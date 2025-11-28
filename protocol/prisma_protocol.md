@@ -54,85 +54,109 @@ This review is motivated by the absence of a systematic, PRISMA-based survey tha
 
 ## 3. Objectives  
 
-### 3.1 Primary Research Question  
+### 3.1 Primary Research Question
 
-> **How have optical integrated sensing and communication (O-ISAC) systems been implemented over cabled (fibre-optic) and wireless optical (FSO/VLC/LiDAR-like) channels at the physical layer, in terms of signal models, channel models, hardware architectures, and joint sensing–communication performance trade-offs?**
+The primary research question of this systematic review is:
 
-### 3.2 Specific Objectives  
+- What are the physical-layer architectures, signal and channel models, and demonstrated sensing–communication performance trade-offs of optical integrated sensing and communication (O-ISAC) systems across cabled (fibre-based) and wireless (FSO, VLC, LiDAR-like, and retroreflective) optical domains?
 
-1. **Mapping and classification**  
-   To systematically identify and classify **cabled (fibre-based)** and **wireless optical (FSO/VLC/LiDAR-like)** O-ISAC systems reported in the peer-reviewed literature.
+The review focuses on modern O-ISAC literature, with particular emphasis on works published in approximately the last five years, while also including earlier optical systems that are functionally O-ISAC even if not explicitly labelled as such.
 
-2. **Unified physical-layer model comparison**  
-   To compare physical-layer signal models, channel models, transmitter/receiver structures, and resource allocation strategies of O-ISAC systems under a unified optical ISAC framework.
 
-3. **Performance synthesis and trade-off characterisation**  
-   To synthesise reported communication metrics (e.g., data rate, spectral efficiency, BER) and sensing metrics (e.g., resolution, accuracy, detection probability), and to characterise fundamental trade-offs between rate, reliability, coverage, and sensing accuracy in optical media.
+### 3.2 Specific Objectives
 
-4. **Separation of cabled vs wireless optical regimes**  
-   To contrast fibre-based O-ISAC with wireless optical O-ISAC in terms of achievable sensing–communication trade-offs, channel constraints (dispersion, turbulence, multipath), and typical application scenarios.
+To answer the primary research question, this review pursues the following specific objectives:
 
-5. **RIS/OPA-enabled and NLoS O-ISAC**  
-   To identify and characterise optical RIS- and OPA-based O-ISAC architectures, with particular emphasis on **NLoS optical links** and turbulence-robust, beamforming-based O-ISAC designs.
+1. **Systematic identification and classification**
+   - To systematically identify and classify optical ISAC studies into
+     (i) cabled O-ISAC (fibre-based integrated sensing and communication), and
+     (ii) wireless O-ISAC (FSO, VLC, LiDAR-like, and retroreflective systems),
+     based on the shared use of optical hardware, spectrum, and/or waveforms for both sensing and communication.
+
+2. **Unified physical-layer taxonomy**
+   - To develop a unified physical-layer taxonomy of O-ISAC signal models, channel models, and transceiver / hardware architectures that applies consistently to both fibre-based and wireless optical implementations.
+
+3. **Performance metrics and trade-offs**
+   - To synthesise reported performance metrics and trade-offs between communication (e.g., data rate, BER, capacity, latency) and sensing (e.g., range, resolution, sensitivity, detection probability) in existing O-ISAC experiments and simulations, highlighting common design patterns and resource-sharing strategies.
+
+4. **Mapping traditional optical techniques into an O-ISAC framework**
+   - To map how traditional optical communication and sensing techniques (e.g., coherent and IM/DD fibre links, distributed fibre sensing, VLC positioning, LiDAR and retroreflective O-ISAC) have been adapted or reinterpreted under an O-ISAC framework, including systems that are functionally O-ISAC but not explicitly labelled as such.
+
+5. **Comparative analysis of cabled vs wireless O-ISAC**
+   - To comparatively analyse cabled and wireless O-ISAC along common dimensions (waveform design, channel modelling assumptions, hardware constraints, robustness to impairments such as fibre nonlinearities and atmospheric turbulence), in order to identify similarities, fundamental differences, and cross-fertilisation opportunities.
+
+6. **Gaps, challenges, and open research problems**
+   - To identify methodological gaps, modelling inconsistencies, and open research problems that arise when bridging fibre sensing, optical wireless, and RF-ISAC perspectives, and to outline future research directions and benchmark scenarios for O-ISAC in 6G and beyond networks.
 
 ---
 
-## 4. Eligibility Criteria  
+## 4. Eligibility Criteria
 
-Eligibility criteria are defined in terms of optical medium, integrated functionality, study type, and reporting detail.
+The eligibility criteria are defined a priori to ensure consistent selection of studies and tight alignment with the primary research question and specific objectives of the review. They operationalise the notion of optical integrated sensing and communication (O-ISAC) at the physical layer across cabled and wireless optical domains. :contentReference[oaicite:3]{index=3}
 
-### 4.1 Inclusion Criteria  
+### 4.1 Types of studies
 
-A record will be included if it satisfies **all** of the following:
+**Inclusion**
 
-1. **Optical medium:**  
-   The system uses optical carriers as the main physical medium, including at least one of:
-   - Cabled fibre-optic links (single-mode or multi-mode),  
-   - Free-space optical (FSO) links,  
-   - Visible light communication (VLC) or other indoor optical wireless systems,  
-   - LiDAR-like optical systems with explicit communication capability.
+- Peer-reviewed **journal articles** and **full-length peer-reviewed conference papers** that present original analytical, simulation-based, experimental, or field-trial work on optical integrated sensing and communication.
+- Studies that describe **physical-layer or link-layer** designs in which sensing and communication functions are jointly realised using shared optical hardware, spectrum, and/or waveforms.
+- System-level or architectural papers that include **sufficient technical detail** on signal models, channel models, or transceiver/hardware architectures to support classification under the proposed physical-layer O-ISAC taxonomy.
 
-2. **Integrated sensing and communication (ISAC nature):**  
-   The optical system implements **both sensing and communication functions** using shared or tightly coupled physical-layer resources, such as:
-   - A common optical transmitter (e.g., laser, LED, OPA) and/or waveform used jointly for sensing and data transmission, or  
-   - A common optical link (e.g., fibre) where distributed sensing and communication operate concurrently with non-negligible interaction or design coupling.
+**Exclusion**
 
-   Systems where sensing is purely incidental (e.g., channel estimation only for equalisation) without an explicit sensing task will **not** be considered O-ISAC.
+- Non–peer-reviewed material (theses, book chapters, white papers, technical reports, magazine articles) and purely conceptual vision or position papers that do not provide concrete physical-layer models, architectures, or quantitative performance results.
+- Standards and roadmap documents that mention ISAC or O-ISAC but lack sufficient technical detail for data extraction.
 
-3. **Cabled vs wireless optical classification:**  
-   The study explicitly or implicitly fits into:
-   - **Cabled O-ISAC:** fibre-based joint sensing–communication systems, or  
-   - **Wireless O-ISAC:** FSO, VLC, or LiDAR-like O-ISAC systems (LOS or NLoS).
+### 4.2 O-ISAC domain and system scope
 
-4. **Study type and level of detail:**  
-   - Peer-reviewed journal articles or full conference papers.  
-   - Provides sufficient technical detail on system and/or channel models, algorithms, or hardware to enable meaningful physical-layer interpretation.
+**Inclusion**
 
-5. **Language and time window:**  
-   - Published in English.  
-   - From the year **2000** up to the final search date, to capture both early joint optical sensing–communication concepts and modern O-ISAC terminology.
+- **Cabled O-ISAC (fibre-based):** Optical fibre systems where both
+  - a **communication function** (e.g., coherent or IM/DD data transmission), and  
+  - a **sensing function** (e.g., distributed vibration, temperature, strain, intrusion, infrastructure monitoring)  
+  are realised on the same fibre infrastructure, and at least one of the following holds:
+  - sensing and communication share the same optical wavelength, time slots, subcarriers, or power budget; or  
+  - sensing backscatter/nonlinear effects are intentionally exploited while a communication channel coexists on the same fibre. :contentReference[oaicite:4]{index=4}
 
-### 4.2 Exclusion Criteria  
+- **Wireless O-ISAC:** Free-space optical (FSO), visible light communication (VLC) / optical wireless (OWC), LiDAR-like, or retroreflective optical systems in which:
+  - the same optical transmitter/receiver or optical front-end is used both to convey user data and to probe the environment (e.g., range, localisation, imaging, turbulence/obstacle sensing); or  
+  - waveforms and resources (e.g., OFDM subcarriers, pulses, chirps) are jointly designed or allocated for simultaneous sensing and communication performance.
 
-Records will be excluded if any of the following hold:
+- Optical systems that are **functionally O-ISAC but not explicitly labelled as such**, including “joint sensing and communication on fibre,” “integrated communication and sensing in DSCM,” “hybrid gas sensing and FSO links,” or “VLC localisation with concurrent data,” provided they meet the shared-hardware/spectrum/waveform criterion above.
 
-- **Pure RF ISAC:**  
-  Joint radar–communication or ISAC systems exclusively in RF/microwave bands, with no optical carrier or optical hardware component.
+**Exclusion**
 
-- **Pure optical communication (no sensing):**  
-  FSO, VLC, or fibre-optic communication systems in which:
-  - No explicit sensing task is performed, or  
-  - Sensing is limited to channel estimation strictly for communication performance (without environment sensing, localisation, or target/state inference).
+- Pure **optical communication** systems (fibre, FSO, VLC, LiDAR-like) that only provide data transmission and do not perform any explicit sensing or measurement task beyond standard channel estimation or tracking for equalisation/beamforming.
+- Pure **optical sensing or imaging** systems (e.g., classical LiDAR, φ-OTDR/DAS, distributed temperature/strain sensing) that do not support or co-design a data communication channel on the same optical infrastructure.
+- RF and millimetre-wave ISAC works without an optical carrier, even if conceptually similar.
 
-- **Pure optical sensing (no communication):**  
-  Fibre sensing, LiDAR, or optical radar systems without any user data transmission or communication function.
+### 4.3 Outcomes and reported information
 
-- **Optical RIS/OPA without ISAC relevance:**  
-  Optical RIS/metasurface or OPA-based systems that focus purely on communication or purely on sensing, with no integrated sensing–communication function or explicit O-ISAC perspective.
+**Inclusion**
 
-- **Non-primary or insufficiently detailed works:**  
-  - Theses, books, patents, white papers, editorials, extended abstracts without full technical content (unless a corresponding full paper is available).  
-  - Papers that mention O-ISAC or optical sensing/communication only at a high level without explicit system/channel model, architecture, or performance metrics.
+- Studies that report at least one **communication-related metric** (e.g., achievable rate, spectral efficiency, BER, SNR, capacity, latency) **and** at least one **sensing-related metric** (e.g., range, spatial or temporal resolution, sensitivity, detection probability, estimation error, localisation accuracy), or provide sufficient detail for such metrics to be inferred.
+- Studies that specify **signal models, channel models, and/or transceiver/hardware architectures** in enough detail to be mapped into the unified physical-layer O-ISAC taxonomy (e.g., waveform families, modulation/detection schemes, fibre or atmospheric channel models, key hardware constraints such as dynamic range or aperture).
+
+**Exclusion**
+
+- Studies that describe sensing or communication purely qualitatively, without quantitative performance, model parameters, or architectural detail sufficient for taxonomy and trade-off analysis.
+
+### 4.4 Time frame
+
+- **Primary window:** The core search will focus on studies published approximately in the **last five years** (e.g., 2020 onwards), reflecting the rapid emergence of explicitly framed optical ISAC work in both fibre and wireless optical domains.
+- **Earlier foundational works:** Older studies (pre-2020) will also be considered **if** they clearly realise joint sensing and communication on optical carriers under the functional O-ISAC definition above (for example, early joint distributed sensing–communication fibre links, VLC positioning with concurrent data, or retroreflective optical links combining data and ranging).
+
+The exact cut-off dates will be specified and justified in the search strategy, in light of the evolution of O-ISAC terminology and architectures. :contentReference[oaicite:5]{index=5}
+
+### 4.5 Language and publication status
+
+- Only studies published in **English** will be included, to ensure consistent technical interpretation and feasibility of screening.
+- Peer-reviewed and formally accepted articles will form the primary evidence base. High-quality preprints (e.g., arXiv) may be tracked during screening for forward citation and, where appropriate, linked to subsequent peer-reviewed versions identified during updated searches.
+
+### 4.6 Study design and setting
+
+- No restriction will be imposed on setting (laboratory, field trial, industrial testbed, indoor/outdoor) as long as the optical ISAC criteria above are satisfied.
+- Simulation-only, analytical, experimental, and hybrid (analysis + experiment) studies are all eligible, provided they report sufficient model detail and performance metrics for inclusion in the taxonomy and trade-off analysis. :contentReference[oaicite:6]{index=6}
 
 ---
 
