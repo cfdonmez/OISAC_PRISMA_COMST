@@ -36,39 +36,21 @@ Any substantial modification to the objectives, eligibility criteria, search str
 Amendments will be recorded in the OSF registration and summarised in a “Protocol Amendments” subsection of the final published review.
 
 ---
+## 2. Background and Rationale
 
-## 2. Background and Rationale  
+Integrated sensing and communication (ISAC) has been widely recognized as a key enabling technology for 6G and beyond networks, allowing the same hardware, spectrum, and waveforms to serve both data communication and environment sensing functions. A rich body of work now exists on radio-frequency (RF) and millimeter-wave ISAC, including joint radar–communications and dual-function radar–communications (DFRC) architectures, waveform design, and information-theoretic performance limits. These studies have firmly established ISAC as a spectrum- and cost-efficient paradigm in the RF and microwave domains. However, existing ISAC surveys and tutorial-style overviews overwhelmingly focus on RF-centric systems and only marginally touch upon optical bands, if at all.
 
-Integrated sensing and communication (ISAC) has emerged as a key paradigm in **6G and beyond** wireless systems, enabling shared hardware and waveforms for both data communication and environment sensing. While recent surveys provide extensive coverage of **RF-based ISAC** (e.g., joint radar–communications, dual-function radar–communications), they largely remain confined to radio-frequency and microwave bands.
+In parallel, optical integrated sensing and communication (O-ISAC) has begun to emerge as a complementary paradigm that exploits the very large, largely license-free bandwidth of optical carriers, their inherent immunity to electromagnetic interference, and their potential for fine spatial and temporal resolution. Recent works have proposed O-ISAC architectures in which the same optical waveform and hardware are used to support both high-rate data transmission and high-resolution sensing, including ranging, vibration monitoring, localisation, and imaging. These efforts span both wired (fibre-based) and wireless (free-space and visible-light) optical domains and demonstrate that optical carriers can, in many scenarios, outperform RF ISAC in terms of achievable throughput and sensing accuracy.
 
-In contrast, **optical integrated sensing and communication (O-ISAC)** leverages optical carriers and hardware for joint sensing and communication functions. Notable directions include:
+On the cabled side, fibre-based O-ISAC (or fibre-ISAC) builds upon decades of research in distributed fibre-optic sensing, including Rayleigh-, Brillouin-, and Raman-based schemes such as φ-OTDR, DAS, and distributed temperature/strain sensing. While traditional distributed fibre sensing systems were deployed as standalone sensing links, recent contributions explicitly integrate high-speed coherent or intensity-modulated communication channels with distributed sensing on the same fibre, often sharing the wavelength channel and exploiting nonlinear or backscattering effects for both functions. A prominent example is the demonstration of integrated sensing and communication in an optical fibre (ISAC-OF), where periodic linear frequency-modulated light serves simultaneously as a carrier for PAM4 data and as a probe for distributed vibration sensing along tens of kilometres of fibre. Related advances extend this concept to digital subcarrier multiplexing (DSCM) systems and field trials where real-time fibre sensing coexists with 400 GbE coherent transmission in dense urban environments.
 
-- **Cabled O-ISAC (fibre-based):**  
-  Distributed optical fibre sensing schemes (e.g., φ-OTDR, Brillouin/Raman-based systems) integrated with high-rate communication channels on the same fibre, potentially sharing spectra, power, or hardware resources.
+On the wireless side, wireless O-ISAC encompasses free-space optical (FSO), visible light communication (VLC), and LiDAR-like systems in which optical beams or illumination sources jointly convey user data and probe the environment. In FSO-based O-ISAC, pulsed, chirped, or OFDM-based optical waveforms have been used to enable simultaneous high-throughput links and sensing tasks such as target ranging, turbulence characterisation, and obstacle detection, including recent designs based on linear frequency modulation (LFM), continuous phase modulation (CPM), and multi-carrier waveforms. VLC-based O-ISAC systems, in turn, exploit LED luminaires to provide both indoor broadband communication and localisation/positioning, motion tracking, or contextual sensing. More recent work on retroreflective O-ISAC (RO-ISAC) uses corner-cube reflectors and carefully engineered hybrid waveforms to significantly extend sensing range and improve link robustness, with experimental demonstrations of full-duplex and bidirectional RO-ISAC links that trade off communication rate against ranging accuracy through flexible waveform design and power allocation.
 
-- **Wireless O-ISAC:**  
-  - **Free-space optical (FSO)** links where optical beams support both high-throughput communication and sensing tasks such as ranging, turbulence monitoring, or target detection.  
-  - **Visible light communication (VLC)** systems where illumination devices (e.g., LEDs) provide simultaneous indoor communication and localisation, tracking, or context sensing.  
-  - **LiDAR-like architectures** with added data transmission capabilities.
+Despite this growing activity, the O-ISAC literature remains fragmented across several largely disjoint communities: optical communications and photonics, distributed fibre sensing, LiDAR and optical remote sensing, VLC and optical wireless, and the broader ISAC/radar–communications community. Many optical systems that are functionally O-ISAC are not explicitly framed as such (e.g., “integrated communication and sensing in DSCM systems”, “optical covert sensing and communication”, “hybrid gas sensing and FSO communication”), and there is currently no unified taxonomy that jointly covers cabled versus wireless O-ISAC under a common physical-layer perspective. Existing overview-type papers either provide high-level architectural discussions of O-ISAC or focus on specific subdomains (e.g., fibre-based integrated sensing and communication, LED-based O-ISAC for IoT, or retroreflective O-ISAC), but do not systematically map the space of signal models, channel models, hardware architectures, and performance trade-offs across the full optical spectrum.
 
-- **Emerging O-ISAC architectures with advanced hardware:**  
-  - Optical **reconfigurable intelligent surfaces (O-RIS)** and metasurfaces to reshape optical channels and potentially enable NLoS O-ISAC.  
-  - **Optical phased arrays (OPA)** providing agile beam steering and spatial sensing while carrying communication signals.
-
-Despite these developments, the existing literature is:
-
-1. **Fragmented** across photonics, optical communications, radar/ISAC, and sensing communities,  
-2. Often focused either on **pure optical communication** or **pure optical sensing**, with few works explicitly framed as O-ISAC, and  
-3. Lacking a **unified taxonomy** that jointly covers **cabled vs wireless optical ISAC** and their physical-layer design trade-offs.
-
-This review aims to systematically identify and synthesise **optical ISAC systems** where sensing and communication are genuinely integrated, rather than incidentally coexisting (e.g., channel estimation used only for equalisation). The central axis of the review is:
-
-- **Cabled O-ISAC:** fibre-based ISAC systems, and  
-- **Wireless O-ISAC:** FSO/VLC/LiDAR-like optical wireless ISAC systems,
-
-with a particular interest in **RIS/OPA-enabled O-ISAC** and **NLoS optical links**.
-
+This review is motivated by the absence of a systematic, PRISMA-based survey that treats optical integrated sensing and communication as a coherent field and explicitly organises it along two main physical-layer axes: (i) **cabled O-ISAC**, where sensing and communication share fibre infrastructure and possibly spectrum, and (ii) **wireless O-ISAC**, where FSO, VLC, and LiDAR-like links realise joint sensing–communication in free space. By adopting a unified O-ISAC lens across these domains, the survey aims to bridge the vocabulary and modelling gaps between fibre sensing, optical wireless, and ISAC communities; highlight common waveform and channel-modelling structures; and identify cross-cutting design challenges and open research problems that are not apparent when these subfields are considered in isolation.
 ---
+
 
 ## 3. Objectives  
 
