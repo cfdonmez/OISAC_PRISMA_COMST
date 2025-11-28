@@ -7,8 +7,19 @@ Optical Integrated Sensing and Communication (O-ISAC) over Fibre and Wireless Op
 <!-- Buraya RF ISAC literatürü, optik ISAC boşluğu ve 6G bağlamı gelecek. -->
 
 ## 3. Objectives
-- To systematically identify and classify optical systems (fibre, FSO, VLC, LiDAR-like) that implement integrated sensing and communication at the physical layer.
-- To compare their signal models, channel models, hardware constraints, and joint sensing–communication performance trade-offs.
+
+The primary research question of this review is:
+
+- How have optical integrated sensing and communication (O-ISAC) systems been implemented over cabled (fibre-optic) and wireless optical (FSO/VLC/LiDAR-like) channels at the physical layer, in terms of signal models, channel models, hardware architectures, and joint sensing–communication performance trade-offs?
+
+To address this question, the review will pursue the following specific objectives:
+
+1. To systematically identify and classify cabled (fibre-based) and wireless optical (FSO/VLC/LiDAR-like) O-ISAC systems reported in the literature.
+2. To compare their physical-layer signal models, channel models, and receiver structures under a unified O-ISAC framework.
+3. To synthesise reported communication and sensing performance metrics, highlighting fundamental trade-offs between data rate, reliability, and sensing accuracy.
+4. To identify methodological gaps, under-explored optical regimes (e.g., RIS/OPA-enabled NLoS O-ISAC), and open research problems relevant to 6G and beyond networks.
+
+
 
 ## 4. Eligibility Criteria
 ### 4.1 Inclusion Criteria
