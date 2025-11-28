@@ -92,7 +92,7 @@ To answer the primary research question, this review pursues the following speci
 
 ## 4. Eligibility Criteria
 
-The eligibility criteria are defined a priori to ensure consistent selection of studies and tight alignment with the primary research question and specific objectives of the review. They operationalise the notion of optical integrated sensing and communication (O-ISAC) at the physical layer across cabled and wireless optical domains. :contentReference[oaicite:3]{index=3}
+The eligibility criteria are defined a priori to ensure consistent selection of studies and tight alignment with the primary research question and specific objectives of the review. They operationalise the notion of optical integrated sensing and communication (O-ISAC) at the physical layer across cabled and wireless optical domains.
 
 ### 4.1 Types of studies
 
@@ -116,7 +116,7 @@ The eligibility criteria are defined a priori to ensure consistent selection of 
   - a **sensing function** (e.g., distributed vibration, temperature, strain, intrusion, infrastructure monitoring)  
   are realised on the same fibre infrastructure, and at least one of the following holds:
   - sensing and communication share the same optical wavelength, time slots, subcarriers, or power budget; or  
-  - sensing backscatter/nonlinear effects are intentionally exploited while a communication channel coexists on the same fibre. :contentReference[oaicite:4]{index=4}
+  - sensing backscatter/nonlinear effects are intentionally exploited while a communication channel coexists on the same fibre.
 
 - **Wireless O-ISAC:** Free-space optical (FSO), visible light communication (VLC) / optical wireless (OWC), LiDAR-like, or retroreflective optical systems in which:
   - the same optical transmitter/receiver or optical front-end is used both to convey user data and to probe the environment (e.g., range, localisation, imaging, turbulence/obstacle sensing); or  
@@ -146,7 +146,7 @@ The eligibility criteria are defined a priori to ensure consistent selection of 
 - **Primary window:** The core search will focus on studies published approximately in the **last five years** (e.g., 2020 onwards), reflecting the rapid emergence of explicitly framed optical ISAC work in both fibre and wireless optical domains.
 - **Earlier foundational works:** Older studies (pre-2020) will also be considered **if** they clearly realise joint sensing and communication on optical carriers under the functional O-ISAC definition above (for example, early joint distributed sensing–communication fibre links, VLC positioning with concurrent data, or retroreflective optical links combining data and ranging).
 
-The exact cut-off dates will be specified and justified in the search strategy, in light of the evolution of O-ISAC terminology and architectures. :contentReference[oaicite:5]{index=5}
+The exact cut-off dates will be specified and justified in the search strategy, in light of the evolution of O-ISAC terminology and architectures.
 
 ### 4.5 Language and publication status
 
@@ -156,7 +156,7 @@ The exact cut-off dates will be specified and justified in the search strategy, 
 ### 4.6 Study design and setting
 
 - No restriction will be imposed on setting (laboratory, field trial, industrial testbed, indoor/outdoor) as long as the optical ISAC criteria above are satisfied.
-- Simulation-only, analytical, experimental, and hybrid (analysis + experiment) studies are all eligible, provided they report sufficient model detail and performance metrics for inclusion in the taxonomy and trade-off analysis. :contentReference[oaicite:6]{index=6}
+- Simulation-only, analytical, experimental, and hybrid (analysis + experiment) studies are all eligible, provided they report sufficient model detail and performance metrics for inclusion in the taxonomy and trade-off analysis.
 
 ---
 
