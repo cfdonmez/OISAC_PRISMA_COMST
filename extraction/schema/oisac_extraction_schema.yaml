@@ -1,0 +1,65 @@
+
+# Optical Integrated Sensing and Communication (O-ISAC) Extraction Schema
+# Bu dosya, her dahil edilen çalışma için doldurulacak alanları tanımlar.
+
+general:
+  - name: record_id
+    type: string
+    required: true
+  - name: year
+    type: int
+    required: true
+  - name: venue
+    type: string
+    required: false
+  - name: is_journal
+    type: bool
+    required: false
+
+domain:
+  - name: domain
+    type: category
+    values: [fibre, FSO, VLC, LiDAR_like, hybrid]
+  - name: cabled
+    type: bool
+  - name: wireless
+    type: bool
+
+signal_channel:
+  - name: wavelength_nm
+    type: float
+  - name: modulation
+    type: string   # PAM4, OFDM, OOK, PPM, vb.
+  - name: detection_type
+    type: category
+    values: [coherent, IMDD, FMCW, other]
+  - name: channel_model
+    type: string   # Gamma-Gamma, lognormal, fibre linear, vb.
+
+isac_specific:
+  - name: sensing_task
+    type: string   # vibration, range, velocity, localization, imaging...
+  - name: comm_metric_reported
+    type: string   # BER, throughput, capacity, SNR, vb.
+  - name: sensing_metric_reported
+    type: string   # RMSE, resolution, P_D, vb.
+  - name: joint_waveform_design
+    type: bool
+  - name: tradeoff_analysis
+    type: category
+    values: [none, qualitative, quantitative]
+
+hardware:
+  - name: hardware_type
+    type: string   # LED, laser, OPA, RIS, DFOS, vb.
+  - name: lab_or_field
+    type: category
+    values: [lab, field_trial, simulation_only]
+
+thesis_specific:
+  - name: uses_RIS
+    type: bool
+  - name: uses_OPA
+    type: bool
+  - name: nlos_capability
+    type: bool
