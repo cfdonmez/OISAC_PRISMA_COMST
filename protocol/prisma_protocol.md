@@ -162,14 +162,14 @@ The exact cut-off dates will be specified and justified in the search strategy, 
 
 ## 5. Information Sources
 
-To capture both the communication-theoretic and optoelectronic physical-layer aspects of optical integrated sensing and communication (O-ISAC), the literature search will draw on a broad set of bibliographic databases and supplementary sources. All information sources, search strategies, and search dates will be documented in detail in line with PRISMA 2020 and the PRISMA-S extension for reporting literature searches. :contentReference[oaicite:6]{index=6}
+To capture both the communication-theoretic and optoelectronic physical-layer aspects of optical integrated sensing and communication (O-ISAC), the literature search will draw on a broad set of bibliographic databases and supplementary sources. All information sources, search strategies, and search dates will be documented in detail in line with PRISMA 2020 and the PRISMA-S extension for reporting literature searches.
 
 ### 5.1 Electronic Databases
 
 The primary search will be conducted in the following databases and publisher platforms:
 
 1. **IEEE Xplore (IEEE)**  
-   *Focus:* Core source for communications, signal processing, radar/ISAC, and optical networking/FSO/VLC engineering literature (e.g., IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Journal on Selected Areas in Communications, Journal of Lightwave Technology, Journal of Optical Communications and Networking). :contentReference[oaicite:7]{index=7}  
+   *Focus:* Core source for communications, signal processing, radar/ISAC, and optical networking/FSO/VLC engineering literature (e.g., IEEE Transactions on Communications, IEEE Transactions on Wireless Communications, IEEE Journal on Selected Areas in Communications, Journal of Lightwave Technology, Journal of Optical Communications and Networking).
    *Rationale:* Captures the majority of RF/ISAC and optical communication work, including many O-ISAC and RO-ISAC papers published in IEEE venues.
 
 2. **Scopus (Elsevier)**  
@@ -180,15 +180,15 @@ The primary search will be conducted in the following databases and publisher pl
    *Focus:* High-quality citation indexing for science and engineering journals.  
    *Rationale:* Provides an independent cross-check on key O-ISAC publications and facilitates structured forward and backward citation tracking.
 
-4. **Optica Publishing Group (formerly OSA) platform** :contentReference[oaicite:8]{index=8}  
+4. **Optica Publishing Group (formerly OSA) platform**
    *Focus:* Optics and photonics journals such as *Optics Express*, *Optics Letters*, *Optica*, *Optical Materials Express*, *Chinese Optics Letters*, and the *Journal of Optical Communications and Networking* (co-published with IEEE).  
    *Rationale:* Essential for fundamental photonics, fibre sensing (e.g., φ-OTDR/DAS, Brillouin/Raman-based schemes), and optical wireless device work that underpin cabled and wireless O-ISAC architectures.
 
-5. **SPIE Digital Library** :contentReference[oaicite:9]{index=9}  
+5. **SPIE Digital Library** 
    *Focus:* Conference proceedings in optics and photonics, including LiDAR, electro-optical remote sensing, and optical engineering (e.g., *Lidar and Optical Remote Sensing for Environmental Monitoring*, *Electro-Optical Remote Sensing* series).  
    *Rationale:* Critical for early experimental demonstrations of LiDAR-like and optical sensing hardware that may implement O-ISAC-like functionality before appearing in journal form.
 
-Where platforms permit multi-database searching (e.g., Scopus and Web of Science indexing overlapping content), the specific database(s) and platform(s) used will be clearly specified in the final review, together with the date of the last search for each source, as recommended by PRISMA-S. :contentReference[oaicite:10]{index=10}
+Where platforms permit multi-database searching (e.g., Scopus and Web of Science indexing overlapping content), the specific database(s) and platform(s) used will be clearly specified in the final review, together with the date of the last search for each source, as recommended by PRISMA-S.
 
 ### 5.2 Preprints and Grey Literature
 
@@ -198,7 +198,7 @@ Given the rapid development of 6G ISAC and O-ISAC research, preprint servers wil
   *Scope:* Categories `eess.SP` (Signal Processing), `cs.IT` (Information Theory), and `physics.optics` (Optics).  
   *Rationale:* Many ISAC, RO-ISAC, and optical radar/communication manuscripts initially appear as arXiv preprints before journal publication.
 
-- **TechRxiv (IEEE preprint server)** :contentReference[oaicite:11]{index=11}  
+- **TechRxiv (IEEE preprint server)**  
   *Scope:* Open, moderated repository for unpublished and pre-review research in electrical engineering, computer science, and related technologies.  
   *Rationale:* Provides early access to O-ISAC-related manuscripts submitted to IEEE journals and conferences.
 
@@ -216,7 +216,7 @@ To minimise the risk of missing relevant O-ISAC studies, the following supplemen
 
 - **Targeted venue and proceedings searches:**  
   Focused manual searches will be performed in recent (e.g., last 3–5 years) proceedings and issues of venues where optical sensing, photonics hardware, and communications/ISAC work intersect, including but not limited to:
-  - *Photonics/optics conferences:* OFC (Optical Fiber Communication Conference), ECOC (European Conference on Optical Communication), CLEO, and selected SPIE conferences on LiDAR, electro-optical remote sensing, and optical engineering. :contentReference[oaicite:12]{index=12}  
+  - *Photonics/optics conferences:* OFC (Optical Fiber Communication Conference), ECOC (European Conference on Optical Communication), CLEO, and selected SPIE conferences on LiDAR, electro-optical remote sensing, and optical engineering.
   - *Communications conferences:* IEEE ICC, IEEE Globecom, IEEE WCNC, and selected ISAC/6G-focused workshops co-located with these events.
 
 The details of each supplementary search (venue, years covered, access route, and date searched) will be recorded in a structured search log to support reproducibility.
@@ -230,7 +230,7 @@ For every information source (databases, platforms, preprint servers, conference
 - any date limits or filters applied,  
 - the date when the source was last searched.
 
-This level of detail follows PRISMA 2020 and PRISMA-S guidance on reporting the “what, when, and how” of information sources, and is intended to facilitate future updating of the review and independent assessment of its completeness. :contentReference[oaicite:13]{index=13}
+This level of detail follows PRISMA 2020 and PRISMA-S guidance on reporting the “what, when, and how” of information sources, and is intended to facilitate future updating of the review and independent assessment of its completeness. :contentReference
 
 <!-- TODO: Add links to the archived search log (e.g., OSF) and record final search dates once the searches are executed. -->
 
