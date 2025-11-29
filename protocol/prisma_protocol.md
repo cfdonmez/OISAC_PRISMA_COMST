@@ -429,17 +429,58 @@ All screening decisions and full-text exclusion reasons will be archived in a st
 
 ## 8. Data Collection Process
 
-Data extraction will be based on a predefined O-ISAC extraction schema and implemented using structured tables (e.g., CSV files) for:
+Data collection will follow a rigorous, schema-driven procedure designed to map each included study $s$ to a structured feature vector $\mathbf{x}(s)$, comprising both numerical physical-layer parameters (e.g., data rate, wavelength, sensing range, resolution) and categorical design choices (e.g., waveform family, detection type, channel/turbulence model). The procedure is designed to satisfy PRISMA 2020 (Item 9) and PRISMA-P recommendations on piloting and duplicate extraction.
 
-- **Cabled O-ISAC studies** (fibre-based), and  
-- **Wireless O-ISAC studies** (FSO/VLC/LiDAR-like).
+### 8.1 Extraction Instrument and Data Dictionary
 
-**Key procedures:**
+Data will be extracted using a predefined, version-controlled **O-ISAC Extraction Schema** (e.g., `extraction/schema/oisac_extraction_schema.yaml`). The schema functions as a strict data dictionary by defining, for each variable:
 
-- A **pilot extraction** on 5–10 studies will be conducted to refine field definitions (e.g., distinguishing sensing vs communication metrics, channel model categories).  
-- Two reviewers will independently extract core items (bibliographic data, system classification, main models and metrics). Extended technical details may be extracted by one reviewer and checked by another.  
-- Discrepancies will be resolved by consensus, consulting the full text.  
-- If critical information is missing or ambiguous (e.g., unclear joint nature of sensing and communication), authors may be contacted where practical.
+- **Data type:** float, integer, string, or constrained category (e.g., `turbulence_model` $\in$ {Log-Normal, Gamma–Gamma, Málaga, ...}).
+- **Units:** standardised units (e.g., nm for wavelength, Gbps for rate) to ensure comparability.
+- **Missing-data policy:** explicit distinction between **NR** (“Not Reported”) and **NA** (“Not Applicable”).
+- **Provenance fields:** each extracted value will be linked to a source pointer (page/figure/table) to enable audit and re-checking.
+
+### 8.2 Pilot Extraction and Refinement
+
+Prior to the main extraction phase, a **pilot calibration** will be conducted on a diverse sample of 5–10 studies (covering fibre, FSO, and VLC domains). The objectives are:
+
+1. To test schema coverage under real-world reporting heterogeneity.
+2. To refine operational definitions for borderline or subjective fields (e.g., what qualifies as an explicit “joint” trade-off analysis).
+3. To ensure consistent interpretation across reviewers before scaling to the full corpus.
+
+Any substantive modifications to the schema resulting from the pilot will be recorded in the repository changelog and, if the protocol has been registered, in the protocol amendment history (Section 1.4).
+
+### 8.3 Main Extraction Strategy
+
+To balance methodological rigor with feasibility, a **hybrid double-extraction strategy** will be employed:
+
+1. **Core bibliometrics and classification:** two reviewers will independently extract high-level metadata, medium/system classification (cabled vs. wireless), and primary sensing/communication performance metrics.
+2. **Deep technical parameters:** complex model parameters (e.g., channel-equation coefficients, turbulence parameters, hardware constraints) will be extracted by one reviewer and explicitly verified by a second reviewer against the full text.
+
+Extraction will be conducted using structured CSV forms (schema-validated at entry) and/or a custom Python-based interface to enforce controlled vocabularies, unit normalisation, and mandatory provenance fields.
+
+### 8.4 Discrepancy Resolution and Agreement Monitoring
+
+Disagreements between reviewers will be resolved through:
+
+1. **Consensus discussion** with explicit citation of the relevant page/figure/table in the full text.
+2. **Third-reviewer arbitration** (e.g., supervisor) if consensus cannot be reached.
+
+Inter-rater reliability for categorical classification fields will be monitored during the pilot and early extraction phases using **Cohen’s Kappa ($\kappa$)**:
+
+$$\kappa = \frac{p_o - p_e}{1 - p_e}$$
+
+where $p_o$ denotes observed agreement and $p_e$ denotes chance agreement. Persistently low agreement (e.g., $\kappa < 0.6$ as a pragmatic “re-calibration” trigger) will prompt refinement of field definitions and an additional calibration round.
+
+### 8.5 Handling Missing or Unclear Data
+
+- **Explicit missingness:** values not stated in the report will be coded as **NR**.
+- **Figure-only quantities:** when quantitative values are available only in plots, a digitisation tool (e.g., WebPlotDigitizer) may be used. Digitised values will be flagged (e.g., `EST-FIG`), accompanied by the figure reference, and **verified by a second reviewer**.
+- **Author queries:** for seminal studies where critical physical-layer parameters are missing, corresponding authors may be contacted with a structured request. If the information cannot be obtained, the field will remain NR and be treated accordingly in synthesis.
+
+### 8.6 Automation and Audit Trail
+
+Python scripts will be used to parse bibliographic metadata, manage the extraction database, and enforce schema validation; however, extraction of non-trivial technical values will remain **human-in-the-loop** to preserve context-aware accuracy. All extraction artefacts (screening IDs, schema versions, changelogs, and the final dataset) will be version-controlled and archived in the project repository to provide a transparent, reproducible audit trail.
 
 ---
 
