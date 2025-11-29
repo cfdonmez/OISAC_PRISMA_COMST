@@ -239,38 +239,135 @@ This level of detail follows PRISMA 2020 and PRISMA-S guidance on reporting the 
 
 ## 6. Search Strategy  
 
-### 6.1 Conceptual Blocks  
+The search strategy is designed to retrieve optical integrated sensing and communication (O-ISAC) studies across both cabled (fibre-based) and wireless (FSO/VLC/LiDAR-like) domains, with explicit emphasis on physical-layer architectures, signal and channel models, and joint sensing–communication performance. Search methods will be planned and reported in accordance with PRISMA 2020 and the PRISMA-S extension for reporting literature searches.
 
-The search strategy will combine three main conceptual blocks:
+### 6.1 Conceptual Framework and Block Logic  
 
-1. **ISAC / joint sensing–communication concepts**  
-   - "integrated sensing and communication" OR ISAC OR "joint sensing and communication" OR "joint radar-communication" OR "dual-function radar-communication" OR DFRC
+The search strategy is built around three conceptual blocks:
 
-2. **Optical media (cabled and wireless)**  
-   - optical OR photonic OR "visible light" OR VLC OR "free-space optical" OR FSO OR "optical fibre" OR "optical fiber" OR LiDAR OR LIDAR
+1. **Block A – Integrated sensing and communication concepts**  
+   Terms capturing joint sensing–communication functionality, for example:  
+   - "integrated sensing and communication", ISAC,  
+   - "joint sensing and communication", "joint communication and sensing",  
+   - "joint radar-communication", "dual-function radar-communication", DFRC,  
+   - "simultaneous sensing and communication", "simultaneous ranging and communication",  
+   - fibre-specific or VLC-specific phrases such as "communication and sensing on fiber", "fibre sensing and communication", "VLC localisation and communication".
 
-3. **Physical-layer emphasis (optional refinement)**  
-   - waveform OR modulation OR "channel model" OR "physical layer" OR "signal model" OR transceiver OR beamforming
+2. **Block B – Optical media (cabled and wireless)**  
+   Terms restricting the search to optical carriers and hardware, for example:  
+   - optical, photonic,  
+   - "optical fibre", "optical fiber", fibre, fiber,  
+   - "free-space optical", FSO,  
+   - "visible light", "visible light communication", VLC, LiFi,  
+   - LiDAR, LIDAR, "optical radar",  
+   - laser, LED, "optical wireless".
 
-These blocks will be combined with Boolean logic. A generic IEEE Xplore-style query could be:
+3. **Block C – Physical-layer emphasis (optional refinement)**  
+   Terms emphasising physical-layer and hardware aspects, which may be added in sensitivity searches or when the volume of results is very large, for example:  
+   - waveform, modulation, "signal model", "channel model",  
+   - "physical layer", transceiver, beamforming, "optical front-end".
+
+The **core Boolean structure** used for the main searches will be:
+
+> (Block A) AND (Block B)
+
+Block C will be used as an **optional refinement** when needed (e.g., in Scopus or Web of Science) to reduce clearly off-topic records while maintaining high recall. Exclusion terms (e.g., for purely seismic fibre sensing without any communication function) will be used cautiously and only after checking that they do not remove any records in the validation set (Section 6.3).
+
+### 6.2 Database-Specific Search Strategies  
+
+Database-specific syntax (field tags, proximity operators, wildcards, and filters) will be used for each information source listed in Section 5. The full, exact search strings for each database will be archived (e.g., as an appendix or OSF file) to ensure reproducibility.
+
+#### 6.2.1 IEEE Xplore  
+
+In IEEE Xplore, the search will target metadata fields (Abstract, Title, Keywords) and restrict results to journal articles and conference papers in English. A generic template is:
 
 ```text
-(("integrated sensing and communication" OR ISAC OR "joint sensing and communication" 
-  OR "joint radar-communication" OR "dual-function radar-communication" OR DFRC)
- AND
- (optical OR photonic OR "visible light" OR VLC OR "free-space optical" OR FSO 
-  OR "optical fibre" OR "optical fiber" OR LiDAR OR LIDAR))
-Database-specific syntax (field tags, proximity operators, wildcards) and filters (e.g., document type = article or conference, language = English) will be applied and documented. Where necessary, additional optical ISAC-specific terms (e.g., "LiDAR-communication", "illumination and communication", "fibre sensing and communication") will be added to ensure recall of earlier works that predate the “ISAC” acronym.
-'''
-### 6.2 Search Limits and Updates
+( "integrated sensing and communication" OR ISAC 
+  OR "joint sensing and communication" 
+  OR "joint communication and sensing"
+  OR "joint radar-communication" 
+  OR "dual-function radar-communication" 
+  OR DFRC
+  OR "simultaneous sensing and communication"
+)
+AND
+( optical OR photonic 
+  OR "optical fibre" OR "optical fiber" OR fibre OR fiber
+  OR "free-space optical" OR FSO
+  OR "visible light" OR "visible light communication" OR VLC OR LiFi
+  OR LiDAR OR LIDAR OR "optical radar"
+)
+```
 
-- **Language:** English only.  
-- **Publication date:** 2000–[final search date].  
+Where feasible, proximity operators (e.g., NEAR/n) will be used in secondary runs to ensure that sensing/communication terms appear in the same local context as the optical medium terms (for example, "sensing" NEAR/5 "communication").
 
-**Search updates:**  
-If the review extends beyond 12 months from the initial search, an updated search will be performed before final analysis. New records will be screened and extracted using the same procedures.
+#### 6.2.2 Scopus and Web of Science
 
-Full search strategies for all databases and information sources will be reported in an appendix or supplementary file.
+In Scopus and Web of Science, the search will be applied to titles, abstracts, and author keywords. Wildcards will be used to capture spelling variants and related terms. A representative Scopus-style query is:
+
+```text
+TITLE-ABS-KEY (
+   ( "integrated sensing and communication" 
+     OR ISAC 
+     OR "joint sensing and communication" 
+     OR "joint communication and sensing"
+     OR "dual-function" W/3 (radar OR communication)
+     OR "simultaneous" W/3 (sensing OR ranging) W/3 communication
+   )
+   AND
+   ( optical* OR photonic* 
+     OR "optical fibre" OR "optical fiber" OR fibre* OR fiber*
+     OR "free-space optical" OR FSO
+     OR "visible light" OR "visible light communication" OR VLC OR LiFi
+     OR lidar* OR "optical radar"
+   )
+)
+AND ( LIMIT-TO ( LANGUAGE, "English" ) )
+```
+
+For Web of Science, equivalent field tags (e.g., TS= for Topic) and filters (document type = Article OR Proceedings Paper; language = English) will be used.
+
+#### 6.2.3 Optica Publishing Group and SPIE Digital Library
+
+For Optica and SPIE platforms, whose interfaces may differ from IEEE Xplore and Scopus, searches will be configured to target at least the title and abstract fields, using combinations of Block A and Block B terms. When supported, proximity operators will be used to link sensing/communication concepts with optical media (e.g., "communication" NEAR/5 "distributed fiber sensing"; "LiDAR" NEAR/5 "communication"). Where platform limitations prevent full replication of the generic query, the exact syntax and any restrictions will be documented.
+
+#### 6.2.4 Preprint Servers (arXiv, TechRxiv)
+
+For arXiv (categories eess.SP, cs.IT, physics.optics) and TechRxiv, simplified queries will be used, for example:
+
+```text
+("integrated sensing and communication" OR "joint sensing and communication" OR ISAC)
+AND
+(optical OR "optical fiber" OR "optical fibre" OR FSO OR VLC OR LiFi OR LiDAR OR "optical radar")
+```
+
+Searches will be filtered by subject area when possible and limited to English-language manuscripts.
+
+### 6.3 Piloting and Validation of the Search Strategy
+
+To evaluate and refine the sensitivity and precision of the search:
+
+1. A validation (“golden”) set of approximately 8–12 known O-ISAC papers will be assembled in advance, covering:
+   - cabled (fibre-based) O-ISAC systems, and
+   - wireless (FSO, VLC, LiDAR-like, retroreflective) O-ISAC systems.
+
+2. Draft search strings will be iteratively adjusted until all validation-set papers are retrieved in each of the core databases (IEEE Xplore, Scopus, Web of Science). Any missed validation paper will trigger the addition or modification of functional keywords in Block A or Block B.
+
+3. Where candidate exclusion terms (e.g., for purely seismic fibre sensing) are introduced, they will be tested against the validation set and a small random sample of potentially relevant records to ensure that true O-ISAC studies are not inadvertently removed.
+
+4. The final search strategies will be peer reviewed by a second reviewer (e.g., supervisor or information specialist) for completeness and syntactic correctness before being executed.
+
+### 6.4 Limits, Filters, and Search Updating
+
+The following limits and filters will be applied consistently across databases, subject to the capabilities of each platform:
+
+- **Language:** restricted to English.
+- **Document type:** peer-reviewed journal articles and peer-reviewed conference papers (including short letters/communications where they contain sufficient technical detail).
+- **Publication date:** database searches will be run from 2000 up to the final search date, in order to capture early optical systems that are functionally O-ISAC but predate the ISAC terminology. In line with the eligibility criteria (Section 4.4), the synthesis will place particular emphasis on approximately the last five years (e.g., 2020 onwards), while still including earlier foundational works that clearly implement joint sensing and communication on optical carriers.
+
+If more than twelve months elapse between the initial search and completion of data synthesis, all database and preprint server searches will be updated using the same strategies, restricted to records added after the previous search date. Newly identified studies that meet the eligibility criteria will be incorporated into the screening, extraction, and synthesis processes, and the updated search date will be reported in the final review.
+
+Full search strategies for all databases and information sources will be provided in an appendix or supplementary file and deposited in an open repository together with the search log.
 
 ---
 
