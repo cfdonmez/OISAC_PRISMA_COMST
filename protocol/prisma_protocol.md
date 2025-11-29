@@ -373,19 +373,57 @@ Full search strategies for all databases and information sources will be provide
 
 ## 7. Study Selection Process
 
-A two-stage screening process will be followed:
+The study selection process will follow the PRISMA 2020 flow, consisting of identification (deduplication), screening (title/abstract), and eligibility (full-text) phases. To ensure reproducibility and an auditable decision trail, all selection steps (including deduplication rules, screening decisions, and full-text exclusion reasons) will be executed and logged through the review’s GitHub-based workflow (e.g., Python notebooks/scripts and structured CSV logs).
 
-### 7.1 Title/Abstract Screening
+### 7.1 Data Management and Deduplication (Identification)
 
-- Two reviewers will independently screen titles and abstracts against the eligibility criteria.  
-- Records clearly unrelated to optical media or without any indication of integrated sensing and communication will be excluded.
+Search results from all sources will be exported in standard bibliographic formats (e.g., RIS/CSV) and merged into a master dataset. Deduplication will be conducted in a **semi-automated** manner using a custom Python pipeline archived in the repository (e.g., `analysis/notebooks/01_search_and_dedup.ipynb`), with the following procedure:
 
-### 7.2 Full-Text Screening
+1. **Automated Matching:** Duplicate candidates will be detected using a hierarchy of keys:
+   - Exact/near-exact DOI matches (when available),
+   - Normalised title similarity (case/punctuation removed; whitespace normalised),
+   - Publication year consistency and, where available, author overlap.
+2. **Manual Verification:** Candidate duplicates with metadata discrepancies (e.g., differing titles due to subtitles, preprint vs. publisher version, conference vs. journal extension) will be flagged for manual inspection by one reviewer, with the decision recorded in the screening log.
+3. **Precedence Rule (Multiple Reports):** When the same study exists in multiple versions, the **most complete peer-reviewed version** (typically the journal article) will be prioritised as the primary record. Earlier versions (e.g., preprints or conference papers) will be retained as linked supplementary reports where relevant.
 
-- Potentially relevant records will be assessed in full text by two independent reviewers.  
-- Disagreements will be resolved by discussion; if unresolved, a third reviewer (e.g., supervisor) will arbitrate.
+After deduplication, each unique record will be assigned a persistent identifier (`record_id`) and imported into the screening log for subsequent phases.
 
-For each record, inclusion/exclusion decisions and reasons for exclusion at full-text stage will be documented in a structured log (e.g., `screening_log` table). The final review will present a **PRISMA 2020 flow diagram** summarising the selection process and counts at each stage.
+### 7.2 Screening Phases
+
+Study selection will be conducted by two independent reviewers to minimise selection bias and improve methodological rigor.
+
+#### Phase 1: Title and Abstract Screening
+- **Calibration Exercise:** Prior to formal screening, both reviewers will independently screen a random sample of 50 records to calibrate the interpretation of the eligibility criteria (Section 4). Discrepancies will be discussed and the operational definitions refined before proceeding to the full screening set.
+- **Process:** Each reviewer will classify records as **Include**, **Exclude**, or **Unsure** based on titles/abstracts against the predefined eligibility criteria.
+- **Decision Rule (Conservative):** Any record marked as *Include* or *Unsure* by at least one reviewer will advance to the full-text stage, to reduce the probability of premature exclusion.
+
+#### Phase 2: Full-Text Eligibility Assessment
+- **Process:** Full texts of all potentially eligible records will be retrieved and assessed independently by both reviewers against Section 4.
+- **Standardised Exclusion Coding:** Records excluded at full-text stage will be assigned a predefined exclusion code to enable transparent reporting and quantitative breakdowns in the PRISMA flow, for example:
+  - `EXC-WRONG-DOMAIN`: RF/mmWave ISAC without an optical carrier.
+  - `EXC-PURE-SENSING`: Optical sensing/imaging without a co-designed data communication function.
+  - `EXC-PURE-COMM`: Optical communication without an explicit sensing task beyond routine channel estimation.
+  - `EXC-NO-PHY`: Conceptual/system-level discussion lacking sufficient physical-layer models/parameters for extraction.
+  - `EXC-TYPE`: Non-eligible publication type (e.g., thesis, white paper, non-peer-reviewed report).
+
+### 7.3 Resolution of Disagreements
+
+Disagreements will be handled using a staged resolution process:
+1. **Consensus discussion** between the two reviewers.
+2. **Third-reviewer arbitration** (e.g., supervisor) if consensus cannot be reached.
+
+All adjudications will be documented in the screening log for auditability.
+
+### 7.4 Transparency and PRISMA 2020 Reporting
+
+The selection results will be reported using a PRISMA 2020 flow diagram, including:
+- Records identified per source,
+- Duplicates removed,
+- Records excluded at title/abstract stage,
+- Full-text articles assessed and excluded (with exclusion-code breakdown),
+- Final included studies.
+
+All screening decisions and full-text exclusion reasons will be archived in a structured CSV file (e.g., `screening/screening_log.csv`) and version-controlled in the repository, enabling independent verification and future updating of the review.
 
 ---
 
