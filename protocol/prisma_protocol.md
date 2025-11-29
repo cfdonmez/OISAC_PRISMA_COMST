@@ -54,39 +54,50 @@ This review is motivated by the absence of a systematic, PRISMA-based survey tha
 
 ## 3. Objectives  
 
-### 3.1 Primary Research Question
+This systematic review aims to go beyond a simple cataloguing of optical integrated sensing and communication (O-ISAC) studies by constructing a **unified physical-layer framework** that jointly covers cabled (fibre-based) and wireless (FSO/VLC/LiDAR-like/retroreflective) implementations. The review emphasises (i) how sensing and communication functions are physically integrated on optical carriers, (ii) how their performance is quantified and traded off across heterogeneous optical media and models, and (iii) how these insights inform future 6G-oriented O-ISAC architectures.
 
-The primary research question of this systematic review is:
+### 3.1 Research Questions
 
-- What are the physical-layer architectures, signal and channel models, and demonstrated sensing–communication performance trade-offs of optical integrated sensing and communication (O-ISAC) systems across cabled (fibre-based) and wireless (FSO, VLC, LiDAR-like, and retroreflective) optical domains?
+To structure this objective, the review is organised around the following research questions:
 
-The review focuses on modern O-ISAC literature, with particular emphasis on works published in approximately the last five years, while also including earlier optical systems that are functionally O-ISAC even if not explicitly labelled as such.
+- **RQ1 (Physical Integration and Architectures):**  
+  How are sensing and communication functions jointly realised in cabled and wireless optical systems in terms of shared hardware, spectrum, and waveforms, and to what extent can these architectures be described within a unified physical-layer model?
 
+- **RQ2 (Signal, Channel, and Trade-off Modelling):**  
+  What classes of signal and channel models are used to describe optical ISAC operation, and how do existing works quantify and manage the trade-off between communication performance (e.g., rate, BER, reliability) and sensing performance (e.g., range, resolution, detection/estimation accuracy), including—where available—links to information-theoretic and estimation-theoretic limits?
+
+- **RQ3 (Gaps, 6G Context, and Enabling Technologies):**  
+  Which methodological gaps and open problems emerge when cabled and wireless O-ISAC studies are viewed through a common 6G physical-layer lens, and what implications do these have for emerging enabling technologies such as optical reconfigurable intelligent surfaces and optical phased arrays?
+
+> **Note.** RIS/OPA are treated as *enabling-platform implications* of the O-ISAC evidence base. Studies that do not satisfy the O-ISAC eligibility criteria (Section 4) are not targeted for inclusion solely on the basis of RIS/OPA content.
 
 ### 3.2 Specific Objectives
 
-To answer the primary research question, this review pursues the following specific objectives:
+To answer these questions, the review pursues the following specific objectives:
 
 1. **Systematic identification and classification**
    - To systematically identify and classify optical ISAC studies into
-     (i) cabled O-ISAC (fibre-based integrated sensing and communication), and
-     (ii) wireless O-ISAC (FSO, VLC, LiDAR-like, and retroreflective systems),
+     (i) cabled O-ISAC (fibre-based integrated sensing and communication) and
+     (ii) wireless O-ISAC (FSO, VLC, LiDAR-like, retroreflective systems),
      based on the shared use of optical hardware, spectrum, and/or waveforms for both sensing and communication.
 
 2. **Unified physical-layer taxonomy**
-   - To develop a unified physical-layer taxonomy of O-ISAC signal models, channel models, and transceiver / hardware architectures that applies consistently to both fibre-based and wireless optical implementations.
+   - To develop a unified physical-layer taxonomy that organises O-ISAC systems jointly by
+     - medium (fibre vs free-space),
+     - integration mechanism (e.g., resource-division vs fully joint waveforms), and
+     - signal dimension (intensity-only vs coherent field processing, single-aperture vs multi-aperture/array-based designs).
 
-3. **Performance metrics and trade-offs**
-   - To synthesise reported performance metrics and trade-offs between communication (e.g., data rate, BER, capacity, latency) and sensing (e.g., range, resolution, sensitivity, detection probability) in existing O-ISAC experiments and simulations, highlighting common design patterns and resource-sharing strategies.
+3. **Sensing–communication performance and trade-offs**
+   - To synthesise reported performance metrics and trade-offs between communication (e.g., data rate, spectral efficiency, BER, latency, reliability) and sensing (e.g., range, resolution, sensitivity, detection probability, estimation error) in existing O-ISAC experiments and simulations, and to relate these trade-offs to known information-theoretic and estimation-theoretic limits where such comparisons are meaningful.
 
 4. **Mapping traditional optical techniques into an O-ISAC framework**
-   - To map how traditional optical communication and sensing techniques (e.g., coherent and IM/DD fibre links, distributed fibre sensing, VLC positioning, LiDAR and retroreflective O-ISAC) have been adapted or reinterpreted under an O-ISAC framework, including systems that are functionally O-ISAC but not explicitly labelled as such.
+   - To map how traditional optical communication and sensing techniques (e.g., coherent and IM/DD fibre links, distributed fibre sensing, VLC positioning, LiDAR and retroreflective schemes) have been adapted or reinterpreted under an O-ISAC framework, including systems that are functionally O-ISAC but not explicitly labelled as such.
 
 5. **Comparative analysis of cabled vs wireless O-ISAC**
-   - To comparatively analyse cabled and wireless O-ISAC along common dimensions (waveform design, channel modelling assumptions, hardware constraints, robustness to impairments such as fibre nonlinearities and atmospheric turbulence), in order to identify similarities, fundamental differences, and cross-fertilisation opportunities.
+   - To comparatively analyse cabled and wireless O-ISAC systems along common dimensions (waveform design, channel modelling assumptions, hardware constraints, robustness to fibre nonlinearities and atmospheric/propagation impairments), in order to identify structural similarities, fundamental differences, and opportunities for cross-fertilisation between fibre and optical wireless communities.
 
-6. **Gaps, challenges, and open research problems**
-   - To identify methodological gaps, modelling inconsistencies, and open research problems that arise when bridging fibre sensing, optical wireless, and RF-ISAC perspectives, and to outline future research directions and benchmark scenarios for O-ISAC in 6G and beyond networks.
+6. **Gaps, open problems, and implications for 6G optical ISAC**
+   - To identify methodological gaps, modelling inconsistencies, and open research problems that arise when bridging fibre sensing, optical wireless, and RF-ISAC perspectives, and to outline a research agenda for O-ISAC in 6G and beyond, including implications for programmable photonic platforms such as optical reconfigurable intelligent surfaces and optical phased arrays.
 
 ---
 
