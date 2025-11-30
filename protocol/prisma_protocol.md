@@ -825,52 +825,108 @@ In summary, the data synthesis (qualitative, quantitative, and gap analysis) wil
 
 ## 12. Meta-bias Assessment (Publication and Reporting Biases)
 
-Traditional tools for assessing publication bias (e.g., funnel plots) are not directly applicable. Instead, meta-bias will be qualitatively assessed by considering:
+Classical publication-bias tools (e.g., funnel plots) are not directly applicable to heterogeneous physical-layer engineering studies. Instead, we will assess **meta-bias** using a structured set of **engineering-relevant indicators** derived from the extracted dataset (Section 9) and quality appraisal (Section 10). The goal is to identify systematic distortions in the body of evidence that could inflate apparent O-ISAC benefits.
 
-- **Venue/community concentration:** dominance of certain research groups or venues for specific O-ISAC architectures.  
-- **Result orientation:** preference for publishing only positive ISAC gains vs neutral or negative findings.  
-- **Metric asymmetry:** tendency to report only communication metrics (or only sensing metrics) while claiming integrated ISAC functionalities.
+### 12.1 Publication and Venue Concentration Bias
 
-These aspects will be discussed as limitations in the final review and linked to the domain-level confidence assessments.
+We will quantify concentration effects by reporting:
+- the distribution of included studies across venues (journals/conferences) and publishers,
+- the distribution across author groups (e.g., top contributing research groups),
+- temporal clustering (bursts driven by a single community trend).
+
+These indicators will be used to discuss whether specific design narratives are over-represented due to venue/community preference rather than independent replication.
+
+### 12.2 Selective Outcome Reporting / Metric Asymmetry (ISAC Cherry-picking)
+
+Because O-ISAC claims require joint evidence, we will assess selective reporting via:
+- the proportion of studies that report **communication outcomes** without meaningful sensing outcomes, or vice versa (Sections 9.8–9.9),
+- the prevalence of explicit trade-off characterisation (Section 9.10: single point vs curve/Pareto front),
+- the frequency of missing reporting for uncertainty descriptors (Section 9.4: trials, CI/STD).
+
+A high rate of “ISAC-labelled but single-sided metrics” will be treated as an indicator of reporting bias and will be highlighted explicitly as a limitation.
+
+### 12.3 Model/Scenario Optimism Bias (Hidden Assumption Bias)
+
+We will examine systematic optimism by checking the frequency of:
+- overly idealised assumptions (e.g., perfect alignment/CSI, no pointing error, simplified turbulence) not stress-tested (Section 9.7; Sections 10.1–10.2),
+- single-regime evaluations without sensitivity analysis (Section 9.0; Section 10.2),
+- lack of baseline comparisons (Section 9.4; Section 10.2).
+
+We will summarise these as “assumption-coverage” statistics (e.g., how often pointing error is modelled in FSO O-ISAC, how often turbulence parameters are stated explicitly) and interpret them as potential upward-bias drivers.
+
+### 12.4 Multiple-report / Version Bias
+
+To avoid double-counting and narrative inflation via multiple versions of the same work (preprint/conference/journal), we adopt the precedence rule defined in Section 7.1. Where multiple reports exist, they will be linked, and only the designated primary report will contribute to quantitative summaries unless a secondary report contains genuinely new experimental evidence.
+
+### 12.5 Integration into Synthesis
+
+Meta-bias findings will not be used to exclude studies. Instead, they will be integrated into the narrative synthesis (Section 11) by:
+- flagging conclusions that rely disproportionately on potentially biased evidence patterns,
+- down-weighting design recommendations supported only by highly optimistic modelling regimes or incomplete metric reporting,
+- transparently listing the most common meta-bias patterns as field-level limitations.
 
 ---
 
 ## 13. Certainty of Evidence / Confidence in the Body of Evidence
 
-An informal but structured **confidence-in-evidence** assessment will be carried out at the **domain level**, e.g.:
+We will assess confidence in the accumulated evidence at the **domain level** (e.g., fibre O-ISAC, FSO O-ISAC, VLC O-ISAC, and RIS/OPA implications within O-ISAC), using an engineering-appropriate scheme rather than clinical GRADE with effect-size pooling. The objective is to communicate, for each domain, whether the observed patterns and trade-offs are robust enough to support design guidance.
 
-- Fibre-based O-ISAC,  
-- FSO-based O-ISAC,  
-- VLC-based O-ISAC,  
-- RIS/OPA-enabled O-ISAC.
+### 13.1 Domains for Confidence Assessment
 
-For each domain, confidence will be judged based on:
+Initial domains:
+- **Fibre-based (cabled) O-ISAC**
+- **FSO-based (wireless) O-ISAC**
+- **VLC-based (wireless) O-ISAC**
+- **LiDAR-like / retroreflective O-ISAC**
+- **RIS/OPA-related implications (within included O-ISAC studies only)**
 
-- Number and independence of studies and consistency of reported trends,  
-- Methodological quality and risk-of-bias profiles (Section 10),  
-- Alignment between simulation and experimental evidence when both exist.
+### 13.2 Confidence Rubric (Engineering-oriented)
 
-Each domain will be assigned a qualitative rating (e.g., **high**, **moderate**, **low** confidence) with justification, which will guide:
+For each domain, confidence will be rated as **High / Moderate / Low** based on five evidence dimensions:
 
-- The strength of design recommendations, and  
-- The identification of open problems.
+1. **Quantity and Independence**
+   - number of studies and diversity of groups/venues; presence of independent replication.
+2. **Methodological Reliability**
+   - distribution of Technical Quality Appraisal scores (Section 10), especially modelling realism and validation strength.
+3. **Consistency of Findings**
+   - whether similar trade-off patterns appear across multiple studies and across different modelling/experimental regimes.
+4. **Directness and Relevance**
+   - alignment between studied scenarios and claimed application targets (Section 9.3), and whether extracted outcomes directly answer RQ1–RQ2.
+5. **Agreement Between Theory and Practice (when applicable)**
+   - coherence between analytical/simulation trends and experimental/field evidence; explicit reporting of uncertainty.
+
+Operationally, we will summarise these dimensions using descriptive statistics and structured narrative. Domains dominated by single-regime simulations with incomplete reporting will typically be downgraded, while domains with multi-regime validation and experimental corroboration will be upgraded.
+
+### 13.3 Outputs and Use in Conclusions
+
+Domain-level confidence ratings will:
+- govern the strength of design recommendations (strong vs cautious),
+- guide which open problems are framed as “evidence gaps” vs “implementation gaps,”
+- be visualised as an **evidence-confidence map** (e.g., a compact domain × confidence table; optionally complemented by a stacked summary chart aligned with Section 10.6).
+
+This assessment will be explicitly reported in the final manuscript alongside the synthesis, enabling readers to distinguish robust cross-domain insights from tentative early-stage claims.
 
 ---
 
 ## 14. Dissemination
 
-The completed systematic review is intended for submission to a **high-impact communications journal**, such as *IEEE Communications Surveys & Tutorials*, or a comparable venue in communications/optics.
+The completed systematic review will be prepared for submission to a high-impact communications survey venue (e.g., **IEEE Communications Surveys & Tutorials**), with the protocol and artefacts designed to support auditability, reproducibility, and future updating.
 
-To promote transparency and re-use:
+### 14.1 Open Artefacts and Reproducibility Package
 
-- The full set of **search strategies**,  
-- **Screening and extraction tables**, and  
-- Any scripts used for analysis and figure generation  
+Subject to institutional/governmental constraints and venue policies, we will publicly archive:
+- full database search strings and search logs (PRISMA-S compliant),
+- screening artefacts (e.g., `screening_log.csv` with inclusion/exclusion decisions and exclusion codes),
+- extraction artefacts (schema YAML + extracted datasets with NR/NA coding and provenance pointers),
+- analysis notebooks/scripts used to generate figures (sunburst taxonomy, bubble trade-off plots, stacked trend charts, and quality landscape visualisations).
 
-will be made available via **OSF** and/or a public code repository, subject to journal policies.
+To respect copyright restrictions, **full-text PDFs will not be redistributed**; instead, we will share bibliographic metadata, extracted variables, and an auditable provenance trail (page/figure/table pointers).
 
-The review will also serve as a **core chapter** in an ongoing PhD thesis on optical ISAC and RIS/OPA-enabled NLoS optical wireless systems, ensuring close integration between:
+### 14.2 Versioning, Amendments, and Persistent Identifiers
 
-- The taxonomy established in this review, and  
-- Subsequent original research contributions.
+The protocol amendments policy (Section 1.4) will be enforced via version control (Git tags/releases). Where feasible, a persistent identifier (e.g., OSF DOI and/or an archival DOI for a repository release) will be used to cite the exact version of the dataset and code corresponding to the published review.
+
+### 14.3 Integration with Doctoral Thesis and Future Updates
+
+The review will also serve as a foundational component for a doctoral thesis on optical ISAC and programmable photonic platforms (RIS/OPA). If substantial time elapses between search execution and synthesis completion, searches will be updated as described in Section 6.4, and the update will be transparently reported as part of the reproducibility package.
 
