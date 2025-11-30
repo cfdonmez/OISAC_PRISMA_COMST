@@ -497,80 +497,179 @@ Python scripts will be used to parse bibliographic metadata, manage the extracti
 
 ## 9. Data Items
 
-The following categories of data will be extracted for each included study (the exact field names and types are defined in the underlying extraction schema):
+The review will extract a structured set of variables (“data items”) from each included report, using the version-controlled extraction schema and data dictionary described in Section 8 (including explicit **NR** = Not Reported and **NA** = Not Applicable coding). The data items are designed to support (i) a unified physical-layer taxonomy across cabled and wireless optical media and (ii) a rigorous characterisation of sensing–communication coupling and reported trade-offs, spanning analytical, simulation, experimental, and hybrid evidence.
 
-### 9.1 Bibliographic and Administrative Information
+### 9.0 Unit of Extraction and Record Structure
 
-- Authors, year, venue, DOI, article type (journal / conference), research area.
+Because many O-ISAC papers report multiple operating points (e.g., multiple distances, SNR regimes, turbulence levels, or modulation orders), extraction will be performed at two levels:
 
-### 9.2 High-level O-ISAC Classification
+- **Study-level record (one per paper):** bibliographic information, high-level classification, architecture and modelling choices, and qualitative claims.
+- **Scenario-level record (one-to-many per study):** each scenario corresponds to a distinct configuration under which quantitative sensing and/or communication outcomes are reported (e.g., a particular channel model/parameter set, link distance, waveform setting, or experimental condition). Scenario-level records enable faithful capture of curves and trade-off surfaces without arbitrary down-selection.
 
-- Cabled vs wireless optical: fibre / FSO / VLC / LiDAR-like / hybrid.  
-- Application context (e.g., distributed structural monitoring, indoor localisation, vehicular, autonomous systems), when specified.
+Where a study reports only one operating point, the study has a single scenario-level record.
 
-### 9.3 Block-level Taxonomy (for Synthesis Alignment)
+### 9.1 Bibliographic and Administrative Information (Study-level)
 
-- **Block-1 (Optical ISAC):** Systems explicitly integrating sensing and communication in the optical domain (primary focus of this review).  
-- **Block-2 (Optical RIS / metasurface):** Optical RIS/metasurface-assisted systems that enable or discuss integrated sensing–communication or are directly used as enabling components in O-ISAC architectures.  
-- **Block-3 (Optical phased arrays, OPA):** OPA-based transmitters/receivers with joint beamforming and sensing capabilities used for or proposed as O-ISAC platforms.
+- **record_id** (string): persistent identifier assigned after deduplication.
+- **title** (string).
+- **authors** (string).
+- **year** (integer).
+- **venue** (string): journal/conference name.
+- **publisher/platform** (string; NR/optional).
+- **doi** (string; NR/optional).
+- **document_type** (enum): {journal, conference, letter/short communication}.
+- **peer_review_status** (enum): {peer-reviewed, accepted, other}; primary synthesis targets peer-reviewed/accepted.
 
-This classification will support cross-referencing with broader optical wireless taxonomies and highlight RIS/OPA-enabled O-ISAC regimes.
+### 9.2 O-ISAC System and Medium Classification (Study-level)
 
-### 9.4 Physical-layer Models and Architectures
+- **oisac_medium_class** (enum): {cabled_fibre, wireless_fso, wireless_vlc, wireless_lidar_like, wireless_retroreflective, hybrid}.
+- **carrier_band** (enum; NR/optional): {visible, NIR, SWIR, C-band, other}.
+- **operational_environment** (enum; NR/optional): {indoor, outdoor, lab, field_trial, mixed}.
+- **link_topology** (enum; NR/optional): {monostatic, bistatic, multistatic, distributed_fibre}.
+- **mobility_context** (enum; NR/optional): {static, quasi_static, mobile, not_specified}.
 
-- **Transmitter:**  
-  - Laser vs LED vs OPA  
-  - Intensity modulation vs coherent  
-  - Wavelength(s)  
-  - Power constraints  
-  - Aperture and array configurations  
+### 9.3 Application Scenario and Use-case Taxonomy (Study-level)
 
-- **Receiver:**  
-  - Direct vs coherent detection  
-  - PD arrays vs imaging sensors  
-  - Fibre sensing topologies (e.g., reflectometry configurations)  
+- **application_domain** (enum; multi-label allowed): {vehicular, industrial_manufacturing, indoor_positioning, environmental_monitoring, critical_infrastructure, fibre_network_monitoring, robotics_autonomy, aerospace_space, uav_aerial, maritime_underwater, security_surveillance, other}.
+- **scenario_description** (string; NR/optional): free-text summary of the intended use case.
+- **requirements_claimed** (string; NR/optional): any explicit application targets (e.g., latency bounds, safety constraints, coverage/range requirements).
 
-- **Signal model:**  
-  - Baseband/optical waveform  
-  - Modulation format (OOK, PAM, OFDM, PPM, etc.)  
-  - Multiple access or beamforming schemes  
+### 9.4 Evidence Type and Validation Strength (Study-level + Scenario-level)
 
-- **Channel model:**
-  - **Fibre:** attenuation, dispersion, nonlinearity models, crosstalk, etc.  
-  - **FSO:** turbulence models (e.g., lognormal, Gamma–Gamma), pointing errors, weather impairments.  
-  - **VLC:** LOS/NLoS impulse response, reflections, shot/thermal noise models.
+- **evidence_type** (enum; multi-label allowed): {analytical, simulation, experimental, hybrid}.
+- **validation_baselines_present** (boolean; NR/optional): whether explicit baselines/comparators are provided.
+- **reproducibility_artifacts** (enum; NR/optional): {code_available, data_available, parameters_sufficient, insufficient}.
 
-### 9.5 Sensing Tasks and Metrics
+Scenario-level (if applicable):
+- **num_trials_runs** (integer; NR/optional): Monte Carlo runs / experimental repetitions.
+- **confidence_reporting** (enum; NR/optional): {ci_reported, std_reported, none_reported, not_applicable}.
 
-- **Task type:** range, velocity, displacement/vibration, strain/temperature, localisation, imaging, environmental state estimation, etc.  
-- **Metrics:** resolution, RMSE, CRLB/estimation bounds, detection probability, false alarm rate, sensing range/coverage, etc.
+### 9.5 Physical-layer Architecture (Tx/Rx) (Study-level + Scenario-level)
 
-### 9.6 Communication Tasks and Metrics
+**Transmitter**
+- **tx_source_type** (enum): {laser, led, frequency_comb, other}.
+- **tx_modulation_type** (enum): {imd_d, coherent, mixed, not_specified}.
+- **tx_external_modulator** (enum; NA/optional): {mzm, eam, none, other}.
+- **wavelength_nm** (float; nm; NR/optional).
+- **optical_bandwidth_hz** (float; Hz; NR/optional).
+- **tx_power_dbm** (float; dBm; NR/optional) and/or **tx_power_mw** (float; mW; NR/optional).
+- **aperture_diameter_m** (float; m; NA/NR/optional) for free-space systems.
+- **beam_divergence_deg** (float; degrees; NA/NR/optional).
+- **array_tx_elements** (integer; NA/NR/optional): number of emitters (if array/OPA).
 
-- Data rate  
-- Spectral efficiency  
-- SNR/SCNR regimes  
-- BER/FER  
-- Outage probability  
-- Latency  
-- Reliability metrics (e.g., BLER), etc.
+**Receiver**
+- **rx_detection_type** (enum): {direct, coherent, imaging, spad, other}.
+- **rx_detector** (enum; NR/optional): {pin_pd, apd_pd, balanced_pd, camera_cmos, camera_ccd, spad_array, other}.
+- **rx_aperture_diameter_m** (float; m; NA/NR/optional).
+- **rx_optics_notes** (string; NR/optional): filters, lenses, telescopes.
 
-### 9.7 Joint Design Aspects (ISAC Coupling)
+**Shared hardware / integration**
+- **hardware_sharing_mode** (enum; NR/optional): {shared_frontend, partially_shared, separate_frontends}.
+- **duplexing_mode** (enum; NR/optional): {full_duplex, half_duplex, tdm, fdm, wdm, code_domain, spatial_domain, other}.
 
-- Shared vs partitioned resources (time, frequency, wavelength, power, spatial beams).  
-- Joint waveform and resource allocation strategies for sensing and communication.  
-- Explicit trade-off analyses (e.g., sensing accuracy vs throughput, sensing range vs link margin).
+### 9.6 Signal and Waveform Design (Study-level + Scenario-level)
 
-### 9.8 Hardware and Implementation Details
+- **comm_waveform_family** (enum; NR/optional): {ook, pam, pam4, ofdm, dmt, ppm, qam, psk, chirp_fmcw, pulse_train, other}.
+- **comm_modulation_order** (integer; NA/NR/optional).
+- **comm_line_coding_fec** (string; NR/optional): FEC type/code rate if provided.
+- **sensing_waveform_family** (enum; NR/optional): {pulse_tof, fmcw_chirp, lfm_chirp, ofdm_sensing, backscatter_probe, reflectometry, other}.
+- **isac_waveform_relationship** (enum): {single_dual_function_waveform, comm_embedded_in_sensing, sensing_embedded_in_comm, multiplexed_separate_waveforms, not_specified}.
+- **resource_partition_parameters** (string; NR/optional): time/frequency/wavelength/power splits, weights (e.g., α).
 
-- Simulation-only vs experimental vs hybrid.  
-- Hardware platforms, prototypes, testbeds.  
-- Channel conditions and scenarios (indoor/outdoor, atmospheric conditions, fibre length/regime).
+### 9.7 Channel and Propagation Models (Scenario-level where applicable)
 
-### 9.9 Quality and Validation Aspects
+**Fibre (if applicable)**
+- **fibre_length_km** (float; km; NA/NR/optional).
+- **attenuation_db_per_km** (float; dB/km; NA/NR/optional).
+- **dispersion_ps_per_nm_km** (float; ps/(nm·km); NA/NR/optional).
+- **nonlinearity_model** (enum; NA/NR/optional): {gn_model, nls_equation, kerr_only, ignored, other}.
+- **backscatter_sensing_type** (enum; NA/NR/optional): {rayleigh_phi_otdr, das, brillouin, raman, fbg, other}.
 
-- Presence of baselines or comparative methods.  
-- Sensitivity analyses, robustness to channel/model mismatch.
+**Free-space / VLC / LiDAR-like (if applicable)**
+- **link_distance_m** (float; m; NA/NR/optional).
+- **path_loss_model** (string; NR/optional).
+- **turbulence_model** (enum; NA/NR/optional): {lognormal, gamma_gamma, malaga, h_k, other}.
+- **turbulence_strength_parameters** (string; NA/NR/optional): e.g., Cn^2, Rytov variance, scintillation index.
+- **pointing_error_model** (enum; NA/NR/optional): {zero, gaussian_jitter, beckmann, other}.
+- **weather_impairments** (string; NA/NR/optional): fog/rain/snow visibility parameters if provided.
+- **ambient_light_noise_model** (string; NA/NR/optional).
+- **multipath_reflection_model** (string; NA/NR/optional) for VLC.
+
+### 9.8 Communication Outcomes (Scenario-level)
+
+- **data_rate_bps** (float; bps; NR/optional).
+- **spectral_efficiency_bps_per_hz** (float; bits/s/Hz; NR/optional).
+- **ber** (float; NR/optional).
+- **fer_bler** (float; NR/optional).
+- **snr_db** (float; dB; NR/optional).
+- **outage_probability** (float; NR/optional).
+- **latency_s** (float; seconds; NR/optional).
+
+**Information-theoretic quantities (optional)**
+- **capacity_bps_per_hz** (float; bits/s/Hz; NA/NR/optional).
+- **capacity_assumptions** (string; NA/NR/optional): channel model, CSI assumption, input constraints.
+
+### 9.9 Sensing Outcomes (Scenario-level)
+
+- **sensing_task_type** (enum; multi-label allowed): {ranging, localization, imaging, vibration_displacement, strain_temperature, environment_state, target_detection, obstacle_detection, turbulence_characterization, other}.
+- **sensing_range_m** (float; m; NR/optional).
+- **range_resolution_m** (float; m; NR/optional).
+- **angular_resolution_deg** (float; degrees; NA/NR/optional).
+- **velocity_resolution_mps** (float; m/s; NA/NR/optional).
+- **rmse** (float; unit + context in notes; NR/optional).
+- **mae** (float; unit + context in notes; NR/optional).
+- **pd** (float; NA/NR/optional): probability of detection.
+- **pfa** (float; NA/NR/optional): probability of false alarm.
+
+**Estimation-theoretic quantities (optional)**
+- **crb_crlb_value** (float; unit depends on parameter; NA/NR/optional).
+- **crb_parameter** (enum; NA/NR/optional): {range, angle, delay, doppler, position, other}.
+- **crb_assumptions** (string; NA/NR/optional): observation model, noise model, priors.
+
+### 9.10 Joint ISAC Coupling and Trade-off Characterisation (Scenario-level)
+
+- **coupling_mode** (enum; NR/optional): {resource_division, joint_waveform, joint_receiver_processing, shared_hardware_only, other}.
+- **tradeoff_type** (enum; multi-label allowed): {rate_vs_rmse, rate_vs_range_resolution, ber_vs_detection, throughput_vs_localization_error, power_split_tradeoff, sensing_time_vs_comm_time, other}.
+- **tradeoff_representation** (enum; NR/optional): {single_point, curve, pareto_front, table, not_explicit}.
+- **tradeoff_control_parameter** (string; NR/optional): name of α/β/time split/power split etc.
+- **tradeoff_control_values** (string; NR/optional): numeric values or ranges as reported.
+
+### 9.11 Enabling Technologies: Optical RIS / Metasurfaces and OPA (Study-level + Scenario-level)
+
+These fields are extracted **only within included O-ISAC studies when reported**; they are not independent inclusion targets.
+
+**Optical RIS / metasurface**
+- **ris_present** (boolean).
+- **ris_type** (enum; NA/NR/optional): {reflective, transmissive, hybrid, slm_equivalent, other}.
+- **ris_num_elements_N** (integer; NA/NR/optional).
+- **ris_element_pitch_m** (float; m; NA/NR/optional).
+- **ris_phase_resolution_bits** (integer; NA/NR/optional).
+- **ris_control_update_rate_hz** (float; Hz; NA/NR/optional).
+- **ris_placement_geometry** (string; NA/NR/optional): Tx–RIS–Rx distances/angles if stated.
+- **ris_role** (enum; NA/NR/optional): {link_enabler_nlos, beam_shaping, interference_management, sensing_assist, other}.
+
+**Optical phased array (OPA)**
+- **opa_present** (boolean).
+- **opa_num_emitters** (integer; NA/NR/optional).
+- **opa_steering_range_deg** (float; degrees; NA/NR/optional).
+- **opa_beamwidth_deg** (float; degrees; NA/NR/optional).
+- **opa_scan_rate_hz** (float; Hz; NA/NR/optional).
+- **opa_role** (enum; NA/NR/optional): {beamforming_for_comm, scanning_for_sensing, joint_beamforming_scanning, other}.
+
+### 9.12 Data Provenance, Digitisation Flags, and Decision Rules
+
+- **source_pointer** (string): mandatory provenance reference to where each quantitative value was extracted (page/figure/table/equation).
+- **value_origin_flag** (enum): {reported_text, reported_table, digitised_figure, computed_from_reported, inferred_not_allowed}.
+- **digitisation_tool** (enum; NA/NR/optional): {webplotdigitizer, other}.
+
+**Multiple-results handling (pre-specified decision rules):**
+- **Scenario-level capture is the default:** when a paper reports multiple operating points (e.g., multiple distances, turbulence levels, SNR values), each is captured as a separate scenario-level record.
+- **Curves and surfaces:** if outcomes are reported primarily as curves or Pareto fronts, representative points may additionally be recorded using a clearly defined rule (e.g., the authors’ default operating point, or the operating point associated with a stated target constraint such as BER ≤ 10^-3), while retaining the underlying curve via digitised samples when feasible.
+- **No “silent” inference:** quantities not explicitly reported (or not recoverable via transparent digitisation) remain NR; model-class assignment is not guessed.
+
+**Unit normalisation and derived variables:**
+- All reported quantities will be converted to schema-standard units (e.g., nm, m, km, Hz, bps, dB).
+- Where meaningful and sufficiently specified, derived variables (e.g., spectral efficiency from rate and bandwidth) may be computed and flagged as `computed_from_reported`.
 
 ---
 
