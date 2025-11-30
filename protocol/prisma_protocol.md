@@ -675,41 +675,95 @@ These fields are extracted **only within included O-ISAC studies when reported**
 
 ## 10. Risk of Bias / Methodological Quality Assessment
 
-Given the engineering nature of O-ISAC studies, a bespoke technical quality framework will be used rather than clinical tools.
+Given the engineering nature of O-ISAC studies, conventional clinical risk-of-bias tools (e.g., QUADAS-2, ROBINS-I) are not applicable. Instead, methodological quality will be assessed using a bespoke **Technical Quality Appraisal Framework (TQAF)** tailored to physical-layer research. The framework prioritises **internal validity** (i.e., whether conclusions follow from realistic, explicitly stated models and sufficiently rigorous validation), while still recording external-validity constraints (e.g., narrow scenario choices) as secondary considerations.
 
-Each study will be assessed along the following dimensions:
+The appraisal will be conducted at the **study level** for each included report. Ratings will be assigned independently by two reviewers during extraction (Section 8), recorded in the extraction dataset alongside provenance pointers (Section 9.12), and resolved via consensus (Section 7.3).
 
-### 10.1 Model Transparency
+### 10.0 Core Principle: Engineering “Bias” as Systematic Optimism
 
-- Clarity and explicitness of signal and channel models.  
-- Clear separation and definition of sensing and communication roles.
+In optical ISAC, the dominant source of systematic bias is **methodological optimism**: performance appears “too good” because the model, assumptions, validation regime, or reporting practices under-represent real impairments or uncertainty. Accordingly, TQAF primarily checks whether a paper:
 
-### 10.2 Reproducibility
+- uses **physically plausible channel/impairment models** (Section 9.7),
+- quantifies outcomes with **appropriate uncertainty handling** (Section 9.4, 9.12),
+- validates performance against **relevant baselines and stress cases** (Section 9.4), and
+- reports both **communication and sensing** outcomes consistently when ISAC is claimed (Section 9.8–9.10).
 
-- Availability of sufficient system parameters, channel assumptions, and algorithmic details to enable reproduction or meaningful comparison.
+### 10.1 Modelling Fidelity and Assumption Realism (Internal Validity)
 
-### 10.3 Validation Strength
+This dimension assesses whether the adopted signal/channel/hardware models are explicit, justified, and sufficiently realistic for the claimed contribution.
 
-- **Simulations:** diversity and realism of parameter ranges, presence of baselines.  
-- **Experiments:** clarity of hardware description, setup, measurement conditions, trial counts, and uncertainty or variability reporting.
+We will evaluate:
+- **Model explicitness:** clear specification of waveform, transceiver, and observation model(s) enabling audit (Sections 9.5–9.6).
+- **Channel realism (medium-specific):**
+  - *Fibre:* treatment of attenuation/dispersion/nonlinearities and the sensing mechanism (φ-OTDR/DAS/Brillouin/Raman/FBG) where relevant (Section 9.7).
+  - *Wireless:* turbulence/fading, pointing errors, ambient noise, and propagation assumptions consistent with the stated environment (Section 9.7).
+- **Stochastic impairments:** whether randomness sources (noise, fading, speckle, jitter) are explicitly modelled and whether results are reported as averages/percentiles where appropriate (Section 9.4; 9.7–9.9).
+- **Assumption disclosures:** clarity regarding CSI assumptions, synchronization, perfect alignment, ideal detectors, unbounded dynamic range, or other “idealities” that can materially inflate performance.
 
-### 10.4 Metric Completeness and Consistency
+A study will be rated lower if it relies on overly idealised models without justification or if key parameters required to interpret the regime are missing (NR) in ways that affect conclusions.
 
-- Reporting of both sensing and communication metrics when ISAC is claimed.  
-- Consistency between claimed contributions and the reported metrics and scenarios.
+### 10.2 Validation Strength and Comparative Rigor
 
-### 10.5 Bias Indicators
+This dimension evaluates whether the paper’s evidence (analytical, simulation, experimental, or hybrid) is strong enough to support its claims.
 
-- Selective reporting of favourable results.  
-- Omission of relevant baselines.  
-- Lack of discussion of limitations.
+We will evaluate:
+- **Baseline comparisons:** presence of meaningful comparators (e.g., sensing-only / comm-only variants, prior ISAC baselines, or ablations of the joint mechanism) (Section 9.4).
+- **Scenario coverage:** whether results are reported across non-trivial operating ranges (e.g., distance/SNR/turbulence regimes; fibre length; modulation orders) rather than a single favourable operating point (Section 9.0).
+- **Stress testing / sensitivity:** whether conclusions are robust to parameter variation or model mismatch (e.g., worse turbulence, increased jitter, bandwidth constraints).
+- **Analytical correctness/closure (when applicable):** whether theoretical developments specify assumptions and boundary conditions and whether results connect to measurable quantities.
 
-Each dimension will be rated using a simple ordinal scale (e.g., 0 = low / unclear, 1 = moderate, 2 = high quality). These quality assessments **will not** be used as hard exclusion criteria but will:
+A study will be rated lower when the evaluation is narrow (single regime), lacks baselines, or does not substantively validate the claimed trade-off improvements.
 
-- Inform domain-level confidence assessments (Section 13), and  
-- Be explicitly considered when interpreting which O-ISAC design patterns are supported by stronger or weaker evidence.
+### 10.3 Experimental Validity and Measurement Quality (When Experiments Exist)
 
----
+For studies containing experiments or field trials, we will assess whether measurement methodology supports the reported outcomes.
+
+We will evaluate:
+- **Hardware and setup transparency:** sufficient detail to reproduce the measurement chain (Section 9.5).
+- **Calibration/controls:** description of alignment, calibration, environmental controls, and instrumentation limits.
+- **Repetition and variability:** reporting of trial counts, repeatability, and uncertainty (e.g., standard deviation, confidence intervals, error bars) (Section 9.4).
+- **Confounding factors:** discussion of background light, weather/visibility, mechanical vibration coupling, detector saturation, and other effects that can systematically bias results.
+
+Experimental studies with a single uncharacterised run, missing uncertainty reporting, or unclear setup will be rated lower.
+
+### 10.4 Metric Completeness and ISAC Consistency (Cherry-picking Detection)
+
+Because O-ISAC claims inherently involve joint performance, this dimension checks whether evaluation metrics are complete and aligned with the asserted ISAC contribution.
+
+We will evaluate:
+- **Dual-metric reporting:** whether at least one communication metric and one sensing metric are reported under the same scenario, or whether the paper provides an explicit, defensible rationale when one side is not applicable (Sections 9.8–9.10).
+- **Trade-off explicitness:** whether the sensing–communication coupling is quantified (power/time/frequency split, shared waveform, joint receiver processing) and whether trade-offs are shown as points/curves/Pareto fronts with clear control parameters (Section 9.10).
+- **Claim–evidence alignment:** whether the reported metrics and scenarios truly support the paper’s stated claims (e.g., “long-range” claims evaluated only at short range).
+
+Papers that report strong results for only one function while asserting integrated ISAC capability (without the corresponding counterpart metrics) will be flagged for elevated risk of reporting bias.
+
+### 10.5 Reproducibility and Reporting Completeness
+
+This dimension evaluates whether the study provides sufficient information for independent reproduction or meaningful comparison.
+
+We will evaluate:
+- **Parameter sufficiency:** completeness of the parameter set required to interpret outcomes (Sections 9.5–9.9).
+- **Uncertainty reporting:** presence of confidence intervals / standard deviations / run counts for stochastic results (Section 9.4).
+- **Provenance and extraction feasibility:** whether key values are explicitly reported in text/tables, or must be digitised from figures (Section 9.12).
+- **Availability of artefacts:** code/data availability or otherwise sufficiently described algorithms and setup (Section 9.4).
+
+### 10.6 Rating Scheme, Visualisation, and Use in Synthesis
+
+Each dimension (10.1–10.5) will be rated using an ordinal scale:
+- **0 = low / unclear quality** (high risk of methodological optimism or insufficient reporting),
+- **1 = moderate quality**,
+- **2 = high quality** (well-specified model, robust validation, complete reporting).
+
+Ratings will not be used as hard exclusion criteria. Instead, they will:
+- inform domain-level confidence assessments (Section 13),
+- guide interpretation and strength of recommendations in the narrative synthesis (Section 11), and
+- support sensitivity-style checks (e.g., whether key conclusions are driven primarily by low-quality evidence).
+
+To improve interpretability for readers, we will visualise the **quality landscape** of the O-ISAC literature using summary charts (e.g., stacked bar charts showing the distribution of low/moderate/high ratings across dimensions, and/or heatmaps by domain such as fibre vs FSO vs VLC). These visualisations will highlight recurrent weaknesses (e.g., systematic under-reporting of uncertainty or poor reproducibility) and will be reported alongside the synthesis.
+
+### 10.7 Reviewer Agreement for Quality Ratings
+
+To ensure rating consistency, inter-rater agreement will be monitored during the pilot extraction (Section 8.2) and early main extraction. For ordinal dimension ratings, agreement will be summarised using appropriate chance-corrected statistics (e.g., Cohen’s kappa for categorical/ordinal agreement with pragmatic interpretation thresholds). Persistent disagreement will trigger re-calibration of the operational definitions for the affected dimension(s).
 
 ## 11. Data Synthesis
 
