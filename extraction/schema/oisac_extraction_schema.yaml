@@ -1,9 +1,14 @@
-
 # Optical Integrated Sensing and Communication (O-ISAC) Extraction Schema
-# Bu dosya, her dahil edilen çalışma için doldurulacak alanları tanımlar.
+# Based on Section 9 of the PRISMA Protocol
 
 general:
   - name: record_id
+    type: string
+    required: true
+  - name: title
+    type: string
+    required: true
+  - name: authors
     type: string
     required: true
   - name: year
@@ -11,55 +16,117 @@ general:
     required: true
   - name: venue
     type: string
-    required: false
-  - name: is_journal
-    type: bool
-    required: false
-
-domain:
-  - name: domain
+    required: true
+  - name: document_type
     type: category
-    values: [fibre, FSO, VLC, LiDAR_like, hybrid]
-  - name: cabled
-    type: bool
-  - name: wireless
-    type: bool
+    values: [journal, conference, letter, other]
+  - name: peer_review_status
+    type: category
+    values: [peer_reviewed, accepted, preprint, other]
 
-signal_channel:
+classification:
+  - name: oisac_medium_class
+    type: category
+    values: [cabled_fibre, wireless_fso, wireless_vlc, wireless_lidar_like, wireless_retroreflective, hybrid]
+  - name: carrier_band
+    type: category
+    values: [visible, NIR, SWIR, C_band, other]
+  - name: operational_environment
+    type: category
+    values: [indoor, outdoor, lab, field_trial, mixed]
+  - name: link_topology
+    type: category
+    values: [monostatic, bistatic, multistatic, distributed_fibre]
+  - name: mobility_context
+    type: category
+    values: [static, quasi_static, mobile, not_specified]
+
+application:
+  - name: application_domain
+    type: list
+    values: [vehicular, industrial, indoor_positioning, environmental, critical_infra, fibre_monitoring, robotics, aerospace, maritime, security, other]
+  - name: evidence_type
+    type: list
+    values: [analytical, simulation, experimental, hybrid]
+
+physical_layer_tx:
+  - name: tx_source_type
+    type: category
+    values: [laser, led, frequency_comb, other]
+  - name: tx_modulation_type
+    type: category
+    values: [im_dd, coherent, mixed, not_specified]
   - name: wavelength_nm
     type: float
-  - name: modulation
-    type: string   # PAM4, OFDM, OOK, PPM, vb.
-  - name: detection_type
-    type: category
-    values: [coherent, IMDD, FMCW, other]
-  - name: channel_model
-    type: string   # Gamma-Gamma, lognormal, fibre linear, vb.
+  - name: optical_bandwidth_hz
+    type: float
+  - name: tx_power_dbm
+    type: float
 
-isac_specific:
-  - name: sensing_task
-    type: string   # vibration, range, velocity, localization, imaging...
-  - name: comm_metric_reported
-    type: string   # BER, throughput, capacity, SNR, vb.
-  - name: sensing_metric_reported
-    type: string   # RMSE, resolution, P_D, vb.
-  - name: joint_waveform_design
-    type: bool
-  - name: tradeoff_analysis
+physical_layer_rx:
+  - name: rx_detection_type
     type: category
-    values: [none, qualitative, quantitative]
-
-hardware:
-  - name: hardware_type
-    type: string   # LED, laser, OPA, RIS, DFOS, vb.
-  - name: lab_or_field
+    values: [direct, coherent, imaging, spad, other]
+  - name: rx_detector
     type: category
-    values: [lab, field_trial, simulation_only]
+    values: [pin_pd, apd_pd, balanced_pd, camera_cmos, spad_array, other]
 
-thesis_specific:
-  - name: uses_RIS
+waveform_signal:
+  - name: comm_waveform_family
+    type: category
+    values: [ook, pam, ofdm, dmt, ppm, qam, psk, chirp_fmcw, pulse_train, other]
+  - name: sensing_waveform_family
+    type: category
+    values: [pulse_tof, fmcw_chirp, lfm_chirp, ofdm_sensing, backscatter_probe, reflectometry, other]
+  - name: isac_waveform_relationship
+    type: category
+    values: [single_dual_function, comm_embedded_in_sensing, sensing_embedded_in_comm, multiplexed, not_specified]
+
+channel_model:
+  - name: fibre_length_km
+    type: float
+  - name: link_distance_m
+    type: float
+  - name: turbulence_model
+    type: category
+    values: [lognormal, gamma_gamma, malaga, h_k, none, other]
+
+performance_comm:
+  - name: data_rate_bps
+    type: float
+  - name: spectral_efficiency_bps_hz
+    type: float
+  - name: ber
+    type: float
+  - name: snr_db
+    type: float
+
+performance_sensing:
+  - name: sensing_task_type
+    type: list
+    values: [ranging, localization, imaging, vibration, strain, temp, detection, other]
+  - name: sensing_range_m
+    type: float
+  - name: range_resolution_m
+    type: float
+  - name: velocity_resolution_mps
+    type: float
+  - name: rmse
+    type: float
+
+tradeoff:
+  - name: coupling_mode
+    type: category
+    values: [resource_division, joint_waveform, joint_rx_processing, shared_hw_only]
+  - name: tradeoff_type
+    type: list
+    values: [rate_vs_rmse, rate_vs_res, ber_vs_det, other]
+  - name: tradeoff_reported
+    type: category
+    values: [none, qualitative, quantitative_curve, quantitative_point]
+
+enabling_tech:
+  - name: ris_present
     type: bool
-  - name: uses_OPA
-    type: bool
-  - name: nlos_capability
+  - name: opa_present
     type: bool
