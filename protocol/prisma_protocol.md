@@ -769,39 +769,59 @@ To ensure rating consistency, inter-rater agreement will be monitored during the
 
 ### 11.1 Qualitative Synthesis
 
-A structured, narrative synthesis will be performed, with primary grouping by **medium**:
+A structured, narrative synthesis will be undertaken, aiming to go beyond a mere listing of studies and instead construct a **unified framework** of O-ISAC designs and trade-offs (in line with the comprehensive approach expected in an IEEE COMST-style survey). The primary organisational scheme will be by **medium**:
 
-- **Cabled O-ISAC:** fibre-based integrated sensing–communication systems.  
-- **Wireless O-ISAC:** FSO/VLC/LiDAR-like systems, further subdivided if appropriate (e.g., VLC localisation vs FSO ranging).
+- **Cabled O-ISAC (Fiber-based):** Integrated sensing–communication systems over optical fibers.
+- **Wireless O-ISAC:** Free-space optical (FSO), visible light (VLC), and LiDAR-like systems (including retroreflective links), potentially further subdivided by application (e.g. VLC indoor localization vs. FSO ranging).
 
-Within each group, studies will be organised according to:
+Within each medium-based category, studies will be compared and synthesized according to key design aspects and context, including:
 
-- Sensing tasks and application contexts,  
-- Signal and channel models,  
-- Hardware architectures (including RIS/OPA where relevant),  
-- Joint sensing–communication strategies and resource allocation schemes.
+- **Sensing tasks and application context:** (e.g. vibration sensing vs. imaging vs. positioning),
+- **Signal and channel models:** (waveform families, modulation, optical channel characteristics),
+- **Hardware architectures:** (type of transmit/receive optics, use of **programmable optics** like RIS/OPA if applicable), and
+- **Joint strategies:** How sensing and communication functions are integrated or resource-shared (waveform multiplexing, power/time allocation, etc).
 
-**Taxonomy tables and figures** will be used to:
+To unify these diverse findings, we will develop a hierarchical **physical-layer taxonomy** of O-ISAC systems covering both cabled and wireless implementations. This taxonomy will be visualized as a **sunburst chart** (a concentric ring diagram): the innermost ring represents the transmission **Medium** (e.g., **Fiber**, **FSO**, **VLC**), while successive outer rings represent **design feature categories** (for example, waveform type, channel model, integration strategy, etc.). In this visualization, each segment’s position and hierarchy show how a given study fits into the overall O-ISAC landscape – for instance, a segment in the Fiber inner-sector might branch into sub-segments for that study’s specific waveform (chirp vs. OFDM), which further branch into the channel model or hardware used. This sunburst diagram will thus illustrate clusters and overlaps across domains, highlighting common architectures (e.g. similar waveforms or channel assumptions appearing in both fiber and FSO regimes) as well as domain-specific niches.
 
-- Visualise the space of cabled vs wireless O-ISAC systems,  
-- Summarise typical metrics and operating regimes (e.g., rate vs range vs resolution),  
-- Highlight common trade-offs and design trends.
+**Taxonomy tables and figures** (including the sunburst chart) will be used to:
 
-### 11.2 Quantitative Elements
+- **Visualize the O-ISAC design space** across cabled and wireless media, showing the hierarchical categorization of approaches in a single view (as described above).
+- **Summarize typical metrics and operating regimes** associated with each category – for example, indicating representative ranges of data rate, sensing range, and resolution achieved by fiber-ISAC vs FSO vs VLC systems. Such summaries will help identify the **rate–range–resolution** regimes that different O-ISAC implementations operate in.
+- **Highlight common trade-offs and design trends:** The taxonomy will make clear where different approaches share design principles (e.g. many VLC-ISAC studies using LED modulation techniques akin to those in fiber links) and where they diverge. Any cross-cutting trends (such as a preference for certain waveform types or co-design strategies) will be noted, providing a narrative thread through the otherwise heterogeneous literature.
 
-A formal meta-analysis in the statistical sense (e.g., pooled effect sizes) is **not** planned, due to:
+This qualitative synthesis will thus produce a cohesive narrative that links studies under a common framework. The use of hierarchical taxonomy (visual and tabular) ensures that insights are framed generally (at the level of categories or patterns) rather than as isolated paper-by-paper summaries. Throughout the narrative, special attention will be given to points of integration between domains (e.g. how techniques from distributed fiber sensing inspire wireless optical methods, or vice versa), laying the groundwork for identifying gaps and opportunities discussed later in Section 11.3.
 
-- Strong heterogeneity in performance metrics, scenarios, and channel conditions, and  
-- Diverse design goals across engineering studies.
+### 11.2 Quantitative Synthesis
 
-However, where subsets of studies are sufficiently homogeneous (e.g., similar scenarios and metrics), **descriptive statistics** and **normalised plots** may be used, such as:
+A formal statistical meta-analysis (e.g. pooling effect sizes) is **not** planned, due to the high heterogeneity in performance metrics and evaluation scenarios across the included studies. The engineering studies in O-ISAC report diverse outcome measures (capacity, BER, range, accuracy, etc.) under varied conditions, making direct quantitative aggregation infeasible. Instead, we will perform a **quantitative descriptive analysis** of key performance relationships and trends to complement the qualitative synthesis.
 
-- Ranges and typical values for data rates, spectral efficiencies, sensing resolutions, and SNR/SCNR.  
-- Normalised performance indicators (e.g., bits/s/Hz vs sensing resolution scaled by aperture or wavelength).
+**Key performance trade-off relations** to be analyzed include:
 
-These quantitative elements will be clearly presented as **descriptive** rather than inferential synthesis.
+- **Capacity vs. Estimation Accuracy:** Where data is available, we will examine how communication throughput or capacity (in bps or bits/s/Hz) trades off against sensing accuracy, typically quantified by estimation error bounds or metrics (e.g., Cramér–Rao bound or RMSE of a measured parameter). This will elucidate the fundamental tension between maximizing data rate and maintaining precise sensing – for example, how adding communication payload might degrade ranging accuracy, or vice versa, in a given system.
+- **Data Rate vs. Sensing Range:** We will compile instances where extending the sensing range (distance over which targets or events can be detected) impacts the achievable data rate. Many wireless O-ISAC systems must balance power and waveform design between long-range sensing and high-rate communication; plotting these two metrics against each other will highlight the design frontier (e.g., how a free-space optical link’s throughput drops as the required sensing distance grows, or how retroreflective O-ISAC can extend range at the cost of data rate).
+- **Spectral Efficiency vs. Hardware Complexity:** We will qualitatively and quantitatively assess whether achieving higher spectral efficiency in O-ISAC (bits/s/Hz) correlates with increased hardware complexity. For instance, systems employing advanced photonic components, complex modulation, or multiple optical elements (mirrors, beam scanners, dual comb sources, etc.) might attain higher efficiency. By contrast, simpler hardware (e.g., direct modulation with a single LED) might limit spectral efficiency. We will document such correlations to infer if the state-of-the-art pushes complexity for performance or finds simpler trade-offs.
 
----
+To **visualize these trade-offs**, we will employ multi-dimensional charts. In particular, **bubble charts** will be used to depict the joint relationships among three variables at once. For example, we will create a 2D plot of communication **data rate vs. sensing range**, and use the bubble color or size to encode a third metric such as sensing resolution (or estimation error). This will produce an intuitive visual of the **rate–range–resolution** interplay: one might observe, for instance, clusters of studies where short-range systems achieve very high rates and fine resolution, versus others where long-range sensing is achieved at lower data rates. Each bubble can represent a study or a specific experimental data point from a study, with distinct colors to denote different mediums or system types (e.g., fiber-based vs FSO vs VLC), thereby showing how the trade-off envelope might differ by sub-domain. Likewise, **3D scatter plots or interactive graphics** may be considered to explore capacity vs error vs SNR trade-spaces if enough data points exist.
+
+We will also use **frequency distributions and trend charts** to summarize technological trends. For instance, **stacked bar charts** (grouped by publication year) will illustrate the prevalence of certain design choices over time. This could include showing the proportion of studies each year that use particular **modulation formats** (e.g., OOK, OFDM, Chirp-LFM, PAM4, etc.) or specific **hardware platforms** (such as those employing coherent detection, or using photonic integrated circuits, or incorporating RIS/OPA components). Such plots will reveal temporal patterns (e.g., a rise in the adoption of OFDM in recent years, or an increasing fraction of works using optical phased arrays post-2020) and help contextualize the evolution of the field.
+
+All quantitative synthesis results will be presented as **descriptive evidence** to support the narrative, rather than as formal inferential statistics. Where subsets of studies are sufficiently comparable, we may report basic descriptive statistics (e.g., typical ranges, medians for data rate or sensing accuracy within that subset) and use **normalized metrics** to enable fair comparison (for example, normalizing spectral efficiency by optical bandwidth, or sensing error by distance or aperture). These analyses will be clearly marked as exploratory. They serve to map out performance envelopes and trade-offs, helping to answer *where* current O-ISAC designs lie in multi-dimensional performance space, rather than to produce a single aggregate “effect size.”
+
+**Integration of quality appraisal:** In interpreting quantitative findings, we will factor in the **methodological quality scores** from Section 10. As part of the narrative, any striking performance claims that stem from studies rated low in technical quality (e.g., due to unclear models or lack of validation) will be **flagged as potentially unreliable**. Conversely, patterns or trade-offs observed consistently across multiple high-quality studies will be given greater weight in our conclusions. This effectively provides a *weighted narrative synthesis*: for example, if a particular rate-vs-range trend is only reported by papers with noted bias risks, we will caution the reader that this trend is tentative. On the other hand, a trade-off supported by rigorously validated studies will be highlighted as robust. By explicitly coupling the synthesis to the quality appraisal, we ensure that the review’s conclusions reflect not just the reported data, but also the credibility of that data.
+
+### 11.3 Gap Analysis and Architectural Implications (RIS/OPA)
+
+In a dedicated subsection of the synthesis, we will examine the **gaps and limitations** revealed by current O-ISAC implementations and discuss **architectural implications** of emerging programmable optical technologies – notably, **reconfigurable intelligent surfaces (RIS)** and **optical phased arrays (OPA)** – as potential solutions. This forward-looking analysis directly addresses the review’s objectives regarding open challenges and future directions (see Section 3), ensuring that our synthesis not only catalogues existing work but also maps how the field can evolve to overcome present limitations.
+
+Specifically, we will identify critical pain points in present O-ISAC systems and map them to the capabilities of RIS/OPA-enabled architectures, for example:
+
+- **Non-line-of-sight (NLoS) vulnerability in FSO links:** Free-space optical ISAC links typically require strict line-of-sight, making them susceptible to blockage by obstacles or pointing misalignment. Optical RIS (metasurface mirrors) offer a way to **reconfigure the propagation path**, effectively creating virtual mirrors in the environment to bend or relay optical signals around obstructions. By reflecting and focusing the beam in steps, RIS nodes can mitigate pointing errors through improved alignment and extend coverage to NLoS scenarios. Our synthesis will highlight how such RIS-assisted architectures could address one of the chief limitations of current FSO-based O-ISAC (which today struggle with reliability in dynamic or blocked environments), and will discuss any early studies or models that demonstrate this concept.
+
+- **Limited beam steering speed and single-target focus:** Many optical sensing systems (e.g. LiDAR-like ISAC) rely on mechanical beam steering (galvanometric mirrors, gimbals) which are **slow, bulky, and limited in agility**, constraining how quickly a system can scan or track multiple objects. **Optical Phased Arrays (OPA)** represent a programmable solution: they can steer beams electronically with no moving parts, enabling **fast, multi-target beam steering**. By replacing or augmenting mechanical scanners with OPAs, O-ISAC systems could drastically improve their sensing refresh rates and cover multiple directions/users at once. This subsection will connect such OPA capabilities to the identified needs of current systems (e.g., rapid beam reconfiguration for vehicular LiDAR-communication or dynamic indoor VLC networks), and will also identify unresolved challenges and missing experimental validations.
+
+Through these examples (and others as appropriate), we will discuss how **RIS/OPA-enabled architectures** could expand O-ISAC capabilities – for instance, enabling NLoS **coverage extension**, dynamic environment adaptation, or seamless integration of optical ISAC with smart surfaces in 6G networks. This subsection will also loop back to the earlier taxonomy and trade-offs: we will indicate where in our taxonomy such RIS/OPA-inclusive studies would fit, and what performance trade-off shifts they might allow (e.g., maintaining high data rate even in NLoS, or improving the rate-resolution trade-off via dynamic beam sharing). The goal is to identify **open research gaps** (e.g., the lack of experimental O-ISAC demonstrations using RIS or OPA so far, or unresolved challenges in their implementation) and to outline the **architectural implications** – how incorporating programmable optics could redefine the design space of optical ISAC.
+
+In summary, the data synthesis (qualitative, quantitative, and gap analysis) will yield a comprehensive, PRISMA-aligned narrative that maps out the O-ISAC domain. It will present a **unified taxonomy**, extract and illustrate **performance trade-offs**, and critically discuss how emerging technologies like RIS and OPA can address current limitations. This approach is expected to deliver deeper insights and a cohesive understanding, as opposed to a superficial inventory of papers, thereby adding value in guiding both current practitioners and future research in optical ISAC.
 
 ## 12. Meta-bias Assessment (Publication and Reporting Biases)
 
