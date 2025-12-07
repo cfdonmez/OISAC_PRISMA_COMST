@@ -14,6 +14,8 @@
 2.  **Artifact First:** Generate analysis as an "Artifact" first (in `.gemini` brain), then commit to the repo (`analysis/` folder) upon approval.
 3.  **Protocol-Driven:** Every decision (e.g., "Should I include this?") must track back to a section in `prisma_protocol.md`.
 4.  **Git Disciplince:** Commit changes after completing a logical "Phase" or significant "Task chunk".
+5.  **Identifier Standards:**
+    *   **Track_ID:** Unique identifier for included studies (Format: `O_ISAC_XXX`, e.g., `O_ISAC_001`). This ID must be the **first column** in all data CSVs (`included_studies_list.csv`, `extraction_dataset.csv`) to maintain relational integrity.
 
 ## Decision Log
 *   **Exclusion Logic:** "No optical carrier" is the primary exclusion reason for RF-ISAC papers.

@@ -8,6 +8,7 @@ We are now entered the **Retreival Phase**.
 *   **Infrastructure:** Established `memory-bank` and `AI_Co_Pilot_Workflow.md`.
 *   **Schema:** Defined `analysis/oisac_extraction_schema.yaml` (v1.0) for structured meta-analysis.
 *   **Target List:** `analysis/phase1_screening/included_studies_list.csv` contains the 158 papers to retrieve.
+*   **Data Tracking:** Implemented unique `Track_ID` (Format: `O_ISAC_XXX`) in `included_studies_list.csv` and populated `analysis/phase2_extraction/extraction_dataset.csv` to link included studies to extraction data.
 
 ## Immediate Next Steps
 1.  **Full-Text Retrieval (User Action):**
