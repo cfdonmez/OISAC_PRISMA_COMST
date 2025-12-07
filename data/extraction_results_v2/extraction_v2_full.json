@@ -1,0 +1,541 @@
+[
+  {
+    "Paper_ID": "O_ISAC_001",
+    "Study_Level": {
+      "title": "Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G",
+      "year": 2025,
+      "venue": "IEEE",
+      "document_type": "journal",
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "point_to_point",
+      "application_domain": [
+        "indoor_positioning"
+      ],
+      "evidence_type": [
+        "experimental"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": true,
+      "key_contribution": "CE-OFDM emerges as a compelling waveform for VLC systems in 6G, offering advantages in both communication robustness and potential for localization.",
+      "gap_addressed": "The paper addresses the need for a waveform that can efficiently support both communication and sensing in 6G optical wireless networks."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "VLC system with CE-OFDM",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "ce_ofdm",
+          "wavelength_nm": 638,
+          "tx_power_dbm": 10,
+          "optical_bandwidth_ghz": 0.25
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "apd_pd"
+        },
+        "Integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "half_duplex"
+        },
+        "Waveform": {
+          "comm_waveform_family": "ofdm",
+          "comm_modulation_order": 64,
+          "comm_symbol_rate_gbaud": 0.25,
+          "sensing_waveform_family": "same_as_comm",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "null"
+        },
+        "Channel_Wireless": {
+          "link_distance_m": 2,
+          "turbulence_model": "none",
+          "turbulence_Cn2": null,
+          "pointing_error_model": "zero",
+          "weather_visibility_m": null
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 4,
+          "ber": 0.001,
+          "snr_db": 10,
+          "outage_probability": null,
+          "latency_ms": null
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "localization"
+          ],
+          "sensing_range_m": 2,
+          "range_resolution_m": null,
+          "range_accuracy_m": null,
+          "velocity_resolution_mps": null,
+          "localization_error_m": null,
+          "pd_detection_prob": null,
+          "pfa_false_alarm": null,
+          "crb_crlb_value": null,
+          "crb_parameter": null
+        },
+        "Tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "modulation index",
+          "tradeoff_control_range": "[0.1, 4]"
+        },
+        "OPA_Details": {
+          "opa_num_emitters": null,
+          "opa_steering_range_deg": null
+        },
+        "Evidence": [
+          {
+            "field": "data_rate_gbps",
+            "snippet": "The results clearly show that CE-OFDM achieves superior performance compared to conventional OFDM.",
+            "source": "TEXT"
+          },
+          {
+            "field": "comm_modulation_order",
+            "snippet": "64 QAM-modulated subcarriers occupying 250 MHz bandwidth",
+            "source": "TEXT"
+          },
+          {
+            "field": "isac_waveform_relationship",
+            "snippet": "CE-OFDM can serve as a strong candidate waveform for VLC in future 6G systems, especially where dual-functionality for communication and localization is desired.",
+            "source": "TEXT"
+          }
+        ],
+        "Source_Pointer": "Section III, Fig. 1"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": false,
+      "tradeoff_explicitly_analyzed": true,
+      "uncertainty_reported": false,
+      "baseline_comparison_present": true
+    },
+    "extraction_timestamp": "2025-12-07T20:26:00.267497",
+    "schema_version": "2.0"
+  },
+  {
+    "Paper_ID": "O_ISAC_002",
+    "Study_Level": {
+      "title": "Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems",
+      "year": 2025,
+      "venue": "NR",
+      "document_type": "journal",
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "terahertz",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "application_domain": [
+        "wireless_networks",
+        "radar"
+      ],
+      "evidence_type": [
+        "experimental",
+        "theoretical"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": false,
+      "key_contribution": "This paper explores the role of photonic terahertz technologies in integrated sensing and communication systems.",
+      "gap_addressed": "The paper addresses the need for reliable connectivity in wireless networks and the integration of sensing and communication systems."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "Photonic THz-ISAC system with LFM-PSK waveform",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "LFM-PSK",
+          "wavelength_nm": 1550,
+          "tx_power_dbm": "NR",
+          "optical_bandwidth_ghz": "NR"
+        },
+        "Receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd"
+        },
+        "Integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "Waveform": {
+          "comm_waveform_family": "LFM-PSK",
+          "comm_modulation_order": "NR",
+          "comm_symbol_rate_gbaud": 6,
+          "sensing_waveform_family": "LFM",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "NR"
+        },
+        "Channel_Fiber": {
+          "fibre_length_km": "NR",
+          "fibre_type": "smf",
+          "attenuation_db_per_km": "NR",
+          "backscatter_sensing_type": "NR"
+        },
+        "Channel_Wireless": {
+          "link_distance_m": 1,
+          "turbulence_model": "none",
+          "turbulence_Cn2": "NR",
+          "pointing_error_model": "zero",
+          "weather_visibility_m": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 6,
+          "spectral_efficiency_bps_hz": "NR",
+          "ber": "NR",
+          "snr_db": "NR",
+          "outage_probability": "NR",
+          "latency_ms": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "sensing_range_m": 1,
+          "range_resolution_m": 0.013,
+          "range_accuracy_m": "NR",
+          "velocity_resolution_mps": "NR",
+          "localization_error_m": "NR",
+          "pd_detection_prob": "NR",
+          "pfa_false_alarm": "NR",
+          "crb_crlb_value": "NR",
+          "crb_parameter": "range"
+        },
+        "Tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "single_point",
+          "tradeoff_control_parameter": "NR",
+          "tradeoff_control_range": "NR"
+        },
+        "OPA_Details": {
+          "opa_num_emitters": "NR",
+          "opa_steering_range_deg": "NR"
+        },
+        "Evidence": [
+          {
+            "field": "data_rate_gbps",
+            "snippet": "6 Gbit/s",
+            "source": "TEXT"
+          },
+          {
+            "field": "range_resolution_m",
+            "snippet": "1.3 cm",
+            "source": "TEXT"
+          },
+          {
+            "field": "isac_waveform_relationship",
+            "snippet": "single_dual_function",
+            "source": "TEXT"
+          }
+        ],
+        "Source_Pointer": "Section 2, Fig. 1"
+      },
+      {
+        "Experiment_ID": "E2",
+        "Scenario_Label": "Multichannel photonic THz-ISAC system",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "LFM-QAM",
+          "wavelength_nm": 1550,
+          "tx_power_dbm": "NR",
+          "optical_bandwidth_ghz": "NR"
+        },
+        "Receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd"
+        },
+        "Integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "Waveform": {
+          "comm_waveform_family": "LFM-QAM",
+          "comm_modulation_order": "NR",
+          "comm_symbol_rate_gbaud": 120,
+          "sensing_waveform_family": "LFM",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "NR"
+        },
+        "Channel_Fiber": {
+          "fibre_length_km": "NR",
+          "fibre_type": "smf",
+          "attenuation_db_per_km": "NR",
+          "backscatter_sensing_type": "NR"
+        },
+        "Channel_Wireless": {
+          "link_distance_m": "NR",
+          "turbulence_model": "none",
+          "turbulence_Cn2": "NR",
+          "pointing_error_model": "zero",
+          "weather_visibility_m": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 120,
+          "spectral_efficiency_bps_hz": "NR",
+          "ber": "NR",
+          "snr_db": "NR",
+          "outage_probability": "NR",
+          "latency_ms": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "sensing_range_m": "NR",
+          "range_resolution_m": 0.0025,
+          "range_accuracy_m": "NR",
+          "velocity_resolution_mps": "NR",
+          "localization_error_m": "NR",
+          "pd_detection_prob": "NR",
+          "pfa_false_alarm": "NR",
+          "crb_crlb_value": "NR",
+          "crb_parameter": "range"
+        },
+        "Tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "single_point",
+          "tradeoff_control_parameter": "NR",
+          "tradeoff_control_range": "NR"
+        },
+        "OPA_Details": {
+          "opa_num_emitters": "NR",
+          "opa_steering_range_deg": "NR"
+        },
+        "Evidence": [
+          {
+            "field": "data_rate_gbps",
+            "snippet": "120 Gbit/s",
+            "source": "TEXT"
+          },
+          {
+            "field": "range_resolution_m",
+            "snippet": "2.5 mm",
+            "source": "TEXT"
+          },
+          {
+            "field": "isac_waveform_relationship",
+            "snippet": "single_dual_function",
+            "source": "TEXT"
+          }
+        ],
+        "Source_Pointer": "Section 3, Fig. 2"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": false,
+      "tradeoff_explicitly_analyzed": false,
+      "uncertainty_reported": false,
+      "baseline_comparison_present": false
+    },
+    "extraction_timestamp": "2025-12-07T20:26:01.492213",
+    "schema_version": "2.0"
+  },
+  {
+    "Paper_ID": "O_ISAC_003",
+    "Study_Level": {
+      "title": "Analysis of Visible Light-Based ISAC Channel Characteristics in a V2V Scenario",
+      "year": 2025,
+      "venue": "2025 IEEE Wireless Communications and Networking Conference (WCNC)",
+      "document_type": "conference",
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "outdoor",
+      "link_topology": "bistatic",
+      "application_domain": [
+        "vehicular"
+      ],
+      "evidence_type": [
+        "simulation"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": false,
+      "key_contribution": "This paper investigates the visible light-based integrated sensing and communication channel characteristics in a vehicle-to-vehicle scenario.",
+      "gap_addressed": "The research on sensing channel is relatively limited, especially the different sensing modes with different positions of transmitter and sensing receiver."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "Mono-static sensing vehicle-to-vehicle scenario",
+        "Transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "NR",
+          "wavelength_nm": 620,
+          "tx_power_dbm": 2.55,
+          "optical_bandwidth_ghz": "NR"
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd"
+        },
+        "Integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "NR"
+        },
+        "Waveform": {
+          "comm_waveform_family": "NR",
+          "comm_modulation_order": "NR",
+          "comm_symbol_rate_gbaud": "NR",
+          "sensing_waveform_family": "NR",
+          "isac_waveform_relationship": "NR",
+          "resource_partition": "NR"
+        },
+        "Channel_Fiber": {
+          "fibre_length_km": "NR",
+          "fibre_type": "NR",
+          "attenuation_db_per_km": "NR",
+          "backscatter_sensing_type": "NR"
+        },
+        "Channel_Wireless": {
+          "link_distance_m": 4,
+          "turbulence_model": "NR",
+          "turbulence_Cn2": "NR",
+          "pointing_error_model": "NR",
+          "weather_visibility_m": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": "NR",
+          "spectral_efficiency_bps_hz": "NR",
+          "ber": "NR",
+          "snr_db": "NR",
+          "outage_probability": "NR",
+          "latency_ms": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "sensing_range_m": 4,
+          "range_resolution_m": "NR",
+          "range_accuracy_m": "NR",
+          "velocity_resolution_mps": "NR",
+          "localization_error_m": "NR",
+          "pd_detection_prob": "NR",
+          "pfa_false_alarm": "NR",
+          "crb_crlb_value": "NR",
+          "crb_parameter": "NR"
+        },
+        "Tradeoff": {
+          "coupling_mode": "NR",
+          "tradeoff_type": [],
+          "tradeoff_representation": "NR",
+          "tradeoff_control_parameter": "NR",
+          "tradeoff_control_range": "NR"
+        },
+        "OPA_Details": {
+          "opa_num_emitters": "NR",
+          "opa_steering_range_deg": "NR"
+        },
+        "Evidence": [
+          {
+            "field": "sensing_range_m",
+            "snippet": "the effective sensing distance for mono-static sensing is the distance between TX and the target in the range of 4 m",
+            "source": "TEXT"
+          }
+        ],
+        "Source_Pointer": "Section III"
+      },
+      {
+        "Experiment_ID": "E2",
+        "Scenario_Label": "Bi-static sensing vehicle-to-vehicle scenario",
+        "Transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "NR",
+          "wavelength_nm": 620,
+          "tx_power_dbm": 2.55,
+          "optical_bandwidth_ghz": "NR"
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd"
+        },
+        "Integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "NR"
+        },
+        "Waveform": {
+          "comm_waveform_family": "NR",
+          "comm_modulation_order": "NR",
+          "comm_symbol_rate_gbaud": "NR",
+          "sensing_waveform_family": "NR",
+          "isac_waveform_relationship": "NR",
+          "resource_partition": "NR"
+        },
+        "Channel_Fiber": {
+          "fibre_length_km": "NR",
+          "fibre_type": "NR",
+          "attenuation_db_per_km": "NR",
+          "backscatter_sensing_type": "NR"
+        },
+        "Channel_Wireless": {
+          "link_distance_m": 10,
+          "turbulence_model": "NR",
+          "turbulence_Cn2": "NR",
+          "pointing_error_model": "NR",
+          "weather_visibility_m": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": "NR",
+          "spectral_efficiency_bps_hz": "NR",
+          "ber": "NR",
+          "snr_db": "NR",
+          "outage_probability": "NR",
+          "latency_ms": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "sensing_range_m": 10,
+          "range_resolution_m": "NR",
+          "range_accuracy_m": "NR",
+          "velocity_resolution_mps": "NR",
+          "localization_error_m": "NR",
+          "pd_detection_prob": "NR",
+          "pfa_false_alarm": "NR",
+          "crb_crlb_value": "NR",
+          "crb_parameter": "NR"
+        },
+        "Tradeoff": {
+          "coupling_mode": "NR",
+          "tradeoff_type": [],
+          "tradeoff_representation": "NR",
+          "tradeoff_control_parameter": "NR",
+          "tradeoff_control_range": "NR"
+        },
+        "OPA_Details": {
+          "opa_num_emitters": "NR",
+          "opa_steering_range_deg": "NR"
+        },
+        "Evidence": [
+          {
+            "field": "sensing_range_m",
+            "snippet": "the effective sensing distance for bi-static sensing is the distance between TX and RXS in the range of 5-10 m",
+            "source": "TEXT"
+          }
+        ],
+        "Source_Pointer": "Section III"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": false,
+      "tradeoff_explicitly_analyzed": false,
+      "uncertainty_reported": false,
+      "baseline_comparison_present": false
+    },
+    "extraction_timestamp": "2025-12-07T20:26:06.223498",
+    "schema_version": "2.0"
+  }
+]
