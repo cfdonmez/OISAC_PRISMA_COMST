@@ -16,6 +16,7 @@
 4.  **Git Disciplince:** Commit changes after completing a logical "Phase" or significant "Task chunk".
 5.  **Identifier Standards:**
     *   **Track_ID:** Unique identifier for included studies (Format: `O_ISAC_XXX`, e.g., `O_ISAC_001`). This ID must be the **first column** in all data CSVs (`included_studies_list.csv`, `extraction_dataset.csv`) to maintain relational integrity.
+    *   **PDF Naming:** `[Track_ID]_[FirstAuthor]_[Year].pdf` (e.g., `O_ISAC_001_Rosmaninho_2025.pdf`). Store in `data/retrieved_docs`.
 
 ## Decision Log
 *   **Exclusion Logic:** "No optical carrier" is the primary exclusion reason for RF-ISAC papers.
