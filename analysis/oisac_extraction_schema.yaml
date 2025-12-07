@@ -1,0 +1,88 @@
+# O-ISAC Data Extraction Schema (v1.0)
+# Based on PRISMA Protocol Section 9
+# Target Usage: Phase 2 Full-Text Analysis
+
+# -----------------------------------------------------------------------------
+# INSTRUCTIONS
+# -----------------------------------------------------------------------------
+# 1. Use metric units (SI) wherever possible.
+# 2. If a value is not reported, use "NR" (Not Reported).
+# 3. For categorical fields, use the allowed values list.
+# -----------------------------------------------------------------------------
+
+schema_version: "1.0"
+
+sections:
+  - section_name: "General Information"
+    fields:
+      - key: "study_id"
+        type: "string"
+        description: "Unique identifier from screening CSV (e.g., 'row_123')"
+      - key: "doi"
+        type: "string"
+        description: "Digital Object Identifier"
+      - key: "year"
+        type: "integer"
+        description: "Year of publication"
+      - key: "category"
+        type: "enum"
+        options: ["Fiber", "Wireless", "Hybrid"]
+        description: "Primary medium of the O-ISAC system"
+
+  - section_name: "System Architecture"
+    fields:
+      - key: "integration_strategy"
+        type: "enum"
+        options: 
+          - "Unified Waveform"       # S&C on same signal
+          - "Time-Division"          # TDM
+          - "Freq-Division"          # FDM / Guard bands
+          - "Space-Division"         # SDM / Multi-core
+          - "Superimposed"           # Check protocol for definition
+          - "Other"
+        description: "How Sensing and Communication co-exist"
+      
+      - key: "waveform"
+        type: "enum"
+        options: ["OFDM", "Nyquist", "Chirp/FMCW", "Pulsed", "Continuous Wave", "Other"]
+        description: "Primary modulation/waveform used"
+      
+      - key: "medium_details"
+        type: "string"
+        description: "e.g., 'SMF-28', 'Free-Space Turbulence', 'Underwater'"
+
+  - section_name: "Performance Metrics (Communication)"
+    fields:
+      - key: "data_rate_gbps"
+        type: "float"
+        unit: "Gbps"
+        description: "Maximum achieved data rate"
+      - key: "transmission_distance_km"
+        type: "float"
+        unit: "km"
+        description: "Transmission distance"
+  
+  - section_name: "Performance Metrics (Sensing)"
+    fields:
+      - key: "sensing_parameter"
+        type: "enum"
+        options: ["Vibration", "Temperature", "Strain", "Distance/Range", "Velocity", "3D Point Cloud"]
+        description: "Primary physical parameter sensed"
+      - key: "spatial_resolution_m"
+        type: "float"
+        unit: "meters"
+        description: "Spatial resolution (range resolution)"
+      - key: "sensing_range_m"
+        type: "float"
+        unit: "meters"
+        description: "Maximum sensing range"
+      - key: "sensing_accuracy"
+        type: "string"
+        description: "reported accuracy/precision (text due to unit variance)"
+
+  - section_name: "Quality Assessment (TQAF)"
+    fields:
+      - key: "risk_of_bias"
+        type: "enum"
+        options: ["Low", "High", "Unclear"]
+        description: "Based on TQAF criteria (Protocol Section 10)"
