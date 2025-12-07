@@ -32,6 +32,19 @@ INTERMEDIATE_DIR = os.path.join(PROJECT_PATH, "data/processed_markdowns")
 FINAL_DIR = os.path.join(PROJECT_PATH, "data/extraction_results_v2")
 os.makedirs(FINAL_DIR, exist_ok=True)
 
+# =============================================================================
+# MODEL SELECTION - Choose based on your needs
+# =============================================================================
+AVAILABLE_MODELS = {
+    "best_quality": "llama-3.3-70b-versatile",      # Best for extraction (70B params)
+    "fast": "llama-3.1-8b-instant",                  # Fast for testing (8B params)
+    "kimi": "moonshotai/kimi-k2-instruct",          # Alternative: Kimi K2
+    "llama4": "meta-llama/llama-4-maverick-17b-128e-instruct",  # Llama 4 series
+}
+
+# SELECT YOUR MODEL HERE ⬇️
+SELECTED_MODEL = AVAILABLE_MODELS["best_quality"]  # Change to "fast", "kimi", or "llama4"
+
 # API Connection
 try:
     if IN_COLAB:
@@ -43,7 +56,8 @@ try:
         raise ValueError("GROQ_API_KEY not found!")
     
     client = AsyncOpenAI(api_key=api_key, base_url="https://api.groq.com/openai/v1")
-    print("✅ Groq (Llama-3.3-70b) Connected. PRISMA Protocol v2.0 Active.")
+    print(f"✅ Groq Connected. Model: {SELECTED_MODEL}")
+    print("   PRISMA Protocol v2.0 Active.")
 except Exception as e:
     print(f"❌ ERROR: {e}")
     client = None
@@ -244,7 +258,7 @@ async def extract_paper_v2(folder_path, semaphore):
             print(f"   🔬 Extracting: {paper_id}...")
             
             response = await client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=SELECTED_MODEL,
                 messages=[
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_content}
