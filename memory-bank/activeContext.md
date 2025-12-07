@@ -1,22 +1,28 @@
 # Active Context
 
-## Current Phase: Phase 2 (Full-Text Retrieval)
-We have completed **Phase 1 (Screening)** and the **Schema Definition**.
-We are now entered the **Retreival Phase**.
+## Current Phase: Phase 2 (Full-Text Retrieval & Pilot Extraction)
+We have successfully completed **Phase 1 (Screening)** with **158 studies included**.
+We are now in the **Retrieval Phase**, with concurrent Pilot Extraction.
 
 ## Recent Accomplishments
-*   **Infrastructure:** Established `memory-bank` and `AI_Co_Pilot_Workflow.md`.
-*   **Schema:** Defined `analysis/oisac_extraction_schema.yaml` (v1.0) for structured meta-analysis.
-*   **Target List:** `analysis/phase1_screening/included_studies_list.csv` contains the 158 papers to retrieve.
-*   **Data Tracking:** Implemented unique `Track_ID` (Format: `O_ISAC_XXX`) in `included_studies_list.csv` and populated `analysis/phase2_extraction/extraction_dataset.csv` to link included studies to extraction data.
+*   **Screening Complete:** 158 papers selected (`analysis/phase1_screening/included_studies_list.csv`).
+*   **Retrieval Started:** 10/158 PDFs retrieved (`data/retrieved_docs`).
+*   **Pilot Processing:** 10 retrieved papers have been processed into markdown (`data/processed_markdowns`).
+*   **Extraction Pilot:** Initial extraction results generated (`data/extraction_results`).
 
 ## Immediate Next Steps
-1.  **Full-Text Retrieval (User Action):**
-    *   The User needs to download PDFs for the 158 included studies using the DOIs in `included_studies_list.csv`.
-    *   Store them in a local directory (e.g., `papers/`).
-2.  **Pilot Extraction:**
-    *   Once a few PDFs are available, we will pilot the `oisac_extraction_schema.yaml` on 3-5 papers to test if it "fits" the reality of the data.
+1.  **Full-Text Retrieval (Action Required):**
+    *   Download remaining 148 PDFs for the included studies.
+    *   Naming convention: `O_ISAC_XXX.pdf`.
+    *   Store in `data/retrieved_docs`.
+2.  **Extraction Verification:**
+    *   Review `data/extraction_results` to ensure `oisac_extraction_schema.yaml` is capturing necessary data.
+    *   Refine schema if needed.
+3.  **Scale Extraction:**
+    *   Once retrieval is substantial, run batch extraction.
 
 ## Active Files
-*   `analysis/oisac_extraction_schema.yaml`: The form we must fill out.
-*   `analysis/phase1_screening/included_studies_list.csv`: The checklist of papers.
+*   `analysis/phase1_screening/included_studies_list.csv`: The master list of 158 included papers.
+*   `data/retrieved_docs/`: Repository for PDF files.
+*   `data/processed_markdowns/`: Intermediate processed files for AI analysis.
+*   `analysis/oisac_extraction_schema.yaml`: The data extraction schema.

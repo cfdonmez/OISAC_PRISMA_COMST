@@ -9,9 +9,10 @@ Bu dosya, projenin **PRISMA 2020** standartlarına uyumunu izlemek ve sistematik
 | Aşama | Durum | Hedef Dosya / Klasör | Notlar |
 | :--- | :--- | :--- | :--- |
 | **Protokol** | 🟢 Tamamlandı | `protocol/prisma_protocol.md` | OSF kaydı bekleniyor. |
-| **Arama (Search)** | 🟡 Devam Ediyor | `search/search_log.csv` | Veritabanı taramaları sürüyor. |
-| **Eleme (Screening)** | 🔴 Başlamadı | `screening/screening_log.csv` | Duplicate temizliği sonrası başlayacak. |
-| **Veri Çıkarma** | 🔴 Başlamadı | `extraction/schema/` | Şema hazır, pilot deneme yapılacak. |
+| **Arama (Search)** | 🟢 Tamamlandı | `search/` | Veritabanı taramaları tamamlandı. |
+| **Eleme (Screening)** | 🟢 Tamamlandı | `analysis/phase1_screening/included_studies_list.csv` | 158 çalışma dahil edildi. |
+| **PDF Toplama** | 🟡 Sürüyor | `data/retrieved_docs/` | 10/158 PDF indirildi. |
+| **Veri Çıkarma** | 🟡 Pilot | `data/extraction_results` | Pilot denemeler yapıldı. |
 | **Yazım (Writing)** | ⚪ Beklemede | `manuscript/comst_template.tex` | Analiz sonrası. |
 
 *(Semboller: 🟢 Tamam, 🟡 Sürüyor, 🔴 Başlamadı, ⚪ Beklemede)*
