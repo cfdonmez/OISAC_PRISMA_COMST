@@ -245,54 +245,196 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
 # =============================================================================
 # PHASE 3: LLM EXTRACTION (Groq API)
 # =============================================================================
-SYSTEM_PROMPT = """You are an IEEE COMST technical reviewer extracting structured data from O-ISAC papers.
+SYSTEM_PROMPT = """You are a Senior Technical Editor for IEEE COMST extracting structured data from Optical Integrated Sensing and Communication (O-ISAC) papers for a PRISMA-2020 systematic review.
 
-CRITICAL RULES:
-1. Use "NR" for Not Reported, "NA" for Not Applicable
-2. Create MULTIPLE experiments if paper has different scenarios
-3. Include evidence snippets for key values
-4. Convert units: wavelength→nm, distance→m (wireless)/km (fiber), rate→Gbps
+================================================================================
+CRITICAL EXTRACTION RULES
+================================================================================
+1. Use "NR" (Not Reported) for missing values, "NA" (Not Applicable) for inapplicable fields
+2. Create MULTIPLE Experiment entries if the paper reports different scenarios/configurations
+3. Extract EXACT numerical values with units - convert to standard: wavelength→nm, distance→m (wireless)/km (fiber), rate→Gbps
+4. Include evidence snippets with source pointers (e.g., "Table II", "Fig. 5", "Section IV-B")
+5. The "isac_waveform_relationship" field is MOST CRITICAL for taxonomy - always determine it
 
-OUTPUT JSON:
+================================================================================
+OUTPUT JSON SCHEMA (Full v2.0)
+================================================================================
 {
   "Paper_ID": "O_ISAC_XXX",
+  
   "Study_Level": {
     "title": "string",
+    "authors": "string",
     "year": int,
     "venue": "string",
-    "document_type": "journal|conference|letter",
-    "oisac_medium_class": "cabled_fibre|wireless_fso|wireless_vlc|wireless_lidar_like|hybrid",
-    "carrier_band": "visible|NIR|C-band|L-band|other|NR",
-    "application_domain": ["list"],
-    "evidence_type": ["simulation|experimental|analytical"],
+    "doi": "string or NR",
+    "document_type": "journal|conference|letter|review",
+    
+    "oisac_medium_class": "cabled_fibre|wireless_fso|wireless_vlc|wireless_lidar_like|wireless_retroreflective|hybrid",
+    "carrier_band": "visible|NIR|SWIR|C-band|L-band|O-band|other|NR",
+    "operational_environment": "indoor|outdoor|lab|field_trial|mixed|NR",
+    "link_topology": "monostatic|bistatic|multistatic|distributed_fibre|point_to_point|NR",
+    "mobility_context": "static|quasi_static|mobile|not_specified",
+    
+    "application_domain": ["vehicular", "industrial_manufacturing", "indoor_positioning", "environmental_monitoring", "critical_infrastructure", "fibre_network_monitoring", "robotics_autonomy", "aerospace_space", "uav_aerial", "maritime_underwater", "security_surveillance", "6g_networks", "other"],
+    "scenario_description": "free-text description of use case",
+    
+    "evidence_type": ["analytical", "simulation", "experimental", "hybrid"],
+    "validation_baselines_present": bool,
+    "reproducibility_artifacts": "code_available|data_available|parameters_sufficient|insufficient|NR",
+    
     "ris_present": bool,
     "opa_present": bool,
-    "ml_used": bool,
-    "key_contribution": "1-2 sentences",
+    "machine_learning_used": bool,
+    
+    "key_contribution": "1-2 sentence summary",
     "gap_addressed": "1 sentence"
   },
-  "Experiments": [{
-    "Experiment_ID": "E1",
-    "Scenario_Label": "descriptive",
-    "Transmitter": {"tx_source_type": "laser|led|vcsel", "wavelength_nm": float, "tx_power_dbm": float},
-    "Receiver": {"rx_detection_type": "direct|coherent", "rx_detector": "pin_pd|apd_pd|balanced_pd"},
-    "Waveform": {
-      "comm_waveform_family": "ook|ofdm|qam|pam|chirp_fmcw",
-      "sensing_waveform_family": "fmcw_chirp|pulse_tof|same_as_comm",
-      "isac_waveform_relationship": "single_dual_function|multiplexed_separate|sensing_embedded_in_comm"
-    },
-    "Channel": {"link_distance_m": float, "fibre_length_km": float},
-    "Comm_Metrics": {"data_rate_gbps": float, "ber": float, "snr_db": float},
-    "Sensing_Metrics": {
-      "sensing_task_type": ["ranging|velocity|localization_2d"],
-      "range_resolution_m": float,
-      "sensing_range_m": float
-    },
-    "Tradeoff": {"coupling_mode": "joint_waveform|resource_division", "tradeoff_type": ["list"]},
-    "Source_Pointer": "Section X, Table Y"
-  }],
-  "Quality_Flags": {"both_sc_metrics_reported": bool, "tradeoff_analyzed": bool}
-}"""
+  
+  "Experiments": [
+    {
+      "experiment_id": "E1",
+      "scenario_label": "Human-readable label (e.g., 'Outdoor FSO, 500m, Gamma-Gamma turbulence')",
+      
+      "Transmitter": {
+        "tx_source_type": "laser|led|vcsel|frequency_comb|sld|other",
+        "tx_modulation_type": "im_dd|coherent|mixed|not_specified",
+        "tx_external_modulator": "mzm|eam|iq_modulator|none|other|NR",
+        "wavelength_nm": float,
+        "optical_bandwidth_ghz": float,
+        "tx_power_dbm": float,
+        "aperture_diameter_m": float,
+        "beam_divergence_mrad": float
+      },
+      
+      "Receiver": {
+        "rx_detection_type": "direct|coherent|self_coherent|imaging|spad|other",
+        "rx_detector": "pin_pd|apd_pd|balanced_pd|camera_cmos|camera_ccd|spad_array|other|NR",
+        "rx_aperture_diameter_m": float
+      },
+      
+      "Integration": {
+        "hardware_sharing_mode": "shared_frontend|partially_shared|separate_frontends|not_specified",
+        "duplexing_mode": "full_duplex|half_duplex|tdm|fdm|wdm|cdm|sdm|other|NR"
+      },
+      
+      "Waveform": {
+        "comm_waveform_family": "ook|pam|pam4|ofdm|dmt|ppm|qam|psk|dpsk|chirp_fmcw|pulse_train|cap|other",
+        "comm_modulation_order": int,
+        "comm_symbol_rate_gbaud": float,
+        "comm_fec_type": "string or NR",
+        "sensing_waveform_family": "pulse_tof|fmcw_chirp|lfm_chirp|ofdm_sensing|backscatter_probe|phase_coded|reflectometry|same_as_comm|other",
+        "isac_waveform_relationship": "single_dual_function|comm_embedded_in_sensing|sensing_embedded_in_comm|multiplexed_separate|superimposed|not_specified",
+        "resource_partition": "string describing split (e.g., 'α=0.7 power to comm') or NR"
+      },
+      
+      "Channel_Fiber": {
+        "fibre_length_km": float,
+        "fibre_type": "smf|mmf|fmf|mcf|dcf|other|NR",
+        "attenuation_db_per_km": float,
+        "dispersion_ps_per_nm_km": float,
+        "nonlinearity_model": "gn_model|nlse|kerr_only|ignored|other|NR",
+        "backscatter_sensing_type": "rayleigh_phi_otdr|das|brillouin_botda|brillouin_botdr|raman|fbg|other|NR"
+      },
+      
+      "Channel_Wireless": {
+        "link_distance_m": float,
+        "path_loss_model": "string or NR",
+        "turbulence_model": "lognormal|gamma_gamma|malaga|negative_exponential|rice_nakagami|none|other|NR",
+        "turbulence_Cn2": float,
+        "scintillation_index": float,
+        "pointing_error_model": "zero|gaussian_jitter|beckmann|rayleigh|other|NR",
+        "weather_visibility_m": float,
+        "ambient_light_model": "string or NR"
+      },
+      
+      "Comm_Metrics": {
+        "data_rate_gbps": float,
+        "spectral_efficiency_bps_hz": float,
+        "ber": float,
+        "ber_target": float,
+        "snr_db": float,
+        "osnr_db": float,
+        "outage_probability": float,
+        "latency_ms": float,
+        "capacity_bps_hz": float
+      },
+      
+      "Sensing_Metrics": {
+        "sensing_task_type": ["ranging", "localization_2d", "localization_3d", "velocity", "imaging", "vibration", "displacement", "strain", "temperature", "target_detection", "obstacle_detection", "turbulence_estimation", "channel_sensing", "other"],
+        "sensing_range_m": float,
+        "range_resolution_m": float,
+        "range_accuracy_m": float,
+        "angular_resolution_deg": float,
+        "velocity_resolution_mps": float,
+        "velocity_accuracy_mps": float,
+        "localization_error_m": float,
+        "spatial_resolution_m": float,
+        "sensing_bandwidth_hz": float,
+        "pd_probability_detection": float,
+        "pfa_probability_false_alarm": float,
+        "crb_crlb_value": float,
+        "crb_parameter": "range|angle|delay|doppler|position|velocity|other|NR"
+      },
+      
+      "Tradeoff": {
+        "coupling_mode": "resource_division|joint_waveform|joint_receiver_processing|shared_hardware_only|other|NR",
+        "tradeoff_type": ["rate_vs_rmse", "rate_vs_range_resolution", "rate_vs_sensing_range", "ber_vs_detection_prob", "throughput_vs_localization", "power_split", "time_split", "bandwidth_split", "pareto_multi_objective", "other"],
+        "tradeoff_representation": "single_point|curve|pareto_front|table|not_explicit",
+        "tradeoff_control_parameter": "string (e.g., 'α', 'power_ratio') or NR",
+        "tradeoff_control_range": "string (e.g., '[0.1, 0.9]') or NR"
+      },
+      
+      "Enabling_Tech": {
+        "opa_num_emitters": int,
+        "opa_steering_range_deg": float,
+        "opa_beamwidth_deg": float,
+        "ris_num_elements": int,
+        "ris_type": "reflective|transmissive|hybrid|slm|other|NR",
+        "ris_phase_bits": int
+      },
+      
+      "Provenance": {
+        "source_pointer": "e.g., 'Table II, Section IV-B, Fig. 5'",
+        "value_origin": "reported_text|reported_table|digitised_figure|computed|inferred",
+        "confidence_reporting": "ci_reported|std_reported|none_reported",
+        "num_trials": int
+      }
+    }
+  ],
+  
+  "Quality_Assessment": {
+    "tqaf_modelling_fidelity": "0|1|2 (0=low, 1=moderate, 2=high)",
+    "tqaf_validation_strength": "0|1|2",
+    "tqaf_experimental_validity": "0|1|2",
+    "tqaf_metric_completeness": "0|1|2 (both S&C metrics reported?)",
+    "tqaf_reproducibility": "0|1|2",
+    "both_sc_metrics_reported": bool,
+    "tradeoff_explicitly_analyzed": bool,
+    "uncertainty_reported": bool,
+    "baseline_comparison_present": bool,
+    "tqaf_notes": "string"
+  }
+}
+
+================================================================================
+UNIT CONVERSION RULES
+================================================================================
+- Wavelength: always in nm (1.55 μm → 1550 nm)
+- Data rate: always in Gbps (100 Mbps → 0.1 Gbps, 1 Tbps → 1000 Gbps)
+- Distance: meters for wireless, km for fiber
+- Power: dBm or dB as reported
+- BER: scientific notation (e.g., 1e-9)
+
+================================================================================
+IMPORTANT NOTES
+================================================================================
+- For fiber-based O-ISAC: focus on Channel_Fiber, backscatter_sensing_type
+- For wireless O-ISAC (FSO/VLC): focus on Channel_Wireless, turbulence_model
+- The isac_waveform_relationship is CRITICAL for the taxonomy
+- If paper does NOT report BOTH comm AND sensing metrics, set both_sc_metrics_reported=false
+- Extract ALL experiments/scenarios reported in the paper as separate entries
+"""
 
 async def extract_single_paper(client, paper_id: str, folder: str, semaphore) -> Optional[dict]:
     """Extract data from single paper using LLM."""
@@ -329,7 +471,7 @@ async def extract_single_paper(client, paper_id: str, folder: str, semaphore) ->
                 ],
                 response_format={"type": "json_object"},
                 temperature=Config.LLM_TEMPERATURE,
-                max_tokens=6000
+                max_tokens=16000
             )
             
             result = json.loads(response.choices[0].message.content)
@@ -390,22 +532,89 @@ async def phase3_llm_extraction(checkpoint: CheckpointManager, limit: int = None
             json.dump(success, f, indent=2)
         print(f"\n📁 Saved: {json_path}")
         
-        # Flatten to CSV
+        # Flatten to CSV with enhanced columns
         rows = []
         for paper in success:
             sl = paper.get("Study_Level", {})
+            qa = paper.get("Quality_Assessment", {})
             for exp in paper.get("Experiments", []):
+                tx = exp.get("Transmitter", {})
+                rx = exp.get("Receiver", {})
+                wf = exp.get("Waveform", {})
+                ch_w = exp.get("Channel_Wireless", {})
+                ch_f = exp.get("Channel_Fiber", {})
+                cm = exp.get("Comm_Metrics", {})
+                sm = exp.get("Sensing_Metrics", {})
+                tr = exp.get("Tradeoff", {})
+                pr = exp.get("Provenance", {})
+                
                 rows.append({
+                    # Study Level
                     "Paper_ID": paper.get("Paper_ID"),
                     "Title": sl.get("title"),
                     "Year": sl.get("year"),
-                    "Medium": sl.get("oisac_medium_class"),
-                    "Exp_ID": exp.get("Experiment_ID"),
-                    "Scenario": exp.get("Scenario_Label"),
-                    "Data_Rate_Gbps": exp.get("Comm_Metrics", {}).get("data_rate_gbps"),
-                    "Range_Resolution_m": exp.get("Sensing_Metrics", {}).get("range_resolution_m"),
-                    "ISAC_Relationship": exp.get("Waveform", {}).get("isac_waveform_relationship"),
-                    "Coupling_Mode": exp.get("Tradeoff", {}).get("coupling_mode")
+                    "Venue": sl.get("venue"),
+                    "Medium_Class": sl.get("oisac_medium_class"),
+                    "Carrier_Band": sl.get("carrier_band"),
+                    "Environment": sl.get("operational_environment"),
+                    "Topology": sl.get("link_topology"),
+                    "Evidence_Type": ", ".join(sl.get("evidence_type", [])) if isinstance(sl.get("evidence_type"), list) else sl.get("evidence_type"),
+                    "RIS": sl.get("ris_present"),
+                    "OPA": sl.get("opa_present"),
+                    "ML_Used": sl.get("machine_learning_used"),
+                    
+                    # Experiment
+                    "Exp_ID": exp.get("experiment_id"),
+                    "Scenario": exp.get("scenario_label"),
+                    
+                    # Transmitter
+                    "TX_Type": tx.get("tx_source_type"),
+                    "TX_Mod_Type": tx.get("tx_modulation_type"),
+                    "Wavelength_nm": tx.get("wavelength_nm"),
+                    "TX_Power_dBm": tx.get("tx_power_dbm"),
+                    
+                    # Receiver
+                    "RX_Detection": rx.get("rx_detection_type"),
+                    "RX_Detector": rx.get("rx_detector"),
+                    
+                    # Waveform (CRITICAL)
+                    "Comm_Waveform": wf.get("comm_waveform_family"),
+                    "Sensing_Waveform": wf.get("sensing_waveform_family"),
+                    "ISAC_Relationship": wf.get("isac_waveform_relationship"),
+                    
+                    # Channel
+                    "Link_Distance_m": ch_w.get("link_distance_m"),
+                    "Turbulence_Model": ch_w.get("turbulence_model"),
+                    "Fiber_Length_km": ch_f.get("fibre_length_km"),
+                    "Fiber_Type": ch_f.get("fibre_type"),
+                    "Backscatter_Type": ch_f.get("backscatter_sensing_type"),
+                    
+                    # Comm Metrics
+                    "Data_Rate_Gbps": cm.get("data_rate_gbps"),
+                    "Spectral_Eff": cm.get("spectral_efficiency_bps_hz"),
+                    "BER": cm.get("ber"),
+                    "SNR_dB": cm.get("snr_db"),
+                    
+                    # Sensing Metrics
+                    "Sensing_Task": ", ".join(sm.get("sensing_task_type", [])) if isinstance(sm.get("sensing_task_type"), list) else sm.get("sensing_task_type"),
+                    "Range_Resolution_m": sm.get("range_resolution_m"),
+                    "Range_Accuracy_m": sm.get("range_accuracy_m"),
+                    "Sensing_Range_m": sm.get("sensing_range_m"),
+                    "Velocity_Resolution_mps": sm.get("velocity_resolution_mps"),
+                    "Localization_Error_m": sm.get("localization_error_m"),
+                    
+                    # Tradeoff
+                    "Coupling_Mode": tr.get("coupling_mode"),
+                    "Tradeoff_Type": ", ".join(tr.get("tradeoff_type", [])) if isinstance(tr.get("tradeoff_type"), list) else tr.get("tradeoff_type"),
+                    "Tradeoff_Repr": tr.get("tradeoff_representation"),
+                    
+                    # Quality
+                    "TQAF_Total": sum([int(qa.get(k, 0)) for k in ["tqaf_modelling_fidelity", "tqaf_validation_strength", "tqaf_metric_completeness", "tqaf_reproducibility"] if isinstance(qa.get(k), (int, str)) and str(qa.get(k)).isdigit()]),
+                    "Both_SC_Metrics": qa.get("both_sc_metrics_reported"),
+                    "Tradeoff_Analyzed": qa.get("tradeoff_explicitly_analyzed"),
+                    
+                    # Provenance
+                    "Source": pr.get("source_pointer")
                 })
         
         df = pd.DataFrame(rows)

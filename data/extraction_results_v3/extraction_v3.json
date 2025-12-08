@@ -1,0 +1,304 @@
+[
+  {
+    "Paper_ID": "O_ISAC_001",
+    "Study_Level": {
+      "title": "Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G",
+      "year": 2025,
+      "venue": "IEEE",
+      "document_type": "journal",
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "application_domain": [
+        "indoor",
+        "outdoor",
+        "space"
+      ],
+      "evidence_type": [
+        "experimental",
+        "analytical"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": true,
+      "key_contribution": "The paper explores constant envelope OFDM (CE-OFDM) for optical wireless communication (OWC) systems, which can support both robust communication and sensing functionalities.",
+      "gap_addressed": "The paper addresses the challenge of nonlinearities in light-emitting components and the need for advanced modulation techniques in OWC systems."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "VLC CE-OFDM system",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "wavelength_nm": 638,
+          "tx_power_dbm": "NR"
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "apd_pd"
+        },
+        "Waveform": {
+          "comm_waveform_family": "ofdm",
+          "sensing_waveform_family": "same_as_comm",
+          "isac_waveform_relationship": "single_dual_function"
+        },
+        "Channel": {
+          "link_distance_m": 2,
+          "fibre_length_km": "NA"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 1,
+          "ber": "NR",
+          "snr_db": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "localization"
+          ],
+          "range_resolution_m": "NR",
+          "sensing_range_m": "NR"
+        },
+        "Tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "spectral_efficiency",
+            "robustness_to_nonlinearities"
+          ]
+        },
+        "Source_Pointer": "Section III, Fig. 1"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": false,
+      "tradeoff_analyzed": true
+    },
+    "extraction_timestamp": "2025-12-08T15:13:08.964090",
+    "schema_version": "3.0"
+  },
+  {
+    "Paper_ID": "O_ISAC_002",
+    "Study_Level": {
+      "title": "Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems",
+      "year": 2025,
+      "venue": "IEEE",
+      "document_type": "journal",
+      "oisac_medium_class": "wireless_fso",
+      "carrier_band": "terahertz",
+      "application_domain": [
+        "wireless communication",
+        "sensing"
+      ],
+      "evidence_type": [
+        "experimental",
+        "theoretical"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": false,
+      "key_contribution": "The paper explores the role of photonic terahertz technologies in integrated sensing and communication systems, focusing on integrated waveform design, optical processing, and algorithms to enhance communication capabilities and sensing performance.",
+      "gap_addressed": "The paper addresses the need for new waveform and system design research that optimally aligns time and frequency resources to enhance ISAC system performance."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "Radar-centric photonic terahertz integrated sensing and communication system",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "wavelength_nm": 1550,
+          "tx_power_dbm": 10
+        },
+        "Receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd"
+        },
+        "Waveform": {
+          "comm_waveform_family": "LFM-PSK",
+          "sensing_waveform_family": "LFM",
+          "isac_waveform_relationship": "single_dual_function"
+        },
+        "Channel": {
+          "link_distance_m": 1,
+          "fibre_length_km": 0
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 6,
+          "ber": 1e-06,
+          "snr_db": 20
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "range_resolution_m": 0.013,
+          "sensing_range_m": 1
+        },
+        "Tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "communication vs sensing performance"
+          ]
+        },
+        "Source_Pointer": "Section 2, Figure 1"
+      },
+      {
+        "Experiment_ID": "E2",
+        "Scenario_Label": "Multi-channel photonic THz-ISAC system",
+        "Transmitter": {
+          "tx_source_type": "laser",
+          "wavelength_nm": 1550,
+          "tx_power_dbm": 10
+        },
+        "Receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd"
+        },
+        "Waveform": {
+          "comm_waveform_family": "LFM-QAM",
+          "sensing_waveform_family": "LFM",
+          "isac_waveform_relationship": "single_dual_function"
+        },
+        "Channel": {
+          "link_distance_m": 1,
+          "fibre_length_km": 0
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": 120,
+          "ber": 1e-06,
+          "snr_db": 20
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "range_resolution_m": 0.0025,
+          "sensing_range_m": 1
+        },
+        "Tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "communication vs sensing performance"
+          ]
+        },
+        "Source_Pointer": "Section 3, Figure 2"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": true,
+      "tradeoff_analyzed": true
+    },
+    "extraction_timestamp": "2025-12-08T15:13:09.889607",
+    "schema_version": "3.0"
+  },
+  {
+    "Paper_ID": "O_ISAC_003",
+    "Study_Level": {
+      "title": "Analysis of Visible Light-Based ISAC Channel Characteristics in a V2V Scenario",
+      "year": 2025,
+      "venue": "2025 IEEE Wireless Communications and Networking Conference (WCNC)",
+      "document_type": "conference",
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "application_domain": [
+        "V2V",
+        "intelligent transportation systems"
+      ],
+      "evidence_type": [
+        "simulation"
+      ],
+      "ris_present": false,
+      "opa_present": false,
+      "ml_used": false,
+      "key_contribution": "The paper investigates the visible light-based integrated sensing and communication (ISAC) channel characteristics in a vehicle-to-vehicle (V2V) scenario, focusing on monostatic sensing and bi-static sensing modes.",
+      "gap_addressed": "The research on sensing integrated channel for outdoor visible light communication is still at an early stage, and this paper aims to explore the VL-based ISAC channel characteristics under mono-static sensing and bi-static sensing modes."
+    },
+    "Experiments": [
+      {
+        "Experiment_ID": "E1",
+        "Scenario_Label": "Monostatic Sensing",
+        "Transmitter": {
+          "tx_source_type": "led",
+          "wavelength_nm": 650,
+          "tx_power_dbm": 7.57
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd"
+        },
+        "Waveform": {
+          "comm_waveform_family": "NR",
+          "sensing_waveform_family": "NR",
+          "isac_waveform_relationship": "NR"
+        },
+        "Channel": {
+          "link_distance_m": 4,
+          "fibre_length_km": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": "NR",
+          "ber": "NR",
+          "snr_db": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "range_resolution_m": "NR",
+          "sensing_range_m": 4
+        },
+        "Tradeoff": {
+          "coupling_mode": "NR",
+          "tradeoff_type": [
+            "NR"
+          ]
+        },
+        "Source_Pointer": "Section III"
+      },
+      {
+        "Experiment_ID": "E2",
+        "Scenario_Label": "Bi-static Sensing",
+        "Transmitter": {
+          "tx_source_type": "led",
+          "wavelength_nm": 650,
+          "tx_power_dbm": 7.57
+        },
+        "Receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd"
+        },
+        "Waveform": {
+          "comm_waveform_family": "NR",
+          "sensing_waveform_family": "NR",
+          "isac_waveform_relationship": "NR"
+        },
+        "Channel": {
+          "link_distance_m": 10,
+          "fibre_length_km": "NR"
+        },
+        "Comm_Metrics": {
+          "data_rate_gbps": "NR",
+          "ber": "NR",
+          "snr_db": "NR"
+        },
+        "Sensing_Metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "range_resolution_m": "NR",
+          "sensing_range_m": 10
+        },
+        "Tradeoff": {
+          "coupling_mode": "NR",
+          "tradeoff_type": [
+            "NR"
+          ]
+        },
+        "Source_Pointer": "Section III"
+      }
+    ],
+    "Quality_Flags": {
+      "both_sc_metrics_reported": false,
+      "tradeoff_analyzed": false
+    },
+    "extraction_timestamp": "2025-12-08T15:13:12.920896",
+    "schema_version": "3.0"
+  }
+]
