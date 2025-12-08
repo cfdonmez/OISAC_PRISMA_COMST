@@ -1,0 +1,159 @@
+{
+  "Paper_ID": "O_ISAC_029",
+  "Study_Level": {
+    "title": "THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network",
+    "authors": "Boyu Dong, Zhongya Li, Sizhe Xing, Yinjun Liu, Junhao Zhao, Ouhan Huang, Junlian Jia, Jianyang Shi, Yingjun Zhou, Haipeng Wang, Nan Chi, Junwen Zhang",
+    "year": 2025,
+    "venue": "IEEE Transactions on Microwave Theory and Techniques",
+    "doi": "10.1109/TMTT.2025.3549729",
+    "document_type": "journal",
+    "oisac_medium_class": "hybrid",
+    "carrier_band": "D-band",
+    "operational_environment": "lab",
+    "link_topology": "point_to_point",
+    "mobility_context": "static",
+    "application_domain": [
+      "6g_networks",
+      "indoor_positioning"
+    ],
+    "scenario_description": "A D-band photonic-based ISAC system for fiber-wireless networks with full-photonic direct LFM reception and de-chirping",
+    "evidence_type": [
+      "experimental"
+    ],
+    "validation_baselines_present": false,
+    "reproducibility_artifacts": "insufficient",
+    "ris_present": false,
+    "opa_present": false,
+    "machine_learning_used": false,
+    "key_contribution": "A novel D-band photonic-based ISAC system with full-photonic direct LFM reception and de-chirping for fiber-wireless networks",
+    "gap_addressed": "The limitation of traditional electronic-based ISAC systems in generating high-frequency THz signals and the impact of fiber transmission on radar performance",
+    "performance_enablers": [
+      "photonic_dechirping",
+      "coherent_homodyne",
+      "high_bandwidth_modulator"
+    ],
+    "novel_component": "TFLN-MZM with 110 GHz bandwidth",
+    "novel_component_specs": "Typical half-wave voltage of ≤3 V and a typical optical insertion loss of 7.1 dB"
+  },
+  "Experiments": [
+    {
+      "experiment_id": "E1",
+      "scenario_label": "D-band fiber-wireless network with 10 km SMF transmission",
+      "Transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 30,
+        "tx_power_dbm": 14.5,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "Receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 110,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "Integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "Waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 29,
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "α=0.7 power to comm"
+      },
+      "Channel_Fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "kerr_only",
+        "backscatter_sensing_type": "rayleigh_phi_otdr"
+      },
+      "Channel_Wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "zero",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "Comm_Metrics": {
+        "data_rate_gbps": 116,
+        "spectral_efficiency_bps_hz": 4,
+        "ber": 0.001,
+        "ber_target": 0.01,
+        "snr_db": 20,
+        "osnr_db": 30,
+        "outage_probability": 0,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "Sensing_Metrics": {
+        "sensing_task_type": [
+          "ranging"
+        ],
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.006,
+        "range_accuracy_m": 0.003,
+        "angular_resolution_deg": 0,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 0,
+        "spatial_resolution_m": 0,
+        "sensing_bandwidth_hz": 30000000000.0,
+        "pd_probability_detection": 1,
+        "pfa_probability_false_alarm": 0,
+        "crb_crlb_value": 0,
+        "crb_parameter": "range"
+      },
+      "Tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "α",
+        "tradeoff_control_range": "[0.1, 0.9]"
+      },
+      "Enabling_Tech": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "Provenance": {
+        "source_pointer": "Fig. 7",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": 10
+      }
+    }
+  ],
+  "Quality_Assessment": {
+    "tqaf_modelling_fidelity": "2",
+    "tqaf_validation_strength": "2",
+    "tqaf_experimental_validity": "2",
+    "tqaf_metric_completeness": "2",
+    "tqaf_reproducibility": "1",
+    "both_sc_metrics_reported": true,
+    "tradeoff_explicitly_analyzed": true,
+    "uncertainty_reported": false,
+    "baseline_comparison_present": false,
+    "tqaf_notes": "The paper presents a well-designed experiment with clear results and discussion."
+  }
+}

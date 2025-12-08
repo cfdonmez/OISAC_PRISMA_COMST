@@ -257,7 +257,7 @@ CRITICAL EXTRACTION RULES
 5. The "isac_waveform_relationship" field is MOST CRITICAL for taxonomy - always determine it
 
 ================================================================================
-OUTPUT JSON SCHEMA (Full v2.0)
+OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
 ================================================================================
 {
   "Paper_ID": "O_ISAC_XXX",
@@ -287,8 +287,11 @@ OUTPUT JSON SCHEMA (Full v2.0)
     "opa_present": bool,
     "machine_learning_used": bool,
     
-    "key_contribution": "1-2 sentence summary",
-    "gap_addressed": "1 sentence"
+    "key_contribution": "1-2 sentence summary of the paper's main technical contribution",
+    "gap_addressed": "What gap/limitation does this work address?",
+    "performance_enablers": ["photonic_dechirping", "electronic_dechirping", "matched_filtering", "fft_based_processing", "compressed_sensing", "coherent_homodyne", "coherent_heterodyne", "direct_detection", "self_coherent", "balanced_detection", "tfln_modulator", "high_bandwidth_modulator", "frequency_comb", "photonic_adc", "integrated_photonics", "joint_waveform_design", "superimposed_waveform", "orthogonal_waveform", "dual_function_waveform", "frequency_jitter_mitigation", "false_target_suppression", "phase_noise_compensation", "nonlinearity_compensation", "wavelength_reuse", "shared_fiber_bidirectional", "distributed_architecture", "monostatic_full_duplex", "other"],
+    "novel_component": "Specific novel hardware/component if applicable (e.g., 'TFLN-MZM with 110 GHz bandwidth')",
+    "novel_component_specs": "Key specifications of the novel component"
   },
   
   "Experiments": [
@@ -310,7 +313,12 @@ OUTPUT JSON SCHEMA (Full v2.0)
       "Receiver": {
         "rx_detection_type": "direct|coherent|self_coherent|imaging|spad|other",
         "rx_detector": "pin_pd|apd_pd|balanced_pd|camera_cmos|camera_ccd|spad_array|other|NR",
-        "rx_aperture_diameter_m": float
+        "rx_aperture_diameter_m": float,
+        "rx_photonic_processing": "none|photonic_dechirping|photonic_downconversion|photonic_mixing|envelope_detection|other|NR",
+        "rx_modulator_type": "none|tfln_mzm|ln_mzm|iq_modulator|phase_modulator|eam|other|NR",
+        "rx_modulator_bandwidth_ghz": float,
+        "rx_modulator_operating_point": "mitp|matp|qbp|other|not_specified|NR",
+        "false_target_mitigation": "none|mitp_bias|balanced_detection|signal_processing|waveform_design|other|NR"
       },
       
       "Integration": {

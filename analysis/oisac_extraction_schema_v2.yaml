@@ -1,11 +1,17 @@
-# O-ISAC Data Extraction Schema (v2.0)
+# O-ISAC Data Extraction Schema (v2.1)
 # =============================================================================
 # Based on PRISMA Protocol Section 9 - Fully Aligned
 # Target Usage: Phase 2 Full-Text Extraction
-# Last Updated: 2025-12-07
+# Last Updated: 2025-12-08
+# =============================================================================
+# v2.1 UPDATES:
+#   - Added key_contribution section (study-level) for capturing HOW, not just WHAT
+#   - Added performance_enablers enum with 25+ categorized technical approaches
+#   - Added rx_photonic_processing fields for THz/photonic ISAC receiver techniques
+#   - Added false_target_mitigation and rx_modulator fields
 # =============================================================================
 
-schema_version: "2.0"
+schema_version: "2.1"
 
 # =============================================================================
 # INSTRUCTIONS
@@ -171,6 +177,84 @@ study_level:
       required: false
       description: "Is ML/DL used for signal processing?"
 
+  # ---------------------------------------------------------------------------
+  # 9.X KEY TECHNICAL CONTRIBUTION (Study-level) ⭐⭐ NEW - CRITICAL
+  # ---------------------------------------------------------------------------
+  # This section captures HOW performance is achieved, not just WHAT metrics.
+  # Essential for survey categorization and design guideline extraction.
+  # ---------------------------------------------------------------------------
+  key_contribution:
+    - key: "key_contribution"
+      type: "string"
+      required: true
+      description: "Free-text summary of the paper's main technical contribution"
+      example: "Full-photonic direct D-band LFM reception and de-chirping via TFLN-MZM"
+      
+    - key: "gap_addressed"
+      type: "string"
+      required: false
+      description: "What gap/limitation does this work address?"
+      example: "Prior systems required electronic downconversion, limiting bandwidth"
+      
+    - key: "performance_enablers"
+      type: "enum_multi"
+      required: true
+      description: "Technical approaches that enable the claimed performance"
+      options:
+        # Signal Processing Approaches
+        - "photonic_dechirping"          # PDC - Photonic De-Chirping
+        - "electronic_dechirping"        # Traditional electronic de-chirp
+        - "matched_filtering"            # Matched filter processing
+        - "fft_based_processing"         # FFT-based signal processing
+        - "compressed_sensing"           # CS-based sparse recovery
+        
+        # Detection/Reception Approaches
+        - "coherent_homodyne"            # Coherent homodyne detection
+        - "coherent_heterodyne"          # Coherent heterodyne detection
+        - "direct_detection"             # Direct/envelope detection
+        - "self_coherent"                # Self-coherent detection
+        - "balanced_detection"           # Balanced PD for noise cancellation
+        
+        # Hardware Enablers
+        - "tfln_modulator"               # Thin-Film LN modulator (high BW)
+        - "high_bandwidth_modulator"     # Generic high-BW modulator
+        - "frequency_comb"               # Optical frequency comb
+        - "photonic_adc"                 # Photonic ADC
+        - "integrated_photonics"         # PIC-based implementation
+        
+        # Waveform/Signal Design
+        - "joint_waveform_design"        # Jointly optimized S&C waveform
+        - "superimposed_waveform"        # S&C waveforms superimposed
+        - "orthogonal_waveform"          # Orthogonal S&C waveforms
+        - "dual_function_waveform"       # Single waveform for both S&C
+        
+        # Interference/Error Mitigation
+        - "frequency_jitter_mitigation"  # Free-running laser jitter handling
+        - "false_target_suppression"     # False target elimination
+        - "phase_noise_compensation"     # Phase noise handling
+        - "nonlinearity_compensation"    # Fiber nonlinearity mitigation
+        
+        # Architecture Innovations
+        - "wavelength_reuse"             # Same λ for Tx and Rx reference
+        - "shared_fiber_bidirectional"   # Up/downlink on same fiber
+        - "distributed_architecture"     # CU/DU - AAU split architecture
+        - "monostatic_full_duplex"       # Full-duplex monostatic sensing
+        
+        # Other
+        - "other"
+        
+    - key: "novel_component"
+      type: "string"
+      required: false
+      description: "Specific novel hardware/component if applicable"
+      example: "TFLN-MZM with 110 GHz bandwidth"
+      
+    - key: "novel_component_specs"
+      type: "string"
+      required: false
+      description: "Key specifications of the novel component"
+      example: "Half-wave voltage ≤3V, optical insertion loss 7.1dB"
+
 # =============================================================================
 # PART B: SCENARIO-LEVEL FIELDS (One per experiment/configuration)
 # =============================================================================
@@ -264,6 +348,52 @@ scenario_level:
       unit: "m"
       required: false
       description: "Rx aperture diameter (for FSO)"
+      
+    # NEW: Receiver-side photonic processing (critical for THz/photonic ISAC)
+    - key: "rx_photonic_processing"
+      type: "enum"
+      required: false
+      description: "Photonic processing at receiver"
+      options:
+        - "none"                    # Pure electronic Rx processing
+        - "photonic_dechirping"     # PDC - TFLN-MZM or similar
+        - "photonic_downconversion" # Photonic frequency downconversion
+        - "photonic_mixing"         # Optical domain mixing
+        - "envelope_detection"      # Envelope detector approach
+        - "other"
+        
+    - key: "rx_modulator_type"
+      type: "enum"
+      required: false
+      description: "Modulator at receiver (for photonic processing)"
+      options: ["none", "tfln_mzm", "ln_mzm", "iq_modulator", "phase_modulator", "eam", "other"]
+      
+    - key: "rx_modulator_bandwidth_ghz"
+      type: "float"
+      unit: "GHz"
+      required: false
+      description: "Receiver modulator bandwidth (critical for THz reception)"
+      
+    - key: "rx_modulator_operating_point"
+      type: "enum"
+      required: false
+      description: "Modulator bias point (affects false target suppression)"
+      options: ["mitp", "matp", "qbp", "other", "not_specified"]
+      # MITP = Minimum Transmission Point (best false target suppression)
+      # MATP = Maximum Transmission Point
+      # QBP = Quadrature Bias Point
+      
+    - key: "false_target_mitigation"
+      type: "enum"
+      required: false
+      description: "How false targets are handled in multi-target scenarios"
+      options:
+        - "none"
+        - "mitp_bias"               # MITP operating point
+        - "balanced_detection"      # BPD instead of single PD
+        - "signal_processing"       # DSP-based mitigation
+        - "waveform_design"         # Waveform-level mitigation
+        - "other"
 
   # ---------------------------------------------------------------------------
   # 9.5 Hardware Sharing and Duplexing
