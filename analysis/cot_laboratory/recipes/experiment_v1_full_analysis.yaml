@@ -1,0 +1,47 @@
+# O-ISAC Extraction Recipe v1
+# =============================================================================
+# Experiment Name: Full Chain-of-Thought Extraction (Visionary Mode)
+# Description: Uses the modular CoT chain (Role -> Concept -> Benchmark -> Challenges) 
+#              to analyze papers for the IEEE COMST Survey.
+# Target Model: Llama 3.3 70B Versatile (via Groq)
+# =============================================================================
+
+metadata:
+  version: "1.2"
+  author: "Antigravity"
+  date: "2025-12-09"
+  target_model: "llama-3.3-70b-versatile" 
+  # Back to our reliable workhorse.
+  # Groq API Key must be set in environment as GROQ_API_KEY.
+
+# -----------------------------------------------------------------------------
+# 🧩 The Chain Assembly (Order Matters!)
+# -----------------------------------------------------------------------------
+steps:
+  - name: "Role Definition"
+    path: "modules/reasoning/00_role_definition.md"
+    description: "Sets the 'Survey Architect' persona."
+
+  - name: "Concept Tuning"
+    path: "modules/reasoning/01_concept_tuning.md"
+    description: "Identifies the ISAC Mechanism and Coupling Strategy."
+
+  - name: "Benchmark Reality"
+    path: "modules/reasoning/02_benchmark_compare.md"
+    description: "Validates physical consistency and trade-offs."
+
+  - name: "Strategic Contribution"
+    path: "modules/reasoning/03_critical_analysis.md"
+    description: "Identifies Open Challenges for the survey discussion."
+
+  - name: "Formatting"
+    path: "modules/formatting/schema_v2.yaml"
+    description: "Defines the strict JSON output structure."
+
+# -----------------------------------------------------------------------------
+# ⚙️ Execution Parameters
+# -----------------------------------------------------------------------------
+parameters:
+  temperature: 0.1       # Low temp for factual extraction
+  max_tokens: 6000       # Llama 3.3 supports 128k context, this is safe
+  json_mode: true        # Enforce valid JSON output

@@ -8,79 +8,48 @@ Bu dosya, projenin **PRISMA 2020** standartlarına uyumunu izlemek ve sistematik
 
 | Aşama | Durum | Hedef Dosya / Klasör | Notlar |
 | :--- | :--- | :--- | :--- |
-| **Protokol** | 🟢 Tamamlandı | `protocol/prisma_protocol.md` | OSF kaydı bekleniyor. |
-| **Arama (Search)** | 🟢 Tamamlandı | `search/` | Veritabanı taramaları tamamlandı. |
-| **Eleme (Screening)** | 🟢 Tamamlandı | `analysis/phase1_screening/included_studies_list.csv` | 158 çalışma dahil edildi. |
-| **PDF Toplama** | 🟡 Sürüyor | `data/retrieved_docs/` | 10/158 PDF indirildi. |
-| **Veri Çıkarma** | 🟡 Pilot | `data/extraction_results` | Pilot denemeler yapıldı. |
-| **Yazım (Writing)** | ⚪ Beklemede | `manuscript/comst_template.tex` | Analiz sonrası. |
+| **Protokol** | 🟢 Tamamlandı | `protocol/prisma_protocol.md` | PRISMA Checklist (`protocol/PRISMA_2020_Checklist.md`) eklendi. |
+| **Arama (Search)** | 🟢 Tamamlandı | `data/search_logs/` | Log şablonları hazırlandı. |
+| **Eleme (Screening)** | 🟢 Tamamlandı | `data/status/prisma_metrics.json` | 158 çalışma dahil edildi. Akış şeması otomatize edildi (`notebooks`). |
+| **PDF Toplama** | 🟡 Sürüyor | `data/retrieved_docs/` | 10/158 PDF indirildi. Devam ediyor. |
+| **Veri Çıkarma** | 🟡 Sürüyor | `data/extraction_results_v3` | V3 Pipeline aktif. Tam metin işleme sürüyor. |
+| **Yazım (Writing)** | 🟡 Hazırlık | `survey_writing_guide.md` | Yazım kılavuzu hazır. Sentez aşamasına geçiliyor. |
 
 *(Semboller: 🟢 Tamam, 🟡 Sürüyor, 🔴 Başlamadı, ⚪ Beklemede)*
 
 ---
 
-## ✅ 2. PRISMA 2020 Uyumluluk Kontrol Listesi (Compliance Checklist)
-*Makaleyi yazarken veya süreci işletirken bu maddeleri tamamladıkça işaretle (`[x]`).*
+## ✅ 2. PRISMA 2020 Uyumluluk Durumu
+*Detaylı eşleşme için `protocol/PRISMA_2020_Checklist.md` dosyasına bakınız.*
 
-### Bölüm: Başlık ve Özet
-- [ ] **Madde 1 (Title):** Başlıkta "Systematic Review" ifadesi var mı?
-- [ ] **Madde 2 (Abstract):** Özet, PRISMA-Abstracts formatına uygun mu?
-
-### Bölüm: Giriş (Introduction)
-- [x] **Madde 3 (Rationale):** Neden bu incelemeye ihtiyaç duyulduğu açıklandı mı? (Bkz: `protocol/prisma_protocol.md` Sec 2)
-- [x] **Madde 4 (Objectives):** Araştırma soruları (PICO/PECO) net mi? (Bkz: `protocol/prisma_protocol.md` Sec 3)
-
-### Bölüm: Yöntem (Methods)
-- [x] **Madde 5 (Eligibility Criteria):** Dahil etme/Dışlama kriterleri net mi? (Bkz: `protocol/prisma_protocol.md` Sec 4)
-- [ ] **Madde 6 (Information Sources):** Tüm veritabanları ve son tarama tarihleri listelendi mi? (Bkz: `search/search_log.csv`)
-- [ ] **Madde 7 (Search Strategy):** En az bir veritabanı için tam arama sorgusu verildi mi?
-- [ ] **Madde 8 (Selection Process):** Eleme işleminin nasıl yapıldığı (kaç kişi, hangi araçlar) açıklandı mı?
-- [ ] **Madde 9 (Data Collection Process):** Veri çekme yöntemi açıklandı mı?
-- [ ] **Madde 10 (Data Items):** Hangi verilerin (sütunların) arandığı listelendi mi? (Bkz: `extraction/schema/oisac_extraction_schema.yaml`)
-- [ ] **Madde 11 (Risk of Bias Assessment):** Çalışmaların kalitesini (yanlılık riski) ölçmek için hangi araç kullanıldı?
-- [ ] **Madde 12 (Effect Measures):** Sonuçların nasıl özetlendiği (örn. fark tablosu, oranlar) belirtildi mi?
-- [ ] **Madde 13 (Synthesis Methods):** Verilerin nasıl sentezlendiği/gruplandığı açıklandı mı? (O-ISAC için: Cabled vs Wireless ayrımı)
-
-### Bölüm: Sonuçlar (Results)
-- [ ] **Madde 16 (Study Selection):** Akış şeması (Flow Diagram) sayıları net mi? (Bkz: `screening/prisma_flow_counts.csv`)
-- [ ] **Madde 17 (Study Characteristics):** Dahil edilen çalışmaların genel özellikleri tablosu var mı?
-- [ ] **Madde 18 (Risk of Bias in Studies):** Her çalışma için kalite değerlendirme sonuçları sunuldu mu?
-- [ ] **Madde 19 (Results of Individual Studies):** Her çalışma için özet veriler sunuldu mu?
-- [ ] **Madde 20 (Results of Syntheses):** Sentez sonuçları (tablolar, grafikler) sunuldu mu?
-
-### Bölüm: Tartışma (Discussion)
-- [ ] **Madde 23a (Discussion):** Bulguların ana yorumu.
-- [ ] **Madde 23b (Limitations):** İncelemenin sınırlılıkları tartışıldı mı? (Örn: Sadece İngilizce kaynaklar, gri literatür eksikliği vb.)
-- [ ] **Madde 23c (Implications):** Gelecek çalışmalar (6G, O-ISAC) için öneriler.
-
-### Bölüm: Diğer Bilgiler
-- [ ] **Madde 24 (Registration):** OSF kayıt numarası eklendi mi?
-- [ ] **Madde 27 (Availability of Data):** Veri setleri ve kodlar erişilebilir mi? (GitHub linki verildi mi?)
+### Kritik Eksikliklerin Giderilmesi:
+- [x] **Checklist:** Resmi PRISMA maddeleri protokole eşlendi.
+- [x] **Flow Diagram:** Otomatik üretim scripti (`PRISMA_Flowchart_Generator.ipynb`) hazır.
+- [x] **Writing Guide:** IEEE COMST ve PRISMA uyumlu yazım şablonu oluşturuldu.
 
 ---
 
 ## 📝 3. Adım Adım Yapılacaklar Listesi (To-Do List)
 
-### Aşama 1: Hazırlık & Arama
+### Aşama 1: Hazırlık & Standartlar (TAMAMLANDI)
 - [x] Protokolü hazırla.
-- [ ] Veritabanı aramalarını tamamla (IEEE, Scopus, WoS, Optica, SPIE).
-- [ ] Arama sonuçlarını ham dosyalara (`raw_results`) kaydet.
-- [ ] `01_search_and_dedup.ipynb` notebook'unu çalıştırarak mükerrer kayıtları temizle.
-- [ ] Temiz listeyi `screening_log.csv` dosyasına aktar.
+- [x] PRISMA 2020 Checklist ve Akış Şeması altyapısını kur.
+- [x] Arama Günlüğü (Search Log) şablonunu oluştur.
+- [x] IEEE COMST Yazım Kılavuzunu hazırla.
 
-### Aşama 2: Tarama (Screening)
-- [ ] **Title/Abstract Screening:** Başlık ve özetlere bakarak ilgisizleri "EXCLUDE" olarak işaretle.
-- [ ] **Full-Text Screening:** Kalanların tam metinlerini bul, "Include/Exclude" kararını ver.
-- [ ] Hariç tutulanların nedenlerini (Reason) not et.
-- [ ] PRISMA akış şeması sayılarını `prisma_flow_counts.csv` dosyasına işle.
+### Aşama 2: Veri Çıkarma ve Analiz (ŞU ANKİ AŞAMA)
+- [ ] **PDF Toplama:** Kalan 148 PDF'i `data/retrieved_docs/` klasörüne ekle.
+- [ ] **Full Extraction:** V3 Pipeline ile tüm PDF'lerden yapısal veri çıkar.
+- [ ] **Reasoning Extraction:** LLM ile derinlemesine analiz (Challenge, Future Direction) modülünü çalıştır.
+- [ ] **Metrics Update:** Her parti bitiminde `prisma_metrics.json` dosyasını güncelle.
 
-### Aşama 3: Veri Çıkarma (Extraction)
-- [ ] Pilot deneme: 5 makale ile YAML şemasını test et, gerekirse revize et.
-- [ ] Dahil edilen (Included) tüm makalelerden verileri çek.
-- [ ] Eksik veriler için gerekirse yazarlarla iletişime geç.
+### Aşama 3: Sentez ve Yazım (GELECEK)
+- [ ] **Fundamentals Bölümü:** `survey_writing_guide.md` rehberliğinde Temel Kavramlar bölümünü taslağa dök.
+- [ ] **Taxonomy Visualization:** "Cabled vs Wireless" taksonomisi için Sunburst grafiği oluştur.
+- [ ] **Trade-off Analysis:** Extraction sonuçlarından (Rate vs Sensing) performans grafiklerini çiz.
+- [ ] **Drafting:** Makalenin diğer bölümlerini (Methods, Results, Discussion) yaz.
 
-### Aşama 4: Analiz & Raporlama
-- [ ] "Cabled vs Wireless" karşılaştırma tablolarını oluştur.
-- [ ] Bibliyometrik analiz grafiklerini çiz (Yıllara göre yayın sayısı vb.).
-- [ ] Makale taslağını (`manuscript/`) yazmaya başla.
-- [ ] Kaynakçayı düzenle.
+---
+
+**Son Güncelleme:** 2025-12-09
+**Aktif Görev:** Extraction & Reasoning Analizi
