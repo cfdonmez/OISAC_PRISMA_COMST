@@ -1,38 +1,89 @@
 # Active Context
 
-## Current Phase: Pilot Extraction v2.0 Complete ✅
-Pilot successfully validated Schema v2.0 extraction on 3 papers with 0 errors.
+**Son Güncelleme:** 2025-12-11 00:40
+**Güncelleyen:** AI + Kullanıcı
 
-## Latest Results (2025-12-07 23:28)
-*   **Papers Processed:** 3 (O_ISAC_001, O_ISAC_002, O_ISAC_003)
-*   **Experiments Extracted:** 5 (multi-scenario detection working)
-*   **CSV Columns:** 51 (comprehensive PRISMA Section 9 alignment)
-*   **Key Success:** `isac_waveform_relationship` and `coupling_mode` correctly extracted
+---
 
-## Extraction Quality Summary
-| Metric | Value |
+## 🎯 Şu Anki Faz: CoT Pipeline Hazır
+
+Pipeline temizlendi ve organize edildi. Batch extraction için hazır.
+
+---
+
+## 📊 Güncel Sayılar
+
+| Metrik | Değer |
 |--------|-------|
-| `single_dual_function` | 3/5 experiments |
-| `resource_division` | 3/5 experiments |
-| Evidence Snippets | ✅ Captured |
-| Source Pointers | ✅ Captured |
+| Dahil edilen çalışma | 158 |
+| PDF toplanan | 32 |
+| Markdown dönüştürülen | 32 |
+| CoT extraction test edilen | 1 (O_ISAC_029) |
+| Batch extraction tamamlanan | 0 (beklemede) |
 
-## Output Files
-*   `data/extraction_results_v2/extraction_v2_full.json` (17.7 KB)
-*   `data/extraction_results_v2/study_level_v2.csv`
-*   `data/extraction_results_v2/experiment_level_v2.csv`
+---
 
-## Immediate Next Steps
-1.  **Full Extraction** - Run `run_extraction_pipeline_v2()` on all 9 papers
-2.  **Fix O_ISAC_009** - Markdown not generated
-3.  **Continue PDF Retrieval** - 147 papers remaining
+## ✅ Bu Session'da Yapılanlar (2025-12-11)
 
-## Excluded Studies
-| Track_ID | Reason | Code |
-|----------|--------|------|
-| O_ISAC_007 | Pure sensing, no communication | EXC-PURE-SENSING |
+1. **Notebook Temizliği**
+   - 5 eski notebook/script `archive/` klasörüne taşındı
+   - Yeni `CoT_Master_Pipeline.ipynb` oluşturuldu
+   - `analysis/notebooks/README.md` güncellendi
 
-## Active Files
-*   `analysis/oisac_extraction_schema_v2.yaml`: Comprehensive schema
-*   `analysis/notebooks/PRISMA_Extraction_v2_Colab.ipynb`: Extraction notebook
-*   `data/extraction_results_v2/`: Pilot output directory
+2. **Root Temizliği**
+   - `docs/` klasörü oluşturuldu
+   - 4 markdown dosyası `docs/`'a taşındı
+   - Ana `README.md` yazıldı
+   - `.DS_Store` silindi
+
+3. **Memory-Bank Güncellemesi**
+   - Tüm dosyalar güncellendi
+   - `fileMap.md` oluşturuldu
+
+---
+
+## 🔧 Aktif Pipeline
+
+```
+📓 CoT_Master_Pipeline.ipynb (Tek notebook ile tüm işlemler)
+├── Section 1: Setup & Mount
+├── Section 2: Phase 1 - PDF → Markdown (GPU)
+├── Section 3: Phase 2 - Visual Analysis (GPU)
+├── Section 4: Phase 3 - CoT Extraction (Groq API)
+└── Section 5: Results & Export
+```
+
+**Motor Dosyaları:**
+- `extraction_pipeline_v3.py` → Phase 1 & 2
+- `cot_laboratory/` → Phase 3 (Chain-of-Thought)
+
+---
+
+## 🚀 Sonraki Adımlar
+
+1. [ ] Colab'da `CoT_Master_Pipeline.ipynb` test et
+2. [ ] O_ISAC_029 extraction kalitesini kontrol et
+3. [ ] Batch extraction çalıştır (32 paper)
+4. [ ] Kalan 126 PDF'i topla
+
+---
+
+## ⚠️ Dikkat Edilecekler
+
+- **API Key:** Colab Secrets'da `GROQ_API_KEY` olmalı
+- **GPU:** Phase 1 & 2 için T4 veya A100 gerekli
+- **Schema:** `cot_laboratory/modules/formatting/schema_v2.yaml` (v2.1) kullanılıyor
+- **Arşiv:** Eski dosyalar `analysis/notebooks/archive/`'da
+
+---
+
+## 📁 Son Değişen Dosyalar
+
+```
+✏️ analysis/notebooks/CoT_Master_Pipeline.ipynb (YENİ)
+✏️ analysis/notebooks/README.md (güncellendi)
+📁 analysis/notebooks/archive/ (5 dosya taşındı)
+✏️ README.md (ana, yeniden yazıldı)
+📁 docs/ (YENİ klasör, 5 dosya)
+✏️ memory-bank/* (tüm dosyalar güncellendi)
+```

@@ -1,23 +1,100 @@
 # System Patterns
 
-## Technical Architecture
-*   **Scripts:** Use **Python** for data analysis and visualization. Use **PowerShell** for file system operations.
-*   **Data Formats:**
-    *   Input Data: `.csv` (e.g., screening results).
-    *   Config/Schema: `.yaml` (for extraction forms).
-    *   Reports: `.md` (Markdown).
-*   **Paths:**
-    *   Use absolute paths when possible in tool calls, but relative paths in repository documentation.
+**Son Güncelleme:** 2025-12-11
 
-## Process Rules
-1.  **Read-Only Inputs:** Do not modify the source screening CSVs. Always read them and generate *new* outputs.
-2.  **Artifact First:** Generate analysis as an "Artifact" first (in `.gemini` brain), then commit to the repo (`analysis/` folder) upon approval.
-3.  **Protocol-Driven:** Every decision (e.g., "Should I include this?") must track back to a section in `prisma_protocol.md`.
-4.  **Git Disciplince:** Commit changes after completing a logical "Phase" or significant "Task chunk".
-5.  **Identifier Standards:**
-    *   **Track_ID:** Unique identifier for included studies (Format: `O_ISAC_XXX`, e.g., `O_ISAC_001`). This ID must be the **first column** in all data CSVs (`included_studies_list.csv`, `extraction_dataset.csv`) to maintain relational integrity.
-    *   **PDF Naming:** `[Track_ID].pdf` (e.g., `O_ISAC_001.pdf`). Store in `data/retrieved_docs`.
+---
 
-## Decision Log
-*   **Exclusion Logic:** "No optical carrier" is the primary exclusion reason for RF-ISAC papers.
-*   **Taxonomy:** we differentiate primarily by **Medium** (Fiber vs Wireless) as per Protocol Section 8.
+## 📁 Klasör Kuralları
+
+### Ana Yapı
+```
+OISAC_PRISMA_COMST/
+├── analysis/          # Tüm notebook ve script'ler
+├── data/              # Tüm veriler (input + output)
+├── protocol/          # Değişmeyen protokol dosyaları
+├── docs/              # Dokümantasyon
+├── memory-bank/       # AI bağlam dosyaları
+└── screening/, search/ # PRISMA kayıtları
+```
+
+### Adlandırma Kuralları
+
+| Öğe | Format | Örnek |
+|-----|--------|-------|
+| Paper ID | `O_ISAC_XXX` | O_ISAC_029 |
+| PDF | `[Paper_ID].pdf` | O_ISAC_029.pdf |
+| Markdown klasörü | `[Paper_ID]/[Paper_ID]/` | O_ISAC_029/O_ISAC_029/ |
+| Log dosyası | `[timestamp]_[paper]_[model]_RESULT.json` | 20251210_144637_O_ISAC_029_*.json |
+
+---
+
+## 🔄 Pipeline Akışı
+
+```
+Phase 1: PDF → Markdown
+  Input:  data/retrieved_docs/O_ISAC_XXX.pdf
+  Output: data/processed_markdowns/O_ISAC_XXX/O_ISAC_XXX/O_ISAC_XXX.md
+  Motor:  extraction_pipeline_v3.py → phase1_marker_conversion()
+
+Phase 2: Visual Analysis
+  Input:  data/processed_markdowns/O_ISAC_XXX/.../*.jpg
+  Output: data/processed_markdowns/O_ISAC_XXX/.../visual_analysis.txt
+  Motor:  extraction_pipeline_v3.py → phase2_visual_analysis()
+
+Phase 3: CoT Extraction
+  Input:  Markdown + Visual Analysis
+  Output: cot_laboratory/logs/*_RESULT.json
+  Motor:  cot_laboratory/core/assembler.py → run_extraction()
+```
+
+---
+
+## 📝 Çalışma Kuralları
+
+### 1. Read-Only Inputs
+Kaynak CSV'leri değiştirme. Her zaman yeni output oluştur.
+
+### 2. Protocol-Driven
+Her karar `protocol/prisma_protocol.md`'ye dayanmalı.
+
+### 3. Checkpoint Kullan
+`data/extraction_results_v3/checkpoint.json` işlenmiş paper'ları takip eder.
+
+### 4. Log Everything
+Her extraction çalıştırması `cot_laboratory/logs/`'a kaydedilir:
+- `*_PROMPT.md` - Kullanılan tam prompt
+- `*_RESULT.json` - LLM çıktısı
+
+### 5. Archive Don't Delete
+Eski dosyaları silme, `archive/` klasörüne taşı.
+
+---
+
+## 🔑 Kritik Dosya Konumları
+
+| Amaç | Dosya |
+|------|-------|
+| Ana notebook | `analysis/notebooks/CoT_Master_Pipeline.ipynb` |
+| CoT motoru | `analysis/cot_laboratory/core/assembler.py` |
+| JSON şeması | `analysis/cot_laboratory/modules/formatting/schema_v2.yaml` |
+| PRISMA protokolü | `protocol/prisma_protocol.md` |
+| Güncel durum | `memory-bank/activeContext.md` |
+| Checkpoint | `data/extraction_results_v3/checkpoint.json` |
+
+---
+
+## ⚙️ Colab Ayarları
+
+1. **Runtime:** GPU (T4 veya A100)
+2. **Secrets:** `GROQ_API_KEY` ekle
+3. **Drive Mount:** `/content/drive/MyDrive/...`
+4. **sys.path:** Notebooks ve project root eklenmeli
+
+---
+
+## 🚨 Dikkat Edilecekler
+
+- Phase 1&2 GPU gerektirir
+- Groq API rate limiti var (2 saniye delay)
+- JSON parse hataları olabilir (markdown wrapper)
+- Drive sync gecikebilir
