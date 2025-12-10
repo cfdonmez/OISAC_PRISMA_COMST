@@ -29,8 +29,26 @@ from PIL import Image
 # CONFIGURATION
 # =============================================================================
 class Config:
-    # Paths (Google Drive)
-    PROJECT_PATH = "/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST"
+    # 🌍 Environment & Path Detection
+    if os.path.exists("/content/drive"):
+        # Google Colab
+        PROJECT_PATH = "/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST"
+        print("🌍 Environment: Google Colab")
+    else:
+        # Local Windows (assuming we are running from project root or analysis folder)
+        # Try to find the root dynamically
+        current_path = Path(os.getcwd())
+        if (current_path / "prisma_protocol.md").exists():
+            PROJECT_PATH = str(current_path)
+        elif (current_path.parent / "prisma_protocol.md").exists(): # analysis/
+            PROJECT_PATH = str(current_path.parent)
+        elif (current_path.parent.parent / "prisma_protocol.md").exists(): # analysis/notebooks
+            PROJECT_PATH = str(current_path.parent.parent)
+        else:
+            # Fallback to hardcoded local if detection fails
+            PROJECT_PATH = r"G:\Drive'ım\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST"
+        print(f"🌍 Environment: Local Windows ({PROJECT_PATH})")
+
     PDF_DIR = os.path.join(PROJECT_PATH, "data/retrieved_docs")
     MARKDOWN_DIR = os.path.join(PROJECT_PATH, "data/processed_markdowns")
     OUTPUT_DIR = os.path.join(PROJECT_PATH, "data/extraction_results_v3")
