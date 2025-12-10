@@ -186,25 +186,6 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
     ).to(device).eval()
     
     print("Loading DePlot model...")
-    deplot_proc = Pix2StructProcessor.from_pretrained("google/deplot")
-    deplot_model = Pix2StructForConditionalGeneration.from_pretrained(
-        "google/deplot"
-    ).to(device).eval()
-    
-    # Process each paper folder
-    folders = sorted(glob.glob(os.path.join(Config.MARKDOWN_DIR, "*")))
-    
-    for folder in folders:
-        paper_id = os.path.basename(folder)
-        output_file = os.path.join(folder, "visual_analysis.txt")
-        
-        # Skip if already done
-        if os.path.exists(output_file):
-            continue
-        
-        print(f"\n🖼️ Analyzing: {paper_id}")
-        
-        # Find images
         images = []
         for ext in ['*.png', '*.jpg', '*.jpeg']:
             images.extend(glob.glob(os.path.join(folder, "**", ext), recursive=True))
