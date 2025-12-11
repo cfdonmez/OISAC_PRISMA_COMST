@@ -8,61 +8,81 @@
 
 | Aşama | Durum | Detay |
 |-------|-------|-------|
-| Protokol | ✅ Tamamlandı | `protocol/prisma_protocol.md` |
+| Protokol | ✅ Tamamlandı | [`protocol/prisma_protocol.md`](protocol/prisma_protocol.md) |
 | Arama | ✅ Tamamlandı | 1200 kayıt bulundu |
 | Eleme | ✅ Tamamlandı | 158 çalışma dahil edildi |
 | PDF Toplama | 🟡 Devam | 32/158 (%20) |
-| Veri Çıkarma | 🟡 Devam | CoT Pipeline hazır |
+| Veri Çıkarma | 🟡 Devam | [CoT Pipeline Hazır](analysis/cot_laboratory/README.md) |
 | Yazım | 🔴 Beklemede | - |
 
 ---
 
-## 📁 Klasör Yapısı
+## 🔄 Master Workflow
 
+Proje, modüler bir **Chain-of-Thought (CoT)** yapısı üzerine kuruludur:
+
+```mermaid
+flowchart LR
+    A[📄 PDF Collection] --> B[🏭 Data Prep & OCR]
+    B --> C[🖼️ Visual Analysis]
+    C --> D[🧠 CoT Extraction]
+    D --> E[📊 Analysis & Reporting]
+    
+    click D "analysis/cot_laboratory/README.md" "CoT Detayları"
 ```
-OISAC_PRISMA_COMST/
-│
-├── protocol/          # PRISMA protokolü ve checklist
-├── data/              # PDF'ler ve çıkarım sonuçları
-│   ├── retrieved_docs/      # Orijinal PDF'ler
-│   ├── processed_markdowns/ # Markdown dönüşümleri
-│   └── extraction_results_v3/ # JSON çıktıları
-│
-├── analysis/          # Notebook'lar ve script'ler
-│   ├── notebooks/           # Colab notebook'ları
-│   └── cot_laboratory/      # Chain-of-Thought sistemi
-│
-├── screening/         # Eleme kayıtları
-├── search/            # Arama logları
-├── manuscript/        # LaTeX dosyaları
-├── memory-bank/       # AI context dosyaları
-└── docs/              # Dokümantasyon
-```
+
+🎯 **Ana Yönetim Merkezi:** [`analysis/notebooks/CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
 
 ---
 
 ## 🚀 Hızlı Başlangıç
 
-### Pipeline Çalıştırma (Colab)
-
-1. `analysis/notebooks/CoT_Master_Pipeline.ipynb` dosyasını Colab'da aç
-2. GPU runtime seç (T4 veya A100)
-3. 🔑 Secrets'a `GROQ_API_KEY` ekle
-4. Sırayla çalıştır
-
-### Dokümantasyon
-
-- [Yol Haritası](docs/ROADMAP.md)
-- [Proje Durumu](docs/PROJECT_STATUS.md)
-- [AI Workflow](docs/AI_Co_Pilot_Workflow.md)
-- [Yazım Rehberi](docs/survey_writing_guide.md)
+1. **Notebook'u Açın:** [`analysis/notebooks/CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
+2. **Runtime:** GPU (T4/A100) seçin.
+3. **API Key:** Colab Secrets'a `GROQ_API_KEY` ekleyin.
+4. **Çalıştırın:** Tüm pipeline (PDF'den analize) tek bir yerden yönetilir.
 
 ---
 
-## 📚 Kaynaklar
+## 📁 Proje Yapısı
 
-- **PRISMA 2020**: [prisma-statement.org](http://www.prisma-statement.org/)
-- **Groq API**: [groq.com](https://groq.com)
+GitHub üzerinde kolay gezinme için ana dizinler:
+
+```text
+OISAC_PRISMA_COMST/
+│
+├── protocol/                  # 📋 [PRISMA Protokolü](protocol/prisma_protocol.md)
+├── data/                      # 💾 Veri Deposu
+│   ├── retrieved_docs/        # PDF'ler
+│   └── extraction_results_v3/ # Çıktılar (JSON)
+│
+├── analysis/                  # 🧠 Analiz Merkezi
+│   ├── notebooks/             # [Notebook'lar & Pipeline](analysis/notebooks/README.md)
+│   └── cot_laboratory/        # [CoT Engine & Modules](analysis/cot_laboratory/README.md)
+│
+├── docs/                      # 📚 [Dokümantasyon](docs/)
+├── manuscript/                # 📝 Taslak Yazım (LaTeX)
+├── screening/                 # 🔍 Eleme Verileri
+└── legacy_archive/            # 📦 Eski Dosyalar (Arşiv)
+```
+
+---
+
+## 🔎 İzlenebilirlik (Traceability)
+
+Bu proje şeffaflık için **Chain-of-Thought (CoT)** metodolojisini kullanır. Her bir çıkarma işlemi kayıt altına alınır:
+
+- **Loglar:** `analysis/cot_laboratory/logs/` altında tutulur.
+- **Format:** `YYYYMMDD_HHMMSS_PaperID_Model_Type.json`
+- **Doğrulama:** Loglar, modelin "düşünme adımlarını" (reasoning steps) içerir.
+
+---
+
+## 📚 Dokümantasyon
+
+- [🛣️ Yol Haritası](docs/ROADMAP.md)
+- [🤖 AI Workflow](docs/AI_Co_Pilot_Workflow.md)
+- [📋 CoT Laboratuvarı](analysis/cot_laboratory/README.md)
 
 ---
 
