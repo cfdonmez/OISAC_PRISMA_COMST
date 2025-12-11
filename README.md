@@ -9,8 +9,8 @@
 | Aşama | Durum | Detay |
 |-------|-------|-------|
 | Protokol | ✅ Tamamlandı | [`protocol/prisma_protocol.md`](protocol/prisma_protocol.md) |
-| Arama | ✅ Tamamlandı | 1200 kayıt bulundu |
-| Eleme | ✅ Tamamlandı | 158 çalışma dahil edildi |
+| Arama | ✅ Tamamlandı | [1200 kayıt bulundu](search/search_log.csv) |
+| Eleme | ✅ Tamamlandı | [158 çalışma dahil edildi](screening/screening_log.csv) |
 | PDF Toplama | 🟡 Devam | 32/158 (%20) |
 | Veri Çıkarma | 🟡 Devam | [CoT Pipeline Hazır](analysis/cot_laboratory/README.md) |
 | Yazım | 🔴 Beklemede | - |
@@ -52,6 +52,9 @@ GitHub üzerinde kolay gezinme için ana dizinler:
 OISAC_PRISMA_COMST/
 │
 ├── protocol/                  # 📋 [PRISMA Protokolü](protocol/prisma_protocol.md)
+├── search/                    # 🔎 [Arama Stratejisi & Loglar](search/search_strings.md)
+├── screening/                 # 🕵️ [Eleme & Karar Logları](screening/screening_log.csv)
+│
 ├── data/                      # 💾 Veri Deposu
 │   ├── retrieved_docs/        # PDF'ler
 │   └── extraction_results_v3/ # Çıktılar (JSON)
@@ -62,7 +65,6 @@ OISAC_PRISMA_COMST/
 │
 ├── docs/                      # 📚 [Dokümantasyon](docs/)
 ├── manuscript/                # 📝 Taslak Yazım (LaTeX)
-├── screening/                 # 🔍 Eleme Verileri
 └── legacy_archive/            # 📦 Eski Dosyalar (Arşiv)
 ```
 
