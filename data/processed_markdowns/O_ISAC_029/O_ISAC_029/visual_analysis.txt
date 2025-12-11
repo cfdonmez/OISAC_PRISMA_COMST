@@ -1,19 +1,127 @@
-📷 [IMAGE - _page_10_Figure_2.jpeg]: a diagram of the different types of the different types of the different materials
+Image [_page_10_Figure_2.jpeg]: Chart.
+(a) **BER vs Center Frequency (GHz):** This chart shows the Bit Error Rate (BER) as a function of the center frequency. The BER decreases from approximately 1.8E-2 at 118 GHz to a minimum of 1.0E-3 at 132 GHz, then increases back to approximately 1.8E-2 at 142 GHz. The insets display electrical spectra at 118 GHz and 142 GHz, illustrating the modulated signal.
+(b) **BER vs Vpp (mV):** This chart plots BER against the peak-to-peak voltage (Vpp). The BER starts at approximately 2.0E-2 at 400 mV, reaches a minimum of 1.0E-3 at 600 mV, and then rises to approximately 6.0E-3 at 900 mV. Insets show 16QAM constellation diagrams at 400 mV and 600 mV.
+(c) **BER vs Baudrate (GHz):** This chart illustrates the BER performance as the baudrate increases. The BER rises from approximately 1.5E-4 at 15 GHz to about 4.5E-3 at 30 GHz. Insets show a 16QAM constellation diagram at 15 GHz and an electrical spectrum at 30 GHz.
+(d) **BER vs Fiberlength (km):** This bar chart shows the BER for different fiber lengths. The BER increases with fiber length: approximately 5.0E-4 for 0 km, 1.5E-3 for 10 km, and 2.5E-3 for 20 km.
+(e) **BER vs Optical Power (dBm):** This chart presents BER against optical power for different fiber lengths: "wo fiber" (without fiber), "10-km fiber", and "20-km fiber". For all cases, BER decreases with increasing optical power. To achieve a BER of 1E-3, approximately -14.5 dBm is required without fiber, -13.5 dBm for 10-km fiber, and -12.5 dBm for 20-km fiber, indicating a power penalty with increased fiber length.
 
-📷 [IMAGE - _page_2_Figure_2.jpeg]: a diagram of a man is using a remote control system
+Image [_page_2_Figure_2.jpeg]: Diagram.
+(a) This diagram illustrates a fiber-wireless integrated system architecture for Integrated Sensing and Communication (ISAC). A Central Unit/Distributed Unit (CU/DU) sends an "ISAC signal" via fiber to an Active Antenna Unit (AAU). The AAU converts this to a "THz Beam" for communication with and sensing of remote targets like a drone and a car outdoors, or people indoors. Reflected THz signals ("THz echo") are received by the AAU, processed into a "De-chirped Sensing Signal", and sent back to the CU/DU via the same fiber.
+(b) This detailed diagram shows the signal processing flow at the AAU. The top branch depicts the communication path where the optical "ISAC signal" from the fiber is converted to electrical (O/E) and then transmitted as a "THz signal." The bottom branch illustrates the sensing path: a "THz echo" from a target and a "Ref. signal" are both fed into a "Full-Photonic De-chirping" module. The output, a "Sensing signal," is then transmitted back through the fiber to the CU/DU for further analysis.
 
-📷 [IMAGE - _page_3_Figure_2.jpeg]: a diagram of a typical electrical device with a circuit and a circuit diagram
+Image [_page_3_Figure_2.jpeg]: Setup.
+This image displays a comprehensive experimental setup for an ISAC system, divided into three main functional blocks: CU/DU (Central Unit/Distributed Unit), AAU (Active Antenna Unit), and UE (User Equipment)/Targets.
+The **CU/DU** section includes:
+*   A transmitter path with ECL-1 and ECL-2 (External Cavity Lasers), an AWG (Arbitrary Waveform Generator), an IQM (In-phase/Quadrature Modulator) containing MZM-Q and MZM-I (Mach-Zehnder Modulators), and EDFA-1 (Erbium-Doped Fiber Amplifier 1) for optical signal generation and modulation.
+*   A receiver path with a BPD (Balanced Photodetector), EA (Electrical Amplifier), and OSC (Oscilloscope) for sensing signal analysis. A tap at point C provides a reference signal for de-chirping.
+The CU/DU connects to the **AAU** via a Single Mode Fiber (SMF).
+The **AAU** section includes:
+*   A transmit path with a VOA (Variable Optical Attenuator), EDFA-2, PD (Photodetector) for optical-to-electrical conversion, PA (Power Amplifier), and HA (Horn Antenna) for transmitting THz signals. Point D indicates the electrical signal for THz transmission.
+*   A receive path with a HA, LNA (Low Noise Amplifier), PA, and a TFLN-MZM (Thin-Film Lithium Niobate Mach-Zehnder Modulator) acting as a photonic mixer for de-chirping the received THz echo signal using a portion of the transmitted optical signal (tapped at Point A) as a local oscillator. The de-chirped signal is sent back to the CU/DU via the fiber (tapped at Point B).
+The **UE/Targets** section represents the wireless environment with horn antennas, amplifiers (LNA, EA), a frequency multiplier (x12), and an oscilloscope, along with multiple "Targets" (triangles) that generate reflections for sensing.
 
-📷 [IMAGE - _page_5_Figure_2.jpeg]: a line graph of different time and time zones for different types of radio
+Image [_page_5_Figure_2.jpeg]: Chart.
+(a) **TFTPR (dB) vs DC bias (V):** This chart shows the Two-Tone Flatness Power Ratio (TFTPR) as a function of DC bias voltage. It exhibits a "W" shape, with minimum TFTPR (indicating better performance) of approximately -40 dB occurring at the MITP (Minimum TFTPR) at 2.0 V, and at the MATP (Maximum Amplitude Transmission Point) at 0.0 V and 4.0 V. Maximum TFTPR (approximately 40 dB) occurs at the QBP (Quiescent Bias Point) at 1.0 V and 3.0 V.
+(b) **Amplitude (dB) vs Frequency (GHz) (Red Line):** This spectral plot shows peaks corresponding to targets. It identifies a "False Target" at 152.59 MHz (amplitude approx. 20 dB), a "True Target" at 305.17 MHz (amplitude approx. 35 dB), and another "True Target" at 457.76 MHz (amplitude approx. 38 dB).
+(c) **Amplitude (dB) vs Frequency (GHz) (Blue Line):** This spectral plot, likely corresponding to an optimized DC bias, shows "True Targets" at 305.17 MHz (amplitude approx. 38 dB) and 457.76 MHz (amplitude approx. 35 dB). The false target observed in (b) is significantly suppressed or absent.
+(d) **Amplitude (dB) vs Frequency (GHz) (Orange Line):** This spectral plot shows a dominant "False Target" at 152.59 MHz (amplitude approx. 38 dB), with no clear indication of the true targets at 305.17 MHz or 457.76 MHz. This suggests a scenario where only the false target is prominently detected, possibly due to a specific operating condition or bias point.
 
-📷 [IMAGE - _page_5_Figure_7.jpeg]: a plot of a plot of a time with a line graph and a line of data
+Image [_page_5_Figure_7.jpeg]: Chart.
+**Amplitude (dB) vs Frequency (GHz):** This chart displays a frequency spectrum. It identifies three distinct peaks: a "False Target" at 152.59 MHz with an amplitude of approximately 22 dB, a "True Target" at 305.17 MHz with an amplitude of approximately 38 dB, and another "True Target" at 457.76 MHz with an amplitude of approximately 35 dB. The true targets have significantly higher amplitudes than the false target in this representation.
 
-📷 [IMAGE - _page_6_Figure_10.jpeg]: a diagram of a waveform with a line of data and a line of data
+=== NEW BATCH ANALYSIS ===
 
-📷 [IMAGE - _page_7_Figure_2.jpeg]: a line graph of different types of light emits
+Image [_page_6_Figure_10.jpeg]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.
+This image presents two charts, (a) and (b), displaying scattering parameters S11 and S21 versus frequency.
+(a) Chart: S11 (dB) vs. Frequency (GHz).
+    *   The S11 (reflection coefficient) is plotted across a frequency range from approximately 0 to 110 GHz.
+    *   The S11 values predominantly remain below -10 dB, indicated by a dashed line, suggesting good impedance matching.
+    *   The values fluctuate, generally between -20 dB and -35 dB, with minimums (better matching) observed around 15 GHz, 45 GHz, 65 GHz, 85 GHz, and 105 GHz, reaching approximately -30 dB to -35 dB at these points.
+(b) Chart: S21 (dB) vs. Frequency (GHz).
+    *   The S21 (transmission coefficient) is plotted over the same frequency range.
+    *   S21 starts near 0 dB at low frequencies (below 5 GHz).
+    *   It gradually decreases, staying mostly between -1 dB and -3 dB up to about 70 GHz.
+    *   Beyond 70 GHz, S21 shows a more significant drop, reaching approximately -3.5 dB to -4 dB around 80 GHz and descending to about -5 dB to -6 dB by 100-110 GHz.
+    *   A shaded region around the S21 curve likely indicates a measurement uncertainty or tolerance, appearing to be roughly ±0.5 dB around the curve.
 
-📷 [IMAGE - _page_8_Figure_2.jpeg]: a plot of the different temperatures of different liquids
+Image [_page_7_Figure_2.jpeg]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.
+This image presents three charts, (a), (b), and (c), showing optical spectra (Power vs. Frequency).
+(a) Chart: Power (dBm) vs. Frequency (THz).
+    *   Shows an optical spectrum with two distinct peaks over a range of 193.2 THz to 193.6 THz.
+    *   The dominant peak is at approximately 193.38 THz with a power slightly above 0 dBm.
+    *   A second significant peak is at approximately 193.51 THz with a power around -10 dBm.
+    *   The frequency difference between these two main peaks is labeled as 134 GHz (0.134 THz).
+    *   The baseline noise floor is approximately -50 dBm.
+(b) Chart: Power (dBm) vs. Frequency (THz).
+    *   Shows a more complex optical spectrum with multiple, broader peaks, ranging from 193.2 THz to 193.6 THz.
+    *   Notable peaks are observed around 193.3 THz (approx. -30 dBm), 193.4 THz (approx. -15 dBm), 193.5 THz (approx. -15 dBm), and 193.6 THz (approx. -30 dBm).
+    *   The overall power levels are lower than in (a), with the highest peaks reaching around -15 dBm.
+    *   The noise floor is approximately -70 dBm to -80 dBm.
+(c) Chart: Power (dBm) vs. Frequency (THz).
+    *   Displays an optical spectrum similar to (a) but with additional smaller side lobes.
+    *   The main peak is at approximately 193.38 THz with power slightly above 0 dBm.
+    *   The second main peak is at approximately 193.51 THz with power around -10 dBm to -15 dBm.
+    *   Smaller side lobes are visible, for example, at ~193.3 THz (approx. -50 dBm), ~193.45 THz (approx. -40 dBm), and ~193.6 THz (approx. -40 dBm).
+    *   The noise floor is approximately -60 dBm.
 
-📷 [IMAGE - _page_9_Figure_2.jpeg]: a diagram of the different stages of the human body ' s development
+Image [_page_8_Figure_2.jpeg]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.
+This image presents two charts, (a) and (b), each with an inset, showing Signal-to-Noise Ratio (SNR) and spectral amplitude.
+(a) Chart: SNR (dB) vs. Center Frequency (GHz).
+    *   The main plot shows SNR values ranging from approximately 10 dB to 30 dB as the center frequency varies from 110 GHz to 170 GHz.
+    *   SNR increases from about 17 dB at 110 GHz, peaks at approximately 28-29 dB around 135-140 GHz, and then decreases to about 12 dB at 170 GHz.
+    *   The inset chart displays "Amp. (dB)" vs. "Frequency (GHz)" (from ~0.95 GHz to ~1.3 GHz, -40 dB to 0 dB), showing a spectral peak near 1.1 GHz. The arrow indicates this inset likely corresponds to a measurement at a lower center frequency (e.g., around 115 GHz) from the main plot.
+(b) Chart: SNR (dB) vs. Vpp (mV).
+    *   The main plot shows SNR values ranging from approximately 0 dB to 30 dB as Vpp (peak-to-peak voltage) increases from 100 mV to 900 mV.
+    *   SNR increases from about 7 dB at 200 mV, reaches approximately 27-28 dB at 700 mV, and then plateaus or slightly increases to about 29 dB at 900 mV.
+    *   The left inset chart shows "Amp. (dB)" vs. "Frequency (GHz)" (from ~0.7 GHz to ~1.3 GHz, -20 dB to 0 dB) with multiple peaks, corresponding to a lower Vpp (indicated by the arrow from ~300mV).
+    *   The right inset chart shows a cleaner "Amp. (dB)" vs. "Frequency (GHz)" (same axes range) with a more dominant peak, corresponding to a higher Vpp (indicated by the arrow from ~700mV).
 
-📷 [IMAGE - _page_9_Figure_4.jpeg]: a group of four graphs showing different types of the same time
+Image [_page_9_Figure_2.jpeg]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.
+This image presents three charts, (a), (b), and (c), illustrating resolution and SNR characteristics.
+(a) Chart: Resolution (cm) vs. Bandwidth of LFM (GHz).
+    *   The main plot compares theoretical and measured resolution as a function of the Linear Frequency Modulation (LFM) bandwidth, from 0 to 45 GHz.
+    *   Both theoretical (red squares) and measured (blue circles) resolution decrease (improve) with increasing LFM bandwidth.
+    *   At 5 GHz bandwidth, theoretical resolution is ~3 cm, while measured is ~3.2 cm.
+    *   At 20 GHz bandwidth, theoretical resolution is ~0.8 cm, while measured is ~1.2 cm.
+    *   At 45 GHz bandwidth, theoretical resolution is ~0.3 cm, while measured is ~0.6 cm.
+    *   The inset chart shows "Power (dBm)" vs. "Frequency (GHz)" (from ~1.028 GHz to ~1.037 GHz, -3 dBm to 0 dBm), depicting a spectral peak with a 3dB bandwidth of 8.7891 MHz.
+(b) Chart: Resolution (cm) vs. Fiber-Length (km).
+    *   This bar chart shows the impact of fiber length on resolution.
+    *   At 0 km fiber length, resolution is approximately 0.58 cm.
+    *   At 10 km fiber length, resolution is approximately 0.62 cm.
+    *   At 20 km fiber length, resolution is approximately 0.65 cm.
+    *   The data indicates a slight degradation in resolution with increasing fiber length.
+(c) Chart: SNR (dB) vs. Optical Power (dBm).
+    *   This plot compares SNR against optical power for different fiber lengths (without fiber, 10-km fiber, 20-km fiber).
+    *   All three curves show an increase in SNR with increasing optical power, ranging from -30 dBm to 0 dBm.
+    *   At -30 dBm optical power, SNR is approximately 8 dB (wo fiber), 7.5 dB (10-km fiber), and 6.5 dB (20-km fiber).
+    *   At -10 dBm optical power, SNR is approximately 20.5 dB (wo fiber), 19.5 dB (10-km fiber), and 18.5 dB (20-km fiber).
+    *   At 0 dBm optical power, SNR is approximately 24 dB (wo fiber), 23.5 dB (10-km fiber), and 22.5 dB (20-km fiber).
+    *   SNR generally decreases with increasing fiber length, with the performance difference becoming more pronounced at lower optical powers.
+
+Image [_page_9_Figure_4.jpeg]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.
+This image presents four charts, (a), (b), (c), and (d), illustrating measurement results for target distances.
+(a) Chart: Amplitude (dB) vs. Frequency (GHz).
+    *   Shows the spectral amplitude for four different target distances (0.26-m, 0.42-m, 0.51-m, 0.77-m) across 0 to 1.5 GHz.
+    *   Each target distance shows a distinct peak corresponding to its reflection, e.g., 0.26-m target peaks around 0.2 GHz, 0.42-m around 0.35 GHz, 0.51-m around 0.45 GHz, and 0.77-m around 0.65 GHz. Multiple reflections or harmonics are also visible.
+(b) Chart: Measured Distance (m) vs. The n-th measurement.
+    *   Displays the measured distance over five repeated measurements for the four target distances.
+    *   For the 0.26-m target, measured distance is consistently around 0.2 m.
+    *   For the 0.42-m target, measured distance is consistently around 0.35 m.
+    *   For the 0.51-m target, measured distance is consistently around 0.45 m.
+    *   For the 0.77-m target, measured distance is consistently around 0.7 m.
+    *   The measured values appear systematically lower than the nominal target distances, suggesting an uncalibrated offset.
+(c) Chart: Error after Calibration (mm) vs. The n-th measurement.
+    *   Shows the measurement error in millimeters after calibration for the four target distances over five measurements.
+    *   For the 0.26-m target, error fluctuates between approximately 0 mm and 5 mm.
+    *   For the 0.42-m target, error fluctuates between approximately -5 mm and 0 mm.
+    *   For the 0.51-m target, error fluctuates between approximately 0 mm and 5 mm.
+    *   For the 0.77-m target, error fluctuates between approximately -5 mm and 0 mm.
+    *   The errors are generally within ±5 mm after calibration, indicating improved accuracy.
+(d) Chart: Mean Error After Calibration (mm) vs. Target Distance (m).
+    *   This box plot summarizes the mean error and spread after calibration for the target distances from 0.2 m to 0.8 m.
+    *   For the 0.26-m target, the mean error is slightly positive (~1-2 mm), with error bars from ~-1 mm to ~3-4 mm.
+    *   For the 0.42-m target, the mean error is slightly negative (~-2-3 mm), with error bars from ~-4-5 mm to ~-1 mm.
+    *   For the 0.51-m target, the mean error is slightly positive (~2-3 mm), with error bars from ~0 mm to ~5 mm.
+    *   For the 0.77-m target, the mean error is slightly negative (~-2-3 mm), with error bars from ~-5 mm to ~0 mm.
+    *   The mean errors are small, mostly within ±3 mm, indicating high precision and accuracy after calibration.

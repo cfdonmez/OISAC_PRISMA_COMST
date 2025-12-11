@@ -165,35 +165,37 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
 # PHASE 2: VISUAL ANALYSIS (BLIP + DePlot) - Batched
 # =============================================================================
 def phase2_visual_analysis(checkpoint: CheckpointManager):
-    """Analyze images with BLIP and DePlot models."""
+    """Analyze images using Google Gemini 1.5 Flash API (Batched)."""
     print("\n" + "="*60)
-    print("👁️ PHASE 2: VISUAL ANALYSIS (BLIP + DePlot)")
+    print("👁️ PHASE 2: VISUAL ANALYSIS (Gemini 1.5 Flash - BATCHED)")
     print("="*60)
     
-    from transformers import (
-        BlipProcessor, BlipForConditionalGeneration,
-        Pix2StructProcessor, Pix2StructForConditionalGeneration
-    )
+    try:
+        import google.generativeai as genai
+        from google.colab import userdata
+        api_key = userdata.get('GOOGLE_API_KEY')
+    except:
+        import google.generativeai as genai
+        api_key = os.getenv('GOOGLE_API_KEY')
+
+    if not api_key:
+        print("❌ GOOGLE_API_KEY not found! Skipping Phase 2.")
+        return
+
+    # Configure Gemini
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(f"Device: {device.upper()}")
-    
-    # Load models
-    print("Loading BLIP model...")
-    blip_proc = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
-    blip_model = BlipForConditionalGeneration.from_pretrained(
-        "Salesforce/blip-image-captioning-large"
-    ).to(device).eval()
-    
-    print("Loading DePlot model...")
-    deplot_proc = Pix2StructProcessor.from_pretrained("google/deplot")
-    deplot_model = Pix2StructForConditionalGeneration.from_pretrained(
-        "google/deplot"
-    ).to(device).eval()
+    # Rate Limiting Config
+    # User confirmed limits: 5 RPM, 20 RPD
+    BATCH_SIZE = 5 
+    RATE_LIMIT_DELAY = 15.0 # Safe delay between batches
     
     # Find papers with processed markdowns
     paper_folders = sorted(glob.glob(os.path.join(Config.MARKDOWN_DIR, "*")))
     print(f"Papers to analyze: {len(paper_folders)}")
+    
+    import time
     
     for i, folder in enumerate(paper_folders):
         paper_id = os.path.basename(folder)
@@ -213,58 +215,74 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
         print(f"[{i+1}/{len(paper_folders)}] 👁️ Analyzing: {paper_id}")
         
         # Find images
-        images = []
-        for ext in ['*.png', '*.jpg', '*.jpeg']:
-            images.extend(glob.glob(os.path.join(folder, "**", ext), recursive=True))
+        images = sorted(glob.glob(os.path.join(folder, "**", "*.png"), recursive=True) + 
+                       glob.glob(os.path.join(folder, "**", "*.jpg"), recursive=True) +
+                       glob.glob(os.path.join(folder, "**", "*.jpeg"), recursive=True))
         
         if not images:
             with open(output_file, 'w') as f:
                 f.write("No images found.")
             continue
-        
-        results = []
-        for img_path in sorted(images):
+
+        # Filter small images
+        valid_images = []
+        for img_path in images:
             try:
-                img = Image.open(img_path).convert("RGB")
-                if img.width < 100 or img.height < 100:
-                    continue
-                
-                img_name = os.path.basename(img_path)
-                
-                # Check if chart
-                with torch.no_grad():
-                    inputs = blip_proc(img, "Is this a chart?", return_tensors="pt").to(device)
-                    out = blip_model.generate(**inputs, max_new_tokens=10)
-                    is_chart = "yes" in blip_proc.decode(out[0], skip_special_tokens=True).lower()
-                
-                if is_chart:
-                    # DePlot for charts
-                    with torch.no_grad():
-                        d_in = deplot_proc(images=img, text="Generate data table:", return_tensors="pt").to(device)
-                        d_out = deplot_model.generate(**d_in, max_new_tokens=400)
-                        data = deplot_proc.decode(d_out[0], skip_special_tokens=True)
-                    results.append(f"📊 [CHART - {img_name}]:\n{data}")
-                else:
-                    # BLIP for other images
-                    with torch.no_grad():
-                        b_in = blip_proc(img, return_tensors="pt").to(device)
-                        b_out = blip_model.generate(**b_in, max_new_tokens=40)
-                        desc = blip_proc.decode(b_out[0], skip_special_tokens=True)
-                    results.append(f"📷 [IMAGE - {img_name}]: {desc}")
-                    
-            except Exception as e:
+                img = Image.open(img_path)
+                if img.width >= 150 and img.height >= 150:
+                    valid_images.append(img_path)
+            except:
                 continue
+
+        if not valid_images:
+            with open(output_file, 'w') as f:
+                f.write("No valid images found (all too small).")
+            continue
+            
+        # Create Batches
+        batches = [valid_images[j:j + BATCH_SIZE] for j in range(0, len(valid_images), BATCH_SIZE)]
+        results = []
+        
+        print(f"     Found {len(valid_images)} images -> {len(batches)} batches")
+        
+        for batch_idx, batch_paths in enumerate(batches):
+            try:
+                inputs = ["Analyze these scientific images for a systematic review. For EACH image, strictly follow this format:\nImage [FILENAME]: [Your Analysis]\n"]
+                
+                batch_imgs = []
+                for p in batch_paths:
+                    img = Image.open(p)
+                    name = os.path.basename(p)
+                    inputs.append(f"Image [{name}]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.")
+                    inputs.append(img)
+                    batch_imgs.append(name)
+                
+                # API Call
+                response = model.generate_content(inputs)
+                text_response = response.text.strip()
+                results.append(text_response)
+                
+                print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed")
+                time.sleep(RATE_LIMIT_DELAY)
+                
+            except Exception as e:
+                print(f"     ❌ Batch {batch_idx+1} Error: {e}")
+                if "429" in str(e):
+                    print("     ⏳ Rate limit! Waiting 60s...")
+                    time.sleep(60)
         
         # Save results
         with open(output_file, 'w', encoding='utf-8') as f:
-            f.write("\n\n".join(results) if results else "No processable images.")
+            final_output = "\n\n=== NEW BATCH ANALYSIS ===\n\n".join(results) if results else "Analysis failed."
+            f.write(final_output)
         
-        print(f"   ✅ {len(results)} images analyzed")
-    
-    # Cleanup GPU
-    del blip_model, deplot_model
-    torch.cuda.empty_cache()
-    gc.collect()
+        print(f"   ✅ Processed. Saved to visual_analysis.txt")
+        print("\n   🔍 PREVIEW OF VISUAL ANALYSIS:")
+        print("   " + "-"*40)
+        print(final_output[:1000] + ("..." if len(final_output) > 1000 else ""))
+        print("   " + "-"*40 + "\n")
+        
+        print(f"   ✅ Processed. Saved to visual_analysis.txt")
     
     print("\n✅ Phase 2 Complete")
 

@@ -25,18 +25,24 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
 
 ## ✅ Bu Session'da Yapılanlar (2025-12-11)
 
-1. **Dokümantasyon & İş Akışı** ✨
-   - `CoT_Master_Pipeline.ipynb` iş akışı Mermaid diyagramları ile belgelendi
-   - `cot_laboratory/README.md` detaylandırıldı ve modül linkleri eklendi
-   - Modüller arası bağlantılar tablo haline getirildi
+1.  **Vision Pipeline Migration (Gemini 2.5 Batch Mode)** 👁️✨
+    -   `extraction_pipeline_v3.py` tamamen yeniden yazıldı.
+    -   **BLIP/DePlot** kaldırıldı -> **Gemini 2.5 Flash** entegre edildi.
+    -   **Batch Processing** (5 imaj/paket) eklendi (Limit korumalı).
+    -   Notebook metinleri ve kütüphaneleri güncellendi.
+    -   `visual_analysis.txt` içeriği başarıyla doğrulandı (Hallucination yok!).
 
-2. **Loglama İyileştirmesi** 🕒
-   - Notebook Section 5.1 log görüntüleme formatı güncellendi (YYYY-MM-DD HH:MM:SS)
+2.  **Dokümantasyon & İş Akışı** ✨
+    -   `CoT_Master_Pipeline.ipynb` iş akışı Mermaid diyagramları ile belgelendi
+    -   `cot_laboratory/README.md` detaylandırıldı ve modül linkleri eklendi
+    -   Modüller arası bağlantılar tablo haline getirildi
 
-3. **Notebook & Root Temizliği** (Önceki Adım)
-   - 5 eski notebook arşivlendi
-   - `docs/` klasörü düzenlendi
-   - Memory-Bank güncellendi
+3.  **Loglama İyileştirmesi** 🕒
+    -   Notebook Section 5.1 log görüntüleme formatı güncellendi (YYYY-MM-DD HH:MM:SS)
+
+4.  **GitHub Repo Optimizasyonu** 🚀
+    -   Kök dizin README'si görselleştirildi
+    -   Tüm değişiklikler `main` branch'e pushlandı
 
 ---
 
