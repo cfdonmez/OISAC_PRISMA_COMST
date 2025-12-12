@@ -45,6 +45,11 @@ Phase 3: CoT Extraction
   Input:  Markdown + Visual Analysis
   Output: cot_laboratory/logs/*_RESULT.json
   Motor:  cot_laboratory/core/assembler.py → run_extraction()
+
+Phase 5: Agentic Research (Deep Research)
+  Input:  Paper Text / Web Search (Future)
+  Output: analysis/deep_research/output/*_Evidence.md
+  Motor:  analysis/deep_research/run_calibration.py → Gemini Agent
 ```
 
 ---

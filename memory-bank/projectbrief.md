@@ -48,6 +48,7 @@
 | PRISMA Protokolü | ✅ Tamamlandı |
 | Tarama (Screening) | ✅ 158 çalışma dahil |
 | Extraction Schema | ✅ v2.1 (Chain-of-Thought) |
+| Deep Research Agent | ✅ Phase 0 Hazır |
 | Veri Çıkarma | 🟡 Pipeline hazır, batch bekliyor |
 | Taxonomy | 🔴 Beklemede |
 | Manuscript | 🔴 Beklemede |
