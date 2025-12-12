@@ -17,17 +17,25 @@ SYSTEM_PROMPT_PATH = r"analysis/deep_research/config/system_prompt.md"
 OUTPUT_DIR = r"analysis/deep_research/output"
 
 def load_text(paper_id):
-    # Find the markdown file
-    search_path = os.path.join(PDF_MARKDOWN_DIR, paper_id, "**", "*.md")
-    files = glob.glob(search_path, recursive=True)
-    if not files:
-        # Fallback absolute path attempt if relative fails
-        base = r"g:\Drive'ım\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST\data\processed_markdowns"
+    # Try multiple base paths to accommodate different execution contexts (Colab root, module dir, etc.)
+    base_paths = [
+        "data/processed_markdowns",  # Run from project root (Notebook default)
+        "../../data/processed_markdowns", # Run from analysis/deep_research/
+        "/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns", # Colab Absolute
+        r"g:\Drive'ım\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST\data\processed_markdowns" # Local Absolute
+    ]
+    
+    files = []
+    for base in base_paths:
         search_path = os.path.join(base, paper_id, "**", "*.md")
-        files = glob.glob(search_path, recursive=True)
+        found = glob.glob(search_path, recursive=True)
+        if found:
+            files = found
+            print(f"✅ Found paper text in: {base}")
+            break
     
     if not files:
-        raise FileNotFoundError(f"Markdown for {paper_id} not found.")
+        raise FileNotFoundError(f"Markdown for {paper_id} not found. Checked paths: {base_paths}")
     
     with open(files[0], 'r', encoding='utf-8') as f:
         return f.read()
