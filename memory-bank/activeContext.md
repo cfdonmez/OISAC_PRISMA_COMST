@@ -44,6 +44,11 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
     -   Kök dizin README'si görselleştirildi
     -   Tüm değişiklikler `main` branch'e pushlandı
 
+5.  **Agentic Research (Gemini Deep Research) Başlangıcı** 🤖
+    -   `analysis/deep_research/` modülü oluşturuldu (Prompt + Config).
+    -   **Phase 0 (Calibration)** için `Deep_Research_Agent_Lab.ipynb` eklendi.
+    -   Tüm yapı GitHub'a pushlandı, kullanıma hazır.
+
 ---
 
 ## 🔧 Aktif Pipeline
@@ -64,11 +69,11 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
 ---
 
 ## 🚀 Sonraki Adımlar
-
-1. [ ] Colab'da `CoT_Master_Pipeline.ipynb` test et
-2. [ ] O_ISAC_029 extraction kalitesini kontrol et
-3. [ ] Batch extraction çalıştır (32 paper)
-4. [ ] Kalan 126 PDF'i topla
+1. [ ] Colab'da `CoT_Master_Pipeline.ipynb` test et (Tamamlandı)
+2. [ ] O_ISAC_029 extraction kalitesini kontrol et (Tamamlandı)
+3. [ ] **Batch Extraction** çalıştır (32 paper)
+4. [ ] **Robustness:** Gemini kotası dolarsa Groq/Llama-Vision'a geçen Fallback mekanizması ekle.
+5. [ ] Kalan 126 PDF'i topla
 
 ---
 
