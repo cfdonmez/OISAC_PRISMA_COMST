@@ -1,0 +1,182 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The provided figures show the performance evaluation of the VLC CE-OFDM system. Figure 1 presents the measured EVM as a function of modulation index for OFDM and CE-OFDM signals. Figure 2 shows the power spectral density (PSD) of CE-OFDM signals centered at 300 MHz, evaluated for different modulation indices."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on CE-OFDM, which is a waveform that mitigates nonlinearities and enhances performance under noise. The ISAC coupling mode is achieved through the use of CE-OFDM, which can serve both communication and localization purposes."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as EVM and PSD, are physically consistent with the hardware and system parameters described in the paper."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The solved problems include the mitigation of nonlinearities and the enhancement of performance under noise. The remaining open challenges include the optimization of the trade-off between modulation index and system performance, and the development of more efficient algorithms for phase demodulation and correction."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G",
+      "authors": "Bruno M.S.R. Rosmaninho, Paulo P. Monteiro, Vinicius N.H. Silva, Maria C.R. Medeiros",
+      "year": 2025,
+      "venue": "IEEE Journal",
+      "doi": "10.1109/COMST.2025.3577779",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "indoor_positioning",
+        "6g_networks"
+      ],
+      "scenario_description": "VLC system for indoor positioning and 6G networks"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "CE-OFDM waveform for VLC systems with improved robustness against nonlinearities and noise",
+      "gap_addressed": "Mitigation of nonlinearities and enhancement of performance under noise in VLC systems",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "CE-OFDM transmitter and receiver",
+      "novel_component_specs": "Constant-envelope signal with improved spectral efficiency and robustness"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "VLC system with CE-OFDM"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 650,
+      "optical_bandwidth_ghz": 1,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "none",
+      "rx_modulator_bandwidth_ghz": 1,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "ofdm",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0,
+      "fibre_type": "none",
+      "attenuation_db_per_km": 0,
+      "dispersion_ps_per_nm_km": 0,
+      "nonlinearity_model": "none"
+    },
+    "channel_wireless": {
+      "link_distance_m": 2,
+      "path_loss_model": "free_space",
+      "turbulence_model": "none",
+      "turbulence_Cn2": 0,
+      "scintillation_index": 0,
+      "pointing_error_model": "none",
+      "weather_visibility_m": 100,
+      "ambient_light_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "localization"
+      ],
+      "sensing_range_m": 2,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "joint_waveform",
+      "tradeoff_type": [
+        "rate_vs_rmse"
+      ],
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "modulation_index",
+      "tradeoff_control_range": "[0, 1]"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and experimental setup, and the results are well-validated through simulations and experiments."
+  },
+  "Paper_ID": "O_ISAC_001"
+}

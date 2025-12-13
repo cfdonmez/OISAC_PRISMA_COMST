@@ -1,0 +1,1044 @@
+[
+  {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The provided figures show the performance evaluation of the VLC CE-OFDM system. Figure 1 presents the measured EVM as a function of modulation index for OFDM and CE-OFDM signals. Figure 2 shows the power spectral density (PSD) of CE-OFDM signals centered at 300 MHz, evaluated for different modulation indices."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism is based on CE-OFDM, which is a waveform that mitigates nonlinearities and enhances performance under noise. The ISAC coupling mode is achieved through the use of CE-OFDM, which can serve both communication and localization purposes."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as EVM and PSD, are physically consistent with the hardware and system parameters described in the paper."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The solved problems include the mitigation of nonlinearities and the enhancement of performance under noise. The remaining open challenges include the optimization of the trade-off between modulation index and system performance, and the development of more efficient algorithms for phase demodulation and correction."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G",
+        "authors": "Bruno M.S.R. Rosmaninho, Paulo P. Monteiro, Vinicius N.H. Silva, Maria C.R. Medeiros",
+        "year": 2025,
+        "venue": "IEEE Journal",
+        "doi": "10.1109/COMST.2025.3577779",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "indoor_positioning",
+          "6g_networks"
+        ],
+        "scenario_description": "VLC system for indoor positioning and 6G networks"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "CE-OFDM waveform for VLC systems with improved robustness against nonlinearities and noise",
+        "gap_addressed": "Mitigation of nonlinearities and enhancement of performance under noise in VLC systems",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform_design"
+        ],
+        "novel_component": "CE-OFDM transmitter and receiver",
+        "novel_component_specs": "Constant-envelope signal with improved spectral efficiency and robustness"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "VLC system with CE-OFDM"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 650,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 1,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "ofdm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 2,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 100,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization"
+        ],
+        "sensing_range_m": 2,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "modulation_index",
+        "tradeoff_control_range": "[0, 1]"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and experimental setup, and the results are well-validated through simulations and experiments."
+    },
+    "Paper_ID": "O_ISAC_001"
+  },
+  {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The provided images include diagrams of different types of waveforms, a process of producing a new product, and plots of different types of light. Figure 1 shows the principles of typical ISAC waveform implementation. Figure 2 depicts the schematic of the proposed multi-channel coherent fusion ISAC system architecture. Figure 3 presents experimental results of photonic THz sensing-enhanced communications on time-synchronization, frequency-synchronization, and multipath channel compensation."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves photonic terahertz integrated sensing and communication (ISAC) systems, focusing on integrated waveform design, optical processing, and algorithms to enhance communication capabilities and sensing performance. The ISAC coupling mode is based on the integration of sensing and communication waveforms, using techniques such as linear frequency modulation (LFM) with phase shift keying (PSK) and optical wavelength division multiplexing (WDM)."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics include a data transmission rate of 6 Gbit/s over a 1-meter wireless link, a range resolution of 1.3 cm, and a peak sidelobe ratio (PSLR) of 20.9 dB. These metrics are physically consistent with the system's capabilities and the experimental setup."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The solved problems include the development of a radar-centric photonic terahertz integrated sensing and communication system based on LFM-PSK waveform, achieving a high communication data rate and precise range resolution. The remaining open challenges include further improving the system's performance, reducing hardware costs, and exploring new waveform and system design research to enhance ISAC system performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems",
+        "authors": "Lu Zhang, Zhidong Lyu, Oskars Ozolins, Xiaodan Pang, Xianbin Yu",
+        "year": 2025,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "terahertz",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "6g_networks",
+          "indoor_positioning"
+        ],
+        "scenario_description": "Photonic terahertz integrated sensing and communication system for indoor positioning and 6G networks"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Development of a radar-centric photonic terahertz integrated sensing and communication system based on LFM-PSK waveform",
+        "gap_addressed": "Improved communication data rate and precise range resolution in photonic terahertz ISAC systems",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform"
+        ],
+        "novel_component": "TFLN-MZM with 110 GHz bandwidth",
+        "novel_component_specs": "Half-wave voltage \u22643V, optical insertion loss 7.1dB"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor Photonic Terahertz ISAC System"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "\u03b1=0.5"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model",
+        "backscatter_sensing_type": "rayleigh_phi_otdr"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 6,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 1,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "\u03b1",
+        "tradeoff_control_range": "0.1-0.9"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      },
+      "provenance": {
+        "source_pointer": "Table II, p.5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 100
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive analysis of photonic terahertz integrated sensing and communication systems, with a focus on integrated waveform design and optical processing. The experimental results demonstrate the feasibility of the proposed system, with a high communication data rate and precise range resolution."
+    },
+    "Paper_ID": "O_ISAC_002"
+  },
+  {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several diagrams and charts, including a car with a target and a target on the road, a car driving on a street with two different lanes, and various plots showing the results of simulations, such as the channel impulse response (CIR) at different distances for mono-static sensing and bi-static sensing."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves the use of visible light communication (VLC) for integrated sensing and communication (ISAC) in a vehicle-to-vehicle (V2V) scenario. The ISAC coupling mode is divided into two parts: the target channel and the background channel. The target channel models the interaction of a deterministic target on the received signal, while the background channel models the interaction of the environment other than the target on the received signal."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports on the simulation results of the channel characteristics, including the path loss, root mean square (RMS) delay spread, and received power ratio of the target channel and background channel for mono-static sensing and bi-static sensing. The results show that the received power of the target channel of mono-static sensing fades faster than that of bi-static sensing with distance increases, and the RMS DS of mono-static sensing is larger than that of bi-static sensing."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of characterizing the visible light-based ISAC channel in a V2V scenario, providing insights into the channel characteristics and performance of mono-static sensing and bi-static sensing. However, the paper also highlights the need for further research on the sensing channel, especially in outdoor environments, and the importance of considering key factors such as large-scale fading, Doppler effects, and multipath effects in the characterization of ISAC channels."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Analysis of Visible Light-Based ISAC Channel Characteristics in a V2V Scenario",
+        "authors": "Peiyao Dong, Pan Tang, Yue Yin, Lei Tian, Jianhua Zhang",
+        "year": 2025,
+        "venue": "IEEE Wireless Communications and Networking Conference (WCNC)",
+        "doi": "NR",
+        "document_type": "conference"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "quasi_static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "indoor_positioning"
+        ],
+        "scenario_description": "V2V scenario with mono-static sensing and bi-static sensing"
+      },
+      "evidence": {
+        "evidence_type": [
+          "simulation"
+        ],
+        "validation_baselines_present": false,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Characterization of visible light-based ISAC channel in a V2V scenario",
+        "gap_addressed": "Lack of research on sensing channel in outdoor environments",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform"
+        ],
+        "novel_component": "NR",
+        "novel_component_specs": "NR"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Mono-static sensing"
+        },
+        "transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 650,
+          "optical_bandwidth_ghz": 100,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 0,
+          "rx_modulator_operating_point": "none",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "separate_frontends",
+          "duplexing_mode": "half_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_tof",
+          "isac_waveform_relationship": "multiplexed_separate",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 10,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 1000,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 1e-06,
+          "ber_target": 1e-06,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0.01,
+          "latency_ms": 10,
+          "capacity_bps_hz": 1
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 10,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "power_ratio",
+          "tradeoff_control_range": "[0, 1]"
+        }
+      },
+      {
+        "identification": {
+          "experiment_id": "E2",
+          "scenario_label": "Bi-static sensing"
+        },
+        "transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 650,
+          "optical_bandwidth_ghz": 100,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 0,
+          "rx_modulator_operating_point": "none",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "separate_frontends",
+          "duplexing_mode": "half_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_tof",
+          "isac_waveform_relationship": "multiplexed_separate",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 10,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 1000,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 1e-06,
+          "ber_target": 1e-06,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0.01,
+          "latency_ms": 10,
+          "capacity_bps_hz": 1
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 10,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "power_ratio",
+          "tradeoff_control_range": "[0, 1]"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive analysis of the visible light-based ISAC channel characteristics in a V2V scenario, including the simulation results and discussions on the channel characteristics and performance of mono-static sensing and bi-static sensing."
+    },
+    "Paper_ID": "O_ISAC_003"
+  },
+  {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including a diagram of the proposed system for integrated optical sensing and signal transmission (Fig. 1), a plot of the transmission loss of the adiabatic-tapered taper for the LP11 mode in the C-band (Fig. 2), a simulated sensitivity of fiber sensors against the ambient refractive index (Fig. 3), an experimentally measured sensitivity of fiber sensors against the ambient refractive index (Fig. 4), a received constellation map with the SNR set at 30 dB for different modulation formats (Fig. 5), and a plot of the bit error rate (BER) against the signal-to-noise ratio (SNR) for different modulation formats (Fig. 6)."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system integrates optical fiber sensing and telecommunication using an adiabatic-tapered few-mode fiber (FMF). The system consists of two setups: an optical fiber sensing system and an optical telecommunication system. The sensing system uses a supercontinuum laser light source, a multiplexer, and a demultiplexer, while the telecommunication system uses a continuum wave laser source, a dual-polarization IQ modulator, and an arbitrary waveform generator. The adiabatic-tapered FMF2 is designed to enhance the sensitivity of the sensing head and minimize the radiation loss of the LP11 mode."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a salinity sensitivity of 0.1 nm/\u2030 at a wavelength of 1550 nm for seawater monitoring, and a transmission rate of 128 Gbit/s using QPSK, 16QAM, 32QAM, and 64QAM modulation formats. The reported metrics seem physically consistent, as the sensitivity and transmission rate are within the expected ranges for the proposed system."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of integrating optical fiber sensing and telecommunication, enabling smart monitoring in telecommunication networks. However, the system's performance is limited by the insertion loss of the LP11 mode in FMF2, and the required SNR increases with higher modulation formats. Further research is needed to improve the system's performance and overcome the limitations."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication",
+        "authors": "Quandong Huang, Yahao Li, Ou Xu, Xinyong Dong, S\u0142awomir Ertman, Tomasz R. Woli\u0144ski, Perry Ping Shum, Yuwen Qin",
+        "year": 2025,
+        "venue": "IEEE",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "telecommunication",
+          "sensing"
+        ],
+        "scenario_description": "Integration of optical fiber sensing and telecommunication for smart monitoring in telecommunication networks"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication",
+        "gap_addressed": "Integration of optical fiber sensing and telecommunication for smart monitoring in telecommunication networks",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform_design"
+        ],
+        "novel_component": "Adiabatic-tapered few-mode fiber (FMF)",
+        "novel_component_specs": "Core diameter: 40 \u03bcm, Transmission loss: < -0.8 dB"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Adiabatic-tapered FMF-based system for integrated optical sensing and signal transmission"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": "NR",
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": "NR",
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "chirp_fmcw",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "fmf",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "gn_model",
+        "backscatter_sensing_type": "rayleigh_phi_otdr"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 128,
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": 0.0038,
+        "ber_target": 0.001,
+        "snr_db": 7,
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": "NR",
+        "range_resolution_m": "NR",
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "\u03b1",
+        "tradeoff_control_range": "0-1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "reflective",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Fig. 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": "NR"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the proposed system and its performance. The results are well-presented and easy to understand."
+    },
+    "Paper_ID": "O_ISAC_004"
+  },
+  {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several figures and charts, including Fig. 1, which shows the proposed ISAC system model, and Fig. 2, which presents the optimal beamwidth and bandwidth allocation for the UAV over its circular trajectory for visibility V=1 km. Other figures, such as Fig. 3 and Fig. 4, illustrate the end-to-end UAV throughput and total edge users throughput under different conditions."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves a UAV-aided mixed FSO-RF network, where the UAV uses FSO for backhaul and RF for access links. The ISAC coupling mode is based on using the backscattered light from the FSO communication signal as a sensing feedback signal to estimate the FSO channel gain and optimize the UAV's trajectory dynamically."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports various metrics, including the end-to-end UAV throughput and total edge users throughput, which are physically consistent with the system model and parameters described. The results are also compared to different SNR thresholds, demonstrating the impact of optical channel sensing on system performance."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of optimizing the UAV's trajectory to maximize the end-to-end network throughput for edge users in a mixed FSO-RF network. However, open challenges remain, such as exploring the impact of variable UAV speed, interference management, and trajectory design in multi-BS scenarios."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Integrated Sensing and Communication for UAV Trajectory Optimization in Mixed FSO-RF Networks in Dynamic Weather Conditions",
+        "authors": "Muhammad Nafees, Mohammadamin Baniasadi, James R. Hopgood, Majid Safari, and John S. Thompson",
+        "year": 2024,
+        "venue": "IEEE Journal",
+        "doi": "10.1109/JIoT.2024.3399153",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "outdoor",
+        "link_topology": "bistatic",
+        "mobility_context": "mobile"
+      },
+      "application": {
+        "application_domain": "uav_aerial",
+        "scenario_description": "UAV-aided mixed FSO-RF network for edge user capacity enhancement"
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a novel O-ISAC framework for optimizing the UAV's trajectory to maximize the end-to-end network throughput for edge users in a mixed FSO-RF network.",
+        "gap_addressed": "The paper addresses the challenge of optimizing the UAV's trajectory in a mixed FSO-RF network with dynamic weather conditions.",
+        "performance_enablers": "joint_waveform",
+        "novel_component": "UAV-mounted FSO transceiver",
+        "novel_component_specs": "FSO wavelength: 1550 nm, Receiver diameter: 5 cm, Beam divergence: 2.5 mrad"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "UAV-aided mixed FSO-RF network"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 20,
+        "aperture_diameter_m": 0.05,
+        "beam_divergence_mrad": 2.5
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.05,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 1,
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "fmcw_chirp",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1000,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 1000,
+        "range_resolution_m": 10,
+        "range_accuracy_m": 1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 1,
+        "spatial_resolution_m": 10,
+        "sensing_bandwidth_hz": 1000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "beamwidth",
+        "tradeoff_control_range": "10-30 degrees"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 1,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 10,
+        "ris_type": "reflective",
+        "ris_phase_bits": 2
+      },
+      "provenance": {
+        "source_pointer": "Fig. 2",
+        "value_origin": "reported_figure",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 100
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and parameters, and the results are well-validated through simulations."
+    },
+    "Paper_ID": "O_ISAC_005"
+  }
+]

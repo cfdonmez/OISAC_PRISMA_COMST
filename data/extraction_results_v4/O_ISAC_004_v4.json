@@ -1,0 +1,197 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including a diagram of the proposed system for integrated optical sensing and signal transmission (Fig. 1), a plot of the transmission loss of the adiabatic-tapered taper for the LP11 mode in the C-band (Fig. 2), a simulated sensitivity of fiber sensors against the ambient refractive index (Fig. 3), an experimentally measured sensitivity of fiber sensors against the ambient refractive index (Fig. 4), a received constellation map with the SNR set at 30 dB for different modulation formats (Fig. 5), and a plot of the bit error rate (BER) against the signal-to-noise ratio (SNR) for different modulation formats (Fig. 6)."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system integrates optical fiber sensing and telecommunication using an adiabatic-tapered few-mode fiber (FMF). The system consists of two setups: an optical fiber sensing system and an optical telecommunication system. The sensing system uses a supercontinuum laser light source, a multiplexer, and a demultiplexer, while the telecommunication system uses a continuum wave laser source, a dual-polarization IQ modulator, and an arbitrary waveform generator. The adiabatic-tapered FMF2 is designed to enhance the sensitivity of the sensing head and minimize the radiation loss of the LP11 mode."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a salinity sensitivity of 0.1 nm/\u2030 at a wavelength of 1550 nm for seawater monitoring, and a transmission rate of 128 Gbit/s using QPSK, 16QAM, 32QAM, and 64QAM modulation formats. The reported metrics seem physically consistent, as the sensitivity and transmission rate are within the expected ranges for the proposed system."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed system solves the problem of integrating optical fiber sensing and telecommunication, enabling smart monitoring in telecommunication networks. However, the system's performance is limited by the insertion loss of the LP11 mode in FMF2, and the required SNR increases with higher modulation formats. Further research is needed to improve the system's performance and overcome the limitations."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication",
+      "authors": "Quandong Huang, Yahao Li, Ou Xu, Xinyong Dong, S\u0142awomir Ertman, Tomasz R. Woli\u0144ski, Perry Ping Shum, Yuwen Qin",
+      "year": 2025,
+      "venue": "IEEE",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "telecommunication",
+        "sensing"
+      ],
+      "scenario_description": "Integration of optical fiber sensing and telecommunication for smart monitoring in telecommunication networks"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental",
+        "simulation"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication",
+      "gap_addressed": "Integration of optical fiber sensing and telecommunication for smart monitoring in telecommunication networks",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Adiabatic-tapered few-mode fiber (FMF)",
+      "novel_component_specs": "Core diameter: 40 \u03bcm, Transmission loss: < -0.8 dB"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Adiabatic-tapered FMF-based system for integrated optical sensing and signal transmission"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "iq_modulator",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": "NR",
+      "tx_power_dbm": "NR",
+      "aperture_diameter_m": "NR",
+      "beam_divergence_mrad": "NR"
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_aperture_diameter_m": "NR",
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "iq_modulator",
+      "rx_modulator_bandwidth_ghz": "NR",
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "qam",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": "NR",
+      "comm_fec_type": "NR",
+      "sensing_waveform_family": "chirp_fmcw",
+      "isac_waveform_relationship": "joint_waveform",
+      "resource_partition": "power_split"
+    },
+    "channel_fiber": {
+      "fibre_length_km": "NR",
+      "fibre_type": "fmf",
+      "attenuation_db_per_km": "NR",
+      "dispersion_ps_per_nm_km": "NR",
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "rayleigh_phi_otdr"
+    },
+    "channel_wireless": {
+      "link_distance_m": "NR",
+      "path_loss_model": "NR",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": "NR",
+      "scintillation_index": "NR",
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": "NR",
+      "ambient_light_model": "NR"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 128,
+      "spectral_efficiency_bps_hz": "NR",
+      "ber": 0.0038,
+      "ber_target": 0.001,
+      "snr_db": 7,
+      "osnr_db": "NR",
+      "outage_probability": "NR",
+      "latency_ms": "NR",
+      "capacity_bps_hz": "NR"
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": "NR",
+      "range_resolution_m": "NR",
+      "range_accuracy_m": "NR",
+      "angular_resolution_deg": "NR",
+      "velocity_resolution_mps": "NR",
+      "velocity_accuracy_mps": "NR",
+      "localization_error_m": "NR",
+      "spatial_resolution_m": "NR",
+      "sensing_bandwidth_hz": "NR",
+      "pd_probability_detection": "NR",
+      "pfa_probability_false_alarm": "NR",
+      "crb_crlb_value": "NR",
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "joint_waveform",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": "NR",
+      "opa_steering_range_deg": "NR",
+      "opa_beamwidth_deg": "NR",
+      "ris_num_elements": "NR",
+      "ris_type": "reflective",
+      "ris_phase_bits": "NR"
+    },
+    "provenance": {
+      "source_pointer": "Fig. 1",
+      "value_origin": "reported_text",
+      "confidence_reporting": "ci_reported",
+      "num_trials": "NR"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the proposed system and its performance. The results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_004"
+}

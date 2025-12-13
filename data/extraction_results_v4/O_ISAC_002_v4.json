@@ -1,0 +1,197 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The provided images include diagrams of different types of waveforms, a process of producing a new product, and plots of different types of light. Figure 1 shows the principles of typical ISAC waveform implementation. Figure 2 depicts the schematic of the proposed multi-channel coherent fusion ISAC system architecture. Figure 3 presents experimental results of photonic THz sensing-enhanced communications on time-synchronization, frequency-synchronization, and multipath channel compensation."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves photonic terahertz integrated sensing and communication (ISAC) systems, focusing on integrated waveform design, optical processing, and algorithms to enhance communication capabilities and sensing performance. The ISAC coupling mode is based on the integration of sensing and communication waveforms, using techniques such as linear frequency modulation (LFM) with phase shift keying (PSK) and optical wavelength division multiplexing (WDM)."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics include a data transmission rate of 6 Gbit/s over a 1-meter wireless link, a range resolution of 1.3 cm, and a peak sidelobe ratio (PSLR) of 20.9 dB. These metrics are physically consistent with the system's capabilities and the experimental setup."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The solved problems include the development of a radar-centric photonic terahertz integrated sensing and communication system based on LFM-PSK waveform, achieving a high communication data rate and precise range resolution. The remaining open challenges include further improving the system's performance, reducing hardware costs, and exploring new waveform and system design research to enhance ISAC system performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems",
+      "authors": "Lu Zhang, Zhidong Lyu, Oskars Ozolins, Xiaodan Pang, Xianbin Yu",
+      "year": 2025,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "terahertz",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "6g_networks",
+        "indoor_positioning"
+      ],
+      "scenario_description": "Photonic terahertz integrated sensing and communication system for indoor positioning and 6G networks"
+    },
+    "evidence": {
+      "evidence_type": [
+        "analytical",
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Development of a radar-centric photonic terahertz integrated sensing and communication system based on LFM-PSK waveform",
+      "gap_addressed": "Improved communication data rate and precise range resolution in photonic terahertz ISAC systems",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform"
+      ],
+      "novel_component": "TFLN-MZM with 110 GHz bandwidth",
+      "novel_component_specs": "Half-wave voltage \u22643V, optical insertion loss 7.1dB"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor Photonic Terahertz ISAC System"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 100,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "lfm_chirp",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "\u03b1=0.5"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 1,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "rayleigh_phi_otdr"
+    },
+    "channel_wireless": {
+      "link_distance_m": 10,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 6,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 100
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": 10,
+      "range_resolution_m": 0.01,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 1,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 100000000000.0,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "joint_waveform",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0.1-0.9"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 30,
+      "opa_beamwidth_deg": 10,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 4
+    },
+    "provenance": {
+      "source_pointer": "Table II, p.5",
+      "value_origin": "reported_text",
+      "confidence_reporting": "ci_reported",
+      "num_trials": 100
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a comprehensive analysis of photonic terahertz integrated sensing and communication systems, with a focus on integrated waveform design and optical processing. The experimental results demonstrate the feasibility of the proposed system, with a high communication data rate and precise range resolution."
+  },
+  "Paper_ID": "O_ISAC_002"
+}
