@@ -1,97 +1,80 @@
-# O-ISAC Systematic Review
+# 📡 O-ISAC Systematic Review (PRISMA 2020)
 
-**Optical Integrated Sensing and Communication (O-ISAC)** alanında PRISMA 2020 standartlarına uygun sistematik derleme projesi.
+> **"Optical Integrated Sensing and Communication: A Unified Survey"**
 
----
+Hoş geldiniz! 👋 Bu repo, **IEEE Communications Surveys & Tutorials (COMST)** dergisi için hazırlanan akademik bir sistematik derleme (survey) projesinin **tüm mutfağını** barındırır.
 
-## 📊 Proje Durumu
-
-| Aşama | Durum | Detay |
-|-------|-------|-------|
-| Protokol | ✅ Tamamlandı | [`protocol/prisma_protocol.md`](protocol/prisma_protocol.md) |
-| Arama | ✅ Tamamlandı | [1200 kayıt bulundu](search/search_log.csv) |
-| Eleme | ✅ Tamamlandı | [158 çalışma dahil edildi](screening/screening_log.csv) |
-| PDF Toplama | 🟡 Devam | 32/158 (%20) |
-| Veri Çıkarma | 🟡 Devam | [CoT Pipeline Hazır](analysis/cot_laboratory/README.md) |
-| Yazım | 🔴 Beklemede | - |
+Burada, literatürdeki binlerce makalenin nasıl tarandığını, nasıl elendiğini ve yapay zeka destekli araçlarla nasıl analiz edildiğini **şeffaf bir şekilde** görebilirsiniz.
 
 ---
 
-## 🔄 Master Workflow
+## 📖 Bu Proje Nedir? (Hikaye)
 
-Proje, modüler bir **Chain-of-Thought (CoT)** yapısı üzerine kuruludur:
+Biz, **"Fiber optik kablolar ve kablosuz optik sistemler (FSO, VLC) hem haberleşme yapıp hem de ortamı algılayabilir mi?"** sorusunun cevabını arıyoruz. Buna **O-ISAC** (Optical Integrated Sensing and Communication) denir.
+
+Bu repo, bu soruyu cevaplamak için yapılan **bilimsel yolculuğun** dijital kanıtıdır.
+
+---
+
+## 🚦 Proje Durum Paneli (Dashboard)
+
+Şu anda projenin hangi aşamasında olduğumuzu buradan takip edebilirsiniz:
+
+| Aşama | Ne Yapıyoruz? | Durum |
+|:---|:---|:---:|
+| **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_protocol.md)) | ✅ Tamamlandı |
+| **2. Arama** | 1200+ makaleyi veritabanlarından bulduk. | ✅ Tamamlandı |
+| **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (158 kaldı). | ✅ Tamamlandı |
+| **4. PDF Toplama** | Seçilen 158 makalenin tam metinlerini topluyoruz. | 🟡 Devam Ediyor (%20) |
+| **5. Veri Madenciliği** | **Yapay Zeka (AI)** ile makaleleri okuyup veri çıkarıyoruz. | 🟡 Devam Ediyor |
+| **6. Yazım** | Sonuçları makale haline getiriyoruz. | 🔴 Başlamadı |
+
+> **Canlı Süreç:** Bu proje "Living Review" mantığıyla çalışır. Her sabah yeni makale var mı diye kontrol ederiz. ([Detaylı Günlük Akış](docs/DAILY_WORKFLOW.md))
+
+---
+
+## 🛠️ Nasıl Çalışıyoruz? (Teknik Mutfak)
+
+Bu projeyi yönetmek için kullandığımız araçlar ve akış şöyledir:
+
+### 1. Araç Setimiz
+*   **🧠 Beyin:** Google Colab (Kodları ve AI modellerini burada çalıştırıyoruz).
+*   **💾 Hafıza:** Google Drive (Tüm PDF'ler ve veriler burada durur).
+*   **📁 Depo:** GitHub (Bu gördüğünüz yer, kodların ve dokümanların evidir).
+*   **✍️ Yazım:** Overleaf (Makalenin son hali burada yazılır).
+
+### 2. İş Akışımız (Workflow)
+Bir makalenin PDF'ten anlamlı bir bilgiye dönüşme süreci:
 
 ```mermaid
-flowchart LR
-    A[📄 PDF Collection] --> B[🏭 Data Prep & OCR]
-    B --> C[🖼️ Visual Analysis]
-    C --> D[🧠 CoT Extraction]
-    D --> E[📊 Analysis & Reporting]
-    
-    click D "analysis/cot_laboratory/README.md" "CoT Detayları"
+graph LR
+    A[📄 Ham PDF] -->|OCR & Temizlik| B(📝 Markdown Metin)
+    B -->|Görsel Analiz| C{🖼️ Grafik/Tablo}
+    B & C -->|AI Akıl Yürütme| D[🧠 Yapısal Veri]
+    D -->|Sentez| E[📊 Makale Taslağı]
 ```
 
-🎯 **Ana Yönetim Merkezi:** [`analysis/notebooks/CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
+Bu sihirli işlemi **tek bir tuşla** yapan aracımız: [`CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## 📂 Dosyalar Nerede? (Harita)
 
-1. **Notebook'u Açın:** [`analysis/notebooks/CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
-2. **Runtime:** GPU (T4/A100) seçin.
-3. **API Key:** Colab Secrets'a `GROQ_API_KEY` ekleyin.
-4. **Çalıştırın:** Tüm pipeline (PDF'den analize) tek bir yerden yönetilir.
-
----
-
-## 📁 Proje Yapısı
-
-GitHub üzerinde kolay gezinme için ana dizinler:
-
-```text
-OISAC_PRISMA_COMST/
-│
-├── protocol/                  # 📋 [PRISMA Protokolü](protocol/prisma_protocol.md)
-├── search/                    # 🔎 [Arama Stratejisi & Loglar](search/search_strings.md)
-├── screening/                 # 🕵️ [Eleme & Karar Logları](screening/screening_log.csv)
-│
-├── data/                      # 💾 Veri Deposu
-│   ├── retrieved_docs/        # PDF'ler
-│   └── extraction_results_v3/ # Çıktılar (JSON)
-│
-├── analysis/                  # 🧠 Analiz Merkezi
-│   ├── notebooks/             # [Notebook'lar & Pipeline](analysis/notebooks/README.md)
-│   └── cot_laboratory/        # [CoT Engine & Modules](analysis/cot_laboratory/README.md)
-│
-├── docs/                      # 📚 [Dokümantasyon](docs/)
-├── manuscript/                # 📝 Taslak Yazım (LaTeX)
-└── legacy_archive/            # 📦 Eski Dosyalar (Arşiv)
-```
+*   `protocol/`: **Anayasa.** Kurallarımız, neyi dahil edip neyi etmeyeceğimiz burada yazar.
+*   `search/` & `screening/`: **Kanıtlar.** Hangi kelimelerle arama yaptık? Hangi makaleyi neden eledik? Hepsi burada kayıtlı.
+*   `data/`: **Hazine.** Toplanan PDF'ler ve AI tarafından çıkarılan JSON verileri.
+*   `analysis/`: **Fabrika.** Analiz kodları, notebook'lar ve "CoT Laboratuvarı".
+*   `docs/`: **Kılavuzlar.** Nasıl yapılır belgeleri.
 
 ---
 
-## 🔎 İzlenebilirlik (Traceability)
+## 🤖 İzlenebilirlik ve Şeffaflık
 
-Bu proje şeffaflık için **Chain-of-Thought (CoT)** metodolojisini kullanır. Her bir çıkarma işlemi kayıt altına alınır:
-
-- **Loglar:** `analysis/cot_laboratory/logs/` altında tutulur.
-- **Format:** `YYYYMMDD_HHMMSS_PaperID_Model_Type.json`
-- **Doğrulama:** Loglar, modelin "düşünme adımlarını" (reasoning steps) içerir.
+Bir bilimsel çalışmanın en önemli özelliği **tekrarlanabilir** olmasıdır.
+*   Her eleme kararı bir CSV dosyasına işlenir.
+*   Yapay zekanın her analizi bir "Log" dosyası olarak saklanır ("Ben bu makaleyi okudum ve şunları buldum" der).
 
 ---
 
-## 📚 Dokümantasyon
-
-- [🛣️ Yol Haritası](docs/ROADMAP.md)
-- [🤖 AI Workflow](docs/AI_Co_Pilot_Workflow.md)
-- [📋 CoT Laboratuvarı](analysis/cot_laboratory/README.md)
-
----
-
-## 📄 Lisans
-
-Bu proje akademik araştırma amaçlıdır.
-
----
-
-**Son Güncelleme:** 2025-12-11
+**Son Güncelleme:** 13 Aralık 2025
+*Bu proje, Açık Bilim (Open Science) ilkelerine adanmıştır.*

@@ -83,6 +83,7 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
 - **GPU:** Phase 1 & 2 için T4 veya A100 gerekli
 - **Schema:** `cot_laboratory/modules/formatting/schema_v2.yaml` (v2.1) kullanılıyor
 - **Arşiv:** Eski dosyalar `analysis/notebooks/archive/`'da
+- **Dil:** İletişim **Türkçe**, Proje/Araştırma **İngilizce** (Dosyalar, kodlar).
 
 ---
 
