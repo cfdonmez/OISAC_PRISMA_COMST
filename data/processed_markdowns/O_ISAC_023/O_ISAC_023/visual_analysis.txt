@@ -1,0 +1,67 @@
+Batch 1:
+Image _page_2_Figure_2.jpeg:
+Type: Diagram
+Description: System model of the proposed DCO-OFDM FSO-ISAC transceiver showing shared, communication-only, and sensing-only processing blocks.
+KEY DATA: Highlights DAC/ADC paths, clipping/noise modeling, common waveform feeding both optical communication link and sensing receiver, and separates communication SNDR γ_c(k) and sensing SNDR γ_s(k) metrics.
+
+Image _page_3_Figure_2.jpeg:
+Type: Chart
+Description: PSD comparison between the unclipped OFDM signal x(n) and clipping noise w_p(n) under even versus uneven subcarrier power allocation.
+KEY DATA: Shows how bias level λ shifts clipping noise mean/variance (Eq. 10), motivating uneven power allocation to suppress PSD peaks while keeping spectral efficiency.
+
+Image _page_7_Figure_14.jpeg:
+Type: Diagram
+Description: Flow diagram of the iterative optimization (Algorithm 3) updating dual variables (μ, η) for the sensing constraint.
+KEY DATA: Illustrates cycling between solving ξ_1(μ,η)=1/2 and ξ_2(μ,η)=ζ̃_0^2, with trajectories staying inside the feasible region so μ and η converge toward (μ_c^*, η_c^*).
+
+Image _page_9_Figure_4.jpeg:
+Type: Chart
+Description: Convergence plots of the normalized residual ε^(j) for different target sensing precisions in the communication-centric scenario.
+KEY DATA: Residuals decay nearly geometrically; demanding precisions (smaller c/2σ_0) slow convergence and require more iterations as starting point (0,0) sits farther from (μ_c^*,η_c^*).
+
+Image _page_9_Figure_11.jpeg:
+Type: Chart
+Description: Optimal dual variables (μ_c^*, η_c^*) versus sensing precision targets.
+KEY DATA: Both μ_c^* and η_c^* grow as desired precision tightens (c/2σ_0 decreasing from 4.2→3.4 cm), reallocating more power to higher-frequency subcarriers to sharpen ranging accuracy.
+
+Batch 2:
+Image _page_10_Figure_2.jpeg:
+Type: Chart
+Description: Normalized subcarrier power allocation for communication-centric (CC) and sensing-centric (SC) tradeoffs with N=128/256/512.
+KEY DATA: CC curves resemble water-filling (near-uniform), SC curves push power to high-index subcarriers, and tradeoff cases smoothly vary curvature with sensing precision or spectral efficiency targets while respecting P̃_m=0.02 and N_c=N_s=-120 dB/Hz.
+
+Image _page_11_Figure_2.jpeg:
+Type: Chart
+Description: Tradeoff curves linking spectral efficiency and sensing precision for different subcarrier counts N.
+KEY DATA: Increasing N (128→512) expands the achievable region; left margin occurs near c/2σ_0≈2.85 cm where spectral efficiency collapses, showing marginal utility of pushing precision beyond that point.
+
+Image _page_11_Figure_6.jpeg:
+Type: Chart
+Description: Computational complexity (number of SNDR evaluations) versus sensing precision in communication-centric and sensing-centric modes.
+KEY DATA: Complexity grows with precision in one mode but falls in the dual mode, confirming “duality” and showing overall complexity scaling as O(N[log(1/ε_b)+2(log(1/ε_μ)+log(1/ε_η))^2]).
+
+Image _page_12_Figure_2.jpeg:
+Type: Chart
+Description: Sensing RMSE versus electrical SNR for different scintillation indices C_n^2 from Monte Carlo simulations.
+KEY DATA: Stronger turbulence (larger C_n^2) raises RMSE, but cm-level accuracy is maintained for electrical SNR ≥ 2 dB, validating robustness of the DCO-OFDM sensing design.
+
+Image _page_14_Picture_43.jpeg:
+Type: Other
+Description: Portrait of Yunfeng Wen with biographical note.
+KEY DATA: Tsinghua Univ. B.Eng. (2022) in electronic engineering; currently pursuing PhD on optical wireless communication, sensing, and optical-band ISAC.
+
+Batch 3:
+Image _page_15_Picture_2.jpeg:
+Type: Other
+Description: Portrait of Fang Yang and career summary.
+KEY DATA: Tsinghua Univ. B.S.E. and PhD (2005/2009), Associate Professor in Electronic Engineering, 180+ publications, >50 Chinese patents, focus on digital TV and communication systems.
+
+Image _page_15_Picture_7.jpeg:
+Type: Other
+Description: Portrait of Jian Song with leadership details.
+KEY DATA: Tsinghua Univ. B.Eng./PhD (1990/1995), Director of DTV Technology R&D Center, extensive experience across fiber, satellite, wireless, and power-line communications.
+
+Image _page_15_Picture_12.jpeg:
+Type: Other
+Description: Portrait of Zhu Han with background summary.
+KEY DATA: B.S. Tsinghua (1997) and M.S./PhD Univ. of Maryland (1999/2003); industry experience at JDSU (2000–2002) and prolific researcher in wireless/IoT/AI fields.

@@ -1,0 +1,346 @@
+Image [_page_10_Figure_11.jpeg]: Chart.
+(a) LoS:
+    *   **DCO-OFDM: RSS (green triangles):** RMSE on range remains high, consistently around 10 meters, across the entire SNR range from 10 dB to 110 dB, showing no significant improvement.
+    *   **DCO-OFDM: Radar (black squares):** RMSE starts high (above 10 meters) at 10 dB SNR. It drops sharply between 20 dB and 40 dB SNR, achieving a low plateau of approximately 0.05-0.07 meters for SNR values from 40 dB to 110 dB.
+    *   **DCO-OFDM: Radar-RSS (blue circles):** Shows almost identical performance to 'DCO-OFDM: Radar'. RMSE drops sharply between 20 dB and 40 dB SNR to a plateau of approximately 0.05-0.07 meters for SNR values from 40 dB to 110 dB.
+(b) Multipath:
+    *   **DCO-OFDM: RSS (green triangles):** Similar to LoS, RMSE on range remains high, consistently around 10 meters, across the entire SNR range from -10 dB to 70 dB.
+    *   **DCO-OFDM: Radar (black squares):** RMSE starts very high (above 10 meters) at -10 dB SNR. It drops sharply between 0 dB and 30 dB SNR, achieving a low plateau of approximately 0.07-0.08 meters for SNR values from 30 dB to 70 dB.
+    *   **DCO-OFDM: Radar-RSS (blue circles):** Shows almost identical performance to 'DCO-OFDM: Radar'. RMSE drops sharply between 0 dB and 30 dB SNR to a plateau of approximately 0.07-0.08 meters for SNR values from 30 dB to 70 dB.
+Overall, Radar-based methods significantly outperform RSS in both LoS and multipath conditions, achieving sub-meter RMSE, with a slight performance degradation in multipath compared to LoS.
+
+Image [_page_10_Figure_4.jpeg]: Chart.
+(a) M = 64, (b) M = 256, (c) M = 1024, (d) M = 4096:
+    *   **OOK, RSS (black stars) & DCO-OFDM, RSS (green triangles):** In all four sub-charts (for M=64, 256, 1024, 4096), both OOK, RSS and DCO-OFDM, RSS curves show consistently high RMSE on range (around 10 meters) across the entire SNR range from -10 dB to 70 dB, indicating poor ranging performance regardless of M.
+    *   **VLPC-DCO-OFDM: Radar (black squares) & VLPC-DCO-OFDM: Radar-RSS (blue circles):** These two curves exhibit similar performance in all sub-charts. They start with high RMSE on range (>10 meters) at -10 dB SNR and sharply decrease to a low plateau of approximately 0.05-0.07 meters at higher SNRs.
+        *   **Effect of M:** As M increases from 64 to 4096, the SNR required to reach the low RMSE plateau significantly decreases.
+            *   For M=64, the sharp drop occurs roughly between 0 dB and 10 dB SNR.
+            *   For M=256, the sharp drop occurs roughly between -5 dB and 5 dB SNR.
+            *   For M=1024, the sharp drop occurs roughly between -10 dB and 0 dB SNR.
+            *   For M=4096, the sharp drop occurs roughly between -10 dB and -5 dB SNR.
+        *   The final plateau RMSE for Radar/Radar-RSS methods remains consistently low (0.05-0.07 meters) across all M values once the performance floor is reached.
+
+Image [_page_10_Figure_9.jpeg]: Chart.
+(a) Pair B:
+    *   **Threshold 5N0 (black triangles):** RMSE starts around 1 meter at 10 dB SNR, fluctuates, and largely remains between 0.8 and 1.2 meters for SNR up to 60 dB. It does not show a sharp performance improvement.
+    *   **Threshold 10N0 (black circles):** RMSE starts high (>10 meters) at 10 dB SNR. It drops significantly between 20 dB and 30 dB SNR, reaching a plateau of approximately 0.3-0.5 meters for SNR values from 30 dB to 60 dB.
+    *   **Threshold 20N0 (blue squares):** RMSE starts very high (>10 meters) at 10 dB SNR. It drops sharply between 15 dB and 25 dB SNR, reaching a plateau of approximately 0.3-0.4 meters for SNR values from 25 dB to 60 dB.
+    *   **Threshold 40N0 (blue crosses):** RMSE starts very high (>10 meters) at 10 dB SNR. It drops sharply between 10 dB and 20 dB SNR, reaching a plateau of approximately 0.3-0.4 meters for SNR values from 20 dB to 60 dB.
+(b) Pair C:
+    *   **Threshold 5N0 (black triangles):** RMSE starts high (>10 meters) at 10 dB SNR, drops to around 1-2 meters between 20-30 dB SNR, and then fluctuates around 1-1.5 meters for SNR up to 60 dB.
+    *   **Threshold 10N0 (black circles):** RMSE starts high (>10 meters) at 10 dB SNR. It drops sharply between 15 dB and 25 dB SNR, reaching a plateau of approximately 0.2-0.3 meters for SNR values from 25 dB to 60 dB.
+    *   **Threshold 20N0 (blue squares):** RMSE starts very high (>10 meters) at 10 dB SNR. It drops sharply between 10 dB and 20 dB SNR, reaching a plateau of approximately 0.2-0.3 meters for SNR values from 20 dB to 60 dB.
+    *   **Threshold 40N0 (blue crosses):** RMSE starts very high (>10 meters) at 10 dB SNR. It drops sharply between 10 dB and 20 dB SNR, reaching a plateau of approximately 0.2-0.3 meters for SNR values from 20 dB to 60 dB.
+Overall, for both pairs, higher threshold values (20N0, 40N0) generally achieve lower RMSE on range and reach this performance floor at lower SNR values compared to lower thresholds (5N0, 10N0). Threshold 5N0 consistently shows the worst performance. Pair C generally achieves a slightly lower minimum RMSE (0.2-0.3 m) compared to Pair B (0.3-0.4 m) at high SNRs.
+
+Image [_page_11_Figure_2.jpeg]: Chart.
+(a) Pair A, (b) Pair B, (c) Pair C:
+    *   **RSS (dotted black line with triangles):** For all pairs, CCMC capacity remains constant and very low, around 80M bits/sec, across the entire SNR range from 20 dB to 70 dB, showing no responsiveness to SNR changes.
+    *   **Radar-CE (solid blue line with circles):** For all pairs, CCMC capacity starts around 80M bits/sec at 20 dB SNR and increases gradually but slowly with SNR, reaching approximately 0.2-0.3G bits/sec at 70 dB SNR. Its performance is notably inferior to the other CE methods.
+    *   **TD-CE (solid red line with crosses), FD-CE (solid purple line with diamonds), Perfect CSI (solid dark purple line with inverted triangles), and DD-CE(N=4) (solid red line with squares):** For all pairs, these methods show a strong positive correlation between CCMC capacity and SNR. They all start around 80M bits/sec at 20 dB SNR and increase significantly.
+        *   **Performance comparison:** Perfect CSI consistently provides the highest capacity (upper bound), followed very closely by FD-CE and TD-CE, which are almost indistinguishable from Perfect CSI at higher SNRs. DD-CE(N=4) also performs very well, only slightly below TD-CE/FD-CE/Perfect CSI, reaching approximately 1.7-1.8G bits/sec at 70 dB SNR, while the top performers reach around 1.8-1.9G bits/sec at 70 dB SNR.
+    *   The performance trends and specific capacity values are remarkably consistent across Pair A, Pair B, and Pair C, indicating robust performance across different channel conditions or setups represented by these pairs.
+
+Image [_page_11_Figure_4.jpeg]: Chart.
+(a) Pair A:
+    *   **RSS (dotted black line with triangles):** Normalized RMSE on CE is consistently high, around 2.0 at -10 dB SNR, dropping to approximately 1.4-1.5 for SNR values from 20 dB to 70 dB.
+    *   **Radar-CE (solid blue line with circles):** Normalized RMSE starts at 1.0 at -10 dB SNR. It sharply drops between 0 dB and 20 dB SNR, reaching a low plateau close to 0 (around 0.05) for SNR values from 30 dB to 70 dB.
+    *   **TD-CE (solid red line with crosses):** Normalized RMSE starts high (around 2.0) at -10 dB SNR. It drops between 10 dB and 50 dB SNR, reaching a low plateau close to 0 (around 0.05) for SNR values from 50 dB to 70 dB. It performs worse than Radar-CE and FD-CE at low to moderate SNRs.
+    *   **FD-CE (solid purple line with diamonds):** Normalized RMSE starts high (around 2.0) at -10 dB SNR. It drops sharply between 10 dB and 30 dB SNR, reaching a low plateau close to 0 (around 0.05) for SNR values from 40 dB to 70 dB. It generally outperforms TD-CE.
+    *   **DD-CE(N=4) (solid red line with squares):** Normalized RMSE starts high (around 2.0) at -10 dB SNR. It shows the sharpest drop, reaching a low plateau close to 0 (around 0.05) at the lowest SNR values, approximately from 25-30 dB to 70 dB SNR. It is the best performing channel estimation method presented.
+(b) Pair C:
+    *   The trends and specific values for Pair C are very similar to Pair A.
+    *   **RSS:** Remains high, around 1.4-1.5 for SNR > 20 dB.
+    *   **Radar-CE:** Drops to near 0 by 30 dB SNR.
+    *   **TD-CE:** Drops to near 0 by 50 dB SNR.
+    *   **FD-CE:** Drops to near 0 by 40 dB SNR.
+    *   **DD-CE(N=4):** Drops to near 0 by 25-30 dB SNR, demonstrating the best performance among the CE methods.
+Overall, DD-CE(N=4) consistently achieves the lowest normalized RMSE on CE at the lowest SNR values for both pairs, followed by FD-CE and Radar-CE, with TD-CE being less efficient at lower SNRs. RSS consistently performs the worst.
+
+=== NEW BATCH ANALYSIS ===
+
+Image [_page_11_Figure_9.jpeg]: Chart
+This image contains two charts, (a) Pair A and (b) Pair C, which depict Achievable Rates (bits/sec) versus Signal-to-Noise Ratio (SNR) in dB. Both charts compare different channel estimation techniques (Radar-CE and Perfect CSI) under two communication modes: CCMC (Coordinated Cooperative Multi-Cell) and DCMC (Distributed Cooperative Multi-Cell), and various modulation schemes (QPSK, 16QAM, 64QAM).
+
+**Data Extraction for (a) Pair A:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 70 dB.
+*   **Y-axis:** Achievable Rates (bits/sec), ranging from 0 to 1G (1000M bits/sec).
+*   **Legends:**
+    *   CCMC: Radar-CE (Circle)
+    *   CCMC: Perfect CSI (Circle with cross)
+    *   DCMC, QPSK: Radar-CE (Triangle)
+    *   DCMC, QPSK: Perfect CSI (Triangle with cross)
+    *   DCMC, 16QAM: Radar-CE (Square)
+    *   DCMC, 16QAM: Perfect CSI (Square with cross)
+    *   DCMC, 64QAM: Radar-CE (Diamond)
+    *   DCMC, 64QAM: Perfect CSI (Diamond with cross)
+
+*   **Key Observations/Data Points (Approximate):**
+    *   All curves show an increase in achievable rate with increasing SNR, eventually saturating.
+    *   **CCMC (Perfect CSI):** Achieves the highest rates, saturating around 950 Mbps at ~60 dB SNR.
+    *   **CCMC (Radar-CE):** Performs slightly worse than Perfect CSI, saturating around 750 Mbps at ~60 dB SNR.
+    *   **DCMC, 64QAM (Perfect CSI):** Saturates around 750 Mbps at ~60 dB SNR.
+    *   **DCMC, 64QAM (Radar-CE):** Saturates around 700 Mbps at ~60 dB SNR.
+    *   **DCMC, 16QAM (Perfect CSI):** Saturates around 500 Mbps at ~50 dB SNR.
+    *   **DCMC, 16QAM (Radar-CE):** Saturates around 490 Mbps at ~60 dB SNR.
+    *   **DCMC, QPSK (Perfect CSI & Radar-CE):** Both perform very similarly, saturating around 250 Mbps at ~40 dB SNR.
+    *   In general, Perfect CSI provides superior or equivalent performance to Radar-CE, especially at higher SNRs and with higher-order modulation. Higher order modulation (64QAM > 16QAM > QPSK) leads to higher achievable rates. CCMC generally outperforms DCMC.
+
+**Data Extraction for (b) Pair C:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 70 dB.
+*   **Y-axis:** Achievable Rates (bits/sec), ranging from 0 to 1G (1000M bits/sec).
+*   **Legends:** Same as (a).
+*   **Key Observations/Data Points (Approximate):**
+    *   The overall trends and relative performance between different schemes are very similar to Pair A.
+    *   **CCMC (Perfect CSI):** Highest rates, saturating around 950 Mbps at ~60 dB SNR.
+    *   **CCMC (Radar-CE):** Saturates around 750 Mbps at ~60 dB SNR.
+    *   **DCMC, 64QAM (Perfect CSI):** Saturates around 750 Mbps at ~60 dB SNR.
+    *   **DCMC, 64QAM (Radar-CE):** Saturates around 700 Mbps at ~60 dB SNR.
+    *   **DCMC, 16QAM (Perfect CSI):** Saturates around 500 Mbps at ~50 dB SNR.
+    *   **DCMC, 16QAM (Radar-CE):** Saturates around 490 Mbps at ~60 dB SNR.
+    *   **DCMC, QPSK (Perfect CSI & Radar-CE):** Both saturate around 250 Mbps at ~40 dB SNR.
+    *   The performance curves for Pair C mirror those of Pair A very closely, indicating consistent system behavior across these two 'pairs'.
+
+---
+
+Image [_page_12_Figure_2.jpeg]: Chart
+This image contains four charts, (a) M=64, (b) M=256, (c) M=1024, and (d) M=4096, which illustrate Bit Error Rate (BER) versus Signal-to-Noise Ratio (SNR) in dB for DCO-OFDM with various channel estimation (CE) techniques and for OOK, RSS. M represents the number of subcarriers.
+
+**Data Extraction for (a) M=64:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 40 dB.
+*   **Y-axis:** BER, logarithmic scale from 10^0 to 10^-5.
+*   **Legends:**
+    *   DCO-OFDM, TD-CE (Circle)
+    *   DCO-OFDM, FD-CE (Cross)
+    *   DCO-OFDM, DD-CE(N=4) (Asterisk)
+    *   OOK, RSS (Triangle)
+    *   DCO-OFDM, Radar-CE (Diamond)
+    *   DCO-OFDM, Perfect CSI (Circle with cross)
+*   **Key Observations/Data Points (Approximate for BER = 10^-3):**
+    *   **Perfect CSI:** ~22 dB
+    *   **Radar-CE:** ~23 dB (very close to Perfect CSI)
+    *   **FD-CE:** ~25 dB
+    *   **TD-CE:** ~26 dB
+    *   **DD-CE(N=4):** ~26 dB
+    *   **OOK, RSS:** ~38 dB (requires significantly higher SNR)
+    *   Perfect CSI and Radar-CE offer the best BER performance, requiring the lowest SNR. The other DCO-OFDM CE techniques perform similarly to each other, but worse than Radar-CE. OOK, RSS performs significantly worse.
+
+**Data Extraction for (b) M=256:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 50 dB.
+*   **Y-axis:** BER, logarithmic scale from 10^0 to 10^-5.
+*   **Legends:** Same as (a).
+*   **Key Observations/Data Points (Approximate for BER = 10^-3):**
+    *   **Perfect CSI:** ~28 dB
+    *   **Radar-CE:** ~29 dB
+    *   **FD-CE:** ~32 dB
+    *   **TD-CE:** ~33 dB
+    *   **DD-CE(N=4):** ~33 dB
+    *   **OOK, RSS:** Requires >50 dB
+    *   All curves have shifted to the right, indicating higher SNR is required for the same BER compared to M=64. The relative performance order remains the same.
+
+**Data Extraction for (c) M=1024:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 50 dB.
+*   **Y-axis:** BER, logarithmic scale from 10^0 to 10^-5.
+*   **Legends:** Same as (a).
+*   **Key Observations/Data Points (Approximate for BER = 10^-3):**
+    *   **Perfect CSI:** ~33 dB
+    *   **Radar-CE:** ~34 dB
+    *   **FD-CE:** ~37 dB
+    *   **TD-CE:** ~38 dB
+    *   **DD-CE(N=4):** ~38 dB
+    *   **OOK, RSS:** Requires >50 dB
+    *   The trend of increasing SNR requirement with higher M continues. Radar-CE still tracks Perfect CSI very closely.
+
+**Data Extraction for (d) M=4096:**
+*   **X-axis:** SNR (dB), ranging from 20 dB to 60 dB.
+*   **Y-axis:** BER, logarithmic scale from 10^0 to 10^-5.
+*   **Legends:** Same as (a).
+*   **Key Observations/Data Points (Approximate for BER = 10^-3):**
+    *   **Perfect CSI:** ~38 dB
+    *   **Radar-CE:** ~39 dB
+    *   **FD-CE:** ~42 dB
+    *   **TD-CE:** ~43 dB
+    *   **DD-CE(N=4):** ~43 dB
+    *   **OOK, RSS:** Requires >60 dB
+    *   The shift to higher SNRs for a given BER is more pronounced. Radar-CE consistently demonstrates near-perfect channel estimation performance.
+
+---
+
+Image [_page_12_Figure_7.jpeg]: Chart
+This image consists of two charts, (a) Positioning and (b) BER, analyzing the effect of DC bias on RMSE on range and Bit Error Rate (BER), respectively, as a function of SNR.
+
+**Data Extraction for (a) Positioning:**
+*   **X-axis:** SNR (dB), ranging from -10 dB to 40 dB.
+*   **Y-axis:** RMSE on range (meter), logarithmic scale from 10^-1 to 10^2.
+*   **Legends:** DC bias: 1dB (Square), 5dB (Circle), 9dB (Cross).
+*   **Key Observations/Data Points (Approximate):**
+    *   All three DC bias levels (1dB, 5dB, 9dB) show almost identical performance.
+    *   At SNR -10 dB, RMSE is approximately 30 meters.
+    *   As SNR increases, RMSE sharply decreases.
+    *   At SNR 10 dB, RMSE is approximately 2 meters.
+    *   At SNR 20 dB, RMSE saturates at approximately 0.2 meters.
+    *   Beyond 20 dB SNR, increasing SNR or changing DC bias has negligible impact on positioning RMSE.
+
+**Data Extraction for (b) BER:**
+*   **X-axis:** SNR (dB), ranging from 10 dB to 60 dB.
+*   **Y-axis:** BER, logarithmic scale from 10^0 to 10^-5.
+*   **Legends:** DC bias: 1dB (Square), 3dB (Circle), 5dB (Cross), 7dB (Asterisk), 9dB (X).
+*   **Key Observations/Data Points (Approximate for BER = 10^-3):**
+    *   **DC bias 1dB:** Requires ~40 dB SNR.
+    *   **DC bias 3dB:** Requires ~25 dB SNR.
+    *   **DC bias 5dB:** Requires ~21 dB SNR.
+    *   **DC bias 7dB:** Requires ~19 dB SNR.
+    *   **DC bias 9dB:** Requires ~18 dB SNR.
+    *   Higher DC bias values significantly improve BER performance, meaning less SNR is required to achieve a target BER. For example, a 9dB DC bias achieves a BER of 10^-3 at nearly 22 dB less SNR than a 1dB DC bias.
+
+---
+
+Image [_page_13_Figure_2.jpeg]: Chart
+This image displays three 3D bar charts: (a) Average, (b) Maximum, and (c) Minimum received signal power, as a function of room width (m) and room length (m).
+
+**Data Extraction for (a) Average:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m (in steps of 2m).
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m (in steps of 2m).
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-10.
+*   **Key Observations/Data Points (Approximate):**
+    *   Highest average power (approx. 3.5e-10 to 4e-10) is observed in the smallest rooms (e.g., 1.5m x 1.5m).
+    *   Average power generally decreases as room width and length increase.
+    *   In the largest rooms (e.g., 7.5m x 7.5m), average power is around 1e-10 to 2e-10.
+
+**Data Extraction for (b) Maximum:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m.
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m.
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-9.
+*   **Key Observations/Data Points (Approximate):**
+    *   Highest maximum power (approx. 3.5e-9 to 4e-9) is observed in the smallest rooms.
+    *   Maximum power generally decreases with increasing room dimensions, though specific grid points can show higher peaks.
+    *   The maximum power values are approximately an order of magnitude higher than the average power values for corresponding room sizes.
+
+**Data Extraction for (c) Minimum:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m.
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m.
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-11.
+*   **Key Observations/Data Points (Approximate):**
+    *   Minimum power values are very low, generally ranging from 0.5e-11 to 2e-11 across all room sizes.
+    *   The minimum power shows a slight decreasing trend with increasing room size, but there are always very low signal strength areas.
+    *   The minimum power values are approximately two orders of magnitude lower than the average power and three orders of magnitude lower than the maximum power.
+
+---
+
+Image [_page_13_Figure_4.jpeg]: Chart
+This image displays three 3D bar charts: (a) Average, (b) Maximum, and (c) Minimum received signal power, as a function of room width (m) and room length (m). These charts are structurally similar to Figure 2, but with different absolute power scales.
+
+**Data Extraction for (a) Average:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m.
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m.
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-6.
+*   **Key Observations/Data Points (Approximate):**
+    *   Highest average power (approx. 3.5e-6 to 4e-6) is observed in the smallest rooms.
+    *   Average power generally decreases as room width and length increase.
+    *   In the largest rooms (e.g., 7.5m x 7.5m), average power is around 1e-6 to 2e-6.
+    *   The absolute power values are significantly higher (by a factor of 10,000 to 100,000) than those in Figure 2(a).
+
+**Data Extraction for (b) Maximum:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m.
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m.
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-5.
+*   **Key Observations/Data Points (Approximate):**
+    *   Highest maximum power (approx. 3.5e-5 to 4e-5) is observed in the smallest rooms.
+    *   Maximum power generally decreases with increasing room dimensions.
+    *   The maximum power values are approximately an order of magnitude higher than the average power values in this figure.
+    *   The absolute power values are significantly higher (by a factor of 10,000 to 100,000) than those in Figure 2(b).
+
+**Data Extraction for (c) Minimum:**
+*   **X-axis:** Room width (m), from 1.5m to 7.5m.
+*   **Y-axis:** Room length (m), from 1.5m to 7.5m.
+*   **Z-axis:** Received Signal Power, ranging from 0 to 4e-6.
+*   **Key Observations/Data Points (Approximate):**
+    *   Minimum power values generally range from 0.5e-6 to 2e-6.
+    *   A clearer decreasing trend of minimum power with increasing room size is observed compared to Figure 2(c).
+    *   The minimum power values are significantly higher (by a factor of 10,000 to 100,000) than those in Figure 2(c).
+    *   Even with higher overall power, minimums remain notably lower than average/maximum, indicating signal variability.
+
+=== NEW BATCH ANALYSIS ===
+
+Image [_page_13_Figure_6.jpeg]: Chart. This image presents six 3D bar charts illustrating the Positioning Root Mean Square Error (RMSE) in meters across varying room widths and lengths for different communication technologies and receiver counts (M).
+*   **(a) RSS, M = 1024:** Positioning RMSE generally increases with room dimensions, ranging from approximately 1.5m (for 1.5m width/length) to around 9-10m (for 7.5m width/length).
+*   **(b) Radar, M = 1024:** Positioning RMSE is significantly lower than RSS, increasing from approximately 0.25m (for 1.5m width/length) to around 0.75-1m (for 7.5m width/length).
+*   **(c) Radar-RSS, M = 1024:** Positioning RMSE values are very similar to the Radar-only scenario (b), ranging from approximately 0.25m to around 0.75-1m, showing similar trends of increasing error with larger room dimensions.
+*   **(d) RSS, M = 4096:** Positioning RMSE values and trends are very similar to (a) RSS, M = 1024, ranging from approximately 1.5m to around 9-10m.
+*   **(e) Radar, M = 4096:** Positioning RMSE is significantly lower than with M=1024, ranging from approximately 0.025m (for 1.5m width/length) to around 0.075-0.1m (for 7.5m width/length). The trend of increasing RMSE with room size persists.
+*   **(f) Radar-RSS, M = 4096:** Positioning RMSE values are very similar to the Radar-only scenario (e) with M=4096, ranging from approximately 0.025m to around 0.075-0.1m.
+
+Image [_page_14_Figure_2.jpeg]: Chart. This image displays three 3D bar charts showing the Achievable Rate across varying room widths and lengths for different communication technologies and receiver counts (M).
+*   **(a) RSS, M = 1024:** Achievable Rate in Mbps generally remains high and relatively stable across room dimensions, ranging from approximately 50 Mbps to 100 Mbps, with most values between 70-100 Mbps.
+*   **(b) Radar-CE, M = 1024:** Achievable Rate in Gbps shows more fluctuation but generally ranges from approximately 1 Gbps to 3 Gbps, with many values between 1.5 Gbps and 2.5 Gbps across the room.
+*   **(c) Radar-CE, M = 4096:** Achievable Rate in Gbps is significantly higher than with M=1024, ranging from approximately 4 Gbps to 8 Gbps, with many values between 5 Gbps and 7 Gbps across the room.
+
+Image [_page_2_Picture_13.jpeg]: Diagram. This diagram illustrates the geometry of a Visible Light Communication (VLC) system within a 3D indoor environment (a rectangular room with x, y, z axes). It shows an LED (Light Emitting Diode) as the transmitter at `c_S = [x_S, y_S, z_S]` and a User PD (Photodetector) as the receiver at `c_D = [x_D, y_D, z_D]`. The Line-of-Sight (LoS) path, denoted `d_SD`, directly connects the LED and PD. The diagram also includes normal vectors for the source (`n_S`) and detector (`n_D`), and associated angles of irradiance (`φ_t`) and incidence (`φ_r`). Additionally, Non-Line-of-Sight (NLoS) paths, representing reflections off the room walls, are indicated.
+
+Image [_page_6_Figure_18.jpeg]: Chart. This is a stacked bar chart displaying the "Peaks" (on a log scale from 1e-12 to 1e-11) versus "Delay" (in ns). There is a single stacked bar at a delay of 16.28 ns. The green portion represents the Line-of-Sight (LoS) component, and the yellow portion on top represents the Non-Line-of-Sight (NLoS) component. The total peak value at 16.28 ns is approximately 1.5 x 1e-11, with the LoS component being approximately 1e-11 and the NLoS component approximately 0.5 x 1e-11. A target delay `τ₀ = 14.08 ns` is also noted.
+
+Image [_page_6_Figure_20.jpeg]: Chart. This is a bar chart displaying "Peaks" (on a log scale from 1e-12 to 1e-11) versus "Delay" (in ns). It shows two distinct bars at a delay of 12.21 ns. The green bar represents the Line-of-Sight (LoS) peak, which is approximately 1.2 x 1e-11. The yellow bar represents the Non-Line-of-Sight (NLoS) peak, which is approximately 1.8 x 1e-11, indicating a stronger NLoS component than LoS at this delay. A target delay `τ₀ = 14.08 ns` is also noted.
+
+=== NEW BATCH ANALYSIS ===
+
+Image [_page_6_Figure_22.jpeg]: Chart: This is a bar chart displaying the "Peaks" (likely power or amplitude on a logarithmic scale) of Line-of-Sight (LoS) and Non-Line-of-Sight (NLoS) components against "Delay" in nanoseconds (ns). The target delay is indicated as τ₀ = 14.08 ns.
+*   **Data:**
+    *   LoS (Green bar): Appears at approximately 14.24 ns, with a peak value estimated around 2.5e-12.
+    *   NLoS (Yellow bar): Appears slightly after 14.24 ns (e.g., ~14.3 ns), with a peak value estimated around 8.5e-12.
+    *   The delay axis ranges up to 65.1 ns.
+
+Image [_page_7_Figure_13.jpeg]: Diagram: This diagram illustrates the representation and distribution of "Intended Pilot" signals, "Hermitian Symmetry," and "Clipping Noise" across three different domains: Time Domain (TD), Frequency Domain (FD), and Delay-Doppler Domain (DD-domain).
+*   **(a) TD (Time Domain):** Shows a sequence of discrete time slots, with one slot highlighted in blue as "Intended Pilot," indicating the presence of a pilot signal at a specific time instant.
+*   **(b) FD (Frequency Domain):** Shows a sequence of frequency subcarriers. "Intended Pilot" symbols are spread across several subcarriers. Regions marked with "Hermitian Symmetry" typically indicate properties of real-valued signals in the time domain when transformed to the frequency domain. "Clipping Noise" is shown affecting other frequency subcarriers.
+*   **(c) DD-domain (Delay-Doppler Domain):** This is a 2D grid where the x-axis represents "Doppler" and the y-axis represents "Delay." "Intended Pilot" signals are localized in specific delay-Doppler bins. "Hermitian Symmetry" and "Clipping Noise" are also distributed within this domain relative to the pilot placements. This representation is typical for orthogonal frequency-division multiplexing (OFDM) or orthogonal time-frequency-space (OTFS) systems where channel characteristics are analyzed in these dimensions.
+
+Image [_page_8_Figure_20.jpeg]: Chart: This image presents two line charts, (a) Pair A and (b) Pair B, showing the "Total Power of CIRs" (Channel Impulse Responses) as a function of "M" (likely a system parameter such as the number of subcarriers).
+*   **Data for (a) Pair A:**
+    *   M = 64: Total Power of CIRs ≈ 5.2e-07
+    *   M = 256: Total Power of CIRs ≈ 3.5e-07
+    *   M = 1024: Total Power of CIRs ≈ 1.2e-07
+    *   M = 4096: Total Power of CIRs ≈ 4.0e-08
+*   **Data for (b) Pair B:**
+    *   M = 64: Total Power of CIRs ≈ 8.0e-08
+    *   M = 256: Total Power of CIRs ≈ 6.5e-08
+    *   M = 1024: Total Power of CIRs ≈ 3.5e-08
+    *   M = 4096: Total Power of CIRs ≈ 1.5e-08
+*   **General Trend:** For both Pair A and Pair B, the total power of CIRs decreases as the value of M increases. The absolute power levels are different between Pair A and Pair B.
+
+Image [_page_9_Figure_10.jpeg]: Chart: This image consists of four line charts, (a) M = 64, (b) M = 256, (c) M = 1024, and (d) M = 4096, each showing the "RMSE on range (meter)" on a logarithmic scale (y-axis) versus "SNR (dB)" (x-axis) for different communication and ranging schemes.
+*   **Schemes compared:** OOK, RSS, VLPC-DCO-OFDM: Radar, and VLPC-DCO-OFDM: Radar-RSS.
+*   **General Trends Across All Charts (a-d):**
+    *   As SNR increases, the RMSE on range decreases for all schemes.
+    *   OOK and RSS generally show higher RMSE (worse performance) compared to the DCO-OFDM based methods.
+    *   VLPC-DCO-OFDM: Radar-RSS consistently shows the lowest RMSE, particularly at higher SNRs.
+    *   Increasing the parameter M (from 64 to 4096) generally improves the RMSE performance of the VLPC-DCO-OFDM schemes, especially at higher SNRs, with M=4096 exhibiting the best performance.
+*   **Approximate Data Points (representative values at SNR = 70 dB):**
+    *   **(a) M = 64:** OOK (~0.08m), RSS (~0.08m), Radar (~0.03m), Radar-RSS (~0.02m)
+    *   **(b) M = 256:** OOK (~0.08m), RSS (~0.08m), Radar (~0.02m), Radar-RSS (~0.015m)
+    *   **(c) M = 1024:** OOK (~0.08m), RSS (~0.08m), Radar (~0.01m), Radar-RSS (~0.005m)
+    *   **(d) M = 4096:** OOK (~0.08m), RSS (~0.08m), Radar (~0.008m), Radar-RSS (~0.003m)
+
+Image [_page_9_Figure_2.jpeg]: Diagram and Charts: This image combines a top diagram illustrating room topology with multiple bottom charts showing channel characteristics.
+*   **Top Part (Fig. 5. Room topology and three LED-User pairs.):** This is a **Diagram**.
+    *   **Explanation:** It depicts a 3D room with an X-Y-Z coordinate system. It shows three distinct transmitter-receiver setups, labeled "Pair A," "Pair B," and "Pair C." Each pair specifies the (x,y,z) coordinates of an LED (Light Emitting Diode, acting as a transmitter) and a User (acting as a receiver). This diagram establishes the physical configurations for which channel impulse responses are likely measured or simulated.
+        *   Pair A: LED at (3,5,3,4), User at (3.1,8,1,2).
+        *   Pair B: LED at (5,5,3,4), User at (0.6,0.8,1,2).
+        *   Pair C: LED at (7,1,3,4), User at (0.1,7,8,1,2).
+*   **Bottom Part (Charts (a) to (f)):** These are **Charts**, specifically bar charts showing the "Power of each CIR" on a logarithmic scale (y-axis) versus "Delay" in nanoseconds (x-axis). These charts depict the channel impulse response (CIR) for "Pair A" under different conditions (single-carrier and various M values), distinguishing between LoS (green) and NLoS (yellow) components.
+    *   **Data for (a) Pair A, single-carrier:**
+        *   LoS: A strong green bar at very early delay (~0 ns) with power ~2.5e-10.
+        *   NLoS: A broad distribution of yellow bars from ~10 ns to ~60 ns, with peak power around 1e-11 to 1e-12.
+    *   **Data for (b) Pair A, M = 256:**
+        *   LoS: A green bar at ~5 ns, power ~5e-11.
+        *   NLoS: Multiple yellow bars, with a cluster peaking around ~10 ns, power ~2e-11, and other smaller components.
+    *   **Data for (c) Pair A, M = 1024:**
+        *   LoS: A green bar at ~8.14 ns, power ~1e-11.
+        *   NLoS: Several yellow bars, with a significant one around ~15 ns, power ~3e-12.
+    *   **Data for (d) Pair A, M = 4096:**
+        *   LoS: A green bar at ~7.12 ns, power ~1e-12.
+        *   NLoS: A cluster of yellow bars from ~10-15 ns, peak power ~5e-12.
+    *   **Data for (e) Pair A, M = 1024 (shifted/zoomed view):**
+        *   A cluster of yellow (NLoS) bars around 21.36 ns, with peak power between 3e-13 and 1e-12.
+    *   **Data for (f) Pair A, M = 4096 (shifted/zoomed view):**
+        *   A cluster of yellow (NLoS) bars around 33.6 ns, with peak power between 1e-14 and 1e-13.
+*   **General Observation from Charts (a)-(f):** As M increases, the NLoS components become more resolved into distinct peaks rather than a broad continuum, and the power of individual LoS and NLoS components generally decreases, suggesting improved multipath resolution and a more accurate representation of the channel. Charts (e) and (f) highlight specific, lower-power multipath components at later delays.

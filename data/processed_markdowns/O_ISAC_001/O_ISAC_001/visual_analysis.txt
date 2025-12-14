@@ -1,0 +1,32 @@
+Image [_page_2_Figure_0.jpeg]: Chart:
+This chart displays the Error Vector Magnitude (EVM) in dB on the Y-axis against the parameter `2πh` on the X-axis. The range for `2πh` is from 1 to 4, and for EVM from -30 dB to -14 dB.
+
+The legend distinguishes between three modulation schemes (4QAM, 16QAM, 64QAM) using different markers (blue circles, orange squares, green diamonds, respectively). It also differentiates between two modulation techniques: CE-OFDM (solid lines) and OFDM (dashed lines). Additionally, two horizontal dashed lines indicate FEC (Forward Error Correction) limits for 16QAM (~-18 dB) and 64QAM (~-22 dB). The legend also includes "W/o PC" (Without Pre-compensation, solid circle marker) and "W/ PC" (With Pre-compensation, solid square marker), which are further annotated as text labels on the plot, specifically for the OFDM curves.
+
+**Key Data and Trends:**
+*   **General Performance Trend:** All curves show an initial decrease in EVM (improvement) as `2πh` increases, reaching a minimum, and then an increase in EVM (degradation) for higher `2πh` values.
+*   **CE-OFDM vs. OFDM:** CE-OFDM (solid lines) consistently achieves lower EVM (better performance) than OFDM (dashed lines) for all modulation schemes and across the entire `2πh` range.
+    *   CE-OFDM minima are around -28 dB to -29 dB, occurring roughly at `2πh` = 1.8 to 2.
+    *   OFDM minima are around -26 dB to -27 dB, occurring roughly at `2πh` = 2.2 to 2.4.
+*   **Modulation Scheme Impact:** For both CE-OFDM and OFDM, higher-order modulation schemes result in higher EVM (worse performance), as expected. For instance, at `2πh` = 2, CE-OFDM 4QAM is approximately -29 dB, 16QAM -28 dB, and 64QAM -27.5 dB.
+*   **FEC Limits:**
+    *   All CE-OFDM curves remain well below their respective FEC limits for most `2πh` values (e.g., 16QAM stays below -18 dB, 64QAM below -22 dB).
+    *   OFDM curves without pre-compensation ("W/o PC" region indicated by annotation) for 16QAM and 64QAM exceed their FEC limits at `2πh` values greater than approximately 3.2, indicating unacceptable error rates.
+*   **Pre-compensation Effect (OFDM):** The labels "W/o PC" and "W/ PC" refer to different performance regions for the OFDM (dashed) curves. "W/o PC" points to the region where EVM significantly increases at higher `2πh` values (e.g., above -20 dB). "W/ PC" points to a region where the OFDM curves maintain lower EVM at higher `2πh` values (e.g., around -26 dB to -27 dB), suggesting an improvement in performance due to pre-compensation, though still generally worse than CE-OFDM.
+
+Image [_page_2_Figure_4.jpeg]: Chart:
+This chart displays the Normalized Power Spectral Density (PSD) in dB/Hz on the Y-axis against Frequency in MHz on the X-axis. The frequency range is from 0 to 600 MHz, and the normalized PSD ranges from -60 dB/Hz to 0 dB/Hz.
+
+The legend distinguishes three curves, each corresponding to a different value of the parameter `2πh`: blue for `2πh = 1`, orange for `2πh = 2`, and yellow for `2πh = 4`.
+
+**Key Data and Trends:**
+*   **General Shape:** All three curves show a characteristic modulated signal spectrum with a prominent central peak and surrounding spectral content. The spectra are generally centered around 300-350 MHz.
+*   **Impact of `2πh` on Spectral Spreading:**
+    *   **`2πh = 1` (Blue line):** Exhibits the narrowest main lobe and most concentrated spectral energy. The bulk of the signal power is within approximately 200-400 MHz, with a peak PSD around -40 dB/Hz (excluding the carrier).
+    *   **`2πh = 2` (Orange line):** Shows wider spectral spreading compared to `2πh = 1`. The main lobe is broader, and the overall PSD level is higher. The peak PSD (excluding the carrier) is around -30 to -35 dB/Hz.
+    *   **`2πh = 4` (Yellow line):** Demonstrates the widest spectral spreading and the highest overall PSD level. The signal energy is spread across a broader frequency range, roughly from 100 MHz to 500 MHz, with a peak PSD (excluding the carrier) around -20 dB/Hz.
+*   **Carrier Component:** All three curves show a very strong, narrow spectral peak at approximately 300 MHz, indicating the presence of a dominant carrier or pilot tone. The amplitude of this carrier peak increases with `2πh`:
+    *   `2πh = 1`: Carrier peak around -5 dB/Hz.
+    *   `2πh = 2`: Carrier peak around -2 dB/Hz.
+    *   `2πh = 4`: Carrier peak around 0 dB/Hz.
+*   **Bandwidth:** The effective bandwidth of the signal increases significantly with increasing `2πh`.

@@ -1,0 +1,140 @@
+Image [_page_1_Figure_6.jpeg]: Diagram: This image displays a block diagram of an experimental setup. It shows a 1064 nm High-Power Fiber Laser (HPFL) connected to an optical Isolator (ISO). The output of the isolator is then fed into a Single-Mode Fiber (SMF) which can be 1 km, 2 km, or 3 km in length. Finally, an Optical Power Meter (OPM) is used to measure the power at the end of the SMF. This setup is designed to investigate the power transmission characteristics of SMF at different lengths when using a high-power laser.
+
+Image [_page_1_Figure_8.jpeg]: Chart: This image is a line graph showing the relationship between HPFL Input power (W) on the x-axis and Collected power (W) on the y-axis.
+*   **Data for 1 km SMF (black squares):**
+    *   1W input -> ~0.8W collected
+    *   2W input -> ~1.6W collected
+    *   3W input -> ~2.8W collected
+    *   4W input -> ~3.8W collected
+    *   5W input -> ~4.9W collected
+    *   6W input -> ~5.8W collected
+    *   7W input -> ~6.7W collected
+    *   8W input -> ~7.2W collected
+    *   9W input -> ~7.5W collected
+    *   10W input -> ~7.6W collected
+*   **Data for 2 km SMF (red circles):**
+    *   1W input -> ~0.5W collected
+    *   2W input -> ~1.1W collected
+    *   3W input -> ~1.9W collected
+    *   4W input -> ~2.9W collected
+    *   5W input -> ~3.6W collected
+    *   6W input -> ~4.3W collected
+    *   7W input -> ~4.7W collected
+    *   8W input -> ~4.9W collected
+    *   9W input -> ~5.1W collected
+    *   10W input -> ~5.2W collected
+*   **Data for 3 km SMF (blue diamonds):**
+    *   1W input -> ~0.4W collected
+    *   2W input -> ~0.8W collected
+    *   3W input -> ~1.3W collected
+    *   4W input -> ~1.8W collected
+    *   5W input -> ~2.3W collected
+    *   6W input -> ~2.5W collected
+    *   7W input -> ~2.7W collected
+    *   8W input -> ~2.8W collected
+    *   9W input -> ~2.8W collected
+    *   10W input -> ~2.9W collected
+The graph also includes dashed lines representing linear fits for the initial portion of each curve, indicating a deviation from linearity at higher input powers, especially for longer fiber lengths, suggesting power saturation.
+
+Image [_page_2_Figure_0.jpeg]: Setup: This image presents a comprehensive experimental setup diagram for a multi-core fiber (MCF) communication system, encompassing a Central Office (Transmitter) and a Remote Unit (Receiver) connected via a 1 km Weakly Coupled 7-Core Fiber (WC-7CF).
+*   **Central Office (Transmitter):**
+    *   Includes a Transmitter Digital Signal Processor (Tx DSP) connected to an Arbitrary Waveform Generator (AWG) and an Electrical Amplifier (EA).
+    *   An array of 1064 nm High-Power Fiber Lasers (HPFLs) and a 1550 nm External Cavity Laser (ECL) followed by a Polarization Controller (PC) and a Mach-Zehnder Modulator (MZM).
+    *   All these optical signals are combined via a "Fan-In" component.
+*   **Transmission Medium:** The combined signals are transmitted through a 1 km WC-7CF.
+    *   Embedded image (a) shows a cross-section of the 7-core fiber with individual cores numbered (1-7) and core diameters indicated (e.g., D1=10.736um, D2=10.414um).
+    *   Embedded image (b) shows a physical photograph of the 7-core fiber pigtails.
+*   **Remote Unit (Receiver):**
+    *   A "Fan-Out" component separates the signals from the WC-7CF into individual channels.
+    *   Each channel then goes through a Variable Optical Attenuator (VOA), an Erbium-Doped Fiber Amplifier (EDFA), and a Photodetector (PD).
+    *   The electrical signals from the PDs are processed by a Programmable Power Controller (PPC).
+    *   A Receiver Digital Signal Processor (Rx DSP) is connected to a Digital Storage Oscilloscope (DSO) for signal analysis.
+The setup facilitates the study of simultaneous data transmission and power delivery over a multi-core fiber.
+
+Image [_page_2_Figure_5.jpeg]: Diagram: This image is a block diagram illustrating the Digital Signal Processing (DSP) steps involved in both the Transmitter (Tx-DSP) and Receiver (Rx-DSP) sides of a communication system.
+*   **Tx-DSP (Transmitter Digital Signal Processing) flow (left to right):**
+    1.  **QAM Mapping:** Converts data bits into Quadrature Amplitude Modulation (QAM) symbols.
+    2.  **DMT Modulation:** Performs Discrete MultiTone modulation, typically using Inverse Fast Fourier Transform (IFFT) to create orthogonal subcarriers.
+    3.  **CP adding:** Adds a Cyclic Prefix to each DMT symbol to mitigate inter-symbol interference.
+    4.  **RRC filtering:** Applies Root Raised Cosine filtering for pulse shaping and bandwidth efficiency.
+    5.  **Resampling:** Adjusts the sampling rate of the signal.
+*   **Rx-DSP (Receiver Digital Signal Processing) flow (right to left):**
+    1.  **Resampling:** Adjusts the sampling rate of the received signal.
+    2.  **Matched filtering:** Applies a filter matched to the transmitted pulse shape to maximize SNR.
+    3.  **Synchronization:** Aligns the received signal in time and frequency.
+    4.  **Equalization:** Compensates for channel impairments like dispersion and fading.
+    5.  **DMT Demodulation:** Performs Discrete MultiTone demodulation, typically using Fast Fourier Transform (FFT) to recover subcarrier data.
+    6.  **BER/SNR Calculation:** Calculates the Bit Error Rate and Signal-to-Noise Ratio to evaluate system performance.
+This diagram provides a high-level overview of the signal processing chain for a DMT-based optical communication system.
+
+Image [_page_3_Figure_1.jpeg]: Chart: This image contains two line graphs (a) and (b), both plotting against Feed optical power (W) on the x-axis.
+*   **Chart (a): Insertion loss of FIFO (dB) vs. Feed optical power (W)**
+    *   **Y-axis:** Insertion loss of FIFO (dB)
+    *   **Data Series (Ch1 to Ch7):**
+        *   Ch1 (black squares): Relatively stable at ~0.5 dB across 1-10W.
+        *   Ch2 (red circles): Increases from ~1.3 dB at 1W to ~1.7 dB at 2W, then gradually drops to ~1.5 dB at 10W.
+        *   Ch3 (blue diamonds): Increases from ~1.9 dB at 1W to ~2.2 dB at 2W, then gradually drops to ~2.0 dB at 10W.
+        *   Ch4 (green upward triangles): Relatively stable at ~3.0 dB across 1-10W.
+        *   Ch5 (purple downward triangles): Increases from ~1.7 dB at 1W to ~2.0 dB at 2W, then gradually drops to ~1.8 dB at 10W.
+        *   Ch6 (teal leftward triangles): Increases from ~1.0 dB at 1W to ~1.4 dB at 2W, then gradually drops to ~1.3 dB at 10W.
+        *   Ch7 (orange rightward triangles): Increases from ~1.4 dB at 1W to ~1.8 dB at 2W, then gradually drops to ~1.6 dB at 10W.
+    *   **Trend:** Most channels show a slight initial rise in insertion loss at low feed power, then either stabilize or slightly decrease with increasing power. Ch1 shows the lowest loss, and Ch4 the highest and most stable.
+
+*   **Chart (b): Collected optical power (W) vs. Feed optical power (W)**
+    *   **Y-axis:** Collected optical power (W)
+    *   **Data Series (Core1 to Core7):**
+        *   Core1 (black squares): Increases linearly from ~0.8W at 1W to ~7.5W at 10W.
+        *   Core2 (red circles): Increases linearly from ~0.6W at 1W to ~6.0W at 10W.
+        *   Core3 (blue diamonds): Increases linearly from ~0.4W at 1W to ~5.5W at 10W.
+        *   Core4 (green upward triangles): Increases linearly from ~0.2W at 1W to ~3.9W at 10W.
+        *   Core5 (purple downward triangles): Increases linearly from ~0.5W at 1W to ~5.0W at 10W.
+        *   Core6 (teal leftward triangles): Increases linearly from ~0.7W at 1W to ~6.5W at 10W.
+        *   Core7 (orange rightward triangles): Increases linearly from ~0.6W at 1W to ~5.9W at 10W.
+    *   **Trend:** All cores exhibit a nearly linear increase in collected optical power with increasing feed optical power. Core1 consistently shows the highest collected power, while Core4 shows the lowest. The relative power distribution among the cores remains consistent across the power range.
+
+=== NEW BATCH ANALYSIS ===
+
+Image [_page_3_Figure_4.jpeg]: Chart. This image presents four sub-charts (a, b, c, d) comparing performance metrics (SNR and BER) with and without feed light across 7 cores at different baud rates.
+*   **(a) SNR vs. Core index at 50 GBaud:** Shows SNR in dB for 7 cores. Green circles represent "w/o Feed light", and orange circles represent "w/ Feed light". A dashed line indicates EVM=8% (22 dB).
+    *   Cores 1, 2, 5, 6, 7 generally show SNR above 22 dB, ranging from ~22.0 dB to ~23.5 dB.
+    *   Cores 3 and 4 show SNR slightly below 22 dB (~21.9-22.0 dB), with their insets indicating performance below the EVM=8% threshold.
+    *   "w/ Feed light" consistently shows a marginally lower SNR than "w/o Feed light" for all cores.
+*   **(b) SNR vs. Core index at 60 GBaud:** Similar to (a), but at a higher baud rate of 60 GBaud.
+    *   SNR values are generally slightly lower than at 50 GBaud.
+    *   Cores 1, 2, 5, 6, 7 show SNR mostly at or above 22 dB, ranging from ~21.9 dB to ~23.3 dB.
+    *   Cores 3 and 4 consistently show SNR below 22 dB (~21.7-21.8 dB), with their insets indicating performance below the EVM=8% threshold.
+    *   Again, "w/ Feed light" consistently shows a marginally lower SNR than "w/o Feed light".
+*   **(c) BER vs. Core index at 50 GBaud:** Shows Bit Error Rate (BER) for 7 cores. Green circles represent "w/o Feed light", and orange circles represent "w/ Feed light". A dashed line indicates a threshold of 2E-2.
+    *   BER values range from approximately 2.5E-3 to 8.0E-3.
+    *   Cores 3 and 4 exhibit the highest BER (~8.0E-3), correlating with their lower SNR.
+    *   All BER values are well below the 2E-2 threshold.
+    *   "w/ Feed light" generally shows a slightly higher BER than "w/o Feed light", but the difference is minimal.
+*   **(d) BER vs. Core index at 60 GBaud:** Similar to (c), but at 60 GBaud.
+    *   BER values are generally higher than at 50 GBaud, ranging from approximately 5.0E-3 to 1.5E-2.
+    *   Cores 3 and 4 still show the highest BER (~1.5E-2).
+    *   All BER values remain below the 2E-2 threshold.
+    *   "w/ Feed light" generally shows a slightly higher BER than "w/o Feed light", with very small differences.
+
+Image [_page_3_Figure_7.jpeg]: Chart. This is a dual Y-axis line chart illustrating the relationship between feed optical power per core and total collected optical power, as well as the optical-to-optical conversion efficiency (OPTE).
+*   **X-axis:** Feed optical power per core (W), ranging from 0 to 10 W.
+*   **Left Y-axis (black circles):** Total collected optical power (W). This data linearly increases from approximately 3.5 W at 1 W feed power to about 32 W at 10 W feed power.
+*   **Right Y-axis (red squares):** OPTE (%). This data remains remarkably constant at approximately 58% across the entire range of feed optical power per core (from 1 W to 10 W).
+
+Image [_page_4_Figure_0.jpeg]: Chart. This is a line chart displaying the collected optical power for individual cores (Core2 to Core7) over a 60-minute period.
+*   **X-axis:** Time (min), from 0 to 60 min.
+*   **Y-axis:** Collected optical power (W), ranging from 3.5 W to 7.0 W.
+*   **Data for each core:**
+    *   Core2 (black diamonds): Stays stable around 6.0 W.
+    *   Core3 (red circles): Stays stable around 5.2 W.
+    *   Core4 (blue triangles): Stays stable around 3.9 W, showing the lowest collected power among the cores.
+    *   Core5 (green circles): Stays stable around 5.05 W.
+    *   Core6 (purple hexagons): Stays stable around 6.05 W.
+    *   Core7 (orange hexagons): Stays stable around 6.2 W, showing the highest collected power among the cores.
+*   **Overall trend:** The collected optical power for each of the measured cores (Core2-Core7) remains very stable over the entire 60-minute observation period, with only minor fluctuations (typically less than +/- 0.1 W).
+
+Image [_page_4_Figure_2.jpeg]: Chart. This is a line chart showing the total collected optical power over a 60-minute duration.
+*   **X-axis:** Time (min), from 0 to 60 min.
+*   **Y-axis:** Total collected optical power (W), ranging from 30 W to 35 W.
+*   **Data (black circles):** The total collected optical power fluctuates minimally around a central value. At time 0 min, it is approximately 32.4 W, peaking around 32.6 W at various points, and dropping slightly to around 32.3 W at other points.
+*   **Red dashed line:** Indicates an average or target total collected optical power of 32.5 W.
+*   **Overall trend:** The total collected optical power demonstrates excellent stability over the 60-minute measurement period, staying consistently within approximately +/- 0.2 W of the 32.5 W average.

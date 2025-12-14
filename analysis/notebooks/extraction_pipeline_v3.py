@@ -164,34 +164,174 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
 # =============================================================================
 # PHASE 2: VISUAL ANALYSIS (BLIP + DePlot) - Batched
 # =============================================================================
+def analyze_with_backup_model(images, prompt_list):
+    """
+    Backup analysis using Nvidia Nemotron (via OpenRouter/OpenAI-compatible API)
+    when Gemini hits rate limits.
+    """
+    try:
+        from openai import OpenAI
+        from google.colab import userdata
+        import base64
+        import io
+        
+        # Get Backup Key
+        # User specified the key name is the model name
+        key_names = ['nvidia/nemotron-nano-12b-v2-vl:free', 'OPENROUTER_API_KEY', 'NVIDIA_API_KEY']
+        api_key = None
+        
+        for name in key_names:
+            try:
+                api_key = userdata.get(name)
+                if api_key:
+                    break
+            except:
+                pass
+            
+            if not api_key:
+                api_key = os.getenv(name)
+                if api_key:
+                    break
+            
+        if not api_key:
+            print(f"     ⚠️ Backup API Key (tried: {key_names}) not found. Cannot switch to backup.")
+            return None
+
+        # Init Client
+        client = OpenAI(
+            base_url="https://openrouter.ai/api/v1",
+            api_key=api_key,
+            timeout=30.0, # Add timeout to prevent hanging
+            max_retries=1 
+        )
+        
+        print("     🔄 Switching to Backup Model: nvidia/nemotron-nano-12b-v2-vl:free")
+        
+        # Prepare content for OpenAI Vision format
+        content_parts = []
+        
+        # Add text prompt
+        text_prompt = (
+            "You are an expert scientific image analyst. Analyze these images for a systematic review.\n"
+            "For EACH image, provide a structured analysis following this EXACT format:\n\n"
+            "Image [FILENAME]:\n"
+            "- Type: (Chart / Diagram / Setup / Other)\n"
+            "- Description: (Brief explanation of visual content)\n"
+            "- KEY DATA: (If chart, extract numerical values/trends. If diagram, explain relationships.)\n"
+            "--------------------------------------------------\n"
+        )
+        content_parts.append({"type": "text", "text": text_prompt})
+        
+        # Add images
+        for img_path in images:
+            try:
+                # Open and resize if needed (though API might handle it, safer to keep manageable)
+                img = Image.open(img_path)
+                
+                # OPTIMIZATION: Resize large images to max 1024px to prevent timeouts/context overflow
+                max_dim = 1024
+                if img.width > max_dim or img.height > max_dim:
+                    img.thumbnail((max_dim, max_dim))
+                
+                # Convert to RGB if needed
+                if img.mode != 'RGB':
+                    img = img.convert('RGB')
+                    
+                # Encode to base64
+                buffered = io.BytesIO()
+                img.save(buffered, format="JPEG", quality=85) # Compress slightly
+                img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
+                
+                content_parts.append({
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/jpeg;base64,{img_str}"
+                    }
+                })
+                # Add specific instruction per image as text is tricky in batched vision, 
+                # but we added global instruction. Let's add filename as context if possible for the model to map
+                content_parts.append({
+                    "type": "text", 
+                    "text": f"\n[Context] Above is Image: {os.path.basename(img_path)}"
+                })
+                
+            except Exception as e:
+                print(f"     ⚠️ Error preparing image for backup: {e}")
+                continue
+
+        response = client.chat.completions.create(
+            model="nvidia/nemotron-nano-12b-v2-vl:free",
+            messages=[
+                {
+                    "role": "user",
+                    "content": content_parts
+                }
+            ]
+        )
+        
+        content = response.choices[0].message.content
+        if content:
+             print(f"     📝 Nvidia Output Preview: {content[:100].replace(chr(10), ' ')}...")
+        return content
+
+    except Exception as e:
+        print(f"     ❌ Backup Model Check Failed: {e}")
+        return None
+
 def phase2_visual_analysis(checkpoint: CheckpointManager):
-    """Analyze images using Google Gemini 1.5 Flash API (Batched)."""
+    """Analyze images using Google Gemini 1.5 Flash API (Batched) with Multi-Stage Fallback."""
     print("\n" + "="*60)
     print("👁️ PHASE 2: VISUAL ANALYSIS (Gemini 1.5 Flash - BATCHED)")
     print("="*60)
     
+    # Imports
     try:
         import google.generativeai as genai
         from google.colab import userdata
-        api_key = userdata.get('GOOGLE_API_KEY')
-    except:
+    except ImportError:
         import google.generativeai as genai
-        api_key = os.getenv('GOOGLE_API_KEY')
+        userdata = None # Fallback for local
 
-    if not api_key:
-        print("❌ GOOGLE_API_KEY not found! Skipping Phase 2.")
-        return
+    # --- API KEY MANAGEMENT ---
+    def get_key(name):
+        k = None
+        if userdata:
+            try:
+                k = userdata.get(name)
+            except:
+                pass
+        if not k:
+            k = os.getenv(name)
+        return k
 
-    # Configure Gemini
-    genai.configure(api_key=api_key)
+    primary_key = get_key('GOOGLE_API_KEY')
+    secondary_key = get_key('gapi2')
+    
+    # State tracking for active key
+    # 0: Primary (GOOGLE_API_KEY)
+    # 1: Secondary (gapi2)
+    # 2: Backup (Nvidia) - this is handled by fallback function, not genai
+    current_key_state = 0 
+    
+    if primary_key:
+        print("   🔑 Using Primary Key: GOOGLE_API_KEY")
+        genai.configure(api_key=primary_key)
+    elif secondary_key:
+        print("   🔑 Primary Key not found. Switching to Secondary: gapi2")
+        genai.configure(api_key=secondary_key)
+        current_key_state = 1
+    else:
+        print("   ⚠️ No Gemini Keys found (GOOGLE_API_KEY or gapi2). Will rely entirely on Backup Model.")
+        current_key_state = 2 # Start directly with backup
+
+    # Model definition
     model = genai.GenerativeModel('gemini-2.5-flash')
     
-    # Rate Limiting Config
-    # User confirmed limits: 5 RPM, 20 RPD
+    # Config
     BATCH_SIZE = 5 
-    RATE_LIMIT_DELAY = 15.0 # Safe delay between batches
-    
-    # Find papers with processed markdowns
+    RATE_LIMIT_DELAY = 15.0 
+
+    # Find papers
     paper_folders = sorted(glob.glob(os.path.join(Config.MARKDOWN_DIR, "*")))
     print(f"Papers to analyze: {len(paper_folders)}")
     
@@ -200,31 +340,25 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
     for i, folder in enumerate(paper_folders):
         paper_id = os.path.basename(folder)
         
-        # Look for inner folder (marker creates nested folders)
+        # Look for inner folder
         inner_folder = os.path.join(folder, paper_id)
         if os.path.exists(inner_folder):
             folder = inner_folder
         
         output_file = os.path.join(folder, "visual_analysis.txt")
         
-        # Skip if already done
         if os.path.exists(output_file):
             print(f"   ⏩ {paper_id} - already analyzed, skipping")
             continue
         
         print(f"[{i+1}/{len(paper_folders)}] 👁️ Analyzing: {paper_id}")
         
-        # Find images
+        # Get Images
         images = sorted(glob.glob(os.path.join(folder, "**", "*.png"), recursive=True) + 
                        glob.glob(os.path.join(folder, "**", "*.jpg"), recursive=True) +
                        glob.glob(os.path.join(folder, "**", "*.jpeg"), recursive=True))
         
-        if not images:
-            with open(output_file, 'w') as f:
-                f.write("No images found.")
-            continue
-
-        # Filter small images
+        # Filter Small Images
         valid_images = []
         for img_path in images:
             try:
@@ -233,54 +367,130 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
                     valid_images.append(img_path)
             except:
                 continue
-
+                
         if not valid_images:
             with open(output_file, 'w') as f:
-                f.write("No valid images found (all too small).")
+                f.write("No valid images found.")
             continue
             
         # Create Batches
         batches = [valid_images[j:j + BATCH_SIZE] for j in range(0, len(valid_images), BATCH_SIZE)]
         results = []
-        
         print(f"     Found {len(valid_images)} images -> {len(batches)} batches")
         
+        # Process Batches
         for batch_idx, batch_paths in enumerate(batches):
+            
+            # Prepare Inputs (Common to Gemini)
+            inputs = ["Analyze these scientific images for a systematic review. For EACH image, strictly follow this format:\nImage [FILENAME]: [Your Analysis]\n"]
             try:
-                inputs = ["Analyze these scientific images for a systematic review. For EACH image, strictly follow this format:\nImage [FILENAME]: [Your Analysis]\n"]
-                
-                batch_imgs = []
+                batch_imgs_objs = []
                 for p in batch_paths:
                     img = Image.open(p)
                     name = os.path.basename(p)
                     inputs.append(f"Image [{name}]: Identify if Chart/Diagram/Setup. If Chart, extract data. If Diagram, explain.")
                     inputs.append(img)
-                    batch_imgs.append(name)
-                
-                # API Call
-                response = model.generate_content(inputs)
-                text_response = response.text.strip()
-                results.append(text_response)
-                
-                print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed")
-                time.sleep(RATE_LIMIT_DELAY)
-                
+                    batch_imgs_objs.append(img)
             except Exception as e:
-                print(f"     ❌ Batch {batch_idx+1} Error: {e}")
-                if "429" in str(e):
-                    print("     ⏳ Rate limit! Waiting 60s...")
-                    time.sleep(60)
-        
+                print(f"     ⚠️ Error loading images for batch: {e}")
+                continue
+
+            # Retry Loop for Strategies
+            batch_success = False
+            
+            # Create a loop that allows trying strategies in order for THIS batch
+            # We start with the globally active current_key_state
+            
+            # Strategies to try for this batch
+            # If current_key_state is 0, we can try 0 -> 1 -> 2
+            # If current_key_state is 1, we can try 1 -> 2
+            # If current_key_state is 2, we just try 2
+            
+            temp_strategies = []
+            if current_key_state == 0:
+                temp_strategies = [0, 1, 2]
+            elif current_key_state == 1:
+                temp_strategies = [1, 2]
+            else:
+                temp_strategies = [2]
+                
+            for strategy_idx in temp_strategies:
+                if batch_success: break
+                
+                try:
+                    # Strategy 0: Primary Gemini
+                    if strategy_idx == 0:
+                        # Ensure Primary Key is set (should be default but verify)
+                         # Assuming global config is set to primary if we are here and state is 0
+                        response = model.generate_content(inputs)
+                        results.append(response.text.strip())
+                        batch_success = True
+                        print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed (Primary Gemini)")
+                        time.sleep(RATE_LIMIT_DELAY)
+
+                    # Strategy 1: Secondary Gemini
+                    elif strategy_idx == 1:
+                        if not secondary_key:
+                            print("     ℹ️ No secondary key (gapi2) available to switch to.")
+                            continue # Skip to next strategy (Backup)
+
+                        # Switch Global State if we were at 0
+                        if current_key_state == 0:
+                            print("     ⏳ Primary Key Rate Limit! Switching to Secondary Key (gapi2)...")
+                            genai.configure(api_key=secondary_key)
+                            current_key_state = 1 # Permanently switch for future lines
+                        
+                        # Try request
+                        response = model.generate_content(inputs)
+                        results.append(response.text.strip())
+                        batch_success = True
+                        print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed (Secondary Gemini)")
+                        print(f"     💤 Cooling down for {RATE_LIMIT_DELAY}s...")
+                        time.sleep(RATE_LIMIT_DELAY)
+
+                    # Strategy 2: Backup Model (Nvidia)
+                    elif strategy_idx == 2:
+                        print("     ⏳ Gemini Rate Limit! Switching to Backup (Nvidia)...")
+                        
+                        # If we are here because Gemini failed, and we have a secondary key,
+                        # it means even the secondary key failed (or we are skipping it).
+                        # Let's make this fallback STICKY if we were using Gemini before.
+                        if current_key_state < 2:
+                             print("     ⚠️ Gemini API Limit Reached consistently. Switching to Backup Mode PERMANENTLY for this run.")
+                             current_key_state = 2
+
+                        backup_res = analyze_with_backup_model(batch_paths, inputs)
+                        if backup_res:
+                            results.append(backup_res)
+                            batch_success = True
+                            print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed (Backup Model)")
+                            
+                            # Shorter delay for backup model
+                            BACKUP_DELAY = 5.0
+                            print(f"     💤 Cooling down for {BACKUP_DELAY}s...")
+                            time.sleep(BACKUP_DELAY)
+                        else:
+                            print("     ❌ Backup Model also failed.")
+                
+                except Exception as e:
+                    err_str = str(e)
+                    if "429" in err_str:
+                        # Rate limit hit - loop will naturally try next strategy defined in temp_strategies
+                        continue 
+                    else:
+                        print(f"     ❌ Error in batch (Strategy {strategy_idx}): {err_str}")
+                        # If Backup failed with non-429, we might want to continue or break? 
+                        # Continue to retry logic just in case
+                        continue
+
+            if not batch_success:
+                 print("     ❌ All strategies failed for this batch. Waiting 60s and skipping...")
+                 time.sleep(60)
+
         # Save results
         with open(output_file, 'w', encoding='utf-8') as f:
             final_output = "\n\n=== NEW BATCH ANALYSIS ===\n\n".join(results) if results else "Analysis failed."
             f.write(final_output)
-        
-        print(f"   ✅ Processed. Saved to visual_analysis.txt")
-        print("\n   🔍 PREVIEW OF VISUAL ANALYSIS:")
-        print("   " + "-"*40)
-        print(final_output[:1000] + ("..." if len(final_output) > 1000 else ""))
-        print("   " + "-"*40 + "\n")
         
         print(f"   ✅ Processed. Saved to visual_analysis.txt")
     

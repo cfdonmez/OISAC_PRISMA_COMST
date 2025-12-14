@@ -1,0 +1,77 @@
+Batch 1:
+Image _page_2_Figure_13.jpeg:
+Type: Diagram
+Description: FMCW LiDAR chirp illustrating transmitted/received sweeps, beat frequency, and time delay.
+KEY DATA: Range is computed via R = (cT/2nB) f_b, linking beat frequency to distance with centimeter-level accuracy.
+
+Image _page_3_Figure_2.jpeg:
+Type: Diagram
+Description: Proposed FSO ISAC architecture combining OCDM communications and FMCW ranging with optical front-end (MZM, EDFA, PD, OCDM demodulation, FMCW receiver).
+KEY DATA: Shows signal duplication for local reference, optical-assisted mixing for ranging, and Fresnel-transform-based OCDM demodulator for data recovery.
+
+Image _page_3_Figure_9.jpeg:
+Type: Diagram
+Description: Time–frequency map comparing conventional OCDM and the ISAC version with a dedicated FMCW subcarrier plus guard bands.
+KEY DATA: Equation (6) allocates power P_s to the N/2 subcarrier for sensing, inserts N_GB guard tones to satisfy B_GB/2 > f_b, and leaves remaining chirps for communication.
+
+Image _page_5_Figure_2.jpeg:
+Type: Setup
+Description: Experimental setup depicting AWG-generated OCDM signal, MZM biasing, EDFA, fiber delay, Gamma-Gamma turbulence emulation, and dual-path detection for communication and ranging.
+KEY DATA: Uses 1024 chirps (1 GHz bandwidth), 480-length guard band, and carrier-suppressed ODSB optics; one branch feeds FMCW mixer while the other goes through FSO/fiber channel to the user.
+
+Image _page_6_Figure_2.jpeg:
+Type: Chart
+Description: FFT spectra (beat frequencies) for 3 m, 5 m, and 15 m fiber delays.
+KEY DATA: Beat frequencies 14.652/24.409/72.260 MHz map to measured distances 3.06/5.10/15.09 m, matching presets within centimeters.
+
+Batch 2:
+Image _page_6_Figure_4.jpeg:
+Type: Chart
+Description: Measured versus preset distances with residuals when varying fiber delay lines.
+KEY DATA: Linear fit R^2 = 1 and residuals <0.1 m validate centimeter-level ranging fidelity of the OCDM-FMCW waveform.
+
+Image _page_6_Figure_9.jpeg:
+Type: Chart
+Description: Deviation between OCDM-based FMCW ranging and a standard FMCW sweep over 2.5–3.5 GHz.
+KEY DATA: Error stays within 1 mm, proving the added OCDM modulation does not degrade FMCW accuracy.
+
+Image _page_6_Figure_11.jpeg:
+Type: Chart
+Description: Beat-frequency amplitude versus guard-band configuration for 5 m and 15 m delays.
+KEY DATA: Longer delays (15 m) reduce beat amplitude due to increased interference; extending guard band improves high-range performance at the cost of communication capacity.
+
+Image _page_7_Figure_2.jpeg:
+Type: Chart
+Description: Constellation diagrams for 4-, 16-, 64-QAM carried by OCDM subcarriers.
+KEY DATA: EVMs of 7.44%, 6.10%, and 5.83% support data rate up to 3.182 Gb/s while sharing waveform with ranging.
+
+Image _page_7_Figure_9.jpeg:
+Type: Chart
+Description: BER versus Gamma-Gamma turbulence strength for 4/16/64-QAM.
+KEY DATA: BER worsens with turbulence and higher modulation order; still demonstrates acceptable performance under moderate scintillation.
+
+Batch 3:
+Image _page_8_Figure_2.jpeg:
+Type: Chart
+Description: BER of 16-QAM under different visibilities (10 km vs 0.5 km) and pointing errors.
+KEY DATA: Fog (0.5 km) and jitter σ=0.05 m significantly raise BER due to attenuation and misalignment, highlighting need for link budget margins.
+
+Image _page_8_Figure_4.jpeg:
+Type: Chart
+Description: Trade-off between attainable ranging distance R_max and communication capacity C versus guard-band length N_GB.
+KEY DATA: R_max ∝ N_GB while C decreases linearly, so larger guard bands extend range but reduce throughput.
+
+Image _page_8_Figure_7.jpeg:
+Type: Chart
+Description: Ranging/communication trade-off for different total OCDM bandwidths B.
+KEY DATA: Wider bandwidth raises both capacity and resolution; plots show C = (-2nNC0/(cT)) R_max + C0(N-1) shifting upward with bandwidth.
+
+Image _page_8_Figure_9.jpeg:
+Type: Chart
+Description: Ranging/communication trade-off for different OCDM symbol periods T.
+KEY DATA: Longer T increases R_max; to keep capacity constant, N must rise, adding complexity—guides parameter selection.
+
+Image _page_9_Figure_2.jpeg:
+Type: Chart
+Description: CCDF of PAPR for conventional OCDM versus OCDM-based ISAC waveform with non-uniform power allocation.
+KEY DATA: Proposed waveform exhibits lower PAPR probabilities thanks to guard-band power redistribution, easing linearity requirements.

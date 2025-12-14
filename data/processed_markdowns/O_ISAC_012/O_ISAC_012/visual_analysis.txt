@@ -1,0 +1,56 @@
+Image [_page_1_Figure_6.jpeg]:
+*   **Image (a):** Diagram. This is a block diagram of a combined optical communication and sensing system.
+    *   **Sensing Path (Left):** An FMCW LASER (Frequency Modulated Continuous Wave Laser) at 90% power is split by OC1. One path goes to PM (Phase Modulator) and then through OC2, which also takes input from a "Target" (via Free Space Optics) and a "1110010" input (likely for modulation). The output of OC2 is detected by BPD2 (Balanced Photodetector 2), processed by a Squaring circuit, and analyzed by an ESA (Electrical Spectrum Analyzer).
+    *   **Communication Path (Right):** A signal from the "Target" (via Free Space Optics) goes through a "1 bit delay" element. This delayed signal is detected by BPD1 (Balanced Photodetector 1), processed by an "I/|I|" block, and fed into a "Code Decision" unit for "Communication".
+    *   **Overall Function:** The diagram illustrates how a single laser source can be used for both sensing (via FMCW and phase modulation, analyzed by ESA) and communication (via a delayed signal from the target, decoded for data).
+*   **Image (b):** Chart.
+    *   **Description:** Time-domain waveform (C_CD vs. t/s).
+    *   **Data:** Y-axis (C_CD) shows binary levels switching between ~0 and ~1. X-axis (t/s) ranges from 0 to 2 x 10^-8 s.
+*   **Image (c):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing a noisy or complex fluctuating signal. X-axis (t/s) ranges from 0 to 2 x 10^-8 s.
+*   **Image (d):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing a relatively stable sinusoidal-like waveform. X-axis (t/s) ranges from 0 to 2 x 10^-8 s.
+*   **Image (e):** Chart.
+    *   **Description:** Frequency-domain spectrum (Power/dBm vs. Frequency/GHz).
+    *   **Data:** Y-axis (Power) ranges from -150 to 0 dBm. X-axis (Frequency) ranges from 0 to 2 GHz. There is a prominent peak at f = 800 MHz, with power close to -20 dBm, and a noise floor around -100 dBm.
+*   **Image (f):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing a clear sinusoidal waveform. X-axis (t/s) ranges from 0 to 1 x 10^-6 s.
+*   **Image (g):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing a pulsed sinusoidal waveform with square-wave amplitude modulation. X-axis (t/s) ranges from 0 to 2.5 x 10^-7 s.
+*   **Image (h):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing a square-wave-like binary signal (0s and 1s). X-axis (t/s) ranges from 0 to 2 x 10^-8 s.
+*   **Image (i):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. t/s), a zoomed-in view of (h).
+    *   **Data:** Y-axis (Amplitude) ranges from -1 to 1, showing distinct binary levels. X-axis (t/s) ranges from 2.05 x 10^-7 to 2.2 x 10^-7 s.
+
+Image [_page_2_Figure_20.jpeg]: Diagram. This is a detailed simulation diagram for an integrated sensing and communication (ISAC) system, likely using an optical simulation platform.
+*   **Transmitter Section (Top Left):** A CW Laser (193 THz, 30 dBm) is modulated by a Dual Port MZ Modulator. One input to the MZ Modulator comes from an Electrical Frequency Modulator (modulating a Triangle Pulse Generator with 1 GHz frequency, 10 GHz constant). The other input is a User Defined Bit Sequence NRZ Pulse Generator (0101 sequence, 1 Gbps bitrate) passed through a Rectangular Electrical Filter (11 GHz bandwidth). The modulated optical signal then goes through a Phase Modulator and is split for distribution. Oscilloscopes and Electrical Gain elements are present for monitoring and signal conditioning.
+*   **Sensing Section (Bottom Left):** A portion of the transmitted optical signal is fed into an X Coupler, then detected by two PIN Photodiodes. The electrical outputs are processed by an Electrical Subtractor and Electrical Norm block. The processed sensing signal is analyzed by an Oscilloscope Visualizer 2 and RF Spectrum Analyzer 1.
+*   **Communication Section (Right):** Another portion of the transmitted optical signal first passes through a Time Delay element (Delay = 2*PRI / (3*10^8) s), simulating a propagation delay. This delayed signal then enters an Optical DPSK Receiver (Reference Wavelength 193 THz) for demodulation. The electrical output from the receiver is filtered by a Low Pass Rectangular Filter (3 GHz cutoff), processed by an Electrical Abs block, an Electrical Multiplier, and an Electrical Reciprocal block. The final communication signal is analyzed by an RF Spectrum Analyzer and Oscilloscope Visualizer 1.
+*   **Line Types:** Optical fiber is represented by green lines, and electrical cable by blue lines, showing signal flow between components.
+*   **Overall Function:** The diagram depicts the generation of an optical signal carrying both sensing (FMCW-like modulation) and communication (NRZ data) information. This signal is then split, with one part going to a sensing receiver that extracts ranging/velocity information, and the other part (after a simulated target/channel delay) going to a communication receiver that decodes the embedded data.
+
+Image [_page_3_Figure_3.jpeg]:
+*   **Image (a):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. Time (s)).
+    *   **Data:** Y-axis (Amplitude) shows binary levels switching between ~0 and ~1. X-axis (Time) ranges from 1.776e-5 s to 1.778e-5 s.
+*   **Image (b):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. Time (s)).
+    *   **Data:** Y-axis (Amplitude) shows bipolar binary levels switching between ~-1 and ~1. X-axis (Time) ranges from 1.776e-5 s to 1.778e-5 s.
+*   **Image (c):** Chart.
+    *   **Description:** Time-domain waveform (Amplitude (a.u.) vs. Time (s)).
+    *   **Data:** Y-axis (Amplitude) shows bipolar binary levels switching between ~-1 and ~1. X-axis (Time) ranges from 1.795e-5 s to 1.796e-5 s.
+*   **Image (d):** Chart.
+    *   **Description:** Frequency-domain spectrum (Power (dBm) vs. Frequency (Hz)).
+    *   **Data:** Y-axis (Power) ranges from -20 to 10 dBm. X-axis (Frequency) ranges from 0 to 2 GHz. A dominant peak is present at f = 266.7 MHz, with power near 0 dBm, rising above a noise floor around -10 dBm.
+*   **Image (e):** Chart.
+    *   **Description:** Frequency-domain spectrum (Power (dBm) vs. Frequency (Hz)).
+    *   **Data:** Y-axis (Power) ranges from -20 to 10 dBm. X-axis (Frequency) ranges from 0 to 2 GHz. A dominant peak is present at f = 533.3 MHz, with power near 0 dBm, rising above a noise floor around -10 dBm.
+*   **Image (f):** Chart.
+    *   **Description:** Frequency-domain spectrum (Power (dBm) vs. Frequency (Hz)).
+    *   **Data:** Y-axis (Power) ranges from -20 to 10 dBm. X-axis (Frequency) ranges from 0 to 2 GHz. A dominant peak is present at f = 800 MHz, with power near 0 dBm, rising above a noise floor around -10 dBm.

@@ -1,0 +1,77 @@
+Batch 1:
+Image _page_2_Figure_2.jpeg:
+Type: Diagram
+Description: Block chart of the joint VLC sensing/communication system showing nine ceiling LEDs feeding an m-CAP chain while the UE photodiode runs RSS-based localization.
+KEY DATA: Highlights 4×4×2.5 m room geometry, AP/UE signal paths, and the requirement that the UE gathers at least four AP power readings to solve RSS trilateration in Section II.
+
+Image _page_3_Figure_2.jpeg:
+Type: Diagram
+Description: Timing plan for the proposed MAC cycle separating preamble, sequential location frames, and payload slots so sensing and communication share the link.
+KEY DATA: Multi-AP preamble boosts synchronization, then each AP transmits short coordinate/power frames without interference before multi-access payload periods.
+
+Image _page_3_Figure_4.jpeg:
+Type: Chart
+Description: Illuminance heatmap over the receiver plane illustrating lighting compliance of the four-chip LUXEON sources.
+KEY DATA: Room floor stays between ~300 and 500 lux (≤20% variation) while each AP outputs 880 lm at 9.8 W, satisfying EN 12464-1 office limits.
+
+Image _page_4_Picture_2.jpeg:
+Type: Diagram
+Description: Optical link geometry relating LED emission cone, field-of-view, and the OWC channel/photodiode chain.
+KEY DATA: Uses Lambertian model with 30° semi-angle, links I_tx,i(t)→Φ_tx,i^r(t)→I_rx,i(t) via h_LED(t) and channel response h_i(t), and emphasizes PD responsivity R_PD.
+
+Image _page_7_Figure_9.jpeg:
+Type: Chart
+Description: Map of RMS positioning error over the 4×4 m plane for Configuration 1 with DC component retained.
+KEY DATA: RSS error ranges 0.3–11.7 cm; 90% of 1681 grid points fall below 7.17 cm, with minima at AP cluster centers (SNR≈45 dB) and midlines (SNR≈50 dB).
+
+Batch 2:
+Image _page_8_Figure_2.jpeg:
+Type: Chart
+Description: CDF of RMS positioning error when the UE keeps the DC component of received signals.
+KEY DATA: 66%/90%/99% percentiles are 5.34 cm / 7.17 cm / 9.96 cm, showing millimeter-level repeatability when ambient light is absent.
+
+Image _page_8_Figure_4.jpeg:
+Type: Chart
+Description: CDF of RMS positioning error when the DC component is filtered out before RSS processing.
+KEY DATA: Removing DC reduces usable optical power by ~7× and degrades the 90th-percentile error to 64.81 cm, motivating DC retention or compensation when ambient light exists.
+
+Image _page_8_Figure_9.jpeg:
+Type: Chart
+Description: Standard deviation of the transmitted signal versus QAM order with and without subtracting the DC bias.
+KEY DATA: Original data current σ ranges 7.6–9.4 A (α from 1→0) while scaled LED drive current stays ≈2.82 A with DC and ≈0.32 A without DC, showing limited sensitivity to m, M, α, or L_SPAN due to LED current limits.
+
+Image _page_9_Figure_2.jpeg:
+Type: Chart
+Description: BER versus roll-off factor α for various filter lengths L_SPAN and subband counts m at M=64.
+KEY DATA: BER monotonically decreases as α increases (smoother filters) and longer FIR filters improve BER when α≤0.2; all curves drop below the 3.8×10^-3 FEC limit for α≥0.35.
+
+Image _page_9_Figure_8.jpeg:
+Type: Chart
+Description: BER versus α for different modulation orders (M=16…256) and subband counts m (4 or 8).
+KEY DATA: Higher M raises BER for a fixed α, but α>0.2 keeps BER below the FEC limit even at M=256; increasing m from 4→8 narrows bandwidth per subband and reduces BER by mitigating LED low-pass distortion.
+
+Batch 3:
+Image _page_10_Figure_2.jpeg:
+Type: Chart
+Description: Coverage maps showing areas meeting the BER target when APs transmit sequentially with M=64 (a) and M=256 (b).
+KEY DATA: With M=64 every point in the 4×4 m plane stays below the FEC BER, though ≥4-AP overlap zones are limited; switching to M=256 eliminates four-way overlap and creates uncovered regions, emphasizing modulation-order tradeoffs.
+
+Image _page_12_Picture_7.jpeg:
+Type: Other
+Description: Portrait of Bastien Béchadergue with a short biography.
+KEY DATA: ISAE-Supaero aeronautical engineer, Imperial College MSc (2014), UVSQ PhD (2017), former Oledcomm research lead (2017–2020), now UVSQ associate professor focusing on VLC sensing.
+
+Image _page_12_Picture_10.jpeg:
+Type: Other
+Description: Portrait of Luc Chassagne and affiliation summary.
+KEY DATA: Supelec B.S. (1994) and Univ. Paris XI PhD (2000) in optoelectronics; currently Professor and LISV Lab Director with interests in nanometrology and VLC.
+
+Image _page_12_Picture_12.jpeg:
+Type: Other
+Description: Portrait of Lina Shi with academic background.
+KEY DATA: Université Grenoble Alpes engineering degree (2017) and Sorbonne Univ. telecom PhD; since 2021 postdoc at UVSQ focusing on VLC/VLP and SDR-based optical systems.
+
+Image _page_12_Picture_14.jpeg:
+Type: Other
+Description: Portrait of Hongyu Guan with role description.
+KEY DATA: ENSEIRB B.S. (2007) and Univ. Bordeaux PhD (2012) in electrical/computer engineering; now LISV research associate overseeing projects in VLC, protocols, and sensing/nanometrology.

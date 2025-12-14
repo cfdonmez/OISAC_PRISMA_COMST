@@ -1,0 +1,106 @@
+Image [_page_0_Figure_15.jpeg]: Diagram: This is a block diagram illustrating the architecture of a Radio-Over-Integrated Sensing and Communication (RO-ISAC) system. It shows four RO-ISAC transceivers (numbered 1 through 4) communicating with a single RO-ISAC receiver and a 3D positioning system.
+*   **RO-ISAC Transceiver (detailed for Transceiver 2):** Input bits undergo OFDM modulation, then D/A conversion. A DC component is added before the signal drives an LED/LD for optical transmission (red dotted arrows). Simultaneously, a portion of the signal reflects off a Corner Cube Reflector (CCR) and is detected by a Photodetector (PD), then A/D converted. This reflected signal is used for cross-correlation to determine "Distance 2", which contributes to "3D positioning."
+*   **RO-ISAC Receiver:** Receives transmitted signals via a PD and A/D converter, then performs OFDM demodulation to yield output bits. It also contains a CCR (with dimensions $L_x$, $L_y$, $D_r$) that reflects signals back to the transceivers (blue solid arrows).
+*   **3D Positioning:** This block receives distance measurements from each transceiver and input bits, utilizing them to determine 3D position. The system integrates both communication (transmitting/receiving input/output bits) and sensing (distance measurement for positioning).
+
+Image [_page_2_Figure_15.jpeg]: Setup: This is a 3D diagram illustrating the physical setup of the RO-ISAC system within a defined space, likely an indoor environment.
+*   **Environment:** A cubic or rectangular room with dimensions defined by X (m), Y (m), and Z (m) axes. The X and Y axes range from 0 to 5 meters.
+*   **Transmitters:** Four RO-ISAC transmitters (Tx1, Tx2, Tx3, Tx4) are mounted on the ceiling (top plane). Each transmitter unit (indicated by dashed red boxes) contains an LED (Light Emitting Diode) for transmission and a PD (Photodetector) for receiving reflected signals.
+*   **Receiver:** A single "Receiver" unit is located on a lower plane within the room, positioned centrally at approximately X=2.5m, Y=2.5m. This receiver unit consists of a CCR (Corner Cube Reflector) for reflecting signals back to the transceivers and a PD (Photodetector) for receiving signals from the transceivers.
+*   **Purpose:** The diagram visualizes the spatial arrangement of the optical transceivers on the ceiling and the mobile/fixed receiver unit, demonstrating a typical scenario for indoor optical wireless communication and positioning.
+
+Image [_page_2_Figure_21.jpeg]: Chart: This line graph shows the Bit Error Rate (BER) as a function of Transmitted Signal-to-Noise Ratio (SNR) in dB for different modulation orders (M).
+*   **X-axis:** Transmitted SNR (dB), ranging from 100 dB to 118 dB.
+*   **Y-axis:** BER (Bit Error Rate), ranging from $10^{-8}$ to $10^0$ (1) on a logarithmic scale.
+*   **Data Series (M values):**
+    *   M = 2 (red circles): Shows the best BER performance, achieving $10^{-7}$ BER at approximately 105.5 dB SNR.
+    *   M = 4 (blue squares): Requires higher SNR than M=2 for the same BER, reaching $10^{-7}$ BER at approximately 109 dB SNR.
+    *   M = 8 (green diamonds): Requires higher SNR than M=4, reaching $10^{-7}$ BER at approximately 113.5 dB SNR.
+    *   M = 16 (magenta crosses): Requires the highest SNR, reaching $10^{-7}$ BER at approximately 116 dB SNR.
+*   **Trend:** As Transmitted SNR increases, BER decreases for all M values. Higher values of M (representing higher-order modulation) result in a higher BER for a given SNR, or equivalently, require a higher SNR to achieve the same BER. This indicates reduced robustness against noise for higher-order modulation, as expected.
+
+Image [_page_3_Figure_1.jpeg]: Chart: This line graph displays the Root Mean Square Error (RMSE) in centimeters versus the "Symbol number" for different modulation orders (M).
+*   **X-axis:** Symbol number, ranging from 10 to 20.
+*   **Y-axis:** RMSE (cm), ranging from 0 cm to 7 cm.
+*   **Data Series (M values):**
+    *   M = 2 (red circles)
+    *   M = 4 (blue diamonds)
+    *   M = 8 (green asterisks)
+    *   M = 16 (magenta squares)
+*   **Trend:**
+    *   At Symbol number 10, RMSE is approximately 6.8 cm for all M values.
+    *   As the Symbol number increases, RMSE consistently decreases for all M values.
+    *   The curves for different M values are very close to each other, especially for Symbol numbers greater than 14. This suggests that the modulation order M has a minimal impact on the RMSE for positioning accuracy within this range of symbol numbers.
+    *   At Symbol number 20, the RMSE for all M values converges to approximately 0.5 cm.
+
+Image [_page_3_Figure_10.jpeg]: Chart: This is a 3D surface plot showing the Root Mean Square Error (RMSE) in centimeters across a 2D spatial plane (X and Y coordinates).
+*   **X-axis:** X (m), ranging from 2 m to 3 m.
+*   **Y-axis:** Y (m), ranging from 2 m to 3 m.
+*   **Z-axis:** RMSE (cm), ranging from 0 cm to approximately 3.5 cm.
+*   **Representation:** The RMSE is represented by the height and color of the surface, with lighter colors (yellow, light green) generally indicating higher RMSE and darker colors (dark blue, purple) indicating lower RMSE.
+*   **Trend:** The RMSE varies significantly across the 1m x 1m area. There are regions with very low RMSE (close to 0 cm) and regions with elevated RMSE (up to approximately 3.5 cm). The pattern shows multiple peaks and valleys, forming a somewhat rugged landscape. Higher RMSE values appear to be concentrated in certain areas, possibly due to geometric factors, multipath effects, or non-uniform signal strength distribution within the positioning area. The plot indicates the spatial variability of positioning accuracy within the designated region.
+
+=== NEW BATCH ANALYSIS ===
+
+Image [_page_3_Figure_5.jpeg]: Chart
+Data Extraction:
+This chart plots RMSE (cm) against Transmitted SNR (dB) for three different symbol numbers.
+
+*   **X-axis (Transmitted SNR in dB):** 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110
+*   **Y-axis (RMSE in cm):** 0 to 35
+
+**Data Points (Approximate values from graph):**
+
+*   **Symbol number = 10 (red circles):**
+    *   SNR 100 dB: RMSE ≈ 31.5 cm
+    *   SNR 101 dB: RMSE ≈ 21.5 cm
+    *   SNR 102 dB: RMSE ≈ 14.5 cm
+    *   SNR 103 dB: RMSE ≈ 7.5 cm
+    *   SNR 104 dB: RMSE ≈ 3.0 cm
+    *   SNR 105 dB: RMSE ≈ 1.0 cm
+    *   SNR 106 dB: RMSE ≈ 0.8 cm
+    *   SNR 107 dB: RMSE ≈ 0.7 cm
+    *   SNR 108 dB: RMSE ≈ 0.7 cm
+    *   SNR 109 dB: RMSE ≈ 0.7 cm
+    *   SNR 110 dB: RMSE ≈ 0.7 cm
+
+*   **Symbol number = 20 (blue diamonds):**
+    *   SNR 100 dB: RMSE ≈ 5.8 cm
+    *   SNR 101 dB: RMSE ≈ 3.5 cm
+    *   SNR 102 dB: RMSE ≈ 1.8 cm
+    *   SNR 103 dB: RMSE ≈ 1.0 cm
+    *   SNR 104 dB: RMSE ≈ 0.8 cm
+    *   SNR 105 dB: RMSE ≈ 0.7 cm
+    *   SNR 106 dB: RMSE ≈ 0.7 cm
+    *   SNR 107 dB: RMSE ≈ 0.7 cm
+    *   SNR 108 dB: RMSE ≈ 0.7 cm
+    *   SNR 109 dB: RMSE ≈ 0.7 cm
+    *   SNR 110 dB: RMSE ≈ 0.7 cm
+
+*   **Symbol number = 30 (green squares):**
+    *   SNR 100 dB: RMSE ≈ 1.8 cm
+    *   SNR 101 dB: RMSE ≈ 1.0 cm
+    *   SNR 102 dB: RMSE ≈ 0.8 cm
+    *   SNR 103 dB: RMSE ≈ 0.7 cm
+    *   SNR 104 dB: RMSE ≈ 0.7 cm
+    *   SNR 105 dB: RMSE ≈ 0.7 cm
+    *   SNR 106 dB: RMSE ≈ 0.7 cm
+    *   SNR 107 dB: RMSE ≈ 0.7 cm
+    *   SNR 108 dB: RMSE ≈ 0.7 cm
+    *   SNR 109 dB: RMSE ≈ 0.7 cm
+    *   SNR 110 dB: RMSE ≈ 0.7 cm
+
+Image [_page_3_Figure_7.jpeg]: Chart
+Data Extraction:
+This chart is a 3D surface plot representing the Root Mean Square Error (RMSE) in centimeters across a 2D spatial grid defined by X and Y coordinates in meters.
+
+*   **X-axis:** X (m), ranging from 2 to 3.
+*   **Y-axis:** Y (m), ranging from 2 to 3.
+*   **Z-axis:** RMSE (cm), ranging from 0 to 30.
+*   **Color Scale (Implicit):** The color of the surface indicates the RMSE value, with darker blue representing lower RMSE and lighter colors (yellow, light green) representing higher RMSE.
+
+**Observed Data Pattern:**
+The chart shows a highly variable spatial distribution of RMSE within the specified X-Y plane. The surface exhibits numerous peaks and valleys, indicating that the RMSE fluctuates significantly depending on the X and Y coordinates.
+*   **High RMSE areas:** Several regions show RMSE values exceeding 20 cm, reaching up to approximately 25 cm, particularly evident in the yellowish-green colored spikes. These peaks are distributed across the X-Y grid, suggesting localized areas of higher error.
+*   **Low RMSE areas:** Conversely, dark blue regions indicate areas where RMSE approaches 0 cm, forming valleys in the surface.
+*   The overall pattern is non-uniform and demonstrates a complex relationship between spatial position and RMSE. Due to the 3D nature and lack of specific grid lines or a color bar legend for precise numerical values, individual data point extraction is not feasible from this representation. The chart provides a visual overview of the spatial variability of RMSE within the given coordinate range.

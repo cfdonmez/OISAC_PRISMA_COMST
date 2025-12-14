@@ -1,0 +1,30 @@
+Batch 1:
+Image _page_1_Figure_4.jpeg:
+Type: Diagram
+Description: Schematic of the symmetric carrier-assisted differential detection (S-CADD) receiver plus its transfer function magnitude vs frequency for τ=12.5 ps.
+KEY DATA: Architecture includes 90° hybrid, optical delay line, and two balanced PDs; |H(f)| shows periodic nulls from 1−e^{j2πf·2τ}, causing inherent SNR imbalance that motivates SSBI mitigation and pairwise coding.
+
+Image _page_1_Figure_15.jpeg:
+Type: Diagram
+Description: Pairwise coding (PWC) and decoding block diagrams showing symbol pairing, phase rotation, I/Q interleaving, and SNR-aware reconstruction.
+KEY DATA: Transmitter rotates symbols by 45°, interlaces I/Q to map one stream onto "good" subcarriers and the other onto "bad" ones; receiver rescales by measured SNRs then performs ML detection to neutralize color-SNR effects in S-CADD.
+
+Image _page_2_Figure_12.jpeg:
+Type: Setup
+Description: Simulation setup for 64-Gbaud 16QAM OFDM over 80 km SSMF including Tx/Rx DSP chains and optical spectrum inset.
+KEY DATA: 4096-FFT with 2184 subcarriers, 120 GSa/s sampling, two 32-GHz subbands separated by 8 GHz gap, EDFA-boosted 6 dBm launch, VOA-controlled CSPR, and S-CADD DSP comprising resampling, SSBI cancellation, and PWC decoding.
+
+Image _page_3_Figure_0.jpeg:
+Type: Chart
+Description: BER versus iteration number for traditional vs PWC schemes at OSNR=32 dB, CSPR=5 dB with associated constellation snapshots.
+KEY DATA: Both converge by six SSBI-cancellation iterations, but PWC achieves lower BER and tighter constellation clusters (except six edge symbols showing ellipses that are corrected via adaptive decision regions).
+
+Image _page_3_Figure_7.jpeg:
+Type: Chart
+Description: BER versus CSPR for traditional and PWC receivers at OSNR = 28, 30, 32 dB.
+KEY DATA: Optimal CSPR ≈5 dB for both; at that point, PWC yields the largest BER improvement, reflecting its enhanced tolerance to SSBI and enabling lower required carrier power.
+
+Image _page_3_Figure_9.jpeg:
+Type: Chart
+Description: BER versus OSNR at fixed CSPR=5 dB comparing traditional and PWC cases.
+KEY DATA: At the 7% HD-FEC limit, PWC delivers ~1.5 dB OSNR gain over the baseline, reducing receiver sensitivity requirements for the 256 Gb/s 64-Gbaud link.
