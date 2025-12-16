@@ -24,6 +24,9 @@ from typing import Optional, List, Dict
 import torch
 import pandas as pd
 from PIL import Image
+from transformers import AutoProcessor, AutoModelForCausalLM
+import warnings
+warnings.filterwarnings("ignore")
 
 # =============================================================================
 # CONFIGURATION
@@ -141,12 +144,16 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
         output_folder = os.path.join(Config.MARKDOWN_DIR, paper_id)
         
         try:
+            # Force CUDA device for marker
+            env = os.environ.copy()
+            env["TORCH_DEVICE"] = "cuda" if torch.cuda.is_available() else "cpu"
+            
             cmd = [
                 "marker_single", pdf_path,
                 "--output_dir", output_folder,
                 "--paginate_output"
             ]
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+            result = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=300)
             
             if result.returncode == 0:
                 pdf_hash = checkpoint.get_pdf_hash(pdf_path)
@@ -278,11 +285,84 @@ def analyze_with_backup_model(images, prompt_list):
         print(f"     ❌ Backup Model Check Failed: {e}")
         return None
 
+# =============================================================================
+# LOCAL VISION MODEL (Florence-2)
+# =============================================================================
+class LocalVisionModel:
+    def __init__(self, model_id="microsoft/Florence-2-large"):
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.model_id = model_id
+        self.model = None
+        self.processor = None
+        
+        if self.device == "cuda":
+            print(f"     🚀 Loading Local Vision Model ({model_id}) on {self.device}...")
+            try:
+                self.model = AutoModelForCausalLM.from_pretrained(model_id, trust_remote_code=True).to(self.device).eval()
+                self.processor = AutoProcessor.from_pretrained(model_id, trust_remote_code=True)
+                print("     ✅ Local Model Loaded Successfully!")
+            except Exception as e:
+                print(f"     ❌ Failed to load local model: {e}")
+                self.model = None
+        else:
+            print("     ⚠️ No GPU found. Skipping Local Vision Model load.")
+
+    def analyze_image(self, image_path: str) -> str:
+        if not self.model:
+            return None
+            
+        try:
+            image = Image.open(image_path)
+            if image.mode != "RGB":
+                image = image.convert("RGB")
+                
+            task_prompt = "<MORE_DETAILED_CAPTION>"
+            inputs = self.processor(text=task_prompt, images=image, return_tensors="pt").to(self.device, torch.float16)
+
+            generated_ids = self.model.generate(
+                input_ids=inputs["input_ids"],
+                pixel_values=inputs["pixel_values"],
+                max_new_tokens=1024,
+                early_stopping=False,
+                do_sample=False,
+                num_beams=3,
+            )
+            generated_text = self.processor.batch_decode(generated_ids, skip_special_tokens=False)[0]
+            parsed_answer = self.processor.post_process_generation(
+                generated_text, 
+                task=task_prompt, 
+                image_size=(image.width, image.height)
+            )
+            
+            description = parsed_answer.get(task_prompt, "")
+            
+            # Identify type based on description keywords
+            img_type = "Chart/Diagram" # Default
+            lower_desc = description.lower()
+            if "chart" in lower_desc or "graph" in lower_desc or "plot" in lower_desc:
+                img_type = "Chart"
+            elif "diagram" in lower_desc or "setup" in lower_desc or "schematic" in lower_desc:
+                img_type = "Diagram"
+                
+            return (
+                f"Image {os.path.basename(image_path)}:\n"
+                f"- Type: {img_type} (Detected by Local Model)\n"
+                f"- Description: {description}\n"
+                f"--------------------------------------------------"
+            )
+
+        except Exception as e:
+            print(f"     ⚠️ Local Analysis Error: {e}")
+            return None
+
 def phase2_visual_analysis(checkpoint: CheckpointManager):
-    """Analyze images using Google Gemini 1.5 Flash API (Batched) with Multi-Stage Fallback."""
+    """Analyze images using Local GPU (Florence-2) with Gemini/Backup Fallback."""
     print("\n" + "="*60)
-    print("👁️ PHASE 2: VISUAL ANALYSIS (Gemini 1.5 Flash - BATCHED)")
+    print("👁️ PHASE 2: VISUAL ANALYSIS (Local GPU + Gemini Fallback)")
     print("="*60)
+    
+    # Init Local Model
+    local_model = LocalVisionModel()
     
     # Imports
     try:
@@ -402,26 +482,43 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
             # We start with the globally active current_key_state
             
             # Strategies to try for this batch
-            # If current_key_state is 0, we can try 0 -> 1 -> 2
-            # If current_key_state is 1, we can try 1 -> 2
-            # If current_key_state is 2, we just try 2
+            # Strategy -1: Local Model (Priority if available)
+            # Strategy 0: Primary Gemini
+            # Strategy 1: Secondary Gemini
+            # Strategy 2: Backup Model (Nvidia)
             
             temp_strategies = []
+            if local_model.model:
+                temp_strategies.append(-1)
+            
             if current_key_state == 0:
-                temp_strategies = [0, 1, 2]
+                temp_strategies.extend([0, 1, 2])
             elif current_key_state == 1:
-                temp_strategies = [1, 2]
+                temp_strategies.extend([1, 2])
             else:
-                temp_strategies = [2]
+                temp_strategies.append(2)
                 
             for strategy_idx in temp_strategies:
                 if batch_success: break
                 
                 try:
+                    # Strategy -1: Local GPU Model
+                    if strategy_idx == -1:
+                        local_results = []
+                        for p in batch_paths:
+                            analysis = local_model.analyze_image(p)
+                            if analysis:
+                                local_results.append(analysis)
+                            else:
+                                raise Exception("Local Analysis Failed")
+                        
+                        results.append("\n".join(local_results))
+                        batch_success = True
+                        print(f"     ✅ Batch {batch_idx+1}/{len(batches)} processed (Local GPU Model)")
+                        
                     # Strategy 0: Primary Gemini
-                    if strategy_idx == 0:
-                        # Ensure Primary Key is set (should be default but verify)
-                         # Assuming global config is set to primary if we are here and state is 0
+                    elif strategy_idx == 0:
+                        # Ensure Primary Key is set
                         response = model.generate_content(inputs)
                         results.append(response.text.strip())
                         batch_success = True
