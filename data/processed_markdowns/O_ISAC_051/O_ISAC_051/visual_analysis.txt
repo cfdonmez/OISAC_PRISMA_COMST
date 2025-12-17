@@ -1,0 +1,59 @@
+Image: _page_7_Figure_9.jpeg
+Type: Chart / Graph (Box Plot)
+---
+**Axes Extraction:**
+- **X-axis:** Actual displacement / m [Values: 0, 0.53, 1.06, 1.59, 2.12, 2.65, 3.18, 3.71, 4.24, 36.8] (Note: 36.8 seems to be an outlier or separate test case).
+- **Y-axis:** Deviation from mean / cm [Range: -4 to 4]
+
+**Data Points:**
+- **Distribution:** Box plots showing the spread of measurement error.
+- **Mean:** Centered around 0 cm deviation for most points.
+- **Spread:** Interquartile range is typically within +/- 0.5 cm.
+- **Outliers (Blue stars):** Present at +/- 1 to 2 cm.
+- **Precision:** The standard deviation (implied by spread) remains relatively consistent across different displacements, indicating stable ranging precision approx +/- 0.5 cm.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **(a) X-axis:** Measured time / s x 10^-6 [Range: -4 to 1]
+- **(a) Y-axis:** Amplitude / V [Range: -1 to 1]
+- **(b) X-axis:** Measured time / s x 10^-6 [Range: -4 to 6]
+- **(b) Y-axis:** Decoding [Values: -1, 1]
+- **(c) X-axis:** SNR / dB [Range: 0 to 30]
+- **(c) Y-axis:** BER [Range: 10^-9 to 10^-1] (Log scale)
+
+**Data Points:**
+- **(c) BER vs SNR Trends:**
+    - **Non-turbulence (Green diamonds):** Best performance. Reaches BER 10^-9 at ~12 dB SNR.
+    - **Sigma_I^2 = 0.05 (Blue circles):** Reaches BER 10^-9 at ~18 dB. Power penalty ~6 dB.
+    - **Sigma_I^2 = 0.1 (Red dots):** Reaches BER 10^-9 at ~22 dB.
+    - **Sigma_I^2 = 0.2 (Yellow triangles):** Reaches BER 10^-9 at ~27 dB.
+    - **Sigma_I^2 = 0.3 (Purple squares):** Worst performance. Reaches BER 10^-9 at ~31 dB.
+
+**Legend/Trends:**
+- **Variables:** BER performance under different turbulence intensities (Sigma_I^2).
+- **Trend:** Strong atmospheric turbulence significantly degrades communication performance, introducing a large power penalty (up to ~19 dB spread between non-turbulence and strong turbulence at BER 10^-9).
+---
+
+Image: _page_9_Figure_5.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **(a) & (b) X-axis:** Actual displacement / m [Range: 0 to 2]
+- **(a) & (b) Y-axis:** Measured range / m [Range: 1.5 to 4]
+- **(c) & (d) X-axis:** Measured time / s x 10^-6 [Range: -12 to 0]
+- **(c) Y-axis:** Amplitude / V [Range: 0 to 1]
+- **(d) Y-axis:** Decoding [Values: 0, 1]
+
+**Data Points:**
+- **(a) Fit:** y = x + 1.6719. Data points (Blue) match line (Red) perfectly.
+- **(b) Fit:** y = x + 1.6736. Data points match line perfectly.
+- **(c) Waveform:** Shows a noisy square-wave-like signal (likely received data sequence).
+- **(d) Decoding:** Recovered clean digital sequence.
+
+**Legend/Trends:**
+- **Variables:** Ranging accuracy under different conditions (possibly turbulence or movement).
+- **Trend:** The system maintains high ranging linearity and accuracy (intercept ~1.67 m) despite potential channel impairments. The recovered digital signal is robust.
+---

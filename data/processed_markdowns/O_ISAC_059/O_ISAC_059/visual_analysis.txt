@@ -1,0 +1,50 @@
+Image: _page_1_Figure_5.jpeg
+Type: Chart / Graph (Resource Grid)
+---
+**Axes Extraction:**
+- **X-axis:** Time (OFDM symbols)
+- **Y-axis:** Frequency (Subcarriers)
+
+**Components:**
+- **Green Cells:** Communication Resources (OFDM symbols).
+- **Blue Cells:** Sensing Resources (Pulse train for sensing).
+
+**Legend/Trends:**
+- **Variables:** Time-Frequency Resource Allocation.
+- **Trend:** Illustrates a specific ISAC resource sharing scheme where sensing signals (blue blocks) are periodically interleaved with communication signals (green grid) in the time-frequency domain.
+---
+
+Image: _page_2_Picture_7.jpeg
+Type: System Diagram / Schematic (Network Architecture)
+---
+**Components:**
+- **Space Layer:** Satellites (Low Earth Orbit?) with inter-satellite links and beams to ground/air.
+- **Air Layer:** UAVs/Drones serving as relay nodes or aerial base stations.
+- **Ground Layer:** Users (Phones), Vehicles (Cars), Ground Stations (Dishes), Infrastructure (Houses), Core Network (Fiber links in "lake"? or just ground).
+- **Links:** Red/Blue/Purple beams indicating multi-layer connectivity (Satellite-to-Ground, UAV-to-Ground, etc.).
+
+**Flow:**
+Integrated Non-Terrestrial Network (NTN) and Terrestrial Network (TN).
+1.  **Satellites** provide wide area coverage and backhaul.
+2.  **UAVs** provide intermediate coverage or relaying.
+3.  **Ground Stations** gateway the space segment to the terrestrial infrastructure.
+4.  **End Users** (Cars, Phones) connect to the best available node (Satellite, UAV, or Tower).
+---
+
+Image: _page_3_Figure_0.jpeg
+Type: System Diagram / Schematic (Block Diagram)
+---
+**Components:**
+- **Orchestration:** Crossdomain Orchestration (Red bar), Service Management and Orchestration (SMO).
+- **RIC:** Non-real time RIC (RAN Intelligent Controller), Near real time RIC.
+- **Domains:** NTN domain 1 ... NTN domain n.
+- **TN Infrastructure:** Data collection -> Reasoner -> Control. Management, Service Based Architecture (SBA).
+- **Interfaces:** KPI Data (In), Control (Out).
+
+**Flow:**
+O-RAN based architecture for NTN-TN integration.
+1.  **Management:** The SMO and Non-real time RIC handle high-level policy and orchestration across domains.
+2.  **Control Loop:** The Near real time RIC operates closer to the edge for faster control.
+3.  **Integration:** The "Crossdomain Orchestration" coordinates between separate NTN domains and the TN infrastructure.
+4.  **Data Driven:** The system relies on "Data collection" and a "Reasoner" (AI/ML) to optimize network performance via the "Control" interface.
+---

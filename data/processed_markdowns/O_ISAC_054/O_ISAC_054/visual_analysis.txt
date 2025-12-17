@@ -1,0 +1,177 @@
+Visual Analysis for O_ISAC_054
+--------------------------------
+
+Image: _page_3_Figure_2.jpeg
+Type: SYSTEM DIAGRAM / SCHEMATIC
+---
+**Components:**
+*   **Ceiling Transmitters:** Multiple "O-AP" (Optical Access Point) units labeled O-AP 1, O-AP m, O-AP µ.
+*   **Light Sources:** Depicted as light bulbs emitting cones of light (yellow). Detailed inset shows an "LED" on a PCB.
+*   **User Devices:** Located on the floor (z=0). Labeled:
+    *   "Device 1" (Laptop) with a sensor/tag.
+    *   "Device 2" (Headphones) with a sensor/tag.
+    *   "Device v" (Smartphone/Tablet) with a sensor/tag.
+*   **Receiver:** Inset shows a "PD array" (Photodiode) package. A line connects it to Device 1.
+*   **Environment:** Rectangular room with dimensions labeled Length ($\mathcal{L}$), Width ($\mathcal{W}$), and Height ($\mathcal{H}$).
+*   **Coordinate System:** Cartesian axes (x, y, z). Origin (0,0,0) at the floor center. Ceiling reference (0,0,$\mathcal{H}$).
+
+**Flow / Geometry:**
+*   The O-APs are distributed on the ceiling plane (at height $\mathcal{H}$). They transmit optical signals downwards (cones of light).
+*   Geometrical angles $\xi_m$ and $\epsilon$ describe the angular position/orientation of the O-APs relative to the center.
+*   User devices are mobile on the floor plane. The system implies Visible Light Communication (VLC) or Optical Positioning, where the O-APs serve as anchors/transmitters and the devices receive signals via PD arrays.
+---
+
+Image: _page_3_Figure_4.jpeg
+Type: SYSTEM DIAGRAM / CHART combined
+---
+**Sub-figure (a): Schematic**
+*   **Components:** "m-th O-AP" (Transmitter), "k-th PD" (Receiver) which is part of a square array.
+*   **Geometry/Angles:**
+    *   $\Phi_{1/2}$: Half-power semi-angle of the LED emission.
+    *   $\phi_m$: Irradiance angle.
+    *   $\psi_m$: Angle of incidence at the receiver.
+    *   $\Psi_{FOV}$: Field of View of the receiver.
+*   **Flow:** Light travels from O-AP to PD. The angles define the channel gain geometry.
+
+**Sub-figure (b): Chart**
+*   **Plot Type:** Line Graph (Lambertian Pattern).
+*   **X-Axis:** Label "AoE" (Angle of Emission). Range: $-\pi/2$ to $\pi/2$ radians.
+*   **Y-Axis:** Label "Intensity". Range: 0 to 1 (Normalized).
+*   **Trend:** Shows the standard Lambertian emission profile of the LED, maximizing downwards.
+---
+
+Image: _page_4_Figure_20.jpeg
+Type: CHART / PLOT (Multi-panel)
+---
+**Overview:** A 2x2 grid of plots titled "Film Planes".
+**Axes Extraction:**
+*   **X-Axis:** "x". Numerical range approx -1.72 to +1.72.
+*   **Y-Axis:** "y". Numerical range approx -1.72 to 1.72.
+*   **Plot Content:** 2D projections of 3 distinct 3D objects (Blue, Red, Black boxes) in different spatial arrangements across the 4 panels.
+---
+
+Image: _page_6_Picture_17.jpeg
+Type: SYSTEM DIAGRAM / TIMING DIAGRAM
+---
+**Components:**
+*   **Phases:** "Phase 1: Directionless O-ISAC" and "Phase 2: Directional O-ISAC".
+*   **Entities:** "APs" (O-AP1 to O-AP$\mu$) and "Devices" (Device1 to Device$\Gamma$).
+**Flow:**
+*   **Phase 1:** "APs broadcast" (Wide beam) -> "Devices decode" / "APs sense".
+*   **Phase 2:** "APs transmit data to device1" (Narrow beam) -> "Device1 decodes" / "APs sense".
+*   **Visual Logic:** Shifts from broad floodlighting to targeted pencil beams for specific users.
+---
+
+Image: _page_9_Figure_11.jpeg
+Type: CHART / 3D SURFACE PLOT
+---
+**Axes Extraction:**
+*   **X-Axis:** "$\xi_0$ (rad)". Range: 0 to 1.5.
+*   **Y-Axis:** "$\epsilon$ (m)". Range: 0 to 2.5.
+*   **Z-Axis:** "Proportion". Range: 0.8 to 1.0.
+**Data Points:**
+*   **Peak:** Simulation value (*) > 0.95 at optimal coordinates.
+*   **Trend:** Performance decreases as angular or spatial offset increases.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: CHART / BAR
+---
+**Axes Extraction:**
+*   **X-Axis:** "$\mu$" (Number of O-APs). Range: 3 to 8.
+*   **Y-Axis:** Percentage (0.00% to 100.00%).
+**Data Points:**
+*   $\mu=3$: Sim 99.71%.
+*   $\mu=5$: Sim 86.70% (Min).
+*   $\mu=8$: Sim 96.79%.
+**Trend:** Non-monotonic trend; excellent agreement between Simulation (Blue) and Analytical (Orange).
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: SYSTEM DIAGRAM / CHART combined
+---
+**Components:** Diagrams of spherical lens/geometry and spectral distribution graph.
+**Data Points:**
+*   Spectrum peak at $\lambda_0 = 450$ nm (Blue light).
+---
+
+Image: _page_11_Figure_16.jpeg
+Type: CHART / LINE
+---
+**Components:** Two subplots (AoD Error and MSE).
+**Data Points:**
+*   Top: Error increases linearly/V-shape with angle $\phi$.
+*   Bottom: MSE is near zero for central angles, rises sharply at $|\phi| > 0.4$ rad.
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: DIAGRAM
+---
+**Description:** Illustrates chromatic dispersion or angular shift $\varphi(\lambda|\phi)$ for different wavelengths relative to central wavelength $\lambda_0$.
+---
+
+Image: _page_12_Figure_10.jpeg
+Type: CHART / LINE (BER vs SNR)
+---
+**Axes Extraction:**
+*   **X-Axis:** "Eb/N0 (dB)". Range: -20 to 100.
+*   **Y-Axis:** "BER" (Log scale). Range: $10^{-5}$ to $10^0$.
+**Data Points:**
+*   **Directional O-ISAC (Red):** Reaches BER $10^{-4}$ at approx **13-14 dB**.
+*   **Directionless O-ISAC (Blue):** Reaches BER $10^{-4}$ at approx **78-80 dB**.
+*   **Gap:** Explicitly labeled as "**63.35 dB**".
+*   **Conclusion:** Directional transmission offers massive SNR gain.
+---
+
+Image: _page_12_Figure_12.jpeg
+Type: CHART / LINE (MSE vs SNR)
+---
+**Axes Extraction:**
+*   **X-Axis:** "Eb/N0 (dB)". Range: -20 to 80.
+*   **Y-Axis:** "MSE" (Log scale). Range: $10^{-5}$ to $10^1$.
+**Data Points:**
+*   **Directional (Red):** Reaches MSE $10^{-4}$ at approx **20 dB**.
+*   **Directionless (Blue):** Reaches MSE $10^{-4}$ at approx **60 dB**.
+*   **Gap:** Labeled as "**40.42 dB**".
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: CHART / 3D SURFACE (Multi-panel)
+---
+**Description:** 6 panels showing spatial distribution of Intensity, BER, and MSE over the x-y plane.
+**Observation:**
+*   Panels (b), (d), (f) show a focused peak/valley (Directional/Beamformed).
+*   Panels (a), (c), (e) show more distributed/wavy patterns (Directionless).
+---
+
+Image: _page_12_Figure_4.jpeg
+Type: CHART / BAR
+---
+**Axes Extraction:**
+*   **Categories:** Intensity, BER, MSE.
+*   **Series:** Uniformity (Blue) vs Threshold (Orange).
+**Data Points:**
+*   **BER:** Uniformity 37.19% vs Threshold 70.98%.
+*   **MSE:** Uniformity 87.30% vs Threshold 89.12%.
+**Conclusion:** The "Threshold" approach dramatically improves BER uniformity.
+---
+
+Image: _page_12_Figure_8.jpeg
+Type: CHART / 3D SURFACE
+---
+**Description:** Visualizing the combined intensity of 4 O-APs.
+*   (a) Broader coverage.
+*   (b) More focused beam.
+---
+
+Image: _page_13_Figure_2.jpeg
+Type: CHART / SCATTER
+---
+**Axes Extraction:**
+*   **X-Axis:** Eb/N0 for BER=$10^{-4}$.
+*   **Y-Axis:** Eb/N0 for MSE=$10^{-4}$.
+**Data Points:**
+*   **Directional (Red):** Cluster at low SNR (approx 15 dB X, 20 dB Y).
+*   **Directionless (Blue):** Cluster at high SNR (approx 80 dB X, 60-120 dB Y).
+*   **Conclusion:** Directional O-ISAC is superior in both comms (BER) and sensing (MSE) efficiency.
+---

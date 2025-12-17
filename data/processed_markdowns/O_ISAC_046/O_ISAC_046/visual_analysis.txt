@@ -1,0 +1,114 @@
+Image: _page_1_Figure_6.jpeg
+Type: System Schematic & Characterization Data
+---
+### Panel (a): Integrated Transmitter & System Setup
+*   **Integrated Transmitter Block:**
+    *   **Sensing Branch:**
+        *   **Components:** Laser ($\lambda_i$) -> IQ Modulator (driven by VCO, Ramp) -> EDFA -> OBPF (Optical Bandpass Filter) -> AOM (Acousto-Optic Modulator, driven by AFG/Pulse) -> EDFA -> OBPF -> Coupler.
+        *   **Signal:** Generates a "Chirped pulse" for sensing.
+    *   **Test Channel (Core-4):**
+        *   **Components:** Laser ($\lambda_s$) -> CDM (Code Division Mux? or Complex Dual Modulator?) driven by AWG/Tx DSP -> EDFA -> Combined with Sensing signal.
+        *   **Spectrum Inset:** Shows "DSB signal with PI" (Protection Interval) and "Transmission lightwave".
+    *   **WDM Channels (Core-4):**
+        *   **Components:** $\lambda_4 \sim \lambda_m$ ASE source -> WSP (Wavelength Selective Switch/Port) -> EDFA -> Combined.
+        *   **Count:** 95 WDM channels.
+    *   **Dummy Cores (Others):**
+        *   **Components:** $\lambda_1 \sim \lambda_m$ ASE -> WSP -> EDFA -> 1x8 Coupler.
+        *   **Count:** 96 WDM channels for dummy cores.
+*   **Fiber Link:**
+    *   **Components:** Fan-in -> **38km MCF** (Multi-Core Fiber) -> Fan-out -> PZT (Piezo-electric Transducer for vibration simulation) -> Polarization Controller?.
+*   **Sensing Receiver:**
+    *   **Path:** From Circulator (Cir. 1) -> EDFA -> OBPF -> PD (Photodetector) -> **2GSa/s DSO** -> Rx DSP.
+*   **Communication Receiver:**
+    *   **Path:** From Fiber Link -> VOA -> EDFA -> OBPF -> **Coherent Receiver** (with LO) -> **80GSa/s DSO** -> Rx DSP.
+
+### Panel (b): Optical Spectrum
+*   **X-Axis:** Wavelength (nm) [1525 - 1570].
+*   **Y-Axis:** Optical Power (dBm).
+*   **Data:** Flat-top spectrum spanning practically the entire C-band (~1528 nm to ~1565 nm). Power level is relatively uniform.
+
+### Panel (c): MCF Cross-section
+*   **Type:** 7-Core Fiber.
+*   **Geometry:** Hexagonal packing.
+*   **Dimensions:**
+    *   Core Diameter: ~8 $\mu m$.
+    *   Core Pitch (spacing): ~41 $\mu m$.
+    *   Cladding Diameter: Not explicitly labeled but visible.
+
+### Panel (d): Crosstalk Matrix
+*   **Type:** Table (7x7) showing crosstalk (dB/100km) at 1550 nm.
+*   **Values:**
+    *   **Diagonal:** 0 (Self).
+    *   **Off-Diagonal:**
+        *   Core-1 to Core-2: -62.045 dB.
+        *   Core-1 to Core-4: -84.344 dB.
+        *   Core-4 to Core-1: -80.811 dB.
+        *   **Range:** Generally between -60 dB and -85 dB, indicating very low crosstalk.
+
+### Panel (e): Loss & Dispersion
+*   **X-Axis:** Core Index [1 - 7].
+*   **Left Y-Axis (Blue):** Loss (dB/km) [0.16 - 0.20].
+    *   **Values:** Consistent around **0.185 dB/km** for all cores.
+*   **Right Y-Axis (Orange):** Dispersion (ps/nm/km) [19 - 23].
+    *   **Values:** Consistent around **20 ps/nm/km** for all cores.
+---
+Image: _page_2_Figure_0.jpeg
+Type: Performance Charts (Q-factor/SNR/Strain)
+---
+### Panel (a): Q-factor vs Protection Interval
+*   **X-Axis:** Protection Interval Bandwidth (GHz) [2, 4, 6, 8, 10].
+*   **Left Y-Axis:** Q-factor (dB) [6.0 - 8.5].
+    *   **Blue Curve (Without DAS):**
+        *   Starts at ~8.3 dB (2 GHz).
+        *   Drops to ~6.7 dB (10 GHz).
+    *   **Red Curve (With DAS):**
+        *   Starts at ~7.7 dB (2 GHz).
+        *   Drops to ~6.4 dB (10 GHz).
+*   **Right Y-Axis (Green):** Q-factor Penalty (dB) [0 - 2.0].
+    *   **Green Curve:**
+        *   At 2 GHz: Penalty ~0.6 dB.
+        *   At 10 GHz: Penalty ~0.3 dB.
+    *   **Interpretation:** Penalty due to DAS integration decreases as protection interval increases, but overall Q-factor drops for both cases due to reduced spectral efficiency or filtering effects? Or interference?
+
+### Panel (b): SNR vs Fiber Length (DAS)
+*   **X-Axis:** Fiber Length (km) [0 - 42].
+*   **Y-Axis:** SNR (dB) [-30 to 30].
+*   **Trend:**
+    *   Linear decrease from ~22 dB at 0km to ~8 dB at 38km.
+    *   **Sharp drop** at ~39km (End of fiber / Fan-out loss).
+    *   Curves for PI Bandwidth = 2, 4, 6, 8 GHz are superimposed, showing negligible impact of PI on sensing SNR.
+
+### Panel (c): BER vs Wavelength (7 Cores)
+*   **Structure:** 7 stacked sub-plots (Core 1 to Core 7).
+*   **X-Axis:** Wavelength (nm) [1525 - 1565].
+*   **Y-Axis:** BER [Log scale: 1E-2 to 3E-2].
+*   **Data:**
+    *   All cores show BER roughly constant across the band.
+    *   **Value:** Average BER ~1.5E-2 to 2E-2.
+    *   **Threshold:** Dashed line at ~2.4E-2 (likely 20% SD-FEC threshold). All channels are below this threshold.
+
+### Panel (d): Distributed Strain Sensing (Waterfall)
+*   **X-Axis:** Distance (km) [38.0 - 38.9].
+*   **Y-Axis:** Time (s) [0 - 30].
+*   **Color Scale:** Strain (n$\epsilon$) [-150 to 150].
+*   **Features:**
+    *   **Static Reflection:** High intensity spot at ~38.6 km (due to Facets Mismatch).
+    *   **Dynamic Event:** Oscillating pattern at ~38.7 km (PZT Vibration).
+    *   **Background:** mostly Green (~0 strain).
+
+### Panel (e): Strain Waveform
+*   **X-Axis:** Time (s) [0 - 25].
+*   **Y-Axis:** Strain (n$\epsilon$) [-50 to 150].
+*   **Trace:** Sinusoidal wave.
+    *   **Period:** ~10 s.
+    *   **Peak-to-Peak Amplitude:** ~130 n$\epsilon$ (-10 to 120).
+    *   **Note:** Labeled "130n$\epsilon$".
+
+### Panel (f): Power Spectral Density (ASD)
+*   **X-Axis:** Frequency (Hz) [0 - 1.0].
+*   **Y-Axis:** ASD ($\epsilon/\sqrt{Hz}$) [Log scale].
+*   **Traces:**
+    *   **Blue (With vibration):** Peak at **0.1 Hz** (Fundamental).
+    *   **Orange (Without vibration):** Noise floor level ~10^-9.
+    *   **Noise Floor Line:** ~3.89 n$\epsilon$.
+---

@@ -1,0 +1,180 @@
+Image: _page_2_Picture_2.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Transceiver:** Ceiling-mounted unit with **PD** (Photodiode) and **LED**.
+- **Users:** User 1, User 2, User 3, ... User M. Each has a desk and computer.
+- **Signals:** 
+    - **Communication Purpose (Blue lines):** Downlink from LED to Users.
+    - **Sensing Purpose (Red dashed lines):** Signals emitted by LED, reflecting off Users, and received by PD.
+- **Environment:** Indoor room with a door.
+
+**Flow:**
+The **LED** in the transceiver broadcasts optical signals. These serve two purposes:
+1.  **Communication:** Direct downlink data transmission to Users (1 to M).
+2.  **Sensing:** The light reflects off objects/users in the room. The reflections are captured by the **PD** in the transceiver to sense the environment (e.g., user presence/location).
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Number of iterations [Range: 1 to 12]
+- **Y-axis:** Communication power (W) [Range: 0 to 180]
+
+**Data Points:**
+- **M = 45 (Top group):**
+    - **Proposed FSSPA:** Starts at ~162 W, drops slightly to ~160 W by iteration 2.
+    - **Proposed SPPM-JSSPA:** Starts at ~152 W, stabilizes at ~150 W.
+- **M = 30 (Middle group):**
+    - **Proposed FSSPA:** Starts at ~98 W, stabilizes at ~95 W.
+    - **Proposed SPPM-JSSPA:** Starts at ~90 W, stabilizes at ~88 W.
+- **M = 10 (Bottom group):**
+    - **Proposed FSSPA:** Starts at ~18 W, stabilizes at ~16 W.
+    - **Proposed SPPM-JSSPA:** Starts at ~14 W, stabilizes at ~13 W.
+
+**Legend/Trends:**
+- **Variables:** Algorithms (SPPM-JSSPA vs FSSPA) and Number of Users (M=10, 30, 45).
+- **Trend:** Both algorithms converge very quickly (within 2-3 iterations). The **SPPM-JSSPA** algorithm consistently consumes less communication power than **FSSPA** for the same number of users. Power consumption increases significantly with the number of users (M).
+---
+
+Image: _page_8_Figure_12.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Number of total slots [Range: 10 to 45]
+- **Y-axis:** Total transmitted power (W) [Range: 20 to 220]
+
+**Data Points:**
+- **At 45 slots:**
+    - **RSSUPA:** Highest power ~210 W.
+    - **SSUPA:** ~195 W.
+    - **Proposed FSSPA:** ~178 W.
+    - **Proposed SPPM-JSSPA:** Lowest power ~168 W.
+- **At 10 slots:**
+    - All algorithms start close to each other, roughly between 30 W and 40 W.
+
+**Legend/Trends:**
+- **Variables:** 4 Algorithms: SPPM-JSSPA, FSSPA, SSUPA, RSSUPA.
+- **Trend:** Total transmitted power increases linearly with the number of time slots. The proposed **SPPM-JSSPA** algorithm is the most energy-efficient (lowest curve), followed by **FSSPA**, **SSUPA**, and lastly **RSSUPA** (highest power consumption).
+---
+
+Image: _page_8_Figure_4.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Number of iterations [Range: 1 to 12]
+- **Y-axis:** Sensing power (W) [Range: 17 to 22]
+
+**Data Points:**
+- **M = 45 (Bottom group):**
+    - **Proposed FSSPA:** Starts at ~18 W, drops to ~17.8 W.
+    - **Proposed SPPM-JSSPA:** Starts at ~18 W, drops to ~17.2 W (Lowest power).
+- **M = 30 (Middle group):**
+    - **Proposed FSSPA:** Starts at ~19.5 W, drops to ~18.5 W.
+    - **Proposed SPPM-JSSPA:** Starts at ~19 W, drops to ~18.2 W.
+- **M = 10 (Top group):**
+    - **Proposed FSSPA:** Starts at ~21.8 W, drops to ~19.2 W.
+    - **Proposed SPPM-JSSPA:** Starts at ~20.5 W, drops to ~18.8 W.
+
+**Legend/Trends:**
+- **Variables:** Algorithms (SPPM-JSSPA vs FSSPA) and Users (M).
+- **Trend:** Both algorithms converge within 4-6 iterations. **SPPM-JSSPA** consistently requires less sensing power than **FSSPA**. Interestingly, unlike communication power, sensing power *decreases* as the number of users (M) increases (or is lower for higher M groups in this specific context/setup).
+---
+
+Image: _page_9_Figure_10.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** R_t (bit/s/Hz) [Range: 0 to 100]
+- **Y-axis:** Communication power (W) [Range: 12 to 19]
+
+**Data Points:**
+- **At R_t = 60 bit/s/Hz:**
+    - **RSSUPA:** ~16.5 W (Highest).
+    - **SSUPA:** ~15.1 W.
+    - **Proposed FSSPA:** ~14.9 W.
+    - **Proposed SPPM-JSSPA:** ~13.4 W (Lowest).
+- **At R_t = 0:**
+    - All start closer, between 12.2 W and 13.5 W.
+
+**Legend/Trends:**
+- **Variables:** 4 Algorithms.
+- **Trend:** Communication power consumption increases as the target rate R_t increases. The proposed **SPPM-JSSPA** is the most efficient, maintaining the lowest power consumption across all rates.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: Chart / Graph (Bar Chart)
+---
+**Axes Extraction:**
+- **Y-axis:** Total transmitted power (W)
+    - (a): [0 to 50]
+    - (b): [0 to 160]
+    - (c): [0 to 250]
+
+**Data Points:**
+- **Structure:** Stacked bars showing "Communication Purpose" (Green hatched) and "Sensing Purpose" (Orange).
+- **(a) M=10:** SPPM-JSSPA Total ~31 W (Sensing ~19W, Comm ~12W). RSSUPA Total ~42 W.
+- **(b) M=30:** SPPM-JSSPA Total ~105 W (Sensing ~18W, Comm ~87W). RSSUPA Total ~130 W.
+- **(c) M=45:** SPPM-JSSPA Total ~168 W (Sensing ~18W, Comm ~150W). RSSUPA Total ~210 W.
+
+**Legend/Trends:**
+- **Trend:** Communication power dominates the total power consumption, especially as the number of users (M) increases. The sensing power component remains relatively stable or decreases slightly with M. The **SPPM-JSSPA** algorithm achieves the lowest total power in all scenarios.
+---
+
+Image: _page_9_Figure_8.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Gamma_t (dB) [Range: 0 to 10]
+- **Y-axis:** Sensing power (W) [Range: 18 to 30]
+
+**Data Points:**
+- **Top Group (RSSUPA, SSUPA):** Sensing power ~27.5 W to 28.2 W. Relatively flat/insensitive to Gamma_t.
+- **Bottom Group (FSSPA, SPPM-JSSPA):**
+    - **FSSPA:** Starts ~19.1 W, rises to ~20.3 W.
+    - **SPPM-JSSPA:** Starts ~18.8 W, rises to ~20 W.
+
+**Legend/Trends:**
+- **Variables:** 4 Algorithms.
+- **Trend:** The proposed algorithms (FSSPA, SPPM-JSSPA) consume significantly less sensing power (~30% less) compared to the benchmark algorithms (SSUPA, RSSUPA). Sensing power increases slightly with the target SINR Gamma_t for the proposed schemes.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** M_sens [Range: 5 to 40]
+- **Y-axis:** Total transmitted power (W) [Range: 140 to 240]
+
+**Data Points:**
+- **Minimum Points:** All curves show a minimum point around M_sens = 30.
+    - **SPPM-JSSPA (Black):** Minimum ~145 W.
+    - **FSSPA (Red):** Minimum ~149 W.
+    - **SSUPA (Blue):** Minimum ~178 W.
+    - **RSSUPA (Green):** Minimum ~195 W.
+- **M_sens = 5:** SPPM-JSSPA starts ~171 W.
+- **M_sens = 40:** SPPM-JSSPA rises back to ~155 W.
+
+**Legend/Trends:**
+- **Variables:** M_sens (Number of sensing points/targets?) vs Total Power.
+- **Trend:** There is an optimal number of sensing points/parameters (M_sens = 30) that minimizes total transmitted power. Below or above this value, power consumption increases. The proposed algorithms consistently outperform the benchmarks.
+---
+
+Image: _page_10_Figure_4.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** rho (correlation coefficient?) [Range: 0.0 to 0.9]
+- **Y-axis:** Total transmitted power (W) [Range: 30 to 55]
+
+**Data Points:**
+- **RSSUPA:** Starts ~42 W, rises to ~50 W.
+- **SSUPA:** Starts ~40 W, rises to ~48 W.
+- **Proposed FSSPA:** Starts ~32 W, rises to ~41 W.
+- **Proposed SPPM-JSSPA:** Starts ~31.5 W, rises to ~39 W.
+
+**Legend/Trends:**
+- **Variables:** Rho (likely channel correlation or similar parameter) vs Total Power.
+- **Trend:** Total transmitted power increases non-linearly (exponentially or quadratically) as rho increases. Higher correlation leads to higher power consumption. The proposed algorithms maintain a significant efficiency gap (~10 W lower) compared to benchmarks across the full range of rho.
+---
