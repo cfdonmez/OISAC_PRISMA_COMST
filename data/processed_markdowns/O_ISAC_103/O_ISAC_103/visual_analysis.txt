@@ -1,0 +1,38 @@
+Image: _page_0_Picture_10.jpeg
+Type: System Schematic (HLLB-based Network)
+---
+**Components:**
+* **(a) Conventional Line:** SL/TE (Signal/Terminal Equipment) connected via EDFA and SSMF (Standard Single-Mode Fiber). Mentions HLLB (Hybrid Line Loopback).
+* **(b) Refined HLLB Schematic:** Details components like AOM (Acousto-Optic Modulator), circulators, and couplers within the loopback structure.
+* **Insets (i & ii):** Details of the 90/10 Coupler and FBG (Fiber Bragg Grating) with Circulators in different HLLB configurations.
+---
+
+Image: _page_1_Figure_0.jpeg
+Type: Experimental Setup (Recirculating Loop)
+---
+**Components:**
+* **(i) Transmitter DSP:** PRBS Generation -> QPSK Mapping -> Upsampling -> RRC Shaping -> Resampling.
+* **(ii) Receiver DSP:** Clock Data Recovery -> CD Compensation -> CMA Equalizer -> Freq. Compensation -> DD-LMS.
+* **Loop-1 & Loop-2:** Dual-loop recirculating setup with 51.17 km and 5.0 km SMF spans.
+* **HLLB 1 & 2:** Integration points for sensing and transmission.
+* **Pulse Generator:** Controls AOMs (Loading, Loop, Sensing).
+* **(iii) Waveform:** Timing diagram for Loading/Loop AOMs and Sensing AOM relative to the Trigger pulse.
+---
+
+Image: _page_2_Figure_0.jpeg
+Type: Rayleigh Trace Plots
+---
+**Panels:** 
+* **(a) Normalized Amplitude vs Distance (km):** 0 to 3500 km. Shows periodic peaks corresponding to loop circulations.
+* **(b) Normalized Amplitude vs Time:** Details Rayleigh traces for 5 loops with frequency shifts (0 to 320 MHz in 80 MHz steps).
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Performance Results (Sensing & Transmission)
+---
+**Panels:** 
+* **(a) Rayleigh Trace vs Distance (km):** 0 to 15 km. Comparison of different attenuation levels (w/o, 3dB, 5dB, 10dB). 10dB attenuation (purple) effectively kills the signal after 5 km.
+* **(b) SNR after 10 loops vs Launch Power (dBm):** Range 0 to -5 dBm. Peak SNR (~15 dB) is achieved at -2 dBm for both Loop-1 and Loop-2. 
+* **Constellation Inset:** 4-point QPSK constellation with clear cluster separation.
+* **(c) BER/SNR vs Transmission Distance (km):** 2500 to 4000 km. 15% SD-FEC threshold is at BER $\approx 2 \times 10^{-2}$. Distance limit is ~3750 km (red star).
+---

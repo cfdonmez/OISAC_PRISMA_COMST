@@ -1,6 +1,7 @@
 # Active Context
 
-**Son Güncelleme:** 2025-12-11 10:55
+**Son Güncelleme:** 2025-12-16
+
 **Güncelleyen:** AI + Kullanıcı
 
 ---
@@ -16,10 +17,10 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
 | Metrik | Değer |
 |--------|-------|
 | Dahil edilen çalışma | 158 |
-| PDF toplanan | 32 |
-| Markdown dönüştürülen | 32 |
+| PDF toplanan | 120+ |
+| Markdown dönüştürülen | 120+ |
 | CoT extraction test edilen | 1 (O_ISAC_029) |
-| Batch extraction tamamlanan | 0 (beklemede) |
+| Batch extraction tamamlanan | Hazırlanıyor |
 
 ---
 
@@ -31,6 +32,7 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
     -   **Batch Processing** (5 imaj/paket) eklendi (Limit korumalı).
     -   Notebook metinleri ve kütüphaneleri güncellendi.
     -   `visual_analysis.txt` içeriği başarıyla doğrulandı (Hallucination yok!).
+    -   **Toplu İşlem Başarısı:** 120+ makalenin PDF -> Markdown dönüşümü ve görüntü analizi tamamlandı. 🚀
 
 2.  **Dokümantasyon & İş Akışı** ✨
     -   `CoT_Master_Pipeline.ipynb` iş akışı Mermaid diyagramları ile belgelendi
@@ -48,6 +50,12 @@ Pipeline dokümante edildi, loglama iyileştirildi. Batch extraction için tam h
     -   `analysis/deep_research/` modülü oluşturuldu (Prompt + Config).
     -   **Phase 0 (Calibration)** için `Deep_Research_Agent_Lab.ipynb` eklendi.
     -   Tüm yapı GitHub'a pushlandı, kullanıma hazır.
+
+6.  **GPU Optimizasyonu (T4/A100)** ⚡
+    -   `extraction_pipeline_v3.py` güncellendi.
+    -   **Phase 1:** `marker-pdf` için `TORCH_DEVICE='cuda'` zorunlu hale getirildi.
+    -   **Phase 2:** `microsoft/Florence-2-large` entegre edildi. Artık görsel analiz öncelikli olarak **lokal GPU** üzerinde yapılıyor (API bağımlılığı azaldı, hız arttı).
+    -   Fallback mekanizması: Local -> Gemini -> Backup (Nvidia).
 
 ---
 

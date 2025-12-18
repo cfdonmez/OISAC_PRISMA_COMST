@@ -1,15 +1,55 @@
-Batch 1:
-Image _page_1_Figure_3.jpeg:
-Type: Diagram
-Description: Block diagram of the proposed ISAC-OW system with QPSK-DSSS waveform shared between LiDAR and communication links.
-KEY DATA: Shows QPSK mapping, PN sequence generation, DSSS modulation, coherent detection with 2×4 optical hybrid, and shared transmit/receive apertures enabling simultaneous vehicle-to-vehicle data and ranging.
+Image: _page_1_Figure_3.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Transmitter (Top):** User Data, QPSK Mapping, Multiplier (x), m Sequence, Shaping Filter, DAC (Digital-to-Analog Converter), Laser, IQ Modulator.
+- **ISAC-OW #1 (Receiver/Radar):**
+    - **Physical Front-end:** Antennas (Tx and Rx), LO Laser, 2x4 90° Optical Hybrid, Photodiodes, ADC.
+    - **Radar Path (Rad):** Matched Filter, Radar Processing, Object Detection.
+    - **Communication Path (Com):** Matched Filter, Dispreading, QPSK Demapping, User Data.
+- **ISAC-OW #2 (Communication Link Target):** Car icon.
+- **ISAC-OW #2 Receiver (Bottom):** Coherent Receiver, ADC, Matched Filter, Communication Signal Processing.
 
-Image _page_3_Figure_7.jpeg:
-Type: Chart
-Description: BER versus SNR for ISAC-OW signals with and without spread spectrum under weak/moderate/strong Gamma-Gamma turbulence.
-KEY DATA: DSSS gains ~1.5 dB (weak) and ~7.5 dB (moderate) at ABER=3.8×10^-3; BER degrades as turbulence increases, but spread spectrum maintains better performance.
+**Flow:**
+1. **Transmission:** User Data is QPSK mapped and multiplied by an m Sequence for spreading. The signal passes through a Shaping Filter and DAC. It then drives an IQ Modulator powered by a Laser source. The resulting optical signal s(t) is transmitted wirelessly.
+2. **Channel:** The signal propagates to a target (Car - ISAC-OW #2) and back.
+3. **ISAC-OW #1 Reception (Radar/Sensing):** The received echo s_r(t) is mixed with an LO Laser in a 2x4 90° Optical Hybrid. The outputs are detected by photodiodes and digitized by an ADC.
+4. **Processing (ISAC-OW #1):** The digitized signal is split into Radar (Rad) and Communication (Com) branches. In the Rad branch, after a Matched Filter, it undergoes Radar Processing for Object Detection. In the Com branch, it is dispread (m Sequence), demapiped (QPSK), and recovered as User Data.
+5. **ISAC-OW #2 Reception (Communication):** The direct signal s_c(t) is received, processed by a Coherent Receiver, ADC, Matched Filter, and finally undergoes Communication Signal Processing to recover the data.
+---
 
-Image _page_3_Figure_18.jpeg:
-Type: Chart
-Description: Single-object ranging result from correlation processing using the unified waveform.
-KEY DATA: For R0=100 m and Tc=1 ns, recovered distance is 100.011 m (≈1 cm error), demonstrating centimeter-level LiDAR accuracy while maintaining communication capability.
+Image: _page_3_Figure_18.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Distance (m) [Range: 20 to 180]
+- **Y-axis:** Amplitude [Range: 0 to 1.0]
+
+**Data Points:**
+- **Peak Identification:** A sharp, single peak is visible at **Distance = 100.011 m** with a normalized **Amplitude = 1.0**.
+- **Noise Floor:** The background noise/clutter amplitude fluctuates between approx 0 and 0.1, with occasional spikes reaching ~0.3 near the target peak.
+
+**Legend/Trends:**
+- **Variables:** Amplitude vs. Distance for a ranging/sensing measurement.
+- **Trend:** Shows extreme precision in target localization (resolving down to millimeters, 100.011m) with high dynamic range (signal peak vs noise floor).
+---
+
+Image: _page_3_Figure_7.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** SNR/dB [Range: 5 to 30]
+- **Y-axis:** BER (Log Scale) [Range: 10^-6 to 10^0]
+
+**Data Points:**
+- **Threshold Line:** ABER_th is marked at **3.8 x 10^-3**.
+- **Case: QPSK Strong (Blue Square):** At SNR = 30 dB, BER is approx **10^-2** (above threshold).
+- **Case: QPSK-DSSS Strong (Green Square):** At SNR = 25 dB, BER is approx **3 x 10^-5** (well below threshold).
+- **Case: QPSK Moderate (Orange Square):** Crosses ABER_th at approx **SNR = 25.5 dB**.
+- **Case: QPSK-DSSS Moderate (Purple Diamond):** Crosses ABER_th at approx **SNR = 16.5 dB**.
+- **Case: QPSK-DSSS Weak (Dark Yellow Circle):** Achieves BER = 10^-6 at approx **SNR = 23 dB**.
+
+**Legend/Trends:**
+- **Variables:** BER vs SNR for QPSK and QPSK-DSSS modulation schemes under different atmospheric turbulence conditions (Weak, Moderate, Strong).
+- **Trend:** QPSK-DSSS significantly outperforms standard QPSK across all turbulence levels. The coding gain provided by the DSSS spreading (m-sequence) allows the system to maintain a reliable BER below the threshold even in strong turbulence where standard QPSK fails (stays above threshold even at 30 dB SNR).
+---

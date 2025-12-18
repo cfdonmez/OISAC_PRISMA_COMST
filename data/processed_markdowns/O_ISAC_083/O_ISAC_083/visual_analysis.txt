@@ -1,0 +1,78 @@
+Image: _page_1_Figure_1.jpeg
+Type: High-Level Network Architecture (ECO-eNET)
+---
+**Components:**
+* **Nodes:**
+    - **A:** Radio Fixed Wireless (RFW) access point.
+    - **B:** Tb/s FSO + hybrid radio fixed wireless transmission.
+    - **C:** Optical Spectrum as a Service (OSaaS) node.
+    - **D:** Analog & Digital RoF with adaptive Split Phy & coding.
+    - **E:** FlexE + Optical Switching.
+    - **F:** End-to-end integrated optical & wireless mesh edge orchestration.
+    - **G:** Dense Cell-free access d-MIMO.
+    - **H:** 6G Core + SDN Monitoring & Control.
+    - **I:** Transmission optimized slicing.
+    - **J:** In-Network Federated AI & split DNN proc.
+* **Link Types (Legend):**
+    - **BB/MEC Proc:** Baseband and Multi-access Edge Computing.
+    - **L1/L2 Switching:** Layer 1/2 network equipment.
+    - **THz Interface:** Terahertz wireless hardware.
+    - **FSO Interface:** Free-Space Optical communication hardware.
+    - **FSO+RFW link:** Hybrid Red Dashed Line.
+    - **RFW link:** Solid Red Line.
+    - **Optical SaaS:** Dark Blue Line.
+    - **Flex-WDM/SSMF:** Light Blue Line.
+**Flow:**
+The architecture depicts a heterogeneous 6G-ready network backbone in a metropolitan area, utilizing a mix of high-speed optical fiber (WDM/SSMF) and high-bandwidth wireless (THz, FSO, RFW) to provide pervasive connectivity, cell-free d-MIMO, and distributed AI processing.
+---
+
+Image: _page_2_Figure_1.jpeg
+Type: Confluent Network Resource Schematic
+---
+**Components:**
+* **Endpoints:** Base Station A and Base Station B.
+* **Parallel Transmission Paths:**
+    1. **Single-segment FSO:** Utilizing optical laser heads for line-of-sight wireless.
+    2. **Single-segment active DWDM:** Features a tube containing ROADMs (Reconfigurable Optical Add-Drop Multiplexers), optical fibers, and amplifiers.
+    3. **Multi-segment passive CWDM:** Segmented fiber links using Coarse WDM.
+    4. **Multi-segment dark fiber:** Segmented unlit fiber links.
+* **Monitoring Inset:** A spectral plot (Power/Frequency) with a magnifying glass highlighting the "RoF" (Radio over Fiber) peak and the "OSaaS" (Optical Spectrum as a Service) band.
+**Flow:**
+The diagram illustrates how diverse physical layer resources (Fiber, FSO, WDM) are converged between base stations to provide resilient and high-capacity transport for 6G services. Station B further distributes signals to multiple downstream nodes (C through H).
+---
+
+Image: _page_2_Figure_3.jpeg
+Type: Probed DWDM Link Schematic
+---
+**Components:**
+* **Test Equipment:**
+    - **C-OTDR:** Coherent Optical Time-Domain Reflectometer.
+    - **S-BVT:** Sliceable Bandwidth Variable Transmitter.
+* **Switching:** 1:16 Optical Switch for selecting between multiple links.
+* **Links:** Shows Link 1 (Detailed) and Links 14, 15, 16.
+    - **Link 1 Details:** Contains ROADMs, booster/preamplifiers, and segments of fiber.
+* **Legend Symbols:**
+    - **Triangle:** Booster/preamplifier.
+    - **Blue Curved Arrow:** Amplifier bypass and 1650nm reflector (used for C-OTDR probing).
+    - **Red U-turn Arrow:** OSC (Optical Service Channel) Loopback.
+**Flow:**
+This schematic details the telemetry and sensing infrastructure. A C-OTDR and S-BVT probe multiple DWDM links via an optical switch. The 1650nm reflector allows the probing signal to bypass amplifiers and return to the CO for real-time monitoring of fiber health and latency.
+---
+
+Image: _page_3_Figure_1.jpeg
+Type: Control Plane and Logical Stack Architecture
+---
+**Components:**
+* **AI Orchestration Layer:** Split Computing, AI Deployment, Data Analytics.
+* **Evolved SMO/MANO:** Service Orchestration & Brokering, VNF/PNF profiling, VNF/PNF Placement, Non RT-RIC, Transport Function.
+* **Adaptive Confluent Mesh Orchestration:** Predictive Composition, Self-Learning, Zero Down Time Mobility, End-to-end slicing, On-Demand Splitting, Federated MEC.
+* **Monitoring Function Orchestration and Chaining:** RAN Monitoring (NWDAF), Optical, Radio, Computing, PNF, and VNF Monitoring Functions.
+* **Evolved SDN Control:** Near RT RIC Agent, 6G Core Agent, Radio Access Agent, Optical Interface Agent.
+* **Physical Mapping:**
+    - **CU (Central Unit):** Connected to RIC/SDN nodes.
+    - **DU (Distributed Unit):** Intermediary nodes.
+    - **RU (Radio Unit):** Cell sites.
+* **Links:** OSaaS, SSMF, RFW, FSO, FSO+RFW.
+**Flow:**
+This block diagram presents the unified management and orchestration (MANO) framework for the ISAC network. It shows how software-defined control and AI orchestration are applied across a hierarchical physical topology (CU -> DU -> RU) using heterogeneous optical and wireless transport.
+---

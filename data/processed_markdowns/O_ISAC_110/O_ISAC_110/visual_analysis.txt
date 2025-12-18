@@ -1,0 +1,30 @@
+Image: _page_0_Picture_15.jpeg
+Type: System Schematic (Figure 1: Conceptual illustration)
+---
+**Components:**
+- **Emitter Layer:** Ceiling-mounted track lighting with 4 lamp units, labeled "Diffused lights enabled with optical wireless transmission."
+- **Receiver Layer:** Mobile robotic platform (4-wheeled chassis) equipped with a "neuromorphic camera" (Event camera).
+- **Environment Objects:** Static indoor fixtures including a work desk, ergonomic chair, laptop, drink glass, and a cactus in a pot.
+- **Connectivity:** Red horizontal arrows indicate the robot's traversal path across the wood-texture floor.
+
+**Signal Flow:**
+1. **Transmission:** Ceiling lights act as optical emitters, broadcasting modulated data via visible or invisible light (IR/UV) throughout the room.
+2. **Channel:** Light rays fall on various surfaces (active LOS or passive NLoS/backscatter reflections).
+3. **Integrated Reception (ISAC):**
+   - **Communication:** The event camera picks up temporal changes in light intensity to demodulate the data stream.
+   - **Sensing:** Simultaneously, the spatial distribution of these events (reflections from objects like the desk or cactus) allows the robot to detect obstacles and perform visual scene processing.
+---
+
+Image: _page_1_Picture_0.jpeg
+Type: Image Comparison (Figure 2: RGB vs Event Camera Feature Matching)
+---
+**Structure:**
+- **Left Panel:** Grayscale frame captured by a standard RGB camera, showing high-fidelity details of three objects: a black matte-finish coffee holder (left), a clear glass vase (center), and a white container (right).
+- **Right Panel:** Corresponding event frame from a neuromorphic camera, visualized as a dense collection of binary events (light intensity changes). The background appears predominantly black, while the objects are outlined by high-density event clusters.
+- **Feature Extraction:** ORB descriptors are applied to both frames, with Brute-Force (BF) matching represented by colored lines.
+
+**Visual Analysis & Quality:**
+- **Descriptor Performance:** The algorithm extracts 12+ matching lines, but they are visually inconsistent. Lines connect mismatched regions (cross-matching between unrelated objects or empty space).
+- **Noise Characteristics:** The event frame exhibits significant noise spread, effectively blurring the sharp edges found in the RGB frame.
+- **Finding:** Quantitative failure of general computer vision feature descriptors (ORB) to find accurate correspondence between traditional and neuromorphic frames due to the starkly different probability density functions of pixel/event intensities.
+---

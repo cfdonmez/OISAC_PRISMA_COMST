@@ -25,8 +25,8 @@ Bu repo, bu soruyu cevaplamak için yapılan **bilimsel yolculuğun** dijital ka
 | **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_protocol.md)) | ✅ Tamamlandı |
 | **2. Arama** | 1200+ makaleyi veritabanlarından bulduk. | ✅ Tamamlandı |
 | **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (158 kaldı). | ✅ Tamamlandı |
-| **4. PDF Toplama** | Seçilen 158 makalenin tam metinlerini topluyoruz. | 🟡 Devam Ediyor (%20) |
-| **5. Veri Madenciliği** | **Yapay Zeka (AI)** ile makaleleri okuyup veri çıkarıyoruz. | 🟡 Devam Ediyor |
+| **4. PDF Toplama** | Seçilen 158 makalenin tam metinlerini topluyoruz. | 🟢 Devam Ediyor (%75 - 120+ PDF) |
+| **5. Veri Madenciliği** | **Yapay Zeka (AI)** ile makaleleri okuyup veri çıkarıyoruz. | 🟡 Devam Ediyor (120+ MD Dönüşümü) |
 | **6. Yazım** | Sonuçları makale haline getiriyoruz. | 🔴 Başlamadı |
 
 > **Canlı Süreç:** Bu proje "Living Review" mantığıyla çalışır. Her sabah yeni makale var mı diye kontrol ederiz. ([Detaylı Günlük Akış](docs/DAILY_WORKFLOW.md))

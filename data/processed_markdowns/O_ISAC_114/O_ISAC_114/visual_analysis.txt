@@ -1,0 +1,171 @@
+Image: _page_3_Figure_2.jpeg
+Type: System Schematic & Component Models (Fig. 1)
+---
+**Components & Architecture (a):**
+- **Transmitter:** OFDM Modulator, D/A Converter, Drive Circuit, Laser Diode (LD), Optical Power Splitter (OPS).
+- **Receiver (EH):** Photovoltaic (PV) cell connected to a Resistor/Load.
+- **Receiver (ISAC):** Corner Cubic Reflector (CCR) for sensing, Photodiode (PD1) for communication, A/D Converter, OFDM Demodulator.
+- **Sensing Path:** Reflected light from CCR captured by PD2, leading to Cross Correlation and Distance Estimation.
+
+**Functional Models (b-f):**
+- **(b) OFDM Modulation:** Data in -> QAM mapping -> Training sequence -> Hermitian symmetry -> IFFT -> Add CP.
+- **(c) OFDM De-modulation:** Remove CP -> FFT -> Channel estimation & Equalization -> QAM de-mapping -> Data out.
+- **(d) OPS Model:** Splits incident beam into sub-beams with factors µ (ISAC) and 1-µ (EH).
+- **(e) Sensing Model:** Approximates LD as point source; CCR with diameter D reflects signal back for ToF estimation.
+- **(f) PV Circuit:** Equivalent model with photogenerated current (Iph), dark current (I0), shunt resistor (RSH), and series resistor (RS).
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Chart (BER and RMSE vs SNR)
+---
+**Axes Extraction:**
+- **X-axis:** SNR (10log10(γc/γs)) in dB | Range: -30 to 20.
+- **Y-axis (a - BER):** 10^-5 to 10^0.
+- **Y-axis (b - RMSE):** 0.0 to 1.0 m.
+
+**Data Points:**
+- **(a) BER:** At SNR 10 dB, 4QAM achieves ~7e-4, 16QAM ~4e-2, 32QAM ~1.5e-1.
+- **(b) RMSE:** Convergence occurs at approx -24 dB SNR, where RMSE reaches its floor of ~0.04 m for all modulation formats (4/16/32QAM).
+**Trend:** Sensing requires significantly lower SNR than high-order communication.
+---
+
+Image: _page_5_Figure_19.jpeg
+Type: Chart (RMSE vs Sequence Length)
+---
+**Axes Extraction:**
+- **X-axis:** Number of OFDM symbols | Range: 0 to 300.
+- **Y-axis:** RMSE (m) | Range: 0.0 to 1.2.
+
+**Data Points:**
+- **0 Symbols:** RMSE is approx 1.1 m.
+- **100 Symbols:** RMSE drops to approx 0.15 m.
+- **150+ Symbols:** RMSE converges to a floor of approx 0.05 m.
+**Conclusion:** 150 symbols are sufficient for stable sensing precision.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Simulated O-ICSPT Performance vs µ)
+---
+**Axes Extraction:**
+- **X-axis:** Optical power splitting factor µ | Range: 0 to 1.
+- **Y-axis (Red - Data Rate):** 0 to 450 Mbps.
+- **Y-axis (Green - RMSE):** 0.02 to 0.05 m.
+- **Y-axis (Blue - EH):** 0 to 1.4 mW.
+
+**Data Points:**
+- **At µ = 0 (Pure EH):** EH is maxed at ~1.2 mW; Data rate is 0.
+- **At µ = 0.5:** Data rate is approx 350 Mbps, EH drops to approx 0.2 mW, RMSE is ~0.04 m.
+- **At µ = 1.0 (Pure ISAC):** Data rate is approx 450 Mbps, RMSE is ~0.022 m, EH is 0 mW.
+---
+
+Image: _page_7_Figure_2.jpeg
+Type: System Schematic (Experimental Layout)
+---
+**Components & Flow:**
+- **Source:** PC -> AWG & OSC -> Electrical Amplifier (EA) -> Bias-Tee.
+- **Optical Front-end:** Red/Green/Blue LD coupled with OPS.
+- **Splitting:** OPS diverts beam 90° to PV (connected to Resistor/Power meter) for EH.
+- **Link:** Incident beam travels 1.5m to Rx unit containing APD and CCR.
+- **Sensing/Comm:** Rx OSC captures PD1 signal; reflected signal from CCR captured by PD2 (APD) for ranging analysis.
+---
+
+Image: _page_7_Figure_4.jpeg
+Type: Chart (LD Characteristic Curves)
+---
+**Axes Extraction:**
+- **X-axis (a, b):** Bias current (mA) | Range: 0 to 200.
+- **Y-axis (a - Voltage):** 1.5 to 6.0 V.
+- **Y-axis (b - Optical Power):** 0 to 100 mW.
+
+**Numerical Extracted Data:**
+- **Threshold Currents:** Blue (~20 mA), Green (~30 mA), Red (~50 mA).
+- **V-I Response:** Red LD operates at much lower voltage (~2-3V) compared to Green/Blue (~3.5-5.5V).
+- **Power:** At 100mA, Blue LD outputs ~72 mW, Green ~40 mW, Red ~38 mW. Power is nonlinear above threshold.
+---
+
+Image: _page_7_Figure_11.jpeg
+Type: Chart (Spectra & Frequency Response)
+---
+**Axes Extraction:**
+- **X-axis (a-c - Freq):** 0 to 100 MHz.
+- **X-axis (d - Freq):** 0 to 100 MHz.
+- **Y-axis (d - Normalized response):** -20 to 0 dB.
+
+**Data Points (-10 dB Bandwidth):**
+- **Red LD:** 57.6 MHz.
+- **Blue LD:** 51.5 MHz.
+- **Green LD:** 46.2 MHz.
+- **Observation:** Rx spectra (colors) show significant roll-off compared to flat Tx spectra (gray) due to system bandwidth limitations.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Chart (PV V-I Curves)
+---
+**Axes Extraction:**
+- **X-axis:** Current (mA) | Range: 0.0 to 2.5+.
+- **Y-axis:** Voltage (V) | Range: 0.0 to 3.0.
+
+**Maximum Power Points (MPP):**
+- **Red LD (140mA bias):** Approx 2.5 mA @ 2.75 V.
+- **Green LD (180mA bias):** Approx 0.5 mA @ 2.55 V.
+- **Blue LD (100mA bias):** Approx 0.35 mA @ 2.60 V.
+**Observation:** Red LD current generation is an order of magnitude higher than G/B.
+---
+
+Image: _page_8_Figure_4.jpeg
+Type: Chart (Performance vs Bias Current)
+---
+**Axes Extraction:**
+- **X-axis:** Bias current (mA) | Range varies by LD.
+- **Y-axis:** BER (10^-4 to 10^-1), RMSE (0 to 0.08 m), EH (0 to 2.5 mW).
+
+**Key Points (Red LD):**
+- **Optimal Bias:** ~75 mA for BER/RMSE (BER ~4e-4).
+- **EH Trend:** Increases linearly; at 90mA bias, EH = approx 2.3 mW.
+- **clipping:** Performance degrades below 65mA due to threshold/clipping.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: Chart (Performance vs Vpp)
+---
+**Axes Extraction:**
+- **X-axis:** Vpp (mV) | Range: 0 to 300.
+- **Y-axis:** BER (10^-4 to 10^-1), RMSE (0 to 0.08 m), EH (0 to 2.0 mW).
+
+**Key Points (Red LD):**
+- **Optimal Vpp:** ~100-150 mV for BER/RMSE.
+- **EH Response:** Flat; constant at ~1.4 mW regardless of Vpp signal swing.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Contour Plot (Parameter Optimization)
+---
+**Axes Extraction:**
+- **X-axis:** Bias current (mA).
+- **Y-axis:** Vpp (mV).
+
+**Optimization Zones:**
+- **Red LD:** "Sweet spot" for BER < 3.8e-3 and RMSE < 0.02m found around Bias = 70-85mA and Vpp = 100-200mV.
+- **EH Capability:** Red LD reaches 10mW EH at Bias ~160mA; Green reaches 5mW at Bias ~250mA; Blue reaches 1mW at Bias ~100mA.
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Chart (Experimental Performance vs µ)
+---
+**Axes Extraction:**
+- **X-axis:** splitting factor µ | Range: 0 to 1.
+- **Y-axis:** Data Rate (0-600+ Mbps), RMSE (0-0.06 m), EH (0-10 mW).
+
+**Numerical Highlights (Red LD):**
+- **At µ = 0:** EH = 10.02 mW.
+- **At µ = 0.3:** Data Rate ~580 Mbps, EH drops to ~0.5 mW.
+- **At µ = 1.0:** Data Rate reaches **632.58 Mbps**, RMSE = **0.0 m**.
+---
+
+Image: _page_11_Figure_4.jpeg
+Type: Chart (Comparative Performance Summary)
+---
+**Description:** Consolidates the trade-off curves for all three wavelengths (Red, Green, Blue) in O-ICSPT mode.
+**Summary Metric (Red LD):** Achieves max combined utility with 632 Mbps throughput and 10.02 mW power generation.
+**Wavelength comparison:** Red LD provides ~6x higher data rate and ~10x higher EH than Blue LD at equivalent power-splitting configurations.
+---

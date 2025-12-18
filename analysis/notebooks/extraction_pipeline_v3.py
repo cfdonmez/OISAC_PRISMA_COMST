@@ -21,10 +21,24 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict
 
-import torch
-import pandas as pd
-from PIL import Image
-from transformers import AutoProcessor, AutoModelForCausalLM
+try:
+    import pandas as pd
+except ImportError:
+    pd = None
+    print("Starting... Pandas not found. CSV/Excel export disabled.")
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
+    print("Starting... PIL not found. Image processing disabled.")
+try:
+    import torch
+    from transformers import AutoProcessor, AutoModelForCausalLM
+except ImportError:
+    torch = None
+    AutoProcessor = None
+    AutoModelForCausalLM = None
+    print("Starting... Torch/Transformers not found. heavy local models will be disabled.")
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -36,7 +50,7 @@ class Config:
     if os.path.exists("/content/drive"):
         # Google Colab
         PROJECT_PATH = "/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST"
-        print("🌍 Environment: Google Colab")
+        print("Environment: Google Colab")
     else:
         # Local Windows (assuming we are running from project root or analysis folder)
         # Try to find the root dynamically
@@ -50,7 +64,7 @@ class Config:
         else:
             # Fallback to hardcoded local if detection fails
             PROJECT_PATH = r"G:\Drive'ım\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST"
-        print(f"🌍 Environment: Local Windows ({PROJECT_PATH})")
+        print(f"Environment: Local Windows ({PROJECT_PATH})")
 
     PDF_DIR = os.path.join(PROJECT_PATH, "data/retrieved_docs")
     MARKDOWN_DIR = os.path.join(PROJECT_PATH, "data/processed_markdowns")
@@ -168,6 +182,9 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
     
     print("\n✅ Phase 1 Complete")
 
+# =============================================================================
+# PHASE 2: VISUAL ANALYSIS (BLIP + DePlot) - Batched
+# =============================================================================
 # =============================================================================
 # PHASE 2: VISUAL ANALYSIS (BLIP + DePlot) - Batched
 # =============================================================================
@@ -358,7 +375,7 @@ class LocalVisionModel:
 def phase2_visual_analysis(checkpoint: CheckpointManager):
     """Analyze images using Local GPU (Florence-2) with Gemini/Backup Fallback."""
     print("\n" + "="*60)
-    print("👁️ PHASE 2: VISUAL ANALYSIS (Local GPU + Gemini Fallback)")
+    print("👁️ PHASE 2: VISUAL ANALYSIS (Local GPU + Gemini Fallback) - Deep Traversal Mode")
     print("="*60)
     
     # Init Local Model
@@ -412,48 +429,67 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
     RATE_LIMIT_DELAY = 15.0 
 
     # Find papers
-    paper_folders = sorted(glob.glob(os.path.join(Config.MARKDOWN_DIR, "*")))
-    print(f"Papers to analyze: {len(paper_folders)}")
+    paper_folders_root = sorted(glob.glob(os.path.join(Config.MARKDOWN_DIR, "*")))
+    # Filter to only directories
+    paper_folders_root = [f for f in paper_folders_root if os.path.isdir(f)]
+    
+    print(f"Papers found for discovery: {len(paper_folders_root)}")
     
     import time
     
-    for i, folder in enumerate(paper_folders):
-        paper_id = os.path.basename(folder)
+    for i, folder_path in enumerate(paper_folders_root):
+        paper_id = os.path.basename(folder_path)
         
-        # Look for inner folder
-        inner_folder = os.path.join(folder, paper_id)
-        if os.path.exists(inner_folder):
-            folder = inner_folder
-        
-        output_file = os.path.join(folder, "visual_analysis.txt")
-        
+        # --- PATH NORMALIZATION (Nested Check) ---
+        # Rule: Check if [Root]/[Paper_ID]/[Paper_ID]/ exists.
+        nested_folder = os.path.join(folder_path, paper_id)
+        if os.path.isdir(nested_folder):
+            working_dir = nested_folder
+            print(f"   📂 Nested Structure detected for {paper_id}. Working Dir: .../{paper_id}/{paper_id}/")
+        else:
+            working_dir = folder_path
+            
+        # --- CHECKPOINT VERIFICATION ---
+        output_file = os.path.join(working_dir, "visual_analysis.txt")
         if os.path.exists(output_file):
-            print(f"   ⏩ {paper_id} - already analyzed, skipping")
-            continue
+             # Check if it has valid content (not empty or just "No valid images found" if we want to re-try, but strict rule says skip)
+             # User rule: "IF Found: Skip this paper entirely"
+             print(f"   ⏩ {paper_id} - visually analyzed (checkpoint found), skipping")
+             continue
         
-        print(f"[{i+1}/{len(paper_folders)}] 👁️ Analyzing: {paper_id}")
+        print(f"[{i+1}/{len(paper_folders_root)}] 👁️ Analyzing: {paper_id}")
         
-        # Get Images
-        images = sorted(glob.glob(os.path.join(folder, "**", "*.png"), recursive=True) + 
-                       glob.glob(os.path.join(folder, "**", "*.jpg"), recursive=True) +
-                       glob.glob(os.path.join(folder, "**", "*.jpeg"), recursive=True))
+        # --- IMAGE COLLECTION (Recursive) ---
+        # "Scan Working Directory and ALL subdirectories recursively."
+        images = []
+        for root, dirs, files in os.walk(working_dir):
+            for file in files:
+                if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                    images.append(os.path.join(root, file))
         
-        # Filter Small Images
+        images = sorted(images) # Sort for consistency
+        
+        # --- FILTERING (Quality Control) ---
         valid_images = []
         for img_path in images:
             try:
                 img = Image.open(img_path)
+                # Rule: Discard if Width < 150px OR Height < 150px
                 if img.width >= 150 and img.height >= 150:
                     valid_images.append(img_path)
+                else:
+                    # Optional: print skipped images? Nah, too verbose.
+                    pass
             except:
                 continue
                 
         if not valid_images:
+            print(f"     ⚠️ No valid images found after filtering (Total raw: {len(images)})")
             with open(output_file, 'w') as f:
                 f.write("No valid images found.")
             continue
             
-        # Create Batches
+        # --- BATCHING ---
         batches = [valid_images[j:j + BATCH_SIZE] for j in range(0, len(valid_images), BATCH_SIZE)]
         results = []
         print(f"     Found {len(valid_images)} images -> {len(batches)} batches")
@@ -596,23 +632,47 @@ def phase2_visual_analysis(checkpoint: CheckpointManager):
 # =============================================================================
 # PHASE 3: LLM EXTRACTION (Groq API)
 # =============================================================================
-SYSTEM_PROMPT = """You are a Senior Technical Editor for IEEE COMST extracting structured data from Optical Integrated Sensing and Communication (O-ISAC) papers for a PRISMA-2020 systematic review.
+# =============================================================================
+# PHASE 3: LLM EXTRACTION (Groq API)
+# =============================================================================
+SYSTEM_PROMPT = """You are a Senior Technical Editor and Optical Systems Engineer specializing in O-ISAC (Optical Integrated Sensing and Communication). Your task is to perform a Deep Extraction & Verification of a scientific paper.
 
-================================================================================
-CRITICAL EXTRACTION RULES
-================================================================================
-1. Use "NR" (Not Reported) for missing values, "NA" (Not Applicable) for inapplicable fields
-2. Create MULTIPLE Experiment entries if the paper reports different scenarios/configurations
-3. Extract EXACT numerical values with units - convert to standard: wavelength→nm, distance→m (wireless)/km (fiber), rate→Gbps
-4. Include evidence snippets with source pointers (e.g., "Table II", "Fig. 5", "Section IV-B")
-5. The "isac_waveform_relationship" field is MOST CRITICAL for taxonomy - always determine it
+Inputs:
+1. Full Text: Markdown content of the paper.
+2. Visual Context: Descriptions of charts/diagrams.
 
-================================================================================
-OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
-================================================================================
+Execution Protocol (Must Follow Step-by-Step):
+
+STEP 1: VISUAL INSPECTION (Grounding)
+- Review the "Visual Context" provided.
+- Verify what the diagrams prove. Does the "System Setup" diagram show a Fiber link or FSO? Does the "BER Graph" show performance below the threshold?
+- Output: Briefly state the physical reality grounded in the images.
+
+STEP 2: CONCEPT ANALYSIS (Classification)
+- Classify the fundamental architecture.
+- Decision Tree:
+  - Is it Fiber, Wireless (FSO/VLC), or Hybrid?
+  - Is the Sensing Active (Radar/Lidar) or Passive (DAS)?
+  - Is the Integration method Spectral (OFDM), Time (TDM), or Hardware sharing?
+
+STEP 3: BENCHMARK VERIFICATION (Sanity Check)
+- Extract key metrics (Data Rate, Sensing Range, Resolution).
+- Constraint Check: Do these numbers make physical sense? (e.g., A resolution of 1mm over 100km fiber is suspicious—flag it or verify it against the Abstract).
+- Logic: Compare "Claims" in the Abstract vs. "Evidence" in the Results/Table section.
+
+STEP 4: STRATEGIC CRITIQUE (Gap Analysis)
+- Identify what is MISSING or WEAK.
+- Focus: Did they simulate or experiment? Did they compare with baselines? Is the code available?
+
+STEP 5: JSON SYNTHESIS (Final Output)
+Populate the Target Schema with the extracted, verified data.
+- Rule 1: JSON must be strictly valid.
+- Rule 2: Use "NR" for missing data, do not hallucinate.
+- Rule 3: Keep the reasoning steps internal (or in a separate trace field if prompted, but here produce CLEAN JSON).
+
+Target Schema:
 {
   "Paper_ID": "O_ISAC_XXX",
-  
   "Study_Level": {
     "title": "string",
     "authors": "string",
@@ -620,36 +680,29 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
     "venue": "string",
     "doi": "string or NR",
     "document_type": "journal|conference|letter|review",
-    
     "oisac_medium_class": "cabled_fibre|wireless_fso|wireless_vlc|wireless_lidar_like|wireless_retroreflective|hybrid",
     "carrier_band": "visible|NIR|SWIR|C-band|L-band|O-band|other|NR",
     "operational_environment": "indoor|outdoor|lab|field_trial|mixed|NR",
     "link_topology": "monostatic|bistatic|multistatic|distributed_fibre|point_to_point|NR",
     "mobility_context": "static|quasi_static|mobile|not_specified",
-    
     "application_domain": ["vehicular", "industrial_manufacturing", "indoor_positioning", "environmental_monitoring", "critical_infrastructure", "fibre_network_monitoring", "robotics_autonomy", "aerospace_space", "uav_aerial", "maritime_underwater", "security_surveillance", "6g_networks", "other"],
     "scenario_description": "free-text description of use case",
-    
     "evidence_type": ["analytical", "simulation", "experimental", "hybrid"],
     "validation_baselines_present": bool,
     "reproducibility_artifacts": "code_available|data_available|parameters_sufficient|insufficient|NR",
-    
     "ris_present": bool,
     "opa_present": bool,
     "machine_learning_used": bool,
-    
-    "key_contribution": "1-2 sentence summary of the paper's main technical contribution",
-    "gap_addressed": "What gap/limitation does this work address?",
+    "key_contribution": "summary",
+    "gap_addressed": "summary",
     "performance_enablers": ["photonic_dechirping", "electronic_dechirping", "matched_filtering", "fft_based_processing", "compressed_sensing", "coherent_homodyne", "coherent_heterodyne", "direct_detection", "self_coherent", "balanced_detection", "tfln_modulator", "high_bandwidth_modulator", "frequency_comb", "photonic_adc", "integrated_photonics", "joint_waveform_design", "superimposed_waveform", "orthogonal_waveform", "dual_function_waveform", "frequency_jitter_mitigation", "false_target_suppression", "phase_noise_compensation", "nonlinearity_compensation", "wavelength_reuse", "shared_fiber_bidirectional", "distributed_architecture", "monostatic_full_duplex", "other"],
-    "novel_component": "Specific novel hardware/component if applicable (e.g., 'TFLN-MZM with 110 GHz bandwidth')",
-    "novel_component_specs": "Key specifications of the novel component"
+    "novel_component": "string",
+    "novel_component_specs": "string"
   },
-  
   "Experiments": [
     {
       "experiment_id": "E1",
-      "scenario_label": "Human-readable label (e.g., 'Outdoor FSO, 500m, Gamma-Gamma turbulence')",
-      
+      "scenario_label": "string",
       "Transmitter": {
         "tx_source_type": "laser|led|vcsel|frequency_comb|sld|other",
         "tx_modulation_type": "im_dd|coherent|mixed|not_specified",
@@ -660,7 +713,6 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "aperture_diameter_m": float,
         "beam_divergence_mrad": float
       },
-      
       "Receiver": {
         "rx_detection_type": "direct|coherent|self_coherent|imaging|spad|other",
         "rx_detector": "pin_pd|apd_pd|balanced_pd|camera_cmos|camera_ccd|spad_array|other|NR",
@@ -671,12 +723,10 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "rx_modulator_operating_point": "mitp|matp|qbp|other|not_specified|NR",
         "false_target_mitigation": "none|mitp_bias|balanced_detection|signal_processing|waveform_design|other|NR"
       },
-      
       "Integration": {
         "hardware_sharing_mode": "shared_frontend|partially_shared|separate_frontends|not_specified",
         "duplexing_mode": "full_duplex|half_duplex|tdm|fdm|wdm|cdm|sdm|other|NR"
       },
-      
       "Waveform": {
         "comm_waveform_family": "ook|pam|pam4|ofdm|dmt|ppm|qam|psk|dpsk|chirp_fmcw|pulse_train|cap|other",
         "comm_modulation_order": int,
@@ -684,9 +734,8 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "comm_fec_type": "string or NR",
         "sensing_waveform_family": "pulse_tof|fmcw_chirp|lfm_chirp|ofdm_sensing|backscatter_probe|phase_coded|reflectometry|same_as_comm|other",
         "isac_waveform_relationship": "single_dual_function|comm_embedded_in_sensing|sensing_embedded_in_comm|multiplexed_separate|superimposed|not_specified",
-        "resource_partition": "string describing split (e.g., 'α=0.7 power to comm') or NR"
+        "resource_partition": "string or NR"
       },
-      
       "Channel_Fiber": {
         "fibre_length_km": float,
         "fibre_type": "smf|mmf|fmf|mcf|dcf|other|NR",
@@ -695,7 +744,6 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "nonlinearity_model": "gn_model|nlse|kerr_only|ignored|other|NR",
         "backscatter_sensing_type": "rayleigh_phi_otdr|das|brillouin_botda|brillouin_botdr|raman|fbg|other|NR"
       },
-      
       "Channel_Wireless": {
         "link_distance_m": float,
         "path_loss_model": "string or NR",
@@ -706,7 +754,6 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "weather_visibility_m": float,
         "ambient_light_model": "string or NR"
       },
-      
       "Comm_Metrics": {
         "data_rate_gbps": float,
         "spectral_efficiency_bps_hz": float,
@@ -718,7 +765,6 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "latency_ms": float,
         "capacity_bps_hz": float
       },
-      
       "Sensing_Metrics": {
         "sensing_task_type": ["ranging", "localization_2d", "localization_3d", "velocity", "imaging", "vibration", "displacement", "strain", "temperature", "target_detection", "obstacle_detection", "turbulence_estimation", "channel_sensing", "other"],
         "sensing_range_m": float,
@@ -735,15 +781,13 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "crb_crlb_value": float,
         "crb_parameter": "range|angle|delay|doppler|position|velocity|other|NR"
       },
-      
       "Tradeoff": {
         "coupling_mode": "resource_division|joint_waveform|joint_receiver_processing|shared_hardware_only|other|NR",
         "tradeoff_type": ["rate_vs_rmse", "rate_vs_range_resolution", "rate_vs_sensing_range", "ber_vs_detection_prob", "throughput_vs_localization", "power_split", "time_split", "bandwidth_split", "pareto_multi_objective", "other"],
         "tradeoff_representation": "single_point|curve|pareto_front|table|not_explicit",
-        "tradeoff_control_parameter": "string (e.g., 'α', 'power_ratio') or NR",
-        "tradeoff_control_range": "string (e.g., '[0.1, 0.9]') or NR"
+        "tradeoff_control_parameter": "string or NR",
+        "tradeoff_control_range": "string or NR"
       },
-      
       "Enabling_Tech": {
         "opa_num_emitters": int,
         "opa_steering_range_deg": float,
@@ -752,21 +796,19 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
         "ris_type": "reflective|transmissive|hybrid|slm|other|NR",
         "ris_phase_bits": int
       },
-      
       "Provenance": {
-        "source_pointer": "e.g., 'Table II, Section IV-B, Fig. 5'",
+        "source_pointer": "string",
         "value_origin": "reported_text|reported_table|digitised_figure|computed|inferred",
         "confidence_reporting": "ci_reported|std_reported|none_reported",
         "num_trials": int
       }
     }
   ],
-  
   "Quality_Assessment": {
-    "tqaf_modelling_fidelity": "0|1|2 (0=low, 1=moderate, 2=high)",
+    "tqaf_modelling_fidelity": "0|1|2",
     "tqaf_validation_strength": "0|1|2",
     "tqaf_experimental_validity": "0|1|2",
-    "tqaf_metric_completeness": "0|1|2 (both S&C metrics reported?)",
+    "tqaf_metric_completeness": "0|1|2",
     "tqaf_reproducibility": "0|1|2",
     "both_sc_metrics_reported": bool,
     "tradeoff_explicitly_analyzed": bool,
@@ -776,28 +818,86 @@ OUTPUT JSON SCHEMA (Full v2.1 - Updated 2025-12-08)
   }
 }
 
-================================================================================
-UNIT CONVERSION RULES
-================================================================================
-- Wavelength: always in nm (1.55 μm → 1550 nm)
-- Data rate: always in Gbps (100 Mbps → 0.1 Gbps, 1 Tbps → 1000 Gbps)
-- Distance: meters for wireless, km for fiber
-- Power: dBm or dB as reported
-- BER: scientific notation (e.g., 1e-9)
-
-================================================================================
-IMPORTANT NOTES
-================================================================================
-- For fiber-based O-ISAC: focus on Channel_Fiber, backscatter_sensing_type
-- For wireless O-ISAC (FSO/VLC): focus on Channel_Wireless, turbulence_model
-- The isac_waveform_relationship is CRITICAL for the taxonomy
-- If paper does NOT report BOTH comm AND sensing metrics, set both_sc_metrics_reported=false
-- Extract ALL experiments/scenarios reported in the paper as separate entries
+CRITICAL: Return ONLY valid JSON.
 """
 
 async def extract_single_paper(client, paper_id: str, folder: str, semaphore) -> Optional[dict]:
-    """Extract data from single paper using LLM."""
+    """Extract data from single paper using LLM with CoT + Visual Context."""
     async with semaphore:
+        print(f"   📐 Extracting: {paper_id}")
+        
+        # 1. READ MARKDOWN
+        try:
+            # Handle nested folder logic if it exists
+            nested_folder = os.path.join(folder, paper_id)
+            if os.path.isdir(nested_folder):
+                working_dir = nested_folder
+            else:
+                working_dir = folder
+                
+            md_path = os.path.join(working_dir, f"{paper_id}.md")
+            if not os.path.exists(md_path):
+                 # Fallback to recursively finding ANY md file
+                 md_files = glob.glob(os.path.join(working_dir, "*.md"))
+                 if md_files:
+                     md_path = md_files[0]
+                 else:
+                     print(f"   ❌ Markdown not found for {paper_id}")
+                     return None
+            
+            with open(md_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+            # 2. READ VISUAL CONTEXT
+            viz_path = os.path.join(working_dir, "visual_analysis.txt")
+            visual_context = "No visual analysis available."
+            if os.path.exists(viz_path):
+                with open(viz_path, 'r', encoding='utf-8') as f:
+                    visual_context = f.read()
+            
+        except Exception as e:
+            print(f"   ❌ Error reading files for {paper_id}: {e}")
+            return None
+
+        # 3. PREPARE PROMPT
+        prompt = (
+            f"Paper ID: {paper_id}\n\n"
+            f"=== VISUAL CONTEXT ===\n{visual_context}\n\n"
+            f"=== FULL TEXT ===\n{content[:Config.MAX_CONTEXT_CHARS]}" # Truncate if needed
+        )
+        
+        # 4. CALL LLM
+        try:
+            # Using Groq (OpenAI-compatible)
+            chat_completion = await client.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt}
+                ],
+                model=Config.LLM_MODEL,
+                temperature=Config.LLM_TEMPERATURE,
+                stream=False
+            )
+            
+            response_text = chat_completion.choices[0].message.content
+            
+            # 5. PARSE JSON
+            # Find JSON block
+            import re
+            json_match = re.search(r'\{.*\}', response_text, re.DOTALL)
+            if json_match:
+                json_str = json_match.group(0)
+                data = json.loads(json_str)
+                data["Paper_ID"] = paper_id # Ensure ID matches
+                return data
+            else:
+                print(f"   ⚠️ No JSON found in response for {paper_id}")
+                return None
+                
+        except Exception as e:
+            print(f"   ❌ LLM Error for {paper_id}: {e}")
+            return None
+
         # Read markdown
         md_files = glob.glob(os.path.join(folder, "**", "*.md"), recursive=True)
         if not md_files:

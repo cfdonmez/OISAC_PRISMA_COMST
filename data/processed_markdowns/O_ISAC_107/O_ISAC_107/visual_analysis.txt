@@ -1,0 +1,132 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Schematic (Indoor Positioning)
+---
+**Components:**
+* **MATLAB:** m-CAP modulation, BER calculation, m-CAP demodulation, RSS positioning.
+* **USRP X300:** DAC (Digital-to-Analog Converter), ADC (Analog-to-Digital Converter).
+* **AP_i (Access Point):** Optical antenna.
+* **UE (User Equipment):** Optical antenna.
+* **Environment:** 3D space with L (Length), W (Width), H (Height) dimensions. Includes IR light source and Photodiode(s).
+---
+
+Image: _page_5_Picture_11.jpeg
+Type: Photo (Experimental Setup)
+---
+**Components:**
+1. **Photodiode/Receiver:** Mounted on a stand.
+2. **USRP X300:** Software-defined radio unit.
+3. **Amplifier/Filter Module:** External hardware.
+4. **DC Power Supply:** Dual-channel unit providing power to the setup.
+---
+
+Image: _page_5_Picture_13.jpeg
+Type: Photo (Testing Environment)
+---
+**Components:**
+5. **IR LED array:** Mounted on the ceiling (h = 1.96 m).
+6. **Receiver Unit:** Photodiode mounted on a 2D positioning stage.
+7. **2D Stage Frame:** L = 1.2 m, W = 1.2 m.
+8. **Black Curtains:** Used for light isolation and reflection control.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: System Diagram (Transceiver Chains)
+---
+**Components:**
+* **RJ45 Interface:** Connectivity point for Tx/Rx/Power.
+* **DC-DC Converters:** Power management.
+* **Transmitter Chain:** Pre-Equalization -> Source Amplifier -> Summation -> IR LED ($\Phi_{tx,i}(t)$).
+* **Receiver Chain:** PDs (Photodiodes) -> TIAs (Transimpedance Amplifiers) -> Summation -> Post-Equalization -> Amplifier & Filter -> Rx output.
+---
+
+Image: _page_7_Figure_4.jpeg
+Type: Polar Plot (Beam Pattern)
+---
+**Axes:** Angular position ($0^\circ$ to $360^\circ$), Magnitude (linear/log units, -3 to 3 shown).
+**Legend/Trends:**
+* **Tilt angle $0^\circ$:** Symmetric beam pattern centered at $0^\circ/180^\circ$ axis.
+* **Tilt angle $5^\circ$:** Pattern shifts noticeably, with peak intensity moving towards $15^\circ-30^\circ$ region.
+---
+
+Image: _page_7_Picture_2.jpeg
+Type: Photo (Optical Receiver Board)
+---
+**Components:**
+* **Photodiodes:** 4 tilted PDs arranged for spatial diversity.
+* **Inductor/Capacitor:** Large yellow component (likely for filtering/power).
+* **Connector:** Micro-USB port for data/power.
+* **PCB:** Circular green board with surface-mount components.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Frequency Response Chart
+---
+**Axes:** X: Frequency (Hz) ($10^5$ to $10^8$), Y: Magnitude (dB) (0 to -50).
+**Data Points:**
+* **Low-end cutoff (-3dB):** 1.17 MHz.
+* **High-end cutoff (-3dB):** 31.2 MHz.
+* **Peak magnitude:** Near 0 dB around 10 MHz.
+---
+
+Image: _page_8_Figure_8.jpeg
+Type: Spatial BER Map (AP3 Coverage)
+---
+**Axes:** X: x(cm) (0 to 120), Y: y(cm) (0 to 120).
+**Panels:** 
+* (a) 1st sub-band (1 MHz): BER range 0.116 to 0.132.
+* (b) 2nd sub-band (3 MHz): BER peak ~2.5E-4 near corners.
+* (c) 3rd sub-band (5 MHz): BER peak ~4E-3.
+* (d) 4th sub-band (7 MHz): BER peak ~1E-5.
+---
+
+Image: _page_8_Figure_9.jpeg
+Type: Positioning Accuracy Summary
+---
+**Axes:** X: Positioning error (m) (0 to 30), Y: CDF (0 to 1).
+**Legend/Trends:**
+* **Different $\eta_i$ w/ correction:** 90% error at 5.9 cm.
+* **Different $\eta_i$ wo/ correction:** 90% error at 12.2 cm.
+* **Identical $\eta_i$:** 90% error at 15.4 cm.
+**Quantitative Comparison:** Correction significantly improves accuracy by ~50% compared to uncorrected case.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: Positioning Scatter Plot
+---
+**Axes:** X: x(m) (0 to 1.2), Y: y(m) (0 to 1.2).
+**Legend:** 
+* Blue circles (Reference location)
+* Red stars (Estimated location before correction)
+* Black crosses (Estimated location after correction)
+**Observation:** Black crosses are much closer to blue circles, especially near the edges of the 1.2 x 1.2 m grid.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Positioning BER CDF (Multiple Access Points)
+---
+**Axes:** X: BER ($10^{-5}$ to $5 \times 10^{-3}$), Y: CDF (0 to 1).
+**Legend:** AP1, AP2, AP3, AP4 for sub-bands 2, 3, 4.
+**Observation:** AP1 and AP2 sub-band 4 show best performance (steepest rise at low BER). AP4 sub-band 3 has the worst performance (BER reaching $4 \times 10^{-3}$).
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: Flowchart (Optimization Algorithm)
+---
+**Process:** 
+1. Start ($j=1, \eta_i = \eta_{min}$).
+2. Set ratios.
+3. Deduce location via (8)-(11).
+4. Calculate RMS error.
+5. Loop until $j=N_x N_y$.
+6. Calculate CDF.
+7. Check if $\delta_{90} < \delta_{opt}$.
+8. Increment $\eta_i$.
+9. End when $\eta_i = \eta_{max}$.
+---
+
+Image: _page_12_Figure_6.jpeg
+Type: Angular Error CDF
+---
+**Axes:** X: Error in angle ($^\circ$) (0 to 50), Y: CDF (0 to 1).
+**Data Points:** 50% of errors are below ~5$^\circ$. 90% of errors are below ~20$^\circ$.
+---

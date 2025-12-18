@@ -1,0 +1,74 @@
+Image: _page_1_Figure_2.jpeg
+Type: Kalman Smoother (KS) Algorithm Schematic
+---
+**Components & Flow:**
+* **Forward Filter Pass:**
+    - Input: Phase Difference $\Delta \theta_{CPE}[i]$.
+    - Steps: Forward Prediction -> Priori Variance Calculation -> Expected Measurement Calculation -> Kalman Gain Calculation -> Update Estimation -> Update Uncertainty Covariance. (Iterative $i=i+1$).
+* **Backward Filter Pass:**
+    - Input: Phase Difference $\Delta \theta_{CPE}[j]$.
+    - Steps: Same as Forward but in reverse time $(j=j-1)$.
+* **Smoother Pass:**
+    - Combines outputs from Forward and Backward passes.
+    - Components: Uncertainty Covariance Combination and Estimated Results Combination.
+* **Final Processing:** Integration block to recover the total vibration-induced phase $\theta_{vib}$.
+---
+
+Image: _page_2_Figure_12.jpeg
+Type: Experimental Setup and Signal Spectra
+---
+**Components:**
+* **Transmitter (Tx):** ~100 kHz External Cavity Laser (ECL), DP-IQ Modulator, RF Amplifier, Arbitrary Waveform Generator (AWG).
+* **Link:** 20-25 km Standard Single Mode Fiber (SSMF), PZT (Piezoelectric Transducer for vibration), VOA (Variable Optical Attenuator).
+* **Receiver (Rx):** EDFA, Local Oscillator (~100 kHz ECL), Integrated Coherent Receiver (ICR), 64 GSa/s Real-time Oscilloscope (RTO).
+* **DSP Blocks (Tx):** PRBS, 16 QAM Mapping, Nyquist Shaping, Subcarrier Mux, Frequency-Pilot Tones (FPTs) Insertion.
+* **DSP Blocks (Rx):** Dynamic FOE, CPE, Pol. DeMux, Subcarrier DeMux, Equalization (Communication path); KS-based Phase Extraction (Sensing path).
+**Spectra (b & c):**
+* **X-axis:** Frequency (GHz, -30 to 30).
+* **Y-axis:** Power (dB/Hz, -200 to -50).
+* **Details:** Displays the 16QAM signal bandwidth (approx 40 GHz) and distinct FPT spikes used for phase tracking in X and Y polarizations.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Phase Tracking Performance (Time-Domain)
+---
+**Axes Extraction:**
+* **X-axis:** Time (ms, 0 to 1).
+* **Y-axis:** Phase (rad, -0.5 to 0.5).
+**Data Points:**
+* **Forward Pass (Top):** Shows noisy estimation (green) following the true 10 kHz vibration (blue). Estimated error $\sigma$ is indicated by red dotted lines (~0.12 rad).
+* **Backward Pass (Middle):** Similar noisy estimation from end-to-start.
+* **Smoother Pass (Bottom):** Resulting estimated phase is significantly smoother and cleaner, aligning almost perfectly with the true blue curve. Noise variance is visibly reduced.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Pulse Generation / Correlation Charts
+---
+**Axes Extraction (a):**
+* **X-axis:** Index (-2000 to 2000).
+* **Y-axis:** Power (-20 to 25).
+* **Point:** Red circle marks $20.5 \mu s$ ($205 \times 10^{-7} s$).
+**Axes Extraction (b):**
+* **X-axis:** Index (-30 to 30).
+* **Y-axis:** Power (-100 to 150).
+* **Point:** Red circle marks $350 ns$ ($3.5 \times 10^{-7} s$).
+**Analysis:** Chart (b) shows the sharp correlation peak resulting from processing, with a high peak-to-sidelobe ratio compared to (a).
+---
+
+Image: _page_3_Figure_4.jpeg
+Type: Vibration and Physiological Sensing Results
+---
+**Axes Extraction (a, c, e):**
+* **X-axis:** Time (ms, 0 to 0.25).
+* **Y-axis:** Phase (rad, -30 to 30).
+**Axes Extraction (b, d):**
+* **X-axis:** Frequency (kHz, 0 to 50).
+* **Y-axis:** Power (dB, 0 to 60).
+**Data Points:**
+* **Multi-frequency sensing (a, b):** Successfully recovers 10, 20, 30, and 40 kHz sine waves with corresponding PSD peaks.
+* **KS vs BPF (c, d):**
+    - KS (Kalman Smoother) achieved a suppression ratio of 15.7 dB.
+    - BPF (Band-pass filter) achieved only 14.2 dB.
+* **Heartbeat Sensing (e):** Shows a periodic physiological phase signal with peak-to-peak amplitude ~8 rad.
+* **Spectrogram (f):** Displays a chirp signal sweeping from 200 kHz to 1100 kHz over 0.2 ms with approx -20 dB peak power.
+---

@@ -1,0 +1,53 @@
+Image: _page_0_Figure_10.jpeg
+Type: System Architecture and Simulation Layout
+---
+**Components (a):**
+* **Access Network:** UEs (Communication), Moving Targets (Sensing).
+* **Remote Units (RU):** RU1, RU2, RU3 with integrated antennas.
+* **RIC / SDN Control:** Splitters, eCPRI/Fronthaul switches (comms), MxN Optical Switch (sensing), Hybrid optical/electronic switches.
+* **Network Infrastructure:** Edge Servers (CU/DU/UPF/Sensing Apps), Core Switch, Central Cloud (UPF/CN/AS).
+**Simulation Results (b-d):**
+* **Layout (b):** RU1-RU5 distributed linearly from Y = -110 to +110 m. Targets show velocities of 10.0, 20.0, 30.0, and 40.0 m/s.
+* **Heatmaps (c, d):** Range-Doppler plots mapping Sum Range (0 to 300 m) against Frequency (-1000 to 1000 Hz). High-intensity peaks indicate detected target echos.
+---
+
+Image: _page_1_Figure_0.jpeg
+Type: Sensing Data Multiplexing Schematic
+---
+**Flow:**
+1. **Input:** OFDM Frame (10 ms) with 1 ms subframes.
+2. **IQ Data Acquisition:** Parallel IQ sensing data from multiple RUs (RU1, RU2, RU3).
+3. **Processing:** MxN Optical Switch performs time-slot assignment (t0, t1, t2).
+4. **Output:** A serialized "Sensing IQ stream" where different RUs' sensing data is interleaved in time for efficient transport to next-tier processing nodes.
+---
+
+Image: _page_2_Figure_7.jpeg
+Type: Sensing Traffic Bar Chart
+---
+**Axes Extraction:**
+* **X-axis:** Resolution velocity (m/s) [8.4, 4.2, 2.8, 2.1, 1.7].
+* **Y-axis:** Total Sensing Traffic (GB) [0, 1, 2, 3, 4].
+**Data Points:**
+* 8.4 m/s -> ~0.6 GB
+* 4.2 m/s -> ~1.2 GB
+* 2.8 m/s -> ~1.85 GB
+* 2.1 m/s -> ~2.45 GB
+* 1.7 m/s -> ~3.05 GB
+Trend shows nearly linear increase in traffic volume as velocity resolution requirements become finer.
+---
+
+Image: _page_2_Figure_8.jpeg
+Type: Network Capacity vs. Target Count Comparison
+---
+**Axes Extraction:**
+* **X-axis:** Number of moving targets [1, 2, 3, 4, 5].
+* **Y-axis:** Optical Network Capacity (Gbps) [0 to 100].
+**Legends:**
+* **Optical Switching Aggregation:** Dark grey bars.
+* **Without Aggregation:** Dotted bars.
+**Data Points:**
+* **1 Target:** ~5 Gbps (With) vs ~25 Gbps (Without).
+* **3 Targets:** ~30 Gbps (With) vs ~50 Gbps (Without).
+* **5 Targets:** ~98 Gbps (With) vs ~100 Gbps (Without).
+Aggregation significantly reduces per-target transport overhead until the system approaches full capacity.
+---

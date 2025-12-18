@@ -1,0 +1,49 @@
+Image: _page_0_Picture_9.jpeg
+Type: Functional System Diagram and Spectra Visualization
+---
+**Components:**
+* **LFM Generator:** Core source generating a Linear Frequency Modulated (LFM) chirp.
+* **Transmitter Path:** Comm. Tx. (integrates signal), Data lane (fiber), Comm. Coh. Rx. (point b).
+* **Local Oscillator Path:** LO lane (fiber), point a.
+* **Sensing Path:** OFDR scheme consisting of Optical Circulator and Sensing Receiver (point c).
+**Flow:**
+The LFM signal is split: one part serves as the optical carrier for the Comm Tx; the other part acts as the sensing probe and LO. The Sensing Receiver uses the Rayleigh backscattering (c) from the fiber link for distributed sensing. The Coh Rx (d) uses the direct LO path (a) to demodulate the data signal (b).
+**Spectra (a-d):**
+* **(a) LO-Spectrum:** Shows a narrow LFM discrete line.
+* **(b) Tx-Spectrum:** Displays the broad communications signal superimposed on the LFM carrier.
+* **(c) Rayleigh scattering:** Illustrates the chaotic sensing signal profile.
+* **(d) Rx-Spectrum:** Shows the recovered communication bandwidth.
+---
+
+Image: _page_1_Figure_0.jpeg
+Type: Detailed Experimental Schematic and Performance Charts
+---
+**Schematic Components:**
+* **LFM carrier Generator:** AFG, VCO, LFM control, SSBM (Single Sideband Modulator), IL-DFB.
+* **Link:** I/Q Modulator, EDFA, OBPF, FI/FO (Fan-in/Fan-out), MCF (Multi-Core Fiber) ~10km, PZT (Vibration source, 5m length, 2.5cm radius).
+* **Sensing Rx:** ODL (Optical Delay Line), 10 GSa/s DSO, Sensing DSP.
+* **Comm Rx:** VOA, DP-ICR, 80 GSa/s DSO, Rx DSP.
+**Flow:**
+LFM signal generated via VCO/AFG is used to modulate a DFB laser. The MCF carries both the high-speed data and the sensing probe. The PZT introduces localized vibration. Sensing is achieved via cross-correlation and phase noise compensation in the Sensing DSP.
+**Communication Performance Charts:**
+* **(b) Phase noise:** X: Time (0 to 5 µs), Y: Radian (-0.5 to 0.5). Linear fit for X-pol (y=1.9986e4x-0.1596) and Y-pol (y=2.0302e4x+0.0476). Slope alpha approx 2e4 rad/s.
+* **(c) BER vs ROP:** X: ROP (dBm, -25 to -12), Y: BER (10^-3 to 10^-1). V-V and SPR algorithms show identical performance, reaching 10^-3 at -14 dBm.
+* **(d) Comparison:** X: ROP, Y: BER. 2ms LFM (orange) and 20ms LFM (green) track close to single-carrier (purple). All reach the 3.8e-3 threshold at approx. -17 dBm.
+---
+
+Image: _page_2_Figure_0.jpeg
+Type: Sensing Performance and Validation Charts
+---
+**Section (a) - Distributed Profile:**
+* **Axes:** X-axis: Fiber length (m, 0 to 11000), Y-axis: Transmission (dB, -55 to -20).
+* **Insets:** Zoom at "Fiber-end" (~10km) shows "MPI-location" peak with a 2-cm spatial resolution marker. "Bending Loss" of 3.6dB is measured at the PZT coiling point (~9950m).
+**Section (b) - Vibration Recovery:**
+* **Waterfall Plot:** Time (ms) vs Length (m) showing localized frequency shift at 9982m.
+* **Insets:** Recovered 50Hz sine wave with Amp: 155 MHz. Spatial resolution of the vibration event (10% to 90%) is 2.5m.
+**Section (c) - Linearity:**
+* **Axes:** X-axis: Voltage (V, 4 to 20), Y-axis: Amplitude (με, 0.2 to 1).
+* **Model:** y = 0.0492*x + 0.0633 with R² = 0.998, demonstrating high linearity in strain sensing.
+**Section (d) - Waveform Recovery:**
+* **Top:** 50Hz Triangular Wave recovered with Amp: 0.98 με.
+* **Bottom:** 100Hz Sine Wave recovered with Amp: 0.64 με.
+---

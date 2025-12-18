@@ -1,0 +1,119 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Schematic and Beam Squinting Analysis
+---
+**Components:**
+* **(a) Phased Array:** Phase shifters (φ), Amplifiers, and Antenna elements with spacing 'd'.
+* **(b) Time Delay Array:** True Time Delay (TTD) units (Δt), Amplifiers, and Antennas.
+* **Flow:** Signal input -> distributed to parallel branches -> processed by φ or Δt -> amplified -> transmitted.
+* **Math:** Δφ = 2πf0d sinθ/c and Δt = d sinθ/c.
+
+**Chart Extraction (c-f):**
+* **Axes (c):** X-axis: θ (°) [0 to 90], Y-axis: Normalized Gain (dB) [-20 to 0].
+* **Data Points (N=16, θ=30°):**
+    * 32.5 GHz peak at ~26°.
+    * 30.0 GHz peak at ~30°.
+    * 27.5 GHz peak at ~35°.
+* **Trends:** Phased arrays exhibit frequency-dependent beam squinting (deviation ~9° across 5GHz). Time-delay arrays (b) show no such dispersion, with all frequency components aligned at the target angle. Increasing antenna count N from 8 to 32 narrows the main beam from ~25° to ~6° FWHM.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: System Schematic and Measured Radiation Patterns
+---
+**Components:**
+* Baseband signal input, IQ Modulator/Mixer, 4-element Array with integrated Δt and φ for Beam-Steering and Secure PTA logic.
+* Receiver (Rx) at angle θ with discrete LNA and Power Detector.
+
+**Chart Extraction (b):**
+* **Axes:** X: θ (°) [-90 to 90], Y: Normalized Radiation Pattern (dB) [-20 to 0].
+* **Numerical Data (N=4, τ=30ps):**
+    * Central peak at 0° suppressed to -3.76 dB (32.5 GHz blue dashed).
+    * Side peak at -45° at 0 dB (30 GHz solid green).
+* **Numerical Data (N=4, τ=60ps):**
+    * Deep nulls (<-20 dB) present at ±30° for 32.5 GHz.
+    * Gain at 0° for 27.5 GHz is -2.8 dB.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Chart (Array Phase Deviation)
+---
+**Axes:**
+* **X-axis:** Delay τ (ps) [-100 to 100].
+* **Y-axis:** Deviation (dB) [0 to 80].
+**Data Points:**
+* At τ = 0 ps, deviation is 0 dB for all angles.
+* **θ = 5°:** Sharp peaks in deviation (~70 dB) occur at τ ≈ ±85 ps.
+* **θ = 20°:** Peaks (~60 dB) occur at τ ≈ ±25 ps.
+* **Trend:** Higher scan angles θ result in deviation peaks occurring at smaller time delay τ offsets.
+---
+
+Image: _page_4_Figure_7.jpeg
+Type: Space-Frequency Heatmaps (Beam Scan)
+---
+**Axes:**
+* **X-axis:** RX Observation Angle (°) [-90 to 90].
+* **Y-axis:** RF Frequency (GHz) [20 to 40].
+**Colorbar:** Normalized Radiation Pattern (dB) [-20 to 0].
+**Sub-plots (a-f):**
+* Labeled features: **"Moving Peaks"** (Red ridge) and **"Moving Notch"** (Blue curved canyon).
+* **Observation:** For a fixed τ (e.g., panel e), the notch position steers from θ≈0° at 30GHz to θ≈35° at 40GHz, following a non-linear trajectory in the angle-frequency plane.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Hardware Implementation (CMOS IC)
+---
+**Labeled Components (Schematic):**
+* **IF Chain:** TTD (True Time Delay), IQ Gen, Multi-stage Drivers.
+* **SSB Upconversion Mixer:** Double-balanced MOSFET structures with 0.28V bias.
+* **Driver & PA:** 100μm/40n Driver with 1.1:1 Transformer; 174μm/40n Cascode PA with VDD=2V.
+* **Antenna:** 4-element Dipole array.
+
+**Die Micrograph (b):**
+* **Dimensions:** 4.85 mm (width) x 2.25 mm (height).
+* **Annotated Regions:** LO Driver + Phase Shifter, LO Wilkinson Divider, IF Chain (Area: 0.37mm x 0.37mm).
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Measured RF Performance Results
+---
+**Chart Analysis:**
+* **(a) Conversion Gain:** RF Frequency [23-34 GHz]. Peak gain ~30.5 dB at 28.5 GHz. 3-dB bandwidth: 25.5 - 32.5 GHz (7 GHz BW).
+* **(b/d) Delay Flatness:** IF/RF delay [20-110 ps]. Group delay variation is within 1.1% to 4.6% across the entire bandwidth.
+* **(e) Power & Efficiency:** Output Power [0 to 17.5 dBm]. Psat ≈ 17.8 dBm. Max PA Drain Efficiency ≈ 38%.
+
+**Constellation Extraction (i-l):**
+* **Modulation:** 16-QAM and 64-QAM at multi-Gbps rates.
+* **(i) Bob/No-Delay:** 36 Gbps (6 GSym/s), Pout_avg = 10.26 dBm, **EVM_rms = 22.81%**. Clusters are fuzzy but symmetric.
+* **(l) Bob/Full-Delay:** 24 Gbps (6 GSym/s), Pout_avg = 10.24 dBm, **EVM_rms = 20.0%**. Quality improved qualitatively with more distinct voids between 64-QAM levels.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: Secure PTA Protocol Verification
+---
+**Components:** Transmitter array, channels targeting Bob (0°) and Eves (±20°).
+**EVM Data (QPSK/16QAM):**
+* **Bob (@0°, τ=32ps):** EVM_rms = **9.6%** (excellent quality, compact clusters).
+* **Bob (@0°, τ=-32ps):** EVM_rms = **8.5%**.
+* **Eve (@10°, τ=32ps):** EVM_rms = **13.7%**.
+* **Eve (@10°, τ=48ps):** EVM_rms = **17.0%**.
+* **Eve (@-10°, τ=-48ps):** EVM_rms = **18.7%**.
+* **Trend:** As τ increases at non-zero angles, Eve's EVM degrades significantly (>15%), making decoding impossible while Bob's remains <10%.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Secure PTA with Phase Shift (LVM)
+---
+**Numerical Results:**
+* **Bob (@0°, τ=16ps):** EVM_rms = **9.3%**.
+* **Eve (@6°, τ=32ps):** EVM_rms = **34.2%** (Total scrambling, clusters merged into a ring/circle).
+* **Eve (@-6°, τ=-32ps):** EVM_rms = **30.4%**.
+* **Conclusion:** The addition of phase shifts to the PTA scheme significantly increases Eve's decoding difficulty at even small angular offsets (±6°).
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Measured EVM vs Observation Angle
+---
+**Axes:** X: Observation Angle θ (°) [-60 to 60]. Y: EVM_rms (%) [0 to 60].
+**Points:**
+* **(a) PTA TX:** Green zone (EVM < 20%) centered at 0° spanning -17° to 16°.
+* **(b) Beam-Shifted:** Green zone shifted. For blue curve (τ=0ps), EVM is min at 0° (~10%) and peaks at ±30° (>50%). For τ=32ps (dashed green), EVM is min at approx 20°.
+---

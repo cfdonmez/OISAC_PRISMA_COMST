@@ -1,0 +1,83 @@
+Image: _page_1_Figure_3.jpeg
+Type: Application Scenario Schematic
+---
+**Components:**
+* **Low-altitude Airspace:** Zones for Fire Detection, Surveying, Agricultural, Logistics, Aerial Photography, Traffic Management, and Patrol drones.
+* **Fiber Infrastructure:** Yellow lines connecting distributed data centers and access uplinks.
+* **RFA (Raman Fiber Amplifier):** Amplification units along the fiber path.
+* **Distributed Data Centers (1 & 2) & Central Data Center:** Processing nodes.
+* **Carrier Network & Carrier-grade Backbone:** Connectivity core.
+* **Low-altitude Aircraft Control Platform:** Monitoring and control hub.
+---
+
+Image: _page_3_Picture_13.jpeg
+Type: System Schematic (Experimental/Simulation Setup)
+---
+**Components:**
+* **WDM Transmitter / WDM Receiver:** End points.
+* **OMU (Optical Multiplexer Unit) & ODU (Optical Demultiplexer Unit):** Aggregation/Dissagregation.
+* **L1 & L2:** Fiber spans.
+* **Pump Light Units:** "Amplifying Part of Pump light" and "Compensation Part of Pump light".
+**Flow:** Transmitter -> OMU -> L1 -> ODU -> OMU (with Compensation) -> L2 -> ODU -> ODU -> Receiver. This setup focuses on Raman amplification (DRA) in a WDM system.
+---
+
+Image: _page_7_Figure_8.jpeg
+Type: Optimization Flow Diagram
+---
+**Components:**
+* **ABC algorithm (Artificial Bee Colony):** Optimization engine.
+* **Input Parameters:** Wavelengths ($\lambda_{1-8}$) and Powers ($P_{1-8}$) for 8 pumps.
+* **OMU:** Multiplexer.
+* **Neural Network (Inset):** ANN model for gain/noise prediction.
+* **ODU:** Demultiplexer.
+* **G101:** Outcome metric (likely Gain flatness or target level).
+**Description:** The ABC algorithm optimizes pump parameters ($\lambda, P$) which are fed through an ANN-based Raman amplifier model to achieve target performance ($G101$).
+---
+
+Image: _page_8_Figure_3.jpeg
+Type: Regression Charts (ANN Performance)
+---
+**Panels:** Training ($R=0.98636$), Validation ($R=0.98272$), Test ($R=0.98259$).
+**Axes:** X: Target Gain (dB), Y: Output Gain (dB).
+**Trend:** High linearity across all sets, indicating the ANN accurately models the Raman gain from -80 to +50 dB.
+---
+
+Image: _page_8_Figure_5.jpeg
+Type: ANN Training Metrics
+---
+**Panels:** 
+* **(a) MSE vs Epoch:** Validation performance reaches 0.0171 at epoch 1000.
+* **(b) Gradient & Validation Check:** Gradient reaches $0.011$ at epoch 1000.
+---
+
+Image: _page_9_Figure_3.jpeg
+Type: Gain Profile & Distribution
+---
+**Panels:** 
+* **(a) Gain Value (dB) vs Wavelength (nm):** 1530 to 1630 nm. Shows a family of gain curves (C+L band) with increasing gain towards longer wavelengths.
+* **(b) Sample Count Histogram:** Peak count around 25-30 dB gain.
+---
+
+Image: _page_9_Figure_7.jpeg
+Type: Gain Profiles (Optimized)
+---
+**Panels:** 
+* **(a) Gain Value vs Wavelength:** Comparison of various gain targets (from ~2 dB to ~32 dB) across 1530-1630 nm. Solid lines (Predicted) vs Dashed lines (Target). High flatness is achieved except for minor ripples.
+* **(b) Single Profile Detail:** Focus on ~34.4 dB gain level, showing ~0.4 dB ripple.
+---
+
+Image: _page_10_Figure_3.jpeg
+Type: Noise Gain Chart
+---
+**Axes:** X: Wavelength (1530-1630 nm), Y: Noise Gain (dB).
+**Legend:** Compensation/Amplify Partial DRBS (Double Rayleigh Backscatter) and ASE (Amplified Spontaneous Emission).
+**Data:** DRBS noise is around 1.6-1.9 dB, while ASE noise is lower, around 1.0-1.25 dB.
+---
+
+Image: _page_10_Figure_7.jpeg
+Type: Pump Power Evolution
+---
+**Axes:** X: Fiber Length (km) (0 to 0.3), Y: Pump Power (mW).
+**Legend:** 4 pump wavelengths (1430.45 to 1499.72 nm).
+**Trend:** Different decay/growth rates. 1499 nm pump (blue) peaks around 0.12 km due to power transfer from shorter wavelength pumps.
+---

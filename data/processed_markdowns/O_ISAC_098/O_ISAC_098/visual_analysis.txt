@@ -1,0 +1,74 @@
+Image: _page_2_Picture_2.jpeg
+Type: Application Scenario Schematic
+---
+**Components:**
+* **Transmitter:** Source of the optical signal.
+* **OIRS (Optical Intelligent Reflecting Surface):** Reflects the signal to the target.
+* **Beams:** Narrow beam (red) and Wide beam (yellow cone).
+* **User:** Automobile with an "Optical communication receiver" and a "PD array" for sensing.
+* **Feedback:** "Uplink signal (OIRS control)" represented by a dashed blue line from User to OIRS.
+**Flow:** Transmitter sends signal to OIRS -> OIRS directs a wide beam for sensing and a narrow beam for communication to the moving User -> User feedback (relative position) helps OIRS adjust the narrow beam direction.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Coordinate and Tracking Geometry
+---
+**Components:** Light source, User, Initial normal vector, Deflected normal vector, Initial OIRS plane, Deflected OIRS plane.
+**Variables:** $d_u$ (User motion), $d_b$ (beam shift), $2\theta_o$ (deflection angle), $\tau_c$ (tracking window).
+**Geometry:** Defines the Cartesian coordinate system $(x,y,z)$ with the OIRS element at the origin $O$. It illustrates the vector relationship between the incident light, the normal of the reflecting element, and the redirected beam towards the user's new position.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Operational Logic Flowchart
+---
+**Phases:**
+* **Stage 1: Wide beam sensing stage:** Estimate relative position -> Generate OIRS control signals -> Uplink transmission to OIRS.
+* **Stage 2: Beam alignment stage:** Process control signals -> Adjust narrow beam direction.
+**System Loop:** Base Station -> OIRS -> User -> (Feedback through Stage 1/2) -> OIRS.
+---
+
+Image: _page_6_Picture_2.jpeg
+Type: Experimental/System Setup Diagram
+---
+**Components:**
+* **Light Source:** Modulation module -> Optical fiber -> Collimator -> Beam expander.
+* **Interface:** OIRS with individual "OIRS elements".
+* **User:** Captures the wide beam and narrow beam.
+**Inset:** Zooms into an OIRS element center, showing the "Original normal vector", "Normal vector after deflection", "Incident light", and "Deflected light vector".
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Performance Chart (BER vs Pt) - Weak Turbulence
+---
+**Axes:** X: $P_t$ (dBm) (10 to 35), Y: BER ($10^0$ to $10^{-7}$).
+**Parameters:** $\sigma_R^2 = 0.05$.
+**Data:**
+* At $P_t = 25$ dBm, BER for $\theta_o = 2 \times 10^{-3}$ and $S_w/S = 0.3$ is approx $10^{-4}$.
+* **Trends:** Increasing beam offset ($\theta_o$) or wide-to-narrow beam area ratio ($S_w/S$) degrades BER.
+* **Comparison:** The proposed scheme significantly outperforms the "Traditional FSO link without beam alignment" (dashed cyan) which maintains BER > $10^{-3}$ even at 30 dBm.
+---
+
+Image: _page_11_Figure_5.jpeg
+Type: Performance Chart (Outage Probability) - Weak Turbulence
+---
+**Axes:** X: $P_t$ (dBm) (10 to 35), Y: Outage Probability ($10^0$ to $10^{-6}$).
+**Data:** Similar trends to BER. Traditional FSO reaches $10^{-2}$ at ~25 dBm, while proposed asym. scheme reaches $10^{-4}$ at the same power for optimal parameters.
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: Performance Chart (BER vs Pt) - Strong Turbulence
+---
+**Axes:** X: $P_t$ (dBm) (10 to 35), Y: BER ($10^0$ to $10^{-7}$).
+**Parameters:** $\sigma_R^2 = 0.8$.
+**Data:** 
+* Performance is generally worse than weak turbulence. 
+* At $P_t = 30$ dBm, BER for the best configuration is ~ $10^{-5}$.
+* Traditional FSO remains above $10^{-1}$ throughout.
+---
+
+Image: _page_12_Figure_4.jpeg
+Type: Performance Chart (Outage Prob) - Strong Turbulence
+---
+**Axes:** X: $P_t$ (dBm) (10 to 35), Y: Outage Probability.
+**Comparison:** The margin between proposed scheme and traditional FSO is even larger under strong turbulence ($\sigma_R^2 = 0.8$), highlighting the robustness provided by OIRS-based alignment.
+---

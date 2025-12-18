@@ -1,0 +1,94 @@
+Image: _page_1_Figure_13.jpeg
+Type: System Architecture Schematic (S-DNN for Sensing)
+---
+**Components:**
+* **Target Signal Source:** Transmitter node emitting broadband incident waves.
+* **Input Plane:** Coordinate system (x, z) where the incident wave enters the processing volume.
+* **Passive Intelligent Surfaces (S-DNN):** Cascaded diffractive layers (phase/amplitude masks) designed as a Spectro-Diffractive Neural Network.
+* **Output Plane:** Detector array (labeled 0-9) for spatial-spectral output.
+* **Far-field Plane:** Projection region showing 1D and 2D estimation modes within the "Super-oscillatory region."
+
+**Operational Flow:**
+Broadband wavefronts are incident on the S-DNN stack. The layers perform a learned diffraction-based transformation that maps specific Direction-of-Arrival (DOA) angles to designated spatial pixels on the output plane. This allows for high-precision DOA estimation without active RF chains at the sensor front-end.
+---
+
+Image: _page_1_Picture_17.jpeg
+Type: Experimental Hardware Setup
+---
+**Labeled Components:**
+1. **Horn Antennas:** Three target sources providing controlled directional emission.
+2. **Power Divider:** Splitting/combining signals for multi-source emulation.
+3. **VNA (Vector Network Analyzer):** Measures S-parameters and captures phase/amplitude at the output probe.
+4. **S-DNN:** Mounted 4-layer physical stack of diffractive intelligent surfaces.
+5. **Angular Rotation Stage:** Large circular stage graduated in degrees [0 to ±90°] for precise source positioning.
+6. **xy-plane Translation Stage:** Computer-controlled stage for scanning the output probe.
+7. **Probe:** Monopole or waveguide probe for harvesting the diffracted field at the output plane.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Schematic (Four-layer S-DNN)
+---
+**Description:**
+Detailed view of the S-DNN physical structure comprising four layers labeled **L1, L2, L3, and L4**. Each layer represents a passive intelligent surface with varying spatial permittivity distributions to achieve target diffractive kernels.
+---
+
+Image: _page_2_Figure_3.jpeg
+Type: Chart (Super-oscillatory angular response)
+---
+**Axes Extraction:**
+* **X-axis:** Incident planewave angle (°) | Range: **-5° to +5°**.
+* **Left Y-axis:** Energy ratio (dB) [for S-DNN] | Range: **0 to 3 dB**.
+* **Right Y-axis:** Energy Ratio (dB) [for Lens] | Range: **0 to 15 dB**.
+
+**Data Points & Trends:**
+* **S-DNN (Blue, starred):** Displays a "Super-oscillatory" characteristic with 7 distinct sharp peaks. Peaks are located at precisely 0°, approx ±1.5°, ±2.7°, and ±4.2°. The peak-to-null ratio is approx 1.5-2.0 dB within the sub-diffraction-limit region.
+* **Standard Lens (Orange, circles):** Displays a classical diffraction-limited Airy-like response with a single broad central peak (~4° FWHM) centered at 0°.
+* **Comparison:** The S-DNN enables sub-wavelength/sub-diffraction angular discrimination that is over 5x finer than the equivalent aperture lens.
+---
+
+Image: _page_2_Figure_7.jpeg
+Type: Performance Evaluation Matrices
+---
+**Extracted Data:**
+* **Confusion Matrix (single target):** 10 input targets vs 10 output detection regions. Result: **100% classification accuracy** (all 10s on the main diagonal, 0s elsewhere).
+* **Energy Matrix (single target):** Diagonal values range from 21 to 44 dB, showing high concentration. Off-diagonal leakage is suppressed to < 5 dB in adjacent regions.
+* **Confusion Matrix (two targets):** Targets at intervals (0&1, 1&2, etc.). Maintains high diagonal dominance (values ≥ 8), indicating robust resolution of adjacent multi-targets.
+* **Energy Matrix (two targets):** Confirms that even with dual sources, the energy is spatially confined to the centers of the predicted detection regions.
+---
+
+Image: _page_2_Figure_9.jpeg
+Type: Schematic (Three-layer S-DNN)
+---
+**Description:**
+Computational/Hardware configuration showing a reduced **three-layer S-DNN** stack, illustrating the design scalability and performance trade-off analysis.
+---
+
+Image: _page_2_Figure_10.jpeg
+Type: Chart (Experimental broadband DOA estimation)
+---
+**Axes Extraction:**
+* **X-axis:** Frequency (GHz) | Range: **25 to 30 GHz**.
+* **Y-axis:** Confidence value (%) | Range: **70 to 100%**.
+
+**Data Points:**
+* **25.0 GHz:** Confidence ~96%.
+* **27.5 GHz:** Peak confidence of **98.2%** (highlighted with a blue circle).
+* **30.0 GHz:** Confidence ~96%.
+* **Trend:** The entire curve remains consistently above the **95% baseline** (marked by the red dashed line), proving wideband operational stability over a 20% fractional bandwidth.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Application Scenario & Performance Chart
+---
+**System Scenario (RIS-aided ISAC):**
+* **Elements:** Base station -> Obstruction -> RC RIS -> User (moving vehicle).
+* **Mechanism:** The base station transmits to an RC RIS (Reflection-Control Reconfigurable Intelligent Surface). A passive S-DNN estimates the DOA of the user. An FPGA consumes this DOA data to track the user with a focused beam, overcoming the NLOS (Non-Line-of-Sight) condition.
+
+**Detected Amplitude Chart:**
+* **X-axis:** User angle (°) | Range: **-15° to +12°**.
+* **Y-axis:** Detected amplitude (dB) | Range: **-80 to -50 dB**.
+* **Trend Comparison:**
+    * **With S-DNN (Blue line):** Extremely stable detected power at approx **-56.5 dB** across the entire 27° angular sweep.
+    * **Without S-DNN (Orange line):** Significant power fluctuations and lower average amplitude (ranging from **-70 to -78 dB**). 
+* **Conclusion:** The S-DNN integration provides a **~15-20 dB link budget improvement** and eliminates tracking-induced fading.
+---

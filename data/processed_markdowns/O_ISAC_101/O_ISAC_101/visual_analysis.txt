@@ -1,0 +1,18 @@
+Image: _page_1_Figure_1.jpeg
+Type: Network Architecture Diagram
+---
+**Components:**
+* **Sensing Apps (1 to n):** Consumer layer for alarms and historic data.
+* **ICON Intelligent Platform:** Core logic layer including:
+    * Intent translation.
+    * Data processing and correlation (ML-based analytics, Context creation, Data Lake info storage, Information compression).
+    * QoT aware probe routing.
+* **Network SDN Controller:** Orchestration layer handling activation and configuration.
+* **Physical Layer Infrastructure:** 
+    * Sensing-enabled Coherent TRXs (Transceivers).
+    * Dedicated probes.
+    * EDFAs (Optical amplifiers).
+    * DAS (Distributed Acoustic Sensing).
+    * ROADMs (Reconfigurable Optical Add-Drop Multiplexers).
+**Flow:** Sensing Apps provide requirements (type, accuracy, etc.) -> ICON Platform translates intent and requests probe activation via SDN Controller -> SDN Controller configures network elements (TRXs, EDFAs, ROADMs) -> Sensed data returns to SDN Controller -> data passed to ICON Platform for processing and correlation -> Interpreted output sent back to Apps.
+---

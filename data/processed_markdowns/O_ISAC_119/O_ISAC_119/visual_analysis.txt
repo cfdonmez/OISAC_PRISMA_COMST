@@ -1,0 +1,290 @@
+Image: _page_1_Figure_2.jpeg
+Type: System Schematic (Smart Factory Architecture)
+---
+**Components:**
+- **Central Office:** Houses servers and cloud connectivity.
+- **Factory 1, 2, 3:** Distributed industrial sites.
+- **Fiber Links:** Provide backhaul between Central Office and Factories.
+- **Factory Internal (Zoom-in on Factory 1):**
+    - **Robotic Arms:** Industrial automation units.
+    - **Industrial Network Nodes:** Equipped with ISAC sensors/communicators.
+    - **AGVs (Automated Guided Vehicles):** Mobile robots with wireless links.
+    - **Control Terminal:** Local management interface.
+
+**Flow:**
+The Central Office coordinates operations via fiber links to each factory. Inside Factory 1, a hierarchical industrial network enables real-time sensing and communication (ISAC) between robotic arms, AGVs, and the local control terminal using high-speed optical wireless links.
+---
+
+Image: _page_1_Figure_4.jpeg
+Type: 3D Comparative Performance Chart
+---
+**Axes Extraction:**
+- **X-axis:** Radial Res. (cm) | Range: 10^0 to 10^2 [Scale: Logarithmic].
+- **Y-axis:** Capacity (Gbit/s) | Range: 10^0 to 10^2 [Scale: Logarithmic].
+- **Z-axis:** CRQ (Gbit/s/cm) | Range: 0 to 80 [Scale: Linear].
+
+**Legend/Trends:**
+- **TDM (Black Circles):** References [23, 24, 25]. Clusters at low capacity (<10 Gbit/s) and high radial resolution (~10 cm). CRQ is minimal (<5 Gbit/s/cm).
+- **FDM (Blue Squares):** References [26, 27, 28, 29]. Capacity ranges ~10-20 Gbit/s; radial res ~5-15 cm; CRQ remains low (<10 Gbit/s/cm).
+- **CTCF (Green Triangles):** References [30, 31, 32, 33, 34, 35]. Higher capacity (~50-80 Gbit/s) and better (lower) radial resolution (~1-5 cm).
+- **"This Work" (Red Star):** Positioned at Capacity ≈ 80 Gbit/s, Radial Res. ≈ 1 cm, and CRQ ≈ 60 Gbit/s/cm. 
+**Trend:** This work significantly outperforms prior art by achieving higher CRQ through simultaneous maximization of capacity and minimization of radial resolution.
+---
+
+Image: _page_3_Picture_13.jpeg
+Type: System Schematic (Dual-Polarization ISAC Setup)
+---
+**Components:**
+- **ISAC Tx (a):**
+    - **ECL1, ECL2, ECL3:** External Cavity Lasers (source).
+    - **I/Q Modulator:** Driven by AWG (Arbitrary Waveform Generator).
+    - **EDFA:** Erbium-Doped Fiber Amplifier.
+    - **IL:** Interleaver.
+    - **OC1, OC2:** Optical Couplers.
+    - **PC1, PC2:** Polarization Controllers.
+    - **SMF1, SMF2:** Single Mode Fibers.
+    - **VOA1, VOA2:** Variable Optical Attenuators.
+    - **PD1, PD2:** Photodiodies.
+    - **LNA1, LNA2:** Low Noise Amplifiers.
+    - **OMT1:** Orthomode Transducer (combines H and V polarizations).
+    - **LCA1:** Lens coupled Antenna.
+- **Sen./Com. Rx (b):**
+    - **LCA2:** Receiver Lens coupled Antenna.
+    - **OMT2:** Splits received H/V polarizations.
+    - **HM1, HM2:** Harmonic Mixers.
+    - **RF Source:** Local Oscillator for D/C (Down-conversion).
+    - **EA1, EA2:** Electronic Amplifiers.
+    - **OSC:** Oscilloscope (captures waveform).
+    - **DSP:** Digital Signal Processing unit.
+
+**Flow:**
+The Tx generates independent H-path and V-path signals from partitioned laser sources. These are amplified and emitted via LCA1. The Rx captures reflections (Sen.) and line-of-sight signals (Com.) via LCA2. OMT2 splits signal polarizations for parallel down-conversion in harmonic mixers (HM1/2) before final digitization in the OSC and DSP analysis.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Chart (Optical Spectrum Analysis)
+---
+**Axes Extraction:**
+- **X-axis:** WaveLength (nm) | Range: 1557.5 to 1559.5.
+- **Y-axis:** Power (dBm) | Range: -100 to 10.
+
+**Data Points:**
+- **LO1 (Pink):** Peak power ~0 dBm at 1559.1 nm.
+- **LO2 (Blue):** Peak power ~0 dBm at 1557.85 nm.
+- **I/Q (Black):** Central modulated signal band at ~1558.45 nm.
+- **Sen-OSB / Com-OSB:** Labeled sidebands within the modulated signal.
+- **Frequency Offset:** Arrows indicate an 88.75 GHz offset between the local oscillator peaks (LO1/LO2) and the signal sidebands.
+- **Dual-Sideband Gap:** Labeled as 20 GHz.
+---
+
+Image: _page_4_Figure_9.jpeg
+Type: Power Spectrum & Spectrogram
+---
+**Axes Extraction (a - Power Spectrum):**
+- **X-axis:** Frequency (GHz) | Range: 0 to 20.
+- **Y-axis:** Power (dBm) | Range: -75 to -35.
+- **Data Points:** Bandwidth labeled as **11.5 GHz** (between 1 GHz and 13.5 GHz). A leaked clock frequency is visible at ~17.5 GHz with a **26.8 dB** rejection/suppression relative to the signal peak.
+
+**Axes Extraction (b - Spectrogram):**
+- **X-axis:** Time (μs) | Range: 0 to 10.
+- **Y-axis:** Frequency (GHz) | Range: 0 to 20.
+- **Trends:** Shows a sequence of periodic down-chirps repeating roughly every 2.5 μs. Frequency sweeps linearly from ~14 GHz down to ~2.5 GHz within each pulse duration.
+---
+
+Image: _page_4_Picture_7.jpeg
+Type: Experimental Setup Photograph
+---
+**Components & Logistics:**
+- **Long Corridor Environment:** Used for free-space transmission testing.
+- **ISAC Tx (Left Panel):** Mounted on a mechanical stage. Components labeled: LCA1 (Lens Coupled Antenna), OMT1, PD1, PD2, LNA1, LNA2.
+- **Sen./Com. Rx (Right Panel):** Positioned at a distance. Components labeled: LCA2, OMT2, PD1, PD2, LNA1, LNA2, VOA1, VOA2.
+- **Transmission Distances:** Labeled as **10.8 m** for the main link and **32 cm** for the lateral separation between transmitter nodes (UE1 and UE2).
+- **Network Interface:** "Com Rx" and "RF" sources are visible in the background.
+---
+
+Image: _page_5_Figure_11.jpeg
+Type: Chart (BER Performance) with Constellation Inserts
+---
+**Axes Extraction:**
+- **X-axis:** Carrier Frequency (GHz) | Range: 80 to 105.
+- **Y-axis:** BER | Range: 10^-6 to 10^-2.
+
+**Data Points:**
+- **Non-overlapping (Blue squares):** BER starts at ~1.5 x 10^-5 at 81.5 GHz. It remains below 10^-4 up to 90 GHz.
+- **Overlapping (Pink squares):** BER peaks at ~1.8 x 10^-3 around 95-97 GHz. 
+- **FEC Limit:** Horizontal dashed green line indicates the HD-FEC threshold at **3.8 x 10^-3**. All measured points are well below this limit.
+- **Constellation Inserts:** Two 16-QAM constellations are shown. The first (at 81.5 GHz) shows very clear cluster separation with minimal noise clouding. The second (at 103.5 GHz) shows slightly more noise spread (wider clusters) but remains decodable.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Chart (Multi-Carrier Optical Spectrum)
+---
+**Axes Extraction:**
+- **X-axis:** WaveLength (nm) | Range: 1557.5 to 1559.5.
+- **Y-axis:** Power (dBm) | Range: -70 to 10.
+
+**Data Points & Trends:**
+- **LO Peaks (LO1, LO2):** Series of peaks representing different frequency channels.
+- **Channel Selections:** Labeled gaps of **22 GHz** and **81.5 GHz** frequency offsets between the Local Oscillators and the ISAC sidebands (Sen-OSB, Com-OSB). 
+- **Sideband Characteristics:** The spectrum shows high side-mode suppression and well-defined carrier tones for independent sensing and communication streams.
+---
+
+Image: _page_5_Figure_4.jpeg
+Type: Chart (SNR vs Carrier Frequency)
+---
+**Axes Extraction:**
+- **X-axis:** Carrier Frequency (GHz) | Range: 80 to 105.
+- **Y-axis:** SNR (dB) | Range: 16 to 26.
+
+**Data Points:**
+- **Max SNR:** ~24.5 dB at 81.5 GHz.
+- **Min SNR:** ~17.2 dB at 103.5 GHz.
+- **Linear Trend:** Dashed line shows a clear linear degradation of SNR as carrier frequency increases.
+- **Spectrum Inserts:** Two power spectra are inserted. 
+    - The first (high SNR) shows a **29.2 dB** side-lobe suppression.
+    - The second (low SNR) shows a reduced **22.1 dB** suppression, correlating with the lower SNR at higher frequencies.
+---
+
+Image: _page_5_Figure_9.jpeg
+Type: Power Spectrum & Constellation Diagram
+---
+**Extracted Data (a - Power Spectrum):**
+- **X-axis:** Frequency (GHz) | Range: 0 to 20.
+- **Y-axis:** Power (dBm) | Range: -75 to -35.
+- **Metrics:** Side-lobe suppression labeled as **23.9 dB**. Leaked clocks are clearly visible at frequencies > 14 GHz.
+
+**Extracted Data (b - Constellation Diagram):**
+- **Modulation:** **16-QAM**.
+- **Quality:** Clusters are symmetric and well-separated. There is visible "ring" noise spread typical of phase noise or timing jitter, but the decision boundaries are clear.
+- **Measured BER:** Labeled as **4.59e-5**.
+---
+
+Image: _page_6_Figure_11.jpeg
+Type: Power Spectrum & Constellation Diagram (High Carrier)
+---
+**Extracted Data (a - Power Spectrum):**
+- **X-axis:** Frequency (GHz) | Range: 0 to 30.
+- **Y-axis:** Power (dBm) | Range: -75 to -35.
+- **Metrics:** Labeled **26 dB** suppression. A leaked clock is present at 12.5 GHz.
+- **Trend:** Shows higher power at lower frequencies, with a roll-off of ~10 dB across the 25 GHz bandwidth.
+
+**Extracted Data (b - Constellation Diagram):**
+- **Modulation:** **16-QAM**.
+- **Quality:** Significant noise clouding compared to previous examples. Clusters are still distinguishable but the decision regions are tightly packed.
+- **Measured BER:** Labeled as **1.12e-2**.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Leaked Clock Frequency vs Carrier Frequency)
+---
+**Axes Extraction:**
+- **X-axis:** Carrier Frequency (GHz) | Range: 80 to 105.
+- **Y-axis:** Leaked Clock Frequency (GHz) | Range: 95 to 120.
+
+**Data Points:**
+- **Linear Trend:** Shows a negative linear relationship. As carrier frequency increases from 82 to 104 GHz, the leaked clock frequency decreases from ~119.5 GHz to ~97.5 GHz.
+- **Spectrum Inserts:** Two spectra show the leaked clock location.
+    - Inset 1 (at 92 GHz carrier): Leaked clock is close to the signal band.
+    - Inset 2 (at 102 GHz carrier): Leaked clock is further removed.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Chart (BER vs IF Frequency)
+---
+**Axes Extraction:**
+- **X-axis:** IF Frequency (GHz) | Range: 6 to 18.
+- **Y-axis:** BER | Range: 10^-5 to 10^-2.
+
+**Data Points & Trends:**
+- **Min BER:** ~4 x 10^-5 at 9 GHz.
+- **Max BER:** ~1.5 x 10^-4 at 16 GHz.
+- **Trend:** BER stays relatively flat with minor fluctuations across the IF range.
+- **Constellation Inserts:** Two **16-QAM** constellations at the edge points (7 GHz and 16 GHz) show stable performance across the IF bandwidth.
+---
+
+Image: _page_6_Figure_9.jpeg
+Type: Power Spectrum & Spectrogram (Extended)
+---
+**Extracted Data (a - Power Spectrum):**
+- **X-axis:** Frequency (GHz) | Range: 0 to 30.
+- **Y-axis:** Power (dBm) | Range: -75 to -35.
+- **Metrics:** Bandwidth labeled as **23 GHz**. Side-lobe suppression of **23.5 dB**.
+
+**Extracted Data (b - Spectrogram):**
+- **X-axis:** Time (μs) | Range: 0 to 10. [Actually labels 2, 4, 6, 8].
+- **Y-axis:** Frequency (GHz) | Range: 0 to 30.
+- **Trends:** Shows linear down-chirps repeating every ~2.5 μs, sweeping from 25 GHz down to 1 GHz.
+---
+
+Image: _page_7_Figure_10.jpeg
+Type: Sensing Performance Chart
+---
+**Axes Extraction:**
+- **X-axis:** Relative Range (mm) | Range: -200 to 200 (a, b) and -100 to 100 (c).
+- **Y-axis:** Normalized Amp. (a.u.) | Range: 0 to 1.
+
+**Data Points:**
+- **(a):** Two targets separated by **80 mm**. Peaks are sharp and well-resolved at approx -10 mm and +70 mm.
+- **(b):** Two targets separated by **31.59 mm**. Peaks are still distinct.
+- **(c):** Two targets separated by **18.72 mm**. The peaks have significant overlap (Sidelobe levels ~0.6) but the dual-peak structure is discernable.
+---
+
+Image: _page_7_Figure_12.jpeg
+Type: Chart (BER vs ROP)
+---
+**Axes Extraction:**
+- **X-axis:** ROP (dBm) | Range: -10 to 12.
+- **Y-axis:** BER | Range: 10^-6 to 10^-2.
+
+**Data Points:**
+- **11.5 GBaud (Blue squares):** Optimal ROP range is 0 to 4 dBm where BER is at its minimum (~1.5 x 10^-5). Above 4 dBm, BER rises sharply (non-linear effect).
+- **23 GBaud (Pink stars):** BER is consistently higher, staying just below the SD-FEC limit (~2 x 10^-2) until it dips towards the HD-FEC limit (~3.8 x 10^-3) at ROP = 6 dBm.
+- **Quality:** Constellation inserts show clear 16-QAM at 11.5 GBaud (minimal clouding) and significantly noisier clusters at 23 GBaud.
+---
+
+Image: _page_7_Figure_2.jpeg
+Type: Sensing Performance Chart (Relative Range)
+---
+**Data Extraction:**
+Similar to Figure 10 on page 7, this chart shows three scenarios (a, b, c) for dual-target resolution.
+- **(a):** Resolution of **80 mm** targets.
+- **(b):** Resolution of **31.59 mm** targets.
+- **(c):** Resolution of **18.72 mm** targets.
+**Note:** The peaks at 18.72 mm show a higher normalized amplitude floor between targets (~0.6) compared to the 80 mm case (<0.2).
+---
+
+Image: _page_7_Figure_4.jpeg
+Type: Chart (SNR vs ROP)
+---
+**Axes Extraction:**
+- **X-axis:** ROP (dBm) | Range: -8 to 8.
+- **Y-axis:** SNR (dB) | Range: 5 to 30.
+
+**Trends:**
+- **Linear Growth:** SNR grows linearly from ~5.5 dB (at -6 dBm ROP) to ~29 dB (at 6 dBm ROP).
+- **Suppression Inserts:** 
+    - At -6 dBm ROP, side-lobe suppression is only **8 dB**.
+    - At 6 dBm ROP, side-lobe suppression improves significantly to **30.3 dB**.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: Chart (BER vs ROP in H-Path)
+---
+**Axes Extraction:**
+- **X-axis:** ROP in H-Path (dBm) | Range: -8 to 8.
+- **Y-axis:** BER | Range: 10^-5 to 10^-2.
+
+**Data Points:**
+- **Stability:** BER remains relatively constant at ~3.5 x 10^-5 for ROP between -7 and 2 dBm.
+- **Degradation:** BER increases to ~1.2 x 10^-4 at 6 dBm ROP in H-Path.
+- **Constellations:** Inserted 16-QAM diagrams at 2 and 6 dBm show the transition from very clean to slightly noisier (but still high quality) transmission. All points are below the HD-FEC limit.
+---
+
+Image: _page_8_Figure_12.jpeg
+Type: Power Spectrum Comparison
+---
+**Extracted Data:**
+- **(a - Pink Path):** Frequency (GHz) [0 to 30]. Side-lobe suppression labeled as **10.4 dB**.
+- **(b - Blue Path):** Frequency (GHz) [0 to 30]. Side-lobe suppression labeled as **9.6 dB**.
+- **Note:** Both H and V paths show similar spectral characteristics, ensuring polarization diversity performance balance.
+---

@@ -1,0 +1,71 @@
+Image: _page_1_Figure_7.jpeg
+Type: System Schematic and Power Spectra
+---
+**Schematic Components:**
+* **CU (Central Unit):** LD (Laser), PC1, DP-MZM (Sub-MZM1/2), AWG (Arbitrary Waveform Generator), EDFA1, PC2.
+* **Modulation:** MSG (Message source) -> Dpol-MZM (Sub-MZM3/4), PR, PC3.
+* **Link:** PBS (Polarization Beam Splitter), Circulator, PS-FBG (Phase-shifted Fiber Bragg Grating), PBS.
+* **RU (Remote Unit):**
+    * **X-polarization:** EDFA2, PD1, OSC (Sensing path for Transverse Load).
+    * **Y-polarization:** EDFA3, OBPF, OC, PD2, EA1 (Transmit Path); Receiving Antenna1, EA2, MZM, PD3, OSC (Radar Path).
+    * **Comms Path:** Receiving Antenna2, Divider, Mixer, OSC.
+**Signal Flow:** LD -> DP-MZM (LFM generation) -> EDFA1 -> Dpol-MZM (ASK modulation for comms) -> PBS/Circulator -> PS-FBG (Transverse load sensing) -> PBS splits X (sensing) and Y (ISAC) -> Y is transmitted via antenna and sensed back via MZM/PD3.
+**Spectra Extractions:** Show ASK-LFM spectra in X and Y polarizations. Y-pol shows ASK-LFM centered at $f_c$ with sidebands at $f_c \pm 2f_s$.
+---
+
+Image: _page_3_Figure_14.jpeg
+Type: Optical Spectra (X and Y pol)
+---
+**Panels:**
+* **(a) X-pol:**
+    * **Axes:** X: Wavelength (nm) (1549.4-1550.8), Y: Power (dBm) (-50 to -10).
+    * **Data:** PS-FBG notches visible. OBPF response (dashed orange) centered ~1550nm. Peak power ~ -20 dBm. Notch depth ~2.2 dB.
+* **(b) Y-pol:**
+    * **Axes:** X: Wavelength (nm) (1549.6-1550.8), Y: Power (dBm) (-50 to -10).
+    * **Data:** Comparison of 3 GHz (dashed blue) vs 6 GHz (black) LFM width. 6 GHz shows broader spectral occupancy.
+---
+
+Image: _page_3_Figure_16.jpeg
+Type: Electrical Power Spectra
+---
+**Axes:** X: Frequency (GHz) (0-30), Y: Power (dBm) (-60 to -10).
+**Panels:** 
+* **(a/b) $f_s = 3$ GHz:** Showing LFM spectrum centered ~12 GHz. Comms rates at 1 Gbit/s and 2 Gbit/s.
+* **(c/d) $f_s = 6$ GHz:** Broader LFM spectrum. Distinct peaks at ~12 GHz and ~25 GHz.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Range Detection Spectra ($f_s = 3$ GHz)
+---
+**Axes:** X: Range (m) (0-4), Y: Power (dBm) (-70 to -40).
+**Panels:**
+* **(a) $R_s = 1$ Gbit/s:** Peak at 1.573 m. Signal-to-clutter ratio ~11 dB. Range resolution (3dB width) is 2.4 cm.
+* **(b) $R_s = 2$ Gbit/s:** Peak at 1.573 m. SCR ~12 dB. Range resolution is 2.6 cm.
+* **(c/d) Two targets:** Shows two peaks separated by ~4.3-4.4 cm.
+---
+
+Image: _page_4_Figure_8.jpeg
+Type: Range Detection Spectra ($f_s = 6$ GHz)
+---
+**Axes:** X: Range (m) (0-4), Y: Power (dBm) (-70 to -40).
+**Data:** 
+* **(a) $R_s = 1$ Gbit/s:** Peak at 1.505 m. Range resolution improved to 2.6 cm (relative to bandwidth increase). SCR ~8 dB.
+* **(b) $R_s = 2$ Gbit/s:** Peak at 1.507 m. SCR ~9 dB. Resolution 2.4 cm.
+* **(c/d) Two targets:** Resolved with 4.7-4.8 cm separation.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Range-Azimuth Maps (2D)
+---
+**Axes:** X: Azimuth (m) (-0.5 to 0.5), Y: Range (m) (2 to 3).
+**Panels:** (a-d) depict target clusters. A dominant target is visible at Range ~2.6-2.7 m and Azimuth ~0 m. Secondary reflections or targets are visible around Range 2.3 m, Azimuth $\pm$ 0.15 m.
+---
+
+Image: _page_5_Figure_6.jpeg
+Type: Communication Waveforms (ASK-LFM)
+---
+**Axes:** X: Time ($\mu$s), Y: Amplitude (V or a.u.).
+**Panels:**
+* **(a/b):** Show the modulated envelope over a 4 $\mu$s burst. Large amplitude fluctuations (~0.2-0.5 V) represent the ASK modulation.
+* **(c/d):** Zoomed-in bitstreams. Dashed orange lines indicate the ideal bit levels (0 or 1). Recovered Blue signal tracks the levels well, but with some noise on the '1' level. Time windows are ~50 ns and ~40 ns respectively.
+---

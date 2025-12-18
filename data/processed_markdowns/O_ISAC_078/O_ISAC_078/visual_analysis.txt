@@ -1,0 +1,115 @@
+Image: _page_2_Figure_2.jpeg
+Type: Neural Network Schematic
+---
+**Components:**
+* **Input Layer:** Input features x1, x2, ... x_n[0] and feedback delays d1, d2, ... dk. Weights w[1] and w^d connect to the hidden layer.
+* **Hidden Layer:** Neurons h1, h2, ... h_n[1] with activation function f[1](.) and bias b[1]. Delay elements z^-1, z^-2, ... z^-k feedback the output layer signal.
+* **Output Layer:** Output neuron y with activation function f[2](.) and bias b[2]. 
+* **Feedback Mechanism:** A switch selects between "Label" (training) and "Decision" (application). Output y(n) is used to calculate "Improved Weight" gamma_n.
+**Flow:**
+The diagram illustrates an Autoregressive Recurrent Neural Network (AR-RNN) with a weighting mechanism. Inputs are processed through a hidden layer, and previous outputs are fed back through delay units (z^-k) to the input and hidden layers to compensate for non-linear impairments in a time-sequenced signal.
+---
+
+Image: _page_3_Figure_10.jpeg
+Type: Optimal Delay Identification Chart
+---
+**Axes Extraction:**
+* **X-axis:** delay, Range: 2 to 14.
+* **Y-axis:** BER, Range: 0.8x10^-3 to 2.0x10^-3.
+**Data Points:**
+* At delay=2, BER is ~1.95x10^-3.
+* At delay=6, BER drops to a minimum of ~0.85x10^-3.
+* Beyond delay=6, BER remains stable/saturated around 0.85x10^-3 to 0.9x10^-3.
+**Trends:** Identifies that a delay of 6 is sufficient for optimal compensation of signal distortions in the system.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Experimental Setup and Spectral Plots
+---
+**Schematic Components:**
+* **Transmitter:** AWG (Arbitrary Waveform Generator) -> EA1-4 (Electrical Amplifiers) -> DML1-4 (Directly Modulated Lasers) -> MUX.
+* **Link:** 10km SSMF, SOA (Semiconductor Optical Amplifier), DEMUX.
+* **Receiver:** VOA1-4 (Variable Optical Attenuators) -> PD1-4 (Photodiodes) -> RTO (Real-time Oscilloscope).
+* **DSP Blocks:** Tx_DSP (PAM-4 Generation, Upsampling, RRC filter, Resampling, Clipping) and Rx_DSP (Resampling, Matched RRC filter, Timing recovery, Downsampling, Equalization, BER Calculation).
+**Spectral Charts:**
+* **(i) Normalized Power:** X: Frequency (GHz, 0 to 30), Y: Normalized power (dB). Compares bandwidth for 1297.2, 1300.6, 1304, and 1305.1 nm channels. All show -3dB bandwidth around 18-20 GHz.
+* **(ii) Power Spectral Density:** X: Wavelength (nm, 1296 to 1308), Y: Power (dB). Shows four distinct peaks corresponding to the CWDM channels with ~20dB peak-to-floor ratio.
+---
+
+Image: _page_3_Figure_8.jpeg
+Type: Parameter Optimization Heatmap
+---
+**Axes Extraction:**
+* **X-axis:** n[0] (Input layer size), Range: 21 to 71.
+* **Y-axis:** n[1] (Hidden layer size), Range: 12 to 22.
+**Data Points:**
+* Color bar shows log(BER) from -3.10 (blue) to -2.70 (red).
+* Optimal region (lowest BER, ~-3.10) is found for high values of n[0] (>61) and low values of n[1] (~12).
+* Worst performance (~-2.70) occurs for small n[0] (~21) and small n[1] (~12).
+**Trends:** Performance generally improves (BER decreases) as the input layer size n[0] increases.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Optimal Weighting Parameter Chart
+---
+**Axes Extraction:**
+* **X-axis:** β (Weighting parameter), Range: 0.0 to 1.0.
+* **Y-axis:** BER, Range: 10^-3 to 10^-2.
+**Data Points:**
+* Minima for all curves occur around β = 0.1 to 0.2.
+* For α=10 (red), BER min is ~3x10^-4. At β=1.0, BER increases to ~5x10^-3.
+**Legend/Trends:**
+* **Variables:** α values 2, 3, 5, 10.
+* **Comparison:** Higher α (larger input window) leads to better performance after optimization, but the 7% HD-FEC limit (3.8x10^-3) is exceeded at high β for α=5 and 10.
+---
+
+Image: _page_4_Figure_4.jpeg
+Type: Learning Convergence Chart (Training Samples)
+---
+**Axes Extraction:**
+* **X-axis:** N_train, Range: 5000 to 50000.
+* **Y-axis:** BER, Range: 10^-3 to 10^-1.
+**Data Points:**
+* **WD-RNN (blue diamonds):** Reaches steady state (~5x10^-4) at N_train = 30000.
+* **AR-RNN (red triangles):** Saturates at ~0.9x10^-3 after 30000 samples.
+* **FNN (green circles):** Saturates at ~0.9x10^-2, well above the 7% HD-FEC threshold.
+**Trends:** WD-RNN (Weighted Delay RNN) provides the fastest convergence and best asymptotic performance.
+---
+
+Image: _page_4_Figure_8.jpeg
+Type: Learning Convergence Chart (Epochs)
+---
+**Axes Extraction:**
+* **X-axis:** Epochs, Range: 2 to 50.
+* **Y-axis:** BER, Range: 10^-4 to 10^-2.
+**Data Points:**
+* **WD-RNN (yellow):** Converges to ~4x10^-4 after approx 30 epochs.
+* **AR-RNN (red):** Converges to ~0.9x10^-3 after approx 42 epochs.
+* **FNN (purple):** Remains above 10^-2 even after 50 epochs.
+**Trends:** WD-RNN is more epoch-efficient and achieves lower BER than standard RNN or FNN architectures.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Multi-pane Robustness Charts (ROP)
+---
+**Axes Extraction (all panes):**
+* **X-axis:** ROP(dBm), Range: 1 to 7.
+* **Y-axis:** BER, Range: 10^-4 to 10^-1.
+**Data Points:**
+* **WD-RNN (yellow):** Achieves the 7% HD-FEC threshold at ROP ~4 dBm (a), ~4.2 dBm (b), ~4.5 dBm (c), and ~4.6 dBm (d).
+* **Conventional methods (FFE, DFE):** Fail to reach the threshold even at 7 dBm.
+**Trends:** Panes (a-d) likely represent different levels of non-linear distortion. WD-RNN consistently outperforms all other equalizers including VNLE and FNN.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Complexity and Penalty Analysis
+---
+**Section (a) - Probability Penalty:** BER vs Epochs.
+* Compares dropout probabilities p=0 to 1.0. Lower p (~0.2-0.4) provides best stability/performance.
+**Section (b) - BER vs ROP Comparison:** 
+* WD-RNN (p=0 and 0.2) achieves 10^-3 BER at 7dBm, while FNN and AR-RNN are slightly higher (~10^-3 to 2x10^-3).
+**Section (c) - Computational Complexity:**
+* **Y-axis:** Equalizers (VNLE, FNN, AR-RNN, WD-RNN variants).
+* **X-axis:** N_mul (Number of multiplications).
+* **Data Points:** VNLE is most complex (>190). WD-RNN(p=0.4) is least complex (~18), demonstrating significant efficiency gains.
+---

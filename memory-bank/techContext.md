@@ -1,6 +1,7 @@
 # Tech Context
 
-**Son Güncelleme:** 2025-12-11
+**Son Güncelleme:** 2025-12-16
+
 
 ---
 
@@ -30,11 +31,14 @@
 | Paket | Amaç |
 |-------|------|
 | `marker-pdf` | PDF → Markdown dönüşümü (OCR) |
-| `transformers` | BLIP/DePlot görsel analiz |
+| `transformers` | Florence-2/BLIP görsel analiz |
 | `torch` | PyTorch (GPU için) |
+| `flash_attn` | Model hızlandırma (Florence-2) |
+| `timm` | Vision model backbone |
 | `groq` | Groq API client |
 | `pandas` | Veri işleme |
 | `pyyaml` | YAML okuma |
+
 
 ### API'ler
 
@@ -48,8 +52,10 @@
 |-------|------|
 | `llama-3.3-70b-versatile` | Metin extraction (default) |
 | `meta-llama/llama-4-scout-17b-16e-instruct` | Vision + metin (resim varsa) |
-| BLIP | Görsel captioning |
-| DePlot | Chart/grafik analizi |
+| `microsoft/Florence-2-large` | **Lokal** görsel analiz (Captioning/OCR) |
+| BLIP | Görsel captioning (Legacy/Backup) |
+| DePlot | Chart/grafik analizi (Legacy/Backup) |
+
 
 ---
 

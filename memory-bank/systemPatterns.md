@@ -1,6 +1,7 @@
 # System Patterns
 
-**Son Güncelleme:** 2025-12-11
+**Son Güncelleme:** 2025-12-16
+
 
 ---
 
@@ -39,7 +40,8 @@ Phase 1: PDF → Markdown
 Phase 2: Visual Analysis
   Input:  data/processed_markdowns/O_ISAC_XXX/.../*.jpg
   Output: data/processed_markdowns/O_ISAC_XXX/.../visual_analysis.txt
-  Motor:  extraction_pipeline_v3.py → phase2_visual_analysis()
+  Motor:  extraction_pipeline_v3.py → LocalVisionModel (Florence-2) + Gemini Fallback
+
 
 Phase 3: CoT Extraction
   Input:  Markdown + Visual Analysis

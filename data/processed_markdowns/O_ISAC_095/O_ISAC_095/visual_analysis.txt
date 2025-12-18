@@ -1,0 +1,121 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Schematic and Optical Spectra
+---
+**Schematic:**
+* **CU (Central Unit):** ECL -> OC1 -> I/Q (Real/Imag) -> MZM (LO) -> IL1/IL2. Modulates Com/Sen signals. Ends with PBC combining polarizations.
+* **DU (Distribution Unit):** SMF -> EDFA -> OS.
+* **RU (Remote Unit):** OC4 -> OBPF1/2 -> PD1/2 -> PA1/2 -> HA1/2.
+* **Scenario:** RU1 communicates with a User (Com.) and performs sensing (Sen.).
+**Spectra (Insets e-g):** Show the wavelength allocation for Carrier, Com-OSB, and Sen-OSB across X and Y polarizations.
+---
+
+Image: _page_4_Figure_10.jpeg
+Type: Optical Spectrum (Carrier Separation)
+---
+**Axes Extraction:**
+* **X-axis:** Wavelength (nm) (1558 to 1559.2).
+* **Y-axis:** Power (dBm) (-80 to -10).
+**Data:** Shows -LO-OSB (magenta) at ~1558.42nm and +LO-OSB (blue) at ~1558.72nm. Carrier suppression is visible. Labels indicate "IL2 Response (Odd/Even)".
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Full Experimental Setup Schematic
+---
+**Flow:**
+* **CU:** ECL -> I/Q1 & I/Q2 (Real/Imag LFM+16QAM).
+* **DU:** EDFA -> VOA.
+* **RU:** Split to Com. and Sen. paths.
+* **Receivers:** HA2/OSC/DSP for User 1/2.
+---
+
+Image: _page_4_Figure_4.jpeg
+Type: Optical Spectrum (I/Q Modular)
+---
+**Data:** Com-OSB and Sen-OSB centered around 1558.5nm. Suppression levels of 16.4 dB and 21.8 dB are marked.
+---
+
+Image: _page_4_Figure_8.jpeg
+Type: Optical Spectrum (IL1 Response)
+---
+**Data:** Com-OSB and Sen-OSB separated by 12GHz and 15GHz respectively from the central frequency. Suppression of 23.6 dB.
+---
+
+Image: _page_5_Figure_11.jpeg
+Type: RF Performance and Chirp Signal
+---
+**Panels:**
+* **(a) RF Spectrum:** LFM signal peak at 25 GHz. Suppression of 21.3 dB relative to noise floor.
+* **(b) Spectrogram:** Linear Frequency Modulation (LFM) pulses over 10 $\mu$s. Frequency range 23.8 to 25.5 GHz.
+* **(c) ACF (Autocorrelation Function):** Main lobe width (3dB) is 0.996 ns.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Integrated Transmitted Spectrum
+---
+**Data:** Combined spectrum of Com-OSB, Sen-OSB, and LO-OSBs. Overlaid on IL2 response.
+---
+
+Image: _page_5_Figure_4.jpeg
+Type: Received Spcetra (Com vs Sen)
+---
+**Data:** Compares the output of Sen-OBPF (magenta) and Com-OBPF (blue).
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Radar Distance Measurement Results
+---
+**Panels:**
+* **(a) Distance Comparison:** "Sensed by radar" (pink cross) vs "Measured by band tape" (blue square). Range: 1500 to 2100 mm. Linear trend for 12 measurements.
+* **(b) Distance Error:** Error ranges from -15 mm to +15 mm. Most points are within $\pm$ 5 mm.
+---
+
+Image: _page_6_Figure_6.jpeg
+Type: RF Spectrum (Enhanced)
+---
+**Data:** LFM peak with 24.4 dB distinction. 16QAM shoulder is visible.
+---
+
+Image: _page_6_Figure_8.jpeg
+Type: Multi-Target Detection (ACF and Range)
+---
+**Panels:**
+* **(a-c) ACF plots:** Peak detection for User 1 and User 2 at different time delays (12-16 ns). Shows separation of two targets.
+* **(d) Distance vs Measurements:** Linear tracks for two targets.
+* **(e) Error plot:** Error for multi-target tracking within $\pm 30$ mm.
+---
+
+Image: _page_7_Figure_6.jpeg
+Type: Multi-Carrier Performance and Constellations
+---
+**Data:**
+* **(a/c) Electrical Spectra:** Showing LFM and 16QAM peaks.
+* **(b/d) Constellation Diagrams:** 16QAM signals with EVM = 9.4% and 12.2% respectively. Both show clear clustering with some spread.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: EVM vs Relative Offset Frequency
+---
+**Axes:** X: Relative offset (GHz) (-4 to 6), Y: EVM (%) (6 to 22).
+**Data:** 2.875 GBaud (blue stars) stays below 12% EVM. 5.75 GBaud (pink triangles) dips below 3GPP standard (12.5% dashed line) at offsets > -1 GHz.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: EVM vs ROP
+---
+**Axes:** X: ROP (dBm) (-12 to 2), Y: EVM (%) (6 to 22).
+**Reference:** 3GPP limit 12.5%. Sensitivities at ~ -7.5 dBm (2.875 G) and -5 dBm (5.75 G).
+---
+
+Image: _page_8_Figure_4.jpeg
+Type: EVM vs QLPR
+---
+**Axes:** X: QLPR (0 to 0.7), Y: EVM (%) (6 to 20).
+**Trend:** Higher QLPR reduces EVM. Both rates meet 3GPP standard for QLPR > 0.25.
+---
+
+Image: _page_8_Figure_8.jpeg
+Type: EVM vs LO Power
+---
+**Axes:** X: LO Power (dBm) (-10 to 10), Y: EVM (%) (7 to 15).
+**Trend:** Increasing LO power generally reduces EVM, reaching a floor near 8-10%.
+---

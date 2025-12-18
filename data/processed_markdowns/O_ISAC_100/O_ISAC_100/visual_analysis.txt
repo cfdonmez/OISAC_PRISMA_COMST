@@ -1,0 +1,113 @@
+Image: _page_1_Figure_8.jpeg
+Type: Application Scenario Schematic
+---
+**Components:**
+* **Vehicle with OW-ISAC transceiver:** Primary mobile unit.
+* **Cooperative target (Truck):** Equipped with a CCR (Corner Cube Retroreflector) and a "PD array" with "MRC" (Maximal Ratio Combining) and a "Lens array".
+* **Uncooperative target (Van):** Tracked via diffuse reflection.
+* **LiDAR unit (Inset):** Details the scanning mechanism with a rotating mirror and PDs.
+**Signal Flow:** Transceiver sends "Transmitted optical signal" (orange) -> signal hits Cooperative/Uncooperative targets -> "Reflected optical signal" (green) returns to the transceiver for Sensing. Simultaneously, the signal carries data for Communication to the cooperative target's PD array.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Detailed Transceiver Block Diagram
+---
+**Components:**
+* **OW-ISAC Transceiver (Tx):** ACO-OFDM/DCO-OFDM modulation, Hermitian symmetry, IFFT, Clipping, DAC, Laser Driver, Laser.
+* **OW-ISAC Transceiver (Rx):** Photo-detector, ADC, Removing CP & FFT, Element-wise division, IFFT, Distance estimation.
+* **OWC Receiver (Target):** Photo-detector, ADC, CCR, Removing CP & FFT, Pairwise averaging, ML detection, ACO/DCO demodulation.
+**Flow:** Bits -> Tx processing -> Laser -> Channel -> (1) Reflection off CCR -> Rx processing -> Distance estimation. (2) Reception at OWC receiver -> Rx processing -> demodulation.
+---
+
+Image: _page_4_Figure_22.jpeg
+Type: Chart (PSD of OFDM/Clipping Noise)
+---
+**Axes:** X: Subcarrier Index $k$ (0 to 60), Y: PSD.
+**Panels:** 
+* **(a) Conventional:** Uniform PSD for OFDM signal and Clipping noise (~$8 \times 10^{-4}$ and ~$3.5 \times 10^{-4}$ respectively).
+* **(b) Proposed:** PSD increases with $k$ for signal (up to ~$2.3 \times 10^{-3}$) while clipping noise PSD decreases (from ~$4.5 \times 10^{-4}$ to ~$2 \times 10^{-4}$). This indicates an optimized power allocation strategy.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Normalized PDF of $L_t(D)$)
+---
+**Axes:** X: $L_t(D)$ (normalized distance error) (0 to 3), Y: Normalized $P(L_t(D))$ (0 to 1).
+**Legends:** Range of $C_n^2$ values ($5 \times 10^{-16}$ to $5 \times 10^{-13} \text{ m}^{-2/3}$).
+**Data:** 
+* For weak turbulence ($5 \times 10^{-16}$, red), the PDF is highly peaked at 1.0. 
+* For strong turbulence ($5 \times 10^{-13}$, purple), the PDF is much broader, peaking at ~0.8 with a significant tail extending to 2.5. The 0.05-quantile point is at $L_t(D) \approx 0.6$.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Spectral Efficiency Profiles
+---
+**Grid:** 5 rows (different power allocation strategies) x 3 columns (DCO/ACO/EADO settings).
+**Axes:** X: Subcarrier $k$ (0 to 500), Y: $P(k)$ (0 to $2 \times 10^{-3}$).
+**Trend:** Shows the transition from uniform power allocation (Top) to highly skewed allocations (Bottom) tailored to mitigate clipping noise in EADO (Enhanced ACO/DCO) systems.
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Comparison Charts (Precision vs Spectral Efficiency)
+---
+**Left Panel (a):**
+* **Axes:** X: Spectral efficiency $C$ (bps/Hz) (0.5 to 3.5), Y: Precision (cm) (4 to 6.5).
+* **Comparison:** Different noise levels $N_c$. At $C=2.5$, precision for $N_c = -127$ dB (blue) is ~4.4 cm, while for $N_c = -113$ dB (green) it is ~6.6 cm.
+**Right Panel (b):** Same setup showing the impact of $\rho$ (correlation). Precision improves (lower value) as $\rho$ increases towards 1.0.
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: Performance Chart (BER vs SNR) - Comparison
+---
+**Axes:** X: $SNR$ (dB) (0 to 35), Y: BER ($10^{-4}$ to $10^0$).
+**Comparison:** DCO, ADO, EADO for 16QAM/BPSK.
+**Data:** 
+* EADO (16QAM, green square) achieves BER $10^{-3}$ at $SNR \approx 20$ dB. 
+* DCO (16QAM, blue circle) reaches $10^{-3}$ at $SNR \approx 15$ dB.
+* EADO (ACO-16QAM, green triangle) is much worse, staying above $10^{-1}$ throughout.
+---
+
+Image: _page_12_Figure_4.jpeg
+Type: Performance Chart (Normalized MSE vs SNR)
+---
+**Axes:** X: $SNR$ (dB) (0 to 35), Y: Norm. MSE (dB) (-30 to 20).
+**Data:** EADO-DCO (green circle) and DCO (blue circle) exhibit similar MSE performance, reaching -25 dB at SNR = 25 dB. ADO-DCO is slightly worse at -18 dB.
+---
+
+Image: _page_12_Figure_9.jpeg
+Type: Performance Chart (BER vs SNR) - Turbulence
+---
+**Axes:** X: $SNR$ (dB) (2 to 20), Y: BER ($10^{-4}$ to $10^0$).
+**Comparison:** Impact of $C_n^2$. Strong turbulence ($5 \times 10^{-13}$, purple triangles) shifts the BER curve significantly. At BER $10^{-3}$, the SNR penalty is ~4 dB compared to weak turbulence.
+---
+
+Image: _page_12_Figure_11.jpeg
+Type: Range Profile (Normalized)
+---
+**Axes:** X: Distance (m) (30 to 70), Y: Normalized range profile (dB) (-20 to 0).
+**Comparison:** EWD (Energy Weighted Detection) vs CC (Cross-Correlation). Both peak at 50 m. EWD (solid lines) provides better side-lobe suppression compared to CC (dashed lines), especially at higher SNR (20 dB, red).
+---
+
+Image: _page_13_Figure_2.jpeg
+Type: RMSE vs SNR
+---
+**Axes:** X: $SNR$ (dB) (0 to 25), Y: RMSE (cm) ($10^0$ to $10^4$).
+**Comparison:** DCO, ADO, EADO.
+**Data:** Convergence to the sampling bound (~2.5 cm) occurs at $SNR > 7$ dB for DCO, but requires $SNR > 10$ dB for ADO/EADO.
+---
+
+Image: _page_13_Figure_4.jpeg
+Type: RMSE vs SNR - Turbulence
+---
+**Axes:** X: $SNR$ (dB) (0 to 25), Y: RMSE (cm).
+**Trend:** Stronger turbulence delays the convergence to the accuracy floor. For $C_n^2 = 5 \times 10^{-13}$, convergence occurs at SNR $\approx 10$ dB.
+---
+
+Image: _page_15_Picture_27.jpeg
+Type: Probability of Detection ($P_D$) vs SNR
+---
+**Axes:** X: $SNR$ (dB) (-30 to 0), Y: $P_D$ (0 to 1).
+**Comparison:** Optical vs Electrical detection for different $P_{FA}$ levels ($10^{-8}, 10^{-6}, 10^{-4}$).
+**Data:** At $P_{FA} = 10^{-4}$ (green), Optical detection hits $P_D = 0.5$ at SNR $\approx -17$ dB, while Electrical detection hits it at SNR $\approx -8$ dB, showing ~9 dB advantage for optical.
+---
+**Note:** Picture_30, Picture_33, Picture_36, and Picture_27 (author photo) are researcher headshots and are skipped as requested.
+---
