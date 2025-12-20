@@ -1,0 +1,129 @@
+PAPER: O_ISAC_156
+TITLE: Physical Layer Security for Authentication, Confidentiality, and Malicious Node Detection: A Paradigm Shift in Securing IoT Networks
+
+================================================================================
+IMAGE: _page_5_Figure_2.jpeg
+TYPE: System Diagram / Flowchart
+DESCRIPTION: Paper organization flowchart showing the structure from Introduction to Conclusion.
+COMPONENTS: 
+- Sec. I: Introduction
+- Sec. II: Preliminaries (PLS Generalities, Mathematical Background)
+- Sec. III: Physical Layer Key Establishment (Channel Reciprocity, Signal Source Indistinguishability)
+- Sec. IV: Physical Layer Security for Authentication (Keyless PLA, Key-based PLA, Cutting-edge PHY)
+- Sec. V: Physical Layer Security for Confidentiality (Keyless, Key-based, Cutting-edge PHY)
+- Sec. VI: Physical Layer Security for Malicious Node Detection (Sybil Nodes, Jammers)
+- Sec. VII: Discussion and Direction Forward (AI/ML, Cross-layer, Future Challenges)
+- Sec. VIII: Conclusion
+================================================================================
+IMAGE: _page_6_Figure_2.jpeg
+TYPE: Venn Diagram
+DESCRIPTION: Schematic view of PLS categories and their fulfillment of security pillars.
+DATA:
+- Pillars: Authenticity and Integrity (top-left), Confidentiality and Privacy (bottom-right).
+- Main Circles: 
+  - Physical Layer Authentication (contains RF Fingerprinting, Wireless Channel).
+  - PLS for Malicious Nodes Detection (contains Sybil-Node detection, Jammers detection, Signal statistics).
+  - PLS for Confidentiality (contains Secrecy capacity-based).
+- Overlap (Center): PUF, PLKE.
+================================================================================
+IMAGE: _page_8_Figure_1.jpeg
+TYPE: Chart / Graph
+DESCRIPTION: Probability Density Function (PDF) of two observed Carrier Frequency Offset (CFO) values for Alice and Eve.
+X-AXIS: Carrier Frequency Offset (Hz) [Range: 0 to 8000]
+Y-AXIS: Probability Density Function [Range: 0 to 8 x 10^-4]
+LEGEND:
+- Alice's CFO (ε_A = 2.4 KHz): Centered at 2400 Hz, peak ~7x10^-4.
+- Eve's CFO (ε_E = 4.8 KHz): Centered at 4800 Hz, peak ~7x10^-4.
+TREND: Shows two distinct Gaussian-like distributions for authentication discrimination via hypothesis testing.
+================================================================================
+IMAGE: _page_9_Figure_2.jpeg
+TYPE: Schematic / Taxonomy
+DESCRIPTION: Main categorization for Physical Layer Key Establishment (PLKE).
+HIERARCHY:
+- Physical Layer Key Establishment
+  - Channel Reciprocity-based (includes RSS, CSI Phase, CSI Amplitude)
+  - Signal Source Indistinguishability-based
+================================================================================
+IMAGE: _page_9_Figure_9.jpeg
+TYPE: Process Diagram
+DESCRIPTION: The general 4-step model of the channel reciprocity-based key establishment approach.
+STEPS:
+1. Advantage Distillation (Alice and Bob over Eavesdropped public channel).
+2. Quantization.
+3. Information Reconciliation (feedback loop between Alice and Bob).
+4. Privacy Amplification.
+ENTITIES: Alice, Bob, Eve.
+================================================================================
+IMAGE: _page_10_Figure_1.jpeg
+TYPE: System Diagram
+DESCRIPTION: Model of signal source indistinguishability-based key establishment.
+COMPONENTS: Alice, Bob, Eve.
+MECHANISM: Shows anonymous signal exchange with potential secondary transmissions (faded arrows) to confuse Eve regarding the source identity.
+================================================================================
+IMAGE: _page_12_Figure_6.jpeg
+TYPE: Illustration
+DESCRIPTION: RIS-assisted Physical Layer Authentication (PLA) in a smart city/UAV scenario.
+COMPONENTS:
+- Alice (A) & Eve (E): Both are UAVs.
+- Bob (B): Ground station.
+- Reconfigurable Intelligent Surface (RIS): Mounted on a building facade.
+CHANNELS: Benign channels (blue dashed), Malign channels (red dashed).
+BEAMS: Legitimate signal beam (orange), Intruder signal beam (pink).
+================================================================================
+IMAGE: _page_13_Figure_2.jpeg
+TYPE: Taxonomy
+DESCRIPTION: Categorization of Physical Layer Authentication (PLA) techniques.
+HIERARCHY:
+- PLA
+  - Keyless PLA
+    - Channel-based (RSS, CIR, Phase, Magnitude, etc.)
+    - Hardware-based / RF Fingerprinting (Transient, Steady-state like CFO, IQI, PN, PUF)
+  - Key-based PLA (Tagging methods)
+================================================================================
+IMAGE: _page_16_Figure_6.jpeg
+TYPE: Waveform Plot
+DESCRIPTION: Typical Bluetooth signal captured by experiment at high SNR.
+DETAILS: Shows the transient part (rising edge) and steady-state part of a Bluetooth packet waveform.
+================================================================================
+IMAGE: _page_20_Picture_6.jpeg
+TYPE: Legend
+DESCRIPTION: Color coding for signal mapping in resource blocks.
+LEGEND:
+- Pink: Message signal
+- Purple: Tag signal
+- Green: Punctured part of the tag signal
+================================================================================
+IMAGE: _page_20_Picture_7.jpeg
+TYPE: 3D Mapping Diagram
+DESCRIPTION: Mapping of message and tag signals in a frequency (f), time (t), and power (P) resource block.
+AXES: Frequency (f), Time (t), Power (P).
+DETAILS: 
+- Base layer (Pink): Message signal with power ρ_m * P.
+- Top layer (Purple/Green): Tag signal with power (1 - ρ_m) * P. 
+- The green section represents the "punctured" portion of the authentication tag.
+================================================================================
+IMAGE: _page_23_Figure_2.jpeg
+TYPE: System Model
+DESCRIPTION: RIS-assisted PLA illustration and Power-domain NOMA authentication.
+SUB-FIGURES:
+(a) Illustration of RIS-assisted PLA: UAV nodes Alice and Eve with RIS reflection beams to Bob.
+(b) NOMA setup: Alice (A) transmitting to users U1, U2 with total power budget, including a "tag" signal superimposed on U1/U2 signals for authentication. Eve (E) injecting jamming signals.
+================================================================================
+IMAGE: _page_24_Figure_1.jpeg
+TYPE: Taxonomy
+DESCRIPTION: Physical Layer Data Confidentiality (PLDC) categories.
+HIERARCHY:
+- Physical Layer Data Confidentiality
+  - Key-based Confidentiality (Signal Modulation)
+  - Keyless Confidentiality (Artificial Noise, Channel Coding, Directional Modulation)
+================================================================================
+IMAGE: _page_25_Figure_2.jpeg
+TYPE: Communication Model
+DESCRIPTION: General model of confidentiality-achieving mechanisms.
+COMPONENTS:
+- Alice: Encoder (Keyless) -> Modulator (Key-based) -> Signal X^n.
+- Noisy Channels: p_AB (Bob), p_AE (Eve).
+- Bob: Demodulator -> Decoder -> Message m_hat.
+- Eve: Demodulator -> Decoder -> ? (Target of security).
+DETAILS: Shows combined Keyless and Key-based loops for full data confidentiality.
+================================================================================

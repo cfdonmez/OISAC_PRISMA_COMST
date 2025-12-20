@@ -1,77 +1,55 @@
-Batch 1:
-Image _page_2_Figure_2.jpeg:
-Type: Diagram
-Description: Block chart of the joint VLC sensing/communication system showing nine ceiling LEDs feeding an m-CAP chain while the UE photodiode runs RSS-based localization.
-KEY DATA: Highlights 4×4×2.5 m room geometry, AP/UE signal paths, and the requirement that the UE gathers at least four AP power readings to solve RSS trilateration in Section II.
+# Visual Analysis for O_ISAC_022
 
-Image _page_3_Figure_2.jpeg:
-Type: Diagram
-Description: Timing plan for the proposed MAC cycle separating preamble, sequential location frames, and payload slots so sensing and communication share the link.
-KEY DATA: Multi-AP preamble boosts synchronization, then each AP transmits short coordinate/power frames without interference before multi-access payload periods.
+## Figure 1: Joint VLC Sensing and Communication Architecture
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_2_Figure_2.jpeg)
+- **Geometry:** 4m × 4m room with 9 Access Points (APs) on ceiling ($z=2.5$m). User Equipment (UE) plane at $z=0.85$m (vertical link distance $h=1.65$m).
+- **Transmitter (AP):** $m$-CAP modulation -> Rescaling to fit LED linear range -> DC Bias ($I_b$) addition -> LED Driver.
+- **Receiver (UE):** Photodiode (PD) -> (1) Removal of DC for data recovery ($m$-CAP filtering/demapping) and (2) RSS algorithm using variance of electrical signals.
 
-Image _page_3_Figure_4.jpeg:
-Type: Chart
-Description: Illuminance heatmap over the receiver plane illustrating lighting compliance of the four-chip LUXEON sources.
-KEY DATA: Room floor stays between ~300 and 500 lux (≤20% variation) while each AP outputs 880 lm at 9.8 W, satisfying EN 12464-1 office limits.
+## Figure 2: Medium Access Control (MAC) Cycle
+**File:** [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_3_Figure_2.jpeg)
+- **Phases:** 
+  1. **Common Preamble:** All 9 APs transmit simultaneously for robust synchronization.
+  2. **Sequential Location Frames:** AP1 through AP9 transmit coordinates and radiated power $\Phi_{tx,i}^r$ in dedicated time slots to avoid mutual interference during RSS measurement.
+  3. **Data Payload:** Standard communication phase.
+- **Strategy:** Decouples sensing/positioning from data payload to ensure high-accuracy trilateration.
 
-Image _page_4_Picture_2.jpeg:
-Type: Diagram
-Description: Optical link geometry relating LED emission cone, field-of-view, and the OWC channel/photodiode chain.
-KEY DATA: Uses Lambertian model with 30° semi-angle, links I_tx,i(t)→Φ_tx,i^r(t)→I_rx,i(t) via h_LED(t) and channel response h_i(t), and emphasizes PD responsivity R_PD.
+## Figure 3: Indoor Illuminance Map
+**File:** [_page_3_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_3_Figure_4.jpeg)
+- **Type:** 2D Heatmap.
+- **Intensity:** Ranges from **300 lux (periphery)** to **500 lux (central peaks)**.
+- **Source:** Each AP utilizes 4 LUXEON Rebel white LED chips (880 lm total output).
+- **Compliance:** Satisfies EN 12464-1 for office work (min 300 lux).
 
-Image _page_7_Figure_9.jpeg:
-Type: Chart
-Description: Map of RMS positioning error over the 4×4 m plane for Configuration 1 with DC component retained.
-KEY DATA: RSS error ranges 0.3–11.7 cm; 90% of 1681 grid points fall below 7.17 cm, with minima at AP cluster centers (SNR≈45 dB) and midlines (SNR≈50 dB).
+## Figure 5: Spatial Distribution of RMS Positioning Error
+**File:** [_page_7_Figure_9.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_7_Figure_9.jpeg)
+- **Conditions:** Configuration 1 ($m=4, \alpha=0.4, M=64$) with DC component retention.
+- **Error Profile:** Minima at AP cluster centers (~0.3 cm). 
+- **SNR Correlation:** Position A (center of 4 APs) SNR values: [43.1, 44.4, 44.4, 45.8] dB. Position B (midway) SNR values: [32.6, 32.6, 49.0, 50.1] dB. 
+- **Max Error:** ~11.7 cm at room corners where coverage is sparser.
 
-Batch 2:
-Image _page_8_Figure_2.jpeg:
-Type: Chart
-Description: CDF of RMS positioning error when the UE keeps the DC component of received signals.
-KEY DATA: 66%/90%/99% percentiles are 5.34 cm / 7.17 cm / 9.96 cm, showing millimeter-level repeatability when ambient light is absent.
+## Figure 6: Cumulative Distribution Function (CDF) of Error
+**File:** [_page_8_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_8_Figure_2.jpeg) & [_page_8_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_8_Figure_4.jpeg)
+- **With DC (Fig 6a):** 66% error < **5.34 cm**; 90% error < **7.17 cm**; 99% error < **9.96 cm**.
+- **Without DC (Fig 6b):** 90% error degrades to **64.81 cm** due to loss of usable optical energy ($\approx 7\times$ lower standard deviation).
 
-Image _page_8_Figure_4.jpeg:
-Type: Chart
-Description: CDF of RMS positioning error when the DC component is filtered out before RSS processing.
-KEY DATA: Removing DC reduces usable optical power by ~7× and degrades the 90th-percentile error to 64.81 cm, motivating DC retention or compensation when ambient light exists.
+## Figure 7: Signal Standard Deviation and Scaling
+**File:** [_page_8_Figure_9.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_8_Figure_9.jpeg)
+- **Original $\hat{I}_i(t)$:** Scales with QAM order $M$; ~4A at $M=16$ up to ~17A at $M=256$.
+- **Drive $I_{tx,i}(t)$:** Constant at **~2.82A** regardless of $M$ or roll-off $\alpha$.
+- **AC-only component:** Constant at **~0.32A**.
+- **Conclusion:** LED linear region constraints (400mA - 1A per chip) normalize total power, making positioning accuracy independent of modulation order.
 
-Image _page_8_Figure_9.jpeg:
-Type: Chart
-Description: Standard deviation of the transmitted signal versus QAM order with and without subtracting the DC bias.
-KEY DATA: Original data current σ ranges 7.6–9.4 A (α from 1→0) while scaled LED drive current stays ≈2.82 A with DC and ≈0.32 A without DC, showing limited sensitivity to m, M, α, or L_SPAN due to LED current limits.
+## Figure 8 & 9: Bit Error Rate (BER) Analysis
+**File:** [_page_9_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_9_Figure_2.jpeg) & [_page_9_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_9_Figure_8.jpeg)
+- **FEC Limit:** Horizontal line at $3.8 \times 10^{-3}$ (HD-FEC overhead).
+- **Trends:** 
+  - Wider roll-off $\alpha$ (smoother filters) reduces non-linear clipping distortion, lowering BER. 
+  - Increasing sub-bands $m$ from 4 to 8 mitigates LED low-pass attenuation effects.
+- **Complexity Trade-off:** $L_{SPAN}=10$ provides a balance between ISI suppression and hardware footprint.
 
-Image _page_9_Figure_2.jpeg:
-Type: Chart
-Description: BER versus roll-off factor α for various filter lengths L_SPAN and subband counts m at M=64.
-KEY DATA: BER monotonically decreases as α increases (smoother filters) and longer FIR filters improve BER when α≤0.2; all curves drop below the 3.8×10^-3 FEC limit for α≥0.35.
-
-Image _page_9_Figure_8.jpeg:
-Type: Chart
-Description: BER versus α for different modulation orders (M=16…256) and subband counts m (4 or 8).
-KEY DATA: Higher M raises BER for a fixed α, but α>0.2 keeps BER below the FEC limit even at M=256; increasing m from 4→8 narrows bandwidth per subband and reduces BER by mitigating LED low-pass distortion.
-
-Batch 3:
-Image _page_10_Figure_2.jpeg:
-Type: Chart
-Description: Coverage maps showing areas meeting the BER target when APs transmit sequentially with M=64 (a) and M=256 (b).
-KEY DATA: With M=64 every point in the 4×4 m plane stays below the FEC BER, though ≥4-AP overlap zones are limited; switching to M=256 eliminates four-way overlap and creates uncovered regions, emphasizing modulation-order tradeoffs.
-
-Image _page_12_Picture_7.jpeg:
-Type: Other
-Description: Portrait of Bastien Béchadergue with a short biography.
-KEY DATA: ISAE-Supaero aeronautical engineer, Imperial College MSc (2014), UVSQ PhD (2017), former Oledcomm research lead (2017–2020), now UVSQ associate professor focusing on VLC sensing.
-
-Image _page_12_Picture_10.jpeg:
-Type: Other
-Description: Portrait of Luc Chassagne and affiliation summary.
-KEY DATA: Supelec B.S. (1994) and Univ. Paris XI PhD (2000) in optoelectronics; currently Professor and LISV Lab Director with interests in nanometrology and VLC.
-
-Image _page_12_Picture_12.jpeg:
-Type: Other
-Description: Portrait of Lina Shi with academic background.
-KEY DATA: Université Grenoble Alpes engineering degree (2017) and Sorbonne Univ. telecom PhD; since 2021 postdoc at UVSQ focusing on VLC/VLP and SDR-based optical systems.
-
-Image _page_12_Picture_14.jpeg:
-Type: Other
-Description: Portrait of Hongyu Guan with role description.
-KEY DATA: ENSEIRB B.S. (2007) and Univ. Bordeaux PhD (2012) in electrical/computer engineering; now LISV research associate overseeing projects in VLC, protocols, and sensing/nanometrology.
+## Figure 10: Connectivity and Sensing Coverage
+**File:** [_page_10_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_022/O_ISAC_022/_page_10_Figure_2.jpeg)
+- **(a) $M=64$:** Uniform coverage over the 16 $m^2$ floor; central zones allow simultaneous sensing from 4 APs.
+- **(b) $M=256$:** Higher data rate (32 Mbps) causes shrunken coverage footprints; sensing fails in dead zones where fewer than 4 AP signals meet the BER target.
+- **Interdependence:** Higher communication throughput directly compromises sensing availability in RSS-based VLC.

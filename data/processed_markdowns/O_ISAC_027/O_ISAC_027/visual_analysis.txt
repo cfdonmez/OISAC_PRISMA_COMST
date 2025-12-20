@@ -1,57 +1,47 @@
-Batch 1:
-Image _page_0_Picture_2.jpeg:
-Type: Other
-Description: Title graphic for the "Low Crosstalk Deep Ocean Salinity Monitoring at 2 µm Wavelength Band" paper introducing the tapered few-mode fiber sensor concept.
-KEY DATA: Emphasizes operation at the 2 µm window to hit strong molecular absorption lines, enabling 1200.7 nm/RIU (0.192 nm/‰) sensitivity while remaining tolerant to deep-ocean pressure/temperature variations.
+# Visual Analysis for O_ISAC_027
 
-Image _page_0_Picture_6.jpeg:
-Type: Other
-Description: Highlight block underscoring that the tapered FMF sensor provides a practical salinity-sensing solution and can be co-developed for joint communication/sensing links.
-KEY DATA: Notes low crosstalk sensing head suited for wide depth ranges, pointing to future multimodal fiber deployments that share C-band comms with 2 µm sensing.
+## Figure 1: Marine Salinity Monitoring System
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_2_Figure_2.jpeg)
+- **Architecture:** 
+  - **Source:** 793 nm Laser Diode pumping a 5m Thulium-Doped Fiber (TDF).
+  - **Filter:** 793/2000 nm WDM to isolate the 2 μm ASE light.
+  - **Probe:** Sensing head deployed underwater, connected via fiber cable to an OSA.
+- **Sensing Head Design (Inset):** 
+  - Adiabatic-tapered Few-Mode Fiber (FMF) spliced between SMFs.
+  - Core/Cladding indices: $n_{core} = 1.4736$, $n_{cladding} = 1.4571$.
+  - Modes: Interferometry between **LP01** and **LP02** modes.
+- **RI vs Salinity (Inset Graph):** Linear relationship mapping Refractive Index (1.30–1.33) to Salinity (0–15%).
 
-Image _page_2_Figure_2.jpeg:
-Type: Diagram
-Description: System schematic showing 793 nm pumping of Tm-doped fiber, WDM routing, tapered FMF sensing head, and OSA readout with inset of the FMF structure and salinity-dependent refractive index curve.
-KEY DATA: FMF core/cladding radii 40 µm/125 µm, supports LP01 and LP02 modes; sensing head uses adiabatic tapers to enhance evanescent interaction, and shows refractive index shifts from 1.306–1.314 corresponding to 0–50‰ salinity.
+## Figure 2: Modal Dispersion and Sensitivity Physics
+**File:** [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_3_Figure_2.jpeg)
+- **(a) Mode Confinement:** Plot of $n_{eff}$ vs Taper Ratio. 
+  - LP02 $n_{eff}$ drops sharply below a ratio of 0.8, indicating energy leakage into cladding and high evanescent coupling.
+- **(b) Spectral Advantage:** Effective refractive index difference ($\Delta n_{eff}$) increases with both wavelength (1980–2020 nm) and external RI (1.306–1.314).
+  - **Key Insight:** Sensitivity is fundamentally higher at 2 μm compared to C-band (1550 nm).
 
-Image _page_3_Figure_2.jpeg:
-Type: Chart
-Description: (a) Dispersion curves of LP01 and LP02 modes versus taper ratio; (b) effective refractive index difference vs external refractive index at 2 µm.
-KEY DATA: Increasing taper ratio lowers LP02 index faster than LP01, boosting sensitivity; Δn_eff grows sharply as seawater index rises 1.307→1.314, enabling >1 µm/RIU wavelength shift potential.
+## Figure 3: Optimization of Waist Diameter (Theory)
+**File:** [_page_4_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_4_Figure_2.jpeg)
+- **(a) 50 μm Waist:** Sensitivity $\approx 675$ nm/RIU ($S_{salinity} \approx 0.11$ nm/‰).
+- **(b) 40 μm Waist:** Sensitivity nearly doubles to **1216.7–1256.7 nm/RIU** ($S_{salinity} \approx 0.20$ nm/‰).
+- **Tradeoff:** Balanced sensitivity with mechanical robustness for deep-sea deployment.
 
-Image _page_4_Figure_2.jpeg:
-Type: Chart
-Description: Refractive-index sensitivity comparison for FMF waist diameters 50 µm and 40 µm.
-KEY DATA: 50 µm waist yields ~675 nm/RIU (0.11 nm/‰) around 2.0 µm, while shrinking to 40 µm nearly doubles sensitivity to ~1.25 µm/RIU (0.20 nm/‰) with FSR ≈25 nm, illustrating design trade-off between robustness and sensitivity.
+## Figure 4: Deep Ocean Environment and Crosstalk
+**File:** [_page_4_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_4_Figure_4.jpeg)
+- **(a) Profiling:** Pressure increases ~1 MPa per 100m depth; Temperature drops to ~2 °C in the deep zone.
+- **(b) Pressure Effect:** Blue shift of $\approx -25$ to $-30.9$ pm/MPa (only ~1 nm total drift at 4100m).
+- **(c) Temperature Effect:** Blue shift of $\approx -13.1$ to $-13.63$ pm/°C.
+- **Impact:** Crosstalk to salinity measurement is $\approx 0.1$ ‰/°C, considered negligible.
 
-Batch 2:
-Image _page_4_Figure_4.jpeg:
-Type: Diagram
-Description: (a) Ocean depth vs pressure/temperature chart plus sensor placement; (b) pressure-induced wavelength shift; (c) temperature-induced drift.
-KEY DATA: Pressure sensitivity only −25 to −30 pm/MPa (≈1 nm drift at 4100 m), temperature sensitivity ≈−13 pm/°C (0.108‰/°C crosstalk), so deep-ocean conditions add negligible salinity error.
+## Figure 5: Experimental Verification of Salinity Sensitivity
+**File:** [_page_6_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_6_Figure_2.jpeg)
+- **Results:** 
+  - **50 μm waist (a-b):** Experimental sensitivity $466.9 - 651.3$ nm/RIU.
+  - **40 μm waist (c-d):** Experimental sensitivity reaches **1190.6 - 1200.7 nm/RIU** ($0.191 - 0.192$ nm/‰).
+  - Inset in (c) shows FFT confirming primary interference between LP01 and LP02.
 
-Image _page_5_Figure_2.jpeg:
-Type: Setup
-Description: Photos/diagrams of the laser welding station and tapered cone dimensions used to manufacture the sensing head.
-KEY DATA: Fujikura LZM-100 laser tapering produces <±1.25 µm waist tolerance; process control over laser power/stretch length ensures consistent adiabatic tapers before splicing to SMFs.
-
-Image _page_6_Figure_2.jpeg:
-Type: Chart
-Description: Experimental spectra and linear fits for refractive-index tuning with 50 µm and 40 µm waist diameters.
-KEY DATA: Resonant dips red-shift as RI increases from 1.307→1.314; 50 µm waist demonstrates 467–651 nm/RIU, whereas 40 µm waist reaches 1190–1201 nm/RIU (0.191–0.192 nm/‰), validating simulations.
-
-Image _page_6_Figure_6.jpeg:
-Type: Chart
-Description: Temperature sensitivity plot for the 40 µm-waist sensor from 0–70 °C.
-KEY DATA: Max wavelength drift 0.95 nm over 70 °C range, yielding −13.16 pm/°C and 0.1096‰/°C equivalent salinity error, confirming minimal thermal crosstalk.
-
-Image _page_7_Figure_2.jpeg:
-Type: Chart
-Description: Long-term stability test after two months showing spectra shifts and linear fits for the 40 µm sensor.
-KEY DATA: Sensitivities remain high (≈1108 and 1138 nm/RIU) with only slight reduction from initial values, demonstrating durability for extended deployments.
-
-Batch 3:
-Image _page_7_Figure_4.jpeg:
-Type: Chart
-Description: Long-term temperature stability measurements tracking wavelength shift vs temperature after two months.
-KEY DATA: Temperature sensitivity remains −14.39 pm/°C (≈0.126‰/°C), confirming sustained low thermal crosstalk and suitability for long-duration ocean monitoring missions.
+## Figure 6: Stability and Longevity Tests
+**File:** [_page_7_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_7_Figure_2.jpeg) & [_page_7_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_027/O_ISAC_027/_page_7_Figure_4.jpeg)
+- **2-Month Snapshot:** 
+  - Salinity sensitivity remains stable at **1107.8 - 1137.8 nm/RIU**.
+  - Temperature sensitivity remains steady at **-14.39 pm/°C**.
+- **Conclusion:** Proves suitability for long-term autonomous ocean monitoring.

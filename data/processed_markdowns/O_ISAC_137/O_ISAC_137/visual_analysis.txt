@@ -1,0 +1,46 @@
+# O_ISAC_137 Visual Analysis
+
+## Image 1: _page_1_Figure_0.jpeg
+- **Type**: System Diagram / Schematic
+- **Description**: Block diagram of a time tagger with one measurement channel in continuous recording (CR) mode.
+- **Extracted Content**:
+    - Inputs: "Input A from laser" (used for Marker) and "Input B from sensor".
+    - Logic: Input A and Input B are combined via an OR gate before entering the "Measuring channel".
+    - Outputs: Two streams labeled "File [tstart]" and "File [tnoise+tref]".
+    - Rationale: High-precision event timing tagging relative to UTC, circumventing hardware time selection windows.
+
+## Image 2: _page_1_Figure_4.jpeg
+- **Type**: Chart / Graph (Timing Diagram)
+- **Description**: Timeline illustrating signal loss due to dead time (τ) of the TDC.
+- **Extracted Content**:
+    - Situations: 
+        1. Dead time after a start pulse in Ch A prevents subsequent registration.
+        2. Noise registered in Ch B creates dead time, causing loss of a valid "Refl. 1" pulse.
+        3. Dead time after a noise/signal pulse in Ch B prevents registration of a start pulse in Ch A.
+    - Notation: "No registration" zones marked by arrows and dashed lines corresponding to τ.
+
+## Image 3: _page_1_Figure_10.jpeg
+- **Type**: Chart / Graph
+- **Description**: Residual analysis of predicted intervals.
+- **Key Data**:
+    - X-axis: Array index (0 to 1200).
+    - Y-axis: AB Interval - Predicted, ps (ranging from -2 x 10^6 to 2 x 10^6).
+    - Observations: A dominant, slightly curved cluster of points around -0.7 to -1.3 x 10^6 ps. Several high-magnitude outliers exist (e.g., at ~1.5 x 10^6 ps).
+
+## Image 4: _page_2_Figure_0.jpeg
+- **Type**: Chart / Graph (Scatter Plot)
+- **Description**: Monitoring of the ranging process without using orbital data.
+- **Key Data**:
+    - X-axis: time (UTC), ps.
+    - Y-axis: t_ref - t_start, ps.
+    - Range: Y-axis roughly 8848109721.7 to 9745300643.7 (long-range scale).
+    - Trends: Green dots highlight the valid reflected signal forming a clear, smooth curved trajectory. Red background dots represent stochastic noise.
+
+## Image 5: _page_2_Figure_8.jpeg
+- **Type**: Illustration / Waveform Diagram
+- **Description**: Structure of transmitted reference pulse-position modulation (TR-PPM) signal.
+- **Extracted Content**:
+    - Components: Reference pulse followed by a "dead time" period.
+    - Data Encoding: "Information pulse positions" shown as dotted peaks. The position of the info pulse relative to the reference encodes the bits.
+    - "frame" duration includes the reference pulse, dead time, and the available positions.
+    - Purpose: Maximize compatibility with SLR while enabling space-to-ground or ground-to-satellite ISAC.

@@ -1,105 +1,60 @@
-Image [_page_0_Figure_15.jpeg]: Setup/Diagram: This image illustrates an experimental setup for an optical fiber sensing and communication system.
-The setup consists of:
-1.  **Light Sources:** A Continuous Wave (CW) laser connected to a Dual-Polarization In-phase/Quadrature Modulator (DP-IQ-MOD), driven by an Arbitrary Waveform Generator (AWG), providing an LP01 mode. Separately, a Supercontinuum (SC) source generates both LP01 and LP11 modes.
-2.  **Multiplexing:** A MUX combines the LP01 mode from the modulator and the LP01/LP11 modes from the SC source.
-3.  **Sensing Element:** The combined light then passes through a fiber structure composed of Few-Mode Fiber 1 (FMF1), a Tapered Few-Mode Fiber 2 (FMF2) which serves as the sensing region where a droplet (representing an analyte) interacts with the light, and another FMF1.
-4.  **Demultiplexing & Detection:** A (De)MUX separates the modes.
-5.  **Receivers:**
-    *   The LP01 mode is directed to an Optical Spectrum Analyzer (OSA) for spectral analysis.
-    *   Another LP01 mode path goes to a Coherent receiver, connected to a Real-Time Oscilloscope (RTOS), for advanced signal processing and demodulation.
-The system is designed to investigate the interaction of different optical fiber modes with an external medium in a tapered fiber structure, combining spectral analysis with coherent detection for potential sensing or communication applications.
+PAPER: O_ISAC_004
+TITLE: Integrating Sensing and Telecommunication Based on an Adiabatic-tapered Few-mode-fiber
 
-Image [_page_1_Figure_0.jpeg]: Chart/Diagram:
-**Chart Data Extraction:** This is a bar chart showing loss (dB) versus wavelength (nm) for an optical fiber system, likely pertaining to the LP11 mode.
-*   X-axis (Wavelength): Ranges from 1520 nm to 1580 nm.
-*   Y-axis (Loss): Ranges from 0 dB to -4 dB.
-*   Approximate Loss values:
-    *   At 1520 nm: ~ -0.4 dB
-    *   At 1530 nm: ~ -0.7 dB
-    *   At 1540 nm: ~ -0.8 dB
-    *   At 1550 nm: ~ -0.9 dB
-    *   At 1560 nm: ~ -1.0 dB
-    *   At 1570 nm: ~ -1.1 dB
-    *   At 1580 nm: ~ -1.2 dB
-The loss generally increases (becomes more negative) with increasing wavelength over the observed range.
-
-**Diagram Explanation:** The embedded diagram illustrates the physical mechanism within the sensing area. It shows an optical fiber where an LP11 mode propagates (indicated by the mode profiles at the input and output). The central part of the fiber is marked as the "Sensing area," implying interaction with an external medium. Arrows indicate "Scattering" from the sensing area, suggesting that interaction with the external environment or structural features leads to light loss or redirection.
-
-Image [_page_1_Figure_11.jpeg]: Chart: This chart displays the Bit Error Rate (BER) versus Signal-to-Noise Ratio (SNR) for various Quadrature Amplitude Modulation (QAM) schemes.
-*   X-axis (SNR): Ranges from 0 dB to 20 dB.
-*   Y-axis (BER): Logarithmic scale, ranging from 10^0 to 10^-8.
-*   Four modulation formats are plotted: QPSK (black squares), 16QAM (red circles), 32QAM (blue triangles up), and 64QAM (green triangles down).
-*   All curves show that BER decreases as SNR increases, which is expected.
-*   A purple dashed line indicates a BER of 3.8 x 10^-3.
-*   Approximate SNR required to achieve a BER of 3.8 x 10^-3:
-    *   QPSK: ~ 5 dB
-    *   16QAM: ~ 9 dB
-    *   32QAM: ~ 13 dB
-    *   64QAM: ~ 15.5 dB
-This indicates that for a target BER, higher-order modulation formats require a significantly higher SNR.
-
-Image [_page_1_Figure_4.jpeg]: Chart: This image presents the transmission spectrum of an optical sensor for different refractive indices, along with an inset showing its sensitivity.
-*   **Main Chart Data Extraction:**
-    *   X-axis (Wavelength): Ranges from 1510 nm to 1550 nm.
-    *   Y-axis (Transmission): Ranges from -4 dB to -7.5 dB.
-    *   Five curves represent different Refractive Index Unit (RIU) values: 1.318, 1.320, 1.322, 1.324, and 1.326.
-    *   Each curve shows a resonance dip, and as the RIU increases, the dip shifts towards longer wavelengths (redshift).
-        *   RIU 1.318 (black squares): Dip wavelength ~ 1524 nm, Transmission ~ -7.0 dB.
-        *   RIU 1.320 (red circles): Dip wavelength ~ 1525 nm, Transmission ~ -7.1 dB.
-        *   RIU 1.322 (green triangles up): Dip wavelength ~ 1527 nm, Transmission ~ -7.2 dB.
-        *   RIU 1.324 (blue triangles down): Dip wavelength ~ 1528 nm, Transmission ~ -7.3 dB.
-        *   RIU 1.326 (cyan diamonds): Dip wavelength ~ 1530 nm, Transmission ~ -7.4 dB.
-*   **Inset Chart Data Extraction:**
-    *   X-axis (Refractive index): Ranges from 1.317 RIU to 1.326 RIU.
-    *   Y-axis (Wavelength): Ranges from 1524 nm to 1530 nm.
-    *   This chart plots the resonance wavelength against the refractive index.
-    *   A linear fit (red line) is applied, indicating a linear relationship.
-    *   The sensitivity (S) derived from the slope of this fit is S = 681.23 pm/RIU.
-This data demonstrates the sensor's ability to detect changes in refractive index by measuring the shift in its resonant wavelength, with a measured sensitivity of 681.23 pm/RIU.
-
-Image [_page_1_Figure_6.jpeg]: Chart: This image displays another set of transmission spectra for an optical sensor under varying refractive indices, including an inset showing its sensitivity.
-*   **Main Chart Data Extraction:**
-    *   X-axis (Wavelength): Ranges from 1530 nm to 1570 nm.
-    *   Y-axis (Transmission): Ranges from -10 dB to -40 dB.
-    *   Five curves represent different Refractive Index Unit (RIU) values: 1.318, 1.320, 1.322, 1.324, and 1.326.
-    *   Each curve exhibits a resonance dip that shifts towards longer wavelengths (redshift) as the RIU increases. The depth of the dip also increases significantly with higher RIU.
-        *   RIU 1.318 (black squares): Dip wavelength ~ 1549 nm, Transmission ~ -24 dB.
-        *   RIU 1.320 (red circles): Dip wavelength ~ 1550 nm, Transmission ~ -26 dB.
-        *   RIU 1.322 (green triangles up): Dip wavelength ~ 1551 nm, Transmission ~ -28 dB.
-        *   RIU 1.324 (blue triangles down): Dip wavelength ~ 1552 nm, Transmission ~ -30 dB.
-        *   RIU 1.326 (cyan diamonds): Dip wavelength ~ 1553 nm, Transmission ~ -38 dB.
-*   **Inset Chart Data Extraction:**
-    *   X-axis (Refractive index): Ranges from 1.317 RIU to 1.326 RIU.
-    *   Y-axis (Wavelength): Ranges from 1546 nm to 1554 nm.
-    *   This chart plots the resonance wavelength against the refractive index.
-    *   A linear fit (red line) is applied, indicating a linear relationship.
-    *   The sensitivity (S) derived from the slope of this fit is S = 671.25 pm/RIU.
-This data demonstrates the sensor's refractive index sensing capability through wavelength shifts, similar to Figure 4. The measured sensitivity is 671.25 pm/RIU, and it also shows a notable increase in the resonance dip depth with increasing refractive index.
-
-=== NEW BATCH ANALYSIS ===
-
-Image _page_1_Figure_9.jpeg: This figure presents four constellation diagrams, labeled (a) through (d), illustrating the received signal constellation for different Quadrature Amplitude Modulation (QAM) schemes. Each subplot shows the In-Phase vs. Quadrature components of the received symbols at a fixed Signal-to-Noise Ratio (SNR) of 30 dB. These diagrams are used to visualize the distinct symbol states of a modulated signal and the impact of noise.
-
-(a) QPSK:
-*   **Type:** Chart (Constellation Diagram).
-*   **Data Extraction:** This chart displays a Quadrature Phase-Shift Keying (QPSK) constellation. It consists of 4 distinct constellation points, each representing 2 bits per symbol (log2(4)).
-    *   Approximate coordinates of the symbol centroids are located at (-0.7, 0.7), (0.7, 0.7), (-0.7, -0.7), and (0.7, -0.7) on the In-Phase/Quadrature plane.
-    *   At an SNR of 30 dB, the symbol clusters are clearly separated with minimal spread due to noise, indicating a robust reception for this modulation scheme.
-
-(b) 16QAM:
-*   **Type:** Chart (Constellation Diagram).
-*   **Data Extraction:** This chart shows a 16-Quadrature Amplitude Modulation (16QAM) constellation. It comprises 16 distinct constellation points, each representing 4 bits per symbol (log2(16)).
-    *   The points are arranged in a 4x4 grid. Approximate In-Phase and Quadrature values for the symbol centroids are from the set {-1.2, -0.4, 0.4, 1.2}.
-    *   At an SNR of 30 dB, the symbol clusters remain well-defined, though the noise-induced spread around each point is visually more significant relative to the inter-symbol distance compared to QPSK.
-
-(c) 32QAM:
-*   **Type:** Chart (Constellation Diagram).
-*   **Data Extraction:** This chart depicts a 32-Quadrature Amplitude Modulation (32QAM) constellation. It contains 32 distinct constellation points, each representing 5 bits per symbol (log2(32)).
-    *   The constellation appears to be a non-rectangular arrangement, likely a cross-QAM scheme, with points distributed in concentric rings or a modified grid pattern. Approximate In-Phase and Quadrature values for the symbol centroids range from -1.2 to 1.2.
-    *   With an SNR of 30 dB, the symbol clusters are noticeably closer to each other than in 16QAM, implying a higher susceptibility to noise for reliable symbol detection, as the Euclidean distance between adjacent symbols is reduced.
-
-(d) 64QAM:
-*   **Type:** Chart (Constellation Diagram).
-*   **Data Extraction:** This chart presents a 64-Quadrature Amplitude Modulation (64QAM) constellation. It features 64 distinct constellation points, each representing 6 bits per symbol (log2(64)).
-    *   The points are arranged in an 8x8 grid. Approximate In-Phase and Quadrature values for the symbol centroids range from -1.2 to 1.2, with finer increments between points compared to 16QAM.
-    *   At an SNR of 30 dB, the symbol clusters are very tightly packed. The noise spread around each symbol point occupies a substantial portion of the space between adjacent symbols, making 64QAM the most sensitive to noise among the presented schemes for maintaining reliable symbol detection at this given SNR.
+================================================================================
+IMAGE: _page_0_Figure_15.jpeg
+TYPE: System Diagram
+DESCRIPTION: Schematic of the experimental setup for integrated sensing and telecommunication based on a tapered few-mode fiber (FMF).
+COMPONENTS:
+- SC (Supercontinuum): Broadband source for sensing.
+- CW (Continuous Wave): Laser for communication.
+- DP-IQ-MOD: Dual-polarization IQ modulator.
+- AWG: Arbitrary Waveform Generator.
+- MUX: Mode multiplexer (LP01, LP11).
+- Tapered FMF2: Sensing area where evanescent field interacts with the environment (depicted with a water droplet).
+- SMF: Single-mode fiber connections.
+- OSA: Optical Spectrum Analyzer for sensing data extraction.
+- Coherent Receiver + RTOS: For communication signal demodulation.
+================================================================================
+IMAGE: _page_1_Figure_0.jpeg
+TYPE: Chart / Graph (Spectral & Cross-section)
+DESCRIPTION: Transmission loss of the LP11 mode and mode field distribution.
+COMPONENTS:
+- Top: Loss (dB, 0 to -1.2) vs Wavelength (nm, 1520 to 1580).
+- Bottom: Schematic of the tapered fiber showing LP11 mode profile (two-lobed) and scattering in the sensing area.
+================================================================================
+IMAGE: _page_1_Figure_4.jpeg
+TYPE: Chart / Graph (Simulation)
+DESCRIPTION: Simulated transmission spectra for the tapered FMF with various refractive indices.
+X-AXIS: Wavelength (nm) [Range: 1510 to 1550].
+Y-AXIS: Transmission (dB) [Range: -8 to -4].
+LEGEND: Refractive indices from 1.318 to 1.326.
+INSET: 3dB bandwidth shift vs Refractive index. Linear fit shows sensitivity S = 681.23 pm/RIU.
+================================================================================
+IMAGE: _page_1_Figure_6.jpeg
+TYPE: Chart / Graph (Experimental)
+DESCRIPTION: Measured transmission spectra for the tapered FMF under experimental refractive index changes.
+X-AXIS: Wavelength (nm) [Range: 1530 to 1570].
+Y-AXIS: Transmission (dB) [Range: -40 to -10].
+INSET: 3dB bandwidth shift vs Refractive index. Linear fit shows experimental sensitivity S = 671.25 pm/RIU.
+================================================================================
+IMAGE: _page_1_Figure_9.jpeg
+TYPE: Constellation Maps
+DESCRIPTION: Received constellation diagrams at SNR = 30 dB for different modulation formats.
+PANELS:
+- (a) QPSK: 4 clean clusters.
+- (b) 16QAM: 4x4 grid.
+- (c) 32QAM: Cross-shaped constellation.
+- (d) 64QAM: 8x8 grid.
+================================================================================
+IMAGE: _page_1_Figure_11.jpeg
+TYPE: Chart / Graph (BER)
+DESCRIPTION: Bit Error Rate (BER) vs OSNR (Signal-to-Noise Ratio).
+X-AXIS: SNR (dB) [Range: 0 to 20].
+Y-AXIS: BER [Log scale, 10^-8 to 10^0].
+LEGEND: QPSK (black square), 16QAM (red circle), 32QAM (blue triangle), 64QAM (green inverted triangle).
+DATA:
+- 7% overhead FEC limit: Mark at 3.8 x 10^-3.
+- QPSK performance: Reaches FEC limit at ~8 dB SNR.
+- 64QAM performance: Reaches FEC limit at ~17.5 dB SNR.
+================================================================================

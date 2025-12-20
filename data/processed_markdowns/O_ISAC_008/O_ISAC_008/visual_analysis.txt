@@ -1,14 +1,32 @@
-Image [_page_0_Figure_12.jpeg]: Setup/Diagram.
-(a) Setup: This is a block diagram of a Lidar/Communication system. It consists of a "Lidar/Commun. TX" (transmitter), a "Lidar RX" (receiver), and a "Commun. Rx" (communication receiver). The TX section uses a laser, PC (polarization controller), MZM (Mach-Zehnder modulator) driven by an AWG (arbitrary waveform generator) with a QPSK-LFM (quadrature phase-shift keying-linear frequency modulation) waveform, EDFA (erbium-doped fiber amplifier), and a splitter. One output from the splitter goes via a VOA (variable optical attenuator) to a TX OPA (optical phased array) for emission towards a target, while the other serves as an LO (local oscillator) for the Lidar RX. The Lidar RX receives light from the target via an RX OPA, combines it with the LO in a Coherent Receiver, and processes it for Target Detection using an OSC (oscilloscope). The Commun. Rx section receives signals from the target, processes them through a PD (photodiode), TIA (transimpedance amplifier), mixer with an ELO (electrical local oscillator), LPF (low-pass filter), OSC, and performs DSP-based Data Recovery.
-(b) Diagram: This depicts an "OPA Antenna Array" with concentric rings. It shows both "Full ring array" elements (empty circles) and "Thinned ring array" elements (blue filled circles), indicating a sparse array configuration. Emission is shown directionally with angles $\theta$ and $\psi$.
-(c) Diagram: This is a detailed diagram of a "Blazed Grating Antenna," showing a waveguide structure with a shallow etch, a length L=2.86µm, and a width W=1.2µm.
+PAPER: O_ISAC_008
+TITLE: Wide-steering Integrated Sensing and Communication OPA-based Lidar Design with Joint Waveform and Thinned Antenna
 
-Image [_page_2_Figure_4.jpeg]: Chart.
-(a) Chart: This is a Power (dB) vs. Distance (m) plot showing two distinct peaks. The "Down-chirp" peak is located at approximately 14 m with a power level around -27 dB. The "Up-chirp" peak is located at approximately 16 m with a power level around -26 dB. The noise floor is around -70 dB.
-(b) Chart: This presents data for the "I channel." The top plot shows Normalized Amplitude vs. Time (ns) for a digital waveform, with amplitudes roughly switching between 0.2 and 0.8. The bottom plot is the corresponding eye diagram, showing a clear, open eye with an opening spanning approximately from -0.8 to 0.8 in normalized amplitude.
-(c) Chart: This presents data for the "Q channel." The top plot shows Normalized Amplitude vs. Time (ns) for a digital waveform, with amplitudes roughly switching between 0.2 and 0.8, similar to the I channel. The bottom plot is the corresponding eye diagram, also showing a clear, open eye, similar to the I channel.
-
-Image [_page_2_Figure_8.jpeg]: Chart.
-(a) Chart: This is a 3D surface plot of Normalized Intensity as a function of u = sin($\theta$)cos($\psi$) and v = sin($\theta$)sin($\psi$). It displays a single, sharp peak at the origin (u=0, v=0), indicating a highly concentrated beam. The normalized intensity ranges from 0 to 1, with the peak reaching 1.
-(b) Chart: This is a Normalized Intensity vs. $\theta$ (°) plot. It shows multiple sharp, distinct peaks at different $\theta$ angles, representing various steered beam directions. A dashed grey envelope indicates the overall intensity profile. A horizontal dashed blue line at approximately Normalized Intensity = 0.1 is labeled with "SNSR=12.23dB."
-(c) Chart: This is a Normalized Intensity vs. $\psi$ (°) plot. Similar to (b), it displays multiple sharp, distinct peaks at different $\psi$ angles, demonstrating beam steering in the orthogonal dimension. A dashed grey envelope outlines the intensity profile. A horizontal dashed blue line at approximately Normalized Intensity = 0.2 is labeled with "SNSR=6.57dB."
+================================================================================
+IMAGE: _page_0_Figure_12.jpeg
+TYPE: System Diagram / Structure
+DESCRIPTION: Architecture of the ISAC OPA-based Lidar system and antenna design.
+PANELS:
+- (a) System Architecture: 
+  - TX Terminal: Laser -> PC -> MZM (driven by AWG/QPSK-LFM Joint Waveform) -> EDFA -> Splitter -> TX OPA.
+  - Lidar RX: RX OPA -> Coherent Receiver (LO input from Splitter) -> OSC -> Target Detection.
+  - Commun. RX: PD -> TIA -> Mixer (ELO input) -> LPF -> OSC -> DSP-based Data Recovery.
+- (b) OPA Antenna Array: Thinned ring array layout with "Full ring" and "Thinned ring" elements highlighted.
+- (c) Blazed Grating Antenna: Single element detail with L=2.8 um, W=1.2 um, and "Shallow etch" features.
+================================================================================
+IMAGE: _page_2_Figure_4.jpeg
+TYPE: Performance Charts
+DESCRIPTION: Evaluation of sensing and communication components of the joint waveform.
+PANELS:
+- (a) Frequency spectra (Lidar beat signal): Power (dB) vs Distance (m). Shows a "Down-chirp" and "Up-chirp" peak around 15m. Noise floor at -70 to -80 dB.
+- (b) I channel (QPSK): Top: Normalized Amplitude vs Time (ns) waveform. Bottom: Eye diagram at ~4Gbps.
+- (c) Q channel (QPSK): Top: Normalized Amplitude vs Time (ns) waveform. Bottom: Eye diagram. Clear eye opening indicates robust recovery at 4Gbps.
+================================================================================
+IMAGE: _page_2_Figure_8.jpeg
+TYPE: 3D Surface / Far-field Chart
+DESCRIPTION: Far-field intensity distribution and steering range evaluation.
+PANELS:
+- (a) 2D far-field intensity: 3D plot on u-v plane (u=sin_theta*cos_psi, v=sin_theta*sin_psi). Shows a sharp central main lobe with suppressed side lobes.
+- (b) 1D steering (Theta axis): Normalized intensity vs Theta (deg) [-90 to 90]. Multiple curves corresponding to different steering angles (0, +/-20, +/-40, etc.). SMSR = 12.23 dB marked.
+- (c) 1D steering (Psi axis): Normalized intensity vs Psi (deg) [-90 to 90]. SMSR = 6.57 dB marked.
+TREND: Demonstrates a steering range of 60 deg x 32 deg.
+================================================================================

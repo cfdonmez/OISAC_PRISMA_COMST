@@ -1,51 +1,34 @@
-Image [_page_1_Figure_2.jpeg]:
-This image consists of three rows of conceptual diagrams, each illustrating different signal processing or multiplexing techniques.
+PAPER: O_ISAC_002
+TITLE: Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems
 
-*   **Top Row:** Diagram. This row illustrates three advanced multiplexing techniques: Orthogonal Frequency Division Multiplexing (OFDM), Orthogonal Time Frequency Space (OTFS), and Orthogonal Chirp Division Multiplexing (OCDM). OFDM is depicted with overlapping frequency-domain subcarriers derived from an inverse Fourier transform. OTFS shows a grid in time-frequency space, transformed by a Symplectic Finite Fourier Transform. OCDM displays multiple chirped signals in the time domain, resulting from an inverse Fresnel transform. These represent different signal characteristics and transformations in various communication paradigms.
-*   **Middle Row:** Diagram. This row explains the principle of Direct Sequence Spread Spectrum (DSSS). A baseband "Sequence" (a time-domain digital signal) is combined with a "Spread Spectrum" signal (represented by a wideband frequency spectrum with a gain). The result, "Direct Sequence Spread Spectrum," shows the original sequence's pulses modulated by a higher-rate spreading code, leading to a wider signal bandwidth in the time domain.
-*   **Bottom Row:** Diagram. This row demonstrates the creation of an LFM-PSK (Linear Frequency Modulation - Phase Shift Keying) waveform. "Linear Frequency Modulation" (LFM) shows a chirp signal (frequency changes linearly with time). This is combined with a "Single-carrier Modulation" (a carrier wave). The resulting "LFM-PSK Waveform" is illustrated in a mixed domain plot, indicating the integration of both frequency (chirp) and amplitude/phase modulation, often used in radar or robust communication.
-
-Image [_page_1_Picture_6.jpeg]:
-This image contains a scientific setup diagram (a) and a signal processing diagram (b).
-
-*   **Part (a):** Setup. This is a block diagram of a photonic system, likely for generating or processing microwave/millimeter-wave signals. It shows a continuous-wave laser diode (LD) connected via polarization controllers (PC1, PC2, PC3) and an EDFA (Erbium-doped fiber amplifier). Key components include a phase modulator (PM), a wavelength selective switch (WSS), an arbitrary waveform generator (AWG), an IQ modulator (IQ-MOD), a variable optical attenuator (VOA), a photodetector (UTC-PD), a low-noise amplifier (LNA), and a mixer. A digital storage oscilloscope (DSO) monitors the output.
-    *   **Inset (i):** Chart.
-        *   X-axis: Frequency (GHz), from 0 to 30.
-        *   Y-axis: Monitoring Power (dBm), from -80 to 0.
-        *   Data: Shows a spectrum with distinct peaks around 10 GHz (approx -20 dBm) and 20 GHz (approx -10 dBm), indicating generated microwave signals.
-    *   **Inset (ii):** Chart.
-        *   X-axis: Frequency (GHz), from 192.9 to 193.3.
-        *   Y-axis: Power (dBm), from -60 to 0.
-        *   Data: Displays an optical spectrum centered at approximately 193.09 GHz (approx 0 dBm) with two sidebands around +/- 0.137 GHz (approx -10 dBm), characteristic of modulated optical signals. A smaller inset within this chart shows a pulsed time-domain waveform.
-*   **Part (b):** Diagram. This diagram illustrates a signal processing scheme to improve resolution for multiple channels (CH1, CH2, CH3).
-    *   The top row shows the frequency spectra of three channels, each with bandwidth 'B' and frequency separation 'F_d'.
-    *   The middle row depicts the time-domain signals after a "Digital Matched Filter" operation, resulting in compressed pulses with duration 'c/2B'. 'T_p' denotes the pulse repetition period.
-    *   The bottom row shows further compressed time-domain signals after "Autoregression" processing, achieving a finer resolution of 'c/(2(3B+2F_d))'. The rightmost column indicates the corresponding spatial resolutions at each processing stage.
-
-Image [_page_2_Figure_3.jpeg]:
-This image presents multiple charts analyzing signal characteristics.
-
-*   **Part (a):** Chart. This is a spectrogram (frequency vs. time) showing the energy distribution of a signal.
-    *   X-axis: Time (µs), from 0 to 1.
-    *   Y-axis: Frequency (GHz), from -15 to 15.
-    *   Color bar: Represents signal intensity, from 0 to 1 (normalized power).
-    *   Data: Two distinct linear frequency modulated (chirp) signals are visible. One sweeps from approx. +10 GHz to -10 GHz over 1 µs, and the other sweeps from approx. -10 GHz to +10 GHz over 1 µs. They intersect around 0.5 µs at approximately 0 GHz. The yellow/white regions indicate high signal intensity along these chirp paths.
-*   **Part (b):** Chart. This chart plots Error Vector Magnitude (EVM) against Frequency Offset for different configurations.
-    *   X-axis: Frequency Offset (GHz), from -4 to 4.
-    *   Y-axis: EVM (%), from 20 to 60.
-    *   Legend: 'p=15/10/5' with/without 'FOE' (Frequency Offset Estimation). Blue squares and red circles represent with FOE; green and orange triangles represent without FOE.
-    *   Horizontal Dashed Lines: 7%-OH HD-FEC (red), 5%-OH KP4-FEC (orange).
-    *   Data: With FOE (blue/red lines), EVM remains consistently low (approx. 20-25%) across the entire frequency offset range, staying well below both FEC limits. Without FOE (green/orange lines), EVM is low at 0 GHz offset but rapidly increases to above 50% as frequency offset increases, exceeding both FEC limits, highlighting the benefit of FOE.
-*   **Part (c):** This section contains three separate charts.
-    *   **Left Chart:** Chart. Normalized Amplitude (dB) vs. Frequency (GHz).
-        *   X-axis: Frequency (GHz), from -15 to 15.
-        *   Y-axis: Normalized Amplitude (dB), from -120 to 0.
-        *   Data: Shows a broad spectrum with a relatively flat top around 0 dB from approx -10 GHz to 10 GHz, indicating a wideband signal. Amplitude drops sharply outside this range.
-    *   **Middle Chart:** Chart. Amplitude vs. Time (ns).
-        *   X-axis: Time (ns), from -1 to 2.5.
-        *   Y-axis: Amplitude, from 0 to 1.
-        *   Data: Shows three distinct pulses or echoes: "Path 1" at approx 0 ns (amplitude ~1), "Path 2" at approx 0.5 ns (amplitude ~0.8), and "Path 3" at approx 1.2 ns (amplitude ~0.4), suggesting multipath propagation.
-    *   **Right Chart:** Chart. Normalized Amplitude (dB) vs. Frequency (GHz).
-        *   X-axis: Frequency (GHz), from -15 to 15.
-        *   Y-axis: Normalized Amplitude (dB), from -120 to 0.
-        *   Data: Similar to the left chart, showing a broad frequency spectrum with a flat top around 0 dB from approx -10 GHz to 10 GHz. The roll-off outside this range appears smoother than in the left chart.
+================================================================================
+IMAGE: _page_1_Figure_2.jpeg
+TYPE: Schematic / Principles Diagram
+DESCRIPTION: Principles of typical ISAC waveform implementation, comparing OFDM, OTFS, OCDM, DSSS, and LFM-PSK.
+COMPONENTS:
+- Top Row (Multi-carrier): OFDM (frequency overlapping subcarriers), OTFS (Time-frequency grid), OCDM (Chirp division via Inverse Fresnel Transform).
+- Middle Row (Spread Spectrum): DSSS principle showing "Sequence" (data bits) combined with a "Spread Spectrum" gain/wideband signal to produce "Direct Sequence Spread Spectrum".
+- Bottom Row (Pulse Compression): LFM (Linear Frequency Modulation / Chirp) combined with "Single-carrier Modulation" (symbol pulses) to produce "LFM-PSK Waveform".
+================================================================================
+IMAGE: _page_1_Picture_6.jpeg
+TYPE: System Architecture / Block Diagram
+DESCRIPTION: Schematic of the multi-channel coherent fusion ISAC system architecture and experimental setup.
+COMPONENTS:
+- Part (a) Optical processing: CW-LD, PC1-3, Pulse Gen, EDFA, PM, WSS, IQ-MOD, AWG, VOA, UTC-PD, LNA, Mixer, DSO.
+- Insets: 
+  - (i) Generated THz Spectrum: Power vs Frequency (peaks at ~10 and 20 GHz).
+  - (ii) Optical Comb: Measured spectrum centered at 193.09 THz.
+- Part (b) Signal processing: WDM-based multi-channel (CH1, CH2, CH3) spectral fusion. Shows transition from baseband channels (bandwidth B) to "Digital Matched Filter" compressed pulses, and finally "Autoregression" for ultra-fine spatial resolution.
+================================================================================
+IMAGE: _page_2_Figure_3.jpeg
+TYPE: Multi-pane Experimental Results
+DESCRIPTION: Performance analysis of photonic THz sensing-enhanced communications.
+PANELS:
+- (a) Spectrogram: Frequency (GHz, -15 to 15) vs Time (us, 0 to 1). Shows dual-chirp LFM signature with opposite slopes intersecting at 0.5 us.
+- (b) Frequency-synchronization: EVM (%) vs Frequency Offset (GHz, -4 to 4).
+  - DATA: With FOE (Frequency Offset Estimation), EVM is stable at ~23%. Without FOE, EVM spikes to >50% at 1 GHz offset.
+  - LIMITS: Red dashed line (7% HD-FEC), Orange dashed line (5% KP4-FEC) marked at ~26%.
+- (c) Multipath Channel Compensation:
+  - Left/Right Charts: Normalized Amplitude (dB) vs Frequency (GHz). Broadband flat-top spectrum from -10 to 10 GHz.
+  - Middle Chart: Amplitude vs Time (ns). Shows 3 distinct paths: Path 1 (0 ns, ref), Path 2 (0.5 ns), Path 3 (1.2 ns).
+================================================================================

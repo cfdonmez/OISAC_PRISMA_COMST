@@ -1,13 +1,33 @@
-Image[_page_1_Figure_0.jpeg]: - Type: Diagram - Description: Fiber optic communication system schematic depicting transmitter (10W HPLD at 1064nm), receiver (PPC O/E converter at 1310nm/1550M bps), multiplexing (MUX), demultiplexing (Demux), and 1 km single-mode fiber (SSMF) transmission. Components include switches, signal transmitters (SFP), and receivers. - KEY DATA: 10W input power, 1310nm/1550M bps data rate.  
----------------------------------------------------------------[Context] Above is Image: _page_1_Picture_2.jpeg[Context] Above is Image: _page_1_Figure_6.jpeg[Context] Above is Image: _page_1_Picture_2.jpeg[Context] Above is Image: _page_1_Figure_8.jpeg[Context] Above is Image: _page_2_Picture_0.jpeg  
+# Visual Analysis for O_ISAC_014
 
-Image [_page_1_Picture_2.jpeg]: - Type: Setup - Description: Laboratory equipment setup with switches, signal transmitters (SFP), receive modules (Decoupler), fiber spools, and interconnections. - KEY DATA: Not applicable (qualitative components: HPLD, PPC, 1 km SSMF).  
----------------------------------------------------------------[Context] Above is Image: _page_1_Figure_6.jpeg[Context] Above is Image: _page_1_Picture_2.jpeg[Context] Above is Image: _page_1_Figure_8.jpeg[Context] Above is Image: _page_2_Picture_0.jpeg  
+## Figure 1: SSMF-based PoF Experimental Setup
+**File:** [_page_1_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_014/O_ISAC_014/_page_1_Figure_0.jpeg)
+- **Type:** System Diagram.
+- **Architecture:** 
+  - **TX (Central Office):** High Power Laser Diode (HPLD, 1064nm, 10W) + Signal TX (SFP, 1310nm, 155 Mbps) -> WDM MUX.
+  - **Link:** 1 km Standard Single Mode Fiber (SSMF).
+  - **RX (Remote Unit):** WDM DEMUX -> Photovoltaic Power Converter (PPC) + Signal RX (SFP, 1310nm, 155 Mbps).
+- **Insight:** Demonstrates simultaneous high-power delivery and standard data transmission for power grid monitoring.
 
-Image [_page_1_Figure_6.jpeg]: - Type: Chart - Description: Relationship between input/output optical power and system efficiency. - KEY DATA: Horizontal axis (0-10W input), vertical axis 0-60% OPAE. Red line plateaus at ~4W output; blue line increases to 5W (20% → 50% OPE at 10W).  
----------------------------------------------------------------[Context] Above is Image: _page_1_Picture_2.jpeg[Context] Above is Image: _page_1_Figure_8.jpeg[Context] Above is Image: _page_2_Picture_0.jpeg  
+## Figure 2: Practical Experiment System Photo
+**File:** [_page_1_Picture_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_014/O_ISAC_014/_page_1_Picture_2.jpeg)
+- **Type:** Laboratory Photograph.
+- **Components:** High-power fiber laser, fiber spools (1km SSMF), and custom WDM couplers.
 
-Image [_page_1_Figure_8.jpeg]: - Type: Chart - Description: Practical vs theoretical converted electrical power from 1W input optical power. - KEY DATA: Practical curve (black dots): 0 → 1W output at 5W input. Theoretical curve (red): ~1.8W at 5W input.  
----------------------------------------------------------------[Context] Above is Image: _page_2_Picture_0.jpeg  
+## Figure 3: Transmission Performance (Power & Efficiency)
+**File:** [_page_1_Figure_6.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_014/O_ISAC_014/_page_1_Figure_6.jpeg)
+- **Data (HPLD Input vs. PPC Input):**
+  - **10W Input:** Results in **4.9W** collected power.
+  - **Efficiency:** Optical PTE remains stable at **$\approx$ 49 - 52%** across the 0-10W range.
+- **Loss Breakdown:** Total loss $\approx 3$ dB (1.94dB WDM insertion, 0.8dB fiber loss, 0.2dB fusion splice).
 
-Image [_page_2_Picture_0.jpeg]: - Type: Setup - Description: Industrial-like equipment with power meters, connectivity ports (green LEDs active), and fiber-loopback testing. Wiring includes fiber and electrical connections. - KEY DATA: Not applicable (qualitative: equipment ports, LED indicators).
+## Figure 4: Electrical Power Conversion Results
+**File:** [_page_1_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_014/O_ISAC_014/_page_1_Figure_8.jpeg)
+- **Data:** PPC Input Optical Power vs. Converted Electrical Power.
+- **Practical Result:** For 5W optical input, the PPC generates **$\approx$ 500 mW** of electrical power (Efficiency $\approx 10\%$).
+- **Theoretical Gap:** Theoretical efficiency of 35% would yield $\sim 1.7W$.
+
+## Figure 5: Optical Modules & Switches
+**File:** [_page_2_Picture_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_014/O_ISAC_014/_page_2_Picture_0.jpeg)
+- **Type:** Component Photograph.
+- **Description:** Commercial SFP modules and optical switches used for the 155 Mbps communication link verification.

@@ -1,145 +1,47 @@
-Batch 1:
-Image _page_1_Picture_2.jpeg:
-Type: Diagram
-Description: Modeling of the reflected HGR (r-HGR) concept where ring-shaped LED sections emit four carriers and a single PD senses intensity variations to infer hand direction.
-KEY DATA: Highlights that carrier-specific reflections encode spatial cues, motivating multi-carrier illumination so the PD can distinguish gesture-induced intensity changes from table-surface reflections (Eq. 3 in Sec. II-A).
+# Visual Analysis for O_ISAC_030
 
-Image _page_2_Figure_13.jpeg:
-Type: Chart
-Description: Recognition accuracy versus training-set proportion (PTD) comparing one-carrier and two-carrier illumination.
-KEY DATA: Dual carriers sustain >90% accuracy even when PTD drops to 0.4, staying ~50% higher than single-carrier accuracy, proving multi-carrier modulation is essential for robust directional sensing.
+## Figure 1: Reflected HGR (r-HGR) Concept
+**File:** [_page_1_Picture_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_1_Picture_2.jpeg)
+- **Concept:** Ring-shaped LED sections emitting four distinct carriers (modulation frequencies) enable a single PD to capture intensity variations from multiple directions.
+- **Physics:** Lambertian radiation pattern where reflected light channel gain depends on emission angle, receiving angle, and distances to/from the reflecting point (Eq. 1).
+- **ISAC Nature:** The lamp simultaneously performs lighting, VLC data transmission, and gesture sensing.
 
-Image _page_2_Figure_15.jpeg:
-Type: Chart
-Description: Normalized reflection intensities over five table surfaces with and without gestures for each carrier.
-KEY DATA: Demonstrates how surfaces (black, white, mosaic, poster, gray) shift baseline reflections and how gestures manifest as carrier-specific fluctuations, motivating domain-robust recognition.
+## Figure 2: Multi-Carrier Accuracy Advantage
+**File:** [_page_2_Figure_13.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_2_Figure_13.jpeg)
+- **Comparison:** Two carriers vs. One carrier.
+- **Data Point:** Two carriers maintain **> 90% accuracy** at a 0.7 train set proportion, whereas one carrier drops significantly.
+- **Robustness:** Even at 0.4 PTD, two-carrier accuracy stays near 90%, proving the multi-carrier design is essential for directional sensing.
 
-Image _page_3_Figure_2.jpeg:
-Type: Diagram
-Description: ReflexGest system architecture showing LED-array transmitter, co-located PD receiver, FPGA controller, and bidirectional VLC paths.
-KEY DATA: Treats the lamp as a full-duplex ISAC device—four MOSFET-driven LED groups transmit multi-carrier light while the PD captures mixed gesture reflections and VLC uplink data for FPGA processing.
+## Figure 3: System Architecture
+**File:** [_page_3_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_3_Figure_4.jpeg)
+- **Transmitter:** Includes carrier frequency selecting (40, 50, 60, 70 kHz) and dimming control.
+- **Receiver:** Five-stage preprocessing pipeline: Carrier filtration $\rightarrow$ Envelope extractor $\rightarrow$ Smoothing $\rightarrow$ Downsampling $\rightarrow$ Normalization.
+- **Full-Duplex:** Bidirectional VLC paths (Uplink/Downlink) integrated with the HGR sensing loop.
 
-Image _page_3_Figure_4.jpeg:
-Type: Chart
-Description: KNN recognition accuracy under in-scene vs cross-scene conditions across five surfaces.
-KEY DATA: In-scene accuracy ≈75% while cross-scene falls to ≈50%, underscoring the need for domain adaptation (bReflexGest/cReflexGest) to generalize across table textures.
+## Figure 4: Data Preprocessing Pipeline
+**File:** [_page_4_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_4_Figure_8.jpeg)
+- **(a) Raw Data:** Pulse-wave light intensity with low-frequency fluctuations from gestures.
+- **(b) Carriers:** Four band-pass filtered signals ($c_1$ to $c_4$) with peak amplitudes $\approx 0.06V$.
+- **(c, d) Envelopes:** Upper-part envelope extraction followed by downsampling to **100 samples** for classification.
 
-Batch 2:
-Image _page_4_Figure_2.jpeg:
-Type: Diagram
-Description: Detailed transmitter circuitry with AC-DC conversion, flyback regulator, PWM dimming, LED drivers, and MOSFET switches.
-KEY DATA: Architecture enables independent brightness control (V_LED) and multi-frequency modulation while preserving VLC compatibility and low BOM cost.
+## Figure 5: Convolutional Neural Network (CNN) Framework
+**File:** [_page_5_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_5_Figure_2.jpeg)
+- **Structure:** Feature extractor ($G^f$), Gesture recognizer ($G^r$), and Domain discriminator ($G^d$).
+- **Technique:** Uses a **Gradient Reversal Layer (GRL)** for adversarial domain adaptation, enabling "cReflexGest" to generalize across table surfaces.
 
-Image _page_4_Figure_8.jpeg:
-Type: Diagram
-Description: Data-preprocessing pipeline converting raw PD waveforms into four carrier envelopes for machine learning.
-KEY DATA: Steps include gesture-time segmentation, four band-pass filters, envelope extraction, smoothing, down-sampling (~2e6→100 samples), and Z-score normalization to isolate spatial cues in 1D data.
+## Figure 6: Confusion Matrices for bReflexGest
+**File:** [_page_7_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_7_Figure_2.jpeg)
+- **0.8 PTD Matrix:** Near-perfect recognition for LR, RL, FB, BF, UP, DN, FR, FL.
+- **Error Modes:** Slight confusion between **Palm-Fist (96.9%)** and **Fist-Palm (93.8%)** at 0.8 PTD, worsening to 76.6%/85.9% at 0.2 PTD.
 
-Image _page_5_Figure_2.jpeg:
-Type: Diagram
-Description: CNN-based adversarial domain adaptation framework (feature extractor G^f, recognizer G^r, discriminator G^d).
-KEY DATA: Incorporates gradient reversal to align feature distributions between source and target scenes/users, enabling cReflexGest to classify gestures despite surface variability.
+## Figure 7: Height Sensitivity (In-height vs. Cross-height)
+**File:** [_page_8_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_8_Figure_2.jpeg)
+- **Range:** 5 cm to 25 cm height.
+- **(a) In-height:** bReflexGest approaches **100% accuracy** at all heights.
+- **(b) Cross-height:** Accuracy remains high but drops at **25 cm** due to signal attenuation from being too far from the table/lamp.
 
-Image _page_6_Figure_2.jpeg:
-Type: Setup
-Description: Photo of the ReflexGest prototype with LED strips and PD retrofitted onto a desk lamp.
-KEY DATA: Prototype uses 48-chip LED arrays (12 W max), SI2310 MOSFETs, Hamamatsu S5971 PD, LTC6268 amplifiers, AD9226 ADC, and ZYNQ-7020 controller—demonstrating practical ISAC hardware.
-
-Image _page_6_Figure_4.jpeg:
-Type: Chart
-Description: bReflexGest accuracy distributions versus PTD (proportion of training data).
-KEY DATA: Box plots show >90% median accuracy down to PTD=0.4 with slight spread; accuracy drops rapidly when PTD<0.2, guiding dataset requirements.
-
-Batch 3:
-Image _page_6_Figure_11.jpeg:
-Type: Chart
-Description: Confusion matrices for bReflexGest at PTD=0.8, 0.5, 0.2.
-KEY DATA: Misclassifications mainly occur between Palm-Fist (PF) and Fist-Palm (FP); accuracies for those gestures fall from 96.9%/93.8% (PTD=0.8) to 76.6%/85.9% (PTD=0.2), indicating which gestures need more data.
-
-Image _page_7_Figure_2.jpeg:
-Type: Chart
-Description: User-specific accuracy when (a) train/test include each user and (b) leave-one-user-out.
-KEY DATA: bReflexGest stays near 100% when users appear in training and ≈94% when testing unseen users, exceeding baselines and proving generalization to new participants.
-
-Image _page_7_Figure_4.jpeg:
-Type: Chart
-Description: Accuracy under varying ambient luminance levels (bright, normal, dim) compared to baseline.
-KEY DATA: bReflexGest maintains >90% accuracy across luminance changes while the baseline degrades >10%, confirming robustness to lighting variation in LiFi scenarios.
-
-Image _page_8_Figure_2.jpeg:
-Type: Chart
-Description: cReflexGest cross-scene accuracy matrix when training on two surfaces and testing on all five.
-KEY DATA: Cross-scene accuracies exceed 85% (even across black/white/mosaic/poster/gray) and outperform baseline significantly, demonstrating effective domain adaptation.
-
-Image _page_8_Figure_4.jpeg:
-Type: Chart
-Description: bReflexGest accuracy versus hand height relative to the desk (in-height vs cross-height setups).
-KEY DATA: In-height tests reach ≈100% accuracy across 5–25 cm; cross-height tests remain high except at 25 cm where proximity to the lamp alters reflections, highlighting usable spatial envelope.
-
-Batch 4:
-Image _page_8_Figure_10.jpeg:
-Type: Chart
-Description: cReflexGest cross-pair evaluation where training/testing use different user-scene pairs.
-KEY DATA: Although harder, cReflexGest still beats the baseline for all seven pairs; training on mixed-user pairs (Fig. 18b) yields better adaptation than same-user-only pairs.
-
-Image _page_8_Figure_12.jpeg:
-Type: Diagram
-Description: Illustration of the VLC user/IoT sensor used in ISAC tests (integrated PD + IR LED terminal).
-KEY DATA: Device supports simultaneous sensing and bidirectional VLC at 50 kbps (tested) and up to 220 kbps throughput with current hardware.
-
-Image _page_9_Figure_2.jpeg:
-Type: Chart
-Description: Uplink BER versus total transmitted bits for two user locations (under vs away) with concurrent gestures.
-KEY DATA: BER decreases as payload length increases (gesture time fraction shrinks); gestures cause noticeable BER spikes only when the user is directly under the lamp, confirming manageable interference.
-
-Image _page_9_Figure_4.jpeg:
-Type: Chart
-Description: Example uplink BER trace for 8 s transmission in the under case while performing an LR gesture.
-KEY DATA: BER jumps during the 3–4 s interval when the gesture occurs, quantifying transient interference introduced by hand motion near the PD.
-
-Image _page_9_Figure_6.jpeg:
-Type: Chart
-Description: Example downlink BER trace for 64 s transmission in the away case while performing an UP gesture.
-KEY DATA: BER spike occurs during the 0–8 s gesture window but remains low otherwise; downlink overall BER is smaller than uplink due to higher lamp-side power.
-
-Batch 5:
-Image _page_9_Figure_11.jpeg:
-Type: Chart
-Description: Downlink BER versus payload length under gesture interference (under vs away placements).
-KEY DATA: Trends mirror uplink—longer packets dilute gesture impact; even worst-case BER stays acceptable for 50 kbps OOK, supporting ISAC coexistence.
-
-Image _page_9_Figure_13.jpeg:
-Type: Diagram
-Description: BER experiment setups for uplink/downlink with VLC user placed directly under or 15 cm away from the lamp.
-KEY DATA: Provides spatial context for the BER curves, clarifying how user placement relative to the sensing zone affects interference.
-
-Image _page_11_Picture_25.jpeg:
-Type: Other
-Description: Portrait/bio of Jifei Zhu.
-KEY DATA: Sichuan University BE/ME; research interests include visible light sensing, HGR, and deep learning—key contributors to ReflexGest algorithms.
-
-Image _page_11_Picture_27.jpeg:
-Type: Other
-Description: Portrait/bio of Jiaqi Yang.
-KEY DATA: BE from Sichuan University, pursuing ME at McMaster; works on HCI, IoT, and mobile computing—grounding the system application scenarios.
-
-Image _page_11_Picture_29.jpeg:
-Type: Other
-Description: Portrait/bio of Yimao Sun (Member, IEEE).
-KEY DATA: BS/PhD from UESTC; research associate professor at Sichuan University focusing on passive localization and array processing, lending sensing expertise.
-
-Batch 6:
-Image _page_11_Picture_31.jpeg:
-Type: Other
-Description: Portrait/bio of Yanbing Yang.
-KEY DATA: BE/ME from UESTC and PhD from NTU; associate professor at Sichuan University with interests in IoT and VLC sensing, supporting ISAC research leadership.
-
-Image _page_11_Picture_34.jpeg:
-Type: Other
-Description: Portrait/bio of Jun Luo (Fellow, IEEE).
-KEY DATA: BS/MS from Tsinghua and PhD from EPFL; associate professor at NTU specializing in mobile/pervasive computing and networking, providing oversight for the ReflexGest project.
-
-Image _page_11_Picture_36.jpeg:
-Type: Other
-Description: Additional biography note for Jun Luo emphasizing research scope.
-KEY DATA: Highlights focus on wireless networking, ML, computer vision, and operations research—aligning with hand-gesture ISAC deployments.
+## Figure 8: User Placement vs. Interference (Setup)
+**File:** [_page_9_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_030/O_ISAC_030/_page_9_Figure_2.jpeg)
+- **(a) Under Setting:** VLC user directly below the lamp (maximal interference).
+- **(b) Away Setting:** VLC user **15 cm away** (minimal interference from gestures).
+- **ISAC Verification:** Tests demonstrate gesture recognition without disrupting concurrent 50 kbps (up to 220 kbps) VLC data flows.

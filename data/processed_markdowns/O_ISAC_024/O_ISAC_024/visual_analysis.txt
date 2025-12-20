@@ -1,15 +1,25 @@
-Batch 1:
-Image _page_1_Figure_2.jpeg:
-Type: Chart
-Description: Multi-panel view comparing the LFM probe waveform before/after transmission, its amplitude-frequency response, and matched-filter autocorrelation.
-KEY DATA: Shows frequency-dependent attenuation distorting the 70–570 MHz sweep, highlights measured |H(ω)| at the forward communication receiver, and demonstrates that pre-distortion sharpens the ACF main lobe and lowers the noise floor, preserving 1 m spatial resolution.
+# Visual Analysis for O_ISAC_024
 
-Image _page_1_Figure_4.jpeg:
-Type: Setup
-Description: Experimental setup for the 40-km DSCM-based ISAC link integrating two 30 GBaud 16-QAM channels with a continuous LFM sensing probe.
-KEY DATA: Includes dual AWGs (Keysight 8196A/8190A), 2×120 Gbit/s payload separated by 2 GHz guard band, circulator plus 1 m PZT actuator generating 200 Hz vibration, coherent receivers feeding frequency-response feedback for probe pre-compensation.
+## Figure 1: LFM Probe Distortion and Matched Filtering
+**File:** [_page_1_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_024/O_ISAC_024/_page_1_Figure_2.jpeg)
+- **(a) Waveforms:** Comparison of LFM signal before and after 40-km transmission. The "After" waveform shows significant amplitude fluctuations due to frequency-dependent system response.
+- **(b) Response |H(\omega)|:** Plot showing transmission (dB) from 70 MHz to 570 MHz. Dips of up to **2-3 dB** are observed, primarily due to EDFA gain tilt and modulation instabilities.
+- **(c) Autocorrelation Function (ACF):** Comparison between "w/o sys" (pre-compensated) and "w sys" (distorted). Pre-compensation lowers the noise floor and sharpens the main lobe, directly impacting spatial resolution.
 
-Image _page_2_Figure_2.jpeg:
-Type: Chart
-Description: Composite sensing results comparing uncompensated versus pre-distorted probes: Rayleigh traces, phase waterfall, phase variance/PSD, and STPR impact on BER/SNR.
-KEY DATA: Pre-compensation boosts vibration SNR by 2.4 dB, sharpens phase tails, and shows that as STPR rises (probe power increased with telecom launch at 0 dBm) BER of subcarrier 2 climbs fastest due to proximity to sensing band; optimal STPR≈10 dB balances sensing SNR and 16-QAM BER.
+## Figure 2: Experimental ISAC Setup
+**File:** [_page_1_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_024/O_ISAC_024/_page_1_Figure_4.jpeg)
+- **Topologies:** 
+  - **Transmitter:** Laser -> OC -> DP-IQM (for 2x16-QAM DSCM via AWG2) and IQM (for Pre-compensated LFM via AWG1).
+  - **Fiber Link:** 39.1 km SMF + 1m PZT (200 Hz actuator) + 255 m SMF.
+  - **Receivers:** Shared local oscillator (LO) feeds both the **Communication Receiver** (DP-Hybrid + BPD) and the **Sensing Receiver** (Hybrid + BPD).
+- **Feedback Loop:** Communication DSP extracts the "Response Extraction" data and feeds it back to the "Distorted Probe Gen." at the transmitter (Tx DSP).
+
+## Figure 3: Experimental Performance Metrics
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_024/O_ISAC_024/_page_2_Figure_2.jpeg)
+- **(a) Rayleigh Traces:** Intensity vs. Distance (0-40 km). The pre-distorted (PD) probe shows a consistently higher and flatter trace compared to the standard LFM probe.
+- **(b) Phase Waterfall:** 2D plot (Time vs. Distance) showing a clear sinusoidal vibration trace at the distal end (~39.1 km).
+- **(c) Phase Variance:** Inset shows a **0.1 m** improvement in the falling edge resolution, supporting the 1 m spatial resolution claim.
+- **(d) PSD curves:** Power Spectral Density of the 200 Hz vibration. Peak-to-base ratio is **22.1 dB** for the PD probe, showing a **2.4 dB SNR improvement** over the uncompensated LFM probe.
+- **(e) Impact of STPR:** 
+  - **Communication:** BER of subcarrier 2 (SC2) rises faster than SC1 as STPR increases, approaching the SD-FEC limit ($1.5 \times 10^{-2}$) at STPR = 12 dB.
+  - **Sensing:** SNR improves with STPR. Optimal point is identified at STPR = 10 dB where both services coexist effectively.

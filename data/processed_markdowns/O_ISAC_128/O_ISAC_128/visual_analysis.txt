@@ -1,0 +1,54 @@
+Image: _page_0_Figure_10.jpeg
+Type: Dual-Comb and Matched Filter Principles
+---
+**Schematic Flow:**
+* **(a) Dual Comb Generation:** Two combs with spacing $f_0$ and $f_0 + \Delta f$ are combined ("beat") to produce a difference frequency $\Delta f$.
+* **(b) Matched Filter DAS:**
+    - Transmitter signal $p(t)$ (FMCW) is convolved (*) with channel response $h(t)$.
+    - Received mixed signal $p(t)$ is correlated ($\otimes$) with $P(t)$ to recover the DAS trace $h(t)$.
+---
+
+Image: _page_1_Figure_1.jpeg
+Type: Experimental Setup and Spectrums
+---
+**Components & Fiber Paths:**
+* **System:** Dual comb enabled ISAC over fiber access network.
+* **Paths:** 
+    - I: 10 m PZT -> 50 km fiber.
+    - II: 10 m PZT -> 20 km fiber.
+    - III: 0.5 m PZT -> 353 m fiber.
+    - IV: 2 m PZT -> 10 km fiber.
+* **Power Levels (dBm):** Point A (16), B (12), C (6), D (2~9), E (-19~-17), F (13).
+* **Equipment:** Seed Laser, IQM, EDFAs (1,2,3,4,5), OBPF, DD-MZM, WSS, Modulators (1-4), PM-OC, WSS, Circulator, Waveshaper, DP-ICR, Oscilloscope.
+* **Spectra:** (b) Dual comb spectrum (MZM vs DD-MZM) centered around 1550 nm. (c) Spectrum after modulator. (d) Sensing receiver spectrum (-1 to 1 GHz).
+---
+
+Image: _page_2_Figure_1.jpeg
+Type: Recovered Sensing Traces and Phase Analysis
+---
+** (a) Recovered Traces:**
+* **X-axis:** Distance (km) | Range: **0 to 55 km**.
+* **Y-axis:** Abs (Absolute intensity).
+* **Data:** Four plots for paths I (48.8 km), II (20.8 km), IV (10.0 km), and III (0.353 km).
+** (b) Phase Variation vs. Distance:**
+* **Range:** 47.8 to 49.0 km (near path I end).
+* **Inset:** Zoomed view of the **10 m** PZT vibration profile at ~48.87 km, showing peak phase shift of **~3 rad**.
+** (c) Reconstructed Vibrations:**
+* **X-axis:** Time (ms) | Range: **0 to 35 ms**.
+* **Y-axis:** Phase (rad) | Range: **-1.5 to 2.5 rad**.
+* **Curves:** Simultaneous demodulation of four paths (353 m, 10 km, 20 km, 50 km) showing consistent sinusoidal patterns (120 Hz).
+---
+
+Image: _page_2_Figure_6.jpeg
+Type: Communication Performance Metrics
+---
+** (a) SNR Performance:**
+* **X-axis:** Number of sets | Range: **1 to 10**.
+* **Y-axis:** SNR (dB).
+* **Condition:** Transition from "sensing off" (sets 1-5) to "sensing on" (sets 6-10).
+* **Data:** Launch powers (LP) from 2 to 9 dBm. At LP=9 dBm, SNR increases from **15.4 dB (off)** to **16.5 dB (on)** due to SBS suppression by FMCW.
+** (b) SNR Heatmap:**
+* **Y-axis:** Modulations (OOK, PAM4, PCS-64QAM DMT, mm-wave 16QAM).
+* **X-axis:** Link lengths (353 m, 10 km, 20 km, 50 km).
+* **Data:** SNR ranges from **16 dB** (bottom right) to **24 dB** (top left).
+---

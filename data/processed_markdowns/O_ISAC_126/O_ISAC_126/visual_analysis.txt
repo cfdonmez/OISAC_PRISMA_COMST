@@ -1,0 +1,81 @@
+Image: _page_1_Figure_1.jpeg
+Type: 6G Channel Scenario & Propagation Loss Schematic
+---
+**Components & Propagation Scenarios:**
+* **Satellite:** Positioned at the header of atmospheric layers (Ionospheric & Tropospheric).
+* **UAV:** Unmanned Aerial Vehicle shown operating within the terrestrial/green layer.
+* **BS (Base Station):** Terrestrial antenna structure with multi-beam radiation (Green, Yellow, Orange beams).
+* **UT (User Terminal):** Represented by a person near a high-rise building.
+* **Vehicles:** Car (V2V), Maritime Ship, High-Speed Train (HST).
+* **Frequency Spectrum (Top):**
+    - **Short wave / Sub-6 GHz:** < 10 GHz.
+    - **mmWave:** 10-100 GHz.
+    - **THz:** 100 GHz - 1 THz.
+    - **Optical Wireless:** Infrared, VLC (Visible Light Communication), Ultraviolet (384-30,000 THz).
+
+**Loss Equations & Flow:**
+* **Total Path Loss (PL):** Computed as $PL = PL_b + PL_s + PL_g + PL_e$.
+* **Atmospheric Attenuation ($PL_g$):** Split into $PL_o$ (Oxygen) and $PL_w$ (Water Vapor).
+* **Scintillation Loss ($PL_s$):** Sum of $PL_{is}$ (Ionospheric) and $PL_{ts}$ (Tropospheric).
+* **Signal Flow:** Signals propagate from BS to various terminals (UT, UAV, Satellite) experiencing specific environment-dependent losses like building penetration ($PL_e$) or ionic scintillation.
+---
+
+Image: _page_4_Figure_1.jpeg
+Type: THz Band Path Loss & Shadow Fading Charts
+---
+** (a) Path Loss (PL) vs. Distance:**
+* **X-axis:** Distance, $d_{3D}$ (m) | Range: **0.1 to 3.0 m** (Logarithmic).
+* **Y-axis:** Path loss, $PL$ (dB) | Range: **55 to 100 dB**.
+* **Numerical Data Points:**
+    - **230 GHz:** Simulation (Red solid) starts at **~62 dB** (0.1m) and ends at **~86 dB** (2.5m).
+    - **270 GHz:** Measurement (Blue circles) follows simulation from **~64 dB** to **~89 dB**.
+    - **330 GHz:** Peaks at **~92 dB** for a distance of approx 2.5m.
+* **Trend:** IMT 2020 model (dashed) consistently under-predicts the path loss for all THz frequencies.
+
+** (b) Probability Density (SF):**
+* **X-axis:** Shadow fading, $SF$ (dB) | Range: **-6 to 6 dB**.
+* **Y-axis:** Probability density | Range: **0 to 0.2**.
+* **Performance:** Simulation (red dashed) shows a high peak density of **~0.14** at $SF=0 dB$, significantly closer to measurement data than the flatter IMT 2020 curve.
+---
+
+Image: _page_4_Figure_7.jpeg
+Type: Indoor Scenario Path Loss & Shadow Fading Charts
+---
+** (a) Path Loss (PL) vs. Distance:**
+* **X-axis:** Distance, $d_{3D}$ (m) | Range: **1 to 60 m** (Logarithmic).
+* **Y-axis:** Path loss, $PL$ (dB) | Range: **40 to 85 dB**.
+* **Numerical Data Points:**
+    - **3 GHz:** PL ranges from **~42 dB** (1m) to **~68 dB** (50m).
+    - **5.5 GHz:** PL ranges from **~50 dB** (1m) to **~80 dB** (50m).
+    - **6.5 GHz:** PL ranges from **~53 dB** (1m) to **~83 dB** (50m).
+* **Comparison:** 3GPP model (dashed) has a higher RMS error compared to the proposed simulation.
+
+** (b) Probability Density (SF):**
+* **X-axis:** Shadow fading, $SF$ (dB) | Range: **-8 to 8 dB**.
+* **Y-axis:** Probability density | Range: **0 to 0.2**.
+* **Peak Value:** Measurement peaks at **~0.15** at 0 dB. The proposed simulation shows a near-perfect fit, whereas the 3GPP model is too wide.
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: UAV Scenario Path Loss Chart
+---
+**Extraction Results:**
+* **X-axis:** Distance, $d_{3D}$ (m) | Range: **1,000 to 11,000 m**.
+* **Y-axis:** Path loss, $PL$ (dB) | Range: **95 to 145 dB**.
+* **Numerical Data Points:**
+    - **$h_{UT}=30$ m (Blue):** PL starts at **111 dB** and rises to **~128 dB** at 10km.
+    - **$h_{UT}=50$ m (Red):** PL starts at **108 dB** and rises to **~125 dB** at 10km.
+* **Trend:** Increasing the UAV height from 30m to 50m results in an average **3 dB reduction** in path loss. The IMT 2020 model underestimates loss by >10 dB.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: UAV Scenario Shadow Fading Probability Density
+---
+**Extraction Results:**
+* **Top Plot ($h_{UT}=50$ m):**
+    - **X-axis:** $SF$ (dB) | Range: **-10 to 20**.
+    - **Peak:** Measurement (black) has a sharp density peak of **~0.14** slightly above 0 dB.
+* **Bottom Plot ($h_{UT}=30$ m):**
+    - **X-axis:** $SF$ (dB) | Range: **-10 to 20**.
+    - **Peak:** Measurement peaks at **~0.10** at 1 dB. Simulation follows the main lobe with a peak density of **0.07**.
+---

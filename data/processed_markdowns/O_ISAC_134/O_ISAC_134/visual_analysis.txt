@@ -1,0 +1,109 @@
+# O_ISAC_134 Visual Analysis
+
+## Image 1: _page_2_Picture_1.jpeg
+- **Type**: System Diagram / Schematic
+- **Description**: Overview of the multimodal transformer (MMT) system for RF beam prediction in vehicular communications. It shows the fusion of radar data (Range-Azimuth and Range-Velocity maps) and LiDAR data (3D point cloud) processed through an MMT.
+- **Key Data**:
+    - Modalities: 24 GHz FMCW Radar, 3D LiDAR.
+    - Output: Predicted RF Beam Index (e.g., for 60 GHz V2X link).
+- **Extracted Content**:
+    - Inputs: Radar sensor data, LiDAR sensor data.
+    - Processing Blocks: Multimodal Transformer, Beam Prediction head.
+
+## Image 2: _page_3_Figure_1.jpeg
+- **Type**: System Diagram
+- **Description**: Radar subsystem block diagram illustrating the FMCW signal generation and reception flow.
+- **Extracted Content**:
+    - TX Path: Signal generator, Power Amplifier (PA).
+    - RX Path: Low Noise Amplifier (LNA), Mixer, Low-Pass Filter (LPF), ADC, FFT processing.
+    - Waveform: Triangular frequency modulation.
+
+## Image 3: _page_3_Picture_11.jpeg / _page_3_Figure_13.jpeg
+- **Type**: System Diagram / Illustration
+- **Description**: LiDAR subsystem principle and resulting point cloud. Illustrates the laser scanning mechanism using MEMS mirrors.
+- **Extracted Content**:
+    - Components: Laser diode, Lenses, MEMS mirror.
+    - Visualization: 3D point cloud of a vehicular scenario with distance/depth color-coding.
+
+## Image 4: _page_4_Figure_10.jpeg
+- **Type**: System Diagram
+- **Description**: Detailed data processing flow for MMT-based fusion. Shows how radar maps and LiDAR point clouds are transformed into embeddings.
+- **Extracted Content**:
+    - Radar Processing: Range-Azimuth (RA) and Range-Velocity (RV) maps.
+    - LiDAR Processing: Point cloud projection.
+    - Transformer Stage: Positional encoding, Multi-head attention layers.
+
+## Image 5: _page_5_Figure_1.jpeg
+- **Type**: System Diagram / Flowchart
+- **Description**: Radar data processing flow for estimating target trajectory parameters like distance, velocity, and angle.
+
+## Image 6: _page_6_Figure_1, _page_6_Figure_2, _page_6_Figure_4, _page_6_Figure_5
+- **Type**: Illustration / Data Plot
+- **Description**: LiDAR data preprocessing steps including range limitation (filtering distant points) and dimensionality reduction to prepare point clouds for the transformer.
+
+## Image 7: _page_8_Picture_1.jpeg
+- **Type**: System Diagram
+- **Description**: Comparison of two multimodal data fusion methods for the transformer: Merging (channel-wise stacking) and Stitching (spatial concatenation).
+
+## Image 8: _page_8_Figure_3.jpeg
+- **Type**: System Diagram
+- **Description**: Detailed architecture of the Designed Multimodal Transformer (MMT).
+- **Extracted Content**:
+    - Key blocks: Linear projection of flattened patches, Transformer Encoder, MLP Head.
+    - Labels: "Class: beam index (64)", "Patch embedding", "Position embedding".
+
+## Image 9: _page_9_Figure_11.jpeg
+- **Type**: Chart / Graph
+- **Description**: Bar chart showing Beam Prediction Accuracy (%) for different fusion schemes across Top-1 to Top-5 candidates.
+- **Key Data**:
+    - MMT (Stitching) Top-1: 42.7%
+    - MMT (Stitching) Top-5: 88.2% (highest)
+    - MMT (Merging) Top-1: 38.6%, Top-5: 79.6%
+    - Unimodal LiDAR: Top-1: 10.5%, Top-5: 33.2%
+- **Extracted Content**:
+    - X-axis: Top-k Accuracy (Top-1 to Top-5).
+    - Y-axis: Beam Prediction Accuracy (%).
+
+## Image 10: _page_10_Figure_1.jpeg
+- **Type**: Chart / Graph
+- **Description**: Line chart of Throughput (bps/Hz) vs Top-k beam candidates.
+- **Key Data**:
+    - MMT (Stitching) at Top-5: ~16.9 bps/Hz.
+    - MMT (Merging) at Top-5: ~16.4 bps/Hz.
+    - Unimodal LiDAR: ~13.8 bps/Hz.
+- **Extracted Content**:
+    - X-axis: Top-k.
+    - Y-axis: Throughput (bps/Hz).
+
+## Image 11: _page_10_Figure_11.jpeg
+- **Type**: Chart / Graph
+- **Description**: Beam Prediction Accuracy comparing full beam set (64) vs pruned beam set (50).
+- **Key Data**:
+    - MMT (Stitching) with 50 beams (Pruning) at Top-5: ~92.7%.
+    - MMT (Stitching) with 64 beams at Top-5: ~88.2%.
+- **Extracted Content**:
+    - Shows that selecting the top 50 most frequent beams (pruning) improves accuracy by reducing the search space.
+
+## Image 12: _page_10_Figure_3.jpeg
+- **Type**: Chart / Graph
+- **Description**: Comparison of MMT vs CNN for beam prediction.
+- **Key Data**:
+    - MMT (Batch 16, Patch 16) Top-5: ~88.2%.
+    - CNN (Kernel 5) Top-5: ~82.4%.
+    - CNN (Kernel != 5): ~32.8%.
+
+## Image 13: _page_10_Figure_9.jpeg
+- **Type**: Chart / Graph
+- **Description**: Histogram of Beam Indices frequency.
+- **Extracted Content**:
+    - X-axis: Beam Indices (0-64).
+    - Y-axis: Frequency.
+    - Highest peaks around indices 40-50, justifying beam pruning.
+
+## Image 14: _page_11_Figure_12.jpeg
+- **Type**: Chart / Graph
+- **Description**: Beam Prediction Accuracy (%) vs Data Proportion (%).
+- **Key Data**:
+    - At 10% data: Top-5 accuracy is ~55%.
+    - At 75% data: Top-5 accuracy is ~91%.
+    - At 100% data: Top-5 accuracy stabilizes around 88-89% (slight saturation/fluctuation).

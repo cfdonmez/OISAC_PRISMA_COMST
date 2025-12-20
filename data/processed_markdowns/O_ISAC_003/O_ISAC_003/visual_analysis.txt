@@ -1,296 +1,72 @@
-Image [_page_1_Picture_10.jpeg]: Diagram. This diagram illustrates an overhead view of a communication scenario involving three vehicles and "Ground" reflection points. A "TX" (Transmitter) vehicle and an "RXS" (Receiver) vehicle are positioned, seemingly on either side of a "Target" vehicle, which is shown with an arrow indicating movement to the right. Red solid lines represent "Target channel" communication paths, which include direct and reflected paths involving the Target vehicle. Yellow dashed lines represent "Background channel" paths, which depict direct transmission between TX and RXS and reflections off designated "Ground" points.
+PAPER: O_ISAC_003
+TITLE: Analysis of Visible Light-Based ISAC Channel Characteristics in a V2V Scenario
 
-Image [_page_1_Picture_3.jpeg]: Diagram. This diagram shows an overhead view of two vehicles on a road. One vehicle is labeled "Sourse" (Source) and contains a combined "TX/RXS" (Transmitter/Receiver) unit. The other vehicle is labeled "Target." A dashed line indicates the distance `d` between the TX/RXS unit of the Source vehicle and the Target vehicle, representing a direct line-of-sight or interaction distance. The white dashed line on the road likely denotes a lane divider.
-
-Image [_page_1_Picture_4.jpeg]: Diagram. This diagram illustrates an overhead view of a three-vehicle setup on a road. A "Sourse" (Source) vehicle with a "TX" (Transmitter) and a "Receiver" vehicle with an "RXS" (Receiver) are positioned in what appears to be the same lane, separated by a distance `d`. A "Target" vehicle is positioned in an adjacent lane, parallel to the Source and Receiver. The diagram specifies relative offsets: the Target vehicle is 1 meter laterally offset from the Source vehicle's lane and 1 meter longitudinally (behind the TX's lateral position line).
-
-Image [_page_1_Picture_9.jpeg]: Diagram. This diagram presents a side view of a communication or sensing setup involving two vehicles. One vehicle is equipped with an "RXS/TX" (Receiver/Transmitter) unit, and the other is a "Target" vehicle. Red solid lines, labeled "Target channel," show communication paths between the RXS/TX unit and the Target vehicle, including direct and multi-bounce reflections off the Target. Yellow dashed lines, labeled "Background channel," illustrate signal paths reflecting off the "Ground" from the RXS/TX unit, representing environmental interference or non-target specific propagation.
-
-Image [_page_2_Figure_15.jpeg]: Chart. This image contains two Channel Impulse Response (CIR) plots, (a) and (b), which display Power (Watt) as a function of Delay (ns) for "ISAC channel," "Target channel," and "Background channel."
-
-*   **Chart (a):**
-    *   **Description:** This plot shows the power profiles across various delays. The ISAC channel and Background channel largely overlap, especially for the initial strong peak. The Target channel shows distinct multipath components at later delays. An inset provides a zoomed-in view of a specific delay range.
-    *   **Data Extraction:**
-        *   **Main Plot:** All three channels exhibit a primary peak around 5 ns, reaching approximately 4.5 x 10^-6 Watt.
-        *   **Target channel specific peaks:** Around 12-14 ns, the Target channel shows distinct smaller peaks.
-        *   **Inset (12-20 ns):** At approximately 13 ns, the Target channel shows a peak of about 5.8 x 10^-7 Watt. The ISAC channel follows this closely, slightly higher at around 6 x 10^-7 Watt. The Background channel is significantly lower in this range, with a small peak around 12.5 ns at about 1 x 10^-7 Watt.
-
-*   **Chart (b):**
-    *   **Description:** This plot also shows CIR power profiles, but over a different delay range than (a). It highlights a strong initial peak for ISAC and Background channels, with a later distinct peak for the Target channel. An inset provides a zoomed-in view of a specific delay range.
-    *   **Data Extraction:**
-        *   **Main Plot:** The ISAC and Background channels show a dominant peak around 23.8 ns, reaching approximately 2.4 x 10^-4 Watt. The Target channel shows very low power at this specific delay on the main scale.
-        *   **Target channel specific peaks:** A distinct, smaller peak for the Target channel appears around 24.8 ns.
-        *   **Inset (23.5-26 ns):** At approximately 23.8 ns, the ISAC and Background channels exhibit a sharp peak of about 2 x 10^-6 Watt. At approximately 24.8 ns, the Target channel shows a peak of about 1 x 10^-6 Watt, which is closely followed by the ISAC channel, while the Background channel remains very low in this specific region.
-
-=== NEW BATCH ANALYSIS ===
-
-Image [_page_3_Figure_6.jpeg]: Chart.
-*   **Chart (a): Path loss (dB) vs. Distance (m)**
-    *   **ISAC channel (blue stars):**
-        *   At 1m: -40 dB
-        *   At 2m: -42 dB
-        *   At 3m: -44 dB
-        *   At 4m: -46 dB
-        *   At 5m: -48 dB
-        *   At 6m: -50 dB
-        *   At 7m: -51 dB
-        *   At 8m: -52 dB
-        *   At 9m: -53 dB
-        *   At 10m: -54 dB
-    *   **Target channel (orange circles):**
-        *   At 1m: -45 dB
-        *   At 2m: -55 dB
-        *   At 3m: -63 dB
-        *   At 4m: -67 dB
-        *   At 5m: -72 dB
-        *   At 6m: -70 dB
-        *   At 7m: -75 dB
-        *   At 8m: -79 dB
-        *   At 9m: -80 dB
-        *   At 10m: -90 dB
-    *   **Background channel (yellow diamonds):**
-        *   At 1m: -41 dB
-        *   At 2m: -43 dB
-        *   At 3m: -45 dB
-        *   At 4m: -47 dB
-        *   At 5m: -49 dB
-        *   At 6m: -51 dB
-        *   At 7m: -52 dB
-        *   At 8m: -53 dB
-        *   At 9m: -54 dB
-        *   At 10m: -55 dB
-    *   **-25 dB Limit (dashed black line):** Constant at approximately -67.5 dB. A vertical arrow at 4m indicates a 25 dB difference between the ISAC/Background channel and the Target channel/Limit.
-*   **Chart (b): Path loss (dB) vs. Distance (m)**
-    *   **ISAC channel (blue stars):**
-        *   At 2m: -27 dB
-        *   At 4m: -32 dB
-        *   At 6m: -37 dB
-        *   At 8m: -41 dB
-        *   At 10m: -45 dB
-        *   At 12m: -48 dB
-        *   At 14m: -50 dB
-        *   At 16m: -52 dB
-        *   At 18m: -54 dB
-        *   At 20m: -55 dB
-    *   **Target channel (orange circles):**
-        *   At 2m: -60 dB
-        *   At 4m: -55 dB
-        *   At 6m: -60 dB
-        *   At 8m: -65 dB
-        *   At 10m: -68 dB
-        *   At 12m: -68 dB
-        *   At 14m: -72 dB
-        *   At 16m: -68 dB
-        *   At 18m: -70 dB
-        *   At 20m: -83 dB
-    *   **Background channel (yellow diamonds):**
-        *   At 2m: -28 dB
-        *   At 4m: -33 dB
-        *   At 6m: -38 dB
-        *   At 8m: -42 dB
-        *   At 10m: -46 dB
-        *   At 12m: -49 dB
-        *   At 14m: -51 dB
-        *   At 16m: -53 dB
-        *   At 18m: -55 dB
-        *   At 20m: -56 dB
-    *   **-25 dB Limit (dashed black line):**
-        *   At 2m: -50 dB
-        *   At 4m: -54 dB
-        *   At 6m: -59 dB
-        *   At 8m: -63 dB
-        *   At 10m: -67 dB
-        *   At 12m: -70 dB
-        *   At 14m: -72 dB
-        *   At 16m: -74 dB
-        *   At 18m: -76 dB
-        *   At 20m: -78 dB
-    *   Vertical arrows indicate an approximate 25 dB difference between the ISAC/Background channel and the -25 dB Limit at approximately 5m and 10m.
-
-Image [_page_3_Figure_9.jpeg]: Chart.
-*   **Chart (a): Received power (-dBW) vs. Distance (m)**
-    *   **Background channel (dark blue bars):**
-        *   At 1m: ~45
-        *   At 1.5m: ~50
-        *   At 2m: ~52
-        *   At 2.5m: ~55
-        *   At 3m: ~58
-        *   At 3.5m: ~60
-        *   At 4m: ~62
-    *   **Target channel first reflection path (light blue bars):**
-        *   At 1m: ~55
-        *   At 1.5m: ~60
-        *   At 2m: ~62
-        *   At 2.5m: ~65
-        *   At 3m: ~68
-        *   At 3.5m: ~70
-        *   At 4m: ~72
-    *   **Target channel secondary reflection and above path (yellow bars):**
-        *   At 1m: ~65
-        *   At 1.5m: ~70
-        *   At 2m: ~72
-        *   At 2.5m: ~75
-        *   At 3m: ~78
-        *   At 3.5m: ~80
-        *   At 4m: ~82
-*   **Chart (b): Received power ratio vs. Distance (m)** (Stacked bars, total height of stack is approximately 1.0)
-    *   **Background channel (dark blue section):**
-        *   At 1m: ~0.65
-        *   At 1.5m: ~0.70
-        *   At 2m: ~0.72
-        *   At 2.5m: ~0.75
-        *   At 3m: ~0.78
-        *   At 3.5m: ~0.80
-        *   At 4m: ~0.82
-    *   **Target channel first reflection path (light blue section):** (Portion on top of dark blue)
-        *   At 1m: from ~0.65 to ~0.95 (height ~0.30)
-        *   At 1.5m: from ~0.70 to ~0.96 (height ~0.26)
-        *   At 2m: from ~0.72 to ~0.97 (height ~0.25)
-        *   At 2.5m: from ~0.75 to ~0.98 (height ~0.23)
-        *   At 3m: from ~0.78 to ~0.99 (height ~0.21)
-        *   At 3.5m: from ~0.80 to ~0.99 (height ~0.19)
-        *   At 4m: from ~0.82 to ~0.99 (height ~0.17)
-    *   **Target channel secondary reflection and above path (yellow section):** (Top-most portion)
-        *   At 1m: from ~0.95 to ~1.00 (height ~0.05)
-        *   At 1.5m: from ~0.96 to ~1.00 (height ~0.04)
-        *   At 2m: from ~0.97 to ~1.00 (height ~0.03)
-        *   At 2.5m: from ~0.98 to ~1.00 (height ~0.02)
-        *   At 3m: from ~0.99 to ~1.00 (height ~0.01)
-        *   At 3.5m: from ~0.99 to ~1.00 (height ~0.01)
-        *   At 4m: from ~0.99 to ~1.00 (height ~0.01)
-*   **Chart (c): Received power (-dBW) vs. Distance (m)**
-    *   **Background channel LoS (dark blue bars):**
-        *   At 5m: ~40
-        *   At 5.5m: ~42
-        *   At 6m: ~44
-        *   At 6.5m: ~46
-        *   At 7m: ~48
-        *   At 7.5m: ~50
-        *   At 8m: ~52
-        *   At 8.5m: ~54
-        *   At 9m: ~56
-        *   At 9.5m: ~58
-        *   At 10m: ~60
-    *   **Background channel NLoS (medium blue bars):**
-        *   At 5m: ~45
-        *   At 5.5m: ~47
-        *   At 6m: ~49
-        *   At 6.5m: ~51
-        *   At 7m: ~53
-        *   At 7.5m: ~55
-        *   At 8m: ~57
-        *   At 8.5m: ~59
-        *   At 9m: ~61
-        *   At 9.5m: ~63
-        *   At 10m: ~65
-    *   **Target channel first reflection path (light blue bars):**
-        *   At 5m: ~60
-        *   At 5.5m: ~62
-        *   At 6m: ~64
-        *   At 6.5m: ~66
-        *   At 7m: ~68
-        *   At 7.5m: ~70
-        *   At 8m: ~72
-        *   At 8.5m: ~74
-        *   At 9m: ~76
-        *   At 9.5m: ~78
-        *   At 10m: ~80
-    *   **Target channel secondary reflection and above path (yellow bars):**
-        *   At 5m: ~70
-        *   At 5.5m: ~72
-        *   At 6m: ~74
-        *   At 6.5m: ~76
-        *   At 7m: ~78
-        *   At 7.5m: ~80
-        *   At 8m: ~82
-        *   At 8.5m: ~84
-        *   At 9m: ~86
-        *   At 9.5m: ~88
-        *   At 10m: ~90
-*   **Chart (d): Received power ratio vs. Distance (m)** (Stacked bars, total height of stack is approximately 1.0)
-    *   **Background channel LoS (dark blue section):**
-        *   At 5m: ~0.88
-        *   At 6m: ~0.90
-        *   At 7m: ~0.91
-        *   At 8m: ~0.92
-        *   At 9m: ~0.93
-        *   At 10m: ~0.94
-    *   **Background channel NLoS (medium blue section):** (Portion on top of dark blue)
-        *   At 5m: from ~0.88 to ~0.96 (height ~0.08)
-        *   At 6m: from ~0.90 to ~0.97 (height ~0.07)
-        *   At 7m: from ~0.91 to ~0.975 (height ~0.065)
-        *   At 8m: from ~0.92 to ~0.98 (height ~0.06)
-        *   At 9m: from ~0.93 to ~0.985 (height ~0.055)
-        *   At 10m: from ~0.94 to ~0.99 (height ~0.05)
-    *   **Target channel first reflection path (light blue section):** (Portion on top of medium blue)
-        *   At 5m: from ~0.96 to ~0.99 (height ~0.03)
-        *   At 6m: from ~0.97 to ~0.995 (height ~0.025)
-        *   At 7m: from ~0.975 to ~0.996 (height ~0.021)
-        *   At 8m: from ~0.98 to ~0.997 (height ~0.017)
-        *   At 9m: from ~0.985 to ~0.998 (height ~0.013)
-        *   At 10m: from ~0.99 to ~0.999 (height ~0.009)
-    *   **Target channel secondary reflection and above path (yellow section):** (Top-most portion)
-        *   At 5m: from ~0.99 to ~1.00 (height ~0.01)
-        *   At 6m: from ~0.995 to ~1.00 (height ~0.005)
-        *   At 7m: from ~0.996 to ~1.00 (height ~0.004)
-        *   At 8m: from ~0.997 to ~1.00 (height ~0.003)
-        *   At 9m: from ~0.998 to ~1.00 (height ~0.002)
-        *   At 10m: from ~0.999 to ~1.00 (height ~0.001)
-
-Image [_page_4_Figure_11.jpeg]: Chart.
-*   **Chart (a): RMS DS (ns) vs. Distance (m)**
-    *   **ISAC channel RMS DS (blue stars):**
-        *   At 1m: ~2.2 ns
-        *   At 1.5m: ~2.5 ns
-        *   At 2m: ~2.8 ns
-        *   At 2.5m: ~3.0 ns
-        *   At 3m: ~3.2 ns
-        *   At 3.5m: ~3.5 ns
-        *   At 4m: ~3.7 ns
-        *   Linear fitting parameters: μ = 2.95, α_DS = 0.37 (slope of the blue line)
-    *   **Target channel RMS DS (orange circles):**
-        *   At 1m: ~0.7 ns
-        *   At 1.5m: ~1.1 ns
-        *   At 2m: ~1.4 ns
-        *   At 2.5m: ~1.6 ns
-        *   At 3m: ~1.8 ns
-        *   At 3.5m: ~1.3 ns
-        *   At 4m: ~1.9 ns
-        *   Linear fitting parameters: μ = 1.39, α_DS = 0.15 (slope of the orange line)
-    *   **Background channel RMS DS (yellow diamonds):**
-        *   At 1m: ~2.1 ns
-        *   At 1.5m: ~2.4 ns
-        *   At 2m: ~2.7 ns
-        *   At 2.5m: ~3.0 ns
-        *   At 3m: ~3.1 ns
-        *   At 3.5m: ~3.3 ns
-        *   At 4m: ~3.5 ns
-        *   Linear fitting parameters: μ = 2.89, α_DS = 0.22 (slope of the yellow line)
-*   **Chart (b): RMS DS (ns) vs. Distance (m)**
-    *   **ISAC channel RMS DS (blue stars):**
-        *   At 1m: ~0.40 ns
-        *   At 1.5m: ~0.35 ns
-        *   At 2m: ~0.33 ns
-        *   At 2.5m: ~0.32 ns
-        *   At 3m: ~0.30 ns
-        *   At 3.5m: ~0.33 ns
-        *   At 4m: ~0.32 ns
-        *   Linear fitting parameters: μ = 0.32, α_DS = -0.02 (slope of the blue line)
-    *   **Target channel RMS DS (orange circles):**
-        *   At 1m: ~0.30 ns
-        *   At 1.5m: ~0.25 ns
-        *   At 2m: ~0.23 ns
-        *   At 2.5m: ~0.21 ns
-        *   At 3m: ~0.19 ns
-        *   At 3.5m: ~0.15 ns
-        *   At 4m: ~0.12 ns
-        *   Linear fitting parameters: μ = 0.21, α_DS = -0.04 (slope of the orange line)
-    *   **Background channel RMS DS (yellow diamonds):**
-        *   At 1m: ~0.35 ns
-        *   At 1.5m: ~0.32 ns
-        *   At 2m: ~0.30 ns
-        *   At 2.5m: ~0.28 ns
-        *   At 3m: ~0.26 ns
-        *   At 3.5m: ~0.27 ns
-        *   At 4m: ~0.26 ns
-        *   Linear fitting parameters: μ = 0.29, α_DS = -0.01 (slope of the yellow line)
+================================================================================
+IMAGE: _page_1_Picture_3.jpeg
+TYPE: Scenario Diagram
+DESCRIPTION: Top-down view of the mono-static sensing vehicle-to-vehicle scenario.
+COMPONENTS:
+- Source car (left): Contains both TX and RXS.
+- Target car (right): Located at distance 'd'.
+================================================================================
+IMAGE: _page_1_Picture_4.jpeg
+TYPE: Scenario Diagram
+DESCRIPTION: Top-down view of the bi-static sensing vehicle-to-vehicle scenario.
+COMPONENTS:
+- Source car (left): Contains TX.
+- Receiver car (right): Contains RXS.
+- Target car (bottom): Located offset from the main TX-RXS path (1m offset marked).
+================================================================================
+IMAGE: _page_1_Picture_9.jpeg
+TYPE: 3D Visualization / Ray-Tracing Model
+DESCRIPTION: 3D scenario layout for mono-static sensing in Zemax.
+COMPONENTS:
+- RXS/TX on the same car (left).
+- Target car (right).
+- Signal paths: Solid red lines (Target channel) and dashed yellow lines (Background channel / Ground reflections).
+================================================================================
+IMAGE: _page_1_Picture_10.jpeg
+TYPE: 3D Visualization / Ray-Tracing Model
+DESCRIPTION: 3D scenario layout for bi-static sensing in Zemax.
+COMPONENTS:
+- TX on source car (left).
+- RXS on receiver car (right).
+- Target car (middle-bottom).
+- Signal paths: Solid red lines (Target channel) and dashed yellow lines (Background channel / LoS and Ground reflections).
+================================================================================
+IMAGE: _page_2_Figure_15.jpeg
+TYPE: Chart / Graph (Channel Impulse Response)
+DESCRIPTION: Channel Impulse Response (CIR) at different distances for mono-static and bi-static sensing.
+PANELS:
+- (a) Mono-static: Power (Watt, 0 to 5e-6) vs Delay (ns, 0 to 50). Primary peak at ~5ns. Large inset shows details of peaks ~15ns.
+- (b) Bi-static: Power (Watt, 0 to 3e-4) vs Delay (ns, 20 to 35). Primary peak at ~23ns. Inset shows small peaks ~25ns.
+LEGEND: ISAC channel (yellow solid), Target channel (red solid), Background channel (blue dashed).
+================================================================================
+IMAGE: _page_3_Figure_6.jpeg
+TYPE: Chart / Graph (Path Loss)
+DESCRIPTION: Optical Path Loss (OPL) comparison for mono-static and bi-static sensing modes.
+PANELS:
+- (a) Mono-static: Path loss (dB, -20 to -100) vs Distance (m, 1 to 10). Effective sensing distance ~4m (intersection with -25dB limit). Target channel PL drops rapidly.
+- (b) Bi-static: Path loss (dB, -20 to -100) vs Distance (m, 2 to 20). Effective sensing distance ~10m.
+LEGEND: ISAC channel (blue star), Target channel (orange circle), Background channel (yellow diamond), 25 dB Limit (black dashed).
+================================================================================
+IMAGE: _page_3_Figure_9.jpeg
+TYPE: Multi-pane Bar Chart
+DESCRIPTION: Received power (-dBW) and received power ratio comparison.
+PANELS:
+- (a) Received power (mono-static).
+- (b) Power ratio (mono-static): Target ratio is significant (~30%) only at very short distances (1m).
+- (c) Received power (bi-static).
+- (d) Power ratio (bi-static): Target ratio is stable at about 1.06%.
+LEGEND: Background channel, Target channel first reflection, Target channel secondary reflection.
+================================================================================
+IMAGE: _page_4_Figure_11.jpeg
+TYPE: Chart / Graph (RMS Delay Spread)
+DESCRIPTION: RMS Delay Spread simulation data and linear fitting.
+PANELS:
+- (a) Mono-static: RMS DS (ns, 0 to 6) vs Distance (m, 1 to 4).
+  - TREND: Upward slope (alpha = 0.37). Mean (mu) for ISAC = 2.95 ns.
+- (b) Bi-static: RMS DS (ns, 0 to 0.6) vs Distance (m, 5 to 10).
+  - TREND: Downward slope (alpha = -0.02). Mean (mu) for ISAC = 0.32 ns.
+LEGEND: ISAC channel, Target channel, Background channel.
+================================================================================

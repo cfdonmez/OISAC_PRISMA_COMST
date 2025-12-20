@@ -1,61 +1,34 @@
-### Image 1: _page_1_Figure_10.jpeg  
-- **Type**: Diagram  
-- **Description**: A simplified setup diagram illustrating an indoor corridor environment for Visible Light Positioning (VLP) experiments. Key elements include a Medium Access Point (MAP), a communication user (green cylinder), a non-user LOS (Line-of-Sight) blocker (red cylinder), a sensing user (yellow cylinder), slide tracks, and devices mounted on walls.  
-- **KEY DATA**:  
-  - 20 Access Points (APs) installed ceiling-mounted.  
-  - Blocks (non-user LOS blockers) are positioned between communication/sensing users and APs.  
-  - Communication and sensing users are positioned at ends of the corridor.  
-  - Slide tracks enable motion-based VLP (e.g., movement at 1.4 m/s).  
+# Visual Analysis for O_ISAC_015
 
----
+## Figure 1: MAP-aided IVLCS Network Model
+**File:** [_page_1_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_015/O_ISAC_015/_page_1_Figure_2.jpeg)
+- **Type:** System Diagram.
+- **Environment:** 10m x 10m x 3m indoor room.
+- **Components:** Movable Access Points (MAPs) on slide tracks (motorized), Communication Users (U), Sensing Users (S), and Non-user LOS Blockers.
+- **Mechanism:** Flexible positioning of transceivers (LEDs/PDs) to bypass blockers and optimize signal paths.
 
-### Image 2: _page_3_Figure_10.jpeg  
-- **Type**: Line Chart  
-- **Description**: Compares aggregate sum rate and mutual information (MI) of a VLP system with varying numbers of non-user LOS blockers (0–10 blockers).  
-- **KEY DATA**:  
-  - **Proposed method**:  
-    - 20 APs, P=0.5 W: ~350 Gbps (stable with >8 blockers).  
-    - 15 APs, P=0.5 W: ~275 Gbps.  
-    - 10 APs, P=0.5 W: ~150 Gbps.  
-  - **Benchmark**:  
-    - High power (P=20 W): ~275 Gbps (degraded with blockers).  
-    - Lower power (P=5 W): ~100 Gbps.  
-  - **Trend**: Proposed method with 20 APs minimizes blocker impact, while benchmarks show significant degradation as blockers increase.  
+## Figure 2: Sum Rate & MI vs. Number of Users
+**File:** [_page_3_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_015/O_ISAC_015/_page_3_Figure_8.jpeg)
+- **Data Points (at 10 users):**
+  - **Proposed (20 APs, 1W):** ~480 Gbps.
+  - **Proposed (15 APs, 1W):** ~380 Gbps.
+  - **Proposed (20 APs, 0.5W):** ~370 Gbps.
+  - **Benchmark (Fixed, 20 APs, 20W):** ~170 Gbps.
+- **Insight:** Proposed MAP solution achieves a ~353.69% gain over fixed benchmarks even with significantly lower transmit power (0.5W vs 20W).
 
----
+## Figure 3: Robustness against LOS Blockers
+**File:** [_page_3_Figure_10.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_015/O_ISAC_015/_page_3_Figure_10.jpeg)
+- **Trend:** Proposed MAP method maintains a nearly flat rate (~350 Gbps for 20 APs) as the number of blockers increases from 2 to 16.
+- **Comparison:** Benchmark schemes show a steep linear decline (e.g., Benchmark 10W drops from 140 to 100 Gbps).
 
-### Image 3: _page_3_Figure_2.jpeg  
-- **Type**: Diagram  
-- **Description**: 3D indoor setup showing a room with coordinate axes (X-Z plane), an access point (AP) at (45,10,25), and user positions (communication users U1/U2, sensing user S). Includes a slide track, motor, and magnetic encoder for motion tracking.  
-- **KEY DATA**:  
-  - AP coordinates and device placement for beamforming optimization.  
-  - Wireframe representation of users and environmental obstacles.  
-  - Scenarios include motion prediction at 1.4 m/s (e.g., "Begin at center, move to corner").  
+## Figure 4: Mobility Support Performance
+**File:** [_page_4_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_015/O_ISAC_015/_page_4_Figure_2.jpeg)
+- **Type:** Line Chart (Log Scale).
+- **Metric:** Aggregate Sum Rate and MI over Time (0 - 5.0 s).
+- **Result:** Proposed MAP scheme adapts to user movement (1.4 m/s), maintaining stable performance (e.g., Sensing User 1 stays between 100-200 Gbps), while Fixed AP benchmarks fluctuate or degrade significantly (falling below 1 Gbps in some slots).
 
----
-
-### Image 4: _page_4_Figure_2.jpeg  
-- **Type**: Line Chart  
-- **Description**: Aggregated sum rate over time (0–4 seconds) for proposed and benchmark VLP users in a dynamic corridor setup.  
-- **KEY DATA**:  
-  - **Proposed method**:  
-    - Communication user 2 (brown solid): Starts at ~10,000 Gbps, drops to ~1,000 Gbps.  
-    - Sensing user 1 (green dotted): Starts at ~200 Gbps, drops to ~50 Gbps.  
-  - **Benchmark**:  
-    - Communication user 2 (blue dashed): Starts at ~350 Gbps, drops to ~150 Gbps.  
-    - Sensing user 2 (magenta dashed): Starts at ~150 Gbps, drops to ~100 Gbps.  
-  - **Trend**: Proposed methods retain higher rates over time compared to benchmarks during user movement.  
-
----
-
-### Image 5: _page_4_Figure_4.jpeg  
-- **Type**: Line Chart  
-- **Description**: Relationship between priority of communication users and average sum rate/MI. Priority ranges from 0 (lowest) to 1 (highest).  
-- **KEY DATA**:  
-  - **6 users**:  
-    - Sum rate: Sharp increase from ~50 Gbps to ~150 Gbps as priority increases (0.2–0.8).  
-    - MI: Declines from ~200 Gbps to ~50 Gbps for 10 users.  
-  - **10 users**:  
-    - Sum rate: Accelerated rise after priority >0.7 (e.g., ~100 Gbps at priority 0.9).  
-    - MI: Steeper drop compared to 6 users.  
-  - **Trend**: Higher user priority improves rate but reduces MI, highlighting trade-offs in resource allocation.
+## Figure 5: Communication vs. Sensing Trade-off
+**File:** [_page_4_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_015/O_ISAC_015/_page_4_Figure_4.jpeg)
+- **Variables:** Sum Rate (Red/Magenta) vs. MI (Blue/Green) across Communication Priority ($\Omega_c$, 0 to 1).
+- **Crossover:** At $\Omega_c \approx 0.65$ (10 users), the average sum rate exceeds the sensing MI.
+- **Range:** Sum rate increases from ~30 to ~175 Gbps; MI decreases from ~230 to ~30 Gbps.

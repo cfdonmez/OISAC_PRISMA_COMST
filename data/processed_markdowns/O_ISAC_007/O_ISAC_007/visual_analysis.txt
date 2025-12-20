@@ -1,28 +1,43 @@
-Image [_page_0_Picture_18.jpeg]: Diagram.
-(a) This diagram illustrates an optical setup for focusing light from a single-mode fiber (SMF) using a GRIN-lens and a single lens. It shows the propagation of light, the formation of a focused beam with a waist diameter (2w_p) at a working distance (w_d) from the single lens.
-(b) This diagram shows a cross-section of an optical fiber core and cladding with an etched structure filled with a high reflecting film and matte paint. The dimensions d1 are indicated, illustrating a method for creating a reflective or light-absorbing surface within the fiber.
-(c) This diagram presents a geometric representation within a circular cross-section, possibly related to light propagation or fiber geometry. It labels a radius (r_0), a specific angle (theta_c), and other dimensions (d_1, r_b, theta_1) related to internal reflections or numerical aperture.
+PAPER: O_ISAC_007
+TITLE: Miniaturized optical fiber displacement probe with large-collection-angle
 
-Image [_page_1_Figure_10.jpeg]: Diagram. This diagram illustrates a complex optical setup, likely an interferometer or a beam shaping system. It shows light propagating from a single-mode fiber (implied on the left) through several optical components including GRIN lenses (indicated by M_air1, M_g, M_air2, M_sl1, M_sl2, with associated lengths L_air, L_g, L_air2, L_sq), and an element that splits or redirects the beam at an angle (2θ). Various coordinate systems (x_0y_0, x_2y_2, x_2*y_2*, x_s*y_s*) and beam waist diameters (w_d) are labeled, indicating a system designed to analyze or manipulate optical beams.
-
-Image [_page_2_Figure_2.jpeg]: Chart.
-(a) This is a 2D heatmap chart showing "Fringe Contrast" as a function of "Angle (degree)" (Y-axis, from -10 to 10 degrees) and "Beam Splitting Ratios ηr" (X-axis, from 0 to 1). The color bar on the right indicates Fringe Contrast values from 0 (blue) to 0.9 (red).
-Data: The maximum fringe contrast (around 0.9) is observed near a beam splitting ratio (ηr) of 0.5 and an angle of 0 degrees. The contrast decreases significantly as the angle deviates from 0 degrees and as ηr approaches 0 or 1.
-(b) This is a 2D heatmap chart showing "Fringe Contrast" as a function of "Working Distance (mm)" (Y-axis, from 0 to 10 mm) and "Beam Splitting Ratios ηr" (X-axis, from 0 to 1). The color bar on the right indicates Fringe Contrast values from 0 (blue) to 0.9 (red).
-Data: The maximum fringe contrast (around 0.9) is observed near a beam splitting ratio (ηr) of 0.5 and a working distance of approximately 5.5 mm. The contrast decreases significantly as the working distance deviates from 5.5 mm and as ηr approaches 0 or 1.
-
-Image [_page_2_Figure_5.jpeg]: Chart.
-(a) This is a 3D surface chart showing "Beam Waist Position (mm)" (vertical axis and color scale, from -800 to 800 mm) as a function of "Lg (mm)" (horizontal axis, from 0 to 6 mm) and "Lair (mm)" (depth axis, from 0 to 10 mm).
-Data: A sharp peak in beam waist position, exceeding 800 mm, is observed for specific combinations of Lg and Lair, appearing to be around Lg ≈ 5-6 mm and Lair ≈ 5-6 mm. The position varies smoothly across other parameter ranges.
-(b) This is a 3D surface chart showing "Beam Waist Radius (um)" (vertical axis and color scale, from 100 to 900 um) as a function of "Lg (mm)" (horizontal axis, from 0 to 6 mm) and "Lair (mm)" (depth axis, from 0 to 10 mm).
-Data: A sharp peak in beam waist radius, exceeding 900 um, is observed for specific combinations of Lg and Lair, appearing to be around Lg ≈ 5-6 mm and Lair ≈ 5-6 mm. The radius varies smoothly across other parameter ranges.
-
-Image [_page_2_Figure_9.jpeg]: Chart.
-(a) This is a 2D line chart showing "Efficiency ηm (%)" as a function of "Working Distance (mm)" (from 0 to 8 mm).
-Data: The efficiency peaks at approximately 99% (Y=0.99) at a Working Distance of 5.5136 mm. Efficiency drops significantly, reaching 0.200156% (Y=0.00200156) at Working Distances of 5.4248 mm and 5.6016 mm.
-(b) This is a 2D line chart showing "Fringe Contrast" as a function of "Working Distance (mm)" (from 0 to 8 mm).
-Data: The fringe contrast shows two distinct peaks. One peak is 0.919842 at a Working Distance of 5.5136 mm. Another peak is 0.900801 at a Working Distance of 5.4784 mm. A symmetrical peak would be expected on the higher working distance side.
-(c) This is a 2D line chart showing "Efficiency ηm (%)" as a function of "Angle (degree)" (from -10 to 10 degrees).
-Data: The efficiency peaks near 100% (Y=0.9997998) at an Angle of 0 degrees. Efficiency drops to 0.200156% (Y=0.00200156) at Angles of -3.842 degrees and 3.842 degrees, indicating a Gaussian-like distribution.
-(d) This is a 2D line chart showing "Fringe Contrast" as a function of "Angle (degree)" (from -10 to 10 degrees).
-Data: The fringe contrast exhibits two peaks of 0.900801 at Angles of approximately -5 degrees and 5 degrees. The contrast dips to 0.851845 at an Angle of 0 degrees, indicating a double-peaked response to angle.
+================================================================================
+IMAGE: _page_0_Picture_18.jpeg
+TYPE: Schematic / Diagram
+DESCRIPTION: Internal structure and design of the fiber optic displacement sensing probe.
+PANELS:
+- (a) Probe structure: Shows the sequence SMF (Single Mode Fiber) -> air gap -> GRIN-lens -> Single lens -> Measurement target.
+- (b) Optical fiber trench: Detailed view of the Michelson interferometer structure within the fiber, highlighting the "High reflecting film", "Matte paint", and the transverse cut depth "d1".
+- (c) Cross section: Geometric parameters of the fiber core transverse cut (r0, rb, theta_i, theta_c).
+================================================================================
+IMAGE: _page_1_Figure_10.jpeg
+TYPE: Ray-tracing / Optical Schematic
+DESCRIPTION: Model of the measurement optical field transmission and the tilted reflector scenario.
+DETAILS:
+- Shows the optical path from SMF through GRIN-lens (Lg) and single lens (Lsq) to the reflector.
+- Reflector tilt angle is marked as 2*theta.
+- Transfer matrices M_air1, M_g, M_air2, M_sl are indicated along the path.
+================================================================================
+IMAGE: _page_2_Figure_2.jpeg
+TYPE: Heatmap / Contour Plot
+DESCRIPTION: Influence of design parameters on fringe contrast.
+PANELS:
+- (a) Fringe Contrast vs Beam Splitting Ratio (eta_r) and Angle (degrees): Shows optimal contrast (>0.8) concentrated at higher splitting ratios and near-zero angles.
+- (b) Fringe Contrast vs Beam Splitting Ratio (eta_r) and Working Distance (mm): Illustrates a sharp peak in contrast at the optimal working distance (~5.5mm), broadening as the splitting ratio approaches 1.
+================================================================================
+IMAGE: _page_2_Figure_5.jpeg
+TYPE: 3D Surface Plot
+DESCRIPTION: Optimization of GRIN-lens (Lg) and initial air gap (Lair) parameters.
+PANELS:
+- (a) Beam Waist Position (mm): Surface showing how the waist position varies with Lg (0-10 mm) and Lair (0-10 mm). High sensitivity observed at specific Lg/Lair combinations.
+- (b) Beam Waist Radius (um): Surface showing the resulting waist radius. Values range from ~100 um to over 900 um.
+================================================================================
+IMAGE: _page_2_Figure_9.jpeg
+TYPE: Performance Charts
+DESCRIPTION: Coupling efficiency and fringe contrast as functions of working distance and tilt angle.
+PANELS:
+- (a) Efficiency vs Working Distance (mm): Peak efficiency ~100% at 5.5136 mm. Efficiency drops to 20% at 5.4248 mm and 5.6016 mm (yielding a ~0.18 mm dynamic range).
+- (b) Fringe Contrast vs Working Distance (mm): Peak contrast 0.816 at 5.5136 mm. Stays above 0.8 within the range 5.348 mm to 5.6784 mm.
+- (c) Efficiency vs Angle (degrees): Peak at 0 deg. Drops to 20% at -3.842 and 3.842 degrees (angular tolerance of +/-3.84 deg).
+- (d) Fringe Contrast vs Angle (degrees): Displays a twin-peak structure. Values: 0.85 at 0 deg, peaking at ~0.9 near +/-4 deg, and dropping to 0.8 at -4.842 and 4.842 deg.
+================================================================================

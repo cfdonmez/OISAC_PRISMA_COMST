@@ -1,19 +1,35 @@
-Image [_page_0_Figure_12.jpeg]:  
-- Type: Diagram  
-- Description: Flowchart of a double-effect DNN-based DBP scheme for ISCA, illustrating signal processing steps (e.g., CD/DBP compensation, SP-LMS, FO compensation, CPR, decision) and error estimation.  
-- KEY DATA: Includes phase noise sources (θ₁, θ₂), nonlinear phase terms (γ*, β*), and a multi-layer DNN architecture for error correction. The process integrates CD compensation, NLPR computation, and a reference error function.  
+# Visual Analysis for O_ISAC_017
 
-Image [_page_1_Figure_5.jpeg]:  
-- Type: Chart  
-- Description: Logarithmic BER (log(BER)) vs. launch power curve comparing CD compensation-only vs. DNN-based DBP schemes at varying learning steps (80 km, 40 km, 20 km).  
-- KEY DATA: BER values below ~10⁻³ are achieved by DNN-based DBP schemes, with faster convergence at smaller learning steps (e.g., 20 km achieves -5 BER at 6 dBm). CD compensation-only requires higher launch power (~6 dBm at 10⁻³ BER vs. ~4 dBm for DNN-based 20 km).  
+## Figure 1: Double-effect DNN-based DBP Scheme Architecture
+**File:** [_page_0_Figure_12.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_017/O_ISAC_017/_page_0_Figure_12.jpeg)
+- **Type:** Technical Flowchart / Structural Diagram.
+- **Description:** Illustrates the integrated DSP framework for simultaneous communication recovery and channel sensing.
+- **Signal Flow:**
+  - **Upper Branch (Communication):** Signal -> CD/DBP comp. -> SP-LMS -> FO comp. -> CPR -> Decision.
+  - **Lower Branch (Parameter Update):** FO comp. output -> CD reload -> DNN-based DBP (N Layers).
+  - **Training:** Uses training sequences to compute an error function $I = \arg\min \|E - \hat{E}\|^2$, where $\hat{E}$ is the reference signal with reloaded phase noise ($\theta_1, \theta_2$).
+  - **Output:** Optimized linear ($\beta^*$) and nonlinear ($\gamma^*$) parameters are fed back for compensation and used for sensing (ISAC).
 
-Image [_page_1_Figure_9.jpeg]:  
-- Type: Chart  
-- Description: (a) Interference parameter (y*) vs. transmit length (200–1200 km) with 1/3/5 dB-loss profiles; (b) Interference parameter (γ*) with multi-loss designs (e.g., 3/3 dB at 360/760 km); shows interference spikes at specific transmit lengths.  
-- KEY DATA: γ* oscillates cyclically; spikes at 360 km (a) and 760 km (b) correlate with dB-loss impacts. For example, in (a), 1 dB-loss peaks at ~-1.8 log(BER), while 5 dB-loss coincides with -2.4 log(BER).  
+## Figure 2: Optical Fiber Link Experimental Setup
+**File:** [_page_1_Figure_5.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_017/O_ISAC_017/_page_1_Figure_5.jpeg)
+- **Type:** System Schematic.
+- **Tx:** Laser -> 4-level signal generator (28-GBaud 16-QAM) -> IQ Modulator.
+- **Channel:** EDFA1 -> **15 spans of (80 km SSMF + EDFA2)**, totaling 1200 km. Fiber attenuation coefficient = 0.2 dB/km.
+- **Rx:** OBPF -> Coherent Receiver (with LO Laser) -> DSP (DNN-based DBP scheme).
 
-Image [_page_2_Figure_5.jpeg]:  
-- Type: Setup Diagram  
-- Description: Experimental layout for 4-level optical signal generation, encoding via IQ modulator, amplification via two EDFAs (SSMF + 80 km spans), and detection via coherent receiver.  
-- KEY DATA: System includes a 4-level signal generator, IQ modulator, two 360 km-long EDFAs with dispersion-shifted fiber (SSMF), 15-span WDM, and a coherent receiver. Designed for testing DNN-based DBP in coherent optical communications.
+## Figure 3: Nonlinear Mitigation and Power Profile Extraction
+**File:** [_page_1_Figure_9.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_017/O_ISAC_017/_page_1_Figure_9.jpeg)
+- **(a) $\log(\text{BER})$ vs. Launch Power (dBm):**
+  - **Range:** -4.0 dBm to 6.0 dBm.
+  - **Performance:** DNN-based DBP (20 km/step) significantly outperforms CD-only mitigation, achieving a lower BER nadir of **$\approx 10^{-4.8}$** at -1 dBm.
+  - **Constellations:** 16-QAM constellations show much tighter clusters for 20 km/step (Magenta) compared to 80 km/step or CD-only.
+- **(b) Optimized $\gamma^*$ vs. Transmit Length:**
+  - Shows the evolved power profile over 1200 km. 
+  - Cyclic peaks every **80 km** correspond to EDFA gain locations.
+
+## Figure 4: Sensing for Abnormal Loss Detection
+**File:** [_page_2_Figure_5.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_017/O_ISAC_017/_page_2_Figure_5.jpeg)
+- **Description:** Monitors $\gamma^*$ values to pinpoint excess loss points in the fiber link.
+- **(a) Single Abnormal Loss:** Sharp drops in $\gamma^*$ at **360 km** for 1 dB, 3 dB, and 5 dB losses. Drop magnitude is proportional to loss severity.
+- **(b) Multiple Span Losses:** Successfully detects two distinct loss points at **360 km and 760 km**.
+- **(c) Same Span Limitation:** Two loss points within the same 80 km span (500 km and 540 km) appear as a single drop, limiting intramodal resolution.

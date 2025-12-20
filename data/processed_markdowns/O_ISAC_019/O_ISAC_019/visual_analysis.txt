@@ -1,27 +1,47 @@
-Image _page_1_Figure_0.jpeg: - Type: Diagram - Description: System architecture for integrated sensing/communication (ISAC) with cooperative units (CO), multiple sensing units (MS), and remote data units (RAU). CO includes integrated interferometric front-end (IF) signal processing, uplink/downlink echoes, and photonic transport (PM/IM-optical). RAU involves up-/down-conversion, mobile terminal interfacing, and frequency bands for mobile communication and radar. - KEY DATA: Frequency bands (71–86 GHz) for CO (mobile) and RAU (automobile radar), PM-based transport at 13–18 GHz, IM-optical transport at 68–86 GHz, and CO-RAU connectivity via SMF.  
+# Visual Analysis for O_ISAC_019
 
-Image _page_2_Figure_0.jpeg: - Type: Diagram - Description: System-level ISAC architecture showing CO and RAU components, frequency allocation (71–86 GHz), and photonic transport. CO includes PM (13–18 GHz), IM (68–86 GHz), and multiplexing for uplink/downlink. RAU splits frequencies into up/down-conversion chains for mobile terminal interfacing. - KEY DATA: Mobile communication uses 71–76 GHz (CO) and 81–86 GHz (RAU); automobile radar uses 76–81 GHz (RAU). CO-RAU links via PM (downlink 18 GHz, uplink 3–8 GHz).  
+## Figure 1: Full-Duplex Microwave Photonics ISAC Architecture
+**File:** [_page_1_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_1_Figure_0.jpeg)
+- **Type:** System Schematic.
+- **Central Office (CO):** Multi-wavelength source (LD1-LDn) -> WDM multiplexer -> Phase Modulator (PM) for downlink -> Demux -> Real-time Delay Module (Beamforming) -> Fiber.
+- **Remote Antenna Unit (RAU):** Recovers downlink via Band-Stop Filter and PD; reuses optical carrier for uplink via Intensity Modulator (MZM).
+- **Communication Flow:** Simultaneous bidirectional fiber transport using different modulation formats (PM for DL, IM for UL/Echo) over the same carrier.
 
-Image _page_2_Figure_6.jpeg: - Type: Chart - Description: Spectrograms showing power spectra of radar waveforms. Subplots (a-d) display measured spectra at differing frequencies and conditions. - KEY DATA: Peaks at 15.5 GHz and 15.5 GHz + offsets (e.g., -18.9 GHz, +24.9 GHz, +31 GHz, -38.9 GHz, +11 GHz). Insets show velocity mapping (3000–5000 m) and range/RCS comparisons (e.g., 4–66.7 dB improvement for QPSK-LFM vs. LFM).  
+## Figure 2: Frequency Resource Allocation
+**File:** [_page_2_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_2_Figure_0.jpeg)
+- **Type:** Spectrum Allocation Diagram.
+- **Millimeter-Wave Bands (mmW):** 71-76 GHz (Uplink), 76-81 GHz (Automobile Radar), 81-86 GHz (Downlink).
+- **Intermediate Frequency (IF) Mapping:**
+  - **Downlink (DL):** 13-18 GHz (IF) $\xrightarrow{\text{LO=68GHz}}$ 81-86 GHz (mmW).
+  - **Uplink (UL):** 71-76 GHz (mmW) $\xrightarrow{\text{LO=68GHz}}$ 3-8 GHz (IF).
+  - **Radar Echo:** 81-86 GHz (mmW) $\xrightarrow{\text{LO=68GHz}}$ 13-18 GHz (IF).
+- **Isolation:** USes a Duplexer at CO to separate the Uplink IF (3-8 GHz) and Radar Echo IF (13-18 GHz).
 
-Image _page_3_Figure_0.jpeg: - Type: Diagram - Description: Radar waveform setup with 64.5 ps burst and 15.5 GHz frequency modulation. Includes waveform source, transmitter/receiver, and processing modules. - KEY DATA: Waveform duration (64.5 ps), carrier frequency (15.5 GHz), and bandwidth approximations (e.g., -56 GHz to -24.9 GHz in subplot b).  
+## Figure 3: Optical Modulation Spectra (Simulation)
+**File:** [_page_2_Figure_6.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_2_Figure_6.jpeg)
+- **(a) Downlink (PM):** Displays phase-modulated sidebands for 4 channels; center frequency $f_1$ has prominent sidebands at $\pm 15.5$ GHz.
+- **(b) Uplink (IM):** Shows reused carrier with intensity-modulated sidebands at $\pm 5.5$ GHz (Communication) and $\pm 15.5$ GHz (Radar Echo).
 
-Image _page_3_Figure_17.jpeg: - Type: Chart/Map - Description: Radar cross-section (RCS) comparison between linear frequency modulation (LFM) and quadrature phase-shift keying (QPSK-LFM). Spatial distribution plots show scatterer localization. - KEY DATA: LFM (red) vs. QPSK-LFM (blue) RCS curves in 2–4 GHz. Spatial maps (c,d) show point clusters at 2300–4450 m range, illustrating improved measurement precision with QPSK-LFM.
+## Figure 4: Time-Domain and RF Spectral Analysis
+**File:** [_page_3_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_3_Figure_0.jpeg)
+- **(a) Waveform:** Sinusoidal DL IF at 15.5 GHz. Period $T = 64.5$ ps.
+- **(b) Downlink RF Spectrum:** Fundamental at 15.5 GHz; 2nd harmonic at 31 GHz suppressed by **24.9 dB**.
+- **(c) Combined Uplink RF:** Marker at 11 GHz and target peak at 15.5 GHz; sideband suppression of **38.9 dB**.
+- **(d) Received Uplink:** Demodulated peak at **5.5 GHz** center frequency.
 
+## Figure 5: Swept Bandwidth and Linearity Results
+**File:** [_page_3_Figure_5.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_3_Figure_5.jpeg)
+- **(a) Downlink Sweep:** Fundamental flat across 13-18 GHz; 2nd harmonics suppressed by **31.1 dB**.
+- **(b) Uplink Sweep:** Passband 3-8 GHz; out-of-band suppression = **57.4 dB**.
+- **(c) Echo Sweep:** 13-18 GHz passband; duplexer isolation = **36.8 dB**.
+- **(d) IM3 Test:** Two-tone test at 13/15 GHz; IM3 components suppressed by **23.4 dB** relative to fundaments.
 
-=== NEW BATCH ANALYSIS ===
-
-Image **_page_3_Figure_5.jpeg**:  
-- **Type**: Chart  
-- **Description**: A spectral analysis plot showing power (dBm) versus frequency (GHz) with four subplots (a–d). Subplots (a–d) display distinct frequency markers (e.g., 13 GHz, 31.4 dB, 57.4 dB) and trends in power across frequency ranges.  
-- **KEY DATA**:  
-  - Subplot (a): Peaks at ~14 GHz with multiple IF lines (e.g., -6GHz, -13GHz).  
-  - Subplot (b): Strong resonance at 1-GHz intervals (e.g., 31.4 dB, 57.4 dB).  
-  - Subplots (c) and (d): Dominant peaks at specific frequencies (36.8 dB and 13 GHz, respectively).  
-
-Image **_page_3_Picture_13.jpeg**:  
-- **Type**: Diagram/Setup  
-- **Description**: A technical deployment schematic and lab setup. Labels include "LD" (laser diode), "CO" (controller?), "RAU" (radio antenna unit), and "MS" (modulating system). A robot with transmitting and receiving antennas is shown in the rightmost image.  
-- **KEY DATA**:  
-  - Hardware components: Transmitting and receiving antennas, control systems (e.g., CO, MS).  
-  - Deep-space network configuration: Mobile setup displayed (rightmost image).
+## Figure 6 & 7: Experimental Verification and ISAC Metrics
+**Files:** [_page_3_Picture_13.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_3_Picture_13.jpeg), [_page_3_Figure_17.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_019/O_ISAC_019/_page_3_Figure_17.jpeg)
+- **Setup:** Chassis views of CO, RAU, and MS. Antennas shown for 12.8-13.1 GHz (DL/Radar) and 2.8-3.1 GHz (UL) microwave-band demonstration.
+- **(a) Spectrum:** 600 Mbit/s QPSK-LFM ISAC waveform.
+- **(b) 2D Map:** Mobile Station detected at **1.8975 m** with a speed of **0.1258 m/s**.
+- **(c, d) Constellations:** 
+  - Downlink QPSK: **9.43% EVM**.
+  - Uplink QPSK: **20.72% EVM** (higher noise due to UHF band interference).
+- **Resolution:** Radar achieved **1.5 cm** distance resolution.

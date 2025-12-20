@@ -1,30 +1,35 @@
-Batch 1:
-Image _page_1_Figure_4.jpeg:
-Type: Diagram
-Description: Schematic of the symmetric carrier-assisted differential detection (S-CADD) receiver plus its transfer function magnitude vs frequency for τ=12.5 ps.
-KEY DATA: Architecture includes 90° hybrid, optical delay line, and two balanced PDs; |H(f)| shows periodic nulls from 1−e^{j2πf·2τ}, causing inherent SNR imbalance that motivates SSBI mitigation and pairwise coding.
+# Visual Analysis for O_ISAC_028
 
-Image _page_1_Figure_15.jpeg:
-Type: Diagram
-Description: Pairwise coding (PWC) and decoding block diagrams showing symbol pairing, phase rotation, I/Q interleaving, and SNR-aware reconstruction.
-KEY DATA: Transmitter rotates symbols by 45°, interlaces I/Q to map one stream onto "good" subcarriers and the other onto "bad" ones; receiver rescales by measured SNRs then performs ML detection to neutralize color-SNR effects in S-CADD.
+## Figure 1: Symmetric-CADD Receiver and Spectral Response
+**File:** [_page_1_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_1_Figure_4.jpeg)
+- **Architecture (a):** Single-photodiode-per-arm setup using a 90° Optical Hybrid, an Optical Delay Line (ODL), and two Balanced Photo-Detectors (BPDs).
+- **Transfer Function (b):** Plot of $|H(f)|$ for a delay $\tau = 12.5$ ps. 
+  - Periodic nulls occur at 0 and $\pm 40$ GHz.
+  - **Red Notation:** "SSBI enhanced" region highlight (near $\pm 8$ GHz) where the intrinsic transfer function amplifies signal-signal beat interference, leading to "color SNR" effects.
 
-Image _page_2_Figure_12.jpeg:
-Type: Setup
-Description: Simulation setup for 64-Gbaud 16QAM OFDM over 80 km SSMF including Tx/Rx DSP chains and optical spectrum inset.
-KEY DATA: 4096-FFT with 2184 subcarriers, 120 GSa/s sampling, two 32-GHz subbands separated by 8 GHz gap, EDFA-boosted 6 dBm launch, VOA-controlled CSPR, and S-CADD DSP comprising resampling, SSBI cancellation, and PWC decoding.
+## Figure 2: Pairwise Coding (PWC) Logic
+**File:** [_page_1_Figure_15.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_1_Figure_15.jpeg)
+- **(a) Encoding:** 16-QAM symbols ($a_n, b_n$) undergo 45° angle rotation, followed by I/Q interleaving. This maps the information across "Good" and "Bad" subcarriers to spread the noise penalty.
+- **(b) Decoding:** Rescaling by measured SNR, de-interleaving, and Maximum Likelihood Detection (MLD).
 
-Image _page_3_Figure_0.jpeg:
-Type: Chart
-Description: BER versus iteration number for traditional vs PWC schemes at OSNR=32 dB, CSPR=5 dB with associated constellation snapshots.
-KEY DATA: Both converge by six SSBI-cancellation iterations, but PWC achieves lower BER and tighter constellation clusters (except six edge symbols showing ellipses that are corrected via adaptive decision regions).
+## Figure 3: System Simulation Testbed
+**File:** [_page_2_Figure_12.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_2_Figure_12.jpeg)
+- **Link Details:** 80 km SSMF.
+- **Spectrum (Inset):** 16-QAM DSB signal with 256 Gb/s raw rate. Shows upper and lower sidebands with a carrier in the center.
+- **DSP Flow:** Pairwise coding happens before IFFT; SSBI cancellation happens after FFT in the receiver.
 
-Image _page_3_Figure_7.jpeg:
-Type: Chart
-Description: BER versus CSPR for traditional and PWC receivers at OSNR = 28, 30, 32 dB.
-KEY DATA: Optimal CSPR ≈5 dB for both; at that point, PWC yields the largest BER improvement, reflecting its enhanced tolerance to SSBI and enabling lower required carrier power.
+## Figure 4: Convergence and Constellations
+**File:** [_page_3_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_3_Figure_0.jpeg)
+- **BER vs Iteration:**
+  - **Traditional:** levels off at $\approx 2 \times 10^{-3}$ after 6 iterations.
+  - **PWC Scheme:** reaches a lower floor of $\approx 4 \times 10^{-4}$ after 6 iterations.
+- **Constellations:** 
+  - (v) Traditional constellation is noisy.
+  - (vi) PWC constellation is tighter but shows vertical/horizontal elongation for edge points, which the adaptive MLD decision boundaries handle.
 
-Image _page_3_Figure_9.jpeg:
-Type: Chart
-Description: BER versus OSNR at fixed CSPR=5 dB comparing traditional and PWC cases.
-KEY DATA: At the 7% HD-FEC limit, PWC delivers ~1.5 dB OSNR gain over the baseline, reducing receiver sensitivity requirements for the 256 Gb/s 64-Gbaud link.
+## Figure 5 & 6: Sensitivity Gains
+**File:** [_page_3_Figure_7.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_3_Figure_7.jpeg) & [_page_3_Figure_9.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_028/O_ISAC_028/_page_3_Figure_9.jpeg)
+- **Optimal Point:** CSPR = **5 dB** for all OSNR cases (28, 30, 32 dB).
+- **OSNR Gain:** 
+  - At the **7% HD-FEC** limit, PWC provides a **1.5 dB OSNR gain** over the traditional scheme.
+  - This gain allows for lower receiver sensitivity requirements in 256 Gb/s short-reach links.

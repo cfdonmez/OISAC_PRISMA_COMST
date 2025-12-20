@@ -1,0 +1,37 @@
+# O_ISAC_153 Visual Analysis
+
+## 1. System and Methodology
+- **Instrumentation (Fig. 4)**: Continuous wave THz frequency-domain spectroscopy (THz-FDS) system using photonmixing.
+    - **Components**: Two DFB lasers (1533/1538 nm), fiber coupler, photomixers (emitter/detector), off-axis parabolic mirrors.
+    - **Resolution**: 0.05 GHz. Range: 0.05 to 1.41 THz.
+- **Signal Processing (Fig. 5 & Fig. 9)**: Oscillating photocurrent data acquisition -> Envelope extraction -> Smoothing -> Transmission ratio calculation.
+- **Fabrication (Fig. 3)**: Photolithography on quartz substrate.
+    - Layer stack: 200 nm Au / 30 nm Cr on 500 µm quartz.
+    - Pattern: Split-ring resonator (SRR) array (22,500 units on 10.5x10.5 mm area).
+
+## 2. Metasurface Design (Table I & Fig. 2)
+- **Unit Cell**: Square SRR (Period = 70 µm).
+- **Parameters**:
+    - **SRR-1**: L=42 µm, G=3 µm, W=4 µm -> 0.67 THz resonance.
+    - **SRR-2**: L=37 µm, G=3 µm, W=4 µm -> 0.77 THz resonance.
+    - **SRR-3**: L=34 µm, G=5 µm, W=4 µm -> 0.88 THz resonance.
+    - **SRR-4**: L=31 µm, G=4 µm, W=4 µm -> 0.96 THz resonance.
+    - **SRR-5**: L=29 µm, G=4 µm, W=4 µm -> 1.04 THz resonance.
+
+## 3. Experimental Performance
+- **Dynamic Range (Fig. 6)**: FDS exhibits ~60 dB DR at low frequencies, significantly higher than TDS (~45 dB). FDS maintains higher signal level across 0.3-1.4 THz.
+- **Robustness (Fig. 7)**: Transmission spectra in ambient air (with water vapor) match nitrogen-purged results. 
+    - **Linear Fit**: R² = 0.9997 (Nitrogen vs Air), R² = 0.9956 (Simulation vs Measured).
+    - **Frequency Accuracy**: Deviation < 0.02 THz from simulation.
+- **Q-Factors (Table II)**:
+    - Simulation: 19.76 - 26.69.
+    - Measurement (Air): 5.70 - 8.16.
+    - Measurement (Nitrogen): 5.20 - 8.54.
+- **Polarization Sensitivity (Fig. 8)**: 
+    - **TM mode**: Resonance dips clearly visible (H-orientation).
+    - **TE mode**: No resonance observed (V-orientation), confirming polarization sensitivity.
+
+## 4. Key Takeaways
+- The paper demonstrates a robust, high-resolution (~0.05 GHz) characterization method for THz metasurfaces using FDS.
+- Successfully eliminates water vapor interference without nitrogen purging.
+- Integrated sample rotating frame enables polarization characterization with 20 arcmin resolution.

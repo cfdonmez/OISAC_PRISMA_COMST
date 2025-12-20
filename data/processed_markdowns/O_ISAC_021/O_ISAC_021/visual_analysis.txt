@@ -1,24 +1,41 @@
-**Image _page_1_Figure_0.jpeg:**  
-- **Type**: Diagram  
-- **Description**: Depicts a conceptual framework for integrated optical communication and sensing systems. Key components include "Data/Control Flow," "Sensing System," "Sensing Signal Generation," and "Laser Receiver." Atmospheric interference elements (rain, snow, fog) are also illustrated.  
-- **KEY DATA**: Shows bidirectional control flow (dotted lines) and unidirectional data flow (solid lines). Describes interactions between modulation, encoding, and parameter estimation processes.  
+# Visual Analysis for O_ISAC_021
 
-**Image _page_1_Figure_2.jpeg**:  
-- **Type**: Diagram  
-- **Description**: Illustrates hybrid optical-RF (ORF) communication and sensing enhancements. Labels include "Optical Communication," "Optical Sensing," "Laser Radar," and directional arrows for signal paths. Waveform Centering is suggested via bidirectional signal control.  
-- **KEY DATA**: Highlights terms like "LoS Channel," "Beam Steering," and "BB Shift," emphasizing the integration of optical sensing with communication. Arrows indicate signal processing steps (e.g., beam steering to reduce interference).  
+## Figure 1: Generalized O-ISAC System Structure
+**File:** [_page_1_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_021/O_ISAC_021/_page_1_Figure_0.jpeg)
+- **Type:** Functional Block Diagram.
+- **Architecture:** 
+  - **Shared Hub:** Cooperation block manages both Comm (Modulation/Encoding) and Sensing (Target Sensing) branches.
+  - **Transmitter Side:** Sensing Signal is integrated with Comm Signal -> DC Bias addition -> D/A -> Laser Driver -> LD.
+  - **Receiver Side:** Photon Detector -> A/D -> Pre-processing -> Parameter Estimation (leads to Target Sensing) & Synchronization (leads to Demodulation/Decoding).
+- **Channel Model:** Atmospheric Channel box accounts for Rain/Snow/Fog, Turbulence, and Ambient Light (Sun/Traffic Light).
+- **Key Flow:** Control flow (dashed) vs Data flow (solid).
 
-**Image _page_3_Figure_0.jpeg:**  
-- **Type**: Chart  
-- **Description**: Displays optical pulse shapes (original, DC bias, LFM) and their transformations (PPM, LFM-CPM). Intensity vs. time graphs show pulse characteristics.  
-- **KEY DATA**: Original pulse duration (≈5 ns), LFM pulse chirp rate (≈2.5/μs), and 2-bit PPM steps. ToF uncertainty (≈100 μs) is annotated.  
+## Figure 2: Advantages of O-ISAC
+**File:** [_page_1_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_021/O_ISAC_021/_page_1_Figure_2.jpeg)
+- **Type:** Conceptual Illustration.
+- **(1) Rate Increase:** Achieved via WDM (multiplexing wavelengths) and MDM (OAM helical modes). Depicted as rainbow-colored beams and ring-structured phases.
+- **(2) Sensing Precision:** High distance resolution (bandwidth-dependent) and high angle resolution (narrow divergence).
+- **(3) Interference Reduction:** Exploits strict LoS requirements and active Beam Steering to isolate multi-user links in dense urban scenarios (ITS).
 
-**Image _page_4_Figure_1.jpeg**:  
-- **Type**: Chart  
-- **Description**: Line plots of Bit Error Rate (BER) vs. SNR (dB) and Root Mean Square Error (RMSE) vs. SNR (dB) for 4-QAM and 16-QAM schemes with varying bandwidth (b = 1σ, 2σ, 3σ).  
-- **KEY DATA**: BER drops from ~10^-1 to 10^-4 across 20 dB SNR. RMSE decreases from ~80 m to ~1 m as SNR increases. 16-QAM with b=3σ performs best in both metrics.  
+## Figure 3: Waveform Design Principles
+**File:** [_page_3_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_021/O_ISAC_021/_page_3_Figure_0.jpeg)
+- **(a) Pulsed:** Shows Symbol Duration window. PPM Pulse encodes data via position; Received Pulse is shifted by ToF + Pulse Position.
+- **(b) Constant-Modulus:** LFM (chirp) vs LFM-CPM. Cross-correlation output reveals the sensing peak above the noise floor.
+- **(c) Multi-carrier:** Frequency domain plot of Real/Imag parts. Element-wise-division (sensing side) recovers the channel response by removing known comm symbols.
 
-**Image _page_5_Figure_0.jpeg**:  
-- **Type**: Diagram  
-- **Description**: Outlines a neural network-driven framework for ORF systems. Integrates "System Parameters," "Requirements," and modules like "Waveform Design," "Resource Allocation," and "Applications."  
-- **KEY DATA**: Neural network maps to waveform selection, power allocation, and target recognition. Applications include semantic communication and behavior prediction. Structured as a decision flowchart from parameters to real-world ORF scenarios.
+## Figure 4: Numerical Performance Metrics
+**File:** [_page_4_Figure_1.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_021/O_ISAC_021/_page_4_Figure_1.jpeg)
+- **Type:** Line Graphs (Monte-Carlo Simulation).
+- **(a) BER vs SNR:** 
+  - **Clipping Effect:** For $b=1\sigma$ (low DC bias), non-negative clipping causes an error floor at $10^{-1}$ (4QAM) and $10^{0}$ (16QAM).
+  - **Optimal Bias:** $b=2\sigma$ or $3\sigma$ allows BER to reach $10^{-5}$ at ~11 dB (4QAM) and ~20 dB (16QAM).
+- **(b) RMSE vs SNR:** 
+  - **Threshold Effect:** Sharp transition to precision region. 
+  - **Robustness:** Sensing is more resilient to low DC bias than communication.
+  - **Precision:** Converges to an RMSE of ~0.05m (5 cm) for a 1 GHz bandwidth signal over a 200m FSO link (normalized latency estimation).
+
+## Figure 5: Future Trends and Deep Learning
+**File:** [_page_5_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_021/O_ISAC_021/_page_5_Figure_0.jpeg)
+- **Type:** Flowchart/AI Architecture.
+- **Neural Network:** Maps System Parameters (inputs) to 4 output categories: Waveform Design, Resource Allocation, Hybrid Optical-RF, and Applications (Target Recognition/Semantic Comm).
+- **OPA Schematic:** Inset shows an Optical Phased Array with waveguide heaters/phase shifters for solid-state beam steering.

@@ -1,0 +1,28 @@
+# O_ISAC_144 Visual Analysis
+
+## 1. Digital Twin Framework
+- **Fig. 1 (_page_1_Figure_0.jpeg)**: WSDT (Wind-Signal Driven Digital Twin) architecture.
+    - **Physical Sensing**: 9-channel wind pressure sensor array + attitude sensors.
+    - **Edge Layer**: Signal conditioning and compressed sampling using Uniform Design.
+    - **Cloud Layer**: Least Squares Based channel gain estimation and load reconstruction.
+    - **Digital Twin**: High-fidelity FEM model for structural response (stress/strain) and health assessment.
+
+## 2. Heliostat Structure & Sensing
+- **Fig. 2 (_page_2_Picture_0.jpeg)**: 50m2 cantilevered dual-beam heliostat structure.
+- **Fig. 3 (_page_2_Figure_2.jpeg)**: 3x3 sensor array layout.
+    - Total dimensions: 8.5m x 6m.
+    - Sub-mirror size: 2.8m x 2m.
+
+## 3. Load Analysis & Critical Condition
+- **Fig. 4 (_page_3_Figure_9.jpeg)**: Peak wind load identification across 13 UD cases.
+    - Y-axis: Sum of wind pressure ($N/m^2$).
+    - Critical case identified at Case 2 ($\beta=15^\circ$, $\theta=65^\circ$).
+    - Peak value: Approx. 3500 $N/m^2$.
+
+## 4. Finite Element Inference (Stress)
+- **Fig. 5(a) (_page_4_Figure_8.jpeg)**: Stress map at 12 m/s. Max stress 155.9 MPa. Concentration at the main beam connection.
+- **Fig. 5(b) (_page_4_Figure_9.jpeg)**: Stress map at 25 m/s. Max stress 502.8 MPa. Exceeds yield limit (345 MPa).
+
+## 5. Finite Element Inference (Displacement)
+- **Fig. 6(a) (_page_5_Figure_0.jpeg)**: Displacement map at 12 m/s. Max 100 mm.
+- **Fig. 6(b) (_page_5_Figure_1.jpeg)**: Displacement map at 25 m/s. Max 248.3 mm. Significant torsional deformation visible.

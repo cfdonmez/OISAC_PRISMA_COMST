@@ -1,80 +1,51 @@
-Image _page_1_Figure_8.jpeg: - Type: Setup diagram and spectral analysis graphs  
-- Description: Partial schematic of a sensing system showing modulatedcomponents (MZMs, PM, PBS) with quadrature bias currents and optical transmission characteristics. Spectral profiles indicate resonance points and polarization states.  
-- KEY DATA: Amplifier sections (MZM1, MZM2, PM) labeled; quadrature currents (V₁₁(t), V₁₂(t), V₂(t)) shaded in blue; resonance range 1-10 m (Fig. 8b); spectral peaks (ε, ||E||, ||I||) at multiple wavelengths.  
+# Visual Analysis for O_ISAC_018
 
-Image _page_2_Figure_19.jpeg: - Type: Spectral analysis chart  
-- Description: Intensity-distance profiles for two optical states (solid blue, dashed red) with resonant dips. Microscope view inset shows Brillouin Scattering (BrS) peak matching the resonance distance (10 km).  
-- KEY DATA: Intensity drops to ~0.2 a.u. at 10 km (blue) and 1 km (red). Resonance dips separated by ~16 dB (red box). Peak alignment at 10 km (inset).  
+## Figure 1: IQ Modulator and CDM Structure
+**File:** [_page_1_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_1_Figure_8.jpeg)
+- **Type:** Schematic and Characteristic Curves.
+- **(a) IQ Modulator:** Dual-arm child MZMs with a phase modulator (PM).
+- **(b) Transmission Curves:** Plots transmission vs. normalized voltage ($V/V_\pi$). Identifies **Null points** ($V/V_\pi = 0.5, 1.5$) and **Quadrature points** (Green dots) for intentional bias setting.
+- **(c) Commercial CDM:** Shows internal polarization multiplexing with bias controls for XI, XQ, XP, YI, YQ, and YP.
 
-Image _page_2_Figure_21.jpeg: - Type: Extended system schematic  
-- Description: Block diagram of sensing transmitter (Tx DSP1, SSB-LFM, AWD) and receiver (IQM, PM-EDFA) paths with optical amplification (Bg, PM-EDFA), polarization control (CC), and time-domain signal processing (Frame Sync, CMA+RDE).  
-- KEY DATA: Separate Tx and Rx DSP units; polarization-maintaining fiber links (PM); Brillouin Scattering (BrS) detection; IQ Entropy Mixing (IQM) and Coherent Detection Modulation (CDM).  
+## Figure 2: Theoretical Spectrum
+**File:** [_page_2_Figure_19.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_2_Figure_19.jpeg)
+- **(a) Post-CDM:** Shows the LFM carrier ($S_{carr}$) at $f_0$ and the communication sideband ($S_{comm}$) shifted by $f_{IF}$.
+- **(b) Post-PD Beat:** Illustrates the resulting radio signal centered at $f_{IF}$ for mmW transmission.
 
-Image _page_3_Figure_2.jpeg: - Type: Hybrid detection system block diagram  
-- Description: Sensing chain integrating optical (SCarr, PM-EDFA, FGA) and electrical paths (Bias Tuning, Up/Down Conversion). Photodetector (PD) outputs processed through RX Sens. DSP with RC Filter and Segment Sync.  
-- KEY DATA: Octave-band filtering (OBPF); Spectrally Segmented Brillouin Scattering (SSB-BrS); Real-Time Oscillator (RTO) synchronization; Kraemer Analysis (KA) in DSP.  
+## Figure 3 & 4: System Architecture and Detailed Setup
+**Files:** [_page_2_Figure_21.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_2_Figure_21.jpeg), [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_3_Figure_2.jpeg)
+- **Setup:** A single narrow-linewidth laser source is split for both Sensing (ICR LO) and Transmission.
+- **Pathways:** 1.6 GBaud 16QAM signal (AWG) is modulated onto a 50 MHz LFM carrier (AWG). 
+- **Fiber Link:** 10 km FUT ends with a 10 m PZT vibration source.
+- **Sensing:** RBS signal is captured by a polarization-diverse coherent receiver (ICR + RTO2).
+- **Communication:** Optical signal detected by PD, amplified by LNA, and transmitted over 1 m wireless mmW (28 GHz) channel to a Telecom Receiver.
 
-Image _page_4_Figure_2.jpeg: - Type: Expanded system architecture diagram  
-- Description: Comprehensive layout of dual-path sensing-to-communications system. Includes laser (OC), modulation (CDM) with polarization (PZT, PPK), and integrated sensing+communication (PDs, LNAs, antennas). Features telescopic DC (AEFA) and RTO1 for phase locking.  
-- KEY DATA: Simultaneous sensing (Rx Sens. DSP) and communication (Comm. DSP) streams; Beat Frequency Oscillation (BFO); Nonlinear Photoacoustic Detection (NPAD) technique; Polarization Diversity (PFDR).  
+## Figure 5 & 6: Distributed Sensing Performance
+**Files:** [_page_4_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_4_Figure_2.jpeg), [_page_4_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_4_Figure_4.jpeg)
+- **Intensity Traces:** Shows significant SNR improvement after **Rotate-Vector Summed (RVS)** algorithm, clearly revealing the PZT location at the fiber end.
+- **Phase Data:**
+  - **Waterfall:** Localizes temporal vibration at **10.08 km**.
+  - **Spatial Resolution:** Phase variance spike confirms **10 m** resolution.
+  - **PSD:** Dominant peak at **400 Hz** (matching PZT drive). 
+  - **Metrics:** Noise floor at **-27 dB rad$^2$/Hz**, achieving a strain sensitivity of **28 p$\epsilon/\sqrt{\text{Hz}}$**.
 
-Context: Each image presents progressive stages of a photonic sensing/communications system. Early figures focus on component-level modulation physics (MZM operation, polarization), while later diagrams transition to subsystem architectures (Tx/Rx DSPs) and system dynamics (Brillouin resonance). UNIFIED FUNCTION ACROSS IMAGES: All components target Brillouin scattering detection using distributed fiber Bragg gratings with optical parametric amplification and quadrature filtering.
+## Figure 7 & 8: Sensing Robustness and Calibration
+**Files:** [_page_4_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_4_Figure_8.jpeg), [_page_5_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_5_Figure_2.jpeg)
+- **Linearity:** Calibrated peak-to-peak phase variation vs. PZT voltage ($100-800$ mV) shows high linearity ($R^2 \approx 1$).
+- **Multi-frequency:** Successfully detects 50 Hz, 400 Hz, and 1000 Hz vibrations with consistent SNR.
+- **Independence:** Data shows sensing sensitivity is largely independent of launch power and CSPR, confirming effective suppression of high-frequency communication crosstalk.
 
+## Figure 9 & 10: Communication and Nonlinearity Mitigation
+**Files:** [_page_5_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_5_Figure_4.jpeg), [_page_5_Figure_8.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_5_Figure_8.jpeg)
+- **Carrier Comparison:** LFM carrier outperforms CW carrier at low CSPR (high power) by suppressing Stimulated Brillouin Scattering (SBS).
+- **Distortion:** BER degrades at low CSPR due to CDM modulator nonlinearity (small-signal approximation $\sin(x) \approx x$ fails).
+- **Optimization:** 
+  - Adjusting voltage ratio **$\alpha = 3.2$** (optimal) minimizes BER.
+  - **Probabilistic Constellation Shaping (PCS)** (with $\lambda=0.05$) and pre-compensation improve BER well below the 7% FEC threshold.
 
-=== NEW BATCH ANALYSIS ===
-
-Image `_page_4_Figure_4.jpeg`:  
-- Type: Chart  
-- Description: A scatter plot comparing bit error rate (BER) performance of systems with and without LFM (Liquid Filter Modulation) across varying CSontoPictureRatios (CSPRs) at 7% forward error correction (FEC).  
-- KEY DATA: At CSPRs = 10–16 dB, BER (10⁻² to 10⁻⁶) decreases for both "w LFM" and "w/o LFM". "w LFM" consistently outperforms "w/o LFM" (e.g., at CSPR = 10 dB, BER of 10⁻⁴ vs. 10⁻² without LFM). A red dashed line at 7% FEC marks a threshold.  
-
-Image `_page_4_Figure_8.jpeg`:  
-- Type: Chart  
-- Description: Scatter plots of signal optimality vs. sensitivity (error rates) at different CSontoPictureRatios (16 dB and 10 dB), with color-coded clusters representing modulation or noise conditions.  
-- KEY DATA: Higher CSotoPictureRatios (16 dB) show smaller error rates (e.g., <10⁻³) compared to 10 dB (~10⁻²). Color gradients indicate varying SNR or noise levels affecting performance.  
-
-Image `_page_5_Figure_2.jpeg`:  
-- Type: Chart  
-- Description: Phase vs. time (0–0.04 s) for two systems. The orange line shows stable oscillations (50 Hz), while the blue line has higher-frequency fluctuations (1000 Hz).  
-- KEY DATA: Phase stabilizes after ~0.02 s for the orange line. The blue line exhibits steeper oscillations (1000 Hz), suggesting faster phase resolution or sensitivity.  
-
-Image `_page_5_Figure_4.jpeg`:  
-- Type: Chart  
-- Description: PSD (power spectral density) curves for 20 µT and 40–1000 Hz systems. The 1000 Hz curve displays sharper dips (e.g., -30 dB/Hz at 500 Hz).  
-- KEY DATA: Higher-frequency systems (1000 Hz) have deeper spectral nulls (e.g., -40 dB/Hz at 500 Hz) vs. weaker features in 20 µT (~-20 dB/Hz). A minimum SNR threshold wireframe (10⁻⁶) is shown.  
-
-Image `_page_5_Figure_8.jpeg`:  
-- Type: Chart  
-- Description: Time-series phase plots for "16QAM" (orange) and "16QAM-PCS" (blue) signals. The orange line has tightly packed oscillations (~1 kHz frequency), while the blue line shows smoother transitions.  
-- KEY DATA: The orange line’s phase variance is 6–8 × higher than the blue line at peak oscillations (0.02 s), indicating improved phase stability with PCS (Pulse Compression Signal) modulation.
-
-
-=== NEW BATCH ANALYSIS ===
-
-**Image: _page_6_Figure_2.jpeg**  
-- **Type**: Chart (Line Graphs)  
-- **Description**: Two graphs comparing Bit Error Rate (BER) versus Composite Signal-to-Noise-plus-Interference-plus-Distortion Ratio (CSPR) for telecommunications systems.  
-- **KEY DATA**:  
-  - **Graph (a)**:  
-    - **fiber + wireless**: BER ≈ 1–3 × 10⁻² across 10–16 dB CSPR.  
-    - **10 km fiber**: BER decreases from ~1 × 10⁻⁴ at 10 dB to ~2 × 10⁻⁷ at 16 dB.  
-    - **B2B**: BER drops below 10⁻⁵ at 14+ dB CSPR, outperforming other systems at high CSPR.  
-  - **Graph (b)**:  
-    - **15% SD-FEC**: BER maintained between 5 × 10⁻³ and 5 × 10⁻⁴ for 28 GHz OUC and 1 × 10⁻⁴ to 10⁻⁵ for 3 GHz OUC.  
-    - Lower-frequency 3 GHz OUC achieves better BER than 28 GHz OUC.  
-
-**Image: _page_6_Figure_4.jpeg**  
-- **Type**: Setup/Diagram  
-- **Description**: Experimental configuration for wireless signal testing and bubble chart visualization of signal propagation.  
-- **KEY DATA**:  
-  - **Hardware Setup**:  
-    - Includes a radar/ultrasonic sensor (‘PA’ in dotted box) and RF equipment (oscilloscopes, signal analyzers).  
-    - ‘PA’ likely represents a power amplifier or pulsing system measuring signal interactions.  
-  - **Bubble Charts (Before/After Channel)**:  
-    - ‘Before Wireless Channel’ shows scatter patterns with central bright zones (likely constructive interference).  
-    - ‘After Wireless Channel’ shows distorted, asymmetrical patterns, indicating signal attenuation, dispersion, or interference post-transmission.  
-
-**Context**:  
-- Figure 2 quantitatively compares BER performance of fiber/wireless systems under different configurations (e.g., 10 km fiber, B2B, SD-FEC error correction).  
-- Figure 4 illustrates the experimental setup (PA system, RF hardware) and visualizes wireless channel effects on signal propagation, complementing the numerical trends in Figure 2.  
-- Both images address signal degradation and mitigation strategies, with Figure 2 focusing on metrics and Figure 4 on hardware implementation.
+## Figure 11 & 12: End-to-End System Validation (Fiber + Wireless)
+**Files:** [_page_6_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_6_Figure_2.jpeg), [_page_6_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_018/O_ISAC_018/_page_6_Figure_4.jpeg)
+- **Setup:** Photo shows the hardware rack and 28 GHz Phased Array (PA) antennas separated by 1 m.
+- **Constellations:** 16-QAM constellations before and after the wireless channel; SNR degrades but remains decodable.
+- **BER Comparison:** 10 km fiber transmission has minimal penalty over B2B; wireless channel introduces a manageable BER penalty, remaining below $10^{-2}$ across the tested CSPR range.
+- **Optical Up-conversion (OUC):** 3 GHz OUC is superior to 28 GHz OUC due to lower quantization noise and system attenuation.

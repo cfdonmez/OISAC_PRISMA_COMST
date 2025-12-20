@@ -1,0 +1,35 @@
+# O_ISAC_152 Visual Analysis
+
+## 1. System Architecture
+- **Fig. 1 (_page_1_Figure_2.jpeg)**: Schematic of the photonics-assisted joint radar ranging, wireless communications, and spectrum sensing (JRCSS) system.
+    - **Core Component**: Polarization-multiplexed dual-parallel Mach-Zehnder modulator (PM-DPMZM).
+    - **Modulation**: CS-SSB modulation used for multi-function signal generation.
+    - **Functional Split**: X-polarization for radar/comms; Y-polarization for de-chirping/sensing.
+    - **Components**: CW-LD, AWG, PBS, WSS (Wavelength Selective Switch), PD1-3, ESA, OSC.
+
+## 2. Signal Characteristics
+- **Fig. 2 (_page_2_Figure_12.jpeg)**: Signal evolution at various stages.
+    - (a-c): Generation of Tri-LFM-ASK merged signal on X-pol.
+    - (d-e): De-chirping and Signal Under Test (SUT) processing on Y-pol.
+    - (f-g): Resulting de-chirped IF signals and sensing pulses.
+- **Fig. 5 (_page_3_Figure_11.jpeg)**: Electrical spectra.
+    - (a) Input IF ASK (2 GHz) and Tri-LFM (6.6-7.6 GHz).
+    - (b) Generated Tri-LFM-ASK centered at 9.1 GHz (8.6-9.6 GHz sweep).
+- **Fig. 10 (_page_5_Figure_5.jpeg & _page_5_Figure_6.jpeg)**: FTTM waveforms.
+    - (c) Pulse interval of 1.2604 µs used to identify SUT frequency (~7 GHz).
+
+## 3. Experimental Performance
+- **Fig. 7 (_page_4_Figure_5.jpeg & _page_4_Figure_6.jpeg)**: Wireless Communications.
+    - **Data Rate**: 1 Gbit/s over 1.8 m free space.
+    - **Visuals**: Successful recovery of original bits (0/1 sequences) and open eye diagrams.
+- **Fig. 8 & Fig. 9 (_page_4_Figure_11.jpeg & _page_4_Figure_13.jpeg)**: Radar Ranging.
+    - **Target**: 30cm x 30cm flat plate reflector.
+    - **Accuracy**: Measurement error within ±3.2 cm for distances (~50 cm to 100 cm).
+- **Fig. 11 (_page_5_Figure_8.jpeg)**: Spectrum Sensing.
+    - **SUT Range**: 6.7 to 7.2 GHz.
+    - **Accuracy**: Frequency measurement error within ±3.2 MHz.
+
+## 4. Benchmarking
+- **Table 1**: Comparison with previous photonics-assisted systems.
+    - Highlights: Unique integration of 3 functions (Ranging, Comms, Sensing) compared to dual-function systems in [15, 20-26].
+    - This work: ASK-LFM shared waveform; 1 Gbit/s rate; ±3.2 cm ranging error; ±3.2 MHz sensing error.

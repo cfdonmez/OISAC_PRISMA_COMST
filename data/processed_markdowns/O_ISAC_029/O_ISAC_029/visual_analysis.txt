@@ -1,51 +1,42 @@
-Batch 1:
-Image _page_2_Figure_2.jpeg:
-Type: Diagram
-Description: Concept illustration of the photonic-based D-band ISAC architecture plus the signal-generation/de-chirping flow.
-KEY DATA: Shows heterodyning of two free-running ECLs to create 134 GHz carriers, time-division multiplexing of 16-QAM and LFM waveforms, thin-film LiNbO3 MZM for direct THz echo reception/de-chirping, and bidirectional fiber transport linking CU/DU to AAUs.
+# Visual Analysis for O_ISAC_029
 
-Image _page_3_Figure_2.jpeg:
-Type: Setup
-Description: Experimental configuration detailing ECLs, IQM, EDFAs, circulators, fiber spans (BtB/10 km/20 km), antennas, mixers, and processing blocks.
-KEY DATA: Lists key components including 60 GSa/s AWG, 25 dBi horn antennas, 18 dB PAs, 12× multiplier LO at UE, TFLN-MZM biased at MITP for photonic de-chirping, and shared SMF paths for downlink ISAC signals and uplink echoes.
+## Figure 1: THz Fiber-Wireless Architecture
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_2_Figure_2.jpeg)
+- **Concept:** Centralized Unit (CU/DU) linked via 10-20 km fiber to Active Antenna Units (AAUs).
+- **Signal Flow:** 
+  - Downlink: ISAC signals (TDM of 16-QAM + LFM).
+  - Uplink: De-chirped sensing signal (low bandwidth tone) sent back from AAU to CU/DU.
+- **AAU Detail:** Uses an O/E PD for transmission and a "Full-Photonic De-chirping" block for echo reception.
 
-Image _page_5_Figure_2.jpeg:
-Type: Chart
-Description: TFTPR versus MZM bias plus FFT spectra for QBP, MITP, and MATP operating points.
-KEY DATA: MITP bias suppresses false targets best (highest TFTPR); QBP and MATP introduce spurious peaks in the FFT output, so maintaining MITP bias is critical for multi-target radar reliability.
+## Figure 2: Experimental Setup
+**File:** [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_3_Figure_2.jpeg)
+- **Source:** ECL-1 (Signal) and ECL-2 (LO) heterodyning.
+- **Radar Rx:** TFLN-MZM (Broadband, 110+ GHz capable) receives THz echo directly.
+- **Network Integration:** 20 km SMF loop for both downlink signal and uplink de-chirped tone.
+- **UE Side:** 12x Frequency multiplier for communication down-conversion to IF.
 
-Image _page_5_Figure_7.jpeg:
-Type: Chart
-Description: FFT spectra when using a single photodiode for O/E conversion, highlighting false-target artifacts.
-KEY DATA: Demonstrates that square-law detection produces frequency mixing among de-chirped tones; using a balanced PD avoids these artifacts for accurate multi-target detection.
+## Figure 3: MZM Operating Point Optimization
+**File:** [_page_5_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_5_Figure_2.jpeg)
+- **(a) TFTPR:** True-to-False Target Power Ratio. Peak at **MITP bias (~2.5V)** reaches ~75 dB.
+- **Spectra (b, c, d):** MITP (c) shows clean peaks for 305 and 457 MHz targets. QBP (b) and MATP (d) introduce a strong false target at 152.59 MHz.
 
-Image _page_6_Figure_10.jpeg:
-Type: Chart
-Description: Measured S11 and S21 parameters of the TFLN-MZM across D-band frequencies.
-KEY DATA: Return loss remains <−10 dB across band (good matching), and insertion loss stays relatively flat through 110 GHz, confirming sufficient bandwidth for 134 GHz echoes.
+## Figure 4: Sensing Performance Floors
+**File:** [_page_8_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_8_Figure_2.jpeg)
+- **(a) Center Frequency:** Optimal SNR (~24 dB) at **129-134 GHz**. Drops outside due to electronics and TFLN bandwidth limits.
+- **(b) Vpp:** SNR increases linearly with transmit voltage from 200 mV to 900 mV.
 
-Batch 2:
-Image _page_7_Figure_2.jpeg:
-Type: Chart
-Description: Optical spectra at key points—D (AAU), B (TFLN-MZM output), and C (CU/DU before BPD).
-KEY DATA: Spectra verify 134 GHz optical beating at point D, presence of multiple mixing terms at point B consistent with Eq.(9), and combined LO plus de-chirped tone near fc2 at point C enabling homodyne extraction.
+## Figure 5: Range Resolution vs. Fiber Length
+**File:** [_page_9_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_9_Figure_2.jpeg)
+- **(a) Theoretical:** 30 GHz LFM bandwidth $\rightarrow$ **6 mm** resolution. Measured value perfectly tracks theoretical from 5 GHz to 30 GHz.
+- **(b, c) Fiber Impact:** 20 km fiber only negligible resolution degradation (~0.1 mm) and ~4 dB SNR penalty compared to back-to-back.
 
-Image _page_8_Figure_2.jpeg:
-Type: Chart
-Description: (a) Sensing SNR versus THz center frequency; (b) Sensing SNR versus AWG Vpp.
-KEY DATA: Optimal sensing occurs at 129–134 GHz before TFLN bandwidth/electronics limit degrade SNR; increasing Vpp raises SNR by boosting transmit power until device limits are hit.
+## Figure 6: Ranging Accuracy and Error Calibration
+**File:** [_page_9_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_9_Figure_4.jpeg)
+- **Calibration:** Systematic error of **6.5 cm** removed.
+- **Result:** After calibration, the mean error is **< 3 mm** for targets at 0.26, 0.42, 0.51, and 0.77 m. Standard deviation is $\approx 4$ mm.
 
-Image _page_9_Figure_2.jpeg:
-Type: Chart
-Description: (a) Theoretical vs measured range resolution versus LFM bandwidth; (b) Range resolution versus fiber length; (c) SNR versus optical power at point A for different fiber spans.
-KEY DATA: 30 GHz bandwidth yields ~6 mm resolution close to theory, performance holds after 20 km SMF thanks to photonic de-chirping, and reduced optical launch power lowers sensing SNR across BtB/10 km/20 km cases.
-
-Image _page_9_Figure_4.jpeg:
-Type: Chart
-Description: Range profiles, raw measurements, calibrated errors, and statistics for targets at four distances.
-KEY DATA: After external calibration removing 6.5 cm systematic bias, mean ranging errors drop below 3 mm with small standard deviations, validating centimeter-level accuracy.
-
-Image _page_10_Figure_2.jpeg:
-Type: Chart
-Description: Communication BER trends versus center frequency, Vpp, baud rate, SMF length, and optical power.
-KEY DATA: Best BER occurs at 129–134 GHz and moderate Vpp before nonlinear penalties; 16-QAM supports up to 29 GBaud (net 108.4 Gb/s with 7% SD-FEC); BER remains <1E-2 after 10/20 km SMF and degrades only when received optical power is reduced.
+## Figure 7: Communication Capacity Results
+**File:** [_page_10_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_10_Figure_2.jpeg)
+- **(c) Baudrate:** 29 GBaud achievable below $10^{-2}$ BER for 16-QAM.
+- **Peak Data Rate:** **116 Gb/s** (gross), **108.4 Gb/s** (net after 7% SD-FEC).
+- **(e) ROP:** BER floor of $2 \times 10^{-3}$ at -8 dBm ROP.

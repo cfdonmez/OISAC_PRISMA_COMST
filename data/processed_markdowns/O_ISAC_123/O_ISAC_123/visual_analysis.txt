@@ -1,0 +1,117 @@
+Image: _page_0_Picture_8.jpeg
+Type: Experimental Hardware Setup
+---
+**Components:**
+* **Leader Robot (Kobuki):** Equipped with a high-resolution LCD screen facing backward to display SCC patterns.
+* **Follower Robot (Kobuki):** Equipped with a front-facing camera (e.g., Logitech C920) to capture the LCD patterns.
+* **LCD Screen (Pattern Source):** Displays a specific SCC structure consisting of corner QR-style markers, horizontal/vertical bar patterns, and a central color-coded data grid.
+* **Ground Surface:** Grid-marked floor for trajectory tracking ground truth verification.
+
+**Description:**
+Sub-figure (a) shows the overall multi-robot setup in a leader-follower configuration. Sub-figure (b) shows a close-up of the follower's sensing node (camera mounted on the Kobuki base) directed at the leader's display node.
+---
+
+Image: _page_1_Picture_2.jpeg
+Type: System Architectural Block Diagram
+---
+**Components & Signal Flow:**
+1. **Robot 1 ROS (Transmitter):**
+   * **Application Nodes:** Source of control/coordination information.
+   * **SCC Transmitter Module:**
+     * *Bits Encoding* -> *Modulation* -> *Clipping & Padding* -> *Detectors & Patterns* -> *Screen*.
+2. **Optical Channel:** Free-space wireless link between the LCD and camera.
+3. **Robot 2 ROS (Receiver):**
+   * **SCC Receiver Module:**
+     * *Camera* -> *Region Detection*.
+     * **Sensing Branch:** *Region Detection* -> *Pose Estimation* (Feedback loop to Communications).
+     * **Communications Branch:** *Region Detection* -> *Perspective Transformation* -> *Channel Equalization* -> *Demodulation & Decoding* -> *Error Correcting*.
+   * **Information (ROS topics):** Final decoded data output.
+---
+
+Image: _page_3_Picture_11.jpeg
+Type: Geometrical Model (Pose Estimation)
+---
+**Description:**
+Sub-figure (a) illustrates the top-down view in the World Frame (Xw, Yw). It shows robots Rf (Follower) and Rl (Leader) with their respective local frames (Xf, Yf) and (Xl, Yl). Key variables: r_l_f (relative distance vector), α (relative angle), d_max (sensor range).
+Sub-figure (b) shows the perspective projection model. Camera Frame (Oc, Xc, Yc, Zc) is related to the image plane where feature point Q is projected to Qt (m_q, n_q).
+---
+
+Image: _page_4_Picture_16.jpeg
+Type: Geometric Schematic (LCD Screen Patterns)
+---
+**Description:**
+Detailed view of the LCD screen layout used as the sensing target. It contains 4 primary markers (A, B, C, D) arranged in a rectangle.
+* **Geometric Constants:** Horizontal distance L1 between markers A-B and C-D; Vertical distance L2 between markers A-C and B-D.
+* **Projection Lines:** Illustrates the mapping from marker coordinates (xA_c, zA_c, etc.) in the camera frame to the robot center frames (Of, Ol) with distances df and dl.
+---
+
+Image: _page_6_Figure_0.jpeg
+Type: Chart (Trajectory Tracking)
+---
+**Axes Extraction:**
+* **X-axis:** x (m) | Range: **-1.5 to 2.5 m**.
+* **Y-axis:** y (m) | Range: **-0.5 to 2.5 m**.
+
+**Trends:**
+The "Leader" (Black line with x markers) follows a circular trajectory centered at approx (0.5, 0.8) with radius ~1.2m. The "Proposed Follower" (Blue line with x markers) accurately converges to and maintains the leader's circular path after an initial acquisition phase starting from approx (-0.5, 2.0).
+---
+
+Image: _page_6_Figure_1.jpeg
+Type: Error Plot (x_lf error)
+---
+**Axes Extraction:**
+* **X-axis:** Time (s) | Range: **0 to 70 s**.
+* **Y-axis:** x_lf error (m) | Range: **0 to 0.6 m**.
+
+**Numerical Extraction:**
+* **Initial Error (t=0):** approx 0.5m.
+* **Convergence Time:** Steady state reached at approx **t = 10s**.
+* **Steady State Error:** Consistently remains below the **0.02m (2cm)** threshold (red dashed line).
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Error Plot (y_lf error)
+---
+**Axes Extraction:**
+* **X-axis:** Time (s) | Range: **0 to 70 s**.
+* **Y-axis:** y_lf error (m) | Range: **-0.3 to 0.1 m**.
+
+**Numerical Extraction:**
+* **Initial Error (t=0):** -0.3m.
+* **Steady State:** Fluctuates slightly within a narrowband of **±0.02m** (bounds marked by red dashed lines).
+---
+
+Image: _page_6_Figure_3.jpeg
+Type: Error Plot (theta_lf error)
+---
+**Axes Extraction:**
+* **X-axis:** Time (s) | Range: **0 to 70 s**.
+* **Y-axis:** θ_lf error (rad) | Range: **-0.6 to 0.1 rad**.
+
+**Numerical Extraction:**
+* **Initial Error (t=0):** -0.52 rad.
+* **Steady State:** Converges within **±0.02 rad** of zero error.
+---
+
+Image: _page_6_Figure_5.jpeg
+Type: Performance Comparison (Braking Distance)
+---
+**Axes Extraction:**
+* **X-axis:** The leader's velocity vl (m/s) | Range: **0.1 to 0.6 m/s**.
+* **Y-axis:** Braking distance (m) | Range: **0 to 0.4 m**.
+
+**Data Points (Proposed Follower vs. EKF Follower):**
+* **At 0.1 m/s:** Proposed (0.0148m) vs EKF (0.0593m).
+* **At 0.3 m/s:** Proposed (0.0404m) vs EKF (0.1590m).
+* **At 0.6 m/s:** Proposed (0.0773m) vs EKF (0.3110m).
+**Conclusion:** The proposed SCC-based sensing reduces braking distance by approx **75%** compared to standard Extended Kalman Filter (EKF) methods across all tested velocities.
+---
+
+Image: _page_7_Figure_0.jpeg
+Type: Comprehensive Experimental Results (Tracking & Kinematics)
+---
+**Technical Breakdown:**
+* **Sub-figure (a):** Dynamic trajectory tracking showing convergence vs EKF.
+* **Sub-figures (b-d):** Convergence of x, y, and theta errors. The proposed method (Blue) shows significantly faster damping and lower overshoot at transient events (e.g., at t=6s and t=38s, corresponding to sudden turns in the leader's path).
+* **Sub-figures (e-f):** Velocity tracking. Linear velocity (e) and Angular velocity (f). The proposed follower's velocities (Blue dashed) tightly overlay the leader's ground truth (Orange), whereas the EKF follower (Pink) exhibits high-frequency noise and jitter.
+---
