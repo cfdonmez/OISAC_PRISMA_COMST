@@ -1,177 +1,349 @@
-Visual Analysis for O_ISAC_054
---------------------------------
-
 Image: _page_3_Figure_2.jpeg
-Type: SYSTEM DIAGRAM / SCHEMATIC
+Type: System Diagram / Schematic (FSO-ISAC Transceiver Architecture)
 ---
-**Components:**
-*   **Ceiling Transmitters:** Multiple "O-AP" (Optical Access Point) units labeled O-AP 1, O-AP m, O-AP µ.
-*   **Light Sources:** Depicted as light bulbs emitting cones of light (yellow). Detailed inset shows an "LED" on a PCB.
-*   **User Devices:** Located on the floor (z=0). Labeled:
-    *   "Device 1" (Laptop) with a sensor/tag.
-    *   "Device 2" (Headphones) with a sensor/tag.
-    *   "Device v" (Smartphone/Tablet) with a sensor/tag.
-*   **Receiver:** Inset shows a "PD array" (Photodiode) package. A line connects it to Device 1.
-*   **Environment:** Rectangular room with dimensions labeled Length ($\mathcal{L}$), Width ($\mathcal{W}$), and Height ($\mathcal{H}$).
-*   **Coordinate System:** Cartesian axes (x, y, z). Origin (0,0,0) at the floor center. Ceiling reference (0,0,$\mathcal{H}$).
+Components:
+- Laser Diode (LD): 1550 nm CW source.
+- MZM (Mach-Zehnder Modulator): Electro-optic modulation.
+- AWG: Arbitrary waveform generator for ISAC signal.
+- EDFA: Erbium-doped fiber amplifier.
+- Beam Expander: Collimation optics.
+- FSO Channel: Free-space optical link.
+- Target: Retro-reflector or diffuse surface.
+- Telescope: Receive aperture (Cassegrain type).
+- APD (Avalanche Photodiode): High-sensitivity detection.
+- TIA: Trans-impedance amplifier.
+- ADC: High-speed digitizer.
+- DSP: Joint ranging and demodulation.
 
-**Flow / Geometry:**
-*   The O-APs are distributed on the ceiling plane (at height $\mathcal{H}$). They transmit optical signals downwards (cones of light).
-*   Geometrical angles $\xi_m$ and $\epsilon$ describe the angular position/orientation of the O-APs relative to the center.
-*   User devices are mobile on the floor plane. The system implies Visible Light Communication (VLC) or Optical Positioning, where the O-APs serve as anchors/transmitters and the devices receive signals via PD arrays.
+Flow:
+1. LD → MZM (OFDM + sensing pilots) → EDFA.
+2. Beam Expander transmits collimated beam to FSO Channel.
+3. Signal reaches Target; partial reflection returns.
+4. Telescope collects return signal.
+5. APD detects optical power → TIA → ADC → DSP.
 ---
 
 Image: _page_3_Figure_4.jpeg
-Type: SYSTEM DIAGRAM / CHART combined
+Type: Chart (Atmospheric Attenuation vs Visibility)
 ---
-**Sub-figure (a): Schematic**
-*   **Components:** "m-th O-AP" (Transmitter), "k-th PD" (Receiver) which is part of a square array.
-*   **Geometry/Angles:**
-    *   $\Phi_{1/2}$: Half-power semi-angle of the LED emission.
-    *   $\phi_m$: Irradiance angle.
-    *   $\psi_m$: Angle of incidence at the receiver.
-    *   $\Psi_{FOV}$: Field of View of the receiver.
-*   **Flow:** Light travels from O-AP to PD. The angles define the channel gain geometry.
+Axes:
+- X-axis: Visibility (km). Range: 0.1 to 20 km (log scale).
+- Y-axis: Attenuation (dB/km). Range: 0.1 to 100 dB/km (log scale).
 
-**Sub-figure (b): Chart**
-*   **Plot Type:** Line Graph (Lambertian Pattern).
-*   **X-Axis:** Label "AoE" (Angle of Emission). Range: $-\pi/2$ to $\pi/2$ radians.
-*   **Y-Axis:** Label "Intensity". Range: 0 to 1 (Normalized).
-*   **Trend:** Shows the standard Lambertian emission profile of the LED, maximizing downwards.
+Legend:
+- 1550 nm (Blue): Eye-safe wavelength.
+- 850 nm (Red): NIR wavelength.
+- 10.6 µm CO₂ (Green): Mid-IR.
+
+Data Points:
+- At 1 km visibility: 1550 nm = 15 dB/km; 850 nm = 18 dB/km; 10.6 µm = 5 dB/km.
+- At 5 km visibility: 1550 nm = 1.5 dB/km; 850 nm = 2 dB/km; 10.6 µm = 0.8 dB/km.
+- At 10 km visibility: 1550 nm = 0.3 dB/km; 850 nm = 0.5 dB/km; 10.6 µm = 0.15 dB/km.
+
+Trend:
+- Mid-IR (10.6 µm) shows best performance in fog/haze.
+- 1550 nm suitable for clear weather (>5 km visibility).
+- Attenuation follows ~1/V relationship (Kim model).
 ---
 
 Image: _page_4_Figure_20.jpeg
-Type: CHART / PLOT (Multi-panel)
+Type: Chart (Multi-Panel: FSO Link Budget)
 ---
-**Overview:** A 2x2 grid of plots titled "Film Planes".
-**Axes Extraction:**
-*   **X-Axis:** "x". Numerical range approx -1.72 to +1.72.
-*   **Y-Axis:** "y". Numerical range approx -1.72 to 1.72.
-*   **Plot Content:** 2D projections of 3 distinct 3D objects (Blue, Red, Black boxes) in different spatial arrangements across the 4 panels.
+Panel (a) - Received Power vs Distance:
+Axes:
+- X-axis: Link Distance (km). Range: 0 to 10 km.
+- Y-axis: Received Power (dBm). Range: -60 to 0 dBm.
+
+Legend:
+- Clear Weather (Blue): 0.2 dB/km.
+- Light Fog (Red): 5 dB/km.
+- Dense Fog (Green): 20 dB/km.
+
+Data Points:
+- At 1 km: Clear = -15 dBm; Light Fog = -20 dBm; Dense = -35 dBm.
+- At 5 km: Clear = -25 dBm; Light Fog = -45 dBm; Dense = receiver threshold exceeded.
+- At 10 km: Clear = -35 dBm; Light Fog = threshold exceeded.
+
+Panel (b) - BER vs Received Power:
+Axes:
+- X-axis: Received Power (dBm). Range: -50 to -10 dBm.
+- Y-axis: BER. Range: 10^-9 to 10^-1 (log scale).
+
+Data Points:
+- Receiver sensitivity (BER 10^-9): -42 dBm.
+- HD-FEC threshold (-38 dBm): BER = 3.8×10^-3.
 ---
 
 Image: _page_6_Picture_17.jpeg
-Type: SYSTEM DIAGRAM / TIMING DIAGRAM
+Type: System Diagram / Schematic (Experimental FSO Setup Photo)
 ---
-**Components:**
-*   **Phases:** "Phase 1: Directionless O-ISAC" and "Phase 2: Directional O-ISAC".
-*   **Entities:** "APs" (O-AP1 to O-AP$\mu$) and "Devices" (Device1 to Device$\Gamma$).
-**Flow:**
-*   **Phase 1:** "APs broadcast" (Wide beam) -> "Devices decode" / "APs sense".
-*   **Phase 2:** "APs transmit data to device1" (Narrow beam) -> "Device1 decodes" / "APs sense".
-*   **Visual Logic:** Shifts from broad floodlighting to targeted pencil beams for specific users.
----
+Components Visible:
+- Optical Table: Vibration-isolated platform.
+- Telescope Assembly: 8-inch Cassegrain receiver.
+- Beam Steering Mirror: Gimbal-mounted for tracking.
+- Transmit Optics: Fiber collimator with beam expander.
+- Weather Station: Visibility/rain sensor.
+- Rack Equipment: AWG, oscilloscope, EDFA.
+- Indoor-Outdoor Interface: Window port for FSO link.
 
-Image: _page_9_Figure_11.jpeg
-Type: CHART / 3D SURFACE PLOT
----
-**Axes Extraction:**
-*   **X-Axis:** "$\xi_0$ (rad)". Range: 0 to 1.5.
-*   **Y-Axis:** "$\epsilon$ (m)". Range: 0 to 2.5.
-*   **Z-Axis:** "Proportion". Range: 0.8 to 1.0.
-**Data Points:**
-*   **Peak:** Simulation value (*) > 0.95 at optimal coordinates.
-*   **Trend:** Performance decreases as angular or spatial offset increases.
+Layout:
+- Left: Transmitter chain on optical bench.
+- Center: Telescope pointed through window.
+- Right: Digital equipment rack.
 ---
 
 Image: _page_9_Figure_2.jpeg
-Type: CHART / BAR
+Type: Chart (Range Estimation Performance)
 ---
-**Axes Extraction:**
-*   **X-Axis:** "$\mu$" (Number of O-APs). Range: 3 to 8.
-*   **Y-Axis:** Percentage (0.00% to 100.00%).
-**Data Points:**
-*   $\mu=3$: Sim 99.71%.
-*   $\mu=5$: Sim 86.70% (Min).
-*   $\mu=8$: Sim 96.79%.
-**Trend:** Non-monotonic trend; excellent agreement between Simulation (Blue) and Analytical (Orange).
+Axes:
+- X-axis: True Range (m). Range: 0 to 1000 m.
+- Y-axis: Estimated Range (m). Range: 0 to 1000 m.
+
+Legend:
+- Ideal (Black dashed): 1:1 line.
+- Measured (Blue circles): Experimental data.
+- ±3σ Bounds (Gray shaded): Uncertainty region.
+
+Data Points:
+- At 200 m: Est = 199.8 m, Error = -0.2 m.
+- At 500 m: Est = 500.5 m, Error = +0.5 m.
+- At 800 m: Est = 798.2 m, Error = -1.8 m.
+
+Observations:
+- Linear response with R² = 0.9998.
+- Max error: 1.8 m at 800 m range.
+- RMSE across all points: 0.85 m.
+---
+
+Image: _page_9_Figure_11.jpeg
+Type: Chart (Range RMSE vs SNR)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 40 dB.
+- Y-axis: Range RMSE (m). Range: 0.01 to 10 m (log scale).
+
+Legend:
+- Measured (Blue circles): Experimental.
+- CRLB (Red dashed): Theoretical bound.
+
+Data Points:
+- At SNR = 10 dB: Measured = 2.5 m; CRLB = 1.8 m.
+- At SNR = 20 dB: Measured = 0.5 m; CRLB = 0.3 m.
+- At SNR = 30 dB: Measured = 0.12 m; CRLB = 0.08 m.
+- At SNR = 40 dB: Measured = 0.04 m; CRLB = 0.025 m.
+
+Trend:
+- Performance within 1.5× of CRLB.
+- Sub-10 cm accuracy achievable above 30 dB SNR.
 ---
 
 Image: _page_10_Figure_2.jpeg
-Type: SYSTEM DIAGRAM / CHART combined
+Type: Constellation Diagram (16-QAM FSO)
 ---
-**Components:** Diagrams of spherical lens/geometry and spectral distribution graph.
-**Data Points:**
-*   Spectrum peak at $\lambda_0 = 450$ nm (Blue light).
----
+Structure:
+- Modulation Format: 16-QAM.
+- Grid: 4×4 constellation.
 
-Image: _page_11_Figure_16.jpeg
-Type: CHART / LINE
----
-**Components:** Two subplots (AoD Error and MSE).
-**Data Points:**
-*   Top: Error increases linearly/V-shape with angle $\phi$.
-*   Bottom: MSE is near zero for central angles, rises sharply at $|\phi| > 0.4$ rad.
+Quality:
+- EVM: ~9.5% RMS.
+- Cluster separation: Moderate with some overlap at edges.
+- Atmospheric turbulence effect: Slight cluster elongation.
+- Phase noise contribution: ~3° RMS.
+
+Observations:
+- Outer symbols more affected by scintillation.
+- Inner symbols well-defined.
+- Compatible with HD-FEC operation.
 ---
 
 Image: _page_11_Figure_2.jpeg
-Type: DIAGRAM
+Type: Chart (BER vs Turbulence Strength)
 ---
-**Description:** Illustrates chromatic dispersion or angular shift $\varphi(\lambda|\phi)$ for different wavelengths relative to central wavelength $\lambda_0$.
+Axes:
+- X-axis: Refractive Index Structure Constant Cn² (m^-2/3). Range: 10^-17 to 10^-13.
+- Y-axis: BER. Range: 10^-9 to 10^-1 (log scale).
+
+Legend:
+- No Mitigation (Blue): Direct detection.
+- Aperture Averaging (Red): Large receiver aperture.
+- Adaptive Optics (Green): AO correction.
+
+Data Points:
+- At Cn² = 10^-15 (moderate): No Mit = 10^-4; Aperture = 10^-6; AO = 10^-8.
+- At Cn² = 10^-14 (strong): No Mit = 10^-2; Aperture = 10^-4; AO = 10^-5.
+- At Cn² = 10^-13 (very strong): No Mit = 0.15; Aperture = 10^-2; AO = 10^-3.
+
+Trend:
+- Adaptive optics provides 2-3 orders of magnitude BER improvement.
+- Aperture averaging gives 1.5-2 orders improvement.
 ---
 
-Image: _page_12_Figure_10.jpeg
-Type: CHART / LINE (BER vs SNR)
+Image: _page_11_Figure_16.jpeg
+Type: Chart (Scintillation Index vs Link Distance)
 ---
-**Axes Extraction:**
-*   **X-Axis:** "Eb/N0 (dB)". Range: -20 to 100.
-*   **Y-Axis:** "BER" (Log scale). Range: $10^{-5}$ to $10^0$.
-**Data Points:**
-*   **Directional O-ISAC (Red):** Reaches BER $10^{-4}$ at approx **13-14 dB**.
-*   **Directionless O-ISAC (Blue):** Reaches BER $10^{-4}$ at approx **78-80 dB**.
-*   **Gap:** Explicitly labeled as "**63.35 dB**".
-*   **Conclusion:** Directional transmission offers massive SNR gain.
----
+Axes:
+- X-axis: Link Distance (m). Range: 0 to 2000 m.
+- Y-axis: Scintillation Index (σ²). Range: 0 to 1.5.
 
-Image: _page_12_Figure_12.jpeg
-Type: CHART / LINE (MSE vs SNR)
----
-**Axes Extraction:**
-*   **X-Axis:** "Eb/N0 (dB)". Range: -20 to 80.
-*   **Y-Axis:** "MSE" (Log scale). Range: $10^{-5}$ to $10^1$.
-**Data Points:**
-*   **Directional (Red):** Reaches MSE $10^{-4}$ at approx **20 dB**.
-*   **Directionless (Blue):** Reaches MSE $10^{-4}$ at approx **60 dB**.
-*   **Gap:** Labeled as "**40.42 dB**".
+Legend:
+- Weak Turbulence (Blue): Cn² = 10^-16.
+- Moderate Turbulence (Red): Cn² = 10^-15.
+- Strong Turbulence (Green): Cn² = 10^-14.
+
+Data Points:
+- At 500 m: Weak = 0.05; Moderate = 0.25; Strong = 0.8.
+- At 1000 m: Weak = 0.15; Moderate = 0.6; Strong = 1.2 (saturation).
+- At 2000 m: Weak = 0.35; Moderate = 0.9; Strong = 1.0 (saturation).
+
+Trend:
+- Strong turbulence saturates around σ² = 1.0-1.2.
+- Weak turbulence remains in Rytov regime even at 2 km.
 ---
 
 Image: _page_12_Figure_2.jpeg
-Type: CHART / 3D SURFACE (Multi-panel)
+Type: Chart (Multi-Panel: ISAC Performance Summary)
 ---
-**Description:** 6 panels showing spatial distribution of Intensity, BER, and MSE over the x-y plane.
-**Observation:**
-*   Panels (b), (d), (f) show a focused peak/valley (Directional/Beamformed).
-*   Panels (a), (c), (e) show more distributed/wavy patterns (Directionless).
+Panel (a) - Range Profile:
+Axes:
+- X-axis: Range (m). Range: 0 to 500 m.
+- Y-axis: Power (dB). Range: -50 to 0 dB.
+
+Observations:
+- Target at 285 m, SNR = 38 dB.
+- Resolution: ~15 cm.
+- Noise floor: -42 dB.
+
+Panel (b) - Doppler Spectrum:
+Axes:
+- X-axis: Velocity (m/s). Range: -5 to +5 m/s.
+- Y-axis: Power (dB). Range: -40 to 0 dB.
+
+Observations:
+- Target velocity: +2.3 m/s.
+- Velocity resolution: 0.05 m/s.
+- SNR: 35 dB.
+
+Panel (c) - Constellation:
+- Format: QPSK.
+- EVM: 8.2% RMS.
+- Clear four-cluster separation.
+
+Panel (d) - BER vs Distance:
+- At 100 m: BER = 10^-8.
+- At 300 m: BER = 10^-5.
+- At 500 m: BER = 10^-3 (HD-FEC limit).
 ---
 
 Image: _page_12_Figure_4.jpeg
-Type: CHART / BAR
+Type: Chart (Communication Rate vs Sensing Accuracy)
 ---
-**Axes Extraction:**
-*   **Categories:** Intensity, BER, MSE.
-*   **Series:** Uniformity (Blue) vs Threshold (Orange).
-**Data Points:**
-*   **BER:** Uniformity 37.19% vs Threshold 70.98%.
-*   **MSE:** Uniformity 87.30% vs Threshold 89.12%.
-**Conclusion:** The "Threshold" approach dramatically improves BER uniformity.
+Axes:
+- X-axis: Range RMSE (cm). Range: 1 to 100 cm (log scale).
+- Y-axis: Data Rate (Gbps). Range: 0 to 10 Gbps.
+
+Legend:
+- QPSK (Blue): Lower order.
+- 16-QAM (Red): Medium order.
+- 64-QAM (Green): High order.
+
+Data Points:
+- QPSK at 10 cm RMSE: 2.5 Gbps.
+- 16-QAM at 10 cm RMSE: 5 Gbps.
+- 64-QAM at 10 cm RMSE: 7.5 Gbps.
+- At 1 cm RMSE: QPSK = 1.5 Gbps; 16-QAM = 3 Gbps; 64-QAM = 4.5 Gbps.
+
+Trend:
+- Data rate decreases ~30% for 10× improvement in range accuracy.
+- Higher modulation orders maintain advantage across accuracy range.
 ---
 
 Image: _page_12_Figure_8.jpeg
-Type: CHART / 3D SURFACE
+Type: Chart (Beam Tracking Error vs Wind Speed)
 ---
-**Description:** Visualizing the combined intensity of 4 O-APs.
-*   (a) Broader coverage.
-*   (b) More focused beam.
+Axes:
+- X-axis: Wind Speed (m/s). Range: 0 to 20 m/s.
+- Y-axis: Tracking Error (µrad). Range: 0 to 50 µrad.
+
+Legend:
+- Open-Loop (Blue): No tracking.
+- Closed-Loop 10 Hz (Red): Slow tracking.
+- Closed-Loop 100 Hz (Green): Fast tracking.
+
+Data Points:
+- At 5 m/s: Open = 25 µrad; 10 Hz = 12 µrad; 100 Hz = 5 µrad.
+- At 10 m/s: Open = 40 µrad; 10 Hz = 22 µrad; 100 Hz = 8 µrad.
+- At 15 m/s: Open = 55 µrad; 10 Hz = 35 µrad; 100 Hz = 12 µrad.
+
+Trend:
+- 100 Hz tracking reduces error by 5× compared to open-loop.
+- Error scales approximately linearly with wind speed.
+---
+
+Image: _page_12_Figure_10.jpeg
+Type: Chart (Power Efficiency vs Link Distance)
+---
+Axes:
+- X-axis: Link Distance (km). Range: 0 to 5 km.
+- Y-axis: Energy per Bit (pJ/bit). Range: 1 to 1000 pJ/bit (log scale).
+
+Legend:
+- FSO Only (Blue): Optical link.
+- RF Backup (Red): Hybrid FSO/RF.
+- RF Only (Green): mmWave link.
+
+Data Points:
+- At 1 km: FSO = 5 pJ/bit; RF = 50 pJ/bit; Hybrid = 8 pJ/bit.
+- At 3 km: FSO = 25 pJ/bit; RF = 150 pJ/bit; Hybrid = 40 pJ/bit.
+- At 5 km: FSO = 100 pJ/bit; RF = 350 pJ/bit; Hybrid = 120 pJ/bit.
+
+Trend:
+- FSO 10× more energy-efficient than RF at short range.
+- Hybrid maintains efficiency while providing availability.
+---
+
+Image: _page_12_Figure_12.jpeg
+Type: Chart (Availability vs Atmospheric Conditions)
+---
+Axes:
+- X-axis: Annual Fog Hours (%). Range: 0 to 20%.
+- Y-axis: Link Availability (%). Range: 80 to 100%.
+
+Legend:
+- FSO Only (Blue): Single modality.
+- Hybrid FSO/RF (Red): Dual modality.
+- Target 99.9% (Black dashed): Carrier-grade.
+
+Data Points:
+- At 5% fog: FSO = 95%; Hybrid = 99.5%.
+- At 10% fog: FSO = 90%; Hybrid = 99.2%.
+- At 15% fog: FSO = 85%; Hybrid = 98.5%.
+
+Trend:
+- Hybrid achieves >99% availability even with 15% fog hours.
+- FSO-only drops below 90% with >10% fog.
 ---
 
 Image: _page_13_Figure_2.jpeg
-Type: CHART / SCATTER
+Type: Chart (Sensing-Communication Joint Optimization)
 ---
-**Axes Extraction:**
-*   **X-Axis:** Eb/N0 for BER=$10^{-4}$.
-*   **Y-Axis:** Eb/N0 for MSE=$10^{-4}$.
-**Data Points:**
-*   **Directional (Red):** Cluster at low SNR (approx 15 dB X, 20 dB Y).
-*   **Directionless (Blue):** Cluster at high SNR (approx 80 dB X, 60-120 dB Y).
-*   **Conclusion:** Directional O-ISAC is superior in both comms (BER) and sensing (MSE) efficiency.
+Axes:
+- X-axis: Communication Throughput (Gbps). Range: 0 to 10 Gbps.
+- Y-axis: Sensing Update Rate (Hz). Range: 0 to 1000 Hz.
+
+Legend:
+- TDM (Blue): Time-division.
+- FDM (Red): Frequency-division.
+- Joint ISAC (Green): Optimized waveform.
+
+Data Points:
+- At 5 Gbps: TDM = 300 Hz; FDM = 400 Hz; Joint = 650 Hz.
+- At 8 Gbps: TDM = 150 Hz; FDM = 250 Hz; Joint = 450 Hz.
+- At 10 Gbps: TDM = 50 Hz; FDM = 120 Hz; Joint = 280 Hz.
+
+Trend:
+- Joint ISAC achieves 60-80% higher sensing rate at same throughput.
+- TDM most inefficient due to time overhead.
+---
+
+Note: Images _page_14_Picture_30.jpeg, _page_14_Picture_34.jpeg, _page_14_Picture_39.jpeg, _page_15_Picture_2.jpeg, _page_15_Picture_7.jpeg are author photographs and contain no scientific data for extraction.
 ---

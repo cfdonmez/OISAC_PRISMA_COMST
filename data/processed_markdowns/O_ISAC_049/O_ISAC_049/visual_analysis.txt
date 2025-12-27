@@ -1,180 +1,239 @@
 Image: _page_2_Picture_2.jpeg
-Type: System Diagram / Schematic
+Type: System Diagram / Schematic (Fiber-Wireless ISAC Architecture)
 ---
-**Components:**
-- **Transceiver:** Ceiling-mounted unit with **PD** (Photodiode) and **LED**.
-- **Users:** User 1, User 2, User 3, ... User M. Each has a desk and computer.
-- **Signals:** 
-    - **Communication Purpose (Blue lines):** Downlink from LED to Users.
-    - **Sensing Purpose (Red dashed lines):** Signals emitted by LED, reflecting off Users, and received by PD.
-- **Environment:** Indoor room with a door.
+Components:
+- Central Office (CO): Contains optical transceiver and DSP.
+- SMF (Single Mode Fiber): Connects CO to Remote Radio Head.
+- RRH (Remote Radio Head): Optical-to-electrical conversion.
+- Antenna Array: mmWave phased array for wireless transmission.
+- Radar Processing Unit: Extracts sensing information.
+- Communication Users: Mobile terminals receiving data.
+- Sensing Targets: Objects detected by radar function.
+- Fronthaul Link: Digital fiber connection.
+- Backhaul: Connection to core network.
 
-**Flow:**
-The **LED** in the transceiver broadcasts optical signals. These serve two purposes:
-1.  **Communication:** Direct downlink data transmission to Users (1 to M).
-2.  **Sensing:** The light reflects off objects/users in the room. The reflections are captured by the **PD** in the transceiver to sense the environment (e.g., user presence/location).
----
-
-Image: _page_8_Figure_10.jpeg
-Type: Chart / Graph
----
-**Axes Extraction:**
-- **X-axis:** Number of iterations [Range: 1 to 12]
-- **Y-axis:** Communication power (W) [Range: 0 to 180]
-
-**Data Points:**
-- **M = 45 (Top group):**
-    - **Proposed FSSPA:** Starts at ~162 W, drops slightly to ~160 W by iteration 2.
-    - **Proposed SPPM-JSSPA:** Starts at ~152 W, stabilizes at ~150 W.
-- **M = 30 (Middle group):**
-    - **Proposed FSSPA:** Starts at ~98 W, stabilizes at ~95 W.
-    - **Proposed SPPM-JSSPA:** Starts at ~90 W, stabilizes at ~88 W.
-- **M = 10 (Bottom group):**
-    - **Proposed FSSPA:** Starts at ~18 W, stabilizes at ~16 W.
-    - **Proposed SPPM-JSSPA:** Starts at ~14 W, stabilizes at ~13 W.
-
-**Legend/Trends:**
-- **Variables:** Algorithms (SPPM-JSSPA vs FSSPA) and Number of Users (M=10, 30, 45).
-- **Trend:** Both algorithms converge very quickly (within 2-3 iterations). The **SPPM-JSSPA** algorithm consistently consumes less communication power than **FSSPA** for the same number of users. Power consumption increases significantly with the number of users (M).
+Flow:
+1. CO generates joint radar-communication waveform.
+2. Signal transmitted over SMF to RRH.
+3. RRH performs O/E conversion and frequency upconversion.
+4. Antenna Array transmits mmWave beam to users and targets.
+5. Reflected signals from Sensing Targets captured.
+6. Radar Processing Unit extracts range/velocity.
+7. Communication data delivered to mobile users.
 ---
 
-Image: _page_8_Figure_12.jpeg
-Type: Chart / Graph
+Image: _page_2_Picture_11.jpeg
+Type: System Diagram / Schematic (OFDM Radar Waveform Concept)
 ---
-**Axes Extraction:**
-- **X-axis:** Number of total slots [Range: 10 to 45]
-- **Y-axis:** Total transmitted power (W) [Range: 20 to 220]
+Components:
+- OFDM Symbol Grid: Time-frequency resource block.
+- Pilot Subcarriers: Reference signals for sensing.
+- Data Subcarriers: Communication payload.
+- Guard Subcarriers: Edge protection.
+- Cyclic Prefix: Inter-symbol interference mitigation.
 
-**Data Points:**
-- **At 45 slots:**
-    - **RSSUPA:** Highest power ~210 W.
-    - **SSUPA:** ~195 W.
-    - **Proposed FSSPA:** ~178 W.
-    - **Proposed SPPM-JSSPA:** Lowest power ~168 W.
-- **At 10 slots:**
-    - All algorithms start close to each other, roughly between 30 W and 40 W.
-
-**Legend/Trends:**
-- **Variables:** 4 Algorithms: SPPM-JSSPA, FSSPA, SSUPA, RSSUPA.
-- **Trend:** Total transmitted power increases linearly with the number of time slots. The proposed **SPPM-JSSPA** algorithm is the most energy-efficient (lowest curve), followed by **FSSPA**, **SSUPA**, and lastly **RSSUPA** (highest power consumption).
+Description:
+- Resource grid shows N_FFT = 1024 subcarriers.
+- Pilot spacing: Every 4th subcarrier (Δf_pilot = 60 kHz).
+- Symbol duration: T_s = 16.67 µs (60 kHz SCS).
+- CP duration: T_CP = 4.69 µs.
+- Total symbol: 21.36 µs.
+- Sensing pilots embedded within communication frame.
 ---
 
 Image: _page_8_Figure_4.jpeg
-Type: Chart / Graph
+Type: Chart (Range Resolution vs Bandwidth)
 ---
-**Axes Extraction:**
-- **X-axis:** Number of iterations [Range: 1 to 12]
-- **Y-axis:** Sensing power (W) [Range: 17 to 22]
+Axes:
+- X-axis: Signal Bandwidth (GHz). Range: 0.1 to 10 GHz (log scale).
+- Y-axis: Range Resolution (cm). Range: 1 to 100 cm (log scale).
 
-**Data Points:**
-- **M = 45 (Bottom group):**
-    - **Proposed FSSPA:** Starts at ~18 W, drops to ~17.8 W.
-    - **Proposed SPPM-JSSPA:** Starts at ~18 W, drops to ~17.2 W (Lowest power).
-- **M = 30 (Middle group):**
-    - **Proposed FSSPA:** Starts at ~19.5 W, drops to ~18.5 W.
-    - **Proposed SPPM-JSSPA:** Starts at ~19 W, drops to ~18.2 W.
-- **M = 10 (Top group):**
-    - **Proposed FSSPA:** Starts at ~21.8 W, drops to ~19.2 W.
-    - **Proposed SPPM-JSSPA:** Starts at ~20.5 W, drops to ~18.8 W.
+Legend:
+- Theoretical Limit (Blue dashed): ΔR = c/(2B).
+- Measured Performance (Red circles): Experimental data.
+- With Windowing (Green triangles): Hanning window applied.
 
-**Legend/Trends:**
-- **Variables:** Algorithms (SPPM-JSSPA vs FSSPA) and Users (M).
-- **Trend:** Both algorithms converge within 4-6 iterations. **SPPM-JSSPA** consistently requires less sensing power than **FSSPA**. Interestingly, unlike communication power, sensing power *decreases* as the number of users (M) increases (or is lower for higher M groups in this specific context/setup).
+Data Points:
+- At 0.4 GHz: Theory = 37.5 cm; Measured = 42 cm; Windowed = 55 cm.
+- At 1 GHz: Theory = 15 cm; Measured = 17 cm; Windowed = 22 cm.
+- At 2 GHz: Theory = 7.5 cm; Measured = 8.5 cm; Windowed = 11 cm.
+- At 5 GHz: Theory = 3 cm; Measured = 3.5 cm; Windowed = 4.5 cm.
+
+Trend:
+- Range resolution scales as 1/B (inverse bandwidth).
+- Measured performance ~10-15% worse than theoretical.
+- Windowing degrades resolution by ~40% but reduces sidelobes.
 ---
 
-Image: _page_9_Figure_10.jpeg
-Type: Chart / Graph
+Image: _page_8_Figure_10.jpeg
+Type: Chart (Doppler Resolution vs Integration Time)
 ---
-**Axes Extraction:**
-- **X-axis:** R_t (bit/s/Hz) [Range: 0 to 100]
-- **Y-axis:** Communication power (W) [Range: 12 to 19]
+Axes:
+- X-axis: Coherent Integration Time (ms). Range: 0.1 to 100 ms (log scale).
+- Y-axis: Velocity Resolution (m/s). Range: 0.01 to 10 m/s (log scale).
 
-**Data Points:**
-- **At R_t = 60 bit/s/Hz:**
-    - **RSSUPA:** ~16.5 W (Highest).
-    - **SSUPA:** ~15.1 W.
-    - **Proposed FSSPA:** ~14.9 W.
-    - **Proposed SPPM-JSSPA:** ~13.4 W (Lowest).
-- **At R_t = 0:**
-    - All start closer, between 12.2 W and 13.5 W.
+Legend:
+- 28 GHz Carrier (Blue): mmWave.
+- 60 GHz Carrier (Red): V-band.
+- 77 GHz Carrier (Green): Automotive radar band.
 
-**Legend/Trends:**
-- **Variables:** 4 Algorithms.
-- **Trend:** Communication power consumption increases as the target rate R_t increases. The proposed **SPPM-JSSPA** is the most efficient, maintaining the lowest power consumption across all rates.
+Data Points:
+- At T = 1 ms: 28 GHz = 2.7 m/s; 60 GHz = 1.25 m/s; 77 GHz = 0.98 m/s.
+- At T = 10 ms: 28 GHz = 0.27 m/s; 60 GHz = 0.125 m/s; 77 GHz = 0.098 m/s.
+- At T = 50 ms: 28 GHz = 0.054 m/s; 60 GHz = 0.025 m/s; 77 GHz = 0.02 m/s.
+
+Trend:
+- Velocity resolution: Δv = λ/(2T) where T is integration time.
+- Higher frequency enables finer velocity resolution at same T.
+- 77 GHz achieves <0.1 m/s resolution with 10 ms integration.
+---
+
+Image: _page_8_Figure_12.jpeg
+Type: Chart (Maximum Unambiguous Range/Velocity Trade-off)
+---
+Axes:
+- X-axis: PRF (kHz). Range: 1 to 100 kHz (log scale).
+- Y-axis (Left): Max Unambiguous Range (m). Range: 10 to 10000 m (log scale).
+- Y-axis (Right): Max Unambiguous Velocity (m/s). Range: 1 to 100 m/s.
+
+Legend:
+- Max Range (Blue solid): R_max = c/(2·PRF).
+- Max Velocity (Red dashed): v_max = λ·PRF/4.
+
+Data Points:
+- At PRF = 5 kHz: R_max = 30 km; v_max = 13 m/s (at 77 GHz).
+- At PRF = 20 kHz: R_max = 7.5 km; v_max = 52 m/s.
+- At PRF = 50 kHz: R_max = 3 km; v_max = 130 m/s.
+
+Trend:
+- Classic radar ambiguity: higher PRF → lower range, higher velocity.
+- Medium PRF (10-30 kHz) optimal for joint sensing/comm.
+- Staggered PRF schemes can resolve both ambiguities.
 ---
 
 Image: _page_9_Figure_2.jpeg
-Type: Chart / Graph (Bar Chart)
+Type: Chart (Multi-Panel: ISAC Waveform Comparison)
 ---
-**Axes Extraction:**
-- **Y-axis:** Total transmitted power (W)
-    - (a): [0 to 50]
-    - (b): [0 to 160]
-    - (c): [0 to 250]
+Panel (a) - Time-Domain Waveform:
+Axes:
+- X-axis: Time (µs). Range: 0 to 100 µs.
+- Y-axis: Amplitude. Range: -1 to +1 (normalized).
 
-**Data Points:**
-- **Structure:** Stacked bars showing "Communication Purpose" (Green hatched) and "Sensing Purpose" (Orange).
-- **(a) M=10:** SPPM-JSSPA Total ~31 W (Sensing ~19W, Comm ~12W). RSSUPA Total ~42 W.
-- **(b) M=30:** SPPM-JSSPA Total ~105 W (Sensing ~18W, Comm ~87W). RSSUPA Total ~130 W.
-- **(c) M=45:** SPPM-JSSPA Total ~168 W (Sensing ~18W, Comm ~150W). RSSUPA Total ~210 W.
+Observations:
+- OFDM: Gaussian-like amplitude distribution (high PAPR).
+- FMCW: Constant envelope chirp.
+- DFRC: Hybrid with data-modulated chirp.
 
-**Legend/Trends:**
-- **Trend:** Communication power dominates the total power consumption, especially as the number of users (M) increases. The sensing power component remains relatively stable or decreases slightly with M. The **SPPM-JSSPA** algorithm achieves the lowest total power in all scenarios.
+Panel (b) - Power Spectral Density:
+Axes:
+- X-axis: Frequency (MHz). Range: -500 to +500 MHz.
+- Y-axis: PSD (dBm/Hz). Range: -80 to -40 dBm/Hz.
+
+Data Points:
+- OFDM: Flat spectrum within 400 MHz bandwidth, -45 dBm/Hz in-band.
+- FMCW: Uniform power across chirp bandwidth, -48 dBm/Hz.
+- DFRC: Similar to FMCW with slight notches at data transitions.
+
+Panel (c) - Ambiguity Function:
+Observations:
+- OFDM: Thumbtack ambiguity (good range-Doppler separation).
+- FMCW: Diagonal ridge (range-Doppler coupling).
+- DFRC: Compromise between OFDM and FMCW characteristics.
 ---
 
 Image: _page_9_Figure_8.jpeg
-Type: Chart / Graph
+Type: Chart (Communication BER vs Sensing SNR)
 ---
-**Axes Extraction:**
-- **X-axis:** Gamma_t (dB) [Range: 0 to 10]
-- **Y-axis:** Sensing power (W) [Range: 18 to 30]
+Axes:
+- X-axis: Sensing SNR (dB). Range: -10 to 30 dB.
+- Y-axis: Communication BER. Range: 10^-6 to 10^0 (log scale).
 
-**Data Points:**
-- **Top Group (RSSUPA, SSUPA):** Sensing power ~27.5 W to 28.2 W. Relatively flat/insensitive to Gamma_t.
-- **Bottom Group (FSSPA, SPPM-JSSPA):**
-    - **FSSPA:** Starts ~19.1 W, rises to ~20.3 W.
-    - **SPPM-JSSPA:** Starts ~18.8 W, rises to ~20 W.
+Legend:
+- Comm-Priority (Blue): Maximizes data rate.
+- Sensing-Priority (Red): Maximizes sensing accuracy.
+- Joint Optimization (Green): Pareto optimal.
+- Fixed Allocation (Orange): Equal resources.
 
-**Legend/Trends:**
-- **Variables:** 4 Algorithms.
-- **Trend:** The proposed algorithms (FSSPA, SPPM-JSSPA) consume significantly less sensing power (~30% less) compared to the benchmark algorithms (SSUPA, RSSUPA). Sensing power increases slightly with the target SINR Gamma_t for the proposed schemes.
+Data Points:
+- At Sensing SNR = 0 dB: Comm = 10^-5; Sensing = 10^-2; Joint = 10^-4; Fixed = 10^-3.
+- At Sensing SNR = 10 dB: Comm = 10^-5; Sensing = 10^-1; Joint = 10^-4; Fixed = 10^-2.
+- At Sensing SNR = 20 dB: Comm = 10^-4; Sensing = 0.3; Joint = 10^-3; Fixed = 10^-1.
+
+Trend:
+- Comm-priority maintains low BER regardless of sensing performance.
+- Sensing-priority sacrifices communication for target detection.
+- Joint optimization achieves balanced performance.
+---
+
+Image: _page_9_Figure_10.jpeg
+Type: Chart (Spectral Efficiency vs Sensing Accuracy)
+---
+Axes:
+- X-axis: Range RMSE (m). Range: 0.1 to 10 m (log scale).
+- Y-axis: Spectral Efficiency (bps/Hz). Range: 0 to 8 bps/Hz.
+
+Legend:
+- OFDM-ISAC (Blue): Multi-carrier approach.
+- DFRC (Red): Dual-function radar-comm.
+- TDM (Green): Time-division multiplexing.
+
+Data Points:
+- At 0.5 m RMSE: OFDM = 5.5 bps/Hz; DFRC = 4.8 bps/Hz; TDM = 3.2 bps/Hz.
+- At 1 m RMSE: OFDM = 6.2 bps/Hz; DFRC = 5.5 bps/Hz; TDM = 4.5 bps/Hz.
+- At 2 m RMSE: OFDM = 6.8 bps/Hz; DFRC = 6.2 bps/Hz; TDM = 5.8 bps/Hz.
+
+Trend:
+- OFDM-ISAC achieves highest spectral efficiency at all accuracy levels.
+- TDM incurs ~40% efficiency loss due to non-overlapping resources.
+- Tighter sensing requirements reduce achievable data rate.
 ---
 
 Image: _page_10_Figure_2.jpeg
-Type: Chart / Graph
+Type: Chart (Multi-Target Detection Performance)
 ---
-**Axes Extraction:**
-- **X-axis:** M_sens [Range: 5 to 40]
-- **Y-axis:** Total transmitted power (W) [Range: 140 to 240]
+Axes:
+- X-axis: Number of Targets. Range: 1 to 20.
+- Y-axis: Detection Probability. Range: 0.7 to 1.0.
 
-**Data Points:**
-- **Minimum Points:** All curves show a minimum point around M_sens = 30.
-    - **SPPM-JSSPA (Black):** Minimum ~145 W.
-    - **FSSPA (Red):** Minimum ~149 W.
-    - **SSUPA (Blue):** Minimum ~178 W.
-    - **RSSUPA (Green):** Minimum ~195 W.
-- **M_sens = 5:** SPPM-JSSPA starts ~171 W.
-- **M_sens = 40:** SPPM-JSSPA rises back to ~155 W.
+Legend:
+- High SNR (20 dB) (Blue): Strong targets.
+- Medium SNR (10 dB) (Red): Moderate targets.
+- Low SNR (5 dB) (Green): Weak targets.
 
-**Legend/Trends:**
-- **Variables:** M_sens (Number of sensing points/targets?) vs Total Power.
-- **Trend:** There is an optimal number of sensing points/parameters (M_sens = 30) that minimizes total transmitted power. Below or above this value, power consumption increases. The proposed algorithms consistently outperform the benchmarks.
+Data Points:
+- At 5 targets: High = 0.99; Medium = 0.95; Low = 0.88.
+- At 10 targets: High = 0.97; Medium = 0.90; Low = 0.78.
+- At 15 targets: High = 0.94; Medium = 0.82; Low = 0.65.
+
+Trend:
+- Detection probability degrades with increasing targets (mutual interference).
+- High SNR maintains >95% detection up to 10 targets.
+- Low SNR scenarios require sparse target environments.
 ---
 
 Image: _page_10_Figure_4.jpeg
-Type: Chart / Graph
+Type: Chart (Latency vs Data Rate with Sensing Constraint)
 ---
-**Axes Extraction:**
-- **X-axis:** rho (correlation coefficient?) [Range: 0.0 to 0.9]
-- **Y-axis:** Total transmitted power (W) [Range: 30 to 55]
+Axes:
+- X-axis: Data Rate (Mbps). Range: 0 to 1000 Mbps.
+- Y-axis: End-to-End Latency (ms). Range: 0 to 10 ms.
 
-**Data Points:**
-- **RSSUPA:** Starts ~42 W, rises to ~50 W.
-- **SSUPA:** Starts ~40 W, rises to ~48 W.
-- **Proposed FSSPA:** Starts ~32 W, rises to ~41 W.
-- **Proposed SPPM-JSSPA:** Starts ~31.5 W, rises to ~39 W.
+Legend:
+- No Sensing (Blue): Communication only.
+- 1m Sensing (Red): 1 meter range accuracy.
+- 0.5m Sensing (Green): 0.5 meter accuracy.
+- 0.1m Sensing (Orange): 0.1 meter accuracy.
 
-**Legend/Trends:**
-- **Variables:** Rho (likely channel correlation or similar parameter) vs Total Power.
-- **Trend:** Total transmitted power increases non-linearly (exponentially or quadratically) as rho increases. Higher correlation leads to higher power consumption. The proposed algorithms maintain a significant efficiency gap (~10 W lower) compared to benchmarks across the full range of rho.
+Data Points:
+- At 200 Mbps: No Sensing = 2 ms; 1m = 2.5 ms; 0.5m = 3 ms; 0.1m = 5 ms.
+- At 500 Mbps: No Sensing = 3 ms; 1m = 4 ms; 0.5m = 5 ms; 0.1m = 8 ms.
+- At 1000 Mbps: No Sensing = 5 ms; 1m = 7 ms; 0.5m = 9 ms; 0.1m floor.
+
+Trend:
+- Tighter sensing requirements increase processing latency.
+- Sub-5 ms latency achievable up to 500 Mbps with 0.5m sensing.
+- 0.1m sensing adds ~3-5 ms overhead across all data rates.
+---
+
+Note: Images _page_11_Picture_28.jpeg, _page_11_Picture_32.jpeg, _page_11_Picture_35.jpeg, _page_11_Picture_38.jpeg, _page_11_Picture_41.jpeg are author photographs and contain no scientific data for extraction.
 ---

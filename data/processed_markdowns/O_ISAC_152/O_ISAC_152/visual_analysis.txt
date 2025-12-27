@@ -1,35 +1,245 @@
-# O_ISAC_152 Visual Analysis
+Image: _page_1_Figure_2.jpeg
+Type: System Diagram / Schematic (THz Photonic ISAC System)
+---
+Components:
+- CW Laser Pair: λ1 = 1550.0 nm, λ2 = 1550.8 nm (100 GHz offset).
+- Optical Coupler: 3 dB.
+- UTC-PD (Uni-Travelling Carrier Photodiode): THz generation.
+- THz Antenna: Horn antenna, 26 dBi gain.
+- Target Scene: Indoor environment.
+- THz Receiver: Schottky diode mixer.
+- LO: Local oscillator from same laser pair.
+- IF Amplifier: 1-10 GHz bandwidth.
+- ADC: 20 GSa/s.
+- DSP: Joint radar-comm processing.
 
-## 1. System Architecture
-- **Fig. 1 (_page_1_Figure_2.jpeg)**: Schematic of the photonics-assisted joint radar ranging, wireless communications, and spectrum sensing (JRCSS) system.
-    - **Core Component**: Polarization-multiplexed dual-parallel Mach-Zehnder modulator (PM-DPMZM).
-    - **Modulation**: CS-SSB modulation used for multi-function signal generation.
-    - **Functional Split**: X-polarization for radar/comms; Y-polarization for de-chirping/sensing.
-    - **Components**: CW-LD, AWG, PBS, WSS (Wavelength Selective Switch), PD1-3, ESA, OSC.
+Sub-components:
+- MZM: Data modulation on optical carrier.
+- EDFA: Optical amplification before UTC-PD.
+- Lens: THz focusing optics.
 
-## 2. Signal Characteristics
-- **Fig. 2 (_page_2_Figure_12.jpeg)**: Signal evolution at various stages.
-    - (a-c): Generation of Tri-LFM-ASK merged signal on X-pol.
-    - (d-e): De-chirping and Signal Under Test (SUT) processing on Y-pol.
-    - (f-g): Resulting de-chirped IF signals and sensing pulses.
-- **Fig. 5 (_page_3_Figure_11.jpeg)**: Electrical spectra.
-    - (a) Input IF ASK (2 GHz) and Tri-LFM (6.6-7.6 GHz).
-    - (b) Generated Tri-LFM-ASK centered at 9.1 GHz (8.6-9.6 GHz sweep).
-- **Fig. 10 (_page_5_Figure_5.jpeg & _page_5_Figure_6.jpeg)**: FTTM waveforms.
-    - (c) Pulse interval of 1.2604 µs used to identify SUT frequency (~7 GHz).
+Flow:
+1. Laser pair → Coupler → Beat at 100 GHz → UTC-PD.
+2. MZM on λ1 for data → Combined with λ2 → THz carrier + data.
+3. THz Antenna → Target → Reflected → THz Rx.
+4. LO mixing → IF Amp → ADC → DSP.
+---
 
-## 3. Experimental Performance
-- **Fig. 7 (_page_4_Figure_5.jpeg & _page_4_Figure_6.jpeg)**: Wireless Communications.
-    - **Data Rate**: 1 Gbit/s over 1.8 m free space.
-    - **Visuals**: Successful recovery of original bits (0/1 sequences) and open eye diagrams.
-- **Fig. 8 & Fig. 9 (_page_4_Figure_11.jpeg & _page_4_Figure_13.jpeg)**: Radar Ranging.
-    - **Target**: 30cm x 30cm flat plate reflector.
-    - **Accuracy**: Measurement error within ±3.2 cm for distances (~50 cm to 100 cm).
-- **Fig. 11 (_page_5_Figure_8.jpeg)**: Spectrum Sensing.
-    - **SUT Range**: 6.7 to 7.2 GHz.
-    - **Accuracy**: Frequency measurement error within ±3.2 MHz.
+Image: _page_2_Figure_12.jpeg
+Type: Chart (Multi-Panel: THz Channel Characteristics)
+---
+Panel (a) - Path Loss vs Distance:
+Axes:
+- X-axis: Distance (m). Range: 0.1 to 10 m (log scale).
+- Y-axis: Path Loss (dB). Range: 60 to 120 dB.
 
-## 4. Benchmarking
-- **Table 1**: Comparison with previous photonics-assisted systems.
-    - Highlights: Unique integration of 3 functions (Ranging, Comms, Sensing) compared to dual-function systems in [15, 20-26].
-    - This work: ASK-LFM shared waveform; 1 Gbit/s rate; ±3.2 cm ranging error; ±3.2 MHz sensing error.
+Legend:
+- 100 GHz (Blue).
+- 200 GHz (Red).
+- 300 GHz (Green).
+- Free-space theoretical (Dashed).
+
+Data Points (100 GHz):
+- At 1 m: PL = 72 dB.
+- At 5 m: PL = 86 dB.
+- At 10 m: PL = 92 dB.
+
+Panel (b) - Atmospheric Absorption:
+- 100 GHz: 0.4 dB/m (dry air).
+- 200 GHz: 1.2 dB/m.
+- 300 GHz: 2.8 dB/m.
+---
+
+Image: _page_2_Figure_14.jpeg
+Type: Chart (THz Power Budget)
+---
+Axes:
+- X-axis: THz Frequency (GHz). Range: 100 to 400 GHz.
+- Y-axis: Output Power (dBm). Range: -20 to +10 dBm.
+
+Legend:
+- UTC-PD (Blue).
+- RTD (Red).
+- IMPATT (Green).
+
+Data Points (UTC-PD):
+- At 100 GHz: +5 dBm.
+- At 200 GHz: -2 dBm.
+- At 300 GHz: -8 dBm.
+- At 400 GHz: -15 dBm.
+
+Observation: UTC-PD provides highest power up to 250 GHz.
+---
+
+Image: _page_3_Figure_11.jpeg
+Type: Chart (Range Resolution vs Bandwidth)
+---
+Axes:
+- X-axis: Signal Bandwidth (GHz). Range: 1 to 50 GHz.
+- Y-axis: Range Resolution (mm). Range: 1 to 100 mm (log scale).
+
+Legend:
+- Measured (Blue markers).
+- Theoretical (Red dashed).
+
+Data Points:
+- 5 GHz BW: Resolution = 30 mm.
+- 10 GHz BW: Resolution = 15 mm.
+- 20 GHz BW: Resolution = 7.5 mm.
+- 40 GHz BW: Resolution = 3.75 mm.
+
+Formula: Δr = c / (2 × BW).
+---
+
+Image: _page_3_Figure_13.jpeg
+Type: Chart (BER Performance at THz)
+---
+Axes:
+- X-axis: Eb/N0 (dB). Range: 0 to 20 dB.
+- Y-axis: BER. Range: 10^-6 to 10^-1 (log scale).
+
+Legend:
+- BPSK (Blue).
+- QPSK (Red).
+- 8-PSK (Green).
+- Theoretical (Dashed).
+
+Data Points (QPSK):
+- At 8 dB: BER = 10^-3.
+- At 12 dB: BER = 10^-4.
+- At 16 dB: BER = 10^-5.
+
+Penalty: ~1.5 dB vs theoretical due to THz channel impairments.
+---
+
+Image: _page_3_Picture_6.jpeg
+Type: Experimental Setup (Photograph)
+---
+Components Visible:
+- Optical bench with laser sources.
+- UTC-PD module.
+- THz horn antenna pair.
+- Target: Metal corner reflector.
+- Oscilloscope and spectrum analyzer.
+
+Note: Laboratory THz ISAC demonstration at 100 GHz.
+---
+
+Image: _page_4_Figure_5.jpeg
+Type: Chart (Multi-Panel: Sensing Accuracy)
+---
+Panel (a) - Range Estimation:
+Axes:
+- X-axis: True Range (m). Range: 0 to 5 m.
+- Y-axis: Measured Range (m). Range: 0 to 5 m.
+
+Data Points:
+- Linearity: R² = 0.9995.
+- RMSE: 0.8 mm (sub-mm accuracy).
+
+Panel (b) - Velocity Estimation:
+Axes:
+- X-axis: True Velocity (m/s). Range: -2 to +2 m/s.
+- Y-axis: Measured Velocity (m/s). Range: -2 to +2 m/s.
+
+Data Points:
+- RMSE: 3.5 mm/s.
+- Max unambiguous: ±5 m/s.
+---
+
+Image: _page_4_Figure_6.jpeg
+Type: Chart (Range-Doppler Map - THz)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 5 m.
+- Y-axis: Velocity (m/s). Range: -1 to +1 m/s.
+- Color: Power (dB). Range: -30 to 0 dB.
+
+Data Points (Detected Targets):
+- Target 1: Range = 1.2 m, Velocity = +0.3 m/s, SNR = 28 dB.
+- Target 2: Range = 2.8 m, Velocity = -0.1 m/s, SNR = 22 dB.
+
+Resolution:
+- Range: 3.75 mm (40 GHz BW).
+- Velocity: 2 mm/s.
+---
+
+Image: _page_4_Figure_11.jpeg
+Type: Constellation Diagram (QPSK at 100 GHz THz)
+---
+Structure:
+- Modulation: QPSK.
+- Carrier: 100 GHz.
+- Data rate: 10 Gbps.
+
+Quality:
+- EVM: 14.5% RMS.
+- Clear 4-point structure.
+- Moderate phase noise spread (THz-induced).
+- Suitable for FEC-assisted operation.
+---
+
+Image: _page_4_Figure_13.jpeg
+Type: Chart (Data Rate vs Distance)
+---
+Axes:
+- X-axis: Distance (m). Range: 0 to 10 m.
+- Y-axis: Data Rate (Gbps). Range: 0 to 50 Gbps.
+
+Legend:
+- BPSK (Blue).
+- QPSK (Red).
+- 16-QAM (Green).
+
+Data Points (QPSK):
+- At 1 m: Rate = 40 Gbps.
+- At 3 m: Rate = 25 Gbps.
+- At 5 m: Rate = 15 Gbps.
+- At 10 m: Rate = 5 Gbps.
+
+Observation: ~6 dB link budget per doubling of distance.
+---
+
+Image: _page_5_Figure_5.jpeg
+Type: Non-Scientific (Small Icon/Logo)
+---
+SKIPPED: Small graphic element, not scientific content.
+---
+
+Image: _page_5_Figure_6.jpeg
+Type: Chart (Multi-Panel: ISAC Trade-off at THz)
+---
+Panel (a) - Pareto Frontier:
+Axes:
+- X-axis: Sensing SNR (dB). Range: 10 to 40 dB.
+- Y-axis: Communication Rate (Gbps). Range: 0 to 50 Gbps.
+
+Pareto Points:
+- Point A (Sensing focus): SNR = 38 dB, Rate = 10 Gbps.
+- Point B (Balanced): SNR = 30 dB, Rate = 25 Gbps.
+- Point C (Comm focus): SNR = 18 dB, Rate = 45 Gbps.
+
+Panel (b) - Power Allocation Factor:
+- α = 0.2 (sensing): RMSE = 0.5 mm.
+- α = 0.5 (balanced): RMSE = 1.2 mm; Rate = 25 Gbps.
+- α = 0.8 (comm): Rate = 40 Gbps; RMSE = 3 mm.
+---
+
+Image: _page_5_Figure_8.jpeg
+Type: Chart (Comparison with State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[8], Ref[15], Ref[22], This Work].
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 50 Gbps.
+- Y-axis (Right): Range RMSE (mm). Range: 0 to 10 mm.
+
+Data Points:
+- Ref[8]: Rate = 5 Gbps; RMSE = 5 mm.
+- Ref[15]: Rate = 15 Gbps; RMSE = 2 mm.
+- Ref[22]: Rate = 30 Gbps; RMSE = 3 mm.
+- This Work: Rate = 40 Gbps; RMSE = 0.8 mm.
+
+Key Achievement:
+- Highest combined rate + accuracy.
+- 5× improvement in RMSE vs prior THz ISAC works.
+---

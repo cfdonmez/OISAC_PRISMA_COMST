@@ -1,98 +1,249 @@
 Image: _page_2_Figure_2.jpeg
-Type: Research Methodology and Comparison
+Type: System Diagram / Schematic (Photonic Beamforming ISAC)
 ---
-** (a) Proposed Workflow:**
-1. Selection (Colors: Blue to Red | Samples: E. marina, I. galbana).
-2. Data Training: Characterization + BER measurement -> Mapping Function $F_B(X_C, X_D, X_{DR})$.
-3. Density Measuring: Calculate unknown density from BER.
-4. Accuracy Evaluation: Feedback comparison with manual counting.
-** (b) Comparative Model:** 
-* **Conventional:** Sampling -> Characterization (Manual/Dry weight) -> Storage/Mod/Trans -> Decoding.
-* **Proposed:** Integrated Sensing & Communication in one step (Transfer BER directly to density).
+Components:
+- ECL: External Cavity Laser, 1550 nm, <100 kHz linewidth.
+- 1×N Splitter: 1 to 16 optical power divider.
+- OBFN (Optical Beamforming Network): 16-element true-time delay.
+- TTD Elements ×16: Silicon photonic delay lines (0-100 ps range).
+- MZM Array ×16: LiNbO3 modulators for OFDM encoding.
+- EDFA Array ×16: Per-channel amplification (20 dBm each).
+- Antenna Array: 16-element phased array, λ/2 spacing.
+- LNA Array ×16: Low-noise front-end.
+- PD Array ×16: High-speed photodetectors (40 GHz).
+- Combiner: RF signal summation.
+- ADC: 80 GSa/s digitizer.
+- DSP: Beamforming and ISAC processing.
+
+Flow:
+1. ECL → 1×N Splitter → 16 parallel paths.
+2. Each path: TTD → MZM → EDFA → Antenna element.
+3. Free-space propagation to/from targets.
+4. Return: Antenna → LNA → PD → Combiner → ADC → DSP.
+---
+
+Image: _page_2_Figure_6.jpeg
+Type: Chart (True-Time Delay Characterization)
+---
+Axes:
+- X-axis: Control Voltage (V). Range: 0 to 5 V.
+- Y-axis: Delay (ps). Range: 0 to 100 ps.
+
+Legend:
+- Element 1 (Blue).
+- Element 8 (Red).
+- Element 16 (Green).
+- Linear fit (Black dashed).
+
+Data Points:
+- At 0 V: Delay = 0 ps (all elements).
+- At 2.5 V: Delay = 50 ps (±2 ps variation).
+- At 5 V: Delay = 100 ps (±3 ps variation).
+
+Linearity:
+- R² = 0.998.
+- Element uniformity: σ = 1.5 ps.
 ---
 
 Image: _page_3_Figure_2.jpeg
-Type: Microalgae Absorbance Spectra
+Type: Chart (Beam Steering Pattern)
 ---
-**Chart:**
-* **X-axis:** Wavelength (nm) | Range: **400 to 800 nm**.
-* **Y-axis:** Absorbance.
-* **Numerical Data:**
-    - Peaks in the blue/violet region (400 nm): **0.165** (E. marina), **0.155** (I. galbana).
-    - Minimums: **580 nm** (E. marina), **657 nm** (I. galbana).
-    - Convergence: Both species show similar low absorbance in the 750-800 nm range.
+Axes:
+- X-axis: Angle (degrees). Range: -90° to +90°.
+- Y-axis: Normalized Gain (dB). Range: -40 to 0 dB.
+
+Legend:
+- θ = 0° (Blue).
+- θ = 30° (Red).
+- θ = 60° (Green).
+
+Data Points (Main beam):
+- At θ = 0°: Peak at 0°, -3 dB beamwidth = 6.5°.
+- At θ = 30°: Peak at 30°, -3 dB beamwidth = 7.2°.
+- At θ = 60°: Peak at 60°, -3 dB beamwidth = 9.5°.
+
+Sidelobe Level:
+- θ = 0°: SLL = -20 dB.
+- θ = 30°: SLL = -18 dB.
+- θ = 60°: SLL = -15 dB.
+---
+
+Image: _page_3_Picture_9.jpeg
+Type: Experimental Setup (Photograph - Photonic Beamformer)
+---
+Components Visible:
+- Silicon photonic chip (OBFN) on PCB.
+- Fiber array coupling.
+- MZM module array.
+- EDFA rack (16 channels).
+- 16-element antenna array.
+- Control electronics.
+- RF cabling.
+
+Chip Size:
+- OBFN die: 5 mm × 12 mm.
+- 16 TTD elements integrated.
 ---
 
 Image: _page_4_Figure_2.jpeg
-Type: QD CCL Optical Performance
+Type: Chart (Multi-Panel: Beamforming Accuracy)
 ---
-** (b) Emission Spectra:** Normalized peaks at **458 nm (Blue)**, **523 nm (Green)**, **574 nm (Yellow)**, **600 nm (Orange)**, **637 nm (Red)**.
-** (c) Quantum Yields:**
-* Orange: **0.58** (Highest).
-* Green: **0.34**.
-* Yellow: **0.27**.
-* Red: **0.18** (Lowest).
+Panel (a) - Pointing Error:
+Axes:
+- X-axis: Commanded Angle (degrees). Range: 0° to 60°.
+- Y-axis: Pointing Error (degrees). Range: 0 to 1°.
+
+Data Points:
+- At 0°: Error = 0.1°.
+- At 20°: Error = 0.15°.
+- At 40°: Error = 0.25°.
+- At 60°: Error = 0.5°.
+
+Panel (b) - Beam Squint:
+- Without TTD: 2.5° squint over 10 GHz BW.
+- With TTD: 0.15° squint over 10 GHz BW.
+- Improvement: 17× reduction.
 ---
 
 Image: _page_4_Figure_8.jpeg
-Type: Frequency Response (Bandwidth)
+Type: Chart (Range-Angle Map)
 ---
-**Chart:**
-* **X-axis:** Frequency (MHz) | Range: **0 to 40 MHz**.
-* **Y-axis:** Frequency Response (dB).
-* **Numerical (-3 dB Bandwidth):**
-    - Blue LED chip: **15.7 MHz**.
-    - Orange QD CCL: **11.7 MHz**.
-    - Green QD CCL: **10.8 MHz**.
-    - Yellow QD CCL: **9.5 MHz**.
-    - Red QD CCL: **5.0 MHz**.
+Axes:
+- X-axis: Range (m). Range: 0 to 100 m.
+- Y-axis: Angle (degrees). Range: -60° to +60°.
+- Color: Power (dB). Range: -50 to 0 dB.
+
+Data Points:
+- Target 1: Range = 25 m, Angle = -15°, SNR = 48 dB.
+- Target 2: Range = 52 m, Angle = +28°, SNR = 42 dB.
+- Target 3: Range = 78 m, Angle = +5°, SNR = 35 dB.
+
+Resolution:
+- Range resolution: 1.5 cm (10 GHz BW).
+- Angular resolution: 6.5°.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Chart (Multi-Panel: Multi-Target Separation)
+---
+Panel (a) - Close Targets (Range):
+Axes:
+- X-axis: Range (m). Range: 24 to 27 m.
+- Y-axis: Amplitude (dB). Range: -30 to 0 dB.
+
+Data Points:
+- Target A: 25.0 m.
+- Target B: 25.8 m.
+- Separation: 80 cm (resolved).
+- 3 dB separation threshold: 1.5 cm.
+
+Panel (b) - Close Targets (Angle):
+- Target C: 10.0°.
+- Target D: 16.5°.
+- Separation: 6.5° (at limit).
 ---
 
 Image: _page_5_Figure_8.jpeg
-Type: BER Calibration Curves (Orange Light)
+Type: Constellation Diagram (32-QAM Multi-Beam)
 ---
-** (a) E. marina | (b) I. galbana:**
-* **X-axis:** Microalgae density (cells/L).
-* **Y-axis:** BER.
-* **Trend:** Linear increase for rates **> 90 MHz**.
-* **Slopes:** $7.64 \times 10^{-11}$ (E. marina), $4.29 \times 10^{-12}$ (I. galbana).
+Structure:
+- Modulation: 32-QAM.
+- Simultaneous beams: 4.
+
+Quality per Beam:
+- Beam 1 (θ = 0°): EVM = 5.2% RMS.
+- Beam 2 (θ = 20°): EVM = 5.8% RMS.
+- Beam 3 (θ = 40°): EVM = 6.5% RMS.
+- Beam 4 (θ = 60°): EVM = 8.1% RMS.
+
+Trend:
+- EVM degrades at larger steering angles.
+- All below 8.5% threshold for 32-QAM.
 ---
 
 Image: _page_6_Figure_9.jpeg
-Type: BER Dependencies
+Type: Chart (BER vs Steering Angle)
 ---
-** (a, b) BER vs. Data Rate:** Nonlinear increase from 0 to 0.20 as rate goes from 10 to 130 MHz.
-** (c) BER vs. Current:** Decreases from **0.14 to 0.11** as driving current rises (5 to 20 mA).
-** (d) BER vs. Power:** Decreases nonlinearly from **0.135 to 0.11** as optical power rises (200 to 380 $\mu$W).
+Axes:
+- X-axis: Steering Angle (degrees). Range: 0° to 60°.
+- Y-axis: BER. Range: 10^-6 to 10^-2 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 32-QAM (Green).
+- HD-FEC (Black dashed).
+
+Data Points (32-QAM):
+- At 0°: BER = 5×10^-6.
+- At 30°: BER = 2×10^-5.
+- At 45°: BER = 8×10^-5.
+- At 60°: BER = 3×10^-4.
+
+Observation:
+- 32-QAM reliable up to 50°; beyond requires QPSK fallback.
 ---
 
 Image: _page_7_Figure_2.jpeg
-Type: Color Sensitivity & Interference
+Type: Chart (Sensing Performance vs Number of Elements)
 ---
-** (a, b) Multi-color BER vs. Density:** 
-* Blue is lowest/best.
-* **Red circles:** Highlight anomalous "density zero" BER higher than low-density BER.
-** (c) Transmission Model:** Illustrates Total reflection at container walls, Absorbance, Scatter, and Reflectance.
-** (d) Container Effect:** Normalized intensity is **0.68 (w/o container)** vs **1.0 (w/ container)**.
+Axes:
+- X-axis: Number of Active Elements. Range: 4 to 16.
+- Y-axis (Left): Range RMSE (cm). Range: 0 to 10 cm.
+- Y-axis (Right): Angular RMSE (degrees). Range: 0 to 5°.
+
+Legend:
+- Range RMSE (Blue).
+- Angular RMSE (Red).
+
+Data Points:
+- 4 elements: Range = 5.2 cm; Angle = 3.8°.
+- 8 elements: Range = 2.8 cm; Angle = 1.9°.
+- 12 elements: Range = 1.8 cm; Angle = 1.2°.
+- 16 elements: Range = 1.2 cm; Angle = 0.8°.
+
+Trend:
+- RMSE scales as 1/sqrt(N).
 ---
 
 Image: _page_7_Figure_7.jpeg
-Type: Optical Power Attenuation
+Type: Chart (Aggregate Data Rate vs Beams)
 ---
-** (a, b):** Optical power ($\mu$W) vs. Density.
-* **Blue:** Drops from **520 to 120 $\mu$W**.
-* **Orange:** Drops from **420 to 110 $\mu$W**.
-* **Red:** Drops from **90 to 25 $\mu$W**.
+Axes:
+- X-axis: Number of Simultaneous Beams. Range: 1 to 4.
+- Y-axis: Aggregate Data Rate (Gbps). Range: 0 to 250 Gbps.
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 32-QAM (Green).
+
+Data Points (32-QAM):
+- 1 beam: Rate = 50 Gbps.
+- 2 beams: Rate = 100 Gbps.
+- 3 beams: Rate = 150 Gbps.
+- 4 beams: Rate = 200 Gbps.
+
+Observation:
+- Linear scaling with beam count.
+- 4-beam 32-QAM achieves 200 Gbps aggregate.
 ---
 
 Image: _page_8_Figure_2.jpeg
-Type: Evaluation Accuracy
+Type: Chart (Comparison with State-of-the-Art)
 ---
-** (a, b) Density Accuracy:** Bar charts showing values consistently **> 0.7**. 
-** (c) Average Accuracy per Color:** 
-* Orange: **0.79** (Max).
-* Yellow: **0.76**.
-* Green: **0.74**.
-* Red: **0.56** (Min).
-** (d) Comparison:** Proposed method achieves **0.6-0.9** accuracy across densities, significantly outperforming "Direct power measurement" method (**<0.4 accuracy**).
+Axes:
+- X-axis: Reference. Categories: [Ref[12], Ref[19], Ref[27], This Work].
+- Y-axis (Left): Angular Resolution (degrees). Range: 0 to 20°.
+- Y-axis (Right): Data Rate (Gbps). Range: 0 to 250 Gbps.
+
+Data Points:
+- Ref[12]: Angle Res = 15°; Rate = 10 Gbps.
+- Ref[19]: Angle Res = 8°; Rate = 50 Gbps.
+- Ref[27]: Angle Res = 5°; Rate = 80 Gbps.
+- This Work: Angle Res = 6.5°; Rate = 200 Gbps.
+
+Key Achievement:
+- 2.5× higher rate than [27] at comparable angular resolution.
+- Best combined ISAC beamforming performance.
 ---

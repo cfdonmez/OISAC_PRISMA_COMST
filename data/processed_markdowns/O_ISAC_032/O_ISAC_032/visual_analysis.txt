@@ -1,124 +1,193 @@
-Batch 1:
-Image _page_0_Picture_2.jpeg:
-Type: Other
-Description: Cover graphic introducing “Temperature Compensation Method for Polarization-Multiplexed Fiber-Optic Vibration Sensing Unit” and highlighting the polarization-multiplexed FOVSU concept.
-KEY DATA: Sets the context for mitigating temperature cross-sensitivity in long-arm interferometric vibration sensors using polarization multiplexing and piecewise compensation.
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic (Decoupling Principle)
+---
+Components:
+- Welding spots (45° and 90°): Precise polarization-maintaining fiber alignment points.
+- Measurement Arm (M) and Reference Arm (R).
+- Polarization States: Fast axis (f) and Slow axis (s).
+- Decoupled Components: Mf, Ms, Rf, Rs.
+- Phase Outputs: φMfRs and φMsRf (Dual-interferometer outputs).
+- Coefficient Matrices: Strain coefficients (ε) and Temperature coefficients (T).
 
-Image _page_0_Figure_6.jpeg:
-Type: Chart
-Description: Performance summary showing that the proposed piecewise uniform compensation suppresses temperature-drift noise by 43 dB under self-cooling and 33 dB under continuous temperature cycling (at 1 mHz).
-KEY DATA: Demonstrates two experimental cases—unidirectional cooling and continuous rise/fall—validating the dramatic phase-noise reduction claimed in the abstract.
+Flow:
+1. Input light is split into two orthogonal paths (90° welding spot).
+2. Each path is rotated (45° welding spots) to launch equally into the Measurement and Reference arms.
+3. The arms are recombined such that the fast-axis measurement component (Mf) interferes with the slow-axis reference (Rs), and vice versa for (Ms, Rf) via a PMFC.
+4. Two distinct phase fluctuations are extracted at 0° and 90° outputs.
+5. These phases are processed through the shown data preprocessing matrix to extract Strain (ε) and Temperature (ΔT) independently.
+---
 
-Image _page_2_Figure_2.jpeg:
-Type: Diagram
-Description: Schematic of the polarization-multiplexed temperature-compensation method, showing how fast/slow axes in PM fiber form two interferometers for decoupling strain and temperature.
-KEY DATA: Illustrates the optical path with 90° splices, measurement/reference arms, and outputs Δφ_MfRs, Δφ_MsRf used in equation (2) to solve for strain ε and temperature ΔT.
+Image: _page_2_Picture_4.jpeg
+Type: System Diagram / Schematic (Setup Detail)
+---
+Components:
+- Light Source: Stable laser for interferometer.
+- FC/APC: Fiber connector with physical contact.
+- Y-Waveguide: Splits the light into two paths.
+- MA (Measurement Arm): Coiled fiber on the sensor disk.
+- RA (Reference Arm): Coiled fiber on the sensor disk.
+- PMFC (Polarization-Maintaining Fiber Coupler): Recombines light.
+- 0° LP and 90° LP: Linear Polarizers for state selection.
+- PD (Photodiodes): Convert optical signals to electrical phase data.
 
-Image _page_2_Picture_4.jpeg:
-Type: Diagram
-Description: Layout of the polarization-multiplexed fiber-optic interferometer with PM couplers, linear polarizer, and measurement/reference arms.
-KEY DATA: Labels FC/APC connectors, PMF coupler, and shows how the two polarization channels share the same interferometric path.
+Flow:
+- Light passes from the source through the Y-waveguide to the MA and RA.
+- Interference occurs at the PMFC and is detected by dual PDs after polarization filtering.
+---
 
-Image _page_2_Picture_6.jpeg:
-Type: Diagram
-Description: Structural diagram and photograph of the fiber-optic vibration sensing unit (FOVSU) using a disk-type vibration pickup bonded to long SFC coils.
-KEY DATA: Panel (a) explains the metal shell, elastic disk, and mass block arrangement that transfers acceleration to the 260 m fiber coils; panel (b) shows the assembled sensor.
+Image: _page_2_Picture_6.jpeg
+Type: System Diagram / Schematic (Mechanical Sensor Design)
+---
+Components:
+- Metal shell: Protective outer casing of the FOVSU.
+- Elastic disk: Flexible platform for strain transfer.
+- Mass block: Inertial mass converting acceleration into force.
+- Sensitive Fiber Coil (SFC): 260m of fiber wound on the disk.
 
-Batch 2:
-Image _page_2_Picture_13.jpeg:
-Type: Diagram
-Description: Heat-conduction model of the sensitive fiber coils (SFCs) showing temperature gradients across inner/outer surfaces and disk-contacting base.
-KEY DATA: Labels T1–T4 and blue arrows indicating radial/axial heat flow—foundation for the nonlinear temperature-response analysis leading to piecewise compensation.
+Flow:
+1. External vibration/acceleration causes the Mass block to move.
+2. The inertia of the mass block deforms the Elastic disk.
+3. This deformation induces radial strain in the SFC.
+4. The strain manifests as a phase shift in the optical signal traveling through the SFC, enabling sensing.
+---
 
-Image _page_4_Figure_2.jpeg:
-Type: Diagram
-Description: Flowchart of the proposed piecewise uniform temperature compensation method.
-KEY DATA: Steps include interval partitioning, solving temperature coefficients per °C slice, matching with measured phase, decoupling ΔT, and splicing compensated data.
+Image: _page_2_Picture_13.jpeg
+Type: System Diagram / Schematic (Thermal Model)
+---
+Components:
+- T1, T2: Ambient temperatures at different longitudinal segments.
+- T3: External boundary temperature.
+- T4: Internal fiber core temperature gradient.
+- Heat conduction arrows (red/blue): Representing radial and longitudinal heat flow.
 
-Image _page_4_Figure_4.jpeg:
-Type: Chart
-Description: Effectiveness of the original single-coefficient compensation during self-cooling: (a) decoupled vs measured temperature; (b) phase shift before/after compensation.
-KEY DATA: Shows max temperature error 0.1605°C and phase drift reduced from 20695.50 to 392.31 rad (1/53 of original) across 55–35°C cooling.
+Flow:
+1. Ambient temperature changes initiate heat conduction through the metal shell and SFC.
+2. Non-uniform thermal gradients (T1 to T4) develop across the fiber loops.
+3. These gradients create nonlinear phase shifts that standard linear compensation methods fail to handle, justifying the need for the piecewise uniform compensation strategy.
+---
 
-Image _page_4_Figure_8.jpeg:
-Type: Chart
-Description: Phase-noise power spectrum for the original method under self-cooling.
-KEY DATA: Displays ~29 dB suppression at 1 mHz after compensation versus before, quantifying residual low-frequency noise.
+Image: _page_4_Figure_2.jpeg
+Type: Flowchart (Algorithm)
+---
+Steps:
+1. Subdivide temperature intervals: Based on gradient stability.
+2. Match temperature coefficients: Finding local linear approximations.
+3. Compensate and decouple segmentally: Applying the matrix per interval.
+4. Splice temperature data: Reconstructing the full temperature profile.
+5. Splice phase data: Reconstructing the compensated vibration phase.
+6. Compare compensation results: Final validation step.
+---
 
-Image _page_5_Figure_2.jpeg:
-Type: Chart
-Description: Effectiveness of the piecewise uniform method under self-cooling: (a) temperature comparison; (b) phase shift before/after compensation.
-KEY DATA: Attains rms temperature error 0.1234°C and reduces phase drift from 20695.50 to 127.83 rad (1/161), tripling the improvement over the original method.
+Image: _page_4_Figure_4.jpeg
+Type: Performance Chart (Self-Cooling: Temperature)
+---
+Axes:
+- X-axis: Time (s). Range: 0 to 16,000.
+- Y-axis: Temperature (°C). Range: 35 to 55.
 
-Batch 3:
-Image _page_5_Figure_4.jpeg:
-Type: Chart
-Description: Phase-noise spectrum for the piecewise method under self-cooling.
-KEY DATA: Shows ~43 dB suppression at 1 mHz, 14 dB better than the original approach.
+Data Points:
+- Initial Temperature: 54.4°C.
+- Terminal Temperature: 35.0172°C (Measured) vs 35.1777°C (Decoupled).
+- Zoom Inset: Shows a small divergence appearing after 12,000s between measured and decoupled traces.
+---
 
-Image _page_5_Figure_8.jpeg:
-Type: Chart
-Description: Original compensation performance under continuous temperature rise/fall: (a) temperature error; (b) phase drift.
-KEY DATA: Max temperature deviation 0.9661°C (rms 0.8882°C) and phase drift only reduced from 6466.52 to 4324.61 rad (≈1/1.5), indicating poor compensation in dynamic conditions.
+Image: _page_4_Figure_8.jpeg
+Type: Performance Chart (Self-Cooling: Comparison)
+---
+Axes:
+- X-axis: Frequency (Hz). Range: 10^-4 to 10^3.
+- Y-axis: PSD (dB). Range: -150 to 150.
 
-Image _page_5_Figure_10.jpeg:
-Type: Chart
-Description: Phase-noise spectrum of the original method under continuous temperature variations.
-KEY DATA: Minimal suppression in the mHz band, confirming ineffectiveness for fluctuating environments.
+Data Points (@ 1 mHz):
+- Red Trace: 106.3 dB (Before compensation).
+- Green Trace: 49.0511 dB (After ordinary compensation).
+- Result: 57.25 dB noise suppression achieved via ordinary method.
+---
 
-Image _page_6_Figure_2.jpeg:
-Type: Chart
-Description: Piecewise uniform compensation under continuous temperature rise/fall: (a) decoupled vs measured temperature; (b) phase response.
-KEY DATA: Max deviation drops to 0.2501°C (rms 0.1732°C) and phase drift to 836.36 rad (1/8 of initial), a 5× improvement over the original method.
+Image: _page_5_Figure_2.jpeg
+Type: Performance Chart (Self-Cooling: Piecewise Results)
+---
+Axes:
+- X-axis: Time (s). Range: 0 to 16,000.
+- Y-axis (a): Temperature (°C). Range: 35 to 55.
+- Y-axis (b): Phase (rad). Range: -2.5 x 10^4 to 0.5 x 10^4.
 
-Image _page_6_Figure_4.jpeg:
-Type: Chart
-Description: Phase-noise spectrum for the piecewise method during continuous temperature changes.
-KEY DATA: Exhibits ~33 dB suppression at 1 mHz, demonstrating robustness across dynamic thermal profiles.
+Data Points:
+- Uncompensated Phase (Dark Blue): -20,695.50 rad drift.
+- Ordinary Compensation (Cyan): -392.31 rad drift.
+- Piecewise Compensation (Light Blue): 127.83 rad residual, demonstrating 3x improvement over ordinary method in terminal phase.
+---
 
-Batch 4:
-Image _page_7_Picture_31.jpeg:
-Type: Other
-Description: Portrait/bio of Ran An.
-KEY DATA: Huazhong Univ. of Science and Technology B.Eng.; PhD candidate at Harbin Engineering University focusing on fiber-optic interferometers and sensors.
+Image: _page_5_Figure_4.jpeg
+Type: Performance Chart (Self-Cooling: Piecewise PSD)
+---
+Axes:
+- X-axis: Frequency (Hz). Range: 10^-4 to 10^3.
+- Y-axis: PSD (dB). Range: -150 to 100.
 
-Image _page_7_Picture_34.jpeg:
-Type: Other
-Description: Portrait/bio of Yuanjun Wang.
-KEY DATA: Xi'an University of Technology B.Eng.; pursuing M.Eng. at Guangdong University of Technology in optical fiber sensors.
+Data Points (@ 1 mHz):
+- Red Trace: 86.2 dB.
+- Green Trace: 19.6506 dB.
+- Net Suppression: **66.5 dB** reduction using the new piecewise method, which is >9 dB better than ordinary method at low frequencies.
+---
 
-Image _page_7_Picture_37.jpeg:
-Type: Other
-Description: Portrait/bio of Xinyang Ping.
-KEY DATA: B.Eng. from Harbin Engineering University; PhD candidate researching fiber-optic interferometers and sensors.
+Image: _page_5_Figure_8.jpeg
+Type: Performance Chart (Complex Cycling: Ordinary Method Phase)
+---
+Axes:
+- X-axis: Time (s). Range: 0 to 6.3 x 10^4.
+- Y-axis (a): Temperature (°C). Range: 8 to 22.
+- Y-axis (b): Phase (rad). Range: -8000 to 6000.
 
-Image _page_7_Picture_40.jpeg:
-Type: Other
-Description: Portrait/bio of Kunhua Wen.
-KEY DATA: Southwest Jiaotong University B.E./PhD; Professor at Guangdong University of Technology working on nanophotonics, optical sensing, and FBGs.
+Data Points:
+- Ordinary decoupling error: 0.9661°C peak at the first cycle peak.
+- Ordinary phase residual: **-4324.61 rad** drift, failing to track the complex thermal load.
+---
 
-Image _page_8_Picture_2.jpeg:
-Type: Other
-Description: Portrait/bio of Yonggui Yuan.
-KEY DATA: Professor at Harbin Engineering University with B.S./M.S./PhD from the same institution; expertise in fiber-optic sensing and precision measurement.
+Image: _page_5_Figure_10.jpeg
+Type: Performance Chart (Complex Cycling: Ordinary PSD)
+---
+Axes:
+- X-axis: Frequency (Hz). Range: 10^-4 to 10^3.
+- Y-axis: PSD (dB). Range: -150 to 100.
 
-Batch 5:
-Image _page_8_Picture_5.jpeg:
-Type: Other
-Description: Portrait/bio of Shun Wang.
-KEY DATA: B.Eng. from Xi'an University of Posts and Telecommunications, PhD from HUST; Associate Professor at Guangdong University of Technology focusing on nanophotonics and FBG sensing.
+Observation:
+- Shows higher background noise floor (-50 dB at 1 Hz) compared to the new method, indicating poor decoupling.
+---
 
-Image _page_8_Picture_8.jpeg:
-Type: Other
-Description: Portrait/bio of Jun Yang.
-KEY DATA: Harbin Engineering University B.S./M.Eng./PhD; Professor at Guangdong University of Technology specializing in optical measurement and fiber sensing.
+Image: _page_6_Figure_2.jpeg
+Type: Performance Chart (Complex Cycling: Piecewise Results)
+---
+Axes:
+- X-axis: Time (s). Range: 0 to 6.3 x 10^4.
+- Y-axis (a): Temperature (°C). Range: 8 to 22.
+- Y-axis (b): Phase (rad). Range: -8000 to 6000.
 
-Image _page_8_Picture_11.jpeg:
-Type: Other
-Description: Portrait/bio of Yuncai Wang.
-KEY DATA: Degrees from Nankai University and Xi'an Institute of Optics; Professor at Guangdong University of Technology studying nonlinear dynamics of semiconductor lasers/fibers and their communications applications.
+Data Points:
+- Piecewise decoupling error: Reduced to **0.2501°C**.
+- Piecewise phase residual: Reduced to **-836.36 rad**, demonstrating the algorithm's ability to handle thermal reversals.
+---
 
-Image _page_8_Picture_15.jpeg:
-Type: Other
-Description: Portrait/bio of Yuwen Qin.
-KEY DATA: B.S. Henan Normal University, M.S./PhD from Xi'an Institute/Tianjin University; Professor at Guangdong University of Technology with interests in optical communication and sensing.
+Image: _page_6_Figure_4.jpeg
+Type: Performance Chart (Complex Cycling: Final PSD)
+---
+Axes:
+- X-axis: Frequency (Hz). Range: 10^-4 to 10^3.
+- Y-axis: PSD (dB). Range: -150 to 100.
+
+Observation:
+- Demonstrates a significantly flatter and lower PSD floor across the 0.01 - 1 Hz range, validating the stability imparted by the piecewise algorithm.
+---
+
+Image: _page_0_Figure_6.jpeg
+Type: Performance Chart (Composite PSD)
+---
+Axes:
+- X-axis: Frequency (Hz). Range: 10^-4 to 10^3.
+- Y-axis: PSD (dB). Range: -150 to 100.
+
+Data Points (@ 1 mHz):
+- Phase before compensation: 49.3230 dB.
+- Phase after compensation: 16.8849 dB.
+- Suppression: 32.44 dB recorded in this specific trial state.
+---

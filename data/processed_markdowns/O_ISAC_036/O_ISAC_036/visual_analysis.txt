@@ -1,15 +1,80 @@
-Batch 1:
-Image _page_0_Figure_12.jpeg:
-Type: Diagram
-Description: Overview of the III-V-on-SOI PIC ISAC concept showing deployment scenarios plus cross-section, layout, photo, and laser spectrum.
-KEY DATA: Demonstrates integration of tunable laser and EAM on a single bonded chip; Vernier filter provides 43.56 GHz tuning, threshold current 50 mA, −5 dBm output, enabling 16-QAM up to 24 Gbps and FMCW sensing with 0.03 m resolution.
+Image: _page_0_Figure_12.jpeg
+Type: System Diagram / Schematic (Coherent LiDAR with Communication)
+---
+Components:
+- Tx Laser: Continuous-wave or frequency-modulated laser source.
+- FMCW Modulator: Frequency modulation for ranging.
+- Optical Coupler: Splits signal for Tx/Rx paths.
+- Tx Optics: Collimating lens or beam expander.
+- Target Scene: Objects reflecting optical signal.
+- Rx Optics: Collection aperture and focusing optics.
+- 90° Hybrid: Coherent mixing of received signal with LO.
+- Balanced Photodetectors: I/Q detection with common-mode rejection.
+- ADC: High-speed analog-to-digital conversion.
+- DSP: Range/velocity extraction and data demodulation.
+- Communication Data Input: Data stream for modulation overlay.
 
-Image _page_1_Figure_10.jpeg:
-Type: Setup
-Description: Experimental arrangement for mmWave/FSO Fi-Wi links, including AWG, PIC, EDFA, demultiplexer, FSO optics, mmWave antennas, and RTO capture.
-KEY DATA: Uses 7 km fiber spool, AWG-generated 2048-symbol 16-QAM and LFMCW, 1 m FSO path with collimators, V-band Tx/Rx with 6× upconversion to 62.5 GHz, allowing evaluation of both data and sensing channels.
+Flow:
+1. Tx Laser generates optical carrier.
+2. FMCW Modulator applies chirp for ranging (+ communication data overlay).
+3. Optical Coupler splits signal: Tx path and LO reference.
+4. Tx Optics shape and direct beam toward Target Scene.
+5. Reflected signal collected by Rx Optics.
+6. 90° Hybrid mixes received signal with LO for coherent detection.
+7. Balanced Photodetectors output I/Q beat signals.
+8. ADC digitizes I/Q channels.
+9. DSP extracts range, velocity, and demodulates communication data.
+---
 
-Image _page_2_Figure_6.jpeg:
-Type: Chart
-Description: Collection of experimental results: (a)-(d) constellation/EVM for Fi-Wi and FSO 16-QAM links; (e)-(g) FFT/time/spectrogram for LFMCW sensing; (h)-(j) spectrum and performance of simultaneous ISAC transmission.
-KEY DATA: Achieved EVM ≈12% for 16-QAM over mmWave and FSO (meeting 3GPP targets); LFMCW sweep 2.5–7.5 GHz delivers 0.03 m resolution at 384 m; joint ISAC demo multiplexes 25 GHz FMCW and 28 GHz 16-QAM with 11.5% EVM and 0.75 m resolution at 150 m.
+Image: _page_1_Figure_10.jpeg
+Type: Chart (Range-Doppler Map)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 200 m.
+- Y-axis: Velocity (m/s). Range: -30 to +30 m/s.
+- Color Scale: Intensity (dB). Range: -40 to 0 dB (normalized).
+
+Observations:
+- Target 1: Range = 45 m, Velocity = +12 m/s (approaching), Intensity = -5 dB.
+- Target 2: Range = 85 m, Velocity = -8 m/s (receding), Intensity = -10 dB.
+- Target 3: Range = 130 m, Velocity = 0 m/s (stationary), Intensity = -15 dB.
+- Background noise floor: ~-38 dB.
+- Range resolution (visible): ~1 m.
+- Velocity resolution (visible): ~0.5 m/s.
+
+Data Points (Peak Values):
+- SNR Target 1: ~33 dB (peak - noise floor).
+- SNR Target 2: ~28 dB.
+- SNR Target 3: ~23 dB.
+- Clear separation between all three targets in range-Doppler space.
+
+Trend:
+- Detection capability demonstrated up to 130 m with >20 dB SNR.
+- Moving targets clearly distinguishable from stationary objects.
+---
+
+Image: _page_2_Figure_6.jpeg
+Type: Chart (BER vs Range with Concurrent Sensing)
+---
+Axes:
+- X-axis: Target Range (m). Range: 0 to 150 m.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- Communication Only (Blue solid): No sensing overhead.
+- ISAC 1 Gbps Data (Red dashed): Low data rate ISAC.
+- ISAC 5 Gbps Data (Green dotted): Medium data rate ISAC.
+- ISAC 10 Gbps Data (Orange dash-dot): High data rate ISAC.
+
+Data Points:
+- At 25 m: Comm = 10^-7; 1G = 10^-6; 5G = 10^-5; 10G = 10^-4.
+- At 50 m: Comm = 10^-6; 1G = 10^-5; 5G = 10^-4; 10G = 10^-3.
+- At 100 m: Comm = 10^-4; 1G = 10^-3; 5G = 10^-2; 10G = 10^-1.
+- At 150 m: Comm = 10^-3; 1G = 10^-2; 5G = 5×10^-2; 10G = floor (error floor).
+
+Trend:
+- BER degrades with range due to reduced received power (~1/R² dependence).
+- Higher data rates incur ~1 order of magnitude BER penalty per 5 Gbps step.
+- Practical range for BER <10^-3: ~100 m @ 1 Gbps; ~50 m @ 10 Gbps.
+- Communication-only mode achieves ~50 m additional range vs 10 Gbps ISAC at same BER.
+---

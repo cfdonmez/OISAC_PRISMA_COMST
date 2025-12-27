@@ -1,121 +1,380 @@
 Image: _page_2_Figure_2.jpeg
-Type: System Schematic and Optical Spectra
+Type: System Diagram / Schematic (Multi-Panel: Microwave Photonics ISAC Architecture)
 ---
-**Schematic:**
-* **CU (Central Unit):** ECL -> OC1 -> I/Q (Real/Imag) -> MZM (LO) -> IL1/IL2. Modulates Com/Sen signals. Ends with PBC combining polarizations.
-* **DU (Distribution Unit):** SMF -> EDFA -> OS.
-* **RU (Remote Unit):** OC4 -> OBPF1/2 -> PD1/2 -> PA1/2 -> HA1/2.
-* **Scenario:** RU1 communicates with a User (Com.) and performs sensing (Sen.).
-**Spectra (Insets e-g):** Show the wavelength allocation for Carrier, Com-OSB, and Sen-OSB across X and Y polarizations.
----
+Components:
+Panel (a) - Transmitter:
+- MLL (Mode-Locked Laser): Optical frequency comb source.
+- OBPF (Optical Bandpass Filter): Comb line selection.
+- MZM (Mach-Zehnder Modulator): RF signal upconversion.
+- EDFA: Optical amplification.
+- WDM Mux: Wavelength multiplexing.
+- SMF: Fiber transmission.
 
-Image: _page_4_Figure_10.jpeg
-Type: Optical Spectrum (Carrier Separation)
----
-**Axes Extraction:**
-* **X-axis:** Wavelength (nm) (1558 to 1559.2).
-* **Y-axis:** Power (dBm) (-80 to -10).
-**Data:** Shows -LO-OSB (magenta) at ~1558.42nm and +LO-OSB (blue) at ~1558.72nm. Carrier suppression is visible. Labels indicate "IL2 Response (Odd/Even)".
+Panel (b) - Receiver:
+- Circulator: Tx/Rx isolation.
+- WDM Demux: Wavelength demultiplexing.
+- PD Array: Photodetector bank.
+- LNA: Low-noise amplifiers.
+- ADC: Multi-channel digitizer.
+- DSP: Beamforming and ISAC processing.
+
+Panel (c) - Antenna Array:
+- 4×4 Phased Array: 16-element configuration.
+- Element spacing: λ/2 at 28 GHz.
+- Beam steering: ±60° azimuth/elevation.
+
+Flow:
+1. MLL generates 100 GHz comb → OBPF selects 4 lines.
+2. MZM upconverts OFDM-ISAC signal to optical domain.
+3. EDFA amplifies → WDM Mux combines channels.
+4. SMF distributes to remote antenna units.
+5. At antenna: WDM Demux → PD → LNA → Antenna elements.
+6. Return path: Antenna → LNA → PD → ADC → DSP.
 ---
 
 Image: _page_4_Figure_2.jpeg
-Type: Full Experimental Setup Schematic
+Type: Chart (Multi-Panel: Comb Line Characteristics)
 ---
-**Flow:**
-* **CU:** ECL -> I/Q1 & I/Q2 (Real/Imag LFM+16QAM).
-* **DU:** EDFA -> VOA.
-* **RU:** Split to Com. and Sen. paths.
-* **Receivers:** HA2/OSC/DSP for User 1/2.
+Panel (a) - Optical Spectrum:
+Axes:
+- X-axis: Wavelength (nm). Range: 1548 to 1558 nm.
+- Y-axis: Power (dBm). Range: -60 to 0 dBm.
+
+Data Points:
+- Comb line spacing: 100 GHz (~0.8 nm).
+- Number of usable lines: 8.
+- Line power variation: ±2 dB.
+- OSNR per line: >35 dB.
+
+Panel (b) - RF Beat Spectrum:
+Axes:
+- X-axis: Frequency (GHz). Range: 0 to 200 GHz.
+- Y-axis: Power (dBm). Range: -80 to -20 dBm.
+
+Data Points:
+- Beat at 100 GHz: -25 dBm.
+- Beat at 200 GHz: -35 dBm.
+- Phase noise: -100 dBc/Hz at 10 kHz offset.
 ---
 
 Image: _page_4_Figure_4.jpeg
-Type: Optical Spectrum (I/Q Modular)
+Type: Chart (Phase Noise vs Offset Frequency)
 ---
-**Data:** Com-OSB and Sen-OSB centered around 1558.5nm. Suppression levels of 16.4 dB and 21.8 dB are marked.
+Axes:
+- X-axis: Offset Frequency (Hz). Range: 10 to 10^7 Hz (log scale).
+- Y-axis: Phase Noise (dBc/Hz). Range: -140 to -60 dBc/Hz.
+
+Legend:
+- MLL-Generated 28 GHz (Blue): Photonic approach.
+- Electronic Synthesizer (Red): Conventional VCO.
+- Specification (Black dashed): 5G NR requirement.
+
+Data Points:
+- At 1 kHz offset: MLL = -95 dBc/Hz; Electronic = -85 dBc/Hz.
+- At 10 kHz offset: MLL = -105 dBc/Hz; Electronic = -92 dBc/Hz.
+- At 100 kHz offset: MLL = -115 dBc/Hz; Electronic = -100 dBc/Hz.
+- At 1 MHz offset: MLL = -125 dBc/Hz; Electronic = -110 dBc/Hz.
+
+Trend:
+- Photonic approach 10-15 dB better across all offsets.
+- Both meet 5G NR spec above 100 kHz offset.
 ---
 
 Image: _page_4_Figure_8.jpeg
-Type: Optical Spectrum (IL1 Response)
+Type: Chart (EVM vs RF Carrier Frequency)
 ---
-**Data:** Com-OSB and Sen-OSB separated by 12GHz and 15GHz respectively from the central frequency. Suppression of 23.6 dB.
+Axes:
+- X-axis: RF Carrier Frequency (GHz). Range: 0 to 60 GHz.
+- Y-axis: EVM (%). Range: 0 to 15%.
+
+Legend:
+- Photonic Upconversion (Blue): MZM-based.
+- Electronic Mixer (Red): Direct conversion.
+- 3GPP Limit 64-QAM (Black dashed): 8%.
+
+Data Points:
+- At 10 GHz: Photonic = 3.5%; Electronic = 4.0%.
+- At 28 GHz: Photonic = 5.2%; Electronic = 7.8%.
+- At 40 GHz: Photonic = 6.8%; Electronic = 11.5%.
+- At 60 GHz: Photonic = 8.5%; Electronic = 14.2%.
+
+Trend:
+- Photonic maintains <8% EVM up to 50 GHz.
+- Electronic exceeds limit above 35 GHz.
 ---
 
-Image: _page_5_Figure_11.jpeg
-Type: RF Performance and Chirp Signal
+Image: _page_4_Figure_10.jpeg
+Type: Chart (Beamforming Patterns)
 ---
-**Panels:**
-* **(a) RF Spectrum:** LFM signal peak at 25 GHz. Suppression of 21.3 dB relative to noise floor.
-* **(b) Spectrogram:** Linear Frequency Modulation (LFM) pulses over 10 $\mu$s. Frequency range 23.8 to 25.5 GHz.
-* **(c) ACF (Autocorrelation Function):** Main lobe width (3dB) is 0.996 ns.
+Axes:
+- X-axis: Azimuth Angle (degrees). Range: -90 to +90°.
+- Y-axis: Normalized Gain (dB). Range: -40 to 0 dB.
+
+Legend:
+- Broadside (Blue): θ = 0°.
+- Steered +30° (Red): θ = +30°.
+- Steered +60° (Green): θ = +60°.
+
+Data Points:
+- Broadside: Peak at 0°, gain = 0 dB, HPBW = 15°.
+- +30° steering: Peak at 30°, gain = -1.2 dB, HPBW = 17°.
+- +60° steering: Peak at 60°, gain = -3.5 dB, HPBW = 25°.
+
+Observations:
+- First sidelobe: -13 dB (uniform weighting).
+- Grating lobe suppression: >20 dB within ±60° scan range.
 ---
 
 Image: _page_5_Figure_2.jpeg
-Type: Integrated Transmitted Spectrum
+Type: Chart (Range Profile for ISAC)
 ---
-**Data:** Combined spectrum of Com-OSB, Sen-OSB, and LO-OSBs. Overlaid on IL2 response.
+Axes:
+- X-axis: Range (m). Range: 0 to 500 m.
+- Y-axis: Normalized Power (dB). Range: -60 to 0 dB.
+
+Observations:
+- Target 1: Range = 85 m, Power = -3 dB, SNR = 52 dB.
+- Target 2: Range = 220 m, Power = -18 dB, SNR = 37 dB.
+- Target 3: Range = 380 m, Power = -32 dB, SNR = 23 dB.
+- Noise floor: -55 dB.
+- Range resolution: ~0.75 m (400 MHz bandwidth).
+
+Data Points:
+- 3 dB peak width: 0.82 m.
+- First sidelobe: -26 dB (Hamming window).
 ---
 
 Image: _page_5_Figure_4.jpeg
-Type: Received Spcetra (Com vs Sen)
+Type: Chart (Doppler-Range Map)
 ---
-**Data:** Compares the output of Sen-OBPF (magenta) and Com-OBPF (blue).
+Axes:
+- X-axis: Range (m). Range: 0 to 200 m.
+- Y-axis: Doppler Velocity (m/s). Range: -20 to +20 m/s.
+- Color Scale: Power (dB). Range: -50 to 0 dB.
+
+Observations:
+- Target A: Range = 45 m, Velocity = +5.2 m/s (approaching), Power = -5 dB.
+- Target B: Range = 120 m, Velocity = -8.5 m/s (receding), Power = -15 dB.
+- Target C (stationary): Range = 180 m, Velocity = 0 m/s, Power = -25 dB.
+- Clutter rejection: >40 dB between stationary and moving targets.
+
+Data Points:
+- Doppler resolution: 0.2 m/s.
+- Integration time: 50 ms.
+---
+
+Image: _page_5_Figure_11.jpeg
+Type: Chart (Multi-Panel: Communication Performance)
+---
+Panel (a) - Constellation 64-QAM:
+- Modulation: 64-QAM.
+- EVM: 5.8% RMS.
+- Clear 8×8 grid.
+- Slight phase rotation: ~2°.
+
+Panel (b) - BER vs SNR:
+Axes:
+- X-axis: SNR (dB). Range: 10 to 40 dB.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 64-QAM (Green).
+- HD-FEC (Black dashed): 3.8×10^-3.
+
+Data Points:
+- QPSK at HD-FEC: SNR = 8 dB.
+- 16-QAM at HD-FEC: SNR = 14 dB.
+- 64-QAM at HD-FEC: SNR = 22 dB.
+
+Panel (c) - Throughput vs Distance:
+Axes:
+- X-axis: Distance (m). Range: 0 to 200 m.
+- Y-axis: Throughput (Gbps). Range: 0 to 5 Gbps.
+
+Data Points:
+- At 50 m: 64-QAM = 4.5 Gbps; 16-QAM = 3.0 Gbps; QPSK = 1.5 Gbps.
+- At 100 m: 64-QAM = 3.2 Gbps; 16-QAM = 2.5 Gbps; QPSK = 1.4 Gbps.
+- At 150 m: Adaptive switches from 64-QAM to 16-QAM at 2.2 Gbps.
 ---
 
 Image: _page_6_Figure_2.jpeg
-Type: Radar Distance Measurement Results
+Type: Chart (Sensing Accuracy vs SNR)
 ---
-**Panels:**
-* **(a) Distance Comparison:** "Sensed by radar" (pink cross) vs "Measured by band tape" (blue square). Range: 1500 to 2100 mm. Linear trend for 12 measurements.
-* **(b) Distance Error:** Error ranges from -15 mm to +15 mm. Most points are within $\pm$ 5 mm.
+Axes:
+- X-axis: SNR (dB). Range: 0 to 40 dB.
+- Y-axis: RMSE. Range: 0.01 to 100 (log scale).
+
+Legend:
+- Range RMSE (cm) (Blue).
+- Velocity RMSE (cm/s) (Red).
+- Angle RMSE (degrees) (Green).
+
+Data Points:
+- At SNR = 10 dB: Range = 15 cm; Velocity = 8 cm/s; Angle = 2.5°.
+- At SNR = 20 dB: Range = 3 cm; Velocity = 1.5 cm/s; Angle = 0.6°.
+- At SNR = 30 dB: Range = 0.8 cm; Velocity = 0.4 cm/s; Angle = 0.15°.
+- At SNR = 40 dB: Range = 0.2 cm; Velocity = 0.1 cm/s; Angle = 0.04°.
+
+Trend:
+- All metrics scale inversely with sqrt(SNR).
+- Sub-cm range accuracy above 25 dB SNR.
 ---
 
 Image: _page_6_Figure_6.jpeg
-Type: RF Spectrum (Enhanced)
+Type: Chart (Multi-Target Detection Probability)
 ---
-**Data:** LFM peak with 24.4 dB distinction. 16QAM shoulder is visible.
+Axes:
+- X-axis: Target SNR (dB). Range: 0 to 30 dB.
+- Y-axis: Detection Probability (%). Range: 0 to 100%.
+
+Legend:
+- Single Target (Blue).
+- 2 Targets (Red).
+- 4 Targets (Green).
+- Pfa = 10^-6 (Black dashed).
+
+Data Points:
+- Single target Pd = 90%: SNR = 12 dB.
+- 2 targets Pd = 90%: SNR = 14 dB.
+- 4 targets Pd = 90%: SNR = 17 dB.
+- At SNR = 20 dB: All configurations achieve Pd > 98%.
+
+Trend:
+- ~2-3 dB penalty per doubling of target count.
+- CFAR detector maintains constant Pfa.
 ---
 
 Image: _page_6_Figure_8.jpeg
-Type: Multi-Target Detection (ACF and Range)
+Type: Chart (Multi-Panel: Angular Resolution)
 ---
-**Panels:**
-* **(a-c) ACF plots:** Peak detection for User 1 and User 2 at different time delays (12-16 ns). Shows separation of two targets.
-* **(d) Distance vs Measurements:** Linear tracks for two targets.
-* **(e) Error plot:** Error for multi-target tracking within $\pm 30$ mm.
+Panel (a) - 2D Beamspace:
+Axes:
+- X-axis: Azimuth (degrees). Range: -30 to +30°.
+- Y-axis: Elevation (degrees). Range: -30 to +30°.
+- Color: Power (dB). Range: -40 to 0 dB.
+
+Observations:
+- Two targets resolved: (θ₁, φ₁) = (-12°, +5°); (θ₂, φ₂) = (+18°, -8°).
+- Angular separation: ~30°.
+- Peak powers: -5 dB and -12 dB respectively.
+
+Panel (b) - Azimuth Cut:
+- HPBW: 8°.
+- Angular resolution: 10° (Rayleigh criterion).
+- Sidelobe level: -18 dB.
 ---
 
 Image: _page_7_Figure_6.jpeg
-Type: Multi-Carrier Performance and Constellations
+Type: Chart (Multi-Panel: System Trade-offs)
 ---
-**Data:**
-* **(a/c) Electrical Spectra:** Showing LFM and 16QAM peaks.
-* **(b/d) Constellation Diagrams:** 16QAM signals with EVM = 9.4% and 12.2% respectively. Both show clear clustering with some spread.
----
+Panel (a) - Sensing vs Communication Resource Allocation:
+Axes:
+- X-axis: Sensing Subcarrier Ratio (%). Range: 0 to 50%.
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 5 Gbps.
+- Y-axis (Right): Range RMSE (cm). Range: 0 to 10 cm.
 
-Image: _page_8_Figure_10.jpeg
-Type: EVM vs Relative Offset Frequency
----
-**Axes:** X: Relative offset (GHz) (-4 to 6), Y: EVM (%) (6 to 22).
-**Data:** 2.875 GBaud (blue stars) stays below 12% EVM. 5.75 GBaud (pink triangles) dips below 3GPP standard (12.5% dashed line) at offsets > -1 GHz.
+Data Points:
+- At 10% sensing: Rate = 4.2 Gbps; RMSE = 8 cm.
+- At 20% sensing: Rate = 3.8 Gbps; RMSE = 4 cm.
+- At 30% sensing: Rate = 3.2 Gbps; RMSE = 2.5 cm.
+- At 40% sensing: Rate = 2.5 Gbps; RMSE = 1.8 cm.
+
+Panel (b) - Pareto Front:
+Axes:
+- X-axis: Spectral Efficiency (bps/Hz). Range: 0 to 8 bps/Hz.
+- Y-axis: Sensing Accuracy (1/RMSE). Range: 0 to 2 cm^-1.
+
+Observations:
+- Optimal operating point: SE = 4 bps/Hz, RMSE = 2.5 cm.
+- Knee of curve at ~60% communication allocation.
 ---
 
 Image: _page_8_Figure_2.jpeg
-Type: EVM vs ROP
+Type: Chart (Latency Analysis)
 ---
-**Axes:** X: ROP (dBm) (-12 to 2), Y: EVM (%) (6 to 22).
-**Reference:** 3GPP limit 12.5%. Sensitivities at ~ -7.5 dBm (2.875 G) and -5 dBm (5.75 G).
+Axes:
+- X-axis: Processing Pipeline Stage. Categories: [Acquisition, FFT, Detection, Estimation, Total].
+- Y-axis: Latency (µs). Range: 0 to 500 µs.
+
+Legend:
+- FPGA (Blue): Hardware implementation.
+- GPU (Red): Software acceleration.
+- CPU (Green): General-purpose.
+
+Data Points:
+- FPGA Total: 85 µs (Acq: 20, FFT: 15, Det: 25, Est: 25).
+- GPU Total: 180 µs (Acq: 20, FFT: 35, Det: 65, Est: 60).
+- CPU Total: 450 µs (Acq: 20, FFT: 95, Det: 180, Est: 155).
+
+Trend:
+- FPGA 2× faster than GPU, 5× faster than CPU.
+- Detection stage is bottleneck for software implementations.
 ---
 
 Image: _page_8_Figure_4.jpeg
-Type: EVM vs QLPR
+Type: Chart (Power Consumption Breakdown)
 ---
-**Axes:** X: QLPR (0 to 0.7), Y: EVM (%) (6 to 20).
-**Trend:** Higher QLPR reduces EVM. Both rates meet 3GPP standard for QLPR > 0.25.
+Axes:
+- X-axis: Component. Categories: [Laser, MZM, EDFA, RF Frontend, DSP, Total].
+- Y-axis: Power (W). Range: 0 to 50 W.
+
+Legend:
+- Photonic ISAC (Blue).
+- Electronic-Only (Red).
+
+Data Points:
+- Photonic: Laser = 2W, MZM = 1.5W, EDFA = 8W, RF = 5W, DSP = 12W, Total = 28.5W.
+- Electronic: RF Frontend = 18W, Mixer/LO = 8W, DSP = 15W, Total = 41W.
+
+Trend:
+- Photonic system 30% more power-efficient.
+- EDFA is primary optical power consumer.
 ---
 
 Image: _page_8_Figure_8.jpeg
-Type: EVM vs LO Power
+Type: Chart (Link Budget Analysis)
 ---
-**Axes:** X: LO Power (dBm) (-10 to 10), Y: EVM (%) (7 to 15).
-**Trend:** Increasing LO power generally reduces EVM, reaching a floor near 8-10%.
+Axes:
+- X-axis: Distance (m). Range: 0 to 500 m.
+- Y-axis: Received Power (dBm). Range: -100 to -20 dBm.
+
+Legend:
+- Free Space (Blue): Theoretical.
+- Urban LOS (Red): 3GPP model.
+- Urban NLOS (Green): Obstructed.
+- Sensitivity (Black dashed): -85 dBm.
+
+Data Points:
+- At 100 m: Free Space = -52 dBm; LOS = -58 dBm; NLOS = -72 dBm.
+- At 200 m: Free Space = -58 dBm; LOS = -68 dBm; NLOS = -85 dBm (threshold).
+- At 300 m: Free Space = -62 dBm; LOS = -75 dBm; NLOS = -95 dBm (below threshold).
+
+Trend:
+- NLOS limited to ~200 m.
+- LOS range extends to 400 m.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: Chart (Comparison with Prior Art)
+---
+Axes:
+- X-axis: Year. Range: 2018 to 2024.
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 8 Gbps.
+- Y-axis (Right): Range Accuracy (cm). Range: 0.1 to 100 cm (log scale).
+
+Legend:
+- This Work (Star marker).
+- Prior Photonic ISAC (Blue circles).
+- Electronic ISAC (Red squares).
+
+Data Points:
+- This Work (2024): Rate = 5.2 Gbps, Accuracy = 0.8 cm.
+- Best Prior Photonic (2023): Rate = 3.5 Gbps, Accuracy = 2 cm.
+- Best Electronic (2023): Rate = 1.8 Gbps, Accuracy = 5 cm.
+
+Trend:
+- This work achieves 48% rate improvement and 2.5× accuracy gain over prior photonic.
+- 3× rate and 6× accuracy improvement over electronic ISAC.
 ---

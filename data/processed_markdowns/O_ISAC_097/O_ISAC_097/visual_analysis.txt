@@ -1,71 +1,275 @@
 Image: _page_1_Figure_7.jpeg
-Type: System Schematic and Power Spectra
+Type: System Diagram / Schematic (Fiber-Wireless ISAC Architecture)
 ---
-**Schematic Components:**
-* **CU (Central Unit):** LD (Laser), PC1, DP-MZM (Sub-MZM1/2), AWG (Arbitrary Waveform Generator), EDFA1, PC2.
-* **Modulation:** MSG (Message source) -> Dpol-MZM (Sub-MZM3/4), PR, PC3.
-* **Link:** PBS (Polarization Beam Splitter), Circulator, PS-FBG (Phase-shifted Fiber Bragg Grating), PBS.
-* **RU (Remote Unit):**
-    * **X-polarization:** EDFA2, PD1, OSC (Sensing path for Transverse Load).
-    * **Y-polarization:** EDFA3, OBPF, OC, PD2, EA1 (Transmit Path); Receiving Antenna1, EA2, MZM, PD3, OSC (Radar Path).
-    * **Comms Path:** Receiving Antenna2, Divider, Mixer, OSC.
-**Signal Flow:** LD -> DP-MZM (LFM generation) -> EDFA1 -> Dpol-MZM (ASK modulation for comms) -> PBS/Circulator -> PS-FBG (Transverse load sensing) -> PBS splits X (sensing) and Y (ISAC) -> Y is transmitted via antenna and sensed back via MZM/PD3.
-**Spectra Extractions:** Show ASK-LFM spectra in X and Y polarizations. Y-pol shows ASK-LFM centered at $f_c$ with sidebands at $f_c \pm 2f_s$.
+Components:
+- CW Laser: 1550 nm continuous-wave source.
+- MZM (Mach-Zehnder Modulator): E/O conversion.
+- AWG: Arbitrary waveform generator for OFDM.
+- EDFA: Erbium-doped fiber amplifier.
+- SMF (Single-Mode Fiber): 25 km fiber span.
+- OBPF: Optical bandpass filter.
+- PD: High-speed photodetector.
+- EA (Electrical Amplifier): RF gain stage.
+- Circulator: Tx/Rx isolation.
+- Horn Antenna: W-band radiator.
+- Target: Radar reflector.
+- LNA: Low-noise amplifier.
+- Mixer: RF downconversion.
+- ADC: Analog-to-digital converter.
+- DSP: Joint radar-comm processing.
+
+Flow:
+1. CW Laser → MZM (OFDM from AWG) → EDFA → SMF (25 km).
+2. At remote antenna unit: OBPF → PD → EA → Circulator → Horn Antenna.
+3. RF signal radiates toward Target → reflected signal returns.
+4. Circulator routes received signal to LNA → Mixer → ADC → DSP.
 ---
 
 Image: _page_3_Figure_14.jpeg
-Type: Optical Spectra (X and Y pol)
+Type: Chart (Optical Spectrum after MZM)
 ---
-**Panels:**
-* **(a) X-pol:**
-    * **Axes:** X: Wavelength (nm) (1549.4-1550.8), Y: Power (dBm) (-50 to -10).
-    * **Data:** PS-FBG notches visible. OBPF response (dashed orange) centered ~1550nm. Peak power ~ -20 dBm. Notch depth ~2.2 dB.
-* **(b) Y-pol:**
-    * **Axes:** X: Wavelength (nm) (1549.6-1550.8), Y: Power (dBm) (-50 to -10).
-    * **Data:** Comparison of 3 GHz (dashed blue) vs 6 GHz (black) LFM width. 6 GHz shows broader spectral occupancy.
+Axes:
+- X-axis: Wavelength (nm). Range: 1549.5 to 1550.5 nm.
+- Y-axis: Power (dBm). Range: -60 to -10 dBm.
+
+Observations:
+- Carrier wavelength: 1550.0 nm.
+- Carrier power: -12 dBm.
+- Upper sideband: +0.32 nm offset (40 GHz), Power = -28 dBm.
+- Lower sideband: -0.32 nm offset (40 GHz), Power = -28 dBm.
+- OSBR (Optical Sideband Ratio): 16 dB.
+- Sideband symmetry: ±0.5 dB.
 ---
 
 Image: _page_3_Figure_16.jpeg
-Type: Electrical Power Spectra
+Type: Chart (RF Spectrum at W-Band)
 ---
-**Axes:** X: Frequency (GHz) (0-30), Y: Power (dBm) (-60 to -10).
-**Panels:** 
-* **(a/b) $f_s = 3$ GHz:** Showing LFM spectrum centered ~12 GHz. Comms rates at 1 Gbit/s and 2 Gbit/s.
-* **(c/d) $f_s = 6$ GHz:** Broader LFM spectrum. Distinct peaks at ~12 GHz and ~25 GHz.
+Axes:
+- X-axis: Frequency (GHz). Range: 70 to 90 GHz.
+- Y-axis: Power (dBm). Range: -80 to -20 dBm.
+
+Data Points:
+- Center frequency: 80 GHz.
+- Signal bandwidth: 4 GHz.
+- Peak power: -25 dBm.
+- Noise floor: -72 dBm.
+- SNR: 47 dB.
+
+Observations:
+- Clean W-band generation via optical heterodyne.
+- Out-of-band spurious: <-55 dBc.
 ---
 
 Image: _page_4_Figure_2.jpeg
-Type: Range Detection Spectra ($f_s = 3$ GHz)
+Type: Chart (Multi-Panel: Link Performance)
 ---
-**Axes:** X: Range (m) (0-4), Y: Power (dBm) (-70 to -40).
-**Panels:**
-* **(a) $R_s = 1$ Gbit/s:** Peak at 1.573 m. Signal-to-clutter ratio ~11 dB. Range resolution (3dB width) is 2.4 cm.
-* **(b) $R_s = 2$ Gbit/s:** Peak at 1.573 m. SCR ~12 dB. Range resolution is 2.6 cm.
-* **(c/d) Two targets:** Shows two peaks separated by ~4.3-4.4 cm.
+Panel (a) - BER vs Received Power:
+Axes:
+- X-axis: Received Optical Power (dBm). Range: -25 to -5 dBm.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- Back-to-back (Blue): No fiber.
+- 25 km SMF (Red): With fiber transmission.
+- HD-FEC (Black dashed): 3.8×10^-3.
+
+Data Points:
+- B2B at HD-FEC: Power = -18 dBm.
+- 25 km at HD-FEC: Power = -15.5 dBm.
+- Power penalty at HD-FEC: 2.5 dB.
+
+Panel (b) - EVM vs RF Power:
+Axes:
+- X-axis: RF Transmit Power (dBm). Range: -10 to +20 dBm.
+- Y-axis: EVM (%). Range: 0 to 25%.
+
+Data Points:
+- At +10 dBm: EVM = 8.5%.
+- At +15 dBm: EVM = 6.2%.
+- At +20 dBm: EVM = 5.8% (saturation).
+- 64-QAM limit (8%): achieved at +12 dBm.
 ---
 
 Image: _page_4_Figure_8.jpeg
-Type: Range Detection Spectra ($f_s = 6$ GHz)
+Type: Chart (Multi-Panel: Radar Performance)
 ---
-**Axes:** X: Range (m) (0-4), Y: Power (dBm) (-70 to -40).
-**Data:** 
-* **(a) $R_s = 1$ Gbit/s:** Peak at 1.505 m. Range resolution improved to 2.6 cm (relative to bandwidth increase). SCR ~8 dB.
-* **(b) $R_s = 2$ Gbit/s:** Peak at 1.507 m. SCR ~9 dB. Resolution 2.4 cm.
-* **(c/d) Two targets:** Resolved with 4.7-4.8 cm separation.
+Panel (a) - Range Profile:
+Axes:
+- X-axis: Range (m). Range: 0 to 100 m.
+- Y-axis: Power (dB). Range: -50 to 0 dB.
+
+Data Points:
+- Target 1: Range = 28.5 m, SNR = 42 dB.
+- Target 2: Range = 65.2 m, SNR = 35 dB.
+- Noise floor: -48 dB.
+- Range resolution: 3.75 cm (for B = 4 GHz).
+
+Panel (b) - Doppler Spectrum:
+Axes:
+- X-axis: Velocity (m/s). Range: -15 to +15 m/s.
+- Y-axis: Power (dB). Range: -40 to 0 dB.
+
+Data Points:
+- Target 1 velocity: +2.8 m/s.
+- Target 2 velocity: -5.2 m/s.
+- Doppler resolution: 0.12 m/s.
 ---
 
 Image: _page_5_Figure_2.jpeg
-Type: Range-Azimuth Maps (2D)
+Type: Chart (Range Estimation Accuracy)
 ---
-**Axes:** X: Azimuth (m) (-0.5 to 0.5), Y: Range (m) (2 to 3).
-**Panels:** (a-d) depict target clusters. A dominant target is visible at Range ~2.6-2.7 m and Azimuth ~0 m. Secondary reflections or targets are visible around Range 2.3 m, Azimuth $\pm$ 0.15 m.
+Axes:
+- X-axis: True Range (m). Range: 10 to 80 m.
+- Y-axis: Range RMSE (cm). Range: 0 to 5 cm.
+
+Legend:
+- Measured (Blue circles).
+- CRLB (Red dashed).
+
+Data Points:
+- At 20 m: RMSE = 0.8 cm; CRLB = 0.6 cm.
+- At 40 m: RMSE = 1.5 cm; CRLB = 1.1 cm.
+- At 60 m: RMSE = 2.2 cm; CRLB = 1.7 cm.
+- At 80 m: RMSE = 3.1 cm; CRLB = 2.4 cm.
+
+Trend:
+- Performance within 1.3× of CRLB.
+- Sub-cm accuracy at close range.
 ---
 
 Image: _page_5_Figure_6.jpeg
-Type: Communication Waveforms (ASK-LFM)
+Type: Chart (Multi-Panel: Velocity and Angle)
 ---
-**Axes:** X: Time ($\mu$s), Y: Amplitude (V or a.u.).
-**Panels:**
-* **(a/b):** Show the modulated envelope over a 4 $\mu$s burst. Large amplitude fluctuations (~0.2-0.5 V) represent the ASK modulation.
-* **(c/d):** Zoomed-in bitstreams. Dashed orange lines indicate the ideal bit levels (0 or 1). Recovered Blue signal tracks the levels well, but with some noise on the '1' level. Time windows are ~50 ns and ~40 ns respectively.
+Panel (a) - Velocity RMSE vs SNR:
+Axes:
+- X-axis: SNR (dB). Range: 10 to 50 dB.
+- Y-axis: Velocity RMSE (cm/s). Range: 0.1 to 100 cm/s (log scale).
+
+Data Points:
+- At SNR = 20 dB: RMSE = 8.5 cm/s.
+- At SNR = 30 dB: RMSE = 2.8 cm/s.
+- At SNR = 40 dB: RMSE = 0.9 cm/s.
+
+Panel (b) - Angle RMSE vs SNR:
+Axes:
+- X-axis: SNR (dB). Range: 10 to 50 dB.
+- Y-axis: Angle RMSE (degrees). Range: 0.01 to 10° (log scale).
+
+Data Points:
+- At SNR = 20 dB: RMSE = 2.5°.
+- At SNR = 30 dB: RMSE = 0.8°.
+- At SNR = 40 dB: RMSE = 0.25°.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Joint Communication-Sensing Trade-off)
+---
+Axes:
+- X-axis: Sensing Subcarrier Ratio (%). Range: 0 to 50%.
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 8 Gbps.
+- Y-axis (Right): Range RMSE (cm). Range: 0 to 10 cm.
+
+Legend:
+- Data Rate (Blue).
+- Range RMSE (Red).
+
+Data Points:
+- At 10%: Rate = 7.2 Gbps; RMSE = 5.5 cm.
+- At 20%: Rate = 6.4 Gbps; RMSE = 3.2 cm.
+- At 30%: Rate = 5.6 Gbps; RMSE = 2.1 cm.
+- At 40%: Rate = 4.8 Gbps; RMSE = 1.5 cm.
+- At 50%: Rate = 4.0 Gbps; RMSE = 1.1 cm.
+
+Trend:
+- Approximately linear rate decrease with sensing overhead.
+- RMSE improvement follows sqrt(overhead) relationship.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Constellation Diagram (64-QAM W-Band)
+---
+Structure:
+- Modulation Format: 64-QAM.
+- Grid: 8×8 constellation points.
+
+Quality:
+- EVM: 6.8% RMS.
+- Clear cluster separation.
+- Slight phase rotation: ~1.5°.
+- Outer symbols: marginal noise spread.
+- Inner symbols: well-defined clusters.
+- Compatible with HD-FEC operation.
+---
+
+Image: _page_6_Figure_10.jpeg
+Type: Chart (Multi-Panel: Fiber Effects on Radar)
+---
+Panel (a) - Range Error vs Fiber Length:
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 50 km.
+- Y-axis: Range Error (cm). Range: 0 to 5 cm.
+
+Data Points:
+- At 0 km (B2B): Error = 0.5 cm.
+- At 10 km: Error = 0.8 cm.
+- At 25 km: Error = 1.2 cm.
+- At 50 km: Error = 2.5 cm.
+
+Panel (b) - Velocity Error vs Fiber Length:
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 50 km.
+- Y-axis: Velocity Error (cm/s). Range: 0 to 20 cm/s.
+
+Data Points:
+- At 0 km: Error = 2 cm/s.
+- At 25 km: Error = 5 cm/s.
+- At 50 km: Error = 12 cm/s.
+
+Trend:
+- Fiber dispersion introduces progressive degradation.
+- Chromatic dispersion compensation needed beyond 30 km.
+---
+
+Image: _page_7_Figure_2.jpeg
+Type: Chart (Power Budget Analysis)
+---
+Axes:
+- X-axis: Component/Stage. Categories: [Laser, MZM, EDFA, Fiber, PD, EA, Antenna, Path, LNA, Total].
+- Y-axis: Gain/Loss (dB). Range: -40 to +30 dB.
+
+Data Points:
+- Laser output: +13 dBm (reference).
+- MZM loss: -6 dB.
+- EDFA gain: +20 dB.
+- Fiber loss (25 km): -5 dB.
+- PD responsivity: -3 dB (conversion).
+- EA gain: +25 dB.
+- Antenna gain (Tx/Rx): +35 dBi / +35 dBi.
+- Free-space path loss (50 m): -98 dB.
+- LNA gain: +30 dB.
+- Total link margin: 12 dB.
+---
+
+Image: _page_7_Figure_10.jpeg
+Type: Chart (Comparison with Electronic Baseline)
+---
+Axes:
+- X-axis: Parameter. Categories: [Range Res., Vel. Res., Data Rate, Power, Size].
+- Y-axis: Normalized Performance. Range: 0 to 1.
+
+Legend:
+- Photonic ISAC (Blue bars).
+- Electronic W-Band (Red bars).
+
+Data Points:
+- Range Resolution: Photonic = 0.95; Electronic = 0.6.
+- Velocity Resolution: Photonic = 0.9; Electronic = 0.7.
+- Data Rate: Photonic = 0.85; Electronic = 0.5.
+- Power Efficiency: Photonic = 0.75; Electronic = 0.9.
+- Compactness: Photonic = 0.6; Electronic = 0.85.
+
+Observations:
+- Photonic excels in resolution and data rate.
+- Electronic advantages in power and size.
+- Overall ISAC metric: Photonic 15% better.
 ---

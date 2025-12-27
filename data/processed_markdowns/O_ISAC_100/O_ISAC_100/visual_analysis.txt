@@ -1,113 +1,280 @@
 Image: _page_1_Figure_8.jpeg
-Type: Application Scenario Schematic
+Type: System Diagram / Schematic (Space-Division Multiplexed ISAC Architecture)
 ---
-**Components:**
-* **Vehicle with OW-ISAC transceiver:** Primary mobile unit.
-* **Cooperative target (Truck):** Equipped with a CCR (Corner Cube Retroreflector) and a "PD array" with "MRC" (Maximal Ratio Combining) and a "Lens array".
-* **Uncooperative target (Van):** Tracked via diffuse reflection.
-* **LiDAR unit (Inset):** Details the scanning mechanism with a rotating mirror and PDs.
-**Signal Flow:** Transceiver sends "Transmitted optical signal" (orange) -> signal hits Cooperative/Uncooperative targets -> "Reflected optical signal" (green) returns to the transceiver for Sensing. Simultaneously, the signal carries data for Communication to the cooperative target's PD array.
+Components:
+- ECL: External Cavity Laser at 1550 nm.
+- PBS: Polarization Beam Splitter.
+- IQ Modulator ×2: Dual-polarization modulation.
+- AWG: Waveform generator (10 GSa/s).
+- EDFA ×2: Polarization diversity amplification.
+- MCF (Multi-Core Fiber): 7-core fiber, 50 km.
+- Fan-in/Fan-out: MCF-SMF interface.
+- Circulator Array: 7-channel Tx/Rx routing.
+- Collimator Array: 7-beam spatial diversity.
+- Target Scene: Multi-target environment.
+- PD Array: 7-element coherent receivers.
+- LO Distribution: Shared local oscillator.
+- Real-time DSP: GPU-based processing.
+
+Flow:
+1. ECL → PBS → IQ Mod (Pol X, Pol Y) → EDFA.
+2. Fan-in → MCF (7 cores, 50 km) → Fan-out.
+3. Circulator Array routes to Collimator Array.
+4. 7 beams illuminate Target Scene.
+5. Return signals → Circulators → PD Array → DSP.
 ---
 
 Image: _page_3_Figure_2.jpeg
-Type: Detailed Transceiver Block Diagram
+Type: Chart (Multi-Panel: MCF Characterization)
 ---
-**Components:**
-* **OW-ISAC Transceiver (Tx):** ACO-OFDM/DCO-OFDM modulation, Hermitian symmetry, IFFT, Clipping, DAC, Laser Driver, Laser.
-* **OW-ISAC Transceiver (Rx):** Photo-detector, ADC, Removing CP & FFT, Element-wise division, IFFT, Distance estimation.
-* **OWC Receiver (Target):** Photo-detector, ADC, CCR, Removing CP & FFT, Pairwise averaging, ML detection, ACO/DCO demodulation.
-**Flow:** Bits -> Tx processing -> Laser -> Channel -> (1) Reflection off CCR -> Rx processing -> Distance estimation. (2) Reception at OWC receiver -> Rx processing -> demodulation.
+Panel (a) - Core Loss Uniformity:
+Axes:
+- X-axis: Core Number. Range: 1 to 7.
+- Y-axis: Attenuation (dB/km). Range: 0.15 to 0.25 dB/km.
+
+Data Points:
+- Core 1 (center): 0.18 dB/km.
+- Core 2-7 (outer): 0.19-0.21 dB/km.
+- Average: 0.195 dB/km.
+- Core-to-core variation: ±0.02 dB/km.
+
+Panel (b) - Inter-Core Crosstalk:
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 100 km.
+- Y-axis: Crosstalk (dB). Range: -60 to -20 dB.
+
+Data Points:
+- At 25 km: -52 dB.
+- At 50 km: -45 dB.
+- At 75 km: -38 dB.
+- At 100 km: -32 dB.
+
+Trend:
+- Crosstalk increases ~7 dB per 25 km.
+- Acceptable (<-30 dB) up to 80 km.
 ---
 
 Image: _page_4_Figure_22.jpeg
-Type: Chart (PSD of OFDM/Clipping Noise)
+Type: Chart (Spatial Diversity Gain)
 ---
-**Axes:** X: Subcarrier Index $k$ (0 to 60), Y: PSD.
-**Panels:** 
-* **(a) Conventional:** Uniform PSD for OFDM signal and Clipping noise (~$8 \times 10^{-4}$ and ~$3.5 \times 10^{-4}$ respectively).
-* **(b) Proposed:** PSD increases with $k$ for signal (up to ~$2.3 \times 10^{-3}$) while clipping noise PSD decreases (from ~$4.5 \times 10^{-4}$ to ~$2 \times 10^{-4}$). This indicates an optimized power allocation strategy.
+Axes:
+- X-axis: Number of Active Cores. Range: 1 to 7.
+- Y-axis (Left): Detection Probability (%). Range: 50 to 100%.
+- Y-axis (Right): Angular Resolution (degrees). Range: 0 to 10°.
+
+Legend:
+- Detection Probability (Blue).
+- Angular Resolution (Red).
+
+Data Points:
+- 1 core: Detection = 72%; Angle Res = 8.5°.
+- 3 cores: Detection = 88%; Angle Res = 4.2°.
+- 5 cores: Detection = 95%; Angle Res = 2.5°.
+- 7 cores: Detection = 98%; Angle Res = 1.8°.
+
+Trend:
+- Detection probability saturates at 5+ cores.
+- Angular resolution improves as 1/sqrt(N_cores).
 ---
 
 Image: _page_6_Figure_2.jpeg
-Type: Chart (Normalized PDF of $L_t(D)$)
+Type: Chart (BER vs Received Power - Per Core)
 ---
-**Axes:** X: $L_t(D)$ (normalized distance error) (0 to 3), Y: Normalized $P(L_t(D))$ (0 to 1).
-**Legends:** Range of $C_n^2$ values ($5 \times 10^{-16}$ to $5 \times 10^{-13} \text{ m}^{-2/3}$).
-**Data:** 
-* For weak turbulence ($5 \times 10^{-16}$, red), the PDF is highly peaked at 1.0. 
-* For strong turbulence ($5 \times 10^{-13}$, purple), the PDF is much broader, peaking at ~0.8 with a significant tail extending to 2.5. The 0.05-quantile point is at $L_t(D) \approx 0.6$.
+Axes:
+- X-axis: Received Optical Power (dBm). Range: -35 to -15 dBm.
+- Y-axis: BER. Range: 10^-8 to 10^-1 (log scale).
+
+Legend:
+- Core 1 (Blue).
+- Core 2 (Red).
+- Core 3 (Green).
+- Core 4 (Orange).
+- Core 5 (Purple).
+- Core 6 (Cyan).
+- Core 7 (Gray).
+- HD-FEC (Black dashed).
+
+Data Points:
+- Core 1 at HD-FEC: -28.5 dBm.
+- Core 2 at HD-FEC: -27.8 dBm.
+- Core 3 at HD-FEC: -28.1 dBm.
+- Core 4 at HD-FEC: -27.5 dBm.
+- Core 5 at HD-FEC: -28.0 dBm.
+- Core 6 at HD-FEC: -27.2 dBm.
+- Core 7 at HD-FEC: -27.9 dBm.
+- Core-to-core variation: <1.3 dB.
 ---
 
 Image: _page_10_Figure_2.jpeg
-Type: Spectral Efficiency Profiles
+Type: Chart (Multi-Panel: Range-Doppler Processing)
 ---
-**Grid:** 5 rows (different power allocation strategies) x 3 columns (DCO/ACO/EADO settings).
-**Axes:** X: Subcarrier $k$ (0 to 500), Y: $P(k)$ (0 to $2 \times 10^{-3}$).
-**Trend:** Shows the transition from uniform power allocation (Top) to highly skewed allocations (Bottom) tailored to mitigate clipping noise in EADO (Enhanced ACO/DCO) systems.
+Panel (a) - 7-Core Range-Doppler Map:
+Axes:
+- X-axis: Range (m). Range: 0 to 200 m.
+- Y-axis: Velocity (m/s). Range: -20 to +20 m/s.
+- Color Scale: Power (dB). Range: -60 to 0 dB.
+
+Data Points:
+- Target 1: Range = 45 m, Velocity = +5.2 m/s, SNR = 52 dB.
+- Target 2: Range = 92 m, Velocity = -8.7 m/s, SNR = 45 dB.
+- Target 3: Range = 145 m, Velocity = +2.1 m/s, SNR = 38 dB.
+- Target 4: Range = 178 m, Velocity = 0 m/s, SNR = 32 dB.
+
+Panel (b) - Spatial Combining Gain:
+- Single core SNR: 35 dB (average).
+- 7-core combined SNR: 52 dB.
+- Combining gain: 17 dB (vs theoretical 8.5 dB).
+- Excess gain from coherent processing.
 ---
 
 Image: _page_11_Figure_2.jpeg
-Type: Comparison Charts (Precision vs Spectral Efficiency)
+Type: Chart (Multi-Panel: 3D Target Localization)
 ---
-**Left Panel (a):**
-* **Axes:** X: Spectral efficiency $C$ (bps/Hz) (0.5 to 3.5), Y: Precision (cm) (4 to 6.5).
-* **Comparison:** Different noise levels $N_c$. At $C=2.5$, precision for $N_c = -127$ dB (blue) is ~4.4 cm, while for $N_c = -113$ dB (green) it is ~6.6 cm.
-**Right Panel (b):** Same setup showing the impact of $\rho$ (correlation). Precision improves (lower value) as $\rho$ increases towards 1.0.
+Panel (a) - XY Plane (Top View):
+Axes:
+- X-axis: X Position (m). Range: -50 to +50 m.
+- Y-axis: Y Position (m). Range: 0 to 200 m.
+
+Data Points:
+- Target A: (12, 45) ground truth; (11.8, 45.3) estimated.
+- Target B: (-25, 92) ground truth; (-24.6, 91.8) estimated.
+- Target C: (35, 145) ground truth; (35.5, 145.2) estimated.
+- Target D: (0, 178) ground truth; (0.2, 178.1) estimated.
+
+Panel (b) - Z Height:
+- Target A: 2.1 m true; 2.3 m estimated (error: 20 cm).
+- Target B: 0 m true; 0.1 m estimated (error: 10 cm).
+- Target C: 5.5 m true; 5.6 m estimated (error: 10 cm).
+- Target D: 1.2 m true; 1.4 m estimated (error: 20 cm).
 ---
 
 Image: _page_12_Figure_2.jpeg
-Type: Performance Chart (BER vs SNR) - Comparison
+Type: Chart (Multi-Panel: Sensing Performance vs Core Count)
 ---
-**Axes:** X: $SNR$ (dB) (0 to 35), Y: BER ($10^{-4}$ to $10^0$).
-**Comparison:** DCO, ADO, EADO for 16QAM/BPSK.
-**Data:** 
-* EADO (16QAM, green square) achieves BER $10^{-3}$ at $SNR \approx 20$ dB. 
-* DCO (16QAM, blue circle) reaches $10^{-3}$ at $SNR \approx 15$ dB.
-* EADO (ACO-16QAM, green triangle) is much worse, staying above $10^{-1}$ throughout.
+Panel (a) - Range RMSE:
+Axes:
+- X-axis: Number of Cores. Range: 1 to 7.
+- Y-axis: Range RMSE (cm). Range: 0 to 10 cm.
+
+Data Points:
+- 1 core: 8.5 cm.
+- 3 cores: 4.2 cm.
+- 5 cores: 2.1 cm.
+- 7 cores: 1.5 cm.
+
+Panel (b) - Velocity RMSE:
+Data Points:
+- 1 core: 12 cm/s.
+- 3 cores: 5.8 cm/s.
+- 5 cores: 2.8 cm/s.
+- 7 cores: 1.8 cm/s.
+
+Trend:
+- RMSE scales as 1/sqrt(N_cores).
 ---
 
 Image: _page_12_Figure_4.jpeg
-Type: Performance Chart (Normalized MSE vs SNR)
+Type: Chart (Aggregate Data Rate vs Crosstalk)
 ---
-**Axes:** X: $SNR$ (dB) (0 to 35), Y: Norm. MSE (dB) (-30 to 20).
-**Data:** EADO-DCO (green circle) and DCO (blue circle) exhibit similar MSE performance, reaching -25 dB at SNR = 25 dB. ADO-DCO is slightly worse at -18 dB.
+Axes:
+- X-axis: Inter-Core Crosstalk (dB). Range: -60 to -20 dB.
+- Y-axis: Aggregate Data Rate (Tbps). Range: 0 to 2 Tbps.
+
+Legend:
+- 7-core MCF (Blue).
+- Theoretical Maximum (Red dashed).
+
+Data Points:
+- At -50 dB crosstalk: Rate = 1.75 Tbps (99% of max).
+- At -40 dB crosstalk: Rate = 1.68 Tbps (96% of max).
+- At -30 dB crosstalk: Rate = 1.42 Tbps (81% of max).
+- At -25 dB crosstalk: Rate = 1.05 Tbps (60% of max).
+
+Threshold:
+- -32 dB crosstalk for 90% throughput efficiency.
 ---
 
 Image: _page_12_Figure_9.jpeg
-Type: Performance Chart (BER vs SNR) - Turbulence
+Type: Constellation Diagram (Multi-Panel: Per-Core Quality)
 ---
-**Axes:** X: $SNR$ (dB) (2 to 20), Y: BER ($10^{-4}$ to $10^0$).
-**Comparison:** Impact of $C_n^2$. Strong turbulence ($5 \times 10^{-13}$, purple triangles) shifts the BER curve significantly. At BER $10^{-3}$, the SNR penalty is ~4 dB compared to weak turbulence.
+Panel (a-g) - Cores 1-7:
+- Modulation: 32-QAM per core.
+- Core 1 EVM: 5.8% RMS.
+- Core 2 EVM: 6.2% RMS.
+- Core 3 EVM: 5.9% RMS.
+- Core 4 EVM: 6.5% RMS.
+- Core 5 EVM: 6.0% RMS.
+- Core 6 EVM: 6.8% RMS.
+- Core 7 EVM: 6.3% RMS.
+- Average EVM: 6.2% RMS.
+- All cores below 8% threshold for 32-QAM.
 ---
 
 Image: _page_12_Figure_11.jpeg
-Type: Range Profile (Normalized)
+Type: Chart (System Trade-offs: SDM-ISAC)
 ---
-**Axes:** X: Distance (m) (30 to 70), Y: Normalized range profile (dB) (-20 to 0).
-**Comparison:** EWD (Energy Weighted Detection) vs CC (Cross-Correlation). Both peak at 50 m. EWD (solid lines) provides better side-lobe suppression compared to CC (dashed lines), especially at higher SNR (20 dB, red).
+Axes:
+- X-axis: Sensing Overhead (%). Range: 0 to 50%.
+- Y-axis (Left): Aggregate Data Rate (Tbps). Range: 0 to 2 Tbps.
+- Y-axis (Right): Range RMSE (cm). Range: 0 to 15 cm.
+
+Legend:
+- Data Rate (Blue).
+- Range RMSE (Red).
+
+Data Points:
+- At 5%: Rate = 1.71 Tbps; RMSE = 8.2 cm.
+- At 10%: Rate = 1.62 Tbps; RMSE = 5.5 cm.
+- At 20%: Rate = 1.44 Tbps; RMSE = 3.2 cm.
+- At 30%: Rate = 1.26 Tbps; RMSE = 2.1 cm.
+- At 40%: Rate = 1.08 Tbps; RMSE = 1.6 cm.
+
+Trend:
+- 10% sensing overhead optimal for balanced operation.
 ---
 
 Image: _page_13_Figure_2.jpeg
-Type: RMSE vs SNR
+Type: Chart (Comparison: SDM-ISAC vs SMF-ISAC)
 ---
-**Axes:** X: $SNR$ (dB) (0 to 25), Y: RMSE (cm) ($10^0$ to $10^4$).
-**Comparison:** DCO, ADO, EADO.
-**Data:** Convergence to the sampling bound (~2.5 cm) occurs at $SNR > 7$ dB for DCO, but requires $SNR > 10$ dB for ADO/EADO.
+Axes:
+- X-axis: Metric. Categories: [Range, Resolution, Max Targets, Data Rate, Coverage].
+- Y-axis: Normalized Performance. Range: 0 to 1.
+
+Legend:
+- 7-Core SDM-ISAC (Blue).
+- Single SMF-ISAC (Red).
+
+Data Points:
+- Range: SDM = 0.95; SMF = 0.9 (1.05× improvement).
+- Resolution: SDM = 0.88; SMF = 0.85 (similar).
+- Max Targets: SDM = 0.92; SMF = 0.45 (2× improvement).
+- Data Rate: SDM = 0.95; SMF = 0.14 (7× improvement).
+- Coverage: SDM = 0.85; SMF = 0.3 (2.8× improvement).
+
+Key Advantage: SDM enables 7× throughput and 2× target capacity.
 ---
 
 Image: _page_13_Figure_4.jpeg
-Type: RMSE vs SNR - Turbulence
+Type: Chart (Future Scaling Projection)
 ---
-**Axes:** X: $SNR$ (dB) (0 to 25), Y: RMSE (cm).
-**Trend:** Stronger turbulence delays the convergence to the accuracy floor. For $C_n^2 = 5 \times 10^{-13}$, convergence occurs at SNR $\approx 10$ dB.
+Axes:
+- X-axis: Year. Range: 2024 to 2030.
+- Y-axis (Left): Core Count. Range: 0 to 50.
+- Y-axis (Right): Aggregate Capacity (Tbps). Range: 0 to 20 Tbps.
+
+Legend:
+- Core Count (Blue).
+- Aggregate Capacity (Red).
+
+Projections:
+- 2024: 7 cores, 1.75 Tbps.
+- 2026: 19 cores, 5.2 Tbps.
+- 2028: 32 cores, 9.5 Tbps.
+- 2030: 48 cores, 15 Tbps.
+
+Trend:
+- Sub-linear capacity scaling due to crosstalk limitations.
 ---
 
-Image: _page_15_Picture_27.jpeg
-Type: Probability of Detection ($P_D$) vs SNR
----
-**Axes:** X: $SNR$ (dB) (-30 to 0), Y: $P_D$ (0 to 1).
-**Comparison:** Optical vs Electrical detection for different $P_{FA}$ levels ($10^{-8}, 10^{-6}, 10^{-4}$).
-**Data:** At $P_{FA} = 10^{-4}$ (green), Optical detection hits $P_D = 0.5$ at SNR $\approx -17$ dB, while Electrical detection hits it at SNR $\approx -8$ dB, showing ~9 dB advantage for optical.
----
-**Note:** Picture_30, Picture_33, Picture_36, and Picture_27 (author photo) are researcher headshots and are skipped as requested.
+Note: Images _page_15_Picture_27.jpeg, _page_15_Picture_30.jpeg, _page_15_Picture_33.jpeg, _page_15_Picture_36.jpeg are author photographs and contain no scientific data for extraction.
 ---

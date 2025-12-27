@@ -1,30 +1,118 @@
-Batch 1:
-Image _page_1_Figure_2.jpeg:
-Type: Diagram
-Description: System model of the pulse-sequence sensing and pulse-position modulation (PSS-PPM) optical ISAC link.
-KEY DATA: Device A transmits PSS-PPM to Device B while a corner reflector returns the signal for ranging; PN codes and ATP mechanisms enable simultaneous data demodulation and distance estimation.
+Image: _page_1_Figure_2.jpeg
+Type: System Diagram / Schematic (Device A - Transmitter/Sensing)
+---
+Components:
+- Input Data (Binary): Data source providing the bits for communication.
+- Split into Slot: Preprocessing step for signal framing.
+- PPM (Pulse Position Modulation): Modulation block determining pulse placement.
+- PN Code Generator: Provides Pseudorandom Noise code for sensing/identification.
+- Multiplier (X symbol): Modulates the PPM signal with the PN code sequence.
+- Pulse Shaping: Shapes the digital pulses for optical transmission.
+- LD (Laser Diode): Optical transmitter source.
+- ATP Mechanism: Acquisition, Tracking, and Pointing system for alignment.
+- PD (Photodiode): Receiver for reflected sensing signals.
+- Cross Correlation: Compares received signal with the reference pulse shape.
+- Quadratic Fitting: Refines the correlation peak for high-resolution ranging.
+- Measuring Distance/Target Distance: Final processing stage outputting range.
 
-Image _page_1_Figure_13.jpeg:
-Type: Diagram
-Description: Signal structure showing slot composition with PPM interval and guard interval plus raised-cosine pulse shape.
-KEY DATA: Each slot length is Ts = Tg + (K+L−1)T; PPM order K determines data bits (log2 K) and pulse sequence length L controls correlation; guard Tg ensures unambiguous range Du.
+Flow:
+1. Binary Input Data is split into slots and modulated via PPM.
+2. A PN Code is generated and multiplied with the PPM signal to create the PSS-PPM waveform.
+3. The signal undergoes Pulse Shaping and is transmitted via a Laser Diode (LD).
+4. The signal is reflected from a target and received by a Photodiode (PD), with alignment maintained by the ATP Mechanism.
+5. The received signal is cross-correlated with the reference pulse sequence.
+6. Quadratic Fitting is applied to the correlation peak to measure the distance, yielding the Target Distance.
+---
 
-Image _page_1_Figure_14.jpeg:
-Type: Diagram
-Description: Pulse waveform definition for the unipolar raised-cosine pulse g(t) modulated by PN codes.
-KEY DATA: Provides closed-form pulse expression, illustrating how PN-coded sequences achieve near-ideal correlation for both communication and sensing.
+Image: _page_1_Figure_13.jpeg
+Type: System Diagram / Schematic (Device B - Communication Receiver)
+---
+Components:
+- PD (Photodiode): Optical receiver for the transmitted signal.
+- Reflector: Passive element reflecting part of the signal back to Device A for sensing.
+- ATP Mechanism: Acquisition, Tracking, and Pointing system for alignment.
+- Pulse Shaping Matched Filter: Filter optimized for the transmitted pulse shape.
+- PN Code Generator: Local generator for the specific user's PN code.
+- PN Code Matched Filter: Correlates the filtered signal with the local PN code for user separation.
+- Pulse Position Decision: Reconstructs the PPM symbols to extract data.
+- Output Data (Binary): Final demodulated bitstream.
 
-Image _page_3_Figure_18.jpeg:
-Type: Chart
-Description: Achievable rate versus modulation order K and PN length L with markers at optimum K0.
-KEY DATA: Shows rate is unimodal in K; optimal K0 follows Eq.(5) and increases with larger L or guard-to-slot ratios, guiding parameter selection for different optical hardware.
+Flow:
+1. The transmitted signal from Device A arrives at Device B.
+2. A portion is reflected by the Reflector (for sensing), while the rest is captured by the PD.
+3. The signal is processed through a Pulse Shaping Matched Filter.
+4. It then passes through a PN Code Matched Filter, which uses a locally generated PN code to identify the user's signal.
+5. A Pulse Position Decision is made based on the filtered signal peaks.
+6. The final Binary Output Data is recovered.
+---
 
-Image _page_3_Figure_20.jpeg:
-Type: Chart
-Description: Communication BER versus number of simultaneous users under atmospheric loss/turbulence using Gaussian approximation.
-KEY DATA: Demonstrates BER climb as user count rises; curves quantify impact of multi-user interference and validate analytical bounds for various turbulence levels.
+Image: _page_1_Figure_14.jpeg
+Type: Signal Structure / Timing Diagram
+---
+Parameters:
+- ai Symbols: Represents the PPM shift/position carrying the communication data.
+- L Symbols: The length of the Pulse Sequence (sensing component).
+- K Symbols: The total number of symbols/slots in the PPM interval.
+- (L-1) Symbols: Indicates the extension/tail of the sequence.
+- Tp (PPM Interval): The active duration for data modulation.
+- Tg (Guard Interval): Buffer period between slots.
+- Ts (Slot Duration): Total time for one complete ISAC frame.
 
-Image _page_4_Figure_2.jpeg:
-Type: Chart
-Description: Sensing RMSE versus number of users under the same atmospheric conditions.
-KEY DATA: Plots show RMSE growth with more users due to increased equivalent noise σ̃^2; results confirm that sensing accuracy remains acceptable up to moderate user counts when system parameters are tuned.
+Description:
+This diagram illustrates the PSS-PPM (Pulse Sequence Sensing - Pulse Position Modulation) waveform structure. A fixed pulse sequence of length L (blue peaks) is inserted into a PPM interval of K symbols at a position ai determined by the input data. This ensures simultaneous communication (via position ai) and sensing (via the sequence L).
+---
+
+Image: _page_3_Figure_18.jpeg
+Type: Performance Chart (Achievable Rate)
+---
+Axes Extraction:
+- X-axis: Modulation Order (M). Numerical range: 2 to 512 (Logarithmic scale).
+- Y-axis: Achievable Rate (Mbps). Numerical range: 0.25 to 3.5.
+
+Legend / Trend:
+- Variables: Pulse Sequence Length L = 15, 31, 63, 127, 255.
+- Trend: There is a clear trade-off between sensing sequence length (L) and communication rate. Higher L (better sensing) results in lower communication capacity.
+
+Data Points:
+- L=15: Peak rate of approx 3.45 Mbps achieved at M=48.
+- L=31: Peak rate of approx 3.15 Mbps achieved at M=64.
+- L=63: Peak rate of approx 2.65 Mbps achieved at M=64.
+- L=127: Peak rate of approx 2.05 Mbps achieved at M=72.
+- L=255: Peak rate of approx 1.45 Mbps achieved at M=96.
+---
+
+Image: _page_3_Figure_20.jpeg
+Type: Performance Chart (BER)
+---
+Axes Extraction:
+- X-axis: Es/N0 (dB). Numerical range: -19 to -10 dB.
+- Y-axis: BER (Bit Error Rate). Numerical range: 10^-5 to 10^-1 (Logarithmic scale).
+
+Legend / Trend:
+- Variables: Number of Users (Nu = 1, 2, 4) with corresponding Simulation, Lower Bound, and Upper Bound curves.
+- Trend: Multi-user interference (MUI) causes performance degradation. Each doubling of users requires approximately 1 dB extra SNR to maintain the same BER.
+
+Data Points:
+- Nu=1 (Sim): BER of 10^-3 reached at Es/N0 ≈ -14.6 dB. BER of 10^-4 at -13.6 dB.
+- Nu=2 (Sim): BER of 10^-3 reached at Es/N0 ≈ -13.8 dB. BER of 10^-4 at -12.8 dB.
+- Nu=4 (Sim): BER of 10^-3 reached at Es/N0 ≈ -12.5 dB. BER of 10^-4 at -11.5 dB.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Performance Chart (Sensing RMSE)
+---
+Axes Extraction:
+- X-axis: Es/N0 (dB). Numerical range: -12 to 3 dB.
+- Y-axis: Distance Estimation RMSE (m). Numerical range: 10^-2 (1cm) to 10^1 (10m) (Logarithmic scale).
+
+Legend / Trend:
+- Variables: Nu=1 (Quadratic fitting), Nu=1 (MLE), Nu=2 (MLE), Nu=4 (MLE), Conv. single pulse (Nu=1), CRB (Cramer-Rao Bound).
+- Trend: Quadratic fitting significantly outperforms standard MLE and approaches the CRB at SNR > -6 dB. Increased users (Nu) significantly raise the SNR threshold required for sub-meter accuracy.
+
+Data Points:
+- Nu=1 (Quad Fitting): RMSE drops to approx 0.04m (4cm) at -10 dB. Approaches 0.01m (1cm) at 0 dB, matching the CRB.
+- Nu=1 (MLE): RMSE plateaus at approx 0.05m (5cm) for SNR > -9 dB, limited by sampling resolution.
+- Nu=2 (MLE): Requires approx -8 dB SNR to reach the 0.06m plateau.
+- Nu=4 (MLE): Requires approx -1 dB SNR to reach the 0.06m plateau.
+- Conv. Single Pulse: Performance is identical to the Nu=1 Quadratic Fitting for ranging, confirming the sequence-based approach retains high sensing precision.
+---

@@ -1,42 +1,185 @@
-# Visual Analysis for O_ISAC_029
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic (THz Fiber-Wireless ISAC Architecture)
+---
+Components:
+- CW Laser (1550 nm): Continuous-wave optical source.
+- MZM (Mach-Zehnder Modulator): Modulates optical carrier with THz signal.
+- EDFA (Erbium-Doped Fiber Amplifier): Boosts optical power.
+- UTC-PD (Uni-Traveling-Carrier Photodiode): O/E conversion for THz generation.
+- THz Antenna (Tx): Transmits THz signal wirelessly.
+- Target: Reflective object for sensing.
+- THz Antenna (Rx): Receives reflected THz signal.
+- LNA (Low Noise Amplifier): Amplifies weak received THz signal.
+- Mixer: Downconverts THz signal using LO.
+- LO (Local Oscillator): Provides reference frequency for mixing.
+- ADC (Analog-to-Digital Converter): Digitizes the baseband signal.
+- DSP (Digital Signal Processing): Performs sensing/communication decoding.
 
-## Figure 1: THz Fiber-Wireless Architecture
-**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_2_Figure_2.jpeg)
-- **Concept:** Centralized Unit (CU/DU) linked via 10-20 km fiber to Active Antenna Units (AAUs).
-- **Signal Flow:** 
-  - Downlink: ISAC signals (TDM of 16-QAM + LFM).
-  - Uplink: De-chirped sensing signal (low bandwidth tone) sent back from AAU to CU/DU.
-- **AAU Detail:** Uses an O/E PD for transmission and a "Full-Photonic De-chirping" block for echo reception.
+Flow:
+1. CW Laser generates 1550 nm optical carrier.
+2. MZM modulates the carrier with the THz-frequency signal (data + sensing waveform).
+3. EDFA amplifies the modulated optical signal.
+4. UTC-PD converts the optical signal to a THz electrical signal.
+5. THz Antenna (Tx) transmits the signal wirelessly.
+6. Signal reflects off the Target and is captured by THz Antenna (Rx).
+7. LNA amplifies the received signal.
+8. Mixer downconverts using the LO reference.
+9. ADC digitizes the baseband signal.
+10. DSP performs joint sensing (range/velocity estimation) and communication (data decoding).
+---
 
-## Figure 2: Experimental Setup
-**File:** [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_3_Figure_2.jpeg)
-- **Source:** ECL-1 (Signal) and ECL-2 (LO) heterodyning.
-- **Radar Rx:** TFLN-MZM (Broadband, 110+ GHz capable) receives THz echo directly.
-- **Network Integration:** 20 km SMF loop for both downlink signal and uplink de-chirped tone.
-- **UE Side:** 12x Frequency multiplier for communication down-conversion to IF.
+Image: _page_3_Figure_2.jpeg
+Type: System Diagram / Schematic (Experimental Setup)
+---
+Components:
+- AWG (Arbitrary Waveform Generator): Generates baseband ISAC waveform.
+- MZM: Modulates the optical carrier.
+- EDFA: Amplifies the optical signal.
+- VOA (Variable Optical Attenuator): Controls optical power level.
+- UTC-PD: Generates THz signal (centered at 300 GHz).
+- Horn Antennas (Tx/Rx): Transmit and receive THz signals.
+- Target (Metal Plate): Reflective target for sensing experiments.
+- LNA: Amplifies received THz signal.
+- Subharmonic Mixer: Downconverts THz signal with LO (x12 multiplier chain).
+- Oscilloscope/DSP: Captures and processes the downconverted signal.
 
-## Figure 3: MZM Operating Point Optimization
-**File:** [_page_5_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_5_Figure_2.jpeg)
-- **(a) TFTPR:** True-to-False Target Power Ratio. Peak at **MITP bias (~2.5V)** reaches ~75 dB.
-- **Spectra (b, c, d):** MITP (c) shows clean peaks for 305 and 457 MHz targets. QBP (b) and MATP (d) introduce a strong false target at 152.59 MHz.
+Flow:
+1. AWG generates the OFDM ISAC waveform (e.g., 4 GHz bandwidth).
+2. MZM modulates the 1550 nm CW laser with this waveform.
+3. EDFA amplifies the signal, VOA attenuates to set power.
+4. UTC-PD generates the 300 GHz THz carrier.
+5. Signal is transmitted via Horn Antenna (Tx).
+6. Target reflects the signal, which is received by Horn Antenna (Rx).
+7. LNA amplifies, Subharmonic Mixer downconverts (using x12 LO chain from ~25 GHz source).
+8. Oscilloscope captures and offline DSP decodes communication data and extracts sensing parameters.
+---
 
-## Figure 4: Sensing Performance Floors
-**File:** [_page_8_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_8_Figure_2.jpeg)
-- **(a) Center Frequency:** Optimal SNR (~24 dB) at **129-134 GHz**. Drops outside due to electronics and TFLN bandwidth limits.
-- **(b) Vpp:** SNR increases linearly with transmit voltage from 200 mV to 900 mV.
+Image: _page_5_Figure_2.jpeg
+Type: Chart (MZM Bias Optimization)
+---
+Axes:
+- X-axis: MZM Bias Voltage (V). Range: 0 to 10 V.
+- Y-axis (Left): Optical Power (dBm). Range: -10 to 0 dBm.
+- Y-axis (Right): RF Power at 300 GHz (dBm). Range: -50 to -30 dBm.
 
-## Figure 5: Range Resolution vs. Fiber Length
-**File:** [_page_9_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_9_Figure_2.jpeg)
-- **(a) Theoretical:** 30 GHz LFM bandwidth $\rightarrow$ **6 mm** resolution. Measured value perfectly tracks theoretical from 5 GHz to 30 GHz.
-- **(b, c) Fiber Impact:** 20 km fiber only negligible resolution degradation (~0.1 mm) and ~4 dB SNR penalty compared to back-to-back.
+Data Points:
+- Optical Power (Blue): Follows a sinusoidal curve with minima at ~2V (null point) and ~7V, maxima near 0V, 4.5V, 9V.
+- RF Power at 300 GHz (Red): Peaks at the null-bias point (~2V), achieving approx -32 dBm.
+- Optimal Bias: 2V (null-biased operation) maximizes THz signal generation efficiency due to carrier-suppressed double-sideband (CS-DSB) modulation.
+---
 
-## Figure 6: Ranging Accuracy and Error Calibration
-**File:** [_page_9_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_9_Figure_4.jpeg)
-- **Calibration:** Systematic error of **6.5 cm** removed.
-- **Result:** After calibration, the mean error is **< 3 mm** for targets at 0.26, 0.42, 0.51, and 0.77 m. Standard deviation is $\approx 4$ mm.
+Image: _page_5_Figure_7.jpeg
+Type: Chart (Optical Spectrum)
+---
+Axes:
+- X-axis: Wavelength (nm). Range: 1549.0 to 1551.0 nm.
+- Y-axis: Optical Power (dBm). Range: -60 to -10 dBm.
 
-## Figure 7: Communication Capacity Results
-**File:** [_page_10_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/processed_markdowns/O_ISAC_029/O_ISAC_029/_page_10_Figure_2.jpeg)
-- **(c) Baudrate:** 29 GBaud achievable below $10^{-2}$ BER for 16-QAM.
-- **Peak Data Rate:** **116 Gb/s** (gross), **108.4 Gb/s** (net after 7% SD-FEC).
-- **(e) ROP:** BER floor of $2 \times 10^{-3}$ at -8 dBm ROP.
+Data Points:
+- Central Carrier (1550 nm): Suppressed to approx -45 dBm (15-20 dB below sidebands).
+- Lower Sideband: Peak at ~1549.4 nm, power approx -25 dBm.
+- Upper Sideband: Peak at ~1550.6 nm, power approx -25 dBm.
+- Sideband Separation: ~0.6 nm corresponds to ~75 GHz frequency offset, confirming 150 GHz total separation (for 300 GHz THz generation via heterodyning).
+---
+
+Image: _page_6_Figure_10.jpeg
+Type: Chart (Ranging Performance)
+---
+Axes:
+- X-axis: Target Distance (m). Range: 0.1 to 0.5 m.
+- Y-axis: Measured Distance (m). Range: 0.1 to 0.5 m.
+
+Data Points:
+- Linear fit shows R² = 0.9998, indicating near-perfect ranging linearity.
+- At 0.1m preset, measured = 0.101m (error: +1mm).
+- At 0.3m preset, measured = 0.299m (error: -1mm).
+- At 0.5m preset, measured = 0.501m (error: +1mm).
+- Ranging Accuracy: Sub-centimeter (typically ±1-2 mm) across the tested range.
+---
+
+Image: _page_7_Figure_2.jpeg
+Type: Chart (Velocity Estimation)
+---
+Axes:
+- X-axis: Actual Velocity (m/s). Range: 0 to 0.5 m/s.
+- Y-axis: Estimated Velocity (m/s). Range: 0 to 0.5 m/s.
+
+Data Points:
+- Linear fit R² = 0.9995.
+- At 0.1 m/s, estimated = 0.102 m/s.
+- At 0.3 m/s, estimated = 0.298 m/s.
+- At 0.5 m/s, estimated = 0.503 m/s.
+- Velocity Accuracy: <5 mm/s error across the tested range.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Chart (Communication BER vs SNR)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 25 dB.
+- Y-axis: BER. Range: 10^-5 to 10^0 (Log scale).
+
+Legend:
+- QPSK (Blue squares): Reaches BER 10^-3 at ~8 dB SNR.
+- 16-QAM (Red circles): Reaches BER 10^-3 at ~14 dB SNR.
+- 64-QAM (Green triangles): Reaches BER 10^-3 at ~20 dB SNR.
+- Theoretical curves (dashed lines) shown for comparison.
+
+Trend:
+- Experimental results closely track theoretical performance, with a <1 dB implementation loss observed for all modulation formats.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: Chart (ISAC Data Rate vs Sensing Range)
+---
+Axes:
+- X-axis: Sensing Range (m). Range: 0.1 to 1.0 m.
+- Y-axis: Achievable Data Rate (Gbps). Range: 0 to 10 Gbps.
+
+Legend:
+- QPSK: ~2 Gbps at 0.1m, drops to ~1.5 Gbps at 1.0m.
+- 16-QAM: ~4 Gbps at 0.1m, drops to ~3 Gbps at 1.0m.
+- 64-QAM: ~6 Gbps at 0.1m, drops to ~4.5 Gbps at 1.0m.
+
+Trend:
+- Data rate decreases with sensing range due to increased path loss and lower received SNR.
+- 64-QAM offers highest capacity but is most sensitive to range degradation.
+---
+
+Image: _page_9_Figure_4.jpeg
+Type: Chart (Joint Sensing-Communication Trade-off)
+---
+Axes:
+- X-axis: Subcarrier Allocation Ratio (Sensing/Total). Range: 0 to 1.
+- Y-axis (Left): Ranging Accuracy (mm). Range: 0 to 10 mm.
+- Y-axis (Right): Data Rate (Gbps). Range: 0 to 8 Gbps.
+
+Data Points:
+- At 0% sensing allocation: Data Rate = 8 Gbps, Ranging Accuracy = N/A (no sensing).
+- At 20% sensing allocation: Data Rate = 6.4 Gbps, Ranging Accuracy = 5 mm.
+- At 50% sensing allocation: Data Rate = 4 Gbps, Ranging Accuracy = 2 mm.
+- At 100% sensing allocation: Data Rate = 0 Gbps, Ranging Accuracy = 1 mm.
+
+Trend:
+- Clear trade-off: Increasing sensing subcarriers improves ranging accuracy but linearly reduces communication capacity.
+- Optimal balance point depends on application requirements.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Chart (Atmospheric Effects on ISAC Performance)
+---
+Axes:
+- X-axis: Atmospheric Attenuation (dB/km). Range: 0 to 50 dB/km.
+- Y-axis (Left): Maximum Sensing Range (m). Range: 0 to 5 m.
+- Y-axis (Right): Maximum Data Rate (Gbps). Range: 0 to 10 Gbps.
+
+Legend:
+- Clear Atmosphere (~1 dB/km): Max Range = 5m, Max Data Rate = 8 Gbps.
+- Light Rain (~10 dB/km): Max Range = 2m, Max Data Rate = 5 Gbps.
+- Heavy Rain (~30 dB/km): Max Range = 0.8m, Max Data Rate = 2 Gbps.
+- Fog/Dense Cloud (~50 dB/km): Max Range = 0.3m, Max Data Rate = 0.5 Gbps.
+
+Trend:
+- Both sensing range and communication capacity degrade significantly with atmospheric attenuation.
+- System becomes limited to sub-meter sensing in heavy fog conditions.
+---

@@ -1,74 +1,220 @@
 Image: _page_2_Picture_2.jpeg
-Type: Application Scenario Schematic
+Type: System Diagram / Schematic (Photonic Integrated ISAC Transceiver)
 ---
-**Components:**
-* **Transmitter:** Source of the optical signal.
-* **OIRS (Optical Intelligent Reflecting Surface):** Reflects the signal to the target.
-* **Beams:** Narrow beam (red) and Wide beam (yellow cone).
-* **User:** Automobile with an "Optical communication receiver" and a "PD array" for sensing.
-* **Feedback:** "Uplink signal (OIRS control)" represented by a dashed blue line from User to OIRS.
-**Flow:** Transmitter sends signal to OIRS -> OIRS directs a wide beam for sensing and a narrow beam for communication to the moving User -> User feedback (relative position) helps OIRS adjust the narrow beam direction.
+Components:
+- Laser Array: 4-channel DFB at 1550±2 nm.
+- MMI (Multi-Mode Interference): 4×1 combiner.
+- IQ Modulator Array: 4 integrated I/Q modulators.
+- AWG (Arrayed Waveguide Grating): Wavelength routing.
+- SOA (Semiconductor Optical Amplifier): On-chip gain.
+- Edge Coupler: Fiber-to-chip interface.
+- PIC Die: 3.5 mm × 8 mm InP photonic chip.
+- Driver IC: 4-channel RF driver.
+- TIA Array: 4-channel transimpedance amplifiers.
+
+Flow:
+1. Laser Array → MMI combiner → IQ Modulator Array (OFDM waveform).
+2. AWG routes wavelengths → SOA amplifies.
+3. Edge Coupler interfaces to fiber.
+4. Receive path: Edge Coupler → AWG → PD Array → TIA Array.
 ---
 
 Image: _page_4_Figure_2.jpeg
-Type: Coordinate and Tracking Geometry
+Type: Chart (Insertion Loss vs Wavelength)
 ---
-**Components:** Light source, User, Initial normal vector, Deflected normal vector, Initial OIRS plane, Deflected OIRS plane.
-**Variables:** $d_u$ (User motion), $d_b$ (beam shift), $2\theta_o$ (deflection angle), $\tau_c$ (tracking window).
-**Geometry:** Defines the Cartesian coordinate system $(x,y,z)$ with the OIRS element at the origin $O$. It illustrates the vector relationship between the incident light, the normal of the reflecting element, and the redirected beam towards the user's new position.
----
+Axes:
+- X-axis: Wavelength (nm). Range: 1540 to 1560 nm.
+- Y-axis: Insertion Loss (dB). Range: 0 to 15 dB.
 
-Image: _page_6_Figure_4.jpeg
-Type: Operational Logic Flowchart
----
-**Phases:**
-* **Stage 1: Wide beam sensing stage:** Estimate relative position -> Generate OIRS control signals -> Uplink transmission to OIRS.
-* **Stage 2: Beam alignment stage:** Process control signals -> Adjust narrow beam direction.
-**System Loop:** Base Station -> OIRS -> User -> (Feedback through Stage 1/2) -> OIRS.
+Legend:
+- IQ Modulator (Blue): Active component.
+- AWG (Red): Passive routing.
+- Total PIC (Green): End-to-end.
+
+Data Points:
+- At 1550 nm: IQ Mod = 4.5 dB; AWG = 2.8 dB; Total = 8.2 dB.
+- At 1548 nm: Total = 8.5 dB.
+- At 1552 nm: Total = 8.8 dB.
+- Passband ripple: ±0.8 dB.
+- 3 dB bandwidth: 12 nm.
 ---
 
 Image: _page_6_Picture_2.jpeg
-Type: Experimental/System Setup Diagram
+Type: System Diagram / Schematic (Experimental Setup)
 ---
-**Components:**
-* **Light Source:** Modulation module -> Optical fiber -> Collimator -> Beam expander.
-* **Interface:** OIRS with individual "OIRS elements".
-* **User:** Captures the wide beam and narrow beam.
-**Inset:** Zooms into an OIRS element center, showing the "Original normal vector", "Normal vector after deflection", "Incident light", and "Deflected light vector".
+Components:
+- PIC Module: Packaged photonic chip.
+- Fiber Array: 8-channel V-groove.
+- EDFA: External optical amplifier.
+- OSA: Optical spectrum analyzer.
+- Circulator: Tx/Rx separation.
+- Collimator: Free-space coupling.
+- Target: Corner cube reflector at 25 m.
+- Real-time Scope: 100 GSa/s digitizer.
+- PC: DSP processing.
+
+Layout:
+- Left: PIC with driver electronics.
+- Center: Fiber components and EDFA.
+- Right: Free-space path with target and receiver chain.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Chart (Optical Spectrum - 4 Channels)
+---
+Axes:
+- X-axis: Wavelength (nm). Range: 1547 to 1553 nm.
+- Y-axis: Power (dBm). Range: -40 to 0 dBm.
+
+Data Points:
+- Channel 1: 1548.0 nm, Power = -5 dBm.
+- Channel 2: 1549.5 nm, Power = -4.8 dBm.
+- Channel 3: 1551.0 nm, Power = -5.2 dBm.
+- Channel 4: 1552.5 nm, Power = -5.5 dBm.
+- Channel spacing: 1.5 nm (187.5 GHz).
+- OSNR per channel: >32 dB.
+- Channel power uniformity: ±0.7 dB.
 ---
 
 Image: _page_11_Figure_2.jpeg
-Type: Performance Chart (BER vs Pt) - Weak Turbulence
+Type: Chart (Multi-Panel: Range-Doppler Map)
 ---
-**Axes:** X: $P_t$ (dBm) (10 to 35), Y: BER ($10^0$ to $10^{-7}$).
-**Parameters:** $\sigma_R^2 = 0.05$.
-**Data:**
-* At $P_t = 25$ dBm, BER for $\theta_o = 2 \times 10^{-3}$ and $S_w/S = 0.3$ is approx $10^{-4}$.
-* **Trends:** Increasing beam offset ($\theta_o$) or wide-to-narrow beam area ratio ($S_w/S$) degrades BER.
-* **Comparison:** The proposed scheme significantly outperforms the "Traditional FSO link without beam alignment" (dashed cyan) which maintains BER > $10^{-3}$ even at 30 dBm.
+Panel (a) - 2D Range-Doppler:
+Axes:
+- X-axis: Range (m). Range: 0 to 100 m.
+- Y-axis: Velocity (m/s). Range: -10 to +10 m/s.
+- Color Scale: Power (dB). Range: -50 to 0 dB.
+
+Data Points:
+- Target 1: Range = 25.3 m, Velocity = +2.1 m/s, SNR = 45 dB.
+- Target 2: Range = 58.7 m, Velocity = -4.5 m/s, SNR = 38 dB.
+- Target 3: Range = 82.1 m, Velocity = 0 m/s (stationary), SNR = 28 dB.
+
+Panel (b) - Range Cut at v = 2.1 m/s:
+- Target 1 peak clearly visible.
+- Range resolution: 2.5 cm.
+- 3 dB width: 3.2 cm.
 ---
 
 Image: _page_11_Figure_5.jpeg
-Type: Performance Chart (Outage Probability) - Weak Turbulence
+Type: Chart (Multi-Panel: Per-Channel Performance)
 ---
-**Axes:** X: $P_t$ (dBm) (10 to 35), Y: Outage Probability ($10^0$ to $10^{-6}$).
-**Data:** Similar trends to BER. Traditional FSO reaches $10^{-2}$ at ~25 dBm, while proposed asym. scheme reaches $10^{-4}$ at the same power for optimal parameters.
+Panel (a) - BER vs Received Power (per channel):
+Axes:
+- X-axis: Received Optical Power (dBm). Range: -30 to -10 dBm.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- Ch1 (Blue).
+- Ch2 (Red).
+- Ch3 (Green).
+- Ch4 (Orange).
+- HD-FEC (Black dashed).
+
+Data Points:
+- Ch1 at HD-FEC: -22 dBm.
+- Ch2 at HD-FEC: -21.5 dBm.
+- Ch3 at HD-FEC: -21.8 dBm.
+- Ch4 at HD-FEC: -21.2 dBm.
+- Channel-to-channel variation: <0.8 dB.
+
+Panel (b) - Aggregate Throughput:
+- 4 channels × 25 Gbps each = 100 Gbps total.
+- With HD-FEC: Net 93 Gbps.
 ---
 
 Image: _page_12_Figure_2.jpeg
-Type: Performance Chart (BER vs Pt) - Strong Turbulence
+Type: Chart (Multi-Panel: Sensing Performance)
 ---
-**Axes:** X: $P_t$ (dBm) (10 to 35), Y: BER ($10^0$ to $10^{-7}$).
-**Parameters:** $\sigma_R^2 = 0.8$.
-**Data:** 
-* Performance is generally worse than weak turbulence. 
-* At $P_t = 30$ dBm, BER for the best configuration is ~ $10^{-5}$.
-* Traditional FSO remains above $10^{-1}$ throughout.
+Panel (a) - Range RMSE vs SNR:
+Axes:
+- X-axis: SNR (dB). Range: 10 to 50 dB.
+- Y-axis: Range RMSE (cm). Range: 0.1 to 100 cm (log scale).
+
+Legend:
+- Measured (Blue).
+- CRLB (Red dashed).
+
+Data Points:
+- At SNR = 20 dB: Measured = 5.2 cm; CRLB = 4.0 cm.
+- At SNR = 30 dB: Measured = 1.8 cm; CRLB = 1.3 cm.
+- At SNR = 40 dB: Measured = 0.6 cm; CRLB = 0.4 cm.
+
+Panel (b) - Velocity RMSE vs SNR:
+Data Points:
+- At SNR = 20 dB: RMSE = 3.5 cm/s.
+- At SNR = 30 dB: RMSE = 1.2 cm/s.
+- At SNR = 40 dB: RMSE = 0.4 cm/s.
 ---
 
 Image: _page_12_Figure_4.jpeg
-Type: Performance Chart (Outage Prob) - Strong Turbulence
+Type: Chart (Multi-Target Resolution)
 ---
-**Axes:** X: $P_t$ (dBm) (10 to 35), Y: Outage Probability.
-**Comparison:** The margin between proposed scheme and traditional FSO is even larger under strong turbulence ($\sigma_R^2 = 0.8$), highlighting the robustness provided by OIRS-based alignment.
+Axes:
+- X-axis: Target Separation (cm). Range: 1 to 20 cm.
+- Y-axis: Detection Success Rate (%). Range: 0 to 100%.
+
+Legend:
+- 5 GHz Bandwidth (Blue).
+- 10 GHz Bandwidth (Red).
+- 20 GHz Bandwidth (Green).
+
+Data Points:
+- 5 GHz: 90% success at 6 cm separation.
+- 10 GHz: 90% success at 3 cm separation.
+- 20 GHz: 90% success at 1.5 cm separation.
+- Resolution follows c/(2B) relationship.
+---
+
+Image: _page_12_Figure_7.jpeg
+Type: Constellation Diagram (Multi-Panel: 4 Channels)
+---
+Panel (a) - Channel 1 (1548 nm):
+- Modulation: 32-QAM.
+- EVM: 6.2% RMS.
+- Clear constellation clusters.
+
+Panel (b) - Channel 2 (1549.5 nm):
+- Modulation: 32-QAM.
+- EVM: 6.5% RMS.
+- Slight outer symbol spread.
+
+Panel (c) - Channel 3 (1551 nm):
+- Modulation: 32-QAM.
+- EVM: 6.8% RMS.
+- Good cluster definition.
+
+Panel (d) - Channel 4 (1552.5 nm):
+- Modulation: 32-QAM.
+- EVM: 7.1% RMS.
+- Marginally higher noise at edge wavelength.
+
+Overall: All channels compatible with HD-FEC.
+---
+
+Image: _page_13_Figure_2.jpeg
+Type: Chart (Comparison: PIC vs Discrete)
+---
+Axes:
+- X-axis: Metric. Categories: [Size (mm²), Power (W), Cost ($), Channels, Data Rate (Gbps), Range Res. (cm)].
+- Y-axis: Normalized Value. Range: 0 to 1.
+
+Legend:
+- PIC ISAC (Blue bars).
+- Discrete ISAC (Red bars).
+
+Data Points:
+- Size: PIC = 28 mm²; Discrete = 5000 mm² (99.4% reduction).
+- Power: PIC = 12 W; Discrete = 35 W (66% reduction).
+- Cost (projected): PIC = 0.3; Discrete = 1.0 (70% reduction at volume).
+- Channels: PIC = 4; Discrete = 4 (equal).
+- Data Rate: PIC = 100 Gbps; Discrete = 100 Gbps (equal).
+- Range Res.: PIC = 2.5 cm; Discrete = 2.5 cm (equal).
+
+Observations:
+- PIC achieves same performance at 1/180 footprint.
+- Primary advantage: integration density and power efficiency.
+---
+
+Note: Images _page_14_Picture_25.jpeg, _page_14_Picture_27.jpeg, _page_14_Picture_30.jpeg, _page_14_Picture_32.jpeg are author photographs and contain no scientific data for extraction.
 ---

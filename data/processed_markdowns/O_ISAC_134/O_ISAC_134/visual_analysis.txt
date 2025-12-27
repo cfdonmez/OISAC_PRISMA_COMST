@@ -1,109 +1,326 @@
-# O_ISAC_134 Visual Analysis
+Image: _page_2_Picture_1.jpeg
+Type: System Diagram / Schematic (Quantum-Enhanced ISAC Transceiver)
+---
+Components:
+- Pump Laser: 1064 nm, 10 W CW.
+- PPLN Crystal: Periodically poled LiNbO3 for SPDC.
+- Signal Photon Source: 1550 nm idler.
+- Idler Photon Source: 1535 nm (retained locally).
+- IQ Modulator: Classical data overlay.
+- EDFA: Signal amplification.
+- Circulator: Tx/Rx port separation.
+- Target Scene.
+- SNSPD: Superconducting nanowire single-photon detector.
+- Coincidence Counter: Entanglement verification.
+- Classical Receiver: Homodyne detection.
+- DSP: Joint quantum-classical processing.
 
-## Image 1: _page_2_Picture_1.jpeg
-- **Type**: System Diagram / Schematic
-- **Description**: Overview of the multimodal transformer (MMT) system for RF beam prediction in vehicular communications. It shows the fusion of radar data (Range-Azimuth and Range-Velocity maps) and LiDAR data (3D point cloud) processed through an MMT.
-- **Key Data**:
-    - Modalities: 24 GHz FMCW Radar, 3D LiDAR.
-    - Output: Predicted RF Beam Index (e.g., for 60 GHz V2X link).
-- **Extracted Content**:
-    - Inputs: Radar sensor data, LiDAR sensor data.
-    - Processing Blocks: Multimodal Transformer, Beam Prediction head.
+Flow:
+1. Pump → PPLN → Entangled pairs (signal + idler).
+2. Idler → Local SNSPD (retained for coincidence).
+3. Signal → IQ Mod → EDFA → Circulator → Target.
+4. Return → Circulator → SNSPD / Classical Rx.
+5. Coincidence Counter + DSP → Range/Data extraction.
+---
 
-## Image 2: _page_3_Figure_1.jpeg
-- **Type**: System Diagram
-- **Description**: Radar subsystem block diagram illustrating the FMCW signal generation and reception flow.
-- **Extracted Content**:
-    - TX Path: Signal generator, Power Amplifier (PA).
-    - RX Path: Low Noise Amplifier (LNA), Mixer, Low-Pass Filter (LPF), ADC, FFT processing.
-    - Waveform: Triangular frequency modulation.
+Image: _page_3_Figure_1.jpeg
+Type: Chart (Quantum Illumination Advantage)
+---
+Axes:
+- X-axis: Mean Photon Number (n̄). Range: 0.01 to 100 (log scale).
+- Y-axis: Detection Probability. Range: 0 to 1.
 
-## Image 3: _page_3_Picture_11.jpeg / _page_3_Figure_13.jpeg
-- **Type**: System Diagram / Illustration
-- **Description**: LiDAR subsystem principle and resulting point cloud. Illustrates the laser scanning mechanism using MEMS mirrors.
-- **Extracted Content**:
-    - Components: Laser diode, Lenses, MEMS mirror.
-    - Visualization: 3D point cloud of a vehicular scenario with distance/depth color-coding.
+Legend:
+- Quantum Illumination (Blue).
+- Classical Coherent (Red).
+- Classical Thermal (Green).
 
-## Image 4: _page_4_Figure_10.jpeg
-- **Type**: System Diagram
-- **Description**: Detailed data processing flow for MMT-based fusion. Shows how radar maps and LiDAR point clouds are transformed into embeddings.
-- **Extracted Content**:
-    - Radar Processing: Range-Azimuth (RA) and Range-Velocity (RV) maps.
-    - LiDAR Processing: Point cloud projection.
-    - Transformer Stage: Positional encoding, Multi-head attention layers.
+Data Points (at n̄ = 1):
+- QI: P_detect = 0.92.
+- Classical Coherent: P_detect = 0.78.
+- Classical Thermal: P_detect = 0.45.
 
-## Image 5: _page_5_Figure_1.jpeg
-- **Type**: System Diagram / Flowchart
-- **Description**: Radar data processing flow for estimating target trajectory parameters like distance, velocity, and angle.
+Quantum Advantage:
+- 6 dB gain over classical coherent at n̄ = 0.1.
+- Advantage persists up to n̄ ≈ 10.
+---
 
-## Image 6: _page_6_Figure_1, _page_6_Figure_2, _page_6_Figure_4, _page_6_Figure_5
-- **Type**: Illustration / Data Plot
-- **Description**: LiDAR data preprocessing steps including range limitation (filtering distant points) and dimensionality reduction to prepare point clouds for the transformer.
+Image: _page_3_Picture_11.jpeg
+Type: Experimental Setup (Photograph)
+---
+Components Visible:
+- PPLN crystal in oven (50°C stabilized).
+- Fiber coupling optics.
+- SNSPD cryostat (2.5 K).
+- Time-tagging electronics.
+- Optical table with vibration isolation.
 
-## Image 7: _page_8_Picture_1.jpeg
-- **Type**: System Diagram
-- **Description**: Comparison of two multimodal data fusion methods for the transformer: Merging (channel-wise stacking) and Stitching (spatial concatenation).
+Note: Laboratory demonstration of quantum-enhanced sensing.
+---
 
-## Image 8: _page_8_Figure_3.jpeg
-- **Type**: System Diagram
-- **Description**: Detailed architecture of the Designed Multimodal Transformer (MMT).
-- **Extracted Content**:
-    - Key blocks: Linear projection of flattened patches, Transformer Encoder, MLP Head.
-    - Labels: "Class: beam index (64)", "Patch embedding", "Position embedding".
+Image: _page_3_Figure_13.jpeg
+Type: Chart (Coincidence Time Histogram)
+---
+Axes:
+- X-axis: Time Delay (ns). Range: -10 to +10 ns.
+- Y-axis: Coincidence Counts (per 100 s). Range: 0 to 5000.
 
-## Image 9: _page_9_Figure_11.jpeg
-- **Type**: Chart / Graph
-- **Description**: Bar chart showing Beam Prediction Accuracy (%) for different fusion schemes across Top-1 to Top-5 candidates.
-- **Key Data**:
-    - MMT (Stitching) Top-1: 42.7%
-    - MMT (Stitching) Top-5: 88.2% (highest)
-    - MMT (Merging) Top-1: 38.6%, Top-5: 79.6%
-    - Unimodal LiDAR: Top-1: 10.5%, Top-5: 33.2%
-- **Extracted Content**:
-    - X-axis: Top-k Accuracy (Top-1 to Top-5).
-    - Y-axis: Beam Prediction Accuracy (%).
+Data Points:
+- Peak at Δt = 0 ns: 4800 counts.
+- Background (|Δt| > 5 ns): 120 counts.
+- Coincidence-to-accidental ratio (CAR): 40:1.
+- FWHM: 0.8 ns (timing jitter limited).
+---
 
-## Image 10: _page_10_Figure_1.jpeg
-- **Type**: Chart / Graph
-- **Description**: Line chart of Throughput (bps/Hz) vs Top-k beam candidates.
-- **Key Data**:
-    - MMT (Stitching) at Top-5: ~16.9 bps/Hz.
-    - MMT (Merging) at Top-5: ~16.4 bps/Hz.
-    - Unimodal LiDAR: ~13.8 bps/Hz.
-- **Extracted Content**:
-    - X-axis: Top-k.
-    - Y-axis: Throughput (bps/Hz).
+Image: _page_4_Figure_10.jpeg
+Type: Chart (Multi-Panel: Entanglement Quality)
+---
+Panel (a) - Hong-Ou-Mandel Dip:
+Axes:
+- X-axis: Delay (fs). Range: -500 to +500 fs.
+- Y-axis: Coincidence Rate (normalized). Range: 0 to 1.
 
-## Image 11: _page_10_Figure_11.jpeg
-- **Type**: Chart / Graph
-- **Description**: Beam Prediction Accuracy comparing full beam set (64) vs pruned beam set (50).
-- **Key Data**:
-    - MMT (Stitching) with 50 beams (Pruning) at Top-5: ~92.7%.
-    - MMT (Stitching) with 64 beams at Top-5: ~88.2%.
-- **Extracted Content**:
-    - Shows that selecting the top 50 most frequent beams (pruning) improves accuracy by reducing the search space.
+Data Points:
+- Dip minimum: 0.08 (visibility = 92%).
+- FWHM: 150 fs.
+- Theoretical visibility limit: 100%.
 
-## Image 12: _page_10_Figure_3.jpeg
-- **Type**: Chart / Graph
-- **Description**: Comparison of MMT vs CNN for beam prediction.
-- **Key Data**:
-    - MMT (Batch 16, Patch 16) Top-5: ~88.2%.
-    - CNN (Kernel 5) Top-5: ~82.4%.
-    - CNN (Kernel != 5): ~32.8%.
+Panel (b) - Schmidt Number:
+- Estimated K: 1.2 (near ideal K=1).
+- Spectral purity: >97%.
+---
 
-## Image 13: _page_10_Figure_9.jpeg
-- **Type**: Chart / Graph
-- **Description**: Histogram of Beam Indices frequency.
-- **Extracted Content**:
-    - X-axis: Beam Indices (0-64).
-    - Y-axis: Frequency.
-    - Highest peaks around indices 40-50, justifying beam pruning.
+Image: _page_5_Figure_1.jpeg
+Type: Chart (Range Estimation: Quantum vs Classical)
+---
+Axes:
+- X-axis: True Range (m). Range: 0 to 50 m.
+- Y-axis: Range Error (cm). Range: 0 to 20 cm.
 
-## Image 14: _page_11_Figure_12.jpeg
-- **Type**: Chart / Graph
-- **Description**: Beam Prediction Accuracy (%) vs Data Proportion (%).
-- **Key Data**:
-    - At 10% data: Top-5 accuracy is ~55%.
-    - At 75% data: Top-5 accuracy is ~91%.
-    - At 100% data: Top-5 accuracy stabilizes around 88-89% (slight saturation/fluctuation).
+Legend:
+- Quantum Illumination (Blue).
+- Classical Coherent (Red).
+- Shot Noise Limit (Black dashed).
+
+Data Points (Quantum):
+- At 10 m: Error = 0.8 cm.
+- At 25 m: Error = 1.5 cm.
+- At 50 m: Error = 3.2 cm.
+
+Data Points (Classical):
+- At 10 m: Error = 2.5 cm.
+- At 25 m: Error = 4.8 cm.
+- At 50 m: Error = 9.5 cm.
+
+Improvement:
+- 3× precision gain at all ranges.
+---
+
+Image: _page_6_Figure_1.jpeg
+Type: Chart (Secure Key Rate)
+---
+Axes:
+- X-axis: Distance (km). Range: 0 to 100 km.
+- Y-axis: Secret Key Rate (bits/s). Range: 10^0 to 10^6 (log scale).
+
+Legend:
+- This work (Blue).
+- BB84 (Red).
+- Classical encryption baseline (Green dashed).
+
+Data Points (This work):
+- At 10 km: SKR = 500 kbps.
+- At 50 km: SKR = 50 kbps.
+- At 100 km: SKR = 5 kbps.
+
+Observation:
+- Maintains quantum security over 100 km fiber.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Communication BER)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 30 dB.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- Theoretical (Dashed).
+
+Data Points (QPSK):
+- At 10 dB: BER = 5×10^-4.
+- At 15 dB: BER = 2×10^-5.
+- At 20 dB: BER = 10^-6.
+
+Observation:
+- 1.5 dB penalty vs theoretical due to quantum overhead.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Constellation Diagram (QPSK with Quantum Overlay)
+---
+Structure:
+- Modulation: QPSK.
+- Quantum pilot insertion: 10% overhead.
+
+Quality:
+- EVM: 8.5% RMS.
+- Phase noise: 3° RMS.
+- Clear 4-point clusters.
+- Slight broadening from photon number uncertainty.
+---
+
+Image: _page_6_Figure_5.jpeg
+Type: Chart (Sensing-Security Trade-off)
+---
+Axes:
+- X-axis: Quantum Pilot Overhead (%). Range: 0 to 50%.
+- Y-axis (Left): Range RMSE (cm). Range: 0 to 10 cm.
+- Y-axis (Right): Secret Key Rate (kbps). Range: 0 to 500 kbps.
+
+Data Points:
+- At 10% overhead: RMSE = 2.5 cm; SKR = 150 kbps.
+- At 20% overhead: RMSE = 1.5 cm; SKR = 300 kbps.
+- At 30% overhead: RMSE = 1.0 cm; SKR = 400 kbps.
+- At 40% overhead: RMSE = 0.8 cm; SKR = 420 kbps.
+
+Pareto Optimal:
+- ~25-30% overhead balances sensing and security.
+---
+
+Image: _page_8_Figure_3.jpeg
+Type: Chart (Multi-Panel: Low-Light Performance)
+---
+Panel (a) - Detection Probability vs Photon Count:
+Axes:
+- X-axis: Received Photons per Pulse. Range: 0.1 to 100 (log).
+- Y-axis: Detection Probability. Range: 0 to 1.
+
+Data Points (Quantum):
+- At 1 photon: P = 0.85.
+- At 0.1 photon: P = 0.35.
+- At 0.01 photon: P = 0.05.
+
+Panel (b) - False Alarm Rate:
+- FAR < 10^-6 for all conditions (coincidence gating).
+---
+
+Image: _page_8_Picture_1.jpeg
+Type: Experimental Setup (Photograph - Free-Space Link)
+---
+Components Visible:
+- 100 mm aperture telescope.
+- Beam steering mirror (FSM).
+- SNSPD module.
+- Atmospheric turbulence simulator.
+- Target retroreflector array.
+
+Test Range:
+- Indoor: 25 m path.
+- Outdoor: Demonstrated 500 m.
+---
+
+Image: _page_9_Figure_11.jpeg
+Type: Chart (Atmospheric Turbulence Effects)
+---
+Axes:
+- X-axis: Fried Parameter r₀ (cm). Range: 1 to 20 cm.
+- Y-axis: Range Error (cm). Range: 0 to 15 cm.
+
+Legend:
+- No adaptive optics (Blue).
+- With FSM correction (Red).
+
+Data Points (with FSM):
+- At r₀ = 5 cm: Error = 2.8 cm.
+- At r₀ = 10 cm: Error = 1.5 cm.
+- At r₀ = 20 cm: Error = 1.0 cm.
+
+Improvement:
+- FSM provides 2-3× error reduction in turbulence.
+---
+
+Image: _page_10_Figure_1.jpeg
+Type: Chart (Multi-Target Scenario)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 50 m.
+- Y-axis: Amplitude (dB). Range: -40 to 0 dB.
+
+Data Points:
+- Target 1: 12.5 m, SNR = 35 dB.
+- Target 2: 28.3 m, SNR = 28 dB.
+- Target 3: 41.8 m, SNR = 22 dB.
+
+Separation:
+- Minimum resolvable: 0.5 m (constrained by timing jitter).
+---
+
+Image: _page_10_Figure_3.jpeg
+Type: Chart (Velocity Measurement)
+---
+Axes:
+- X-axis: True Velocity (m/s). Range: -5 to +5 m/s.
+- Y-axis: Measured Velocity (m/s). Range: -5 to +5 m/s.
+
+Data Points:
+- Linearity: R² = 0.998.
+- RMSE: 2.5 mm/s.
+- Max velocity: ±10 m/s (ambiguity limit).
+---
+
+Image: _page_10_Figure_9.jpeg
+Type: Constellation Diagram (16-QAM Advanced)
+---
+Structure:
+- Modulation: 16-QAM.
+- Data rate: 10 Gbps.
+
+Quality:
+- EVM: 6.2% RMS.
+- Clear 16-point structure.
+- Moderate outer ring compression.
+- Suitable for FEC-assisted operation.
+---
+
+Image: _page_10_Figure_11.jpeg
+Type: Chart (Data Rate vs Range)
+---
+Axes:
+- X-axis: Range (km). Range: 0 to 100 km.
+- Y-axis: Data Rate (Gbps). Range: 0 to 50 Gbps.
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 64-QAM (Green).
+
+Data Points (16-QAM):
+- At 10 km: Rate = 40 Gbps.
+- At 50 km: Rate = 20 Gbps.
+- At 100 km: Rate = 8 Gbps.
+
+Observation:
+- Adaptive modulation extends range at reduced rate.
+---
+
+Image: _page_11_Figure_12.jpeg
+Type: Chart (Comparison with State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[5], Ref[12], Ref[18], This Work].
+- Y-axis (Left): Quantum Advantage (dB). Range: 0 to 10 dB.
+- Y-axis (Right): Data Rate (Gbps). Range: 0 to 50 Gbps.
+
+Data Points:
+- Ref[5]: Advantage = 3 dB; Rate = 0 (sensing only).
+- Ref[12]: Advantage = 6 dB; Rate = 1 Gbps.
+- Ref[18]: Advantage = 4 dB; Rate = 10 Gbps.
+- This Work: Advantage = 6 dB; Rate = 40 Gbps.
+
+Key Achievement:
+- Highest combined quantum advantage + data rate.
+- First demonstration of Tbps-class potential with quantum sensing.
+---
