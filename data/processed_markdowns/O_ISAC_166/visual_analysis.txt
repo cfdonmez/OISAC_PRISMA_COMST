@@ -1,0 +1,273 @@
+================================================================================
+O_ISAC_166 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Sensing and Communication Solar Skin for Health Monitoring
+Authors: Jiarong Li et al. (Tsinghua University, Pengcheng Laboratory)
+Journal: Nano Energy 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_6.jpeg
+### Type: Multi-Panel System Diagram (Solar E-Skin Architecture)
+
+### Panel (a) - System Overview:
+- Ultraflexible OSC patch on wrist
+- Off-skin processing module
+- Four functionalities: Motion recognition, Health monitoring, OWC, Gesture interaction
+
+### Panel (b) - Communication Module:
+- VLC transmitter (LED driver + MOSFET)
+- Signal conditioning unit
+- ESP32 microcontroller
+- ADC for digitization
+
+### Panel (c) - Wearable Module:
+- 2×3 ultraflexible OSC array
+- Flexible PCB connection
+- Wrist-mounted configuration
+
+### Panel (d) - OSC Array Detail:
+- Individual cell structure visible
+- Ultrathin (~3.2 μm total thickness)
+
+### Panel (e) - Data Processing Pipeline:
+- Parallel processing for sensing + communication
+- Preprocessing → Feature extraction → Classification
+- OWC demodulation path
+
+### Panel (f) - Bio-Inspired Design:
+- Sensory reception → Spinal processing → Motor actuation
+- Mimics biological neural pathways
+
+### O-ISAC Relevance:
+- Core solar-powered ISAC platform
+- Self-powered sensing + OWC in single device
+---
+
+## Image: _page_2_Figure_8.jpeg
+### Type: Multi-Panel Chart (OSC Characterization)
+
+### Panel (a) - Photograph:
+- 3.2 μm-thick freestanding OSC on skin
+- High conformability demonstration
+- Device structure cross-section
+
+### Panel (b) - J-V Characteristics:
+| Parameter | Value |
+|-----------|-------|
+| J_SC | 26.6 mA/cm² |
+| V_OC | 0.81 V |
+| Fill Factor | 0.76 |
+| PCE | 15.3% |
+
+### Panel (c) - EQE Spectrum:
+- Spectral range: 300-1000 nm
+- Peak EQE: >75%
+- Broad responsivity for PPG sensing
+
+### Panel (d) - Light Intensity Dependence:
+- J_SC ∝ P_light^α, α = 0.95 (near-unity)
+- V_OC ideality factor n = 1.30
+- Minimal bimolecular recombination
+
+### Panel (e) - Photocurrent Response:
+- Hand approach/withdraw detection
+- Response time: <0.5 s
+- Clear signal modulation
+
+### Panel (f) - Compression Test Setup:
+- 0% and 30% compression states
+- Elastomeric substrate mounting
+
+### Panel (g) - V_OC Retention:
+- After 2000 cycles: 97.7% retention
+- Excellent mechanical durability
+
+### Panel (h) - J_SC Retention:
+- After 2000 cycles: 93.0% retention
+- Confirms electrode/layer integrity
+
+### O-ISAC Relevance:
+- High PCE (15.3%) enables self-powered operation
+- Mechanical robustness for wearable ISAC
+---
+
+## Image: _page_4_Figure_8.jpeg
+### Type: Multi-Panel Diagram (Sensing Data Characterization)
+
+### Panel (a) - Data Flow:
+- OSC array → Analog front-end → ADC
+- ESP32 processing → Bluetooth/WiFi
+- Mobile app visualization
+
+### Panel (b) - Finger Gesture Signals (Indoor):
+- 6-channel sensor output
+- 7 gesture classes: Swipe, Up, Down, Bend, Stretch, Rotate, Anti-rotate
+- Clear temporal signatures
+
+### Panel (c) - Body Activity Signals (Outdoor):
+- 7 activity classes: Stand, Walk, Turn, Jump, Run, Sleep, Sit
+- Robust features despite outdoor interference
+
+### Panel (d) - Gesture Recognition Setup:
+- Wrist-mounted OSC array
+- Real-time classification on UI
+- Video S1 demonstration
+
+### Panel (e) - Activity Recognition Setup:
+- Full body activity detection
+- Six-channel real-time display
+
+### O-ISAC Relevance:
+- Multimodal sensing via single OSC platform
+- Gesture/activity recognition for HCI
+---
+
+## Image: _page_6_Figure_1.jpeg
+### Type: Multi-Panel Diagram (ML-Based Recognition)
+
+### Panel (a) - Recognition Pipeline:
+1. Raw signal → Low-pass filter (<5 Hz)
+2. Mean-variance normalization
+3. Segmentation (3s gestures, 5s activities)
+4. Downsampling to 128 points/channel
+
+### Panel (b) - Residual BiLSTM Architecture:
+- 4 stacked Residual BiLSTM layers (64 neurons each)
+- Flatten layer
+- 3 dense layers (32 → 16 → 8 neurons)
+- Captures long-range temporal dependencies
+
+### Panel (c) - Gesture Confusion Matrix (Outdoor):
+| Metric | Value |
+|--------|-------|
+| Precision | 97.87% |
+| Recall | 97.86% |
+| F1 Score | 97.86% |
+| AUROC | 99.79% |
+
+### Panel (d) - Activity Confusion Matrix (Outdoor):
+| Metric | Value |
+|--------|-------|
+| Accuracy | 98.8% |
+| Precision | 98.8% |
+| Recall | 98.8% |
+| F1 Score | 98.8% |
+
+### Key Misclassifications:
+- Rotate ↔ Anti-rotate (similar patterns)
+- Jump ↔ Run (high-intensity movements)
+
+### O-ISAC Relevance:
+- Deep learning enables robust classification
+- Outdoor performance validates practical deployment
+---
+
+## Image: _page_7_Figure_1.jpeg
+### Type: Multi-Panel Diagram (OWC Module)
+
+### Panel (a) - Communication Architecture:
+- Computer/cloud → Encoder → LED driver → LED TX
+- OSC array RX → Amplifier → Demodulator → Decoder
+- OOK modulation scheme
+
+### Panel (b) - Phototransient Response:
+- LED wavelength: 685 nm
+- Rise time: ~62 μs
+- Fall time: ~71 μs
+- Theoretical bandwidth: ~2.38 kHz
+
+### Panel (c) - Experimental Setup:
+- BeagleBone Black (BBB) signal generator
+- OpenVLC transceiver module
+- Mobile app showing decoded messages
+
+### Panel (d) - Waveform Analysis:
+- Upper: Transmitted OOK pulses
+- Lower: Received signal with "HELLO" decoded
+- Clear transitions, robust demodulation
+
+### Panel (e) - Industrial Application Scenario:
+- Control center → LED broadcast → Field workers
+- Robotic arm/quadruped control via OWC
+- Secure, directional, interference-free
+
+### Panel (f) - Gesture-Robot Interaction Flow:
+OSC sensing → Classification → Controller → Robot action
+
+### Panel (g) - Robotic Arm Control:
+- Gesture-driven apple grasping
+- Real-time e-skin input
+
+### Panel (h) - Quadruped Robot Control:
+- Locomotion commands via wearable
+- Forward, rotate ±90°, grasp/release
+
+### OWC Performance:
+| Condition | BER | PER | SNR |
+|-----------|-----|-----|-----|
+| ≤30 cm, ≤30° | 0-0.06 | 0-0.3 | ~12 dB |
+
+### O-ISAC Relevance:
+- Self-powered OWC receiver via OSC
+- Industrial OWC for secure command transmission
+---
+
+## Image: _page_8_Figure_10.jpeg
+### Type: Multi-Panel Diagram (PPG Health Monitoring)
+
+### Panel (a) - PPG Sensor Cross-Section:
+- Skin tissue with subdermal blood vessels
+- 2×3 OSC array as photodetector
+- Dual-wavelength LEDs (660 nm, 850 nm)
+- Reflected light detection (PPG principle)
+
+### Panel (b) - Wearable Patch Schematic:
+- Ultrathin conformal design
+- Integrated OSCs + LEDs on skin
+
+### Panel (c) - PPG Waveforms (Post-Exercise):
+| Condition | HR (bpm) | SpO₂ (%) |
+|-----------|----------|----------|
+| Initial | ~140 | Stable |
+| Recovery | →113 | Stable |
+
+- Device vs Commercial agreement confirmed
+- 660 nm (red) and 850 nm (NIR) illumination
+
+### Panel (d) - Remote Health Monitoring:
+- Wireless transmission to cloud server
+- Real-time HR/HRV/SpO₂ analytics
+- Fatigue assessment potential
+
+### HRV Metrics (Post-Exercise):
+| Metric | Value |
+|--------|-------|
+| SDNN | 0.209 s |
+| RMSSD | 0.276 s |
+| SD1 | 0.195 s |
+| SD2 | 0.222 s |
+
+### O-ISAC Relevance:
+- Physiological sensing via OSC photodetection
+- Dual-function: Energy harvesting + PPG sensing
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6 (17 author photos skipped)
+- System Diagrams: 2
+- Multi-panel Charts: 2
+- ML/Recognition Diagrams: 1
+- Health Monitoring Diagrams: 1
+
+Key Technical Findings:
+1. Platform: Ultraflexible OSC (3.2 μm thick, 15.3% PCE)
+2. Mechanical: 97.7% V_OC retention after 2000 compression cycles
+3. Gesture Recognition: 97.87% outdoor accuracy (Residual BiLSTM)
+4. Activity Recognition: 98.8% outdoor accuracy
+5. OWC: 2.38 kHz bandwidth, OOK modulation, "HELLO" decoded
+6. PPG Sensing: Dual-wavelength (660/850 nm), HR + SpO₂ monitoring
+7. Applications: Robot control, health monitoring, smart home
+8. Self-Powered: Energy harvesting + sensing in single platform
+================================================================================

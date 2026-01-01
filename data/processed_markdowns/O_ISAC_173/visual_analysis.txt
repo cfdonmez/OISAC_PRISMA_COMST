@@ -1,0 +1,161 @@
+================================================================================
+O_ISAC_173 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Poster: High-Performance Optical Camera Communications for ISAC Localization and Sensing
+Authors: Lih-Wei Chia, Mehul Motani (National University of Singapore)
+Venue: ACM MobiCom 2025 (Poster)
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_15.jpeg
+### Type: Conceptual Diagram (OCC Spatial Multiplexing)
+
+### Concept:
+- Camera sensor isolates signals from multiple transmitters
+- Each transmitter maps to unique pixel region
+- Equivalent to optical receiver-side beamforming
+- Millions of pixels → fine spatial resolution
+
+### Key Advantage:
+- Simultaneous reception across all FOV
+- Quasi-orthogonal point-to-point channels
+- Minimal interference between transmitters
+
+### O-ISAC Relevance:
+- Spatial multiplexing for optical ISAC
+- Localization via angle-of-arrival
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: System Architecture Diagram (HP-OCC Receiver)
+
+### Components:
+- **SPAD Sensor Array:**
+  - Single-photon avalanche diodes
+  - High temporal resolution
+  - Event-based photon detection
+
+- **Crossbar Network:**
+  - Dynamic pixel-to-processor assignment
+  - Tracks transmitter across sensor
+
+- **Edge Processing Units Pool:**
+  - Multiple parallel processors
+  - Each demodulates single optical stream
+  - OOK/ASK demodulation capable
+
+### Signal Flow:
+- Photon arrival → SPAD event
+- Crossbar routes to assigned processor
+- Edge unit decodes optical stream
+
+### Modulation Support:
+- OOK (On-Off Keying)
+- ASK (Amplitude Shift Keying)
+
+### O-ISAC Relevance:
+- Frameless architecture for high speed
+- Simultaneous communication + localization
+---
+
+## Image: _page_2_Figure_4.jpeg
+### Type: Application Diagram (Warehouse Automation)
+
+### Setup:
+- 25m × 3m warehouse trial lane
+- Kuehne+Nagel operational warehouse (Singapore)
+
+### Components:
+- **AGV (Automated Guided Vehicle):**
+  - Forklift-based platform
+  - HP-OCC receiver onboard
+  - Video streaming + localization
+
+- **Active Anchors:**
+  - Installed on warehouse shelves
+  - Known positions for trilateration
+
+- **Control System:**
+  - Navigation commands via HP-OCC
+  - Real-time position updates
+
+### Performance:
+| Metric | Value |
+|--------|-------|
+| Video rate | 5 Mbps |
+| Localization accuracy | 10 cm |
+| Range | 25 m |
+| Packet loss | Low |
+
+### O-ISAC Relevance:
+- Simultaneous communication + localization
+- Industrial IoT application
+---
+
+## Image: _page_3_Picture_1.jpeg
+### Type: Hardware Photo (Passive Transmitter Tag)
+
+### Components:
+- Solar panel (power harvesting)
+- Retroreflector (reflects incoming light)
+- LC shutter (modulates light with tag ID)
+- Microcontroller (controls modulation)
+
+### Operation:
+- No dedicated power source required
+- Interrogation light from receiver
+- Tag modulates reflected light with ID
+
+### Challenge:
+- 100 Hz flicker from mains LED lighting
+- Resolved with higher optical data rates
+- Range limited by LC shutter speed
+
+### O-ISAC Relevance:
+- Passive optical sensing tags
+- Alternative to RFID/BLE
+---
+
+## Image: _page_3_Picture_3.jpeg
+### Type: Hardware Photo (Portable HP-OCC Receiver)
+
+### Features:
+- Integrated interrogation light
+- SPAD-based sensor
+- Portable handheld form factor
+- Used for inventory search
+
+### Application:
+- Locate tagged items on shelves
+- Workers sweep receiver across inventory
+- Real-time tag identification
+
+### O-ISAC Relevance:
+- Practical deployment in logistics
+- Battery-free tag localization
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (6 header/logo images skipped)
+- Conceptual Diagrams: 1
+- System Architecture: 1
+- Application Diagram: 1
+- Hardware Photos: 2
+
+Key Technical Findings:
+1. Platform: HP-OCC with SPAD sensors
+2. Communication: 5 Mbps video streaming
+3. Localization: 10 cm accuracy @ 25 m range
+4. Tags: Passive (solar + retroreflector + LC shutter)
+5. Processing: On-sensor edge processing
+6. Architecture: Frameless, event-based
+7. Application: Warehouse automation, inventory tracking
+8. Partner: Kuehne+Nagel (logistics company)
+
+Key Advantages vs RF:
+- Centimeter-level localization precision
+- Power efficient (passive tags possible)
+- No RF interference (industrial/medical suitable)
+- Line-of-sight required (limitation)
+================================================================================

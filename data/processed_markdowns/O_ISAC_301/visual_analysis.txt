@@ -1,0 +1,209 @@
+================================================================================
+O_ISAC_301 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Demonstration of radar-aided flexible communication in a photonics-based
+       W-band distributed integrated sensing and communication system for 6G
+Authors: Junlian Jia et al. (Fudan University)
+Journal: Chinese Optics Letters 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## SKIPPED IMAGES:
+- _page_0_Picture_1.jpeg (Journal header)
+
+---
+
+## Image: _page_2_Figure_10.jpeg
+### Type: System Architecture Diagram
+
+### Title: Experimental Setup for W-Band ISAC
+
+### Central Office (CO):
+- ECL @ 193.1 THz
+- AWG (60 GSa/s)
+- EA + MZM
+- Circulator pair
+
+### RRU (Remote Radio Unit):
+- Circulator + PC + PM-EDFA
+- PM-OC (50:50 split)
+- LO @ 193.1965 THz → 96.5 GHz
+- PD (100 GHz) + PA
+- Horn antenna (Tx)
+- Servo turntable (azimuth)
+
+### Sensing Path:
+- Second horn antenna (Rx)
+- LNA + ED
+- MZM (dechirp modulation)
+- Back to CO via fiber
+- OBF + PD (10 GHz) → FFT
+
+### User Equipment (UE):
+- Horn antenna + LNA + ED
+- OSC for demodulation
+
+### Transmission:
+- 10 km SMF + 1.15 m wireless
+
+### O-ISAC Relevance:
+- Distributed sensing architecture
+---
+
+## Image: _page_3_Figure_6.jpeg
+### Type: Dual-Panel NDR Analysis
+
+### Title: Communication Performance @ 1.15 m
+
+### Panel (a) - NDR vs Vpp:
+- Optimal: 240 mV
+- Peak NDR: ~68 Gbps
+
+### Panel (b) - NDR vs ROP:
+- Peak: 68.6 Gbps @ -2.6 dBm
+- Over 10 km SMF
+
+### O-ISAC Relevance:
+- High-rate communication
+---
+
+## Image: _page_3_Figure_8.jpeg
+### Type: Multi-Target Radar Spectrum
+
+### Title: Radar Sensing Performance (5 Targets)
+
+### Targets & Results:
+| Distance | Error | PMNR |
+|----------|-------|------|
+| 0.65 m | <1 cm | 16.31 dB (max) |
+| 0.84 m | <1 cm | ~15 dB |
+| 1.15 m | <1 cm | ~15 dB |
+| 1.38 m | <1 cm | ~14.5 dB |
+| 1.58 m | <1 cm | 14.0 dB (min) |
+
+### Key Finding:
+- Resolution: 1.95 cm (theoretical 1.5 cm)
+- Error: <1 cm for all targets
+
+### O-ISAC Relevance:
+- High-precision ranging
+---
+
+## Image: _page_3_Figure_14.jpeg
+### Type: PMNR vs ROP
+
+### Title: Sensing Performance vs Optical Power
+
+### X-axis: ROP (dBm) @ EDFA input (CO)
+### Y-axis: PMNR (dB)
+
+### Key Finding:
+- PMNR stable above -25 dBm
+- Falls rapidly below -25 dBm
+- Independent of fiber length
+
+### O-ISAC Relevance:
+- Sensing dynamic range
+---
+
+## Image: _page_4_Figure_7.jpeg
+### Type: User Location Map
+
+### Title: Radar-Detected User Locations
+
+### 3 Users:
+| User | Distance | Azimuth |
+|------|----------|---------|
+| 1 | 1.15 m | 2.47° |
+| 2 | 1.38 m | -27.10° |
+| 3 | 1.77 m | 23.00° |
+
+### Key Finding:
+- Azimuth smearing due to beam width
+- All 3 users clearly detected
+- 0.5° scanning step
+
+### O-ISAC Relevance:
+- Multi-user detection
+---
+
+## Image: _page_4_Figure_9.jpeg
+### Type: NGMI Heatmap
+
+### Title: Communication NGMI Map (3 Users)
+
+### Display:
+- Azimuth vs NGMI for each user
+- -3 dB beam width: 20°
+- Sharp drop on misalignment
+
+### Key Finding:
+- Alignment critical for high-speed link
+- ISAC enables optimal azimuth finding
+
+### O-ISAC Relevance:
+- Beam alignment validation
+---
+
+## Image: _page_4_Figure_11.jpeg
+### Type: NDR Comparison Chart
+
+### Title: Estimated vs Achieved NDR
+
+### Results:
+| Target | Estimated | Achieved | Gap |
+|--------|-----------|----------|-----|
+| 1.15 m | 68.65 Gbps | 68.65 Gbps | 0% |
+| 1.38 m | 61.12 Gbps | 62.58 Gbps | 2.4% |
+| 1.77 m | 50.70 Gbps | 51.82 Gbps | 2.2% |
+
+### Inset: PS-256QAM constellations
+
+### Key Finding:
+- Sensing-based SNR estimation accurate
+- <2.4% NDR gap
+
+### O-ISAC Relevance:
+- Radar-aided rate adaptation
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 7 (1 header skipped)
+- System Diagrams: 1
+- Communication Analysis: 2
+- Radar Sensing: 2
+- User Detection Maps: 2
+
+Key Technical Findings:
+1. Platform: Photonics-based W-band ISAC
+2. Carrier: 96.5 GHz
+3. Comm BW: 15 GHz
+4. Sensing BW: 10 GHz (5-15 GHz)
+5. Modulation: PS-256QAM
+6. LFM Duration: 34.13 ns
+7. Fiber: 10 km SMF (FTTR)
+
+Key Innovations:
+1. Distributed sensing (RRU-based dechirp)
+2. Radar-aided flexible communication
+3. Probabilistic shaping for rate adaptation
+4. Azimuth correction for antenna spacing
+5. SNR estimation from distance
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Peak NDR | 68.6 Gbps |
+| Sensing Resolution | 1.95 cm |
+| Distance Error | <1 cm |
+| Max PMNR | 16.31 dB |
+| NDR Estimation Gap | <2.4% |
+| Wireless Distance | 1.15-1.77 m |
+| Fiber Distance | 10 km |
+
+Application:
+- 6G radio access networks
+- Fiber-to-the-room (FTTR)
+- Indoor micro-base stations
+================================================================================

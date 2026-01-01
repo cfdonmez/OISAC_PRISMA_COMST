@@ -1,0 +1,210 @@
+================================================================================
+O_ISAC_245 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: MCMC-Based Sparse Bayesian Learning for Super-Resolution Receiver in ISAC Systems
+Authors: Keying Zhu et al. (Southeast University)
+Journal: IEEE 2025
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Picture_1.jpeg
+### Type: System Diagram
+
+### Title: Proposed ISAC System Architecture
+
+### Components:
+- Base Station (BS):
+  - Tx ULA (N antennas)
+  - Rx ULA (N antennas)
+  - Spacing: 5λ-10λ (self-interference)
+- K single-antenna users
+- L point-like targets
+
+### Operation:
+- OFDM waveform transmission
+- Downlink communication to K users
+- Echo reception for sensing
+- Joint range-velocity-angle estimation
+
+### Parameters:
+- Carrier: fc = 30 GHz
+- M = 128 subcarriers
+- Δf = 120 kHz
+- N = 8 antennas
+
+### O-ISAC Relevance:
+- MIMO-OFDM ISAC baseline
+---
+
+## Image: _page_4_Figure_1.jpeg
+### Type: Line Chart (Sparse Vector Convergence)
+
+### Title: Convergence of Sparse Vector b (3 Targets, 20 dB)
+
+### Axes:
+- X-axis: Iteration number
+- Y-axis: |b| magnitude
+
+### Observations:
+- 10 potential targets (Q=10)
+- 3 true targets emerge after ~12k iterations
+- Distinct peaks correspond to targets
+- Stable after convergence
+
+### Key Finding:
+- Sparsity clearly identifies target count
+- Strong convergence properties
+
+### O-ISAC Relevance:
+- Target detection via SBL
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Line Chart (RMSE Convergence)
+
+### Title: RMSE Convergence at 0 dB SNR
+
+### Axes:
+- X-axis: Iteration number
+- Y-axis: RMSE
+
+### Parameters:
+- τ (delay/range)
+- fD (Doppler/velocity)
+- θ (angle)
+
+### Key Finding:
+- More fluctuation at 0 dB vs 20 dB
+- Still converges within acceptable iterations
+- Algorithm robust under low SNR
+
+### O-ISAC Relevance:
+- Low-SNR robustness
+---
+
+## Image: _page_4_Figure_3.jpeg
+### Type: Triple-Panel RMSE Convergence
+
+### Title: RMSE Convergence at 20 dB SNR
+
+### Panels:
+- (a) Range τ
+- (b) Doppler fD
+- (c) Angle θ
+
+### Convergence Point:
+- ~12k iterations for all parameters
+- Steep decline after b convergence
+
+### Key Finding:
+- Fast convergence once targets identified
+- Efficient random variable estimation
+
+### O-ISAC Relevance:
+- Parameter estimation validation
+---
+
+## Image: _page_4_Figure_5.jpeg
+### Type: Line Chart (Detection Probability)
+
+### Title: Correct Detection Probability vs SNR
+
+### Axes:
+- X-axis: SNR (dB): -20 to 20
+- Y-axis: Pcd: 0-1
+
+### Curves:
+| Targets | Pcd @ 10 dB | Pcd @ -5 dB |
+|---------|-------------|-------------|
+| L=1 | ~100% | ~80% |
+| L=2 | ~100% | ~65% |
+| L=3 | ~100% | ~55% |
+
+### Key Finding:
+- Near 100% detection for SNR > 10 dB
+- Single target: 60% @ -15 dB
+- Multi-target: robust detection
+
+### O-ISAC Relevance:
+- Dynamic target detection
+---
+
+## Image: _page_5_Figure_1.jpeg
+### Type: Triple-Panel RMSE Comparison
+
+### Title: Parameter Estimation RMSE vs SNR
+
+### Algorithms Compared:
+- Proposed MCMC-SBL
+- NOMP
+- OMP
+- s-CRLB (theoretical bound)
+
+### Panel (a) - Range:
+| SNR | MCMC | NOMP | OMP |
+|-----|------|------|-----|
+| 10 dB | 0.1 m | ~10 m | ~30 m |
+| 0 dB | ~1 m | ~100 m | ~100 m |
+
+### Panel (b) - Velocity:
+| SNR | MCMC | NOMP | OMP |
+|-----|------|------|-----|
+| 10 dB | 0.1 m/s | ~1 m/s | ~3 m/s |
+
+### Panel (c) - Angle:
+| SNR | MCMC | NOMP | OMP |
+|-----|------|------|-----|
+| 10 dB | 0.01° | ~0.5° | ~2° |
+
+### Key Finding:
+- MCMC-SBL approaches s-CRLB
+- 20-30 dB improvement over CS methods
+- Superior low-SNR performance
+
+### Accuracy @ 10 dB:
+- Range: 10⁻¹ m
+- Velocity: 10⁻¹ m/s
+- Angle: 10⁻² degrees
+
+### O-ISAC Relevance:
+- Super-resolution estimation
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6 (all scientific)
+- System Diagrams: 1
+- Convergence Charts: 3
+- Detection Charts: 1
+- RMSE Comparison: 1
+
+Key Technical Findings:
+1. Platform: mmWave MIMO-OFDM ISAC
+2. Carrier: 30 GHz
+3. Subcarriers: 128
+4. Bandwidth: 120 kHz × 128 = 15.36 MHz
+5. Antennas: 8 (Tx/Rx)
+6. OFDM Symbols: K = 14
+
+Key Innovations:
+1. MCMC-based Sparse Bayesian Learning
+2. Gridless super-resolution estimation
+3. Adam optimizer for proposal distribution
+4. Mini-batch gradient (B=100)
+5. Temperature scaling for robustness
+6. Avoid large sensing matrix construction
+
+Algorithm Parameters:
+- Q = 10 sparse variants
+- N_burnin = 40,000 iterations
+- N_sample = 5,000 samples
+- Learning rate: 0.15 (decreasing 0.001)
+
+Performance Highlights:
+- Range: 10⁻¹ m @ 10 dB SNR
+- Velocity: 10⁻¹ m/s @ 10 dB SNR
+- Angle: 10⁻² degrees @ 10 dB SNR
+- 20-30 dB better than OMP/NOMP
+- Near s-CRLB performance
+- Robust at low SNR
+================================================================================

@@ -1,0 +1,378 @@
+================================================================================
+O_ISAC_241 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Photonics-Assisted Millimeter-Wave Integrated Sensing and Communication Based on OTFS
+Authors: Yanyi Wang et al. (Shanghai University, Fudan University)
+Journal: IEEE Journal of Lightwave Technology 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_2.jpeg
+### Type: System Block Diagram
+
+### Title: OTFS Waveform Generation and Signal Processing
+
+### Transmitter:
+- PRBS Tx → QAM mapping
+- DD domain grid (M×N)
+- ISFFT (DD → TF)
+- Heisenberg transform (TF → time)
+- P/S + CP insertion
+- Up-conversion
+
+### Communication Receiver:
+- Synchronization + CP removal
+- S/P → Wigner transform
+- SFFT → DD domain
+- PCE + MP detection
+- BER evaluation
+
+### Radar Receiver:
+- CP removal, S/P
+- OTFS demodulation
+- 2D matched filter
+- Range-velocity extraction
+
+### Key Transform:
+- ISFFT: DD → TF domain
+- SFFT: TF → DD domain
+
+### O-ISAC Relevance:
+- Complete OTFS-ISAC architecture
+---
+
+## Image: _page_2_Figure_4.jpeg
+### Type: Grid Diagram
+
+### Title: DD Domain Pilot and Data Symbol Arrangement
+
+### Structure:
+- M rows (delay) × N columns (Doppler)
+- Pilot at center: (128, 8)
+- Zero-padding guard: Δl × Δk symbols
+- Data symbols around guard
+
+### Guard Interval:
+- [l', l''] over delay axis
+- [k', k''] over Doppler axis
+- Prevents pilot-data interference
+
+### O-ISAC Relevance:
+- Single pilot for channel estimation
+---
+
+## Image: _page_3_Figure_16.jpeg
+### Type: 3D Surface Plot
+
+### Title: Visualized Radar Channel Response Matrix h1
+
+### Axes:
+- Delay tap (l): 0-60
+- Doppler tap (k): 0-60
+- Magnitude
+
+### Targets:
+- 5 simulated targets
+- Each shows distinct (l, k) position
+- Magnitude proportional to RCS
+
+### Key Feature:
+- Sparse representation in DD domain
+- Direct range-velocity mapping
+
+### O-ISAC Relevance:
+- OTFS radar sensing principle
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: Photonics-Assisted OTFS-ISAC System
+
+### Components:
+- LD: 1544.3 nm, <100 kHz linewidth
+- AWG: Keysight 8192A
+- I/Q Mod: Fujitsu FTM7961 (40 GHz)
+- EA: SHF S807C (23 dB) + M827A (11 dB)
+- EDFA: Optical amplification
+- VOA: Power control
+- PD: Finisar XPDV2120R
+- HA: 25 dBi horn antennas (HA1-3)
+- OSC: Keysight DSAZ592A
+
+### Signal Path:
+1. OTFS @ 12 GHz + subcarrier @ 20 GHz
+2. I/Q modulation → optical carrier
+3. PD → mmWave generation (32 GHz)
+4. 1m wireless transmission
+5. Echo via HA2/HA3
+
+### O-ISAC Relevance:
+- Photonics-enabled mmWave ISAC
+---
+
+## Image: _page_4_Figure_14.jpeg
+### Type: Optical Spectrum
+
+### Title: Measured Optical Spectra After I/Q Modulator
+
+### Features:
+- Resolution: 0.2 nm
+- Carrier at 1544.3 nm
+- OTFS sideband (+12 GHz)
+- Virtual subcarrier (-20 GHz)
+- SSB structure visible
+
+### O-ISAC Relevance:
+- Optical signal generation verification
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Dual-Y-Axis Line Chart
+
+### Title: CCDF of PAPR and Doppler Resolution vs Subcarriers
+
+### X-axis:
+- Number of subcarriers M: 2-512
+
+### Y-axes:
+- CCDF (PAPR > γ0) [left, red]
+- Doppler resolution (Hz) [right, blue]
+
+### Trade-off:
+- More subcarriers → worse CCDF (↑)
+- More subcarriers → better Δν (↓)
+- Optimal: M ≈ 256
+
+### O-ISAC Relevance:
+- Communication-radar performance trade-off
+---
+
+## Image: _page_5_Figure_7.jpeg
+### Type: 3D Surface Plot
+
+### Title: Received DD Domain Pilot
+
+### Observations:
+- Multiple paths visible
+- Same color: same Doppler (zero)
+- Different delays (multipath)
+- Static environment test
+
+### Channel Estimation:
+- Threshold for path validity
+- 4 significant paths identified
+
+### O-ISAC Relevance:
+- Multipath channel visualization
+---
+
+## Image: _page_5_Figure_9.jpeg
+### Type: Line Chart (BER Comparison)
+
+### Title: BER vs IOP: OTFS vs OFDM (5 Gbaud 16-QAM)
+
+### Axes:
+- X-axis: IOP (dBm): -9 to -3
+- Y-axis: BER: 10⁻⁴ to 10⁻¹
+
+### Results:
+| Scheme | IOP @ HD-FEC |
+|--------|--------------|
+| OTFS | ~-7 dBm |
+| OFDM | ~-5.5 dBm |
+
+### Key Finding:
+- OTFS 1.5 dB better sensitivity
+- Superior MPI resistance
+- NLOS scenario advantage
+
+### O-ISAC Relevance:
+- OTFS outperforms OFDM in multipath
+---
+
+## Image: _page_6_Figure_2.jpeg
+### Type: Line Chart (BER vs Baud Rate)
+
+### Title: BER vs IOP for Different Baud Rates (16QAM-OTFS)
+
+### Baud Rates:
+- 3, 4, 5, 6 Gbaud
+
+### IOP Margin:
+- 3→6 Gbaud: ~5 dB degradation
+- HD-FEC threshold: 3.8×10⁻³
+
+### Net Data Rate:
+- 5 Gbaud: 15.71 Gbit/s
+- Calculation: Eq. (18)
+
+### O-ISAC Relevance:
+- Communication capacity validation
+---
+
+## Image: _page_6_Figure_10.jpeg
+### Type: Line Chart (64-QAM)
+
+### Title: BER vs IOP for 64QAM-OTFS
+
+### Baud Rates:
+- 2, 4 Gbaud
+
+### Results:
+- 2 Gbaud: IOP > -4 dBm for SD-FEC
+- 4 Gbaud: Additional 3 dB needed
+
+### O-ISAC Relevance:
+- High-order modulation capability
+---
+
+## Image: _page_6_Figure_12.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Single Target Detection at 21 cm
+
+### Measured:
+- Range: 20.81 cm
+- Error: 0.19 cm
+- Velocity: 0 (static)
+
+### O-ISAC Relevance:
+- Single-target ranging validation
+---
+
+## Image: _page_6_Figure_14.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Single Target Detection at 60 cm
+
+### Measured:
+- Range: 59.26 cm
+- Error: 0.74 cm
+
+### O-ISAC Relevance:
+- Ranging accuracy validation
+---
+
+## Image: _page_7_Figure_2.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Single Target Detection at 93 cm
+
+### Measured:
+- Range: 93.19 cm
+- Error: 0.19 cm
+
+### Key Finding:
+- Maximum error: 0.74 cm
+- High-precision ranging
+
+### O-ISAC Relevance:
+- Long-range accuracy
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Multi-Target Detection at 51 cm and 36 cm
+
+### Measured:
+- Target 1: 50.63 cm
+- Target 2: 35.81 cm
+- Separation: 14.82 cm (true: 15 cm)
+
+### O-ISAC Relevance:
+- Multi-target resolution
+---
+
+## Image: _page_7_Figure_6.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Multi-Target Detection at 102 cm and 21 cm
+
+### Measured:
+- Target 1: 101.82 cm
+- Target 2: 20.44 cm
+- Separation: 81.38 cm (true: 81 cm)
+
+### O-ISAC Relevance:
+- Large separation multi-target
+---
+
+## Image: _page_7_Figure_9.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Range Resolution Validation at ~3 cm Separation
+
+### Setup:
+- Two targets at 51.28 cm and 48.25 cm
+- Separation: 3.03 cm
+
+### Result:
+- Two distinct peaks resolved
+- Matches theoretical ΔR = c/(2B) = 3 cm
+
+### O-ISAC Relevance:
+- Resolution limit verification
+---
+
+## Image: _page_7_Figure_11.jpeg
+### Type: 3D Range-Velocity Profile
+
+### Title: Resolution Limit Test at 2.99 cm
+
+### Setup:
+- Separation reduced to ~2.99 cm
+
+### Result:
+- Complete peak overlap
+- Cannot resolve below 3 cm
+
+### Key Finding:
+- Confirms 3 cm range resolution
+- Matches theory exactly
+
+### O-ISAC Relevance:
+- Resolution threshold demonstration
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 17 (all scientific)
+- System Diagrams: 2
+- Optical Spectra: 1
+- BER Charts: 3
+- 3D Range-Velocity: 8
+- Trade-off Analysis: 1
+- Grid/Surface Plots: 2
+
+Key Technical Findings:
+1. Platform: Photonics-assisted mmWave ISAC
+2. Modulation: OTFS (16-QAM, 64-QAM)
+3. mmWave: 32 GHz (12 + 20 GHz)
+4. Bandwidth: 5 GHz
+5. Link: 1 m wireless
+6. Net Data Rate: 15.71 Gbit/s
+7. Range Resolution: 3 cm (verified)
+8. Max Ranging Error: 0.74 cm
+
+Key Innovations:
+1. First photonics-assisted OTFS-ISAC system
+2. Delay-Doppler domain processing
+3. Single pilot channel estimation
+4. 2D matched filter for radar
+5. Trade-off analysis (M subcarriers)
+6. OTFS 1.5 dB better than OFDM
+
+OTFS Advantages:
+- Lower PAPR than OFDM
+- Better multipath resistance
+- Sparse DD domain channel
+- No ICI from Doppler
+- Longer ranging capability
+
+Performance Highlights:
+- BER: HD-FEC @ IOP = -7 dBm
+- Multi-target detection validated
+- Resolution: 3 cm matches theory
+================================================================================

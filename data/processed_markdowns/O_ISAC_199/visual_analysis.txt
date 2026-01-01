@@ -1,0 +1,323 @@
+================================================================================
+O_ISAC_199 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Sensing and Communication System - MIMO FSO with FBG Sensors for 6G IoT Applications
+Authors: R. Arunachalam, Rupali Singh, M. Vinoth Kumar (SRM Institute, India)
+Journal: Engineering Science and Technology, an International Journal 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_5.jpeg (Elsevier Logo)
+### Type: Non-Scientific
+### Note: Publisher logo - SKIPPED
+---
+
+## Image: _page_0_Picture_7.jpeg (Graphical Abstract)
+### Type: System Overview Diagram
+
+### Components:
+- FSO Channel with MIMO
+- FBG Sensors for temperature + strain
+- 6G IoT application context
+- Atmospheric turbulence representation
+
+### O-ISAC Relevance:
+- Conceptual overview of FSO-FBG ISAC
+---
+
+## Image: _page_0_Picture_8.jpeg + _page_0_Picture_10.jpeg
+### Type: Non-Scientific (ORCID, Journal Logo)
+### Note: Icons - SKIPPED
+---
+
+## Image: _page_1_Figure_9.jpeg
+### Type: Probability Density Chart
+
+### Title: PDF Comparison of Scintillation Models
+
+### Axes:
+- X-axis: Intensity (I)
+- Y-axis: Probability Density f(I)
+
+### Models Compared:
+| Model | Turbulence | Characteristics |
+|-------|------------|-----------------|
+| Log-Normal | Weak | Narrower, symmetric |
+| Gamma-Gamma | Moderate-Strong | Wider, skewed |
+
+### Key Parameters:
+- σ²R (Rytov variance) < 1: Weak
+- α, β: Small/large scale turbulence
+
+### O-ISAC Relevance:
+- Channel model selection for FSO ISAC
+---
+
+## Image: _page_1_Figure_11.jpeg
+### Type: System Block Diagram
+
+### Title: Proposed Integrated FSO Communication and FBG Sensing System
+
+### Transmitter:
+- PRBS Generator (10 Gbps)
+- NRZ Encoder
+- CW Laser (1552 nm, 20 dBm)
+- MZM (30 dB extinction ratio)
+
+### Channel:
+- MIMO FSO (1×1, 2×2, 4×4)
+- Gamma-Gamma turbulence model
+- Atmospheric attenuations
+
+### Sensing:
+- FBG Sensor 1: 1545 nm (temperature)
+- FBG Sensor 2: 1550 nm (strain)
+- White light source
+- Real-time IoT monitoring
+
+### Receiver:
+- PIN Photodetector (1 A/W, 10 nA dark)
+- LPF (Bessel)
+- BER Analyzer
+
+### Compensation:
+- DCF (Dispersion Compensating Fiber)
+- FBG Compensator
+
+### O-ISAC Relevance:
+- Complete ISAC architecture with FBG sensing
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: Triple-Panel Eye Diagram
+
+### Title: Eye Diagrams - Clear Air (0.54 dB/km)
+
+### Panel (a) - 9.6 km:
+- Wide eye opening
+- Good signal quality
+- Low ISI
+
+### Panel (b) - 28 km:
+- Moderate eye closure
+- Increased ISI
+
+### Panel (c) - 69.6 km:
+- Maximum range at FEC limit
+- Eye barely open
+- BER ≤ 2×10⁻³
+
+### O-ISAC Relevance:
+- Communication performance baseline
+---
+
+## Image: _page_2_Figure_4.jpeg
+### Type: Dual-Panel Chart (BER vs Distance)
+
+### Panel (a) - Clear Air:
+- Attenuation: 0.54 dB/km
+- Max range: 69.6 km
+- BER decreases with distance
+
+### Panel (b) - Various Weather:
+| Condition | Attenuation | Max Range |
+|-----------|-------------|-----------|
+| Very light mist | 2 dB/km | 23.4 km |
+| Very light fog | 6.9 dB/km | 8.1 km |
+| Light fog | 18.3 dB/km | 3.2 km |
+| Moderate fog | 28.9 dB/km | 2.4 km |
+
+### O-ISAC Relevance:
+- FSO channel characterization
+---
+
+## Image: _page_3_Figure_2.jpeg + _page_3_Figure_3.jpeg
+### Type: Dual-Panel Chart (Received Power)
+
+### Panel (a) - Clear Air:
+- ROP: -62.8 dBm to -64.9 dBm
+- Range: 10-70 km
+
+### Panel (b) - Various Weather:
+- Rain: Moderate attenuation
+- Fog: Severe attenuation
+- Moderate fog: Highest loss
+
+### O-ISAC Relevance:
+- Power budget for FSO ISAC
+---
+
+## Image: _page_4_Figure_2.jpeg + _page_4_Figure_3.jpeg
+### Type: Dual-Panel Chart (FBG Pointing Error Response)
+
+### Panel (a) - Wavelength Shift:
+- X-axis: Pointing displacement r (mm)
+- Y-axis: Δλ_B (nm)
+- Linear increase with displacement
+- FBG detects misalignment via strain
+
+### Panel (b) - Coupling Efficiency:
+- X-axis: Pointing displacement r (mm)
+- Y-axis: η (coupling efficiency)
+- Exponential decrease: η = exp(-r²/2ω_z²)
+- ω_z: Beam waist parameter
+
+### Key Insight:
+- FBG strain sensing → pointing error detection
+- 10 mm displacement → significant efficiency loss
+
+### O-ISAC Relevance:
+- FBG enables pointing error monitoring
+---
+
+## Image: _page_4_Figure_5.jpeg
+### Type: Dual-Panel Chart (FBG Wavelength Shift)
+
+### Title: FBG Sensor Response
+
+### Panel (a) - Temperature Sensing (1545 nm):
+- X-axis: Time steps
+- Y-axis: Wavelength shift (nm)
+- 2°C per step
+- Sensitivity: 14.4 pm/°C
+
+### Panel (b) - Strain Sensing (1550 nm):
+- X-axis: Time steps
+- Y-axis: Wavelength shift (nm)
+- 10×10⁻⁵ strain per step
+- Sensitivity: 1.2 pm/µε
+
+### O-ISAC Relevance:
+- Dual-parameter sensing demonstrated
+---
+
+## Image: _page_5_Figure_2.jpeg + _page_5_Figure_3.jpeg
+### Type: Dual-Panel Spectrum Chart
+
+### Title: FBG Sensor Signal
+
+### Panel (a) - Reflected Signal:
+- 3D: Wavelength × Power × Time
+- Peak shifts with temperature/strain
+- Clear reflection peaks
+
+### Panel (b) - Transmitted Signal:
+- 3D: Wavelength × Power × Time
+- Notch shifts with parameters
+- Complementary to reflection
+
+### O-ISAC Relevance:
+- Real-time sensing via FBG interrogation
+---
+
+## Image: _page_6_Figure_2.jpeg
+### Type: Dual-Panel Spectrum Chart
+
+### Title: FBG Under Severe Attenuation
+
+### Panel (a) - Reflected Signal with Temp+Strain:
+- Signal heavily attenuated
+- Required power increase: 65 dBm
+
+### Panel (b) - Transmitted Signal:
+- Near complete signal loss
+- Pointing errors cause failure
+
+### O-ISAC Relevance:
+- Shows need for MIMO + compensation
+---
+
+## Image: _page_6_Figure_4.jpeg
+### Type: Multi-Panel Eye Diagram
+
+### Title: MIMO FSO + FBG System Eye Diagrams
+
+### Conditions Tested:
+| Power | Eye Quality |
+|-------|-------------|
+| 46 dBm | Minimal opening |
+| 46.6 dBm | FEC limit |
+| 47 dBm | Better |
+| 47.6 dBm | Good |
+| 48 dBm | Clear opening |
+
+### Key Finding:
+- MIMO + compensation recovers signal
+- 46.6 dBm sufficient for FEC
+
+### O-ISAC Relevance:
+- MIMO enables ISAC under adverse conditions
+---
+
+## Image: _page_6_Figure_6.jpeg
+### Type: Line Chart (BER vs Distance)
+
+### Title: BER Comparison - Scintillation Models
+
+### Axes:
+- X-axis: FSO Link Length (km): 6-12
+- Y-axis: log(BER)
+
+### Models:
+- Log-Normal: Gradual BER increase
+- Gamma-Gamma: Steeper increase @ >8 km
+
+### Key Observation:
+- Gamma-Gamma more realistic for long links
+- BER spikes at 9.6 km for GG model
+
+### O-ISAC Relevance:
+- Channel model impacts ISAC design
+---
+
+## Image: _page_6_Figure_8.jpeg
+### Type: Line Chart (BER vs Power)
+
+### Title: BER vs Transmission Power
+
+### Axes:
+- X-axis: Transmission Power (dBm): 44-49
+- Y-axis: log(BER)
+
+### Conditions:
+- Clear air @ 10 km
+- With temperature + strain effects
+- MIMO configurations
+
+### Key Results:
+| Config | BER (dB) | Power (dBm) |
+|--------|----------|-------------|
+| FSO only | -3.12 | Required: 65 |
+| 4×4 MIMO + Comp | -35.02 | Required: 46.6 |
+
+### O-ISAC Relevance:
+- MIMO significantly improves ISAC performance
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 16 (4 non-scientific skipped)
+- System Diagrams: 2
+- Multi-Panel Charts: 10
+- Eye Diagrams: 2
+- Spectrum Plots: 2
+
+Key Technical Findings:
+1. Platform: MIMO FSO + FBG Sensors for 6G IoT
+2. Data Rate: 10 Gbps
+3. Wavelength: 1552 nm communication
+4. FBG Sensors: 1545 nm (temp), 1550 nm (strain)
+5. Temperature Sensitivity: 14.4 pm/°C
+6. Strain Sensitivity: 1.2 pm/µε
+7. Max FSO Range: 69.6 km (clear air)
+8. MIMO Improvement: BER from -3.12 dB to -35.02 dB
+9. Power Reduction: 65 dBm → 46.6 dBm with MIMO
+10. Channel Model: Gamma-Gamma turbulence
+
+Key Innovations:
+- FBG sensors for pointing error detection via strain
+- MIMO + DCF compensation for FSO under temperature/strain
+- Dual-wavelength FBG for simultaneous temp + strain sensing
+- IoT web dashboard via MQTT protocol
+- Applicable to 6G last-mile connectivity
+================================================================================

@@ -1,0 +1,245 @@
+================================================================================
+O_ISAC_190 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Common Bias-Digital Subcarrier Multiplexing Scheme for Integrated Sensing and Communication in Short-Reach Optical Transmission Systems
+Authors: Jin Shi et al. (Wuhan University of Technology)
+Journal: Optics Express 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_8.jpeg
+### Type: Conceptual Diagram (Pulse Compression DAS)
+
+### LFM Pulse Compression:
+- Input: LFM pulse (wide, low power)
+- Matched filter: h(t) = exp(j(2πft + πκt²))
+- Output: Compressed pulse (narrow, high power)
+
+### Benefits:
+- Resolution by bandwidth, not pulse width
+- Breaks distance vs resolution trade-off
+- Compatible with CB-DSCM
+
+### Key Equation:
+- θ(t) = (2πft + πκt²) rect(t/T)
+- κ = chirp rate
+- SR = c/(2nB)
+
+### O-ISAC Relevance:
+- Foundation for LFM-based DAS in IM/DD
+---
+
+## Image: _page_4_Figure_9.jpeg
+### Type: System Comparison Diagram
+
+### Panel (a) - Typical IM/DD with OFDM:
+- Transmitter: OFDM signal generation
+- EOM at quadrature point
+- Direct detection receiver
+- No sensing capability
+
+### Panel (b) - IM/DD with CB-DSCM:
+- Transmitter: ACO-OFDM + LFM combined
+- EOM at null point (common for both)
+- Dual receiver: DD for comm + coherent for sensing
+- Integrated ISAC functionality
+
+### Key Innovation:
+- ACO-OFDM compatible with null point bias
+- Same EOM serves both functions
+- No transmitter modification needed
+
+### O-ISAC Relevance:
+- Low-cost IM/DD ISAC solution
+---
+
+## Image: _page_5_Figure_7.jpeg
+### Type: Multi-Panel Diagram (CB-DSCM Integration)
+
+### Panel (a) - EOM Transfer Function:
+- Null point bias selected
+- Optical power vs bias voltage
+- Zero output at null (pure phase mod)
+
+### Panel (b) - ACO-OFDM Time Domain:
+- Antisymmetric waveform
+- Zero mean → no DC bias needed
+- Odd subcarriers only
+- Negative clipping safe
+
+### Panel (c) - LFM Time Domain:
+- Chirped pulse
+- Bandwidth: 20-120 MHz
+- Duration: 262 µs
+
+### Panel (d) - CB-DSCM Frequency Domain:
+- LFM: 20-120 MHz band
+- ACO-OFDM: 200 MHz - 2 GHz band
+- Frequency-division multiplexing
+- No overlap between signals
+
+### O-ISAC Relevance:
+- Shows how signals coexist
+- FDM for isolation
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Experimental Setup Diagram
+
+### Transmitter:
+- NLL (NP Photonics, <700 Hz linewidth)
+- 1550 nm, 10 dBm output
+- 90:10 OC splitter
+- AWG (Keysight M8195A, 4 GSa/s)
+- EOM (iXblue MXER-LN-10) @ null point
+- EDFA + OBPF
+
+### Sensing Receiver:
+- Optical circulator for RBS
+- EDFA for amplification
+- 90° hybrid coherent receiver (Fujitsu)
+- DSO (30 GHz, 80 GSa/s)
+- PZT at fiber end
+
+### Communication Receiver:
+- Forward PD (direct detection)
+- DSO
+
+### Key Parameters:
+| Parameter | Value |
+|-----------|-------|
+| Fiber | 19.8 km |
+| LFM BW | 100 MHz (20-120 MHz) |
+| ACO-OFDM BW | 1.8 GHz (200 MHz - 2 GHz) |
+| Modulation | 16-QAM |
+| Subcarriers | 205 (odd only) |
+| Symbol rate | 4 GSa/s |
+| Net rate | 3.01 Gb/s |
+| LFM period | 262 µs |
+
+### O-ISAC Relevance:
+- Complete CB-DSCM ISAC setup
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: Dual-Panel Chart (Communication Performance)
+
+### Panel (a) - BER vs ROP:
+- X-axis: Received Optical Power (dBm)
+- Y-axis: BER
+- ROP: -3.8 to -12.3 dBm
+- BER: 6×10⁻⁴ to 5.3×10⁻²
+- HD-FEC threshold shown
+
+### Panel (b) - Constellation Diagram:
+- 16-QAM constellation
+- ROP = -11.1 dBm
+- Clear separation of points
+- Successful demodulation
+
+### Key Result:
+| ROP | BER |
+|-----|-----|
+| -3.8 dBm | 6×10⁻⁴ |
+| -12.3 dBm | 5.3×10⁻² |
+
+### O-ISAC Relevance:
+- 3.01 Gb/s communication verified
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Multi-Panel Chart (Sensing Only Performance)
+
+### Panel (a) - Spatiotemporal Strain Map:
+- 3D view: Distance × Time × Strain
+- 19.8 km fiber
+- Clear periodic strain at end (PZT)
+- Rest of fiber: stable
+
+### Panel (b) - Vibration Localization:
+- X-axis: Distance (km)
+- Y-axis: Intensity variation
+- Peak at 19.8 km (PZT location)
+- Accurate localization
+
+### Panel (c) - Time Domain Signal:
+- 400 Hz sinusoidal vibration
+- Clean recovery without comm
+
+### Panel (d) - PSD:
+- X-axis: Frequency (Hz)
+- Y-axis: Power (dB)
+- 400 Hz peak clearly visible
+- SNR: 14.3 dB
+
+### O-ISAC Relevance:
+- Baseline sensing performance
+- 1 m spatial resolution achieved
+---
+
+## Image: _page_9_Figure_3.jpeg
+### Type: Multi-Panel Chart (ISAC Performance)
+
+### Panel (a) - Spatiotemporal Strain Map (with comm):
+- Higher noise floor vs sensing-only
+- Periodic strain still visible at end
+- Communication introduces interference
+
+### Panel (b) - Vibration Localization (with comm):
+- PZT still located at 19.8 km
+- Elevated noise floor
+- Localization accuracy maintained
+
+### Panel (c) - 400 Hz Vibration Recovery:
+- Slightly noisier waveform
+- Still clearly sinusoidal
+
+### Panel (d) - 400 Hz PSD:
+- SNR: 14.0 dB (vs 14.3 dB sensing-only)
+- Minor degradation
+
+### Panel (e) - 800 Hz Vibration Recovery:
+- Clean sinusoidal recovery
+- Demonstrates frequency response
+
+### Panel (f) - 800 Hz PSD:
+- SNR: 13.5 dB
+- Slightly lower than 400 Hz
+
+### Comparison:
+| Metric | Sensing Only | With Comm |
+|--------|--------------|-----------|
+| 400 Hz SNR | 14.3 dB | 14.0 dB |
+| 800 Hz SNR | N/A | 13.5 dB |
+
+### O-ISAC Relevance:
+- ISAC verified with minimal degradation
+- ~0.3-0.8 dB sensing penalty
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 7 (0 skipped)
+- System Diagrams: 2
+- Conceptual Diagrams: 2
+- Multi-Panel Charts: 3
+
+Key Technical Findings:
+1. Platform: IM/DD Short-Reach + φ-OTDR DAS
+2. Communication: 3.01 Gb/s net rate (16-QAM ACO-OFDM)
+3. BER: 6×10⁻⁴ @ -3.8 dBm ROP
+4. Sensing: 1 m spatial resolution (LFM pulse compression)
+5. Fiber Length: 19.8 km
+6. LFM Bandwidth: 100 MHz
+7. ACO-OFDM Bandwidth: 1.8 GHz
+8. Sensing SNR: 14.0 dB (with comm) vs 14.3 dB (without)
+9. Max detectable frequency: ~1.9 kHz (262 µs period)
+10. Bias Point: EOM null (common for both signals)
+
+Key Innovations:
+- CB-DSCM enables ACO-OFDM + LFM at same bias
+- No transmitter modification needed
+- ACO-OFDM inherently compatible with null point
+- Low-cost IM/DD ISAC solution
+- Frequency-division separation of sensing and comm
+================================================================================

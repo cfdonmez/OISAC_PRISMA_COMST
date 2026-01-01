@@ -1,0 +1,268 @@
+================================================================================
+O_ISAC_162 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: A Unified Future: Integrated Sensing and Communication (ISAC) in 6G
+Authors: Amitava Ghosh et al. (Nokia Bell Labs)
+Journal: IEEE J-STAEQ 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_0.jpeg
+### Type: Journal Logo
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_1_Figure_8.jpeg
+### Type: Pie Chart (3GPP ISAC Use Cases Distribution)
+
+### Quantitative Data:
+Categories identified by 3GPP SA1 group [ref 2]:
+| Category | Percentage |
+|----------|------------|
+| Smart Manufacturing | Large segment |
+| Transportation | Significant segment |
+| Smart Home | Medium segment |
+| Public Safety | Medium segment |
+| Healthcare | Smaller segment |
+| Environmental | Smaller segment |
+
+### Key Use Cases per Category:
+- Smart Manufacturing: AGV tracking, predictive maintenance
+- Transportation: V2X, collision avoidance
+- Smart Home: Intruder detection, gesture recognition
+- Public Safety: Disaster detection, infrastructure monitoring
+- Healthcare: Vital signs monitoring
+- Environmental: Flood/rainfall detection
+
+### O-ISAC Relevance:
+- 32 total use cases identified by 3GPP SA1
+- Prioritized for 6G Release 19 development
+---
+
+## Image: _page_1_Figure_10.jpeg
+### Type: System Diagram (UAV Use Cases)
+
+### Components:
+- UAV/Drone platforms
+- Base station (gNB) with sensing capability
+- Flight trajectory path
+- Detection zones for collision avoidance
+- Intrusion detection perimeter
+
+### Use Cases Illustrated:
+1. UAV flight trajectory tracking
+2. Collision avoidance between drones
+3. Intrusion detection in restricted airspace
+
+### O-ISAC Relevance:
+- Key 6G use case: Real-time UAV tracking
+- Performance requirement: cm-level positioning
+---
+
+## Image: _page_2_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_2_Picture_11.jpeg
+### Type: Diagram (3GPP Sensing Architectures)
+
+### Topologies Shown:
+| Configuration | Sounder | Sensor | Description |
+|---------------|---------|--------|-------------|
+| (a) Monostatic Network | Single gNB | Same gNB | Most common ISAC setup |
+| (b) Bi/Multistatic Network | One gNB | Other gNB(s) | Distributed sensing |
+| (c) Monostatic UE | Single UE | Same UE | Device-centric sensing |
+| (d) Bi/Multistatic UE | One UE | Other UE(s) | UE collaboration |
+| (e) DL Collaborative | gNB | UE(s) | Downlink-based sensing |
+| (f) UL Collaborative | UE | gNB(s) | Uplink-based sensing |
+
+### O-ISAC Relevance:
+- 3GPP supports all topologies for maximum flexibility
+- Choice depends on specific use case requirements
+---
+
+## Image: _page_3_Picture_1.jpeg
+### Type: System Diagram (ISAC Channel Model)
+
+### Channel Components:
+- H_ISAC = H_background + H_target
+- H_background: Multipath not impacted by target (clutter)
+- H_target: Divided into TX-Target and Target-RX paths
+
+### Path Types:
+- LOS direct path (TX/RX to target)
+- NLOS paths (via environment clutter)
+
+### Key Equation:
+L_TX-SPST-RX = PL(d1) + PL(d2) + 10log(c²/4πf²) - 10log(σ_RCS) + SF
+
+### O-ISAC Relevance:
+- Foundation for 3GPP Rel-19 ISAC channel modeling
+- Extends TR 38.901 for sensing targets
+---
+
+## Image: _page_3_Figure_19.jpeg
+### Type: Diagram (Target Models)
+
+### Model Types:
+| Model Complexity | Description | Use Case |
+|------------------|-------------|----------|
+| Single-Ray | Single reflection point | Basic detection |
+| Single-Point Multiple-Ray | Multiple rays from one point | Improved characterization |
+| Multiple-Point | Extended target model | Gesture recognition, trajectory |
+
+### Components:
+- Dashed lines: Background channel (clutter)
+- Solid lines: Target channel (sensing signal)
+- Reference Points (RP): Virtual grid for modeling
+
+### O-ISAC Relevance:
+- Model selection depends on sensing resolution needs
+- Multiple-point needed for human gesture recognition
+---
+
+## Image: _page_6_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_7_Figure_1.jpeg
+### Type: Block Diagram (Nokia ISAC PoC Architecture)
+
+### System Components:
+1. **Comms RU (TX)**: Transmits OFDM sensing signal
+2. **Sniffer RU (RX)**: Receive-only unit for sensing
+3. **Synchronization**: eCPRI fronthaul, PTP/SyncE (jitter ≈40 ps)
+4. **SPU**: Sensing Processing Unit (GPU server)
+5. **DU/L1 High**: Distributed Unit for coordination
+
+### Processing Pipeline:
+1. Pre-generated OFDM frames → TX RU
+2. Reflected signal acquisition → Sniffer RU
+3. CTF estimation (equalization)
+4. Clutter removal algorithms
+5. OFDM radar processing (FFT)
+6. Range-Doppler periodogram
+7. Target detection + AI/ML classification
+8. Kalman filter tracking
+
+### Key Specifications:
+- Frequency: ~27 GHz (mmWave)
+- Bandwidth: up to 400 MHz
+- TDD: DL:UL = 4:1
+- Subcarrier spacing: 120 kHz
+- Range resolution: 0.39 m
+- Speed resolution: 0.55 m/s
+- Processing latency: <10 ms
+- Beam configuration: up to 128 beams
+
+### O-ISAC Relevance:
+- Commercial 5G hardware demonstration
+- Quasi-monostatic (separate TX/RX to avoid full-duplex)
+---
+
+## Image: _page_8_Picture_1.jpeg
+### Type: Photograph (PoC Deployment)
+
+### Views:
+- Left: RUs mounted on Nokia Stuttgart rooftop
+- Right: View of observed intersection from RU position
+
+### Distance to Target:
+- Intersection approximately 400 m from deployment
+
+### O-ISAC Relevance:
+- Real-world outdoor deployment for traffic monitoring
+---
+
+## Image: _page_8_Figure_2.jpeg
+### Type: Heatmap (Range-Doppler Periodogram)
+
+### Axes:
+- X-axis: Doppler velocity (m/s). Range: approximately -15 to +15 m/s
+- Y-axis: Range (m). Range: approximately 350 to 450 m
+
+### Data Points:
+- Target A (highlighted): Vehicle at 380 m range, approaching at 8.5 m/s
+- Residual clutter visible at 0 m/s line (static objects)
+
+### Color Scale:
+- Normalized power (stronger targets = brighter)
+- Larger RCS (trucks) produces higher power peaks
+
+### Observations:
+- Vehicle detection at 400 m range demonstrated
+- Clutter removal partially visible (0 m/s artifacts)
+- Temperature effects on analog front-ends noted
+
+### O-ISAC Relevance:
+- Proof of concept for traffic monitoring use case
+- Demonstrates practical ISAC sensing at 400+ m range
+---
+
+================================================================================
+TABLE I - SENSING REQUIREMENTS FOR InF-AGV (From Paper)
+================================================================================
+| Requirement | Detection | Characterization | Localization |
+|-------------|-----------|------------------|--------------|
+| P_False Alarm | 3% | 3% | TBD |
+| P_Detection | 99% | 99% | TBD |
+| Horizontal Accuracy | - | - | 0.5 m |
+| Vertical Accuracy | - | - | 0.5 m |
+| Velocity Accuracy | - | 1 m/s | - |
+
+================================================================================
+TABLE II - RCS VALUES FOR DIFFERENT TARGETS (3GPP Agreed)
+================================================================================
+| Target | A (dBsm) | B1 (dB) | B2 (dB) |
+|--------|----------|---------|---------|
+| Small UAV | -12.81 | 0 | 3.74 |
+| Large UAV | [-9.60] | [0] | [5.32] |
+| AGV | [3.00] | [0] | TBD |
+| Human | -1.37 | 0 | 3.94 |
+
+Note: Values in brackets = reported but not yet officially agreed.
+
+================================================================================
+TABLE III - ANTENNA SETTINGS FOR ISAC AT 7 GHz
+================================================================================
+| Parameter | UMi-AV | InF-AGV |
+|-----------|--------|---------|
+| Array Size | 32×32 | 8×8 |
+| Antenna Elements | 1024 | 64 |
+| Element Directivity | 3.0 dBi | 3.0 dBi |
+| Array Factor | 30.1 dB | 18.1 dB |
+| Antenna Gain | 31.6 dB | 19.6 dB |
+| Total TX Power | 40.0 dBm | 28.0 dBm |
+
+================================================================================
+TABLE IV - SENSING COVERAGE ANALYSIS AT 7 GHz
+================================================================================
+| Scenario | SNR | Sensing Distance |
+|----------|-----|------------------|
+| UMi-AV High SNR (8 dB margin) | 17 dB | 1779 m |
+| UMi-AV Low SNR | - | 7083 m |
+| InF-DH High SNR (8 dB margin) | 17 dB | 553 m |
+| InF-DH Low SNR | - | 2201 m |
+
+Key Finding: Sensing distances exceed ISDs (200m UMi, 120×60m InF).
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 12
+- Journal Headers (skipped): 3
+- System/Block Diagrams: 4
+- Pie Charts: 1
+- Heatmaps: 1
+- Photographs: 1
+- Conceptual Diagrams: 2
+
+Key Technical Findings:
+1. 3GPP defines 32 ISAC use cases across 6 domains
+2. Six sensing topologies supported by 3GPP (mono/bi-static, network/UE)
+3. RCS modeling: σ = A × B1 × B2 (mean + deterministic + stochastic)
+4. ISAC channel: H_ISAC = H_background + H_target
+5. Nokia PoC: 400 MHz bandwidth, 0.39 m range resolution, <10 ms latency
+6. Sensing coverage exceeds ISD requirements in both UMi and InF scenarios
+================================================================================

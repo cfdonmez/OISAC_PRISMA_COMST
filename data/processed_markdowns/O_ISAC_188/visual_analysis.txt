@@ -1,0 +1,296 @@
+================================================================================
+O_ISAC_188 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Endogenous Integration of Communication and Interference Fading Free Sensing Using Telecom Pilots via Joint Polarization-Fraction Domain Multiplexing
+Authors: Li Wang et al. (PolyU Hong Kong + HUST Wuhan)
+Journal: Optics Express 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_4_Figure_5.jpeg
+### Type: Frame Structure Diagram
+
+### Panel (a) - Transmitted Frame:
+- Chirp TSs (Training Sequences)
+- Telecom payload
+- Time-domain structure
+
+### Panel (b) - X-SOP Chirp TS:
+- FM slope: -k
+- Initial frequency: f_x
+- Time-frequency: down-chirp
+
+### Panel (c) - Y-SOP Chirp TS:
+- FM slope: +k
+- Initial frequency: f_y
+- Time-frequency: up-chirp
+- f_x = f_y + kT (relationship)
+
+### Key Concept:
+- Opposite FM slopes → orthogonal in fraction domain
+- Same frequency spectrum but distinguishable via FrFT
+- Dual-polarization sensing + SOP estimation
+
+### O-ISAC Relevance:
+- Telecom pilots repurposed for sensing
+- Endogenous ISAC (no dedicated probe)
+---
+
+## Image: _page_4_Figure_7.jpeg
+### Type: Multi-Panel Conceptual Diagram (FrFT Extraction)
+
+### Panel (a) - FrFT Principle:
+- Only matched rotation converges chirp
+- +α rotation → +k FM slope peak
+- -α rotation → -k FM slope peak
+
+### Panel (b) - Peak Distinction:
+- Blue: α rotation (Y-SOP origin)
+- Gray: -α rotation (X-SOP origin)
+- Clear separation despite SOP mixing
+
+### Panel (c) - Zoom-in of Peak:
+- Peak-to-fractional-noise: 55.2 dB
+- Ultra-narrow: 1 sample FWHM
+- PSLR: ~27.9 dB
+
+### Panels (d-e) - Intensity Traces:
+- α rotation: fading at certain positions
+- -α rotation: fading at different positions
+- Independent fluctuation → can combine
+
+### Panel (f) - Zoom-in (4000-4020 m):
+- Different fading positions visible
+- Basis for interference fading suppression
+
+### O-ISAC Relevance:
+- FrFT enables chirp separation
+- Foundation for fading-free DAS
+---
+
+## Image: _page_7_Figure_3.jpeg
+### Type: Full Experimental Setup Diagram
+
+### Panel (a) - System Configuration:
+- **Transmitter:**
+  - NKT E15 laser (1550.12 nm, ~100 Hz linewidth)
+  - AWG (Keysight M8196A, 90 GSa/s)
+  - EDFA1, OBPF (0.8 nm)
+  - SOA shutter (120 µs period)
+
+- **Fiber Link:**
+  - 10 km + 400 m SMF
+  - PZT with 1 m fiber wrapped
+
+- **Communication Receiver:**
+  - Coherent receiver (hybrid + 43 GHz BPD)
+  - DSO (Keysight DSAZ594A, 80 GSa/s)
+
+- **Sensing Receiver:**
+  - ICR (Neophotonics Class 40)
+  - DSO (1 GSa/s)
+  - Self-homodyne detection
+
+### Panel (b) - Frequency Domain:
+- Chirp TSs at spectrum edge
+- Telecom payload in center
+- Bandwidth sharing
+
+### Panel (c) - Time Domain ISAC Frame:
+- Chirp TSs
+- Sync TS (FrFT order 0.9)
+- Telecom payload
+
+### Panel (d) - FFD-AEQ:
+- 1-tap MIMO pre-equalization
+- Adaptive weight coefficients
+- 83.8% convergence reduction
+
+### Key Parameters:
+| Parameter | Value |
+|-----------|-------|
+| Sweep BW | 200 MHz |
+| Pulse width | 182 ns |
+| Fiber length | 10.4 km |
+| Telecom rate | 200G/400G |
+
+### O-ISAC Relevance:
+- Complete endogenous ISAC system
+- Standard coherent transceiver
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Multi-Panel Chart (SOP Rotation Estimation)
+
+### Panels (a-d) - tan(θ) vs Reference:
+- SCPR = -37 dB: High error (RMSE ~5.87 at π/2)
+- SCPR = -32 dB: Improving
+- SCPR = -27 dB: Good accuracy
+- SCPR = -22 dB: Best (RMSE ~0.03)
+
+### Panels (e-h) - Poincaré Sphere:
+- Yellow dots: Reference SOP
+- Green triangles: Measured SOP
+- Accuracy improves with SCPR
+
+### Key Observation:
+- Error peaks at θ = (2n+1)π/2
+- Higher SCPR → better estimation
+- RMSE: 1.62 @ -37dB → 0.48 @ -12dB
+
+### O-ISAC Relevance:
+- SOP estimation enables FFD-AEQ
+- Trade-off: sensing power vs comm quality
+---
+
+## Image: _page_8_Figure_5.jpeg
+### Type: Multi-Panel Chart (Performance Metrics)
+
+### Panel (a) - RMSE vs SCPR:
+- Mean RMSE decreases with SCPR
+- θ = 39π/40: 0.58 → 0.06
+
+### Panel (b) - Equalization Convergence:
+- Conventional CMA: 1.6×10⁷ iterations
+- FFD-AEQ: 2.6×10⁶ iterations
+- 83.8% reduction
+
+### Panel (c) - Constellations:
+- QPSK: Clean with both methods
+- 16QAM: Clean with both methods
+- FFD-AEQ matches conventional quality
+
+### O-ISAC Relevance:
+- Chirp TS enables fast equalization
+- No quality penalty for ISAC
+---
+
+## Image: _page_10_Figure_3.jpeg
+### Type: Dual-Panel Chart (BER and Sensing Performance)
+
+### Panel (a) - BER vs SCPR:
+- X-axis: SCPR (dB): -14 to 2
+- Y-axis: BER
+- QPSK (ROP -33 dBm): Degrades >-6 dB
+- 16QAM (ROP -25 dBm): More sensitive
+- HD-FEC threshold crossed at high SCPR
+
+### Panel (b) - Phase STD and PSD SNR vs SCPR:
+- Phase STD decreases with SCPR
+- PSD SNR increases with SCPR
+- Plateau above ~21 dB (laser phase noise limit)
+- QPSK better than 16QAM
+
+### Optimal SCPR: -6 dB
+- Balances sensing and communication
+- Below FEC threshold
+- Good DAS performance
+
+### O-ISAC Relevance:
+- SCPR as key design parameter
+- Trade-off quantified
+---
+
+## Image: _page_10_Figure_6.jpeg
+### Type: Multi-Panel Chart (Fading Suppression)
+
+### Panel (a) - Single SOP, Single FrFT:
+- Severe fading (>50 dB fluctuation)
+- Many points below noise floor
+- Polarization fading + interference fading
+
+### Panel (b) - Dual FrFT Comparison:
+- Single FrFT (α only): Still fading
+- Dual FrFT (α and -α): Fading-free
+- Lowest intensity: 3.7 dB above noise floor
+- Fluctuation reduced: >50 dB → 18 dB
+
+### Panel (c) - Differential Phase:
+- Single FrFT: Errors visible
+- Dual FrFT: Clean, no errors
+- Perturbation zone clearly resolved
+
+### Panel (d) - Intensity Histogram:
+- Single FrFT: Rayleigh, peak ~0.24
+- Dual FrFT: Right-shifted, peak ~0.41
+- Lower probability of low intensity
+
+### O-ISAC Relevance:
+- Dual chirp TSs eliminate fading
+- Key innovation for endogenous ISAC
+---
+
+## Image: _page_11_Figure_4.jpeg
+### Type: Multi-Panel Chart (Dynamic Sensing Demo)
+
+### Panel (a) - Phase SD Distribution:
+- X-axis: Distance (m)
+- 1 m fiber on PZT clearly visible
+- Spatial resolution: ~1 m (10-90% edge)
+
+### Panel (b) - Time-Space Distribution:
+- 500 Hz sinusoidal vibration
+- Clear sinusoidal pattern at PZT position
+- No distortion visible
+
+### Panel (c) - Time-Domain Signal:
+- Clean 500 Hz waveform
+- Correctly recovered
+
+### Panel (d) - Power Spectral Density:
+- 500 Hz peak clearly visible
+- SNR: 20.2 dB
+- Noise floor: -43.5 rad²/Hz
+- Strain resolution: 0.73 nε/√Hz
+
+### O-ISAC Relevance:
+- Demonstrates working DAS
+- 500 Hz vibration detection
+---
+
+## Image: _page_12_Figure_3.jpeg
+### Type: Multi-Panel Chart (Sweep Frequency Demo)
+
+### Panel (a) - Time-Space Phase:
+- Chirped frequency: 500 Hz → 2 kHz
+- Increasing frequency over time visible
+
+### Panel (b) - Time-Domain Signal:
+- Chirp waveform recovered
+- Frequency increases with time
+
+### Panel (c) - Time-Frequency Distribution:
+- STFT with Hamming window
+- Linear frequency increase
+- Clean chirp from 500 Hz to 2 kHz
+
+### O-ISAC Relevance:
+- Wideband vibration recovery
+- Demonstrates DAS frequency response
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 9 (0 skipped)
+- System Diagrams: 2
+- Multi-Panel Charts: 6
+- Frame Structure: 1
+
+Key Technical Findings:
+1. Platform: Coherent fiber optic ISAC (DP-QPSK/16QAM)
+2. Communication: 200 Gbps (QPSK), 400 Gbps (16QAM)
+3. Sensing: φ-OTDR DAS, 1 m spatial resolution
+4. Innovation: FrFT-based polarization-fraction domain multiplexing
+5. Fading Suppression: >50 dB → 18 dB fluctuation
+6. FFD-AEQ: 83.8% convergence reduction
+7. SOP Estimation RMSE: 0.48
+8. Strain Resolution: 0.73 nε/√Hz
+9. Fiber Length: 10.4 km
+10. Optimal SCPR: -6 dB
+
+Key Innovations:
+- Telecom pilots (chirp TSs) for both SOP estimation and DAS
+- Opposite FM slopes → orthogonal in FrFT domain
+- Dual FrFT rotation for interference fading suppression
+- Endogenous ISAC (no dedicated sensing probe)
+================================================================================

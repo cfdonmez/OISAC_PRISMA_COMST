@@ -1,0 +1,614 @@
+================================================================================
+O_ISAC_161 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: ISAC Transceiver Hardware Architectures, Technologies, and Trends
+Authors: Ke Wu et al. (Polytechnique Montreal)
+Journal: IEEE J-STAEQ 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_0.jpeg
+### Type: Journal Logo
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_1_Figure_5.jpeg
+### Type: Conceptual Diagram (Wireless Function Integration)
+
+### Components:
+- Three fundamental wireless functions in concentric/overlapping structure:
+  1. Data Communication
+  2. Parametric Sensing
+  3. Power Transfer
+- Center intersection: Full integration (ISAC + WPT)
+
+### Signal Flow:
+- Sensing ↔ Communication: ISAC paradigm
+- Communication ↔ Power Transfer: SWIPT
+- Sensing ↔ Power Transfer: Self-powered sensors
+
+### O-ISAC Relevance:
+- Core concept: Convergence toward multifunctional wireless systems
+- Key insight: 6G enables triple integration (sensing + comm + power)
+---
+
+## Image: _page_2_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_2_Figure_1.jpeg
+### Type: System Diagram (ISAC Application Scenarios)
+
+### Components:
+- Autonomous vehicles with V2X connectivity
+- UAV/Drone platforms
+- Smart infrastructure (buildings, factories)
+- Base stations with dual functionality
+- Satellite links
+
+### Key Applications:
+- Intelligent transportation
+- Industrial IoT
+- Smart home/healthcare
+- Environmental monitoring
+- Human-computer interaction
+
+### O-ISAC Relevance:
+- Modality: RF (Sub-6 GHz, mmW, THz)
+- Function: Joint sensing and communication
+- Application domains mapped to frequency bands
+---
+
+## Image: _page_4_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_4_Figure_1.jpeg
+### Type: Timeline Diagram (ISAC Hardware Evolution)
+
+### Chronological Structure:
+- **Pre-2000**: Coexistence era (separate radar/communication)
+- **2000-2010**: JRC emergence (spectrum sharing, waveform codesign)
+- **2010-2020**: Hardware integration begins (DARPA SSPARC initiative 2014)
+- **2020-Present**: Full ISAC paradigm (component reusability)
+
+### Key Milestones:
+- 1948: Marconi Company radar-radio study
+- 1978: Orbiter Ku-band integrated subsystem
+- 2011-2012: First 24 GHz TDM transceiver [refs 18, 19]
+- 2023-2025: VRM/VTM architectures, THz CMOS receivers
+
+### Evolution Phases:
+1. Independent development (separate systems)
+2. Convergence (spectrum sharing)
+3. Hardware integration (shared components)
+
+### O-ISAC Relevance:
+- Historical foundation of ISAC technology
+- Trend toward deeper physical-layer integration
+---
+
+## Image: _page_4_Figure_10.jpeg
+### Type: Block Diagram (ISAC Concept Architecture)
+
+### Components:
+- Antenna Arrays (shared aperture)
+- RF Front-End (common for sensing/communication)
+- IF Stage (potentially separate)
+- Signal Processing chain (joint optimization)
+
+### Integration Levels:
+- Level 1: Antenna sharing only
+- Level 2: RF front-end + antenna sharing
+- Level 3: Full chain sharing (including baseband)
+
+### O-ISAC Relevance:
+- Core ISAC hardware architecture concept
+- Key for maximizing component reusability
+---
+
+## Image: _page_6_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_6_Figure_1.jpeg
+### Type: Block Diagram (Integration Scenarios)
+
+### Structure:
+Three configurations shown:
+1. **Colocated Separate**: Independent TX/RX chains
+2. **Partially Shared**: Common antenna + RF front-end
+3. **Fully Shared**: Complete hardware reuse
+
+### Components per Configuration:
+- Antenna(s)
+- RF Front-End (LNA, PA, mixer)
+- IF Stage
+- DAC/ADC
+- Baseband processor
+
+### O-ISAC Relevance:
+- Classification of ISAC integration depths
+- Trade-offs: Complexity vs. efficiency
+---
+
+## Image: _page_6_Picture_8.jpeg
+### Type: Diagram (Multiplexing Strategies)
+
+### Multiplexing Modes:
+- (a) TDM: Time slots for radar/communication
+- (b) FDM: Separate frequency bands
+- (c) CDM: Orthogonal codes
+- (d) Hybrid: Combined approaches
+
+### O-ISAC Relevance:
+- TDM: Most prevalent, simplest implementation
+- FDM: Supports real-time dual functionality
+- CDM: High spectral efficiency but complex
+- Hybrid: Maximum flexibility
+---
+
+## Image: _page_8_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_8_Picture_7.jpeg
+### Type: Circuit Diagram (Mixer Comparison)
+
+### Structure:
+Two architectures compared:
+- (a) Double-balanced mixer (nonlinear interference)
+- (b) Multiport interferometric receiver (linear interference)
+
+### Key Equations:
+- Mixer output: i(t) = 4αi_s V_RF I_1(αV_LO) cos((ω_LO - ω_RF)t) + ...
+- Interferometric: p_i = |S_LOi|²|a_LO|² + |S_RFi|²|a_RF|² + ...
+
+### O-ISAC Relevance:
+- Comparison of mixer-based vs. linear interferometric receivers
+- Interferometric: Lower LO power (~20 dB less), broader bandwidth
+---
+
+## Image: _page_8_Figure_8.jpeg
+### Type: Block Diagram (Receiver Architectures)
+
+### Components:
+- Heterodyne receiver: RF → Mixer → IF → ADC
+- Interferometric receiver: RF → Hybrid couplers → Power detectors
+
+### Quantitative Comparison:
+| Parameter | Heterodyne | Interferometric |
+|-----------|------------|-----------------|
+| LO Power | High | Low (~20 dB less) |
+| Bandwidth | Moderate | Broadband |
+| Dynamic Range | High | Limited |
+| Complexity | High | Low (passive) |
+
+### O-ISAC Relevance:
+- Interferometric ideal for large-scale arrays
+- Trade-off between dynamic range and power efficiency
+---
+
+## Image: _page_9_Figure_1.jpeg
+### Type: Block Diagram (Digital Transceiver for ISAC)
+
+### Components:
+- Digital TX: DAC → Mixer → PA → Antenna
+- Digital RX: Antenna → LNA → Mixer → ADC
+- DSP for both communication and radar modes
+
+### Operating Modes:
+- Communication: QAM/OFDM modulation
+- Radar: FMCW chirp generation
+
+### O-ISAC Relevance:
+- Generic SDR/MIMO architecture for ISAC
+- TDM mode only, high processing overhead
+---
+
+## Image: _page_9_Figure_11.jpeg
+### Type: Photograph (Fabricated Prototypes)
+
+### Devices Shown:
+- (a) 24 GHz Transmitter prototype
+- (b) 24 GHz Receiver prototype
+
+### Key Features:
+- Early TDM-based ISAC implementation [ref 19, 2012]
+- PCB fabrication technology
+- Time-agile radar sensing and radio communication
+
+### O-ISAC Relevance:
+- Historical milestone: First complete 24 GHz ISAC transceiver
+- Demonstrated vehicular applications
+---
+
+## Image: _page_9_Figure_13.jpeg
+### Type: Block Diagram (TDM ISAC Transceiver)
+
+### Architecture:
+- Mode switch between radar and communication
+- LO synthesizer with chirp modulation capability
+- Quadrature mixers for communication mode
+- Bypass for FMCW radar mode
+
+### Key Components:
+- Frequency doubler + mixer as tripler
+- Mode multiplexers for path switching
+
+### O-ISAC Relevance:
+- Partial hardware integration approach
+- Switch-based TDM architecture
+---
+
+## Image: _page_10_Picture_0.jpeg
+### Type: Block Diagram (Bifunctional Mixer)
+
+### Architecture:
+- 60 GHz ISAC transceiver design [ref 32]
+- Dual-mode Gilbert cell:
+  - Communication mode: Up-conversion mixer
+  - Radar mode: Amplifier (direct chirp driving)
+
+### Advantages:
+- Eliminated redundant mode multiplexers
+- Direct RF dechirping reduces ADC requirements
+
+### O-ISAC Relevance:
+- Key innovation: Reconfigurable RF components
+- Enhanced hardware efficiency
+---
+
+## Image: _page_10_Picture_3.jpeg
+### Type: Block Diagram (Bidirectional Mixer + Multibeam)
+
+### Architecture:
+- Configurable TX-IF scheme [refs 27, 62, 63]
+- Bidirectional mixer for up/down conversion
+- Pulsed chirping scheme
+- Multibeam configuration for concurrent operation
+
+### O-ISAC Relevance:
+- Enables TDM of uplink/downlink + FMCW radar
+- Maximum component reuse
+---
+
+## Image: _page_10_Picture_8.jpeg
+### Type: Block Diagram (Dual-Band Waveguide Receiver)
+
+### Structure:
+- Joint MW (5.8 GHz) and THz (150 GHz) operation
+- SIW paths for THz signals
+- CPW structures for MW signals
+- Parallel interferometric receivers
+
+### Demonstrated Capability:
+- Concurrent QAM demodulation at 5.8 GHz and 150 GHz
+
+### O-ISAC Relevance:
+- FDM-based ISAC at widely separated bands
+- Key for future 6G multi-band systems
+---
+
+## Image: _page_11_Figure_1.jpeg
+### Type: Block Diagram (Dual-Polarized Receiver)
+
+### Architecture:
+- Eight-port linear interferometric design [ref 65]
+- Square waveguide supporting TE₁₀ and TE₀₁ modes
+- Dual-polarization + dual-band operation
+- Four distinct channels in single module
+
+### Components:
+- Cruciform couplers
+- Orthomode transducers (OMTs)
+- Precision phase shifters
+
+### Demonstrated Performance:
+- M-QAM demodulation up to 1.2 Gb/s
+- No post-processing calibration required
+
+### O-ISAC Relevance:
+- Maximum information capacity from single aperture
+- Polarization as additional multiplexing dimension
+---
+
+## Image: _page_11_Figure_3.jpeg
+### Type: Photograph (Waveguide Receiver Array)
+
+### Views:
+- (a) Front view of fabricated array
+- (b) Exploded view showing layers
+
+### Components:
+- Multiple interferometric RX units
+- Integrated distributed LO generation
+- Waveguide-based coupling structure
+
+### O-ISAC Relevance:
+- Hardware demonstration of VRM concept [ref 28]
+- Joint communication, sensing, and WPT
+---
+
+## Image: _page_11_Figure_8.jpeg
+### Type: Microphotograph (THz CMOS Receiver)
+
+### Specifications:
+- Operating frequency: 300 GHz
+- Technology: CMOS waveguide IC
+- Dual-polarized antenna input
+- Vertically stacked multilayer architecture
+
+### Key Innovation:
+- SIW-based 3-dB couplers in CMOS
+- Non-TEM mode operation
+- ~50% footprint reduction vs. planar design
+
+### O-ISAC Relevance:
+- Path toward THz ISAC arrays
+- Paradigm shift from voltage/current-based IC to EM waveguide IC
+---
+
+## Image: _page_12_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_12_Figure_1.jpeg
+### Type: Circuit Diagram + Photo (SOM-Based System)
+
+### Structure:
+- (a) Zero-IF SOM circuit schematic
+- (b) MMID system block diagram (battery-less active tag)
+- (c) Microphotograph of fabricated chip
+
+### Specifications:
+- Technology: 65 nm CMOS
+- Frequency: 40 GHz
+- Modulation: QPSK/16-QAM
+
+### Operating Modes:
+- Reader-to-tag: Injection-locked AM reception
+- Tag-to-reader: VCO bias modulation for ASK transmission
+
+### O-ISAC Relevance:
+- Self-oscillating mixer: Ultra-low power ISAC solution
+- Battery-free operation for IoT applications
+---
+
+## Image: _page_12_Figure_2.jpeg
+### Type: Conceptual Diagram (Virtual Transceiver Matrix)
+
+### Architecture:
+- VRM: Virtual Receiver Matrix
+- VTM: Virtual Transceiver Matrix
+- CAO: Combinatory Analog Operations
+
+### Key Features:
+- Selective activation/deactivation of cells
+- Virtual mapping of receiver channels
+- Real-time reconfigurability without hardware changes
+
+### Functions Enabled:
+- Communication
+- Radar sensing
+- 2-D AoA detection
+- Energy harvesting
+
+### O-ISAC Relevance:
+- Novel SDM-based ISAC architecture
+- Scalable, power-efficient front-end design
+---
+
+## Image: _page_13_Picture_1.jpeg
+### Type: Conceptual Illustration (Virtual Transceiver Array)
+
+### Structure:
+- Array of simplified interferometric cells
+- Shared physical aperture
+- Mode diversity for multifunctionality
+
+### O-ISAC Relevance:
+- Spatial-mode multiplexing concept
+- Alternative to classical MIMO for ISAC
+---
+
+## Image: _page_13_Picture_5.jpeg
+### Type: Photograph (VTM Prototype)
+
+### Views:
+- (a) Fabricated VTM front-end prototype
+- (b) Unit cell with ±45° rotated antenna
+
+### Specifications [ref 33]:
+- Frequency: 25.4 GHz
+- Data rate: 0.25 Gb/s
+- Modulation: 64/128-QAM
+- Angular resolution: 0.9°
+
+### O-ISAC Relevance:
+- Hardware validation of VTM architecture
+- Concurrent AoA detection and polarization sensing
+---
+
+## Image: _page_13_Figure_6.jpeg
+### Type: Block Diagram (VTM Unit Cell)
+
+### Components:
+- ±45° rotated dual-polarized antenna
+- Interferometric receiver units
+- Distributed LO generation
+
+### O-ISAC Relevance:
+- Building block for large-scale VTM arrays
+---
+
+## Image: _page_14_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_14_Figure_1.jpeg
+### Type: Conceptual Diagram (SOM-Based Array)
+
+### Operating Modes:
+- Mode 1: Synchronous multifunction ISAC (all SOMs active)
+- Mode 2: Independent MIMO operation (frequency comb)
+
+### Key Features:
+- Self-generating LO power
+- Passive vs. active mode switching
+- Ultra-low power for dense arrays
+
+### O-ISAC Relevance:
+- SOM arrays: Promising for mmW/sub-THz ISAC
+- Dual-mode flexibility (sourceless vs. active)
+---
+
+## Image: _page_16_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_18_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_18_Figure_1.jpeg
+### Type: System Diagram (Hardware-Software Codesign)
+
+### Layers:
+1. **Physical Layer**:
+   - Antenna
+   - RF Front-End
+   - IF Stage
+   - Baseband analog conditioning
+
+2. **Software Layer**:
+   - Communication mode (mod/demod)
+   - Sensing mode (detection/estimation)
+   - ML/AI module for optimization
+
+### Outputs:
+- CSI (Channel State Information)
+- Beamforming weights
+- AoA, Doppler, mobility patterns
+
+### O-ISAC Relevance:
+- Joint ISAC hardware-software optimization
+- AI-driven real-time adaptation
+- DPD for PA nonlinearity compensation
+---
+
+## Image: _page_20_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_21_Figure_1.jpeg
+### Type: Diagram (Future Research Directions)
+
+### Challenges Identified:
+1. Hardware Miniaturization and Cost
+2. Interference Management (IBFD SIC >55 dB)
+3. Scalability to Mass Markets
+4. Energy Efficiency
+5. Cognitive ISAC Hardware
+
+### Emerging Technologies:
+- 2D semiconductors
+- Tunnel FETs
+- Metamaterial-enabled apertures
+- AI-driven reconfiguration
+
+### O-ISAC Relevance:
+- Research roadmap for next-generation ISAC
+- Key bottlenecks for commercial deployment
+---
+
+## Image: _page_22_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_24_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_26_Picture_0.jpeg
+### Type: Journal Header
+### Note: IEEE publication header - no scientific data for extraction.
+---
+
+## Image: _page_26_Picture_21.jpeg
+### Type: Author Photo (Ke Wu - Fellow, IEEE)
+### Note: No scientific data for extraction.
+---
+
+## Image: _page_26_Picture_26.jpeg
+### Type: Author Photo (Yasser Bigdeli - Graduate Student Member)
+### Note: No scientific data for extraction.
+---
+
+## Image: _page_27_Picture_1.jpeg
+### Type: Author Photo (Seyed Ali Keivaan - Member, IEEE)
+### Note: No scientific data for extraction.
+---
+
+## Image: _page_27_Picture_6.jpeg
+### Type: Author Photo (Jie Deng - Member, IEEE)
+### Note: No scientific data for extraction.
+---
+
+## Image: _page_27_Picture_11.jpeg
+### Type: Author Photo (Pascal Burasa - Member, IEEE)
+### Note: No scientific data for extraction.
+---
+
+================================================================================
+TABLE II - ISAC HARDWARE REALIZATIONS (Key Data Points)
+================================================================================
+| Ref | Year | Frequency | Fabrication | Data Rate | Modulation |
+|-----|------|-----------|-------------|-----------|------------|
+| [19] | 2012 | 24 GHz | PCB | 50 Mb/s | BPSK/QPSK |
+| [99] | 2016 | 57-64 GHz | 0.13μm SiGe | 400 Mb/s | OOK |
+| [24] | 2019 | 40 GHz | 65nm CMOS | 4 Mb/s | QPSK/16-QAM |
+| [88] | 2021 | 1140 GHz | 90nm SiGe | 10 Gb/s | 64-QAM |
+| [25] | 2023 | 122-168 GHz | 28nm CMOS | 10 Gb/s | 16-QAM |
+| [32] | 2025 | 55-65 GHz | 65nm CMOS | 7 Gb/s | 16-QAM |
+| [33] | 2025 | 25.4 GHz | PCB | 0.25 Gb/s | 64/128-QAM |
+
+================================================================================
+TABLE III - ISAC APPLICATION CASES (Summary)
+================================================================================
+| Application | Freq. Bands | Key Use Cases |
+|-------------|-------------|---------------|
+| Smart Home | mmW, THz | Human presence detection, fall detection |
+| V2X | mmW, THz | Vehicle platooning, SLAM, extended sensors |
+| Industrial IoT | mmW, THz | Predictive maintenance, AGV |
+| Environmental | mmW, THz | Weather prediction, pollution monitoring |
+| HCI | mmW, THz | Gesture recognition, activity recognition |
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 44
+- Journal Headers (skipped): 13
+- System/Block Diagrams: 18
+- Photographs/Microphotographs: 5
+- Conceptual Diagrams: 3
+- Author Photos (skipped): 5
+
+Key Technical Findings:
+1. Three phases of ISAC evolution: Coexistence → Convergence → Integration
+2. Integration approaches: TDM (most prevalent), FDM, CDM, Hybrid
+3. Receiver types: Mixer-based (nonlinear) vs. Interferometric (linear)
+4. VRM/VTM architecture: Novel SDM-based approach for scalable ISAC
+5. Key challenges: Miniaturization, SIC (>55 dB for IBFD), energy efficiency
+6. Frequency progression: 24 GHz → 60 GHz → D-band (110-170 GHz) → THz (300+ GHz)
+================================================================================

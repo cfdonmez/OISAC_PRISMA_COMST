@@ -1,0 +1,274 @@
+================================================================================
+O_ISAC_219 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Multiuser Retroreflective Optical ISAC: Waveform Design, Joint Sensing and Multiple Access
+Authors: Weiren Wang et al. (Chongqing University, Cambridge)
+Journal: IEEE 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_4.jpeg
+### Type: System Block Diagram
+
+### Title: MU-RO-ISAC System Using OFDM-MLS-CIM
+
+### Transceiver:
+- LD transmitter (optical)
+- Input bits from K users
+- OFDM-MLS-CIM modulation:
+  - Bit allocation
+  - OFDM modulation (data)
+  - MLS signal generation (sensing)
+  - CIM for index bits
+  - VPP allocation (α ratio)
+  - Signal superposition
+- D/A + DC bias
+- APD receiver for echoes
+
+### Users (K total):
+- PD receiver
+- CCR (corner cube reflector)
+- A/D + sync + demodulation
+- Retroreflection path
+
+### Joint Sensing:
+- Cross-correlation for TOF
+- Interference Cancellation (IC)
+- Distance estimation
+
+### Key Innovation:
+- OFDM-MLS-CIM waveform
+- Hybrid OFDMA + IMMA multiple access
+
+### O-ISAC Relevance:
+- First multiuser RO-ISAC system
+---
+
+## Image: _page_2_Figure_8.jpeg
+### Type: Signal Comparison
+
+### Title: Two 8th-Order MLS Signals with Different PPC Codes
+
+### Signals:
+- PPC code 100011101 (index 0)
+- PPC code 100101011 (index 1)
+- Length L = 2^8 - 1 = 255
+
+### Key Feature:
+- Same correlation properties
+- Distinct waveforms
+- Enables CIM (Code Index Modulation)
+
+### CIM Capacity:
+- n = 8: 16 PPC codes available
+- 4 index bits per OFDM-MLS symbol
+
+### O-ISAC Relevance:
+- CIM adds data without sensing penalty
+---
+
+## Image: _page_3_Figure_2.jpeg
+### Type: Waveform Comparison
+
+### Title: OFDM-MLS-CIM Waveforms at Different α
+
+### Panel (a) - α = 0.1:
+- VPP allocation ratio = 0.1
+- 90% OFDM, 10% MLS
+- More OFDM-like appearance
+- Better communication
+
+### Panel (b) - α = 0.3:
+- VPP allocation ratio = 0.3
+- 70% OFDM, 30% MLS
+- More visible MLS structure
+- Better sensing
+
+### Key Equation:
+x = α·x_MLS + (1-α)·x_OFDM
+
+### Fixed Parameters:
+- Total VPP = 2V (constant)
+- α = 0: Pure OFDM
+- α = 1: Pure MLS
+
+### O-ISAC Relevance:
+- Flexible sensing-communication trade-off
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Hardware Photo + Setup Diagram
+
+### Panel (a) - Hardware Setup:
+- LD: HL63603TG
+- APD: Hamamatsu C12702-12
+- PD: HCCLS2021MOD01-RX
+- CCR: Thorlabs PS976
+- AWG: Tektronix AFG31102
+- DSO: Tektronix MDO32
+
+### Panel (b) - Top-View Photo:
+- Lab testbed environment
+- User 1: 36-84 cm (near)
+- User 2: 108 cm (far, fixed)
+
+### Parameters:
+| Parameter | Value |
+|-----------|-------|
+| AWG rate | 500 MSa/s |
+| DSO rate | 2.5 GSa/s |
+| IFFT | 256 |
+| Data SC | 64 |
+| Modulation | BPSK |
+| OFDM rate | 125 Mbps |
+| CIM rate | 7.8 Mbps |
+| Total | 132.8 Mbps |
+| Resolution | 6 cm |
+
+### O-ISAC Relevance:
+- Complete experimental testbed
+---
+
+## Image: _page_6_Figure_2.jpeg
+### Type: Bar Chart (CIM Demodulation)
+
+### Title: CIM Demodulation Performance
+
+### Test Conditions:
+- Distance: 108 cm
+- VPP: 200 mV
+- α = 0.3
+- 8th-order MLS, 16 PPC codes
+
+### Cross-Correlation Results:
+| Code Index | Match? | Peak Value |
+|------------|--------|------------|
+| 3 (tx) | Yes | ~3.5 |
+| 3 (other) | No | ~1.6 |
+| 7 (tx) | Yes | ~3.5 |
+| 11 (tx) | Yes | ~3.5 |
+
+### Key Finding:
+- Clear discrimination between matched/unmatched
+- ~2.2× peak ratio
+- Reliable CIM demodulation
+
+### O-ISAC Relevance:
+- Validates CIM for RO-ISAC
+---
+
+## Image: _page_6_Figure_6.jpeg
+### Type: Dual-Panel BER Chart
+
+### Title: BER vs VPP for Two Bit Allocation Modes
+
+### Panel (a) - Mode A (Equal Rate):
+- User 1: OFDM + CIM bits
+- User 2: OFDM bits only
+- Both: 66.4 Mbps
+
+### Performance:
+| Config | User 1 BER | User 2 BER |
+|--------|------------|------------|
+| OFDM (α=0) | Best | Best |
+| α=0.1 | Good | Good |
+| α=0.3 | Moderate | Moderate |
+
+### Panel (b) - Mode B (Asymmetric):
+- User 1: 125 Mbps (OFDM only)
+- User 2: 7.8 Mbps (CIM only)
+
+### Key Finding:
+- User 2 CIM-only: BER < 10⁻⁵ with α=0.3
+- CIM more robust than OFDM at far distance
+
+### O-ISAC Relevance:
+- Flexible rate allocation per user
+---
+
+## Image: _page_7_Figure_2.jpeg
+### Type: Dual-Panel Cross-Correlation
+
+### Panel (a) - Transmitted Signal Correlation:
+- Window: 10 symbols
+- OFDM (α=0): Peak ~105
+- α=0.1: Peak ~146
+- α=0.3: Peak ~275
+- Higher α → sharper correlation
+
+### Panel (b) - Joint Sensing w/ IC:
+- Window: 30 symbols
+- Without IC: Only User 1 peak visible
+- With IC: User 2 peak recovered
+- User 1 interference removed
+
+### Key Finding:
+- IC essential for multi-user sensing
+- Higher α improves sensing performance
+
+### O-ISAC Relevance:
+- Validates IC-aided joint sensing
+---
+
+## Image: _page_7_Figure_6.jpeg
+### Type: Dual-Panel RMSE Chart
+
+### Panel (a) - RMSE vs Symbol Count:
+- X-axis: Symbols in window (10-50)
+- Y-axis: Ranging RMSE (cm)
+
+| Config | User 1 @ 50 | User 2 @ 50 |
+|--------|-------------|-------------|
+| OFDM | ~1.2 cm | ~1.4 cm |
+| α=0.1 | ~0.8 cm | ~1.0 cm |
+| α=0.3 | 0 cm | 0.3 cm |
+
+### Panel (b) - RMSE vs User 1 Distance:
+- User 1: 36-84 cm (variable)
+- User 2: 108 cm (fixed)
+- RMSE increases with User 1 distance
+- Error propagation in IC
+
+### Key Finding:
+- OFDM-MLS-CIM α=0.3 achieves cm-level
+- More symbols → better accuracy
+- IC error propagation challenge
+
+### O-ISAC Relevance:
+- Quantifies sensing accuracy
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 8 (all scientific)
+- System Diagrams: 1
+- Waveform Comparisons: 2
+- Hardware Photos: 1
+- Performance Charts: 4
+
+Key Technical Findings:
+1. Platform: Multiuser RO-ISAC
+2. Users: 2 (proof-of-concept)
+3. Waveform: OFDM-MLS-CIM (novel)
+4. OFDM Rate: 125 Mbps (BPSK, 64 SC)
+5. CIM Rate: 7.8 Mbps (16 PPC codes)
+6. Total: 132.8 Mbps
+7. Ranging Resolution: 6 cm
+8. Ranging RMSE: < 1 cm with α=0.3
+
+Key Innovations:
+1. OFDM-MLS-CIM waveform (first proposal)
+2. Code Index Modulation (CIM) for extra bits
+3. VPP allocation ratio α for trade-off:
+   - α→0: Communication priority
+   - α→1: Sensing priority
+4. IC-aided joint sensing for multi-user
+5. Hybrid OFDMA + IMMA multiple access
+6. Bit allocation modes A (equal) and B (asymmetric)
+
+Performance Highlights:
+- Both users: BER < 3.8×10⁻³ (7% FEC threshold)
+- CIM demodulation: Clean discrimination
+- Ranging: cm-level accuracy
+- Far user CIM-only: BER < 10⁻⁵
+================================================================================

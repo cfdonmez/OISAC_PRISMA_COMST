@@ -1,0 +1,265 @@
+================================================================================
+O_ISAC_324 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Distributed Sensing and Quantum Communication Networks
+Authors: Yuehan Xu et al. (Shanghai Jiao Tong University)
+Journal: Research (Science Partner Journal) 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Picture_2.jpeg
+### Type: Network Architecture Diagram
+
+### Title: Round-trip Multiband QKD Network
+
+### Components:
+- Center Node (Telecommunication) with Laser & Detector
+- Child Nodes (Factory, Government, School, Supermarket, Community)
+- Optical Fiber Links
+
+### Principle:
+- Center node sends CW light
+- Child nodes modulate quantum signals (Alice)
+- Signals return to Center (Bob) for detection
+- "Round-trip" structure enables shared source/detector
+
+### O-ISAC Relevance:
+- Network topology for ISAQN
+---
+
+## Image: _page_4_Figure_6.jpeg
+### Type: Concept Diagram
+
+### Title: ISAQN Sensing Principle
+
+### Panel (A) - No Vibration:
+- Normal QKD operation
+- Coherent state $|\alpha_i\rangle$ returns unchanged (phase wise)
+
+### Panel (B) - Vibration Event:
+- Vibration induces phase rotation $\varphi_i(t)$
+- State becomes $|\alpha_i\rangle e^{j\varphi_i(t)}$
+- Sensing via phase monitoring
+
+### O-ISAC Relevance:
+- Core sensing mechanism (Phase-sensitive)
+---
+
+## Image: _page_5_Picture_2.jpeg
+### Type: Signal Processing Schematic
+
+### Title: Time-Frequency Domain Processing
+
+### Flow:
+1. Child nodes modulate QKD + Pilot signals (TDM) on different carriers (FDM)
+2. Fiber transmission (Vibration adds modulation)
+3. Detection at Center Node
+4. Spectrum Castdown (backscattering) + Spectrum Splitting (pilot)
+5. SPM Protocol: Coherent Demodulation -> Phase Unwrapping -> Waveform Recovery
+
+### Key Concept:
+- Simultaneous QKD and Sensing extraction from same signal
+
+### O-ISAC Relevance:
+- Signal processing pipeline
+---
+
+## Image: _page_8_Figure_10.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: Optical Structure of ISAQN Experiment
+
+### Components:
+- 99:1 BS (Beam Splitter) for LO
+- VOA (Variable Optical Attenuator)
+- OC (Optical Circulator)
+- 8x1 BS (Distribution to 8 nodes - 3 used)
+- 10 km Fiber Spools
+- AWG + IQM (Modulation)
+- PZT (Simulating vibration)
+- Integrated Coherent Receiver (ICR)
+
+### Signal Flow:
+- Round-trip architecture implemented
+- PZT phase modulation validates sensing
+
+### O-ISAC Relevance:
+- Experimental validation setup
+---
+
+## Image: _page_9_Figure_7.jpeg
+### Type: Phase Space Scatter Plot
+
+### Title: QKD Phase Space Distribution
+
+### Content:
+- Gaussian distribution of x and p quadratures
+- Three child nodes shown (A, B, C)
+- Validation of Gaussian Modulated Coherent States (GMCS)
+
+### O-ISAC Relevance:
+- QKD protocol verification
+---
+
+## Image: _page_9_Figure_9.jpeg
+### Type: Frequency Spectrum
+
+### Title: Received Signal Spectrum
+
+### Peaks:
+- 100 MHz (Child Node 1)
+- 200 MHz (Child Node 2)
+- 300 MHz (Child Node 3)
+
+### Key Finding:
+- FDM successfully separates 3 nodes
+- No aliasing observed
+
+### O-ISAC Relevance:
+- FDM multiplexing verification
+---
+
+## Image: _page_9_Figure_11.jpeg
+### Type: Cross-Correlation Plot
+
+### Title: Frame Synchronization
+
+### Content:
+- Cross-correlation peaks for 3 nodes
+- Alignments indicate successful sync
+
+### O-ISAC Relevance:
+- Digital signal processing
+---
+
+## Image: _page_10_Figure_2.jpeg
+### Type: Noise Analysis Chart
+
+### Title: Excess Noise of 3 Child Nodes
+
+### Data:
+- Mean Excess Noise:
+  - Node 1: 4.7 mSNU
+  - Node 2: 2.4 mSNU
+  - Node 3: 3.6 mSNU
+- All well below threshold for secure key generation
+
+### O-ISAC Relevance:
+- QKD security parameter
+---
+
+## Image: _page_10_Figure_4.jpeg
+### Type: Performance Chart
+
+### Title: Secure Key Rate (SKR) vs Distance
+
+### Trends:
+- SKR decreases with distance (attenuation)
+- At 10 km: ~0.7 Mbits/s per node (N=8 capacity)
+- Theoretical lines match experimental points
+
+### O-ISAC Relevance:
+- Communication performance (QKD)
+---
+
+## Image: _page_10_Figure_14.jpeg
+### Type: Waveform Comparison
+
+### Title: Phase Waveform vs Voltage
+
+### Content:
+- Blue (Phase): Recovered sensing signal
+- Red (Voltage): Applied PZT voltage
+- High correlation confirms accurate sensing
+
+### O-ISAC Relevance:
+- Sensing accuracy verification
+---
+
+## Image: _page_11_Figure_2.jpeg
+### Type: Spectrum Anomalies
+
+### Title: Spectrum under Vibration
+
+### Panels (A, B, C):
+- Vibration at Node 1 (100 MHz): Spectrum "castdown" and splitting visible
+- Other nodes remain normal
+- Proves node-specific vibration identification
+
+### O-ISAC Relevance:
+- Event localization mechanism
+---
+
+## Image: _page_11_Figure_6.jpeg
+### Type: Linearity Plot
+
+### Title: Phase Change vs Length Change
+
+### Content:
+- Almost perfect linear relationship
+- Contrast with Fig 13 (Voltage vs Length) which has hysteresis
+- Proves phase is a reliable metric for length change
+
+### O-ISAC Relevance:
+- Sensing calibration
+---
+
+## Image: _page_12_Figure_4.jpeg
+### Type: Sensing Waveforms (Time Difference)
+
+### Title: Localization via Time Difference of Arrival (TDOA)
+
+### Scenarios:
+1. dt = 0 -> Center
+2. dt = 0.001 s -> Shifted
+3. dt = 0.01 s -> Further shifted
+
+### Key Finding:
+- Arrival time differences allow triangulation of vibration source
+- Vibration response bandwidth: 1 Hz - 2 kHz
+
+### O-ISAC Relevance:
+- Distributed sensing capability
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 13 (Skipped 3 minor plots like Fig 8/13/15 for brevity but analyzed key ones)
+- Network/System Diagrams: 3
+- Signal Processing: 1
+- Experimental Setup: 1
+- QKD Performance (Phase/SKR/Noise): 3
+- Sensing Performance (Spectrum/Waveform/Linearity): 4
+- Localization: 1
+
+Key Technical Findings:
+1. Platform: Integrated Sensing and Quantum Network (ISAQN) - Fiber based
+2. Architecture: Round-trip Multiband (Point-to-Multipoint)
+3. Network Capacity: 8 nodes (Simulated/Calculated), 3 nodes (Experimental)
+4. QKD Performance:
+   - Protocol: GMCS CV-QKD
+   - SKR: ~0.7 Mbps @ 10 km (per node)
+   - Excess Noise: < 5 mSNU
+5. Sensing Performance:
+   - Method: Spectrum Phase Monitoring (SPM) using Pilot Signals
+   - Spatial Resolution: 0.20 m
+   - Strain Resolution: 0.50 nε/√Hz
+   - Bandwidth: 1 Hz - 2 kHz
+   - Limit: Reaches Standard Quantum Limit (Shot Noise Limit)
+
+Key Innovations:
+1. Simultaneous QKD and Distributed Sensing (DVS) on same fiber/signal
+2. Use of pilot signals for both phase reference (QKD) and sensing extraction
+3. Round-trip architecture minimizes hardware at child nodes (passive-like)
+4. FDM for separating multiple user nodes
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| SKR (10 km) | ~0.7 Mbps |
+| Network Nodes | 8 (Design) / 3 (Test) |
+| Sensing Res | 0.20 m |
+| Strain Res | 0.50 nε/√Hz |
+| Freq Range | 1 Hz - 2 kHz |
+| Positioning Error| < 6 cm (implied from 310, here TDOA used) |
+================================================================================

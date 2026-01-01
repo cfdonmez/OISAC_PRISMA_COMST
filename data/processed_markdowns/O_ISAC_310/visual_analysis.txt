@@ -1,0 +1,164 @@
+================================================================================
+O_ISAC_310 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Simulation of Constant-envelope THz Integrated Sensing and Communication
+       System based on Photonics with 2D Positioning
+Authors: Yuxin Liu et al. (Southwest Jiaotong University)
+Journal: Unknown (Likely Conference/Journal 2024 based on refs)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_0.jpeg
+### Type: System Schematic
+
+### Title: Schematic of CE THz ISAC System
+
+### Components:
+- LD1/LD2 (Laser Diodes)
+- DPMZM (Dual-Parallel MZM) driven by IF ISAC signal
+- 90° Hybrid
+- EDFA + OBPF
+- OC (Optical Coupler)
+- PD1/PD2 (Photodetectors for heterodyne)
+- Transmitting/Receiving Antennas (Tx-At1/2, Rx-At1/2)
+- DSP / OSC (Oscilloscope)
+
+### Signal Flow:
+1. Baseband CE-OFDM + LFM-QPSK sub-bands generated
+2. Up-conversion to IF
+3. Optical CS-SSB modulation via DPMZM
+4. Heterodyne with LO (LD2) to generate THz ISAC signal (132-142 GHz)
+5. Splitting to Tx-At1 and Tx-At2
+
+### Key Concept:
+- Constant Envelope (CE) OFDM to reduce PAPR
+- LFM sub-bands for radar and extra QPSK comms
+
+### O-ISAC Relevance:
+- Full system architecture
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: Geometry/Scenario Diagram
+
+### Title: MISO 2D Positioning Scenario
+
+### Setup:
+- 2 Transmitters (Tx1, Tx2)
+- 1 Receiver (Rx1)
+- Target P at coordinates (x, y)
+
+### Principle:
+- Trilateration based on Time of Arrival (TOA)
+- Distance sums: D1+D2, D2+D3 derived from delays
+- Intersection of ellipses determines position
+
+### O-ISAC Relevance:
+- Positioning algorithm geometry
+---
+
+## Image: _page_2_Figure_12.jpeg
+### Type: Spectrum & Spectrogram
+
+### Title: Generated THz ISAC Signal
+
+### Panel (a) - Spectrum:
+- Center Freq: ~137 GHz
+- Bandwidth: 10 GHz (132-142 GHz)
+- Flat spectrum (CE-OFDM characteristic)
+
+### Panel (b) - Spectrogram:
+- Central block: CE-OFDM (5 GHz BW)
+- Edges: LFM sub-bands (2 GHz each)
+- Time-frequency structure clearly visible
+
+### O-ISAC Relevance:
+- Waveform validation
+---
+
+## Image: _page_3_Figure_2.jpeg
+### Type: Dual-Axis Performance Chart
+
+### Title: BER and SNR vs PMI
+
+### X-axis: Phase Modulation Index (PMI)
+### Left Y-axis: BER (log scale) - Blue
+### Right Y-axis: SNR (dB) - Orange
+
+### Trends:
+- BER: < 3.8e-3 (FEC limit) for PMI 1.75 to 10
+- SNR: Decreases as PMI increases (from ~25 dB to ~10 dB)
+
+### Key Finding:
+- Trade-off: Higher PMI degrades radar SNR due to interference/distortion
+- Communication robust over wide PMI range
+
+### O-ISAC Relevance:
+- Performance optimization
+---
+
+## Image: _page_3_Figure_6.jpeg
+### Type: Radar Resolution Plot
+
+### Title: Equivalent Radar Range Resolution (CFP)
+
+### Content:
+- Main lobe width measurement
+- 3 dB bandwidth corresponding to 1.78 cm resolution
+
+### Key Finding:
+- Coherent Fusion Processing (CFP) synthesizes 10 GHz bandwidth from sub-bands
+- 1.78 cm resolution achieved (equivalent to full 10 GHz BW)
+
+### O-ISAC Relevance:
+- Super-resolution processing
+---
+
+## Image: _page_3_Figure_9.jpeg
+### Type: De-chirped Spectrum
+
+### Title: De-chirped Signal Peaks
+
+### Results:
+- Peaks at 5.30 MHz and 9.54 MHz
+- Correspond to delays from Tx1 and Tx2
+- Used for trilateration
+
+### O-ISAC Relevance:
+- Ranging measurement
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6 (all scientific)
+- System Schematics: 1
+- Scenarios: 1
+- Spectral Analysis: 1
+- Performance Charts: 2
+- Radar Results: 1
+
+Key Technical Findings:
+1. Platform: Photonics-based THz ISAC (132-142 GHz)
+2. Waveform: CE-OFDM (Center) + LFM-QPSK (Sidebands)
+3. Total Bandwidth: 10 GHz
+4. Data Rate: 18.448 Gbit/s (15 Gbps CE-OFDM + 3.448 Gbps QPSK)
+5. Radar Resolution: 1.78 cm (via CFP)
+6. Positioning: 2D MISO Trilateration
+7. Positioning Accuracy: < 5.81 cm error within 2 m
+
+Key Innovations:
+1. Constant Envelope (CE) OFDM to reduce PAPR
+2. Coherent Fusion Processing (CFP) to synthesize wideband radar resolution from sub-bands
+3. Integrated 2D positioning with MISO setup
+4. High data rate (18+ Gbps) with high resolution (<2 cm)
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Frequency | 132-142 GHz |
+| Data Rate | 18.448 Gbps |
+| Range Resolution | 1.78 cm |
+| Positioning Error | < 5.81 cm |
+| BER | ~1e-4 |
+| PMI Range | 1.75 - 10 |
+================================================================================

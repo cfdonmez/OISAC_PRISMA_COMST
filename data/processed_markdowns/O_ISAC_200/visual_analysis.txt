@@ -1,0 +1,208 @@
+================================================================================
+O_ISAC_200 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Machine Learning Opportunities for Integrated Polarization Sensing and Communication in Optical Fibers
+Authors: Andrej Rode et al. (KIT, Chalmers University)
+Journal: Optical Fiber Technology 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_5.jpeg + _page_0_Picture_6.jpeg
+### Type: Non-Scientific (Journal Logo, Elsevier)
+### Note: Publisher logos - SKIPPED
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: System Block Diagram
+
+### Title: Integrated Polarization Sensing and Communication System Model
+
+### Transmitter:
+- Symbol selection: X ∈ ℂ^(2×N_sym)
+- Probability mass function P(M)
+- Upsampling (T times)
+- RRC pulse shaping
+
+### Optical Channel H(ω,θ):
+- PMD (Polarization Mode Dispersion)
+- PDL (Polarization Dependent Loss)
+- Jones matrix model
+- Segment-based: N = 10,000 plates
+
+### Receiver DSP:
+- Matched filter
+- 2×2 MIMO Equalizer
+- Gradient-based: LMS, ZF, LMS-ZF
+- VAE-based equalizer
+
+### Outputs:
+- X̂: Symbol estimate (communication)
+- Ĥ(ω,θ): Channel estimate (sensing)
+
+### Physics-Based ML (Section 4):
+- Infer θ from Ĥ
+- Distributed polarization sensing
+- ISA vs PML approaches
+
+### O-ISAC Relevance:
+- Unified framework for fiber ISAC
+---
+
+## Image: _page_2_Picture_14.jpeg
+### Type: Block Diagram (2×2 MIMO Equalizer)
+
+### Structure:
+- 2 inputs: z̃₁, z̃₂ (matched filter output)
+- 4 filter branches: c₁,₁, c₁,₂, c₂,₁, c₂,₂
+- Each filter: 2L+1 complex taps
+- Butterfly structure
+- T-fold downsampling
+
+### Parameters:
+| Parameter | Description |
+|-----------|-------------|
+| c_p,q,k | Tap coefficients at time k |
+| L | Half-filter length |
+| T | Oversampling factor |
+
+### O-ISAC Relevance:
+- Core DSP for polarization tracking
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Block Diagram (VAE-Based Equalizer)
+
+### Architecture:
+- Encoder: Q(x|z̃,ζ) - Variational approximation
+- Channel estimator: Ĥ(ω,θ) explicit
+- Decoder: p(z̃|x,Ξ) - Likelihood model
+
+### Key Equations:
+- ELBO maximization: ln p(z̃|Ξ) ≥ ELBO(Q)
+- B = E_Q{ln p(z̃|x,Ξ)}
+- D_KL regularization
+
+### Advantages vs LMS:
+- Blind (no pilots needed)
+- Explicit channel estimation
+- Joint optimization
+
+### Training:
+- Adam optimizer
+- Batch size: 200
+- Learning rate: 3×10⁻³
+
+### O-ISAC Relevance:
+- Superior sensing accuracy vs LMS
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Scatter Plot (Sensing-Communication Trade-off)
+
+### Axes:
+- X-axis: Communication SNR (dB): 17-25
+- Y-axis: Channel Estimation MSE: 0.02-0.14
+
+### Algorithms Compared:
+| Algorithm | SNR (dB) | MSE | Notes |
+|-----------|----------|-----|-------|
+| ZF | ~18 | ~0.035 | Noise enhancement |
+| LMS-ZF (ν=0.25) | ~23 | ~0.03 | Stabilized ZF |
+| LMS-ZF (ν=0.50) | ~24 | ~0.04 | Balanced |
+| LMS-ZF (ν=0.75) | ~24.5 | ~0.06 | Near LMS |
+| LMS (ν=1.0) | ~25 | ~0.08 | Best comm, worst sensing |
+| VAE | ~24.5 | ~0.025 | Best sensing |
+
+### Key Insight:
+- Trade-off curve visible
+- VAE achieves best sensing + good comm
+- ν=0.25 stabilizes ZF significantly
+- Weighted LMS-ZF enables flexible trade-off
+
+### O-ISAC Relevance:
+- Quantifies sensing-communication trade-off
+- Design guidance for fiber ISAC
+---
+
+## Image: _page_7_Figure_2.jpeg
+### Type: Multi-Panel Chart (Distributed Sensing)
+
+### Title: Physics-Based Learning for Event Localization
+
+### Panel Structure (4 scenarios):
+- Each panel: 5 fiber segments × time index k
+- Y-axis: |cos φ| (rotation angle tracking)
+- Color: Blue (static) to Yellow (perturbed)
+
+### Panel (a) - Noise-free:
+- Both ISA and PML track event
+- Segment 2 shows perturbation at k∈[15,35]
+- Perfect localization
+
+### Panel (b) - Low Noise (1/σ² = 25 dB):
+- PML still tracks
+- ISA starts degrading
+- Event visible in segment 2
+
+### Panel (c) - Higher Noise (1/σ² = 20 dB):
+- PML maintains tracking
+- ISA loses localization
+- Spread across segments
+
+### Panel (d) - Non-trackable Realization:
+- Overparameterization issue
+- Multiple θ produce same H(ω,θ)
+- PML matches response but wrong parameters
+
+### Key Comparison:
+| Method | Noise Resilience | Localization |
+|--------|------------------|--------------|
+| ISA | Poor | Degrades rapidly |
+| PML | Good | Maintains accuracy |
+
+### O-ISAC Relevance:
+- Enables distributed polarization sensing
+- ML improves noise robustness
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (2 non-scientific skipped)
+- System Diagrams: 2
+- Block Diagrams: 2
+- Scatter/Trade-off Plots: 1
+- Multi-Panel Charts: 1
+
+Key Technical Findings:
+1. Platform: Coherent Optical Fiber Communication
+2. Focus: Polarization Sensing via Adaptive Equalization
+3. Channel Model: PMD + PDL (N=10,000 segments, 1000 km)
+4. Symbol Rate: 100 GBaud
+5. Modulation: 64-QAM
+6. Equalizer Length: 25 taps
+
+ML Algorithms Studied:
+- LMS: Best communication, worst sensing
+- ZF: Best sensing, worst communication (convergence issues)
+- LMS-ZF (weighted): Flexible trade-off
+- VAE: Best sensing + good communication (blind)
+
+Key Innovations:
+1. LMS-ZF weighted regression: ν parameter trades comm vs sensing
+2. VAE for blind fiber ISAC: No pilots needed
+3. Physics-based learning (PML): Distributed polarization sensing
+4. Jones matrix factorization: Event localization
+5. Trade-off quantification: SNR vs MSE Pareto front
+
+Simulation Parameters (Table 1):
+| Parameter | Value |
+|-----------|-------|
+| AWGN SNR | 25 dB |
+| Fiber length | 1000 km |
+| PMD elements | 10,000 |
+| PMD coefficient | 0.3 ps/√km |
+| PDL elements | 5 |
+| PDL attenuation | 0.1-0.3 dB |
+| Symbol rate | 100 GBd |
+| Samples/symbol | 2 |
+================================================================================

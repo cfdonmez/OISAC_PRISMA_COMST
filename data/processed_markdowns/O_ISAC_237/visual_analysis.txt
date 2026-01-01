@@ -1,0 +1,405 @@
+================================================================================
+O_ISAC_237 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Coordinated FMCW and OFDM for Integrated Sensing and Communication
+Authors: Yuhong Wang et al. (A*STAR I2R, Singapore)
+Journal: IEEE 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_2.jpeg
+### Type: System Block Diagram
+
+### Title: Coordinated FMCW and OFDM Scheme for ISAC
+
+### Components:
+- OFDM transceiver (communication)
+- FMCW radar (sensing)
+- Shared:
+  - RF front end
+  - Antenna
+  - Spectral resources
+- Superposition before TX
+
+### Signal Flow:
+1. OFDM data → modulation
+2. FMCW pilot → synchronized with OFDM
+3. Superposition: x(t) = √(1-Ps)·FMCW + √Ps·OFDM
+4. TX via shared antenna
+5. RX: sensing + channel estimation + communication
+
+### O-ISAC Relevance:
+- Complete Co-FMCW-OFDM architecture
+---
+
+## Image: _page_3_Picture_15.jpeg
+### Type: Waveform Diagram
+
+### Title: One Symbol of Co-FMCW-OFDM Waveform
+
+### Structure:
+- OFDM symbol: [CP | Data]
+- FMCW symbol: [Zero CP | Chirp | Zero guard]
+- Same duration: Tsym = T + Tcp
+- Synchronized in symbol level
+
+### Key Design:
+- All-zero CP for FMCW
+- Enables FCCR algorithm
+- Reduces inter-symbol interference
+
+### Parameters:
+| Parameter | Description |
+|-----------|-------------|
+| Bw | Bandwidth |
+| Tc | Chirp duration = T - Tcp |
+| N | IFFT size (4096) |
+| Ncp | CP length (288) |
+
+### O-ISAC Relevance:
+- Novel waveform structure
+---
+
+## Image: _page_4_Figure_11.jpeg
+### Type: Channel Profile Comparison
+
+### Title: Original vs Effective Channel Profile
+
+### Original Channel:
+- 2 paths
+- τ1 = 0.5075 µs (31.18 Ts)
+- τ2 = 0.8395 µs (51.58 Ts)
+
+### Effective Channel (with pulse shaping):
+- 10 paths (5 per original path)
+- Δ = 2 (filter parameter)
+- Delays: [29-33, 50-54] Ts
+- Non-integer delays create spreading
+
+### Key Insight:
+- Realistic channel model
+- (2Δ+1)×P effective paths
+- More challenging estimation
+
+### O-ISAC Relevance:
+- Arbitrary delay handling
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Receiver Algorithm Flowchart
+
+### Title: Co-FMCW-OFDM Receiver Algorithm
+
+### Blocks:
+1. Received signal y(n)
+2. Sensing (FCCR or DMD)
+   - Range/Doppler estimation
+3. Sensing-aided channel estimation
+   - Path delays, Doppler, coefficients
+   - SIC algorithm
+4. FMCW interference cancellation
+   - Time domain subtraction
+5. OFDM demodulation
+   - FFT, equalization, decoding
+
+### O-ISAC Relevance:
+- Complete receiver pipeline
+---
+
+## Image: _page_7_Figure_20.jpeg
+### Type: Line Chart (RMSE Analysis)
+
+### Title: Simulated vs Theoretic RMSE of Time Domain Channel Estimation
+
+### Axes:
+- X-axis: Number of symbols M (10-200)
+- Y-axis: RMSE of h1
+
+### SNR Curves:
+- SNR = 0, 5, 10 dB
+- Simulated (solid)
+- Theoretic (dashed)
+
+### Key Finding:
+- RMSE decreases with M
+- Simulated matches theory well
+- σ_h1 ∝ 1/√(MNa)
+
+### O-ISAC Relevance:
+- Channel estimation analysis
+---
+
+## Image: _page_9_Figure_2.jpeg
+### Type: Line Chart (Range RMSE)
+
+### Title: FCCR vs DMD Sensing - Range RMSE
+
+### Axes:
+- X-axis: SNR (dB): 0-15
+- Y-axis: RMSE of range (m)
+
+### Scenarios:
+- SA: Low Doppler (1-2 kHz)
+- SB: High Doppler (5-6 kHz)
+
+### Results:
+| Method | SA @ 12dB | SB @ 12dB |
+|--------|-----------|-----------|
+| FCCR | 1.46 m | 2.13 m |
+| DMD | ~1.5 dB worse | ~1.5 dB worse |
+
+### Key Finding:
+- FCCR outperforms DMD by ~3 dB
+- Resolution: 2.44 m
+- High Doppler degrades accuracy
+
+### O-ISAC Relevance:
+- Sensing algorithm comparison
+---
+
+## Image: _page_9_Figure_4.jpeg
+### Type: Line Chart (Speed RMSE)
+
+### Title: FCCR vs DMD Sensing - Speed RMSE
+
+### Axes:
+- X-axis: SNR (dB): 0-15
+- Y-axis: RMSE of speed (m/s)
+
+### Results:
+- High SNR: RMSE ≈ 0.036 m/s
+- Speed resolution: 0.068 m/s
+- FCCR ~3 dB better than DMD
+
+### O-ISAC Relevance:
+- Velocity estimation performance
+---
+
+## Image: _page_9_Figure_8.jpeg
+### Type: Line Chart (Doppler Impact)
+
+### Title: Range RMSE vs Average Doppler Frequency
+
+### Axes:
+- X-axis: Doppler frequency (kHz): 1.5-7.5
+- Y-axis: RMSE of range (m)
+
+### Trend:
+- 1.5 kHz: RMSE = 1.49 m
+- 7.5 kHz: RMSE = 2.6 m
+- Linear degradation
+
+### Key Finding:
+- High Doppler violates FCCR approximations
+- Sensing accuracy degrades
+
+### O-ISAC Relevance:
+- Doppler-range accuracy trade-off
+---
+
+## Image: _page_10_Figure_2.jpeg
+### Type: Line Chart (Channel Estimation NMSE)
+
+### Title: NMSE of Time Domain Channel Estimation
+
+### Axes:
+- X-axis: SNR (dB): 2-10
+- Y-axis: NMSE
+
+### Methods Compared:
+- With SIC (proposed)
+- Without SIC
+- FCCR sensing
+- Ideal sensing
+
+### Key Finding:
+- SIC improves NMSE significantly
+- S2 (higher Doppler) worse than S1
+- Gap closes at high SNR
+
+### O-ISAC Relevance:
+- SIC validation
+---
+
+## Image: _page_10_Figure_4.jpeg
+### Type: Line Chart (BER)
+
+### Title: Coded BER Performance of Proposed System
+
+### Axes:
+- X-axis: SNR (dB)
+- Y-axis: BER
+
+### Configurations:
+- Perfect IC
+- Actual IC
+- Without IC
+- S1 and S2 scenarios
+
+### Key Finding:
+- IC provides significant BER improvement
+- Gap between perfect/actual IC exists
+- Higher Doppler → worse BER
+
+### O-ISAC Relevance:
+- Interference cancellation impact
+---
+
+## Image: _page_10_Figure_10.jpeg
+### Type: Line Chart (Power Ratio Impact)
+
+### Title: BER vs OFDM-to-FMCW Power Ratio
+
+### Axes:
+- X-axis: R = 10log10(Ps/(1-Ps)) dB
+- Y-axis: Uncoded BER
+
+### Curves:
+- M = 28, 56, 140 symbols
+- SNR = 10 dB
+
+### Key Finding:
+- Optimal R exists (~10 dB)
+- Too high R: sensing degradation
+- Too low R: communication degradation
+- Design parameter for trade-off
+
+### O-ISAC Relevance:
+- Power allocation optimization
+---
+
+## Image: _page_11_Figure_10.jpeg
+### Type: Line Chart (Range RMSE Comparison)
+
+### Title: Range RMSE: Co-FMCW-OFDM vs Conventional OFDM
+
+### Methods:
+- Co-FMCW-OFDM (proposed)
+- OFDM + CE (channel estimation-based)
+- OFDM + DF (decision feedback-based)
+
+### Target Performance:
+| Target | Co-FMCW | OFDM+DF |
+|--------|---------|---------|
+| Target 1 | ~1.5 m | ~2.5 m |
+| Target 2 | ~2 m | ~4 m |
+
+### Key Finding:
+- Co-FMCW-OFDM 3 dB better for Target 1
+- Significant advantage for Target 2
+
+### O-ISAC Relevance:
+- Superior sensing vs conventional
+---
+
+## Image: _page_11_Figure_12.jpeg
+### Type: Line Chart (Speed RMSE Comparison)
+
+### Title: Speed RMSE: Co-FMCW-OFDM vs Conventional OFDM
+
+### Methods:
+- Same as range comparison
+
+### Key Finding:
+- Similar trends to range
+- Co-FMCW-OFDM consistently better
+- Weak target detection improved
+
+### O-ISAC Relevance:
+- Velocity sensing comparison
+---
+
+## Image: _page_12_Figure_2.jpeg
+### Type: Line Chart (Channel Estimation Comparison)
+
+### Title: Frequency Domain Channel NMSE Comparison
+
+### Methods:
+- Co-FMCW-OFDM (FCCR)
+- Conventional OFDM (interpolation)
+
+### Scenarios:
+- S1: Lower Doppler
+- S2: Higher Doppler
+
+### Key Finding:
+- Proposed scheme much better
+- Gap increases with Doppler
+- Interpolation fails for fast channels
+
+### O-ISAC Relevance:
+- Superior channel tracking
+---
+
+## Image: _page_12_Figure_4.jpeg
+### Type: Line Chart (BER Comparison)
+
+### Title: BER: Co-FMCW-OFDM vs Conventional OFDM
+
+### Methods:
+- Co-FMCW-OFDM S1/S2
+- Conventional OFDM S1/S2
+
+### Key Finding:
+- Proposed significantly better
+- Same reason: accurate channel estimation
+- Higher Doppler → larger gap
+
+### O-ISAC Relevance:
+- Communication performance advantage
+---
+
+## Image: _page_12_Figure_10.jpeg
+### Type: Line Chart (BER vs Reference [29])
+
+### Title: BER: Co-FMCW-OFDM vs OFDM-plus-FMCW [29]
+
+### Comparison:
+- Co-FMCW-OFDM (estimated channel)
+- [29] (ideal channel)
+- M = 56, 140
+
+### Key Finding:
+- Proposed better even with estimated channel
+- [29] improves with M (averaging)
+- Proposed less sensitive to M
+
+### O-ISAC Relevance:
+- Time-domain IC superiority
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 16 (all scientific)
+- System Diagrams: 2
+- Waveform Diagrams: 1
+- Algorithm Flowcharts: 1
+- Performance Charts: 12
+
+Key Technical Findings:
+1. Platform: Vehicular ISAC
+2. Carrier: 23.6 GHz
+3. Bandwidth: 50 MHz
+4. Sampling: 61.44 MHz
+5. OFDM: 4096 subcarriers, 15 kHz spacing
+6. Modulation: QPSK + LDPC 0.5 rate
+7. Range resolution: 2.44 m
+8. Speed resolution: 0.068 m/s
+
+Key Innovations:
+1. Co-FMCW-OFDM waveform (superposition)
+2. All-zero CP for FMCW (enables FCCR)
+3. FCCR sensing (near-optimal, low complexity)
+4. DMD sensing (digital mixing alternative)
+5. Arbitrary delay handling (effective channel model)
+6. Sensing-aided channel estimation with SIC
+7. Time-domain interference cancellation
+8. Ps parameter for sensing-communication trade-off
+
+Performance Highlights:
+- FCCR 3 dB better than DMD
+- Co-FMCW-OFDM 3 dB better than conventional OFDM
+- Superior weak target detection
+- Better channel tracking in high Doppler
+- Lower BER than [29] even with estimated channel
+================================================================================

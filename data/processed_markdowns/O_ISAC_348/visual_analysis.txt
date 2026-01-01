@@ -1,0 +1,173 @@
+================================================================================
+O_ISAC_348 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated sensing and communication in an optical fibre
+Authors: Haijun He et al. (Southwest Jiaotong University)
+Journal: Light: Science & Applications (2023)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_2.jpeg
+### Type: Conceptual Diagram & System Principle
+
+### Title: Operating Principle of ISAC-OF
+
+### Panel (a) Waveform:
+- Transmission Light E_X(t)
+- LFM Optical Carrier (Chirped freq vs Time)
+- Loaded with PAM4 data (Amplitude modulation)
+
+### Panel (b) Fiber Effects:
+- Interaction of CD (Chromatic Dispersion), SBS (Stimulated Brillouin Scattering), and SPM (Self-Phase Modulation).
+- Problem: SBS limits power; CD fades power.
+- Solution: LFM suppresses SBS -> Allows High Power -> High Power induces SPM -> SPM compensates CD.
+
+### O-ISAC Relevance:
+- Fundamental mechanism explanation for why this ISAC waveform improves *communication* performance (Synergy).
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: ISAC-OF Experimental Setup
+
+### Components:
+- **Source:** CW Laser (1549.5 nm)
+- **Modulation Chain:**
+  1. MZM1 (Driven by AWG LFM) -> OBPF -> LFM Carrier (SSB)
+  2. MZM2 (Driven by PAM4) -> Data Modulation
+- **Channel:** 24.5 km SMF (Standard Single Mode Fiber)
+- **Receiver (Comms):** Direct Detection (PD -> DSO)
+- **Receiver (Sensing):** Coherent Detection (Ref Light + RBS -> Balanced PD -> DSO)
+
+### Key Parameters:
+- Repetition Period: 248 us (Range Ambiguity > 24.5 km)
+- Sample Rate: 65 GSa/s (Tx), 80 GSa/s (Rx Comms)
+
+### O-ISAC Relevance:
+- Complete hardware implementation of the optical ISAC system
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Performance Charts (BER)
+
+### Title: BER Performance Comparison (ISAC vs Conventional)
+
+### Panel (a) BER vs Power:
+- Conventional PAM4 (Orange): BER degrades > 13 dBm launch power due to SBS.
+- ISAC (Blue/Purple): BER improves up to 16 dBm.
+- Result: ISAC tolerates 7 dB higher power.
+
+### Panel (c) Stokes Power (SBS indicator):
+- Conventional: Stokes power rises sharply to 12 dBm.
+- ISAC: Stokes power suppressed at -28 dBm (due to LFM).
+
+### Panel (d) Sensitivity:
+- ISAC achieves ~1.3 dB sensitivity gain at FEC threshold compared to optimized Conventional.
+
+### O-ISAC Relevance:
+- Proof that ISAC waveform outperforms dedicated Comms waveform in this regime
+---
+
+## Image: _page_7_Figure_2.jpeg
+### Type: Sensing Results (Vibration)
+
+### Title: Vibration Sensing Performance (Phi-OTDR)
+
+### Panel (a) Waterfall Plot:
+- Distance vs Time vs Phase
+- Vibration localized at ~22.5 km.
+- Clean recovery (no fading).
+
+### Panel (b) Spatial Resolution:
+- Step response analysis
+- Resolution: ~4 meters (10%-90% rise).
+
+### Panel (d) Power Spectral Density:
+- Signal Peak @ 800 Hz (21.55 dB SNR)
+- Noise Floor: -52.55 dB rad^2/Hz
+- Strain Resolution: 4.32 ne/sqrt(Hz)
+
+### O-ISAC Relevance:
+- Quantification of Sensing Capability (DAS)
+---
+
+## Image: _page_8_Figure_2.jpeg
+### Type: Frequency Response Analysis
+
+### Title: Frequency Response Enhancement
+
+### Content:
+- Detection of 3 kHz and 21 kHz vibrations.
+- Note: Intrinsic repetition rate limit is ~2 kHz (determined by fiber length).
+- Technique: Sub-band segmentation and stitching allows measuring frequencies > Nyquist limit of pulses.
+- Result: 21 kHz vibration recovered clearly.
+
+### O-ISAC Relevance:
+- Advanced sensing DSP feature
+---
+
+## Image: _page_9_Figure_7.jpeg
+### Type: Parameter Sensitivity Plot
+
+### Title: Impact of Launch Power and Bandwidth
+
+### Panel (a) Power:
+- Sensing SNR (Orange) and Phase Variance (Blue) are independent of Launch Power (9-17 dBm).
+- Analysis: Code noise increases with signal power, keeping SNR constant.
+
+### Panel (b) Bandwidth:
+- Sensing SNR improves by 2.4 dB as Bandwidth goes 0.6 -> 2.0 GHz.
+- Phase Variance decreases (Accuracy improves).
+
+### O-ISAC Relevance:
+- Optimization rules for optical ISAC
+---
+
+## Image: _page_10_Figure_2.jpeg
+### Type: Cross-Talk Analysis
+
+### Title: Effect of Communication Code on Sensing
+
+### Panel (a) Linearity:
+- Phase vs Voltage (Strain) linearity is 0.9999 for both Pure Carrier and ISAC waveform.
+- Comms data does not distort linearity.
+
+### Panel (b) SNR Penalty:
+- Adding PAM4 data causes ~2.14 dB SNR penalty on Sensing compared to pure LFM.
+- Acceptable trade-off for carrying 56 Gb/s data.
+
+### O-ISAC Relevance:
+- Critical "Cross-Talk" quantification
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 7
+- Conceptual/Schematic: 2
+- Performance Charts (BER/Stokes): 2
+- Sensing Results (PSD/Waterfalls): 1
+- Parameter Sweeps: 2
+
+Key Technical Findings:
+1. **Synergy:** LFM carrier suppresses SBS by >40 dB (Fig 3c), allowing launch power to increase from 9 to 16 dBm.
+2. **Comms Improvement:** Higher launch power enhances SPM, which compensates CD, improving BER by 1.3 dB.
+3. **Sensing Performance:**
+   - Spatial Resolution: 4 m
+   - Strain Resolution: 4.32 ne/sqrt(Hz)
+   - Frequency Response: >21 kHz (via stitching)
+   - Bandwidth used: 1-2 GHz
+4. **Data Rate:** 56 Gbit/s PAM4 (Net Rate > 100 Gbps potential with WDM).
+
+Key Innovations:
+1. **ISAC-OF Scheme:** Using LFM as both the Comms Carrier (to kill SBS) and Sensing Probe (Phi-OTDR).
+2. **SBS-SPM-CD Interplay:** Exploiting nonlinearities rather than just mitigating them.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Comms Rate | 56 Gb/s (PAM4) |
+| Fiber Length | 24.5 km |
+| Sensing Res | 4 m |
+| Launch Power | 16 dBm (ISAC) vs 9 dBm (Conv) |
+================================================================================

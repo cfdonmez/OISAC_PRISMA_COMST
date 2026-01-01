@@ -1,0 +1,384 @@
+================================================================================
+O_ISAC_288 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Development of an Integrated Communication and Sensing System Using
+       Spread Spectrum and Photonics Technologies
+Authors: Abdulrahman K. Alzamil et al. (King Saud University)
+Journal: Photonics (MDPI) 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## SKIPPED IMAGES (Logos/Copyright):
+- _page_0_Picture_0.jpeg (Journal logo)
+- _page_0_Picture_1.jpeg (Journal logo)
+- _page_0_Picture_10.jpeg (Citation badge)
+- _page_0_Picture_13.jpeg (CC license)
+
+---
+
+## Image: _page_4_Figure_8.jpeg
+### Type: System Block Diagram
+
+### Title: Proposed ISAC System Model
+
+### Components:
+- Transmitter: PN code generator + Information bits
+- Spreader (modulo-2 multiplication)
+- BPSK modulation
+- Wireless channel (to comm & radar)
+- Communication Rx: MF + despread + sum
+- Radar Rx: Correlator + range detection
+
+### Signal Flow:
+1. N-bit info → PN spread (L chips/bit)
+2. BPSK modulation
+3. Tx antenna → dual radiation
+4. Comm: MF → despread → decode
+5. Radar: Correlate with ref → range
+
+### O-ISAC Relevance:
+- Unified DSSS waveform
+---
+
+## Image: _page_5_Figure_4.jpeg
+### Type: Signal Waveform Diagram
+
+### Title: DSSS Signal Generation
+
+### Waveforms:
+1. Information data (Tb duration)
+2. PN sequence (Tc = Tb/6)
+3. DSSS signal (spread)
+
+### Parameters:
+- 6 chips per bit
+- Tc = 2.86 ns (for 50 Mbps)
+- Modulo-2 combination
+
+### O-ISAC Relevance:
+- Waveform structure
+---
+
+## Image: _page_6_Figure_1.jpeg
+### Type: Block Diagram
+
+### Title: MF-Based DSSS Receiver
+
+### Components:
+- Matched filter (MF)
+- Sampler
+- PN sequence
+- Multiplier + ∑ (despread)
+- Threshold → bits
+
+### O-ISAC Relevance:
+- Communication demodulation
+---
+
+## Image: _page_6_Figure_4.jpeg
+### Type: PN Sequence Generator
+
+### Title: q-Stage Shift Register with Linear Feedback
+
+### Structure:
+- q flip-flops (shift registers)
+- Modulo-2 adders
+- Feedback connections
+
+### Properties:
+- Period L = 2^q - 1
+- Maximal-length sequence
+- R(0) = L, R(j) = -1
+
+### O-ISAC Relevance:
+- PN code generation
+---
+
+## Image: _page_7_Figure_8.jpeg
+### Type: BER Curve
+
+### Title: Communication System BER Performance
+
+### Curves:
+- Theoretical BPSK: Q(√(2Eb/N0))
+- Estimated (Monte Carlo, 1M bits)
+
+### Key Finding:
+- Close match to theory
+- DSSS maintains BPSK performance
+
+### O-ISAC Relevance:
+- Communication reliability
+---
+
+## Image: _page_8_Picture_1-3.jpeg (Combined)
+### Type: Image Transmission Test
+
+### Title: Clock Image at Various SNR
+
+### Results:
+| Eb/N0 | Image Quality |
+|-------|---------------|
+| -20 dB | Unusable |
+| -10 dB | Degraded |
+| 0 dB | Clear |
+
+### O-ISAC Relevance:
+- Visual SNR demonstration
+---
+
+## Image: _page_9_Figure_1.jpeg
+### Type: Radar Correlator Output
+
+### Title: Single Target Detection
+
+### Target: 250 m
+
+### Results:
+| Condition | PSL Ratio |
+|-----------|-----------|
+| Noiseless | 18 dB |
+| -20 dB SNR | 13.6 dB |
+| -40 dB SNR | 4.5 dB |
+
+### O-ISAC Relevance:
+- Radar detection reliability
+---
+
+## Image: _page_9_Figure_3.jpeg
+### Type: Dual-Target Detection
+
+### Title: Two-Target Resolution Test
+
+### Separation Tests @ -20 dB:
+| Separation | Result |
+|------------|--------|
+| 21.5 cm | Unresolved (< ΔR) |
+| 43 cm | Resolved (= ΔR) |
+| 215 cm | Clearly resolved |
+
+### Key Finding:
+- Resolution matches theory (43 cm)
+
+### O-ISAC Relevance:
+- Range resolution validation
+---
+
+## Image: _page_10_Figure_3.jpeg
+### Type: Photonics System Diagram
+
+### Title: Proposed ISAC Model Using Photonics
+
+### Components:
+- AWG (waveform generation)
+- LD (laser diode)
+- MZM (optical modulation)
+- SMF (single-mode fiber)
+- PD (photodetector)
+- OC (optical coupler)
+- HPA/LNA (amplifiers)
+- Mixer + SG (RF conversion)
+
+### Transmission:
+- 28 GHz carrier
+- RoF (radio-over-fiber)
+
+### O-ISAC Relevance:
+- Photonics-enabled ISAC
+---
+
+## Image: _page_11_Figure_1.jpeg
+### Type: Transmitted Image
+
+### Title: Text Image for RoF Test
+
+### Content:
+- 20.088 Kbits
+- BPSK with PN spread (×7)
+- 0.7 GHz bandwidth
+
+### O-ISAC Relevance:
+- Test data source
+---
+
+## Image: _page_11_Figure_2.jpeg
+### Type: Spectrum
+
+### Title: Spectrum of Transmitted DSSS BPSK Signal
+
+### Characteristics:
+- Bandpass signal
+- 0.7 GHz bandwidth
+- 28 GHz carrier (upconverted)
+
+### O-ISAC Relevance:
+- Signal spectrum
+---
+
+## Image: _page_11_Picture_10.jpeg
+### Type: Quad-Panel Image Recovery
+
+### Title: Received Images at Various Fiber Lengths
+
+### Results:
+| Fiber Length | BER | Quality |
+|--------------|-----|---------|
+| 10 km | 0 | Perfect |
+| 25 km | 0.0793 | Degraded |
+| 50 km | 0 | Perfect |
+| 75 km | 0.4132 | Poor |
+
+### Key Finding:
+- 50 km better than 25 km (ODSB nulls)
+- Performance depends on fiber null position
+
+### O-ISAC Relevance:
+- Fiber dispersion impact
+---
+
+## Image: _page_12_Figure_1.jpeg
+### Type: Frequency Response
+
+### Title: Fiber Frequency Response vs Length
+
+### Curves:
+- 10, 25, 50, 75 km
+- Nulls from chromatic dispersion
+
+### Key Finding:
+- 25 km: Null near 28 GHz (bad)
+- 50 km: No null at 28 GHz (good)
+
+### O-ISAC Relevance:
+- Carrier frequency selection
+---
+
+## Image: _page_12_Figure_5.jpeg
+### Type: Quad-Panel Radar Output
+
+### Title: Radar Correlator Output Over Fiber
+
+### Results (PSL Ratio):
+| Fiber Length | PSL |
+|--------------|-----|
+| 10 km | High |
+| 25 km | Degraded |
+| 50 km | Good |
+| 75 km | Low |
+
+### O-ISAC Relevance:
+- Fiber dispersion on radar
+---
+
+## Image: _page_13_Figure_2.jpeg
+### Type: Quad-Panel Dual-Target Over Fiber
+
+### Title: Two-Target Detection Over Fiber
+
+### Separation: 43 cm (= ΔR)
+
+### Finding:
+- Nulls affect target resolution
+- 50 km performs best
+
+### O-ISAC Relevance:
+- Resolution preservation
+---
+
+## Image: _page_14_Picture_1.jpeg
+### Type: Experimental Photo
+
+### Title: Lab Experimental Setup
+
+### Components:
+- (a) Communication system
+- (b) Radar system
+- AWG, MZM, LD, PD visible
+- 10 km fiber channel
+
+### O-ISAC Relevance:
+- Real-world validation
+---
+
+## Image: _page_14_Figure_8.jpeg
+### Type: Dual-Panel Constellation/EVM
+
+### Title: Communication Performance @ 10 km
+
+### Panel (a) - Constellations:
+- Varying received optical power
+- EVM = 12% @ -3.8 dBm
+
+### Panel (b) - EVM vs Power:
+- Lower EVM at higher power
+- Meets specification at -3.8 dBm
+
+### O-ISAC Relevance:
+- Communication quality
+---
+
+## Image: _page_15_Figure_1.jpeg
+### Type: Triple-Panel Radar Results
+
+### Title: Lab Correlator Output for Two Targets
+
+### Results @ 10 km Fiber:
+| Separation | Detection |
+|------------|-----------|
+| 21 cm | Single peak (< ΔR) |
+| 43 cm | Two peaks (= ΔR) |
+| 128 cm | Two peaks (> ΔR) |
+
+### Key Finding:
+- Resolution verified experimentally
+- Second target weaker (farther)
+
+### O-ISAC Relevance:
+- Experimental validation
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 20 (4 logos skipped)
+- System Diagrams: 3
+- Signal Waveforms: 2
+- BER/EVM Analysis: 3
+- Radar Correlator: 4
+- Fiber Response: 2
+- Image Transmission: 3
+- Experimental Photos: 1
+- Spectrum: 2
+
+Key Technical Findings:
+1. Platform: DSSS-BPSK ISAC with RoF
+2. Carrier: 28 GHz (mm-Wave)
+3. Bandwidth: 700 MHz
+4. Data Rate: 50 Mbps
+5. PN Code: 7 chips/bit (3-stage LFSR)
+6. Waveform Duration: 8 µs (400 bits)
+7. Fiber: 0-75 km SMF
+
+Key Innovations:
+1. DSSS-BPSK unified waveform
+2. RoF photonics transmission
+3. Maximal-length PN sequence
+4. Communication + radar = CPI
+5. Simple architecture (no optical filter)
+6. ODSB fiber transmission
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Range Resolution | 43 cm |
+| Max Unambiguous Range | 1200 m |
+| PSL Ratio (noiseless) | 18 dB |
+| PSL Ratio @ -20 dB | 13.6 dB |
+| BER @ -3.8 dBm | 0 |
+| EVM | 12% |
+| Max Fiber (no null) | 50 km |
+
+ODSB Fiber Nulls:
+- Performance depends on null position
+- 25 km: Null at 28 GHz (bad)
+- 50 km: No null (good)
+================================================================================

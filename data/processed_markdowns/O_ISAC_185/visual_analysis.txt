@@ -1,0 +1,283 @@
+================================================================================
+O_ISAC_185 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Adaptive Visible Light Integrated Sensing and Communication for Cable-Free Virtual Reality
+Authors: Ziwei Li et al. (Fudan University)
+Journal: Photonics Research 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_3.jpeg
+### Type: Conceptual Diagram (Computational ISAC Principle)
+
+### Panel (a) - Spatio-Temporal Modulation:
+- Light source with temporal encoding (communication)
+- Spatial encoding via DMD (sensing)
+- Structured illumination (SI) patterns
+- Combined signal: E^k(p,t) = u(t)·S^k(p)
+
+### Panel (b-c) - Receiver Processing:
+- Multiple users within illumination field
+- Each receiver collects position-dependent light
+- Communication: high-pass filter + demodulation
+- Sensing: low-frequency response to SI sequence
+
+### Key Equations:
+- y^k(t) ∝ ∫M(p)·E^k(p,t)dp
+- Decoupling via frequency domain separation
+- Communication rate >> SI switching rate
+
+### Unique Features:
+- Same optical signal for both functions
+- Private position (not shared with emitter)
+- No optical interference between users
+
+### O-ISAC Relevance:
+- Novel computational imaging approach
+- Single-pixel sensing in VLC
+---
+
+## Image: _page_3_Figure_3.jpeg
+### Type: Multi-Panel Diagram (CAP System Architecture)
+
+### Panel (a) - System Overview:
+- Wide-angle VLC coverage (0.6m × 0.6m)
+- Structured illumination projection
+- 2m free-space link
+
+### Panel (b) - Transmitter Pipeline:
+- Temporal modulation (DMT signals)
+- Spatial modulation (DMD at 20 kHz)
+- Combined spatio-temporal encoding
+
+### Panel (c) - CAP Concept:
+- Compressive Angular Projection imaging
+- Stripe patterns in two angles (X, Y)
+- 2N measurements vs N² for full sampling
+- 64-fold reduction in measurement time
+
+### Panel (d) - Coded Measurements:
+- Received signal with SI variations
+- Pattern-dependent amplitude
+
+### Panel (e) - Averaged Responses:
+- Mean intensity per SI pattern
+- Position-dependent variations
+
+### Panel (f) - Recovered Projections:
+- X-axis projection profile
+- Y-axis projection profile
+- Back-projection algorithm
+
+### Panel (g) - Spatial Recovery:
+- 2D image reconstruction
+- Reception field location visible
+- Scale bar: 100 mm
+
+### Panel (h) - Position Estimation:
+- Zero-truncated quadratic fitting
+- Center coordinates (x₀, y₀)
+- Aperture radius R
+- Depth from size ratio
+
+### O-ISAC Relevance:
+- CAP enables real-time 3D localization
+- 39 Hz sensing frame rate
+---
+
+## Image: _page_4_Figure_3.jpeg
+### Type: Multi-Panel Chart (3D Localization Performance)
+
+### Panel (a) - Test Configuration:
+- 8×8 grid positions at 2m
+- Vertical depth scanning (1.6-2.2m)
+
+### Panel (b) - XY Accuracy:
+- MSE mostly <1 mm
+- Maximum error: 2 mm (corners)
+- 10 repetitive trials per position
+
+### Panel (c) - Lateral Resolving Limit:
+- 1 mm displacement clearly resolved
+- Two positions at ~1 mm distance distinguishable
+- Resolution: 1/600 of field size
+
+### Panel (d) - Depth Recovery Images:
+- 4 distances: 1.6, 1.8, 2.0, 2.2 m
+- Aperture size changes with depth
+- Estimated sizes in mm noted
+
+### Panel (e) - Depth Resolution:
+- 2 cm displacement steps
+- 10 trials per position
+- 4 cm depth resolution achieved
+
+### Panel (f-g) - Dynamic Tracking:
+- Receiver moving in 3D volume
+- 39 fps real-time tracking
+- 10s swirling trace reconstructed
+- Representative recovered profiles shown
+
+### Key Performance:
+| Parameter | Value |
+|-----------|-------|
+| Lateral resolution | <1 mm |
+| Depth resolution | 4 cm |
+| Field of view | 0.6m × 0.6m |
+| Distance | 2 m |
+| Frame rate | 39 fps |
+| Volume | 0.6m × 0.6m × 0.6m |
+
+### O-ISAC Relevance:
+- High-precision 3D localization for VLC
+- Real-time tracking capability
+---
+
+## Image: _page_5_Figure_3.jpeg
+### Type: Multi-Panel Chart (Communication Performance)
+
+### Panel (a) - Integrated Waveform Design:
+- SI intensity rescaling: S^k = 1 - α(1 - S^k)
+- α = 1/4 for SNR balance
+- DC-blocking at receiver
+- Dynamic range optimization
+
+### Panel (b) - Data Rate vs SI Pattern:
+- X-axis: Pattern index (1-80+)
+- Y-axis: Data rate (Gbps)
+- Range: 3.16 - 3.52 Gbps
+- Average: 3.35 Gbps
+- Only 4.3% decrease vs no SI baseline
+- Insets: Patterns #5 and #29 comparison
+
+### Panel (c) - Spatial Data Rate Maps:
+- 2m distance: ~3.4 Gbps peak
+- 1.8m distance: ~3.6 Gbps peak
+- Variations due to uneven irradiance
+- Baud rate analysis included
+
+### Panel (d) - Dynamic Transmission:
+- 3D trace with color-coded data rate
+- 3.2 - 3.8 Gbps range during motion
+- Stable transmission while moving
+
+### Key Results:
+| Distance | Peak Rate | Average Rate |
+|----------|-----------|--------------|
+| 2.0 m | 3.40 Gbps | 3.35 Gbps |
+| 1.8 m | 3.63 Gbps | ~3.5 Gbps |
+
+### O-ISAC Relevance:
+- Minimal communication penalty (<5%)
+- Simultaneous sensing + high-speed comm
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Multi-Panel Diagram (Adaptive Beamforming + VR Demo)
+
+### Panel (a) - Beamforming Concept:
+- Position info from sensing
+- Collimating lens translation
+- Beam focusing + steering
+- 1/8 original divergence
+- 75mm × 75mm ROI at 2m
+
+### Panel (b) - Data Rate Enhancement:
+| Position | Baseline | Beamform | Improvement |
+|----------|----------|----------|-------------|
+| 2m #1 | ~3.0 Gbps | ~6.5 Gbps | 122% |
+| 2m #2 | ~3.0 Gbps | ~6.0 Gbps | 100% |
+| 3m #1 | 2.09 Gbps | 5.93 Gbps | 184% |
+| 3m #2 | ~2.1 Gbps | ~5.9 Gbps | 181% |
+
+### Panel (c) - SNR Improvement:
+- Before: 12.30 dB average
+- After: 18.79 dB average
+- Bit allocation: 4 → 7 bits/Hz
+- 128-QAM, 64-QAM constellations visible
+
+### Panel (d-f) - VR Content Change Demo:
+- d) Concept illustration
+- e) Without beamforming: trailing shadows, pixel contamination
+- f) With beamforming: clean frames, no artifacts
+
+### Panel (g-i) - VR User View Change Demo:
+- g) View switching concept
+- h) Without: fuzziness, content loss
+- i) With: sharp, lossless
+
+### VR Video Requirements:
+| Content | Resolution | Frame Rate | Data Rate |
+|---------|------------|------------|-----------|
+| 3D Panoramic | 7680×3840 | 120 Hz | 5.45 Gbps |
+| 360° Monoscopic | 7200×3840 | 120 Hz | 5.11 Gbps |
+
+### Without Beamforming:
+- Packet loss: 34-38%
+- Desync → dizziness
+
+### With Beamforming:
+- Lossless transmission
+- Immersive VR enabled
+
+### O-ISAC Relevance:
+- Sensing enables beamforming
+- Beamforming enables high-throughput VR
+- Mutual benefit demonstrated
+---
+
+## Image: _page_7_Figure_8.jpeg
+### Type: Multi-Panel Diagram (Refined Localization)
+
+### Panel (a) - Concept:
+- Coarse localization first (CAP)
+- ROI-focused SI reprojection
+- Finer spatial modulation in subregion
+- 16×16 Hadamard patterns in ROI
+
+### Panel (b) - XY Resolution Improvement:
+- Before: ±0.5 mm variation
+- After: ±0.006 mm (X), ±0.003 mm (Y)
+- >2-fold reduction in estimation variation
+- 0.5 mm displacement clearly resolved
+
+### Panel (c) - Depth Resolution Improvement:
+- Before: 4 cm resolution
+- After: ~10 mm resolution (4-fold improvement)
+- 5 mm back-and-forth displacement tested
+
+### Refined Performance:
+| Axis | Before | After | Improvement |
+|------|--------|-------|-------------|
+| X | ~1 mm | sub-mm | >2× |
+| Y | ~1 mm | sub-mm | >2× |
+| Z | 4 cm | ~1 cm | ~4× |
+
+### O-ISAC Relevance:
+- Iterative refinement possible
+- mm-level 3D precision achievable
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6 (1 journal header skipped)
+- Conceptual Diagrams: 2
+- Multi-Panel Charts: 3
+- System Diagrams: 1
+
+Key Technical Findings:
+1. Platform: VLC with structured illumination (DMD)
+2. Communication: 3.35 Gbps (baseline), >6 Gbps (beamformed)
+3. Modulation: DMT with bit-power loading
+4. Localization: <1 mm lateral, 4 cm depth (39 Hz)
+5. Beamforming Gain: 122-184% data rate increase
+6. Sensing: CAP (Compressive Angular Projection)
+7. Volume: 0.6m × 0.6m × 0.6m @ 2m distance
+8. Application: Cable-free VR (7680×3840 @ 120Hz)
+
+Key Innovations:
+- Spatio-temporal modulation for joint sensing/comm
+- CAP: 64× faster than dense sampling
+- Integrated waveform design (<5% comm penalty)
+- Sensing-assisted adaptive beamforming
+================================================================================

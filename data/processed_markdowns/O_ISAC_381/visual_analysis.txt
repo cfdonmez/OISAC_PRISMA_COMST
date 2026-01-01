@@ -1,0 +1,112 @@
+================================================================================
+O_ISAC_381 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Long-Distance, Real-Time LED Display-Camera Communication System Based on LED Point Clustering and Lightweight Image Processing
+Authors: Jingwen Li, Junbin Fang et al. (Jinan University)
+Journal: Photonics (2022) / MDPI
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_2.jpeg
+### Type: System Block Diagram
+
+### Title: Overall Block Diagram of Proposed Long-Distance Real-Time LED-DCC System
+
+### Visuals:
+- **Tx:** LED Display (Parking Sign) -> ABRC Encoding -> Modulated Light.
+- **Channel:** Visible Light Channel (Air).
+- **Rx:** Smartphone CMOS Camera -> Capture Video -> Fast Image Processing -> Decoding.
+- **Core Concept:** "Dual-function" of Display (Visual info) and Comms (Hidden data).
+
+### O-ISAC Relevance:
+- Represents the "Image Sensor" branch of Optical ISAC, where the receiver is a high-res imaging sensor.
+---
+
+## Image: _page_4_Figure_5.jpeg
+### Type: Algorithm Schematic
+
+### Title: LED-DCC Point Clustering Scheme
+
+### Visuals:
+- **Concept:** Instead of modulating 1 pixel (weak signal), modulate a cluster of N pixels (2x2, 3x3) with the same data.
+- **Benefit:** Increased Emitter Area -> Higher SNR at the Camera -> Longer Range.
+
+### O-ISAC Relevance:
+- Fundamental trade-off in OCC: Spatial Resolution (Display quality) vs Communication Range.
+---
+
+## Image: _page_6_Picture_3.jpeg
+### Type: Experimental Setup
+
+### Title: Schematic and Photo of Experimental Setup
+
+### Visuals:
+- **Tx:** 2.2-inch 16x16 LED Matrix.
+- **Rx:** Huawei P30 Smartphone (Kirin 980).
+- **Scenario:** Dim environment, distance tests up to 7m.
+
+### O-ISAC Relevance:
+- Practical implementation using COTS (Commercial Off-The-Shelf) devices.
+---
+
+## Image: _page_7_Figure_6.jpeg
+### Type: Performance Graph
+
+### Title: Data Transmission Performance (BER vs Distance)
+
+### Data:
+- **X-axis:** Distance (cm) [0 to 700].
+- **Y-axis:** BER (10^-3 to 0.5).
+- **Result:**
+  - Robust (BER < 3.8e-3) up to 175 cm.
+  - Limit (BER ~0.5) at 700 cm (7m).
+  - Rate: 30 bps (Low rate, ID-tagging application).
+
+### O-ISAC Relevance:
+- Benchmarks the range of OCC systems. 7m is considered "Long Distance" for this specific screen-to-camera topology.
+---
+
+## Image: _page_8_Figure_2.jpeg
+### Type: Comparative Analysis
+
+### Title: BER Performance of Different LED-DCC Systems
+
+### Data:
+- **Black Line (Previous):** Max range ~15 cm.
+- **Blue Line (2x2 Cluster):** Max range ~40 cm.
+- **Red Line (Proposed):** Max range ~175 cm (FEC limit).
+- **Improvement:** 12x improvement over baseline.
+
+### O-ISAC Relevance:
+- Validates the "Clustering" + "Lightweight Processing" approach.
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5
+- Block Diagrams/Schematics: 2
+- Setup Photos: 1
+- Performance Graphs (BER): 2
+
+Key Technical Findings:
+1. **System Type:** Optical Camera Communication (OCC) / Display-Camera Communication (DCC).
+2. **Technique:** LED Point Clustering (Spatial Diversity) to increase range.
+3. **Receiver:** Smartphone Camera (CMOS Image Sensor).
+4. **Performance:**
+   - Range: 1.75 m (Robust), 7 m (Limit).
+   - Rate: ~30 bps (Very low, for identification/tags).
+   - Latency: 13.26 ms (Real-time).
+
+Key Innovations:
+1. **Clustering:** Trading spatial resolution for range.
+2. **Lightweight Image Processing:** "Back-Forth" search to reduce image processing load on mobile CPU.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Range (Robust) | 1.75 m |
+| Range (Max) | 7.0 m |
+| Data Rate | 30 bps |
+| Rx Sensor | Smartphone Camera |
+| Display | 16x16 LED Matrix |
+================================================================================

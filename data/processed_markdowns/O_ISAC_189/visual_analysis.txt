@@ -1,0 +1,403 @@
+================================================================================
+O_ISAC_189 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Ultra-Large Dynamic Vibration Sensing with Fronthaul Analog Radio-over-Fiber Transmission
+Authors: Jingchuan Wang et al. (PolyU Hong Kong + Sun Yat-sen University)
+Journal: Photonics Research 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Picture_3.jpeg
+### Type: Conceptual Diagram (RAN Fronthaul)
+
+### Architecture:
+- CU/DU (Centralized/Distributed Unit)
+- Optical fiber fronthaul
+- AAU (Active Antenna Unit)
+- Wireless broadcast to UE
+
+### Key Concept:
+- 5G/6G fronthaul via fiber
+- Optical sensing on same fiber
+- ISACoF (Integrated Sensing and Comm over Fiber)
+
+### O-ISAC Relevance:
+- RAN as natural ISAC platform
+- Fiber serves dual purpose
+---
+
+## Image: _page_1_Figure_12.jpeg
+### Type: Frame Structure Diagram (LFM-OFDM)
+
+### OFDM Frame Components:
+- Frame head (sync + FOE)
+- Training sequence (channel est init)
+- LFM pilots (periodic, every 7 subcarriers)
+- DC carrier (unused, avoid RIN)
+- Data payload (QAM symbols)
+
+### LFM Pilot Properties:
+- Continuous across frames
+- 2 subcarrier slots each
+- Dual purpose: comm + sensing
+
+### O-ISAC Relevance:
+- Seamless integration of pilots for ISAC
+- No dedicated sensing probe needed
+---
+
+## Image: _page_2_Figure_3.jpeg
+### Type: DSP Flow Diagram (Transmitter + Receiver)
+
+### Panel (a) - Transmitter DSP:
+- QAM mapping
+- BPSK training symbol
+- IFFT
+- CP addition
+- LFM pilot insertion
+- Frame sync header
+- S-parameter calibration
+
+### Panel (b) - Receiver DSP:
+- Coarse FOE via LFM pilots
+- Frame sync
+- Fine FOE
+- LFM pilot extraction (de-chirp)
+- Channel estimation
+- OFDM demodulation
+- QAM demapping
+
+### Key Innovation:
+- LFM pilots assist both FOE and sensing
+- Joint optical-wireless channel processing
+
+### O-ISAC Relevance:
+- Dual-use DSP for sensing and communication
+---
+
+## Image: _page_3_Figure_3.jpeg
+### Type: Multi-Stage Diagram (De-chirp Process)
+
+### Stage 1:
+- Received OFDM with LFM pilots
+
+### Stage 2:
+- Inverse chirp multiplication
+- Lower sideband → discrete tones
+
+### Stage 3:
+- Bandpass filter isolates pilots
+- Upper sideband processing
+
+### Stage 4:
+- LFM pilots separated from payload
+- Pilots → FOE + Channel Est
+- Payload → standard DSP
+
+### O-ISAC Relevance:
+- LFM pilot extraction enables sensing
+---
+
+## Image: _page_3_Picture_11.jpeg
+### Type: Conceptual Diagram (Pulse Compression DAS)
+
+### Theory:
+- LFM/FMCW probe (not pulse)
+- Matched filter → compressed pulse
+- Resolution: ~3 dB bandwidth of autocorrelation
+- Bypasses nonlinearity limits (MI, SBS)
+
+### Key Equation:
+- r(t) = LFM * h_FUT (convolution)
+- s(t) = r(t) ⊗ LFM (correlation)
+- p(t) = sinc-like compressed pulse
+
+### O-ISAC Relevance:
+- Pulse compression enables long-haul DAS
+- Continuous LFM compatible with comm
+---
+
+## Image: _page_4_Figure_13.jpeg
+### Type: Conceptual Diagram (Multi-LFM Pilot Sensing)
+
+### Principle:
+- 128 LFM pilots at different frequencies
+- Matched filter per pilot → DAS trace per frequency
+- RBS spectrum reconstructed at each point
+- Strain → frequency shift of RBS spectrum
+
+### Key Relationship:
+- 1 µε ≈ 150 MHz shift @ 1550 nm
+- 1.8 GHz bandwidth → 6 µε max range
+
+### O-ISAC Relevance:
+- Large OFDM BW enables large dynamic range
+- Frequency demodulation for ultra-large strain
+---
+
+## Image: _page_4_Figure_15.jpeg
+### Type: Flow Diagram (DAS Demodulation Methods)
+
+### Frequency Demodulation:
+- Compare RBS spectra at different times
+- LMS algorithm for frequency shift
+- Large dynamic range
+- No fading issues
+
+### Phase Demodulation:
+- Compare differential phase
+- Fine sensitivity
+- Limited to [-π, π] range
+- Polarization/interference fading
+
+### Comparison Table:
+| Feature | Frequency | Phase |
+|---------|-----------|-------|
+| Fading | No | Yes |
+| Computation | High | Low |
+| Static | Yes | No |
+| Sensitivity | Coarse | Fine |
+| Dynamic | Large | Narrow |
+
+### O-ISAC Relevance:
+- Frequency demod enables 6 µε range
+---
+
+## Image: _page_5_Figure_9.jpeg
+### Type: Experimental Setup Diagram (MMW RoF ISACoF)
+
+### Transmitter:
+- NKT X15 laser (~100 Hz linewidth)
+- MZM + MSG (Keysight E8257D)
+- AWG (Keysight M8190A, 12 GSa/s)
+- IQ modulator (Fujitsu 7962EP)
+- PM-EDFA for carrier adjustment
+
+### Fiber Link:
+- 10 km FUT
+- 60 m PZT at end
+- VOA for power control
+
+### Communication Receiver:
+- PD (Finisar 40 GHz)
+- 64-element MMW phased array Tx
+- 4 m free-space channel
+- 16-element MMW phased array Rx
+- RTO (Keysight DSAZ594A, 80 GSa/s)
+
+### Sensing Receiver:
+- ICR (integrated coherent receiver)
+- 4 GSa/s oscilloscope
+- Matched filter processing
+
+### Key Parameters:
+| Parameter | Value |
+|-----------|-------|
+| OFDM BW | 1.8 GHz |
+| Subcarriers | 896 |
+| LFM pilots | 128 |
+| Pilot interval | 7 subcarriers |
+| Fiber | 10 km |
+| MMW band | 27.2-29 GHz |
+
+### O-ISAC Relevance:
+- Complete ISACoF + MMW RoF demo
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Dual-Panel Chart (Spectrum and PAPR)
+
+### Panel (a) - OFDM Spectrum:
+- 1.8 GHz bandwidth
+- 896 subcarriers
+- LFM pilots visible (periodic notches)
+- Inset: Zoom of LFM pilot slots
+
+### Panel (b) - PAPR vs Subcarriers:
+- Without pilots: ~10-11 dB
+- Quadratic phase: +1.5 dB increase
+- Random phase: +1.2 dB
+- GA optimized: +0.5 dB only
+
+### Key Finding:
+- GA reduces PAPR penalty from LFM pilots
+- 128 pilots @ STPR=6 dB
+
+### O-ISAC Relevance:
+- PAPR optimization for practical deployment
+---
+
+## Image: _page_6_Figure_6.jpeg
+### Type: Dual-Panel Chart (Communication Performance)
+
+### Panel (a) - BER vs CSPR:
+- 64-QAM OFDM
+- LP = 7 dBm, 10 km fiber
+- IF mode vs RF mode
+- RF mode better (no up-conversion loss)
+- FEC threshold @ CSPR < 13 dB
+- Optimal CSPR: ~10 dB
+
+### Panel (b) - BER vs Launch Power:
+- CSPR = 10 dB, STPR = 6 dB
+- Modulation: QPSK, 16QAM, 64QAM
+- PCS-16QAM, PCS-64QAM tested
+- LP up to 10 dBm acceptable
+- SBS limit above 10 dBm
+
+### O-ISAC Relevance:
+- Communication performance maintained
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: Dual-Panel Chart (STPR Trade-off)
+
+### Panel (a) - BER vs STPR:
+- STPR: 3-12 dB
+- Pilot intervals: 5, 7, 9, 21 subcarriers
+- Lower STPR → higher BER
+- Trade-off: sensing power vs comm quality
+
+### Panel (b) - BER vs LFM Bandwidth:
+- More LFM bandwidth → crosstalk with payload
+- Optimal: 2 MHz (50% of 2 subcarriers)
+- Higher BW → better resolution but worse BER
+
+### Optimal: STPR = 6 dB
+- Below FEC threshold
+- Good sensing performance
+
+### O-ISAC Relevance:
+- Design trade-off quantified
+---
+
+## Image: _page_7_Figure_8.jpeg
+### Type: Dual-Panel Chart (RBS Spectrum and Vibration)
+
+### Panel (a) - RBS Spectrum vs Distance:
+- 10 km fiber
+- 128 frequency traces (LFM pilots)
+- Color: RBS intensity
+- Unique spectrum per position
+
+### Panel (b) - Time-Distance Waterfall:
+- PZT at 9.84 km
+- 80 Hz, 1 Vpp vibration
+- Periodic frequency shift visible
+- 60 m PZT clearly resolved
+
+### O-ISAC Relevance:
+- Demonstrates working DAS with LFM pilots
+---
+
+## Image: _page_8_Figure_5.jpeg
+### Type: Dual-Panel Chart (Linearity and Resolution)
+
+### Panel (a) - Frequency Shift vs Voltage:
+- Linear response
+- 1.8 GHz OFDM BW → 6 µε max
+- Measured points + fitted line
+- High linearity confirmed
+
+### Panel (b) - RBS Spectrum Shift:
+- 2 MHz LFM sweep → 50 m resolution
+- Spectrum shift at vibration point
+- Frequency demodulation principle
+
+### O-ISAC Relevance:
+- 6 µε dynamic range achieved
+- 50 m spatial resolution
+---
+
+## Image: _page_8_Figure_9.jpeg
+### Type: Dual-Panel Chart (Chirp Vibration Demo)
+
+### Panel (a) - Chirp Recovery:
+- Sweep: 20 Hz → 100 Hz
+- Flat frequency response
+- Successfully recovered
+
+### Panel (b) - Phase vs Frequency Demod:
+- Same vibration, same point
+- 2 Vpp PZT drive
+- Phase demod: wrapping (failed)
+- Freq demod: clean recovery
+
+### O-ISAC Relevance:
+- Frequency demod handles large vibration
+- Phase demod limited by π wrapping
+---
+
+## Image: _page_9_Figure_3.jpeg
+### Type: Dual-Panel Chart (Sensitivity)
+
+### Panel (a) - PSD of 50 Hz Vibration:
+- 2 s measurement
+- Noise floor: ~-45 dB
+- Sensitivity: 0.81 nε/√Hz
+- 50 Hz peak clearly visible
+
+### Panel (b) - Sensitivity vs STPR:
+- X-axis: STPR (dB)
+- Y-axis: Strain sensitivity (nε/√Hz)
+- Lower STPR → better sensitivity
+- 4 pilot intervals compared
+- STPR = 6 dB: good trade-off
+
+### O-ISAC Relevance:
+- Sub-nε sensitivity achieved
+- STPR design parameter
+---
+
+## Image: _page_10_Picture_23.jpeg + _page_10_Picture_24.jpeg
+### Type: Hardware Photos (MMW Phased Arrays)
+
+### Transmitter:
+- 64-element phased array
+- Ka-band (27.2-29 GHz)
+- 12° beam width
+- 65 dB max gain
+- LNA + PA + variable ATT
+
+### Receiver:
+- 16-element phased array
+- Down-conversion to IF (2-3.8 GHz)
+- 4 groups to RTO
+
+### Free-Space Channel:
+- 4 m transmission
+- Reflective surface used
+
+### O-ISAC Relevance:
+- Practical MMW RoF demo
+- Phased array beamforming
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 16 (3 header/icon images skipped)
+- System Diagrams: 4
+- Flow Diagrams: 3
+- Conceptual Diagrams: 4
+- Multi-Panel Charts: 7
+- Hardware Photos: 2
+
+Key Technical Findings:
+1. Platform: MMW RoF (27.2-29 GHz) + Fiber DAS
+2. Communication: 64-QAM OFDM, SNR >20 dB
+3. OFDM Bandwidth: 1.8 GHz
+4. LFM Pilots: 128 (periodic, every 7 subcarriers)
+5. Dynamic Range: 6 µε (frequency demodulation)
+6. Sensitivity: 0.81 nε/√Hz
+7. Spatial Resolution: 50 m (2 MHz LFM sweep)
+8. Fiber Length: 10 km + 4 m wireless
+9. Optimal STPR: 6 dB (trade-off point)
+10. PAPR: +0.5 dB penalty with GA optimization
+
+Key Innovations:
+- LFM pilots for dual-use (FOE/CE + DAS)
+- Frequency demodulation for large dynamic range
+- Seamless ISACoF without dedicated sensing probe
+- GA-optimized initial phases for PAPR reduction
+- Compatible with MMW phased array fronthaul
+================================================================================

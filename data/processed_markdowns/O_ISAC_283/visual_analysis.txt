@@ -1,0 +1,418 @@
+================================================================================
+O_ISAC_283 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Photonics-assisted self-interference cancellation for in-band full-duplex
+       integrated sensing and communication transceiver
+Authors: Xiao Yu et al. (Southwest Jiaotong University)
+Journal: Optics Express 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_4_Figure_3.jpeg
+### Type: System Block Diagram
+
+### Title: Photonics-Assisted SIC for IBFD ISAC Transceiver
+
+### Components:
+- Transmitter:
+  - LD0s (3 laser diodes)
+  - WDM (wavelength multiplexer)
+  - MZM0 (positive quadrature bias)
+  - PD0 + PA
+  - Tx/Rx Antennas
+- Receiver (Comm + Radar):
+  - LNA + ADC
+  - MZM1/MZM2 (negative quadrature bias)
+  - VOA + VOTDL (amplitude/delay matching)
+  - WDM + PD1/PD2
+  - Mixer (de-chirp for radar)
+
+### Signal Flow:
+1. CE-LFM-OFDM ISAC → MZM0
+2. 3 optical signals: Tx, Comm CR, Radar CR
+3. Rx signal = SI + SOI → MZM1/2
+4. Counter-phase cancellation
+5. SOI recovery for comm/radar
+
+### O-ISAC Relevance:
+- Complete IBFD ISAC transceiver
+---
+
+## Image: _page_4_Figure_5.jpeg
+### Type: MZM Transfer Curve
+
+### Title: MZM Bias Point Selection
+
+### Quadrature Points:
+- Positive: +π/2 (Tx modulator)
+- Negative: -π/2 (Rx modulator)
+
+### Purpose:
+- Counter-biased MZMs for phase inversion
+- Enables optical domain SIC
+
+### O-ISAC Relevance:
+- Phase inversion mechanism
+---
+
+## Image: _page_8_Picture_4.jpeg
+### Type: Experimental Photo
+
+### Title: Wireless Communication Link Setup
+
+### Setup:
+- 1.3 m antenna separation
+- Horn antennas (Tx/Rx)
+- PA + LNA chain
+
+### O-ISAC Relevance:
+- Field experiment validation
+---
+
+## Image: _page_8_Figure_6.jpeg
+### Type: Quad-Panel ISAC Signal Analysis
+
+### Title: Received ISAC Signal Characteristics
+
+### Panel (a) - Temporal Waveform:
+- 40 µs pulse duration
+- Constant envelope
+
+### Panel (b) - Spectrum:
+- Center: 10 GHz
+- BW: ~2 GHz (9.25-10.75 GHz)
+
+### Panel (c) - Spectrogram:
+- LFM chirp visible
+- 1.5 GHz instantaneous BW
+
+### Panel (d) - Constellation:
+- 64-QAM demodulation
+- EVM: 5.54% (<8% threshold)
+
+### O-ISAC Relevance:
+- Waveform quality validation
+---
+
+## Image: _page_8_Figure_8.jpeg
+### Type: VNA SIC Measurement
+
+### Title: Wideband Self-Interference Cancellation
+
+### Results:
+- 30 dB cancellation depth
+- 2.2 GHz bandwidth
+- Center: 10 GHz
+
+### O-ISAC Relevance:
+- Wideband SIC performance
+---
+
+## Image: _page_9_Figure_5.jpeg
+### Type: Single-Tone SIC Spectrum
+
+### Title: Single-Tone SIC at 10 GHz
+
+### Results:
+| Condition | Power |
+|-----------|-------|
+| Without SIC | ~-20 dBm |
+| With SIC | ~-72 dBm |
+| Cancellation | 52.08 dB |
+
+### O-ISAC Relevance:
+- Narrowband SIC depth
+---
+
+## Image: _page_10_Figure_3.jpeg
+### Type: Multi-Panel Wideband SIC
+
+### Title: Wideband SIC Performance
+
+### Panel (a) - 1 GHz BW:
+- Cancellation: 35.29 dB
+
+### Panel (b) - 2 GHz BW:
+- Cancellation: 32.59 dB
+
+### Panels (c-f) - Spectrograms:
+- Before/after cancellation
+- SI residue visible but reduced
+
+### O-ISAC Relevance:
+- Bandwidth vs SIC trade-off
+---
+
+## Image: _page_11_Figure_3.jpeg
+### Type: Quad-Panel SOI Recovery
+
+### Title: Weak SOI Recovery Spectra
+
+### Scenarios:
+| Config | SI BW | SOI BW | Modulation |
+|--------|-------|--------|------------|
+| (a) | 2 GHz | 1 GHz | 16-QAM |
+| (b) | 2 GHz | 1 GHz | 64-QAM |
+| (c) | 1 GHz | 1 GHz | 16/64-QAM |
+| (d) | 2 GHz | 2 GHz | 16/64-QAM |
+
+### Key Finding:
+- SOI buried in SI without SIC
+- Successfully recovered after SIC
+
+### O-ISAC Relevance:
+- Weak signal recovery
+---
+
+## Image: _page_11_Figure_5.jpeg
+### Type: Quad-Panel Spectrogram + Constellation
+
+### Title: SOI Recovery - Scenario (a)
+
+### Before SIC:
+- EVM: 100.02% (unrecognizable)
+
+### After SIC:
+- EVM: 8.87%
+- Clear 16-QAM constellation
+
+### O-ISAC Relevance:
+- Communication recovery
+---
+
+## Image: _page_11_Figure_7.jpeg
+### Type: Quad-Panel Spectrogram + Constellation
+
+### Title: SOI Recovery - Scenario (b)
+
+### Before SIC:
+- EVM: 100.06%
+
+### After SIC:
+- EVM: 4.96%
+- Clear 64-QAM constellation
+
+### O-ISAC Relevance:
+- High-order modulation recovery
+---
+
+## Image: _page_11_Figure_9.jpeg
+### Type: Quad-Panel Spectrogram + Constellation
+
+### Title: SOI Recovery - Scenario (c)
+
+### Before SIC:
+- EVM: 100.03%
+
+### After SIC:
+- EVM: 4.36%
+
+### O-ISAC Relevance:
+- Mixed modulation scenario
+---
+
+## Image: _page_12_Figure_3.jpeg
+### Type: Quad-Panel Spectrogram + Constellation
+
+### Title: SOI Recovery - Scenario (d)
+
+### Before SIC:
+- EVM: 100.14%
+
+### After SIC:
+- EVM: 5.21%
+
+### O-ISAC Relevance:
+- Full bandwidth scenario
+---
+
+## Image: _page_12_Figure_6.jpeg
+### Type: Quad-Panel Wireless Link Results
+
+### Title: SOI Recovery in Wireless Link (16-QAM)
+
+### Results:
+- Before SIC: EVM = 100.3%
+- After SIC: EVM = 12.25%
+- Meets 3GPP 12.5% limit
+
+### O-ISAC Relevance:
+- Real wireless validation
+---
+
+## Image: _page_12_Figure_8.jpeg
+### Type: Quad-Panel Wireless Link Results
+
+### Title: SOI Recovery in Wireless Link (64-QAM)
+
+### Results:
+- Before SIC: EVM = 100.09%
+- After SIC: EVM = 6.79%
+- Meets 3GPP 8% limit
+
+### O-ISAC Relevance:
+- Higher order modulation
+---
+
+## Image: _page_13_Figure_4.jpeg
+### Type: Triple-Panel Experimental Photos
+
+### Title: Radar Target Setup
+
+### Panel (a):
+- 2 static reflectors at 1.3 m
+
+### Panel (b):
+- 2 reflectors at 10 cm spacing
+
+### Panel (c):
+- 3 moving targets on rotating platform
+- Angular speed: 4π rad/s
+
+### O-ISAC Relevance:
+- Ranging and ISAR targets
+---
+
+## Image: _page_13_Figure_6.jpeg
+### Type: Range Profile
+
+### Title: Radar Range Profile (10 cm Resolution)
+
+### Results:
+| Condition | Peaks |
+|-----------|-------|
+| Without SIC | 3 peaks (SI + 2 targets) |
+| With SIC | 2 peaks (targets only) |
+
+### Key Finding:
+- SI creates false target at 0.1 m
+- 10.16 cm separation measured
+- Matches theoretical 10 cm resolution
+
+### O-ISAC Relevance:
+- Range measurement accuracy
+---
+
+## Image: _page_14_Figure_3.jpeg
+### Type: Multi-Panel Range Profiles
+
+### Title: SIC Effect on Ranging at Various Distances
+
+### Panel (a) - No Target:
+- SI cancellation: 23.6 dB
+
+### Panels (b-f) - Target at 0.1-0.5 m:
+| Distance | Finding |
+|----------|---------|
+| 0.1 m | SI+target overlap, 8.43 dB improvement |
+| 0.2 m | SI effect reduced |
+| 0.3-0.5 m | SI negligible |
+
+### Key Finding:
+- Blind zone eliminated by SIC
+- Effective within 0.3 m
+
+### O-ISAC Relevance:
+- Near-range sensing enabled
+---
+
+## Image: _page_15_Figure_3.jpeg
+### Type: Quad-Panel ISAR Imaging
+
+### Title: ISAR Imaging Results
+
+### Panel (a) - Background:
+- No SI, no targets
+- Environment noise floor
+
+### Panel (b) - With SIC, No Target:
+- Background after SIC
+- Similar to (a)
+
+### Panel (c) - Without SIC:
+- Strong SI peak (blind area)
+- Targets partially visible
+
+### Panel (d) - With SIC:
+- SI suppressed
+- 3 targets clearly imaged
+
+### O-ISAC Relevance:
+- ISAR imaging enabled
+---
+
+## Image: _page_15_Figure_5.jpeg
+### Type: Combined ISAR Comparison
+
+### Title: Dynamic Range Improvement
+
+### Results:
+- Without SIC: Blind area present
+- With SIC: 23.84 dB improvement
+- All 3 targets visible
+
+### Theoretical Resolution:
+- Range: 10 cm
+- Cross-range: 2.22 cm
+
+### O-ISAC Relevance:
+- Imaging dynamic range
+---
+
+## Image: _page_15_Figure_8.jpeg
+### Type: PMI Trade-off Chart
+
+### Title: Communication vs Radar Performance Trade-off
+
+### X-axis: Phase Modulation Index (1-12)
+
+### Curves:
+- BER (communication): Decreases with PMI
+- SNR (radar): Decreases with PMI
+
+### Optimal PMI: 7
+- Balanced performance
+
+### O-ISAC Relevance:
+- ISAC parameter optimization
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 20 (all scientific)
+- System Diagrams: 2
+- Experimental Photos: 2
+- Spectral Analysis: 6
+- Spectrogram + Constellation: 6
+- Range/ISAR Imaging: 3
+- Trade-off Analysis: 1
+
+Key Technical Findings:
+1. Platform: Photonics-assisted IBFD ISAC
+2. Carrier: 10 GHz
+3. LFM BW: 1.5 GHz (sensing)
+4. CE-OFDM BW: 0.5 GHz (comm)
+5. Modulation: 16/64-QAM
+6. Pulse Duration: 40 µs
+7. PMI: 7 (optimal)
+
+Key Innovations:
+1. Counter-biased MZM SIC
+2. CE-LFM-OFDM waveform
+3. WDM-based optical domain cancellation
+4. VOTDL for precise delay matching
+5. Single transceiver for both functions
+6. Blind zone elimination
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Single-tone SIC | 52.08 dB |
+| 1 GHz SIC | 35.29 dB |
+| 2 GHz SIC | 32.59 dB |
+| Radar SIC (de-chirp) | 23.6 dB |
+| ISAR DR improvement | 23.84 dB |
+| Range resolution | 10 cm |
+| Cross-range resolution | 2.22 cm |
+| EVM (64-QAM) | 5.54% (<8%) |
+================================================================================

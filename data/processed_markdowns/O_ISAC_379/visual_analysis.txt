@@ -1,0 +1,126 @@
+================================================================================
+O_ISAC_379 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Demonstration of photonics-based flexible integration of sensing and communication with adaptive waveforms
+Authors: Boyu Dong, Junwen Zhang et al. (Fudan University)
+Journal: Optics Express (2022)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Picture_6.jpeg
+### Type: Conceptual Architecture
+
+### Title: Concept of Adaptive Photonics-based ISAC Networks
+
+### Visuals:
+- **Centralized Unit (CU):** Generates Adaptive OFDM + LFM signals.
+- **Infrastructure:** 10 km Fiber -> Remote Base Station (BS).
+- **Remote BS:** Photonic Up-conversion (O/E) -> W-band MMW -> Users.
+- **Adaptive Allocation:** Longer Range = Narrower Bandwidth (Lower Res). Short Range = Wider Bandwidth (High Res).
+
+### O-ISAC Relevance:
+- Illustrates the "Centralized" Fiber-Wireless application where waveform adaptation happens at the CO, not the BS.
+---
+
+## Image: _page_4_Figure_3.jpeg
+### Type: Signal Principle Schematic
+
+### Title: Concept of Adaptive Waveform (C-T Ratio)
+
+### Visuals:
+- **Figure (a) Short Range:** Wide LFM bandwidth (High Res), Narrow OFDM bandwidth.
+- **Figure (b) Long Range:** Narrow LFM bandwidth (Low Res), Wide OFDM bandwidth (High Rate).
+- **Key Concept:** Dynamic Frequency Division Multiplexing (FDM) between Sensing (LFM) and Comms (OFDM).
+
+### O-ISAC Relevance:
+- Defines the core innovation: "Flexible/Adaptive" bandwidth sharing.
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Experimental Setup
+
+### Title: Schematic of Experiment Setup and DSP
+
+### Visuals:
+- **Tx:** 60 GSa/s AWG -> I/Q Modulator.
+- **Link:** 10 km Fiber.
+- **Rx:** 100 GHz PD -> W-Band Horn Antenna -> 1m Air.
+- **Processing:** Envelope Detector (ED) used for down-conversion (Simple, no expensive LO needed at Rx).
+
+### O-ISAC Relevance:
+- High-end setup (96.5 GHz) demonstrating the feasibility of the architecture.
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: Spectral Analysis (Adaptive)
+
+### Title: Electrical Spectrum of Adaptive Signals
+
+### Visuals:
+- **Panels (d-h):** Showing spectral occupation as C-T (Communication-to-Total) bandwidth ratio changes from 0.8 to 0.2.
+- **Impact:** As Comms band shrinks (0.8 -> 0.2), Sensing band expands, improving resolution.
+
+### O-ISAC Relevance:
+- Visual proof of the "Flexible" waveform generation.
+---
+
+## Image: _page_11_Figure_4.jpeg
+### Type: Trade-off Performance
+
+### Title: EVM and Resolution vs C:T Ratio
+
+### Data:
+- **X-axis:** Bandwidth Ratio (Communication / Total).
+- **Blue (Rate):** Linearly increases from ~6 Gbps (Ratio 0.2) to ~41 Gbps (Ratio 1.0).
+- **Orange (Resolution):** Linearly degrades (distance error increases) as Sensing bandwidth shrinks.
+- **Key Result:** Adaptive Access Rate 5.98 - 41.48 Gbps; Sensing Resolution 1.53 - 6.94 cm.
+
+### O-ISAC Relevance:
+- Quantifies the trade-off. A classic "Pareto Frontier" for ISAC performance.
+---
+
+## Image: _page_12_Figure_8.jpeg
+### Type: Sensing Resolution Test
+
+### Title: Range Profile of Two Targets (8 cm separation)
+
+### Data:
+- **Setup:** Two targets separated by 8 cm.
+- **Waveform:** C-T Ratio 0.8 (Narrow sensing band).
+- **Result:** Targets clearly resolved (Distance match = 8.08 cm).
+
+### O-ISAC Relevance:
+- Even with high comms allocation (0.8), the resolution (6.94 cm limit) is sufficient to resolve 8 cm gaps.
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6
+- Concept/Principle: 2
+- Setup: 1
+- Spectra (Adaptive): 1
+- Trade-off Graphs: 1
+- Sensing Profiles: 1
+
+Key Technical Findings:
+1. **Waveform:** Adaptive FDM (OFDM + LFM).
+2. **Frequency:** 96.5 GHz (W-band).
+3. **Flexibility:** C-T Bandwidth Ratio tuneable from 0.2 to 0.8 (or 1.0).
+4. **Performance Bounds:**
+   - **Max Rate:** 41.48 Gbps (Full OFDM).
+   - **Max Resolution:** 1.53 cm (Full LFM).
+5. **Architecture:** Envelope Detector (ED) based receiver reduces cost/complexity (no mixer/LO needed at Rx).
+
+Key Innovations:
+1. **Adaptive ISAC:** Dynamic reconfiguration of the Comms/Sensing boundary based on channel need.
+2. **Envelope Detection Rx:** Simplified mmW down-conversion.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Frequency | 96.5 GHz |
+| Rate Range | 6 - 41.5 Gbps |
+| Res Range | 1.5 - 7.0 cm |
+| Fiber | 10 km |
+| Wireless | 1 m |
+================================================================================

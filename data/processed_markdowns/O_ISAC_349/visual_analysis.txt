@@ -1,0 +1,137 @@
+================================================================================
+O_ISAC_349 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Radar-Centric Photonic Terahertz Integrated Sensing and Communication System Based on LFM-PSK Waveform
+Authors: Zhidong Lyu, Lu Zhang (Zhejiang University / KTH Royal Institute of Technology)
+Journal: IEEE Trans. Microwave Theory and Techniques (2023)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_4.jpeg
+### Type: Waveform Concept Diagram
+
+### Title: Principle of LFM-BPSK Waveform
+
+### Visuals:
+- **Time-Frequency Plot:**
+  - Base: Linear Frequency Modulation (Chirp Slope).
+  - Modulation: Phase Shift Keying (PSK) embedded in the phase.
+  - Symbols: '0' (0 phase), '1' (pi phase).
+- **Time Slots:** T_s = 1/R_b.
+
+### O-ISAC Relevance:
+- "Radar-Centric" waveform design. Primary structure is Radar (LFM), comms is embedded hidden in phase.
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: Photonic LFM-BPSK THz-ISAC System Schematic
+
+### Components:
+- **Optical Source:** ECL (1552 nm) -> PM (Comb Generator) -> WSS (Filter).
+- **Transmitter:**
+  - Lower Branch: EDFA -> IQ-MOD (Driven by AWG LFM-BPSK).
+  - Upper Branch: LO (Local Oscillator).
+  - Photomixing: Coupler -> UTC-PD (Uni-Traveling Carrier Photodiode).
+- **Receiver:**
+  - THz Antenna -> THz LNA -> Schottky Mixer -> DSO.
+- **Processing:** Digital Down Conversion -> Radar/Comms DSP.
+
+### Frequency Plan:
+- Optical LO separation: 330 GHz.
+- Output Frequency: 330 GHz Band (THz).
+
+### O-ISAC Relevance:
+- State-of-the-art Photonics-based THz ISAC prototype.
+---
+
+## Image: _page_4_Figure_6.jpeg
+### Type: Signal Spectrum / Spectrogram
+
+### Title: Electrical Spectrum & STFT
+
+### Panels:
+- (a,b) Pure LFM: Clean linear chirp (15-27 GHz IF).
+- (c,d) LFM-BPSK: Chirp structure preserved, but noise floor raised due to BPSK modulation spectrum spreading.
+
+### O-ISAC Relevance:
+- Spectral impact of embedding data into Radar waveforms.
+---
+
+## Image: _page_4_Figure_10.jpeg
+### Type: Radar Range Profile (Autocorrelation)
+
+### Title: Range Profile vs Data Rate
+
+### Visuals:
+- Main lobe width (Resolution) unchanged.
+- Side lobes *decrease* as Data Rate increases (0 -> 6 Gbit/s).
+- **Counter-intuitive Finding:** Higher data rate = More randomness = Lower Sidelobes (Better PSLR).
+
+### O-ISAC Relevance:
+- Evidence that Comms data acts as a "scrambling" sequence improving Radar PSLR.
+---
+
+## Image: _page_5_Figure_9.jpeg
+### Type: Experimental Radar Result
+
+### Title: Two-Target Resolution Test
+
+### Scenario:
+- Two metal plates separated by ~2 cm.
+
+### Result:
+- Two distinct peaks observed in Range Profile.
+- Measured separation: 2.1 cm.
+- Resolution Limit: ~1.3-1.5 cm.
+
+### O-ISAC Relevance:
+- Validation of centimeter-level sensing resolution at 330 GHz.
+---
+
+## Image: _page_6_Figure_7.jpeg
+### Type: Performance Chart (BER)
+
+### Title: BER vs Data Rate
+
+### Data:
+- 2, 4, 6 Gbit/s tested.
+- All below HD-FEC (3.8e-3).
+- 6 Gbit/s approaches the limit (due to SNR).
+
+### O-ISAC Relevance:
+- Comms capacity verification (6 Gbps).
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6
+- Waveform Concept: 1
+- System Schematic: 1
+- Spectrum/STFT: 1
+- Radar Profiles: 2
+- BER Charts: 1
+
+Key Technical Findings:
+1. **Radar-Centric Waveform:** LFM-PSK preserves LFM envelope (good for PA efficiency) but carries data.
+2. **Sensing Improvement:** Embeddding random BPSK data improves Peak Sidelobe Ratio (PSLR) by ~6 dB (from 14.5 to 20.9 dB).
+3. **Performance Specs:**
+   - Carrier: 330 GHz (spans 324-336 GHz, BW = 12 GHz).
+   - Range Resolution: 1.3 cm (Theoretical), 1.5 cm (Experimental).
+   - Data Rate: 6 Gbit/s (BPSK).
+   - PSLR: ~21 dB.
+
+Key Innovations:
+1. Photonics-based generation of high-frequency (330 GHz) wideband (12 GHz) LFM-PSK.
+2. Demonstrating that Comms data can *enhance* Radar performance (PSLR) rather than degrade it (as in ASK).
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Freq | 330 GHz |
+| Bandwidth| 12 GHz |
+| Resolution | 1.3 cm |
+| Data Rate | 6 Gbps |
+| PSLR | 20.9 dB |
+================================================================================

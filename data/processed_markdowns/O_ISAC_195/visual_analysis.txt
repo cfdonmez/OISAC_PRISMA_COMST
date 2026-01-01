@@ -1,0 +1,252 @@
+================================================================================
+O_ISAC_195 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Sensing and Communication System Based on a Photonic Integrated Broadband Multi-Beamformer
+Authors: Ruixuan Wang et al. (AIRCAS, Chinese Academy of Sciences)
+Journal: Optics Express 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_4.jpeg
+### Type: Multi-Panel System Diagram
+
+### Panel (a) - Application Scenarios:
+- Earth observation satellite
+- Satellite communication
+- UAV surveillance
+- Urban low-altitude monitoring
+- Multiple radar beams for sensing
+- Multiple communication beams for data
+
+### Panel (b) - ISAC System Framework:
+- TSG (Transmission Signal Generator): Multiple
+- RSP (Receiving Signal Processor): Multiple
+- Shared multi-beamformer
+- Shared antenna array
+- SDM (Space Division Multiplexing)
+
+### Panel (c) - Photonic Multi-Beamformer:
+- SOI platform
+- OTTD-induced Blass matrix
+- 4 input interfaces (antenna channels)
+- 5 output interfaces (5 beam directions)
+- MZMs at quadrature point
+- TCs (Tunable Couplers) in nodes
+- Multi-wavelength laser array
+
+### Panel (d) - Node Architecture:
+- TC (Tunable Coupler)
+- OC (Optical Combiner)
+- DL (Delay Line)
+- Crossings for routing
+
+### O-ISAC Relevance:
+- Complete ISAC architecture with integrated photonic beamformer
+---
+
+## Image: _page_5_Picture_5.jpeg
+### Type: Experimental Setup Photo
+
+### Setup Components:
+- Mechanical arm for angle rotation
+- Horn antenna (transmitter)
+- 1×2 microstrip array (receiver)
+- NKT Photonics laser sources
+- EDFAs
+- Multi-channel sources for control
+
+### Test Environment:
+- Far-field pattern measurement
+- -70° to +70° scanning range
+- 5° step increments
+- Center frequency: 14 GHz
+- Element spacing: 0.65λ (1.39 cm)
+
+### O-ISAC Relevance:
+- Beam characterization setup
+---
+
+## Image: _page_5_Figure_7.jpeg
+### Type: Multi-Line Chart (5-Beam Patterns)
+
+### Axes:
+- X-axis: Angle (degrees): -80 to +80
+- Y-axis: Normalized radiation pattern (dB)
+
+### 5 Measured Beams:
+| Beam | Measured Angle | Frequency |
+|------|----------------|-----------|
+| 1 | +20° | 14 GHz |
+| 2 | +30° | 14 GHz |
+| 3 | 0° | 14 GHz |
+| 4 | -35° | 14 GHz |
+| 5 | -15° | 14 GHz |
+
+### Comparison:
+- Solid lines: Measured
+- Dotted lines: Theoretical
+- Close agreement
+- Minor deviations from cable length differences
+
+### O-ISAC Relevance:
+- Validates multi-beamforming capability
+- 5 simultaneous squint-free beams
+---
+
+## Image: _page_7_Figure_3.jpeg
+### Type: Multi-Panel Chart (Dual-Beam Analysis)
+
+### Panel (a) - Measured Dual Beams:
+- Beam 3: -5° @ 12.5 GHz (radar)
+- Beam 4: -30° @ 14 GHz (communication)
+- Intensity difference: 1.48 dB
+- Crosstalk @ -5°: 1.84 dB
+- Crosstalk @ -30°: 7.36 dB
+
+### Panel (b) - Simulated 2-Channel Pattern:
+- Based on antenna test measurements
+- Matches experimental results
+- Beam broadening at 12.5 GHz visible
+
+### Panel (c) - Simulated 4-Channel Pattern:
+- Crosstalk suppression >10 dB
+- Narrower beamwidth
+- Sidelobe-dominated crosstalk
+
+### Key Finding:
+- More channels → better isolation
+- Amplitude weighting reduces sidelobes
+
+### O-ISAC Relevance:
+- Quantifies inter-beam crosstalk
+- Design guidance for ISAC
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Experimental Setup Diagram (ISAC Verification)
+
+### Panel (a) - System Components:
+
+**Transmitter:**
+- AWG (Keysight 8910A, dual channel)
+- Communication: 16-QAM @ 3.5 GHz IF, 600 MBaud
+- Radar: LFM @ 3.5 GHz IF, 1 GHz BW
+- IF BPFs (3-4.25 GHz)
+- EMixers for upconversion
+- MCSG (LO: 10.5 GHz, 9 GHz)
+- RF BPFs (11.9-15.1 GHz)
+
+**Multi-Beamforming:**
+- Photonic integrated beamformer
+- RF input via baluns
+- Dual-beam operation
+- EDFAs for optical amplification
+
+**Receiver:**
+- Radar: De-chirp + LPF + OSC (100 MSa/s)
+- Comm: OSC (40 GSa/s) + DSP
+
+### Panel (b) - Radar Scenario:
+- 2 TCRs on rotating platform
+- 60°/s rotation speed
+- 4.5 m distance
+- Range separation: 56 cm
+- Cross-range separation: 50 cm
+
+### Key Parameters:
+| Signal | Carrier | Bandwidth | Rate |
+|--------|---------|-----------|------|
+| LFM (Radar) | 12.5 GHz | 1 GHz | N/A |
+| 16-QAM (Comm) | 14 GHz | 600 MHz | 2.4 Gbps |
+
+### O-ISAC Relevance:
+- Complete ISAC experimental demo
+---
+
+## Image: _page_9_Figure_4.jpeg
+### Type: Multi-Panel Chart (Transmitted Signals)
+
+### Panel (a) - Spectra:
+- LFM: 12-13 GHz (red)
+- 16-QAM: 13.5-14.5 GHz (blue)
+- No spectral overlap
+- Frequency separation
+
+### Panel (b) - LFM Time-Frequency:
+- Linear chirp visible
+- 1 GHz bandwidth
+- 100 µs period
+- Linearity: 0.0091 (pre-distortion)
+
+### Panel (c) - 16-QAM Constellation:
+- Clear 16-QAM constellation
+- EVM: 3.29% (transmitted)
+- Clean modulation
+
+### Transmission Powers:
+- 16-QAM: -7.78 dBm
+- LFM: 20.11 dBm (1.38 dB flatness)
+
+### O-ISAC Relevance:
+- Shows ISAC signal generation
+---
+
+## Image: _page_10_Figure_3.jpeg
+### Type: Multi-Panel Chart (ISAC Results)
+
+### Panel (a) - Received Spectra:
+- Beam @ -5° (orange): Radar dominant
+- Beam @ -30° (blue): Comm dominant
+- Clear beam separation
+
+### Power Measurements:
+| Signal | Beam@-5° | Beam@-30° | Difference |
+|--------|----------|-----------|------------|
+| LFM | -39.44 dBm | -46.30 dBm | 6.86 dB |
+| 16-QAM | -44.61 dBm | -42.78 dBm | 1.83 dB |
+
+### Panel (b) - Radar Imaging Result:
+- 2 TCRs clearly resolved
+- Range separation: 54.3 cm (actual: 56 cm)
+- Cross-range separation: 47.0 cm (actual: 50 cm)
+- Range resolution: 14.9 cm
+- Cross-range resolution: 8.0 cm
+- PSLR: 11.61 dB (range), 13.23 dB (cross-range)
+
+### Panel (c) - Received 16-QAM Constellation:
+- Clear constellation points
+- BER: 8.15×10⁻⁷
+- EVM: 6.74%
+
+### O-ISAC Relevance:
+- Simultaneous imaging + communication
+- Validates photonic ISAC concept
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 7 (0 skipped)
+- System Diagrams: 3
+- Multi-Panel Charts: 3
+- Hardware Photos: 1
+
+Key Technical Findings:
+1. Platform: Photonic Integrated Multi-Beamformer (SOI)
+2. Architecture: OTTD-induced Blass Matrix
+3. Beams: 5 simultaneous squint-free beams
+4. Frequency Band: Ku-band (12-15 GHz)
+5. Radar Bandwidth: 1 GHz LFM
+6. Range Resolution: 14.9 cm
+7. Cross-range Resolution: 8.0 cm
+8. Communication: 2.4 Gbps (16-QAM, 600 MBaud)
+9. BER: 8.15×10⁻⁷
+10. Inter-beam Crosstalk: 1.84-7.36 dB (2 channels)
+11. Multi-wavelength Laser: Prevents channel interference
+
+Key Innovations:
+- First photonic integrated multi-beamformer for ISAC
+- OTTD-based Blass matrix for broadband squint-free beams
+- Space division multiplexing for simultaneous radar + comm
+- SOI platform for integration
+- 4-input, 5-output beamforming network
+================================================================================

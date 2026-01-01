@@ -1,0 +1,148 @@
+================================================================================
+O_ISAC_252 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: An Adaptive Control System for Satellite-Ground Laser Communication Based on ISAC
+Authors: Mingyuan Wu et al. (BUPT, University of Quebec)
+Conference: OECC/PSC 2025
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Figure_6.jpeg
+### Type: System Architecture Diagram
+
+### Title: ISAC-Based Satellite-Ground Adaptive Control System
+
+### Components:
+- Satellite (LEO)
+- Ground Station
+- Wavefront Sensor
+- Atmospheric Turbulence Region
+
+### Processing Flow:
+1. Communication beam captures distortion
+2. 3D beam distortion map generated
+3. TII-DGCNN algorithm for turbulence ID
+4. 9-class turbulence classification
+5. Adaptive control (power + modulation)
+6. FSO/RF feedback to transmitter
+
+### O-ISAC Relevance:
+- FSO communication + turbulence sensing
+---
+
+## Image: _page_1_Figure_29.jpeg
+### Type: BER Curves
+
+### Title: BER vs SNR for Different Modulation Formats (Level VIII Turbulence)
+
+### Modulation Formats:
+- BPSK
+- QPSK
+- 16QAM
+- 32QAM
+- 64QAM
+
+### Key Finding:
+- Only BPSK meets BER < 0.1% @ SNR > 13.75 dB
+- Higher modulations fail under strong turbulence
+
+### O-ISAC Relevance:
+- Modulation selection based on sensing
+---
+
+## Image: _page_1_Figure_30.jpeg
+### Type: Curve (SNR vs Power)
+
+### Title: SNR vs Output Power (Level VIII Turbulence)
+
+### Key Finding:
+- 5W output → SNR = 13.75 dB
+- Dynamic power adjustment needed
+
+### O-ISAC Relevance:
+- Power control strategy
+---
+
+## Image: _page_1_Figure_31.jpeg
+### Type: Equation Reference
+### Note: Shows SNR formula with turbulence factor
+### Formula: Includes Cn², L^(11/6), λ^(-7/6)
+---
+
+## Image: _page_2_Figure_6.jpeg
+### Type: Multi-Panel Analysis (Confusion Matrix + Performance)
+
+### Panel (a) - PointNet Result:
+- Failed to classify small samples
+- Poor feature extraction
+
+### Panel (b) - TII-DGCNN Result:
+- 9-class confusion matrix
+- Most labels correctly identified
+- Adjacent label misclassification expected
+- Accuracy: 93.33%
+
+### Panel (c) - BER Comparison:
+- Traditional vs Proposed system
+- Under strong turbulence
+- Proposed: Lower BER
+
+### Panel (d) - Power Comparison:
+- Traditional: Higher consumption
+- Proposed: 20.75% reduction
+
+### Key Findings:
+- BER reduced by 9.64%
+- Power reduced by 20.75%
+- 93.33% turbulence classification accuracy
+
+### O-ISAC Relevance:
+- DGCNN-based adaptive control validated
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (all scientific)
+- System Diagrams: 1
+- BER Analysis: 2
+- Confusion Matrix: 1
+- Power Analysis: 1
+
+Key Technical Findings:
+1. Platform: Satellite-Ground FSO ISAC
+2. Wavelength: 1550 nm
+3. Beam Diameter: 1 m
+4. Distance: 495 km vertical
+5. Turbulence Depth: 15 km
+6. Max Power: 5 W
+
+Key Innovations:
+1. TII-DGCNN for turbulence sensing
+2. 3D beam distortion as input
+3. 9-class turbulence classification
+4. Fine-grained adaptive control
+5. Dual-layer: Power + Modulation
+
+Turbulence Classification:
+- Level I-IX based on Cn²
+- From 10^-18 to >3×10^-12 m^(-2/3)
+- Finer than traditional 3-class
+
+Adaptive Control Strategy:
+| Level | Modulation | Power |
+|-------|------------|-------|
+| I | 64QAM | 5W |
+| II | 32QAM | 4.5W |
+| III | 32QAM | 5W |
+| IV | 16QAM | 3.2W |
+| V | 16QAM | 3.75W |
+| VI | QPSK | 2W |
+| VII | QPSK | 3.25W |
+| VIII | BPSK | 5W |
+| IX | Link switch | - |
+
+Performance Highlights:
+- Classification: 93.33% accuracy
+- BER reduction: 9.64%
+- Power reduction: 20.75%
+================================================================================
