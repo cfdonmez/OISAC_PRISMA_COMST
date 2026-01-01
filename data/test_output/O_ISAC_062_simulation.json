@@ -1,0 +1,130 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Focused on 6-DoF SLAP (Simultaneous Location And Pose) using VLC. Algorithm design (SCA) and Fundamental Limits (CRLB). Detailed theoretical analysis and simulation."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: System model (VLC-SLAP). Fig 2: PD array geometry. Fig 5: Riemannian manifold optimization. Fig 12 (in text, likely Fig 2 in Sec V): RMSE vs NLOS/SNR. Simulation results confirm robust 6-DoF estimation.",
+        "step_1_concept_analysis": "Proposes SCA-based algorithm to jointly estimate UD location, pose (yaw, pitch, roll), and scattering channel. Uses OFDM. Addresses 'diffuse scattering' and 'random fading' which usually degrade VLP. Key innovation: 'VLC-enabled anti-disturbance' (Channel Equalization).",
+        "step_2_benchmark_verification": "Compares against RSS-based [25], TOA-based [19], and RSS-based [11] baselines. Shows proposed method is robust to NLOS (Fig 9/12) while baselines diverge.",
+        "step_3_strategic_critique": "Strong theoretical paper (TSP). Rigorous derivation of CRLB. Simulation validates theory. High relevance for 'indoor_vlc' and 'localization' categories."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_062",
+            "title": "6-DoF Location-and-Pose Estimation Toward Integrated Visible Light Communication and Sensing: Algorithm Design and Performance Limits",
+            "authors": "Bingpeng Zhou, Xin Wang, Yuan Shen, Pingzhi Fan",
+            "year": 2024,
+            "venue": "IEEE Transactions on Signal Processing",
+            "document_type": "journal_paper",
+            "doi": "10.1109/TSP.2024.3383285"
+        },
+        "classification": {
+            "oisac_medium_class": "visible_light",
+            "carrier_band": "optical",
+            "operational_environment": "indoor",
+            "link_topology": "multipoint_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "indoor_positioning",
+                "industrial_automation",
+                "robotics"
+            ],
+            "scenario_description": "Indoor room (20x20x3m) with LED array on ceiling and 6-DoF User Device (UD) on floor."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation",
+                "theoretical_analysis"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "none"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "SCA-based algorithm for joint 6-DoF SLAP and channel estimation. Closed-form CRLB derivation. Robustness to NLOS scattering.",
+            "gap_addressed": "Impact of diffuse scattering and random fading on VLP accuracy; lack of 6-DoF solution handling these impairments.",
+            "performance_enablers": [
+                "successive_convex_approximation",
+                "ofdm_waveform",
+                "joint_channel_sensing_estimation",
+                "multiple_photodiodes"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_VLC_SLAP_6DOF",
+                "scenario_label": "Indoor 6-DoF VLC Positioning"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "ofdm",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "9 LEDs (3x3 array). 2.2 W power each due to illumination."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode_array",
+                "notes": "4 PDs (1 center + 3 circular). 120 deg FOV."
+            },
+            "integration": {
+                "hardware_sharing_mode": "unified_waveform",
+                "duplexing_mode": "no_duplex",
+                "notes": "OFDM pilots used for both Channel Estimation (Comm enabler) and Sensing."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "ofdm",
+                "isac_waveform_relationship": "unified_waveform",
+                "notes": "N_c=8 pilot subcarriers. K=2 symbols."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 3.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "20x20x3m room. Diffuse scattering channel model (LOS + NLOS)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "notes": "Comm performance implied by channel estimation quality (MSE), but not typically reported as BER/Rate in Section V."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "localization",
+                    "orientation_estimation"
+                ],
+                "sensing_range_m": 20.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.018,
+                "notes": "Location RMSE approx 1.8cm (with 20 LEDs) or ~3cm (default SNR). Pose accuracy ~10^-3 rad."
+            },
+            "tradeoff": {
+                "coupling_mode": "tightly_coupled",
+                "tradeoff_type": [
+                    "complexity_vs_performance"
+                ],
+                "tradeoff_representation": "text_description",
+                "notes": "Proposed method has higher complexity (cubic in K_source) than baselines but offers robustness to NLOS."
+            }
+        }
+    ]
+}

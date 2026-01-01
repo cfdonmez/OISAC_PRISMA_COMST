@@ -1,0 +1,125 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. Integrated Optical Sensing and Communication (IOSAC) using a Silicon Nitride (Si3N4) Micro-Ring Resonator for simultaneous Refractive Index Sensing (Salinity) and 1.25 Gbps OOK Communication over 20 km Fiber."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: Setup with ASE, Modulator, 10km+10km fiber, Si3N4 Chip, OSA, BERT. Fig 2: BER vs Received Power and Resonance Shift vs Salinity.",
+        "step_1_concept_analysis": "System: Fiber-Sensing (IOSAC). Sensing: Refractive Index (Salinity) via Resonance Shift. Comm: OOK (IM-DD). Method: Si3N4 Micro-Ring Resonator acts as both a passive filter/sensor and transmission element.",
+        "step_2_benchmark_verification": "Comm: 1.25 Gbps OOK. Sensing: 294 nm/RIU sensitivity. Fiber: 20 km total.",
+        "step_3_strategic_critique": "Focuses on ocean monitoring (salinity) integrating sensing into submarine-like fiber links. Si3N4 ring provides high Q and sensitivity."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_045",
+            "title": "Simultaneous Sensing and Communication Over 20 km Fiber Based on Si3N4 Micro-Ring",
+            "authors": "Ving Qiu, Xiangpeng Ou, Ming Luo, Chao Yang, Zhixue He, Xi Xiao, Yan Yang, Jin Tao",
+            "year": 2024,
+            "venue": "Unknown (Copyright 2024 The Authors - Likely OFC/CLEO)",
+            "document_type": "conference_paper",
+            "doi": "unknown"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "c_band",
+            "operational_environment": "underwater_submarine",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "environmental_monitoring",
+                "infrastructure_health_monitoring"
+            ],
+            "scenario_description": "Submarine cable monitoring (salinity) using micro-ring resonator integrated into optical fiber communication link."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "experimental_setup_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Si3N4 Micro-Ring Resonator used for simultaneous biochemical sensing (Salinity/RI) and data transmission over 20km fiber.",
+            "gap_addressed": "Difficulty of biochemical sensing (e.g. salinity) using standard all-fiber links.",
+            "performance_enablers": [
+                "integrated_photonics",
+                "wavelength_division_multiplexing"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_Si3N4_RING_IOSAC",
+                "scenario_label": "Si3N4 Ring Salinity-Comm Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "ase_source",
+                "tx_modulation_type": "ook",
+                "wavelength_nm": 1597.9,
+                "optical_bandwidth_ghz": 1.25,
+                "notes": "ASE filtered to 5nm, then modulated. Resonance at ~1597-1599nm."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode",
+                "notes": "PD for BER, OSA for Sensing (Spectrum Analysis)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_infrastructure",
+                "duplexing_mode": "simultaneous_shared_spectrum",
+                "notes": "Signal passes through the sensor chip. Spectrum shift indicates sensing, transmission carries data."
+            },
+            "waveform": {
+                "comm_waveform_family": "ook",
+                "comm_modulation_order": 2,
+                "sensing_waveform_family": "continuous_wave",
+                "isac_waveform_relationship": "shared_resource",
+                "notes": "Modulated light is used to probe the resonance shift."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 20.0,
+                "attenuation_db_per_km": 0.2,
+                "backscatter_sensing_type": "none",
+                "notes": "20 km SMF (10km pre-chip, 10km post-chip). Sensing happens at the discrete chip."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 1.25,
+                "ber": 0.00001,
+                "notes": "1.25 Gbps OOK. BER degrades from 10^-5.6 (DI water) to 10^-4.1 (Salt water) at -10dBm."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "material_sensing"
+                ],
+                "sensing_range_m": 0.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "Refractive Index Sensing Sensitivity: 294 nm/RIU. Resonance shift ~1.9 nm for 3.5% NaCl."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "power_penalty"
+                ],
+                "tradeoff_representation": "text_description",
+                "notes": "Presence of analyte (Salt Water) causes ~2 dB power penalty / BER degradation."
+            }
+        }
+    ]
+}

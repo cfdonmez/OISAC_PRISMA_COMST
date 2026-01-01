@@ -1,0 +1,128 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Simulation/Analytic Paper. Focuses on Adaptive Resource Allocation for ADO-OFDM in OW-ISAC."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: ADO-OFDM OW-ISAC system model. Fig 2: Power allocation curves. Fig 3/4: Pareto Fronts (Trade-off curves) between Spectral Efficiency (Comm) and Fisher Information/Sensing Precision.",
+        "step_1_concept_analysis": "System: OW-ISAC (LiDAR + OWC). Waveform: ADO-OFDM (Asymmetrically Clipped DC Biased Optical OFDM). Hybrid of DCO-OFDM and ACO-OFDM. Problem: Joint Resource Allocation (DCO/ACO Power Split + Subcarrier Power Allocation).",
+        "step_2_benchmark_verification": "Sensing Precision (CRLB based) vs Comm Spectral Efficiency trade-off. Shows DCO-OFDM dominance in Comm-centric and ACO-OFDM utility in Sensing-centric regimes (at low frequencies).",
+        "step_3_strategic_critique": "ADO-OFDM allows flexibility. Optimization problem decomposed into DCO-ACO split and Subcarrier allocation. Weighted-sum objective balances C&S."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_052",
+            "title": "Adaptive Resource Allocation in ADO-OFDM for Optical Wireless Integrated Sensing and Communication",
+            "authors": "Yunfeng Wen, Fang Yang, Jian Song, Zhu Han",
+            "year": 2024,
+            "venue": "IEEE Internet of Things Journal (cited as J. Lightw. Technol. in some refs but title says IoTJ, let's stick to paper metadata or generic journal if unclear. Text says 'IEEE Internet Things J.' in ref [1] for survey, but this paper's header says 2024. Actually it's likely a preprint or recent pub. Let's use 'IEEE Internet of Things Journal' if implied or 'IEEE Transactions on Wireless Communications'? Header says 'Department of Electronic Engineering, Tsinghua...'. Actually ref [17] is ArXiv 2024. Let's check venue line... Header doesn't specify venue explicitly as published. Wait, it looks like a conference or journal draft. Let's assume Journal based on format. Ah, Ref [2] cites 'Wen... IEEE Internet Things Mag. 2024'. This paper itself is 'Index Terms...' style. Let's mark as 'Journal Paper'.)",
+            "document_type": "journal_paper",
+            "doi": "N/A"
+        },
+        "classification": {
+            "oisac_medium_class": "free_space_optics",
+            "carrier_band": "optical",
+            "operational_environment": "indoor_or_short_range",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "lidar",
+                "vehicular_networks",
+                "6g"
+            ],
+            "scenario_description": "OW-ISAC transceiver on a LiDAR estimating distance to OWC receiver while communicating."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation",
+                "optimization_problem"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "algorithm_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Adaptive Resource Allocation (Power & Subcarriers) for ADO-OFDM based OW-ISAC. Decomposes non-convex joint optimization into DCO-ACO power distribution and convex subcarrier allocation sub-problems.",
+            "gap_addressed": "Lack of adaptive resource allocation schemes for ADO-OFDM in OW-ISAC to balance communication spectral efficiency and sensing Fisher information.",
+            "performance_enablers": [
+                "resource_allocation_isac",
+                "waveform_optimization"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_ADO_OFDM_ISAC",
+                "scenario_label": "ADO-OFDM Resource Allocation"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "ado_ofdm",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.2048,
+                "notes": "ADO-OFDM: DCO-OFDM (Even subcarriers) + ACO-OFDM (Odd subcarriers). N=1024."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode",
+                "notes": "Intensity Modulation / Direct Detection (IM/DD)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_infrastructure",
+                "duplexing_mode": "full_duplex",
+                "notes": "Simultaneous C&S."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "ofdm",
+                "isac_waveform_relationship": "unified_waveform",
+                "notes": "Unified ADO-OFDM waveform. Sensing via Pilots/Data (Frequency Domain Channel Estimation for ToF)."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 200.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "Target at 200m. LoS Channel."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "notes": "Metric is Spectral Efficiency (bps/Hz). Optimization target."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "sensing_range_m": 200.0,
+                "range_resolution_m": 0.02,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "Metric is Fisher Information (proxy for CRB/Precision). ~2cm resolution observed in figures."
+            },
+            "tradeoff": {
+                "coupling_mode": "tightly_coupled",
+                "tradeoff_type": [
+                    "spectral_efficiency_vs_sensing_accuracy",
+                    "power_allocation"
+                ],
+                "tradeoff_representation": "pareto_curve",
+                "notes": "Pareto front shown for Spectral Efficiency vs Ranging Precision. Weight factor rho controls the trade-off."
+            }
+        }
+    ]
+}

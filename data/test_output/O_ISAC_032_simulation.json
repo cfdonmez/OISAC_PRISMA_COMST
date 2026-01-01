@@ -1,0 +1,124 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "exclude_sensing_only",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Pure Sensing Paper. Focuses on Temperature Compensation for a Fiber-Optic Vibration Sensing Unit (FOVSU). No communication data, no dual-functionality."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 1: Schematic of temperature compensation. Figure 2: Interferometer setup. Figure 3: Vibration pickup structure. All figures focus on sensing mechanics and thermal effects.",
+        "step_1_concept_analysis": "System: Polarization-multiplexed fiber-optic vibration sensing unit (FOVSU). Goal: Decouple temperature and strain to improve sensing accuracy. Innovation: Piecewise uniform compensation method.",
+        "step_2_benchmark_verification": "Comm: None reported. Sensing: 43 dB noise suppression at 1 mHz. Phase drift reduction from ~20k rad to ~128 rad.",
+        "step_3_strategic_critique": "Exclusion: The paper is purely about optimizing a fiber sensor. It does not integrate communication functionality."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_032",
+            "title": "Temperature Compensation Method for Polarization-Multiplexed Fiber-Optic Vibration Sensing Unit",
+            "authors": "Ran An, Yuanjun Wang, Xinyang Ping, Kunhua Wen, Yonggui Yuan, Shun Wang, Jun Yang, Yuncai Wang, Yuwen Qin",
+            "year": 2025,
+            "venue": "IEEE Sensors Journal",
+            "document_type": "journal",
+            "doi": "10.1109/JSEN.2024.3501256"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "optical",
+            "operational_environment": "underwater",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "structural_health_monitoring"
+            ],
+            "scenario_description": "Vibration sensing for structures (bridges, tunnels) using fiber optics."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_provided"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Piecewise uniform temperature compensation method for FOVSU.",
+            "gap_addressed": "Temperature cross-sensitivity in fiber vibration sensors.",
+            "performance_enablers": [
+                "waveform_diversity"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_FOVSU_TEMP_COMP",
+                "scenario_label": "FOVSU Temperature Compensation Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "continuous_wave",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "Stable frequency laser."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_homodyne",
+                "rx_detector": "photodiode",
+                "notes": "Dual PDs for polarization multiplexing."
+            },
+            "integration": {
+                "hardware_sharing_mode": "none",
+                "duplexing_mode": "none",
+                "notes": "Sensing only."
+            },
+            "waveform": {
+                "comm_waveform_family": "none",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "continuous_wave",
+                "isac_waveform_relationship": "none",
+                "notes": "Interferometric sensing."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.26,
+                "attenuation_db_per_km": 0.2,
+                "backscatter_sensing_type": "none",
+                "notes": "260m fiber coil."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "snr_db": 0.0,
+                "notes": "No comms."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_measurement"
+                ],
+                "sensing_range_m": 0.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "Focus on noise suppression (43 dB) and stability."
+            },
+            "tradeoff": {
+                "coupling_mode": "loose",
+                "tradeoff_type": [
+                    "none"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "N/A"
+            }
+        }
+    ]
+}

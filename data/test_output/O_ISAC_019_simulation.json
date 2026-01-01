@@ -1,0 +1,122 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid O-ISAC paper! Full-duplex microwave photonics ISAC with CO-RAU-MS architecture. Carrier reuse: PM for downlink, IM for uplink."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: Full-duplex system with CO, RAU, MS. WDM + PM/IM modulation. Fig.2: E-band spectrum allocation. Fig.3-5: OptiSystem simulation results. Fig.6-7: Experimental setup and ISAC results (2D map, constellations).",
+        "step_1_concept_analysis": "System: Microwave photonics full-duplex ISAC. Key innovation: optical carrier reuse - PM for downlink (13-18 GHz IF → 81-86 GHz), IM for uplink (71-76 GHz → 3-8 GHz IF). FDM separates radar echo from uplink comm. Single fiber bidirectional. WDM for phased array beamforming.",
+        "step_2_benchmark_verification": "Comm: 600 Mbps QPSK-LFM, EVM 9.43% (DL) / 20.72% (UL). Radar: 1.5 cm distance resolution, Range-Doppler map at 1.9 m. 5 GHz bandwidth per link. Simulation: OptiSystem15, 4-channel WDM.",
+        "step_3_strategic_critique": "Contribution: Full-duplex ISAC with carrier reuse. Reduces cost and complexity. First bidirectional fiber ISAC with FDM separation. Gap: Lab demo at microwave (12.8-13.1 GHz) not mmW (71-86 GHz). Slow target limited velocity resolution."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_019",
+            "title": "Full-duplex Integrated Sensing and Communication System Based on Microwave Photonics",
+            "authors": "Weiqiong Wang, Guanxing Zhang, He Wen, Jie Zhang",
+            "year": 2024,
+            "venue": "IEEE Conference (BUPT)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "hybrid_fiber_wireless",
+            "carrier_band": "E-band",
+            "operational_environment": "indoor",
+            "link_topology": "bistatic",
+            "mobility_context": "mobile_user"
+        },
+        "application": {
+            "application_domain": [
+                "intelligent_transport",
+                "6g_networks"
+            ],
+            "scenario_description": "Full-duplex RAN front-haul with simultaneous bidirectional communication and radar sensing for mobile stations."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation",
+                "experimental"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Full-duplex ISAC with optical carrier reuse: phase modulation for downlink, intensity modulation for uplink. FDM separation of radar echo and uplink communication.",
+            "gap_addressed": "Previous ISAC systems lacked bidirectional (full-duplex) capability with carrier reuse.",
+            "performance_enablers": [
+                "pm_im_carrier_reuse",
+                "fdm_separation",
+                "wdm_beamforming",
+                "duplexer_isolation"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "E1_FD_ISAC",
+                "scenario_label": "Full-Duplex mmW Photonic ISAC"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "coherent",
+                "tx_external_modulator": "phase_modulator",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 5.0,
+                "notes": "4-channel WDM (193.1, 193.3, 193.5, 193.7 THz). PM for downlink (π/2 modulation index). IM (MZM) for uplink. IF: 13-18 GHz DL, 3-8 GHz UL."
+            },
+            "receiver": {
+                "rx_detection_type": "direct",
+                "rx_detector": "pin_pd",
+                "rx_photonic_processing": "filtering",
+                "notes": "PD + LNA + BPF. Band-stop filter for PM demodulation. Duplexer separates radar echo (13-18 GHz) from uplink (3-8 GHz)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "full_duplex",
+                "notes": "Carrier reuse: same optical carrier for DL (PM) and UL (IM). Circular polarization for equal power split. PBS for polarization diversity at RAU."
+            },
+            "waveform": {
+                "comm_waveform_family": "qpsk",
+                "sensing_waveform_family": "lfm",
+                "isac_waveform_relationship": "joint_waveform",
+                "notes": "QPSK-LFM integrated waveform. 600 Mbps. Same waveform for comm (QPSK) and sensing (LFM chirp)."
+            },
+            "channel_wireless": {
+                "link_distance_m": 5.0,
+                "notes": "0.5-5 m mobile station range in experiment. Target E-band (71-86 GHz). Demo at microwave (12.8-13.1 GHz)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.6,
+                "evm_percent": 9.43,
+                "notes": "600 Mbps QPSK. DL EVM 9.43%, UL EVM 20.72% (higher due to UHF band noise). Full-duplex verified."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging",
+                    "velocity_estimation"
+                ],
+                "sensing_range_m": 5.0,
+                "range_resolution_m": 0.015,
+                "velocity_resolution_mps": "NR",
+                "notes": "1.5 cm distance resolution (from 300 MHz BW). 2D Range-Doppler map. MS at 1.9 m detected. Velocity accuracy limited by slow target."
+            },
+            "tradeoff": {
+                "coupling_mode": "resource_partitioning",
+                "tradeoff_type": [
+                    "bandwidth_allocation",
+                    "modulation_depth"
+                ],
+                "notes": "FDM: DL 81-86 GHz, UL 71-76 GHz. Duplexer isolation 50 dB. IM3 suppression 23.4 dB."
+            }
+        }
+    ]
+}

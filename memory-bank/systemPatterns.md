@@ -57,6 +57,11 @@ Phase 5: Agentic Research (Deep Research)
 ---
 
 ## 📝 Çalışma Kuralları
+### 6. Collaborative Screening (İşbirlikçi Eleme)
+Kullanıcı yeni çalışmalar paylaştığında Agent şu adımları izler:
+1.  **Duplicate Check:** `included_studies_list.csv` ve `search_log.csv` (veya `screening_log.csv`) dosyalarında DOI/Başlık taraması yapar.
+2.  **Eligibility Check:** `protocol/prisma_protocol.md` kriterlerine göre çalışmanın soyutunu (abstract) değerlendirir.
+3.  **Daily Log Update:** İşlemi `docs/DAILY_WORKFLOW.md` (veya günlük loglar) çerçevesinde kayıt altına alır.
 
 ### 1. Read-Only Inputs
 Kaynak CSV'leri değiştirme. Her zaman yeni output oluştur.

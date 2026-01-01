@@ -1,0 +1,112 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "sensing_only_isac_mentioned",
+        "data_completeness": "high",
+        "needs_spot_check": true,
+        "notes": "BORDERLINE FOR EXCLUSION: Paper mentions 'ISAC-OF' as motivation but demonstrates ONLY vibration sensing. No communication experiment. Claims sensing is 'ideal for ISAC-OF' but does not implement communication. Similar to O_ISAC_007 pattern."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: Vibration demodulation flowchart (sensing only). Fig.4: OFDR system with PZT for vibration. Fig.5-8: Pearson-CC based vibration detection results at 100+ km. NO communication diagrams.",
+        "step_1_concept_analysis": "System: OFDR-based Distributed Vibration Sensor (DOFVS) using Pearson-CC and PELT algorithm. The abstract says 'DOFVS is an ideal technology for integrated sensing and communication in an optical fiber (ISAC-OF)'. However, the paper ONLY demonstrates sensing - no communication waveform, no BER, no data rate. Similar to O_ISAC_007 (sensing-only exclusion candidate).",
+        "step_2_benchmark_verification": "Sensing: 100.9 km range, 15.3 m spatial resolution, 868 pε strain resolution. Multiple vibration events detected. Communication: NOT DEMONSTRATED. Paper references ISAC-OF future potential but does not implement it.",
+        "step_3_strategic_critique": "EXCLUSION RECOMMENDED: This is a pure sensing paper that mentions 'ISAC-OF' as motivation but does not demonstrate any communication functionality. Including it would dilute the O-ISAC corpus with sensing-only papers. Same pattern as O_ISAC_007."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_013",
+            "title": "Single-Ended >100-km Distributed Vibration Sensor Based on OFDR Using Pearson Correlation Coefficient",
+            "authors": "Haohan Guo, Kun Liu, Yuanyao Li, Ji Liu, Huafang Wang, Jinqi Deng, Junfeng Jiang, Tiegen Liu, Zhenyang Ding",
+            "year": 2025,
+            "venue": "IEEE Sensors Journal",
+            "document_type": "journal",
+            "doi": "10.1109/JSEN.2025.3554542"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "C-band",
+            "operational_environment": "underground",
+            "link_topology": "monostatic",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "pipeline_monitoring",
+                "perimeter_security",
+                "seismic_detection"
+            ],
+            "scenario_description": "Ultra-long distributed vibration sensing for ocean cables, pipelines, and perimeter intrusion detection."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experimental",
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Single-ended OFDR vibration sensing using Pearson-CC and PELT algorithm, achieving >100 km range without optical amplifiers.",
+            "gap_addressed": "Existing long-distance DOFVS require amplifiers or dual-ended configurations, incompatible with ISAC-OF networks.",
+            "performance_enablers": [
+                "pearson_cc",
+                "pelt_algorithm",
+                "internal_modulation_ofdr"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "E1_OFDR_DVS",
+                "scenario_label": "Distributed Vibration Sensing (SENSING ONLY)"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "coherent",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 6.72,
+                "notes": "Silicon photonic chip laser, <1 kHz linewidth, ~8 mW. Internal modulation via AWG-controlled temperature tuning."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent",
+                "rx_detector": "bpd",
+                "notes": "Rayleigh backscatter coherent detection via MZI. DAQ at 200 MS/s, 16 MS samples."
+            },
+            "integration": {
+                "hardware_sharing_mode": "sensing_only",
+                "notes": "NO COMMUNICATION FUNCTIONALITY DEMONSTRATED. Paper mentions ISAC-OF as potential application only."
+            },
+            "waveform": {
+                "sensing_waveform_family": "ofdr",
+                "isac_waveform_relationship": "not_applicable",
+                "notes": "OFDR sweep at 84 GHz/s. No communication waveform."
+            },
+            "channel_wireless": {
+                "link_distance_m": 100900.0,
+                "notes": "100.9 km single-mode fiber (SMF). No optical amplifiers. Two PZTs at 100.9 km and 101.8 km for vibration excitation."
+            },
+            "comm_metrics": {
+                "notes": "NOT APPLICABLE - NO COMMUNICATION DEMONSTRATED."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_sensing",
+                    "localization"
+                ],
+                "sensing_range_m": 100900.0,
+                "range_resolution_m": 15.3,
+                "strain_resolution_pe": 868.0,
+                "notes": "Spatial resolution 15.3 m (N=1000 window). Strain resolution 868 pε. R² = 0.9993 for amplitude calibration. Multiple simultaneous events detected."
+            },
+            "tradeoff": {
+                "coupling_mode": "not_applicable",
+                "notes": "No ISAC trade-off analyzed - sensing-only paper."
+            }
+        }
+    ]
+}

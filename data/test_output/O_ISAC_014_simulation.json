@@ -1,0 +1,116 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "pof_not_sensing",
+        "data_completeness": "high",
+        "needs_spot_check": true,
+        "notes": "EXCLUDE: Power-over-Fiber (PoF) + Communication, but NO SENSING. Same pattern as O_ISAC_010. Power Grid infrastructure paper."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: SSMF-based PoF system with WDM. Fig.3: Optical PTE vs power. Fig.4: Electrical conversion. NO sensing diagrams.",
+        "step_1_concept_analysis": "System: Power-over-Fiber for Power Grid applications. 10W optical power + 155 Mbps data over 1 km SSMF. This is NOT an ISAC paper! The affiliation mentions 'Key Laboratory of Photonic Technology for Integrated Sensing and Communication' but the paper implements power + communication only. NO sensing functionality.",
+        "step_2_benchmark_verification": "Comm: 155 Mbps via SFP module at 1310 nm. Power: 10W HPLD at 1064 nm, 49% optical PTE, 500 mW electrical output. NO sensing metrics.",
+        "step_3_strategic_critique": "EXCLUSION RECOMMENDED: Same pattern as O_ISAC_010. Power + Communication co-transmission without sensing. Not relevant to O-ISAC survey scope."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_014",
+            "title": "Experimental Demonstration of Power over Fiber for Power Grid Application",
+            "authors": "Zemian Zeng, Changna Chen, Xiaosheng Lin, Wei Chen, Jianping Li, Yuwen Qin",
+            "year": 2025,
+            "venue": "IEEE/Optica Conference (inferred from format)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "C-band",
+            "operational_environment": "indoor",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "power_grid"
+            ],
+            "scenario_description": "Power Grid infrastructure monitoring with simultaneous optical power and data transmission."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experimental"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "SSMF-based PoF demonstration with commercial SFP modules for Power Grid applications.",
+            "gap_addressed": "Lack of practical PoF implementations using SSMF for Power Grid scenarios.",
+            "performance_enablers": [
+                "wdm",
+                "ssmf",
+                "commercial_sfp"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "E1_PoF_Grid",
+                "scenario_label": "Power + Data Co-transmission (NO SENSING)"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "im_dd",
+                "wavelength_nm": 1310.0,
+                "notes": "HPLD at 1064 nm (10W, 40 GHz linewidth) for power. SFP at 1310 nm for data (155 Mbps)."
+            },
+            "receiver": {
+                "rx_detection_type": "direct",
+                "rx_detector": "pin_pd",
+                "notes": "PPC (YCH-H003) for power conversion. SFP receiver for data."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_medium",
+                "notes": "WDM: 1064 nm power + 1310 nm data. NO sensing integration."
+            },
+            "waveform": {
+                "comm_waveform_family": "other",
+                "sensing_waveform_family": "not_applicable",
+                "isac_waveform_relationship": "not_applicable",
+                "notes": "Commercial SFP module (155 Mbps). No sensing waveform."
+            },
+            "channel_wireless": {
+                "link_distance_m": 1000.0,
+                "notes": "1 km SSMF (9 µm core). WDM insertion loss ~2 dB. Total loss ~3 dB."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.155,
+                "notes": "155 Mbps via commercial SFP at 1310 nm. Stable transmission verified."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "none"
+                ],
+                "notes": "NO SENSING FUNCTIONALITY IN THIS PAPER."
+            },
+            "power_delivery": {
+                "power_input_w": 10.0,
+                "power_collected_w": 4.9,
+                "opte_percent": 49.0,
+                "electrical_output_mw": 500.0,
+                "notes": "10W HPLD input, 4.9W collected (49% optical PTE). ~500 mW electrical after PPC (10% efficiency)."
+            },
+            "tradeoff": {
+                "coupling_mode": "resource_partitioning",
+                "tradeoff_type": [
+                    "other"
+                ],
+                "notes": "Trade-off is power vs comm (not sensing vs comm). WDM separates wavelengths."
+            }
+        }
+    ]
+}

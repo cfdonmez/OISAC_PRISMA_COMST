@@ -1,53 +1,58 @@
-# 🔄 Daily "Living" Workflow for O-ISAC Review
+# 🔄 O-ISAC Günlük Çalışma Akışı (Daily Workflow)
 
-This document outlines the **Daily Routine** to maintain the "Living Systematic Review" status. Until the manuscript is finalized, these steps should be performed regularly (e.g., every morning).
-
-## 🌅 Morning Routine: Data Ingestion
-
-### 1. Living Search (Sürekli Arama)
-**Goal:** Catch new publications immediately.
-*   **Action:** Check defined search alerts (Google Scholar, IEEE Xplore).
-*   **Query:** Use the "Block A + Block B" simplified string from `protocol/prisma_protocol.md`.
-*   **If New Hits Found:**
-    1.  Add bibliographic details to `search/search_log.csv`.
-    2.  Assign a temporary ID (e.g., `O_ISAC_NEW_YYYYMMDD_XX`).
-
-### 2. Living Screening (Sürekli Eleme)
-**Goal:** Filter new hits instantly.
-*   **Input:** New entries in `search_log.csv`.
-*   **Process:**
-    1.  **Title/Abstract Check:** Does it meet `protocol` Section 4 criteria?
-    2.  **Decision:** Update `screening/screening_log.csv` with `Include` or `Exclude`.
-    3.  **If Included:** Immediately flag for PDF collection.
-
-### 3. PDF Collection (Anlık Toplama)
-**Goal:** Prevent backlog accumulation.
-*   **Action:** Download PDF for any new `Include` items.
-*   **Naming:** Rename to `O_ISAC_[ID].pdf`.
-*   **Storage:** Save to `data/retrieved_docs/`.
+Bu belge, O-ISAC sistematik literatür taramasının güncel kalması ve veri çıkarma sürecinin düzenli işlemesi için takip edilmesi gereken **Standart Uygulama Prosedürüdür (SOP)**. Bu adımlar, yeni bir kullanıcı için en basit haliyle kurgulanmıştır.
 
 ---
 
-## 🏭 The Factory: Batch Extraction (Optimization)
+## 🌅 Sabah: Yeni Yayın Kontrolü (Arama & Eleme)
+**Hedef:** Literatürdeki en yeni çalışmaları anında yakalamak.
 
-*Note: This section describes the integrated "Structural + Reasoning" pipeline.*
+### 1. Günlük Arama (Living Search)
+*   **İşlem:** Google Scholar ve IEEE Xplore üzerindeki kayıtlı alarmlarınızı kontrol edin.
+*   **Kayıt:** Yeni bir çalışma bulduğunuzda `search/search_log.csv` dosyasına DOI ve başlık bilgilerini ekleyin.
+*   **Geçici ID:** Çalışmaya `O_ISAC_NEW_YYYYMMDD_01` gibi bir geçici ID atayın.
 
-### 4. Integrated Extraction & Backbone Update
-**Goal:** Turn PDF into Manuscript Skeleton.
-*   **Trigger:** When new PDFs land in `data/retrieved_docs/`.
-*   **Process:**
-    1.  **Run Pipeline:** Execute `analysis/notebooks/CoT_Master_Pipeline.ipynb`.
-    2.  **Output:** Generates `extraction_results_v4/` (Unified JSON).
-    3.  **Backbone Sync:** The results automatically update the `manuscript/skeleton/` (TBD) files, linking findings to specific report sections.
+### 2. Hızlı Eleme (Living Screening)
+*   **Kriter:** `protocol/prisma_protocol.md` dosyasındaki Section 4 kriterlerine bakın.
+*   **Karar:** `Include` (Dahil et) veya `Exclude` (Ele) kararını `screening/screening_log.csv` dosyasına işleyin.
+*   **PDF:** Dahil edilenlerin PDF'ini indirin ve `data/retrieved_docs/` klasörüne `O_ISAC_[ID].pdf` ismiyle kaydedin.
+
+---
+
+## ☀️ Öğlen: Veri Fabrikasını Çalıştırma (Pipeline)
+**Hedef:** Ham PDF'leri yapılandırılmış verilere (JSON/CSV) dönüştürmek.
+
+### 3. Pipeline'ı Başlatma
+*   **Dosya:** `analysis/notebooks/CoT_Master_Pipeline.ipynb` (Ana Notebook).
+*   **Uygulama:** Colab üzerinde notebook'u açın, Drive'ı bağlayın (Mount Drive) ve tüm hücreleri çalıştırın.
+*   **Otomatik Süreç:**
+    1.  **Phase 1:** PDF → Markdown (Metinleştirme).
+    2.  **Phase 2:** Görsel Analiz (Grafik ve diyagramların PhD seviyesinde analizi).
+    3.  **Phase 3:** CoT Extraction (LLM kullanarak detaylı veri çıkarma).
 
 ---
 
-## 🤖 Nightly: Agentic Research
+## 🌙 Akşam: Kalite Kontrol & Senkronizasyon
+**Hedef:** Çıkarılan verilerin doğruluğunu kontrol etmek ve ilerlemeyi kaydetmek.
 
-### 5. Deep Research
-**Goal:** Synthesis and Hypothesis Generation.
-*   **Action:** The Deep Research Agent analyzes the day's new findings against the existing `activeContext`.
-*   **Output:** Updates `analysis/deep_research/insights_log.md` with new gaps or trends identified.
+### 4. Veri Doğrulama (QC)
+*   **Kontrol:** `analysis/cot_laboratory/logs/` klasöründeki en son `_RESULT.json` dosyasını açın.
+*   **Audit:** Teknik verilerin (EVM, Range, Data Rate vb.) makaledeki rakamlarla uyuşup uyuşmadığına hızlıca göz atın.
+
+### 5. Kayıt ve Git (Commit)
+*   **İşlem:** Çalışmalarınızı GitHub'a gönderin.
+*   **Yeni PDF'ler:** `data/retrieved_docs/` klasöründeki yeni dosyaları da eklediğinizden emin olun.
+*   **Not:** Git komutlarını biz (agent'lar) sizin için çalıştırabiliriz, sadece "commit et" demeniz yeterli.
 
 ---
-**Last Updated:** 2025-12-13
+
+## 🛠️ Temel Bilgiler Panosu
+
+| Aşama | Girdi | Kullanılan Araç | Çıktı |
+| :--- | :--- | :--- | :--- |
+| **Arama** | IEEE / Scholar | Tarayıcı | `O_ISAC_XXX.pdf` |
+| **İşleme** | PDF | `CoT_Master_Pipeline.ipynb` | Markdown + `.jpg` Figürler |
+| **Çıkarma** | Markdown + Figür | Groq API / Llama 3.3 | `*_RESULT.json` |
+
+---
+**Son Güncelleme:** 2025-12-28

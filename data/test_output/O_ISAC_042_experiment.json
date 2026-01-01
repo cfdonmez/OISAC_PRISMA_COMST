@@ -1,0 +1,125 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. Demonstrates simultaneous high-speed coherent communication (60 GBaud 16-QAM) and sub-meter vibration sensing (DAS) using LFM probes embedded in data frame headers."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: Frame structure with LFM sensing pilots in ISAC header. Fig 2: Shared Transmitter setup for Coherent Comms & Sensing. Fig 3: 0.5m resolution peak and BER tradeoff.",
+        "step_1_concept_analysis": "System: Coherent Fiber ISAC. Sensing: DAS (phi-OTDR via LFM pilots). Comm: Coherent 16-QAM. Method: Time/Frequency multiplexing LFM probes into roll-off area of training sequences.",
+        "step_2_benchmark_verification": "Comm: 60 GBaud (~240 Gbps raw). Sensing: 0.5m spatial resolution over 10 km. Negligible BER impact at STPR < 6dB.",
+        "step_3_strategic_critique": "Highly efficient resource sharing (Spectrum & Hardware). Uses LFM for high-resolution sensing without dedicated channels."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_042",
+            "title": "High-efficiency ISAC to enable sub-meter level vibration sensing for coherent fiber networks",
+            "authors": "Jingchuan Wang, Liwang Lu, Li Wang, Yaxi Yan, Alan Pak Tao Lau, Chao Lu",
+            "year": 2024,
+            "venue": "Unknown (Copyright 2024 The Authors)",
+            "document_type": "conference_paper",
+            "doi": "unknown"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "c_band",
+            "operational_environment": "data_center_interconnect",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "infrastructure_health_monitoring",
+                "vibration_sensing"
+            ],
+            "scenario_description": "Sub-meter vibration sensing integrated into 60 GBaud coherent fiber communication link."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "experimental_setup_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "LFM sensing probes embedded in communication frame headers (ISACH) for simultaneous high-res DAS and Coherent Comms.",
+            "gap_addressed": "resource_inefficiency_of_dedicated_sensing_channels",
+            "performance_enablers": [
+                "waveform_design_isac",
+                "coherent_detection"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_COHERENT_LFM_DAS",
+                "scenario_label": "Coherent LFM-DAS Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "qam",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 60.0,
+                "notes": "60 GBaud 16-QAM. LFM pilots added in Training Sequence."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_detection",
+                "rx_detector": "balanced_photodiode",
+                "notes": "Coherent Receiver for both Comms (BPD) and Sensing (ICR)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_transmitter",
+                "duplexing_mode": "time_division",
+                "notes": "Time-staggered LFM probes within frame structure. Shared spectrum (Roll-off area)."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "chirp",
+                "isac_waveform_relationship": "superimposed_time_domain",
+                "notes": "Communication: 16-QAM. Sensing: LFM Chirp (250 MHz BW)."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 10.0,
+                "attenuation_db_per_km": 0.2,
+                "backscatter_sensing_type": "rayleigh_phase",
+                "notes": "10 km Standard Single Mode Fiber."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 240.0,
+                "ber": 0.0038,
+                "notes": "60 GBaud * 4 bits/symbol = 240 Gbps. BER < FEC limit at STPR 6dB."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_measurement"
+                ],
+                "sensing_range_m": 10000.0,
+                "range_resolution_m": 0.5,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "0.5m spatial resolution. 21 dB SNR for vibration sensing."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "snr_vs_ber"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Sensing Power vs Comm BER tradeoff. Optimal STPR ~6-8 dB."
+            }
+        }
+    ]
+}

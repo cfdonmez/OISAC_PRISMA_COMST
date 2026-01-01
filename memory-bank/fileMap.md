@@ -91,6 +91,7 @@ cot_laboratory/
 | `PROJECT_STATUS.md` | Detaylı durum (eski REMINDER) |
 | `AI_Co_Pilot_Workflow.md` | AI ile çalışma rehberi |
 | `survey_writing_guide.md` | IEEE COMST yazım rehberi |
+| `DAILY_WORKFLOW.md` | **GÜNLÜK RUTİN** - Arama, eleme ve veri çıkarma akışı |
 
 ---
 

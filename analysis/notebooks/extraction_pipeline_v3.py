@@ -132,12 +132,23 @@ class CheckpointManager:
         self.save()
 
 # =============================================================================
+# GPU MEMORY MANAGEMENT
+# =============================================================================
+def clear_gpu_memory():
+    """Aggressive VRAM cleanup to prevent OOM."""
+    if torch:
+        torch.cuda.empty_cache()
+        torch.cuda.ipc_collect()
+    gc.collect()
+    print("   🧹 GPU Memory Cleared")
+
+# =============================================================================
 # PHASE 1: PDF TO MARKDOWN (Marker)
 # =============================================================================
 def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = False):
-    """Convert PDFs to Markdown using Marker library."""
+    """Convert PDFs to Markdown using Marker library (Batch Optimized for T4)."""
     print("\n" + "="*60)
-    print("📄 PHASE 1: PDF → MARKDOWN (Marker)")
+    print("📄 PHASE 1: PDF → MARKDOWN (Marker) - Batch Mode")
     print("="*60)
     
     pdf_files = sorted(glob.glob(os.path.join(Config.PDF_DIR, "*.pdf")))
@@ -153,33 +164,119 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
     
     print(f"\n📋 PDFs to convert: {len(to_process)}")
     
-    for i, (paper_id, pdf_path) in enumerate(to_process):
-        print(f"\n[{i+1}/{len(to_process)}] 🔨 Processing: {paper_id}")
-        output_folder = os.path.join(Config.MARKDOWN_DIR, paper_id)
+    if not to_process:
+        print("✅ No new files to process. Phase 1 Complete.")
+        return
+
+    # BATCH OPTIMIZATION: Load models once to save time & VRAM thrashing
+    # ===================================================================
+    # MARKER-PDF v1.0+ API (Verified from GitHub source 2026-01-01)
+    # ===================================================================
+    try:
+        from marker.models import create_model_dict
+        from marker.converters.pdf import PdfConverter
         
-        try:
-            # Force CUDA device for marker
-            env = os.environ.copy()
-            env["TORCH_DEVICE"] = "cuda" if torch.cuda.is_available() else "cpu"
+        print("   ℹ️ Detected Marker v1.0+ Architecture.")
+        
+        # 1. Load models once
+        print("\n🧠 Loading Models to GPU (This happens only once)...")
+        model_dict = create_model_dict()
+        print("✅ Models Loaded! Starting serial batch processing...")
+        
+        # 2. Create converter with models
+        converter = PdfConverter(artifact_dict=model_dict)
+        
+        for i, (paper_id, pdf_path) in enumerate(to_process):
+            print(f"\n[{i+1}/{len(to_process)}] 🔨 Processing: {paper_id}")
+            output_folder = os.path.join(Config.MARKDOWN_DIR, paper_id)
+            os.makedirs(output_folder, exist_ok=True)
             
-            cmd = [
-                "marker_single", pdf_path,
-                "--output_dir", output_folder,
-                "--paginate_output"
-            ]
-            result = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=300)
-            
-            if result.returncode == 0:
+            try:
+                # 3. Convert PDF (returns MarkdownOutput pydantic model)
+                result = converter(pdf_path)
+                
+                # 4. Manual Save (v1.0 removed save_markdown)
+                # Save markdown
+                md_path = os.path.join(output_folder, f"{paper_id}.md")
+                with open(md_path, 'w', encoding='utf-8') as f:
+                    f.write(result.markdown)
+                
+                # Save images (dict: {filename: PIL.Image})
+                if result.images:
+                    for img_name, img in result.images.items():
+                        img_path = os.path.join(output_folder, img_name)
+                        img.save(img_path)
+                
+                # Checkpoint update
                 pdf_hash = checkpoint.get_pdf_hash(pdf_path)
                 checkpoint.mark_complete(paper_id, pdf_hash, "marker")
                 print(f"   ✅ Done")
-            else:
-                raise Exception(result.stderr[:500])
                 
-        except Exception as e:
-            print(f"   ❌ Error: {str(e)[:100]}")
-            checkpoint.add_error(paper_id, "marker", str(e))
-    
+            except Exception as e:
+                print(f"   ❌ Error: {str(e)[:100]}")
+                checkpoint.add_error(paper_id, "marker", str(e))
+        
+        # CLEANUP: Free VRAM for Phase 2
+        print("\n🧹 Cleaning up Phase 1 models from GPU...")
+        del model_dict
+        del converter
+        clear_gpu_memory()
+
+    except ImportError as e:
+        # DIAGNOSTICS for debugging
+        print("\n" + "!"*60)
+        print(f"🛑 CRITICAL ERROR IN FAST MODE SETUP")
+        print(f"👉 Reason: {e}")
+        print("!"*60)
+        
+        try:
+            import marker
+            pkg_dir = list(marker.__path__)[0] if hasattr(marker, '__path__') else os.path.dirname(marker.__file__)
+            print(f"\n🔍 DEBUG: Marker Path: {pkg_dir}")
+            print(f"   📂 Dir Contents: {os.listdir(pkg_dir)}")
+            conv_dir = os.path.join(pkg_dir, "converters")
+            if os.path.exists(conv_dir):
+                print(f"   📂 Converters: {os.listdir(conv_dir)}")
+        except Exception as diag_err:
+            print(f"   ⚠️ Diagnostics failed: {diag_err}")
+        
+        print("\n💡 HINT: Try '!pip install marker-pdf --upgrade --force-reinstall' in a separate cell.")
+        print("⚠️ FAST MODE Failed. System can revert to SLOW MODE (Subprocess).")
+        
+        user_choice = input("👉 Do you want to continue with SLOW MODE? (y/n): ").strip().lower()
+        if user_choice != 'y':
+            print("❌ Operation cancelled by user.")
+            return
+
+        print("Falling back to slow subprocess method...")
+        
+        # Fallback to slow subprocess method
+        env = os.environ.copy()
+        env["TORCH_DEVICE"] = "cuda" if torch.cuda.is_available() else "cpu"
+        
+        for i, (paper_id, pdf_path) in enumerate(to_process):
+            print(f"\n[{i+1}/{len(to_process)}] 🔨 Processing (Slow Mode): {paper_id}")
+            output_folder = os.path.join(Config.MARKDOWN_DIR, paper_id)
+            
+            try:
+                cmd = [
+                    "marker_single", pdf_path,
+                    "--output_dir", output_folder,
+                    "--paginate_output"
+                ]
+                result = subprocess.run(cmd, env=env, capture_output=True, text=True, timeout=300)
+                
+                if result.returncode == 0:
+                    pdf_hash = checkpoint.get_pdf_hash(pdf_path)
+                    checkpoint.mark_complete(paper_id, pdf_hash, "marker")
+                    print(f"   ✅ Done")
+                else:
+                    raise Exception(result.stderr[:500])
+                    
+            except Exception as e:
+                print(f"   ❌ Error: {str(e)[:100]}")
+                checkpoint.add_error(paper_id, "marker", str(e))
+
     print("\n✅ Phase 1 Complete")
 
 # =============================================================================

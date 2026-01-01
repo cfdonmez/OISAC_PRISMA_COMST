@@ -1,0 +1,120 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Fiber-ISAC paper! DNN-based DBP enables dual-function: nonlinear compensation for comm + power profile estimation / anomaly detection for sensing."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: DNN-based DBP architecture with training/sensing branches. Fig.2: 15×80 km SSMF link. Fig.3: BER vs launch power (communication), γ* profile (sensing). Fig.4: Anomaly detection at 360km, 760km.",
+        "step_1_concept_analysis": "System: Double-effect DNN-based DBP for Fiber-ISAC. The optimized γ* (nonlinear parameter) serves dual purpose: (1) nonlinear compensation for communication, (2) power distribution estimation and anomaly detection for sensing. Uses training sequence - no additional bandwidth overhead.",
+        "step_2_benchmark_verification": "Comm: 28 GBaud 16-QAM, 1200 km (15×80 km). BER ~1e-5 at optimal launch power. Sensing: γ* profile shows EDFA positions, detects 1-5 dB losses at 360/760 km. 20 km step size for fine resolution.",
+        "step_3_strategic_critique": "Contribution: First DNN-based DBP for ISAC. Dual-use of trained parameters. No additional hardware/bandwidth. Gap: Sensing resolution limited when multiple anomalies in same span."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_017",
+            "title": "Double-effect DNN-based DBP Scheme for Integrated Sensing and Communications (ISAC)",
+            "authors": "Feiyu Li, Xian Zhou, Qirui Fan, Yuyuan Gao, Jiahao Huo, Jinhui Yuan, Keping Long",
+            "year": 2022,
+            "venue": "OFC (Optical Fiber Communication Conference)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "C-band",
+            "operational_environment": "long_haul",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "optical_network_monitoring",
+                "fiber_sensing"
+            ],
+            "scenario_description": "Long-haul coherent optical transmission with simultaneous link status monitoring for power profile estimation and anomaly detection."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": true,
+            "ml_details": "DNN-based Digital Back-Propagation (DBP) with supervised training. Adam optimizer, 15000 training symbols, 50 iterations."
+        },
+        "key_contribution": {
+            "key_contribution": "DNN-based DBP enables dual-function: nonlinear compensation (communication) and power profile / anomaly detection (sensing) using the same optimized γ* parameters.",
+            "gap_addressed": "Previous DBP and sensing methods were separate. This integrates them without additional bandwidth or hardware.",
+            "performance_enablers": [
+                "dnn_dbp",
+                "training_sequence_reuse",
+                "parameter_dual_use"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "S1_DNN_DBP_ISAC",
+                "scenario_label": "Long-Haul Fiber ISAC with DNN-DBP"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "coherent",
+                "tx_external_modulator": "iq_modulator",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": "NR",
+                "notes": "28 GBaud 16-QAM coherent system. RRC filter (roll-off 0.18). Laser linewidth 100 kHz."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent",
+                "rx_detector": "bpd",
+                "rx_photonic_processing": "mixing",
+                "notes": "Coherent receiver with DSP: CD comp, SP-LMS, FOE, CPR (BPS), DNN-based DBP."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_processing",
+                "duplexing_mode": "not_applicable",
+                "notes": "DSP-level integration. Same trained parameters serve both comm (nonlinear comp) and sensing (anomaly detection)."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "not_applicable",
+                "isac_waveform_relationship": "single_dual_function_waveform",
+                "notes": "Standard 16-QAM signal. Sensing derived from trained nonlinear parameters γ*. No separate sensing waveform."
+            },
+            "channel_wireless": {
+                "link_distance_m": 1200000.0,
+                "notes": "15×80 km SSMF (1200 km total). α=0.2 dB/km, D=17 ps/nm/km, γ=1.3 W⁻¹km⁻¹. EDFA per span (NF=6 dB)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 112.0,
+                "ber": 1e-5,
+                "notes": "28 GBaud × 4 bits/symbol = 112 Gbps (single pol). BER ~1e-5 at optimal launch power with 20 km step DBP."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "anomaly_detection",
+                    "power_profiling"
+                ],
+                "sensing_range_m": 1200000.0,
+                "range_resolution_m": 20000.0,
+                "notes": "20 km step size for γ* profile. Detects 1-5 dB anomalous losses. Locates EDFA positions. Limited when multiple anomalies in same 80 km span."
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "step_size_vs_resolution"
+                ],
+                "notes": "Smaller DBP step improves both BER and sensing resolution. 20 km step: better BER + finer loss localization."
+            }
+        }
+    ]
+}

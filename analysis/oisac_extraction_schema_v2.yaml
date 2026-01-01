@@ -88,8 +88,9 @@ study_level:
     - key: "carrier_band"
       type: "enum"
       required: false
-      options: ["visible", "NIR", "SWIR", "C-band", "L-band", "O-band", "other"]
-      description: "Optical carrier wavelength band"
+      options: ["visible", "NIR", "SWIR", "C-band", "L-band", "O-band", "D-band", "Ka-band", "E-band", "W-band", "THz", "other"]
+      # D-band = 110-170 GHz, Ka-band = 26.5-40 GHz, E-band = 60-90 GHz, W-band = 75-110 GHz
+      description: "Optical/RF carrier wavelength band"
       
     - key: "operational_environment"
       type: "enum"
@@ -340,7 +341,9 @@ scenario_level:
     - key: "rx_detector"
       type: "enum"
       required: false
-      options: ["pin_pd", "apd_pd", "balanced_pd", "camera_cmos", "camera_ccd", "spad_array", "other"]
+      options: ["pin_pd", "apd_pd", "balanced_pd", "bpd", "icr", "camera_cmos", "camera_ccd", "spad_array", "other"]
+      # bpd = Balanced Photodetector (alias for balanced_pd)
+      # icr = Integrated Coherent Receiver (e.g., Neophotonic commercial modules)
       description: "Detector type"
       
     - key: "rx_aperture_diameter_m"

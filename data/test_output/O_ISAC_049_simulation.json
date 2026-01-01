@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Simulation/Optimization Paper. Focuses on Resource Allocation (Slot Selection + Power) for TDMA-based Indoor Visible Light Communication and Sensing (IVLCS)."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: Indoor IVLCS system model. Fig 9: Total Power vs Slots. Comparison of proposed SPPM-JSSPA vs benchmarks. Fig 8: Power vs CSR threshold.",
+        "step_1_concept_analysis": "System: Indoor IVLCS (Visible Light). Access: TDMA. Optimization: Minimize Total Power under constraints (ENR for Sensing, CSR for Comm). Methods: Joint Slot Selection and Power Allocation.",
+        "step_2_benchmark_verification": "Comm: CSR (Communication Sum Rate) > 1 bit/s/Hz. Sensing: ENR (Echo-to-Noise Ratio) > 0 dB. Power: Minimized (e.g., ~2-4 W).",
+        "step_3_strategic_critique": "Addresses the resource competition in TDMA-based ISAC. 'Sensing Priority' approach (allocating sensing slots first) is adopted."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_049",
+            "title": "Joint Optimization of Slot Selection and Power Allocation in Integrated Visible Light Communication and Sensing Systems",
+            "authors": "Jin-Yuan Wang, Hao-Nan Yang, Jun-Bo Wang, Min Lin, Peicheng Shi",
+            "year": 2023,
+            "venue": "IEEE Internet of Things Journal",
+            "document_type": "journal_paper",
+            "doi": "10.1109/JIOT.2023.3303137"
+        },
+        "classification": {
+            "oisac_medium_class": "visible_light",
+            "carrier_band": "visible_light",
+            "operational_environment": "indoor_office_home",
+            "link_topology": "point_to_multipoint",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "smart_home",
+                "iot"
+            ],
+            "scenario_description": "Indoor IVLCS system with 1 Transceiver (LED+PD) and M Users on floor. Simultaneous Comm (Downlink) and Sensing (Active, detecting users)."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation",
+                "numerical_analysis"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "algorithm_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Joint optimization of Time Slot Selection and Power Allocation (SPPM-JSSPA algorithm) to minimize total power while satisfying Sensing ENR and Comm CSR constraints.",
+            "gap_addressed": "Resource allocation (slots/power) in TDMA-based Integrated Visible Light Communication and Sensing (IVLCS) systems.",
+            "performance_enablers": [
+                "resource_allocation_isac",
+                "waveform_optimization"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_IVLCS_TDMA_OPTIM",
+                "scenario_label": "IVLCS TDMA Resource Allocation"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "ook",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "LED Transceiver. OOK Modulation. TDMA frame structure."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode",
+                "notes": "Users have PDs (Comm Rx). Transceiver has PD (Sensing Rx)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_infrastructure",
+                "duplexing_mode": "time_division",
+                "notes": "TDMA. Time slots allocated either to Sensing or Communication."
+            },
+            "waveform": {
+                "comm_waveform_family": "ook",
+                "comm_modulation_order": 2,
+                "sensing_waveform_family": "ook",
+                "isac_waveform_relationship": "time_division_multiplexing",
+                "notes": "Time slots are dynamically assigned. Pulse based."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 3.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "Indoor room 10x10x3m. Distance approx 3m (Ceiling to floor)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "notes": "Constraint: Communication Sum Rate (CSR) > 1 bit/s/Hz."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "activity_recognition"
+                ],
+                "sensing_range_m": 3.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "Constraint: Echo-to-Noise Ratio (ENR) > 0 dB."
+            },
+            "tradeoff": {
+                "coupling_mode": "loose",
+                "tradeoff_type": [
+                    "power_consumption"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Trade-off between Total Power consumption and Sensing/Comm Requirements."
+            }
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Excellent VLC-ISAC paper! m-CAP modulation + RSS trilateration for joint communication and indoor positioning. IEEE TBC journal. 32 Mbps + 7.17 cm error."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: System architecture with 9 APs, m-CAP mod/demod. Fig.2: MAC cycle with location frames. Fig.3: Illuminance map (300-500 lux). Fig.5: RMS positioning error distribution. Fig.6: CDF of error (7.17 cm @90%). Fig.8-9: BER vs roll-off analysis.",
+        "step_1_concept_analysis": "System: VLC-ISAC using m-CAP modulation and RSS-based trilateration. 9 white LED APs in 4m×4m room. Sensing via RSS (received signal strength) from 4 closest APs. Communication: m-CAP with 4/8 sub-bands, 16-256 QAM. Single PD receiver at UE.",
+        "step_2_benchmark_verification": "Comm: 32 Mbps (256-QAM, 8 sub-bands). BER < 3.8e-3 (FEC limit). Sensing: 7.17 cm RMS error @90% (with DC), 5.34 cm @66%. Illuminance: 300-500 lux. SNR: 43-50 dB. Room: 4m×4m×2.5m, h=1.65m.",
+        "step_3_strategic_critique": "Contribution: First m-CAP + RSS-trilateration VLC-ISAC system with realistic LED constraints. Takes into account lighting standards (EN 12464-1) and LED bandwidth limitations (3 MHz). Gap: Alternative modulations (OFDM, FBMC) perform differently. Roll-off/filter trade-offs analyzed."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_022",
+            "title": "Joint Visible Light Sensing and Communication Using m-CAP Modulation",
+            "authors": "Lina Shi, Bastien Béchadergue, Luc Chassagne, Hongyu Guan",
+            "year": 2022,
+            "venue": "IEEE Transactions on Broadcasting",
+            "document_type": "journal",
+            "doi": "10.1109/TBC.2022.3201649"
+        },
+        "classification": {
+            "oisac_medium_class": "wireless_vlc",
+            "carrier_band": "visible",
+            "operational_environment": "indoor",
+            "link_topology": "monostatic",
+            "mobility_context": "quasi_static"
+        },
+        "application": {
+            "application_domain": [
+                "indoor_positioning",
+                "6g_networks"
+            ],
+            "scenario_description": "Indoor VLC-ISAC system for office environments: simultaneous data communication and positioning using white LED lighting infrastructure."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "First VLC-ISAC system combining m-CAP modulation with RSS-based trilateration, incorporating realistic LED bandwidth and lighting constraints (EN 12464-1).",
+            "gap_addressed": "Previous VLC-ISAC works ignored LED dynamic range limits and lighting standards, leading to unrealistic performance claims.",
+            "performance_enablers": [
+                "joint_waveform_design",
+                "direct_detection",
+                "other"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_mCAP_RSS",
+                "scenario_label": "9-AP Indoor VLC-ISAC with m-CAP"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "im_dd",
+                "wavelength_nm": 550.0,
+                "optical_bandwidth_ghz": 0.01,
+                "tx_power_dbm": 4.5,
+                "notes": "4× LUXEON Rebel white LED chips per AP. 880 lm total. 2.84 W optical power. 3 MHz LED bandwidth. Bias: 2.8 A. Linear region: 1.6-4 A."
+            },
+            "receiver": {
+                "rx_detection_type": "direct",
+                "rx_detector": "pin_pd",
+                "notes": "4× Hamamatsu S6967 PDs. Responsivity 0.63 A/W. FOV 85°. Effective area 105.6 mm². No optical filter/concentrator."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "tdm",
+                "notes": "MAC cycle: common preamble → sequential location frames (sensing) → payload (comm). RSS uses variance of received signal."
+            },
+            "waveform": {
+                "comm_waveform_family": "cap",
+                "comm_modulation_order": 256,
+                "comm_symbol_rate_gbaud": 0.001,
+                "sensing_waveform_family": "same_as_comm",
+                "isac_waveform_relationship": "single_dual_function",
+                "notes": "m-CAP: 4 or 8 sub-bands. Sub-band width: 1 MHz or 0.5 MHz. Roll-off 0.4. Filter length 10. Same waveform for comm and RSS sensing."
+            },
+            "channel_wireless": {
+                "link_distance_m": 1.65,
+                "path_loss_model": "Lambertian_LoS",
+                "ambient_light_model": "AWGN_PSD_10e-21",
+                "notes": "4m×4m×2.5m room. UE at 85 cm height (h=1.65 m). 9 APs on ceiling. LOS channel only. Semi-angle 30°."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.032,
+                "ber": 3.8e-3,
+                "snr_db": 45.0,
+                "notes": "32 Mbps max (256-QAM, 8 sub-bands). BER below FEC limit (7% OH) everywhere. SNR varies 32-50 dB depending on position."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "localization_2d"
+                ],
+                "localization_error_m": 0.0717,
+                "notes": "RSS-trilateration using 4 closest APs. 7.17 cm RMS error @90% (with DC). 5.34 cm @66%. Degrades to 64.81 cm without DC."
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "throughput_vs_localization"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Higher QAM order (M=256) shrinks coverage area, reducing sensing availability. Roll-off affects comm BER more than positioning. Interdependence studied."
+            }
+        }
+    ]
+}

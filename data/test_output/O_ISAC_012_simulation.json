@@ -1,0 +1,122 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Excellent O-ISAC paper! Novel PC-FMCW joint waveform. Phase coding for comm, squaring removes it for sensing."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: PC-FMCW system schematic with sensing (coherent detection + squaring) and communication (self-delayed coherent detection) paths. Fig.2: OptiSystem simulation layout. Fig.3: Results showing decoded bits and ranging spectra at 10/20/30m.",
+        "step_1_concept_analysis": "System: Phase-Coded FMCW (PC-FMCW) LiDAR with communication. Sensing uses coherent detection + signal squaring to eliminate phase code influence. Communication uses self-delayed coherent detection (DPSK principle). Joint waveform: phase shifts (0, π) carry comm data on FMCW.",
+        "step_2_benchmark_verification": "Comm: 1 Gbps, phase shifts 0/π. Sensing: B=10 GHz sweep, T=10 µs period. Range: 10/20/30 m verified. Beat frequencies: 266.7/533.3/800 MHz. Velocity measurement possible via Doppler. OptiSystem 15 simulation.",
+        "step_3_strategic_critique": "Contribution: Novel PC-FMCW joint waveform with elegant squaring technique to decouple sensing from comm. Better BER than AM-FMCW. Turbulence robust via self-delayed coherent detection. Gap: Simulation only, no experimental validation."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_012",
+            "title": "Phase-Coded FMCW for Optical Integrated Sensing and Communication",
+            "authors": "Tianzhu Zhang, Zhongji Yan, Anning Pang, Anhong Dang",
+            "year": 2025,
+            "venue": "IEEE Conference (inferred from format)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "wireless_fso",
+            "carrier_band": "C-band",
+            "operational_environment": "outdoor_urban",
+            "link_topology": "monostatic",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "autonomous_vehicles",
+                "environmental_monitoring"
+            ],
+            "scenario_description": "Coherent LiDAR with communication capability for vehicular networks and remote sensing."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation"
+            ],
+            "validation_baselines_present": false,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Phase-Coded FMCW joint waveform where signal squaring at sensing receiver eliminates communication code influence, enabling interference-free dual functionality.",
+            "gap_addressed": "AM-FMCW has lower BER performance and is susceptible to turbulence-induced phase drift.",
+            "performance_enablers": [
+                "pc_fmcw",
+                "coherent_detection",
+                "self_delayed_coherent_detection",
+                "signal_squaring"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "S1_PC_FMCW",
+                "scenario_label": "Phase-Coded FMCW LiDAR with Communication"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "coherent",
+                "tx_external_modulator": "phase_modulator",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 10.0,
+                "notes": "CW laser at 193 THz (1550 nm), 30 dBm. PM for phase coding. Sweep BW = 10 GHz, period = 10 µs."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent",
+                "rx_detector": "bpd",
+                "rx_photonic_processing": "mixing",
+                "notes": "Sensing: BPD + squaring + FFT. Communication: Self-delayed coherent detection (DPSK receiver)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "full_duplex",
+                "notes": "Single TX waveform, separate processing for sensing (transceiver) and communication (target)."
+            },
+            "waveform": {
+                "comm_waveform_family": "fmcw",
+                "comm_modulation_order": 2,
+                "sensing_waveform_family": "fmcw",
+                "isac_waveform_relationship": "single_dual_function_waveform",
+                "notes": "PC-FMCW: Phase shifts (0, π) carry comm data on FMCW chirp. Squaring removes phase code for sensing."
+            },
+            "channel_wireless": {
+                "link_distance_m": 30.0,
+                "turbulence_model": "none",
+                "notes": "Round-trip delay τ = 2R/c. Beat frequencies: 266.7 MHz (10m), 533.3 MHz (20m), 800 MHz (30m)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 1.0,
+                "ber": "NR",
+                "notes": "1 Gbps code rate. BPSK-like phase coding (0, π). Differential encoding for flipping correction."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging",
+                    "velocity_estimation"
+                ],
+                "sensing_range_m": 30.0,
+                "range_resolution_m": 0.015,
+                "notes": "Range resolution = c/(2B) = 1.5 cm for 10 GHz sweep. Velocity via Doppler from up/down ramps."
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "interference_free"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "No mutual interference when phase shifts are 0 and π. Squaring completely eliminates communication code from sensing signal."
+            }
+        }
+    ]
+}

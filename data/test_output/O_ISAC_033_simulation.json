@@ -1,0 +1,191 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper (Reviewing/Reporting two key trials). 1. Forward Phase Sensing (380 km). 2. FD-CP-DAS (1007 km, 10 Tb/s). Excellent benchmarks for high-capacity long-haul ISAC."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 1: 380km field trial with modified coherent transponders. Figure 2: 1007km FD-CP-DAS setup with All-Raman amplification. Figure 3: Waterfall plots of vehicle tracking.",
+        "step_1_concept_analysis": "Method 1: Extracting optical phase accumulated during forward propagation of data signals (16-QAM) for vibration sensing. Method 2: Frequency-Diverse Chirped-Pulse DAS (Backscatter) co-propagating with WDM data.",
+        "step_2_benchmark_verification": "Method 1: 32-Gbaud 16-QAM, 380 km range, 7 km localization accuracy. Method 2: 10 Tb/s Comm Capacity, 1007 km Sensing Range, 100 pstrain/rtHz sensitivity.",
+        "step_3_strategic_critique": "Significantly advances long-range O-ISAC. Method 1 reuses existing transponders. Method 2 pushes DAS range >1000km using Raman amplification."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_033",
+            "title": "Simultaneous Sensing and Communication in Optical Fibers",
+            "authors": "Yue-Kai Huang, Ezra Ip, Junqiang Hu, Ming-Fang Huang, Fatih Yaman, Ting Wang, Glenn Wellbrock, Tiejun Xia, Koji Asahi, Yoshiaki Aono",
+            "year": 2022,
+            "venue": "Optical Fiber Communication Conference (OFC)",
+            "document_type": "conference",
+            "doi": "10.1364/OFC.2022.Th4A.2"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "c_band",
+            "operational_environment": "underwater",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "long_haul_network",
+                "earthquake_detection"
+            ],
+            "scenario_description": "Submarine and terrestrial long-haul fiber networks for seismic/traffic monitoring co-existing with Tb/s data."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "available"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Demonstrated >1000 km DAS co-existing with 10 Tb/s data using Raman amplification and frequency diversity.",
+            "gap_addressed": "Range limitations of standard DAS and incompatibility with inline amplifiers.",
+            "performance_enablers": [
+                "waveform_diversity",
+                "advanced_amplification"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_FORWARD_PHASE_380KM",
+                "scenario_label": "Forward Phase Vibration Sensing (380 km)"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "iq_modulation",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 32.0,
+                "notes": "32-Gbaud 16-QAM data signal used as sensing probe."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_intradyne",
+                "rx_detector": "photodiode",
+                "notes": "Standard coherent receiver with phase extraction DSP."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_front_end",
+                "duplexing_mode": "full_duplex",
+                "notes": "Sensing is intrinsic to the data signal propagation."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "qam",
+                "isac_waveform_relationship": "embedded",
+                "notes": "Data waveform itself tracks phase."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 380.0,
+                "attenuation_db_per_km": 0.2,
+                "backscatter_sensing_type": "none",
+                "notes": "Forward transmission (accumulated phase)."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 200.0,
+                "ber": 0.0,
+                "snr_db": 0.0,
+                "notes": "32 Gbaud 16-QAM implies ~200G/wavelength."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_measurement"
+                ],
+                "sensing_range_m": 380000.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 7000.0,
+                "notes": "Localization uncertainty ~7 km (34 us)."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "none"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "No penalty reported."
+            }
+        },
+        {
+            "identification": {
+                "experiment_id": "EXP_FD_CP_DAS_1000KM",
+                "scenario_label": "FD-CP-DAS with Raman Amplification (1007 km)"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "iq_modulation",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 0.01,
+                "notes": "Chirped pulses (10 MHz bandwidth) for sensing. Separte 200G DP-16QAM for data."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_homodyne",
+                "rx_detector": "photodiode",
+                "notes": "Coherent DAS receiver."
+            },
+            "integration": {
+                "hardware_sharing_mode": "separate_components",
+                "duplexing_mode": "frequency_division",
+                "notes": "WDM coexistence."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "chirp",
+                "isac_waveform_relationship": "frequency_division",
+                "notes": "Data and Sensing on different wavelengths."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 1007.0,
+                "attenuation_db_per_km": 0.2,
+                "backscatter_sensing_type": "rayleigh",
+                "notes": "All-Raman amplification enabling ultra-long reach."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 10000.0,
+                "ber": 0.0,
+                "snr_db": 0.0,
+                "notes": "10 Tb/s total capacity (50 DWDM channels x 200G)."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_measurement"
+                ],
+                "sensing_range_m": 1007000.0,
+                "range_resolution_m": 10.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "10m spatial resolution. Sensitivity ~100 pStrain/rtHz at end of link."
+            },
+            "tradeoff": {
+                "coupling_mode": "loose",
+                "tradeoff_type": [
+                    "power_budget"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "XPM managed by pulse shaping."
+            }
+        }
+    ]
+}

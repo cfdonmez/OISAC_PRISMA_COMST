@@ -1,0 +1,129 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Experimental demonstration of THz-over-Fiber (ToF) ISAC at 0.14 THz using OCDM waveform. Compares OCDM vs OFDM. Demonstrates superior robustness of OCDM to frequency-selective fading."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: OCDM generation (Fresnel transform). Fig 2: Experimental setup (ToF, 10km Fiber, 3.14m THz wireless). Fig 6: BER vs Photocurrent (OCDM better than OFDM). Fig 8: Subcarrier SNR (OCDM flat/robust vs OFDM deep fading). Fig 10/11: Sensing resolution (1.875 cm) identical for both.",
+        "step_1_concept_analysis": "Proposed OCDM (Orthogonal Chirp Division Multiplexing) for ToF-ISAC. OCDM spreads information across the entire bandwidth via Fresnel transform, making it robust against frequency-selective fading (which plagues OFDM). Used in a 'Photonics-based' THz system.",
+        "step_2_benchmark_verification": "OCDM achieves BER < 3.8e-3 (HD-FEC) at lower photocurrent than OFDM (Fig 6). SNR per subcarrier is flat for OCDM, fluctuating for OFDM (Fig 8). Sensing performance (PSLR, ISLR, Resolution) is comparable to OFDM.",
+        "step_3_strategic_critique": "Strong experimental paper (JLT). Clear advantage of OCDM for *Communication* in dispersive THz/Fiber channels, while maintaining *Sensing* quality of OFDM. High relevance for 'waveform_design' and 'terahertz' categories."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_065",
+            "title": "THz-Over-Fiber System With Orthogonal Chirp Division Multiplexing for Integrated Sensing and Communication",
+            "authors": "Lianyi Li, Lu Zhang, Hongqi Zhang, Zhidong Lyu, Zuomin Yang, Xiaodan Pang, Vjaceslavs Bobrovs, Oskars Ozolins, Hangbin Zhao, Feng Li, Changming Zhang, Xianbin Yu",
+            "year": 2024,
+            "venue": "IEEE Journal of Lightwave Technology",
+            "document_type": "journal_paper",
+            "doi": "10.1109/JLT.2023.3311645"
+        },
+        "classification": {
+            "oisac_medium_class": "terahertz",
+            "carrier_band": "terahertz",
+            "operational_environment": "indoor",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "6g_networks",
+                "indoor_positioning",
+                "fiber_wireless_integration"
+            ],
+            "scenario_description": "THz-over-Fiber (ToF) ISAC system extending fiber reach to wireless THz link (3.14m) for high-rate comms and high-res sensing."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "none"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "First demonstration of OCDM-based ToF-ISAC. OCDM shows superior robustness to frequency-selective fading compared to OFDM, with equal sensing resolution.",
+            "gap_addressed": "Performance degradation of OFDM-ToF ISAC due to frequency-selective fading in fiber and THz wireless links.",
+            "performance_enablers": [
+                "orthogonal_chirp_division_multiplexing",
+                "terahertz_over_fiber",
+                "optical_frequency_comb",
+                "fresnel_transform"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_OCDM_TOF_ISAC",
+                "scenario_label": "0.14 THz ToF ISAC"
+            },
+            "transmitter": {
+                "tx_source_type": "optical_frequency_comb",
+                "tx_modulation_type": "iq_modulator",
+                "wavelength_nm": 1552.0,
+                "optical_bandwidth_ghz": 8.0,
+                "notes": "PM-based OFC generation. 140 GHz (0.14 THz) Carrier generated via photomixing (UTC-PD)."
+            },
+            "receiver": {
+                "rx_detection_type": "heterodyne_detection",
+                "rx_detector": "schottky_barrier_diode",
+                "notes": "Schottky mixer for THz downconversion to 7 GHz IF. Real-time DSO (80 GSa/s)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "unified_waveform",
+                "duplexing_mode": "full_duplex",
+                "notes": "OCDM waveform used for both."
+            },
+            "waveform": {
+                "comm_waveform_family": "ocdm",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "ocdm",
+                "isac_waveform_relationship": "unified_waveform",
+                "notes": "16-QAM OCDM. Also compared with OFDM. Bandwidth 8 GHz."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 10.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "10 km SMF transmission."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 3.14,
+                "wireless_band_ghz": 140.0,
+                "notes": "0.14 THz wireless link."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 32.0,
+                "ber": 0.0021,
+                "notes": "OCDM achieves 32 Gbps below HD-FEC. Better BER than OFDM at same photocurrent."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging",
+                    "imaging"
+                ],
+                "sensing_range_m": 1.57,
+                "range_resolution_m": 0.01875,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.01,
+                "notes": "Range resolution 1.875 cm. Radar images obtained via Zero-Padded Matched Filtering."
+            },
+            "tradeoff": {
+                "coupling_mode": "tightly_coupled",
+                "tradeoff_type": [
+                    "robustness_vs_complexity"
+                ],
+                "tradeoff_representation": "text_description",
+                "notes": "OCDM improves robustness (BER) without sacrificing sensing resolution, but requires Fresnel Transform (slightly higher complexity than Fourier)."
+            }
+        }
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. Closed-loop controller using VLC for commands and VLS (Backscattered Intensity from Retroreflective Foil) for rotational angle sensing."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: System setup (Coordinator + Worker). Fig 3: Timing diagram showing TDM (Sensing vs Illumination phases). Fig 5: Control loop step response (Angle vs Time).",
+        "step_1_concept_analysis": "System: VLC-ISAC (VLC + VLS). Function: Remote control of a servomotor. Sensing: Rotational Angle via reflected intensity from a triangular foil (nLoS VLS). Comm: Frequency Modulated Light (500-700 Hz) sending commands.",
+        "step_2_benchmark_verification": "Accuracy: 1.2 degree average deviation. Max error 5 degrees. Range 0-205 degrees.",
+        "step_3_strategic_critique": "Integration via Time Division Multiplexing (TDM) to avoid interference between Comm modulation and Sensing intensity measurement. Simple, low-cost implementation."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_053",
+            "title": "Integrated Sensing and Communication in the Visible Spectral Range: A Novel Closed Loop Controller",
+            "authors": "Christian Fragner, Andreas P. Weiss, Franz P. Wenzl, Erich Leitgeb",
+            "year": 2022,
+            "venue": "2022 13th International Symposium on Communication Systems, Networks and Digital Signal Processing (CSNDSP)",
+            "document_type": "conference_paper",
+            "doi": "10.1109/CSNDSP54353.2022.9908009"
+        },
+        "classification": {
+            "oisac_medium_class": "visible_light",
+            "carrier_band": "visible_light",
+            "operational_environment": "indoor_industrial",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary_device_mobile_part"
+        },
+        "application": {
+            "application_domain": [
+                "industrial_automation",
+                "robotics",
+                "iot"
+            ],
+            "scenario_description": "Closed-loop feedback control of a servomotor's rotational position using VLC for commands and VLS for angle feedback."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "algorithm_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "First practical implementation of a visible light-based closed-loop controller using backscattered VLS for rotational angle sensing and VLC for command transmission, integrated via TDM.",
+            "gap_addressed": "Lack of low-cost, low-complexity ISAC systems for industrial control loops that combine sensing and actuation/communication in the visible spectrum.",
+            "performance_enablers": [
+                "waveform_optimization",
+                "protocol_design"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_VLC_VLS_CONTROL",
+                "scenario_label": "VLC-VLS Closed Loop Control"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "frequency_modulation",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "White LEDs. Cree MC-E (Sensing) and Circular LED Module (Comm)."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode",
+                "notes": "Photodiode (Worker) and 'LED as Receiver' (Coordinator)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "partially_shared",
+                "duplexing_mode": "time_division",
+                "notes": "TDM: Sensing Phase (Intensity measurement, no modulation) vs Illumination/Comm Phase (FM modulation)."
+            },
+            "waveform": {
+                "comm_waveform_family": "analog_fm",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "cw_tone",
+                "isac_waveform_relationship": "time_division",
+                "notes": "Comm: Frequency Modulation (500-700 Hz pulses). Sensing: CW/Unmodulated (Intensity measurement)."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.65,
+                "wireless_band_ghz": 0.0,
+                "notes": "65 cm distance."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "notes": "Low rate command transmission (stop, CW, CCW)."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "orientation_estimation"
+                ],
+                "sensing_range_m": 0.65,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.021,
+                "notes": "Rotational Accuracy: 1.2 degrees (~0.02 rad). Range limited to 0-205 degrees."
+            },
+            "tradeoff": {
+                "coupling_mode": "loose",
+                "tradeoff_type": [
+                    "time_resource"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "TDM approach separates functions to avoid trade-off/interference."
+            }
+        }
+    ]
+}
