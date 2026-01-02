@@ -24,47 +24,45 @@ Bu repo, bu soruyu cevaplamak için yapılan **bilimsel yolculuğun** dijital ka
 |:---|:---|:---:|
 | **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_protocol.md)) | ✅ Tamamlandı |
 | **2. Arama** | 1200+ makaleyi veritabanlarından bulduk. | ✅ Tamamlandı |
-| **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (158 kaldı). | ✅ Tamamlandı |
-| **4. PDF Toplama** | Seçilen 158 makalenin tam metinlerini topluyoruz. | 🟢 Devam Ediyor (%75 - 120+ PDF) |
-| **5. Veri Madenciliği** | **Yapay Zeka (AI)** ile makaleleri okuyup veri çıkarıyoruz. | 🟡 Devam Ediyor (120+ MD Dönüşümü) |
-| **6. Yazım** | Sonuçları makale haline getiriyoruz. | 🔴 Başlamadı |
+| **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (223+ dahil edildi). | ✅ Tamamlandı |
+| **4. PDF Toplama** | Dahil edilen 223+ makalenin tam metinlerini topladık. | ✅ Tamamlandı |
+| **5. Veri Madenciliği** | **Pipeline V4 (Vision + CoT)** ile derin analiz yapıyoruz. | 🟢 Devam Ediyor (200+ İşlendi) |
+| **6. Benchmark** | V4 vs Legacy sonuçlarını kıyaslıyoruz. | 🟢 Devam Ediyor ([Benchmark Lab](analysis/notebooks/06_Extraction_Benchmark_Lab.ipynb)) |
+| **7. Yazım** | Sonuçları COMST taslağına dönüştürüyoruz. | 🟡 Hazırlanıyor |
 
-> **Canlı Süreç:** Bu proje "Living Review" mantığıyla çalışır. Her sabah yeni makale var mı diye kontrol ederiz. ([Detaylı Günlük Akış](docs/DAILY_WORKFLOW.md))
+> **Canlı Süreç:** Bu proje "Onion" (Soğan) mimarisiyle katman katman derinleşir. ([Detaylı Takip Dosyası](data/extraction_tracker.md))
 
 ---
 
 ## 🛠️ Nasıl Çalışıyoruz? (Teknik Mutfak)
 
-Bu projeyi yönetmek için kullandığımız araçlar ve akış şöyledir:
+Bu projeyi yönetmek için **Pipeline V4** mimarisini kullanıyoruz:
 
-### 1. Araç Setimiz
-*   **🧠 Beyin:** Google Colab (Kodları ve AI modellerini burada çalıştırıyoruz).
-*   **💾 Hafıza:** Google Drive (Tüm PDF'ler ve veriler burada durur).
-*   **📁 Depo:** GitHub (Bu gördüğünüz yer, kodların ve dokümanların evidir).
-*   **✍️ Yazım:** Overleaf (Makalenin son hali burada yazılır).
+### 1. Katmanlı Veri İşleme (Onion Structure)
+Proje, veriyi merkezden dışa doğru 5 aşamada işler:
+1.  **Öz:** Marker V1.0 ile PDF'ten Markdown'a dijitalleştirme.
+2.  **Legacy:** Temel meta-veri çıkarımı (O_ISAC_001-066).
+3.  **V4 (Vision+CoT):** Llama-3.3-70b ve Vision modelleriyle karmaşık tablo/grafik analizi.
+4.  **Benchmark:** Doğruluk kalibrasyonu ve kıyaslama.
+5.  **Sentez:** PRISMA uyumlu sistematik raporlama.
 
 ### 2. İş Akışımız (Workflow)
-Bir makalenin PDF'ten anlamlı bir bilgiye dönüşme süreci:
-
 ```mermaid
 graph LR
-    A[📄 Ham PDF] -->|OCR & Temizlik| B(📝 Markdown Metin)
-    B -->|Görsel Analiz| C{🖼️ Grafik/Tablo}
-    B & C -->|AI Akıl Yürütme| D[🧠 Yapısal Veri]
-    D -->|Sentez| E[📊 Makale Taslağı]
+    A[📄 PDF] --> B(📝 Markdown)
+    B --> C{🖼️ Vision Analysis}
+    C --> D[🧠 Chain of Thought Extraction]
+    D --> E[📊 Structured JSON]
+    E --> F[🧪 Benchmark Lab]
 ```
-
-Bu sihirli işlemi **tek bir tuşla** yapan aracımız: [`CoT_Master_Pipeline.ipynb`](analysis/notebooks/CoT_Master_Pipeline.ipynb)
 
 ---
 
 ## 📂 Dosyalar Nerede? (Harita)
 
-*   `protocol/`: **Anayasa.** Kurallarımız, neyi dahil edip neyi etmeyeceğimiz burada yazar.
-*   `search/` & `screening/`: **Kanıtlar.** Hangi kelimelerle arama yaptık? Hangi makaleyi neden eledik? Hepsi burada kayıtlı.
-*   `data/`: **Hazine.** Toplanan PDF'ler ve AI tarafından çıkarılan JSON verileri.
-*   `analysis/`: **Fabrika.** Analiz kodları, notebook'lar ve "CoT Laboratuvarı".
-*   `docs/`: **Kılavuzlar.** Nasıl yapılır belgeleri.
+*   `data/`: **Hazine.** JSON verileri ve [`extraction_tracker.md`](data/extraction_tracker.md).
+*   `analysis/notebooks/`: **Laboratuvar.** `CoT_Master_Pipeline.ipynb` ve `06_Extraction_Benchmark_Lab.ipynb`.
+*   `protocol/`: **Anayasa.** PRISMA protokolü.
 
 ---
 
@@ -72,9 +70,10 @@ Bu sihirli işlemi **tek bir tuşla** yapan aracımız: [`CoT_Master_Pipeline.ip
 
 Bir bilimsel çalışmanın en önemli özelliği **tekrarlanabilir** olmasıdır.
 *   Her eleme kararı bir CSV dosyasına işlenir.
-*   Yapay zekanın her analizi bir "Log" dosyası olarak saklanır ("Ben bu makaleyi okudum ve şunları buldum" der).
+*   Yapay zekanın her analizi bir "Log" dosyası olarak saklanır.
+*   Tüm kıyaslama süreçleri notebook'lar üzerinden şeffafça izlenebilir.
 
 ---
 
-**Son Güncelleme:** 13 Aralık 2025
+**Son Güncelleme:** 2 Ocak 2026
 *Bu proje, Açık Bilim (Open Science) ilkelerine adanmıştır.*
