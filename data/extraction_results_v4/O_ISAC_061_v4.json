@@ -1,0 +1,160 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper proposes an Optical Phased Array (OPA)-based Optical Wireless Integrated Sensing and Communication (OW-ISAC) framework. It includes system models for both communication and sensing, and derives dedicated performance metrics for each subsystem. The system uses a uniform line array of edge emitters and serves multiple communication user equipment (UE) simultaneously, while also conducting sensing for the direction of interest like a scanning LiDAR."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The OPA-based OW-ISAC system uses optical beamforming and atmospheric propagation to enable concurrent multi-user communication and environment imaging. The system mechanism involves the use of a precoding matrix to control the optical beams, and the ISAC coupling mode is based on the multi-beam property of the OPA, which is mitigated and exploited through the use of a photodiode (PD) array with various steering angles."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper derives dedicated performance metrics for the communication and sensing subsystems, including the light-field signal-to-interference-plus-noise ratio (SINR) for communication and the contrast metric for sensing. The metrics are validated through numerical simulations, which demonstrate the effectiveness of the proposed OPA-based OW-ISAC framework in achieving high-precision sensing and reliable communication capabilities."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating sensing and communication in an optical wireless system using an OPA-based approach. However, the system still faces challenges such as the tradeoff between communication and sensing performance, and the need for further optimization of the precoding matrix and PD orientations to achieve better performance. Additionally, the system's performance in realistic scenarios, such as intelligent transportation systems (ITS), needs to be further evaluated."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Optical Wireless Integrated Sensing and Communication Based on Optical Phased Array: Performance Metric and Optimal Beamforming",
+      "authors": "Yunfeng Wen, Fang Yan, Jian Song, Zhu Han",
+      "year": 2025,
+      "venue": "IEEE Transactions on Wireless Communications",
+      "doi": "10.1109/TWC.2025.3559254"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "NIR",
+      "operational_environment": "outdoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "The system is designed for intelligent transportation systems (ITS) and can be used for simultaneous communication and sensing in vehicular environments."
+    },
+    "evidence": {
+      "evidence_type": "simulation",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": true,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes an OPA-based OW-ISAC framework and derives dedicated performance metrics for the communication and sensing subsystems.",
+      "gap_addressed": "The paper addresses the challenge of integrating sensing and communication in an optical wireless system using an OPA-based approach.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "Optical Phased Array (OPA)",
+      "novel_component_specs": "The OPA consists of a uniform line array of edge emitters with a distance of 6.2 \u03bcm between adjacent emitters."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Outdoor FSO, 500m, Fog"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 100,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.5,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 500,
+      "path_loss_model": "friis",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-14,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 2,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 5
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 500,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 0.1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_split",
+      "tradeoff_control_range": "0.1-0.9"
+    }
+  },
+  "Paper_ID": "O_ISAC_061"
+}

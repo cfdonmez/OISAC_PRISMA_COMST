@@ -1,0 +1,188 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, such as Figure 1, which shows the off-shore platform used for the experiment, and Figure 2, which displays the brightness contrast as a function of the elevation angle. Figure 3 presents a comparison between the retrieved curvature spectrum and three different spectrum models. Figure 4 illustrates the wave conditions obtained from radar measurements, and Figure 5 shows a comparison between S-band measurements and model simulations as a function of the incidence angle."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves the use of microwave radiometers and radar to measure the sea surface roughness and wind speed. The ISAC coupling mode is based on the combination of active and passive microwave measurements to retrieve wave parameters and characterize the spectral properties of the waved surface."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a good agreement between the measured and simulated brightness temperatures at S and Ka bands, which validates the physical consistency of the metrics. However, the retrieval of wave spectrum parameters shows appreciable disagreements between retrieved and simulated parameters, indicating some inconsistencies."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of retrieving wind speed from microwave radiometric measurements using an algorithm based on supervised Artificial Neural Network (ANN). However, the retrieval of wave spectrum parameters remains an open challenge due to the disagreements between retrieved and simulated parameters."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Remote Sensing of Waved Sea Surface: Combined Passive and Active Microwave Measurements During the CAPMOS'05 Experiment",
+      "authors": "E.Santi, P. Pampaloni, M. Pospelov, A Kuzmin, S. Zecchetto, F. De Biasio, N. Skou, S. S\u00f8bj\u00e6rg",
+      "year": 2005,
+      "venue": "International Experiment CAPMOS'05",
+      "doi": "Not Reported",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_fso",
+      "carrier_band": "Not Reported",
+      "operational_environment": "outdoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "environmental_monitoring",
+      "scenario_description": "Remote sensing of waved sea surface using combined passive and active microwave measurements"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "Development of an algorithm based on supervised Artificial Neural Network (ANN) for retrieving wind speed from microwave radiometric measurements",
+      "gap_addressed": "Retrieval of wind speed from microwave radiometric measurements",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "machine_learning"
+      ],
+      "novel_component": "ANN algorithm",
+      "novel_component_specs": "Multi-layer perceptrons (MLP's) with back-propagation (BP) learning rule"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "CAPMOS'05",
+      "scenario_label": "Remote sensing of waved sea surface"
+    },
+    "transmitter": {
+      "tx_source_type": "Not Reported",
+      "tx_modulation_type": "Not Reported",
+      "tx_external_modulator": "Not Reported",
+      "wavelength_nm": "Not Reported",
+      "optical_bandwidth_ghz": "Not Reported",
+      "tx_power_dbm": "Not Reported",
+      "aperture_diameter_m": "Not Reported",
+      "beam_divergence_mrad": "Not Reported"
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "Not Reported",
+      "rx_aperture_diameter_m": "Not Reported",
+      "rx_photonic_processing": "none",
+      "rx_modulator_type": "Not Reported",
+      "rx_modulator_bandwidth_ghz": "Not Reported",
+      "rx_modulator_operating_point": "Not Reported",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "separate_frontends",
+      "duplexing_mode": "Not Reported"
+    },
+    "waveform": {
+      "comm_waveform_family": "Not Reported",
+      "comm_modulation_order": "Not Reported",
+      "comm_symbol_rate_gbaud": "Not Reported",
+      "comm_fec_type": "Not Reported",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "Not Reported"
+    },
+    "channel_fiber": {
+      "fibre_length_km": "Not Reported",
+      "fibre_type": "Not Reported",
+      "attenuation_db_per_km": "Not Reported",
+      "dispersion_ps_per_nm_km": "Not Reported",
+      "nonlinearity_model": "Not Reported",
+      "backscatter_sensing_type": "Not Reported"
+    },
+    "channel_wireless": {
+      "link_distance_m": "Not Reported",
+      "path_loss_model": "Not Reported",
+      "turbulence_model": "Not Reported",
+      "turbulence_Cn2": "Not Reported",
+      "scintillation_index": "Not Reported",
+      "pointing_error_model": "Not Reported",
+      "weather_visibility_m": "Not Reported",
+      "ambient_light_model": "Not Reported"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": "Not Reported",
+      "spectral_efficiency_bps_hz": "Not Reported",
+      "ber": "Not Reported",
+      "ber_target": "Not Reported",
+      "snr_db": "Not Reported",
+      "osnr_db": "Not Reported",
+      "outage_probability": "Not Reported",
+      "latency_ms": "Not Reported",
+      "capacity_bps_hz": "Not Reported"
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": "Not Reported",
+      "range_resolution_m": "Not Reported",
+      "range_accuracy_m": "Not Reported",
+      "angular_resolution_deg": "Not Reported",
+      "velocity_resolution_mps": "Not Reported",
+      "velocity_accuracy_mps": "Not Reported",
+      "localization_error_m": "Not Reported",
+      "spatial_resolution_m": "Not Reported",
+      "sensing_bandwidth_hz": "Not Reported",
+      "pd_probability_detection": "Not Reported",
+      "pfa_probability_false_alarm": "Not Reported",
+      "crb_crlb_value": "Not Reported",
+      "crb_parameter": "Not Reported"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "incidence_angle",
+      "tradeoff_control_range": "20-160 degrees"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": "Not Reported",
+      "opa_steering_range_deg": "Not Reported",
+      "opa_beamwidth_deg": "Not Reported",
+      "ris_num_elements": "Not Reported",
+      "ris_type": "Not Reported",
+      "ris_phase_bits": "Not Reported"
+    },
+    "provenance": {
+      "source_pointer": "Figure 2",
+      "value_origin": "reported_text",
+      "confidence_reporting": "none",
+      "num_trials": "Not Reported"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 1,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a good description of the experimental setup and methodology, but lacks some details on the modeling and validation of the results."
+  },
+  "Paper_ID": "O_ISAC_147"
+}

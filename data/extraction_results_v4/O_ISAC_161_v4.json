@@ -1,0 +1,136 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper contains various diagrams and figures illustrating different aspects of ISAC systems, including system diagrams, block diagrams, and circuit diagrams. These visual aids help to explain the concepts and architectures of ISAC systems, such as the integration of sensing and communication functions, antenna arrays, and RF front-end designs."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The paper discusses the concept of Integrated Sensing and Communication (ISAC) systems, which aim to integrate sensing and communication functions within a shared hardware platform. The ISAC coupling mode is achieved through various techniques, including time-division multiplexing (TDM), frequency-division multiplexing (FDM), and code-division multiplexing (CDM). The system mechanism involves the use of shared antennas, RF front-ends, and signal processing chains to support both sensing and communication operations."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports various metrics, such as data rates and range resolutions, for different ISAC system implementations. To verify the physical consistency of these metrics, it is essential to consider the underlying system architectures, component specifications, and operational conditions. For example, the reported data rates and range resolutions should be consistent with the capabilities of the RF front-ends, antennas, and signal processing chains used in the system."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper highlights the progress made in ISAC system development, including the integration of sensing and communication functions, the use of advanced antenna arrays, and the implementation of efficient signal processing algorithms. However, it also identifies remaining open challenges, such as the need for further miniaturization, improved energy efficiency, and enhanced system scalability. Additionally, the paper discusses the importance of addressing these challenges to enable the widespread adoption of ISAC systems in various applications."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_161",
+      "title": "ISAC Transceiver Hardware Architectures, Technologies, and Trends",
+      "authors": "Ke Wu et al.",
+      "year": 2025,
+      "venue": "IEEE J-STAEQ",
+      "doi": "10.1109/JSTEAP.2025.3610564"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "mmW",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "The paper discusses the application of ISAC systems in industrial manufacturing, including predictive maintenance and automated guided vehicles."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The paper presents a comprehensive review of ISAC transceiver technologies, including hardware architectures, RF front-end designs, and signal processing algorithms.",
+      "gap_addressed": "The paper addresses the need for a comprehensive review of ISAC transceiver technologies, highlighting the current state-of-the-art and identifying remaining challenges.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "TFLN-MZM",
+      "novel_component_specs": "Half-wave voltage \u22643V, optical insertion loss 7.1dB"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor ISAC System"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "fmcw",
+      "isac_waveform_relationship": "joint_waveform"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 100,
+      "path_loss_model": "friis",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 5,
+      "ber": 1e-06,
+      "snr_db": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 100,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    }
+  },
+  "Paper_ID": "O_ISAC_161"
+}

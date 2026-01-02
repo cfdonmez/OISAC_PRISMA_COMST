@@ -1,0 +1,190 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper discusses the performance improvement of symmetric carrier-assisted differential detection (S-CADD) receiver using pairwise coding (PWC) for short-reach optical interconnections. The system configuration and simulation results are provided in the paper."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The S-CADD receiver is a self-coherent detection technique that can overcome frequency-selective fading caused by fiber dispersion. However, it suffers from a color SNR effect due to its intrinsic transfer function, which degrades the overall system performance. The PWC scheme is proposed to alleviate this issue by pairing subcarriers with different SNRs and improving the sensitivity of the receiver."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The simulation results show that the PWC scheme can achieve a lower BER compared to the traditional scheme. The BER performance vs. iteration number and BER vs. CSPR are compared between the traditional scheme and the PWC scheme. The PWC scheme can realize an OSNR gain of 1.5dB for the 7% HD-FEC limit under optimal CSPR conditions."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The PWC scheme is a promising solution for cost-effective direct detection schemes with field recovery. However, there is still room for improvement in future research, such as reducing the demand for carrier power and improving spectral efficiency."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Performance Improvement for Symmetric Carrierassisted Differential Detection Receiver by Pairwise Coding",
+      "authors": "Zihua Huang, Jianping Li, Xinkuo Yu, Jianqing He, Yuwen Qin, Meng Xiang, and Songnian Fu",
+      "year": 2023,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2023.3265621",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "data_center",
+        "short_reach_optical_interconnects"
+      ],
+      "scenario_description": "Short-reach optical interconnections for data centers"
+    },
+    "evidence": {
+      "evidence_type": [
+        "simulation"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Pairwise coding (PWC) scheme for symmetric carrier-assisted differential detection (S-CADD) receiver to improve SNR imbalance among different subcarriers",
+      "gap_addressed": "Color SNR effect in S-CADD receiver",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "None",
+      "novel_component_specs": "None"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "S-CADD receiver with PWC scheme"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 32,
+        "tx_power_dbm": 6,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 0.1
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 64,
+        "comm_fec_type": "hd_fec",
+        "sensing_waveform_family": "none",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 80,
+        "fibre_type": "ssmf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0,
+        "path_loss_model": "none",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 0,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 256,
+        "spectral_efficiency_bps_hz": 4,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 32,
+        "osnr_db": 32,
+        "outage_probability": 0,
+        "latency_ms": 0,
+        "capacity_bps_hz": 4
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "none"
+        ],
+        "sensing_range_m": 0,
+        "range_resolution_m": 0,
+        "range_accuracy_m": 0,
+        "angular_resolution_deg": 0,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 0,
+        "spatial_resolution_m": 0,
+        "sensing_bandwidth_hz": 0,
+        "pd_probability_detection": 0,
+        "pfa_probability_false_alarm": 0,
+        "crb_crlb_value": 0,
+        "crb_parameter": "none"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "csp_ratio",
+        "tradeoff_control_range": "[0, 10]"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Fig. 4",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 1
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 0,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system configuration and simulation results. However, the experimental setup and measurement results are not provided."
+  },
+  "Paper_ID": "O_ISAC_028"
+}

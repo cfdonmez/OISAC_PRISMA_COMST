@@ -1,0 +1,195 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper includes several figures and diagrams that provide insight into the 6G-EWOC project's architecture and technical details. Figure 1 illustrates OWC scenarios, including V2V and V2I communication, as well as a Fi-Wi-Fi bridge. Figure 2 shows a busy urban intersection, highlighting the need for advanced sensing and communication technologies. Figure 7 depicts the 6G-EWOC high-level architecture, which integrates OWC and C-V2X systems. Figure 8 shows the 6G-EWOC connectivity architecture, including OWC transceivers, photonic switches, and edge data centers."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The 6G-EWOC project aims to develop a 6G-V2X network that combines fiber-optic and wireless technologies with AI to support advanced network and CAM services. The project focuses on the development of OWC technologies for V2V and V2I communications, as well as the integration of C-V2X systems. The architecture includes a photonic lantern-based remote radio head for V2I OWC, a Fi-Wi-Fi bridge for fiber-scarce areas, and an AI-driven control and orchestration system for resource optimization."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The paper reports several performance metrics, including data rates of >100 Mb/s for V2V OWC and >1 Gb/s for V2I OWC. The Fi-Wi-Fi bridge is reported to have a loss of <13 dB for a 100 m link. The project aims to demonstrate 17 KPIs, including V2V and V2I data rates, user data rates, and energy efficiency. The reported metrics seem physically consistent, but further analysis is needed to verify the results."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The 6G-EWOC project addresses several key challenges in the development of 6G-V2X networks, including the need for high-speed, low-latency communication and advanced sensing capabilities. The project's focus on OWC technologies and AI-driven control and orchestration provides a promising approach to addressing these challenges. However, further analysis is needed to evaluate the project's potential impact and identify areas for improvement."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_340",
+      "title": "6G-EWOC: AI-Enhanced Fiber-Wireless Optical 6G Network in Support of Connected Mobility",
+      "authors": "Eleni Theodoropoulou et al.",
+      "year": 2026,
+      "venue": "6G-EWOC Project / IEEE Conf",
+      "doi": "Not Reported",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "Not Reported",
+      "operational_environment": "urban",
+      "link_topology": "Not Reported",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "industrial_manufacturing"
+      ],
+      "scenario_description": "Connected mobility, autonomous vehicles, and smart cities"
+    },
+    "evidence": {
+      "evidence_type": [
+        "analytical",
+        "simulation"
+      ],
+      "validation_baselines_present": false,
+      "reproducibility_artifacts": "insufficient"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": true,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The development of a 6G-V2X network that integrates OWC and C-V2X systems with AI-driven control and orchestration",
+      "gap_addressed": "The need for high-speed, low-latency communication and advanced sensing capabilities in 6G-V2X networks",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "electronic_dechirping",
+        "matched_filtering"
+      ],
+      "novel_component": "Photonic lantern-based remote radio head",
+      "novel_component_specs": "Not Reported"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "Demo 1",
+        "scenario_label": "OWC Connectivity"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "Not Reported",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": "Not Reported",
+        "aperture_diameter_m": "Not Reported",
+        "beam_divergence_mrad": "Not Reported"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": "Not Reported",
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "Not Reported",
+        "rx_modulator_bandwidth_ghz": "Not Reported",
+        "rx_modulator_operating_point": "Not Reported",
+        "false_target_mitigation": "Not Reported"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OOK",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "Not Reported",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "Not Reported"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "Not Reported",
+        "fibre_type": "smf",
+        "attenuation_db_per_km": "Not Reported",
+        "dispersion_ps_per_nm_km": "Not Reported",
+        "nonlinearity_model": "Not Reported",
+        "backscatter_sensing_type": "Not Reported"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "Not Reported",
+        "turbulence_model": "Not Reported",
+        "turbulence_Cn2": "Not Reported",
+        "scintillation_index": "Not Reported",
+        "pointing_error_model": "Not Reported",
+        "weather_visibility_m": "Not Reported",
+        "ambient_light_model": "Not Reported"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.1,
+        "spectral_efficiency_bps_hz": "Not Reported",
+        "ber": "Not Reported",
+        "ber_target": "Not Reported",
+        "snr_db": "Not Reported",
+        "osnr_db": "Not Reported",
+        "outage_probability": "Not Reported",
+        "latency_ms": "Not Reported",
+        "capacity_bps_hz": "Not Reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 100,
+        "range_resolution_m": "Not Reported",
+        "range_accuracy_m": "Not Reported",
+        "angular_resolution_deg": "Not Reported",
+        "velocity_resolution_mps": "Not Reported",
+        "velocity_accuracy_mps": "Not Reported",
+        "localization_error_m": "Not Reported",
+        "spatial_resolution_m": "Not Reported",
+        "sensing_bandwidth_hz": "Not Reported",
+        "pd_probability_detection": "Not Reported",
+        "pfa_probability_false_alarm": "Not Reported",
+        "crb_crlb_value": "Not Reported",
+        "crb_parameter": "Not Reported"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "Not Reported",
+        "tradeoff_control_range": "Not Reported"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "Not Reported",
+        "opa_steering_range_deg": "Not Reported",
+        "opa_beamwidth_deg": "Not Reported",
+        "ris_num_elements": "Not Reported",
+        "ris_type": "Not Reported",
+        "ris_phase_bits": "Not Reported"
+      },
+      "provenance": {
+        "source_pointer": "Figure 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "Not Reported"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 1,
+    "tqaf_validation_strength": 1,
+    "tqaf_experimental_validity": 0,
+    "tqaf_metric_completeness": 1,
+    "tqaf_reproducibility": 0,
+    "tqaf_notes": "The paper provides a detailed description of the 6G-EWOC project's architecture and technical details. However, the validation strength and experimental validity are limited due to the lack of reported experimental results."
+  },
+  "Paper_ID": "O_ISAC_340"
+}

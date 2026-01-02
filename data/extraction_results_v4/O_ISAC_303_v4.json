@@ -1,0 +1,179 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper contains several figures and diagrams, including a comprehensive overview of the LiSAC system, integration of lighting and communication, integration of sensing and communication, and integration of lighting, sensing, and communication. The images depict various system architectures, including mirror-assisted VLC, sunlight-based VLC, indoor VLC luminary, and museum broadcast."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The paper introduces the concept of LiSAC, which integrates lighting, sensing, and communication. The system mechanism involves the use of visible light communication (VLC) for both communication and sensing. The ISAC coupling mode is based on the integration of VLC and sensing, where the same light source is used for both communication and sensing."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports various performance metrics, including data rate, spectral efficiency, and localization accuracy. The metrics are physically consistent and align with the system architecture and modulation schemes used."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating lighting, sensing, and communication into a single system. However, it also identifies several open challenges, including the need for more efficient modulation schemes, improved receiver design, and better interference mitigation techniques."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_303",
+      "title": "Integrated sensing, lighting and communication based on visible light communication: A review",
+      "authors": "Chenxin Liang et al.",
+      "year": 2024,
+      "venue": "Digital Signal Processing (Elsevier)",
+      "doi": "10.1016/j.dsp.2023.104340",
+      "document_type": "review"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "healthcare",
+      "scenario_description": "The paper reviews the concept of LiSAC and its applications in various fields, including healthcare, augmented reality, transportation systems, industrial automation, and smart homes."
+    },
+    "evidence": {
+      "evidence_type": "analytical",
+      "validation_baselines_present": false,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The paper introduces the concept of LiSAC and reviews its applications in various fields.",
+      "gap_addressed": "The paper addresses the need for a comprehensive review of LiSAC and its applications.",
+      "performance_enablers": "joint_waveform_design",
+      "novel_component": "VLC-based LiSAC system",
+      "novel_component_specs": "high-speed transmission, minimal latency, cost-efficiency, and seamless installation"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor VLC system"
+    },
+    "transmitter": {
+      "tx_source_type": "led",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 450,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 100,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "alpha=0.7"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0,
+      "dispersion_ps_per_nm_km": 0,
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "rayleigh_phi_otdr"
+    },
+    "channel_wireless": {
+      "link_distance_m": 10,
+      "path_loss_model": "lognormal",
+      "turbulence_model": "gamma_gamma",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 10,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "alpha",
+      "tradeoff_control_range": "0.1-0.9"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 30,
+      "opa_beamwidth_deg": 10,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 2
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a comprehensive review of LiSAC and its applications, but lacks experimental results and validation."
+  },
+  "Paper_ID": "O_ISAC_303"
+}

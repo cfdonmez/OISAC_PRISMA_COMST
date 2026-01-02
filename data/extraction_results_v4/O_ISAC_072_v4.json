@@ -1,0 +1,187 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which illustrates the ANN training method based on digital twin technology and the vibration-induced phase extraction based on the well-trained ANN. Fig. 2 shows the experimental setup and DSP procedure. Fig. 3 displays the phases extracted by ANN under different vibration frequencies. Fig. 4 compares the phases extracted by BPF and ANN under 10 kHz vibration and shows the spectra of the extracted phases."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves using artificial neural networks (ANN) and digital twin technology for integrated vibration sensing and communication in DSCM systems with commercial external cavity lasers (ECLs). The ISAC coupling mode is based on the joint use of frequency-domain pilot tones (FPTs) for both communication and vibration-induced phase extraction."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a 12 dB improvement in sensing signal-to-noise ratio (SSNR) compared to traditional BPF-based schemes, which is physically consistent with the expected performance of the proposed ANN-based method."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of vibration-induced phase extraction in DSCM systems using commercial ECLs, but the open challenge of further improving the SSNR and adapting the system to various vibration frequencies and environments remains."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Integrated Vibration Sensing in DSCM Systems Under ECLs Based on ANN and Digital Twin",
+      "authors": "Bang Yang, Shangyi Wang, Jianwei Tang, Yanfu Yang",
+      "year": 2025,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Vibration sensing in DSCM systems"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "ANN-based vibration-induced phase extraction using digital twin technology",
+      "gap_addressed": "Limited accuracy of dynamic frequency offset estimation in conventional methods",
+      "performance_enablers": "ann",
+      "novel_component": "Digital twin framework",
+      "novel_component_specs": "Combines experimental noise with digitally-added vibration-induced phases"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Vibration sensing in DSCM system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": "NR",
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "NR",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "NR",
+        "false_target_mitigation": "NR"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 8,
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "same_as_comm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "NR",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "NR",
+        "backscatter_sensing_type": "NR"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "NR",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 32,
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": "NR",
+        "ber_target": "NR",
+        "snr_db": "NR",
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "vibration",
+        "sensing_range_m": "NR",
+        "range_resolution_m": "NR",
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": 50000,
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "NR"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "NR",
+        "tradeoff_control_range": "NR"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "NR",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Fig. 4",
+        "value_origin": "reported_figure",
+        "confidence_reporting": "NR",
+        "num_trials": "NR"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and procedure, and the results are well-validated through comparisons with traditional BPF-based schemes."
+  },
+  "Paper_ID": "O_ISAC_072"
+}

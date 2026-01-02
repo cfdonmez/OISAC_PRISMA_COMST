@@ -1,0 +1,121 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper presents a single-ended > 100-km distributed vibration sensor based on OFDR using the Pearson correlation coefficient. The system uses a simple internal modulation OFDR without any amplifier, specialty optical fiber, and complex modulation techniques. The vibration events can be located by detecting changepoints in the Pearson-CC, and the amplitude of vibration events is proportional to the differential Pearson-CC."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on OFDR, which uses the Pearson correlation coefficient to evaluate the variation of Rayleigh backscattering spectra. The ISAC coupling mode is not explicitly mentioned, but it can be inferred that the system is designed for integrated sensing and communication in an optical fiber (ISAC-OF)."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the sensing range of 100.9 km, sensing spatial resolution of 15.3 m, and strain resolution of 868 p\u03b5, are physically consistent with the system design and experimental results. The differential Pearson-CC and amplitude of the vibration event have a good linear relationship, with an R-square of 0.9993."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of detecting vibration events over 100 km using a simple and effective method based on OFDR and the Pearson correlation coefficient. The remaining open challenges include improving the strain resolution, increasing the sensing range, and demonstrating the system's potential for multiple simultaneous vibration events."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Single-Ended > 100-km Distributed Vibration Sensor Based on OFDR Using Pearson Correlation Coefficient",
+      "authors": "Haohan Guo, Kun Liu, Yuanyao Li, Ji Liu, Huafang Wang, Jinqi Deng, Junfeng Jiang, Tiegen Liu, and Zhenyang Ding",
+      "year": 2025,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JSEN.2025.3554542"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Distributed vibration sensing for industrial monitoring"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "A simple and effective method for detecting vibration events over 100 km using OFDR and the Pearson correlation coefficient",
+      "gap_addressed": "The need for a simple and effective method for detecting vibration events over long distances",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "None",
+      "novel_component_specs": "None"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Distributed vibration sensing over 100 km"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "none"
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "ldpc"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 100,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 2,
+      "ber": 1e-06
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 100000,
+      "range_resolution_m": 15,
+      "range_accuracy_m": 10
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a well-designed experiment with clear results and a thorough analysis of the system's performance."
+  },
+  "Paper_ID": "O_ISAC_013"
+}

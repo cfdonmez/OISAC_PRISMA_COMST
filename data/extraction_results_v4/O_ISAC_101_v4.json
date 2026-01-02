@@ -1,0 +1,181 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "Figure 1 illustrates the ICON concept, which includes a sensing system controlled through an intelligent control platform that can be integrated into or interact with terrestrial and subsea network controllers and their network management systems."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The ICON project aims to create a pathway for fibre sensing to become an integral service in optical transmission systems. It combines physical layer sensing with an intelligent sensing control system, enabling intent- and context-awareness. The system provisions and configures IC&S network elements to fulfill sensing requirements, interfaces with sensing applications and the network management system, and creates a digital twin of network segments/elements."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper discusses the potential of integrating fibre sensing into telecommunications infrastructure, but does not provide specific metrics on rate or resolution. However, it mentions the use of distributed acoustic sensing (DAS) and spatio-temporal signal processing to monitor remote seismic events and detect vehicle speed, density, and road conditions."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The ICON project addresses the challenge of integrating fibre sensing into optical transmission systems, enabling improved network performance, security, and new services. However, open challenges remain, such as developing highly flexible physical layer sensing solutions, creating intelligent platforms compatible with SDN control environments, and ensuring data sovereignty and security in multi-vendor, multi-operator environments."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Intent and Context-Aware Optical Networks",
+      "authors": "Aleksandra Kaszubowska-Anandarajah, Kaida Kaeval, Alessandro Giusti, et al.",
+      "year": 2024,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "NR",
+      "operational_environment": "NR",
+      "link_topology": "NR",
+      "mobility_context": "NR"
+    },
+    "application": {
+      "application_domain": "fibre_network_monitoring",
+      "scenario_description": "Fibre sensing for network monitoring and performance optimization"
+    },
+    "evidence": {
+      "evidence_type": "analytical",
+      "validation_baselines_present": false,
+      "reproducibility_artifacts": "insufficient"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The ICON project integrates fibre sensing into optical transmission systems, enabling intent- and context-awareness for improved network performance and security.",
+      "gap_addressed": "The challenge of integrating fibre sensing into optical transmission systems.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "signal_processing"
+      ],
+      "novel_component": "NR",
+      "novel_component_specs": "NR"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "NR",
+      "scenario_label": "Fibre sensing for network monitoring"
+    },
+    "transmitter": {
+      "tx_source_type": "NR",
+      "tx_modulation_type": "NR",
+      "tx_external_modulator": "NR",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 100,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "nr",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "\u03b1=0.5"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 100,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 10000,
+      "ambient_light_model": "nr"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 100,
+      "spectral_efficiency_bps_hz": 2,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 100
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 1000,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 8
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 1,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 1,
+    "tqaf_reproducibility": 1,
+    "tqaf_notes": "The paper provides a comprehensive overview of the ICON project, but lacks specific technical details and experimental results."
+  },
+  "Paper_ID": "O_ISAC_101"
+}

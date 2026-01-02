@@ -1,0 +1,151 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures and charts that illustrate the system architecture, signal processing, and performance metrics. Figure 1 shows the time-frequency distribution of the chirp signal, while Figure 2 depicts the transmitted frame structure and time-frequency distribution of the DP chirp TSs. Figure 3 illustrates the principle of FrFT and its application to the received DP chirp TSs. Figure 4 shows the experimental setup, and Figure 5 demonstrates the estimation of SOP rotation and the performance of FFD-AEQ. Figure 6 illustrates the BER performance and phase STD versus SCPR, and Figure 7 shows the intensity trace and demodulated differential phase. Figure 8 demonstrates the fading mitigation performance, and Figure 9 shows the time-space distribution of the demodulated differential phase and the power spectral density at the PZT position. Figure 10 illustrates the temporal evolution of the demodulated differential phase and the time-frequency distribution of the demodulated sweeping frequency vibration."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on the use of telecom pilots for both SOP rotation estimation and DAS. The ISAC coupling mode is achieved through the use of dual-polarization chirp TSs with opposite FM slopes, which are orthogonal to each other in the fractional domain. The FrFT is used to extract the chirp TSs and distinguish the RBS signals of different telecom TSs."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the BER performance, phase STD, and PSD SNR, are physically consistent with the system architecture and signal processing described in the paper. The experimental results demonstrate the feasibility of the proposed endogenous ISAC system, with a spatial resolution of 1 m and a strain resolution of 0.73 n\u03b5/\u221aHz."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving endogenous ISAC using telecom pilots for both SOP rotation estimation and DAS. The remaining open challenges include further improving the spatial resolution and strain resolution, as well as demonstrating the system's performance in more complex scenarios, such as with multiple vibration sources and longer fiber lengths."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_188",
+      "title": "Endogenous Integration of Communication and Interference Fading Free Sensing Using Telecom Pilots via Joint Polarization-Fraction Domain Multiplexing",
+      "authors": "Li Wang et al.",
+      "year": 2025,
+      "venue": "Optics Express",
+      "doi": "Not Reported",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "indoor_positioning",
+      "scenario_description": "Distributed acoustic sensing (DAS) for vibration detection and localization"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes an endogenous ISAC system using telecom pilots for both SOP rotation estimation and DAS, achieving a spatial resolution of 1 m and a strain resolution of 0.73 n\u03b5/\u221aHz.",
+      "gap_addressed": "The paper addresses the challenge of achieving endogenous ISAC using telecom pilots, which can reduce the complexity and cost of the system.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "FrFT-based signal processing",
+      "novel_component_specs": "FrFT rotation angle, FM slope, and sweep bandwidth"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Endogenous ISAC with DAS"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550.12,
+      "optical_bandwidth_ghz": 200,
+      "tx_power_dbm": 3
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 43
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "pam4",
+      "comm_modulation_order": 4,
+      "comm_symbol_rate_gbaud": 50,
+      "comm_fec_type": "hd_fec",
+      "sensing_waveform_family": "chirp_fmcw",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10.4,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 16
+    },
+    "channel_wireless": {
+      "link_distance_m": 0,
+      "path_loss_model": "Not Reported",
+      "turbulence_model": "Not Reported"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 200,
+      "spectral_efficiency_bps_hz": 2,
+      "ber": 0.001,
+      "snr_db": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 10000,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "scpr",
+      "tradeoff_control_range": "-14 to 2 dB"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 0,
+      "opa_steering_range_deg": 0,
+      "opa_beamwidth_deg": 0,
+      "ris_num_elements": 0,
+      "ris_type": "Not Reported"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system architecture, signal processing, and experimental setup. The results demonstrate the feasibility of the proposed endogenous ISAC system."
+  },
+  "Paper_ID": "O_ISAC_188"
+}

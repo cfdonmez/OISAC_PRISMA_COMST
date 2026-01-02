@@ -1,0 +1,159 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several figures and charts, including system diagrams, block diagrams, hardware photos, and performance curves. Figure 3 shows the system diagram and signal processing, including the geometry, transmitted OFDM signal, and returned signals from two tags with OOK modulation. Figure 4 illustrates the block diagram of the receiver and the SIC framework. Other figures show the LED board design, thermal management, experimental setup, and performance curves for retro-reflected power vs lateral distance."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a hybrid MRR-assisted long-range SDMA for RO-ISAC systems. The ISAC coupling mode is based on a hybrid retro-reflector architecture, which combines a stable, unmodulated retro-reflector (URR) for high-precision ranging with a modulated retro-reflector (MRR) for embedding a unique ID via on-off keying (OOK). The system also employs a successive interference cancellation (SIC) framework to resolve the near-far problem and separate the signals from multiple tags."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a ranging accuracy of centimeter-level at a 5-meter range, with a communication uplink of several hundred hertz per tag at a bit-error rate below 10^-3. The system's performance is validated through high-fidelity simulations parameterized by experimental data from a custom-built, high-power optical testbed. The results show that the system can achieve simultaneous ranging and communication for two concurrent tags, with a ranging accuracy of 95% within a centimeter-level range."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving long-range SDMA in RO-ISAC systems using a hybrid MRR-assisted architecture and SIC framework. However, the system still faces challenges such as the limited modulation bandwidth of the light source, which affects the multi-tag positioning accuracy and uplink concurrency. Future work will focus on developing an integrated hardware transceiver for real-time operation, designing more robust channel estimation and SIC algorithms to support larger tag populations, and extending the system from one-dimensional ranging to two-dimensional positioning."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_218",
+      "title": "Hybrid MRR-Assisted Long-Range SDMA for RO-ISAC Systems in Industry IoT Applications",
+      "authors": "Xin Xiong, Haochuan Wang, Sihua Shao, Chen Chen",
+      "year": 2025,
+      "venue": "IEEE",
+      "doi": "Not Reported",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "RO-ISAC system for industry IoT applications"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Hybrid MRR-assisted long-range SDMA for RO-ISAC systems",
+      "gap_addressed": "Limited modulation bandwidth of light source",
+      "performance_enablers": "photonic_dechirping, electronic_dechirping, matched_filtering, fft_based_processing, compressed_sensing",
+      "novel_component": "Hybrid MRR-assisted retro-reflector architecture",
+      "novel_component_specs": "Not Reported"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor RO-ISAC system"
+    },
+    "transmitter": {
+      "tx_source_type": "led",
+      "tx_modulation_type": "ofdm",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 650,
+      "optical_bandwidth_ghz": 4,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 1,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 5,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 0.001,
+      "ber_target": 0.001,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 5,
+      "range_resolution_m": 0.01,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "osr",
+      "tradeoff_control_range": "10-100"
+    }
+  },
+  "Paper_ID": "O_ISAC_218"
+}

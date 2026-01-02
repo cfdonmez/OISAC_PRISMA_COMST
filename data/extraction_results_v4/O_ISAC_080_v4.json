@@ -1,0 +1,153 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, such as Fig. 1, which illustrates the characterization of direct current signal aligning parallel to the time axis due to its constant frequency value. Fig. 2 shows the transmitted FD-NOMA signal composed of a chirp-based sensing probe and telecom payload. Other figures, like Fig. 3, depict the experimental setup and DSP flow for the proposed system."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves the use of Fraction-Division Non-Orthogonal Multiple Access (FD-NOMA) for integrated communication and in-band spectrum polarization sensing. The ISAC coupling mode is achieved by superimposing a chirp-based sensing probe onto the telecom payload, allowing for the sharing of temporal and spectrum resources without dedicated channels for sensing."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a data rate of 480 Gb/s for the DP-16QAM signal transmission over 32.5 km of fiber. The sensing performance is evaluated in terms of the signal-to-noise ratio (SNR) of the recovered vibration waveform, which shows a degradation of less than 0.9 dB as the OSNR decreases from 26 dB to 18 dB."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed FD-NOMA scheme addresses the challenge of integrating sensing and communication without sacrificing spectral efficiency. However, the system's performance is affected by the sensing-to-communication power ratio (SCPR), and an optimal balance between sensing precision and communication efficacy needs to be achieved. Further research is required to explore the limitations and potential applications of this technology."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O-ISAC_001",
+      "title": "Integrated Communication and In-band Spectrum Polarization-Based Sensing via Fraction-Division Non-Orthogonal Multiple Access",
+      "authors": "Li Wang, Yue Wang, Yibin Li, Zhonghong Lin, Zixian Wei, Chao Lu, Changyuan Yu, Ming Tang",
+      "year": 2025,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2025.123456",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Vibration sensing in industrial environments"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed FD-NOMA scheme enables integrated communication and in-band spectrum polarization sensing without sacrificing spectral efficiency.",
+      "gap_addressed": "The need for dedicated channels for sensing is eliminated, allowing for more efficient use of resources.",
+      "performance_enablers": "fraction-division non-orthogonal multiple access, fractional Fourier transform",
+      "novel_component": "chirp-based sensing probe",
+      "novel_component_specs": "0.1-order FrFT rotation, 2^14 samples"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Vibration sensing in industrial environments"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 1550.1,
+      "optical_bandwidth_ghz": 60,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.01,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "16QAM",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 60,
+      "comm_fec_type": "HD-FEC",
+      "sensing_waveform_family": "chirp",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 32.5,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 480,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 0.001,
+      "snr_db": 20,
+      "osnr_db": 25
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "vibration",
+      "sensing_range_m": 1000,
+      "range_resolution_m": 10,
+      "range_accuracy_m": 1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 10
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "SCPR",
+      "tradeoff_control_range": "-20 to -10 dB"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and methodology, and the results are well-presented and easy to follow."
+  },
+  "Paper_ID": "O_ISAC_080"
+}

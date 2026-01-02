@@ -1,0 +1,174 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper presents a system model for the coexistence of distributed sensing and ultra-simple coherent RoF based front-haul for radio access networks. The system uses a commercially available coherent modulator to achieve signal modulation and remote up-conversion. The linear frequency modulated carrier enables distributed sensing while simultaneously serving as the beat tone of RoF communication."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on the use of a linear frequency modulated (LFM) carrier to enable distributed sensing and RoF communication. The LFM carrier is modulated using a commercially available coherent driver module (CDM) and is used as the beat tone for RoF communication. The system uses a probabilistic constellation shaping (PCS) QAM signal and a pre-compensation algorithm to optimize transmission performance."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The system achieves a distributed sensing detection sensitivity of 28 p\u03b5/\u221aHz and supports 1.6 GBaud 16 QAM radio transmission in the Ka-band of 28 GHz. The system also demonstrates robust communication performance for a wide range of CSPR values."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The system solves the problem of integrating distributed sensing and RoF communication in a single system. However, the system still faces challenges such as nonlinear distortion and modulation-induced noise, which can impact transmission performance. The system also requires further optimization to improve its robustness and accuracy."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Coexistence of Distributed Sensing and Ultra-Simple Coherent RoF Based Front-Haul for Radio Access Network",
+      "authors": "Maoqi Liu, Jingchuan Wang, Chen Liu, Changyuan Yu, Chao Lu",
+      "year": 2025,
+      "venue": "IEEE Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2025.3555486"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "Ka-band",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "Distributed sensing and RoF communication for radio access networks"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The system integrates distributed sensing and RoF communication using a linear frequency modulated carrier and a commercially available coherent driver module.",
+      "gap_addressed": "The system addresses the challenge of integrating distributed sensing and RoF communication in a single system.",
+      "performance_enablers": "linear frequency modulation, coherent modulator, probabilistic constellation shaping (PCS) QAM signal, pre-compensation algorithm",
+      "novel_component": "commercially available coherent driver module (CDM)",
+      "novel_component_specs": "supports 1.6 GBaud 16 QAM radio transmission in the Ka-band of 28 GHz"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Distributed sensing and RoF communication"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "CDM",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 50,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.01,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "photodetector",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "CDM",
+      "rx_modulator_bandwidth_ghz": 50,
+      "rx_modulator_operating_point": "quadrature_point",
+      "false_target_mitigation": "matched_filtering"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "QAM",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 1.6,
+      "comm_fec_type": "LDPC",
+      "sensing_waveform_family": "LFM",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time_division_multiplexing"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "SMF",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "GN_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 5,
+      "ber": 1e-06,
+      "snr_db": 20,
+      "osnr_db": 30,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 50
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 100,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "CSPR",
+      "tradeoff_control_range": "10-16 dB"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 1,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 10,
+      "ris_type": "reflective",
+      "ris_phase_bits": 8
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The system is well-designed and the results are well-presented. However, the system still faces challenges such as nonlinear distortion and modulation-induced noise."
+  },
+  "Paper_ID": "O_ISAC_018"
+}

@@ -1,0 +1,198 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Figure 1, which shows the schematic diagram of the proposed 60-GHz mm-wave joint radar-communication system, and Figure 2, which shows the optical spectrum and instantaneous frequency of the mm-wave LFM-OOK joint signal."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses photonic techniques to generate and de-chirp mm-wave ultra-wideband linearly frequency modulated continuous wave (LFMCW) radar signals. The on-off keying (OOK) signal is directly modulated onto the LFMCW radar signals for high-capacity wireless communication. The system achieves a range resolution of 1.8-cm and a 1-Gbit/s communication data rate."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the range resolution of 1.8-cm and the communication data rate of 1-Gbit/s, are physically consistent with the system's design and the principles of photonic generation and de-chirping of mm-wave ultra-wideband LFMCW radar signals."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The system solves the problem of achieving high-resolution radar detection and high-capacity wireless communication simultaneously. However, the system's complexity and the need for precise control of the photonic components may pose challenges for practical implementation and scalability."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "60-GHz photonic millimeter-wave joint radar-communication system",
+      "authors": "Wenlin Bai, Xihua Zou, Peixuan Li, Wei Pan, Lianshan Yan, Bin Luo",
+      "year": 2023,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2023.3265749",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "mm-wave",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "industrial_manufacturing"
+      ],
+      "scenario_description": "High-resolution radar detection and high-capacity wireless communication for unmanned aerial vehicles and autonomous vehicles"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Photonic generation and de-chirping of mm-wave ultra-wideband LFMCW radar signals for high-resolution radar detection and high-capacity wireless communication",
+      "gap_addressed": "Achieving high-resolution radar detection and high-capacity wireless communication simultaneously",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "high_bandwidth_modulator"
+      ],
+      "novel_component": "Photonic-based transceiver",
+      "novel_component_specs": "High-bandwidth modulator and photonic de-chirping"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "60-GHz mm-wave joint radar-communication system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "intensity_modulator",
+        "wavelength_nm": 1549.7,
+        "optical_bandwidth_ghz": 9,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodetector",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "intensity_modulator",
+        "rx_modulator_bandwidth_ghz": 65,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 1,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 1,
+        "range_resolution_m": 0.018,
+        "range_accuracy_m": 0.018,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 1,
+        "localization_error_m": 0.018,
+        "spatial_resolution_m": 0.018,
+        "sensing_bandwidth_hz": 9000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "none",
+        "tradeoff_control_range": "none"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Figure 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 1
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and its components, and the experimental results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_057"
+}

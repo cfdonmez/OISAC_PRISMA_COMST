@@ -1,0 +1,185 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which shows the schematic of the proposed carrier laser PN retrieval method in a West-End to East-End coherent transmission link. Fig. 2 illustrates the receiver DSP used to retrieve the carrier laser PN. Fig. 3 shows the experimental setup for bidirectional coherent transmission and vibration sensing. Fig. 4 is a schematic and picture of the piezo electric driven vibro-acoustic transducer. Fig. 5 plots the peak-to-peak phase variation induced by the transducer device driven by sinusoid signals at different frequencies and peak-to-peak voltage. Fig. 6 shows the frequency noise power spectral density of the vibration-induced phase change. Fig. 7 shows the extracted temporal vibration phase waveform and localization results. Fig. 8 presents the standard deviation and localization error versus vibration center frequency and bandwidth. Fig. 9 shows the vibration localization results and 16 QAM signal SNR. Fig. 10 shows the recovered 60-Gbaud 16-QAM constellations. Fig. 11 shows the vibration localization performance with and without the denoising method. Fig. 12 shows the vibration spectra for an emulated tampering event."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a carrier laser phase noise retrieval method to enhance vibration detection and localization in optical networks. The method introduces a relative delay between two frequency tones generated at the transmitter and retrieves an estimate of the transmitter laser phase noise at the coherent receiver. This allows for the mitigation of laser phase noise and improvement of vibration detection and localization precision."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a reduction in localization error from 102 m to 43 m and a reduction in standard deviation of estimated locations from 355 m to 67 m when using the proposed method. The system achieves error-free transmission of 200 Gbps over 80 km. The reported metrics are physically consistent and demonstrate the effectiveness of the proposed method."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of mitigating laser phase noise to improve vibration detection and localization in optical networks. The remaining open challenges include further improving the precision and accuracy of vibration localization, increasing the data transmission rate, and demonstrating the method in a more practical and commercial setting."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Demonstration of High Sensitivity Detection and High Precision Localization of Vibrations in Bidirectional Coherent Transmission Systems Enabled by Carrier Laser Phase Noise Retrieval",
+      "authors": "Yixiang Hu, Kaibo Zhang, Mohammad E. Mousa-Pasandi, Ram\u00f3n Guti\u00e9rrez-Castrej\u00f3n, Maurice O'Sullivan, Fanqi Kong, Brandon Buscaino, Jinsong Zhang, Santiago Bernal, Charles St-Arnault, and David V. Plant",
+      "year": 2025,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2025.3593142",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Vibration detection and localization in optical networks"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a method for recovering carrier laser phase noise to enhance vibration detection and localization in optical networks.",
+      "gap_addressed": "The method addresses the problem of mitigating laser phase noise to improve vibration detection and localization in optical networks.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "None",
+      "novel_component_specs": "None"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Vibration detection and localization in optical networks"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550.1,
+      "optical_bandwidth_ghz": 60,
+      "tx_power_dbm": 13,
+      "aperture_diameter_m": 0.001,
+      "beam_divergence_mrad": 0.01
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_aperture_diameter_m": 0.001,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 60,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "16_qam",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 60,
+      "comm_fec_type": "hd_fec",
+      "sensing_waveform_family": "fmcw_chirp",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 80,
+      "fibre_type": "ssmf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "rayleigh_phi_otdr"
+    },
+    "channel_wireless": {
+      "link_distance_m": 0,
+      "path_loss_model": "none",
+      "turbulence_model": "none",
+      "turbulence_Cn2": 0,
+      "scintillation_index": 0,
+      "pointing_error_model": "none",
+      "weather_visibility_m": 0,
+      "ambient_light_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 200,
+      "spectral_efficiency_bps_hz": 4,
+      "ber": 1e-06,
+      "ber_target": 0.01,
+      "snr_db": 20,
+      "osnr_db": 30,
+      "outage_probability": 0,
+      "latency_ms": 10,
+      "capacity_bps_hz": 4
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 100000,
+      "range_resolution_m": 10,
+      "range_accuracy_m": 1,
+      "angular_resolution_deg": 0.01,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 43,
+      "spatial_resolution_m": 10,
+      "sensing_bandwidth_hz": 10000,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 0,
+      "opa_steering_range_deg": 0,
+      "opa_beamwidth_deg": 0,
+      "ris_num_elements": 0,
+      "ris_type": "none",
+      "ris_phase_bits": 0
+    },
+    "provenance": {
+      "source_pointer": "Table I",
+      "value_origin": "reported_text",
+      "confidence_reporting": "std_reported",
+      "num_trials": 40
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and methodology. The results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_090"
+}

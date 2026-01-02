@@ -1,0 +1,187 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes two figures: Fig. 1, a scheme of the OFI-based interrogator embedded inside the PON cable itself, and Fig. 2, examples of the OFI-based interrogator embedded in the PON infrastructure. The figures show the setup of the OFI-based interrogator, including the use of Faraday rotator mirrors (FRMs) and a 3x3 coupler for passive homodyne demodulation."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on optical fiber interferometry (OFI), which uses a standard Michelson interferometer with two fibers mirrored for the wavelength devoted to sensing. The OFI-based interrogator is embedded directly inside the PON structure, allowing for joint communication and sensing. The ISAC coupling mode is achieved through the coexistence of telecommunication data and sensing signals, with the OFI-based interrogator able to monitor anthropogenic and natural events, as well as the safety of the feeder fiber and the remote node."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports on the use of the OFI-based interrogator for monitoring the safety of the PON cabinet and detecting anthropogenic activities around the PON. The results demonstrate the feasibility of the proposed approach, but do not provide detailed metrics on the resolution or accuracy of the sensing system. However, the use of OFI allows for sensitive detection of perturbations, with a slight difference in the geometrical arrangement of the fibers inside the cable enabling the revelation of the perturbation."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of providing a sustainable and cost-effective solution for sensing in PONs, leveraging the existing fiber infrastructure. The proposed OFI-based interrogator addresses the challenges of coexistence between telecommunication data and sensing signals, as well as the need for a simple and energy-efficient implementation. However, open challenges remain, such as the need for further validation and testing of the system in different scenarios, as well as the development of more advanced signal processing techniques to improve the accuracy and resolution of the sensing system."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Joint communication and sensing in access networks for anthropic activities monitoring and real-time safety surveillance",
+      "authors": "Pierpaolo Boffi, Marco Fasano, Andrea Madaschi, Paola Parolari",
+      "year": 2024,
+      "venue": "Journal/Conference",
+      "doi": "DOI: 10.1109/JSEN.2023.3316425",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "other",
+      "operational_environment": "indoor",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Monitoring of anthropogenic and natural phenomena, such as road traffic, and proactive surveillance of the fiber infrastructure itself."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": false,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed OFI-based interrogator enables joint communication and sensing in PONs, leveraging the existing fiber infrastructure.",
+      "gap_addressed": "The need for a sustainable and cost-effective solution for sensing in PONs.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "OFI-based interrogator",
+      "novel_component_specs": "Simple, energy-efficient, and cost-oriented implementation."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "PON safety monitoring"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 0,
+      "aperture_diameter_m": 0.001,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.001,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "rs",
+      "sensing_waveform_family": "lfm_chirp",
+      "isac_waveform_relationship": "joint_waveform",
+      "resource_partition": "power_split"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 100,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 100,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "joint_waveform",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_split",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 2
+    },
+    "provenance": {
+      "source_pointer": "Fig. 1",
+      "value_origin": "reported_text",
+      "confidence_reporting": "ci_reported",
+      "num_trials": 10
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and the experimental setup, and the results are well-supported by the data."
+  },
+  "Paper_ID": "O_ISAC_104"
+}

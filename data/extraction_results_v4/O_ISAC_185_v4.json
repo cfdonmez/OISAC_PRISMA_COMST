@@ -1,0 +1,168 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "The paper presents a novel approach to integrated sensing and communication using visible light. The system utilizes a digital micromirror device (DMD) for spatial light modulation and a fluorescent white laser diode for illumination. The receiver uses an avalanche photodiode (APD) for signal detection. The system achieves high-speed data transmission and high-resolution 3D localization.",
+      "value": "The system consists of a transmitter with a DMD and a fluorescent white laser diode, and a receiver with an APD. The transmitter modulates the light spatially using the DMD and temporally using a discrete multi-tone (DMT) signal. The receiver detects the signal using the APD and processes it to extract the communication data and sensing information."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "The system uses a compressive angular projection (CAP) imaging scheme to achieve fast and accurate localization. The CAP scheme uses a set of Hadamard basis patterns to illuminate the scene, and the receiver detects the reflected light to estimate its position.",
+      "value": "The CAP scheme is based on the principle of compressive sensing, which allows for the reconstruction of a signal from a limited number of measurements. In this case, the signal is the 3D position of the receiver, and the measurements are the detected light intensities. The Hadamard basis patterns are used to encode the spatial information, and the receiver uses a simple linear back-projection algorithm to reconstruct the position."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "The system achieves a high-resolution 3D localization with an accuracy of <1 mm in the XY plane and 4 cm in the Z direction. The system also demonstrates a high-speed data transmission rate of up to 6 Gbps.",
+      "value": "The localization accuracy is verified through experiments, where the receiver is moved to different positions within the illumination area. The system demonstrates a high accuracy in estimating the position of the receiver, with an average error of <1 mm in the XY plane and 4 cm in the Z direction. The data transmission rate is also verified through experiments, where the system achieves a high-speed data transmission rate of up to 6 Gbps."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "The system has the potential to enable a wide range of applications, including wireless virtual reality (VR) and augmented reality (AR). The system's ability to provide high-speed data transmission and high-resolution 3D localization makes it an attractive solution for applications that require precise tracking and high-bandwidth data transfer.",
+      "value": "The system's potential applications include wireless VR and AR, where the system's ability to provide high-speed data transmission and high-resolution 3D localization can enable a more immersive and interactive experience. The system can also be used in other applications, such as robotics and autonomous vehicles, where precise tracking and high-bandwidth data transfer are required."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_185",
+      "title": "Adaptive Visible Light Integrated Sensing and Communication for Cable-Free Virtual Reality",
+      "authors": "Ziwei Li et al.",
+      "year": 2025,
+      "venue": "Photonics Research",
+      "doi": "https://doi.org/10.1364/PRJ.561888",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "Wireless virtual reality (VR) and augmented reality (AR)"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The system uses a novel compressive angular projection (CAP) imaging scheme to achieve fast and accurate localization.",
+      "gap_addressed": "The system addresses the challenge of achieving high-resolution 3D localization and high-speed data transmission in a wireless visible light communication system.",
+      "performance_enablers": "compressive_sensing",
+      "novel_component": "digital micromirror device (DMD)",
+      "novel_component_specs": "20 kHz switching rate"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Wireless VR"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 450,
+      "optical_bandwidth_ghz": 1,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "apd_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 1,
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 2,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 6,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 1e-06,
+      "ber_target": 0.001,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 100
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 2,
+      "range_resolution_m": 0.01,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "alpha",
+      "tradeoff_control_range": "0-1"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The system demonstrates a high accuracy in estimating the position of the receiver and a high-speed data transmission rate."
+  },
+  "Paper_ID": "O_ISAC_185"
+}

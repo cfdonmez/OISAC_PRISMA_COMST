@@ -1,0 +1,190 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper proposes a full-duplex RO-ISAC system based on wavelength division duplexing (WDD) with a hybrid single-carrier and multi-carrier (HSM) waveform. The system uses blue and green lights for downlink and uplink transmissions, respectively, and employs a pair of blue and green optical filters to avoid interference between the reflected downlink signal and the uplink signal."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The system mechanism is based on retroreflective optical ISAC (RO-ISAC), which equips the target with a corner cube reflector (CCR) to enhance light reflection. The HSM waveform consists of both pulse amplitude modulation (PAM) and orthogonal frequency division multiplexing (OFDM) samples, allowing for flexible performance trade-off between communication and sensing."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The paper reports a downlink data rate of 125 Mb/s and an uplink data rate of 12.5 Mb/s, with a ranging root mean square error (RMSE) of less than 4 cm. The system achieves full-duplex transmission using WDD, and the HSM waveform enables flexible trade-off between communication and sensing performance."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The proposed system addresses the challenges of bidirectional transmission and waveform design in RO-ISAC systems. The use of WDD and HSM waveform enables full-duplex transmission and flexible performance trade-off, making it a promising solution for 6G mobile communication systems."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Full-Duplex RO-ISAC System: Wavelength Division Duplexing and Hybrid Waveform Design",
+      "authors": "Shuhang Chen, Chen Chen, Zhihong Zeng, Yanbing Yang, and Harald Haas",
+      "year": 2025,
+      "venue": "IEEE Photonics Technology Letters",
+      "doi": "10.1109/LPT.2025.3570997",
+      "document_type": "letter"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "indoor_positioning",
+        "intelligent_transportation_systems"
+      ],
+      "scenario_description": "Full-duplex RO-ISAC system for indoor positioning and intelligent transportation systems"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Proposed a full-duplex RO-ISAC system based on wavelength division duplexing (WDD) with a hybrid single-carrier and multi-carrier (HSM) waveform",
+      "gap_addressed": "Bidirectional transmission and waveform design challenges in RO-ISAC systems",
+      "performance_enablers": [
+        "hybrid_waveform",
+        "wavelength_division_duplexing"
+      ],
+      "novel_component": "Hybrid single-carrier and multi-carrier (HSM) waveform",
+      "novel_component_specs": "Consists of both pulse amplitude modulation (PAM) and orthogonal frequency division multiplexing (OFDM) samples"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Full-duplex RO-ISAC system with WDD and HSM waveform"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "hybrid",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 450,
+        "optical_bandwidth_ghz": 3,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "none",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "wavelength_division_duplexing"
+      },
+      "waveform": {
+        "comm_waveform_family": "hybrid",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 0.125,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "hybrid",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.125,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0.001,
+        "ber_target": 0.0038,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 1,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging"
+        ],
+        "sensing_range_m": 1,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 0,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 1000,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "hsm_ratio",
+        "tradeoff_control_range": "[0, 1]"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Table II, p.5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 100
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and the experimental setup, and the results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_071"
+}

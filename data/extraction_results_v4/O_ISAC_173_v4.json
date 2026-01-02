@@ -1,0 +1,188 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper includes several images, including a conceptual diagram of OCC spatial multiplexing, a system architecture diagram of the HP-OCC receiver, an application diagram of warehouse automation, and hardware photos of a passive transmitter tag and a portable HP-OCC receiver. These images provide visual evidence of the HP-OCC system's components and functionality."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The paper proposes High-Performance Optical Camera Communications (HP-OCC) as an alternative to RF-based ISAC. HP-OCC combines single-photon avalanche diode (SPAD) sensors with on-sensor edge processing, enabling high-speed optical communication and centimeter-level localization. The system uses spatial multiplexing, where a camera sensor isolates signals from multiple transmitters, and each transmitter maps to a unique pixel region."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The paper reports a video rate of 5 Mbps and a localization accuracy of 10 cm at a range of 25 m. The system also demonstrates low packet loss and stable performance in a warehouse automation scenario. These results suggest that HP-OCC can achieve high-speed communication and accurate localization in a practical setting."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The paper highlights the advantages of HP-OCC over RF-based ISAC, including higher sensing precision, power efficiency, and environmental compatibility. However, it also notes the limitation of requiring line-of-sight between transmitters and receivers. Future work could investigate hybrid optical-RF ISAC approaches to mitigate this limitation."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_173",
+      "title": "High-Performance Optical Camera Communications for ISAC Localization and Sensing",
+      "authors": "Lih-Wei Chia, Mehul Motani",
+      "year": 2025,
+      "venue": "ACM MobiCom 2025",
+      "doi": "10.1145/3680207.3765690",
+      "document_type": "poster"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "industrial_manufacturing",
+        "logistics"
+      ],
+      "scenario_description": "Warehouse automation and inventory tracking"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "HP-OCC system with SPAD sensors and on-sensor edge processing for high-speed optical communication and centimeter-level localization",
+      "gap_addressed": "Limited sensing precision and power efficiency of RF-based ISAC",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "high_bandwidth_modulator"
+      ],
+      "novel_component": "SPAD sensor array with on-sensor edge processing",
+      "novel_component_specs": "High temporal resolution and sensitivity"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Warehouse automation"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "ook",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 650,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "spad",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 1,
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_tof",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 25,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.005,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization_2d"
+        ],
+        "sensing_range_m": 25,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 1,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "\u03b1",
+        "tradeoff_control_range": "0-1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Figure 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 10
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the HP-OCC system and its components, and reports experimental results in a warehouse automation scenario."
+  },
+  "Paper_ID": "O_ISAC_173"
+}

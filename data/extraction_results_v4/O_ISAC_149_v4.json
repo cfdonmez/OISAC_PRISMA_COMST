@@ -1,0 +1,180 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Figure 1, which shows the optical periscope installed in the back seat of the F-104, Figure 2, which depicts the mobile Precision Automated Tracking System (PATS), Figure 3, which illustrates the retroreflector arrays mounted on the periscope flaring, Figure 4, which shows the manually operated optical acquisition system, Figure 5, which displays a three-dimensional pictorial of the aircraft and its orientation relative to the runway, and Figure 6, which shows x-y and x-z plots displayed in real-time. Figure 7 shows the rectilinear coordinate system established with the origin at the approach end of the runway."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a mobile Precision Automated Tracking System (PATS) with a laser tracker and a telemetry acquisition system to provide merged data in real-time. The PATS tracker uses a retroreflector array on the aircraft to track its position. The system also includes a video tracker, an optical acquisition aid, and radar data acquisition. The ISAC coupling mode is not explicitly stated, but it appears to be a resource division approach, where the laser tracker and telemetry system provide separate but complementary data streams."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports that the PATS system can track the aircraft with a high degree of accuracy, but it does not provide specific metrics on the rate or resolution of the system. However, it does mention that the system uses an 18-bit shaft angle encoder, which suggests a high level of precision."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The system appears to have solved the problem of providing accurate and reliable tracking data for aircraft in flight. However, the paper does not explicitly state any remaining open challenges, but it does mention the need for further development of the system to support more advanced flight test scenarios."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "MOBILE FLIGHT TEST SUPPORT",
+      "authors": "Fred H. Shigemoto",
+      "year": 1994,
+      "venue": "NASA Dryden Flight Test Center",
+      "doi": "NR",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "other",
+      "operational_environment": "outdoor",
+      "link_topology": "monostatic",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": [
+        "aerospace_space",
+        "uav_aerial"
+      ],
+      "scenario_description": "Flight test support for aircraft"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": false,
+      "reproducibility_artifacts": "insufficient"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Development of a mobile Precision Automated Tracking System (PATS) for flight test support",
+      "gap_addressed": "Need for accurate and reliable tracking data for aircraft in flight",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "high_bandwidth_modulator"
+      ],
+      "novel_component": "Retroreflector array",
+      "novel_component_specs": "15 one-inch reflectors mounted to form a hemispheric shape"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Flight test support for F-104 aircraft"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "pulsed",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 1064,
+      "optical_bandwidth_ghz": "NR",
+      "tx_power_dbm": "NR",
+      "aperture_diameter_m": "NR",
+      "beam_divergence_mrad": "NR"
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "quadrant_pd",
+      "rx_aperture_diameter_m": "NR",
+      "rx_photonic_processing": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "separate_frontends",
+      "duplexing_mode": "half_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "pulsed",
+      "comm_modulation_order": "NR",
+      "comm_symbol_rate_gbaud": "NR",
+      "comm_fec_type": "NR",
+      "sensing_waveform_family": "pulsed",
+      "isac_waveform_relationship": "multiplexed_separate",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": "NR",
+      "fibre_type": "NR",
+      "attenuation_db_per_km": "NR",
+      "dispersion_ps_per_nm_km": "NR",
+      "nonlinearity_model": "NR",
+      "backscatter_sensing_type": "NR"
+    },
+    "channel_wireless": {
+      "link_distance_m": "NR",
+      "path_loss_model": "NR",
+      "turbulence_model": "NR",
+      "turbulence_Cn2": "NR",
+      "scintillation_index": "NR",
+      "pointing_error_model": "NR",
+      "weather_visibility_m": "NR",
+      "ambient_light_model": "NR"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": "NR",
+      "spectral_efficiency_bps_hz": "NR",
+      "ber": "NR",
+      "ber_target": "NR",
+      "snr_db": "NR",
+      "osnr_db": "NR",
+      "outage_probability": "NR",
+      "latency_ms": "NR",
+      "capacity_bps_hz": "NR"
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": "NR",
+      "range_resolution_m": "NR",
+      "range_accuracy_m": "NR",
+      "angular_resolution_deg": "NR",
+      "velocity_resolution_mps": "NR",
+      "velocity_accuracy_mps": "NR",
+      "localization_error_m": "NR",
+      "spatial_resolution_m": "NR",
+      "sensing_bandwidth_hz": "NR",
+      "pd_probability_detection": "NR",
+      "pfa_probability_false_alarm": "NR",
+      "crb_crlb_value": "NR",
+      "crb_parameter": "NR"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": [
+        "rate_vs_rmse"
+      ],
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "NR",
+      "tradeoff_control_range": "NR"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 1,
+    "tqaf_validation_strength": 1,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 0,
+    "tqaf_reproducibility": 0,
+    "tqaf_notes": "The paper lacks specific metrics on the system's performance, and the reproducibility of the results is not clear."
+  },
+  "Paper_ID": "O_ISAC_149"
+}

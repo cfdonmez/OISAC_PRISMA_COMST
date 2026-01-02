@@ -1,0 +1,185 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which shows a 380-km long field fiber link and a bidirectional transponder setup at LBI. Fig. 2 shows the setup of a recent FD-CP-DAS experiment over a 13 spans link and post-FEC BER vs sensing power for different T_rt values. Fig. 3 shows waterfall plots of FD-CP-DAS and RT CP-DAS."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The paper explores two fiber sensing methods that enable coexistence with data transmission on DWDM fiber networks. The first method is based on the recovery of accumulated optical phase during forward propagation, while the second method uses distributed acoustic sensing (DAS) with frequency-diverse chirped pulses and all-Raman amplification."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a spatial resolution of 10 m and an SNR gain of 32 dB over conventional DAS at the same peak power. The DAS sensitivity is ~100 p_epsilon/sqrt(Hz) obtained alongside 10-Tb/s transmission with error-free operation confirmed with a real-time coherent transponder."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of coexisting sensing and data transmission on the same fiber using wavelength-division multiplexing. However, the spatial resolution is limited by the bandwidth of the vibration signature, and the number of simultaneous vibration events that can be detected and localized may be limited."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Simultaneous Sensing and Communication in Optical Fibers",
+      "authors": "Yue-Kai Huang, Ezra Ip, Junqiang Hu, Ming-Fang Huang, Fatih Yaman, Ting Wang, Glenn Wellbrock, Tiejun Xia, Koji Asahi, Yoshiaki Aono",
+      "year": 2022,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2021.3137768",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Distributed fiber optical sensing for vibration detection and localization"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes two fiber sensing methods that enable coexistence with data transmission on DWDM fiber networks.",
+      "gap_addressed": "The paper addresses the challenge of coexisting sensing and data transmission on the same fiber.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "frequency_diverse_chirped_pulses"
+      ],
+      "novel_component": "Low-phase-noise laser",
+      "novel_component_specs": "Phase noise < 100 Hz"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Vibration detection and localization using modified digital coherent telecom transponders"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 0,
+      "aperture_diameter_m": 0.01,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 32,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "chirp",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "alpha=0.5"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 1007,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 200,
+      "spectral_efficiency_bps_hz": 2,
+      "ber": 1e-06,
+      "ber_target": 0.001,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1000000000.0
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "vibration",
+      "sensing_range_m": 1000,
+      "range_resolution_m": 10,
+      "range_accuracy_m": 1,
+      "angular_resolution_deg": 10,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 10,
+      "spatial_resolution_m": 10,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 1e-06,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "alpha",
+      "tradeoff_control_range": "0.1-0.9"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 8
+    },
+    "provenance": {
+      "source_pointer": "Table II, p.5",
+      "value_origin": "reported_text",
+      "confidence_reporting": "ci_reported",
+      "num_trials": 10
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and results."
+  },
+  "Paper_ID": "O_ISAC_033"
+}

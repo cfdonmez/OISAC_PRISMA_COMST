@@ -1,0 +1,159 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which illustrates the research methodology of the proposed method, and Fig. 2, which shows microscope photographs of E. marina and I. galbana samples. Fig. 3 presents the absorbances of E. marina and I. galbana samples. Fig. 4 shows the preparation steps for microalgal solution with different densities and photographs of E. marina and I. galbana in various densities. Fig. 5 displays photographs of QDs in solvent and in solidified status, normalized emission spectra of blue, green, yellow, orange, and red light, and quantum yields of green, yellow, orange, and red light at 460-nm excitation. Fig. 6 illustrates the frequency responses of the blue LED chip and QD CCLs in different colors. Fig. 7 depicts the arrangement of the VLSC measuring system and measurement photographs of microalgae at varying densities by using the yellow QD CCL. Fig. 8 shows BER versus microalgae density by using E. marina and the orange QD CCL, and BER versus microalgae density by using I. galbana and the orange QD CCL. Fig. 9 presents BER versus data rate with E. marina under various light colors, BER versus data rate with I. galbana under various light colors, BER versus driving current of the blue LED chip, and BER versus optical power of the blue LED chip. Fig. 10 illustrates BER versus microalgae density using E. marina and QD CCLs in various colors, BER versus microalgae density using I. galbana and QD CCLs in various colors, a schematic of light transmission through the microalgae container, and simulation results of received light intensity with and without a container. Fig. 11 shows optical power versus microalgae density using E. marina and QD CCLs in various colors, and optical power versus microalgae density using I. galbana and QD CCLs in various colors. Fig. 12 presents measurement accuracy of the proposed method by using orange and yellow QD CCLs under various data rates, average accuracy of the proposed method by using green, yellow, orange, and red QD CCLs, and average accuracy of the proposed method and the method by directly measuring the optical power."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system is a quantum dot (QD)-based visible light sensing and communication (VLSC) system. The system uses emissions spanning the blue, green, yellow, orange, and red spectra to evaluate the density of microalgae across different species and varying densities. The bit error rate (BER) of the VLSC system serves as an intermediate to calculate microalgae density under various data rates and light colors by fitting the linear area of BERs."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports the BER and optical power of the VLSC system under various microalgae densities and light colors. The results show that the BER increases with the increase in microalgae density, and the optical power decreases with the increase in microalgae density. The paper also reports the accuracy of the proposed method, which is validated by comparing the calculated densities using the proposed method with those obtained from the conventional counting method."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed method solves the problem of measuring microalgae density using a VLSC system. The method is contactless, eco-friendly, and offers convenience in automatic measurement without the need for sampling or risking contamination of the original microalgal solution. However, the method still has some limitations, such as the need for a training process to establish the mapping relationship between BER and microalgae density, and the potential impact of system errors on the measured BER results."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Microalgae Density Measurement Using Quantum-Dot-Integrated Sensing and Communication System",
+      "authors": "Hua Xiao, Wensong Wang, Kuokuo Zhang, Feng Li, and Caiming Sun",
+      "year": 2025,
+      "venue": "IEEE Transactions on Instrumentation and Measurement",
+      "doi": "10.1109/TIM.2025.3595231",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "microalgae_cultivation",
+      "scenario_description": "The proposed system is used to measure the density of microalgae in a lab setting."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed system uses a QD-based VLSC system to measure microalgae density.",
+      "gap_addressed": "The proposed system addresses the need for a contactless and eco-friendly method for measuring microalgae density.",
+      "performance_enablers": "quantum_dot",
+      "novel_component": "QD-based VLSC system",
+      "novel_component_specs": "The QD-based VLSC system uses emissions spanning the blue, green, yellow, orange, and red spectra to evaluate the density of microalgae."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Microalgae density measurement using QD-based VLSC system"
+    },
+    "transmitter": {
+      "tx_source_type": "LED",
+      "tx_modulation_type": "OOK",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 460,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "PD",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "half_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "OOK",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "same_as_comm",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "SMF",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "none"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "none",
+      "turbulence_Cn2": 0,
+      "scintillation_index": 0,
+      "pointing_error_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 0.01,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 1,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "data_rate",
+      "tradeoff_control_range": "1-10 Gbps"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and methodology. The results are well-presented and easy to follow."
+  },
+  "Paper_ID": "O_ISAC_130"
+}

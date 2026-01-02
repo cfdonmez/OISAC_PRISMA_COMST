@@ -1,0 +1,193 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several images, including a conceptual illustration of Pepper's ghost illusion, a 3D tag illustration, a dual-panel BER analysis, and a comparison chart. These images provide visual evidence of the HoloCube system's design and performance."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The HoloCube system utilizes the Pepper's ghost illusion to create a virtual 3D cube for omnidirectional optical wireless communication. The system uses a smartphone screen and a Pepper's ghost reflector to generate direction-specific data and decode optical symbols robustly. The ISAC coupling mode is achieved through the use of spatial and spectral diversities in OWC, which improves data rate and user experience."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a maximum data rate of 109.4 Kbps and a goodput of 70 Kbps at 4m. The BER analysis shows that the system achieves a BER of 0.03 at 1m and 0.26 at 5m. These metrics are physically consistent with the system's design and implementation."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The HoloCube system solves the problem of omnidirectional optical wireless communication with integrated communication and sensing. However, the system's performance is limited by the distance between the transmitter and receiver, and the BER increases with increasing distance. Further research is needed to improve the system's performance and robustness."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_291",
+      "title": "POSTER: Holographic Optical Tag enabled Omnidirectional IoT Connection",
+      "authors": "Xiao Zhang, Li Xiao, Matt W. Mutka",
+      "year": 2024,
+      "venue": "ACM SIGCOMM Posters and Demos '24",
+      "doi": "10.1145/3672202.3673726"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "iot",
+        "indoor_positioning"
+      ],
+      "scenario_description": "Omnidirectional IoT connection with integrated communication and sensing"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "HoloCube, a software-defined OWC system enabling omnidirectional IoT connections via holographic optical tags",
+      "gap_addressed": "Omnidirectional optical wireless communication with integrated communication and sensing",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Pepper's ghost reflector",
+      "novel_component_specs": "45\u00b0 angle, plexiglass material"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Omnidirectional IoT connection with HoloCube"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 650,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "camera",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "half_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_tof",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 4,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 100,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.1094,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0.03,
+        "ber_target": 0.01,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization_2d",
+          "localization_3d"
+        ],
+        "sensing_range_m": 5,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_range_resolution",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "distance",
+        "tradeoff_control_range": "[1, 5]"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Figure 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 10
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the HoloCube system and its performance. The experimental results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_291"
+}

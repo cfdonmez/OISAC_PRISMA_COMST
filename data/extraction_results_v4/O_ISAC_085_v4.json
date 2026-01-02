@@ -1,0 +1,163 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which illustrates the principles of the KS-based vibration-induced phase extraction scheme, and Fig. 2, which shows the estimated differential vibration-induced phase using forward filter pass, backward filter pass, and three-pass KS in simulation. Fig. 3 shows the experimental setup and digital signal processing (DSP) diagram for integrated sensing and communication. Fig. 4 displays the time constants (TCs) of differential carrier phases under different vibrations. Fig. 5 presents the extracted vibration-induced phases and corresponding spectra under various vibration conditions."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves a three-pass Kalman smoother (KS) with a scalar linear time-invariant model for integrated communication and sensing systems under commercial external-cavity lasers (ECLs). The ISAC coupling mode is based on a flexible vibration-induced phase extraction scheme, where the estimated carrier phase is differentiated to transform laser phase noise into Gaussian noise, and then the differentiated vibration-induced phase is estimated by the three-pass KS."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a 1.5 dB improvement in SSNR at 10 kHz compared to the BPF-based scheme. The experimental results demonstrate the effectiveness of the KS-based scheme in extracting vibration-induced phases under various vibration conditions, including sinusoidal vibrations and FMCW vibrations. The results are physically consistent with the expected performance of the proposed system."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of flexible vibration-induced phase extraction in integrated sensing and communication systems. The proposed KS-based scheme achieves a 1.5 dB improvement in SSNR at 10 kHz and successfully detects sinusoidal vibrations and FMCW vibrations. However, the paper does not address the potential challenges of implementing the proposed scheme in practical scenarios, such as the impact of noise and interference on the system's performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Flexible Vibration Sensing Using Kalman Smoother Integrated in ECL-Based Communication Systems",
+      "authors": "Bang Yang, Jianwei Tang, Shuang Gao, Junpeng Liang, Jinlong Wei, and Yanfu Yang",
+      "year": 2025,
+      "venue": "IEEE Letters",
+      "doi": "10.1109/LPT.2025.3577173",
+      "document_type": "letter"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Vibration sensing in optical communication networks"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "A flexible vibration-induced phase extraction scheme based on a three-pass Kalman smoother (KS) with a scalar linear time-invariant model",
+      "gap_addressed": "The need for a flexible vibration-induced phase extraction scheme in integrated sensing and communication systems",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "Three-pass Kalman smoother",
+      "novel_component_specs": "Scalar linear time-invariant model"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Vibration sensing using KS-based scheme"
+    },
+    "transmitter": {
+      "tx_source_type": "ECL",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "DP-IQ modulator",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 100,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.01,
+      "beam_divergence_mrad": 1
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_PD",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "DP-IQ modulator",
+      "rx_modulator_bandwidth_ghz": 100,
+      "rx_modulator_operating_point": "MITP",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 4,
+      "comm_fec_type": "LDPC",
+      "sensing_waveform_family": "fmcw_chirp",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time_division"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 40,
+      "fibre_type": "SMF",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 16,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 100,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 20,
+      "osnr_db": 25
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "vibration",
+      "sensing_range_m": 1000,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 0.1,
+      "velocity_resolution_mps": 0.01,
+      "velocity_accuracy_mps": 0.001,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100000,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0.1-0.9"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system model and the experimental setup. The results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_085"
+}

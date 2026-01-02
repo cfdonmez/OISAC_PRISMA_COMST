@@ -1,0 +1,177 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several images, including a waveform concept diagram, an experimental setup diagram, signal spectrum and STFT analysis, radar range profiles, and performance charts. These images provide visual representations of the proposed LFM-PSK waveform, the experimental setup, and the performance of the system."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a radar-centric approach, where the primary structure is a linear frequency modulation (LFM) waveform, and communication is embedded in the phase of the LFM waveform using phase shift keying (PSK). The ISAC coupling mode is achieved through the integration of the LFM and PSK waveforms."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the range resolution and peak sidelobe ratio (PSLR), are physically consistent with the hardware and methodology described in the paper. The range resolution of 1.3 cm and PSLR of 20.9 dB are consistent with the expected performance of the LFM-PSK waveform."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving high PSLR and range resolution in a radar-centric ISAC system. However, the remaining open challenges include optimizing the data rate for the best trade-off between PSLR and range estimation error, and further improving the system's performance in terms of range resolution and PSLR."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_349",
+      "title": "Radar-Centric Photonic Terahertz Integrated Sensing and Communication System Based on LFM-PSK Waveform",
+      "authors": "Zhidong Lyu, Lu Zhang",
+      "year": 2023,
+      "venue": "IEEE Trans. Microwave Theory and Techniques",
+      "doi": "10.1109/TMTT.2023.3267546"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "THz",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "6g_networks",
+      "scenario_description": "Radar-centric ISAC system for 6G networks"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a radar-centric photonic terahertz integrated sensing and communication system based on an LFM-PSK waveform, which achieves high PSLR and range resolution.",
+      "gap_addressed": "The paper addresses the problem of achieving high PSLR and range resolution in a radar-centric ISAC system.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "LFM-PSK waveform generator",
+      "novel_component_specs": "12 GHz bandwidth, 330 GHz carrier frequency"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Radar-centric ISAC system"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "iq_modulator",
+      "wavelength_nm": 1552,
+      "optical_bandwidth_ghz": 12,
+      "tx_power_dbm": 12.6,
+      "aperture_diameter_m": 0.01,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "balanced_pd",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "iq_modulator",
+      "rx_modulator_bandwidth_ghz": 40,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "balanced_detection"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "psk",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 6,
+      "comm_fec_type": "hd_fec",
+      "sensing_waveform_family": "lfm",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "alpha=0.7"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.001,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "background_noise"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 6,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 0.001,
+      "ber_target": 0.001,
+      "snr_db": 20,
+      "osnr_db": 30,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 100
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 100,
+      "range_resolution_m": 0.013,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 1000000000.0,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 1e-10,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "alpha",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 30,
+      "opa_beamwidth_deg": 10,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 8
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and methodology, and the results are well-validated through simulations and experiments."
+  },
+  "Paper_ID": "O_ISAC_349"
+}

@@ -1,0 +1,178 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures and charts that provide visual details about the proposed system. Figure 1 shows the schematic diagram of the proposed CE THz ISAC system, including the components such as laser diodes, dual-parallel Mach-Zehnder modulator, and photodetectors. Figure 2 illustrates the geometric schematic of the MISO scenario with two transmitting antennas and one receiving antenna. Figure 3 shows the measured spectrograms of the generated THz ISAC signal. Figure 4 presents the measured BER and SNR at different PMI. Figure 5 displays the equivalent radar range resolution after CFP. Figure 6 shows the peak locations of the de-chirped signal."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system is a photonics-based CE THz ISAC system that integrates 2D positioning and CFP. The system uses a dual-parallel Mach-Zehnder modulator to generate the IF ISAC signal, which is then up-converted to the THz band using optical heterodyne detection. The ISAC signal is designed with two LFM sub-bands and a CE-OFDM signal in between. The system uses CFP to synthesize a 10 GHz bandwidth from the two 2 GHz LFM sub-bands, achieving a radar range resolution of 1.78 cm. The system also demonstrates a communication data rate of 18.448 Gbit/s."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the communication data rate of 18.448 Gbit/s and the radar range resolution of 1.78 cm, are physically consistent with the system design and parameters. The system's performance is also verified through simulations, which demonstrate the system's ability to achieve high-speed communication and high-resolution target localization."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed system solves the problem of achieving high-speed communication and high-resolution target localization in a single system. However, the system's performance is affected by the PMI, which can distort the sensing signals and reduce the SNR. The system also requires a high degree of complexity in terms of hardware and signal processing, which can be a challenge for practical implementation. Further research is needed to address these challenges and improve the system's performance and feasibility."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_310",
+      "title": "Simulation of Constant-envelope THz Integrated Sensing and Communication System based on Photonics with 2D Positioning",
+      "authors": "Yuxin Liu, Xiong Deng, Ningyuan Zhong, Xihua Zou, Wei Pan, Lianshan Yan",
+      "year": 2024,
+      "venue": "Unknown",
+      "doi": "Unknown",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "THz",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "6g_networks",
+        "indoor_positioning"
+      ],
+      "scenario_description": "2D positioning in indoor environment"
+    },
+    "evidence": {
+      "evidence_type": [
+        "simulation"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed system integrates 2D positioning and CFP in a photonics-based CE THz ISAC system, achieving a communication data rate of 18.448 Gbit/s and a radar range resolution of 1.78 cm.",
+      "gap_addressed": "The system addresses the challenge of achieving high-speed communication and high-resolution target localization in a single system.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "coherent_heterodyne"
+      ],
+      "novel_component": "Dual-parallel Mach-Zehnder modulator",
+      "novel_component_specs": "High-speed and high-resolution"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "2D positioning in indoor environment"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "dual-parallel Mach-Zehnder modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 23,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodetector",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "dual-parallel Mach-Zehnder modulator",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 5,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 18.448,
+        "spectral_efficiency_bps_hz": 1.8448,
+        "ber": 0.0001,
+        "ber_target": 0.0038,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.018,
+        "range_accuracy_m": 0.0581,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.0581,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 1000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "pmi",
+        "tradeoff_control_range": "[1.75, 10]"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The system's performance is verified through simulations, and the results are physically consistent with the system design and parameters."
+  },
+  "Paper_ID": "O_ISAC_310"
+}

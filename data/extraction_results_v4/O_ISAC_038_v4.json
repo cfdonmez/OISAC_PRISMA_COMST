@@ -1,0 +1,159 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which shows the NOMA 16-QAM constellation before and after LFM tone loading, and Fig. 2, which depicts the DSP flows of both communication and sensing parts. Fig. 3 presents various results, including the frequency spectrum of the received signal, BER with different baud rates and power ratios, and the waterfall plot of a 100 Hz, 10 m PZT."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The paper proposes a NOMA-based scheme for integrating distributed acoustic sensing (DAS) and coherent communication. The system uses a single transmitter to generate both communication and sensing signals through non-orthogonal multiple access (NOMA). The sensing signal is superimposed on the communication signal using NOMA, allowing for simultaneous transmission of 60 GBaud 16-QAM and 10 m resolution DAS over a 10 km fiber."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a negligible communication penalty in 60 GBaud 16QAM and a 100 MHz LFM tone experiment. The results show that when the power ratio exceeds 10 dB, the performance is very close to that of the case without the sensing signal. The paper also presents the demodulated vibration waterfall plot for a 100 Hz, 1 Vpp electrical waveform driven 10 m PZT at the end of a 10 km fiber, demonstrating the system's sensing capability."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating distributed sensing into optical coherent networks through non-orthogonal multiple access (NOMA). The proposed scheme achieves negligible communication penalty and high sensing sensitivity. However, the paper also acknowledges the need for further research, particularly in seamlessly integrating the proposed scheme with existing NOMA systems in short-reach networks."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Integration of Distributed Sensing into Optical Coherent Networks through Non-Orthogonal Multiple Access",
+      "authors": "Jingchuan Wang, Liwang Lu, Junwei Zhang, Alan Pak Tao Lau, Chao Lu",
+      "year": 2025,
+      "venue": "Journal/Conference Name",
+      "doi": "DOI Number",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Distributed acoustic sensing (DAS) integrated with coherent communication"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "NOMA-based scheme for integrating distributed acoustic sensing (DAS) and coherent communication",
+      "gap_addressed": "Integrating distributed sensing into optical coherent networks",
+      "performance_enablers": [
+        "non_orthogonal_multiple_access",
+        "photonic_dechirping",
+        "matched_filtering"
+      ],
+      "novel_component": "NOMA-enabled transmitter",
+      "novel_component_specs": "Supports simultaneous transmission of 60 GBaud 16-QAM and 10 m resolution DAS"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "60 GBaud 16-QAM and 10 m resolution DAS over 10 km fiber"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 1
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "16_qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 60,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "power_ratio"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 480,
+        "spectral_efficiency_bps_hz": 6,
+        "ber": 0.001,
+        "snr_db": 20,
+        "osnr_db": 25
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10000,
+        "range_resolution_m": 10,
+        "range_accuracy_m": 1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 1,
+        "spatial_resolution_m": 10,
+        "sensing_bandwidth_hz": 100000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "0_to_10_db"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a well-designed experiment with clear results and discussions."
+  },
+  "Paper_ID": "O_ISAC_038"
+}

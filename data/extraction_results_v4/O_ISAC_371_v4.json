@@ -1,0 +1,124 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures: Figure 1 shows the transmitter structure of the VLC-OCC-CDMA system, Figure 2 depicts the block diagram of the VLC-OCC-CDMA Rake receiver, and Figures 3-5 display the BER performance of the system using different combining methods (SC, MRC, EGC)."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a VLC-OCC-CDMA Rake receiver, which combines the energy of multi-path transmissions to enhance the received signal. The ISAC coupling mode is based on the use of optical complementary codes (OCC) as signature codes, which have ideal autocorrelation characteristics and minimum cross-correlation interference."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a data rate of 125 Mbps and a BER performance that improves with increasing SNR and degrades with increasing number of users (K). The results are consistent with the expected behavior of a CDMA system."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of designing a VLC-OCC-CDMA Rake receiver that can effectively combine multi-path energy and mitigate interference. However, the system's performance is still limited by the number of users and the SNR, and further research is needed to improve its scalability and robustness."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_371",
+      "title": "Design and Analysis of VLC-OCC-CDMA Rake System",
+      "authors": "Qiu Yang, Si Yujuan et al.",
+      "year": 2023,
+      "venue": "ICSI 2023 (Springer LNCS)",
+      "doi": "10.1007/978-3-031-36625-3_10"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_vlc",
+      "carrier_band": "visible",
+      "operational_environment": "indoor"
+    },
+    "application": {
+      "application_domain": "indoor_positioning",
+      "scenario_description": "VLC-OCC-CDMA system for indoor positioning and communication"
+    },
+    "evidence": {
+      "evidence_type": "simulation",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Design and analysis of VLC-OCC-CDMA Rake receiver",
+      "gap_addressed": "Mitigation of interference in VLC-OCC-CDMA systems",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "VLC-OCC-CDMA Rake receiver",
+      "novel_component_specs": "Supports up to 11 users, 125 Mbps data rate"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "VLC-OCC-CDMA Rake system"
+    },
+    "transmitter": {
+      "tx_source_type": "led",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "none"
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_photonic_processing": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "separate_frontends",
+      "duplexing_mode": "tdm"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 0.125,
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0,
+      "fibre_type": "none"
+    },
+    "channel_wireless": {
+      "link_distance_m": 5,
+      "path_loss_model": "los"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 0.125,
+      "ber": 1e-05
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 5
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 0,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a detailed simulation analysis of the VLC-OCC-CDMA Rake system, but lacks experimental validation."
+  },
+  "Paper_ID": "O_ISAC_371"
+}

@@ -1,0 +1,195 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, such as Figure 1, which shows a logistics scenario with mobile robots transporting goods while running compute-intensive processes, and Figure 2, which presents an overview of the implemented components from the HERO framework. Figure 3 displays the dashboard and point cloud views with real-time insight into process orchestration."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The paper presents the Human-Enhanced Robot Orchestration (HERO) framework, which enables context-aware, real-time robot process orchestration across cloud-edge nodes. The framework supports adaptive and dynamic offloading, container-based process orchestration, and context-aware workload placement for robotic applications. The system mechanism involves monitoring compute status, network bandwidth, and battery levels to make real-time decisions for offloading processes to idle robots, edge servers, or the cloud."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports several metrics, including offload rate, bandwidth usage, energy use, average runtime, and logistics process time. The results show that the implemented HERO framework extends uninterrupted robot runtime by 4\u00d7, improves network usage efficiency by 26%, and reduces energy and compute resource consumption by 57.5% compared to static orchestration strategies. These metrics appear to be physically consistent and demonstrate the effectiveness of the framework."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of adaptive and dynamic offloading in robotic process orchestration, demonstrating improved runtime, energy efficiency, and network usage. However, open challenges remain, such as integrating learning-based and predictive task scheduling for adaptive, low-latency orchestration, optimizing task prioritization, and evaluating the framework in complex scenarios."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Demo: Towards 6G-Enabled Multi-Robot Process Orchestration in Complex Logistics Environments",
+      "authors": "Julia Freytag, Irfan Fachrudin Priyanta, Rico Ahlbaumer, Sonke Kauffmann, Jan Emmerich",
+      "year": 2024,
+      "venue": "IEEE International Conference on Robotics and Automation",
+      "doi": "10.1109/ICRA.2024.3151156",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "other",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Autonomous mobile robots in a logistics environment"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "A Kubernetes-based implementation of the Human-Enhanced Robot Orchestration (HERO) framework for adaptive and dynamic offloading in robotic process orchestration",
+      "gap_addressed": "The need for efficient and adaptive offloading in robotic process orchestration",
+      "performance_enablers": [
+        "adaptive_offloading",
+        "context_aware_workload_placement",
+        "containerized_microservices"
+      ],
+      "novel_component": "The HERO framework",
+      "novel_component_specs": "A Kubernetes-native orchestration setup utilizing Robot Operating System (ROS)"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Logistics scenario with mobile robots"
+    },
+    "transmitter": {
+      "tx_source_type": "other",
+      "tx_modulation_type": "not_specified",
+      "tx_external_modulator": "none",
+      "wavelength_nm": null,
+      "optical_bandwidth_ghz": null,
+      "tx_power_dbm": null,
+      "aperture_diameter_m": null,
+      "beam_divergence_mrad": null
+    },
+    "receiver": {
+      "rx_detection_type": "other",
+      "rx_detector": "other",
+      "rx_aperture_diameter_m": null,
+      "rx_photonic_processing": "none",
+      "rx_modulator_type": "none",
+      "rx_modulator_bandwidth_ghz": null,
+      "rx_modulator_operating_point": "not_specified",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "separate_frontends",
+      "duplexing_mode": "other"
+    },
+    "waveform": {
+      "comm_waveform_family": "other",
+      "comm_modulation_order": null,
+      "comm_symbol_rate_gbaud": null,
+      "comm_fec_type": null,
+      "sensing_waveform_family": "other",
+      "isac_waveform_relationship": "not_specified",
+      "resource_partition": null
+    },
+    "channel_fiber": {
+      "fibre_length_km": null,
+      "fibre_type": null,
+      "attenuation_db_per_km": null,
+      "dispersion_ps_per_nm_km": null,
+      "nonlinearity_model": null,
+      "backscatter_sensing_type": null
+    },
+    "channel_wireless": {
+      "link_distance_m": null,
+      "path_loss_model": null,
+      "turbulence_model": null,
+      "turbulence_Cn2": null,
+      "scintillation_index": null,
+      "pointing_error_model": null,
+      "weather_visibility_m": null,
+      "ambient_light_model": null
+    },
+    "comm_metrics": {
+      "data_rate_gbps": null,
+      "spectral_efficiency_bps_hz": null,
+      "ber": null,
+      "ber_target": null,
+      "snr_db": null,
+      "osnr_db": null,
+      "outage_probability": null,
+      "latency_ms": null,
+      "capacity_bps_hz": null
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "localization_2d",
+        "localization_3d"
+      ],
+      "sensing_range_m": null,
+      "range_resolution_m": null,
+      "range_accuracy_m": null,
+      "angular_resolution_deg": null,
+      "velocity_resolution_mps": null,
+      "velocity_accuracy_mps": null,
+      "localization_error_m": null,
+      "spatial_resolution_m": null,
+      "sensing_bandwidth_hz": null,
+      "pd_probability_detection": null,
+      "pfa_probability_false_alarm": null,
+      "crb_crlb_value": null,
+      "crb_parameter": null
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": [
+        "rate_vs_rmse",
+        "rate_vs_range_resolution"
+      ],
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "offload_rate",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": null,
+      "opa_steering_range_deg": null,
+      "opa_beamwidth_deg": null,
+      "ris_num_elements": null,
+      "ris_type": null,
+      "ris_phase_bits": null
+    },
+    "provenance": {
+      "source_pointer": "Table I",
+      "value_origin": "reported_text",
+      "confidence_reporting": "none_reported",
+      "num_trials": null
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and the results are well-documented."
+  },
+  "Paper_ID": "O_ISAC_155"
+}

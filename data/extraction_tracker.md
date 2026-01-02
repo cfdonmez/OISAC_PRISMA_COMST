@@ -1,13 +1,19 @@
 # O-ISAC Extraction Tracker
 
-Bu dosya, manuel extraction sürecinde işlenen makalelerin takibini sağlar.
+Bu dosya, projenin "Soğan Yapısı" (Layered Structure) prensibine göre veri extraction süreçlerini takip eder.
 
-**Son Güncelleme:** 2025-12-28
+### 🧅 O-ISAC Layered (Onion) Structure
+Bu kampanya, veriyi merkezden dışa doğru şu katmanlarla işler:
+
+1. **Öz (Core):** Ham PDF verisi ve Marker V1.0 ile dijitalleştirme.
+2. **1. Katman (Legacy):** Temel meta-veri ve manuel doğrulama (O_ISAC_001 - 066).
+3. **2. Katman (V4 Vision + CoT):** LLM (Llama-3.3-70b) ve Vision entegreli derin analiz (200+ Makale).
+4. **3. Katman (Benchmark):** V4 vs Legacy kıyaslaması ve doğruluk kalibrasyonu.
+5. **Dış Katman (PRISMA):** Sistematik inceleme raporu ve sentez.
 
 ---
 
-## 📊 Extraction Özet Tablosu
-
+## 📊 1. Katman (Legacy) Extraction Özeti
 | # | Record ID | Başlık (Kısa) | Medium Class | Eligibility Concern | Completeness | Spot Check | Notes |
 |---|-----------|---------------|--------------|---------------------|--------------|------------|-------|
 | 1 | O_ISAC_001 | CE-OFDM VLC Sensing | `wireless_vlc` | `none` | medium | ✅ Doğrulandı | Sensing metrikleri teorik (NR) |
@@ -110,3 +116,31 @@ Bu dosya, manuel extraction sürecinde işlenen makalelerin takibini sağlar.
 - Tüm JSON dosyaları `data/test_output/` klasöründe
 - Her JSON dosyasında `_extraction_flags` alanı mevcut
 - PDF vs Markdown doğrulaması O_ISAC_001 için yapıldı (100% başarılı)
+
+---
+
+## 📊 2. Katman (V4 Vision + CoT) Durumu
+**Kapsam:** 067 - 388+ nolu makaleler.
+
+| Makale Grubu | Durum | Teknik Notlar |
+|--------------|-------|---------------|
+| 001 - 066 | ✅ Tamamlandı | Benchmark için V4 sonuçları üretildi. |
+| 067 - 206 | ✅ Tamamlandı | Groq Llama-3.3-70b ile toplu işleme yapıldı. |
+| 029 (Referans) | ✅ Doğrulandı | Altın standart (Gold Standard) olarak tanımlandı. |
+| 207 - 388+ | 🔨 İşleniyor | Vision destekli extraction devam ediyor. |
+
+---
+
+## 🔬 3. Katman (Benchmark & Kalibrasyon)
+**Araç:** [06_Extraction_Benchmark_Lab.ipynb](file:///c:/Users/fatih/gdrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/analysis/notebooks/06_Extraction_Benchmark_Lab.ipynb)
+
+| Kıyaslama | Sonuç | Gözlem |
+|-----------|-------|--------|
+| Veri Zenginliği | 🚀 Yüksek | V4, Legacy'deki "NR" alanları %40+ oranında doldurabiliyor. |
+| Akıl Yürütme | 🧠 Derin | Görsel analiz sayesinde parametrelerin "neden" seçildiği açıklanıyor. |
+| Doğruluk | ✅ Orta-Yüksek | 60 GHz heterodyning gibi teknik detaylar Vision katmanında daha net yakalanıyor. |
+
+---
+
+## 🌍 Dış Katman (Sentez)
+*Gelecek Adım: PRISMA Şeması ve Raporlama.*

@@ -1,0 +1,157 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which depicts the OCDM waveform generation scheme and the receiving signal processing schemes of the communication and sensing applications. Fig. 2 shows the schematic experimental configuration for ToF-based ISAC systems. Fig. 3 presents the transmission performance of the OCDM and OFDM ISAC waveform in the ToF system. Fig. 4 displays the received constellation diagrams without equalization, with linear equalization, and with non-linear equalization at 3.5 mA photocurrent. Fig. 5 and Fig. 6 show the normalized RD images and range cuts of the ISAC system at 0.2 m range for OCDM and OFDM."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses an orthogonal chirp division multiplexing (OCDM) waveform-based terahertz-over-fiber (ToF) system for integrated sensing and communication (ISAC) applications. The OCDM waveform is generated through an inverse discrete Fresnel transform (IDFnT) and is compatible with OFDM ISAC waveforms. The system achieves a 32 Gbit/s data rate and 1.875 cm range resolution simultaneously at 0.14 THz."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the 32 Gbit/s data rate and 1.875 cm range resolution, are physically consistent with the system's parameters, such as the 0.14 THz frequency and the 10 km optical fiber transmission. The system's performance is also compared to an OFDM-based ToF system, showing improved performance in frequency-selective ISAC channels."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving high-performance ISAC in the THz frequency band by using an OCDM waveform-based ToF system. The remaining open challenges include further improving the system's performance, such as increasing the data rate and range resolution, and exploring the system's applications in various fields, such as 6G wireless communication and sensing."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "THz-over-fiber system with orthogonal chirp division multiplexing for integrated sensing and communication",
+      "authors": "Lianyi Li, Lu Zhang, Hongqi Zhang, Zhidong Lyu, Zuomin Yang, Changming Zhang, Xianbin Yu",
+      "year": 2023,
+      "venue": "Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2023.3265625",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "THz",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "6g_networks",
+        "indoor_positioning"
+      ],
+      "scenario_description": "The system is designed for integrated sensing and communication applications in the THz frequency band."
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes and experimentally demonstrates an OCDM waveform-based ToF system for ISAC applications, achieving a 32 Gbit/s data rate and 1.875 cm range resolution simultaneously at 0.14 THz.",
+      "gap_addressed": "The paper addresses the challenge of achieving high-performance ISAC in the THz frequency band.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "orthogonal_chirp_division_multiplexing"
+      ],
+      "novel_component": "OCDM waveform generator",
+      "novel_component_specs": "The OCDM waveform generator uses an inverse discrete Fresnel transform (IDFnT) to generate the OCDM waveform."
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "OCDM-based ToF system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1552,
+        "optical_bandwidth_ghz": 0.1,
+        "tx_power_dbm": 16
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "orthogonal_chirp_division_multiplexing",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 8,
+        "sensing_waveform_family": "orthogonal_chirp_division_multiplexing",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18
+      },
+      "channel_wireless": {
+        "link_distance_m": 3.14,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 32,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0.0038,
+        "snr_db": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 1.57,
+        "range_resolution_m": 0.01875,
+        "range_accuracy_m": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "photocurrent",
+        "tradeoff_control_range": "1-3.5 mA"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and the experimental setup, and the results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_077"
+}

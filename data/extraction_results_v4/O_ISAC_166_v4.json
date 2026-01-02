@@ -1,0 +1,154 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several figures and diagrams, including Figure 1, which shows the system schematics with functionalities and potential applications, and Figure 2, which characterizes the ultraflexible OSCs. Figure 3 illustrates the sensing data characterization of the solar cell-based e-skin, and Figure 4 shows the activity and gesture recognition based on the solar cell-based e-skin and machine learning. Figure 5 depicts the communication functionality of the solar cell-based e-skin system and extended applications on robotic control. Figure 6 shows the extended applications of the solar cell-based e-skin system for health monitoring."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves an integrated wearable system utilizing ultraflexible organic solar cells (OSCs) that combine energy harvesting, multimodal sensing, and optical wireless communication (OWC) into a single wearable platform. The ISAC coupling mode is based on the dual functionality of the OSCs, which can be used for both sensing and energy harvesting."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports several metrics, including the short-circuit current density (JSC) of 26.6 mA/cm\u00b2, open-circuit voltage (VOC) of 0.81 V, fill factor (FF) of 0.76, and power conversion efficiency (PCE) of 15.3%. The reported metrics are physically consistent and align with the expected performance of ultraflexible OSCs."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves several problems, including the development of an integrated wearable system that combines energy harvesting, multimodal sensing, and OWC. However, remaining open challenges include improving the efficiency and stability of the system, as well as exploring its applications in various fields such as healthcare and human-machine interaction."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_166",
+      "title": "Integrated Sensing and Communication Solar Skin for Health Monitoring",
+      "authors": "Jiarong Li et al.",
+      "year": 2025,
+      "venue": "Nano Energy",
+      "doi": "10.1016/j.nanoen.2025.111639"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic"
+    },
+    "application": {
+      "application_domain": "healthcare",
+      "scenario_description": "The system is designed for health monitoring and human-machine interaction."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The development of an integrated wearable system that combines energy harvesting, multimodal sensing, and OWC.",
+      "gap_addressed": "The system addresses the need for a wearable platform that can provide continuous health monitoring and human-machine interaction.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "Ultraflexible organic solar cells (OSCs)",
+      "novel_component_specs": "3.2 \u03bcm total thickness, 15.3% PCE"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor Health Monitoring"
+    },
+    "transmitter": {
+      "tx_source_type": "LED",
+      "tx_modulation_type": "OOK",
+      "tx_external_modulator": "MOSFET",
+      "wavelength_nm": 685,
+      "tx_power_dbm": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "photodiode",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "OOK",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 0.1,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "pulse_train",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "SMF",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 0.01,
+      "spectral_efficiency_bps_hz": 0.1,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 1,
+      "range_resolution_m": 0.01,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.01,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.1,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a comprehensive evaluation of the system, including its performance, stability, and potential applications."
+  },
+  "Paper_ID": "O_ISAC_166"
+}

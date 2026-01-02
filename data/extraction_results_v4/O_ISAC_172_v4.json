@@ -1,0 +1,132 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several figures and diagrams, including a system diagram of the OFDR-based ISAC-OF system, a schematic diagram of the sliding-windows normalization algorithm, and several multi-panel charts showing the received communication signal, eye diagrams, and BER performance. These visual aids help to illustrate the system architecture, signal processing, and performance metrics."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a directly modulated laser (DML) to generate a linearly frequency-modulated (LFM) optical signal, which serves as both the communication carrier and the sensing probe. The LFM signal is split into two branches, with the majority used for communication and the minority used as a reference signal for sensing. The system employs a sliding-windows normalization (SN) algorithm to mitigate the impact of periodic power fading on communication performance."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a data rate of 25 Mbps and a distance resolution of 12.28 cm. These metrics are physically consistent, as the system's communication performance and sensing resolution are within the expected ranges for the given system parameters and experimental setup."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating high-precision fiber sensing with high-speed optical communication in a single system. However, the system's performance is affected by the laser's linewidth, and the sensing range is limited by the coherence length of the laser. Further research is needed to improve the system's performance, particularly in terms of increasing the sensing range and reducing the impact of laser linewidth on sensing resolution."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_172",
+      "title": "Joint Break-Point Localization Sensing Based on OFDR and Non-Disruptive Communication Fiber ISAC System",
+      "authors": "Mingxuan Ma et al.",
+      "year": 2025,
+      "venue": "Optics and Laser Technology",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "optical_network_monitoring",
+      "scenario_description": "The system is designed for intelligent optical network monitoring, particularly for fault detection and localization in optical fiber networks."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a novel joint non-disruptive communication and fiber breakpoints localization ISAC-OF system, which integrates high-precision fiber sensing with high-speed optical communication in a single system.",
+      "gap_addressed": "The system addresses the challenge of integrating sensing and communication in a single system, which is essential for intelligent optical network monitoring.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "DFB laser",
+      "novel_component_specs": "linewidth: 2.448 MHz, coherence length: 83.77 m"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "OFDR-based ISAC-OF system"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 33,
+      "tx_power_dbm": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pd",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "pam4",
+      "comm_modulation_order": 4,
+      "comm_symbol_rate_gbaud": 25,
+      "comm_fec_type": "hd_fec",
+      "sensing_waveform_family": "lfm_chirp",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 20,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18
+    },
+    "channel_wireless": {
+      "link_distance_m": 1000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 25,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 0.001,
+      "snr_db": 20
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 40,
+      "range_resolution_m": 0.01,
+      "range_accuracy_m": 0.1
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve"
+    }
+  },
+  "Paper_ID": "O_ISAC_172"
+}

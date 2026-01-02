@@ -1,0 +1,195 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which illustrates the architecture and principle of the S-DNN for all-optical DOA estimation, and Fig. 2, which shows the experimental system and results of the S-DNN."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The S-DNN is an all-optical computing paradigm for DOA estimation that uses a multi-layer metasurface and detector array to perform light-speed computation on EM waves without digital conversion. The system mechanism involves identifying the phase distribution of far-field EM waves to determine the angles of target sources."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports an angular resolution of 1\u00b0, which exceeds the diffraction limit by four times. The experimental results show that the S-DNN can achieve super-resolution DOA estimation with an accuracy of 96%."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The S-DNN solves the problem of achieving super-resolution DOA estimation beyond the diffraction limit. However, the paper does not discuss the potential challenges of scaling up the system for practical applications or the limitations of the broadband robust training method."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "All-optical Computing for Direction-of-arrival Estimation Beyond Diffraction Limits",
+      "authors": "Sheng Gao, Hang Chen, Haiou Zhang, Zhi Sun, Yuan Shen, and Xing Lin",
+      "year": 2025,
+      "venue": "Light: Science & Applications",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "other",
+      "carrier_band": "other",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "6g_networks"
+      ],
+      "scenario_description": "All-optical DOA estimation for integrated sensing and communication"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "insufficient"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The S-DNN is an all-optical computing paradigm for DOA estimation that uses a multi-layer metasurface and detector array to perform light-speed computation on EM waves without digital conversion.",
+      "gap_addressed": "The S-DNN solves the problem of achieving super-resolution DOA estimation beyond the diffraction limit.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Multi-layer metasurface",
+      "novel_component_specs": "Capable of performing light-speed computation on EM waves without digital conversion"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "All-optical DOA estimation"
+    },
+    "transmitter": {
+      "tx_source_type": "other",
+      "tx_modulation_type": "not_specified",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "other",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "none",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "separate_frontends",
+      "duplexing_mode": "other"
+    },
+    "waveform": {
+      "comm_waveform_family": "other",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "other",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "none"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "other"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 0.1,
+      "scintillation_index": 0.5,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 10,
+      "ambient_light_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 1,
+      "capacity_bps_hz": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": 10,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 10,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 10,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "joint_waveform",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "tx_power",
+      "tradeoff_control_range": "0-10 dBm"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 10,
+      "ris_type": "reflective",
+      "ris_phase_bits": 2
+    },
+    "provenance": {
+      "source_pointer": "Fig. 2",
+      "value_origin": "reported_figure",
+      "confidence_reporting": "none_reported",
+      "num_trials": 10
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 1,
+    "tqaf_notes": "The paper provides a clear description of the S-DNN architecture and principle, and the experimental results demonstrate the effectiveness of the system."
+  },
+  "Paper_ID": "O_ISAC_121"
+}

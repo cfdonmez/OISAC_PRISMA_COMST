@@ -1,0 +1,176 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which depicts the schematic diagram of a RO-ISAC system using the proposed OFDM-MLS waveform, and Fig. 2, which illustrates the designed OFDM-MLS waveforms with different \u03b2 values. Fig. 3 shows the experimental setup of the RO-ISAC system, and Fig. 4 compares the cross-correlation performance of transmitted OFDM-PAM and OFDM-MLS signals with different \u03b2 values. Fig. 5 shows the ranging RMSE versus distance for different power allocation ratio \u03b2 values with PPC degrees of n=4 and 8. Fig. 6 shows the communication bit error rate (BER) versus distance for different power allocation ratio \u03b2 values with different constellations and N_data values. Fig. 7 shows the ranging RMSE and BER versus \u03b2 with n=4 and 8."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system is a retroreflective optical integrated sensing and communication (RO-ISAC) system, which uses a flexible waveform design based on orthogonal frequency division multiplexing-embedded maximum length sequence (OFDM-MLS) to achieve both communication and sensing. The OFDM-MLS waveform is designed to embed OFDM samples into a MLS sequence, allowing for flexible performance trade-off between communication and sensing by adaptively adjusting the power allocation ratio between the MLS signal and the OFDM signal."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports experimental results for the RO-ISAC system using the proposed OFDM-MLS waveform, including the cross-correlation performance, ranging RMSE, and communication BER. The results show that the proposed OFDM-MLS waveform can achieve superior cross-correlation performance and ranging accuracy compared to the OFDM-PAM waveform, and that the communication BER can be improved by adjusting the power allocation ratio \u03b2."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed OFDM-MLS waveform design solves the problem of achieving flexible performance trade-off between communication and sensing in RO-ISAC systems. However, the paper also notes that the communication BER can be affected by the power allocation ratio \u03b2, and that the ranging RMSE can be improved by increasing the PPC degree n. Open challenges include further optimizing the OFDM-MLS waveform design and improving the system's robustness to noise and interference."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Flexible Waveform Design for RO-ISAC Based on OFDM-Embedded Maximum Length Sequence",
+      "authors": "Jia Du, Chen Chen, Zhihong Zeng, Dengke Wang, Jia Ye, Jian Song, Harald Haas",
+      "year": 2025,
+      "venue": "IEEE Letters",
+      "doi": "10.1109/LWC.2025.3593253"
+    },
+    "classification": {
+      "oisac_medium_class": "retroreflective_optical",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "indoor_positioning",
+      "scenario_description": "RO-ISAC system using OFDM-MLS waveform for communication and sensing"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed OFDM-MLS waveform design achieves flexible performance trade-off between communication and sensing in RO-ISAC systems.",
+      "gap_addressed": "The proposed design solves the problem of achieving flexible performance trade-off between communication and sensing in RO-ISAC systems.",
+      "performance_enablers": "OFDM-MLS waveform design, power allocation ratio \u03b2, PPC degree n",
+      "novel_component": "OFDM-MLS modulator",
+      "novel_component_specs": "PPC degree n, power allocation ratio \u03b2"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "RO-ISAC system using OFDM-MLS waveform"
+      },
+      "transmitter": {
+        "tx_source_type": "LED",
+        "tx_modulation_type": "OFDM-MLS",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 450,
+        "optical_bandwidth_ghz": 0.5,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "APD",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OFDM",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 0.25,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "MLS",
+        "isac_waveform_relationship": "embedded",
+        "resource_partition": "power_allocation"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.0625,
+        "spectral_efficiency_bps_hz": 0.5,
+        "ber": 0.001,
+        "ber_target": 0.0038,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 1,
+        "range_resolution_m": 0.06,
+        "range_accuracy_m": 0.08,
+        "angular_resolution_deg": 10,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.2,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "\u03b2",
+        "tradeoff_control_range": "0_to_10"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Fig. 4",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": 10
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the proposed OFDM-MLS waveform design and its experimental evaluation. The results show that the proposed design can achieve flexible performance trade-off between communication and sensing in RO-ISAC systems."
+  },
+  "Paper_ID": "O_ISAC_075"
+}

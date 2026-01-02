@@ -1,0 +1,186 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper presents a PAM-4 photonics-assisted W-band ISAC system. The system uses a sliding window-based LSTM network for equalization and a correlation-based ranging scheme for radar detection. The experimental setup includes a transmitter, a communication receiver, and a radar receiver. The results show a BER performance of 10^-4 at an ROP of 4 dBm and a ranging resolution of up to 1.875 cm."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The system uses a single PAM-4 waveform for both communication and radar detection. The sliding window-based LSTM network is used for equalization, and the correlation-based ranging scheme is used for radar detection. The system achieves a BER performance of 10^-4 at an ROP of 4 dBm and a ranging resolution of up to 1.875 cm."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The system's performance is compared to that of a Volterra Series-based Nonlinear Equalizer (VNE) and a Feed Forward Equalizer (FFE). The results show that the sliding window-based LSTM network outperforms the VNE and FFE in terms of BER performance."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The system's performance is limited by the ROP and the sampling rate. The system achieves better performance at a sampling rate of 8 GSa/s than at 4 GSa/s. The system's ranging resolution is limited by the sampling rate and the signal bandwidth."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_242",
+      "title": "Sliding window-based LSTM scheme for PAM-4 photonics-assisted W-band ISAC systems",
+      "authors": "Jing He et al.",
+      "year": 2025,
+      "venue": "IEEE",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "W-band",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "industrial_manufacturing"
+      ],
+      "scenario_description": "PAM-4 photonics-assisted W-band ISAC system for joint communication and radar detection"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "Sliding window-based LSTM network for PAM-4 equalization and correlation-based ranging scheme for radar detection",
+      "gap_addressed": "Improved BER performance and ranging resolution for PAM-4 photonics-assisted W-band ISAC systems",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "machine_learning"
+      ],
+      "novel_component": "Sliding window-based LSTM network",
+      "novel_component_specs": "128 nodes in hidden layer, learning rate of 0.005"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "PAM-4 photonics-assisted W-band ISAC system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "pam4",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1556.67,
+        "optical_bandwidth_ghz": 4.8,
+        "tx_power_dbm": 4,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 6,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "correlation_based_ranging"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "pam4",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 0.8,
+        "comm_fec_type": "sd_fec",
+        "sensing_waveform_family": "pam4",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time_division_multiplexing"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 50,
+        "fibre_type": "ssmf",
+        "attenuation_db_per_km": 10,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space_loss",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1.6,
+        "spectral_efficiency_bps_hz": 2,
+        "ber": 0.00033,
+        "ber_target": 0.001,
+        "snr_db": 15.2,
+        "osnr_db": 10,
+        "outage_probability": 0.01,
+        "latency_ms": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization"
+        ],
+        "sensing_range_m": 150,
+        "range_resolution_m": 0.01875,
+        "range_accuracy_m": 0.043,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 1000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "sliding_window_length",
+        "tradeoff_control_range": "1-4"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 1,
+        "opa_steering_range_deg": 10,
+        "opa_beamwidth_deg": 1,
+        "ris_num_elements": 1,
+        "ris_type": "reflective",
+        "ris_phase_bits": 8
+      },
+      "provenance": {
+        "source_pointer": "Figure 5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 5
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a well-designed experiment with clear results and discussions."
+  },
+  "Paper_ID": "O_ISAC_242"
+}

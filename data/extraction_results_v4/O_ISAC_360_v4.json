@@ -1,0 +1,302 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper presents a monolithic III-nitride photonic circuit for integrated sensing and communication. The circuit consists of two identical InGaN/AlGaN MQW diodes and a comb waveguide. The diodes serve as transmitter and receiver, and the comb waveguide facilitates in-plane light communication and liquid sensing. The SEM morphology image shows the integrated system, and the AFM characterization displays the dimensions of the comb coupler. The I-V curve and luminous image of the transmitter are also provided, along with the EL and responsivity spectra. The paper demonstrates on-chip data communication at 40 Mbps and dynamic ethanol sensing."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The system mechanism involves the use of a comb waveguide to couple light between the transmitter and receiver diodes. The diodes have overlapping EL and responsivity spectra, allowing for simultaneous emission and detection. The comb waveguide also enables liquid sensing by monitoring changes in optical coupling efficiency. The system integrates multiple components, including the transmitter, receiver, and comb waveguide, on a single chip."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The paper reports a data rate of 40 Mbps for in-plane communication, with minimal distortion in the received signal. The eye diagram is open, indicating good signal quality. The liquid sensing results show a linear relationship between the forward current and photocurrent, with a higher photocurrent measured in ethanol compared to air. The system demonstrates both communication and sensing capabilities, with potential applications in the Internet of Things."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The paper presents a novel monolithic III-nitride photonic circuit that integrates sensing and communication on a single chip. The use of a comb waveguide enables both in-plane light communication and liquid sensing, making it a versatile platform for various applications. The system's performance is promising, with a high data rate and sensitive liquid sensing capabilities. However, further research is needed to explore the system's limitations, scalability, and potential applications."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_360",
+      "title": "Monolithic III-nitride photonic circuit for integrated sensing and communication system",
+      "authors": "Yan Jiang, Mingyuan Xie, Zheng Shi, and Yongjin Wang",
+      "year": 2026,
+      "venue": "Manuscript (NJUPT)",
+      "doi": "Not reported",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "visible",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "industrial_manufacturing",
+        "environmental_monitoring",
+        "security_surveillance"
+      ],
+      "scenario_description": "On-chip sensing and communication for various applications"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Monolithic III-nitride photonic circuit for integrated sensing and communication",
+      "gap_addressed": "Integration of sensing and communication on a single chip",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Comb waveguide",
+      "novel_component_specs": "100 \u03bcm length, 10 \u03bcm width, 5 \u03bcm gap"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "In-plane communication"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 385,
+        "optical_bandwidth_ghz": "Not reported",
+        "tx_power_dbm": "Not reported",
+        "aperture_diameter_m": "Not reported",
+        "beam_divergence_mrad": "Not reported"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": "Not reported",
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "Not reported",
+        "rx_modulator_operating_point": "none",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 1,
+        "comm_symbol_rate_gbaud": 0.04,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "Not reported",
+        "fibre_type": "none",
+        "attenuation_db_per_km": "Not reported",
+        "dispersion_ps_per_nm_km": "Not reported",
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": "Not reported",
+        "path_loss_model": "none",
+        "turbulence_model": "none",
+        "turbulence_Cn2": "Not reported",
+        "scintillation_index": "Not reported",
+        "pointing_error_model": "none",
+        "weather_visibility_m": "Not reported",
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.04,
+        "spectral_efficiency_bps_hz": "Not reported",
+        "ber": "Not reported",
+        "ber_target": "Not reported",
+        "snr_db": "Not reported",
+        "osnr_db": "Not reported",
+        "outage_probability": "Not reported",
+        "latency_ms": "Not reported",
+        "capacity_bps_hz": "Not reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization_2d",
+          "target_detection"
+        ],
+        "sensing_range_m": "Not reported",
+        "range_resolution_m": "Not reported",
+        "range_accuracy_m": "Not reported",
+        "angular_resolution_deg": "Not reported",
+        "velocity_resolution_mps": "Not reported",
+        "velocity_accuracy_mps": "Not reported",
+        "localization_error_m": "Not reported",
+        "spatial_resolution_m": "Not reported",
+        "sensing_bandwidth_hz": "Not reported",
+        "pd_probability_detection": "Not reported",
+        "pfa_probability_false_alarm": "Not reported",
+        "crb_crlb_value": "Not reported",
+        "crb_parameter": "none"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "none",
+        "tradeoff_control_range": "none"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "Not reported",
+        "opa_steering_range_deg": "Not reported",
+        "opa_beamwidth_deg": "Not reported",
+        "ris_num_elements": "Not reported",
+        "ris_type": "none",
+        "ris_phase_bits": "Not reported"
+      },
+      "provenance": {
+        "source_pointer": "Figure 4",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": "Not reported"
+      }
+    },
+    {
+      "identification": {
+        "experiment_id": "E2",
+        "scenario_label": "Liquid sensing"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 385,
+        "optical_bandwidth_ghz": "Not reported",
+        "tx_power_dbm": "Not reported",
+        "aperture_diameter_m": "Not reported",
+        "beam_divergence_mrad": "Not reported"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": "Not reported",
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "Not reported",
+        "rx_modulator_operating_point": "none",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "none",
+        "comm_modulation_order": "Not reported",
+        "comm_symbol_rate_gbaud": "Not reported",
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "Not reported",
+        "fibre_type": "none",
+        "attenuation_db_per_km": "Not reported",
+        "dispersion_ps_per_nm_km": "Not reported",
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": "Not reported",
+        "path_loss_model": "none",
+        "turbulence_model": "none",
+        "turbulence_Cn2": "Not reported",
+        "scintillation_index": "Not reported",
+        "pointing_error_model": "none",
+        "weather_visibility_m": "Not reported",
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "Not reported",
+        "spectral_efficiency_bps_hz": "Not reported",
+        "ber": "Not reported",
+        "ber_target": "Not reported",
+        "snr_db": "Not reported",
+        "osnr_db": "Not reported",
+        "outage_probability": "Not reported",
+        "latency_ms": "Not reported",
+        "capacity_bps_hz": "Not reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "target_detection"
+        ],
+        "sensing_range_m": "Not reported",
+        "range_resolution_m": "Not reported",
+        "range_accuracy_m": "Not reported",
+        "angular_resolution_deg": "Not reported",
+        "velocity_resolution_mps": "Not reported",
+        "velocity_accuracy_mps": "Not reported",
+        "localization_error_m": "Not reported",
+        "spatial_resolution_m": "Not reported",
+        "sensing_bandwidth_hz": "Not reported",
+        "pd_probability_detection": "Not reported",
+        "pfa_probability_false_alarm": "Not reported",
+        "crb_crlb_value": "Not reported",
+        "crb_parameter": "none"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "none",
+        "tradeoff_control_range": "none"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "Not reported",
+        "opa_steering_range_deg": "Not reported",
+        "opa_beamwidth_deg": "Not reported",
+        "ris_num_elements": "Not reported",
+        "ris_type": "none",
+        "ris_phase_bits": "Not reported"
+      },
+      "provenance": {
+        "source_pointer": "Figure 5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": "Not reported"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 1,
+    "tqaf_reproducibility": 1,
+    "tqaf_notes": "The paper presents a novel monolithic III-nitride photonic circuit with promising performance. However, some metrics are not reported, and the reproducibility of the results is not explicitly stated."
+  },
+  "Paper_ID": "O_ISAC_360"
+}

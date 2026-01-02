@@ -1,0 +1,178 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes various figures and charts, such as system block diagrams, grid diagrams, 3D surface plots, line charts, and experimental setup diagrams. Figure 2 shows the OTFS waveform generation and signal processing, while Figure 4 illustrates the DD domain pilot and data symbol arrangement. Figure 16 is a 3D surface plot of the visualized radar channel response matrix h1."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system employs OTFS modulation to map data to the delay-Doppler (DD) domain, enhancing the communication performance in NLOS scenarios. The OTFS modulation scheme outperforms OFDM under identical multipath conditions due to its enhanced resistance to MPI."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a net data rate of 15.71 Gbit/s and a range resolution of 3 cm. The maximum absolute error in single-target detection is 0.74 cm, and the system's minimum resolvable distance is 3 cm, which agrees well with the theoretical value."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving high-speed data transmission and high-precision ranging in NLOS scenarios using OTFS modulation. However, the system's performance in more complex environments and its scalability to larger distances and higher data rates remain open challenges."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_241",
+      "title": "Photonics-Assisted Millimeter-Wave Integrated Sensing and Communication Based on OTFS",
+      "authors": "Yanyi Wang et al.",
+      "year": 2025,
+      "venue": "IEEE Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2025.3613544"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "mmWave",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "industrial_manufacturing",
+        "indoor_positioning"
+      ],
+      "scenario_description": "The system is designed for indoor positioning and sensing applications."
+    },
+    "evidence": {
+      "evidence_type": [
+        "analytical",
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a photonics-assisted ISAC system employing OTFS modulation, which achieves a net data rate of 15.71 Gbit/s and a range resolution of 3 cm.",
+      "gap_addressed": "The system addresses the limitation of conventional OFDM-based ISAC systems in NLOS scenarios.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "OTFS modulation",
+      "novel_component_specs": "The OTFS modulation scheme uses a delay-Doppler domain grid with M=256 and N=16."
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor positioning"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "OTFS",
+        "tx_external_modulator": "I/Q modulator",
+        "wavelength_nm": 1544.3,
+        "optical_bandwidth_ghz": 5,
+        "tx_power_dbm": -7
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "I/Q modulator",
+        "rx_modulator_bandwidth_ghz": 40,
+        "rx_modulator_operating_point": "MITP",
+        "false_target_mitigation": "pilot_aided_channel_estimation"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OTFS",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 5,
+        "comm_fec_type": "HD-FEC",
+        "sensing_waveform_family": "OTFS",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.001,
+        "fibre_type": "SMF",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "Kerr_nonlinearity"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 15.71,
+        "spectral_efficiency_bps_hz": 3.14,
+        "ber": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization"
+        ],
+        "sensing_range_m": 1,
+        "range_resolution_m": 0.03,
+        "range_accuracy_m": 0.0074,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 5000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1e-06,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "subcarrier_number",
+        "tradeoff_control_range": "2-512"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and its performance, and the results are well-validated through experiments."
+  },
+  "Paper_ID": "O_ISAC_241"
+}

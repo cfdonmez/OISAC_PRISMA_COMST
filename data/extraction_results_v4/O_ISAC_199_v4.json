@@ -1,0 +1,168 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper contains several images, including a graphical abstract, system block diagrams, probability density charts, eye diagrams, and line charts. These images provide visual representations of the proposed system, including the transmitter, channel, and receiver, as well as the performance of the system under various conditions."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system integrates a free-space optical (FSO) communication system with a fiber Bragg grating (FBG) sensor. The FSO system uses a MIMO technique to improve the reliability and performance of the system, while the FBG sensor is used to monitor temperature and strain effects. The system also includes a compensator to mitigate the effects of dispersion."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a maximum FSO link range of 69.6 km under clear atmospheric conditions, with a BER of less than 2 x 10^-3. The system also demonstrates a significant reduction in BER and improvement in received power when using a 4x4 MIMO FSO channel with a compensator."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed system addresses the challenges of signal losses due to atmospheric conditions, temperature, and strain in FSO channels. However, the system still requires further investigation to support increased FSO link lengths and equalization of the required information."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_199",
+      "title": "Integrated Sensing and Communication System - MIMO FSO with FBG Sensors for 6G IoT Applications",
+      "authors": "R. Arunachalam, Rupali Singh, M. Vinoth Kumar",
+      "year": 2025,
+      "venue": "Engineering Science and Technology, an International Journal",
+      "doi": "Not Reported",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "C-band",
+      "operational_environment": "outdoor",
+      "link_topology": "point-to-point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "6g_networks",
+      "scenario_description": "The proposed system is designed for 6G IoT applications, with a focus on last-mile connectivity."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed system integrates a MIMO FSO channel with an FBG sensor and a compensator to mitigate the effects of dispersion.",
+      "gap_addressed": "The system addresses the challenges of signal losses due to atmospheric conditions, temperature, and strain in FSO channels.",
+      "performance_enablers": "MIMO technique, FBG sensor, compensator",
+      "novel_component": "FBG sensor",
+      "novel_component_specs": "Temperature sensitivity: 14.4 pm/\u00b0C, Strain sensitivity: 1.2 pm/\u03bc\u03b5"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Outdoor FSO, 10 km, Clear Air"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "intensity_modulation",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1552,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 20,
+      "aperture_diameter_m": 0.05,
+      "beam_divergence_mrad": 1
+    },
+    "receiver": {
+      "rx_detection_type": "direct_detection",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.2,
+      "rx_photonic_processing": "none",
+      "rx_modulator_type": "none",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "fmcw",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "power_split"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.54,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 10000,
+      "path_loss_model": "free_space",
+      "turbulence_model": "gamma_gamma",
+      "turbulence_Cn2": 1e-13,
+      "scintillation_index": 0.5,
+      "pointing_error_model": "gaussian_jitter"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 0.001,
+      "ber_target": 0.001,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 10000,
+      "range_resolution_m": 10,
+      "range_accuracy_m": 1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 1,
+      "spatial_resolution_m": 10,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_split",
+      "tradeoff_control_range": "0-1"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and its components, and the results are well-presented and easy to understand. However, the paper could benefit from more detailed information about the experimental setup and the measurement procedures."
+  },
+  "Paper_ID": "O_ISAC_199"
+}

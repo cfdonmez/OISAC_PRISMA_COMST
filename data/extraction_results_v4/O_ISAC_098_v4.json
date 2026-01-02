@@ -1,0 +1,177 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper proposes an optical integrated sensing and communication system based on the combination of Optical Intelligent Reflecting Surface (OIRS) and Photodiode (PD) array for mobile scenarios. The system enables the integration of sensing and communication functionalities with a single transmission, a single device, and ultimately a single network infrastructure."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses OIRS to attain beam reflection and real-time deflection, effectively distributing the responsibility of beam alignment from the base station to the OIRS situated in the environment. The OIRS is divided into a narrow beam region and a wide beam region, where the wide beam region does not require beam focusing and steering."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper derives the probability distribution function (PDF) of channel fading and the closed-form expression of system performance, which shows the influence of various parameters on performance. Simulations have been performed to verify the accuracy of the derived results."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of beam alignment for mobile users by proposing a closed-loop control algorithm for OIRS adaptive beam positioning and deflection. However, the system is still in its basic form and needs to be scaled up to incorporate additional optical systems to enhance both sensing and communication performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Optical Integrated Sensing and Communication System Based on Combination of OIRS and PD Array for Mobile Scenarios",
+      "authors": "Haibo Wang, Zaichen Zhang, Yingmeng Ge, and Bingcheng Zhu",
+      "year": 2024,
+      "venue": "IEEE Transactions on Wireless Communications",
+      "doi": "10.1109/TWC.2024.3484569"
+    },
+    "classification": {
+      "oisac_medium_class": "wireless_fso",
+      "carrier_band": "C-band",
+      "operational_environment": "outdoor",
+      "link_topology": "monostatic",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "Mobile communication scenarios"
+    },
+    "evidence": {
+      "evidence_type": "simulation",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": true,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes an optical integrated sensing and communication system based on the combination of OIRS and PD array for mobile scenarios.",
+      "gap_addressed": "The system solves the problem of beam alignment for mobile users by proposing a closed-loop control algorithm for OIRS adaptive beam positioning and deflection.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "OIRS",
+      "novel_component_specs": "The OIRS is divided into a narrow beam region and a wide beam region, where the wide beam region does not require beam focusing and steering."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Outdoor FSO, 500m, Fog"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0.1,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 500,
+      "path_loss_model": "friis",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 0.1,
+      "scintillation_index": 0.5,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 0.001,
+      "ber_target": 0.01,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 100,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "alpha",
+      "tradeoff_control_range": "0_to_1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 30,
+      "opa_beamwidth_deg": 10,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 4
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a detailed description of the system model and simulation results, but lacks experimental validation."
+  },
+  "Paper_ID": "O_ISAC_098"
+}

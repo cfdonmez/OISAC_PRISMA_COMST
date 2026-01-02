@@ -1,0 +1,155 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures and charts that provide visual evidence of the research. Figure 1 shows a comparison of ideal OTDR traces in a PON with and without a RN with trace serialization. Figure 2 illustrates the impact of PPE on non-reflective event detection. Figure 3 presents the experimental setup and results for reflective event measurement. Figure 4 shows the results of tests with temperature sensors. Figure 5 depicts the RN enabling trace serialization. Figure 6 shows the testbed setup. Figure 7 presents OTDR traces for a regular RN and the new RN. Figure 8 shows the received downstream UDP packets measurement results."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on the concept of OTDR trace serialization, which converts a traditional OTDR trace of a PtMP PON into a PtP-like trace. This is achieved through a new passive RN that enables the application of legacy reflectometers independent of the network protocol and with minimal impact on data transmission. The ISAC coupling mode is based on the use of back-scattered and back-reflected light as a source of monitoring and sensing information."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports several metrics, including the event magnitude measurement, temperature measurement offset, and received downstream UDP packets. The physical consistency of these metrics is validated through experimental results, which show that the new RN enables direct readout of event magnitudes and accurate temperature measurement. The results also show that the OTDR signal has a negligible impact on data transmission."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of PPE in PtMP PONs, which prevents accurate event detection and localization. The remaining open challenges include the scalability of the trace serialization concept towards PONs with higher split ratios and the integration of the new RN with existing network infrastructure."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_276",
+      "title": "Parallel Path Effect-Free Remote Monitoring and Sensing in Live XGS-PON Using Legacy Optical Time Domain Reflectometry",
+      "authors": "Patryk J. Urban et al.",
+      "year": 2025,
+      "venue": "IEEE Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2025.3563162"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "indoor",
+      "link_topology": "point_to_multipoint",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "industrial_manufacturing",
+        "indoor_positioning"
+      ],
+      "scenario_description": "The paper presents a method for supervision of fiber point-to-multipoint access networks to serve monitoring and sensing purposes."
+    },
+    "evidence": {
+      "evidence_type": [
+        "analytical",
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper presents a cost-optimized passive remote node architecture for supervision of fiber point-to-multipoint access networks to serve monitoring and sensing purposes.",
+      "gap_addressed": "The paper addresses the problem of parallel path effect in point-to-multipoint passive optical networks, which prevents accurate event detection and localization.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform"
+      ],
+      "novel_component": "The paper presents a new passive remote node architecture that enables the application of legacy reflectometers independent of the network protocol and with minimal impact on data transmission.",
+      "novel_component_specs": "The new RN is composed of common discrete passive components all housed in a 1U enclosure."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "XGS-PON testbed setup"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 0
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.01,
+      "rx_photonic_processing": "photonic_dechirping"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "pam4",
+      "comm_modulation_order": 4,
+      "comm_symbol_rate_gbaud": 10,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "fmcw_chirp",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 17,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 100,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 1e-06,
+      "snr_db": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": 100,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a comprehensive evaluation of the proposed method, including experimental results and theoretical analysis."
+  },
+  "Paper_ID": "O_ISAC_276"
+}

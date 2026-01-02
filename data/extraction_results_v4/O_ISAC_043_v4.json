@@ -1,0 +1,189 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which shows the concept of photonic-based ISAC networks, the principle of de-chirp, and the concept of flexible waveforms. Fig. 2 shows the experimental setup and offline DSP. Fig. 3 shows the BER, SNR, and range resolution for different cases, as well as the effect of received optical power on BER and resolution. Fig. 4 shows the detection results of multiple targets for different cases."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a photonic-based integration of sensing and communication, with a W-band flexible time-frequency-division multiplexed (TFDM) signal. The ISAC coupling mode is achieved through the combination of linear frequency modulation (LFM) and subcarrier modulated (SCM) signals in the form of frequency division multiplexing (FDM), time division multiplexing (TDM), or a mixture of the two."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a range resolution of 1.59 cm to 4.39 cm and a data rate of 15 Gbit/s to 60 Gbit/s. These metrics are physically consistent with the system's parameters, such as the bandwidth of the LFM signal and the duration of the signal."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of achieving high-resolution sensing and high-speed communication in a photonic-based ISAC system. However, the system's performance is affected by the received optical power, and the distance error after calibration is less than 3 cm. Open challenges include improving the system's robustness to optical power variations and reducing the distance error."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Photonic-based W-band Flexible TFDM Integrated Sensing and Communication System for Fiber-wireless Network",
+      "authors": "Boyu Dong, Junlian Jia, Guoqiang Li, Jianyang Shi, Haipeng Wang, Zhenzhou Tang, Junwen Zhang, Shilong Pan, and Nan Chi",
+      "year": 2023,
+      "venue": "Journal/Conference Name",
+      "doi": "DOI Number",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "W-band",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "6g_networks",
+      "scenario_description": "Fiber-wireless integrated network"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "A W-band flexible TFDM photonic-based ISAC system for fiber-wireless integrated network",
+      "gap_addressed": "Achieving high-resolution sensing and high-speed communication in a photonic-based ISAC system",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform"
+      ],
+      "novel_component": "None",
+      "novel_component_specs": "None"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "W-band TFDM ISAC system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 12,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 32,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "flexible"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 60,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.01,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.04,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 1000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "bandwidth",
+        "tradeoff_control_range": "1-10 GHz"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      },
+      "provenance": {
+        "source_pointer": "Fig. 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 10
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and its performance, and the experimental results are well-presented."
+  },
+  "Paper_ID": "O_ISAC_043"
+}

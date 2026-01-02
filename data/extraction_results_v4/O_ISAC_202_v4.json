@@ -1,0 +1,179 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper includes several images, including a system block diagram, dual-panel charts for sensing performance and position sensing, and line charts for covert channel BER and public channel BER under vibration. The system block diagram shows the setup of the proof-of-concept experiment, including the transmitter, Sagnac interferometer, sensing receiver, and communication receiver. The dual-panel charts and line charts present the results of the experiment, including the waveform and frequency of the signal, null frequency vs order N, position error vs order N, BER curves of the covert channel with and without vibration, and BER curves of the public channel under vibration."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on a Sagnac interferometer, which detects the location of vibration by searching the null frequency in the spectrum. The ISAC coupling mode is achieved through the use of amplified spontaneous emission (ASE) light, which serves as a natural optical carrier for covertly conveying messages in the photonic layer and simultaneously as a typical optical carrier in optical sensors."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the null frequency, position error, and BER curves, are physically consistent with the hardware and method described in the paper. The results show that the covert sensing has a negligible impact on covert communication, and the vibration has a minimal effect on the transmission performance of the covert channel."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating covert sensing and communication in the same fiber, same time, and same wavelength. The remaining open challenges include further improving the precision of fiber optic sensing, reducing the impact of environmental factors on the measurement, and exploring the application of this technology in various fields."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_202",
+      "title": "Integrated Optical Covert Sensing and Communication",
+      "authors": "Huatao Zhu et al.",
+      "year": 2025,
+      "venue": "Chinese Optics Letters",
+      "doi": "10.3788/COL202523.020602"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "security_surveillance",
+        "6g_networks"
+      ],
+      "scenario_description": "Metropolitan area optical network"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "First integrated optical covert sensing and communication method",
+      "gap_addressed": "Integrating sensing and communication in the same fiber, same time, and same wavelength",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Sagnac interferometer",
+      "novel_component_specs": "25-km span of G.652 SMF, 10-km span of SMF, and a short span of SMF with varying lengths"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Covert Sensing and Communication"
+      },
+      "transmitter": {
+        "tx_source_type": "ase",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": -10,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1.25,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time_domain"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 25,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1000,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1.25,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-09,
+        "ber_target": 1e-09,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 1000,
+        "range_resolution_m": 10,
+        "range_accuracy_m": 1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 10,
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "[0, 1]"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and experiment, and the results are well-presented and easy to understand."
+  },
+  "Paper_ID": "O_ISAC_202"
+}

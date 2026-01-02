@@ -1,0 +1,179 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures and diagrams that illustrate the system architecture, experimental setup, and results. Figure 1 shows the LFM based on pulse compression, Figure 2 compares the typical IM/DD system with OFDM and the proposed IM/DD system with CB-DSCM, Figure 3 illustrates the integration process of CB-DSCM, Figure 4 shows the experimental setup, Figure 5 presents the communication performance, Figure 6 shows the sensing results without communication, and Figure 7 shows the sensing performance with communication."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a common bias-digital subcarrier multiplexing (CB-DSCM) scheme, which combines linear frequency modulation (LFM) signals for distributed acoustic sensing (DAS) and asymmetrically clipped optical orthogonal frequency division multiplexing (ACO-OFDM) signals for communication. The LFM signal is used for sensing and is biased at the null point of the electro-optic modulator (EOM), while the ACO-OFDM signal is used for communication and is also biased at the null point. The two signals are multiplexed in the frequency domain, allowing for simultaneous transmission over the same optical fiber."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a net data rate of 3.01 Gb/s with a bit error rate (BER) as low as 6 \u00d7 10\u22124 over a 19.8 km fiber-optic transmission link, while achieving a spatial resolution of 1 m for vibration sensing. These results are physically consistent with the system architecture and experimental setup described in the paper."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of integrating sensing and communication in a low-cost intensity modulation/direct detection (IM/DD) system, achieving high spatial resolution and long sensing range. However, the system still faces challenges such as interference between the sensing and communication signals, and the need for further optimization of the system parameters to improve performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_190",
+      "title": "Common bias-digital subcarrier multiplexing scheme for integrated sensing and communication in short-reach optical transmission systems",
+      "authors": "Jin Shi et al.",
+      "year": 2025,
+      "venue": "Optics Express",
+      "doi": "NR",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "indoor_positioning",
+      "scenario_description": "Short-reach optical transmission system with integrated sensing and communication"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a common bias-digital subcarrier multiplexing (CB-DSCM) scheme for integrated sensing and communication in short-reach optical transmission systems, achieving high spatial resolution and long sensing range.",
+      "gap_addressed": "The paper addresses the challenge of integrating sensing and communication in a low-cost IM/DD system.",
+      "performance_enablers": "photonic_dechirping",
+      "novel_component": "EOM",
+      "novel_component_specs": "half-wave voltage \u22643V, optical insertion loss 7.1dB"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Short-reach optical transmission system with integrated sensing and communication"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 2,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": "NR",
+      "beam_divergence_mrad": "NR"
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": "NR",
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 22,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 4,
+      "comm_fec_type": "NR",
+      "sensing_waveform_family": "lfm_chirp",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "frequency_division"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 19.8,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "gn_model",
+      "backscatter_sensing_type": "rayleigh_phi_otdr"
+    },
+    "channel_wireless": {
+      "link_distance_m": "NR",
+      "path_loss_model": "NR",
+      "turbulence_model": "NR",
+      "turbulence_Cn2": "NR",
+      "scintillation_index": "NR",
+      "pointing_error_model": "NR",
+      "weather_visibility_m": "NR",
+      "ambient_light_model": "NR"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 3.01,
+      "spectral_efficiency_bps_hz": "NR",
+      "ber": 0.0006,
+      "ber_target": 0.001,
+      "snr_db": "NR",
+      "osnr_db": "NR",
+      "outage_probability": "NR",
+      "latency_ms": "NR",
+      "capacity_bps_hz": "NR"
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 19800,
+      "range_resolution_m": 1,
+      "range_accuracy_m": "NR",
+      "angular_resolution_deg": "NR",
+      "velocity_resolution_mps": "NR",
+      "velocity_accuracy_mps": "NR",
+      "localization_error_m": "NR",
+      "spatial_resolution_m": 1,
+      "sensing_bandwidth_hz": 100000000.0,
+      "pd_probability_detection": "NR",
+      "pfa_probability_false_alarm": "NR",
+      "crb_crlb_value": "NR",
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "\u03b1",
+      "tradeoff_control_range": "0-1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": "NR",
+      "opa_steering_range_deg": "NR",
+      "opa_beamwidth_deg": "NR",
+      "ris_num_elements": "NR",
+      "ris_type": "NR",
+      "ris_phase_bits": "NR"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system architecture, experimental setup, and results. The modelling fidelity, validation strength, experimental validity, metric completeness, and reproducibility are all rated as high."
+  },
+  "Paper_ID": "O_ISAC_190"
+}

@@ -1,0 +1,173 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper presents an experimental demonstration of an integrated optical wireless sensing and communication (ISAC) system using multi-band carrierless amplitude and phase (m-CAP) modulation associated with received signal strength (RSS)-based positioning. The system consists of four access points installed on the ceiling of a 1.2 x 1.2 x 2.16 m^3 room, each equipped with an IR optical antenna. The system can provide a communication link at a data rate of 12 Mbps with a bit error rate of less than 3.8 x 10^-3 to any user in a reception plane 20 cm above the ground, while estimating its position with an error of less than 5.9 cm in 90% of cases."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses m-CAP modulation for data transmission and RSS-based positioning for sensing. The m-CAP modulation is a multi-carrier scheme that divides the frequency spectrum into multiple sub-bands, each modulated with CAP through the use of digital or analog pulse shaping filters. The RSS-based positioning technique uses the received signal strength to estimate the distance between the user equipment (UE) and the access points (APs). The system assumes a line-of-sight (LOS) component of the received optical signal for estimating the distances between the UE and the APs."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a data rate of 12 Mbps with a bit error rate of less than 3.8 x 10^-3, and a positioning error of less than 5.9 cm in 90% of cases. These metrics are physically consistent with the system's architecture and the m-CAP modulation scheme used. The system's frequency response, which has a -3 dB bandwidth of around 30 MHz, supports the reported data rate. The positioning error is also consistent with the RSS-based positioning technique used, which is based on the estimated distances between the UE and the APs."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of demonstrating an experimental ISAC system using m-CAP modulation and RSS-based positioning. However, there are remaining open challenges, such as improving the system's positioning accuracy and reducing the number of calibration points required. Additionally, the system's performance in a multi-user scenario and its robustness to interference and noise need to be further investigated."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Experimental Demonstration of Integrated Optical Wireless Sensing and Communication",
+      "authors": "Lina Shi, Ziqi Liu, Bastien B\u00e9chadergue, Hongyu Guan, Luc Chassagne, and Xun Zhang",
+      "year": 2024,
+      "venue": "IEEE Journal",
+      "doi": "10.1109/JLT.2024.3415417"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "indoor_positioning",
+      "scenario_description": "The system is designed for indoor positioning and communication in a 1.2 x 1.2 x 2.16 m^3 room."
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes and demonstrates an experimental ISAC system using m-CAP modulation and RSS-based positioning.",
+      "gap_addressed": "The paper addresses the gap of demonstrating an experimental ISAC system using m-CAP modulation and RSS-based positioning.",
+      "performance_enablers": "m-CAP modulation, RSS-based positioning",
+      "novel_component": "IR optical antenna",
+      "novel_component_specs": "The IR optical antenna has a central wavelength of 940 nm, a semi-angle at half-power of 45\u00b0, and is calibrated to emit an optical signal of average power 472.5 mW with a swing of \u00b1 337.5 mW."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Indoor positioning and communication"
+    },
+    "transmitter": {
+      "tx_source_type": "IR LED",
+      "tx_modulation_type": "m-CAP",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 940,
+      "optical_bandwidth_ghz": 0.045,
+      "tx_power_dbm": 0,
+      "aperture_diameter_m": 0,
+      "beam_divergence_mrad": 0
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "PIN PD",
+      "rx_aperture_diameter_m": 0,
+      "rx_photonic_processing": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "half_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "m-CAP",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 0.01,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "RSS",
+      "isac_waveform_relationship": "joint_waveform"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0,
+      "fibre_type": "none",
+      "attenuation_db_per_km": 0,
+      "dispersion_ps_per_nm_km": 0,
+      "nonlinearity_model": "none"
+    },
+    "channel_wireless": {
+      "link_distance_m": 2.16,
+      "path_loss_model": "free_space",
+      "turbulence_model": "none",
+      "turbulence_Cn2": 0,
+      "scintillation_index": 0,
+      "pointing_error_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 0.012,
+      "spectral_efficiency_bps_hz": 0,
+      "ber": 0.0038,
+      "ber_target": 0.0038,
+      "snr_db": 0,
+      "osnr_db": 0
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 2.16,
+      "range_resolution_m": 0.05,
+      "range_accuracy_m": 0.059,
+      "angular_resolution_deg": 0,
+      "velocity_resolution_mps": 0,
+      "velocity_accuracy_mps": 0,
+      "localization_error_m": 0.059,
+      "spatial_resolution_m": 0,
+      "sensing_bandwidth_hz": 0,
+      "pd_probability_detection": 0,
+      "pfa_probability_false_alarm": 0,
+      "crb_crlb_value": 0,
+      "crb_parameter": "none"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "none",
+      "tradeoff_control_range": "none"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 0,
+      "opa_steering_range_deg": 0,
+      "opa_beamwidth_deg": 0,
+      "ris_num_elements": 0,
+      "ris_type": "none",
+      "ris_phase_bits": 0
+    },
+    "provenance": {
+      "source_pointer": "Table I",
+      "value_origin": "reported_text",
+      "confidence_reporting": "none",
+      "num_trials": 169
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a well-designed experiment with a clear description of the system and its components. The results are well-documented and the paper provides a good discussion of the limitations and potential improvements of the system."
+  },
+  "Paper_ID": "O_ISAC_107"
+}

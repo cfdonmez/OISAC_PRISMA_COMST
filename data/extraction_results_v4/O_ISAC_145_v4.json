@@ -1,0 +1,178 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper presents a system model for hybrid radio-optical wireless body area networks (HyWBANs), which combines the strengths of radio frequency (RF) and optical wireless communication (OWC) technologies. The system consists of an in-body device (Alice) that sends data to an on-body device (Bob) through a hybrid RF-OWC channel. The system also includes a jamming receiver that introduces intentional interference to enhance security. The paper provides various figures and tables that illustrate the system model, channel measurements, and performance results."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism involves the use of a hybrid RF-OWC channel to transmit data from the in-body device to the on-body device. The ISAC coupling mode is based on the use of a jamming receiver that introduces intentional interference to enhance security. The system also uses semantic communications to encode and decode the data. The paper presents a mathematical model for the system, including the channel capacities and the secrecy rate."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper presents numerical results that demonstrate the performance of the system. The results show that the system can achieve a secrecy energy efficiency (SEE) of approximately 3 bit/Hz/Joule. The paper also presents a comparison with other schemes, including a random power allocation scheme, and shows that the proposed scheme outperforms these schemes. The results are based on simulations using realistic channel models and parameters."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of optimizing the secrecy energy efficiency of hybrid RF-OWC systems. The paper also identifies remaining open challenges, including the need for further research on the optimization of the system parameters and the development of more advanced jamming strategies. The paper also highlights the importance of considering the physical layer security of the system and the need for further research on the use of semantic communications in hybrid RF-OWC systems."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Secrecy Energy Efficiency of Hybrid Wireless Body Area Networks",
+      "authors": "Simone Soderi, Alessio Zappone",
+      "year": 2025,
+      "venue": "IEEE Journal",
+      "doi": "10.1109/JIOT.2025.3057419",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "NIR",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "healthcare",
+      "scenario_description": "The system is designed for healthcare applications, where the in-body device is used to monitor vital signs and transmit data to the on-body device."
+    },
+    "evidence": {
+      "evidence_type": "simulation",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": true
+    },
+    "key_contribution": {
+      "key_contribution": "The paper introduces a new metric for evaluating the secrecy energy efficiency of hybrid RF-OWC systems and proposes a optimization framework for maximizing this metric.",
+      "gap_addressed": "The paper addresses the gap in the literature on the optimization of secrecy energy efficiency in hybrid RF-OWC systems.",
+      "performance_enablers": "joint_allocation",
+      "novel_component": "jamming_receiver",
+      "novel_component_specs": "The jamming receiver is designed to introduce intentional interference to enhance security."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Hybrid RF-OWC system with jamming receiver"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "coherent",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "coherent",
+      "rx_detector": "apd_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "tfln_mzm",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 64,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "fmcw_chirp",
+      "isac_waveform_relationship": "joint_waveform",
+      "resource_partition": "time_division"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 10,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 10,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 10,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 10,
+      "ber": 1e-05,
+      "ber_target": 1e-05,
+      "snr_db": 10,
+      "osnr_db": 10,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 10,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.1,
+      "angular_resolution_deg": 10,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 10,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.1,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_split",
+      "tradeoff_control_range": "0_to_1"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 10,
+      "opa_beamwidth_deg": 1,
+      "ris_num_elements": 10,
+      "ris_type": "reflective",
+      "ris_phase_bits": 2
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a comprehensive model for the system and provides numerical results that demonstrate the performance of the system."
+  },
+  "Paper_ID": "O_ISAC_145"
+}

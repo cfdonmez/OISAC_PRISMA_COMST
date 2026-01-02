@@ -1,0 +1,190 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "value": "The paper discusses an endogenous ISAC system using telecom training sequences for interference-fading free sensing. The system uses dual-polarization chirp training sequences to achieve distributed acoustic sensing with 1m spatial resolution over 10.4km fiber, while co-existing with 50GBaud 16-QAM transmission."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "value": "The system mechanism involves using chirp training sequences as sensing probes, which are inserted prior to the telecom payload. The sequences have identical spectrums but opposite frequency modulation slopes, allowing for orthogonal extraction in the fractional domain. This enables state of polarization rotation estimation and distributed sensing simultaneously."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "value": "The paper reports a mean root mean square error of 0.48 for state of polarization rotation estimation, and a signal to noise ratio of 20.3 dB for vibration sensing. The system achieves a spatial resolution of 1m and reduces intensity fluctuations from 38 dB to 17 dB."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "value": "The proposed system demonstrates the potential for endogenous ISAC using telecom training sequences. However, the system's performance may be limited by the power allocation between the chirp training sequences and the telecom payload, as well as the impact of interference fading on the sensing signals."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Endogenous ISAC Enabled Interference Fading Free Sensing via Telecom Training Sequence",
+      "authors": "Yue Wang, Li Wang, Zhonghong Lin, Chao Lu, Ming Tang, Changyuan Yu",
+      "year": 2025,
+      "venue": "OECC/PSC",
+      "doi": "NR",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "industrial_manufacturing",
+        "fibre_network_monitoring"
+      ],
+      "scenario_description": "Distributed acoustic sensing for fibre network monitoring"
+    },
+    "evidence": {
+      "evidence_type": [
+        "experimental"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The use of telecom training sequences for endogenous ISAC, enabling interference-fading free sensing with 1m spatial resolution over 10.4km fiber.",
+      "gap_addressed": "The limitation of traditional ISAC systems, which require separate sensing and communication signals.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "Dual-polarization chirp training sequences",
+      "novel_component_specs": "Sweep bandwidth: 200MHz, probe width: 182ns"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "50GBaud 16-QAM transmission with vibration sensing"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550.12,
+        "optical_bandwidth_ghz": 200,
+        "tx_power_dbm": 3,
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator",
+        "rx_modulator_bandwidth_ghz": 43,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "matched_frft"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 50,
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10.4,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "gn_model",
+        "backscatter_sensing_type": "rayleigh"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "NR",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 50,
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": "NR",
+        "ber_target": "NR",
+        "snr_db": "NR",
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 10400,
+        "range_resolution_m": 1,
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "NR"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "scpr",
+        "tradeoff_control_range": "-37 to -12 dB"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "NR",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Fig. 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "NR"
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and results, and the authors discuss the limitations of their system."
+  },
+  "Paper_ID": "O_ISAC_074"
+}

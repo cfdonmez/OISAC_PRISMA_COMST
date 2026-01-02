@@ -1,0 +1,199 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper presents an optical wireless (OW)-ISAC scheme based on asymmetrically clipped direct-current-biased optical orthogonal frequency division multiplexing (ADO-OFDM). The system model is shown in Fig. 1, which includes blocks for C&S, specific components for sensing, and specific components for communication."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses ADO-OFDM, which combines DCO-OFDM and ACO-OFDM. The Bussgang theorem is adopted to model the clipped OFDM signal and analyze the clipping noise. The system also uses signal processing techniques to exploit the properties of the clipping noise."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper presents numerical results that demonstrate the effectiveness of the proposed ADO-OFDM scheme and reveal the trade-off between communication and sensing functionalities in OW-ISAC."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of adaptive resource allocation in ADO-OFDM for OW-ISAC. However, the paper also highlights the trade-off between communication and sensing functionalities, which remains an open challenge."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O-ISAC-001",
+      "title": "Adaptive Resource Allocation in ADO-OFDM for Optical Wireless Integrated Sensing and Communication",
+      "authors": "Yunfeng Wen, Fang Yang, Jian Song, Zhu Han",
+      "year": 2024,
+      "venue": "IEEE Journal",
+      "doi": "10.1109/JSTQE.2024.3394923",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": [
+        "vehicular",
+        "indoor_positioning"
+      ],
+      "scenario_description": "Optical wireless integrated sensing and communication"
+    },
+    "evidence": {
+      "evidence_type": [
+        "analytical",
+        "simulation"
+      ],
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes an ADO-OFDM-based scheme that adaptively allocates resources for OW-ISAC.",
+      "gap_addressed": "The paper addresses the problem of adaptive resource allocation in ADO-OFDM for OW-ISAC.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "electronic_dechirping"
+      ],
+      "novel_component": "ADO-OFDM",
+      "novel_component_specs": "The ADO-OFDM scheme combines DCO-OFDM and ACO-OFDM."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Optical wireless integrated sensing and communication"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1550,
+      "optical_bandwidth_ghz": 10,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pin_pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "photonic_dechirping",
+      "rx_modulator_type": "mzm",
+      "rx_modulator_bandwidth_ghz": 10,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "mitp_bias"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": 4,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "ldpc",
+      "sensing_waveform_family": "ofdm",
+      "isac_waveform_relationship": "single_dual_function",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 10,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2,
+      "dispersion_ps_per_nm_km": 18,
+      "nonlinearity_model": "gn_model"
+    },
+    "channel_wireless": {
+      "link_distance_m": 100,
+      "path_loss_model": "free_space",
+      "turbulence_model": "lognormal",
+      "turbulence_Cn2": 1e-15,
+      "scintillation_index": 0.1,
+      "pointing_error_model": "gaussian_jitter",
+      "weather_visibility_m": 1000,
+      "ambient_light_model": "solar"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 10,
+      "spectral_efficiency_bps_hz": 5,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 10
+    },
+    "sensing_metrics": {
+      "sensing_task_type": [
+        "ranging",
+        "localization_2d"
+      ],
+      "sensing_range_m": 100,
+      "range_resolution_m": 1,
+      "range_accuracy_m": 0.1,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 1,
+      "velocity_accuracy_mps": 0.1,
+      "localization_error_m": 0.1,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 100,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": [
+        "rate_vs_rmse",
+        "rate_vs_range_resolution"
+      ],
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_split",
+      "tradeoff_control_range": "[0, 1]"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 10,
+      "opa_steering_range_deg": 30,
+      "opa_beamwidth_deg": 10,
+      "ris_num_elements": 100,
+      "ris_type": "reflective",
+      "ris_phase_bits": 4
+    },
+    "provenance": {
+      "source_pointer": "Table II, p.5",
+      "value_origin": "reported_table",
+      "confidence_reporting": "ci_reported",
+      "num_trials": 100
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper presents a comprehensive analysis of the ADO-OFDM scheme and its performance metrics."
+  },
+  "Paper_ID": "O_ISAC_052"
+}

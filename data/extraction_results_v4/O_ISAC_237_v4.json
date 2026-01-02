@@ -1,0 +1,185 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "The paper presents a Coordinated FMCW and OFDM (Co-FMCW-OFDM) system for Integrated Sensing and Communication (ISAC). The system uses a superposed FMCW signal on the OFDM signal, enabling both sensing and communication functionalities.",
+      "value": "The system diagram shows the Co-FMCW-OFDM transmitter and receiver structure, including the shared RF front end, antenna, and spectral resources. The waveform diagram illustrates the structure of one symbol of the Co-FMCW-OFDM signal."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "The Co-FMCW-OFDM system uses a superposed FMCW signal on the OFDM signal, which serves as a pilot for both bistatic sensing and channel estimation at the receiver. The system has a shared RF front end, antenna, and spectral resources.",
+      "value": "The system enables integrated sensing and communication, with the FMCW signal facilitating sensing and the OFDM signal enabling communication. The superposed FMCW signal allows for efficient use of spectral resources and reduces hardware complexity."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "The paper presents simulation results to verify the performance of the Co-FMCW-OFDM system. The results show that the system achieves superior sensing accuracy, improved channel estimation, and lower bit error rate (BER) compared to conventional OFDM systems.",
+      "value": "The simulation results demonstrate the effectiveness of the Co-FMCW-OFDM system in achieving integrated sensing and communication. The system's performance is evaluated in terms of range and speed estimation, channel estimation, and BER."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "The Co-FMCW-OFDM system has several advantages, including improved sensing accuracy, reduced hardware complexity, and efficient use of spectral resources. However, the system also has some limitations, such as the need for accurate channel estimation and the potential for interference between the FMCW and OFDM signals.",
+      "value": "The system's performance can be further improved by optimizing the power allocation between the FMCW and OFDM signals, as well as by developing more advanced channel estimation and interference cancellation techniques."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_237",
+      "title": "Coordinated FMCW and OFDM for Integrated Sensing and Communication",
+      "authors": "Yuhong Wang et al.",
+      "year": 2025,
+      "venue": "IEEE",
+      "doi": "Not Reported",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "Not Reported",
+      "operational_environment": "vehicular",
+      "link_topology": "bistatic",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "The system is designed for vehicular applications, where the FMCW signal is used for sensing and the OFDM signal is used for communication."
+    },
+    "evidence": {
+      "evidence_type": "simulation",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The paper proposes a Co-FMCW-OFDM system for integrated sensing and communication, which uses a superposed FMCW signal on the OFDM signal to enable both sensing and communication functionalities.",
+      "gap_addressed": "The system addresses the need for efficient use of spectral resources and reduced hardware complexity in integrated sensing and communication systems.",
+      "performance_enablers": "joint_waveform_design",
+      "novel_component": "Not Reported",
+      "novel_component_specs": "Not Reported"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "Not Reported",
+      "scenario_label": "Vehicular ISAC"
+    },
+    "transmitter": {
+      "tx_source_type": "Not Reported",
+      "tx_modulation_type": "Not Reported",
+      "tx_external_modulator": "Not Reported",
+      "wavelength_nm": "Not Reported",
+      "optical_bandwidth_ghz": "Not Reported",
+      "tx_power_dbm": "Not Reported",
+      "aperture_diameter_m": "Not Reported",
+      "beam_divergence_mrad": "Not Reported"
+    },
+    "receiver": {
+      "rx_detection_type": "Not Reported",
+      "rx_detector": "Not Reported",
+      "rx_aperture_diameter_m": "Not Reported",
+      "rx_photonic_processing": "Not Reported",
+      "rx_modulator_type": "Not Reported",
+      "rx_modulator_bandwidth_ghz": "Not Reported",
+      "rx_modulator_operating_point": "Not Reported",
+      "false_target_mitigation": "Not Reported"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ofdm",
+      "comm_modulation_order": "Not Reported",
+      "comm_symbol_rate_gbaud": "Not Reported",
+      "comm_fec_type": "Not Reported",
+      "sensing_waveform_family": "fmcw",
+      "isac_waveform_relationship": "superimposed",
+      "resource_partition": "Not Reported"
+    },
+    "channel_fiber": {
+      "fibre_length_km": "Not Reported",
+      "fibre_type": "Not Reported",
+      "attenuation_db_per_km": "Not Reported",
+      "dispersion_ps_per_nm_km": "Not Reported",
+      "nonlinearity_model": "Not Reported",
+      "backscatter_sensing_type": "Not Reported"
+    },
+    "channel_wireless": {
+      "link_distance_m": "Not Reported",
+      "path_loss_model": "Not Reported",
+      "turbulence_model": "Not Reported",
+      "turbulence_Cn2": "Not Reported",
+      "scintillation_index": "Not Reported",
+      "pointing_error_model": "Not Reported",
+      "weather_visibility_m": "Not Reported",
+      "ambient_light_model": "Not Reported"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": "Not Reported",
+      "spectral_efficiency_bps_hz": "Not Reported",
+      "ber": "Not Reported",
+      "ber_target": "Not Reported",
+      "snr_db": "Not Reported",
+      "osnr_db": "Not Reported",
+      "outage_probability": "Not Reported",
+      "latency_ms": "Not Reported",
+      "capacity_bps_hz": "Not Reported"
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": "Not Reported",
+      "range_resolution_m": "Not Reported",
+      "range_accuracy_m": "Not Reported",
+      "angular_resolution_deg": "Not Reported",
+      "velocity_resolution_mps": "Not Reported",
+      "velocity_accuracy_mps": "Not Reported",
+      "localization_error_m": "Not Reported",
+      "spatial_resolution_m": "Not Reported",
+      "sensing_bandwidth_hz": "Not Reported",
+      "pd_probability_detection": "Not Reported",
+      "pfa_probability_false_alarm": "Not Reported",
+      "crb_crlb_value": "Not Reported",
+      "crb_parameter": "Not Reported"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "power_ratio",
+      "tradeoff_control_range": "Not Reported"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": "Not Reported",
+      "opa_steering_range_deg": "Not Reported",
+      "opa_beamwidth_deg": "Not Reported",
+      "ris_num_elements": "Not Reported",
+      "ris_type": "Not Reported",
+      "ris_phase_bits": "Not Reported"
+    },
+    "provenance": {
+      "source_pointer": "Not Reported",
+      "value_origin": "reported_text",
+      "confidence_reporting": "ci_reported",
+      "num_trials": "Not Reported"
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 1,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the system and its components, as well as the simulation parameters and results. However, the paper could benefit from more detailed information about the experimental setup and the measurement procedures."
+  },
+  "Paper_ID": "O_ISAC_237"
+}

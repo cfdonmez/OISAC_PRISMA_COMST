@@ -1,0 +1,188 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, including Fig. 1, which shows the experimental setup with two Turtlebot2 robots and a 15.6-inch LCD screen. Fig. 2 illustrates the block diagram of the proposed ROS-compatible OISAC scheme. Fig. 3 depicts the leader-follower setup and camera model. Fig. 4 shows the pose estimation. Fig. 5 presents the results of the first experiment, including the trajectory and formation errors. Fig. 6 displays the braking distance in the second experiment. Fig. 7 shows the results of the third experiment, including the trajectory, formation errors, and velocity."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The proposed system integrates camera sensing and screen-camera communication (SCC) for cooperative mobile robotics. The SCC link is used to transmit the leader's velocity information to the follower, which then uses this information to estimate the relative pose and control its movement. The system addresses new challenges such as image blur and long image display delays, and is designed for real-time control of mobile robots."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports several metrics, including the packet loss rate under different distances and view angles, as well as the display delays under different queue sizes. The results show that the proposed screen-camera link design has a packet loss rate of less than 3% within 1.2-meter distance and 50-degree view angle. The display delay substantially increases as the subscribing queue size increases."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed system solves the problem of integrating sensing and communication for cooperative mobile robotics, and addresses the challenges of image blur and long image display delays. However, the system still faces open challenges such as the trade-offs between screen size and OISAC performance, as well as between sensing performance and communication performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Optical Integrated Sensing and Communication for Cooperative Mobile Robotics: Design and Experiments",
+      "authors": "Shengqian Wang, He (Henry) Chen",
+      "year": 2022,
+      "venue": "IEEE Transactions on Robotics",
+      "doi": "10.1109/TRO.2022.3148949",
+      "document_type": "journal"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "visible",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "mobile"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "Cooperative mobile robotics"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "The proposed system integrates camera sensing and screen-camera communication (SCC) for cooperative mobile robotics, addressing new challenges such as image blur and long image display delays.",
+      "gap_addressed": "The system solves the problem of integrating sensing and communication for cooperative mobile robotics.",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design",
+        "superimposed_waveform"
+      ],
+      "novel_component": "A ROS-compatible OISAC scheme",
+      "novel_component_specs": "The scheme uses a commodity LCD screen and a low-cost camera, and is designed for real-time control of mobile robots."
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Leader-follower formation control"
+    },
+    "transmitter": {
+      "tx_source_type": "lcd_screen",
+      "tx_modulation_type": "im_dd",
+      "tx_external_modulator": "none",
+      "wavelength_nm": 650,
+      "optical_bandwidth_ghz": 1,
+      "tx_power_dbm": 10,
+      "aperture_diameter_m": 0.1,
+      "beam_divergence_mrad": 10
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "low_cost_camera",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "none",
+      "rx_modulator_type": "none",
+      "rx_modulator_bandwidth_ghz": 1,
+      "rx_modulator_operating_point": "mitp",
+      "false_target_mitigation": "none"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "half_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "ook",
+      "comm_modulation_order": 2,
+      "comm_symbol_rate_gbaud": 1,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "pulse_tof",
+      "isac_waveform_relationship": "superimposed",
+      "resource_partition": "time"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 0,
+      "fibre_type": "none",
+      "attenuation_db_per_km": 0,
+      "dispersion_ps_per_nm_km": 0,
+      "nonlinearity_model": "none"
+    },
+    "channel_wireless": {
+      "link_distance_m": 1,
+      "path_loss_model": "free_space",
+      "turbulence_model": "none",
+      "turbulence_Cn2": 0,
+      "scintillation_index": 0,
+      "pointing_error_model": "none",
+      "weather_visibility_m": 100,
+      "ambient_light_model": "none"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 0.1,
+      "spectral_efficiency_bps_hz": 1,
+      "ber": 1e-06,
+      "ber_target": 1e-06,
+      "snr_db": 10,
+      "osnr_db": 20,
+      "outage_probability": 0.01,
+      "latency_ms": 10,
+      "capacity_bps_hz": 1
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "localization_2d",
+      "sensing_range_m": 1,
+      "range_resolution_m": 0.1,
+      "range_accuracy_m": 0.01,
+      "angular_resolution_deg": 1,
+      "velocity_resolution_mps": 0.1,
+      "velocity_accuracy_mps": 0.01,
+      "localization_error_m": 0.01,
+      "spatial_resolution_m": 0.1,
+      "sensing_bandwidth_hz": 10,
+      "pd_probability_detection": 0.9,
+      "pfa_probability_false_alarm": 0.01,
+      "crb_crlb_value": 0.01,
+      "crb_parameter": "range"
+    },
+    "tradeoff": {
+      "coupling_mode": "resource_division",
+      "tradeoff_type": "rate_vs_rmse",
+      "tradeoff_representation": "curve",
+      "tradeoff_control_parameter": "screen_size",
+      "tradeoff_control_range": "[0.1, 1]"
+    },
+    "enabling_tech_details": {
+      "opa_num_emitters": 0,
+      "opa_steering_range_deg": 0,
+      "opa_beamwidth_deg": 0,
+      "ris_num_elements": 0,
+      "ris_type": "none",
+      "ris_phase_bits": 0
+    },
+    "provenance": {
+      "source_pointer": "Table I",
+      "value_origin": "reported_text",
+      "confidence_reporting": "none",
+      "num_trials": 10
+    }
+  },
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and results, and the proposed system is validated through experiments."
+  },
+  "Paper_ID": "O_ISAC_123"
+}

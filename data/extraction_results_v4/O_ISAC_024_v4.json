@@ -1,0 +1,194 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+      "value": "The paper includes several figures, such as Fig. 1, which shows the time-domain waveform of the LFM signal before and after transmission, and the amplitude-frequency response of the LFM probe within the ISAC system. Fig. 2 depicts the experimental setup, while Fig. 3 shows the Rayleigh scattering traces of the LFM probe and pre-distorted probe, as well as the phase waterfall, phase variance, and PSD curves of the vibration with LFM probe and pre-distorted probe."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system uses a digital subcarrier multiplexing (DSCM)-based integrated sensing and communication (ISAC) system, where the sensing probe is pre-compensated using the frequency response data from the forward communication link. The ISAC system consists of a narrow linewidth laser, an arbitrary waveform generator, and a coherent receiver. The sensing component comprises a continuous linear frequency-modulated (LFM) probe, while the communication payload consists of two 30 GBaud 16QAM DSCM signals."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The paper reports a spatial resolution of 1 m in a 40-km fiber link, with an SNR improvement of 2.4 dB in distributed sensing. The experimental results show that the pre-compensation enabled by forward communication information results in significant improvements in both SNR and spatial resolution. The reported metrics are physically consistent with the system description and experimental setup."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The paper solves the problem of frequency-dependent distortions in LFM probes used in distributed fiber optic sensing systems. The proposed ISAC system with pre-compensation enables simultaneous sensing and communication over a 40-km fiber link with minimal impact on both performances. However, the paper does not address the potential challenges of scaling up the system to longer distances or more complex network topologies."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "Pre-compensation of LFM Sensing Probe via Integrated Sensing and Communication over Fiber System",
+      "authors": "LIU Maoqi, WANG Jingchuan, LIU Chen, YU Changyuan, LU Chao",
+      "year": 2025,
+      "venue": "OECC/PSC 2025",
+      "doi": "NR",
+      "document_type": "conference"
+    },
+    "classification": {
+      "oisac_medium_class": "cabled_fibre",
+      "carrier_band": "C-band",
+      "operational_environment": "lab",
+      "link_topology": "point_to_point",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "industrial_manufacturing",
+      "scenario_description": "Distributed fiber optic sensing for large-scale infrastructure monitoring"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "Pre-compensation of LFM sensing probe using forward communication information in a DSCM-based ISAC system",
+      "gap_addressed": "Frequency-dependent distortions in LFM probes used in distributed fiber optic sensing systems",
+      "performance_enablers": [
+        "photonic_dechirping",
+        "joint_waveform_design"
+      ],
+      "novel_component": "NR",
+      "novel_component_specs": "NR"
+    }
+  },
+  "scenario_level": [
+    {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "40-km fiber link with pre-compensation"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "NR",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 0.5,
+        "tx_power_dbm": 0,
+        "aperture_diameter_m": 0.001,
+        "beam_divergence_mrad": 0.01
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.001,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "NR",
+        "rx_modulator_bandwidth_ghz": 0.5,
+        "rx_modulator_operating_point": "NR",
+        "false_target_mitigation": "NR"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "16QAM",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 30,
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 40,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 16,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0,
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "NR",
+        "weather_visibility_m": 0,
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 240,
+        "spectral_efficiency_bps_hz": 2,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1000000000.0
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 40000,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 0.01,
+        "velocity_resolution_mps": 0.01,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": 500000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "\u03b1",
+        "tradeoff_control_range": "0-1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "NR",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Fig. 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 5
+      }
+    }
+  ],
+  "quality_assessment": {
+    "tqaf_modelling_fidelity": 2,
+    "tqaf_validation_strength": 2,
+    "tqaf_experimental_validity": 2,
+    "tqaf_metric_completeness": 2,
+    "tqaf_reproducibility": 2,
+    "tqaf_notes": "The paper provides a clear description of the experimental setup and results, with sufficient details for reproduction."
+  },
+  "Paper_ID": "O_ISAC_024"
+}

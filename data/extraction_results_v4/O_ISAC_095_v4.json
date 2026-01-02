@@ -1,0 +1,124 @@
+{
+  "reasoning_trace": [
+    {
+      "key": "step_0_visual_inspection",
+      "type": "string",
+      "required": true,
+      "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+      "value": "The paper presents a novel spectrum-efficient MMW-over-fiber (MoF) architecture for joint sensing and communication in B5G optical-wireless converged networks. The proposed MoF architecture is based on polarization interleaving and polarization-insensitive filtering. The system model shows the central unit (CU), distributed unit (DU), and remote unit (RU) with their respective components and signal flow."
+    },
+    {
+      "key": "step_1_concept_analysis",
+      "type": "string",
+      "required": true,
+      "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+      "value": "The system mechanism is based on the generation of sensing and communication sidebands through asymmetrical single-sideband (ASSB) modulation and carrier-suppressed double-sideband (CS-DSB) modulation. The ISAC coupling mode is achieved through polarization interleaving and polarization-insensitive filtering, allowing for the simultaneous transmission of sensing and communication signals over the same optical fiber."
+    },
+    {
+      "key": "step_2_benchmark_verification",
+      "type": "string",
+      "required": true,
+      "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+      "value": "The reported metrics, such as the \u00b115-mm ranging accuracy for single-target detection and the 30-cm ranging resolution for dual-target detection, are physically consistent with the system's design and experimental setup. The use of ASSB modulation and polarization interleaving enables the system to achieve high-resolution sensing and communication performance."
+    },
+    {
+      "key": "step_3_strategic_critique",
+      "type": "string",
+      "required": true,
+      "description": "Identify the solved problems and remaining open challenges.",
+      "value": "The proposed MoF architecture solves the problem of achieving high-resolution sensing and communication performance in B5G optical-wireless converged networks. However, the system's complexity, cost, and scalability remain as open challenges. The use of polarization interleaving and polarization-insensitive filtering requires careful system design and optimization to ensure stable and reliable performance."
+    }
+  ],
+  "study_level": {
+    "bibliographic": {
+      "record_id": "O_ISAC_001",
+      "title": "A Spectrum-Efficient MoF Architecture for Joint Sensing and Communication in B5G",
+      "authors": "Mingzheng Lei, Min Zhu, Bingchang Hua, Jiao Zhang, Yuancheng Cai, Yucong Zou, Xiang Liu, and Jianjun Yu",
+      "year": 2022,
+      "venue": "IEEE Journal of Lightwave Technology",
+      "doi": "10.1109/JLT.2022.3181608"
+    },
+    "classification": {
+      "oisac_medium_class": "hybrid",
+      "carrier_band": "mmw",
+      "operational_environment": "indoor",
+      "link_topology": "monostatic",
+      "mobility_context": "static"
+    },
+    "application": {
+      "application_domain": "vehicular",
+      "scenario_description": "Joint sensing and communication in B5G optical-wireless converged networks"
+    },
+    "evidence": {
+      "evidence_type": "experimental",
+      "validation_baselines_present": true,
+      "reproducibility_artifacts": "code_available"
+    },
+    "enabling_tech": {
+      "ris_present": false,
+      "opa_present": false,
+      "machine_learning_used": false
+    },
+    "key_contribution": {
+      "key_contribution": "A novel spectrum-efficient MoF architecture for joint sensing and communication in B5G optical-wireless converged networks",
+      "gap_addressed": "The proposed architecture addresses the need for high-resolution sensing and communication performance in B5G optical-wireless converged networks",
+      "performance_enablers": "polarization_interleaving",
+      "novel_component": "polarization beam combiner",
+      "novel_component_specs": "high polarization extinction ratio"
+    }
+  },
+  "scenario_level": {
+    "identification": {
+      "experiment_id": "E1",
+      "scenario_label": "Joint Sensing and Communication"
+    },
+    "transmitter": {
+      "tx_source_type": "laser",
+      "tx_modulation_type": "assb",
+      "tx_external_modulator": "mzm",
+      "wavelength_nm": 1558.558,
+      "optical_bandwidth_ghz": 36,
+      "tx_power_dbm": 14.5
+    },
+    "receiver": {
+      "rx_detection_type": "direct",
+      "rx_detector": "pd",
+      "rx_aperture_diameter_m": 0.1,
+      "rx_photonic_processing": "polarization_insensitive_filtering"
+    },
+    "integration": {
+      "hardware_sharing_mode": "shared_frontend",
+      "duplexing_mode": "full_duplex"
+    },
+    "waveform": {
+      "comm_waveform_family": "qam",
+      "comm_modulation_order": 16,
+      "comm_symbol_rate_gbaud": 5.75,
+      "comm_fec_type": "none",
+      "sensing_waveform_family": "lfm",
+      "isac_waveform_relationship": "single_dual_function"
+    },
+    "channel_fiber": {
+      "fibre_length_km": 5.41,
+      "fibre_type": "smf",
+      "attenuation_db_per_km": 0.2
+    },
+    "channel_wireless": {
+      "link_distance_m": 2,
+      "path_loss_model": "free_space"
+    },
+    "comm_metrics": {
+      "data_rate_gbps": 23,
+      "spectral_efficiency_bps_hz": 2.5,
+      "ber": 1e-06,
+      "snr_db": 20
+    },
+    "sensing_metrics": {
+      "sensing_task_type": "ranging",
+      "sensing_range_m": 2000,
+      "range_resolution_m": 0.3,
+      "range_accuracy_m": 0.015
+    }
+  },
+  "Paper_ID": "O_ISAC_095"
+}
