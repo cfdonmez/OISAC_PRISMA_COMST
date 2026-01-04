@@ -252,7 +252,7 @@ def phase1_marker_conversion(checkpoint: CheckpointManager, force_all: bool = Fa
         
         # Fallback to slow subprocess method
         env = os.environ.copy()
-        env["TORCH_DEVICE"] = "cuda" if torch.cuda.is_available() else "cpu"
+        env["TORCH_DEVICE"] = "cuda" if (torch and torch.cuda.is_available()) else "cpu"
         
         for i, (paper_id, pdf_path) in enumerate(to_process):
             print(f"\n[{i+1}/{len(to_process)}] 🔨 Processing (Slow Mode): {paper_id}")
