@@ -12,6 +12,13 @@ To create a **Unified Physical-Layer Framework** that:
 2.  Identifies common **Waveform families** (e.g., OFDM, Chirp) used in both domains.
 3.  Quantifies the **Sensing-Communication Trade-off** (e.g., Rate vs Resolution).
 
+## The Golden Model (IEEE COMST Blueprint)
+En son PRISMA standartlarını IEEE COMST'un yüksek yazım kalitesiyle birleştiriyoruz.
+*   **76 IEEE COMST Paper Analizi:** En başarılı 76 survey kağıdı tersine mühendislik (reverse engineering) yöntemiyle analiz edildi.
+*   **Analiz Kapsamı:** Bölüm yapıları, görsel yoğunluğu (ortalama 18 figür/5 tablo), kelime bütçeleri (~36k kelime) ve retorik stratejiler ("Yes, But..." yöntemi).
+*   **Phrasebank:** Akademik yazımı otomatize etmek ve standartlaştırmak için corpus'tan 100+ kalıp cümle yapısı çıkarıldı.
+*   **Amaç:** O-ISAC survey çalışmasını sadece bir veri listesi değil, COMST standartlarında "Blueprint" niteliğinde bir başyapıt haline getirmek.
+
 ## Success Criteria
 *   Selection of high-quality, peer-reviewed studies (Journal/Conference).
 *   Rigorous exclusion of non-optical (RF-only) or pure-sensing/pure-comms papers.

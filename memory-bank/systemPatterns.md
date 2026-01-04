@@ -48,6 +48,11 @@ Phase 3: CoT Extraction
   Output: cot_laboratory/logs/*_RESULT.json
   Motor:  cot_laboratory/core/assembler.py → run_extraction()
 
+Phase 4: Synthesis & Writing Model (The Blueprint)
+  Input:  Phase 3 JSON Results + 76 COMST Metadata
+  Output: analysis/synthesis_report.md
+  Motor:  Reverse engineering analysis of 76 IEEE COMST papers to guide structure, language (phrasebank), and visuals.
+
 Phase 5: Agentic Research (Deep Research)
   Input:  Paper Text / Web Search (Future)
   Output: analysis/deep_research/output/*_Evidence.md

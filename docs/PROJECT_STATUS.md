@@ -10,9 +10,10 @@
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| **Phase 1: PDF → Markdown** | ✅ Complete | 120+ papers digitized |
-| **Phase 2: Visual Analysis** | ✅ Complete | 20+ directories with PhD-level extraction |
+| **Phase 1: PDF → Markdown** | ✅ Complete | 221 papers digitized |
+| **Phase 2: Visual Analysis** | ✅ Complete | 221 directories with PhD-level extraction |
 | **Phase 3: CoT Extraction** | 🔄 Ready | Module created, awaiting batch run |
+| **Phase 4: Golden Model** | ✅ Complete | 76 COMST papers analyzed for writing guide |
 | **Living Search** | 🔁 Ongoing | Daily routine for new publications |
 
 ---

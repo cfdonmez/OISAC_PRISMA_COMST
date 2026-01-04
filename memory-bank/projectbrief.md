@@ -41,15 +41,14 @@
 
 ---
 
-## 🎁 Key Deliverables
-
 | Çıktı | Durum |
 |-------|-------|
 | PRISMA Protokolü | ✅ Tamamlandı |
-| Tarama (Screening) | ✅ 158 çalışma dahil |
+| Tarama (Screening) | ✅ 221 çalışma dahil |
 | Extraction Schema | ✅ v2.1 (Chain-of-Thought) |
-| Deep Research Agent | ✅ Phase 0 Hazır |
-| Veri Çıkarma | 🟡 Pipeline hazır, batch bekliyor |
+| COMST Analizi (76 Paper) | ✅ Golden Model Hazır |
+| Veri Çıkarma | ✅ Phase 2 Tamam (221 PDF) |
+| CoT Extraction | 🟡 Phase 3 Başlıyor |
 | Taxonomy | 🔴 Beklemede |
 | Manuscript | 🔴 Beklemede |
 
@@ -59,13 +58,11 @@
 
 | Metrik | Değer |
 |--------|-------|
-| Belirlenen kayıt | 1200 |
-| Duplicate çıkarılan | 400 |
-| Taranan | 800 |
-| Title/Abstract çıkarılan | 642 |
-| Dahil edilen | 158 |
-| PDF toplanan | 32 (%20) |
-| Extraction tamamlanan | Test aşamasında |
+| Belirlenen kayıt | 1500+ |
+| Dahil edilen (Included) | 221 |
+| PDF toplanan | 221 |
+| Visual Analysis tamamlanan | 221 |
+| COMST Corpus analizi | 76 paper |
 
 ---
 
