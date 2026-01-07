@@ -36,20 +36,6 @@
 - **Table I: Comparison with Existing Surveys** (GAP SELLING - Zorunlu)
 - RF-dominant ISAC surveys incelemesi
 - "To the best of our knowledge, no survey provides a unified physical-layer framework..."
-
-#### E. Contributions and Paper Organization
-- **Fig. 1: Survey Structure Diagram** (Zorunlu)
-- Explicit contribution listesi (numaralı)
-- Section-by-section roadmap
-
----
-
-### II. FUNDAMENTALS OF OPTICAL SENSING AND COMMUNICATION (~5,000 words)
-> *COMST Gereksinimi: Tutorial-style background*
-
-#### A. Optical Channel Models
-1. **Fiber Channel:** Attenuation, dispersion, nonlinearity, Rayleigh backscattering
-2. **FSO Channel:** Path loss, turbulence (Rytov, Gamma-Gamma), pointing errors
 3. **VLC Channel:** LoS/NLoS, multipath, ambient light interference
 
 #### B. Key Hardware Components

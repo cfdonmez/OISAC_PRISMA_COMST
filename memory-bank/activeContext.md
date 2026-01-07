@@ -24,9 +24,10 @@
 | Bölüm | Durum | Analiz Edilen Makale | Formül/Notlar |
 |-------|-------|----------------------|---------------|
 | **1. Abstract** | ✅ HAZIR | 20 (incl. 060-070) | 4-Block (Context-Gap-Solution-Result) |
-| **2. Introduction** | ✅ HAZIR | 20 | Evolution Hook -> Gap Comparison Table |
-| **3. Conclusion** | ✅ HAZIR | 25 | The "Receipt" (Restatement-Summary-Vision) |
-| **4. Methodology** | ⏳ BEKLEMEDE | - | PRISMA Checklist (Drafting Next) |
+| **2. Introduction** | ✅ HAZIR | 20 | Evolution Hook -> Gap Comp| Markdown dönüştürülen | 221 |
+| **Visual Analysis tamamlanan** | **221 klasör** ✅ |
+| **Batch Extraction tamamlanan** | **225 JSON files** ✅ |
+| CoT extraction test edilen | 225 papers (Full Corpus) | - | PRISMA Checklist (Drafting Next) |
 
 ---
 
@@ -57,6 +58,8 @@
 ## 📁 Son Değişen Dosyalar
 
 ```
+✏️ drafts/section_02_methodology.md (YENİ - Methods Draft)
+✏️ memory-bank/methodology_template.md (YENİ)
 ✏️ memory-bank/abstract_and_conclusion_templates.md (YENİ)
 ✏️ memory-bank/introduction_templates.md
 ✏️ memory-bank/surveyOutline.md
