@@ -102,6 +102,8 @@ cot_laboratory/
 | `README.md` | Klasör açıklaması | Evet |
 | `activeContext.md` | **ŞU ANKİ DURUM** | ✅ İLK OKU |
 | `fileMap.md` | Bu dosya | ✅ 2. OKU |
+| `goldenModel.md` | **GOLDEN MODEL** — Survey yazım rehberi | ✅ YAZIM AŞAMASINDA |
+| `surveyOutline.md` | **SURVEY OUTLINE** — Onaylı makale yapısı | ✅ YAZIM AŞAMASINDA |
 | `projectbrief.md` | Proje özeti | Evet |
 | `techContext.md` | Teknik terimler | Gerekirse |
 | `systemPatterns.md` | Çalışma kuralları | Gerekirse |

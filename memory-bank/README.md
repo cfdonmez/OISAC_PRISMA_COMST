@@ -13,9 +13,11 @@ Bu klasör AI asistanı için bağlam dosyalarını içerir. AI yeni bir session
 | `projectbrief.md` | Projenin amacı ve kapsamı | 1️⃣ |
 | `activeContext.md` | **ŞU ANKİ DURUM** - En güncel | 2️⃣ |
 | `fileMap.md` | Tüm dosyaların haritası | 3️⃣ |
-| `techContext.md` | Teknik terimler ve araçlar | 4️⃣ |
-| `systemPatterns.md` | Çalışma kuralları | 5️⃣ |
-| `productContext.md` | Problem ve hedef | 6️⃣ |
+| `goldenModel.md` | **GOLDEN MODEL** - Survey yazım rehberi | 4️⃣ (Yazım aşamasında) |
+| `surveyOutline.md` | **SURVEY OUTLINE** - Onaylı makale yapısı | 5️⃣ (Yazım aşamasında) |
+| `techContext.md` | Teknik terimler ve araçlar | 6️⃣ |
+| `systemPatterns.md` | Çalışma kuralları | 7️⃣ |
+| `productContext.md` | Problem ve hedef | 8️⃣ |
 
 ---
 

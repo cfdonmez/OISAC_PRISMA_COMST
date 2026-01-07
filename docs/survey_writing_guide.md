@@ -6,6 +6,17 @@
 
 ---
 
+## 0. Abstract (The "Storefront")
+
+**Goal:** Sell the paper in <30 seconds.
+**COMST Requirement:** Strict 200-250 word limit. No references usually.
+
+*   **Structure (The Golden Formula):**
+    1.  **Context:** "With the rapid development of [Trend]..."
+    2.  **Gap:** "**However**, existing solutions ignore [X]..."
+    3.  **Solution:** "In this paper, we present the first unified survey..."
+    4.  **Future:** "**Finally**, we outline open challenges..."
+
 ## 1. Introduction (PRISMA Item 3 & 4)
 
 **Goal:** Establish the "Why" and "What".
