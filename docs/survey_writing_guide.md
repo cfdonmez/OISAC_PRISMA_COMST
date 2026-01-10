@@ -1,5 +1,11 @@
 # O-ISAC Survey Writing Guide (IEEE COMST & PRISMA 2020)
 
+| Tarih | Revizyon | Açıklama |
+|-------|----------|----------|
+| 2026-01-05 | v1.0 | İlk taslak oluşturuldu. IEEE COMST ve PRISMA 2020 temelleri atıldı. |
+| 2026-01-07 | v1.1 | Abstract ve Introduction analiz sonuçlarına göre şablonlar güncellendi. |
+| 2026-01-10 | v1.2 | "Non-list" sentez stratejisi ve Metodoloji rigor (TQAF) detayları eklendi. |
+
 **Target Journal:** IEEE Communications Surveys & Tutorials (Impact Factor: ~35)
 **Standard:** PRISMA 2020 Statement
 **Purpose:** This guide serves as a bridge between the `prisma_protocol.md` and the final manuscript, ensuring every section meets both the rigorous reporting standards of PRISMA and the tutorial-style depth required by COMST.
@@ -29,46 +35,25 @@
     *   Explicitly state the Research Questions (RQ1-RQ3 form Protocol).
     *   Outline the structure of the paper (using the Sunburst Taxonomy concept).
 
-## 2. Methodology (The "Shield")
+## 2. Methodology (The "Shield" - PRISMA 2020)
 
-**Goal:** Defend your rigor. (Most COMST papers skip this, making it your competitive advantage).
-**PRISMA Requirement:** Items 5-15 (Search Strategy, Eligibility, Risk of Bias).
+**Goal:** Defend your rigor and uniqueness.
+**Action:** Follow the three-phase screening workflow described in `memory-bank/methodology_template.md`.
 
-*   **Structure:**
-    1.  **Protocol:** "We followed PRISMA..."
-    2.  **Search:** "We searched IEEE/WoS/Scopus using keywords..."
-    3.  **Screening:** "We screened 450 papers, selecting 221." (Refer to PRISMA Flow Diagram).
+*   **Standard Opening:** "This systematic review was conducted in strict accordance with the **PRISMA 2020** guidelines [Ref]."
+*   **Search Rigor:** Explicitly list databases (IEEE, WoS, Scopus) and the Boolean search strings.
+*   **Quality Appraisal:** Mention the **Technical Quality Assessment Form (TQAF)** used to score the 221 included studies. This proves you didn't just find papers, but evaluated them.
 
-## 3. Fundamentals (The "Textbook")
+## 4. Main Synthesis (The "Non-List" Strategy)
 
-**Goal:** Teach the reader. PRISMA doesn't require this, but COMST *demands* it.
-**Note:** This corresponds to the `background` knowledge implicit in our extraction schema but explicit in the paper.
+**Goal:** Provide a tutorial-style synthesis, not a list of summaries.
+**Action:** Use templates from `memory-bank/body_section_templates.md`.
 
-*   **O-ISAC Channel Models:**
-    *   One subsection on Fiber Channel (Attenuation, Dispersion, Nonlinearity).
-    *   One subsection on FSO/VLC Channel (Path loss, Turbulence, Ambient Light).
-*   **Key Hardware Components:**
-    *   Brief tutorial on Modulators (MZM vs TFLN), Detectors (PD vs SPAD), and Beam Steering (RIS vs OPA).
+*   **Grouping:** Cluster papers by **Problem/Challenge** (e.g., "Non-linearity mitigation") or **Architecture** (e.g., "Full-duplex ISAC").
+*   **The "However" Pivot:** Use "However" or "In contrast" to transition between different technical schools of thought.
+*   **Visual Dominance:** Every major section MUST have a comparison table. Refer to the **Golden Model** for visual density standards (Target: 18-22 figures).
 
-## 4. Main Synthesis: Cabled O-ISAC (Fiber)
-
-*   **Structure:** Follow the Taxonomy.
-    *   Integration Strategies (TDM vs FDM vs Joint Waveform).
-    *   Sensing Tasks (Vibration, Temperature, Intrusion).
-*   **Synthesis Style:**
-    *   Do NOT just list papers ("Paper A did this, Paper B did that").
-    *   Group by **Solution**: "Approaches to mitigate nonlinearity include [Ref 1, 2, 3]..."
-
-## 5. Main Synthesis: Wireless O-ISAC (FSO/VLC)
-
-*   **Structure:**
-    *   FSO-ISAC (Long range, LFM/Chirp based).
-    *   VLC-ISAC (Indoor, LED-based, Positioning focus).
-    *   LiDAR/Radar-like (Automotive focus).
-*   **Synthesis Style:**
-    *   Compare performance: "While FSO achieves km-range sensing, VLC is limited to room-scale but offers ubiquitous coverage."
-
-## 6. Performance Trade-offs (PRISMA Item 20 -- Quantitative Description)
+## 6. Performance Trade-offs (Quantitative Synthesis)
 
 **Goal:** The "Engineer's Discussion". Use the data extracted in `tradeoff` fields.
 

@@ -1,6 +1,6 @@
 # System Patterns
 
-**Son Güncelleme:** 2025-12-16
+**Son Güncelleme:** 2026-01-10
 
 
 ---
@@ -115,3 +115,13 @@ Eski dosyaları silme, `archive/` klasörüne taşı.
 - Groq API rate limiti var (2 saniye delay)
 - JSON parse hataları olabilir (markdown wrapper)
 - Drive sync gecikebilir
+
+---
+
+## 🛰️ Stratejik İşbirliği İlkeleri (New)
+
+### 1. AI as a Force Multiplier
+Kullanıcı tek başına (solo) yazar olarak hareket etmektedir. AI, eksik olan 5 kişilik uzman ekip üyesinin (Data Analyst, Reviewer, Proofreader, Specialist, Coordinator) sorumluluğunu üstlenir. Analizlerde "ortalama bir asistan" değil, "6 kişilik titiz bir ekip" standardı uygulanır.
+
+### 2. Hybrid Verification (Hibrit Doğrulama)
+Sadece kod (regex/script) sonuçlarıyla yetinilmez. Elde edilen veriler, AI'nın dil modeli kabiliyetleriyle "gözle kontrol" (visual/semantic cross-check) edilerek doğrulanır. Özellikle mangled metadata (ORCID linkleri, markdown artifaktları) bu yöntemle temizlenir.

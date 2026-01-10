@@ -1,6 +1,6 @@
 # Active Context
 
-**Son Güncelleme:** 2026-01-07
+**Son Güncelleme:** 2026-01-10
 
 **Güncelleyen:** AI + Kullanıcı
 
@@ -31,20 +31,13 @@
 
 ---
 
-## ✅ Bu Session'da Yapılanlar (2026-01-07)
+## ✅ Bu Session'da Yapılanlar (2026-01-10)
 
-### 1. Abstract Analizi ve Doğrulaması
-- İlk 20 makale + Rastgele 11 makale (060-070) analiz edildi.
-- **Bulgu:** Ortalama 250 kelime, "Finally" ile biten katı yapı.
-- **Aksiyon:** `surveyOutline.md` ve `writing_guide.md` güncellendi.
-
-### 2. Conclusion Analizi ve Doğrulaması
-- İlk 20 makale + Rastgele 5 makale (030-050) analiz edildi.
-- **Bulgu:** Introduction'ın "Ayna Görüntüsü".
-- **Aksiyon:** `abstract_and_conclusion_templates.md` dosyasına "The Receipt" formülü eklendi.
-
-### 3. Survey Outline Revizyonu
-- Outline'a "0. Abstract" ve "IX. Conclusion" bölümleri resmi kurallarıyla eklendi.
+### 1. COMST Yazar Sayısı Analizi (Force Multiplier Check)
+- **Kapsam:** 76 adet IEEE COMST makalesi (standardized MD files).
+- **Metodoloji:** Python extraction + LLM-based pattern validation (Hybrid approach).
+- **Sonuç:** Ortalama **6.14** yazar, Medyan **6**, Max **19**.
+- **Stratejik Önemi:** Tek kişilik bir survey yazım sürecinde, AI'nın "5 eksik ekip üyesinin" yerini dolduracak bir güç çarpanı (Force Multiplier) olarak hareket etmesi gerektiği tescillendi.
 
 ---
 
@@ -52,18 +45,13 @@
 
 1. [ ] **Methodology Template:** PRISMA tabanlı şablon oluştur.
 2. [ ] **Drafting:** Şablonları kullanarak makaleyi yazmaya başla.
+3. [!] **Strategy:** AI as a Force Multiplier - Her analizde "6 kişilik ekip titizliği" standardını koru.
 
 ---
 
 ## 📁 Son Değişen Dosyalar
 
 ```
-✏️ drafts/section_02_methodology.md (YENİ - Methods Draft)
-✏️ memory-bank/methodology_template.md (YENİ)
-✏️ memory-bank/abstract_and_conclusion_templates.md (YENİ)
-✏️ memory-bank/introduction_templates.md
-✏️ memory-bank/surveyOutline.md
-✏️ memory-bank/goldenModel.md
-✏️ docs/survey_writing_guide.md
-✏️ task.md
+✏️ analysis/calculate_authors.py (YENİ - Analiz betiği)
+✏️ memory-bank/activeContext.md (Güncellendi)
 ```
