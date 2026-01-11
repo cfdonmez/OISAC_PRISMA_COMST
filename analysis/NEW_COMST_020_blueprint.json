@@ -1,0 +1,80 @@
+{
+    "rhetorical_skeleton": [
+        {
+            "section": "I. Introduction",
+            "writing_objective": "Sell the critical need for Multi-AP Coordination (MAP-Co) in next-gen WLANs (Wi-Fi 7 / 802.11be and WiGig / 802.11ay) by highlighting the limitations of single-AP systems in dense environments.",
+            "key_components": [
+                "Evolution of WLAN standards (802.11n -> ac -> ax -> be/ay)",
+                "The gap: Single-AP surveys exist, but MAP-Co surveys are missing",
+                "Explicit statement of contributions (Taxonomy, Lesson Learned, Future Directions)"
+            ]
+        },
+        {
+            "section": "III. MAP-Co Network Design",
+            "writing_objective": "Establish the foundational architectures (Centralized vs Distributed) before diving into protocol specifics, creating a clear structural mental model for the reader.",
+            "key_components": [
+                "Master Controller (MC) based Architecture (Centralized)",
+                "Master AP (MA) based Architecture (Semi-distributed)",
+                "Taxonomy of data transmission phases",
+                "Summary and 'Lessons Learned' subsection"
+            ]
+        },
+        {
+            "section": "IV. Multi-AP Channel Sounding",
+            "writing_objective": "Detail the prerequisite phase for coordination: acquiring Channel State Information (CSI) in a multi-node environment.",
+            "key_components": [
+                "Explicit Channel Sounding (Sequential vs Joint)",
+                "Implicit Channel Sounding (Reciprocity-based)",
+                "Detailed MAC frame exchange descriptions (NDPA, NDP, Beamforming Report)",
+                "Summary and 'Lessons Learned' subsection"
+            ]
+        },
+        {
+            "section": "V. MAP-Co Based Scheduling Approaches",
+            "writing_objective": "Analyze the core technical mechanisms for coordinated interference management and resource allocation.",
+            "key_components": [
+                "Coordinated OFDMA (C-OFDMA) - Inter/Intra-channel allocation",
+                "Coordinated Spatial Reuse (CSR)",
+                "Coordinated Beamforming (CBF)",
+                "Joint Transmission (JTX)",
+                "State-of-the-Art review for each method",
+                "Summary and 'Lessons Learned' subsection"
+            ]
+        },
+        {
+            "section": "VI. Future Directions",
+            "writing_objective": "Propose forward-looking research paths including AI/ML integration and specific challenges for mmWave/THz bands.",
+            "key_components": [
+                "AI/ML for MAP-Co",
+                "MAP-Co in 802.11ay (mmWave)",
+                "Energy efficiency",
+                "Security in distributed coordination"
+            ]
+        }
+    ],
+    "visual_roadmap": {
+        "layout_logic": "The paper strictly follows a 'Process Flow' logic: Architecture -> Channel Acquisition -> Scheduling/Transmission. Critically, it employs a recurring 'Summary and Lesson Learned' block at the end of every major technical section to synthesize findings immediately.",
+        "required_table_types": [
+            "Gap Analysis Table (Current WLAN vs Emerging WLAN studies)",
+            "Taxonomy Table (Pros/Cons of Explicit vs Implicit Sounding in MC/MA architectures)",
+            "State-of-the-Art Comparison Table (Overhead reduction methods)"
+        ]
+    },
+    "writing_style_secrets": {
+        "phrasing_patterns": "Consistently uses the phrase 'Summary and Lesson Learned' as a subsection title. Uses 'In this vein,' to transition to related works. High density of technical acronyms defined early in a dedicated table.",
+        "technical_depth_management": "Separates the high-level 'Architecture' (Section III) from the protocol-level 'Channel Sounding' (Section IV). This prevents the reader from getting lost in MAC frame details before understanding the system topology."
+    },
+    "actionable_mentor_advice": {
+        "top_3_tips": [
+            "Implement a 'Lessons Learned' subsection at the end of every major technical block. This provides 'checkpoints' for the reader to consolidate complex info.",
+            "Create a rigorous taxonomy table that cross-references methods (e.g., Sounding Types) against architectures (MC vs MA) with pros/cons.",
+            "Strictly separate the 'Network Design' (Topology) from 'Data Transmission' (Protocol Operations) to manage complexity."
+        ],
+        "mistakes_to_avoid": [
+            "Avoid discussing protocol frame exchanges (NDP, NDPA) before defining the network nodes (Master Controller, Slave AP) and their hierarchy.",
+            "Do not mix 802.11be (Sub-6GHz) and 802.11ay (mmWave) details indiscriminately; clarify which standard supports which feature.",
+            "Don't ignore the 'overhead' implications. This paper explicitly analyzes communication/computation overhead for every method."
+        ]
+    },
+    "paper_id": "COMST_020"
+}

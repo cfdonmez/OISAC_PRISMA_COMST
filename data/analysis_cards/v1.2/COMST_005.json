@@ -1,0 +1,662 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_005",
+  "title": "A Survey of Beam Management for mmWave and THz Communications Towards 6G",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi/frontmatter",
+  "domain": "Beam management for mmWave/THz toward 6G",
+  "source_path": "data/corpus_standardized/COMST_005/COMST_005.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Common abbreviation list excluded from budgets."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 42898,
+    "approx_token_count_total": null,
+    "equation_count_est": 510,
+    "figure_count_est": 12,
+    "table_count_est": 8,
+    "list_count_est": 278,
+    "citation_count_in_body_est": 148,
+    "citation_density_per_1k_words_est": 3.4,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Review: 6G Vision",
+        "B. Motivation",
+        "C. Our Survey Scope and Contributions"
+      ],
+      "objective": "Motivate 6G beam management, review 6G vision, set survey scope, and list contributions.",
+      "key_components": [
+        "6G vision and KPI targets",
+        "Motivation for mmWave/THz beam management challenges",
+        "Gap vs prior beam management surveys (mmWave only, lacking 6G enablers and THz)",
+        "Contributions and scope statement"
+      ],
+      "approx_word_share_pct": "12-16",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 0,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "6G KPI bullet list to frame ambition",
+        "Enumerates four enabler trends (AI, sensing/ISAC, RIS, combination)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States lack of THz beam management surveys and new 6G enabler-driven solutions.",
+          "locator": {
+            "heading": "B. Motivation",
+            "paragraph_index_est": 2,
+            "line_range_est": "L60-L90"
+          }
+        },
+        {
+          "claim": "Lists contributions and defines survey scope.",
+          "locator": {
+            "heading": "C. Our Survey Scope and Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L100-L120"
+          }
+        },
+        {
+          "claim": "Provides section organization.",
+          "locator": {
+            "heading": "C. Our Survey Scope and Contributions",
+            "paragraph_index_est": 2,
+            "line_range_est": "L120-L140"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "RELATED_WORK",
+      "raw_headings": [
+        "A. Beam Management in 3GPP NR",
+        "B. Beam Management in IEEE"
+      ],
+      "objective": "Review beam management in 3GPP NR and IEEE standards to set the legacy baseline.",
+      "key_components": [
+        "NR beam training/measurement/tracking procedures",
+        "IEEE 802.11ad/ay beam management summary",
+        "Gap to 6G requirements"
+      ],
+      "approx_word_share_pct": "12-16",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 18,
+        "end_doc_progress_pct_est": 32
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "scope_boundary",
+        "pivot"
+      ],
+      "notable_moves": [
+        "Contrasts 3GPP and IEEE beam procedures before 6G enablers"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes NR beam management stages and limits for 6G.",
+          "locator": {
+            "heading": "A. Beam Management in 3GPP NR",
+            "paragraph_index_est": 1,
+            "line_range_est": "L102-L140"
+          }
+        },
+        {
+          "claim": "Summarizes IEEE beam management and notes gaps.",
+          "locator": {
+            "heading": "B. Beam Management in IEEE",
+            "paragraph_index_est": 1,
+            "line_range_est": "L140-L170"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. OVERVIEW ON CONVENTIONAL BEAM MANAGEMENT"
+      ],
+      "objective": "Outline conventional beam management pipeline as a baseline system model.",
+      "key_components": [
+        "Initial access, tracking, recovery phases",
+        "Overhead and latency challenges",
+        "Links to mobile/dynamic environments"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 32,
+        "end_doc_progress_pct_est": 40
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Establishes beam management phases to frame later enabler-specific sections"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines phases and overhead issues of conventional beam management.",
+          "locator": {
+            "heading": "II. OVERVIEW ON CONVENTIONAL BEAM MANAGEMENT",
+            "paragraph_index_est": 1,
+            "line_range_est": "L170-L210"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. ENABLING-TECHNOLOGY-BASED 6G BEAM MANAGEMENT: STATE-OF-THE-ART",
+        "A. AI-Empowered Beam Management",
+        "B. ISAC-Enabled Beam Management",
+        "C. Beam Management for RIS-Enhanced Systems"
+      ],
+      "objective": "Present taxonomy by enabling technologies (AI, ISAC, RIS) and review state-of-the-art.",
+      "key_components": [
+        "AI-based beam management (DL/FL/TL)",
+        "ISAC-enabled sensing-assisted beam prediction/tracking",
+        "RIS-enhanced beam coordination",
+        "State-of-the-art tables/figures and lessons"
+      ],
+      "approx_word_share_pct": "30-35",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 40,
+        "end_doc_progress_pct_est": 70
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Taxonomy centered on enabling tech rather than scenario",
+        "Each sub-block uses examples then lessons"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces AI/ISAC/RIS taxonomy and surveys methods.",
+          "locator": {
+            "heading": "III. ENABLING-TECHNOLOGY-BASED 6G BEAM MANAGEMENT: STATE-OF-THE-ART",
+            "paragraph_index_est": 1,
+            "line_range_est": "L210-L360"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. CHALLENGES AND OPEN ISSUES",
+        "A. AI-Empowered 6G Framework",
+        "B. ISAC-Enabled 6G Framework",
+        "C. RIS-Enhanced 6G Framework"
+      ],
+      "objective": "Discuss challenges for each enabler-driven beam management category and outline open issues.",
+      "key_components": [
+        "AI challenges (data, overhead, generalization)",
+        "ISAC challenges (sensing accuracy, latency)",
+        "RIS challenges (deployment, joint optimization)",
+        "Open issue bullets per enabler"
+      ],
+      "approx_word_share_pct": "12-16",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 70,
+        "end_doc_progress_pct_est": 85
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Challenges framed per enabling tech to mirror taxonomy"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists challenges and open issues for AI/ISAC/RIS beam management.",
+          "locator": {
+            "heading": "IV. CHALLENGES AND OPEN ISSUES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L619-L690"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "V. CONCLUSION"
+      ],
+      "objective": "Summarize survey scope and future directions for 6G beam management.",
+      "key_components": [
+        "Recap enabling-tech taxonomy",
+        "Highlight lessons and challenges",
+        "Restate future research needs"
+      ],
+      "approx_word_share_pct": "3-5",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 85,
+        "end_doc_progress_pct_est": 90
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Conclusion focuses on enabler-driven roadmap"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Recaps taxonomy and reiterates challenges for 6G beam management.",
+          "locator": {
+            "heading": "V. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L690-L720"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Positions mmWave/THz and 6G KPIs to set urgency for beam management.",
+      "locator": "L1-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes lack of THz beam management surveys and need to cover AI/ISAC/RIS-driven solutions.",
+      "locator": "L60-L90"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Prior surveys focus on conventional mmWave; 6G enablers introduce new challenges.",
+      "locator": "L60-L100"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists scope and contributions for 6G beam management taxonomy.",
+      "locator": "L100-L120"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section roadmap in the intro.",
+      "locator": "L120-L140"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus on beam management for mmWave/THz toward 6G with AI/ISAC/RIS enablers.",
+      "locator": "L60-L120"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "We review 6G vision, legacy beam management, enabling-tech taxonomy (AI/ISAC/RIS), challenges, and conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by enabling technology",
+    "axes": [
+      "enabler (AI, ISAC, RIS, combination)",
+      "beam management phase (training/tracking/recovery)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 4,
+    "branches": [
+      "AI-empowered",
+      "ISAC-enabled",
+      "RIS-enhanced",
+      "Combined enablers"
+    ],
+    "taxonomy_figure_present": "no",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [],
+      "table_ids": [
+        "T03",
+        "T04"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [
+      "throughput",
+      "latency",
+      "overhead",
+      "tracking accuracy"
+    ],
+    "tradeoff_axes": [
+      "overhead vs accuracy",
+      "latency vs reliability"
+    ],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses KPI bullets; legacy sections summarize 3GPP/IEEE procedures; enabler sections rely on comparison tables; challenges use bullet lists; few figures overall.",
+    "caption_verbs_top": [
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "scenario",
+        "purpose": "illustrate beam management context",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 12
+        },
+        "evidence_locator": "L20-L40"
+      },
+      {
+        "figure_id": "F02",
+        "type": "process",
+        "purpose": "legacy beam management flow",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 35
+        },
+        "evidence_locator": "L170-L210"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "abbreviations",
+        "purpose": "reader support",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 90
+        },
+        "evidence_locator": "L671-L690"
+      },
+      {
+        "table_id": "T03",
+        "type": "taxonomy/summary",
+        "purpose": "state-of-the-art comparison by enabler",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 50
+        },
+        "evidence_locator": "L210-L360"
+      },
+      {
+        "table_id": "T04",
+        "type": "summary",
+        "purpose": "lessons/limitations per enabler",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 60
+        },
+        "evidence_locator": "L260-L360"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "AI-empowered section",
+        "lesson": "AI/FL/TL can reduce beam training overhead and adapt to dynamics but raise data/compute burdens.",
+        "locator": "L210-L260"
+      },
+      {
+        "location": "ISAC section",
+        "lesson": "Sensing-assisted prediction improves tracking but hinges on sensing accuracy and latency.",
+        "locator": "L260-L310"
+      },
+      {
+        "location": "RIS section",
+        "lesson": "RIS extends coverage and mitigates blockage but complicates joint optimization and coordination.",
+        "locator": "L310-L360"
+      }
+    ],
+    "aha_moment": "The survey reframes beam management taxonomy around enabling technologies (AI/ISAC/RIS), not channels or protocols, aligning challenges with each enabler."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "yes",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "State need/gap, then categorize by enabler and proceed with comparisons.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 6.5,
+    "signposting_devices": [
+      "In this paper",
+      "The remainder of this paper is organized",
+      "We review",
+      "We then"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro with 6G KPI bullets plus enabler framing",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Open with 6G KPI list to set ambition.",
+        "State gap in prior beam management surveys (mmWave-only, no THz or enablers).",
+        "List contributions and scope.",
+        "Provide roadmap of sections."
+      ],
+      "why_it_works": "Combines urgency (KPIs) with a clear gap and navigational map.",
+      "evidence_locators": [
+        "L40-L120"
+      ]
+    },
+    {
+      "title": "Legacy baseline before enabler taxonomy",
+      "applies_to_sections": [
+        "RELATED_WORK",
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Summarize legacy standard procedures (3GPP/IEEE).",
+        "Highlight where they fall short for 6G.",
+        "Use this baseline to justify the enabler-based taxonomy."
+      ],
+      "why_it_works": "Anchors the reader in known standards before introducing new taxonomy axes.",
+      "evidence_locators": [
+        "L102-L170"
+      ]
+    },
+    {
+      "title": "Enabler-centric taxonomy blocks",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Split by enabler (AI, ISAC, RIS).",
+        "For each: describe mechanism, give examples, add comparison table.",
+        "Close with lessons/limitations."
+      ],
+      "why_it_works": "Keeps coverage organized by what changes beam management, not by channel alone.",
+      "evidence_locators": [
+        "L210-L360"
+      ]
+    },
+    {
+      "title": "Challenge mirror of taxonomy",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Mirror enabler categories and list challenges per category.",
+        "Bulletize open issues (data/compute for AI; sensing latency; RIS optimization).",
+        "Tie back to the taxonomy lessons."
+      ],
+      "why_it_works": "Keeps future work tightly coupled to the taxonomy, avoiding a grab-bag list.",
+      "evidence_locators": [
+        "L619-L690"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "OCR artifacts in abstract and author block",
+      "Common abbreviation list outside main body"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts are heuristic; heavy list usage and math markers. Abbreviation list excluded from budgets."
+}

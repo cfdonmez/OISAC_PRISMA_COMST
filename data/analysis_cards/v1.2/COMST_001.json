@@ -1,0 +1,828 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_001",
+    "title": "6G Communication New Paradigm: The Integration of Autonomous Aerial Vehicles and Intelligent Reflecting Surfaces",
+    "paper_meta": {
+        "doi": "10.1109/COMST.2025.3526251",
+        "year_online": "2025",
+        "year_issue": "2025",
+        "venue": "IEEE COMST",
+        "source_path": "data/corpus_standardized/COMST_001/COMST_001.md"
+    },
+    "analysis_policy": {
+        "include_scope": "Abstract through Section VI Conclusion (main body only)",
+        "exclude_scope": "References (L700+), author bios/photos (L851-887), abbreviation table (Table II)",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Paper uses Roman numeral section headings with multi-level substructure"
+    },
+    "document_stats": {
+        "approx_word_count_total": 18500,
+        "approx_token_count_total": 25000,
+        "equation_count_est": 0,
+        "figure_count_est": 12,
+        "table_count_est": 5,
+        "list_count_est": 45,
+        "citation_count_in_body_est": 183,
+        "citation_density_per_1k_words_est": 9.9,
+        "definition_box_or_glossary_present": "no",
+        "notation_table_present": "yes"
+    },
+    "normalization": {
+        "section_ontology": "INTRO|RELATED|SYSTEM_MODEL|TAXONOMY|EVALUATION|CHALLENGES|CONCLUSION|OTHER",
+        "section_order_canonical": [
+            "INTRO",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "CHALLENGES",
+            "CONCLUSION"
+        ],
+        "mapping_notes": "Section I→INTRO, Section II (Applications & Key Issues)→OTHER (hybrid taxonomy+challenges), Section III (Prototypes & Technologies)→OTHER (system model+taxonomy), Section IV (Solutions)→OTHER (evaluation-like but focused on solutions), Section V→CHALLENGES, Section VI→CONCLUSION"
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "I. Introduction",
+                "A. Overview of IRS-Assisted AAV Communications for 6G Networks",
+                "B. Features of IRS-Assisted AAV Communications",
+                "C. Related Surveys",
+                "D. Contributions",
+                "E. Organization"
+            ],
+            "objective": "Establish the significance of combining IRS and AAV technologies for 6G networks, position the survey against prior work, and articulate unique contributions",
+            "key_components": [
+                "6G network evolution context",
+                "AAV benefits and bottlenecks",
+                "IRS technology primer",
+                "Comparison table of related surveys",
+                "Four explicit contributions",
+                "Paper roadmap"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 15
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Three-layer IRS architecture diagram as visual anchor",
+                "Comprehensive comparison table (Table I) for positioning",
+                "Four bulleted contributions for clarity"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Hook: 6G promises significant improvements over 5G",
+                    "locator": {
+                        "heading": "I. Introduction",
+                        "line_range": "L23-25"
+                    }
+                },
+                {
+                    "claim": "Gap: Existing surveys lack comprehensive analysis of IRS-AAV integration for 6G",
+                    "locator": {
+                        "heading": "C. Related Surveys",
+                        "line_range": "L90-100"
+                    }
+                },
+                {
+                    "claim": "Contribution claim: First survey on IRS-assisted AAV communications for 6G",
+                    "locator": {
+                        "heading": "D. Contributions",
+                        "line_range": "L102-109"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "II. Applications and Key Issues of IRS-Assisted AAV Communications for 6G Networks",
+                "A. Applications...",
+                "B. Key Issues..."
+            ],
+            "objective": "Present three application domains (SAGIN, V2X, Large-Scale IoT) and derive three key technical issues (energy-constrained, secure, enhanced communications)",
+            "key_components": [
+                "SAGIN application scenario",
+                "V2X application scenario",
+                "Large-scale IoT application scenario",
+                "Energy-constrained communications issue",
+                "Secure communications issue",
+                "Enhanced communications issue"
+            ],
+            "approx_word_share_pct": 20,
+            "positioning": {
+                "start_doc_progress_pct_est": 15,
+                "end_doc_progress_pct_est": 30
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "1",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "pivot"
+            ],
+            "notable_moves": [
+                "Application-to-issue derivation pattern",
+                "Three figures (Fig 3, 4, 5) for each application domain",
+                "Challenges listed as sub-bullets under each issue"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Application taxonomy: SAGIN, V2X, Large-Scale IoT",
+                    "locator": {
+                        "heading": "A. Applications of IRS-Assisted AAV Communications for 6G Networks",
+                        "line_range": "L157-202"
+                    }
+                },
+                {
+                    "claim": "Pivot to key issues derived from applications",
+                    "locator": {
+                        "heading": "B. Key Issues of IRS-Assisted AAV Communications for 6G Networks",
+                        "line_range": "L205-240"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "III. Prototypes and Technologies of IRS-Assisted AAV Communications for 6G Networks",
+                "A. Prototypes...",
+                "B. Technologies..."
+            ],
+            "objective": "Provide technical foundations: hardware/software prototypes, performance metrics, prototype classification, and four key enabling technologies",
+            "key_components": [
+                "Hardware prototypes",
+                "Software prototypes (IoD-Sim)",
+                "Performance metrics (EE, secure rates, network rates)",
+                "Prototype classification (service objects, service types)",
+                "Channel estimation techniques",
+                "Beamforming techniques",
+                "Resource allocation algorithms",
+                "Trajectory optimization methods"
+            ],
+            "approx_word_share_pct": 22,
+            "positioning": {
+                "start_doc_progress_pct_est": 30,
+                "end_doc_progress_pct_est": 45
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Four-perspective prototype analysis (hardware, software, metrics, classification)",
+                "Technology sub-taxonomy with (a)/(b)/(c) lettered sub-items",
+                "Fig 6 for IoD-Sim simulation architecture",
+                "Fig 7 for hybrid IRS architecture"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Four technologies: channel estimation, beamforming, resource allocation, trajectory optimization",
+                    "locator": {
+                        "heading": "B. Technologies of IRS-Assisted AAV Communications for 6G Networks",
+                        "line_range": "L291-356"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "IV. Solutions of IRS-Assisted AAV Communications for 6G Networks",
+                "A. Solutions for Energy-Constrained Communications",
+                "B. Solutions for Secure Communications",
+                "C. Solutions for Enhanced Communications"
+            ],
+            "objective": "Systematically present solutions organized by the three key issues, with summary tables and empirical lessons",
+            "key_components": [
+                "BackCom solutions",
+                "SWIPT solutions",
+                "Other EE solutions",
+                "PLS anti-jamming solutions",
+                "PLS anti-eavesdropping solutions",
+                "Covert communications",
+                "Network rate improvement",
+                "Coverage enhancement",
+                "Latency reduction",
+                "Reliability improvement"
+            ],
+            "approx_word_share_pct": 35,
+            "positioning": {
+                "start_doc_progress_pct_est": 45,
+                "end_doc_progress_pct_est": 85
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Summary tables (Table III, IV, V) for each issue category",
+                "'Lesson' boxes providing actionable takeaways",
+                "Scenario-specific subsections (V2X, IoT specializations)",
+                "Figures for security scenarios (Fig 10, 11, 12)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Summary table for energy-constrained solutions",
+                    "locator": {
+                        "heading": "Table III",
+                        "line_range": "L388-410"
+                    }
+                },
+                {
+                    "claim": "Summary table for security solutions",
+                    "locator": {
+                        "heading": "Table IV",
+                        "line_range": "L438-460"
+                    }
+                },
+                {
+                    "claim": "Lesson 1: BackCom deployment considerations",
+                    "locator": {
+                        "heading": "Lesson 1",
+                        "line_range": "L380"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "V. Research Challenges and Open Issues"
+            ],
+            "objective": "Articulate future research directions across eight challenge areas",
+            "key_components": [
+                "Channel estimation challenges",
+                "IRS element selection",
+                "Active IRS research",
+                "Channel modeling",
+                "ISAC integration",
+                "Multi-UAV multi-IRS coordination",
+                "Other challenges"
+            ],
+            "approx_word_share_pct": 8,
+            "positioning": {
+                "start_doc_progress_pct_est": 85,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Numbered challenge subsections",
+                "Forward-looking research agenda"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Eight challenge areas enumerated",
+                    "locator": {
+                        "heading": "V. Research Challenges and Open Issues",
+                        "line_range": "L558-700"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "VI. Conclusion"
+            ],
+            "objective": "Synthesize contributions and reinforce the survey's value proposition",
+            "key_components": [
+                "Summary of coverage",
+                "Reiteration of contributions"
+            ],
+            "approx_word_share_pct": 3,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "contribution"
+            ],
+            "notable_moves": [
+                "Concise wrap-up matching introduction structure"
+            ],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_contract": {
+        "intro_move_sequence": [
+            "hook",
+            "gap",
+            "yes_but",
+            "contribution",
+            "organization_map"
+        ],
+        "move_evidence": [
+            {
+                "move": "hook",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L23-28"
+                }
+            },
+            {
+                "move": "gap",
+                "locator": {
+                    "heading": "C. Related Surveys",
+                    "line_range": "L98-100"
+                }
+            },
+            {
+                "move": "contribution",
+                "locator": {
+                    "heading": "D. Contributions",
+                    "line_range": "L104-109"
+                }
+            },
+            {
+                "move": "organization_map",
+                "locator": {
+                    "heading": "E. Organization",
+                    "line_range": "L111-113"
+                }
+            }
+        ],
+        "reader_contract_pattern": "We provide a comprehensive survey on IRS-assisted AAV communications for 6G networks covering applications, key issues, prototypes, technologies, solutions, and future challenges; structured from problem framing through technical foundations to practical solutions."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "hybrid",
+        "axes": [
+            "Application domain (SAGIN/V2X/IoT)",
+            "Issue type (energy/security/enhanced)",
+            "Prototype type (hardware/software/classification)",
+            "Technology category",
+            "Solution approach"
+        ],
+        "levels_est": 3,
+        "node_count_est": 35,
+        "branches": [
+            "Applications",
+            "Key Issues",
+            "Prototypes",
+            "Technologies",
+            "Solutions"
+        ],
+        "taxonomy_figure_present": "yes",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [
+                "F02"
+            ],
+            "table_ids": [
+                "T01",
+                "T03",
+                "T04",
+                "T05"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Energy efficiency",
+            "Secure communication rate",
+            "Network rate",
+            "Coverage",
+            "Latency",
+            "Reliability"
+        ],
+        "tradeoff_axes": [
+            "Energy vs performance",
+            "Security vs complexity",
+            "Coverage vs cost"
+        ],
+        "where_used": [
+            {
+                "section": "S03",
+                "table_ids": []
+            },
+            {
+                "section": "S04",
+                "table_ids": [
+                    "T03",
+                    "T04",
+                    "T05"
+                ]
+            }
+        ]
+    },
+    "visual_strategy": {
+        "global_layout_logic": "Figures appear at the start of each major section to provide visual orientation (architectural diagrams for Section I, scenario schematics for Section II applications, simulation architecture for Section III, security scenario illustrations for Section IV). Tables consolidate related work comparisons and solution summaries at key synthesis points.",
+        "artifact_inventory": {
+            "figures": [
+                {
+                    "id": "F01",
+                    "type": "architecture",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 4
+                    },
+                    "locator": "L31-33"
+                },
+                {
+                    "id": "F02",
+                    "type": "taxonomy",
+                    "purpose": "taxonomy anchor",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 13
+                    },
+                    "locator": "L119-121"
+                },
+                {
+                    "id": "F03",
+                    "type": "scenario",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 18
+                    },
+                    "locator": "L161-163"
+                },
+                {
+                    "id": "F04",
+                    "type": "scenario",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 20
+                    },
+                    "locator": "L177-179"
+                },
+                {
+                    "id": "F05",
+                    "type": "scenario",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 21
+                    },
+                    "locator": "L187-189"
+                },
+                {
+                    "id": "F06",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 30
+                    },
+                    "locator": "L257-259"
+                },
+                {
+                    "id": "F07",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 32
+                    },
+                    "locator": "L283-285"
+                }
+            ],
+            "tables": [
+                {
+                    "id": "T01",
+                    "type": "survey comparison",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 6
+                    },
+                    "locator": "L55-82"
+                },
+                {
+                    "id": "T02",
+                    "type": "other",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 14
+                    },
+                    "locator": "L123-153"
+                },
+                {
+                    "id": "T03",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 50
+                    },
+                    "locator": "L388-410"
+                },
+                {
+                    "id": "T04",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 60
+                    },
+                    "locator": "L438-460"
+                },
+                {
+                    "id": "T05",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 75
+                    },
+                    "locator": "L526-560"
+                }
+            ]
+        },
+        "caption_style_metrics": {
+            "caption_verbs_top": [
+                {
+                    "verb": "illustrates",
+                    "freq_est": 4
+                },
+                {
+                    "verb": "shows",
+                    "freq_est": 3
+                },
+                {
+                    "verb": "schematic",
+                    "freq_est": 5
+                }
+            ],
+            "avg_caption_length_est": 15
+        }
+    },
+    "synthesis": {
+        "synthesis_style": "taxonomy-first",
+        "comparative_synthesis_degree": "high",
+        "lesson_blocks": [
+            {
+                "location": "IV.A.1 (BackCom)",
+                "lesson": "IRS can replace traditional BDs for low-power communications, but deployment location significantly impacts performance",
+                "locator": "L380"
+            },
+            {
+                "location": "IV.A.2 (SWIPT)",
+                "lesson": "System fairness and performance conflict needs addressing for energy distribution among multiple users",
+                "locator": "L420-421"
+            },
+            {
+                "location": "IV.A.3 (Other EE)",
+                "lesson": "Lightweight, low-complexity algorithms are promising for reducing computational energy overhead",
+                "locator": "L434"
+            },
+            {
+                "location": "IV.B (Security)",
+                "lesson": "Robust optimization under imperfect attacker CSI is crucial; balance security overhead with performance",
+                "locator": "L504-505"
+            },
+            {
+                "location": "IV.B.3 (Covert)",
+                "lesson": "Multi-modal communication (communication+silence modes) can enhance covert communication performance",
+                "locator": "L516-518"
+            }
+        ],
+        "aha_moment": "The survey reveals that IRS-AAV integration creates a new design paradigm where passive beamforming, trajectory optimization, and resource allocation must be jointly designed to unlock 6G network potential."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Section opens with motivating context establishing relevance, then outlines subsection structure",
+        "math_handling_strategy": "defer-to-appendix",
+        "listicle_usage": "heavy",
+        "signposting_devices": [
+            "In this section",
+            "Specifically",
+            "Furthermore",
+            "In addition",
+            "It is worth noting"
+        ],
+        "definition_density_est": "low"
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Application-to-Issue Derivation Pattern",
+            "steps": [
+                "Present N application domains with visual scenarios (figures)",
+                "For each application, identify user requirements and technical constraints",
+                "Derive M common issues that span across applications",
+                "Structure remainder of paper around solving these M issues"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "OTHER"
+            ],
+            "why_it_works": "Creates reader buy-in by grounding abstract technical challenges in concrete use cases; the derived issues provide natural paper organization",
+            "evidence_locators": [
+                {
+                    "heading": "II. Applications and Key Issues",
+                    "line_range": "L115-240"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Lesson-Block Synthesis Pattern",
+            "steps": [
+                "After reviewing related work in a category, synthesize with a 'Lesson N' callout",
+                "State the lesson in 2-3 sentences focusing on takeaways, not summaries",
+                "Include forward-looking implications (e.g., 'is worth researching')"
+            ],
+            "applies_to_sections": [
+                "OTHER",
+                "EVALUATION"
+            ],
+            "why_it_works": "Transforms literature review from passive summary to active knowledge synthesis; gives readers actionable guidance",
+            "evidence_locators": [
+                {
+                    "heading": "Lesson 1",
+                    "line_range": "L380"
+                },
+                {
+                    "heading": "Lesson 2",
+                    "line_range": "L420"
+                },
+                {
+                    "heading": "Lesson 3",
+                    "line_range": "L434"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Triple-Scenario Visual Anchoring",
+            "steps": [
+                "For each of N scenarios/applications, create a dedicated schematic figure",
+                "Place figure immediately before textual description",
+                "Use consistent visual style across all N figures",
+                "Reference figure explicitly in prose"
+            ],
+            "applies_to_sections": [
+                "OTHER",
+                "TAXONOMY"
+            ],
+            "why_it_works": "Provides parallel visual structure that reinforces taxonomic organization; readers can quickly orient themselves",
+            "evidence_locators": [
+                {
+                    "heading": "Fig. 3, 4, 5",
+                    "line_range": "L161-189"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Comparison Table Authority Building",
+            "steps": [
+                "Create comprehensive comparison table of related surveys early in paper",
+                "Include multiple scope dimensions as columns",
+                "Use checkmarks to show coverage gaps in prior work",
+                "Show 'This Article' row with all checkmarks to demonstrate comprehensive coverage"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "RELATED"
+            ],
+            "why_it_works": "Visually establishes authority and clearly demonstrates novelty gap; readers immediately see survey's unique contribution",
+            "evidence_locators": [
+                {
+                    "heading": "Table I",
+                    "line_range": "L55-82"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Summary-Table-Per-Issue Pattern",
+            "steps": [
+                "For each major issue/category, create a summary table of solutions",
+                "Include columns: Reference, Description, Technologies Used, Outcomes",
+                "Use checkmarks for technology coverage",
+                "Place table at start of subsection for overview before details"
+            ],
+            "applies_to_sections": [
+                "EVALUATION",
+                "OTHER"
+            ],
+            "why_it_works": "Provides scannable overview before deep dive; enables readers to locate relevant work quickly",
+            "evidence_locators": [
+                {
+                    "heading": "Table III, IV, V",
+                    "line_range": "L388-560"
+                }
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [
+            "Some HTML span tags for page anchors",
+            "Table formatting complex with line breaks"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [
+            "Exact equation count (paper uses minimal math in main body)"
+        ],
+        "confidence": "high"
+    },
+    "notes": "Exemplary survey structure demonstrating the 'applications → issues → technologies → solutions → challenges' narrative arc. Heavy use of summary tables and lesson blocks distinguishes this from purely descriptive surveys. The paper maintains practical focus throughout, avoiding deep mathematical treatment in favor of accessible explanations."
+}

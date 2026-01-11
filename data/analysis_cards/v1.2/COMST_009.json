@@ -1,0 +1,706 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_009",
+  "title": "A Survey of Security in UAVs and FANETs: Issues, Threats, Analysis of Attacks, and Solutions",
+  "year_online": "2024",
+  "year_issue": "2025",
+  "year_source": "doi/frontmatter",
+  "domain": "Security in UAVs and FANETs (attack surface, taxonomy, solutions)",
+  "source_path": "data/corpus_standardized/COMST_009/COMST_009.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Acronym table excluded from budgets."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 33265,
+    "approx_token_count_total": null,
+    "equation_count_est": 284,
+    "figure_count_est": 10,
+    "table_count_est": 12,
+    "list_count_est": 22,
+    "citation_count_in_body_est": 207,
+    "citation_density_per_1k_words_est": 6.2,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "no",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Contributions",
+        "B. Structure of the Survey"
+      ],
+      "objective": "Motivate UAV/FANET security, state attack-surface focus, contributions, and roadmap.",
+      "key_components": [
+        "Market/usage growth of UAVs and FANETs",
+        "Threat motivation (wireless links, mobility, cooperativeness)",
+        "Attack surface + taxonomy intent",
+        "Contribution bullets",
+        "Survey organization (Fig. 1)"
+      ],
+      "approx_word_share_pct": "12-16",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 0,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Contributions include simulation-based attack analysis beyond survey",
+        "Structure map provided early (Fig. 1)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Motivates UAV/FANET security and attack surface need.",
+          "locator": {
+            "heading": "I. INTRODUCTION",
+            "paragraph_index_est": 4,
+            "line_range_est": "L60-L110"
+          }
+        },
+        {
+          "claim": "Lists contributions including simulations and taxonomy.",
+          "locator": {
+            "heading": "A. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L110-L150"
+          }
+        },
+        {
+          "claim": "Provides section organization with Fig. 1.",
+          "locator": {
+            "heading": "B. Structure of the Survey",
+            "paragraph_index_est": 1,
+            "line_range_est": "L150-L190"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "RELATED_WORK",
+      "raw_headings": [
+        "II. RELATED WORK"
+      ],
+      "objective": "Review prior UAV/FANET security surveys and position this studys added depth.",
+      "key_components": [
+        "Prior survey coverage and limitations",
+        "Gaps in attack analysis and realistic scenarios",
+        "Need for layered/attack-surface taxonomy"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 18,
+        "end_doc_progress_pct_est": 25
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "scope_boundary",
+        "pivot"
+      ],
+      "notable_moves": [
+        "Highlights lack of realistic attack simulations in prior work"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes prior UAV/FANET security surveys and gaps.",
+          "locator": {
+            "heading": "II. RELATED WORK",
+            "paragraph_index_est": 1,
+            "line_range_est": "L190-L240"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "III. BACKGROUND OF UAVS AND FANETS"
+      ],
+      "objective": "Present UAV/FANET characteristics relevant to security analysis.",
+      "key_components": [
+        "Mobility/topology traits vs MANET/VANET",
+        "3D movement, node density, energy constraints",
+        "Implications for security"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 25,
+        "end_doc_progress_pct_est": 35
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Contrasts FANET properties with other ad hoc networks to justify security focus"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes FANET characteristics and security implications.",
+          "locator": {
+            "heading": "III. BACKGROUND OF UAVS AND FANETS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L240-L310"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. ATTACK SURFACE ANALYSIS",
+        "V. TAXONOMY OF ATTACKS AGAINST UAVS"
+      ],
+      "objective": "Define attack surface entry points and categorize attacks based on those entry points.",
+      "key_components": [
+        "Entry points for UAVs/FANETs",
+        "Attack categories mapped to surface",
+        "Threat enumeration"
+      ],
+      "approx_word_share_pct": "18-22",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 35,
+        "end_doc_progress_pct_est": 55
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Attack taxonomy explicitly tied to attack surface analysis"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines attack surface entry points and groups attacks accordingly.",
+          "locator": {
+            "heading": "IV. ATTACK SURFACE ANALYSIS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L310-L380"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "VI. SIMULATIONS AND ANALYSIS OF ATTACKS AGAINST FANETS"
+      ],
+      "objective": "Evaluate selected routing attacks via simulations with realistic parameters.",
+      "key_components": [
+        "Four routing attacks simulated",
+        "Setup parameters and metrics",
+        "Observed impact on FANETs"
+      ],
+      "approx_word_share_pct": "12-15",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 55,
+        "end_doc_progress_pct_est": 70
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Adds simulation-based analysis uncommon in surveys"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Simulates four routing attacks with realistic parameters and analyzes impact.",
+          "locator": {
+            "heading": "VI. SIMULATIONS AND ANALYSIS OF ATTACKS AGAINST FANETS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L380-L450"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "VII. SECURITY SOLUTIONS"
+      ],
+      "objective": "Review preventive and detection solutions for UAV/FANET security.",
+      "key_components": [
+        "Preventive measures",
+        "Detection/IDS approaches",
+        "Limitations of proposed solutions"
+      ],
+      "approx_word_share_pct": "12-16",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 70,
+        "end_doc_progress_pct_est": 85
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Solutions grouped by prevention vs detection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes preventive and detection solutions and notes limitations.",
+          "locator": {
+            "heading": "VII. SECURITY SOLUTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L450-L520"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VIII. LIMITATIONS AND OPEN RESEARCH AREAS"
+      ],
+      "objective": "Discuss limitations of existing studies and outline open research directions.",
+      "key_components": [
+        "Identified gaps after surveying solutions and simulations",
+        "Open research areas for UAV/FANET security"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 85,
+        "end_doc_progress_pct_est": 92
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Limits and opens future work after solution survey and simulations"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Discusses limitations and open research areas.",
+          "locator": {
+            "heading": "VIII. LIMITATIONS AND OPEN RESEARCH AREAS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L520-L560"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "IX. CONCLUSION"
+      ],
+      "objective": "Conclude with summary and forward-looking remarks.",
+      "key_components": [
+        "Recap taxonomy, simulations, and solutions",
+        "Restate open issues"
+      ],
+      "approx_word_share_pct": "2-4",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 92,
+        "end_doc_progress_pct_est": 95
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps conclusion concise and points to future work"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes contributions and reiterates open issues.",
+          "locator": {
+            "heading": "IX. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L560-L590"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights UAV growth and associated threat landscape.",
+      "locator": "L1-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States need for attack-surface-driven taxonomy and realistic attack analysis beyond prior surveys.",
+      "locator": "L40-L100"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Notes prior work lacks realistic simulations and comprehensive attack-surface categorization.",
+      "locator": "L190-L240"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions including simulation analysis and taxonomy of attacks/solutions.",
+      "locator": "L110-L150"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section roadmap with Fig. 1.",
+      "locator": "L150-L190"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus on UAV/FANET security via attack surface, attack taxonomy, simulations, solutions.",
+      "locator": "L100-L150"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate UAV/FANET security; compare prior surveys; give background; present attack surface and taxonomy; analyze attacks via simulations; survey solutions; list open issues; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by attack surface entry points",
+    "axes": [
+      "entry point (device, link, protocol, routing)",
+      "attack type"
+    ],
+    "levels_est": 2,
+    "node_count_est": 4,
+    "branches": [
+      "Device-level attacks",
+      "Link-layer attacks",
+      "Routing/Network attacks",
+      "Application/Control attacks"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "throughput",
+      "packet delivery ratio",
+      "delay",
+      "attack impact"
+    ],
+    "tradeoff_axes": [
+      "security vs performance",
+      "detection accuracy vs overhead"
+    ],
+    "metrics_table_present": "no",
+    "evidence_locators": [
+      "L380-L450"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses organization figure; taxonomy uses tables/figures; simulations/results likely use plots; solutions summarized textually.",
+    "caption_verbs_top": [
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "organization",
+        "purpose": "survey structure overview",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 15
+        },
+        "evidence_locator": "L150-L190"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "acronyms",
+        "purpose": "terminology support",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 18
+        },
+        "evidence_locator": "L180-L200"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Attack taxonomy",
+        "lesson": "Categorizing by attack surface clarifies entry points and informs defenses.",
+        "locator": "L310-L380"
+      },
+      {
+        "location": "Simulation analysis",
+        "lesson": "Routing attacks significantly impact FANET performance; realistic parameters matter for evaluation.",
+        "locator": "L380-L450"
+      },
+      {
+        "location": "Security solutions",
+        "lesson": "Prevention and detection approaches each carry overhead and coverage gaps.",
+        "locator": "L450-L520"
+      }
+    ],
+    "aha_moment": "Integrates attack-surface-based taxonomy with simulation-backed attack impact and grouped defenses."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "State need/gap, then map to attack surface and taxonomy; later sections introduce simulations then solutions.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 0.7,
+    "signposting_devices": [
+      "In this survey",
+      "We categorize",
+      "We simulate",
+      "We discuss"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro with attack-surface promise and structure map",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Motivate UAV/FANET threat landscape.",
+        "State gap: need for attack-surface-driven taxonomy and realistic attack analysis.",
+        "List contributions including simulations.",
+        "Show survey organization figure."
+      ],
+      "why_it_works": "Pairs clear scope with a visual roadmap and unique angle (simulations).",
+      "evidence_locators": [
+        "L60-L190"
+      ]
+    },
+    {
+      "title": "Attack surface to taxonomy bridge",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Define entry points for UAVs/FANETs.",
+        "Map attacks to those entry points.",
+        "Summarize threats per category."
+      ],
+      "why_it_works": "Grounds taxonomy in concrete surfaces, aiding defense mapping.",
+      "evidence_locators": [
+        "L310-L380"
+      ]
+    },
+    {
+      "title": "Simulation-backed attack analysis",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK"
+      ],
+      "steps": [
+        "Select representative attacks (e.g., routing).",
+        "Set realistic simulation parameters and metrics.",
+        "Report impact on performance.",
+        "Discuss implications for defenses."
+      ],
+      "why_it_works": "Adds empirical weight to the survey and informs priorities.",
+      "evidence_locators": [
+        "L380-L450"
+      ]
+    },
+    {
+      "title": "Prevention vs detection solution grouping",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Group solutions into preventive and detection/IDS buckets.",
+        "Note limitations and overhead for each group.",
+        "Tie back to attack categories."
+      ],
+      "why_it_works": "Keeps defenses organized and linked to threats.",
+      "evidence_locators": [
+        "L450-L520"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "OCR artifacts in author block and tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; acronym table excluded. Simulations described but exact figures not parsed here."
+}

@@ -5,6 +5,9 @@
 
 ---
 
+**UYARI (2026-01-10):** Structure Analysis sonrasindaki script/regex tabanli ciktilar hatali kabul edildi. Tum cikarsimlar LLM destekli yeniden yapilacak.
+
+
 ## 🎯 Nedir?
 
 **Golden Model**, 76 IEEE COMST survey makalesinin tersine mühendislik (reverse engineering) yöntemiyle analiz edilmesiyle oluşturulan bir **yazım kılavuzudur**. Bu model:
@@ -25,54 +28,75 @@ içerir ve O-ISAC survey çalışmasının IEEE COMST standartlarında yazılmas
 | 2025-11 | PDF Toplama | 76 IEEE COMST makalesi (2020-2025 arası) indirildi |
 | 2025-11 | Digitization | `marker-pdf` ile PDF → Markdown dönüşümü yapıldı |
 | 2025-12 | Standardization | Dosyalar `COMST_001-076` formatında standartlaştırıldı |
-| 2025-12 | Structure Analysis | `extract_structure.py` ile bölüm yapıları çıkarıldı |
-| 2025-12 | Phrasebank Mining | `extract_phrasebank.py` ile 1700+ kalıp cümle çıkarıldı |
-| 2025-12 | Style Analysis | Paragraf istatistikleri, atıf tazeliği analiz edildi |
-| 2025-12 | Rhetoric Analysis | Transition kelimeleri ve tablo referans dili belirlendi |
-| 2025-12 | Synthesis | `synthesis_report.md` ana blueprint olarak oluşturuldu |
-| 2026-01-05 | Memory-Bank Entegrasyonu | Bu dosya oluşturuldu |
+| 2026-01 | Legacy ciktilar gozden cikarildi | Script/regex tabanli structure/phrase/rhetoric cikarsimlar hatali kabul edildi |
+| 2026-01 | LLM Structure Rebuild (planli) | 76 Markdown dosyasindan LLM destekli heading/kategori/kelime butcesi cikartilacak |
+| 2026-01 | LLM Phrasebank & Rhetoric (planli) | LLM ile paragraf orneklemeleri yapilip transition/caption fiilleri yeniden derlenecek |
+| 2026-01 | LLM Blueprint Synthesis (planned) | New analysis/llm_synthesis_report.md and writing_recipes/COMST_master_recipe_llm.md will be synthesized; downstream artifacts updated accordingly |
 
 ---
 
-## 📁 Golden Model Dosya Haritası
+## ? Analysis Policy (LLM Reconstruction)
 
-### Ana Çıktılar (Yazım Sırasında Kullan)
+- Include: Abstract through Conclusion/Challenges (main body only).
+- Exclude: References, author bios/photos, acknowledgments, appendix, nomenclature.
+- Rationale: non-body content inflates word budgets and distorts section ratios and correlations.
 
-| Dosya | Amaç | Öncelik |
-|-------|------|---------|
-| `analysis/synthesis_report.md` | **ANA BLUEPRINT** — 7 bölümlü kapsamlı yazım rehberi | ⭐⭐⭐ |
-| `analysis/phrasebank.json` | 1700+ akademik kalıp cümle (5 kategori) | ⭐⭐⭐ |
-| `analysis/layout_stats.json` | Section bazlı kelime bütçeleri | ⭐⭐ |
+## ?? Golden Model Dosya Haritas?
 
-### Destekleyici Analizler
+### Core LLM Artifacts (Authoritative)
 
-| Dosya | İçerik |
-|-------|--------|
-| `analysis/corpus_structure.json` | 76 makalenin detaylı bölüm yapısı |
-| `analysis/rhetoric_report.json` | Transition kelimeleri ve fiil kullanımı |
-| `analysis/stylometric_report.json` | Atıf tazeliği, paragraf dinamikleri |
+| File | Purpose | Priority |
+|------|---------|----------|
+| `analysis/llm_structure_model.json` | Section flow, frequency, objectives, word budgets | High |
+| `analysis/llm_rhetoric_model.json` | Rhetorical moves, transitions, caption verbs | High |
+| `analysis/llm_phrasebank.json` | LLM-extracted phrase templates by function | High |
+| `analysis/llm_analysis_cards/COMST_XXX.json` | Per-paper analysis card | High |
+| `analysis/llm_synthesis_report.md` | New golden blueprint narrative | High |
+| `writing_recipes/COMST_master_recipe_llm.md` | Actionable writing recipe | High |
 
-### Analiz Scriptleri
+### Supporting LLM Artifacts (Optional)
 
-| Script | İşlev |
-|--------|-------|
-| `analysis/extract_structure.py` | Bölüm yapısı çıkarma |
-| `analysis/extract_phrasebank.py` | Kalıp cümle çıkarma |
-| `analysis/analyze_layout.py` | Görsel yoğunluğu ve kelime sayısı |
-| `analysis/analyze_style.py` | Stilometrik analiz |
-| `analysis/analyze_rhetoric.py` | Retorik pattern analizi |
-| `analysis/standardize_corpus.py` | COMST dosyalarını standartlaştırma |
+| File | Purpose |
+|------|---------|
+| `analysis/llm_visual_table_patterns.json` | Figure/table types, placement logic, caption patterns |
+| `analysis/llm_taxonomy_patterns.json` | Taxonomy axes, branch patterns, lesson rules |
+| `analysis/llm_sampling_log.md` | Calibration/validation sample list and notes |
+| `analysis/llm_decision_log.md` | Decisions, revisions, assumptions |
 
-### Ham Veri
+### Legacy Artifacts (Reference Only)
 
-| Klasör | İçerik | Sayı |
-|--------|--------|------|
-| `data/comstPrev/` | Orijinal COMST PDF dosyaları | 77 PDF |
-| `data/processed_markdowns_comstPrev/` | Markdown dönüşümleri (uzun isimli) | 77 klasör |
-| `data/corpus_standardized/` | Standartlaştırılmış Markdown (COMST_XXX) | 76 klasör |
+| File | Status |
+|------|--------|
+| `analysis/synthesis_report.md` | Legacy, script-derived; not authoritative |
+| `analysis/phrasebank.json` | Legacy, script-derived; not authoritative |
+| `analysis/layout_stats.json` | Legacy, script-derived; not authoritative |
+| `analysis/corpus_structure.json` | Legacy, script-derived; not authoritative |
+| `analysis/rhetoric_report.json` | Legacy, script-derived; not authoritative |
+| `analysis/stylometric_report.json` | Legacy, script-derived; not authoritative |
+| `analysis/writing_blueprints_master.json` | Legacy, old pipeline output |
+
+### Legacy Scripts (Do Not Use for New Synthesis)
+
+> Note: script outputs are legacy and considered incorrect; keep only for reference.
+
+| Script | Legacy role |
+|--------|-------------|
+| `analysis/extract_structure.py` | Legacy structure extraction |
+| `analysis/extract_phrasebank.py` | Legacy phrasebank extraction |
+| `analysis/analyze_layout.py` | Legacy layout and word budget stats |
+| `analysis/analyze_style.py` | Legacy stylometric analysis |
+| `analysis/analyze_rhetoric.py` | Legacy rhetoric pattern analysis |
+| `analysis/standardize_corpus.py` | Legacy corpus standardization |
+
+### Raw Data
+
+| Folder | Contents | Count |
+|--------|----------|-------|
+| `data/comstPrev/` | Original COMST PDFs | 77 PDF |
+| `data/processed_markdowns_comstPrev/` | Markdown conversions (long names) | 77 folders |
+| `data/corpus_standardized/` | Standardized markdown (COMST_XXX) | 76 folders |
 
 ---
-
 ## 📊 Temel Bulgular (Özet)
 
 ### Yapısal Standartlar

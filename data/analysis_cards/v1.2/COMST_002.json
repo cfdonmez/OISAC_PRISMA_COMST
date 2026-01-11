@@ -1,0 +1,981 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_002",
+    "title": "A Comprehensive Survey on Full-Duplex Communication: Current Solutions, Future Trends, and Open Issues",
+    "paper_meta": {
+        "doi": "10.1109/COMST.2023.3318198",
+        "year_online": "2023",
+        "year_issue": "2023",
+        "venue": "IEEE COMST",
+        "source_path": "data/corpus_standardized/COMST_002/COMST_002.md"
+    },
+    "analysis_policy": {
+        "include_scope": "Abstract through Section X Conclusion (main body only)",
+        "exclude_scope": "Nomenclature section at start, References (L1300+), author bios",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Paper uses Roman numeral section headings with extensive mathematical formulations and case studies in each major section"
+    },
+    "document_stats": {
+        "approx_word_count_total": 32000,
+        "approx_token_count_total": 45000,
+        "equation_count_est": 28,
+        "figure_count_est": 18,
+        "table_count_est": 12,
+        "list_count_est": 85,
+        "citation_count_in_body_est": 360,
+        "citation_density_per_1k_words_est": 11.3,
+        "definition_box_or_glossary_present": "yes",
+        "notation_table_present": "yes"
+    },
+    "normalization": {
+        "section_ontology": "INTRO|RELATED|SYSTEM_MODEL|TAXONOMY|EVALUATION|CHALLENGES|CONCLUSION|OTHER",
+        "section_order_canonical": [
+            "INTRO",
+            "SYSTEM_MODEL",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "CHALLENGES",
+            "CONCLUSION"
+        ],
+        "mapping_notes": "Section I→INTRO, Section II (FD Fundamentals)→SYSTEM_MODEL, Sections III-VIII (FD Integration Topics)→OTHER (each covers a specific integration domain), Section IX→CHALLENGES, Section X→CONCLUSION"
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "I. Introduction",
+                "A. Existing Survey Papers and Organization"
+            ],
+            "objective": "Establish FD as game-changer for 5G/beyond, position against prior surveys via comprehensive comparison table, articulate three-part contribution structure",
+            "key_components": [
+                "5G context and FD promise",
+                "Survey comparison table (Table I)",
+                "Three contribution bullets",
+                "Paper outline"
+            ],
+            "approx_word_share_pct": 5,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 6
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Taxonomy figure (Fig 1) as visual roadmap",
+                "Comparison table with checkmarks for gap demonstration"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Hook: FD can double spectral efficiency",
+                    "locator": {
+                        "heading": "I. Introduction",
+                        "line_range": "L47-50"
+                    }
+                },
+                {
+                    "claim": "Gap: existing surveys lack comprehensive FD integration coverage",
+                    "locator": {
+                        "heading": "A. Existing Survey Papers and Organization",
+                        "line_range": "L87-88"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "SYSTEM_MODEL",
+            "raw_headings": [
+                "II. Full-Duplex Fundamentals",
+                "A. Structure of In-Band Full-Duplex Transceiver",
+                "B. Classical Self-Interference Mitigation",
+                "C. Machine Learning-Based Self-Interference Mitigation"
+            ],
+            "objective": "Provide technical foundations: transceiver architecture, SI types, and comprehensive coverage of classical and ML-based SI cancellation techniques",
+            "key_components": [
+                "IBFD transceiver block diagram",
+                "Three SI types (leakage, direct, reflected)",
+                "Passive suppression techniques",
+                "Analog-domain cancellation",
+                "Digital-domain cancellation",
+                "ML-based approaches",
+                "Summary tables (Table II, III)"
+            ],
+            "approx_word_share_pct": 15,
+            "positioning": {
+                "start_doc_progress_pct_est": 6,
+                "end_doc_progress_pct_est": 20
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Takeaways and Potential Directions boxes after each subsection",
+                "Mathematical modeling of nonlinearity",
+                "Summary tables for SI techniques"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Three SI types enumerated",
+                    "locator": {
+                        "heading": "A. Structure of In-Band Full-Duplex Transceiver",
+                        "line_range": "L127-145"
+                    }
+                },
+                {
+                    "claim": "ML-based SI mitigation summary table",
+                    "locator": {
+                        "heading": "Table III",
+                        "line_range": "L318-342"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "III. Coexistence of Full-Duplex and Cooperative Networks",
+                "A. One-Way Full-Duplex Relaying",
+                "B. Two-Way Full-Duplex Relaying"
+            ],
+            "objective": "Systematically review FD integration with cooperative communications, covering one-way and two-way relaying with summary tables",
+            "key_components": [
+                "One-way relaying protocols",
+                "Two-way relaying protocols",
+                "Performance analysis",
+                "Beamforming and spatial SI mitigation",
+                "Buffer-aided relay systems",
+                "Summary tables (Table IV, V)"
+            ],
+            "approx_word_share_pct": 10,
+            "positioning": {
+                "start_doc_progress_pct_est": 20,
+                "end_doc_progress_pct_est": 30
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Systematic literature categorization by relay protocol and antenna configuration",
+                "Network coding discussion",
+                "Clear taxonomy of relay types"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Summary table for one-way FD relaying",
+                    "locator": {
+                        "heading": "Table IV",
+                        "line_range": "L386-410"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "IV. Coexistence of Full-Duplex and Conventional Cellular Networks",
+                "A. Single- and Multi-Cell Full-Duplex Cellular Networks",
+                "B. Full-Duplex Heterogeneous Cellular Networks",
+                "C. Case Study and Discussion"
+            ],
+            "objective": "Analyze FD in cellular networks from single-cell to HetNets, with case study demonstrating SI cancellation impact",
+            "key_components": [
+                "Single-cell FD",
+                "Multi-cell FD",
+                "HetNets with decoupled user association",
+                "Case study with equations",
+                "Summary tables (Table VI, VII)"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 30,
+                "end_doc_progress_pct_est": 42
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Mathematical case study with figures showing SI impact",
+                "Decoupled user association detailed discussion"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Case study: achievable sum-rate analysis",
+                    "locator": {
+                        "heading": "C. Case Study and Discussion",
+                        "line_range": "L533-608"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "V. Full-Duplex and Cognitive Radio Networks",
+                "A. Cognitive Radio Networks",
+                "B. Motivation for Employing Full-Duplex Cognitive Radios",
+                "C. Full-Duplex Cognitive Radio Network Architectures",
+                "D. Case Study and Discussion",
+                "E. Future Research Direction"
+            ],
+            "objective": "Cover FD-CRN integration: spectrum sensing, architectures (interweave, underlay, overlay, hybrid), with case study and future directions",
+            "key_components": [
+                "CRN fundamentals",
+                "Listen-and-Talk protocol",
+                "Four CRN architectures",
+                "Case study with outage analysis",
+                "Summary table (Table VIII)"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 42,
+                "end_doc_progress_pct_est": 52
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Complete CRN taxonomy",
+                "Four-architecture classification",
+                "Case study with optimization problem formulation"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "FD CRN architectures figure",
+                    "locator": {
+                        "heading": "Fig. 9",
+                        "line_range": "L639-642"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "VI. Full-Duplex Communication and NOMA",
+                "A. Full-Duplex PD-NOMA",
+                "B. Case Study and Discussion"
+            ],
+            "objective": "Analyze FD-NOMA integration for cooperative and cellular scenarios, with case study comparing FD/HD NOMA",
+            "key_components": [
+                "PD-NOMA and CD-NOMA overview",
+                "User-assisted cooperative NOMA",
+                "Relay-assisted cooperative NOMA",
+                "Cellular NOMA",
+                "Case study with rate analysis",
+                "Summary table (Table IX)"
+            ],
+            "approx_word_share_pct": 8,
+            "positioning": {
+                "start_doc_progress_pct_est": 52,
+                "end_doc_progress_pct_est": 60
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Numerical comparison figures",
+                "Hybrid-duplex recommendation"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "FD NOMA case study results",
+                    "locator": {
+                        "heading": "Fig. 13",
+                        "line_range": "L817-828"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S07",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "VII. Full-Duplex Communication and Security",
+                "A. Full-Duplex Communication and Physical Layer Security",
+                "B. Full-Duplex Communication and Proactive Eavesdropping",
+                "C. Full-Duplex Covert Communication"
+            ],
+            "objective": "Comprehensive security analysis including PLS, proactive eavesdropping, and covert communications with FD",
+            "key_components": [
+                "PLS fundamentals with Wyner's wiretap model",
+                "Covert communication concepts",
+                "Proactive eavesdropping paradigm",
+                "Self-protection schemes",
+                "Cooperative jamming",
+                "Summary table (Table X)"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 60,
+                "end_doc_progress_pct_est": 72
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Triple-concept security taxonomy (PLS, covert, proactive)",
+                "Multiple scenario figures"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Security concepts: PLS, covert, proactive eavesdropping",
+                    "locator": {
+                        "heading": "VII. Full-Duplex Communication and Security",
+                        "line_range": "L833-841"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S08",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "VIII. Full-Duplex and Energy Harvesting"
+            ],
+            "objective": "Review FD with wireless power transfer including WPCN and SWIPT scenarios",
+            "key_components": [
+                "WPCN system model",
+                "SWIPT integration",
+                "Resource allocation",
+                "Summary literature"
+            ],
+            "approx_word_share_pct": 6,
+            "positioning": {
+                "start_doc_progress_pct_est": 72,
+                "end_doc_progress_pct_est": 78
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Energy harvesting model integration"
+            ],
+            "evidence_locators": []
+        },
+        {
+            "section_id": "S09",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "IX. Future Research Directions"
+            ],
+            "objective": "Articulate emerging FD technologies: cell-free massive MIMO, mmWave, UAV, BackCom, RIS, and other miscellaneous",
+            "key_components": [
+                "Cell-free massive MIMO FD",
+                "mmWave FD",
+                "UAV-aided FD",
+                "BackCom FD",
+                "RIS-assisted FD",
+                "Other technologies (VLC, ISAC, AoI, etc.)"
+            ],
+            "approx_word_share_pct": 15,
+            "positioning": {
+                "start_doc_progress_pct_est": 78,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Forward-looking technology integration",
+                "Detailed subsections per emerging technology"
+            ],
+            "evidence_locators": []
+        },
+        {
+            "section_id": "S10",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "X. Conclusion"
+            ],
+            "objective": "Synthesize survey contributions and reinforce value proposition",
+            "key_components": [
+                "Summary of coverage",
+                "Reiteration of contribution areas"
+            ],
+            "approx_word_share_pct": 2,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "contribution"
+            ],
+            "notable_moves": [
+                "Concise wrap-up"
+            ],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_contract": {
+        "intro_move_sequence": [
+            "hook",
+            "gap",
+            "yes_but",
+            "contribution",
+            "organization_map"
+        ],
+        "move_evidence": [
+            {
+                "move": "hook",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L47-50"
+                }
+            },
+            {
+                "move": "gap",
+                "locator": {
+                    "heading": "A. Existing Survey Papers and Organization",
+                    "line_range": "L86-88"
+                }
+            },
+            {
+                "move": "contribution",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L89-96"
+                }
+            },
+            {
+                "move": "organization_map",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L99-106"
+                }
+            }
+        ],
+        "reader_contract_pattern": "We survey FD fundamentals and integration with emerging wireless technologies; structured as fundamentals followed by technology-specific integration chapters each containing systematic literature review, case study, and future directions."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "by use-case",
+        "axes": [
+            "SI cancellation domain (passive/analog/digital/ML)",
+            "Integration technology (cooperative/cellular/CRN/NOMA/security/EH)",
+            "Architecture type",
+            "Protocol type"
+        ],
+        "levels_est": 3,
+        "node_count_est": 50,
+        "branches": [
+            "FD Fundamentals",
+            "Cooperative Networks",
+            "Cellular Networks",
+            "CRNs",
+            "NOMA",
+            "Security",
+            "Energy Harvesting",
+            "Future Directions"
+        ],
+        "taxonomy_figure_present": "yes",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [
+                "F01"
+            ],
+            "table_ids": [
+                "T01",
+                "T02",
+                "T03",
+                "T04",
+                "T05",
+                "T06",
+                "T07",
+                "T08",
+                "T09",
+                "T10"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Spectral efficiency",
+            "Energy efficiency",
+            "Self-interference cancellation",
+            "Outage probability",
+            "Secrecy rate",
+            "Achievable rate"
+        ],
+        "tradeoff_axes": [
+            "SE vs SI cancellation capability",
+            "FD gain vs hardware complexity",
+            "Security vs overhead"
+        ],
+        "where_used": [
+            {
+                "section": "S02",
+                "table_ids": [
+                    "T02",
+                    "T03"
+                ]
+            },
+            {
+                "section": "S03",
+                "table_ids": [
+                    "T04",
+                    "T05"
+                ]
+            },
+            {
+                "section": "S04",
+                "table_ids": [
+                    "T06",
+                    "T07"
+                ]
+            }
+        ]
+    },
+    "visual_strategy": {
+        "global_layout_logic": "Each major section follows consistent pattern: taxonomy/architecture figure at start, scenario schematics for sub-topics, case study figures with numerical results, and summary table at end. This pattern repeats for each integration domain (Sections III-VIII), creating predictable reader navigation.",
+        "artifact_inventory": {
+            "figures": [
+                {
+                    "id": "F01",
+                    "type": "taxonomy",
+                    "purpose": "taxonomy anchor",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 5
+                    },
+                    "locator": "L101-104"
+                },
+                {
+                    "id": "F02",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 8
+                    },
+                    "locator": "L129-132"
+                },
+                {
+                    "id": "F03",
+                    "type": "taxonomy",
+                    "purpose": "taxonomy anchor",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 12
+                    },
+                    "locator": "L153-156"
+                },
+                {
+                    "id": "F04",
+                    "type": "scenario",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 22
+                    },
+                    "locator": "L352-355"
+                }
+            ],
+            "tables": [
+                {
+                    "id": "T01",
+                    "type": "survey comparison",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 4
+                    },
+                    "locator": "L65-82"
+                },
+                {
+                    "id": "T02",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 17
+                    },
+                    "locator": "L247-276"
+                },
+                {
+                    "id": "T03",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 19
+                    },
+                    "locator": "L318-342"
+                }
+            ]
+        },
+        "caption_style_metrics": {
+            "caption_verbs_top": [
+                {
+                    "verb": "shows",
+                    "freq_est": 6
+                },
+                {
+                    "verb": "illustrates",
+                    "freq_est": 4
+                },
+                {
+                    "verb": "comparison",
+                    "freq_est": 3
+                }
+            ],
+            "avg_caption_length_est": 20
+        }
+    },
+    "synthesis": {
+        "synthesis_style": "tutorial",
+        "comparative_synthesis_degree": "high",
+        "lesson_blocks": [
+            {
+                "location": "II.B.1 (Passive SIS)",
+                "lesson": "Passive SI cancellation is necessary but insufficient alone; requires combination with active methods for practical FD",
+                "locator": "L204-207"
+            },
+            {
+                "location": "II.B.2 (Analog)",
+                "lesson": "Trade-off between hardware costs and SI cancellation capability remains a practical obstacle",
+                "locator": "L223-227"
+            },
+            {
+                "location": "II.B.3 (Digital)",
+                "lesson": "Hybrid analog+digital approach is necessary; digital alone insufficient without prior analog cancellation",
+                "locator": "L292-295"
+            },
+            {
+                "location": "II.C (ML)",
+                "lesson": "ML-based approaches excel at modeling nonlinear functions but practical limitations with time-varying SI channels persist",
+                "locator": "L344-345"
+            },
+            {
+                "location": "V.E (CRN Future)",
+                "lesson": "Efficient use of FD in CRNs requires redesign of network protocols across MAC, network, and physical layers",
+                "locator": "L738-744"
+            }
+        ],
+        "aha_moment": "FD is not a standalone technology but a multiplier that supercharges other wireless technologies; the paper's structure itself demonstrates this by systematically analyzing FD integration with 8+ distinct domains using a consistent analytical framework."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Section opens with domain-specific context, then outlines subsection structure with brief motivation for each",
+        "math_handling_strategy": "progressive deepening",
+        "listicle_usage": "heavy",
+        "signposting_devices": [
+            "We begin with",
+            "Next, we discuss",
+            "More specifically",
+            "It is worth noting",
+            "Therefore"
+        ],
+        "definition_density_est": "medium"
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Consistent Integration Chapter Structure",
+            "steps": [
+                "Open chapter with domain-specific context and motivation paragraphs",
+                "Present taxonomy figure for the integration domain",
+                "Organize literature by sub-categories (e.g., one-way/two-way, single-cell/multi-cell)",
+                "Include summary table with systematic literature categorization",
+                "Provide mathematical case study with numerical results",
+                "Close with 'Case Study and Discussion' and optionally 'Future Research Direction'"
+            ],
+            "applies_to_sections": [
+                "OTHER"
+            ],
+            "why_it_works": "Creates predictable reader navigation across multiple integration domains; readers can jump to any chapter and find consistent structure; demonstrates analytical rigor while maintaining accessibility",
+            "evidence_locators": [
+                {
+                    "heading": "Sections III-VIII",
+                    "line_range": "L346-1100"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Takeaways and Potential Directions Pattern",
+            "steps": [
+                "After reviewing a technical topic, insert labeled 'Takeaways and Potential Directions' block",
+                "State key engineering insights in 2-3 sentences",
+                "Identify practical challenges or trade-offs",
+                "Suggest specific future research opportunities"
+            ],
+            "applies_to_sections": [
+                "SYSTEM_MODEL",
+                "OTHER"
+            ],
+            "why_it_works": "Transforms detailed technical review into actionable guidance; provides natural pause points for reader reflection; explicitly bridges review to future work",
+            "evidence_locators": [
+                {
+                    "heading": "Takeaways and Potential Directions",
+                    "line_range": "L204-207"
+                },
+                {
+                    "heading": "Takeaways and Potential Directions",
+                    "line_range": "L223-227"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Case Study with Comparative Analysis",
+            "steps": [
+                "Define system model with mathematical notation and block diagram",
+                "Formulate optimization problem or derive performance metrics",
+                "Present numerical results comparing proposed/analyzed approach with baselines (e.g., FD vs HD)",
+                "Provide engineering interpretation of results",
+                "State key observations explicitly"
+            ],
+            "applies_to_sections": [
+                "OTHER"
+            ],
+            "why_it_works": "Demonstrates analytical depth beyond pure literature review; provides concrete numerical validation; allows readers to understand trade-offs visually",
+            "evidence_locators": [
+                {
+                    "heading": "C. Case Study and Discussion (Cellular)",
+                    "line_range": "L533-608"
+                },
+                {
+                    "heading": "D. Case Study and Discussion (CRN)",
+                    "line_range": "L682-735"
+                },
+                {
+                    "heading": "B. Case Study and Discussion (NOMA)",
+                    "line_range": "L762-830"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Survey Comparison Table Authority Building",
+            "steps": [
+                "Create comprehensive comparison table of prior surveys",
+                "Define contribution dimensions as column headers with abbreviations",
+                "Use checkmarks to show coverage gaps in prior work",
+                "Include 'This paper' row demonstrating comprehensive coverage",
+                "Reference table explicitly in narrative"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "RELATED"
+            ],
+            "why_it_works": "Visually establishes authority and novelty; readers immediately see survey's unique contribution; checkmark matrix is highly scannable",
+            "evidence_locators": [
+                {
+                    "heading": "Table I",
+                    "line_range": "L65-82"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Technology Integration Taxonomy",
+            "steps": [
+                "Create master taxonomy figure showing all integration domains",
+                "Use hierarchical tree or radial layout",
+                "Place at end of introduction or start of body",
+                "Reference throughout paper as organizational anchor"
+            ],
+            "applies_to_sections": [
+                "INTRO"
+            ],
+            "why_it_works": "Provides visual roadmap for entire survey; helps readers understand scope at a glance; serves as reference point for navigation",
+            "evidence_locators": [
+                {
+                    "heading": "Fig. 1",
+                    "line_range": "L101-104"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Systematic Literature Summary Table",
+            "steps": [
+                "Create table with columns: Literature, System Setup/Protocol, Technical Contribution",
+                "Group references by category (e.g., cooperative vs cellular, SISO vs MIMO)",
+                "Use checkmarks or abbreviations for system characteristics",
+                "Place at end of each major subsection"
+            ],
+            "applies_to_sections": [
+                "OTHER",
+                "TAXONOMY"
+            ],
+            "why_it_works": "Compresses large literature review into scannable format; enables readers to locate relevant work quickly; demonstrates comprehensive coverage",
+            "evidence_locators": [
+                {
+                    "heading": "Table IV",
+                    "line_range": "L386-410"
+                },
+                {
+                    "heading": "Table VI",
+                    "line_range": "L468-512"
+                },
+                {
+                    "heading": "Table VIII",
+                    "line_range": "L659-679"
+                }
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [
+            "Some HTML span tags for page anchors",
+            "Complex table formatting with line breaks"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [
+            "Exact figure count verification needed for later sections"
+        ],
+        "confidence": "high"
+    },
+    "notes": "Exemplary 'technology integration survey' pattern where a core technology (FD) is systematically analyzed across multiple application domains. Key distinguishing features: (1) Consistent chapter structure across integration domains, (2) Mathematical case studies with numerical results in each chapter, (3) Takeaways boxes after technical subsections, (4) Heavy use of summary tables. The paper achieves encyclopedic coverage while maintaining analytical depth through the case study mechanism."
+}

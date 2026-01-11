@@ -1,0 +1,669 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_013",
+  "title": "A Survey on IEEE 802.11bn Wi-Fi 8: Advantages of Ultra High Reliability for Next Generation Wireless LANs",
+  "year_online": "2025",
+  "year_issue": "2025",
+  "year_source": "unknown",
+  "domain": "Wi-Fi 8 (IEEE 802.11bn) ultra-high reliability",
+  "source_path": "data/corpus_standardized/COMST_013/COMST_013.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Abbreviation and comparison tables inside body counted as visuals; stop before references."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 23726,
+    "approx_token_count_total": null,
+    "equation_count_est": 0,
+    "figure_count_est": 38,
+    "table_count_est": 8,
+    "list_count_est": 140,
+    "citation_count_in_body_est": 238,
+    "citation_density_per_1k_words_est": 10.0,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "no",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. The Evolution of WLAN and Motivation",
+        "B. Related Work",
+        "C. Contributions"
+      ],
+      "objective": "Motivate Wi-Fi 8 UHR, show evolution/timeline, contrast with prior Wi-Fi surveys, state contributions and paper map.",
+      "key_components": [
+        "Problem framing: Wi-Fi 7 limits for reliability/latency in dense deployments",
+        "Timeline figure for standards evolution",
+        "Related-survey comparison table to surface gap",
+        "Explicit contributions and organization"
+      ],
+      "approx_word_share_pct": "12-15",
+      "approx_words_est": 3071,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Uses a glossary table and a survey-comparison table inside the intro to assert novelty",
+        "Employs a timeline figure and structure figure to orient readers early"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States Wi-Fi 7 cannot meet UHR reliability/latency in dense scenarios, motivating 802.11bn.",
+          "locator": {
+            "heading": "A. The Evolution of WLAN and Motivation",
+            "paragraph_index_est": 2,
+            "line_range_est": "L35-L70"
+          }
+        },
+        {
+          "claim": "Compares existing surveys and notes lack of full Wi-Fi 8/UHR coverage.",
+          "locator": {
+            "heading": "B. Related Work",
+            "paragraph_index_est": 1,
+            "line_range_est": "L90-L140"
+          }
+        },
+        {
+          "claim": "Lists contributions and provides organization roadmap with figures.",
+          "locator": {
+            "heading": "C. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L140-L185"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. PHY TECHNOLOGY ENHANCEMENT",
+        "A. Distributed Resource Unit",
+        "B. Modulation and Coding Scheme",
+        "C. 2x Low-Density Parity-Check",
+        "Key Takeaways",
+        "Summary of PHY Technology Enhancement"
+      ],
+      "objective": "Explain UHR-oriented PHY enhancements (DRU, MCS, 2xLDPC) with signaling logic and summarize lessons.",
+      "key_components": [
+        "Problem context for each feature (e.g., interference, coding gain)",
+        "Mechanism description and signaling steps",
+        "Pros/cons analysis",
+        "Key takeaways bullet block after each feature",
+        "Section summary"
+      ],
+      "approx_word_share_pct": "30-35",
+      "approx_words_est": 7813,
+      "positioning": {
+        "start_doc_progress_pct_est": 18,
+        "end_doc_progress_pct_est": 51
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Repeats a feature-description plus Key Takeaways pattern to compress lessons",
+        "Uses tables to list PHY enhancements and reference sources"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces DRU, MCS, and 2xLDPC with reliability rationale, each ending with key takeaways.",
+          "locator": {
+            "heading": "II. PHY TECHNOLOGY ENHANCEMENT",
+            "paragraph_index_est": 1,
+            "line_range_est": "L190-L320"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "III. MAC TECHNOLOGY ENHANCEMENT",
+        "A. Seamless Mobility Domain",
+        "B. HiP Enhanced Distributed Channel Access",
+        "C. Non-Primary Channel Access",
+        "D. Dynamic Subband Operation",
+        "Key Takeaways",
+        "Summary of MAC Technology Enhancement"
+      ],
+      "objective": "Detail MAC-layer UHR features (SMD, HiP-EDCA, NPCA, DSO) and distill actionable lessons.",
+      "key_components": [
+        "Problem framing per feature (mobility, contention, spectrum use)",
+        "Signaling flow and operation description",
+        "Performance or overhead discussion",
+        "Key Takeaways blocks after each feature",
+        "Section summary"
+      ],
+      "approx_word_share_pct": "25-30",
+      "approx_words_est": 6565,
+      "positioning": {
+        "start_doc_progress_pct_est": 51,
+        "end_doc_progress_pct_est": 78
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Mirrors PHY section pattern to maintain rhythm: mechanism then Key Takeaways",
+        "Highlights multi-AP coordination and contention handling as recurring themes"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers SMD, HiP-EDCA, NPCA, and DSO with operational logic and takeaways.",
+          "locator": {
+            "heading": "III. MAC TECHNOLOGY ENHANCEMENT",
+            "paragraph_index_est": 1,
+            "line_range_est": "L320-L460"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. AI/ML IN UHR",
+        "TABLE VII LIST OF CSI AND RELEVANT EFFORTS",
+        "A. AI/ML in PHY",
+        "B. AI/ML in MAC",
+        "C. AI/ML in Cross-Layer",
+        "D. Conclusions and Future Directions"
+      ],
+      "objective": "Map AI/ML use cases across PHY, MAC, and cross-layer for UHR and summarize future integration directions.",
+      "key_components": [
+        "Layered categorization of AI/ML applications",
+        "CSI/feedback table to ground examples",
+        "Case snippets for channel access, compression, and scheduling",
+        "Future direction remarks"
+      ],
+      "approx_word_share_pct": "14-18",
+      "approx_words_est": 3893,
+      "positioning": {
+        "start_doc_progress_pct_est": 78,
+        "end_doc_progress_pct_est": 94
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Places a CSI/efforts table upfront to anchor the AI/ML taxonomy",
+        "Ends with future directions that tie back to earlier layer-wise gaps"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Classifies AI/ML roles by PHY, MAC, and cross-layer with supporting table.",
+          "locator": {
+            "heading": "IV. AI/ML IN UHR",
+            "paragraph_index_est": 1,
+            "line_range_est": "L470-L560"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "V. CURRENT CHALLENGES AND FUTURE DIRECTIONS",
+        "A. Current Challenges",
+        "B. Open Issues",
+        "C. Future Directions"
+      ],
+      "objective": "Summarize challenges and open issues for UHR PHY/MAC/AI features and point to research directions.",
+      "key_components": [
+        "Reliability and latency hurdles per feature group",
+        "Standardization gaps",
+        "Prospective research themes linked to earlier sections"
+      ],
+      "approx_word_share_pct": "7-9",
+      "approx_words_est": 1954,
+      "positioning": {
+        "start_doc_progress_pct_est": 94,
+        "end_doc_progress_pct_est": 99
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Challenges mirror the earlier PHY/MAC/AI structure for continuity"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists challenges and future directions aligned with PHY/MAC/AI themes.",
+          "locator": {
+            "heading": "V. CURRENT CHALLENGES AND FUTURE DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L560-L630"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VI. CONCLUSION"
+      ],
+      "objective": "Close the survey by reiterating UHR scope and linking to future work.",
+      "key_components": [
+        "Recap of PHY/MAC/AI highlights",
+        "Pointer to open research agenda"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 181,
+      "positioning": {
+        "start_doc_progress_pct_est": 99,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Conclusion is brief, restating reliability focus and future needs"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Restates UHR focus and future directions succinctly.",
+          "locator": {
+            "heading": "VI. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L630-L665"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights Wi-Fi 7 throughput but notes reliability/latency shortfalls in dense deployments.",
+      "locator": "L10-L60"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States lack of comprehensive Wi-Fi 8/UHR survey covering PHY, MAC, and AI/ML.",
+      "locator": "L90-L150"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Existing Wi-Fi surveys focus on Wi-Fi 7 or narrow topics like MAP-Co or AI without UHR scope.",
+      "locator": "L100-L150"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions: deep dive into PHY/MAC enhancements, AI/ML roles, and challenges.",
+      "locator": "L140-L185"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides roadmap and references structure figure early.",
+      "locator": "L140-L185"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on Wi-Fi 8 (802.11bn) reliability features and AI/ML integration, excluding broader wireless topics.",
+      "locator": "L120-L185"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate Wi-Fi 8 reliability gap; compare surveys; dive into PHY then MAC features with takeaways; add AI/ML layer taxonomy; end with challenges and concise conclusion."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by layer",
+    "axes": [
+      "Layer (PHY, MAC, cross-layer AI/ML)",
+      "Reliability lever (resource, coding, access, learning)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 4,
+    "branches": [
+      "PHY enhancements (DRU, MCS, 2xLDPC)",
+      "MAC enhancements (SMD, HiP-EDCA, NPCA, DSO)",
+      "AI/ML applications (CSI compression, channel access, cross-layer)",
+      "Challenges/future directions mirroring layers"
+    ],
+    "taxonomy_figure_present": "no",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [],
+      "table_ids": [
+        "T02"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro packs a glossary table, survey comparison table, and timeline figure; each major technical section interleaves figures with feature explanations and ends with key-takeaway bullets; AI/ML section anchors with a CSI efforts table.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "timeline",
+        "purpose": "orient reader to Wi-Fi evolution and motivate UHR",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 6
+        },
+        "evidence_locator": "L40-L80"
+      },
+      {
+        "figure_id": "F02",
+        "type": "organization",
+        "purpose": "show structure of the paper",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 14
+        },
+        "evidence_locator": "L120-L160"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "differentiate this Wi-Fi 8 survey from prior work",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 12
+        },
+        "evidence_locator": "L90-L140"
+      },
+      {
+        "table_id": "T02",
+        "type": "summary",
+        "purpose": "list PHY enhancements and references",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 25
+        },
+        "evidence_locator": "L200-L260"
+      },
+      {
+        "table_id": "T03",
+        "type": "dataset/benchmark_map",
+        "purpose": "catalog CSI/AI/ML efforts for UHR",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 80
+        },
+        "evidence_locator": "L520-L560"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "tutorial",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "PHY enhancements",
+        "lesson": "Introduce each UHR PHY mechanism, then condense pros/cons in a Key Takeaways block.",
+        "locator": "L190-L320"
+      },
+      {
+        "location": "MAC enhancements",
+        "lesson": "Repeat the pattern for MAC features, tying reliability goals to contention and mobility control.",
+        "locator": "L320-L460"
+      },
+      {
+        "location": "AI/ML section",
+        "lesson": "Layer AI/ML use cases by protocol layer and support with an efforts table before future directions.",
+        "locator": "L470-L560"
+      },
+      {
+        "location": "Challenges",
+        "lesson": "Mirror earlier layer structure to state gaps and open research cleanly.",
+        "locator": "L560-L630"
+      }
+    ],
+    "aha_moment": "Using repeated feature-plus-Key-Takeaways blocks across PHY and MAC builds a tutorial rhythm that keeps dense standard content navigable."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Each major section opens by naming the reliability problem, then introduces the feature set and signals a Key Takeaways block.",
+    "math_handling_strategy": "none/minimal",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 5.9,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "Furthermore",
+      "Finally"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro with glossary, gap table, and timeline",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Open with limitations of the latest generation (Wi-Fi 7) for the target objective.",
+        "Insert a glossary/abbreviation table to normalize terms early.",
+        "Use a comparison table of prior surveys to surface the unaddressed gap.",
+        "Show a timeline figure and state contributions plus paper map."
+      ],
+      "why_it_works": "Combines urgency, shared terminology, and evidence of novelty with early navigation aids.",
+      "evidence_locators": [
+        "L10-L150"
+      ]
+    },
+    {
+      "title": "Feature tutorial pattern with Key Takeaways",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "For each feature, start with the reliability problem context.",
+        "Explain mechanism steps/signaling concisely.",
+        "Note pros/cons or overheads.",
+        "End with a Key Takeaways bullet block before moving on."
+      ],
+      "why_it_works": "Creates a predictable rhythm that helps readers digest dense standard updates.",
+      "evidence_locators": [
+        "L190-L460"
+      ]
+    },
+    {
+      "title": "Layered AI/ML taxonomy anchored by a CSI table",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Lead with a concise table of AI/ML efforts (e.g., CSI compression).",
+        "Discuss use cases per layer (PHY, MAC, cross-layer).",
+        "Tie each use case back to reliability goals.",
+        "Close with future directions aligned to the layer taxonomy."
+      ],
+      "why_it_works": "Grounds abstract AI/ML claims in concrete cases and keeps coverage organized by protocol layer.",
+      "evidence_locators": [
+        "L520-L580"
+      ]
+    },
+    {
+      "title": "Challenges that mirror earlier structure",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List challenges per previously covered feature group (PHY, MAC, AI/ML).",
+        "For each, restate the reliability objective and the blocker.",
+        "Offer concise future directions tied to the blocker.",
+        "Keep this section brief to maintain momentum into the conclusion."
+      ],
+      "why_it_works": "Maintains structural continuity, helping readers connect open problems to earlier content.",
+      "evidence_locators": [
+        "L560-L630"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "OCR artifacts (e.g., odd characters) in front matter and tables",
+      "Broken table formatting with line breaks in cells"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Year inferred from internal table; DOI not found. Counts heuristic; figures/tables numerous with some OCR noise. Glossary table placed in intro."
+}

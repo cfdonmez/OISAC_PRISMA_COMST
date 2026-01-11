@@ -1,0 +1,973 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_010",
+    "title": "A Survey on Approximate Edge AI for Energy Efficient Autonomous Driving Services",
+    "paper_meta": {
+        "doi": "10.1109/COMST.2023.3302474",
+        "year_online": "2023",
+        "year_issue": "2023",
+        "venue": "IEEE COMST",
+        "source_path": "data/corpus_standardized/COMST_010/COMST_010.md"
+    },
+    "analysis_policy": {
+        "include_scope": "Abstract through Section VII Conclusion (main body only)",
+        "exclude_scope": "References (L872+), author biographies",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Very comprehensive survey (1296 lines, ~40K words) spanning autonomous driving AI, Edge AI, approximation techniques, federated learning, and energy-efficient frameworks. SLR methodology with explicit research questions."
+    },
+    "document_stats": {
+        "approx_word_count_total": 40000,
+        "approx_token_count_total": 55000,
+        "equation_count_est": 8,
+        "figure_count_est": 14,
+        "table_count_est": 9,
+        "list_count_est": 120,
+        "citation_count_in_body_est": 407,
+        "citation_density_per_1k_words_est": 10.2,
+        "definition_box_or_glossary_present": "yes",
+        "notation_table_present": "yes"
+    },
+    "normalization": {
+        "section_ontology": "INTRO|RELATED|SYSTEM_MODEL|TAXONOMY|EVALUATION|CHALLENGES|CONCLUSION|OTHER",
+        "section_order_canonical": [
+            "INTRO",
+            "INTRO",
+            "OTHER",
+            "OTHER",
+            "OTHER",
+            "CHALLENGES",
+            "CONCLUSION"
+        ],
+        "mapping_notes": "Section I→INTRO, Section II (Motivation & Background)→INTRO, Section III (AI & AD)→OTHER, Section IV (Edge AI for AD)→OTHER, Section V (Enabling Frameworks)→OTHER, Section VI (Research Outlook)→CHALLENGES, Section VII→CONCLUSION. Sections III-V function as parallel taxonomy sections rather than progressive build."
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "I. INTRODUCTION"
+            ],
+            "objective": "Establish autonomous driving sensor data volume problem, energy consumption challenge, and present paper contributions",
+            "key_components": [
+                "ADAS evolution",
+                "Sensor data volume (20TB)",
+                "Energy problem framing",
+                "Four research questions",
+                "Section outline"
+            ],
+            "approx_word_share_pct": 3,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 3
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Energy efficiency as unifying lens",
+                "Research questions preview"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Hook: 20TB data generation",
+                    "locator": {
+                        "heading": "Abstract",
+                        "line_range": "L5"
+                    }
+                },
+                {
+                    "claim": "Section outline with 5 numbered parts",
+                    "locator": {
+                        "heading": "I. INTRODUCTION",
+                        "line_range": "L29-37"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "II. MOTIVATION AND BACKGROUND",
+                "A. Research Trends",
+                "B. Autonomous Driving",
+                "C. Approximate Techniques",
+                "D. Edge AI",
+                "E. Communications in Autonomous Vehicles",
+                "F. Taxonomy of Edge AI Technologies for CAV",
+                "G. Motivation and Methodology for Choosing Literature"
+            ],
+            "objective": "Comprehensive background covering research trends, autonomous driving levels, approximation techniques, Edge AI fundamentals, vehicular communication, and SLR methodology",
+            "key_components": [
+                "Research trends figure (Scopus data)",
+                "SAE autonomy levels",
+                "Energy consumption tables",
+                "Acronym table",
+                "Survey comparison table",
+                "SLR methodology figure",
+                "Four research questions"
+            ],
+            "approx_word_share_pct": 18,
+            "positioning": {
+                "start_doc_progress_pct_est": 3,
+                "end_doc_progress_pct_est": 20
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "gap",
+                "scope_boundary",
+                "organization_map",
+                "contribution"
+            ],
+            "notable_moves": [
+                "Taxonomy figure as complete paper map",
+                "SLR methodology with research questions",
+                "Multi-domain background synthesis"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Research trends from Scopus",
+                    "locator": {
+                        "heading": "Fig. 1",
+                        "line_range": "L50"
+                    }
+                },
+                {
+                    "claim": "Taxonomy figure",
+                    "locator": {
+                        "heading": "Fig. 4",
+                        "line_range": "L220-222"
+                    }
+                },
+                {
+                    "claim": "Survey comparison table",
+                    "locator": {
+                        "heading": "Table IV",
+                        "line_range": "L259-273"
+                    }
+                },
+                {
+                    "claim": "SLR methodology",
+                    "locator": {
+                        "heading": "Fig. 5",
+                        "line_range": "L286-288"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "III. AI & AUTONOMOUS DRIVING",
+                "A. Perception",
+                "B. HD Map",
+                "C. SLAM",
+                "D. Vehicular Communication",
+                "E. Energy Efficient Approaches in Autonomous Driving",
+                "F. An Overview of Dataset for Autonomous Driving"
+            ],
+            "objective": "Comprehensive review of AI methods for AD tasks (perception, HD map, SLAM, communication) with energy efficiency lens and dataset overview",
+            "key_components": [
+                "2D/3D object detection table",
+                "HD map layers figure",
+                "SLAM techniques comparison table",
+                "Communication technologies table",
+                "Compression techniques (pruning, quantization, KD)",
+                "Datasets table (60+ datasets)"
+            ],
+            "approx_word_share_pct": 35,
+            "positioning": {
+                "start_doc_progress_pct_est": 20,
+                "end_doc_progress_pct_est": 55
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Takeaways boxes per subsection",
+                "Per-task energy implications",
+                "Comprehensive dataset inventory"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Object detection architecture table",
+                    "locator": {
+                        "heading": "Table V",
+                        "line_range": "L318-376"
+                    }
+                },
+                {
+                    "claim": "SLAM comparison table",
+                    "locator": {
+                        "heading": "Table VI",
+                        "line_range": "L443-473"
+                    }
+                },
+                {
+                    "claim": "Communication technologies table",
+                    "locator": {
+                        "heading": "Table VII",
+                        "line_range": "L485-500"
+                    }
+                },
+                {
+                    "claim": "Datasets table",
+                    "locator": {
+                        "heading": "Table IX",
+                        "line_range": "L581-650"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "IV. EDGE AI FOR AUTONOMOUS DRIVING",
+                "A. Edge Computing and Intelligence",
+                "B. Edge Training and Optimization",
+                "C. Edge Inference",
+                "D. Communication-Efficient Approaches",
+                "E. Federated Learning for CAV"
+            ],
+            "objective": "Review Edge AI paradigm for autonomous driving covering edge computing, training, inference, communication efficiency, and federated learning",
+            "key_components": [
+                "Edge AI layers figure",
+                "Cooperative perception",
+                "Edge-SLAM",
+                "Edge training optimization",
+                "Sparsification techniques",
+                "Federated learning approaches"
+            ],
+            "approx_word_share_pct": 20,
+            "positioning": {
+                "start_doc_progress_pct_est": 55,
+                "end_doc_progress_pct_est": 70
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Lessons Learned subsections",
+                "Edge vs Cloud comparison table"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Edge AI layers figure",
+                    "locator": {
+                        "heading": "Fig. 11",
+                        "line_range": "L677-679"
+                    }
+                },
+                {
+                    "claim": "Edge vs Cloud comparison",
+                    "locator": {
+                        "heading": "Table VIII",
+                        "line_range": "L549-562"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "V. ENABLING FRAMEWORKS",
+                "A. Autonomous Driving Frameworks",
+                "B. Application-Oriented Frameworks for CAV",
+                "C. Energy-Efficient Edge Frameworks"
+            ],
+            "objective": "Review of autonomous driving frameworks from traditional AD frameworks to energy-efficient edge frameworks",
+            "key_components": [
+                "Apollo/Autoware review",
+                "Data offloading frameworks",
+                "Energy-efficient frameworks (OpenVDAP, CAVBench, π-Edge, MobileEdge, LoPECS, AC4AV)"
+            ],
+            "approx_word_share_pct": 10,
+            "positioning": {
+                "start_doc_progress_pct_est": 70,
+                "end_doc_progress_pct_est": 80
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing",
+                "limitation"
+            ],
+            "notable_moves": [
+                "Framework-by-framework analysis",
+                "Key Takeaways and Lessons Learned section"
+            ],
+            "evidence_locators": []
+        },
+        {
+            "section_id": "S06",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "VI. RESEARCH OUTLOOK AND OPEN PROBLEMS",
+                "A. Connected Vehicle Service and Case-Study",
+                "B. Enablers for Edge Application in Autonomous Driving",
+                "C. Energy Efficiency Evaluation of DNN Implementation on Embedded Devices",
+                "D. Outlook of Edge AI Pipeline"
+            ],
+            "objective": "Identify open problems and propose Edge AI processing pipeline vision for future CAV",
+            "key_components": [
+                "HD map directions",
+                "Vehicular network directions",
+                "Data management challenges",
+                "Collaborative edge intelligence",
+                "Edge AI pipeline figure (vision)"
+            ],
+            "approx_word_share_pct": 10,
+            "positioning": {
+                "start_doc_progress_pct_est": 80,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "limitation",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Proposed Edge AI pipeline figure as contribution",
+                "Four-component vision"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Edge AI processing pipeline figure",
+                    "locator": {
+                        "heading": "Fig. 14",
+                        "line_range": "L848-850"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S07",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "VII. CONCLUSION"
+            ],
+            "objective": "Summarize coverage and highlight energy-efficient vision for Level 4+ driving",
+            "key_components": [
+                "Coverage summary",
+                "Energy efficiency emphasis",
+                "Vision for level 4+ driving"
+            ],
+            "approx_word_share_pct": 2,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "contribution",
+                "future_directions_framing"
+            ],
+            "notable_moves": [],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_contract": {
+        "intro_move_sequence": [
+            "hook",
+            "gap",
+            "yes_but",
+            "contribution",
+            "organization_map"
+        ],
+        "move_evidence": [
+            {
+                "move": "hook",
+                "locator": {
+                    "heading": "Abstract",
+                    "line_range": "L5"
+                }
+            },
+            {
+                "move": "gap",
+                "locator": {
+                    "heading": "II. MOTIVATION AND BACKGROUND",
+                    "line_range": "L282-284"
+                }
+            },
+            {
+                "move": "contribution",
+                "locator": {
+                    "heading": "I. INTRODUCTION",
+                    "line_range": "L29-37"
+                }
+            }
+        ],
+        "reader_contract_pattern": "We review AI and autonomous driving (Section III), Edge AI approaches (Section IV), enabling frameworks (Section V), and research outlook with proposed Edge AI pipeline (Section VI)."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "by application domain and technique type",
+        "axes": [
+            "AD task (Perception/SLAM/HD Map/Communication)",
+            "AI technique type (ML/DL/Approximation)",
+            "Edge paradigm (Training/Inference/Caching)",
+            "Framework orientation"
+        ],
+        "levels_est": 4,
+        "node_count_est": 80,
+        "branches": [
+            "AI & Autonomous Driving",
+            "Edge AI for Autonomous Driving",
+            "Enabling Frameworks"
+        ],
+        "taxonomy_figure_present": "yes",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [
+                "F04"
+            ],
+            "table_ids": [
+                "T04"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Latency",
+            "Energy consumption",
+            "Accuracy",
+            "Memory",
+            "Communication cost"
+        ],
+        "tradeoff_axes": [
+            "Accuracy vs energy",
+            "Latency vs computational cost",
+            "Model size vs performance"
+        ],
+        "where_used": [
+            {
+                "section": "S03",
+                "table_ids": [
+                    "T05",
+                    "T06",
+                    "T07"
+                ]
+            },
+            {
+                "section": "S04",
+                "table_ids": [
+                    "T08"
+                ]
+            }
+        ]
+    },
+    "visual_strategy": {
+        "global_layout_logic": "Figures provide system overviews and architectural diagrams while tables provide comprehensive comparison inventories. The paper uses a master taxonomy figure (Fig. 4) as a complete paper roadmap. Each major section uses comparison tables with consistent columns. The paper culminates in a proposed Edge AI pipeline figure (Fig. 14) as a vision contribution.",
+        "artifact_inventory": {
+            "figures": [
+                {
+                    "id": "F01",
+                    "type": "trend",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 4
+                    },
+                    "locator": "L48-50"
+                },
+                {
+                    "id": "F02",
+                    "type": "data_flow",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 5
+                    },
+                    "locator": "L62-64"
+                },
+                {
+                    "id": "F03",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 15
+                    },
+                    "locator": "L198-200"
+                },
+                {
+                    "id": "F04",
+                    "type": "taxonomy",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 17
+                    },
+                    "locator": "L220-222"
+                },
+                {
+                    "id": "F05",
+                    "type": "methodology",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 19
+                    },
+                    "locator": "L286-288"
+                },
+                {
+                    "id": "F11",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 56
+                    },
+                    "locator": "L677-679"
+                },
+                {
+                    "id": "F14",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S06",
+                        "first_mention_section_label": "CHALLENGES",
+                        "doc_progress_pct_est": 92
+                    },
+                    "locator": "L848-850"
+                }
+            ],
+            "tables": [
+                {
+                    "id": "T01",
+                    "type": "glossary",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 6
+                    },
+                    "locator": "L74-142"
+                },
+                {
+                    "id": "T02",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 9
+                    },
+                    "locator": "L145-160"
+                },
+                {
+                    "id": "T04",
+                    "type": "survey comparison",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 19
+                    },
+                    "locator": "L259-273"
+                },
+                {
+                    "id": "T05",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 25
+                    },
+                    "locator": "L318-376"
+                },
+                {
+                    "id": "T06",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 35
+                    },
+                    "locator": "L443-473"
+                },
+                {
+                    "id": "T07",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 40
+                    },
+                    "locator": "L485-500"
+                },
+                {
+                    "id": "T08",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 50
+                    },
+                    "locator": "L549-562"
+                },
+                {
+                    "id": "T09",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 47
+                    },
+                    "locator": "L581-650"
+                }
+            ]
+        },
+        "caption_style_metrics": {
+            "caption_verbs_top": [
+                {
+                    "verb": "comparison",
+                    "freq_est": 4
+                },
+                {
+                    "verb": "overview",
+                    "freq_est": 3
+                },
+                {
+                    "verb": "classification",
+                    "freq_est": 2
+                }
+            ],
+            "avg_caption_length_est": 18
+        }
+    },
+    "synthesis": {
+        "synthesis_style": "encyclopedic",
+        "comparative_synthesis_degree": "high",
+        "lesson_blocks": [
+            {
+                "location": "Section III.A (Perception Takeaways)",
+                "lesson": "Computational efficiency, data fusion, and domain gap are key challenges for perception models on embedded devices",
+                "locator": "L391-396"
+            },
+            {
+                "location": "Section III.C (SLAM Takeaways)",
+                "lesson": "SLAM requires <5ms latency, high compute, and DNN approaches struggle with environmental variability",
+                "locator": "L478-484"
+            },
+            {
+                "location": "Section III.D (Vehicular Communication Lessons)",
+                "lesson": "Latency, privacy, and collaborative application design are key communication challenges",
+                "locator": "L517-522"
+            },
+            {
+                "location": "Section IV.C (Edge Inference Lessons)",
+                "lesson": "Joint inference approaches balance on-board and server computation for energy efficiency",
+                "locator": "L705-710"
+            },
+            {
+                "location": "Section V.C (Edge Framework Takeaways)",
+                "lesson": "Edge frameworks need lightweight OS, intelligent scheduling, heterogeneous communication support, and high-volume data handling",
+                "locator": "L819-824"
+            }
+        ],
+        "aha_moment": "The paper's power lies in its unifying energy-efficiency lens applied across multiple domains (AD AI, Edge AI, frameworks). By consistently asking 'what are the energy implications?' for each technique, it reveals patterns across otherwise disparate topics. The culminating proposed Edge AI pipeline (Fig. 14) synthesizes all reviewed components into a coherent vision."
+    },
+    "methodology": {
+        "survey_method": "slr",
+        "search_strategy_present": "yes",
+        "prisma_elements": [
+            "research_questions",
+            "kitchenham_framework"
+        ],
+        "transparency_flags": {
+            "databases_named": "yes",
+            "time_window_named": "partial",
+            "inclusion_exclusion_explicit": "yes"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Section opens with domain definition and context, immediately followed by enumeration of sub-topics to be covered",
+        "math_handling_strategy": "inline minimal",
+        "listicle_usage": "heavy",
+        "signposting_devices": [
+            "This section discusses",
+            "As covered in",
+            "Key points can be highlighted as",
+            "Takeaways",
+            "Lessons Learned"
+        ],
+        "definition_density_est": "high"
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Takeaways/Lessons Learned Block Pattern",
+            "steps": [
+                "Complete detailed review of a technique category",
+                "Insert dedicated 'Takeaways' or 'Lessons Learned' subsection",
+                "Use numbered list format with bold topic headers",
+                "Frame each point as challenge+implication (not just description)",
+                "Connect takeaways to paper's unifying theme (e.g., energy efficiency)"
+            ],
+            "applies_to_sections": [
+                "SYSTEM_MODEL",
+                "TAXONOMY",
+                "OTHER"
+            ],
+            "why_it_works": "Explicit synthesis within each section prevents reader from waiting until conclusion; numbered format enables reference; bold headers support scanning; challenge framing creates actionable insights",
+            "evidence_locators": [
+                {
+                    "heading": "Takeaways (Perception)",
+                    "line_range": "L391-396"
+                },
+                {
+                    "heading": "Takeaways (SLAM)",
+                    "line_range": "L478-484"
+                },
+                {
+                    "heading": "Lessons Learned (Communication)",
+                    "line_range": "L517-522"
+                },
+                {
+                    "heading": "Key Takeaways and Lessons Learned (Frameworks)",
+                    "line_range": "L819-824"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Master Taxonomy Figure as Paper Roadmap",
+            "steps": [
+                "Create comprehensive taxonomy figure early in paper (Section II)",
+                "Include all major branches and leaves that will be covered",
+                "Reference figure when transitioning between major sections",
+                "Use consistent terminology between figure and section headings",
+                "Place after background but before detailed treatment"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "SYSTEM_MODEL"
+            ],
+            "why_it_works": "Single visual provides complete paper overview; readers can orient themselves at any point; figure becomes reference anchor for navigation",
+            "evidence_locators": [
+                {
+                    "heading": "F. Taxonomy of Edge AI Technologies for CAV",
+                    "line_range": "L212-214"
+                },
+                {
+                    "heading": "Fig. 4",
+                    "line_range": "L220-222"
+                }
+            ]
+        },
+        {
+            "recipe_name": "SLR Methodology Section with Research Questions",
+            "steps": [
+                "Create dedicated methodology subsection within background/motivation",
+                "Include SLR process figure (adapted from Kitchenham or similar)",
+                "List explicit research questions that paper will address",
+                "Describe search strategy, databases, keyword refinement",
+                "Connect research questions to paper's section structure"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "RELATED"
+            ],
+            "why_it_works": "Establishes methodological rigor; research questions provide evaluation criteria; transparent process builds credibility; reader expectations aligned with paper structure",
+            "evidence_locators": [
+                {
+                    "heading": "G. Motivation and Methodology for Choosing Literature",
+                    "line_range": "L280-292"
+                },
+                {
+                    "heading": "Fig. 5",
+                    "line_range": "L286-288"
+                },
+                {
+                    "heading": "Key Questions Addressed",
+                    "line_range": "L294-300"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Comprehensive Dataset Inventory Table",
+            "steps": [
+                "Create multi-column table with year, dataset name, sensors included, and URL",
+                "Use checkmarks (Y/N) for standardized sensor coverage columns",
+                "Order chronologically to show evolution",
+                "Group by sensor modality when patterns emerge",
+                "Include URL column for practitioner accessibility",
+                "Follow with 'Lessons Learned' synthesis block"
+            ],
+            "applies_to_sections": [
+                "SYSTEM_MODEL",
+                "OTHER"
+            ],
+            "why_it_works": "Comprehensive inventory becomes reference resource; checkmark columns enable rapid filtering; chronological order shows field evolution; URLs provide immediate actionability",
+            "evidence_locators": [
+                {
+                    "heading": "Table IX",
+                    "line_range": "L581-650"
+                },
+                {
+                    "heading": "Lessons Learned (Datasets)",
+                    "line_range": "L652-659"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Unifying Lens for Cross-Domain Survey",
+            "steps": [
+                "Identify a unifying analytical perspective (e.g., energy efficiency)",
+                "Apply this lens consistently when reviewing each technique/domain",
+                "Create Venn diagram or overlap figure showing synthesis",
+                "Ask the same evaluation questions for each reviewed topic",
+                "Use this lens to structure future directions and proposed architecture"
+            ],
+            "applies_to_sections": [
+                "INTRO",
+                "TAXONOMY",
+                "CHALLENGES"
+            ],
+            "why_it_works": "Transforms encyclopedic coverage into coherent narrative; enables cross-domain insights; differentiates from domain-specific surveys; provides evaluation framework for future work",
+            "evidence_locators": [
+                {
+                    "heading": "Fig. 9",
+                    "line_range": "L529-531"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Vision Architecture Figure as Future Contribution",
+            "steps": [
+                "In Research Outlook section, propose an integrated architecture",
+                "Include all reviewed components as building blocks",
+                "Show data flow and interactions between components",
+                "Describe each component with reference to reviewed techniques",
+                "Position as 'envisioned' or 'proposed' to signal contribution"
+            ],
+            "applies_to_sections": [
+                "CHALLENGES"
+            ],
+            "why_it_works": "Transforms review into forward-looking contribution; synthesizes all reviewed material; provides concrete vision for practitioners; differentiates from pure description",
+            "evidence_locators": [
+                {
+                    "heading": "D. Outlook of Edge AI Pipeline",
+                    "line_range": "L858-866"
+                },
+                {
+                    "heading": "Fig. 14",
+                    "line_range": "L848-850"
+                }
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [
+            "HTML span tags throughout",
+            "Some table formatting inconsistencies",
+            "Page anchor artifacts"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [
+            "Some implementation details in Section V frameworks not fully extracted"
+        ],
+        "confidence": "high"
+    },
+    "notes": "Excellent example of a cross-domain survey using a unifying lens (energy efficiency) to connect autonomous driving AI, Edge AI, approximation techniques, and frameworks. Key patterns: (1) Master taxonomy figure as paper roadmap, (2) Takeaways/Lessons Learned blocks after each major subsection, (3) SLR methodology with explicit research questions, (4) Comprehensive dataset inventory table, (5) Vision architecture figure as forward contribution. The paper's 407 citations and ~40K words make it one of the most comprehensive surveys in this corpus."
+}

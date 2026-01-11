@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "<COMST_XXX>",
+  "title": "<string>",
+  "year_online": "<YYYY or unknown>",
+  "year_issue": "<YYYY or unknown>",
+  "year_source": "<doi/frontmatter/unknown>",
+  "domain": "<short topic label>",
+  "source_path": "<relative path to COMST_XXX.md>",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "<optional>"
+  },
+
+  "document_stats": {
+    "approx_word_count_total": "<number or null>",
+    "approx_token_count_total": "<number or null>",
+    "equation_count_est": "<number or null>",
+    "figure_count_est": "<number or null>",
+    "table_count_est": "<number or null>",
+    "list_count_est": "<number or null>",
+    "citation_count_in_body_est": "<number or null>",
+    "citation_density_per_1k_words_est": "<number or null>",
+    "definition_box_or_glossary_present": "<yes/no/unknown>",
+    "notation_table_present": "<yes/no/unknown>",
+    "inventory_completeness": "<complete/subset/unknown>"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "<S01>",
+      "section_label": "<INTRODUCTION | RELATED_WORK | SYSTEM_MODEL | TAXONOMY | EVALUATION_FRAMEWORK | CHALLENGES | CONCLUSION | OTHER>",
+      "raw_headings": ["<string>"],
+
+      "objective": "<what the author tries to achieve>",
+      "key_components": ["<required sub-elements>"],
+
+      "approx_word_share_pct": "<number or range>",
+      "approx_words_est": "<number or null>",
+
+      "positioning": {
+        "start_doc_progress_pct_est": "<0-100 or null>",
+        "end_doc_progress_pct_est": "<0-100 or null>"
+      },
+
+      "moves_present": {
+        "hook": "<0/1/unknown>",
+        "gap": "<0/1/unknown>",
+        "yes_but": "<0/1/unknown>",
+        "contribution": "<0/1/unknown>",
+        "organization_map": "<0/1/unknown>",
+        "scope_boundary": "<0/1/unknown>",
+        "pivot": "<0/1/unknown>",
+        "limitation": "<0/1/unknown>",
+        "evaluation_framing": "<0/1/unknown>",
+        "future_directions_framing": "<0/1/unknown>"
+      },
+
+      "move_sequence_est": [
+        "<hook>",
+        "<gap>",
+        "<contribution>",
+        "<organization_map>"
+      ],
+
+      "notable_moves": ["<rhetorical or structural moves>"],
+
+      "evidence_locators": [
+        {
+          "claim": "<short paraphrase of the move/objective>",
+          "locator": {
+            "heading": "<string or null>",
+            "paragraph_index_est": "<number or null>",
+            "line_range_est": "<Lx-Ly or null>"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+    "gap": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+    "yes_but": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+    "contribution": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+    "organization": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+    "scope_boundary": { "present": "<yes/no/unknown>", "evidence": "<paraphrase>", "locator": "<optional>" },
+
+    "transition_starters_top": [
+      { "token": "<however>", "freq_est": "<number or null>" },
+      { "token": "<therefore>", "freq_est": "<number or null>" },
+      { "token": "<finally>", "freq_est": "<number or null>" }
+    ],
+
+    "reader_contract_pattern": "<e.g., 'We focus on X; exclude Y; organized as follows...'>"
+  },
+
+  "taxonomy": {
+    "present": "<yes/no/unknown>",
+    "classification_strategy": "<by layer | by use-case | by objective | by impairment | hybrid | unknown>",
+    "axes": ["<axis 1>", "<axis 2>"],
+    "levels_est": "<number or null>",
+    "node_count_est": "<number or null>",
+    "branches": ["<branch label>"],
+
+    "taxonomy_figure_present": "<yes/no/unknown>",
+    "taxonomy_table_present": "<yes/no/unknown>",
+
+    "taxonomy_artifacts": {
+      "figure_ids": ["<F01>"],
+      "table_ids": ["<T01>"]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "<yes/no/unknown>",
+    "dimensions": ["<throughput>", "<latency>", "<energy>", "<complexity>", "<reliability>", "<security>", "<cost>"],
+    "tradeoff_axes": ["<metric A vs metric B>"],
+    "metrics_table_present": "<yes/no/unknown>",
+    "evidence_locators": ["<optional locators>"]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "<why figures/tables appear where they do>",
+    "caption_verbs_top": [
+      { "verb": "<surveys>", "freq_est": "<number or null>" },
+      { "verb": "<summarizes>", "freq_est": "<number or null>" },
+      { "verb": "<shows>", "freq_est": "<number or null>" },
+      { "verb": "<provides>", "freq_est": "<number or null>" }
+    ],
+
+    "figures": [
+      {
+        "figure_id": "<F01>",
+        "type": "<architecture | taxonomy | timeline | scenario | pipeline | comparison | other>",
+        "purpose": "<reader orientation | taxonomy anchor | design space map | summary | other>",
+        "placement": {
+          "first_mention_section_id": "<S01>",
+          "first_mention_section_label": "<INTRODUCTION>",
+          "doc_progress_pct_est": "<0-100 or null>"
+        },
+        "evidence_locator": "<optional>"
+      }
+    ],
+
+    "tables": [
+      {
+        "table_id": "<T01>",
+        "type": "<survey comparison | summary | qualitative_vs_quantitative | protocol_field_summary | dataset/benchmark_map | other>",
+        "purpose": "<authority building | compression | evaluation rubric | other>",
+        "placement": {
+          "first_mention_section_id": "<S03>",
+          "first_mention_section_label": "<TAXONOMY>",
+          "doc_progress_pct_est": "<0-100 or null>"
+        },
+        "evidence_locator": "<optional>"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "<tutorial | checklist | taxonomy-first | evaluation-rubric-first | hybrid | unknown>",
+    "comparative_synthesis_degree": "<low/medium/high>",
+
+    "lesson_blocks": [
+      {
+        "location": "<section/subsection>",
+        "lesson": "<one-line takeaway>",
+        "locator": "<optional>"
+      }
+    ],
+
+    "aha_moment": "<single sentence capturing the structural insight>"
+  },
+
+  "methodology": {
+    "survey_method": "<systematic | narrative | hybrid | unspecified>",
+    "search_strategy_present": "<yes/no/unknown>",
+    "selection_criteria": "<keywords, databases, years, filters>",
+    "prisma_elements": ["<screening>", "<inclusion/exclusion>", "<flow diagram>", "<quality assessment>"],
+    "transparency_flags": {
+      "databases_named": "<yes/no/unknown>",
+      "time_window_named": "<yes/no/unknown>",
+      "inclusion_exclusion_explicit": "<yes/no/unknown>"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "<e.g., forward-looking summary + scope boundary>",
+    "math_handling_strategy": "<defer-to-appendix | inline minimal | progressive deepening | heavy formalism | unknown>",
+    "listicle_usage": "<none/light/heavy>",
+    "list_density_per_1k_words_est": "<number or null>",
+    "signposting_devices": ["<In this section>", "<We next>", "<Finally>"],
+    "definition_density_est": "<low/medium/high>"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "<short name>",
+      "applies_to_sections": ["<INTRODUCTION>", "<TAXONOMY>", "<CHALLENGES>"],
+      "steps": ["<step 1>", "<step 2>"],
+      "why_it_works": "<rationale>",
+      "evidence_locators": ["<Lx-Ly or heading/paragraph>"]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": ["<headers merged>", "<figure captions broken>"],
+    "non_body_leakage": "<yes/no>",
+    "missingness": ["<fields that could not be inferred>"],
+    "confidence": "<high/medium/low>"
+  },
+
+  "notes": "<freeform>"
+}
