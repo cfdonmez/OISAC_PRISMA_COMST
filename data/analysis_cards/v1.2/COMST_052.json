@@ -1,0 +1,825 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_052",
+  "title": "Network Slicing-Based Learning Techniques for IoV in 5G and Beyond Networks",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi/frontmatter",
+  "domain": "Network slicing and machine learning for Internet of Vehicles (5G/6G)",
+  "source_path": "data/corpus_standardized/COMST_052/COMST_052.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Acronym table treated as glossary; page/span markers ignored."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 55797,
+    "approx_token_count_total": null,
+    "equation_count_est": 899,
+    "figure_count_est": 28,
+    "table_count_est": 9,
+    "list_count_est": 497,
+    "citation_count_in_body_est": 121,
+    "citation_density_per_1k_words_est": 2.2,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction",
+        "A. Paper Motivation",
+        "B. Paper Contribution",
+        "C. Paper Organization"
+      ],
+      "objective": "Frame IoV needs, introduce network slicing and ML intersection, claim survey gap, list contributions, and map the paper.",
+      "key_components": [
+        "Smart mobility/IoV scope and communication layers",
+        "Scope figure showing domain intersections",
+        "Survey gap versus IoV-only or NS-only reviews",
+        "Contribution bullets across architecture, benefits/challenges, ML integration, applications, datasets/projects",
+        "Organization map and acronym table pointer"
+      ],
+      "approx_word_share_pct": "13-15",
+      "approx_words_est": 7500,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 10
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Uses a scope Venn-style figure early to clarify the three-domain intersection.",
+        "Presents contribution bullets before the organization paragraph and acronym table."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces IoV scope and smart mobility ecosystem as the hook.",
+          "locator": {
+            "heading": "I. Introduction",
+            "paragraph_index_est": 1,
+            "line_range_est": "L20-L85"
+          }
+        },
+        {
+          "claim": "States prior surveys cover IoV+ML or NS+ML but not the full NS-ML-IoV intersection.",
+          "locator": {
+            "heading": "A. Paper Motivation",
+            "paragraph_index_est": 2,
+            "line_range_est": "L120-L190"
+          }
+        },
+        {
+          "claim": "Lists contributions spanning NS architecture, benefits/challenges, ML integration, applications, datasets/projects.",
+          "locator": {
+            "heading": "B. Paper Contribution",
+            "paragraph_index_est": 1,
+            "line_range_est": "L210-L250"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. NETWORK SLICING FOR IOV",
+        "A. Network Slicing",
+        "B. Network Slicing Architecture",
+        "C. Network Slicing Enabling Technologies",
+        "D. Network Slicing Methods",
+        "E. Network Slice life Cycle",
+        "F. Network Slicing Across All Network Domains",
+        "G. Network Slicing Over Cellular Networks",
+        "H. Discussion and Main Findings"
+      ],
+      "objective": "Lay the architectural and lifecycle foundation of NS in IoV, covering definitions, enablers, methods, domains, and cellular evolution.",
+      "key_components": [
+        "Definition and core concepts of NS",
+        "Reference architecture and SDN/NFV/cloud enablers",
+        "Method taxonomy and lifecycle phases",
+        "Domain-wise application (core, RAN, edge) and cellular evolution",
+        "Discussion summarizing main findings"
+      ],
+      "approx_word_share_pct": "20-22",
+      "approx_words_est": 12000,
+      "positioning": {
+        "start_doc_progress_pct_est": 10,
+        "end_doc_progress_pct_est": 28
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "scope_boundary",
+        "pivot",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses a layered vision mini-map to summarize NS positioning across domains.",
+        "Ends with a discussion subsection to recap before moving to benefits/challenges."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines NS and presents architecture with enabling technologies.",
+          "locator": {
+            "heading": "A. Network Slicing",
+            "paragraph_index_est": 1,
+            "line_range_est": "L240-L310"
+          }
+        },
+        {
+          "claim": "Summarizes multi-domain NS application and evolution across cellular generations.",
+          "locator": {
+            "heading": "H. Discussion and Main Findings",
+            "paragraph_index_est": 1,
+            "line_range_est": "L320-L355"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "III. BENEFITS AND CHALLENGES OF NETWORK SLICING IN IOV",
+        "A. Benefits of Networks Slicing for IOV",
+        "B. Discussion and Main Findings"
+      ],
+      "objective": "Contrast NS benefits in IoV with associated challenges and constraints.",
+      "key_components": [
+        "Benefit list (QoS, mobility handling, security, resource efficiency)",
+        "Challenge list and limitations",
+        "Short synthesis"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 5200,
+      "positioning": {
+        "start_doc_progress_pct_est": 28,
+        "end_doc_progress_pct_est": 36
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "yes_but",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Pairs benefit bullets with a follow-on discussion to highlight remaining gaps."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists benefits NS brings to IoV and notes challenges.",
+          "locator": {
+            "heading": "A. Benefits of Networks Slicing for IOV",
+            "paragraph_index_est": 1,
+            "line_range_est": "L497-L560"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "IV. NETWORK SLICING AND MACHINE LEARNING TECHNIQUES",
+        "A. Benefits of Using Machine learning",
+        "B. IoV NS Based on Machine Learning Techniques",
+        "C. Discussion and Main Findings"
+      ],
+      "objective": "Explain why and how ML augments NS for IoV, providing a taxonomy of ML techniques and use cases.",
+      "key_components": [
+        "ML benefits for automation and optimization of NS",
+        "Taxonomy of ML techniques applied to NS in IoV",
+        "Discussion of findings and open issues"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 5200,
+      "positioning": {
+        "start_doc_progress_pct_est": 36,
+        "end_doc_progress_pct_est": 44
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Highlights ML as the bridge to automation and slices admission/control with a concise taxonomy."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes ML benefits to NS and enumerates technique categories.",
+          "locator": {
+            "heading": "A. Benefits of Using Machine learning",
+            "paragraph_index_est": 1,
+            "line_range_est": "L623-L660"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "V. NETWORK SLICING BASED IOV APPLICATIONS",
+        "A. Terrestrial Domain",
+        "B. Aerial Domain",
+        "C. Marine Domain",
+        "D. Multi-Domain"
+      ],
+      "objective": "Survey NS-based IoV applications across terrestrial, aerial, marine, and multi-domain scenarios with example use cases.",
+      "key_components": [
+        "Domain-wise application narratives",
+        "Representative scenarios and benefits",
+        "Brief discussion of comfort/safety/service slices"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 6500,
+      "positioning": {
+        "start_doc_progress_pct_est": 44,
+        "end_doc_progress_pct_est": 56
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps application slices grouped by domain to mirror the scope figure."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces domain-based application taxonomy for NS in IoV.",
+          "locator": {
+            "heading": "V. NETWORK SLICING BASED IOV APPLICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L688-L725"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VI. DATASETS, SIMULATORS AND PROJECTS FOR NS-BASED ML FOR IOV",
+        "A. Datasets and Simulators",
+        "B. Projects"
+      ],
+      "objective": "Inventory datasets, simulators, and projects relevant to NS-based ML for IoV.",
+      "key_components": [
+        "Dataset and simulator list with short descriptors",
+        "Project summaries linking to NS/IoV context",
+        "Implications for reproducibility and benchmarking"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 6500,
+      "positioning": {
+        "start_doc_progress_pct_est": 56,
+        "end_doc_progress_pct_est": 67
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Provides a tooling inventory to support future work after the application survey."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists datasets/simulators and summarizes relevant projects.",
+          "locator": {
+            "heading": "A. Datasets and Simulators",
+            "paragraph_index_est": 1,
+            "line_range_est": "L820-L905"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VII. EMERGING AND FUTURE RESEARCH DIRECTIONS",
+        "A. Network Slicing and Blockchain",
+        "B. 3D Coverage",
+        "C. Network Slicing and Federated Learning"
+      ],
+      "objective": "Outline future research trajectories combining NS with blockchain, 3D coverage, and federated learning.",
+      "key_components": [
+        "Forward-looking themes",
+        "Integration challenges and potential benefits",
+        "Pointers back to previous sections"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": 3500,
+      "positioning": {
+        "start_doc_progress_pct_est": 67,
+        "end_doc_progress_pct_est": 71
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Aligns future themes with earlier ML and NS discussions to maintain continuity."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Highlights blockchain, 3D coverage, and FL as next research themes.",
+          "locator": {
+            "heading": "VII. EMERGING AND FUTURE RESEARCH DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L963-L1010"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VIII. CONCLUSION"
+      ],
+      "objective": "Close with recap of scope and research outlook for NS-based ML in IoV.",
+      "key_components": [
+        "Concise recap of survey coverage",
+        "Reminder of integration benefits/challenges",
+        "Forward-facing closing statement"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 800,
+      "positioning": {
+        "start_doc_progress_pct_est": 71,
+        "end_doc_progress_pct_est": 72
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "1",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "contribution",
+        "limitation",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps ending brief and future-facing."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes NS-ML-IoV survey and reiterates future work.",
+          "locator": {
+            "heading": "VIII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L1017-L1023"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Introduces smart mobility ecosystem and IoV communication layers as a broad hook.",
+      "locator": "Introduction L20-L85"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States that prior surveys cover IoV+ML or NS+ML or IoT, but none unify NS, IoV, and ML end-to-end.",
+      "locator": "Paper Motivation L120-L190"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges existing IoV/NS/ML surveys then claims missing integration and domain coverage.",
+      "locator": "Paper Motivation L150-L200"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists multi-pronged contributions covering NS architecture, benefits/challenges, ML integration, applications, datasets/projects.",
+      "locator": "Paper Contribution L210-L250"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section roadmap and points to the organization figure.",
+      "locator": "Paper Organization L260-L290"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Defines survey scope as NS for IoV across terrestrial/aerial/marine with ML support and excludes general IoT-only focus.",
+      "locator": "Introduction L80-L120"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "We review NS foundations, then benefits/challenges, then ML-enhanced NS, then IoV applications and tooling, ending with future research themes."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "hybrid",
+    "axes": [
+      "NS lifecycle/architecture",
+      "IoV domain (terrestrial/aerial/marine/multi)"
+    ],
+    "levels_est": 3,
+    "node_count_est": 18,
+    "branches": [
+      "NS foundations (definition, architecture, enablers, lifecycle)",
+      "NS benefits/challenges in IoV",
+      "ML techniques for NS in IoV",
+      "IoV applications by domain",
+      "Datasets/simulators/projects"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F03"
+      ],
+      "table_ids": [
+        "T02"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses scope and organization figures plus acronym and comparison tables to orient; NS foundations include layered vision graphic; applications and ML sections include tables summarizing techniques and scenarios.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "scenario",
+        "purpose": "smart mobility ecosystem orientation",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 3
+        },
+        "evidence_locator": "Fig. 1 Smart Mobility Ecosystem in Introduction"
+      },
+      {
+        "figure_id": "F02",
+        "type": "comparison",
+        "purpose": "scope Venn/intersection diagram",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 6
+        },
+        "evidence_locator": "Fig. 2 Scope of the survey in Introduction"
+      },
+      {
+        "figure_id": "F03",
+        "type": "roadmap",
+        "purpose": "paper organization map",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 9
+        },
+        "evidence_locator": "Fig. 3 Paper organization near end of Introduction"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "notation_table",
+        "purpose": "acronym glossary",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 8
+        },
+        "evidence_locator": "Table I list of important abbreviations"
+      },
+      {
+        "table_id": "T02",
+        "type": "survey comparison",
+        "purpose": "compare prior surveys across IoV/NS/ML intersections",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 9
+        },
+        "evidence_locator": "Table II survey comparison in Introduction"
+      },
+      {
+        "table_id": "T03",
+        "type": "dataset/benchmark_map",
+        "purpose": "catalog NS-based ML datasets/simulators for IoV",
+        "placement": {
+          "first_mention_section_id": "S06",
+          "first_mention_section_label": "OTHER",
+          "doc_progress_pct_est": 58
+        },
+        "evidence_locator": "Datasets and simulators table in Section VI"
+      },
+      {
+        "table_id": "T04",
+        "type": "summary",
+        "purpose": "NS-based ML techniques by application",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "OTHER",
+          "doc_progress_pct_est": 42
+        },
+        "evidence_locator": "Table summarizing ML techniques for NS in IoV (Table VII)"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "checklist",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Introduction",
+        "lesson": "Use a Venn/scope diagram plus contribution bullets to clarify intersection surveys.",
+        "locator": "Introduction L20-L250"
+      },
+      {
+        "location": "NS Foundations",
+        "lesson": "Walk through definition, enablers, lifecycle, domains, and evolution before benefits/challenges.",
+        "locator": "II. NETWORK SLICING FOR IOV L240-L355"
+      },
+      {
+        "location": "Benefits/Challenges",
+        "lesson": "Pair benefit lists with a short discussion to surface unresolved gaps.",
+        "locator": "III. BENEFITS AND CHALLENGES L497-L560"
+      },
+      {
+        "location": "ML Integration",
+        "lesson": "Frame ML as automation for NS, provide a concise taxonomy, and close with findings.",
+        "locator": "IV. NETWORK SLICING AND MACHINE LEARNING TECHNIQUES L623-L688"
+      },
+      {
+        "location": "Applications + Tooling",
+        "lesson": "Group applications by domain, then provide dataset/simulator/project inventories to support replication.",
+        "locator": "V-VI L688-L905"
+      }
+    ],
+    "aha_moment": "By sequencing NS foundations → benefits/challenges → ML augmentation → domain applications → tooling, the survey keeps a complex NS-ML-IoV intersection readable and actionable."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "Curated IoV, network slicing, and ML literature; no explicit databases or filters stated.",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "yes",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Opens with a scope sentence and a short map of subsection focus.",
+    "math_handling_strategy": "progressive deepening",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 8.9,
+    "signposting_devices": [
+      "In this section",
+      "Next",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intersection scope + gap framing",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Open with a scenario hook and layered ecosystem figure.",
+        "Use a Venn/scope diagram to show intersecting domains.",
+        "Contrast prior partial surveys, then list contributions and roadmap."
+      ],
+      "why_it_works": "Visually clarifies scope while pairing gap and contributions to set expectations.",
+      "evidence_locators": [
+        "Introduction L20-L250"
+      ]
+    },
+    {
+      "title": "Foundation stack before problems",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Define the system and enabling technologies first.",
+        "Lay out lifecycle and domain coverage with a layered vision graphic.",
+        "End with a discussion paragraph to consolidate before moving to challenges."
+      ],
+      "why_it_works": "Readers get structural footing before confronting benefit/challenge lists.",
+      "evidence_locators": [
+        "II. NETWORK SLICING FOR IOV L240-L355"
+      ]
+    },
+    {
+      "title": "Benefit–challenge pairing",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List benefits first to anchor value.",
+        "Follow immediately with challenges/limitations and a brief synthesis.",
+        "Signal forward look to keep momentum."
+      ],
+      "why_it_works": "Balances optimism with realism and tees up later solution sections.",
+      "evidence_locators": [
+        "III. BENEFITS AND CHALLENGES L497-L560"
+      ]
+    },
+    {
+      "title": "ML-as-automation frame",
+      "applies_to_sections": [
+        "OTHER"
+      ],
+      "steps": [
+        "State why ML is needed (automation/optimization).",
+        "Provide a compact taxonomy of techniques and use cases.",
+        "Conclude with findings that point to remaining gaps."
+      ],
+      "why_it_works": "Keeps ML discussion focused on its role, not technical deep dives.",
+      "evidence_locators": [
+        "IV. NETWORK SLICING AND MACHINE LEARNING TECHNIQUES L623-L688"
+      ]
+    },
+    {
+      "title": "Application-to-tooling bridge",
+      "applies_to_sections": [
+        "OTHER"
+      ],
+      "steps": [
+        "Group applications by domain to maintain clarity.",
+        "After applications, list datasets/simulators and active projects to support replication.",
+        "Note limitations to guide future work."
+      ],
+      "why_it_works": "Shows readers where and how to experiment after seeing applications.",
+      "evidence_locators": [
+        "V-VI L688-L905"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span/page markers in headings",
+      "Special characters in tables",
+      "Image placeholders for figures"
+    ],
+    "non_body_leakage": "no",
+    "missingness": [
+      "Figure/table IDs inferred from captions",
+      "Doc progress percentages approximate",
+      "Token count not computed"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "References excluded conceptually though heading appears mid-file; counts heuristic. Acronym table treated as glossary. Figures/tables identified via captions."
+}

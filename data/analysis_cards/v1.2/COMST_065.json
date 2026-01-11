@@ -1,0 +1,414 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_065",
+    "title": "Semantics-Empowered Space-Air-Ground-Sea Integrated Network: New Paradigm, Frameworks, and Challenges",
+    "authors": [
+        "Siqi Meng",
+        "Shaohua Wu",
+        "Jiaming Zhang",
+        "Junlan Cheng",
+        "Haibo Zhou",
+        "Qinyu Zhang"
+    ],
+    "affiliation": "Harbin Institute of Technology (Shenzhen) / Nanjing University / Peng Cheng Laboratory",
+    "year_online": "2024",
+    "year_issue": "2025",
+    "source_path": "data/corpus_standardized/COMST_065/COMST_065.md",
+    "domain": "Semantic Communications / SAGSIN / 6G / Deep Learning / Task-Oriented Communications / PCCAIP",
+    "paper_type": "Comprehensive Survey with Novel Paradigm Proposal",
+    "analysis_policy": {
+        "focus": "Extract paradigm framing, three-perspective organization, and multi-modal technique coverage patterns",
+        "depth": "Full paper analysis including PCCAIP framework, SPT/MET/EYT techniques, DNN models, metrics"
+    },
+    "document_stats": {
+        "total_lines": 1289,
+        "total_bytes": 292119,
+        "section_count": 7,
+        "figure_count": 17,
+        "table_count": 9,
+        "reference_count": 255
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-VII)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "SAGSIN": "Space-Air-Ground-Sea Integrated Network",
+            "PCCAIP": "Perception-Communication-Computing-Actuation Integrated Paradigm",
+            "SPT": "Significance Protection Technique",
+            "MET": "Meaning-Enhancement Technique",
+            "EYT": "Effectiveness-Yielding Technique",
+            "AoI": "Age of Information",
+            "AoII": "Age of Incorrect Information",
+            "GoT": "Goal-Oriented Tensor",
+            "JSCC": "Joint Source-Channel Coding",
+            "DeepJSCC": "Deep Learning based JSCC"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_framing",
+            "subsections": [
+                "Motivation",
+                "Related Surveys & Tutorials on SAGSIN",
+                "Related Surveys & Tutorials on Semantic Communications",
+                "Contributions",
+                "Organization"
+            ],
+            "summary": "Establishes 6G SAGSIN context, identifies gap between Shannon-limited traditional communications and semantic needs. Poses three guiding questions, introduces three semantics interpretations (significance, meaning, effectiveness).",
+            "key_claims": [
+                "Shannon limit reached - new revolution needed",
+                "Bit-level reconstruction unnecessary for M2M applications",
+                "Term 'semantics' has three interpretations in literature"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Perception, Computing, and Actuation for Semantic Communications in the SAGSIN",
+            "role": "paradigm_proposal",
+            "subsections": [
+                "Perception",
+                "Computing",
+                "Actuation",
+                "PCCAIP",
+                "Lessons Learned From This Section"
+            ],
+            "summary": "Proposes novel PCCAIP paradigm with closed-loop framework. Emergency rescue scenario illustrates target-perception-communication-actuation-target loop. Differentiates from ISAC/ISCC.",
+            "key_claims": [
+                "PCCAIP enables closed-loop semantic communication",
+                "PCCAIP differs from ISAC/ISCC in semantic focus and actuation integration",
+                "Edge computing enables semantic encoding on satellites"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "Perception-Communication-Integrated Semantic Communications: A Data Significance Perspective",
+            "role": "significance_oriented_system",
+            "subsections": [
+                "Metrics: Towards Significance Representation",
+                "Techniques: Towards Significance Protection",
+                "Lessons Learned From This Section"
+            ],
+            "summary": "Covers AoI and variants (nonlinear AoI, AoS, AoII, UoI, GoT) as significance metrics. Reviews SPTs: significance-oriented sampling, coding (HARQ variants), modulation (NOMA power allocation).",
+            "key_claims": [
+                "GoT unifies existing timeliness metrics",
+                "Zero-wait sampling not always AoI-optimal",
+                "HARQ-IR benefits depend on propagation delay threshold"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "Perception-Communication-Computing-Integrated Semantic Communications: A Meaning Extraction and Reconstruction Perspective",
+            "role": "meaning_oriented_system",
+            "subsections": [
+                "Metrics: Towards Meaning Similarity",
+                "Methods: Based on DNNs",
+                "Techniques: Towards Meaning Enhancement"
+            ],
+            "summary": "Comprehensive DNN-based semantic communication coverage. Metrics by modality (text: BLEU/BERT; image: PSNR/SSIM/LPIPS/FID; speech: SDR/PESQ). DNN taxonomy (CNN/RNN/Transformer/GAN). METs for multi-modal sources.",
+            "key_claims": [
+                "Learning-based metrics better capture meaning similarity",
+                "DeepJSCC outperforms SSCC in finite blocklength regime",
+                "Transformer enables parallel processing for long sequences"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "Perception-Communication-Computing-Actuation-Integrated Semantic Communications: An Ultimate Effectiveness Perspective",
+            "role": "effectiveness_oriented_system",
+            "subsections": [
+                "Metrics: Towards Ultimate Effectiveness",
+                "Techniques: Towards Effectiveness-Yielding"
+            ],
+            "summary": "Task-oriented communications covering classification, retrieval, control tasks. Effectiveness metrics (accuracy, precision, recall, F1). EYTs for image classification, VQA, control, multi-modal sensing.",
+            "key_claims": [
+                "Reconstruction unnecessary for task actuation",
+                "Task-oriented design reduces computing resource consumption",
+                "Multi-modal semantic fusion enhances task effectiveness"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "Future Challenges on Semantic Communications in the SAGSIN",
+            "role": "research_directions",
+            "subsections": [
+                "Robust Meaning-Oriented Semantic Communications",
+                "Semantic Scheduling and Rate Allocation",
+                "Security of Semantic Communications",
+                "Semantic Cooperation",
+                "Generative AI for Semantic Communications"
+            ],
+            "summary": "Five future directions: robustness (channel/semantic noise), scheduling, security (eavesdropping, semantic attacks), cooperation (federated learning), generative AI (LLM for compression).",
+            "key_claims": [
+                "Semantic noise distinct from channel noise",
+                "Semantic eavesdropping emerging threat",
+                "LLMs promising for semantic compression"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "Conclusions",
+            "role": "synthesis",
+            "summary": "Summarizes PCCAIP paradigm and three semantic communication system types with their corresponding techniques (SPT, MET, EYT)."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Propose comprehensive paradigm (PCCAIP) for semantic communications in SAGSIN addressing three interpretations of semantics",
+        "delivery_mechanism": "Paradigm Proposal → Significance-Oriented → Meaning-Oriented → Effectiveness-Oriented → Future Challenges",
+        "unique_contribution": "First survey linking SAGSIN fundamental limitations to semantic communication design through unified PCCAIP paradigm"
+    },
+    "taxonomy": {
+        "type": "semantic_interpretation_classification",
+        "root_concept": "Semantics for Communications",
+        "dimensions": [
+            {
+                "dimension": "Semantics Interpretation",
+                "categories": [
+                    "Significance (etymology: 'significós')",
+                    "Meaning (common explanation)",
+                    "Effectiveness-related information"
+                ]
+            },
+            {
+                "dimension": "Communication System Type",
+                "categories": [
+                    "Significance-oriented",
+                    "Meaning-oriented",
+                    "Effectiveness/Task-oriented"
+                ]
+            },
+            {
+                "dimension": "Integration Level",
+                "categories": [
+                    "Perception-Communication",
+                    "Perception-Communication-Computing",
+                    "Perception-Communication-Computing-Actuation"
+                ]
+            },
+            {
+                "dimension": "Source Modality",
+                "categories": [
+                    "Text",
+                    "Image/Video",
+                    "Speech"
+                ]
+            },
+            {
+                "dimension": "Significance Metrics",
+                "categories": [
+                    "Content-agnostic (AoI, nonlinear AoI)",
+                    "Content-aware (AoS, AoII, UoI)",
+                    "Unified (GoT)"
+                ]
+            }
+        ]
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "AoI and variants (significance)",
+            "BLEU, BERT score (text meaning)",
+            "PSNR, SSIM, LPIPS, FID, KID (image meaning)",
+            "SDR, PESQ, MCD, FDSD, KDSD (speech meaning)",
+            "Accuracy, Precision, Recall, F1 (effectiveness)"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Comparison of contributions between related surveys and this survey (SAGSIN + Semantic Comms)"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Summary of abbreviations/acronyms (extensive - 50+ entries)"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Summary of significance metrics with evolution examples"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "Summary of significance-protection techniques (SPTs)"
+            },
+            {
+                "table_ref": "Table V",
+                "purpose": "Summary of metrics based on meaning similarity by source type"
+            },
+            {
+                "table_ref": "Table VI",
+                "purpose": "Summary of neural networks used in JSCC"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "scenario_illustration",
+                "example": "Fig. 1 - An Illustration of the SAGSIN",
+                "purpose": "Show network architecture with space/air/ground/sea layers"
+            },
+            {
+                "type": "survey_architecture_diagram",
+                "example": "Fig. 2 - The architecture of this survey",
+                "purpose": "Visual roadmap showing section organization"
+            },
+            {
+                "type": "paradigm_scenario_diagram",
+                "example": "Fig. 3 - A scenario of a remote emergency rescue task in SAGSIN",
+                "purpose": "Illustrate PCCAIP with numbered information flows"
+            },
+            {
+                "type": "framework_diagram",
+                "example": "Fig. 4, 8 - Framework diagrams for significance and meaning-oriented systems",
+                "purpose": "System block diagrams"
+            },
+            {
+                "type": "metric_evolution_diagram",
+                "example": "Fig. 5 - Examples of how GoT can degenerate to existing metrics",
+                "purpose": "Show metric relationships through subfigures"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Three-perspective semantic interpretation with increasing integration level",
+        "key_paradigm": "PCCAIP unifies perception, communication, computing, and actuation for semantic communications",
+        "gap_identification": [
+            "No prior survey linking SAGSIN limitations to semantic communication design",
+            "Semantic noise and robustness under-explored",
+            "Semantic security lacking formal framework",
+            "LLM integration nascent"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Paradigm-driven organization with three semantic interpretations",
+        "source_selection": "255+ references covering 2014-2024 literature",
+        "distinguishing_features": [
+            "Three guiding research questions in introduction",
+            "Novel paradigm proposal (PCCAIP)",
+            "Per-section Lessons Learned synthesis",
+            "Technique acronym framework (SPT, MET, EYT)",
+            "Multi-modal source coverage with dedicated metrics tables",
+            "DNN taxonomy for semantic communication systems"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with pedagogical paradigm introduction",
+        "rhetorical_patterns": [
+            "Three guiding research questions",
+            "Lessons Learned paragraphs",
+            "Remark boxes for important observations",
+            "Technique categorization acronyms (SPT/MET/EYT)",
+            "Numbered bullet contributions",
+            "Etymology-based definition exploration"
+        ],
+        "characteristic_phrases": [
+            "Question N. How should we...",
+            "Lessons Learned From This Section:",
+            "Remark N:",
+            "In this survey, we consider...",
+            "The reason behind this is that..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Three Guiding Research Questions",
+            "description": "Open the introduction by posing three numbered research questions that the survey will answer, providing clear reader expectations",
+            "structure": [
+                "State 'This survey is dedicated to answering the following three questions'",
+                "Present Question 1, 2, 3 in italics format",
+                "Questions progress from conceptual (what is X) to design to implementation",
+                "Answer preview follows questions",
+                "Structure survey sections around answering these questions"
+            ],
+            "example_application": "Section I-A: Question 1 (interpret semantics), Question 2 (design systems), Question 3 (utilize SAGSIN resources)",
+            "rhetorical_effect": "Sets clear expectations; creates narrative arc; reader engagement hook",
+            "complexity": "Medium - requires careful question design"
+        },
+        {
+            "recipe_name": "Etymology-Based Definition Exploration",
+            "description": "Ground key terminology by exploring its etymological origins followed by multiple interpretations",
+            "structure": [
+                "State term's etymological origin (e.g., Greek word)",
+                "Provide original meaning from etymology",
+                "Present common/modern explanation",
+                "Introduce domain-specific interpretation",
+                "Map interpretations to system types throughout survey"
+            ],
+            "example_application": "'Semantics' → Greek 'semanticós' = significance → common meaning = meaning → effectiveness-related information",
+            "rhetorical_effect": "Academic authority; comprehensive conceptual coverage; structured organization",
+            "complexity": "Low - requires etymology research"
+        },
+        {
+            "recipe_name": "Per-Section Lessons Learned Synthesis",
+            "description": "Conclude each major section with a dedicated 'Lessons Learned' subsection summarizing key takeaways",
+            "structure": [
+                "Title: 'E. Lessons Learned From This Section'",
+                "Start with overview paragraph of section purpose",
+                "Synthesize 3-5 major technical insights",
+                "Connect to overall paradigm/framework",
+                "Transition to next section"
+            ],
+            "example_application": "Every major section (II-VI) ends with 'Lessons Learned From This Section' subsection",
+            "rhetorical_effect": "Reinforces key messages; aids retention; enables scanning",
+            "complexity": "Low - requires synthesis skill"
+        },
+        {
+            "recipe_name": "Technique Acronym Framework",
+            "description": "Create memorable acronyms for technique categories that form a coherent set across the survey",
+            "structure": [
+                "Define acronyms in introduction (SPT, MET, EYT)",
+                "Use parallel structure ([X]-Protection/Enhancement/Yielding Techniques)",
+                "Map techniques to their corresponding system type",
+                "Create summary tables for each technique category",
+                "Reference acronyms consistently throughout paper"
+            ],
+            "example_application": "SPTs (Section III), METs (Section IV), EYTs (Section V) - each has dedicated table",
+            "rhetorical_effect": "Memorability; clear categorization; consistent terminology",
+            "complexity": "Medium - requires careful parallel design"
+        },
+        {
+            "recipe_name": "Remark Boxes for Key Observations",
+            "description": "Insert numbered 'Remark' paragraphs at strategic points to highlight important insights that warrant special attention",
+            "structure": [
+                "Title: 'Remark N:' in italics",
+                "Present non-obvious observation or insight",
+                "Explain reasoning or implications",
+                "Connect to broader context when relevant",
+                "Place after complex technical explanations"
+            ],
+            "example_application": "Remark 1-5 throughout Sections III-IV highlighting metric preferences, differentiability issues, etc.",
+            "rhetorical_effect": "Highlights wisdom; breaks technical density; captures reader attention",
+            "complexity": "Low - requires identifying key insights"
+        },
+        {
+            "recipe_name": "Source-Type Stratified Metrics Coverage",
+            "description": "Organize metrics discussion by source modality with consistent objective/learning-based subdivision",
+            "structure": [
+                "Major subdivision by source type (text, image/video, speech)",
+                "Within each source: Objective metrics first, then Learning-based metrics",
+                "Provide formulas for key metrics",
+                "Explain what each metric captures",
+                "Create comprehensive summary table with all metrics"
+            ],
+            "example_application": "Section IV-A: Text (WER→BLEU→BERT), Image (PSNR→SSIM→LPIPS→FID), Speech (SDR→PESQ→FDSD)",
+            "rhetorical_effect": "Comprehensive coverage; easy reference; systematic organization",
+            "complexity": "Medium - requires domain expertise across modalities"
+        }
+    ],
+    "key_concepts": {
+        "pccaip": "Perception-Communication-Computing-Actuation Integrated Paradigm for semantic SAGSIN",
+        "three_semantics": "Significance, Meaning, Effectiveness interpretations",
+        "deepjscc": "Deep learning based joint source-channel coding",
+        "got": "Goal-oriented tensor unifying significance metrics"
+    },
+    "quality_flags": {
+        "three_guiding_questions": true,
+        "novel_paradigm_proposal": true,
+        "etymology_exploration": true,
+        "per_section_lessons_learned": true,
+        "technique_acronym_framework": true,
+        "remark_boxes": true,
+        "multi_modal_coverage": true,
+        "dnn_taxonomy": true,
+        "approximately_255_references": true
+    }
+}

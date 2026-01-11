@@ -1,0 +1,352 @@
+{
+    "paper_id": "COMST_059",
+    "schema_version": "v1.2",
+    "title": "Rate-Splitting Multiple Access: Fundamentals, Survey, and Future Research Trends",
+    "year_online": 2022,
+    "year_issue": 2022,
+    "domain": "Multiple Access, Rate-Splitting, Interference Management, 6G PHY Layer",
+    "abstract_summary": "First holistic tutorial and survey on Rate-Splitting Multiple Access (RSMA) as a general, powerful, and robust framework for non-orthogonal transmission, multiple access, and interference management in 6G wireless networks. Covers information-theoretic foundations, communication-theoretic designs, PHY layer architecture, and applications to 17 enabling technologies.",
+    "doc_type": "tutorial_survey",
+    "document_stats": {
+        "total_lines": 1731,
+        "sections": 8,
+        "figures": 33,
+        "tables": 12,
+        "references": 202
+    },
+    "section_flow": [
+        {
+            "id": "I",
+            "title": "Introduction",
+            "purpose": "Motivate RSMA as 6G PHY layer paradigm, compare with existing MA schemes"
+        },
+        {
+            "id": "II",
+            "title": "Principles of RSMA",
+            "purpose": "Define RSMA frameworks for downlink, uplink, and multi-cell scenarios"
+        },
+        {
+            "id": "III",
+            "title": "Information-Theoretic Background and Milestones",
+            "purpose": "Trace RSMA roots in network information theory"
+        },
+        {
+            "id": "IV",
+            "title": "Communication-Theoretic Background of RSMA",
+            "purpose": "Resource allocation, precoder design, and system optimization"
+        },
+        {
+            "id": "V",
+            "title": "RSMA PHY Layer Design",
+            "purpose": "Finite constellation, polar codes, AMC, and practical transceiver architecture"
+        },
+        {
+            "id": "VI",
+            "title": "Comparison of Multiple Access Schemes",
+            "purpose": "Comprehensive comparison of RSMA vs OMA/SDMA/NOMA in framework, complexity, performance"
+        },
+        {
+            "id": "VII",
+            "title": "Emerging Applications, Challenges, and Future Research Trends",
+            "purpose": "17 enabling technologies and research directions for 6G"
+        },
+        {
+            "id": "VIII",
+            "title": "Conclusion",
+            "purpose": "Summarize RSMA benefits and research opportunities"
+        }
+    ],
+    "rhetorical_patterns": {
+        "introduction_moves": [
+            "Establish 6G vision and new requirements",
+            "Compare existing MA schemes (OMA, SDMA, NOMA) and limitations",
+            "Present RSMA as unified solution bridging extreme interference strategies",
+            "Define key research questions on robustness, flexibility, and generality",
+            "Outline paper contributions and organization via detailed table"
+        ],
+        "body_organization": "Layered Tutorial: Theory (Information → Communication) → Practice (PHY Layer) → Comparison → Applications",
+        "conclusion_structure": "Bullet-point summary of tutorial contributions, synthesis of advantages, call for future research"
+    },
+    "taxonomy": {
+        "exists": true,
+        "type": "scheme_hierarchy",
+        "depth": 3,
+        "structure": {
+            "level_1": "RSMA Frameworks",
+            "level_2": [
+                "Downlink RSMA",
+                "Uplink RSMA",
+                "Multi-Cell RSMA"
+            ],
+            "level_3": [
+                "1-layer RS",
+                "2-layer HRS",
+                "Generalized RS",
+                "RS-CMD",
+                "DPCRS",
+                "THPRS"
+            ]
+        },
+        "presentation": "Tables V, VIII, IX, X showing scheme relationships and complexity"
+    },
+    "visuals_tables": {
+        "key_figures": [
+            {
+                "id": "Fig.1",
+                "type": "comparison_diagrams",
+                "description": "Visual comparison of OMA, SDMA, NOMA, and RSMA transmission frameworks"
+            },
+            {
+                "id": "Fig.16",
+                "type": "milestone_timeline",
+                "description": "Timeline of RSMA development from 1978 to 2021"
+            },
+            {
+                "id": "Fig.20",
+                "type": "system_architecture",
+                "description": "PHY layer transmitter/receiver structure with polar codes and AMC"
+            },
+            {
+                "id": "Fig.21-22",
+                "type": "framework_hierarchy",
+                "description": "Hierarchical relationship among MA schemes for uplink/downlink"
+            },
+            {
+                "id": "Fig.33",
+                "type": "standardization_roadmap",
+                "description": "Pathways to 3GPP standardization via existing mechanisms"
+            }
+        ],
+        "key_tables": [
+            {
+                "id": "Table I",
+                "type": "acronym_list",
+                "description": "Comprehensive list of abbreviations and acronyms"
+            },
+            {
+                "id": "Table II",
+                "type": "paper_outline",
+                "description": "Detailed organization showing all sections and subsections"
+            },
+            {
+                "id": "Table III",
+                "type": "notation_reference",
+                "description": "Mathematical notation definitions"
+            },
+            {
+                "id": "Table V",
+                "type": "scheme_comparison",
+                "description": "Quantitative complexity comparison of 7 RSMA schemes"
+            },
+            {
+                "id": "Table VI",
+                "type": "literature_summary",
+                "description": "Information-theoretic literature from 1978-2021"
+            },
+            {
+                "id": "Table VII",
+                "type": "literature_summary",
+                "description": "Communication-theoretic literature by application"
+            },
+            {
+                "id": "Table VIII",
+                "type": "design_principles",
+                "description": "MA scheme design philosophy comparison"
+            },
+            {
+                "id": "Table X",
+                "type": "complexity_comparison",
+                "description": "Encoder/Scheduler/Receiver complexity across MA schemes"
+            },
+            {
+                "id": "Table XI",
+                "type": "performance_comparison",
+                "description": "Sum-DoF and MMF-DoF for perfect/imperfect CSIT"
+            },
+            {
+                "id": "Table XII",
+                "type": "applications_literature",
+                "description": "~80 references organized by year and 6G application"
+            }
+        ]
+    },
+    "synthesis": {
+        "key_findings": [
+            "RSMA is a universal MA scheme subsuming OMA, SDMA, NOMA, and multicasting",
+            "RSMA achieves optimal DoF region in MISO BC with imperfect CSIT",
+            "1-layer RS provides best complexity-performance tradeoff with single SIC layer",
+            "RSMA is robust to CSIT uncertainties from quantization, mobility, and pilot contamination",
+            "RSMA enables SE, EE, coverage, and user fairness improvements simultaneously"
+        ],
+        "research_gaps": [
+            "MIMO BC with multi-antenna receivers",
+            "K-cell MIMO IC capacity region",
+            "HARQ design for RSMA",
+            "Waveform design integration",
+            "System-level performance evaluation"
+        ],
+        "future_directions": [
+            "Massive MIMO and cell-free massive MIMO",
+            "Millimeter-wave hybrid precoding",
+            "Multigroup multicasting and NOUM",
+            "Multi-cell CoMP, C-RAN, and F-RAN",
+            "SWIPT and cooperative user relaying",
+            "UAV-aided communications",
+            "Physical layer security",
+            "Satellite and integrated terrestrial-satellite networks",
+            "Joint radar/sensing and communication (ISAC)",
+            "Cognitive radio",
+            "Massive machine-type communication (mMTC)",
+            "Visible light communication (VLC)",
+            "Intelligent reconfigurable surface (IRS)",
+            "Space-air-ground integrated networks (SAGIN)",
+            "Vehicle-to-everything (V2X)",
+            "3D eMBB-URLLC-mMTC services",
+            "Standardization and implementation"
+        ]
+    },
+    "writing_recipes": [
+        {
+            "id": "COMST_059_R1",
+            "name": "Triple Reference Table Foundation",
+            "description": "Opening the survey with three foundational reference tables: Acronym List (Table I), Notation Reference (Table III), and Paper Organization Outline (Table II) to establish comprehensive reader scaffolding.",
+            "rhetorical_function": "Provides instant accessibility for readers at any expertise level, enabling quick lookup and establishing the paper's scope upfront",
+            "template": {
+                "structure": [
+                    "Table I: Acronyms and abbreviations (A-Z organized)",
+                    "Table II: Paper organization with section descriptions",
+                    "Table III: Mathematical notation with definitions"
+                ],
+                "placement": "After abstract, before Section I body text"
+            },
+            "examples": [
+                "Tables I, II, III positioned as frontmatter before introduction prose"
+            ]
+        },
+        {
+            "id": "COMST_059_R2",
+            "name": "Scheme-by-Scheme Taxonomy with Quantitative Complexity Metrics",
+            "description": "Presenting the taxonomy of related schemes (1-layer RS, 2-layer HRS, Generalized RS, RS-CMD, DPCRS, THPRS) with systematic quantitative comparison including encoding complexity, SIC layers, and decoding operations.",
+            "rhetorical_function": "Enables readers to immediately understand scheme relationships and make informed tradeoff decisions based on exact complexity numbers",
+            "template": {
+                "structure": [
+                    "Individual scheme description with transmitter/receiver diagrams",
+                    "Table V: Side-by-side comparison with columns for encoding complexity, SIC layers, decoding order complexity",
+                    "Remark blocks highlighting when each scheme is most applicable"
+                ],
+                "metrics": [
+                    "Number of encoded streams",
+                    "SIC layers at receiver",
+                    "User grouping complexity",
+                    "Decoding order options"
+                ]
+            },
+            "examples": [
+                "Table V comparing 7 RSMA schemes across 5 complexity dimensions"
+            ]
+        },
+        {
+            "id": "COMST_059_R3",
+            "name": "Dual Information-Theoretic and Communication-Theoretic Literature Division",
+            "description": "Explicitly partitioning the literature review into two complementary perspectives: information-theoretic (capacity, DoF, fundamental limits) and communication-theoretic (resource allocation, practical algorithms, finite SNR performance).",
+            "rhetorical_function": "Establishes intellectual depth while maintaining practical relevance, appealing to both theorists and system designers",
+            "template": {
+                "structure": [
+                    "Section III: Information-Theoretic Background (historical milestones, DoF analysis, capacity results)",
+                    "Section IV: Communication-Theoretic Background (precoder design, power allocation, rate optimization)",
+                    "Table VI: Information-theoretic literature by year and metric (DoF, GDoF, capacity)",
+                    "Table VII: Communication-theoretic literature by year, CSIT condition, and KPI"
+                ]
+            },
+            "examples": [
+                "Sections III and IV with Tables VI-VII providing complementary literature perspectives"
+            ]
+        },
+        {
+            "id": "COMST_059_R4",
+            "name": "MA Scheme Framework Comparison Matrix",
+            "description": "Creating a comprehensive comparison matrix (Table VIII) that systematically contrasts all MA schemes across design principles, decoder architecture, ideal deployment scenarios, and network load suitability.",
+            "rhetorical_function": "Provides authoritative positioning statement showing RSMA's universal applicability compared to specialized alternatives",
+            "template": {
+                "dimensions": [
+                    "Design principle (interference handling strategy)",
+                    "Decoder architecture (SIC requirements)",
+                    "Ideal user deployment scenario (channel conditions)",
+                    "Network load suitability (underloaded/overloaded)"
+                ],
+                "comparison_entities": [
+                    "OMA",
+                    "SDMA",
+                    "NOMA (G=1)",
+                    "NOMA (G>1)",
+                    "RSMA"
+                ]
+            },
+            "examples": [
+                "Table VIII showing RSMA as universally applicable across all dimensions"
+            ]
+        },
+        {
+            "id": "COMST_059_R5",
+            "name": "Structured Advantages-Disadvantages Enumeration",
+            "description": "Presenting a balanced assessment with named bullet points for advantages (Universality, Flexibility, Robustness, Higher SE, Higher EE, Enhanced QoS, Lower Complexity, Coverage Extension, Low Latency) and disadvantages (SIC requirement, Higher encoding complexity, Higher signaling burden, Higher optimization burden).",
+            "rhetorical_function": "Builds credibility through balanced analysis while clearly establishing net positive value proposition",
+            "template": {
+                "advantages_format": "• *AdvantageTitle:* Detailed multi-paragraph explanation with citations",
+                "disadvantages_format": "• *DisadvantageTitle:* Concise explanation with context",
+                "ratio": "9 advantages : 4 disadvantages in this paper"
+            },
+            "examples": [
+                "Section VI.D (9 advantages) and VI.E (4 disadvantages)"
+            ]
+        },
+        {
+            "id": "COMST_059_R6",
+            "name": "17-Application Future Directions Enumeration with Challenges-and-Future-Work Pattern",
+            "description": "Systematically covering 17 enabling technologies, each with consistent structure: technology overview, RSMA application summary, 'Challenges and future work' subsection identifying open problems.",
+            "rhetorical_function": "Provides exhaustive coverage of research landscape while identifying specific actionable research opportunities for each application domain",
+            "template": {
+                "per_application_structure": [
+                    "Technology introduction and motivation",
+                    "RSMA application survey (existing works with citations)",
+                    "*Challenges and future work:* Open problems in bullet/paragraph form"
+                ],
+                "applications_covered": 17,
+                "literature_table": "Table XII summarizing ~80 references by application and year"
+            },
+            "examples": [
+                "Section VII.B covering Massive MIMO through IRS-aided Communications"
+            ]
+        },
+        {
+            "id": "COMST_059_R7",
+            "name": "Standardization Pathway Discussion with Visual Roadmap",
+            "description": "Including a dedicated subsection on standardization (Section VII.C) with a visual figure (Fig. 33) showing how existing 3GPP mechanisms (MU-MIMO, CoMP, MBS, NAICS, MUST) provide pathways to RSMA integration.",
+            "rhetorical_function": "Bridges academic research to industry adoption, enhancing paper's practical impact and relevance to standards community",
+            "template": {
+                "structure": [
+                    "Key topics for standardization (HARQ, signaling, system-level performance)",
+                    "Existing 3GPP mechanisms that support RSMA components",
+                    "Visual pathway diagram showing Release evolution"
+                ],
+                "figure_type": "Standardization roadmap with Release numbers"
+            },
+            "examples": [
+                "Section VII.C with Fig. 33 showing pathways to 3GPP"
+            ]
+        }
+    ],
+    "quality_flags": {
+        "is_comprehensive": true,
+        "has_clear_structure": true,
+        "has_visual_taxonomy": true,
+        "has_experimental_validation": true,
+        "has_standardization_discussion": true
+    },
+    "processing_metadata": {
+        "extracted_by": "gemini-cli",
+        "extraction_date": "2025-01-11",
+        "confidence_score": 0.95,
+        "notes": "Extremely comprehensive 1731-line tutorial/survey with 12 tables, 33 figures, 202 references. Exceptional for Triple Reference Table Foundation and 17-Application enumeration patterns."
+    }
+}

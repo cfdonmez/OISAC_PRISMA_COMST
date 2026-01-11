@@ -1,0 +1,758 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_051",
+  "title": "Near-Field Communications: A Comprehensive Survey",
+  "year_online": "2024",
+  "year_issue": "2025",
+  "year_source": "doi/frontmatter",
+  "domain": "Near-field communications (fundamentals, models, performance, signal processing, applications)",
+  "source_path": "data/corpus_standardized/COMST_051/COMST_051.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Acronym/glossary tables treated as nomenclature; page markers ignored."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 41450,
+    "approx_token_count_total": null,
+    "equation_count_est": 698,
+    "figure_count_est": 62,
+    "table_count_est": 16,
+    "list_count_est": 385,
+    "citation_count_in_body_est": 376,
+    "citation_density_per_1k_words_est": 9.1,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. From Plane Wave to Spherical Wave",
+        "B. A Brief History of Near-Field Communications",
+        "C. Prior Works and Motivations",
+        "D. Contributions",
+        "E. Organization"
+      ],
+      "objective": "Hook with the 5G-to-NG shift and plane-to-spherical wave transition, establish the literature gap, list contributions, and map the paper.",
+      "key_components": [
+        "Historical hook with EM region definitions and visual timeline/table",
+        "Gap versus magazines/tutorials and case-study surveys",
+        "Contribution bullets with five thrusts",
+        "Scope boundary on NFC definition (radiating near field, ELAA-driven)",
+        "Organization map and structure figure"
+      ],
+      "approx_word_share_pct": "14-17",
+      "approx_words_est": 6500,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 13
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Opens with plane-vs-spherical wave contrast and Fraunhofer distance math to dramatize the near-field shift.",
+        "Uses a brief historical timeline and comparison table inside the introduction to support the gap claim."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines the near-field transition via Fraunhofer distance and sets the hook for NG wireless.",
+          "locator": {
+            "heading": "A. From Plane Wave to Spherical Wave",
+            "paragraph_index_est": 1,
+            "line_range_est": "L30-L65"
+          }
+        },
+        {
+          "claim": "States prior magazines/tutorials treat NFC partially and positions need for a comprehensive survey.",
+          "locator": {
+            "heading": "C. Prior Works and Motivations",
+            "paragraph_index_est": 2,
+            "line_range_est": "L120-L175"
+          }
+        },
+        {
+          "claim": "Lists five contribution bullets and delivers the organization map.",
+          "locator": {
+            "heading": "D. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L185-L235"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. FUNDAMENTALS OF NEAR-FIELD COMMUNICATIONS",
+        "A. Near-Field Channel Modeling: From Physics to Communications",
+        "B. Recent Developments in Antenna Array Technology",
+        "C. Electromagnetic Information Theory (EMIT)"
+      ],
+      "objective": "Lay physical and communications fundamentals, connecting EM theory to NFC channel modeling and antenna evolution.",
+      "key_components": [
+        "Physics-driven channel model categories",
+        "Antenna architecture evolution for NFC",
+        "EMIT primer as theoretical backbone"
+      ],
+      "approx_word_share_pct": "15-17",
+      "approx_words_est": 7000,
+      "positioning": {
+        "start_doc_progress_pct_est": 13,
+        "end_doc_progress_pct_est": 22
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "pivot",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses physics-to-communications bridge as a repeating paragraph pattern.",
+        "Keeps EMIT as a lightweight primer rather than deep math to avoid bogging down."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces three categories of near-field channel models from physics perspective.",
+          "locator": {
+            "heading": "A. Near-Field Channel Modeling: From Physics to Communications",
+            "paragraph_index_est": 1,
+            "line_range_est": "L250-L290"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "III. CHANNEL MODELING OF NEAR-FIELD COMMUNICATIONS",
+        "A. Spatial Non-Stationarity in Near-Field Channel Modeling",
+        "B. Line-of-Sight Channel Models",
+        "C. Non-Line-of-Sight Channel Models",
+        "D. Hybrid Line-of-Sight/Non-Line-of-Sight Models",
+        "E. Discussions and Outlook"
+      ],
+      "objective": "Build a taxonomy of NFC channel models segmented by propagation condition and array type, highlighting non-stationarity and modeling choices.",
+      "key_components": [
+        "SPD vs CAP delineation",
+        "LoS/NLoS/hybrid model families",
+        "Spatial non-stationarity treatment",
+        "Outlook paragraph with open modeling issues"
+      ],
+      "approx_word_share_pct": "20-22",
+      "approx_words_est": 8700,
+      "positioning": {
+        "start_doc_progress_pct_est": 22,
+        "end_doc_progress_pct_est": 40
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Starts with a mini-map to signal SPD/CAP and LoS/NLoS splits.",
+        "Closes with an outlook to tee up performance analysis."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Signals the need to handle spatial non-stationarity before diving into model families.",
+          "locator": {
+            "heading": "A. Spatial Non-Stationarity in Near-Field Channel Modeling",
+            "paragraph_index_est": 1,
+            "line_range_est": "L305-L335"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "IV. PERFORMANCE ANALYSIS OF NEAR-FIELD COMMUNICATIONS",
+        "A. Degrees-of-Freedom and Effective Degrees-of-Freedom",
+        "B. Power Scaling Law",
+        "C. Transmission Rate",
+        "D. Discussions and Outlook"
+      ],
+      "objective": "Evaluate NFC via three core metrics (DoF/EDoF, power scaling, rate), summarizing analytical tools and limits.",
+      "key_components": [
+        "Metric definitions and relevance",
+        "Key findings per metric (scaling, bounds, sensitivities)",
+        "Comparative discussion and open issues"
+      ],
+      "approx_word_share_pct": "18-20",
+      "approx_words_est": 8000,
+      "positioning": {
+        "start_doc_progress_pct_est": 40,
+        "end_doc_progress_pct_est": 59
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Uses a three-metric backbone to keep a math-heavy section navigable.",
+        "Ends with an outlook to transition to signal processing techniques."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces DoF/EDoF as the first performance lens.",
+          "locator": {
+            "heading": "A. Degrees-of-Freedom and Effective Degrees-of-Freedom",
+            "paragraph_index_est": 1,
+            "line_range_est": "L560-L610"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "V. SIGNAL PROCESSING FOR NEAR-FIELD COMMUNICATIONS",
+        "A. Near-Field Channel Estimation",
+        "B. Near-Field Beamforming",
+        "C. Low-Complexity Near-Field Beam Training",
+        "D. Discussions and Outlook"
+      ],
+      "objective": "Survey core NFC signal processing blocks with design patterns and complexity notes.",
+      "key_components": [
+        "Estimation strategies tuned for near-field non-stationarity",
+        "Beamforming designs and hardware-aware choices",
+        "Beam training/tracking schemes and complexity trade-offs",
+        "Short outlook to bridge to applications"
+      ],
+      "approx_word_share_pct": "12-14",
+      "approx_words_est": 5200,
+      "positioning": {
+        "start_doc_progress_pct_est": 59,
+        "end_doc_progress_pct_est": 68
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps a recurring trio (estimation, beamforming, training) with short summaries to avoid drift.",
+        "Closes with an outlook paragraph to segue into applications."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Frames the signal processing trio and scope.",
+          "locator": {
+            "heading": "V. SIGNAL PROCESSING FOR NEAR-FIELD COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L805-L835"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VI. PROMISING NEXT-GENERATION APPLICATION SCENARIOS IN THE NEAR FIELD",
+        "A. Near-Field Sensing (NISE)",
+        "B. Near-Field Sustainability Enhancement",
+        "C. Near-Field Massive Connectivity",
+        "D. Near-Field Information Safeguarding"
+      ],
+      "objective": "Showcase application scenarios and integration points for NFC, translating prior models and processing into use cases.",
+      "key_components": [
+        "Application buckets (sensing, sustainability, connectivity, safeguarding)",
+        "Benefit statements and enabling features",
+        "Pointers back to models/processing constraints"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": 3000,
+      "positioning": {
+        "start_doc_progress_pct_est": 68,
+        "end_doc_progress_pct_est": 70
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps application vignettes concise and tightly linked to earlier technical sections."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces the application buckets and connects them to prior sections.",
+          "locator": {
+            "heading": "VI. PROMISING NEXT-GENERATION APPLICATION SCENARIOS IN THE NEAR FIELD",
+            "paragraph_index_est": 1,
+            "line_range_est": "L922-L955"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VII. CONCLUSION"
+      ],
+      "objective": "Summarize key takeaways and restate the NFC research roadmap.",
+      "key_components": [
+        "Concise recap of main pillars",
+        "Reminder of open research opportunities",
+        "Forward-looking closing sentence"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 800,
+      "positioning": {
+        "start_doc_progress_pct_est": 70,
+        "end_doc_progress_pct_est": 71
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "1",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "contribution",
+        "limitation",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps the conclusion minimal, pointing back to research opportunities."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Restates NFC roadmap and calls for future research.",
+          "locator": {
+            "heading": "VII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L954-L960"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Leads with 5G-to-NG shift and plane-vs-spherical wave contrast plus Fraunhofer distance math.",
+      "locator": "Introduction L20-L65"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes existing magazines/tutorials and case-study surveys do not comprehensively cover NFC history, models, performance, and applications together.",
+      "locator": "Prior Works and Motivations L120-L175"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges prior magazines/tutorials and then argues missing pieces like comparative math tools and full application coverage.",
+      "locator": "Prior Works and Motivations L150-L180"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Five contribution bullets span principles, models, performance, processing, and integration.",
+      "locator": "Contributions L185-L235"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section roadmap and references an organization figure.",
+      "locator": "Organization L235-L260"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Defines NFC as radiating near-field driven by ELAAs/high frequencies and excludes reactive-NF RFID focus.",
+      "locator": "Introduction L90-L120"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "We redefine NFC via spherical-wave physics, review models/metrics/processing, compare against prior magazines/tutorials, and organize as fundamentals → models → performance → processing → applications → conclusion."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "hybrid",
+    "axes": [
+      "array type (SPD vs CAP)",
+      "propagation condition (LoS/NLoS/hybrid)"
+    ],
+    "levels_est": 3,
+    "node_count_est": 20,
+    "branches": [
+      "Fundamentals (physics/antennas/EMIT)",
+      "Channel models (SPD/CAP; LoS/NLoS/hybrid)",
+      "Performance metrics (DoF, scaling, rate)",
+      "Signal processing (estimation/beamforming/training)",
+      "Applications (sensing, sustainability, connectivity, safeguarding)"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F03"
+      ],
+      "table_ids": [
+        "T02"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "degrees-of-freedom",
+      "power scaling",
+      "transmission rate"
+    ],
+    "tradeoff_axes": [
+      "DoF vs complexity",
+      "power scaling vs aperture size"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "IV. PERFORMANCE ANALYSIS L560-L835"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro packs a timeline and comparison table to anchor the hook/gap; organization figure early to orient; tables scattered for milestones, comparisons, acronyms; figures throughout fundamentals/model/performance sections to visualize wave regions and architectures.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "timeline",
+        "purpose": "historical hook",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 3
+        },
+        "evidence_locator": "Table I and associated timeline visuals in Introduction"
+      },
+      {
+        "figure_id": "F03",
+        "type": "architecture",
+        "purpose": "organization/roadmap",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 12
+        },
+        "evidence_locator": "Organization figure referenced near Section E"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "timeline",
+        "purpose": "historical milestone compression",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 7
+        },
+        "evidence_locator": "Table I timeline of NFC milestones"
+      },
+      {
+        "table_id": "T02",
+        "type": "survey comparison",
+        "purpose": "compare this work to magazines/tutorials",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 10
+        },
+        "evidence_locator": "Table II comparison with existing works"
+      },
+      {
+        "table_id": "T03",
+        "type": "notation_table",
+        "purpose": "acronym glossary",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 14
+        },
+        "evidence_locator": "Table III list of acronyms"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "tutorial",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Introduction",
+        "lesson": "Combine physics hook, literature gap, and contributions with embedded timeline and comparison table.",
+        "locator": "Introduction L20-L235"
+      },
+      {
+        "location": "Fundamentals",
+        "lesson": "Bridge physics-to-communications and antenna evolution before heavier math.",
+        "locator": "II. FUNDAMENTALS L240-L320"
+      },
+      {
+        "location": "Channel modeling",
+        "lesson": "Matrix SPD/CAP by LoS/NLoS and flag non-stationarity before diving into submodels.",
+        "locator": "III. CHANNEL MODELING L297-L540"
+      },
+      {
+        "location": "Performance analysis",
+        "lesson": "Use a three-metric backbone (DoF, scaling, rate) with short outlook to prevent math fatigue.",
+        "locator": "IV. PERFORMANCE ANALYSIS L547-L803"
+      },
+      {
+        "location": "Signal processing",
+        "lesson": "Triad pattern (estimation, beamforming, training) capped with an outlook to applications.",
+        "locator": "V. SIGNAL PROCESSING L803-L922"
+      }
+    ],
+    "aha_moment": "A consistent matrix—physics to antenna to SPD/CAP models to three performance metrics to three processing blocks—keeps an equation-heavy NFC survey readable while grounding every section back to the near-field transition story."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "Curated NFC literature across physics, modeling, performance, processing, and applications; no explicit database filters listed.",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "yes",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Forward-looking opener plus mini-map of upcoming subsections.",
+    "math_handling_strategy": "progressive deepening",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 9.3,
+    "signposting_devices": [
+      "In this section",
+      "Next",
+      "Moreover"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Physics hook + gap + contribution bundle",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Open with a physics contrast (plane vs spherical, Fraunhofer distance) to anchor novelty.",
+        "Position the literature gap with a quick magazine/tutorial/survey scan.",
+        "List contributions and pair with an organization map plus timeline/comparison visuals."
+      ],
+      "why_it_works": "Combines technical authority with fast reader orientation and clear promises.",
+      "evidence_locators": [
+        "Introduction L20-L235"
+      ]
+    },
+    {
+      "title": "Physics-to-communications bridge",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Start with physical model categories and constraints.",
+        "Transition to antenna evolution and design implications.",
+        "Close with a light theoretical primer (e.g., EMIT) without heavy math."
+      ],
+      "why_it_works": "Prepares readers for later math by grounding abstractions in physical intuition.",
+      "evidence_locators": [
+        "II. FUNDAMENTALS L240-L320"
+      ]
+    },
+    {
+      "title": "Model matrix with non-stationarity flag",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Declare axes (e.g., SPD vs CAP; LoS vs NLoS vs hybrid).",
+        "Survey each cell with concise modeling notes and assumptions.",
+        "Call out spatial non-stationarity early and revisit per model family."
+      ],
+      "why_it_works": "A clear matrix keeps diverse channel models organized and comparable.",
+      "evidence_locators": [
+        "III. CHANNEL MODELING L297-L540"
+      ]
+    },
+    {
+      "title": "Three-metric performance backbone",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK"
+      ],
+      "steps": [
+        "Define three metrics (DoF/EDoF, power scaling, rate) up front.",
+        "For each, summarize key results, tools, and sensitivities.",
+        "Finish with a brief outlook tying metrics back to models."
+      ],
+      "why_it_works": "Fixing on three metrics keeps a math-heavy section skimmable and comparable.",
+      "evidence_locators": [
+        "IV. PERFORMANCE ANALYSIS L547-L803"
+      ]
+    },
+    {
+      "title": "Signal-processing triad with outlook",
+      "applies_to_sections": [
+        "OTHER"
+      ],
+      "steps": [
+        "Use a fixed triad: estimation, beamforming, training.",
+        "Note hardware/complexity constraints per item.",
+        "End with an outlook paragraph to bridge into applications."
+      ],
+      "why_it_works": "A repeated triad plus outlook prevents drift and sets up application narratives cleanly.",
+      "evidence_locators": [
+        "V. SIGNAL PROCESSING L803-L922"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span/page markers in headings",
+      "Special characters in tables and equations",
+      "Image placeholders for figures"
+    ],
+    "non_body_leakage": "no",
+    "missingness": [
+      "Figure/table IDs inferred from captions",
+      "Doc progress percentages approximate",
+      "Token count not computed"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Heavily mathematical sections with many equations; counts are heuristic. References excluded starting at References heading."
+}

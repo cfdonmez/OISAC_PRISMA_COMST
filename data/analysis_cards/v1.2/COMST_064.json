@@ -1,0 +1,425 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_064",
+    "title": "Security and Privacy on 6G Network Edge: A Survey",
+    "authors": [
+        "Bomin Mao",
+        "Jiajia Liu",
+        "Yingying Wu",
+        "Nei Kato"
+    ],
+    "affiliation": "Northwestern Polytechnical University / Tohoku University",
+    "year_online": "2023",
+    "year_issue": "2023",
+    "source_path": "data/corpus_standardized/COMST_064/COMST_064.md",
+    "domain": "6G Security / Edge Computing / Edge Caching / Edge Intelligence / Federated Learning / Blockchain / O-RAN",
+    "paper_type": "Comprehensive Survey",
+    "analysis_policy": {
+        "focus": "Extract double-edged sword framing, three-technique coverage, per-section lessons learned patterns",
+        "depth": "Full paper analysis including attack taxonomy, countermeasures, trade-off discussions"
+    },
+    "document_stats": {
+        "total_lines": 918,
+        "total_bytes": 234630,
+        "section_count": 10,
+        "figure_count": 9,
+        "table_count": 6,
+        "reference_count": 213
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-X)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "MEC": "Multi-access Edge Computing",
+            "FL": "Federated Learning",
+            "O-RAN": "Open-Radio Access Network",
+            "DoS": "Denial of Service",
+            "DDoS": "Distributed DoS",
+            "ABE": "Attribute-Based Encryption",
+            "IDS": "Intrusion Detection Systems",
+            "DP": "Differential Privacy",
+            "LDP": "Local Differential Privacy",
+            "ZTA": "Zero Trust Architecture",
+            "SAGSIN": "Space-Air-Ground-Sea Integrated Network"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_scope",
+            "summary": "Establishes 6G edge requirements (100μs latency, 1Tbps throughput), introduces double-edged sword concept for edge computing/caching/intelligence, presents contributions and paper organization.",
+            "key_claims": [
+                "Edge techniques are double-edged sword - enable defense but also become attack targets",
+                "First survey covering security/privacy of all three edge techniques together",
+                "FL and blockchain key solutions for decentralized edge security"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Existing Survey Papers and Motivation Behind This Research",
+            "role": "gap_identification",
+            "subsections": [
+                "Existing Similar Survey Papers",
+                "Motivations Behind This Research"
+            ],
+            "summary": "Reviews 10 related surveys via comparison table, identifies gap - no survey covers both security concerns OF edge services AND edge-enabled countermeasures together.",
+            "key_claims": [
+                "Current surveys focus on either threats OR countermeasures, not both",
+                "No prior survey covers edge computing, caching, and intelligence together"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "Challenges and Requirements of Security and Privacy",
+            "role": "threat_taxonomy",
+            "subsections": [
+                "Security Attacks (DoS, Malware, Poisoning)",
+                "Privacy Concerns (Eavesdropper, Data Abuse, Unreliable Participants)",
+                "Requirements (Generality, Diversity, Cooperation, High cost-efficiency)",
+                "Lessons Learned"
+            ],
+            "summary": "Classifies security attacks (DoS, malware, poisoning) and privacy concerns (eavesdropping, data abuse, unreliable participants). Defines four requirements: generality, diversity, cooperation, cost-efficiency."
+        },
+        {
+            "section_id": "IV",
+            "title": "Emerging Techniques to Enhance Security and Privacy on 6G Network Edge",
+            "role": "enabling_technologies",
+            "subsections": [
+                "Federated Learning",
+                "Blockchain",
+                "Open-Radio Access Network",
+                "Lessons Learned"
+            ],
+            "summary": "Covers FL (applications, limitations), blockchain (applications, limitations), O-RAN (architecture, security concerns). Each technique has Applications→Limitations→Countermeasures structure."
+        },
+        {
+            "section_id": "V",
+            "title": "Security and Privacy in Edge Computing",
+            "role": "edge_computing_analysis",
+            "subsections": [
+                "Improved Authentication",
+                "Lightweight Encryption",
+                "Edge Computing-Assisted Intrusion Detection",
+                "Lessons Learned"
+            ],
+            "summary": "Reviews edge computing for authentication, encryption, IDS with dedicated table (Table III) summarizing 12+ papers by threat type, attack target, solution."
+        },
+        {
+            "section_id": "VI",
+            "title": "Security and Privacy in Edge Caching",
+            "role": "edge_caching_analysis",
+            "subsections": [
+                "Caching Placement",
+                "Content Storage",
+                "Content Delivery",
+                "Lessons Learned"
+            ],
+            "summary": "Covers secure caching placement (blockchain, game theory), content storage (ABE, homomorphic encryption), content delivery (physical to transport layer). Table IV summarizes papers."
+        },
+        {
+            "section_id": "VII",
+            "title": "Security and Privacy in Edge Intelligence",
+            "role": "edge_intelligence_analysis",
+            "subsections": [
+                "Anomaly Detection",
+                "Authentication/Encryption",
+                "Unreliable Collaborative Learning",
+                "Security Threats",
+                "Privacy Concerns",
+                "Lessons Learned"
+            ],
+            "summary": "Most extensive section covering edge intelligence for anomaly detection, authentication. Addresses unreliable FL participants, blockchain countermeasures. Table V summarizes 20+ papers."
+        },
+        {
+            "section_id": "VIII",
+            "title": "Trade-off Between Security/Privacy and QoS",
+            "role": "optimization_challenges",
+            "summary": "Discusses trade-offs in IoT/IIoT, vehicular networks, mobile networks. Table VI categorizes papers by trade-off metrics and solutions. References 6G KPIs (1Tbps, 100μs)."
+        },
+        {
+            "section_id": "IX",
+            "title": "Open Research Issues",
+            "role": "future_directions",
+            "subsections": [
+                "Future Issues on Three Technologies",
+                "Future Issues on Three Enabling Techniques",
+                "Future Issues on Convergence"
+            ],
+            "summary": "Organizes future issues by: (1) edge computing/caching/intelligence, (2) FL/blockchain/O-RAN, (3) convergence of all techniques."
+        },
+        {
+            "section_id": "X",
+            "title": "Conclusion",
+            "role": "synthesis",
+            "summary": "Summarizes coverage of security/privacy for three edge techniques with FL, blockchain, O-RAN as enablers."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Comprehensive survey of security/privacy issues and countermeasures for 6G edge networks covering computing, caching, and intelligence",
+        "delivery_mechanism": "Threats/Requirements → Enabling Techniques → Three Edge Services → Trade-offs → Future Directions",
+        "unique_contribution": "First survey treating edge services as both attack targets AND defense mechanisms (double-edged sword framing)"
+    },
+    "taxonomy": {
+        "type": "multi_dimensional_threat_countermeasure",
+        "root_concept": "6G Edge Security and Privacy",
+        "dimensions": [
+            {
+                "dimension": "Edge Technique",
+                "categories": [
+                    "Edge Computing",
+                    "Edge Caching",
+                    "Edge Intelligence"
+                ]
+            },
+            {
+                "dimension": "Security Attacks",
+                "categories": [
+                    "DoS/DDoS Attacks",
+                    "Malware",
+                    "Poisoning Attacks"
+                ]
+            },
+            {
+                "dimension": "Privacy Concerns",
+                "categories": [
+                    "Eavesdropping",
+                    "Abuse of Data Access",
+                    "Unreliable Participants"
+                ]
+            },
+            {
+                "dimension": "Requirements",
+                "categories": [
+                    "Generality",
+                    "Diversity",
+                    "Cooperation",
+                    "High cost-efficiency"
+                ]
+            },
+            {
+                "dimension": "Enabling Techniques",
+                "categories": [
+                    "Federated Learning",
+                    "Blockchain",
+                    "O-RAN"
+                ]
+            },
+            {
+                "dimension": "Countermeasure Type",
+                "categories": [
+                    "Authentication",
+                    "Encryption",
+                    "Intrusion Detection",
+                    "Access Control"
+                ]
+            }
+        ]
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "Security level",
+            "Latency",
+            "Energy consumption",
+            "Computation overhead",
+            "QoS metrics",
+            "Accuracy rate (for ML models)"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Summary of important acronyms (40+ entries)"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Existing similar survey papers comparison with topic/scenario/edge technique coverage"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Survey of papers on security/privacy of edge computing (Literature, Scenario, Threat, Target, Solution)"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "Survey of papers on security/privacy of edge caching"
+            },
+            {
+                "table_ref": "Table V",
+                "purpose": "Survey of papers on security/privacy of edge intelligence (20+ entries)"
+            },
+            {
+                "table_ref": "Table VI",
+                "purpose": "Trade-off between security and QoS metrics"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "scenario_illustration",
+                "example": "Fig. 1 - 6G edge services and common security/privacy concerns",
+                "purpose": "Show edge network architecture with attack vectors"
+            },
+            {
+                "type": "paper_structure_diagram",
+                "example": "Fig. 2 - The structure of this paper",
+                "purpose": "Visual roadmap of survey organization"
+            },
+            {
+                "type": "technique_diagram",
+                "example": "Fig. 3 - Blockchain-secured federated learning",
+                "purpose": "Illustrate technology integration"
+            },
+            {
+                "type": "architecture_diagram",
+                "example": "Fig. 4 - O-RAN architecture, Fig. 6 - 6G cloud-edge architecture",
+                "purpose": "System architecture representation"
+            },
+            {
+                "type": "threat_scenario_diagram",
+                "example": "Fig. 5, 7, 8 - Security/privacy in edge computing/caching/intelligence scenarios",
+                "purpose": "Per-section threat visualization"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Three parallel edge techniques with shared enabling technologies (FL, blockchain, O-RAN)",
+        "key_paradigm": "Double-edged sword - edge techniques are both defense mechanisms AND attack targets",
+        "gap_identification": [
+            "Lightweight security for resource-constrained edge",
+            "Reliable participant selection for collaborative learning",
+            "Practical O-RAN security deployment",
+            "Trade-off optimization between security and 6G KPIs"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Technique-centric organization with threat-countermeasure pairing",
+        "source_selection": "213+ references covering 2018-2023 literature",
+        "distinguishing_features": [
+            "Double-edged sword framing",
+            "Per-section scenario figures",
+            "Per-section literature summary tables",
+            "Per-section Lessons Learned subsections",
+            "Three-technique parallel structure",
+            "Trade-off section with dedicated table"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with practical threat analysis",
+        "rhetorical_patterns": [
+            "Double-edged sword metaphor",
+            "Per-section Lessons Learned",
+            "Bullet-point future directions",
+            "Scenario-Solution pairing in tables",
+            "Applications→Limitations→Countermeasures structure"
+        ],
+        "characteristic_phrases": [
+            "It can be found that...",
+            "Lessons Learned and Summary",
+            "On the other hand...",
+            "To address this issue...",
+            "The research [X] focuses on..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Double-Edged Sword Framing",
+            "description": "Frame key technologies as having dual nature - serving both as defense mechanisms AND attack targets",
+            "structure": [
+                "Introduce technology with its primary purpose (e.g., privacy protection)",
+                "Immediately pivot with 'On the other hand...' to attack vectors",
+                "Establish this duality as central survey theme",
+                "Organize sections to cover both perspectives",
+                "Reference duality in lessons learned sections"
+            ],
+            "example_application": "Edge computing/caching/intelligence 'not only significantly reduce response time...but also effectively protect privacy' vs 'network threats still exist'",
+            "rhetorical_effect": "Creates balanced, comprehensive perspective; justifies extensive coverage; hooks reader attention",
+            "complexity": "Low - requires identifying dual nature"
+        },
+        {
+            "recipe_name": "Per-Section Scenario Figure",
+            "description": "Include a dedicated figure for each major technical section showing threats/attacks relevant to that specific domain",
+            "structure": [
+                "Fig. N - Security and privacy in [edge computing/caching/intelligence] scenarios",
+                "Show network architecture specific to that domain",
+                "Annotate with relevant attack vectors and threat types",
+                "Reference figure at section opening",
+                "Use consistent visual style across all scenario figures"
+            ],
+            "example_application": "Fig. 5 (edge computing), Fig. 7 (edge caching), Fig. 8 (edge intelligence) - each shows domain-specific threats",
+            "rhetorical_effect": "Visual consistency; quick domain orientation; threat visualization",
+            "complexity": "Medium - requires domain-specific diagrams"
+        },
+        {
+            "recipe_name": "Per-Section Literature Summary Table",
+            "description": "Include a comprehensive table at each major section summarizing reviewed papers with consistent columns",
+            "structure": [
+                "Place table early in section as reference",
+                "Columns: Literature, Scenario, Threat type, Attack target, Solution",
+                "Group rows by subsection topics when possible",
+                "Include 10-20 entries per table",
+                "Reference table entries throughout prose discussion"
+            ],
+            "example_application": "Table III (edge computing, 12 entries), Table IV (edge caching, 14 entries), Table V (edge intelligence, 20+ entries)",
+            "rhetorical_effect": "Comprehensive coverage proof; easy reference; systematic organization",
+            "complexity": "Medium - requires extensive literature review"
+        },
+        {
+            "recipe_name": "Per-Section Lessons Learned Synthesis",
+            "description": "Conclude each major section with dedicated 'Lessons Learned and Summary' subsection distilling key insights",
+            "structure": [
+                "Subsection title: 'D. Lessons Learned and Summary' (or similar)",
+                "Opening paragraph synthesizing section purpose",
+                "Bullet points (3-5) with key takeaways",
+                "Each bullet addresses specific gap or insight",
+                "Some bullets suggest future directions"
+            ],
+            "example_application": "Sections III, IV, V, VI, VII all end with 'Lessons Learned' subsections",
+            "rhetorical_effect": "Reinforces key messages; aids retention; provides section summary",
+            "complexity": "Low - requires synthesis skill"
+        },
+        {
+            "recipe_name": "Applications-Limitations-Countermeasures Structure",
+            "description": "Organize technique coverage with consistent three-part structure showing practical use, challenges, and solutions",
+            "structure": [
+                "1) Applications in Edge Services: Use cases and benefits",
+                "2) Limitations and Countermeasures: Challenges with corresponding solutions",
+                "Apply structure consistently across all techniques",
+                "Use numbered subsections for clarity",
+                "End with lessons learned"
+            ],
+            "example_application": "Section IV covers FL and Blockchain each with 'Applications' and 'Limitations and Countermeasures' subsections",
+            "rhetorical_effect": "Balanced coverage; practical perspective; identifies research gaps",
+            "complexity": "Medium - requires identifying both benefits and limitations"
+        },
+        {
+            "recipe_name": "Trade-off Dedicated Section",
+            "description": "Include a separate section analyzing trade-offs between security/privacy and other metrics with dedicated summary table",
+            "structure": [
+                "State the trade-off problem (security vs QoS/latency/energy)",
+                "Reference target KPIs (6G: 1Tbps, 100μs)",
+                "Organize by scenario (IoT, vehicular, mobile)",
+                "Create summary table with columns: Scenario, Edge services, Reference, Trade-off metrics, Solution",
+                "Discuss lightweight solutions and optimization approaches"
+            ],
+            "example_application": "Section VIII with Table VI summarizing 15+ papers on security-QoS trade-offs",
+            "rhetorical_effect": "Acknowledges practical constraints; bridges theory-practice gap; guides implementation",
+            "complexity": "Medium - requires optimization perspective"
+        }
+    ],
+    "key_concepts": {
+        "double_edged_sword": "Edge techniques serve both as defense AND attack targets",
+        "three_edge_techniques": "Edge computing, edge caching, edge intelligence",
+        "three_enabling_techniques": "FL, blockchain, O-RAN",
+        "6g_kpis": "1Tbps throughput, 100μs latency, 60b/s/Hz spectral efficiency"
+    },
+    "quality_flags": {
+        "double_edged_framing": true,
+        "per_section_figures": true,
+        "per_section_tables": true,
+        "per_section_lessons_learned": true,
+        "applications_limitations_structure": true,
+        "trade_off_section": true,
+        "future_directions_organized": true,
+        "approximately_213_references": true
+    }
+}

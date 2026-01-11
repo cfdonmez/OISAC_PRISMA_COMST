@@ -1,0 +1,712 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_016",
+  "title": "A Survey on Integration of Network Communication into Vehicle Real-Time Motion Control",
+  "year_online": "2023",
+  "year_issue": "2023",
+  "year_source": "doi",
+  "domain": "Vehicular real-time motion control with in-vehicle and V2X communications",
+  "source_path": "data/corpus_standardized/COMST_016/COMST_016.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Stop before references; span tags kept as headings markers."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 28035,
+    "approx_token_count_total": null,
+    "equation_count_est": 336,
+    "figure_count_est": 32,
+    "table_count_est": 12,
+    "list_count_est": 12,
+    "citation_count_in_body_est": 86,
+    "citation_density_per_1k_words_est": 3.1,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "unknown",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Related Surveys",
+        "B. Contributions",
+        "C. Organization"
+      ],
+      "objective": "Motivate integrating communication into vehicle real-time motion control, position gap vs prior surveys, and state contributions with roadmap.",
+      "key_components": [
+        "Need for closed-loop control with communication uncertainty",
+        "Prior survey comparison and identified gap",
+        "Contribution bullets",
+        "Organization/roadmap"
+      ],
+      "approx_word_share_pct": "8-12",
+      "approx_words_est": 2532,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Early related-work subsection with table-style comparison to underline novelty",
+        "Lists contributions and organization explicitly"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States gap: few surveys tie communication impairments directly to vehicle real-time control loops.",
+          "locator": {
+            "heading": "A. Related Surveys",
+            "paragraph_index_est": 1,
+            "line_range_est": "L40-L80"
+          }
+        },
+        {
+          "claim": "Bullet contributions and outline organization.",
+          "locator": {
+            "heading": "B. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L80-L115"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. ARCHITECTURE OF CONTROL OVER COMMUNICATIONS"
+      ],
+      "objective": "Present high-level architecture linking control loops with communication networks.",
+      "key_components": [
+        "Control system blocks and communication links",
+        "Timing/reliability considerations",
+        "Interaction diagram"
+      ],
+      "approx_word_share_pct": "2-4",
+      "approx_words_est": 645,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 15
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses architecture figure to anchor subsequent sections"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes architecture integrating control blocks with networks.",
+          "locator": {
+            "heading": "II. ARCHITECTURE OF CONTROL OVER COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L120-L150"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "RELATED_WORK",
+      "raw_headings": [
+        "III. ANALYSIS OF VEHICULAR NETWORK TECHNOLOGIES",
+        "A. Intra-Vehicle Network Communications",
+        "B. Inter-Vehicle Network Communications",
+        "C. Vehicular Network Architectures",
+        "D. Discussions"
+      ],
+      "objective": "Survey intra-vehicle and inter-vehicle communication technologies and architectures as enablers for control.",
+      "key_components": [
+        "Buses and protocols inside vehicles",
+        "V2V/V2I technologies",
+        "Architectural patterns combining them",
+        "Discussion/limitations"
+      ],
+      "approx_word_share_pct": "25-30",
+      "approx_words_est": 8177,
+      "positioning": {
+        "start_doc_progress_pct_est": 15,
+        "end_doc_progress_pct_est": 37
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Splits intra/inter-vehicle tech then reunifies in architecture discussion",
+        "Includes a discussion subsection to surface gaps"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers intra-vehicle buses and inter-vehicle networks before architecture synthesis.",
+          "locator": {
+            "heading": "III. ANALYSIS OF VEHICULAR NETWORK TECHNOLOGIES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L150-L240"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "IV. VEHICLE CONTROL CONSIDERING INTRA-VEHICLE NETWORK COMMUNICATIONS",
+        "A. Powertrain Control",
+        "B. Chassis Control",
+        "C. Vehicle Longitudinal Control",
+        "D. Vehicle Lateral Control",
+        "E. Discussions"
+      ],
+      "objective": "Discuss control algorithms within the vehicle that account for intra-vehicle communication constraints.",
+      "key_components": [
+        "Control domains (powertrain, chassis, longitudinal, lateral)",
+        "Communication delay/loss modeling in each domain",
+        "Discussion of integration challenges"
+      ],
+      "approx_word_share_pct": "24-28",
+      "approx_words_est": 7134,
+      "positioning": {
+        "start_doc_progress_pct_est": 37,
+        "end_doc_progress_pct_est": 58
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses repeated domain subsections followed by a discussion to consolidate lessons"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Treats each control domain with attention to communication effects and ends with discussion.",
+          "locator": {
+            "heading": "IV. VEHICLE CONTROL CONSIDERING INTRA-VEHICLE NETWORK COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L240-L330"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "V. COOPERATIVE CONTROL CONSIDERING INTER-VEHICLE NETWORK COMMUNICATIONS",
+        "A. Distributed Cooperative Control",
+        "B. Centralized Cooperative Control",
+        "C. Discussions"
+      ],
+      "objective": "Cover cooperative control schemes over V2X networks, split by distributed vs centralized approaches.",
+      "key_components": [
+        "Distributed cooperative control and communication assumptions",
+        "Centralized schemes and latency considerations",
+        "Discussion of trade-offs"
+      ],
+      "approx_word_share_pct": "15-18",
+      "approx_words_est": 4685,
+      "positioning": {
+        "start_doc_progress_pct_est": 58,
+        "end_doc_progress_pct_est": 77
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Mirrors earlier pattern with discussion subsection to highlight reliability issues"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Contrasts distributed vs centralized cooperative control and summarizes trade-offs.",
+          "locator": {
+            "heading": "V. COOPERATIVE CONTROL CONSIDERING INTER-VEHICLE NETWORK COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L330-L420"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "VI. CONTROL INTEGRATING INTRA-&INTER-VEHICLE NETWORK COMMUNICATIONS"
+      ],
+      "objective": "Discuss integrated control frameworks combining intra- and inter-vehicle communications.",
+      "key_components": [
+        "Unified architectures",
+        "Coordination between in-vehicle and V2X links",
+        "Open integration issues"
+      ],
+      "approx_word_share_pct": "4-6",
+      "approx_words_est": 1372,
+      "positioning": {
+        "start_doc_progress_pct_est": 77,
+        "end_doc_progress_pct_est": 80
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Positions integration as a bridge to challenges section"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Highlights need for coordinated intra/inter-vehicle control frameworks.",
+          "locator": {
+            "heading": "VI. CONTROL INTEGRATING INTRA-&INTER-VEHICLE NETWORK COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L420-L470"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VII. OPEN PROBLEMS AND FUTURE CHALLENGES",
+        "A. Co-Development of Control and Communications",
+        "B. Coevolution of Intra- & Inter-Vehicle Communications",
+        "C. Research Extension for Vehicle Real-Time Control",
+        "D. Research Extension for Nonideal Communications",
+        "E. Simulation and Reality"
+      ],
+      "objective": "Enumerate challenges for joint control-communication design, integration, nonidealities, and validation gaps.",
+      "key_components": [
+        "Joint design challenges",
+        "Integration of intra/inter communication stacks",
+        "Robustness to nonideal links",
+        "Simulation vs real-world gap"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 2511,
+      "positioning": {
+        "start_doc_progress_pct_est": 80,
+        "end_doc_progress_pct_est": 87
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Challenge subsections mirror prior taxonomy (intra, inter, integrated, realism)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists open problems on co-design, integration, nonideal comms, and simulation-reality gap.",
+          "locator": {
+            "heading": "VII. OPEN PROBLEMS AND FUTURE CHALLENGES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L470-L550"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VIII. CONCLUSION"
+      ],
+      "objective": "Recap survey scope and restate future integration needs.",
+      "key_components": [
+        "Summary of intra/inter/integrated control insights",
+        "Pointer to future research"
+      ],
+      "approx_word_share_pct": "2-3",
+      "approx_words_est": 737,
+      "positioning": {
+        "start_doc_progress_pct_est": 87,
+        "end_doc_progress_pct_est": 90
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Concise wrap-up that points back to integration agenda"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Restates contributions and need for tighter control-communication integration.",
+          "locator": {
+            "heading": "VIII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L550-L595"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Notes emerging real-time vehicle control demands and communication unreliability risks.",
+      "locator": "L10-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States lack of surveys coupling communication characteristics with vehicle control design.",
+      "locator": "L40-L80"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Existing works cover networking or control separately but not integrated real-time co-design.",
+      "locator": "L40-L90"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions and integration focus.",
+      "locator": "L80-L115"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Outlines paper structure at the end of intro.",
+      "locator": "L110-L130"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on intra-vehicle, inter-vehicle, and integrated control under communication constraints.",
+      "locator": "L80-L130"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate real-time control need; compare surveys; present architecture; cover intra/inter control with discussions; integrate streams; list challenges; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by communication scope",
+    "axes": [
+      "Scope (intra-vehicle, inter-vehicle, integrated)",
+      "Control paradigm (single-vehicle vs cooperative)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 4,
+    "branches": [
+      "Intra-vehicle control under bus constraints",
+      "Inter-vehicle cooperative control",
+      "Integrated intra+inter control frameworks",
+      "Challenges mapping to each scope"
+    ],
+    "taxonomy_figure_present": "no",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro and architecture sections rely on figures to orient control-network interactions; technology and control sections interleave figures per subsection and end with discussion blocks; tables summarize comparisons of network technologies or architectures.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "architecture",
+        "purpose": "show control over communications reference model",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 13
+        },
+        "evidence_locator": "L120-L150"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "summary",
+        "purpose": "compare communication technologies/architectures",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "RELATED_WORK",
+          "doc_progress_pct_est": 20
+        },
+        "evidence_locator": "L160-L210"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "tutorial",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Technology analysis discussions",
+        "lesson": "Split intra vs inter-vehicle networks, then reunify in an architecture discussion to expose integration gaps.",
+        "locator": "L150-L230"
+      },
+      {
+        "location": "Control domains section",
+        "lesson": "For each control domain, present communication constraints and end with a discussion subsection.",
+        "locator": "L240-L330"
+      },
+      {
+        "location": "Cooperative control section",
+        "lesson": "Contrast distributed vs centralized schemes and distill trade-offs in a closing discussion.",
+        "locator": "L330-L420"
+      },
+      {
+        "location": "Challenges section",
+        "lesson": "Map open problems to the same intra/inter/integrated taxonomy and add realism/simulation gap.",
+        "locator": "L470-L550"
+      }
+    ],
+    "aha_moment": "Repeating a pattern of subsection deep dives followed by explicit discussions keeps technical breadth digestible and aligns challenges to the same structure."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Open sections by framing the control or communication problem, then drill into subcases before a discussion block.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 0.4,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "In summary",
+      "Finally"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro gap with related-survey mini-section",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "State the real-time control problem and why communication imperfections matter.",
+        "Insert a short related-survey comparison to surface the integration gap.",
+        "List contributions and outline the paper."
+      ],
+      "why_it_works": "Gap evidence is shown immediately via comparison, building credibility before deep dives.",
+      "evidence_locators": [
+        "L40-L115"
+      ]
+    },
+    {
+      "title": "Architecture anchor before technology survey",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Present an architecture figure showing control blocks and communication links.",
+        "Describe timing/reliability needs at a high level.",
+        "Use this reference model to motivate the next technology survey section."
+      ],
+      "why_it_works": "Gives readers a scaffold to hang diverse technologies on, improving coherence.",
+      "evidence_locators": [
+        "L120-L150"
+      ]
+    },
+    {
+      "title": "Subsection-deep-dive plus discussion pattern",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "For each theme (e.g., powertrain, chassis, distributed control), first describe mechanism and communication constraints.",
+        "After covering all subthemes, add a short discussion subsection to surface trade-offs and gaps.",
+        "Repeat the pattern in later sections for consistency."
+      ],
+      "why_it_works": "Creates a predictable rhythm and compresses takeaways after detailed coverage.",
+      "evidence_locators": [
+        "L240-L420"
+      ]
+    },
+    {
+      "title": "Challenges mapped to taxonomy with realism add-on",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List challenges per previously used taxonomy (intra, inter, integrated).",
+        "Add cross-cutting issues like simulation-to-reality gaps and nonideal comms.",
+        "Keep items concise and forward-looking."
+      ],
+      "why_it_works": "Maintains continuity with earlier structure and highlights actionable future work.",
+      "evidence_locators": [
+        "L470-L550"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "Possible OCR artifacts in tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Equation count heuristic triggered by inline markers; adjust if needed. Headings contain span markers from conversion."
+}

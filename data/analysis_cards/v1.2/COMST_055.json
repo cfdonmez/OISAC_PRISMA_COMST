@@ -1,0 +1,688 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_055",
+    "title": "Post-Quantum Blockchain Security for the Internet of Things: Survey and Research Directions",
+    "year_online": "2024",
+    "year_issue": "2024",
+    "year_source": "frontmatter",
+    "domain": "Post-Quantum Cryptography / Blockchain / IoT Security",
+    "source_path": "data/corpus_standardized/COMST_055/COMST_055.md",
+    "analysis_policy": {
+        "include_scope": "Abstract through Conclusion",
+        "exclude_scope": "References, Author Bios",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Paper relies heavily on comparative tables for dense information presentation."
+    },
+    "document_stats": {
+        "approx_word_count_total": 13000,
+        "approx_token_count_total": 18500,
+        "equation_count_est": 0,
+        "figure_count_est": 5,
+        "table_count_est": 9,
+        "list_count_est": 10,
+        "citation_count_in_body_est": 210,
+        "citation_density_per_1k_words_est": 16,
+        "definition_box_or_glossary_present": "no",
+        "notation_table_present": "no",
+        "inventory_completeness": "complete"
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRODUCTION",
+            "raw_headings": [
+                "I. Introduction"
+            ],
+            "objective": "Introduce the convergence of IoT, Blockchain, and Quantum threats, and define the survey's unique position (intersection of all three).",
+            "key_components": [
+                "Context (IoT scale)",
+                "Problem (Quantum threat to BC/IoT)",
+                "Solution (Post-Quantum Blockchain)",
+                "Scope (Intersection of 3 domains)",
+                "Outline"
+            ],
+            "approx_word_share_pct": "10",
+            "approx_words_est": 1200,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 10
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "yes_but",
+                "gap",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Venn Diagram Scoping (Fig 1)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Quantum computers threaten existing BC/IoT security",
+                    "locator": {
+                        "heading": "I. Introduction",
+                        "paragraph_index_est": 4,
+                        "line_range_est": "25-27"
+                    }
+                },
+                {
+                    "claim": "Existing surveys cover 2 domains, this one covers 3 (IoT+BC+PQC)",
+                    "locator": {
+                        "heading": "II. RELATED SURVEYS",
+                        "paragraph_index_est": 5,
+                        "line_range_est": "49-51"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "RELATED_WORK",
+            "raw_headings": [
+                "II. RELATED SURVEYS"
+            ],
+            "objective": "Differentiate this survey from existing ones by visualizing the scope intersection.",
+            "key_components": [
+                "Review of BC-IoT surveys",
+                "Review of PQC-IoT surveys",
+                "Review of PQC-BC surveys",
+                "Gap (None cover PQC-BC-IoT)",
+                "visual_gap_analysis"
+            ],
+            "approx_word_share_pct": "10",
+            "approx_words_est": 1200,
+            "positioning": {
+                "start_doc_progress_pct_est": 10,
+                "end_doc_progress_pct_est": 20
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "gap",
+                "contribution"
+            ],
+            "notable_moves": [
+                "Visual Gap Analysis (Fig. 1)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Fig 1 shows the dark gray area as the unique contribution",
+                    "locator": {
+                        "heading": "II. RELATED SURVEYS",
+                        "paragraph_index_est": 5,
+                        "line_range_est": "49-51"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "PRIMER_CORE_CONCEPTS",
+            "raw_headings": [
+                "III. POST-QUANTUM CRYPTOSYSTEMS",
+                "IV. PQCs in IoT Devices"
+            ],
+            "objective": "Educate the reader on PQC types and NIST standards, then evaluate their feasibility on IoT hardware.",
+            "key_components": [
+                "Shor/Grover algorithms",
+                "PQC Types (Code, Hash, Lattice, Multivariate, Isogeny)",
+                "NIST Standards (Kyber, Dilithium, Falcon, Sphincs+)",
+                "Performance comparison on IoT devices"
+            ],
+            "approx_word_share_pct": "20",
+            "approx_words_est": 2500,
+            "positioning": {
+                "start_doc_progress_pct_est": 20,
+                "end_doc_progress_pct_est": 40
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "1",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing",
+                "yes_but"
+            ],
+            "notable_moves": [
+                "Hardware Feasibility Check"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Kyber is best KEM for IoT",
+                    "locator": {
+                        "heading": "IV. PQCs in IoT Devices",
+                        "paragraph_index_est": 3,
+                        "line_range_est": "177-179"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "SYSTEM_MODEL",
+            "raw_headings": [
+                "V. BLOCKCHAIN-BASED IOT"
+            ],
+            "objective": "Define the baseline architecture for integrating Blockchain and IoT before adding PQC.",
+            "key_components": [
+                "Layers (Network, Infrastructure, Consensus, Data, Service)",
+                "Integration Fig 3",
+                "Platforms (Helium, IOTA)",
+                "Applications"
+            ],
+            "approx_word_share_pct": "15",
+            "approx_words_est": 1800,
+            "positioning": {
+                "start_doc_progress_pct_est": 40,
+                "end_doc_progress_pct_est": 55
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Architecture Layering"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Blockchain acts as middleware layer",
+                    "locator": {
+                        "heading": "A. Blockchain-IoT Layers",
+                        "paragraph_index_est": 0,
+                        "line_range_est": "208-208"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "CORE_ANALYSIS",
+            "raw_headings": [
+                "VI. POST-QUANTUM BLOCKCHAINS",
+                "VII. PQC FOR BLOCKCHAIN-BASED IOT"
+            ],
+            "objective": "Review state-of-the-art in making BC quantum-safe, and then specific solutions for PQC-BC-IoT integration.",
+            "key_components": [
+                "PQ Signatures in BC",
+                "PQ Consensus",
+                "PQ Communication (TLS)",
+                "PQ Smart Contracts",
+                "Integrated Solutions (Table IX)"
+            ],
+            "approx_word_share_pct": "25",
+            "approx_words_est": 3200,
+            "positioning": {
+                "start_doc_progress_pct_est": 55,
+                "end_doc_progress_pct_est": 80
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Synthesis by Component (Sig, Consensus, Contract)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Table IX summarizes PQC-BC-IoT solutions",
+                    "locator": {
+                        "heading": "VII. PQC FOR BLOCKCHAIN-BASED IOT",
+                        "paragraph_index_est": 0,
+                        "line_range_est": "367-367"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "FUTURE_DIRECTIONS",
+            "raw_headings": [
+                "VIII. CHALLENGES AND RESEARCH DIRECTIONS"
+            ],
+            "objective": "Identify open problems arising from the PQC integration constraints (key size, energy).",
+            "key_components": [
+                "Large Key Size vs IoT constraints",
+                "Energy costs",
+                "Physical Layer PQC",
+                "Identity Management",
+                "Privacy vs Transparency",
+                "Scalability",
+                "Real-time constraints"
+            ],
+            "approx_word_share_pct": "10",
+            "approx_words_est": 1200,
+            "positioning": {
+                "start_doc_progress_pct_est": 80,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Trade-off Analysis"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "PQC Key sizes are too large for some IoT",
+                    "locator": {
+                        "heading": "A. Large Key and Signature Size",
+                        "paragraph_index_est": 0,
+                        "line_range_est": "413-415"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S07",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "IX. CONCLUSION"
+            ],
+            "objective": "Summarize the survey's contribution.",
+            "key_components": [
+                "Recap",
+                "Final remarks"
+            ],
+            "approx_word_share_pct": "5",
+            "approx_words_est": 600,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "contribution"
+            ],
+            "notable_moves": [],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_moves_global": {
+        "hook": {
+            "present": "yes",
+            "evidence": "IoT devices over 30 billion by 2030... but security risks...",
+            "locator": "I. Introduction"
+        },
+        "gap": {
+            "present": "yes",
+            "evidence": "Existing blockchains rely on classical cryptosystems... vulnerable to Shor and Grover.",
+            "locator": "I. Introduction"
+        },
+        "yes_but": {
+            "present": "yes",
+            "evidence": "PQC is a solution BUT has large key sizes challenging for IoT.",
+            "locator": "VIII. CHALLENGES"
+        },
+        "contribution": {
+            "present": "yes",
+            "evidence": "To the best of our knowledge, this is the first study to examine PQC + BC + IoT integration.",
+            "locator": "I. Introduction"
+        },
+        "organization": {
+            "present": "yes",
+            "evidence": "The remainder of this paper is organized as follows...",
+            "locator": "I. Introduction"
+        },
+        "scope_boundary": {
+            "present": "yes",
+            "evidence": "Intersection of IoT, PQC, and Blockchain (Fig 1).",
+            "locator": "II. RELATED SURVEYS"
+        },
+        "transition_starters_top": [
+            {
+                "token": "However",
+                "freq_est": 50
+            },
+            {
+                "token": "Furthermore",
+                "freq_est": 35
+            },
+            {
+                "token": "Therefore",
+                "freq_est": 30
+            }
+        ],
+        "reader_contract_pattern": "Problem (Quantum Threat) -> Toolkit (PQC) -> Integration Context (BC-IoT) -> Integration Solutions -> Challenges."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "by-pqc-type",
+        "axes": [
+            "PQC Family (Lattice, Hash, etc.)",
+            "Application Layer (Consensus, Sig, Contract)",
+            "IoT Domain (Smart City, IoV, etc.)"
+        ],
+        "levels_est": 2,
+        "node_count_est": 15,
+        "branches": [
+            "Lattice-based",
+            "Hash-based",
+            "Multivariate",
+            "Code-based",
+            "Isogeny"
+        ],
+        "taxonomy_figure_present": "no",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [],
+            "table_ids": [
+                "TABLE I",
+                "TABLE V"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Security Level (NIST 1-5)",
+            "Key Size",
+            "Signature Size",
+            "Execution Time",
+            "Memory Usage"
+        ],
+        "tradeoff_axes": [
+            "Security vs Performance",
+            "Key Size vs Bandwidth"
+        ],
+        "metrics_table_present": "yes",
+        "evidence_locators": [
+            "TABLE II",
+            "TABLE III",
+            "TABLE IV"
+        ]
+    },
+    "visuals_tables": {
+        "layout_logic": "Tables are the primary knowledge carrier. Figures establish high-level scope and architecture.",
+        "caption_verbs_top": [
+            {
+                "verb": "Performance",
+                "freq_est": 3
+            },
+            {
+                "verb": "Comparison",
+                "freq_est": 2
+            },
+            {
+                "verb": "Architecture",
+                "freq_est": 1
+            },
+            {
+                "verb": "Taxonomy",
+                "freq_est": 1
+            }
+        ],
+        "figures": [
+            {
+                "figure_id": "Fig. 1",
+                "type": "venn_diagram",
+                "purpose": "scope definition",
+                "placement": {
+                    "first_mention_section_id": "S02",
+                    "first_mention_section_label": "RELATED_WORK",
+                    "doc_progress_pct_est": 15
+                },
+                "evidence_locator": "Fig. 1. The distinct subjects addressed in this survey"
+            },
+            {
+                "figure_id": "Fig. 3",
+                "type": "architecture",
+                "purpose": "system model",
+                "placement": {
+                    "first_mention_section_id": "S04",
+                    "first_mention_section_label": "SYSTEM_MODEL",
+                    "doc_progress_pct_est": 45
+                },
+                "evidence_locator": "Fig. 3. Blockchain-IoT integrated layers"
+            },
+            {
+                "figure_id": "Fig. 5",
+                "type": "taxonomy",
+                "purpose": "challenge summary",
+                "placement": {
+                    "first_mention_section_id": "S06",
+                    "first_mention_section_label": "FUTURE_DIRECTIONS",
+                    "doc_progress_pct_est": 85
+                },
+                "evidence_locator": "Fig. 5. Taxonomy of different challenges"
+            }
+        ],
+        "tables": [
+            {
+                "table_id": "TABLE III",
+                "type": "comparative_performance",
+                "purpose": "evaluation",
+                "placement": {
+                    "first_mention_section_id": "S03",
+                    "first_mention_section_label": "PRIMER_CORE_CONCEPTS",
+                    "doc_progress_pct_est": 30
+                },
+                "evidence_locator": "Performance Evaluation of NIST Standard Post-Quantum Signatures"
+            },
+            {
+                "table_id": "TABLE IX",
+                "type": "synthesis",
+                "purpose": "synthesis",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "CORE_ANALYSIS",
+                    "doc_progress_pct_est": 70
+                },
+                "evidence_locator": "Breakdown of the IoT Solutions based on Post-Quantum Blockchains"
+            }
+        ]
+    },
+    "synthesis": {
+        "synthesis_style": "matrix-driven",
+        "comparative_synthesis_degree": "very_high",
+        "lesson_blocks": [
+            {
+                "location": "IV. Summary",
+                "lesson": "Lattice-based schemes (Kyber, Dilithium) offer the best balance for IoT constraints compared to others.",
+                "locator": "IV. PQCs in IoT Devices"
+            },
+            {
+                "location": "VII. Summary",
+                "lesson": "Choosing a PQ signature requires balancing verification speed (Falcon) vs signing speed (Dilithium) vs Key Size (Sphincs+ needs tradeoff).",
+                "locator": "VII. PQC FOR BLOCKCHAIN-BASED IOT"
+            }
+        ],
+        "aha_moment": "The bottleneck isn't just the algorithm's math, but the sheer size of keys/signatures clogging the limited bandwidth and storage of IoT devices."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "selection_criteria": "unknown",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Historical context or definition followed by current relevance.",
+        "math_handling_strategy": "minimalist",
+        "listicle_usage": "heavy",
+        "list_density_per_1k_words_est": 5,
+        "signposting_devices": [
+            "In the following section",
+            "As shown in Table X",
+            "From the perspective of"
+        ],
+        "definition_density_est": "high"
+    },
+    "reusable_writing_recipes": [
+        {
+            "title": "Three-Domain Intersection Scope",
+            "applies_to_sections": [
+                "INTRODUCTION",
+                "RELATED_WORK"
+            ],
+            "steps": [
+                "Identify the three core domains of the survey (e.g., IoT, Blockchain, PQC).",
+                "Create a Venn diagram or block diagram showing the intersection.",
+                "Review existing surveys that cover Domain A+B, B+C, A+C.",
+                "Explicitly state that this survey is the first to cover A+B+C (the center of the Venn diagram)."
+            ],
+            "why_it_works": "Instantly visualizes the 'Gap' and justifies the need for the survey in a crowded field.",
+            "evidence_locators": [
+                "Fig. 1",
+                "II. Related Surveys"
+            ]
+        },
+        {
+            "title": "Comprehensive Comparative Tabulation",
+            "applies_to_sections": [
+                "CORE_ANALYSIS",
+                "EVALUATION"
+            ],
+            "steps": [
+                "Use tables not just for data, but for narrative synthesis.",
+                "Create tables that aggregate: Performance (Table III), Hardware Feasibility (Table IV), Platforms (Table VI), and Solutions (Table IX).",
+                "Ensure every major section has a summary table.",
+                "Refer to tables in text to support specific comparative claims (e.g., 'As seen in Table III, X is faster than Y')."
+            ],
+            "why_it_works": "Allows handling high information density without overwhelming the prose, serving both deep readers and skimmers.",
+            "evidence_locators": [
+                "Table I",
+                "Table II",
+                "Table III",
+                "Table IX"
+            ]
+        },
+        {
+            "title": "Hardware Feasibility Check",
+            "applies_to_sections": [
+                "IMPLEMENTATION",
+                "PRACTICAL_GUIDE"
+            ],
+            "steps": [
+                "Don't just discuss algorithms in theory.",
+                "Include a section specifically on 'Hardware Implementation' or 'Device Feasibility'.",
+                "Cite experimental studies that ran the code on specific chips (ARM Cortex, Raspberry Pi).",
+                "Use this data to filter theoretical candidates down to practical ones."
+            ],
+            "why_it_works": "Adds engineering rigor and practical value, moving beyond abstract math.",
+            "evidence_locators": [
+                "IV. PQCs in IoT Devices",
+                "Table IV"
+            ]
+        },
+        {
+            "title": "Layered Integration Mapping",
+            "applies_to_sections": [
+                "SYSTEM_MODEL"
+            ],
+            "steps": [
+                "Define the standard layers of the base technology (IoT Layers).",
+                "Define the layers of the enhancing technology (Blockchain Layers).",
+                "Create a diagram (Fig. 3) that maps the enhancing technology as a specific layer (e.g., Middleware) within the base stack.",
+                "Structure the discussion by these layers (Network, Infrastructure, Consensus, etc.)."
+            ],
+            "why_it_works": "Provides a clean architectural mental model for integration topics.",
+            "evidence_locators": [
+                "Fig. 3",
+                "V. Blockchain-IoT Layers"
+            ]
+        },
+        {
+            "title": "Challenge-Solution Taxonomy",
+            "applies_to_sections": [
+                "FUTURE_DIRECTIONS"
+            ],
+            "steps": [
+                "Create a taxonomy figure specifically for Challenges (Fig. 5).",
+                "Group challenges into logical branches (e.g., Scalability, Security, Data Management).",
+                "For each challenge, discuss both the problem and potential research directions/solutions."
+            ],
+            "why_it_works": "Turns the 'Challenges' section into a structured research roadmap rather than a laundry list of problems.",
+            "evidence_locators": [
+                "Fig. 5",
+                "VIII. Challenges"
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [],
+        "non_body_leakage": "no",
+        "missingness": [],
+        "confidence": "high"
+    },
+    "notes": "Excellent example of using tables to synthesize vast amounts of literature."
+}

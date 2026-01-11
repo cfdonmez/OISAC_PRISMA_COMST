@@ -1,0 +1,524 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_071",
+    "title": "Unleashing the Power of Edge-Cloud Generative AI in Mobile Networks: A Survey of AIGC Services",
+    "authors": [
+        "Minrui Xu",
+        "Hongyang Du",
+        "Dusit Niyato",
+        "Jiawen Kang",
+        "Zehui Xiong",
+        "Shiwen Mao",
+        "Zhu Han",
+        "Abbas Jamalipour",
+        "Dong In Kim",
+        "Xuemin Shen",
+        "Victor C. M. Leung",
+        "H. Vincent Poor"
+    ],
+    "affiliation": "NTU Singapore, Sun Yat-sen University, Auburn University, University of Houston, University of Sydney, Sungkyunkwan University, University of Waterloo, UBC, Princeton University",
+    "year_online": "2024",
+    "year_issue": "2024",
+    "source_path": "data/corpus_standardized/COMST_071/COMST_071.md",
+    "domain": "Mobile Edge Computing / Generative AI / AIGC Services / Edge Intelligence / 6G Networks",
+    "paper_type": "Comprehensive Survey with Tutorial Elements and Case Studies",
+    "analysis_policy": {
+        "focus": "Extract mobile AIGC network architecture, generative AI model taxonomy, and deployment challenges",
+        "depth": "Full paper analysis including all 8 sections and 4 case studies"
+    },
+    "document_stats": {
+        "total_lines": 1195,
+        "total_bytes": 302684,
+        "section_count": 8,
+        "figure_count": 18,
+        "table_count": 5,
+        "reference_count": 304
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-VIII)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "AIGC": "Artificial Intelligence-Generated Content",
+            "PGC": "Professionally-Generated Content",
+            "UGC": "User-Generated Content",
+            "ASP": "AIGC Service Provider",
+            "ESP": "Edge Service Provider",
+            "GAN": "Generative Adversarial Network",
+            "VAE": "Variational Autoencoder",
+            "GDM": "Generative Diffusion Model",
+            "LLM": "Large Language Model",
+            "MEC": "Mobile Edge Computing",
+            "QoE": "Quality of Experience",
+            "FID": "Fréchet Inception Distance",
+            "IS": "Inception Score"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_positioning",
+            "subsections": [
+                "Background",
+                "Motivation",
+                "Related Works and Contributions"
+            ],
+            "summary": "Introduces AIGC paradigm shift from PGC/UGC, motivates mobile AIGC networks for low-latency, localized, personalized, privacy-preserving services. Compares with existing surveys.",
+            "key_claims": [
+                "AIGC reduces marginal cost of content creation to nearly zero",
+                "ChatGPT, DALL-E represent breakthrough in generative AI",
+                "Cloud-only AIGC has high latency; edge deployment needed",
+                "First survey to focus on mobile AIGC network deployment"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Background and Fundamentals of AIGC",
+            "role": "conceptual_foundations",
+            "subsections": [
+                "Definitions of PGC/UGC/AIGC",
+                "Serving ChatGPT at Mobile Edge",
+                "Life-Cycle of AIGC"
+            ],
+            "summary": "Defines AIGC characteristics (automatic, creative, multimodal, diverse, valuable), details ChatGPT lifecycle (pre-training, fine-tuning, inference, product management), introduces AIGC lifecycle at edge.",
+            "key_claims": [
+                "AIGC combines automation of PGC with creativity of UGC",
+                "GPT-3 has 175 billion parameters trained on massive corpus",
+                "AIGC lifecycle: data collection → pre-training → fine-tuning → inference → product management",
+                "Stable Diffusion pre-training: 256 A100 GPUs, 150K hours, ~$600K"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "Technologies and Collaborative Infrastructure",
+            "role": "technical_framework",
+            "subsections": [
+                "Evaluation Metrics",
+                "Generative AI Models",
+                "Collaborative Infrastructure",
+                "Lessons Learned"
+            ],
+            "summary": "Presents generative AI model taxonomy (GAN, VAE, Flow, Diffusion, LLM), evaluation metrics (IS, FID, R-Precision, CLIP-R-Precision, QoE), and cloud-edge-mobile collaborative architecture.",
+            "key_claims": [
+                "Five fundamental generative models: GAN, energy-based, VAE, flow-based, diffusion",
+                "Diffusion models avoid mode collapse via MLE training",
+                "LLMs face challenges: long response times, high bandwidth, data privacy",
+                "Cloud-edge collaborative training + edge-mobile collaborative inference"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "Applications and Advantages of AIGC",
+            "role": "application_taxonomy",
+            "subsections": [
+                "Applications (Text/Audio/Image/Video/3D)",
+                "Advantages (Efficiency/Reconfigurability/Accuracy/Scalability/Security)"
+            ],
+            "summary": "Categorizes AIGC applications by modality: text (ALBERT, MobileBERT), audio (WaveNet, Audio ALBERT), image (Make-a-Scene, SPADE), video (Imagen Video), 3D (NeRF, Latent-NeRF, Diffusion-SDF).",
+            "key_claims": [
+                "ALBERT and MobileBERT enable edge-deployable NLG",
+                "Audio ALBERT shows 20% inference time reduction",
+                "Make-a-Scene leverages human priors for text-to-image",
+                "Deepfake concerns require study and legislation"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "Case Studies of AIGC in Mobile Network",
+            "role": "empirical_validation",
+            "subsections": [
+                "AI-Generated Incentive Mechanism",
+                "AIGC Service Provider Selection",
+                "Traffic and Driving Simulation",
+                "Blockchain-Powered Lifecycle Management"
+            ],
+            "summary": "Presents 4 detailed case studies: diffusion-based contract design for semantic communication, DRL-based ASP selection (20 ASPs, 1000 users), vehicular Metaverse simulation, blockchain-based AIGC product lifecycle.",
+            "key_claims": [
+                "AI-generated contract outperforms SAC (185.9) and PPO (184.3) with utility 189.1",
+                "DRL-based ASP selection outperforms random, round-robin, crash-avoid policies",
+                "MTEPViSA mechanism improves 150% social surplus vs baselines",
+                "Reputation-based ESP selection balances workload and incentivizes honest behavior"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "Implementation Challenges",
+            "role": "challenge_identification",
+            "subsections": [
+                "Edge Resource Allocation",
+                "Task/Computation Offloading",
+                "Edge Caching",
+                "Mobility Management",
+                "Incentive Mechanism Design",
+                "Security and Privacy"
+            ],
+            "summary": "Identifies 6 major challenge categories with detailed KPIs, techniques, and mathematical tools. Covers model accuracy vs resource tradeoff, offloading latency, cache management, and FL privacy.",
+            "key_claims": [
+                "Model accuracy, bandwidth utilization, resource consumption as key KPIs",
+                "ADMM for AI service placement and resource allocation",
+                "DNN partitioning for edge-mobile collaboration",
+                "FL, differential privacy, blockchain for privacy preservation"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "Future Research Directions",
+            "role": "future_directions",
+            "subsections": [
+                "Networking and Computing",
+                "Machine Learning",
+                "Practical Implementation"
+            ],
+            "summary": "Discusses future directions: distributed diffusion, foundation model caching, 6G wireless communication design, model compression, digital twin integration.",
+            "key_claims": [
+                "Distributed diffusion across edge devices emerging",
+                "Foundation model caching and inference optimization needed",
+                "AI-generated 6G network design using diffusion models",
+                "Digital twin for Metaverse content generation"
+            ]
+        },
+        {
+            "section_id": "VIII",
+            "title": "Conclusion",
+            "role": "synthesis",
+            "summary": "Summarizes mobile AIGC network vision, emphasizes cloud-edge-mobile collaboration, and highlights remaining challenges."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Provide comprehensive survey on deploying AIGC services at mobile edge networks with practical case studies and implementation guidance",
+        "delivery_mechanism": "Tutorial-style progression from fundamentals through applications to case studies and challenges",
+        "unique_contribution": "First survey to systematically address mobile AIGC network deployment, combining generative AI model taxonomy with edge computing infrastructure and validated case studies"
+    },
+    "taxonomy": {
+        "type": "multi_dimensional_hierarchical",
+        "root_concept": "Mobile AIGC Networks",
+        "primary_dimensions": [
+            {
+                "dimension": "Content Types",
+                "categories": [
+                    "Text",
+                    "Audio",
+                    "Image",
+                    "Video",
+                    "3D"
+                ],
+                "representative_models": [
+                    "GPT-3/ChatGPT",
+                    "WaveNet/Audio ALBERT",
+                    "DALL-E/Stable Diffusion",
+                    "Imagen Video",
+                    "NeRF/Point-E"
+                ]
+            },
+            {
+                "dimension": "Generative AI Models",
+                "categories": [
+                    "GAN",
+                    "Energy-Based",
+                    "VAE",
+                    "Flow-Based",
+                    "Diffusion",
+                    "LLM"
+                ],
+                "evaluation": [
+                    "IS",
+                    "FID",
+                    "R-Precision",
+                    "CLIP-R-Precision",
+                    "QoE"
+                ]
+            },
+            {
+                "dimension": "Infrastructure Layers",
+                "categories": [
+                    "Cloud Computing",
+                    "Edge Computing",
+                    "Mobile Computing"
+                ],
+                "characteristics": [
+                    "Capacity vs Latency tradeoff",
+                    "Localization",
+                    "Privacy preservation"
+                ]
+            },
+            {
+                "dimension": "AIGC Lifecycle",
+                "categories": [
+                    "Data Collection",
+                    "Pre-Training",
+                    "Fine-Tuning",
+                    "Inference",
+                    "Product Management"
+                ],
+                "edge_suitability": [
+                    "IoT data",
+                    "Cloud only",
+                    "Edge/Cloud",
+                    "Edge/Mobile",
+                    "Blockchain"
+                ]
+            }
+        ],
+        "visualization": {
+            "figure_ref": "Fig. 3",
+            "type": "survey_outline_diagram",
+            "description": "Complete paper structure showing section interdependencies"
+        }
+    },
+    "case_studies": [
+        {
+            "name": "AI-Generated Incentive Mechanism",
+            "context": "Mixed Reality semantic communication sharing",
+            "method": "Diffusion model-based contract generation",
+            "result": "Utility 189.1 vs SAC 185.9, PPO 184.3",
+            "lesson": "Diffusion models enable superior optimization via improved sampling quality and long-term dependence"
+        },
+        {
+            "name": "AIGC Service Provider Selection",
+            "context": "AIGC-as-a-Service with 20 ASPs, 1000 users",
+            "method": "DRL-based SAC algorithm",
+            "result": "Outperforms random, round-robin, crash-avoid policies",
+            "lesson": "Proper ASP selection critical for QoE; DRL enables adaptive selection"
+        },
+        {
+            "name": "Generative AI-Empowered Simulation",
+            "context": "Vehicular Metaverse with traffic sign generation",
+            "method": "TSDreambooth + MTEPViSA auction mechanism",
+            "result": "150% social surplus improvement",
+            "lesson": "Generative AI reduces data collection costs; mechanism design coordinates supply/demand"
+        },
+        {
+            "name": "Blockchain-Powered Lifecycle Management",
+            "context": "AIGC product ownership and trading",
+            "method": "Proof-of-AIGC + MWSL reputation-based ESP selection",
+            "result": "Effective workload balancing and honest behavior incentivization",
+            "lesson": "Blockchain enables traceable, immutable AIGC ownership; reputation balances workload"
+        }
+    ],
+    "evaluation_framework": {
+        "metrics_used": [
+            "Inception Score (IS) - image quality",
+            "Fréchet Inception Distance (FID) - image quality and diversity",
+            "R-Precision - text-image alignment",
+            "CLIP-R-Precision - model-agnostic text-image alignment",
+            "Quality of Experience (QoE) - user satisfaction",
+            "System utility - reward maximization",
+            "Social surplus - mechanism design efficiency"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Compare related works on AIGC algorithms, applications, edge intelligence coverage"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Summarize state-of-the-art generative AI models by application type"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Key literature on AIGC within wireless networks"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "Edge resource allocation scenarios, metrics, and mathematical tools"
+            },
+            {
+                "table_ref": "Table V",
+                "purpose": "Task and computation offloading scenarios and techniques"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "system_overview",
+                "example": "Fig. 1 - Mobile AIGC networks overview",
+                "purpose": "Three-layer cloud-edge-mobile architecture visualization"
+            },
+            {
+                "type": "timeline_evolution",
+                "example": "Fig. 2 - AIGC and MEC development roadmap 2013-2023",
+                "purpose": "Technology evolution context"
+            },
+            {
+                "type": "paper_organization",
+                "example": "Fig. 3 - Survey outline",
+                "purpose": "Reader navigation and section dependencies"
+            },
+            {
+                "type": "lifecycle_diagram",
+                "example": "Fig. 4 - ChatGPT development stages",
+                "purpose": "Pre-training → Fine-tuning → Inference → Product Management"
+            },
+            {
+                "type": "model_architecture",
+                "example": "Fig. 5 - Generative AI model architectures",
+                "purpose": "Compare GAN, VAE, Flow, Diffusion, Energy-based"
+            },
+            {
+                "type": "infrastructure_diagram",
+                "example": "Fig. 6 - Cloud-edge-mobile collaborative infrastructure",
+                "purpose": "Show advantages and limitations at each layer"
+            },
+            {
+                "type": "generated_samples",
+                "example": "Fig. 8 - Generated images from different models",
+                "purpose": "Visual comparison of Stable Diffusion, DALL-E2, Visual ChatGPT, Point-E"
+            },
+            {
+                "type": "case_study_system",
+                "example": "Fig. 9, 11, 13, 15 - System models for each case study",
+                "purpose": "Detailed case study visualization"
+            },
+            {
+                "type": "performance_results",
+                "example": "Fig. 10, 12, 14, 16 - Experimental results",
+                "purpose": "Quantitative validation of proposed methods"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Multi-dimensional taxonomy combining content types, generative models, infrastructure layers, and lifecycle stages",
+        "key_paradigm": "Mobile AIGC Networks = Cloud pre-training + Edge fine-tuning/inference + Mobile D2D execution",
+        "gap_identification": [
+            "Distributed diffusion across heterogeneous edge devices",
+            "Foundation model caching and inference optimization",
+            "AI-generated 6G network design",
+            "Model compression for edge deployment",
+            "Privacy-preserving AIGC training and inference"
+        ],
+        "future_recommendations": [
+            "Explore collaborative distributed diffusion-based AIGC",
+            "Design joint model caching and inference frameworks",
+            "Develop AI-generated wireless communication protocols",
+            "Integrate digital twin for Metaverse content generation",
+            "Address security threats with generative AI defenses"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Comprehensive survey with tutorial elements and empirical case studies",
+        "source_selection": "304 references covering generative AI, edge computing, mobile networks, blockchain",
+        "distinguishing_features": [
+            "First survey on mobile AIGC network deployment",
+            "Includes 4 validated case studies with quantitative results",
+            "Covers full AIGC lifecycle at mobile edge",
+            "Six-category implementation challenge analysis",
+            "Comprehensive generative AI model taxonomy"
+        ]
+    },
+    "style": {
+        "register": "Tutorial-survey hybrid with practical case studies",
+        "rhetorical_patterns": [
+            "Definition-based conceptual introduction",
+            "Lifecycle-based organization (AIGC stages)",
+            "Modality-based application taxonomy",
+            "Challenge-solution pairing",
+            "Lesson Learned synthesis per case study"
+        ],
+        "characteristic_phrases": [
+            "In mobile AIGC networks...",
+            "The lesson learned from this study is...",
+            "Motivated by the aforementioned reasons...",
+            "Several KPIs are specifically relevant to..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Lifecycle-Based Survey Organization",
+            "description": "Organize a survey around the complete lifecycle of a technology or service, covering each stage from creation to deployment to management",
+            "structure": [
+                "Define lifecycle stages (e.g., data collection, training, inference, product management)",
+                "Explain each stage's role in the overall system",
+                "Map infrastructure layers to lifecycle stages",
+                "Discuss tradeoffs and challenges at each stage",
+                "Synthesize with 'Lessons Learned' sections"
+            ],
+            "example_application": "AIGC lifecycle: data collection → pre-training → fine-tuning → inference → product management",
+            "rhetorical_effect": "Provides natural progression; enables modular reading; clarifies deployment considerations",
+            "complexity": "Medium - requires comprehensive understanding of technology evolution"
+        },
+        {
+            "recipe_name": "Content Type-Based Application Taxonomy",
+            "description": "Categorize applications by content modality (text, audio, image, video, 3D) with representative models for each",
+            "structure": [
+                "List major content modalities",
+                "For each modality: describe applications, list representative models, note edge deployment considerations",
+                "Include model comparison table with architectures, datasets, metrics",
+                "Discuss cross-modal generation potential"
+            ],
+            "example_application": "Section IV: AI-Generated Text/Audio/Image/Video/3D with Table II summary",
+            "rhetorical_effect": "Enables readers to quickly find relevant models; demonstrates breadth of coverage",
+            "complexity": "Low-Medium - requires thorough model cataloging"
+        },
+        {
+            "recipe_name": "Case Study with Lesson Learned Pattern",
+            "description": "Present detailed case studies each concluding with explicit 'Lesson Learned' synthesis and future directions",
+            "structure": [
+                "Describe system model and motivation",
+                "Present proposed method with mathematical formulation",
+                "Show experimental setup (number of agents, users, parameters)",
+                "Compare against baseline policies quantitatively",
+                "Conclude with 'Lesson Learned:' paragraph synthesizing insights",
+                "List promising future directions as bullet points"
+            ],
+            "example_application": "Section V: 4 case studies each with Lesson Learned and future directions",
+            "rhetorical_effect": "Demonstrates practical applicability; enables knowledge transfer; guides future research",
+            "complexity": "High - requires original experiments or detailed reproduction"
+        },
+        {
+            "recipe_name": "Challenge-KPI-Technique Matrix",
+            "description": "Structure implementation challenges around Key Performance Indicators and solution techniques in tabular form",
+            "structure": [
+                "Identify major challenge categories",
+                "For each challenge: define relevant KPIs, list scenarios, map to mathematical tools",
+                "Create summary table with columns: Reference, Scenario, Metrics/Decision Variables, Benefits/Challenges, Tools",
+                "Discuss tradeoffs between KPIs"
+            ],
+            "example_application": "Tables IV and V: Edge resource allocation and computation offloading challenges",
+            "rhetorical_effect": "Provides actionable reference; enables quick lookup; highlights solution landscape",
+            "complexity": "Medium - requires systematic literature classification"
+        },
+        {
+            "recipe_name": "Three-Content-Generation-Paradigm Comparison",
+            "description": "Introduce a new content generation paradigm by contrasting with two existing paradigms",
+            "structure": [
+                "Define Paradigm 1 (e.g., PGC - professional)",
+                "Define Paradigm 2 (e.g., UGC - user)",
+                "Define Paradigm 3 (e.g., AIGC - AI) as synthesis",
+                "Compare on key dimensions (automation, creativity, multimodality, diversity)",
+                "Show how new paradigm combines advantages of predecessors"
+            ],
+            "example_application": "Section II-A: PGC vs UGC vs AIGC comparison with characteristic dimensions",
+            "rhetorical_effect": "Positions new paradigm as natural evolution; clarifies unique value proposition",
+            "complexity": "Low - requires clear dimension identification"
+        },
+        {
+            "recipe_name": "Technology Evolution Roadmap Figure",
+            "description": "Create a timeline figure showing parallel evolution of two converging technology streams",
+            "structure": [
+                "Define two technology streams (e.g., AIGC models, edge computing)",
+                "Mark key milestones with year and specific contribution",
+                "Show convergence point where technologies meet",
+                "Use visual differentiation (colors, lanes) for each stream"
+            ],
+            "example_application": "Fig. 2: AIGC and MEC development roadmap 2013-Oct 2023",
+            "rhetorical_effect": "Provides historical context; justifies timeliness; shows technology maturity",
+            "complexity": "Low - requires industry knowledge and milestone research"
+        }
+    ],
+    "key_concepts": {
+        "mobile_aigc_networks": "Fusion of AI-generated content and mobile edge networks enabling rapid content creation, delivery, and processing at network edge",
+        "aigc_lifecycle": "Complete process from data collection through pre-training, fine-tuning, inference to product management",
+        "cloud_edge_mobile_collaboration": "Three-tier architecture where cloud handles pre-training, edge handles fine-tuning/inference, mobile handles D2D execution"
+    },
+    "quality_flags": {
+        "comprehensive_survey": true,
+        "tutorial_elements": true,
+        "case_studies_validated": true,
+        "304_references": true,
+        "multi_author_collaboration": true,
+        "lifecycle_complete_coverage": true,
+        "implementation_challenges_detailed": true,
+        "future_directions_comprehensive": true
+    }
+}

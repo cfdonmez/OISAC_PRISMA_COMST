@@ -1,0 +1,786 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_019",
+  "title": "A Survey on Model-Based, Heuristic, and Machine Learning Optimization Approaches in RIS-Aided Wireless Networks",
+  "year_online": "2023",
+  "year_issue": "2024",
+  "year_source": "doi/frontmatter",
+  "domain": "RIS-aided wireless optimization (model-based, heuristic, ML)",
+  "source_path": "data/corpus_standardized/COMST_019/COMST_019.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Nomenclature excluded from analysis; main body taken up to References heading."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 33587,
+    "approx_token_count_total": null,
+    "equation_count_est": 240,
+    "figure_count_est": 89,
+    "table_count_est": 30,
+    "list_count_est": 37,
+    "citation_count_in_body_est": 472,
+    "citation_density_per_1k_words_est": 14.1,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Existing Surveys on Mobile Edge Technologies",
+        "B. Contributions"
+      ],
+      "objective": "Motivate RIS optimization importance, contrast with existing RIS surveys, state contributions and organization.",
+      "key_components": [
+        "RIS motivation and complexity",
+        "Survey gap vs prior works",
+        "Contribution bullets",
+        "Organization/roadmap figure"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 1046,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Explicitly contrasts model-based, heuristic, and ML coverage versus prior surveys",
+        "Early organization figure to orient readers"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States gap: no survey systematically compares model-based, heuristic, and ML optimization for RIS.",
+          "locator": {
+            "heading": "II. RELATED SURVEYS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L110-L150"
+          }
+        },
+        {
+          "claim": "Lists contributions and roadmap.",
+          "locator": {
+            "heading": "I. INTRODUCTION",
+            "paragraph_index_est": 3,
+            "line_range_est": "L70-L110"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "RELATED_WORK",
+      "raw_headings": [
+        "II. RELATED SURVEYS"
+      ],
+      "objective": "Position this survey against prior RIS works and optimization-focused tutorials.",
+      "key_components": [
+        "Coverage comparison across optimization approaches",
+        "Missing heuristic/ML techniques in prior work",
+        "Table of prior surveys"
+      ],
+      "approx_word_share_pct": "2-3",
+      "approx_words_est": 787,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 15
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses a comparison table to show omitted heuristic/ML techniques in prior surveys"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Notes prior surveys focus on model-based algorithms, omit heuristic and emerging ML.",
+          "locator": {
+            "heading": "II. RELATED SURVEYS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L130-L160"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "III. BACKGROUND AND PROBLEM FORMULATIONS FOR OPTIMIZING RIS-AIDED WIRELESS NETWORKS",
+        "A. Fundamental Theories of RIS Technology",
+        "B. Sum-Rate/Capacity Maximization",
+        "C. Power Minimization",
+        "D. Energy Efficiency Maximization",
+        "E. User Fairness Maximization",
+        "F. Secrecy Rate Maximization",
+        "G. Optimization With Integer Constraints",
+        "H. Optimization Constraints for Imperfect CSI",
+        "I. Discussions and Analyses"
+      ],
+      "objective": "Lay groundwork on RIS technology and enumerate optimization problem formulations and constraints.",
+      "key_components": [
+        "RIS fundamentals",
+        "Objective categories (sum-rate, power, EE, fairness, secrecy)",
+        "Integer/discrete constraints and imperfect CSI",
+        "Discussion/analysis summary"
+      ],
+      "approx_word_share_pct": "16-18",
+      "approx_words_est": 6529,
+      "positioning": {
+        "start_doc_progress_pct_est": 15,
+        "end_doc_progress_pct_est": 35
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses objective-wise substructure before diving into algorithms",
+        "Ends with a discussion to summarize formulation insights"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists optimization objectives and constraints for RIS problems.",
+          "locator": {
+            "heading": "III. BACKGROUND AND PROBLEM FORMULATIONS FOR OPTIMIZING RIS-AIDED WIRELESS NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L160-L240"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. MODEL-BASED OPTIMIZATION ALGORITHMS FOR RIS-AIDED WIRELESS NETWORKS",
+        "A. Alternating Optimization",
+        "B. Block Coordinate Descent",
+        "C. Majorization-Minimization Method",
+        "D. Successive Convex Approximation",
+        "E. Semidefinite Relaxation",
+        "F. Second-Order Cone Programming",
+        "G. Fractional Programming",
+        "H. Branch-and-Bound",
+        "I. Discussions and Numerical Results"
+      ],
+      "objective": "Survey model-based optimization algorithms for RIS problems with discussion and numerical notes.",
+      "key_components": [
+        "AO, BCD, MM, SCA, SDR, SOCP, FP, BnB",
+        "Problem property requirements",
+        "Discussion/numerical observations"
+      ],
+      "approx_word_share_pct": "13-15",
+      "approx_words_est": 5631,
+      "positioning": {
+        "start_doc_progress_pct_est": 35,
+        "end_doc_progress_pct_est": 55
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Ends with a dedicated discussion/numerical-results subsection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers classic model-based methods and notes their requirements.",
+          "locator": {
+            "heading": "IV. MODEL-BASED OPTIMIZATION ALGORITHMS FOR RIS-AIDED WIRELESS NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L240-L340"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. HEURISTIC ALGORITHMS FOR RIS-AIDED WIRELESS NETWORKS",
+        "A. Convex-Concave Procedure",
+        "B. Meta-Heuristic Algorithms",
+        "C. Greedy Algorithms",
+        "D. Matching Theory-Based Methods",
+        "E. Discussions and Numerical Results"
+      ],
+      "objective": "Review heuristic optimization techniques for RIS with examples and discussions.",
+      "key_components": [
+        "CCP, meta-heuristics, greedy, matching",
+        "Use cases and complexity trade-offs",
+        "Discussion/numerical notes"
+      ],
+      "approx_word_share_pct": "12-14",
+      "approx_words_est": 3245,
+      "positioning": {
+        "start_doc_progress_pct_est": 55,
+        "end_doc_progress_pct_est": 72
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Mirrors model-based section with its own discussion/numerical results subsection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes heuristic approaches and their role as low-complexity alternatives.",
+          "locator": {
+            "heading": "V. HEURISTIC ALGORITHMS FOR RIS-AIDED WIRELESS NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L340-L390"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "VI. ML-ENABLED OPTIMIZATION FOR RIS-AIDED WIRELESS NETWORKS",
+        "A. Supervised Learning-Enabled Optimization",
+        "B. Unsupervised Learning-Based Optimization",
+        "C. Reinforcement Learning-Based Optimization",
+        "D. Federated Learning and RISs",
+        "E. Graph Learning",
+        "F. Transfer Learning",
+        "G. Hierarchical Learning",
+        "H. Meta-Learning",
+        "I. Discussions and Numerical Results"
+      ],
+      "objective": "Survey ML-based optimization methods for RIS across learning paradigms with discussion.",
+      "key_components": [
+        "Supervised/unsupervised/RL/FL/graph/transfer/hierarchical/meta learning",
+        "RIS-specific data/label considerations",
+        "Discussion/numerical comparison"
+      ],
+      "approx_word_share_pct": "18-21",
+      "approx_words_est": 8734,
+      "positioning": {
+        "start_doc_progress_pct_est": 72,
+        "end_doc_progress_pct_est": 88
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Extensive list of ML paradigms followed by a discussion/numerical results subsection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details ML approaches including RL, FL, graph, transfer, hierarchical, meta learning for RIS optimization.",
+          "locator": {
+            "heading": "VI. ML-ENABLED OPTIMIZATION FOR RIS-AIDED WIRELESS NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L390-L470"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "VII. COMPARISON AND RELATIONSHIP BETWEEN MODEL-BASED, HEURISTIC AND ML APPROACHES"
+      ],
+      "objective": "Compare and relate the three optimization families for RIS with synthesized insights.",
+      "key_components": [
+        "Comparative analysis of optimality, robustness, stability, complexity",
+        "Guidance on when to use each approach"
+      ],
+      "approx_word_share_pct": "3-4",
+      "approx_words_est": 1198,
+      "positioning": {
+        "start_doc_progress_pct_est": 88,
+        "end_doc_progress_pct_est": 92
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Synthesizes across three algorithm families to guide selection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Compares model-based, heuristic, and ML approaches on optimality/complexity/robustness.",
+          "locator": {
+            "heading": "VII. COMPARISON AND RELATIONSHIP BETWEEN MODEL-BASED, HEURISTIC AND ML APPROACHES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L470-L520"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VIII. RIS-ASSISTED 6G APPLICATIONS: OPTIMIZATION ANALYSES AND CHALLENGES",
+        "A. Control and Optimization Analyses of RIS-Assisted 6G Applications",
+        "B. Challenges and Future Directions"
+      ],
+      "objective": "Discuss optimization analyses for RIS-assisted 6G applications and outline challenges.",
+      "key_components": [
+        "Application areas: NOMA, SWIPT, mmWave/THz, NTNs, V2X, ISAC",
+        "Control/optimization considerations",
+        "Challenges and future directions"
+      ],
+      "approx_word_share_pct": "4-5",
+      "approx_words_est": 1291,
+      "positioning": {
+        "start_doc_progress_pct_est": 92,
+        "end_doc_progress_pct_est": 98
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Links challenges directly to earlier application analyses"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Identifies optimization challenges for RIS-assisted 6G scenarios and future directions.",
+          "locator": {
+            "heading": "VIII. RIS-ASSISTED 6G APPLICATIONS: OPTIMIZATION ANALYSES AND CHALLENGES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L520-L560"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S09",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "IX. CONCLUSION"
+      ],
+      "objective": "Summarize optimization survey and restate future challenges.",
+      "key_components": [
+        "Recap of optimization families",
+        "Pointer to applications and challenges"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 181,
+      "positioning": {
+        "start_doc_progress_pct_est": 98,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Brief wrap-up restating future needs"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes contributions and emphasizes ongoing challenges.",
+          "locator": {
+            "heading": "IX. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L560-L585"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights RIS as key to 6G with benefits in capacity, coverage, efficiency, and security.",
+      "locator": "L5-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes no prior survey systematically compares model-based, heuristic, and ML optimization for RIS.",
+      "locator": "L40-L80"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Existing works cover subsets (model-based or partial ML) without full-spectrum comparison.",
+      "locator": "L110-L150"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Outlines contributions: problem formulations, three algorithm families, comparisons, applications, challenges.",
+      "locator": "L70-L110"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides roadmap and Fig. 1 showing key topics.",
+      "locator": "L90-L120"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus limited to optimization techniques for RIS-aided wireless networks.",
+      "locator": "L70-L120"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate RIS importance; define optimization problems; cover model-based, heuristic, and ML methods; compare them; discuss 6G applications and challenges; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by optimization approach",
+    "axes": [
+      "Approach family (model-based, heuristic, ML)",
+      "Problem formulation category (objectives/constraints)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 9,
+    "branches": [
+      "Model-based methods",
+      "Heuristic methods",
+      "ML methods"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "Optimality",
+      "Robustness",
+      "Stability",
+      "Complexity"
+    ],
+    "tradeoff_axes": [
+      "optimality vs complexity",
+      "data dependence vs model knowledge"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L470-L520"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro shows organization figure; related-work table compares surveys; problem-formulation section lists objectives and constraints; each algorithm family section includes figures/tables of formulations and results; comparison section uses summary table.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "organization",
+        "purpose": "show survey structure and key topics",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 8
+        },
+        "evidence_locator": "L90-L120"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "compare prior RIS surveys on optimization coverage",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "RELATED_WORK",
+          "doc_progress_pct_est": 14
+        },
+        "evidence_locator": "L130-L160"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Problem formulations section",
+        "lesson": "Organize optimization objectives/constraints before algorithms to ground later comparisons.",
+        "locator": "L160-L240"
+      },
+      {
+        "location": "Model-based/heuristic/ML sections",
+        "lesson": "Use parallel structure with closing discussion/numerical notes to enable cross-family comparison.",
+        "locator": "L240-L470"
+      },
+      {
+        "location": "Comparison section",
+        "lesson": "Summarize trade-offs (optimality, robustness, complexity) to guide approach selection.",
+        "locator": "L470-L520"
+      },
+      {
+        "location": "Applications/challenges section",
+        "lesson": "Tie optimization methods to 6G application scenarios and extract challenges.",
+        "locator": "L520-L560"
+      }
+    ],
+    "aha_moment": "Maintaining identical structures for the three optimization families plus a dedicated comparison section yields a clear map from formulations to method choice to applications."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Open with what is optimized or which method family is covered, then enumerate subtypes before a discussion.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 1.1,
+    "signposting_devices": [
+      "Specifically",
+      "In particular",
+      "Furthermore",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Formulation-first setup before algorithms",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "List optimization objectives (rate, power, EE, fairness, secrecy) and constraints (integer variables, imperfect CSI).",
+        "Briefly explain why each matters for RIS.",
+        "Close with a short discussion/analysis block."
+      ],
+      "why_it_works": "Grounds readers in problem space so later algorithm families have clear targets.",
+      "evidence_locators": [
+        "L160-L240"
+      ]
+    },
+    {
+      "title": "Parallel algorithm-family chapters",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "For each family (model-based, heuristic, ML), list representative methods and their prerequisites.",
+        "Describe typical RIS use cases per method.",
+        "End with a discussion/numerical results subsection."
+      ],
+      "why_it_works": "Parallel structure makes cross-family comparison effortless and keeps reader orientation.",
+      "evidence_locators": [
+        "L240-L470"
+      ]
+    },
+    {
+      "title": "Mid-book comparison checkpoint",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK"
+      ],
+      "steps": [
+        "After covering all families, dedicate a short section to compare optimality, robustness, stability, and complexity.",
+        "Include a concise table or bullets.",
+        "State when to choose each family."
+      ],
+      "why_it_works": "Creates a synthesis pivot before moving to applications and challenges.",
+      "evidence_locators": [
+        "L470-L520"
+      ]
+    },
+    {
+      "title": "Applications plus challenges bridge",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List RIS-assisted 6G application areas and note optimization levers.",
+        "Follow immediately with challenges and future directions tied to those applications.",
+        "Keep concise to preserve momentum to conclusion."
+      ],
+      "why_it_works": "Connects method survey to real scenarios and sets up forward-looking close.",
+      "evidence_locators": [
+        "L520-L560"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings and tables",
+      "OCR artifacts in figures/tables",
+      "Nomenclature section near front"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts computed excluding references; nomenclature excluded from analysis. Heavy use of figures and tables; rich citation density."
+}

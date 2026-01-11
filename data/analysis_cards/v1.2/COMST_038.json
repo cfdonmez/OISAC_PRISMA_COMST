@@ -1,0 +1,763 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_038",
+  "title": "Evasion Attack and Defense on Machine Learning Models in Cyber-Physical Systems: A Survey",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi",
+  "domain": "Evasion attacks and defenses on ML models in cyber-physical systems",
+  "source_path": "data/corpus_standardized/COMST_038/COMST_038.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Span tags retained; mixed HTML/markdown tables kept."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 30200,
+    "approx_token_count_total": null,
+    "equation_count_est": 263,
+    "figure_count_est": 24,
+    "table_count_est": 12,
+    "list_count_est": 63,
+    "citation_count_in_body_est": 191,
+    "citation_density_per_1k_words_est": 6.3,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction",
+        "A. Related Works",
+        "B. Survey Methodology",
+        "C. Survey Scope",
+        "D. Terminology Clarification",
+        "E. Structure and Organization"
+      ],
+      "objective": "Motivate evasion threats to ML in CPS, review related work, clarify scope/terminology, and present structure.",
+      "key_components": [
+        "CPS/ML context and evasion risk",
+        "Related survey gap",
+        "Methodology and scope",
+        "Terminology definitions",
+        "Organization roadmap"
+      ],
+      "approx_word_share_pct": "13-15",
+      "approx_words_est": 4302,
+      "positioning": {
+        "start_doc_progress_pct_est": 2,
+        "end_doc_progress_pct_est": 14
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Terminology clarification and survey methodology appear in intro before technical content"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States survey methodology/scope and clarifies terminology after highlighting evasion threats and survey gap.",
+          "locator": {
+            "heading": "A. Related Works",
+            "paragraph_index_est": 2,
+            "line_range_est": "L40-L110"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. BACKGROUND",
+        "A. Supervisory Control and Data Acquisition (SCADA) System",
+        "B. Evasion Attacks in a Nutshell",
+        "C. Evasion Attacks at Physical Layer",
+        "D. Evasion Attacks at Network Layer"
+      ],
+      "objective": "Provide CPS/SCADA background and overview of evasion attacks across physical and network layers.",
+      "key_components": [
+        "SCADA/CPS overview",
+        "Evasion attack basics",
+        "Physical-layer evasion examples",
+        "Network-layer evasion examples"
+      ],
+      "approx_word_share_pct": "11-13",
+      "approx_words_est": 2092,
+      "positioning": {
+        "start_doc_progress_pct_est": 14,
+        "end_doc_progress_pct_est": 21
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Separates physical-layer and network-layer evasion examples early"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers SCADA background and summarizes evasion attacks at physical and network layers.",
+          "locator": {
+            "heading": "II. BACKGROUND",
+            "paragraph_index_est": 1,
+            "line_range_est": "L102-L180"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. ATTACK TAXONOMY",
+        "A. Attacker's Knowledge",
+        "B. Attacker's Proximity",
+        "C. Attacker's Strategy",
+        "D. Attacker's Goal",
+        "E. Attacker's Perceptibility",
+        "F. Attacker's Source"
+      ],
+      "objective": "Classify evasion attacks by attacker attributes (knowledge, proximity, strategy, goal, perceptibility, source).",
+      "key_components": [
+        "Knowledge levels",
+        "Proximity categories",
+        "Strategy types",
+        "Goal taxonomy",
+        "Perceptibility",
+        "Source of attack"
+      ],
+      "approx_word_share_pct": "12-14",
+      "approx_words_est": 3616,
+      "positioning": {
+        "start_doc_progress_pct_est": 21,
+        "end_doc_progress_pct_est": 30
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Uses multiple attacker-attribute axes to build taxonomy"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines attacker taxonomy by knowledge, proximity, strategy, goal, perceptibility, and source.",
+          "locator": {
+            "heading": "III. ATTACK TAXONOMY",
+            "paragraph_index_est": 1,
+            "line_range_est": "L186-L240"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. EVASION ATTACKS IN CYBER-PHYSICAL SYSTEMS",
+        "A. Gradient-Based Attacks",
+        "B. Non-Gradient-Based Attacks"
+      ],
+      "objective": "Survey evasion attacks in CPS, grouped by gradient-based vs non-gradient-based methods.",
+      "key_components": [
+        "Gradient-based attack techniques",
+        "Non-gradient attack techniques"
+      ],
+      "approx_word_share_pct": "29-31",
+      "approx_words_est": 8809,
+      "positioning": {
+        "start_doc_progress_pct_est": 30,
+        "end_doc_progress_pct_est": 59
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Longest section, split by gradient vs non-gradient attack families"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details gradient-based and non-gradient-based evasion attacks in CPS.",
+          "locator": {
+            "heading": "IV. EVASION ATTACKS IN CYBER-PHYSICAL SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L240-L420"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. DEFENSE TAXONOMY"
+      ],
+      "objective": "Introduce taxonomy of defenses against evasion attacks.",
+      "key_components": [
+        "Defense classification axes"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 352,
+      "positioning": {
+        "start_doc_progress_pct_est": 59,
+        "end_doc_progress_pct_est": 60
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Serves as a bridge between attack survey and defense survey"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces defense taxonomy before detailed defenses.",
+          "locator": {
+            "heading": "V. DEFENSE TAXONOMY",
+            "paragraph_index_est": 1,
+            "line_range_est": "L464-L480"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "VI. DEFENSE AGAINST EVASION ATTACKS IN CYBER-PHYSICAL SYSTEMS",
+        "A. Training Dataset Strengthening",
+        "B. Training Enhancement",
+        "C. Model Algorithm Enhancement",
+        "D. Auxiliary Detector"
+      ],
+      "objective": "Survey defenses against evasion attacks in CPS across training data, training process, model, and auxiliary detectors.",
+      "key_components": [
+        "Dataset-level defenses",
+        "Training-stage enhancements",
+        "Model-level enhancements",
+        "Auxiliary detection mechanisms"
+      ],
+      "approx_word_share_pct": "22-24",
+      "approx_words_est": 4927,
+      "positioning": {
+        "start_doc_progress_pct_est": 60,
+        "end_doc_progress_pct_est": 77
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Defenses grouped by stage (data, training, model, detector) mirroring attack taxonomy linkage"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers defenses spanning dataset, training, model, and auxiliary detectors.",
+          "locator": {
+            "heading": "VI. DEFENSE AGAINST EVASION ATTACKS IN CYBER-PHYSICAL SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L474-L620"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VII. OPEN RESEARCH GAPS AND DIRECTIONS",
+        "A. Attacker",
+        "B. Defender",
+        "C. Attacker & Defender"
+      ],
+      "objective": "Discuss open gaps and future directions from attacker and defender perspectives and jointly.",
+      "key_components": [
+        "Attacker-side gaps",
+        "Defender-side gaps",
+        "Joint attacker/defender challenges"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 2599,
+      "positioning": {
+        "start_doc_progress_pct_est": 77,
+        "end_doc_progress_pct_est": 86
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Splits future research into attacker, defender, and combined perspectives"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists open research gaps for attacker, defender, and joint perspectives.",
+          "locator": {
+            "heading": "VII. OPEN RESEARCH GAPS AND DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L620-L700"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VIII. LESSONS LEARNED",
+        "A. Evasion Attack",
+        "B. Evasion Defense"
+      ],
+      "objective": "Summarize lessons from attack and defense surveys.",
+      "key_components": [
+        "Attack lessons",
+        "Defense lessons"
+      ],
+      "approx_word_share_pct": "3-4",
+      "approx_words_est": 1080,
+      "positioning": {
+        "start_doc_progress_pct_est": 86,
+        "end_doc_progress_pct_est": 90
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Lessons split into attack vs defense takeaways"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes lessons for attack and defense topics.",
+          "locator": {
+            "heading": "VIII. LESSONS LEARNED",
+            "paragraph_index_est": 1,
+            "line_range_est": "L673-L700"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S09",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "IX. CONCLUDING REMARKS"
+      ],
+      "objective": "Conclude survey and restate key points.",
+      "key_components": [
+        "Recap of attack/defense taxonomy and future gaps",
+        "Closing remarks"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 333,
+      "positioning": {
+        "start_doc_progress_pct_est": 90,
+        "end_doc_progress_pct_est": 92
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Brief close that points back to gaps/directions"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Concludes with recap and future-oriented remarks.",
+          "locator": {
+            "heading": "IX. CONCLUDING REMARKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L700-L730"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights importance of ML in CPS and vulnerability to evasion attacks.",
+      "locator": "L10-L50"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes lack of comprehensive CPS-focused evasion attack/defense surveys.",
+      "locator": "L50-L90"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges related works but stresses missing CPS-specific treatment and full taxonomy.",
+      "locator": "L60-L100"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions: attacker taxonomy, CPS evasion attack survey, defense taxonomy, gaps and lessons.",
+      "locator": "L90-L130"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Outlines survey structure and methodology.",
+      "locator": "L100-L140"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus on evasion attacks/defenses on ML models in CPS across layers and stages.",
+      "locator": "L80-L140"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate CPS evasion risk; clarify methodology/scope/terminology; provide attacker taxonomy; survey attacks; survey defenses; discuss gaps; summarize lessons and conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by attacker attributes and attack family",
+    "axes": [
+      "Attacker attributes (knowledge, proximity, strategy, goal, perceptibility, source)",
+      "Attack method family (gradient vs non-gradient)"
+    ],
+    "levels_est": 3,
+    "node_count_est": 10,
+    "branches": [
+      "Knowledge/proximity/strategy/goal/perceptibility/source axes",
+      "Gradient-based attacks",
+      "Non-gradient-based attacks"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "attack success rate",
+      "robustness",
+      "accuracy under attack",
+      "detection rate",
+      "overhead"
+    ],
+    "tradeoff_axes": [
+      "attack strength vs perceptibility",
+      "defense robustness vs performance cost"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L180-L240"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Figures/tables support taxonomy axes and attack/defense summaries; background uses diagrams for CPS layers; defense section may include comparison tables; lessons/gaps text-heavy.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "taxonomy",
+        "purpose": "depict attacker attribute taxonomy and attack families",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 24
+        },
+        "evidence_locator": "L186-L230"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "summary",
+        "purpose": "summarize attack/defense characteristics or metrics",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 26
+        },
+        "evidence_locator": "L200-L260"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Attacker taxonomy",
+        "lesson": "Multiple attacker attributes expose varied CPS vulnerabilities and guide defenses.",
+        "locator": "L186-L240"
+      },
+      {
+        "location": "Attack families",
+        "lesson": "Gradient vs non-gradient categories capture most CPS evasion tactics.",
+        "locator": "L240-L420"
+      },
+      {
+        "location": "Defenses",
+        "lesson": "Stage-aligned defenses (data, training, model, detector) map to attack surfaces.",
+        "locator": "L474-L620"
+      },
+      {
+        "location": "Gaps",
+        "lesson": "Future work must address adaptive attackers and practical deployment constraints for defenders.",
+        "locator": "L620-L700"
+      }
+    ],
+    "aha_moment": "Framing CPS evasion by attacker attributes then pairing attack families with stage-aligned defenses makes a large threat space navigable and actionable."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "yes",
+    "selection_criteria": "stated survey methodology; details of databases/keywords not fully enumerated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Introduce topic then enumerate taxonomy axes or stage-specific methods; signpost subsections clearly.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "medium",
+    "list_density_per_1k_words_est": 2.1,
+    "signposting_devices": [
+      "In this survey",
+      "Specifically",
+      "Furthermore",
+      "Finally"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro with methodology and terminology",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Motivate CPS evasion risk and survey gap.",
+        "Present survey methodology and scope early.",
+        "Clarify key terminology before technical sections.",
+        "Provide organization roadmap."
+      ],
+      "why_it_works": "Establishes clarity and credibility before diving into taxonomy.",
+      "evidence_locators": [
+        "L40-L120"
+      ]
+    },
+    {
+      "title": "Attacker-attribute taxonomy before attack families",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Define attacker attributes (knowledge, proximity, strategy, goal, perceptibility, source).",
+        "Then survey attack families (gradient vs non-gradient) with examples.",
+        "Use figures/tables to keep axes clear."
+      ],
+      "why_it_works": "Attributes frame the threat model, making subsequent attack families easier to map.",
+      "evidence_locators": [
+        "L186-L420"
+      ]
+    },
+    {
+      "title": "Stage-aligned defenses",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK"
+      ],
+      "steps": [
+        "Group defenses by stage (dataset, training, model, auxiliary detector).",
+        "Highlight trade-offs and link each to attack surfaces.",
+        "Keep subsections parallel for comparison."
+      ],
+      "why_it_works": "Parallel structure eases mapping from attacks to mitigations.",
+      "evidence_locators": [
+        "L474-L620"
+      ]
+    },
+    {
+      "title": "Gaps split by attacker vs defender",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List gaps from attacker perspective.",
+        "List gaps from defender perspective.",
+        "Provide joint challenges and future directions."
+      ],
+      "why_it_works": "Separating perspectives surfaces asymmetric priorities and joint needs.",
+      "evidence_locators": [
+        "L620-L700"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "Mixed HTML/markdown tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; several lists; figures/tables across taxonomy and attacks/defenses. Encoding artifacts may remain in tables."
+}
