@@ -1,6 +1,6 @@
 # 📁 File Map - Tüm Dosyaların Rehberi
 
-**Son Güncelleme:** 2025-12-11
+**Son Güncelleme:** 2026-01-15
 
 Bu dosya repodaki tüm önemli dosyaların ne işe yaradığını açıklar.
 
@@ -102,8 +102,13 @@ cot_laboratory/
 | `README.md` | Klasör açıklaması | Evet |
 | `activeContext.md` | **ŞU ANKİ DURUM** | ✅ İLK OKU |
 | `fileMap.md` | Bu dosya | ✅ 2. OKU |
+| `master_writing_guide.md` | **MASTER GUIDE** — Tüm yazım şablonları (21KB) | ✅ YAZIM İÇİN ANA REFERANS ⭐ |
 | `goldenModel.md` | **GOLDEN MODEL** — Survey yazım rehberi | ✅ YAZIM AŞAMASINDA |
 | `surveyOutline.md` | **SURVEY OUTLINE** — Onaylı makale yapısı | ✅ YAZIM AŞAMASINDA |
+| `introduction_templates.md` | Introduction şablonları (20 COMST analizi) | Referans |
+| `abstract_templates.md` | Abstract & Conclusion şablonları (35 COMST) | Referans |
+| `methodology_template.md` | PRISMA Methodology şablonu | Referans |
+| `body_section_templates.md` | Body section yazım stratejileri | Referans |
 | `projectbrief.md` | Proje özeti | Evet |
 | `techContext.md` | Teknik terimler | Gerekirse |
 | `systemPatterns.md` | Çalışma kuralları | Gerekirse |
@@ -141,13 +146,13 @@ cot_laboratory/
 
 ## 🔑 En Önemli Dosyalar (Top 10)
 
-1. `analysis/notebooks/CoT_Master_Pipeline.ipynb` - Ana notebook
-2. `analysis/cot_laboratory/core/assembler.py` - CoT motoru
-3. `analysis/cot_laboratory/modules/formatting/schema_v2.yaml` - JSON şeması
-4. `analysis/notebooks/extraction_pipeline_v3.py` - Phase 1&2 motoru
-5. `protocol/prisma_protocol.md` - Ana protokol
-6. `memory-bank/activeContext.md` - Güncel durum
-7. `data/retrieved_docs/` - PDF'ler
-8. `data/processed_markdowns/` - İşlenmiş veriler
-9. `analysis/cot_laboratory/logs/` - Çalıştırma kayıtları
-10. `analysis/cot_laboratory/recipes/experiment_v1_full_analysis.yaml` - CoT tarifi
+1. `memory-bank/master_writing_guide.md` - **MASTER YAZIM REHBERİ** ⭐
+2. `memory-bank/activeContext.md` - Güncel durum
+3. `memory-bank/surveyOutline.md` - Onaylı makale yapısı
+4. `analysis/notebooks/CoT_Master_Pipeline.ipynb` - Ana notebook
+5. `analysis/cot_laboratory/core/assembler.py` - CoT motoru
+6. `analysis/cot_laboratory/modules/formatting/schema_v2.yaml` - JSON şeması
+7. `analysis/notebooks/extraction_pipeline_v3.py` - Phase 1&2 motoru
+8. `protocol/prisma_protocol.md` - Ana protokol
+9. `data/processed_markdowns/` - İşlenmiş veriler
+10. `analysis/cot_laboratory/logs/` - Çalıştırma kayıtları

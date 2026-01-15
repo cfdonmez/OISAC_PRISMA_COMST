@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Writing Blueprints Master Schema",
+  "description": "Schema for items in analysis/writing_blueprints_master.json built from COMST survey reverse-engineering.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "paper_id",
+      "rhetorical_skeleton",
+      "visual_roadmap",
+      "writing_style_secrets",
+      "actionable_mentor_advice"
+    ],
+    "properties": {
+      "paper_id": {
+        "type": "string",
+        "pattern": "^COMST_\\d{3}$"
+      },
+      "rhetorical_skeleton": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "section_title",
+            "objective",
+            "key_points"
+          ],
+          "properties": {
+            "section_id": {
+              "type": "string",
+              "description": "Stable identifier for the section (optional)."
+            },
+            "section_title": {
+              "type": "string"
+            },
+            "objective": {
+              "type": "string"
+            },
+            "key_points": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "word_budget_pct": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Approximate word budget percentage for this section."
+            },
+            "position_order": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Order of appearance within the paper."
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "visual_roadmap": {
+        "type": "object",
+        "required": [
+          "layout_logic"
+        ],
+        "properties": {
+          "layout_logic": {
+            "type": "string"
+          },
+          "figures_required": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "table_types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "writing_style_secrets": {
+        "type": "object",
+        "required": [
+          "phrasing_patterns",
+          "technical_depth_management"
+        ],
+        "properties": {
+          "phrasing_patterns": {
+            "type": "string"
+          },
+          "technical_depth_management": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "actionable_mentor_advice": {
+        "type": "object",
+        "required": [
+          "top_3_tips",
+          "mistakes_to_avoid"
+        ],
+        "properties": {
+          "top_3_tips": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "mistakes_to_avoid": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "additionalProperties": false
+  }
+}
