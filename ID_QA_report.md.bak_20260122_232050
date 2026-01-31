@@ -1,0 +1,46 @@
+# ID_QA_report
+
+## Recipe Constraints Applied
+- Comparison table in Introduction must be Table I with an active-verb caption; use it to position gaps vs. prior surveys (COMST_master_recipe.md; introduction_templates.md).
+- Follow COMST headings (Roman numerals, lettered subsections) and reference every figure/table before it appears (master_writing_guide.md).
+- Keep Introduction concise (~10% of manuscript) with 3–5 contribution bullets and an organization map (COMST_master_recipe.md; master_writing_guide.md).
+- End major subsections with synthesizing “Lesson” statements to enforce gap-focused flow (master_writing_guide.md; introduction_templates.md).
+- Maintain academic tone; avoid evidence-free superlatives and paper-by-paper lists—group by axis/claim (master_writing_guide.md).
+- Use active-verb captions (“summarizes/illustrates/provides”) and ensure tables use consistent notation/metrics (COMST_master_recipe.md; introduction_templates.md).
+- Present notation/acronym tables early; define sensing metrics with bandwidth-limited Δr_min and estimator-based σ_r distinctions (surveyOutline.md; COMST_master_recipe.md).
+- Keep taxonomy and PRISMA methodology explicit to satisfy reproducibility expectations (surveyOutline.md; master_writing_guide.md).
+
+## Evidence Log
+| Key | JSON path | MD path | Sections read | Verified facts (≤2 bullets) | Table/prose decision |
+| --- | --- | --- | --- | --- | --- |
+| O_ISAC_161 | data/extraction_results_v4/O_ISAC_161_v4.json | data/processed_markdowns/O_ISAC_161/O_ISAC_161.md | Abstract, Introduction | Invited hardware-centric review of ISAC transceivers across RF/mmWave/THz; no optical modality coverage. <br> Classification lists carrier_band mmW, hybrid class. | Modality scope set to ○/○/○/◐; Tier-2 narrative row in Table I. |
+| O_ISAC_068 | data/extraction_results_v4/O_ISAC_068_v4.json | data/processed_markdowns/O_ISAC_068/O_ISAC_068.md | Abstract, Introduction, VL JCS sections | Reviews JCS with emphasis on visible-light approaches alongside RF; indoor VLC focus. <br> JSON classification carrier_band visible. | Modality scope ○/○/●/○; Tier-2 narrative. |
+| O_ISAC_327 | data/extraction_results_v4/O_ISAC_327_v4.json | data/processed_markdowns/O_ISAC_327/O_ISAC_327.md | Abstract, Introduction, Survey scope | Survey on VLC channel characterization/modeling for 6G IoE; survey designation in doc. | Modality scope ○/○/●/○; Tier-2 survey row. |
+| O_ISAC_006 | data/extraction_results_v4/O_ISAC_006_v4.json | data/processed_markdowns/O_ISAC_006/O_ISAC_006.md | Abstract, Introduction | Mini-review of integrated sensing/communication in optical fiber using forward/backscattered light. <br> C-band fiber focus. | Modality scope ●/○/○/○; Tier-2 mini-review. |
+| O_ISAC_368 | data/extraction_results_v4/O_ISAC_368_v4.json | data/processed_markdowns/O_ISAC_368/O_ISAC_368.md | Abstract, Intro | Technical review of ISAC in optical transmission systems; compares DOFS/WDM optical schemes. | Modality scope ●/○/○/○; Tier-2 review. |
+| O_ISAC_021 | data/extraction_results_v4/O_ISAC_021_v4.json | data/processed_markdowns/O_ISAC_021/O_ISAC_021.md | Abstract, System structure, Advantages | Tutorial on optical ISAC architectures; highlights FSO advantages vs RF. | Modality scope ○/●/○/○; Tier-2 tutorial. |
+| O_ISAC_070 | data/extraction_results_v4/O_ISAC_070_v4.json | data/processed_markdowns/O_ISAC_070/O_ISAC_070.md | Abstract, Introduction | Photonic THz ISAC waveform article; THz 0.1–10 THz focus with integrated waveforms. | Modality scope ○/○/○/●; Tier-2 narrative. |
+| O_ISAC_163 | data/extraction_results_v4/O_ISAC_163_v4.json | data/processed_markdowns/O_ISAC_163/O_ISAC_163.md | Abstract, Intro | COMST survey on multi-functional/hybrid RIS for ISAC; RF/mmWave/THz context only. | Modality scope ○/○/○/○; Tier-1 survey row. |
+| O_ISAC_303 | data/extraction_results_v4/O_ISAC_303_v4.json | data/processed_markdowns/O_ISAC_303/O_ISAC_303.md | Abstract, Intro | Review of VLC-based LiSAC (integrated lighting, sensing, comm); indoor VLC emphasis. | Modality scope ○/○/●/○; Tier-1 review row. |
+| O_ISAC_105 | data/extraction_results_v4/O_ISAC_105_v4.json | data/processed_markdowns/O_ISAC_105/O_ISAC_105/O_ISAC_105.md | Abstract, Results | 275 GHz photonic LFM-QAM ISAC: 120 Gbps with 2.5 mm range resolution; CRQ 480 Gbps/cm. | Used in rate–resolution exemplar prose (no table row). |
+| O_ISAC_016 | data/extraction_results_v4/O_ISAC_016_v4.json | data/processed_markdowns/O_ISAC_016/O_ISAC_016.md | Abstract, System/results | D-band photonic sub-THz system: 251.03 Gbps real-time, 2.5 cm sensing resolution; CRQ ≈100 Gbps/cm. | Used in rate–resolution exemplar prose. |
+| O_ISAC_046 | data/extraction_results_v4/O_ISAC_046_v4.json | data/processed_markdowns/O_ISAC_046/O_ISAC_046.md | Abstract, Intro, Experimental setup | Seven-core fiber co-wavelength DAS+DSM: 241.85 Tb/s capacity; detects 0.1 Hz vibration with 20 m spatial granularity. | Cited in capacity/sensing comparisons (Fig. 2, Section B). |
+
+## Table Captions (final numbering)
+- Table I: Axis-Based Comparison of This Survey with Existing Related Survey-Style Works.
+- Table II: RF-ISAC vs. O-ISAC Performance Comparison [O_ISAC_021].
+- Table III: Mathematical Notation Conventions.
+- Table IV: List of Frequently Used Acronyms.
+
+## Token Checks
+- “### Table I:” occurrences: 1 (rg '### Table I:').
+- “ΔR” occurrences: 0.
+- “σ_R” occurrences: 0.
+- CRQ_Δ expressed only as R/Δr_min (Sections A and B.2).
+- Modality Scope column uses only {○, ◐, ●}; no “–” symbols in scope entries.
+
+## Final [O_ISAC_161] Row (rendered)
+[O_ISAC_161] | 2025 | 2 | ○ / ○ / ○ / ◐ | ● | Narrative | ◐ | – | – | – | –
+
+## Citation Keys
+All citation keys retained; no renaming performed.
