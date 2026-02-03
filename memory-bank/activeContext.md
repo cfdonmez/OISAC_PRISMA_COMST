@@ -1,150 +1,73 @@
-# Active Context
+﻿# Active Context
 
-**Son Güncelleme:** 2026-01-15
+**Son Guncelleme:** 2026-02-03
 
-**Güncelleyen:** AI + Kullanıcı
-
----
-
-## 🎯 Şu Anki Faz: Template Development COMPLETE ✅
-
-**MAJOR MILESTONE:** Tüm COMST yazım şablonları tamamlandı ve `master_writing_guide.md` içinde konsolide edildi. Artık makale yazımına hazırız!
-
-### 🏆 Şablon & Dokümantasyon Durumu
-- **Master Writing Guide:** `memory-bank/master_writing_guide.md` ✅ **YENİ - Ana Referans**
-- **Introduction Templates:** `memory-bank/introduction_templates.md` ✅ (20 COMST analizi)
-- **Abstract/Conclusion Templates:** `memory-bank/abstract_templates.md` ✅ (35 COMST analizi)
-- **Methodology Template:** `memory-bank/methodology_template.md` ✅ (PRISMA-compliant)
-- **Body Section Templates:** `memory-bank/body_section_templates.md` ✅ (6 pattern tipi)
-- **Survey Outline:** `memory-bank/surveyOutline.md` ✅ (9 section, ~35,500 kelime)
-- **Golden Model:** `memory-bank/goldenModel.md` ✅ (76 COMST analizi)
+**Guncelleyen:** AI + Kullanici
 
 ---
 
-## 📊 Template Development Özeti
+## Su Anki Faz: Section II (A/B/C) Drafting + Audit COMPLETE
 
-### Analiz Edilen COMST Makaleleri
-| Bölüm | Analiz Sayısı | Çıkarılan Patterns |
-|-------|---------------|-------------------|
-| **Abstract** | 35 papers | 5-Block Formula (Context→Gap→Authority→Content→Vision) |
-| **Introduction** | 20 papers | 3 Hook Patterns + Gap Table + 4-fold Contributions |
-| **Methodology** | 25 papers | PRISMA Shield (Items 5-15) |
-| **Body Sections** | 76 papers | 6 Synthesis Patterns (Challenge, Architecture, etc.) |
-| **Conclusion** | 20 papers | 3-Block Receipt (Restatement→Summary→Vision) |
-
-### Master Writing Guide İçeriği
-✅ **Tüm şablonlar tek dokümanda konsolide**
-- Abstract Template (200-250 kelime)
-- Introduction Template (4,500 kelime)
-- Methodology Template (2,500 kelime)
-- Body Section Templates (Challenge-Based & Architecture Synthesis)
-- Conclusion Template (150-250 kelime)
-- Universal COMST Writing Rules
-- Section-by-Section Checklists
-- Quick Reference Word Budgets
+**MAJOR MILESTONE:** Section II-A, II-B, II-C taslaklari ve audit dosyalari uretildi. Evidence-locked yazim disiplini uygulanmis durumda.
 
 ---
 
-## ✅ Bu Session'da Yapılanlar (2026-01-15)
+## Son Durum Ozeti (2026-02-03)
 
-### 1. Master Writing Guide Oluşturuldu
-- **Dosya:** `memory-bank/master_writing_guide.md` (21KB)
-- **İçerik:** Tüm template'lerin konsolidasyonu
-- **Özellikler:**
-  - 5 ana bölüm şablonu
-  - COMST Golden Standards
-  - Premium phrasing örnekleri
-  - Kelime bütçeleri
-  - Checklist'ler
+### Uretilen Yeni Taslaklar
+- `drafts/section_02A_fundamentals.md` (II-A tamam)
+- `drafts/section_02B_channel_models.md` (II-B tamam)
+- `drafts/section_02C_transceiver_hardware.md` (II-C tamam)
 
-### 2. Memory-Bank Güncellemeleri
-- `README.md` → Template library eklendi
-- `activeContext.md` → Bu dosya güncellendi
-- `fileMap.md` → Güncellenecek (sonraki adım)
-- `task.md` → Tüm template görevleri ✅ işaretlendi
-- `walkthrough.md` → Template inventory eklendi
+### Audit / Evidence Disiplini
+- `analysis/II_evidence_v2/section_02A_audit.md`
+- `analysis/II_evidence_v2/section_02B_audit.md`
+- `analysis/section_02C_audit.md`
 
----
-
-## 🚀 Sonraki Adımlar
-
-### Öncelik 1: Makale Yazımına Başla
-1. [ ] **Introduction Section:** Master guide kullanarak ilk taslağı yaz
-2. [ ] **Methodology Section:** PRISMA template'i uygula
-3. [ ] **Abstract:** 5-Block formula ile yaz
-
-### Öncelik 2: Veri Sentezi
-1. [ ] 221 çalışmadan tablo verilerini çıkar
-2. [ ] Taxonomy diagram'ı oluştur
-3. [ ] PRISMA Flow Diagram'ı hazırla
-
-### Öncelik 3: Visual Elements
-1. [ ] Fig. 1: Survey Structure Diagram
-2. [ ] Fig. 2: PRISMA Flow Diagram
-3. [ ] Fig. 3: O-ISAC Taxonomy (Sunburst)
-4. [ ] Table I: Survey Comparison Table
+### Review Paketi (COMST Hakem Paylasimi)
+- `review_package/` klasoru olusturuldu
+- Paket icinde manuskript + template + governance + evidence/audit dosyalari birlestirildi
+- Grup bazli birlestirme dosyalari:
+  - `review_package/01_manuscript_bundle.md`
+  - `review_package/02_templates_methodology_bundle.md`
+  - `review_package/03_governance_bundle.md`
+  - `review_package/04_evidence_audit_bundle.md`
+- Hakem notlari:
+  - `review_package/COMST_Hakem_Notlari.md`
 
 ---
 
-## 📊 Proje Genel Durumu
+## Evidence Governance Durumu (Section II)
 
-### Veri Toplama & İşleme
-| Aşama | Durum | Detay |
-|-------|-------|-------|
-| PDF Collection | ✅ | 221 paper |
-| Markdown Conversion | ✅ | 221 klasör |
-| Visual Analysis | ✅ | 221 klasör |
-| Batch Extraction | ✅ | 225 JSON files |
-| CoT Extraction | ✅ | Full Corpus |
-
-### Template Development
-| Şablon | Durum | Kaynak Analiz |
-|--------|-------|---------------|
-| Abstract | ✅ | 35 COMST |
-| Introduction | ✅ | 20 COMST |
-| Methodology | ✅ | 25 COMST |
-| Body Sections | ✅ | 76 COMST |
-| Conclusion | ✅ | 20 COMST |
-| Master Guide | ✅ | Konsolidasyon |
-
-### Yazım Durumu
-| Section | Durum | Hedef Kelime |
-|---------|-------|--------------|
-| I. Introduction | 🔜 BAŞLANACAK | 4,500 |
-| II. Fundamentals | ⏸️ Bekliyor | 5,000 |
-| III. Methodology | 🔜 BAŞLANACAK | 2,500 |
-| IV. Taxonomy | ⏸️ Bekliyor | 8,000 |
-| V. Performance | ⏸️ Bekliyor | 4,000 |
-| VI. Enabling Tech | ⏸️ Bekliyor | 3,500 |
-| VII. Applications | ⏸️ Bekliyor | 3,000 |
-| VIII. Future | ⏸️ Bekliyor | 4,500 |
-| IX. Conclusion | ⏸️ Bekliyor | 500 |
+- OSNR (optical plane) vs electrical SNR/ESNR (electrical plane) ayrimi korunuyor.
+- OSNR->SNR donusumu yasak (governance kuralina bagli).
+- Evidence anchoring + context-window verification uygulanmis durumda.
+- Section II-B icin Beer-Lambert, multipath/NLoS, photonic-THz phase noise gibi anchorlar dogrulandi.
 
 ---
 
-## 📁 Son Değişen Dosyalar
+## Oncelikli Sonraki Adimlar
+
+1) Section II-A/B/C taslaklarini `drafts/section_02_fundamentals_draft.md` icine entegre et (merge).
+2) Notation reconciliation (d vs r, Delta r_min vs Delta z) icin tek cümlelik köprü notu ekle.
+3) ESNR anchor sayisini guclendir (gerekirse targeted scan).
+4) Section II-D/E yazimina gec (metric contract + optimization).
+5) COMST reviewer feedback hazirlik setini guncel tut.
+
+---
+
+## Son Degisen Dosyalar (2026-02-03)
 
 ```
-✏️ memory-bank/master_writing_guide.md (YENİ - 21KB)
-✏️ memory-bank/README.md (Güncellendi)
-✏️ memory-bank/activeContext.md (Güncellendi)
-✏️ task.md (Tüm template görevleri ✅)
-✏️ walkthrough.md (Template inventory eklendi)
+ drafts/section_02A_fundamentals.md
+ drafts/section_02B_channel_models.md
+ drafts/section_02C_transceiver_hardware.md
+ analysis/II_evidence_v2/section_02A_audit.md
+ analysis/II_evidence_v2/section_02B_audit.md
+ analysis/section_02C_audit.md
+ review_package/01_manuscript_bundle.md
+ review_package/02_templates_methodology_bundle.md
+ review_package/03_governance_bundle.md
+ review_package/04_evidence_audit_bundle.md
+ review_package/COMST_Hakem_Notlari.md
 ```
-
----
-
-## 🎯 Stratejik Durum
-
-**✅ HAZIRLIK AŞAMASI TAMAMLANDI**
-- Golden Model analizi: ✅ Complete
-- PRISMA Protocol: ✅ Defined
-- Survey Outline: ✅ Approved
-- Writing Templates: ✅ Complete
-- Data Extraction: ✅ Complete
-
-**🚀 YAZIM AŞAMASINA GEÇİŞ HAZIR**
-- Master Writing Guide kullanıma hazır
-- 221 çalışma verisi mevcut
-- COMST standartları belirlenmiş
-- Section-by-section roadmap hazır

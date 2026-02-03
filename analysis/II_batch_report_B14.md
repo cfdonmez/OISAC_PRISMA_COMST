@@ -1,10 +1,6 @@
-# Batch Report B14
+# II Batch Report B14
 
-Processed paper_id list:
-- O_ISAC_154
-- O_ISAC_155
-- O_ISAC_156
-- O_ISAC_157
+## Papers processed
 - O_ISAC_158
 - O_ISAC_159
 - O_ISAC_160
@@ -13,17 +9,37 @@ Processed paper_id list:
 - O_ISAC_163
 - O_ISAC_164
 - O_ISAC_165
+- O_ISAC_166
+- O_ISAC_167
+- O_ISAC_171
+- O_ISAC_172
 
-Batch evidence counts:
-- DRMIN_TEXT_EVIDENCE: 0
-- DZ_TEXT_EVIDENCE: 0
-- OSNR_TEXT_EVIDENCE: 0
-- ESNR_TEXT_EVIDENCE: 0
+## Stage-1 candidate counts (global)
+- DRMIN: 4
+- DZ: 1
+- OSNR: 0
+- ESNR: 0
 
-Overrides applied:
+## Stage-1 candidate counts (per anchor)
+- II-A: DRMIN=1, DZ=0, OSNR=0, ESNR=0
+- II-D: DRMIN=1, DZ=1, OSNR=0, ESNR=0
+- II-UNK: DRMIN=2, DZ=0, OSNR=0, ESNR=0
+
+## Stage-2 verified counts (global)
+- DRMIN: 0
+- DZ: 0
+- OSNR: 0
+- ESNR: 0
+
+## Stage-2 verified counts (per anchor)
+- II-A: DRMIN=0, DZ=0, OSNR=0, ESNR=0
+- II-D: DRMIN=0, DZ=0, OSNR=0, ESNR=0
+- II-UNK: DRMIN=0, DZ=0, OSNR=0, ESNR=0
+
+## Overrides applied
 - None
 
-Discarded matches due to References rule:
-- None
+## Discarded matches due to References rule
+- O_ISAC_163
 
-STOP HERE: Batch complete; do not process next batch until user approval.
+STOP: do not proceed to next batch without user approval.

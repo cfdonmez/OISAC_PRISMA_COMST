@@ -1,146 +1,53 @@
-# Memory-Bank Update Summary
+﻿# Memory-Bank Update Summary
 
-**Güncelleme Tarihi:** 2026-01-15  
-**Güncelleme Kapsamı:** Template Development Completion
-
----
-
-## ✅ Güncellenen Dosyalar
-
-### 1. `README.md`
-**Değişiklikler:**
-- Güncelleme tarihi: 2026-01-15
-- `master_writing_guide.md` ana referans olarak eklendi (⭐)
-- Yeni "Şablon Dosyaları" bölümü eklendi
-- Tüm template dosyaları listelendi (5 dosya)
-- Hızlı başlangıç rehberi güncellendi
-
-**Yeni Bölümler:**
-```markdown
-## 📝 Şablon Dosyaları (Template Library)
-- master_writing_guide.md ✅
-- introduction_templates.md ✅
-- abstract_templates.md ✅
-- methodology_template.md ✅
-- body_section_templates.md ✅
-```
+**Guncelleme Tarihi:** 2026-02-03
+**Guncelleme Kapsami:** Section II-A/B/C Drafts + Evidence/Audit + Review Package
 
 ---
 
-### 2. `activeContext.md`
-**Değişiklikler:**
-- Güncelleme tarihi: 2026-01-15
-- Faz güncellendi: "Template Development COMPLETE ✅"
-- MAJOR MILESTONE eklendi
-- Template Development Özeti bölümü eklendi
-- Master Writing Guide içeriği detaylandırıldı
-- Proje Genel Durumu tabloları eklendi
-- Yazım Durumu tracking tablosu eklendi
-- Stratejik Durum özeti eklendi
+## Guncellenen Dosyalar
 
-**Yeni Metrikler:**
-- 35 COMST abstract analizi
-- 20 COMST introduction analizi
-- 25 COMST methodology analizi
-- 76 COMST body section analizi
-- 20 COMST conclusion analizi
+### 1) `memory-bank/activeContext.md`
+- Faz guncellendi: Section II-A/B/C draft + audit tamamlandi.
+- Review package ve COMST reviewer notlari eklendi.
+- Sonraki adimlar (merge + notation reconciliation + ESNR anchor guclendirme) eklendi.
 
-**Sonraki Adımlar:**
-- Öncelik 1: Makale yazımına başla (Introduction, Methodology, Abstract)
-- Öncelik 2: Veri sentezi (221 çalışma, taxonomy, PRISMA diagram)
-- Öncelik 3: Visual elements (4 figür, 1 tablo)
+### 2) `memory-bank/fileMap.md`
+- Yeni Section II draft dosyalari eklendi.
+- Yeni audit/evidence dosyalari eklendi.
+- `review_package/` ve bundling dosyalari eklendi.
+
+### 3) `memory-bank/UPDATE_SUMMARY.md`
+- Bu guncelleme kaydi eklendi.
 
 ---
 
-### 3. `fileMap.md`
-**Değişiklikler:**
-- Güncelleme tarihi: 2026-01-15
-- `memory-bank/` bölümü genişletildi
-- `master_writing_guide.md` eklendi (⭐ Ana Referans)
-- 4 yeni template dosyası eklendi
-- "En Önemli Dosyalar (Top 10)" listesi yeniden düzenlendi
-- Master Writing Guide #1 önceliğe alındı
+## Yeni Uretilen Kritik Dosyalar (Repo)
 
-**Yeni Dosya Girişleri:**
-```markdown
-| master_writing_guide.md | MASTER GUIDE — Tüm yazım şablonları (21KB) | ⭐ |
-| introduction_templates.md | Introduction şablonları (20 COMST) | Referans |
-| abstract_templates.md | Abstract & Conclusion (35 COMST) | Referans |
-| methodology_template.md | PRISMA Methodology | Referans |
-| body_section_templates.md | Body section stratejileri | Referans |
-```
+### Section II Drafts
+- `drafts/section_02A_fundamentals.md`
+- `drafts/section_02B_channel_models.md`
+- `drafts/section_02C_transceiver_hardware.md`
 
----
+### Audit / Evidence
+- `analysis/II_evidence_v2/section_02A_audit.md`
+- `analysis/II_evidence_v2/section_02B_audit.md`
+- `analysis/section_02C_audit.md`
 
-## 📊 Memory-Bank Durumu
-
-### Dosya Sayıları
-- **Toplam dosya:** 14
-- **Ana bağlam dosyaları:** 9
-- **Template dosyaları:** 5
-- **Toplam boyut:** ~75 KB
-
-### Dosya Hiyerarşisi
-```
-memory-bank/
-├── Core Context (9 files)
-│   ├── README.md ✅
-│   ├── activeContext.md ✅
-│   ├── fileMap.md ✅
-│   ├── projectbrief.md
-│   ├── goldenModel.md
-│   ├── surveyOutline.md
-│   ├── techContext.md
-│   ├── systemPatterns.md
-│   └── productContext.md
-│
-└── Templates (5 files) ⭐
-    ├── master_writing_guide.md (21 KB) ← MAIN
-    ├── introduction_templates.md (5.7 KB)
-    ├── abstract_templates.md (11 KB)
-    ├── methodology_template.md (3 KB)
-    └── body_section_templates.md (2.7 KB)
-```
+### Review Package
+- `review_package/01_manuscript_bundle.md`
+- `review_package/02_templates_methodology_bundle.md`
+- `review_package/03_governance_bundle.md`
+- `review_package/04_evidence_audit_bundle.md`
+- `review_package/COMST_Hakem_Notlari.md`
 
 ---
 
-## 🎯 Önemli Notlar
-
-### AI için Okuma Sırası (Yeni Session)
-1. `activeContext.md` → Neredeyiz?
-2. `fileMap.md` → Dosya haritası
-3. `master_writing_guide.md` → Nasıl yazacağız? ⭐
-4. `surveyOutline.md` → Ne yazacağız?
-5. `protocol/prisma_protocol.md` → Kurallar
-
-### Yazım Aşaması için Kritik Dosyalar
-1. **master_writing_guide.md** - Tüm şablonlar
-2. **surveyOutline.md** - Makale yapısı
-3. **goldenModel.md** - COMST standartları
-4. **activeContext.md** - Güncel durum
+## Notlar
+- Section II-A/B/C icin plane separation ve metric governance kurallari uygulanmis durumda.
+- COMST reviewer icin tek klasorde paket olusturuldu (review_package).
+- Bundan sonraki adim: Section II-A/B/C merge + notation reconciliation + ESNR anchor guclendirme.
 
 ---
 
-## ✅ Tamamlanan İşler
-
-- [x] README.md güncellendi
-- [x] activeContext.md tamamen yenilendi
-- [x] fileMap.md genişletildi
-- [x] Template library bölümü eklendi
-- [x] Top 10 dosya listesi güncellendi
-- [x] Tüm tarihler 2026-01-15'e güncellendi
-- [x] Stratejik durum özeti eklendi
-
----
-
-## 🚀 Sonraki Adım
-
-**YAZIM AŞAMASI BAŞLAYACAK**
-
-Memory-bank artık tamamen güncel ve yazım aşaması için hazır. Tüm template'ler, rehberler ve bağlam dosyaları yerli yerinde.
-
-**Önerilen İlk Adım:** Introduction veya Methodology section'ını `master_writing_guide.md` kullanarak yazmaya başla.
-
----
-
-**Güncelleme Tamamlandı:** 2026-01-15 22:29
+**Guncelleme Tamamlandi:** 2026-02-03

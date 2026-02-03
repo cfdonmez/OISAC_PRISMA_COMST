@@ -156,3 +156,32 @@ cot_laboratory/
 8. `protocol/prisma_protocol.md` - Ana protokol
 9. `data/processed_markdowns/` - İşlenmiş veriler
 10. `analysis/cot_laboratory/logs/` - Çalıştırma kayıtları
+
+---
+
+## Recent Additions (2026-02-03)
+
+### `drafts/` - New Section II Drafts
+| File | Purpose |
+|------|---------|
+| `drafts/section_02A_fundamentals.md` | Section II-A draft (system model + measurement planes) |
+| `drafts/section_02B_channel_models.md` | Section II-B draft (channel models across modalities) |
+| `drafts/section_02C_transceiver_hardware.md` | Section II-C draft (hardware abstractions) |
+
+### `analysis/II_evidence_v2/` - New Audits / Evidence
+| File | Purpose |
+|------|---------|
+| `analysis/II_evidence_v2/section_02A_audit.md` | II-A writing recipe audit |
+| `analysis/II_evidence_v2/section_02B_audit.md` | II-B writing recipe audit |
+| `analysis/section_02C_audit.md` | II-C writing recipe audit |
+| `analysis/II_evidence_v2/section2A_evidence.csv` | II-A evidence anchors |
+| `analysis/II_evidence_v2/patch_notes_for_writing_2B.md` | II-B evidence notes |
+
+### `review_package/` - COMST Reviewer Bundle
+| File | Purpose |
+|------|---------|
+| `review_package/01_manuscript_bundle.md` | Section I + II-A/B/C combined |
+| `review_package/02_templates_methodology_bundle.md` | Templates + methodology + PRISMA |
+| `review_package/03_governance_bundle.md` | Metric governance + schema map |
+| `review_package/04_evidence_audit_bundle.md` | Evidence + audits |
+| `review_package/COMST_Hakem_Notlari.md` | Reviewer notes / reminders |
