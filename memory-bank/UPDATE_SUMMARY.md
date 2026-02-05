@@ -1,21 +1,20 @@
 ﻿# Memory-Bank Update Summary
 
-**Guncelleme Tarihi:** 2026-02-03
-**Guncelleme Kapsami:** Section II-A/B/C Drafts + Evidence/Audit + Review Package
+**Guncelleme Tarihi:** 2026-02-05
+**Guncelleme Kapsami:** Section II A-E merge + drafts cleanup + analysis archive + alignment task list
 
 ---
 
 ## Guncellenen Dosyalar
 
 ### 1) `memory-bank/activeContext.md`
-- Faz guncellendi: Section II-A/B/C draft + audit tamamlandi.
-- Review package ve COMST reviewer notlari eklendi.
-- Sonraki adimlar (merge + notation reconciliation + ESNR anchor guclendirme) eklendi.
+- Faz guncellendi: Section II (A-E) birlestirildi, temizlik + arsiv yapildi.
+- Yeni alignment task listesi eklendi.
+- Sonraki adimlar guncellendi.
 
 ### 2) `memory-bank/fileMap.md`
-- Yeni Section II draft dosyalari eklendi.
-- Yeni audit/evidence dosyalari eklendi.
-- `review_package/` ve bundling dosyalari eklendi.
+- `analysis/_archive_20260205/` arsiv notu eklendi.
+- `drafts/` aktif taslaklar ve arsiv klasoru eklendi.
 
 ### 3) `memory-bank/UPDATE_SUMMARY.md`
 - Bu guncelleme kaydi eklendi.
@@ -24,30 +23,22 @@
 
 ## Yeni Uretilen Kritik Dosyalar (Repo)
 
-### Section II Drafts
-- `drafts/section_02A_fundamentals.md`
-- `drafts/section_02B_channel_models.md`
-- `drafts/section_02C_transceiver_hardware.md`
+### Birlesim / Taslaklar
+- `drafts/section_02_fundamentals_draft.md` (II-A..II-E birlesik)
+- `drafts/section01_section02_tasklist.md` (Section I–II uyum task listesi)
 
-### Audit / Evidence
-- `analysis/II_evidence_v2/section_02A_audit.md`
-- `analysis/II_evidence_v2/section_02B_audit.md`
-- `analysis/section_02C_audit.md`
-
-### Review Package
-- `review_package/01_manuscript_bundle.md`
-- `review_package/02_templates_methodology_bundle.md`
-- `review_package/03_governance_bundle.md`
-- `review_package/04_evidence_audit_bundle.md`
-- `review_package/COMST_Hakem_Notlari.md`
+### Arsivler
+- `drafts/_archive_20260205/`
+- `analysis/_archive_20260205/`
+- `analysis/_archive_20260205/ARCHIVE_LOG.md`
 
 ---
 
 ## Notlar
-- Section II-A/B/C icin plane separation ve metric governance kurallari uygulanmis durumda.
-- COMST reviewer icin tek klasorde paket olusturuldu (review_package).
-- Bundan sonraki adim: Section II-A/B/C merge + notation reconciliation + ESNR anchor guclendirme.
+- `drafts/` temizlendi: sadece Section I/II taslaklari ve fig1-3 birakildi.
+- Analysis icinde run/batch/partial/debug ciktilar arsivlendi.
+- Section I–II COMST/PRISMA uyum duzeltmeleri task listesine alindi.
 
 ---
 
-**Guncelleme Tamamlandi:** 2026-02-03
+**Guncelleme Tamamlandi:** 2026-02-05

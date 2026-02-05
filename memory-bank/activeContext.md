@@ -1,39 +1,34 @@
 ﻿# Active Context
 
-**Son Guncelleme:** 2026-02-03
+**Son Guncelleme:** 2026-02-05
 
 **Guncelleyen:** AI + Kullanici
 
 ---
 
-## Su Anki Faz: Section II (A/B/C) Drafting + Audit COMPLETE
+## Su Anki Faz: Section II (A-E) Merge + Repo Cleanup + Alignment Tasks
 
-**MAJOR MILESTONE:** Section II-A, II-B, II-C taslaklari ve audit dosyalari uretildi. Evidence-locked yazim disiplini uygulanmis durumda.
+**MAJOR MILESTONE:** Section II-A..E icerikleri tek dosyada birlestirildi ve `drafts/` temizlendi. Analysis klasorunde run/batch/partial ciktilar arsivlendi.
 
 ---
 
-## Son Durum Ozeti (2026-02-03)
+## Son Durum Ozeti (2026-02-05)
 
-### Uretilen Yeni Taslaklar
-- `drafts/section_02A_fundamentals.md` (II-A tamam)
-- `drafts/section_02B_channel_models.md` (II-B tamam)
-- `drafts/section_02C_transceiver_hardware.md` (II-C tamam)
+### Birlesim ve Draft Temizligi
+- `drafts/section_02_fundamentals_draft.md` artik II-A..II-E'nin tam birlesik versiyonu.
+- `drafts/` icinde yalnizca:
+  - `section_01_introduction.md`
+  - `section_02_fundamentals_draft.md`
+  - `fig1.png`, `fig2.png`, `fig3.png`
+- Diger taslak ve yedekler: `drafts/_archive_20260205/` altina tasindi.
 
-### Audit / Evidence Disiplini
-- `analysis/II_evidence_v2/section_02A_audit.md`
-- `analysis/II_evidence_v2/section_02B_audit.md`
-- `analysis/section_02C_audit.md`
+### Analysis Arsivleme
+- Run/batch/partial/debug ciktilar `analysis/_archive_20260205/` altina arsivlendi.
+- Arsiv listesi: `analysis/_archive_20260205/ARCHIVE_LOG.md`
 
-### Review Paketi (COMST Hakem Paylasimi)
-- `review_package/` klasoru olusturuldu
-- Paket icinde manuskript + template + governance + evidence/audit dosyalari birlestirildi
-- Grup bazli birlestirme dosyalari:
-  - `review_package/01_manuscript_bundle.md`
-  - `review_package/02_templates_methodology_bundle.md`
-  - `review_package/03_governance_bundle.md`
-  - `review_package/04_evidence_audit_bundle.md`
-- Hakem notlari:
-  - `review_package/COMST_Hakem_Notlari.md`
+### Alignment Task List
+- Section I–II uyumu (COMST + PRISMA) icin gorev listesi olusturuldu:
+  - `drafts/section01_section02_tasklist.md`
 
 ---
 
@@ -42,32 +37,24 @@
 - OSNR (optical plane) vs electrical SNR/ESNR (electrical plane) ayrimi korunuyor.
 - OSNR->SNR donusumu yasak (governance kuralina bagli).
 - Evidence anchoring + context-window verification uygulanmis durumda.
-- Section II-B icin Beer-Lambert, multipath/NLoS, photonic-THz phase noise gibi anchorlar dogrulandi.
 
 ---
 
 ## Oncelikli Sonraki Adimlar
 
-1) Section II-A/B/C taslaklarini `drafts/section_02_fundamentals_draft.md` icine entegre et (merge).
-2) Notation reconciliation (d vs r, Delta r_min vs Delta z) icin tek cümlelik köprü notu ekle.
-3) ESNR anchor sayisini guclendir (gerekirse targeted scan).
-4) Section II-D/E yazimina gec (metric contract + optimization).
-5) COMST reviewer feedback hazirlik setini guncel tut.
+1) Section I organizasyon cümlesini Section II kapsamiyla uyumla (metric contract + trade-off temeli ekle).
+2) Table II "Resolution" satirini Δr_min vs Δz ayrimina gore normalize et.
+3) Section II girisine "temel + temsilî" sinir notu ekle (PRISMA beklenirlik için).
+4) `drafts/section01_section02_tasklist.md` uzerinden adim adim ilerle.
 
 ---
 
-## Son Degisen Dosyalar (2026-02-03)
+## Son Degisen Dosyalar (2026-02-05)
 
 ```
- drafts/section_02A_fundamentals.md
- drafts/section_02B_channel_models.md
- drafts/section_02C_transceiver_hardware.md
- analysis/II_evidence_v2/section_02A_audit.md
- analysis/II_evidence_v2/section_02B_audit.md
- analysis/section_02C_audit.md
- review_package/01_manuscript_bundle.md
- review_package/02_templates_methodology_bundle.md
- review_package/03_governance_bundle.md
- review_package/04_evidence_audit_bundle.md
- review_package/COMST_Hakem_Notlari.md
+ drafts/section_02_fundamentals_draft.md
+ drafts/section01_section02_tasklist.md
+ drafts/_archive_20260205/*
+ analysis/_archive_20260205/*
+ analysis/_archive_20260205/ARCHIVE_LOG.md
 ```

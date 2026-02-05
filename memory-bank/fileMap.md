@@ -1,6 +1,6 @@
 # 📁 File Map - Tüm Dosyaların Rehberi
 
-**Son Güncelleme:** 2026-01-15
+**Son Güncelleme:** 2026-02-05
 
 Bu dosya repodaki tüm önemli dosyaların ne işe yaradığını açıklar.
 
@@ -59,6 +59,12 @@ cot_laboratory/
 └── run_prototype.py       # Tek paper test scripti
 ```
 
+#### `analysis/_archive_20260205/` - Arsiv
+
+| Icerik | Amac |
+|--------|------|
+| Run/batch/partial/debug ciktilar | Temizlik sonrasi arsiv |
+
 ---
 
 ### `data/` - Veriler
@@ -71,6 +77,17 @@ cot_laboratory/
 | `extraction_results_v2/` | Eski v2 pilot sonuçları | Arşiv |
 | `extraction_results/` | Eski v1 sonuçları | Arşiv |
 | `figures/` | PRISMA akış diyagramı | 2 dosya |
+
+---
+
+### `drafts/` - Aktif Taslaklar
+
+| Dosya/Klasör | Amaç |
+|--------------|------|
+| `section_01_introduction.md` | Section I çalışma taslağı |
+| `section_02_fundamentals_draft.md` | Section II (A–E) birleşik taslak |
+| `fig1.png`, `fig2.png`, `fig3.png` | Section I görselleri |
+| `_archive_20260205/` | Eski taslaklar, yedekler, notlar |
 
 ---
 
