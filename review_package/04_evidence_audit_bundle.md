@@ -1,4 +1,4 @@
-﻿# Review Bundle\n\n## analysis/II_evidence_v2/patch_notes_for_writing.md\n\n# Patch Notes for Writing (Section I-II)
+﻿# Review Bundle\n\n## analysis/II_ev_v2/patch_notes_for_writing.md\n\n# Patch Notes for Writing (Section I-II)
 
 - Bandwidth-limited range resolution (Î”r_min) is reported as c/2B m (O_ISAC_026). | locator: Jianyang Shi > I. INTRODUCTION (L74-L84)
 - Bandwidth-limited range resolution (Î”r_min) is reported as c/2B m (O_ISAC_034). | locator: <span id="page-0-1"></span>I. INTRODUCTION > <span id="page-1-3"></span>*B. Signal Structure* > B. Sensing Metrics (L145-L155)
@@ -15,7 +15,7 @@
 - Achievable rate R is reported as 100000000000.0 bps (O_ISAC_002). | locator: **Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems** > **1. Introduction** (L11-L11)
 - Achievable rate R is reported as 128000000000.0 bps (O_ISAC_004). | locator: Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication (L7-L7)
 - Bandwidth B is reported as 250000000.0 Hz (O_ISAC_001). | locator: Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G > B. VLC CE-OFDM Receiver > III. VLC CE-OFDM PERFORMANCE ASSESSMENT (L89-L89)
-\n\n## analysis/II_evidence_v2/section2A_evidence.csv\n\n`csv\npaper_id,metric,plane,strength,quote,heading_path,line_start,line_end,rationale
+\n\n## analysis/II_ev_v2/section2A_evidence.csv\n\n`csv\npaper_id,metric,plane,strength,quote,heading_path,line_start,line_end,rationale
 O_ISAC_276,IMDD_MODEL,N/A,strong,photodetector of the OxDR system,# Parallel Path Effect-Free Remote Monitoring and Sensing in Live XGS-PON Using Legacy Optical Time Domain Reflectometry > ## *A. Sensing in Passive Optical Networks* > #### *B. Parallel Path Effect*,52,56,"Mentions photodetector, indicating IM/DD model"
 O_ISAC_033,COHERENT_MODEL,N/A,strong,coherent receiver,# Simultaneous Sensing and Communication in Optical Fibers > #### Introduction,15,19,Mentions coherent receiver for sensing
 O_ISAC_033,COHERENT_MODEL,N/A,weak,coherent transponders,# Simultaneous Sensing and Communication in Optical Fibers,7,11,Mentions coherent transponders for sensing
@@ -840,7 +840,7 @@ O_ISAC_011,IMDD_MODEL,N/A,strong,responsivity of the PD,# Retroreflective Optica
 O_ISAC_011,IMDD_MODEL,N/A,strong,active area and responsivity of the PD,# Retroreflective Optical ISAC Supporting 3D Positioning in Indoor Environments > ## I. INTRODUCTION > #### II. SYSTEM MODEL > #### A. Channel model,54,58,Mention of photodetector characteristics
 O_ISAC_051,COHERENT_MODEL,N/A,strong,coherent detection,# II. MODEL OF PHASE-SHIFT LASER RANGING WITH COMMUNICATION > ## *A. Ranging* > #### B. Communication > #### C. Discussion,356,360,Mention of coherent detection
 O_ISAC_051,IMDD_MODEL,N/A,strong,intensity modulation,# II. MODEL OF PHASE-SHIFT LASER RANGING WITH COMMUNICATION,61,65,Mention of intensity modulation
-\n`\n\n## analysis/II_evidence_v2/section_02A_audit.md\n\n### II-A Writing Recipe Audit (Not for manuscript)
+\n`\n\n## analysis/II_ev_v2/section_02A_audit.md\n\n### II-A Writing Recipe Audit (Not for manuscript)
 R-1 Structure compliance: PASS - Headings include II, A, A.1, A.2, and Lesson (A).
 R-2 Model inclusion: PASS - Coherent model present with symbols defined; IM/DD model present with x(t) >= 0 and responsivity R defined; IM/DD intensity-clarification sentence included.
 R-2b Paradigm coverage: PASS - Communication-centric, sensing-centric, and joint design explicitly defined; objective-form exemplars included; paradigm-to-mechanism bridge bullets present.
@@ -864,13 +864,13 @@ Corrections to evidence labels (strength/plane):
 Resolved input paths used:
 - drafts/section_01_introduction.md
 - drafts/section_02_methodology.md
-- reference_compendium/section_02_fundamentals_template.md (resolved from missing drafts/section_02_fundamentals_template.md)
+- reference_compendium/s02_fund_tpl.md (resolved from missing drafts/section_02_fundamentals_template.md)
 - drafts/section_02_fundamentals_draft.md
-- analysis/II_metric_governance.md
-- analysis/II_evidence_v2/patch_notes_for_writing.md
-- analysis/II_evidence_v2/section2A_evidence.csv
-- analysis/II_schema_map.md (not used)
-\n\n## analysis/II_evidence_v2/section_02B_audit.md\n\n### II-B Writing Recipe Audit (Not for manuscript)
+- analysis/II_met_gov.md
+- analysis/II_ev_v2/patch_notes_for_writing.md
+- analysis/II_ev_v2/section2A_evidence.csv
+- analysis/II_sch_map.md (not used)
+\n\n## analysis/II_ev_v2/section_02B_audit.md\n\n### II-B Writing Recipe Audit (Not for manuscript)
 R-1 Structure compliance: PASS - Headings include B, B.1, B.2, B.3, B.4, and Lesson (B).
 R-2 Channel model inclusion: PASS - B.1 includes linear dispersive model and conceptual NLSE; B.2 includes multiplicative fading/pointing + Beer-Lambert attenuation; B.3 includes Lambertian/impulse-response framing + noise note; B.4 includes optical-vs-THz separation and impairment note (evidence-backed).
 R-3 Metric governance compliance: PASS - No forbidden tokens introduced; no OSNR->SNR conversion implied; Delta r_min vs Delta z separation stated in B.1.
@@ -879,14 +879,14 @@ R-5 Section I stylistic alignment: PASS - Citation style [O_ISAC_XXX] and tone c
 
 Resolved input paths used:
 - drafts/section_01_introduction.md
-- reference_compendium/section_02_fundamentals_template.md
+- reference_compendium/s02_fund_tpl.md
 - drafts/section_02_methodology.md
 - drafts/section_02A_fundamentals.md
 - drafts/section_02_fundamentals_draft.md
-- analysis/II_metric_governance.md
-- analysis/II_evidence_v2/patch_notes_for_writing_2B.md
-- analysis/II_evidence_v2/section2B_evidence.csv
-- analysis/II_evidence_v2/section2B_evidence_LLM.csv (consulted as candidate-only)
+- analysis/II_met_gov.md
+- analysis/II_ev_v2/patch_notes_for_writing_2B.md
+- analysis/II_ev_v2/section2B_evidence.csv
+- analysis/II_ev_v2/section2B_evidence_LLM.csv (consulted as candidate-only)
 
 Evidence anchors used (deduplicated):
 - O_ISAC_035 | ### II. SYSTEM MODEL AND METHODOLOGY > # B. FSO Channel | L75-L79 | strength_final=strong | claim_tag=attenuation_beer_lambert | context-verified=YES
@@ -903,7 +903,7 @@ Claims weakened/removed due to missing/ambiguous evidence:
 Corrections to evidence labels (strength/claim_tag):
 - O_ISAC_035: reclassified from patch-notes claim_tag=multipath_nlos to claim_tag=attenuation_beer_lambert based on explicit "exponential Beers-Lambert Law" statement (context-verified).
 - O_ISAC_034: patch-notes locator pointed to L92; corrected to L205 where Beer-Lambert Law is explicitly stated (context-verified).
-\n\n## analysis/section_02C_audit.md\n\n### II-C Writing Recipe Audit (Not for manuscript)
+\n\n## analysis/s02C_aud.md\n\n### II-C Writing Recipe Audit (Not for manuscript)
 R-1 Structure compliance: PASS - Headings match template (C, C.1, C.2, C.3) and end with Lesson (C).
 R-2 Hardware coverage: PASS - Transmitter chain (sources/modulators) addressed; receiver chain (coherent vs IM/DD) addressed; spatial/beamforming enablers addressed; fiber sensing granularity noted via Delta z without conflating with Delta r_min.
 R-3 Metric governance compliance: PASS - pi(metric) mapping stated; OSNR vs electrical SNR separation stated; no OSNR->SNR conversion implied; no forbidden tokens introduced.
@@ -912,15 +912,15 @@ R-5 Section I stylistic alignment: PASS - Citation style [O_ISAC_XXX] and tone c
 
 Resolved input paths used:
 - drafts/section_01_introduction.md
-- reference_compendium/section_02_fundamentals_template.md (resolved from missing drafts/section_02_fundamentals_template.md)
+- reference_compendium/s02_fund_tpl.md (resolved from missing drafts/section_02_fundamentals_template.md)
 - drafts/section_02_methodology.md
 - drafts/section_02_fundamentals_draft.md
 - drafts/section_02A_fundamentals.md
-- analysis/II_metric_governance.md
-- analysis/II_evidence_v2/patch_notes_for_writing.md
-- analysis/II_evidence_v2/section2C_evidence_LLM.csv
-- analysis/II_evidence_v2/Transceiver_Hardware_Governance_Lab.ipynb
-- analysis/II_schema_map.md (not used)
+- analysis/II_met_gov.md
+- analysis/II_ev_v2/patch_notes_for_writing.md
+- analysis/II_ev_v2/section2C_evidence_LLM.csv
+- analysis/II_ev_v2/Transceiver_Hardware_Governance_Lab.ipynb
+- analysis/II_sch_map.md (not used)
 
 Evidence anchors used (deduplicated):
 - O_ISAC_029 | # THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network > ### <span id="page-2-2"></span>II. PRINCIPLE | L100-L100 | strength_final=strong | plane_final=OPTICAL_PLANE | context-verified=YES
@@ -938,3 +938,75 @@ Claims weakened/removed due to missing/ambiguous evidence:
 Corrections to evidence labels (strength/plane):
 - O_ISAC_029 (L47) uses the phrase "optical signal-to-noise ratio (SNR)" rather than the OSNR acronym; retained as OPTICAL_PLANE with strength_final=strong due to explicit optical-plane wording.
 \n\n
+\n\n## analysis/II_ev_v2/section_02D_audit.md\n\n﻿### II-D Writing Recipe Audit (Not for manuscript)
+R-1 Structure compliance: PASS - Headings match II-D structure (D, D.1–D.4, Lesson (D)).
+R-2 Required equations present: PASS - Delta r_min = v/(2 B_eff) with v=c and v≈c/n_g; sigma_r RMSE; CRB delay exemplar + range mapping with beta defined; CRQ_Delta = R/Delta r_min.
+R-3 Governance compliance: PASS - No forbidden tokens; no OSNR->SNR conversion implied; Delta z not substituted into CRQ_Delta; explicit warning present.
+R-4 Evidence compliance: PASS - All literature-usage claims anchored; context verification logged for each anchor; no unanchored prevalence claims.
+R-5 Section I stylistic alignment: PASS - Citation tokens [O_ISAC_XXX] used correctly; tone and Markdown consistent.
+
+Resolved input paths used:
+- drafts/section_01_introduction.md
+- review_package/section_02_fundamentals_template.md
+- review_package/section_02_methodology.md
+- drafts/section_02_fundamentals_draft.md
+- analysis/II_met_gov.md
+- review_package/patch_notes_for_writing.md
+- analysis/II_ev_v2/section2D_evidence_LLM.csv (consulted; not used due to missing locators)
+- analysis/II_sch_map.md (not used)
+
+Evidence anchors used (deduplicated):
+- O_ISAC_026 | Jianyang Shi > I. INTRODUCTION | L74-L84 | strength_final=strong | meaning_final=bandwidth_limited_range_resolution | context_verified=YES
+- O_ISAC_034 | <span id="page-0-1"></span>I. INTRODUCTION > <span id="page-1-3"></span>*B. Signal Structure* > B. Sensing Metrics | L145-L155 | strength_final=strong | meaning_final=bandwidth_limited_range_resolution | context_verified=YES
+- O_ISAC_006 | *A. Solution based on multiplexing technology* | L79-L95 | strength_final=strong | meaning_final=delta_z_spatial_granularity | context_verified=YES
+- O_ISAC_013 | Single-Ended > 100-km Distributed Vibration Sensor Based on OFDR Using Pearson Correlation Coefficient | L3-L19 | strength_final=strong | meaning_final=delta_z_spatial_granularity | context_verified=YES
+
+Claims weakened/removed due to missing/ambiguous evidence:
+- No literature-usage claims for CRB/FIM prevalence or specific estimator choices; treated as theory-standard definitions.
+
+Corrections to evidence labels (strength/meaning):
+- None. Anchors remain consistent with context windows.
+\n\n## analysis/II_ev_v2/section_02E_writing_audit.md\n\n### II-E Writing Recipe Audit (Not for manuscript)
+R-1 Structure compliance: PASS
+R-2 Governance compliance (metric + tradeoff): PASS
+R-3 Evidence compliance (every literature claim anchored): PASS
+R-4 Context verification coverage (anchors with context_verified=YES): PASS
+R-5 Style alignment with Section I: PASS
+
+Evidence anchors used (deduplicated list)
+- O_ISAC_048 | # I. INTRODUCTION > ## C. Clipping Noise Statistics > #### III. OPTIMAL POWER ALLOCATION FOR DCO-OFDM | L124-L132 | strength_final=strong | context_verified=YES
+- O_ISAC_023 | # Free-Space Optical Integrated Sensing and Communication Based on DCO-OFDM: Performance Metrics and Resource Allocation | L5-L5 | strength_final=strong | context_verified=YES
+- O_ISAC_005 | # III. PROBLEM FORMULATION AND RESOURCE ALLOCATION > #### A. Problem Formulation | L116-L122 | strength_final=strong | context_verified=YES
+- O_ISAC_005 | # III. PROBLEM FORMULATION AND RESOURCE ALLOCATION > #### B. Resource Optimization using Reinforcement Learning | L134-L136 | strength_final=strong | context_verified=YES
+- O_ISAC_005 | # Integrated Sensing and Communication for UAV Trajectory Optimization in Mixed FSO-RF Networks in Dynamic Weather Conditions | L5-L5 | strength_final=strong | context_verified=YES
+- O_ISAC_002 | # **2. Photonic THz ISAC Waveform Design** | L17-L17 | strength_final=strong | context_verified=YES
+- O_ISAC_001 | # Modulation Strategies for Robust Optical Wireless Communications and Sensing in 6G > ## B. VLC CE-OFDM Receiver > ### III. VLC CE-OFDM PERFORMANCE ASSESSMENT | L97-L97 | strength_final=strong | context_verified=YES
+- O_ISAC_004 | # Adiabatic-tapered few-mode-fiber-based system for integrating optical fiber sensing and telecommunication > ### I. INTRODUCTION | L13-L13 | strength_final=strong | context_verified=YES
+- O_ISAC_019 | # Full-duplex Integrated Sensing and Communication System Based on Microwave Photonics | L31-L31 | strength_final=strong | context_verified=YES
+
+Corrections to evidence labels (if any)
+- None. LLM CSV labels were treated as candidate-only; strength_final assigned after context verification.
+
+Claims weakened/removed (if any)
+- None.
+
+Resolved paths used for inputs
+- drafts/section_01_introduction.md
+- drafts/section_02_methodology.md
+- review_package/section_02_fundamentals_template.md (drafts/section_02_fundamentals_template.md not found)
+- drafts/section_02_fundamentals_draft.md (patched only in Section II-E)
+- analysis/II_met_gov.md
+- analysis/II_trade_gov_2E.md
+- analysis/II_sch_map.md (not required for drafting)
+- analysis/II_ev_v2/patch_notes_for_writing_2E.md
+- analysis/II_ev_v2/section2E_evidence_LLM.csv (primary candidate list)
+- data/proc_markdowns/O_ISAC_048/O_ISAC_048.md
+- data/proc_markdowns/O_ISAC_023/O_ISAC_023.md
+- data/proc_markdowns/O_ISAC_005/O_ISAC_005.md
+- data/proc_markdowns/O_ISAC_002/O_ISAC_002.md
+- data/proc_markdowns/O_ISAC_001/O_ISAC_001.md
+- data/proc_markdowns/O_ISAC_004/O_ISAC_004.md
+- data/proc_markdowns/O_ISAC_019/O_ISAC_019.md
+
+Evidence source note
+- analysis/II_ev_v2/section2E_evidence.csv not found; anchors were selected from section2E_evidence_LLM.csv and verified directly in the markdown corpus with ?15-line context checks.

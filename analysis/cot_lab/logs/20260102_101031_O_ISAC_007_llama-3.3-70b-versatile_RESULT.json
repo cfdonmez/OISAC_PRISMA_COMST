@@ -1,0 +1,193 @@
+{
+  "run_id": "20260102_101031_O_ISAC_007_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101031",
+  "paper_id": "O_ISAC_007",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows the probe structure, optical fiber trench, and cross-section. Fig. 2 illustrates the measurement optical field transmission of the sensing probe. Fig. 3 shows the effect of beam splitting ratios and angle on the fringe contrast. Fig. 4 displays the effect of GRIN-lens length and air length on the beam waist position and radius. Fig. 5 presents the effect of working distance on efficiency and fringe contrast, as well as the effect of tilt angle on efficiency and fringe contrast."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system is a fiber optic displacement sensing probe with a common optical path Michelson interferometer structure. The sensing model is established using the tilted Gaussian optical field diffraction method combined with the optical transmission matrix. The system does not explicitly involve ISAC (Integrated Sensing and Communication) coupling, as it is primarily focused on precision measurement of R angles and small rough spots in narrow spaces."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a dynamic working range of 5.42-5.60 mm and an angular tolerance of ±3.84°. These metrics seem physically consistent with the system's design and the principles of optical interferometry. The reported values are within reasonable bounds for such a system, considering the wavelength of light used and the dimensions of the optical components involved."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of precision measurement in narrow spaces by proposing a fiber optic displacement sensing probe with improved angular tolerance and working range. However, open challenges include further miniaturization, potential applications in more complex environments, and the integration of this technology with other sensing or communication systems."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Miniaturized optical fiber displacement probe with large-collection-angle",
+        "authors": "Chengpin Wu, Xikai Hou, Jiaqi Zhu, Leiming Wu",
+        "year": 2024,
+        "venue": "Measurement",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "NR",
+        "operational_environment": "indoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "industrial_manufacturing",
+        "scenario_description": "Precision measurement of R angles and small rough spots in narrow spaces"
+      },
+      "evidence": {
+        "evidence_type": "analytical",
+        "validation_baselines_present": false,
+        "reproducibility_artifacts": "insufficient"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Fiber optic displacement sensing probe with a common optical path Michelson interferometer structure",
+        "gap_addressed": "Precision measurement in narrow spaces",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "NR",
+        "novel_component_specs": "NR"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Narrow space measurement"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "NR",
+        "tx_external_modulator": "NR",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": "NR",
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "NR",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "NR",
+        "false_target_mitigation": "NR"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "NR"
+      },
+      "waveform": {
+        "comm_waveform_family": "NR",
+        "comm_modulation_order": "NR",
+        "comm_symbol_rate_gbaud": "NR",
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "pulse_tof",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "smf",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "NR",
+        "backscatter_sensing_type": "NR"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "NR",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "NR",
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": "NR",
+        "ber_target": "NR",
+        "snr_db": "NR",
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 0.005,
+        "range_resolution_m": "NR",
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "working_distance",
+        "tradeoff_control_range": "5.42-5.60 mm"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "NR",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Fig. 5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "NR"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 1,
+      "tqaf_experimental_validity": 0,
+      "tqaf_metric_completeness": 1,
+      "tqaf_reproducibility": 1,
+      "tqaf_notes": "The paper provides a detailed mathematical model and simulation results, but lacks experimental validation and completeness in reporting all relevant metrics."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows the probe structure, optical fiber trench, and cross-section. Fig. 2 illustrates the measurement optical field transmission of the sensing probe. Fig. 3 shows the effect of beam splitting ratios and angle on the fringe contrast. Fig. 4 displays the effect of GRIN-lens length and air length on the beam waist position and radius. Fig. 5 presents the effect of working distance on efficiency and fringe contrast, as well as the effect of tilt angle on efficiency and fringe contrast.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system is a fiber optic displacement sensing probe with a common optical path Michelson interferometer structure. The sensing model is established using the tilted Gaussian optical field diffraction method combined with the optical transmission matrix. The system does not explicitly involve ISAC (Integrated Sensing and Communication) coupling, as it is primarily focused on precision measurement of R angles and small rough spots in narrow spaces.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a dynamic working range of 5.42-5.60 mm and an angular tolerance of ±3.84°. These metrics seem physically consistent with the system's design and the principles of optical interferometry. The reported values are within reasonable bounds for such a system, considering the wavelength of light used and the dimensions of the optical components involved.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of precision measurement in narrow spaces by proposing a fiber optic displacement sensing probe with improved angular tolerance and working range. However, open challenges include further miniaturization, potential applications in more complex environments, and the integration of this technology with other sensing or communication systems.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Miniaturized optical fiber displacement probe with large-collection-angle\",\n         \"authors\":\"Chengpin Wu, Xikai Hou, Jiaqi Zhu, Leiming Wu\",\n         \"year\":2024,\n         \"venue\":\"Measurement\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"NR\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"industrial_manufacturing\",\n         \"scenario_description\":\"Precision measurement of R angles and small rough spots in narrow spaces\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"analytical\",\n         \"validation_baselines_present\":false,\n         \"reproducibility_artifacts\":\"insufficient\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Fiber optic displacement sensing probe with a common optical path Michelson interferometer structure\",\n         \"gap_addressed\":\"Precision measurement in narrow spaces\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"NR\",\n         \"novel_component_specs\":\"NR\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Narrow space measurement\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"NR\",\n         \"tx_external_modulator\":\"NR\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":\"NR\",\n         \"tx_power_dbm\":\"NR\",\n         \"aperture_diameter_m\":\"NR\",\n         \"beam_divergence_mrad\":\"NR\"\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":\"NR\",\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"NR\",\n         \"rx_modulator_bandwidth_ghz\":\"NR\",\n         \"rx_modulator_operating_point\":\"NR\",\n         \"false_target_mitigation\":\"NR\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"NR\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"NR\",\n         \"comm_modulation_order\":\"NR\",\n         \"comm_symbol_rate_gbaud\":\"NR\",\n         \"comm_fec_type\":\"NR\",\n         \"sensing_waveform_family\":\"pulse_tof\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"NR\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":\"NR\",\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":\"NR\",\n         \"dispersion_ps_per_nm_km\":\"NR\",\n         \"nonlinearity_model\":\"NR\",\n         \"backscatter_sensing_type\":\"NR\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":\"NR\",\n         \"path_loss_model\":\"NR\",\n         \"turbulence_model\":\"NR\",\n         \"turbulence_Cn2\":\"NR\",\n         \"scintillation_index\":\"NR\",\n         \"pointing_error_model\":\"NR\",\n         \"weather_visibility_m\":\"NR\",\n         \"ambient_light_model\":\"NR\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":\"NR\",\n         \"spectral_efficiency_bps_hz\":\"NR\",\n         \"ber\":\"NR\",\n         \"ber_target\":\"NR\",\n         \"snr_db\":\"NR\",\n         \"osnr_db\":\"NR\",\n         \"outage_probability\":\"NR\",\n         \"latency_ms\":\"NR\",\n         \"capacity_bps_hz\":\"NR\"\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":0.005,\n         \"range_resolution_m\":\"NR\",\n         \"range_accuracy_m\":\"NR\",\n         \"angular_resolution_deg\":\"NR\",\n         \"velocity_resolution_mps\":\"NR\",\n         \"velocity_accuracy_mps\":\"NR\",\n         \"localization_error_m\":\"NR\",\n         \"spatial_resolution_m\":\"NR\",\n         \"sensing_bandwidth_hz\":\"NR\",\n         \"pd_probability_detection\":\"NR\",\n         \"pfa_probability_false_alarm\":\"NR\",\n         \"crb_crlb_value\":\"NR\",\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"working_distance\",\n         \"tradeoff_control_range\":\"5.42-5.60 mm\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":\"NR\",\n         \"opa_steering_range_deg\":\"NR\",\n         \"opa_beamwidth_deg\":\"NR\",\n         \"ris_num_elements\":\"NR\",\n         \"ris_type\":\"NR\",\n         \"ris_phase_bits\":\"NR\"\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Fig. 5\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"none_reported\",\n         \"num_trials\":\"NR\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":1,\n      \"tqaf_experimental_validity\":0,\n      \"tqaf_metric_completeness\":1,\n      \"tqaf_reproducibility\":1,\n      \"tqaf_notes\":\"The paper provides a detailed mathematical model and simulation results, but lacks experimental validation and completeness in reporting all relevant metrics.\"\n   }\n}"
+}

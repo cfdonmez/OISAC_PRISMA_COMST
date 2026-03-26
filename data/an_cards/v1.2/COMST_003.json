@@ -1,0 +1,929 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_003",
+  "title": "A Comprehensive Survey on Radio Resource Management in 5G HetNets: Current Solutions, Future Trends and Open Issues",
+  "year_online": "2022",
+  "year_issue": "2022",
+  "year_source": "doi/frontmatter",
+  "domain": "RRM in 5G HetNets (UA/RA/PA/IM)",
+  "source_path": "data/corp_std/COMST_003/COMST_003.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Nomenclature and acronym table excluded from budgets."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 39658,
+    "approx_token_count_total": null,
+    "equation_count_est": 386,
+    "figure_count_est": 32,
+    "table_count_est": 15,
+    "list_count_est": 231,
+    "citation_count_in_body_est": 240,
+    "citation_density_per_1k_words_est": 6.1,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction"
+      ],
+      "objective": "Frame RRM challenges in 5G HetNets, define UA/RA/PA/IM focus, set contribution list and roadmap.",
+      "key_components": [
+        "5G HetNet motivation and traffic/latency/energy demands",
+        "Problem framing for UA-RA-PA and interference",
+        "Contribution bullets",
+        "Organization map pointing to taxonomy and feature sections"
+      ],
+      "approx_word_share_pct": "8-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 5,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Uses a reading map (Fig. 6) early to orient readers",
+        "Contribution bullets precede roadmap"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States the gap and positions the survey on RRM (UA/RA/PA, IM) for 5G HetNets.",
+          "locator": {
+            "heading": "I. Introduction",
+            "paragraph_index_est": 3,
+            "line_range_est": "L120-L145"
+          }
+        },
+        {
+          "claim": "Lists contributions and provides section-by-section roadmap.",
+          "locator": {
+            "heading": "I. Introduction",
+            "paragraph_index_est": 4,
+            "line_range_est": "L141-L150"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. HETNETS IN 5G: VISION AND MOTIVATION",
+        "A. 5G Advanced and 6G Vision"
+      ],
+      "objective": "Describe 5G/6G HetNet vision and motivate RRM challenges as fundamentals.",
+      "key_components": [
+        "Traffic growth and service requirements",
+        "HetNet architecture and interference contexts",
+        "Link to UA/RA/PA/IM problem space"
+      ],
+      "approx_word_share_pct": "10-14",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 22
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Sets network vision before entering literature review"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Outlines HetNet vision and motivates RRM issues.",
+          "locator": {
+            "heading": "II. HETNETS IN 5G: VISION AND MOTIVATION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L149-L190"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "RELATED_WORK",
+      "raw_headings": [
+        "III. EXISTING SURVEYS AND TUTORIALS ON HETNETS"
+      ],
+      "objective": "Critique prior surveys on HetNets/RRM and position the gap for this work.",
+      "key_components": [
+        "Survey comparison across RRM topics",
+        "Gap statements (UA/RA/PA/IM not integrated)",
+        "Table summarizing prior works"
+      ],
+      "approx_word_share_pct": "8-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 22,
+        "end_doc_progress_pct_est": 30
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "scope_boundary",
+        "pivot"
+      ],
+      "notable_moves": [
+        "Uses a table to compress prior surveys and highlight missing integrated RRM coverage"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States prior surveys and highlights missing integrated MAP of UA/RA/PA/IM.",
+          "locator": {
+            "heading": "III. EXISTING SURVEYS AND TUTORIALS ON HETNETS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L184-L210"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. RRM TAXONOMY"
+      ],
+      "objective": "Introduce taxonomy for RRM schemes and set classification axes.",
+      "key_components": [
+        "Axes: approach type (CO, DRL, GAT, GRT), metrics (QoS/QoE/EE/SE/fairness/coverage)",
+        "Mapping UA/RA/PA vs IM vs combined",
+        "Positioning for subsequent sections"
+      ],
+      "approx_word_share_pct": "8-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 30,
+        "end_doc_progress_pct_est": 38
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "pivot",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Defines taxonomy before diving into per-approach sections"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Sets the taxonomy axes and motivates later sections.",
+          "locator": {
+            "heading": "IV. RRM TAXONOMY",
+            "paragraph_index_est": 1,
+            "line_range_est": "L200-L240"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. RRM FOR UA-RA-PA IN HETNETS",
+        "A. UA-RA-PA Schemes Based on Combinatorial Optimization",
+        "B. UA-RA-PA Approaches Based on GAT",
+        "D. UA-RA-PA Approaches Based On Deep Reinforcement Learning (DRL)"
+      ],
+      "objective": "Survey UA/RA/PA schemes by technique and summarize lessons.",
+      "key_components": [
+        "CO-based UA/RA/PA",
+        "GAT-based UA/RA/PA",
+        "DRL-based UA/RA/PA",
+        "State-of-the-art tables and summaries"
+      ],
+      "approx_word_share_pct": "20-25",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 38,
+        "end_doc_progress_pct_est": 60
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Each technique block ends with a summary/lesson paragraph",
+        "Tables capture pros/cons and metrics focus"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes UA/RA/PA schemes per technique with lessons and tables.",
+          "locator": {
+            "heading": "V. RRM FOR UA-RA-PA IN HETNETS",
+            "paragraph_index_est": 2,
+            "line_range_est": "L279-L370"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "VI. RRM FOR CROSS-CO-TIER INTERFERENCE IN 5G HETNETS"
+      ],
+      "objective": "Survey interference management schemes (IM) and relate to taxonomy.",
+      "key_components": [
+        "IM schemes and metrics",
+        "State-of-the-art table",
+        "Lessons on limitations and metric coverage"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 60,
+        "end_doc_progress_pct_est": 70
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Emphasizes metrics skew (throughput over QoE/fairness)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Highlights IM schemes and notes metric focus gaps.",
+          "locator": {
+            "heading": "VI. RRM FOR CROSS-CO-TIER INTERFERENCE IN 5G HETNETS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L650-L720"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "VII. COMBINED APPROACHES FOR RRM IN 5G HETNETS"
+      ],
+      "objective": "Review combined UA/RA/PA + IM approaches and synthesize lessons.",
+      "key_components": [
+        "Combined schemes (CO, GAT, DRL variants)",
+        "Qualitative comparison table",
+        "Lesson summary on metric coverage and scalability"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 70,
+        "end_doc_progress_pct_est": 78
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Closes with a concise lesson paragraph after the comparison table"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes combined approaches and notes lack of QoE/fairness coverage.",
+          "locator": {
+            "heading": "VII. COMBINED APPROACHES FOR RRM IN 5G HETNETS",
+            "paragraph_index_est": 2,
+            "line_range_est": "L880-L910"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VIII. SIMULATORS AND HARDWARE FOR 5G HETNETS"
+      ],
+      "objective": "List simulators/hardware used in RRM studies as practical guidance.",
+      "key_components": [
+        "Common simulators (NS2/NS3/OPNET/OMNET++)",
+        "SDR/SDN hardware notes",
+        "Usage rationale"
+      ],
+      "approx_word_share_pct": "4-6",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 78,
+        "end_doc_progress_pct_est": 82
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Provides tool names as actionable guidance"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists simulators and notes their suitability.",
+          "locator": {
+            "heading": "VIII. SIMULATORS AND HARDWARE FOR 5G HETNETS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L918-L940"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S09",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "IX. LESSONS LEARNED",
+        "X. FUTURE CHALLENGES AND OPPORTUNITIES"
+      ],
+      "objective": "Synthesize lessons across approaches and outline challenges/opportunities.",
+      "key_components": [
+        "Ratios of approaches/metrics (figures)",
+        "Risks and pitfalls",
+        "Challenges and opportunities subsections",
+        "Open issues bullets"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 82,
+        "end_doc_progress_pct_est": 94
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Uses figures to show ratios of approaches/metrics",
+        "Separates risks/pitfalls from challenges/open issues"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Presents lessons learned with ratio figures and notes metric/approach imbalances.",
+          "locator": {
+            "heading": "IX. LESSONS LEARNED",
+            "paragraph_index_est": 1,
+            "line_range_est": "L926-L970"
+          }
+        },
+        {
+          "claim": "Lists challenges and opportunities with bulletized issues.",
+          "locator": {
+            "heading": "X. FUTURE CHALLENGES AND OPPORTUNITIES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L970-L1030"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S10",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "XI. CONCLUSION"
+      ],
+      "objective": "Summarize RRM findings and restate open directions.",
+      "key_components": [
+        "Recap taxonomy and surveyed schemes",
+        "Restate metrics coverage",
+        "Highlight future challenges and projects"
+      ],
+      "approx_word_share_pct": "2-4",
+      "approx_words_est": null,
+      "positioning": {
+        "start_doc_progress_pct_est": 94,
+        "end_doc_progress_pct_est": 98
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Conclusion reiterates challenges and highlights ongoing projects"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes taxonomy-driven survey and reiterates challenges.",
+          "locator": {
+            "heading": "XI. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L1035-L1055"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Frames 5G HetNet service demands and RRM criticality.",
+      "locator": "L1-L30"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States absence of integrated survey covering UA/RA/PA with IM in 5G HetNets.",
+      "locator": "L120-L145"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Notes prior surveys focus on subsets (e.g., single technique or single metric) rather than integrated RRM.",
+      "locator": "L184-L210"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions (taxonomy, qualitative comparison, lessons, challenges).",
+      "locator": "L141-L150"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section roadmap with reference to Fig. 6.",
+      "locator": "L141-L150"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on RRM in 5G HetNets with UA/RA/PA, IM, and combined schemes.",
+      "locator": "L120-L150"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "We motivate 5G HetNet RRM, review prior surveys, present a taxonomy, survey UA/RA/PA, IM, combined schemes, tools, lessons, challenges, and conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "hybrid (approach type + metric focus)",
+    "axes": [
+      "approach type (CO, DRL, GAT, GRT)",
+      "metric focus (QoS, QoE, EE, SE, fairness, coverage)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 5,
+    "branches": [
+      "UA/RA/PA CO",
+      "UA/RA/PA GAT",
+      "UA/RA/PA DRL",
+      "IM schemes",
+      "Combined schemes"
+    ],
+    "taxonomy_figure_present": "no",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [],
+      "table_ids": [
+        "T02",
+        "T05",
+        "T06"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "throughput",
+      "latency",
+      "energy",
+      "spectral efficiency",
+      "fairness",
+      "QoE",
+      "coverage probability"
+    ],
+    "tradeoff_axes": [
+      "accuracy vs overhead",
+      "throughput vs fairness",
+      "QoE vs complexity"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L404-L420",
+      "L926-L970"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses reading map; taxonomy and each approach block employ summary tables; later sections use ratio figures and qualitative comparison tables; future challenges use bulletized lists without new visuals.",
+    "caption_verbs_top": [
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "depicts",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "roadmap",
+        "purpose": "reader orientation",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 12
+        },
+        "evidence_locator": "L139-L150"
+      },
+      {
+        "figure_id": "F02",
+        "type": "taxonomy/process",
+        "purpose": "section organization map",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 12
+        },
+        "evidence_locator": "L141-L150"
+      },
+      {
+        "figure_id": "F03",
+        "type": "ratio/chart",
+        "purpose": "approach ratios",
+        "placement": {
+          "first_mention_section_id": "S09",
+          "first_mention_section_label": "CHALLENGES",
+          "doc_progress_pct_est": 86
+        },
+        "evidence_locator": "L926-L940"
+      },
+      {
+        "figure_id": "F04",
+        "type": "ratio/chart",
+        "purpose": "metric ratios",
+        "placement": {
+          "first_mention_section_id": "S09",
+          "first_mention_section_label": "CHALLENGES",
+          "doc_progress_pct_est": 86
+        },
+        "evidence_locator": "L930-L945"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "nomenclature",
+        "purpose": "reader support",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 6
+        },
+        "evidence_locator": "L20-L60"
+      },
+      {
+        "table_id": "T02",
+        "type": "survey comparison",
+        "purpose": "gap/authority building",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "RELATED_WORK",
+          "doc_progress_pct_est": 25
+        },
+        "evidence_locator": "L184-L210"
+      },
+      {
+        "table_id": "T03",
+        "type": "taxonomy/approach summary",
+        "purpose": "classify UA/RA/PA schemes",
+        "placement": {
+          "first_mention_section_id": "S05",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 45
+        },
+        "evidence_locator": "L279-L340"
+      },
+      {
+        "table_id": "T04",
+        "type": "summary",
+        "purpose": "state-of-the-art comparison (UA/RA/PA)",
+        "placement": {
+          "first_mention_section_id": "S05",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 50
+        },
+        "evidence_locator": "L404-L420"
+      },
+      {
+        "table_id": "T05",
+        "type": "summary",
+        "purpose": "state-of-the-art comparison (GAT/GRT/DRL)",
+        "placement": {
+          "first_mention_section_id": "S05",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 55
+        },
+        "evidence_locator": "L484-L520"
+      },
+      {
+        "table_id": "T06",
+        "type": "qualitative comparison",
+        "purpose": "combined approaches comparison",
+        "placement": {
+          "first_mention_section_id": "S07",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 75
+        },
+        "evidence_locator": "L900-L915"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "UA/RA/PA sections",
+        "lesson": "CO provides strong optimality but high complexity; DRL offers adaptability with overhead; GAT/GRT balance structure and tractability.",
+        "locator": "L404-L420"
+      },
+      {
+        "location": "IM section",
+        "lesson": "Most IM schemes optimize throughput/EE, leaving QoE/fairness under-addressed.",
+        "locator": "L650-L720"
+      },
+      {
+        "location": "Combined approaches",
+        "lesson": "Combined UA/RA/PA+IM solutions remain throughput-centric and face scalability and QoE gaps.",
+        "locator": "L880-L910"
+      },
+      {
+        "location": "Lessons Learned",
+        "lesson": "Approach ratios skew toward CO; metric coverage skews toward throughput/EE over QoE/fairness/coverage probability.",
+        "locator": "L926-L945"
+      }
+    ],
+    "aha_moment": "The paper enforces a taxonomy-first pipeline, then mirrors it with repeated table-plus-lesson blocks, culminating in ratio visuals to expose metric and approach imbalances."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "yes",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Define problem/approach, then move to taxonomy or table before lessons.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 5.8,
+    "signposting_devices": [
+      "The rest of the paper is organized as",
+      "In this section",
+      "Next",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro with gap + contributions + reading map",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Open with service/traffic requirements and define the domain problem.",
+        "State what prior surveys miss (integration of UA/RA/PA with IM).",
+        "Bullet contributions.",
+        "Show a reading map/structure figure.",
+        "End with section roadmap."
+      ],
+      "why_it_works": "Sets scope, promises, and navigation early with visual anchoring.",
+      "evidence_locators": [
+        "L120-L150"
+      ]
+    },
+    {
+      "title": "Taxonomy-first framing",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Declare classification axes (approach type + metrics).",
+        "Tie axes to the upcoming sections.",
+        "Place a summary table to anchor branches."
+      ],
+      "why_it_works": "Gives readers a mental map before diving into dense literature blocks.",
+      "evidence_locators": [
+        "L200-L240"
+      ]
+    },
+    {
+      "title": "Per-approach block: table + lesson",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Introduce the approach and its problem framing.",
+        "Present a state-of-the-art table with metrics/complexity.",
+        "Highlight limitations (metric gaps, scalability).",
+        "Close with a \"Summary and Lesson Learned\" paragraph."
+      ],
+      "why_it_works": "Consistent micro-structure makes comparisons easy and forces synthesis.",
+      "evidence_locators": [
+        "L279-L420",
+        "L880-L910"
+      ]
+    },
+    {
+      "title": "Lessons with ratio visuals",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Aggregate counts of approaches and metrics.",
+        "Visualize ratios via charts.",
+        "Interpret skew (e.g., throughput-heavy, QoE-light).",
+        "Segue into risks and open issues."
+      ],
+      "why_it_works": "Numbers plus visuals make biases explicit and motivate the challenge section.",
+      "evidence_locators": [
+        "L926-L945"
+      ]
+    },
+    {
+      "title": "Future challenges as bulletized subsections",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Group challenges (mobility, load balancing, security, mmWave, QoS prediction, DRL deployment).",
+        "Use short paragraph + bullet lists per challenge.",
+        "Tie back to taxonomy branches (UA/RA/PA, IM, combined)."
+      ],
+      "why_it_works": "Keeps a long challenge list scannable and connected to prior taxonomy.",
+      "evidence_locators": [
+        "L970-L1030"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "OCR artifacts in tables",
+      "Broken characters in comparison tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts are heuristic; heavy table and list usage. Nomenclature table present outside main budgets. Math count includes inline formula markers."
+}

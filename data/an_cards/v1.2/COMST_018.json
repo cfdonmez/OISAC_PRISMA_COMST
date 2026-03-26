@@ -1,0 +1,753 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_018",
+  "title": "A Survey on Mobility of Edge Computing Networks in IoT: State-of-the-Art, Architectures, and Challenges",
+  "year_online": "2022",
+  "year_issue": "2022",
+  "year_source": "doi",
+  "domain": "Mobile edge computing networks in IoT (mobility and applications)",
+  "source_path": "data/corp_std/COMST_018/COMST_018.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Span tags kept as markers; stop before references."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 31548,
+    "approx_token_count_total": null,
+    "equation_count_est": 220,
+    "figure_count_est": 46,
+    "table_count_est": 8,
+    "list_count_est": 74,
+    "citation_count_in_body_est": 94,
+    "citation_density_per_1k_words_est": 3.0,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "unknown",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Existing Surveys on Mobile Edge Technologies",
+        "B. Contributions",
+        "C. Organization"
+      ],
+      "objective": "Motivate mobile ECNs, highlight survey gap across node types and applications, list contributions and roadmap.",
+      "key_components": [
+        "Why mobility matters for ECNs",
+        "Comparison with existing MEC surveys",
+        "Contribution bullets",
+        "Organization figure"
+      ],
+      "approx_word_share_pct": "9-11",
+      "approx_words_est": 3210,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Early related-survey subsection to justify novelty across four mobile node categories",
+        "Organization graphic referenced in intro"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States lack of a unified survey on mobile ECNs across aerial/ground/spatial/maritime nodes.",
+          "locator": {
+            "heading": "A. Existing Surveys on Mobile Edge Technologies",
+            "paragraph_index_est": 1,
+            "line_range_est": "L40-L75"
+          }
+        },
+        {
+          "claim": "Lists contributions and provides paper organization.",
+          "locator": {
+            "heading": "B. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L75-L95"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. BACKGROUND",
+        "A. Edge Computing Overview",
+        "B. Mobile Edge Computing-Enabled IoT Networks Overview",
+        "C. Summary and Lessons Learned"
+      ],
+      "objective": "Provide edge computing and MEC-enabled IoT background, glossary, and baseline lessons.",
+      "key_components": [
+        "Edge computing basics",
+        "MEC-enabled IoT architecture overview",
+        "Acronym table",
+        "Summary/lessons"
+      ],
+      "approx_word_share_pct": "12-15",
+      "approx_words_est": 4450,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 27
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Includes glossary table before diving into node categories"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers MEC-enabled IoT architecture and provides lessons learned.",
+          "locator": {
+            "heading": "B. Mobile Edge Computing-Enabled IoT Networks Overview",
+            "paragraph_index_est": 1,
+            "line_range_est": "L150-L200"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. AERIAL NODES",
+        "A. Mobility Behavior",
+        "B. Communications Channel Models",
+        "C. Energy Consumption Model",
+        "D. Examples of Practical Systems",
+        "E. Overall Insights and Summary",
+        "IV. GROUND VEHICULAR NODES",
+        "A. Mobility Behavior",
+        "B. Communications Channel Models",
+        "C. Energy Consumption Model",
+        "D. Examples of Practical Systems",
+        "E. Overall Insights and Summary",
+        "V. SPATIAL NODES",
+        "A. Mobility Behavior",
+        "B. Communications Channel Models",
+        "C. Energy Consumption Model",
+        "D. Examples of Practical Systems",
+        "E. Overall Insights and Summary",
+        "VI. MARITIME NODES",
+        "A. Mobility Behavior",
+        "B. Communications Channel Models",
+        "C. Energy Consumption Model",
+        "D. Examples of Practical Systems",
+        "E. Overall Insights and Summary"
+      ],
+      "objective": "Classify mobile ECNs by node type (aerial, ground vehicular, spatial, maritime), discussing mobility, channel, energy, and examples with summaries.",
+      "key_components": [
+        "Mobility behavior patterns per node type",
+        "Channel models",
+        "Energy consumption models",
+        "Practical system examples",
+        "Insight/summary subsection per node"
+      ],
+      "approx_word_share_pct": "35-40",
+      "approx_words_est": 6180,
+      "positioning": {
+        "start_doc_progress_pct_est": 27,
+        "end_doc_progress_pct_est": 60
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Repeats a fixed micro-structure (mobility, channel, energy, examples, summary) for each node class",
+        "Closes each node class with an insights/summary mini-section"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes aerial node mobility, channel, energy, and examples, ending with summary.",
+          "locator": {
+            "heading": "III. AERIAL NODES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L210-L280"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "VII. COMPARISON OF DIFFERENT ECNS",
+        "A. Mobility Pattern",
+        "B. Coverage Area",
+        "C. Communication Channel: Type and Speed"
+      ],
+      "objective": "Compare mobile ECN categories across mobility, coverage, and channel dimensions.",
+      "key_components": [
+        "Comparison table",
+        "Qualitative contrasts of mobility/coverage/channel"
+      ],
+      "approx_word_share_pct": "1-3",
+      "approx_words_est": 446,
+      "positioning": {
+        "start_doc_progress_pct_est": 60,
+        "end_doc_progress_pct_est": 64
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses a dedicated comparison block to synthesize node classes before applications"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Compares ECN types by mobility, coverage, and channel.",
+          "locator": {
+            "heading": "VII. COMPARISON OF DIFFERENT ECNS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L300-L330"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "VIII. SINGULAR NODE TYPE-SUPPORTED APPLICATIONS",
+        "A. UAV-Assisted Edge Computing-Enabled IoT Applications",
+        "B. Ground Vehicular Nodes",
+        "C. Spatial Nodes",
+        "D. Maritime Nodes"
+      ],
+      "objective": "Survey applications for each single node type as ECNs.",
+      "key_components": [
+        "Application scenarios per node class",
+        "Algorithms/methods overview",
+        "Deployment considerations"
+      ],
+      "approx_word_share_pct": "38-42",
+      "approx_words_est": 13338,
+      "positioning": {
+        "start_doc_progress_pct_est": 64,
+        "end_doc_progress_pct_est": 92
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Longest section; maintains per-node organization while focusing on applications"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers UAV-assisted applications with offloading/scheduling algorithms.",
+          "locator": {
+            "heading": "A. UAV-Assisted Edge Computing-Enabled IoT Applications",
+            "paragraph_index_est": 1,
+            "line_range_est": "L330-L430"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "IX. INTEGRATED NODE TYPE-SUPPORTED APPLICATIONS",
+        "A. Aerial-Ground Vehicular Integrated Edge Computing-Enabled IoT Networks",
+        "B. Spatial-Aerial Integrated Edge Computing-Enabled IoT Networks",
+        "C. Maritime-Aerial Integrated Edge Computing-Enabled IoT Networks",
+        "D. Spatial-Maritime Integrated Edge Computing-Enabled IoT Networks"
+      ],
+      "objective": "Discuss applications with integrated heterogeneous ECN node types.",
+      "key_components": [
+        "Integration architectures per pairing",
+        "Application examples",
+        "Design considerations"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": 2069,
+      "positioning": {
+        "start_doc_progress_pct_est": 92,
+        "end_doc_progress_pct_est": 96
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses integration categories to transition into future directions"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Explores integrated ECN architectures (e.g., aerial-ground).",
+          "locator": {
+            "heading": "IX. INTEGRATED NODE TYPE-SUPPORTED APPLICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L430-L500"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "X. FUTURE RESEARCH DIRECTIONS",
+        "A. Moving to Millimeter Wave and Terahertz Bands",
+        "B. Using Blockchain for Secure Task Executions",
+        "C. Using Reconfigurable Intelligent Surfaces for Performance Improvement",
+        "D. Integrating FL With Data Analytics",
+        "E. Optimizing Load Balancing and Routing Jointly",
+        "F. Designing Efficient Task Migration Mechanisms",
+        "G. Integrating Edge Computing and Mobile Crowd Sensing"
+      ],
+      "objective": "List forward-looking research directions tied to ECN mobility and integration.",
+      "key_components": [
+        "Technology shifts (mmWave/THz, RIS, blockchain, FL)",
+        "Resource/routing/migration optimization",
+        "Crowd sensing integration"
+      ],
+      "approx_word_share_pct": "4-5",
+      "approx_words_est": 1338,
+      "positioning": {
+        "start_doc_progress_pct_est": 96,
+        "end_doc_progress_pct_est": 99
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Future directions mirror key enablers mentioned earlier (mmWave/RIS/FL/blockchain)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Enumerates future directions including mmWave/THz, blockchain, RIS, FL, load balancing, migration, crowd sensing.",
+          "locator": {
+            "heading": "X. FUTURE RESEARCH DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L500-L540"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "XI. CONCLUSION"
+      ],
+      "objective": "Summarize survey and restate research gaps.",
+      "key_components": [
+        "Recap of ECN taxonomy and applications",
+        "Restated gaps/future work"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 191,
+      "positioning": {
+        "start_doc_progress_pct_est": 99,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Very brief conclusion pointing back to gaps"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes mobile ECN coverage and open research needs.",
+          "locator": {
+            "heading": "XI. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L540-L560"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights benefits of mobile ECNs (latency/energy) and growing IoT demand.",
+      "locator": "L5-L35"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States no survey covers all four mobile ECN categories and integrated applications.",
+      "locator": "L40-L75"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Existing surveys focus on subsets of mobile edge technologies.",
+      "locator": "L40-L75"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists taxonomy across nodes, applications, and future directions.",
+      "locator": "L75-L95"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Presents section roadmap and organization figure/table references.",
+      "locator": "L90-L105"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus limited to mobile ECNs (aerial, ground, spatial, maritime) and their applications.",
+      "locator": "L70-L110"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate mobile ECNs; note survey gap; lay background; classify nodes; compare; cover applications (single vs integrated); list future directions; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by node type",
+    "axes": [
+      "Node type (aerial, ground vehicular, spatial, maritime)",
+      "Design aspect (mobility, channel, energy, examples)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 8,
+    "branches": [
+      "Aerial nodes",
+      "Ground vehicular nodes",
+      "Spatial nodes",
+      "Maritime nodes",
+      "Integrated node combinations"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses organization figure and glossary table; background includes architecture and acronym table; each node section uses figures for mobility/channel examples and ends with summary; comparison section has a table; application sections interleave scenario figures.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "organization",
+        "purpose": "show survey structure and node taxonomy",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 10
+        },
+        "evidence_locator": "L90-L110"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "glossary",
+        "purpose": "list common abbreviations",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 17
+        },
+        "evidence_locator": "L140-L170"
+      },
+      {
+        "table_id": "T02",
+        "type": "summary",
+        "purpose": "compare different ECN types",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 61
+        },
+        "evidence_locator": "L300-L330"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Node-type sections",
+        "lesson": "Reuse the mobility/channel/energy/examples+summary pattern to make each node class comparable.",
+        "locator": "L210-L330"
+      },
+      {
+        "location": "Comparison section",
+        "lesson": "Compress differences across node types before diving into applications.",
+        "locator": "L300-L330"
+      },
+      {
+        "location": "Application sections",
+        "lesson": "Separate single-node applications from integrated-node applications to clarify design assumptions.",
+        "locator": "L330-L500"
+      },
+      {
+        "location": "Future directions",
+        "lesson": "Tie future enablers (mmWave, RIS, FL, blockchain) back to mobility and integration challenges.",
+        "locator": "L500-L540"
+      }
+    ],
+    "aha_moment": "A repeated subsection template across four node categories creates a digestible taxonomy that later feeds into application mapping and future directions."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Introduce node class or topic, then enumerate sub-dimensions (mobility, channel, energy) before examples and summaries.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 2.3,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "In summary",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro gap with node-class coverage claim",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "State benefits and demand for mobile ECNs.",
+        "Note that prior surveys cover only subsets of node types.",
+        "List contributions spanning all four node classes and integrated architectures.",
+        "Show an organization figure to preview taxonomy and applications."
+      ],
+      "why_it_works": "Anchors novelty on coverage breadth and orients the reader early.",
+      "evidence_locators": [
+        "L40-L110"
+      ]
+    },
+    {
+      "title": "Per-node-class template",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "For each node class, cover mobility behavior, channel model, energy model, examples.",
+        "Close with an insights/summary mini-subsection.",
+        "Repeat identically for all classes to aid comparison."
+      ],
+      "why_it_works": "Consistency makes a multi-class taxonomy easier to digest and compare.",
+      "evidence_locators": [
+        "L210-L330"
+      ]
+    },
+    {
+      "title": "Mid-article comparison checkpoint",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "After covering all classes, add a short comparison section (mobility, coverage, channel).",
+        "Use a table to compress contrasts.",
+        "Use this as a bridge into applications."
+      ],
+      "why_it_works": "Re-syncs readers after lengthy taxonomy and prepares them for application mapping.",
+      "evidence_locators": [
+        "L300-L330"
+      ]
+    },
+    {
+      "title": "Applications split into single vs integrated nodes",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "First present applications for each standalone node class.",
+        "Then present integrated-node applications by pairing types.",
+        "Highlight design assumptions unique to each grouping."
+      ],
+      "why_it_works": "Separating single from integrated scenarios clarifies scope and avoids conflating assumptions.",
+      "evidence_locators": [
+        "L330-L500"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "Possible OCR artifacts in tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts are heuristic; many figures. Headings include span tags. No evaluation framework; focus on taxonomy and applications."
+}

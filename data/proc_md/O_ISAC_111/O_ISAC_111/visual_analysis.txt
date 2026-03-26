@@ -1,0 +1,41 @@
+Image: _page_1_Figure_1.jpeg
+Type: Experimental Setup & Spectra (Photonic ISAC)
+---
+**Components (Panel a):**
+* **OWCM (Optical Wrapper Communication Module):** ECL1, DP-QPSK Generation, EDFA1, EDFA2.
+* **Sen. Rx (Sensing Receiver):** ECL2, OC1, IQ Mod, AWG, ECL3, PC1, PBS, VOA, UTC-PD3, HM3, LNA3, LNA4, OSC.
+* **Com. Rx (Communication Receiver):** HA3, HA4, HM1, HM2, LNA1, LNA2, ECL4, DP-MZM, OBPF, EDFA3, DCO Rx.
+**Spectra (Panel b):**
+* X: WaveLength (nm) [1548.5 to 1551.5], Y: Power (dB).
+* DP-CS-DSB (Double Sideband) shows two peaks around 1549.5 nm.
+* DP-CS-SSB(QPSK) shows a single sideband peak.
+* Optical LO (Local Oscillator) is at 1550.5 nm.
+* Spectral gaps: 120 GHz and 149 GHz marked relative to Optical LO.
+**Signal Plot (Panel c):**
+* X: Frequency (GHz) [0 to 20], Y: Power (dB) [-80 to -40].
+* Bandwidth marked as 11.24 GHz (10 dB width).
+* Peak power at ~14 GHz. Leaked clock seen at ~11 GHz.
+**Photos (Panels d, e):** Benchtop setup with labeled UTA-PDs, HAs (Horn Antennas), and HM (Harmonic Mixer) units.
+---
+
+Image: _page_2_Figure_1.jpeg
+Type: Performance Analysis (Wavelength & Power)
+---
+**Axes:** Y (left): BER [Log $10^{-8}$ to $10^{-5}$], Y (right): ROP (dBm) [-18.2 to -17.6], X: Wavelength (nm) / IOP (dBm).
+**Legend/Trends:**
+* (a) **BER vs Wavelength:** Minimum BER (~$1.5 \times 10^{-7}$) at 1549.58 nm. ROP fluctuates between -17.7 and -18.2 dBm.
+* (b) **BER vs IOP:** BER decreases from $10^{-2}$ to ~$4 \times 10^{-7}$ as IOP increases from -18 to -3 dBm. Crosses SD-FEC threshold ($2.2 \times 10^{-2}$) at ~-16 dBm.
+* (c) **BER vs IOP (2nd configuration):** BER increases with IOP, from $10^{-8}$ to $10^{-5}$ as IOP rises from -18 to 3 dBm.
+---
+
+Image: _page_2_Figure_7.jpeg
+Type: Sensing Profiles (Point Spread Function)
+---
+**Axes:** X: Relative Range (mm) [-50 to 50], Y: Normalized Amp. (a.u.) [0 to 1].
+**Panels/Trends:**
+* (a) **Without homologous LO (10 mm interval):** Broad peaks, poor resolution, cannot resolve the 10 mm spacing clearly.
+* (b) **With homologous LO (11.25 mm interval):** Two distinct sharp peaks with 11.25 mm separation clearly visible.
+* (c) **Without homologous LO (15 mm interval):** Better visibility than (a) but still significant sidelobes.
+* (d) **With homologous LO (15 mm interval):** Two very distinct sharp peaks with 15 mm separation.
+**Conclusion:** Homologous LO significantly improves spatial resolution and sidelobe suppression.
+---

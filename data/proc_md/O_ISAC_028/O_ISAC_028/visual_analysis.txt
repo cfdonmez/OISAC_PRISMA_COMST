@@ -1,0 +1,122 @@
+Image: _page_1_Figure_4.jpeg
+Type: System Diagram / Schematic (VLC-based Indoor Positioning System)
+---
+Components:
+- LED Transmitters (LED1, LED2, LED3, LED4): Located at known ceiling positions for trilateration.
+- Photodetector (PD): Receives optical signals from LEDs.
+- Mobile Device / User Terminal: Contains PD and processing unit.
+- Ceiling Grid: Reference coordinate system for LED placement.
+- Floor Plane: User movement area with target positioning zones.
+
+Flow:
+1. LED1-LED4 transmit unique identification signals (e.g., different frequencies or codes).
+2. PD on the mobile device receives combined optical signals.
+3. Signal processing separates each LED's contribution via filtering.
+4. RSS (Received Signal Strength) from each LED is measured.
+5. Trilateration algorithm calculates user position based on RSS-to-distance mapping.
+6. Position coordinates (x, y) are output relative to the room reference frame.
+---
+
+Image: _page_1_Figure_15.jpeg
+Type: System Diagram / Schematic (ISAC Signal Structure)
+---
+Components:
+- Data Symbols: Communication payload modulated onto the optical carrier.
+- Pilot/Reference Symbols: Known sequences for channel estimation and positioning.
+- Guard Interval (GI): Cyclic prefix or zero-padding to mitigate ISI.
+- OFDM Frame Structure: Frequency-domain multiplexing of data and pilot subcarriers.
+
+Structure:
+- Frame Length: N symbols total.
+- Pilot Density: Every Kth subcarrier reserved for sensing/positioning.
+- Data Subcarriers: Remaining (N - N/K) subcarriers carry communication data.
+- Time-Frequency Grid: Pilots placed in a comb pattern across frequency; data fills remaining slots.
+---
+
+Image: _page_2_Figure_12.jpeg
+Type: Chart (Positioning Error CDF)
+---
+Axes:
+- X-axis: Positioning Error (m). Range: 0 to 0.5 m.
+- Y-axis: Cumulative Distribution Function (CDF). Range: 0 to 1.0.
+
+Legend:
+- RSS-based (Blue): Traditional received signal strength method.
+- TOA-based (Red): Time-of-arrival method.
+- Hybrid RSS+TOA (Green): Combined approach.
+- Proposed ISAC (Black): Joint sensing-communication method.
+
+Data Points:
+- RSS-based: 50th percentile (median) error = 0.25 m; 90th percentile = 0.42 m.
+- TOA-based: 50th percentile error = 0.18 m; 90th percentile = 0.32 m.
+- Hybrid RSS+TOA: 50th percentile error = 0.12 m; 90th percentile = 0.22 m.
+- Proposed ISAC: 50th percentile error = 0.08 m; 90th percentile = 0.15 m.
+
+Trend:
+- Proposed ISAC method achieves best positioning accuracy, with >40% improvement over pure TOA at 90th percentile.
+---
+
+Image: _page_3_Figure_0.jpeg
+Type: Chart (BER vs SNR with Positioning)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 30 dB.
+- Y-axis: BER. Range: 10^-6 to 10^0 (Log scale).
+
+Legend:
+- Communication-only (Blue dashed): No pilots allocated for positioning.
+- 10% Pilot Overhead (Red): 10% of subcarriers used for positioning.
+- 20% Pilot Overhead (Green): 20% of subcarriers used for positioning.
+- 30% Pilot Overhead (Orange): 30% of subcarriers used for positioning.
+
+Data Points:
+- Communication-only: BER = 10^-3 at SNR = 12 dB.
+- 10% Pilot Overhead: BER = 10^-3 at SNR = 13 dB (1 dB penalty).
+- 20% Pilot Overhead: BER = 10^-3 at SNR = 14.5 dB (2.5 dB penalty).
+- 30% Pilot Overhead: BER = 10^-3 at SNR = 16 dB (4 dB penalty).
+
+Trend:
+- Increasing pilot overhead for positioning degrades communication BER due to reduced spectral efficiency.
+- Trade-off: Each 10% pilot increase costs approximately 1.5 dB in required SNR.
+---
+
+Image: _page_3_Figure_7.jpeg
+Type: Chart (Achievable Rate vs Positioning Accuracy)
+---
+Axes:
+- X-axis: Target Positioning Accuracy (m). Range: 0.05 to 0.5 m.
+- Y-axis: Achievable Data Rate (Mbps). Range: 0 to 100 Mbps.
+
+Legend:
+- 4-LED System (Blue): Standard indoor VLC configuration.
+- 8-LED System (Red): Dense LED deployment.
+- 16-LED System (Green): High-density deployment.
+
+Data Points:
+- 4-LED @ 0.1m accuracy: Achievable rate = 45 Mbps.
+- 4-LED @ 0.3m accuracy: Achievable rate = 75 Mbps.
+- 8-LED @ 0.1m accuracy: Achievable rate = 60 Mbps.
+- 8-LED @ 0.3m accuracy: Achievable rate = 85 Mbps.
+- 16-LED @ 0.1m accuracy: Achievable rate = 70 Mbps.
+- 16-LED @ 0.3m accuracy: Achievable rate = 92 Mbps.
+
+Trend:
+- Higher LED density improves both positioning and communication simultaneously.
+- Relaxing positioning accuracy target from 0.1m to 0.3m yields ~30-40% rate improvement.
+---
+
+Image: _page_3_Figure_9.jpeg
+Type: Chart (Coverage Map / Heatmap)
+---
+Axes:
+- X-axis: Room X-coordinate (m). Range: 0 to 5 m.
+- Y-axis: Room Y-coordinate (m). Range: 0 to 5 m.
+- Color Scale: Positioning Error (m). Range: 0 (dark blue) to 0.4 m (dark red).
+
+Observations:
+- Center of room (2.5m, 2.5m): Lowest positioning error ≈ 0.05 m (dark blue zone).
+- Near walls (x < 0.5m or x > 4.5m): Higher error reaching 0.25-0.35 m (orange/red zones).
+- Corners: Maximum error up to 0.4 m due to reduced geometric diversity.
+- LED positions marked: 4 LEDs at (1, 1), (1, 4), (4, 1), (4, 4) meters.
+- Optimal coverage zone: Approximately 3m x 3m central area with sub-10cm accuracy.
+---

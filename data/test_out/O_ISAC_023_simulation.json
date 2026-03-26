@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Excellent FSO-ISAC paper! DCO-OFDM with BCD resource allocation. IEEE IoT Journal 2024. Comprehensive tradeoff optimization framework + ACGN clipping noise model."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: System model - LiDAR-based FSO-ISAC with m-QAM→IDFT→DAC→Laser. Sensing for uncooperative targets (backscatter) and comm for cooperative targets. Fig.2: PSD analysis - clipping noise becomes colored (ACGN) with uneven power allocation. Fig.6: Pareto power allocation curves. Fig.7: Spectral efficiency vs sensing precision tradeoff (Pareto frontiers).",
+        "step_1_concept_analysis": "System: LiDAR-based FSO-ISAC using DCO-OFDM. Single waveform serves both sensing (ToF estimation) and communication (data to cooperative target). Integration: Joint waveform with power allocation optimization. Clipping noise modeled as ACGN creating equivalent frequency-selective channel.",
+        "step_2_benchmark_verification": "Comm: Up to 3.38 bps/Hz spectral efficiency (N=512). Sensing: cm-level precision (2.85-4.4 cm) at 200m range. Configuration: 905nm LiDAR, 102.4 MHz BW, N=128/256/512 subcarriers. log-normal turbulence model. RMSE ~3-8 cm at SNR>2dB. Matches CRB theory.",
+        "step_3_strategic_critique": "Contribution: First comprehensive DCO-OFDM analysis for FSO-ISAC with BCD optimization and ACGN clipping noise model. Novel KKT-based closed-form power allocation. Pareto frontier characterization. Gap: Simulation only (no experimental demo), single target scenario, weak turbulence assumption."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_023",
+            "title": "Free-Space Optical Integrated Sensing and Communication Based on DCO-OFDM: Performance Metrics and Resource Allocation",
+            "authors": "Yunfeng Wen, Fang Yang, Jian Song, Zhu Han",
+            "year": 2024,
+            "venue": "IEEE Internet of Things Journal",
+            "document_type": "journal",
+            "doi": "10.1109/JIOT.2024.3469279"
+        },
+        "classification": {
+            "oisac_medium_class": "wireless_fso",
+            "carrier_band": "NIR",
+            "operational_environment": "outdoor",
+            "link_topology": "monostatic",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "vehicular",
+                "robotics_autonomy",
+                "6g_networks"
+            ],
+            "scenario_description": "Intelligent Transportation System (ITS) with LiDAR-based FSO-ISAC providing communication to cooperative vehicles and sensing for uncooperative targets."
+        },
+        "evidence": {
+            "evidence_type": [
+                "analytical",
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "First DCO-OFDM FSO-ISAC analysis with: (1) ACGN clipping noise model for uneven power allocation, (2) BCD algorithm for joint DC-bias + subcarrier power optimization, (3) Closed-form KKT solutions for Pareto-optimal tradeoff.",
+            "gap_addressed": "Prior FSO-ISAC focused on pulses/single-carrier; no comprehensive multicarrier (OFDM) analysis with clipping noise and resource allocation.",
+            "performance_enablers": [
+                "joint_waveform_design",
+                "ofdm_frequency_diversity",
+                "water_filling_allocation",
+                "direct_detection",
+                "other"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_DCO_OFDM_N512",
+                "scenario_label": "DCO-OFDM FSO-ISAC with N=512 subcarriers"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "im_dd",
+                "wavelength_nm": 905.0,
+                "optical_bandwidth_ghz": 0.1024,
+                "tx_power_dbm": 30.0,
+                "notes": "905nm LiDAR. DCO-OFDM: Hermitian symmetry, DC bias b, clipping. N=512 subcarriers, Δf=0.2 MHz, B=102.4 MHz. Total power 1W. Guard interval Tg=2μs for 300m unambiguous range."
+            },
+            "receiver": {
+                "rx_detection_type": "direct",
+                "rx_detector": "pin_pd",
+                "notes": "Photodiode with gain G_R=10. Thermal + shot noise modeled as AWGN. Sensing: MLE for ToF. Communication: DFT + equalization."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "full_duplex",
+                "notes": "Single DCO-OFDM waveform. Monostatic sensing (backscatter) + point-to-point comm to cooperative target. Same TX hardware for both functions."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "comm_modulation_order": 16,
+                "comm_symbol_rate_gbaud": 0.1024,
+                "sensing_waveform_family": "same_as_comm",
+                "isac_waveform_relationship": "single_dual_function",
+                "notes": "DCO-OFDM: m-QAM on N/2-1 independent subcarriers. Clipping introduces colored noise (ACGN) in frequency-selective equivalent channel."
+            },
+            "channel_wireless": {
+                "link_distance_m": 200.0,
+                "turbulence_model": "lognormal",
+                "path_loss_model": "Beer-Lambert + Geometric",
+                "notes": "Weak turbulence: Cn2=5e-14 m^-2/3. Atmospheric attenuation -12.8 dB/km. Beam divergence 0.5 mrad. Receiver aperture 10 cm². Hc/Lt=-2.17dB, Hs/Lt=-23.2dB."
+            },
+            "comm_metrics": {
+                "spectral_efficiency_bps_hz": 3.38,
+                "snr_db": "NR",
+                "notes": "Max spectral efficiency ~3.38 bps/Hz (N=512). Ergodic capacity with 0.05-quantile turbulence attenuation."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "sensing_range_m": 200.0,
+                "range_resolution_m": 0.0285,
+                "notes": "CRB-based sensing precision. Best achievable: 2.85 cm at N=512. RMSE 3-8 cm at SNR>2dB under various turbulence conditions."
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "rate_vs_range_resolution",
+                    "throughput_vs_localization"
+                ],
+                "tradeoff_representation": "pareto_front",
+                "notes": "BCD algorithm optimizes DC bias b and subcarrier power P(k). Comm-centric: max C s.t. Fisher ≥ threshold. Sensing-centric: max I s.t. C ≥ threshold. Duality between formulations."
+            }
+        }
+    ]
+}

@@ -1,0 +1,200 @@
+Image: _page_1_Figure_8.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Full-field frequency response section:** 
+  - Charts for I and Q branches: |A(f)| (amplitude response) and φ(f) (phase response).
+  - IQ skew formula: τ_I - τ_Q.
+- **TOSA (Transmitter Optical Sub-Assembly):**
+  - Digital Input.
+  - DAC (Digital-to-Analog Converter).
+  - EA (Electrical Amplifier).
+  - Laser.
+  - IQM (I/Q Modulator).
+  - Optical Output.
+
+**Flow:**
+Digital inputs A_I(f)e^{jφ_I(f)} and A_Q(f)e^{jφ_Q(f)} are processed through DACs and EAs. These electrical signals then drive the IQM. A Laser provides the optical carrier to the IQM, which modulates the carrier and produces the Optical Output. The left panel illustrates how the frequency response and temporal skew (τ_I, τ_Q) affect the complex signal.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Transmitter Side:**
+  - Signal generators for C_{1I} to C_{4I} (In-phase) and C_{1Q} to C_{4Q} (Quadrature).
+  - Labels for frequency spacing (Δf_ILAFR, Δf_ILPFR) and subcarrier durations.
+  - TOSA (Transmitter Optical Sub-Assembly).
+- **Receiver Side:**
+  - Optical Spectrum display.
+  - PD (Photodiode).
+  - ADC (Analog-to-Digital Converter) + FFT (Fast Fourier Transform).
+- **Analysis Side:**
+  - AFR @ I, AFR @ Q, PFR @ I, PFR @ Q charts showing |H_{iI}|, |H_{iQ}|, Ψ_{S/b,iI}, and Ψ_{S/b,iQ}.
+
+**Flow:**
+Multi-tone/comb-like signals are generated in the I and Q domains with specific frequency offsets for Amplitude Frequency Response (AFR) and Phase Frequency Response (PFR) measurement. These signals pass through the TOSA. At the receiver, the Optical Spectrum is captured. After detection by the PD, the signal is digitized (ADC) and analyzed via FFT to extract the AFR and PFR for both In-phase and Quadrature branches (AFR@I/Q, PFR@I/Q).
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **All subplots (a, b, c, d):**
+  - **X-axis:** Frequency (GHz) [Range: 0 to 50 GHz].
+  - **Left Y-axis (a, b):** AFR (dB) [Range: -20 to 0 dB].
+  - **Right Y-axis (a, b):** AFR Deviation (dB) [Range: -0.5 to 1.0 dB].
+  - **Left Y-axis (c, d):** PFR (rad) [Range: -10 to 0 rad].
+  - **Right Y-axis (c, d):** PFR Deviation (rad) [Range: -0.25 to 0.5 rad].
+
+**Data Points:**
+- **(a) AFR @ I:** Response stays above -5 dB until ~40 GHz, then drops sharply to ~-16 dB at 50 GHz. Deviation is within ±0.2 dB.
+- **(b) AFR @ Q:** Similar to I branch, response stays above -5 dB until ~40 GHz, dropping to ~-17 dB at 50 GHz. Deviation within ±0.25 dB.
+- **(c) PFR @ I:** Linear decrease in phase. At 40 GHz, phase is ~-4 rad. Sharp drop follows to ~-8 rad at 50 GHz. Deviation within ±0.1 rad.
+- **(d) PFR @ Q:** Linear decrease to ~-4 rad at 40 GHz, then sharp drop to ~-9 rad at 50 GHz. Deviation within ±0.15 rad.
+
+**Legend/Trends:**
+- **Variables:** Obtained vs Preset AFR/PFR and the corresponding Deviation.
+- **Trend:** Both amplitude and phase responses are relatively flat/linear up to 40 GHz, indicating the operational bandwidth. High correlation between obtained and preset values proves extraction accuracy.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **(a) X-axis:** Frequency (GHz) [Range: 0 to 50 GHz].
+- **(a) Y-axis:** Phase Difference (rad) [Range: -2 to 2 rad].
+- **(b) X-axis:** Preset IQ skew (ps) [Range: -10 to 10 ps].
+- **(b) Left Y-axis:** Estimated IQ skew (ps) [Range: -10 to 10 ps].
+- **(b) Right Y-axis:** Error (ps) [Range: -0.8 to 0.8 ps].
+
+**Data Points:**
+- **(a):** 
+  - Skew = 0ps (Blue): Phase difference flat at 0 rad.
+  - Skew = 7ps (Dark yellow): Phase difference increases linearly to ~2.2 rad at 50 GHz.
+  - Skew = -5ps (Gray): Phase difference decreases linearly to ~-1.6 rad at 50 GHz.
+- **(b):** 
+  - Estimated skew exactly matches preset skew (linear slope).
+  - Error (black stars) is within ±0.2 ps across the entire range.
+
+**Legend/Trends:**
+- **Variables:** Skew values (-5, -3, 0, 2, 4, 7 ps) in (a). Estimated vs Preset skew and Error in (b).
+- **Trend:** IQ skew manifests as a frequency-dependent phase difference. The estimation algorithm is highly accurate with extremely low sub-picosecond error.
+---
+
+Image: _page_5_Figure_4.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Source:** AWG (Arbitrary Waveform Generator).
+- **Transmitter:** Coherent TOSA.
+- **Measurement Instrument:**
+  - PD (Photodiode).
+  - DSO (Digital Storage Oscilloscope).
+  - **Inset Spectrum:** Power/dBm vs Frequency/GHz showing AFR and PFR spectral components.
+- **Offline DSP:**
+  - FFT.
+  - Output blocks: AFR, IQ skew, PFR.
+
+**Flow:**
+The AWG generates waveforms for the Coherent TOSA. The Optical Output is sent to a PD and captured by a DSO. Inset shows the frequency comb spectrum with designated AFR/PFR regions. The captured data is processed by Offline DSP using FFT to extract AFR, IQ skew, and PFR information.
+---
+
+Image: _page_5_Figure_7.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **Both subplots (a, b):**
+  - **X-axis:** Frequency (GHz) [Range: 0 to 45 GHz].
+  - **Left Y-axis (a):** AFR (dB) [Range: -35 to 0 dB].
+  - **Right Y-axis (a):** AFR Deviation (dB) [Range: -2 to 10 dB].
+  - **Left Y-axis (b):** PFR (rad) [Range: -10 to 5 rad].
+  - **Right Y-axis (b):** Fluctuation (rad) [Range: -0.4 to 2.0 rad].
+
+**Data Points:**
+- **(a) AFR Verification:** 
+  - Measured AFR @ I/Q tracks the Reference AFR well.
+  - At 40 GHz, AFR is approx -15 dB.
+  - Deviation (green/pink stars) remains within ±1 dB across the 45 GHz range.
+- **(b) PFR Verification:**
+  - PFR @ I/Q are nearly identical.
+  - Peaks at ~2 rad around 15-20 GHz, then drops towards -8 rad at 45 GHz.
+  - Fluctuation is tightly bounded within ±0.1 rad.
+
+**Legend/Trends:**
+- **Variables:** Measured vs Reference AFR/PFR for I and Q branches.
+- **Trend:** Minimal deviation/fluctuation confirms the robustness of the frequency response measurement technique up to 45 GHz.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **(a) X-axis:** Frequency (GHz) [Range: 0 to 45 GHz].
+- **(a) Left Y-axis:** PFR (rad) [Range: -2 to 4 rad].
+- **(a) Right Y-axis:** PFR deviation (rad) [Range: -0.8 to 0.8 rad].
+- **(b) X-axis:** Preset IQ skew (ps) [Range: -10 to 10 ps].
+- **(b) Y-axis:** Estimated IQ skew (ps) [Range: -10 to 10 ps].
+
+**Data Points:**
+- **(a):** 
+  - Preset PFR (gray) and probe PFR @ I/Q (red/blue) overlap.
+  - Sinks to -1.5 rad at 20 GHz, then rises to 3 rad at 45 GHz.
+  - Deviation is within ±0.2 rad.
+- **(b):** 
+  - Estimated IQ skew points lie exactly on the linear reference line.
+  - Error (black) bars indicate high precision over the ±10 ps range.
+
+**Legend/Trends:**
+- **Variables:** Preset/Probe PFR and Estimated vs Preset IQ skew.
+- **Trend:** Demonstrates the ability to recover complex phase responses and sub-picosecond skew estimation even under non-linear phase conditions.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Tx DSP (Transmitter):**
+  - PRBS (Pseudo-Random Binary Sequence).
+  - Constellation Mapping.
+  - Up sampling.
+  - RRC (Root-Raised Cosine).
+  - Resample.
+  - **Frequency Response Pre-compensate** (Highlighted yellow).
+- **Physical Link:**
+  - AWG.
+  - Coherent TOSA.
+  - Laser.
+  - ICR (Integrated Coherent Receiver).
+  - DSO.
+- **Rx DSP (Receiver):**
+  - Resample.
+  - GSOP (Gram-Schmidt Orthogonalization Procedure).
+  - RRC.
+  - Synchronization.
+  - Decode.
+  - BER (Bit Error Rate).
+
+**Flow:**
+Signal is generated and pre-compensated in Tx DSP to counteract the previously measured frequency response. It passes through the Coherent TOSA, undergoes coherent detection at the ICR, is digitized by the DSO, and finally processed by the Rx DSP to calculate the BER.
+---
+
+Image: _page_6_Figure_6.jpeg
+Type: Constellation Diagram
+---
+**Structure:**
+- **Format:** 16QAM (16 distinct clusters in a 4x4 grid).
+- **Rows:** 32GBaud and 64GBaud.
+- **Columns:** (a/d) w/o calibration, (b/e) w/ amp calibration, (c/f) w/ full calibration.
+
+**Quality & Data Points:**
+- **32GBaud:**
+  - (a) Blurred clusters, BER @ 4.6e-4.
+  - (c) Sharp, well-separated clusters, BER @ 1.9e-4.
+- **64GBaud:**
+  - (d) High noise, overlapping clusters, BER @ 6.1e-3.
+  - (f) Recovered grid structure, clusters distinct but larger than 32G, BER @ 2.1e-3.
+
+**Trend:**
+Calibration significantly improves bit error rate and cluster separation, especially at higher baud rates (64GBaud) where frequency response distortion is more severe. Full calibration (amplitude + phase + skew) provides the best performance.
+---

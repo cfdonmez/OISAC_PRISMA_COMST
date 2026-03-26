@@ -1,0 +1,186 @@
+{
+  "run_id": "20260102_103226_O_ISAC_151_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103226",
+  "paper_id": "O_ISAC_151",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Figure 1, which depicts the BigFiberNet architecture, comprising three main components: the fabric-based large-scale non-disturbance platform, mobile edge intelligence, and remote cloud. Figure 2 illustrates the fabric-based large-scale non-disturbance sensing platform, which integrates advanced chips and provides both raw data and preprocessing results. Figure 3 shows the LLMs-based non-disturbance cognition platform, which leverages data semantic relevance to adapt to changing user needs. Figure 4 illustrates the LLM-empowered Mobile Edge Intelligence for Resource Optimization with User Need Alignment. Figure 5 presents the experimental example of LLM application in the remote cloud layer of the proposed BigFiber-Net. Figure 6 demonstrates the performance evaluation on the BigFiberNet testbed."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The BigFiberNet system integrates fabric computing technology with 5G and large language models (LLMs) to enable non-disturbance mobile sensing networks. The system employs an LLM-based encoder to pre-encode collected multimodal data, constructing a detailed semantic space of user needs. The platform dynamically adjusts and accurately predicts user requirements by analyzing historical interaction preferences and the semantic similarity of data from newly connected applications."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports on the performance evaluation of the BigFiberNet testbed, which demonstrates the efficiency of the PPO algorithm in solving the optimization problem. The results show that the proposed algorithm consistently achieves higher scores compared to strategies relying on raw data retrieval, unified outlier processing, or fixed data compression rates."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper introduces BigFiberNet, a novel architecture for large-scale non-disturbance mobile sensing networks, addressing the challenges of non-disturbance, multi-user applications. The system enables efficient data transmission and optimized service quality across varying user needs and application scenarios. However, challenges remain regarding the computational power of edge devices and network bandwidth."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "BigFiberNet: LLMs and Fabric Computing Empowered Large-Scale Non-Disturbance Mobile Sensing Networks",
+        "authors": "Jia Liu, Yixue Hao, Zhicai He, Min Chen, Long Hu, and Gang Wei",
+        "year": 2024,
+        "venue": "IEEE",
+        "doi": "10.1109/MNET.2024.3519187"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "other",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "healthcare",
+        "scenario_description": "The system is designed for non-disturbance mobile sensing networks, enabling efficient data transmission and optimized service quality across varying user needs and application scenarios."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The paper introduces BigFiberNet, a novel architecture for large-scale non-disturbance mobile sensing networks, integrating fabric computing technology with 5G and large language models (LLMs).",
+        "gap_addressed": "The system addresses the challenges of non-disturbance, multi-user applications, enabling efficient data transmission and optimized service quality across varying user needs and application scenarios.",
+        "performance_enablers": "photonic_dechirping, electronic_dechirping, matched_filtering, fft_based_processing, compressed_sensing, coherent_homodyne, coherent_heterodyne, direct_detection, self_coherent, balanced_detection, tfln_modulator, high_bandwidth_modulator, frequency_comb, photonic_adc, integrated_photonics, joint_waveform_design, superimposed_waveform, orthogonal_waveform, dual_function_waveform, frequency_jitter_mitigation, false_target_suppression, phase_noise_compensation, nonlinearity_compensation, wavelength_reuse, shared_fiber_bidirectional, distributed_architecture, monostatic_full_duplex",
+        "novel_component": "LLM-based encoder",
+        "novel_component_specs": "The LLM-based encoder is used to pre-encode collected multimodal data, constructing a detailed semantic space of user needs."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Non-disturbance mobile sensing network"
+      },
+      "transmitter": {
+        "tx_source_type": "other",
+        "tx_modulation_type": "not_specified",
+        "tx_external_modulator": "none",
+        "wavelength_nm": null,
+        "optical_bandwidth_ghz": null,
+        "tx_power_dbm": null,
+        "aperture_diameter_m": null,
+        "beam_divergence_mrad": null
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "other",
+        "rx_aperture_diameter_m": null,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": null,
+        "rx_modulator_operating_point": "not_specified",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "separate_frontends",
+        "duplexing_mode": "other"
+      },
+      "waveform": {
+        "comm_waveform_family": "other",
+        "comm_modulation_order": null,
+        "comm_symbol_rate_gbaud": null,
+        "comm_fec_type": null,
+        "sensing_waveform_family": "other",
+        "isac_waveform_relationship": "not_specified",
+        "resource_partition": null
+      },
+      "channel_fiber": {
+        "fibre_length_km": null,
+        "fibre_type": null,
+        "attenuation_db_per_km": null,
+        "dispersion_ps_per_nm_km": null,
+        "nonlinearity_model": null,
+        "backscatter_sensing_type": null
+      },
+      "channel_wireless": {
+        "link_distance_m": null,
+        "path_loss_model": null,
+        "turbulence_model": null,
+        "turbulence_Cn2": null,
+        "scintillation_index": null,
+        "pointing_error_model": null,
+        "weather_visibility_m": null,
+        "ambient_light_model": null
+      },
+      "comm_metrics": {
+        "data_rate_gbps": null,
+        "spectral_efficiency_bps_hz": null,
+        "ber": null,
+        "ber_target": null,
+        "snr_db": null,
+        "osnr_db": null,
+        "outage_probability": null,
+        "latency_ms": null,
+        "capacity_bps_hz": null
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "localization_2d",
+        "sensing_range_m": null,
+        "range_resolution_m": null,
+        "range_accuracy_m": null,
+        "angular_resolution_deg": null,
+        "velocity_resolution_mps": null,
+        "velocity_accuracy_mps": null,
+        "localization_error_m": null,
+        "spatial_resolution_m": null,
+        "sensing_bandwidth_hz": null,
+        "pd_probability_detection": null,
+        "pfa_probability_false_alarm": null,
+        "crb_crlb_value": null,
+        "crb_parameter": null
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": null,
+        "tradeoff_control_range": null
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": null,
+        "opa_steering_range_deg": null,
+        "opa_beamwidth_deg": null,
+        "ris_num_elements": null,
+        "ris_type": null,
+        "ris_phase_bits": null
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system architecture and the experimental setup. The results are well-presented, and the conclusions are well-supported by the data."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Figure 1, which depicts the BigFiberNet architecture, comprising three main components: the fabric-based large-scale non-disturbance platform, mobile edge intelligence, and remote cloud. Figure 2 illustrates the fabric-based large-scale non-disturbance sensing platform, which integrates advanced chips and provides both raw data and preprocessing results. Figure 3 shows the LLMs-based non-disturbance cognition platform, which leverages data semantic relevance to adapt to changing user needs. Figure 4 illustrates the LLM-empowered Mobile Edge Intelligence for Resource Optimization with User Need Alignment. Figure 5 presents the experimental example of LLM application in the remote cloud layer of the proposed BigFiber-Net. Figure 6 demonstrates the performance evaluation on the BigFiberNet testbed.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The BigFiberNet system integrates fabric computing technology with 5G and large language models (LLMs) to enable non-disturbance mobile sensing networks. The system employs an LLM-based encoder to pre-encode collected multimodal data, constructing a detailed semantic space of user needs. The platform dynamically adjusts and accurately predicts user requirements by analyzing historical interaction preferences and the semantic similarity of data from newly connected applications.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports on the performance evaluation of the BigFiberNet testbed, which demonstrates the efficiency of the PPO algorithm in solving the optimization problem. The results show that the proposed algorithm consistently achieves higher scores compared to strategies relying on raw data retrieval, unified outlier processing, or fixed data compression rates.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper introduces BigFiberNet, a novel architecture for large-scale non-disturbance mobile sensing networks, addressing the challenges of non-disturbance, multi-user applications. The system enables efficient data transmission and optimized service quality across varying user needs and application scenarios. However, challenges remain regarding the computational power of edge devices and network bandwidth.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"BigFiberNet: LLMs and Fabric Computing Empowered Large-Scale Non-Disturbance Mobile Sensing Networks\",\n         \"authors\":\"Jia Liu, Yixue Hao, Zhicai He, Min Chen, Long Hu, and Gang Wei\",\n         \"year\":2024,\n         \"venue\":\"IEEE\",\n         \"doi\":\"10.1109/MNET.2024.3519187\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"other\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"healthcare\",\n         \"scenario_description\":\"The system is designed for non-disturbance mobile sensing networks, enabling efficient data transmission and optimized service quality across varying user needs and application scenarios.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper introduces BigFiberNet, a novel architecture for large-scale non-disturbance mobile sensing networks, integrating fabric computing technology with 5G and large language models (LLMs).\",\n         \"gap_addressed\":\"The system addresses the challenges of non-disturbance, multi-user applications, enabling efficient data transmission and optimized service quality across varying user needs and application scenarios.\",\n         \"performance_enablers\":\"photonic_dechirping, electronic_dechirping, matched_filtering, fft_based_processing, compressed_sensing, coherent_homodyne, coherent_heterodyne, direct_detection, self_coherent, balanced_detection, tfln_modulator, high_bandwidth_modulator, frequency_comb, photonic_adc, integrated_photonics, joint_waveform_design, superimposed_waveform, orthogonal_waveform, dual_function_waveform, frequency_jitter_mitigation, false_target_suppression, phase_noise_compensation, nonlinearity_compensation, wavelength_reuse, shared_fiber_bidirectional, distributed_architecture, monostatic_full_duplex\",\n         \"novel_component\":\"LLM-based encoder\",\n         \"novel_component_specs\":\"The LLM-based encoder is used to pre-encode collected multimodal data, constructing a detailed semantic space of user needs.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Non-disturbance mobile sensing network\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"other\",\n         \"tx_modulation_type\":\"not_specified\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":null,\n         \"optical_bandwidth_ghz\":null,\n         \"tx_power_dbm\":null,\n         \"aperture_diameter_m\":null,\n         \"beam_divergence_mrad\":null\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"other\",\n         \"rx_aperture_diameter_m\":null,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":null,\n         \"rx_modulator_operating_point\":\"not_specified\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"separate_frontends\",\n         \"duplexing_mode\":\"other\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"other\",\n         \"comm_modulation_order\":null,\n         \"comm_symbol_rate_gbaud\":null,\n         \"comm_fec_type\":null,\n         \"sensing_waveform_family\":\"other\",\n         \"isac_waveform_relationship\":\"not_specified\",\n         \"resource_partition\":null\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":null,\n         \"fibre_type\":null,\n         \"attenuation_db_per_km\":null,\n         \"dispersion_ps_per_nm_km\":null,\n         \"nonlinearity_model\":null,\n         \"backscatter_sensing_type\":null\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":null,\n         \"path_loss_model\":null,\n         \"turbulence_model\":null,\n         \"turbulence_Cn2\":null,\n         \"scintillation_index\":null,\n         \"pointing_error_model\":null,\n         \"weather_visibility_m\":null,\n         \"ambient_light_model\":null\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":null,\n         \"spectral_efficiency_bps_hz\":null,\n         \"ber\":null,\n         \"ber_target\":null,\n         \"snr_db\":null,\n         \"osnr_db\":null,\n         \"outage_probability\":null,\n         \"latency_ms\":null,\n         \"capacity_bps_hz\":null\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"localization_2d\",\n         \"sensing_range_m\":null,\n         \"range_resolution_m\":null,\n         \"range_accuracy_m\":null,\n         \"angular_resolution_deg\":null,\n         \"velocity_resolution_mps\":null,\n         \"velocity_accuracy_mps\":null,\n         \"localization_error_m\":null,\n         \"spatial_resolution_m\":null,\n         \"sensing_bandwidth_hz\":null,\n         \"pd_probability_detection\":null,\n         \"pfa_probability_false_alarm\":null,\n         \"crb_crlb_value\":null,\n         \"crb_parameter\":null\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":null,\n         \"tradeoff_control_range\":null\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":null,\n         \"opa_steering_range_deg\":null,\n         \"opa_beamwidth_deg\":null,\n         \"ris_num_elements\":null,\n         \"ris_type\":null,\n         \"ris_phase_bits\":null\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system architecture and the experimental setup. The results are well-presented, and the conclusions are well-supported by the data.\"\n   }\n}"
+}

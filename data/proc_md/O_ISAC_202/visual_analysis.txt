@@ -1,0 +1,211 @@
+================================================================================
+O_ISAC_202 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Optical Covert Sensing and Communication
+Authors: Huatao Zhu et al. (NUDT, BUPT)
+Journal: Chinese Optics Letters 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_1.jpeg
+### Type: Non-Scientific (Journal Header)
+### Note: COL logo - SKIPPED
+---
+
+## Image: _page_1_Picture_2.jpeg
+### Type: System Block Diagram
+
+### Title: Proof-of-Concept Experiment Setup
+
+### Transmitter (Covert):
+- ASE light source (no optical filtering)
+- PPG (1.25 Gbps, OOK)
+- SMF spreading (time domain)
+
+### Transmitter (Public):
+- Standard optical TX
+- 25 km G.652 SMF
+
+### Sagnac Interferometer:
+- Two 3×3 optical couplers
+- 25 km SMF span
+- 10 km SMF span
+- Variable short SMF (0-5 km)
+- PZT vibration source (130 kHz resonance)
+
+### Sensing Receiver:
+- Optical filter (suppress public signal)
+- EDFA amplification
+- PD for vibration detection
+- Null frequency analysis
+
+### Communication Receiver:
+- DCF (time compression)
+- Optical filter
+- EDFA + PD
+- BER tester
+
+### Key Parameters:
+| Parameter | Value |
+|-----------|-------|
+| Covert data rate | 1.25 Gbps |
+| Modulation | OOK |
+| PZT frequency | 130 kHz resonance |
+| Test frequency | 100 Hz |
+| R₁ (initial) | 10 km |
+| R₂ (initial) | 25 km |
+
+### O-ISAC Relevance:
+- First integrated covert ISAC system
+---
+
+## Image: _page_2_Figure_13.jpeg
+### Type: Dual-Panel Chart (Sensing Performance)
+
+### Title: Waveform and Frequency of the Signal
+
+### Panel (a) - Time Domain:
+- X-axis: Time (s)
+- Y-axis: Voltage (V)
+- Clear 100 Hz vibration signal visible
+- Modulated ASE carrier
+- Clean sinusoidal pattern
+
+### Panel (b) - Frequency Domain:
+- X-axis: Frequency (Hz): 0
+- Y-axis: Power (dBm/Hz)
+- Null frequency points visible
+- Series of harmonics
+- Vibration location derivable via null frequencies
+
+### Key Equation:
+f_null = Nc / [n(L - 2R₁)]
+- N: Order of null frequency
+- c: Speed of light
+- n: Effective index
+- L: Interferometer length
+- R₁: Distance to vibration
+
+### O-ISAC Relevance:
+- Demonstrates covert sensing capability
+---
+
+## Image: _page_3_Figure_2.jpeg
+### Type: Dual-Panel Chart (Position Sensing)
+
+### Panel (a) - Null Frequency vs Order N:
+- X-axis: N (order): 1-6
+- Y-axis: Null Frequency (kHz)
+- Linear increase with N
+- Multiple fiber length configurations
+- First null frequency shows deviation (noise)
+
+### Panel (b) - Position Error vs Order N:
+- X-axis: N (order): 1-6
+- Y-axis: Error (m): 0-400
+- Error decreases with higher N
+- N=6: ~20 m accuracy
+- With/without modulation compared
+
+### Fiber Configurations Tested:
+| Short SMF | R₁ (km) | R₂ (km) |
+|-----------|---------|---------|
+| 0 km | 10 | 25 |
+| 1 km | 10 | 26 |
+| 2 km | 10 | 27 |
+| 3 km | 10 | 28 |
+| 4 km | 10 | 29 |
+| 5 km | 10 | 30 |
+
+### Key Finding:
+- Covert communication has negligible impact on sensing
+- 20 m localization accuracy at N=6
+
+### O-ISAC Relevance:
+- Validates simultaneous covert comm + sensing
+---
+
+## Image: _page_3_Figure_7.jpeg
+### Type: Line Chart (Covert Channel BER)
+
+### Title: BER Curves of Covert Channel
+
+### Axes:
+- X-axis: Received Optical Power (dBm): -30 to -18
+- Y-axis: log(BER): -9 to -2
+
+### Curves:
+- With vibration
+- Without vibration
+- Nearly superimposable
+
+### Key Finding:
+- Vibration has minimal impact on covert BER
+- Sensitivity: ~-24 dBm @ BER 10⁻⁹
+
+### O-ISAC Relevance:
+- Sensing doesn't degrade communication
+---
+
+## Image: _page_3_Figure_9.jpeg
+### Type: Line Chart (Public Channel BER)
+
+### Title: BER Curves of Public Channel Under Vibration
+
+### Axes:
+- X-axis: Received Optical Power (dBm): -30 to -18
+- Y-axis: log(BER): -9 to -2
+
+### Curves Compared:
+1. Without ASE noise
+2. With ASE noise + covert signal
+3. With ASE noise without covert signal
+4. With ASE noise + vibration
+
+### Power Levels:
+| Channel | Power |
+|---------|-------|
+| Public | -1 dBm |
+| Covert | -13 dBm |
+
+### Key Finding:
+- ~1 dB penalty from ASE noise
+- Covert channel negligible impact on public
+- Vibration minimal effect on intensity detection
+
+### O-ISAC Relevance:
+- Public channel unaffected by covert ISAC
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (1 non-scientific skipped)
+- System Diagrams: 1
+- Dual-Panel Charts: 2
+- Line Charts: 2
+
+Key Technical Findings:
+1. Platform: Sagnac Interferometer + ASE Carrier
+2. Covert Carrier: Amplified Spontaneous Emission (ASE)
+3. Data Rate: 1.25 Gbps OOK
+4. Vibration Detection: Null frequency method
+5. Localization Accuracy: ~20 m (at N=6)
+6. Sensing Frequency: 100 Hz test
+7. PZT Resonance: 130 kHz
+
+Key Innovations:
+- First integrated optical COVERT sensing + communication
+- ASE as natural covert carrier (wideband, noise-like)
+- Sagnac loop for vibration sensing
+- Same wavelength, same time, same fiber
+- Physical layer security + sensing combined
+- Metropolitan optical network application
+
+Performance Summary:
+| Metric | Value |
+|--------|-------|
+| Covert sensitivity | ~-24 dBm @ 10⁻⁹ BER |
+| Public penalty | ~1 dB from ASE |
+| Position error | 20 m @ N=6 |
+| Covert power | 12 dB below public |
+================================================================================

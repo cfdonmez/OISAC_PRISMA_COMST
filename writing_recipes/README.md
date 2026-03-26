@@ -8,10 +8,10 @@
 
 | Dosya | Konum | Açıklama |
 |:------|:------|:---------|
-| [writing_blueprints_master.json](../analysis/writing_blueprints_master.json) | `analysis/` | Tüm COMST blueprintlerinin master koleksiyonu |
-| [NEW_COMST_020_blueprint.json](../analysis/NEW_COMST_020_blueprint.json) | `analysis/` | COMST_020 için güncel blueprint |
-| [COMST_001 writing_blueprint.json](../data/corpus_standardized/COMST_001/writing_blueprint.json) | `data/corpus_standardized/COMST_001/` | Per-paper blueprint |
-| [COMST_020 writing_blueprint.json](../data/corpus_standardized/COMST_020/writing_blueprint.json) | `data/corpus_standardized/COMST_020/` | Per-paper blueprint |
+| [writing_blueprints_master.json](../analysis/wrt_bp_master.json) | `analysis/` | Tüm COMST blueprintlerinin master koleksiyonu |
+| [NEW_COMST_020_blueprint.json](../analysis/COMST_020_bp.json) | `analysis/` | COMST_020 için güncel blueprint |
+| [COMST_001 writing_blueprint.json](../data/corp_std/COMST_001/writing_blueprint.json) | `data/corp_std/COMST_001/` | Per-paper blueprint |
+| [COMST_020 writing_blueprint.json](../data/corp_std/COMST_020/writing_blueprint.json) | `data/corp_std/COMST_020/` | Per-paper blueprint |
 
 ---
 
@@ -32,7 +32,7 @@
 |:------|:------|:-------|
 | [surveyOutline.md](../memory-bank/surveyOutline.md) | `memory-bank/` | Detaylı survey outline, word budgets, visual budgets |
 | [goldenModel.md](../memory-bank/goldenModel.md) | `memory-bank/` | 76 COMST analizinden çıkarılan yazım modeli |
-| [synthesis_report.md](../analysis/synthesis_report.md) | `analysis/` | The Blueprint - 7 bölümlü kapsamlı yazım rehberi |
+| [synthesis_report.md](../analysis/synth_rpt.md) | `analysis/` | The Blueprint - 7 bölümlü kapsamlı yazım rehberi |
 
 ---
 
@@ -40,7 +40,7 @@
 
 | Dosya | Konum | İçerik |
 |:------|:------|:-------|
-| [phrasebank.json](../analysis/phrasebank.json) | `analysis/` | 1700+ akademik kalıp cümle (5 kategori) |
+| [phrasebank.json](../analysis/pbank.json) | `analysis/` | 1700+ akademik kalıp cümle (5 kategori) |
 
 ---
 
@@ -48,7 +48,7 @@
 
 | Dosya | Konum | İçerik |
 |:------|:------|:-------|
-| [survey_writing_guide.md](../docs/survey_writing_guide.md) | `docs/` | IEEE COMST + PRISMA 2020 entegrasyon rehberi |
+| [surv_write_guide.md](../docs/surv_write_guide.md) | `docs/` | IEEE COMST + PRISMA 2020 entegrasyon rehberi |
 
 ---
 
@@ -64,7 +64,7 @@
 
 **Yazarken:** Önce `surveyOutline.md` → hangi section yazacaksanız o template → `phrasebank.json` → bitirince `goldenModel.md` ile kontrol.
 
-**Blueprint üretirken:** `generate_blueprint_comst020.py` → output `data/corpus_standardized/COMST_XXX/writing_blueprint.json`
+**Blueprint üretirken:** `generate_blueprint_comst020.py` → output `data/corp_std/COMST_XXX/writing_blueprint.json`
 
 ---
 

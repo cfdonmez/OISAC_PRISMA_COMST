@@ -1,0 +1,114 @@
+Image: _page_2_Figure_3.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Coordinator:** Circular LED module (Transmitter subsystem), Receiving LED (Receiver subsystem).
+- **Worker/Device:** Black plastic material (Length 169.6 mm), Retroreflective foil (Width 50 mm, Height not fully specified but covers section of black plastic), Photodiode (Receiver), Receiver box.
+- **Labels:** Continuously emitting LED, Circular LED module, Receiving LED, Photodiode, Retroreflective foil, Black plastic material.
+- **Dimensions:** 169.6 mm (Length), 50 mm (Width), 54 mm (Device height).
+
+**Flow:**
+The diagram illustrates the physical setup and components of the VLP (Visible Light Positioning) system.
+1.  **Coordinator:** Houses the LED transmitter module for illumination and positioning signal, and a Receiving LED for sensing.
+2.  **Worker:** A mobile device equipped with a specific retroreflective foil pattern (marker) and a photodiode receiver.
+3.  **Interaction:** The Coordinator emits light. The retroreflective foil on the Worker reflects the light back to the Receiving LED on the Coordinator for angle/position sensing. The Photodiode on the Worker receives the signal for communication or own positioning.
+---
+
+Image: _page_2_Figure_8.jpeg
+Type: System Diagram / Schematic (Block Diagram)
+---
+**Components:**
+- **Coordinator (Left Block):**
+    -   **Control Loop:** PID Controller -> Error (+/-) -> Angle Set -> Control Loop feedback.
+    -   **Tx/Rx:** LED Module (emits pulse 1/f), LED (separate block?), Receiver (receives Measured Angle).
+- **Worker (Right Block):**
+    -   **Passive/Active:** Servo / Retroreflective Foil, Receiver.
+- **Signals:** Measured Angle (Worker -> Coordinator), Controller Output (Coordinator -> LED Module), Light/Signal (LED Module -> Worker).
+
+**Flow:**
+Control system block diagram.
+1.  **Sensing:** The Coordinator's Receiver measures the angle (likely via the retroreflective foil reflection from the Worker).
+2.  **Processing:** This "Measured Angle" is fed into a summation point, compared with an "Angle Set" point to generate an "Error" signal.
+3.  **Control:** The "PID Controller" processes the error and generates a "Controller Output".
+4.  **Actuation:** The output drives the "LED Module" (likely modulating the intensity or frequency 1/f) to illuminate the Worker or adjust the system state to minimize the error in the "Control Loop".
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: System Diagram / Schematic (Timing Diagram)
+---
+**Components:**
+- **Y-axis:** Signal State (ON / OFF).
+- **X-axis:** Time.
+- **Phases:**
+    -   **Sensing:** Signal is OFF (or constant low).
+    -   **Illumination:** Signal is toggling ON/OFF (Square wave/PWM).
+- **Sequence:** Sensing -> Illumination -> Sensing -> Illumination -> Sensing.
+
+**Flow:**
+The diagram illustrates a Time Division Multiplexing (TDM) or hybrid frame structure.
+1.  **Sensing Interval:** The transmitter is in a specific state (likely OFF or listening) to perform sensing (detecting reflections without self-interference).
+2.  **Illumination Interval:** The transmitter pulses (PWM) to provide illumination and potentially transmit data, while sensing is paused.
+3.  **Repetition:** This cycle repeats, allowing both functions (Sensing and Illumination) to coexist in time.
+---
+
+Image: _page_4_Figure_1.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Angle (deg) [Range: 0 to 200]
+- **Y-axis:** Voltage (V) [Range: 0.08 to 0.20]
+
+**Data Points:**
+- **Curve:** Monotonic quasi-linear decrease.
+    - Start: At Angle 0, Voltage ~ 0.20 V.
+    - End: At Angle 200, Voltage ~ 0.075 V.
+    - Anomaly: A slight bump/discontinuity around 155-160 degrees.
+- **Slope:** Negative. Voltage decreases as Angle increases, indicating an inverse relationship used for sensing.
+
+**Legend/Trends:**
+- **Variables:** Receiver Voltage output vs Incidence Angle.
+- **Trend:** Demonstrates the sensing characteristic of the retroreflective foil/receiver setup. Higher angles result in lower received voltage (lower intensity), allowing angle estimation from voltage measurement.
+---
+
+Image: _page_4_Figure_6.jpeg
+Type: Chart / Graph (Multi-plot)
+---
+**Axes Extraction:**
+- **(a) X-axis:** Time (s) [Range: 0 to 3.5]
+- **(a) Y-axis:** Frequency (Hz) [Range: 500 to 600]
+- **(b) X-axis:** Time (s) [Range: 0 to 3.5]
+- **(b) Y-axis:** Angle (deg) [Range: 0 to 200]
+- **(c) X-axis:** Time (s) [Range: 0 to 3.5]
+- **(c) Y-axis:** Pulse-width (ms) [Range: 1460 to 1472.5]
+- **(d) X-axis:** Time (s) [Range: 0 to 3.5]
+- **(d) Y-axis:** Voltage (V) [Range: 0.075 to 0.200]
+
+**Data Points:**
+- **Event at t ~ 0.5s:** Step change. Frequency drops (600 -> 500 Hz), Pulse-width drops (1473 -> 1460 ms), Angle starts increasing (0 -> 200 deg), Voltage starts decreasing (0.2 -> 0.075 V).
+- **Event at t ~ 1.8s:** System response changes. Frequency rises, Pulse-width rises (stepped), Angle continues rising, Voltage continues decreasing.
+- **Correlation:** As Angle increases (b), Voltage decreases (d). This drives the Control Loop to adjust Frequency (a) and Pulse-width (c).
+
+**Legend/Trends:**
+- **Variables:** System step response tracking.
+- **Trend:** Shows the dynamic response of the system (PID controller) to a change in angle (likely a movement). The controller adjusts the LED modulation parameters (Frequency/Pulse-width) based on the sensed Angle (Voltage).
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Angle (deg) [Range: 0 to 200]
+- **Y-axis:** Angle (deg) [Range: 0 to 200]
+
+**Data Points:**
+- **(a) Dark Conditions:**
+    - **Red Line (Servo):** Ideal/Reference angle.
+    - **Blue Dots (VLS dark):** Measured points tightly cluster along the reference line. High linearity, low noise.
+- **(b) Ambient Conditions:**
+    - **Red Line (Servo):** Ideal/Reference angle.
+    - **Green Dots (VLS ambient):** Measured points generally follow the line but show significantly slightly more spread/noise compared to dark conditions.
+
+**Legend/Trends:**
+- **Variables:** Measured Angle (VLS) vs Reference Angle (Servo) under (a) Dark and (b) Ambient Light.
+- **Trend:** The Visible Light Sensing (VLS) system is highly accurate in dark conditions. Ambient light introduces some noise/error but the system remains largely linear and effective across the 0-200 degree range.
+---

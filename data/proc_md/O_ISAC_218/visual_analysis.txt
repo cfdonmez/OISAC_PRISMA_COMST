@@ -1,0 +1,359 @@
+================================================================================
+O_ISAC_218 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Hybrid MRR-Assisted Long-Range SDMA for RO-ISAC Systems in Industry IoT Applications
+Authors: Xin Xiong et al. (Colorado School of Mines, Chongqing University)
+Journal: IEEE 2025 (under review)
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_3.jpeg
+### Type: System Diagram
+
+### Title: RO-ISAC System Diagram and Signal Processing
+
+### Main Panel - Geometry:
+- Central luminaire (TX/RX combined)
+- Two mobile tags at different distances
+- Conflict Regions (CRs) as concentric circles
+- 5m vertical distance
+
+### Panel (a) - Transmitted OFDM:
+- Downlink waveform
+- IFFT size: 128
+- 63 active subcarriers
+
+### Panel (b) - Tag 1 Return:
+- 100 Hz OOK modulation
+- MRR (orange) + URR (blue) combined
+
+### Panel (c) - Tag 2 Return:
+- 80 Hz OOK modulation
+- Different delay
+
+### Panel (d) - Cross-Correlation Profile:
+- Top: Before SIC - only Tag 1 peak visible (84 samples)
+- Bottom: After SIC - Tag 2 recovered (90 samples)
+- Weaker signal unmasked
+
+### Panel (e) - Peak Time Series:
+- OOK waveform from peak amplitudes
+- 100 Hz pattern visible
+
+### Panel (f) - Demodulated Bits:
+- Final bit stream recovery
+- Threshold detection
+
+### O-ISAC Relevance:
+- Complete RO-ISAC signal chain
+---
+
+## Image: _page_4_Figure_3.jpeg
+### Type: Block Diagram (SIC Framework)
+
+### Title: System Workflow and SIC-Based Signal Processing
+
+### Receiver Block Diagram:
+1. A/D Converter
+2. Cross-Correlation with x_ref[n]
+3. Peak Detection (k̂₁)
+4. Signal Reconstruction: r̂₁[n] = ĥ₁·x_ref[n-k̂₁]
+5. Subtraction: r_res[n] = r[n] - r̂₁[n]
+6. Second Cross-Correlation for k̂₂
+
+### Key Equations:
+- r(t) = s₁(t-τ₁) + s₂(t-τ₂) + n(t)
+- Cross-correlation: Eq. (4)
+- Reconstruction: Eq. (5)
+- Residual: Eq. (6)
+
+### O-ISAC Relevance:
+- Novel SIC for ToF-based SDMA
+---
+
+## Image: _page_5_Figure_9.jpeg
+### Type: Hardware Photo + Thermal Image
+
+### Title: LED Board Design and Thermal Management
+
+### Panel (a) - LED Board:
+- 30 LEDs non-uniform distribution
+- Centrally-weighted configuration
+- Three concentric rings
+- Aluminum-based PCB
+
+### Inset - Thermal Camera:
+- 10-LED test board
+- Uniform temperature distribution
+- Metal core PCB effectiveness
+
+### Panel (b) - Final Luminaire Heat Map:
+- 200 LEDs for 200 lux @ 5m
+- Center: ~66°C
+- Edge: ~62°C
+- Only 3-4°C differential
+
+### O-ISAC Relevance:
+- Practical LED array design for long-range
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Hardware Photo
+
+### Title: Experimental Setup and Optical Components
+
+### Panel (a) - Physical Setup:
+- Integrated LED array + photodiode receiver
+- External high-speed photodetector (PDA100A2)
+- Corner cube retro-reflector
+
+### Panel (b) - Component Catalog:
+- 5 Retro-reflector Types:
+  1. Glass TIR corner cube
+  2. Gold-coated glass
+  3. Hollow Al-coated
+  4. Hollow Au-coated
+  5. 3M reflective material
+
+- 4 LC Modulators:
+  1. TN 5V shutter
+  2. TN 10V shutter
+  3. Pi-cell
+  4. PDLC
+
+### O-ISAC Relevance:
+- COTS component evaluation
+---
+
+## Image: _page_6_Figure_5.jpeg
+### Type: Schematic Diagrams (3 panels)
+
+### Panel (a) - Transmitter Driver:
+- DC bias (Keithley 2230)
+- AWG for AC signal
+- ADA4870 linear amplifier
+- Bias-tee (ESDEMC 450V, 5 GHz BW)
+
+### Panel (b) - Lateral Scanning:
+- Corner cube movement geometry
+- 1.6m baseline distance
+
+### Panel (c) - Vertical Calibration:
+- Detector position variation
+- Inverse-square law characterization
+
+### O-ISAC Relevance:
+- Testbed methodology
+---
+
+## Image: _page_7_Figure_3.jpeg
+### Type: Multi-Panel Chart (L-I/L-V Characterization)
+
+### Title: Electro-Optical Response for LED Configurations
+
+### Top Row (a-c) - L-I Response:
+- (a) Single LED
+- (b) 3 LEDs in series
+- (c) 3 LEDs in parallel
+
+### Bottom Row (d-f) - L-V Response:
+- (d) Single LED: Linear
+- (e) Series: More stable
+- (f) Parallel: More fluctuation
+
+### Panel (g) - Linear Operating Region:
+- DC bias: 3V
+- Vpp = 0.8V, 0.6V, 0.4V, 0.2V
+- No harmonics at 0.2V
+
+### Key Finding:
+- Voltage modulation superior linearity
+- Series configuration more stable
+- Linear region: 3V DC + 0.336V AC
+
+### O-ISAC Relevance:
+- LED characterization for OFDM transmission
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Multi-Panel Performance Chart
+
+### Title: Retro-Reflected Power vs Lateral Distance
+
+### Panel (a) - Baseline (No LC):
+| Retro-reflector | Ranking |
+|-----------------|---------|
+| TIR glass | 1st (highest) |
+| Hollow Al-coated | 2nd |
+| Gold-coated (both) | 3rd |
+| 3M material | Lowest, but widest angle |
+
+### Panel (b) - With 5V TN Shutter:
+- Hollow Al-coated: Best combined
+- 5V performs better than 10V
+
+### Panel (c) - With 10V TN Shutter:
+- Lower total power vs 5V
+
+### Panel (d) - With Pi-cell:
+- TIR, Hollow Al, Hollow Au similar
+- Gold-coated glass lower
+
+### Panel (e) - With PDLC:
+- Rapid attenuation with displacement
+
+### Optimal Configuration:
+- 5V TN LC + Hollow Al corner cube
+- Avoids TIR polarization mismatch
+- OOK: 80-100 Hz (within 30-1000 Hz range)
+
+### O-ISAC Relevance:
+- Component selection for MRR design
+---
+
+## Image: _page_9_Figure_11.jpeg
+### Type: Dual-Panel Calibration Curves
+
+### Title: DC Voltage and Signal Strength vs Distance
+
+### Panel (a) - DC Voltage Fit:
+- Photodiode DC voltage vs distance
+- R² = 0.9963
+
+### Panel (b) - Signal Strength Fit:
+- Photodetector AC amplitude vs distance
+- R² = 0.9990
+- 1 MHz modulated signal
+
+### Calibration Map:
+- A_sig(y) = g(V_LF(y))
+- Maps low-speed DC to high-speed AC
+- Enables indirect measurement
+
+### Noise Floor:
+- Thermal noise: -97 dBV
+- Commercial detector 25 dB better than custom
+
+### O-ISAC Relevance:
+- SNR characterization for simulation
+---
+
+## Image: _page_10_Figure_13.jpeg
+### Type: CDF Chart
+
+### Title: Ranging Error Under Single-Region Condition
+
+### Axes:
+- X-axis: Ranging Error (m): 0-0.06
+- Y-axis: CDF: 0-1
+
+### Sub-regions:
+- Center (0-0.5m): Highest error
+- Mid (0.9-1.4m): Best accuracy
+- Edge (1.8-2.3m): Higher error
+- Overall: 95% within cm-level
+
+### Key Finding:
+- Center: High SNR but worst 1D→2D conversion
+- Edge: Lower SNR
+- Mid-range optimal accuracy
+
+### O-ISAC Relevance:
+- Single-tag ranging performance
+---
+
+## Image: _page_11_Figure_6.jpeg
+### Type: Line Chart (OSR Impact)
+
+### Title: Impact of OSR on Peak Positioning Accuracy
+
+### Axes:
+- X-axis: SNR (dB): 10-40
+- Y-axis: Peak Positioning Accuracy (%): 0-100
+
+### OSR Values:
+- OSR = 50: ~50% accuracy
+- OSR = 100: ~75%
+- OSR = 200: ~85%
+- OSR = 500: ~95%
+
+### Key Finding:
+- OSR dominant factor (not SNR)
+- Accuracy stable across 10-40 dB SNR
+- Only degrades below 10 dB
+
+### System Parameters:
+- Receiver: 2.5 GHz sampling
+- Tag at 88 samples (1.686m offset)
+
+### O-ISAC Relevance:
+- Bandwidth-resolution trade-off
+---
+
+## Image: _page_12_Figure_3.jpeg
+### Type: Multi-Panel Simulation Results
+
+### Title: Two-Tag ISAC Performance
+
+### Configuration:
+- Tag 1: Region 2 (variable offset)
+- Tag 2: Region 3 or Region 8
+- OOK: 100 Hz / 80 Hz
+- MRR depth: 1/10 of URR
+
+### Panels (a-d) - OSR = 10:
+- (a) BER vs offset (Regions 2&3)
+- (b) Accuracy vs offset (Regions 2&3)
+- (c) BER vs offset (Regions 2&8)
+- (d) Accuracy vs offset (Regions 2&8)
+
+### Panels (e-h) - OSR = 20:
+- Similar structure
+- Lower OSR = better performance
+
+### Key Results:
+| Metric | Without SIC | With SIC |
+|--------|-------------|----------|
+| Weak tag BER | High | Significantly better |
+| Region classification | Good | Maintained |
+
+### Trade-off:
+- Adjacent regions: SIC may slightly degrade
+- Well-separated: SIC essential
+
+### O-ISAC Relevance:
+- SIC enables multi-tag recovery
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 11 (all scientific)
+- System Diagrams: 2
+- Block Diagrams: 1
+- Hardware Photos: 2
+- Multi-Panel Charts: 4
+- Performance Curves: 2
+
+Key Technical Findings:
+1. Platform: Retro-Reflective Optical ISAC (RO-ISAC)
+2. Range: 5 meters (warehouse ceiling height)
+3. Light Source: 200 COTS LEDs, 200 lux
+4. Bandwidth: 4 MHz LED (-20 dB)
+5. Receiver: 2.5 GHz sampling
+6. Modulation: OFDM + OOK (80-100 Hz)
+7. MRR Depth: 10% of URR
+
+Key Innovations:
+1. Hybrid URR + MRR architecture
+2. SIC-based SDMA for passive optical multi-access
+3. ToF cross-correlation for ranging + communication
+4. Conflict Region (CR) concept for spatial resolution
+5. cm-level ranging @ 5m with 95% confidence
+6. OSR as dominant factor for resolution
+
+Hardware Contributions:
+- Custom LED array with thermal management
+- Bias-tee for DC+AC combination
+- Component evaluation: 5 CCRs × 4 LC modulators
+- Optimal: 5V TN + Hollow Al-coated CCR
+================================================================================

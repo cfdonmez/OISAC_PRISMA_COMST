@@ -1,0 +1,22 @@
+flowchart TB
+    A["Identification<br/>Records identified from databases<br/>(n = 980)<br/>IEEE Xplore, Scopus, Web of Science"]
+    B["Duplicate records removed<br/>(n = 280)"]
+    C["Screening<br/>Records screened by title and abstract<br/>(n = 700)"]
+    D["Records excluded<br/>(n = 478)<br/>Irrelevant topic, RF-only, or out-of-scope"]
+    E["Eligibility<br/>Full-text articles assessed<br/>(n = 222)"]
+    F["Full-text articles excluded<br/>(n = 2)<br/>Non-O-ISAC or unverifiable full-text record"]
+    G["Included<br/>Studies included in review<br/>(n = 220)"]
+
+    A --> B --> C
+    C --> D
+    C --> E
+    E --> F
+    E --> G
+
+    classDef stage fill:#ffffff,stroke:#444444,stroke-width:1.2px,color:#111111;
+    classDef excluded fill:#fff4f4,stroke:#b85450,stroke-width:1.2px,color:#111111;
+    classDef included fill:#dff2bf,stroke:#4f772d,stroke-width:1.8px,color:#111111;
+
+    class A,B,C,E stage;
+    class D,F excluded;
+    class G included;

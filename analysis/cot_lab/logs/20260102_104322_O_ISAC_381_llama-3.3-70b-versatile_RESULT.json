@@ -1,0 +1,184 @@
+{
+  "run_id": "20260102_104322_O_ISAC_381_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104322",
+  "paper_id": "O_ISAC_381",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper proposes a long-distance, real-time LED display-camera communication (DCC) system based on LED point clustering and lightweight image processing. The system uses a 2.2-inch 16x16 point LED display and a smartphone's CMOS camera to achieve a maximum data transmission distance of 7m under a BER of 0.5 and a data transmission distance of 175cm under the 7% FEC limit."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The system uses a LED-DCC point clustering scheme to increase the light-emitting area for sending information and a lightweight, back-forth, fast image processing algorithm to quickly locate the LED-DCC display area and extract the transmitted data bits in real-time."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The system's performance is verified through experiments, which show that it can achieve a maximum data transmission distance of 7m under a BER of 0.5 and a data transmission distance of 175cm under the 7% FEC limit, outperforming previous LED-DCC systems."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The system's long-distance and real-time capabilities make it suitable for various applications, but its performance may be limited by the low frame rate and resolution of the image sensor. Future works should focus on improving the channel capacity of the LED-DCC system and testing its performance under outdoor conditions."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_381",
+        "title": "Long-Distance, Real-Time LED Display-Camera Communication System Based on LED Point Clustering and Lightweight Image Processing",
+        "authors": "Jingwen Li, Junbin Fang et al.",
+        "year": 2022,
+        "venue": "Photonics",
+        "doi": "10.3390/photonics9100721",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "indoor_positioning",
+          "security_surveillance"
+        ],
+        "scenario_description": "LED display-camera communication system for indoor applications"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "LED-DCC point clustering scheme and lightweight, back-forth, fast image processing algorithm for long-distance and real-time LED display-camera communication",
+        "gap_addressed": "short transmission distance and high processing latency in previous LED-DCC systems",
+        "performance_enablers": [
+          "joint_waveform",
+          "photonic_dechirping"
+        ],
+        "novel_component": "LED-DCC point clustering scheme",
+        "novel_component_specs": "increases light-emitting area for sending information"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Indoor LED-DCC system"
+        },
+        "transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 630,
+          "optical_bandwidth_ghz": 0.1,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "cmos",
+          "rx_aperture_diameter_m": 0.01,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 0,
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "separate_frontends",
+          "duplexing_mode": "half_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 0.01,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_tof",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 7,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 100,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 3e-05,
+          "spectral_efficiency_bps_hz": 0.01,
+          "ber": 0.001,
+          "ber_target": 0.001,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0,
+          "latency_ms": 13.26,
+          "capacity_bps_hz": 0.01
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging"
+          ],
+          "sensing_range_m": 7,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0,
+          "velocity_accuracy_mps": 0,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.01,
+          "sensing_bandwidth_hz": 0,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": 0,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_range"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "tx_power",
+          "tradeoff_control_range": "[0, 10]"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and its components, and the experiments are well-designed to verify the system's performance."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper proposes a long-distance, real-time LED display-camera communication (DCC) system based on LED point clustering and lightweight image processing. The system uses a 2.2-inch 16x16 point LED display and a smartphone's CMOS camera to achieve a maximum data transmission distance of 7m under a BER of 0.5 and a data transmission distance of 175cm under the 7% FEC limit.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The system uses a LED-DCC point clustering scheme to increase the light-emitting area for sending information and a lightweight, back-forth, fast image processing algorithm to quickly locate the LED-DCC display area and extract the transmitted data bits in real-time.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"The system's performance is verified through experiments, which show that it can achieve a maximum data transmission distance of 7m under a BER of 0.5 and a data transmission distance of 175cm under the 7% FEC limit, outperforming previous LED-DCC systems.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The system's long-distance and real-time capabilities make it suitable for various applications, but its performance may be limited by the low frame rate and resolution of the image sensor. Future works should focus on improving the channel capacity of the LED-DCC system and testing its performance under outdoor conditions.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_381\",\n           \"title\": \"Long-Distance, Real-Time LED Display-Camera Communication System Based on LED Point Clustering and Lightweight Image Processing\",\n           \"authors\": \"Jingwen Li, Junbin Fang et al.\",\n           \"year\": 2022,\n           \"venue\": \"Photonics\",\n           \"doi\": \"10.3390/photonics9100721\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_vlc\",\n           \"carrier_band\": \"visible\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"indoor_positioning\", \"security_surveillance\"],\n           \"scenario_description\": \"LED display-camera communication system for indoor applications\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"LED-DCC point clustering scheme and lightweight, back-forth, fast image processing algorithm for long-distance and real-time LED display-camera communication\",\n           \"gap_addressed\": \"short transmission distance and high processing latency in previous LED-DCC systems\",\n           \"performance_enablers\": [\"joint_waveform\", \"photonic_dechirping\"],\n           \"novel_component\": \"LED-DCC point clustering scheme\",\n           \"novel_component_specs\": \"increases light-emitting area for sending information\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Indoor LED-DCC system\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"led\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 630,\n               \"optical_bandwidth_ghz\": 0.1,\n               \"tx_power_dbm\": 10,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct\",\n               \"rx_detector\": \"cmos\",\n               \"rx_aperture_diameter_m\": 0.01,\n               \"rx_photonic_processing\": \"none\",\n               \"rx_modulator_type\": \"none\",\n               \"rx_modulator_bandwidth_ghz\": 0,\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"separate_frontends\",\n               \"duplexing_mode\": \"half_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ook\",\n               \"comm_modulation_order\": 2,\n               \"comm_symbol_rate_gbaud\": 0.01,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"pulse_tof\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"time\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"none\",\n               \"attenuation_db_per_km\": 0,\n               \"dispersion_ps_per_nm_km\": 0,\n               \"nonlinearity_model\": \"none\",\n               \"backscatter_sensing_type\": \"none\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 7,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 100,\n               \"ambient_light_model\": \"none\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 0.00003,\n               \"spectral_efficiency_bps_hz\": 0.01,\n               \"ber\": 0.001,\n               \"ber_target\": 0.001,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0,\n               \"latency_ms\": 13.26,\n               \"capacity_bps_hz\": 0.01\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\"],\n               \"sensing_range_m\": 7,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0,\n               \"velocity_accuracy_mps\": 0,\n               \"localization_error_m\": 0.1,\n               \"spatial_resolution_m\": 0.01,\n               \"sensing_bandwidth_hz\": 0,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.1,\n               \"crb_crlb_value\": 0,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_range\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"tx_power\",\n               \"tradeoff_control_range\": \"[0, 10]\"\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system and its components, and the experiments are well-designed to verify the system's performance.\"\n   }\n}"
+}

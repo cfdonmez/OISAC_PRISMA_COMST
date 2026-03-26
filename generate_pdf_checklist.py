@@ -4,9 +4,9 @@ import os
 
 # Paths
 base_dir = r'c:\Users\fatih\gdrive\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST'
-csv_path = os.path.join(base_dir, 'analysis/phase1_screening/included_studies_list.csv')
-pdf_dir = os.path.join(base_dir, 'data/retrieved_docs')
-output_md = os.path.join(base_dir, 'analysis/phase2_extraction/pdf_download_todo.md')
+csv_path = os.path.join(base_dir, 'analysis/ph1_scr/included_studies_list.csv')
+pdf_dir = os.path.join(base_dir, 'data/ret_docs')
+output_md = os.path.join(base_dir, 'analysis/ph2_ext/pdf_download_todo.md')
 
 # Ensure PDF Dir exists
 os.makedirs(pdf_dir, exist_ok=True)
@@ -55,7 +55,7 @@ try:
     if missing:
         md_content = '# 📥 PDF Download Checklist\n\n'
         md_content += f'**Durum:** {found_count} Mevcut | {len(missing)} Eksik\n'
-        md_content += '**Hedef Klasör:** `data/retrieved_docs`\n'
+        md_content += '**Hedef Klasör:** `data/ret_docs`\n'
         md_content += '**Format:** `O_ISAC_XXX.pdf`\n\n'
         md_content += '| Download Status | Track ID | Title | DOI Link |\n'
         md_content += '|---|---|---|---|\n'

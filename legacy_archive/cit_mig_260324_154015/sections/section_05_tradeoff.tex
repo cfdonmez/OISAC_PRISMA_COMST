@@ -1,0 +1,145 @@
+\section{Communication-Sensing Tradeoff Synthesis}
+\label{sec:tradeoff}
+
+Section V turns the Section II governance contract and the Section IV taxonomy into a quantitative synthesis layer. The aim is not to pool every reported point into a single cloud, but to keep only the scenario-level evidence that remains admissible after plane, metric-role, and aliasing checks. In that sense, this section is the review's comparison layer: Section IV decides which studies are structurally comparable, and Section V asks what can still be interpreted quantitatively once those constraints are enforced.
+
+\subsection{Communication Metrics}
+\label{sec:tradeoff-comm}
+
+Communication evidence in the corpus is numerically rich, but only a governed subset is suitable for cross-study synthesis. We therefore keep rate $R$ and quality indicators separate by receiver plane: electrical-plane SNR/ESNR is treated as a post-detection metric, while optical-plane OSNR is treated as an optical-domain metric and is not numerically interchangeable with SNR without an explicit conversion model.
+
+\begin{table*}[!t]
+\caption{Governed Communication-Metric Coverage and Plane-Aware Availability}
+\label{tab:tradeoff-comm}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Communication metric} & \textbf{Raw scenario coverage} & \textbf{Governed usable coverage} & \textbf{Governed range / median} & \textbf{Interpretation note} \\
+\midrule
+Rate ($R$) & 197/225 records; 194/220 papers & 33 rate-bearing records within 53 governed scenarios & 25 Mbps to 448 Gbps; median 10 Gbps & Comparative only with explicit sample-size caveats \\
+Electrical-plane SNR & 190/225 records; 186/220 papers & 20/53 governed records & 7--22 dB; median 10 dB & The only governed quality indicator that remains available across multiple medium slices \\
+Optical-plane OSNR & 169/225 records; 166/220 papers & 0/53 governed records & -- & All OSNR-bearing records are blocked by plane mixing in this release \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+Before governance filtering, communication reporting appears broad: rate is reported in 197 of 225 scenario records, electrical-plane SNR in 190, and optical-plane OSNR in 169. At paper level, at least one rate value appears in 194 of 220 papers, at least one SNR value in 186, and at least one OSNR value in 166. Raw prevalence, however, should not be confused with synthesis readiness. All OSNR-bearing records are plane-mixed, and therefore direct cross-study comparisons would overstate the amount of usable evidence.
+
+Applying the Section II contract reduces the pool substantially. Of 225 scenario records, 172 are blocked and 53 remain usable. The dominant blocker is metric-plane mixing, followed by $d_z$ to $\Delta r_{\min}$ aliasing flags. At paper level, 169 papers have all scenarios blocked, leaving 51 papers with at least one governed usable scenario. This is the reason Table~\ref{tab:tradeoff-comm} reports availability and admissibility separately.
+
+Medium-conditioned rate behavior is only meaningful on the governed subset and should be read with explicit support-size caveats. The usable records are concentrated in hybrid, cabled fiber, and a small set of wireless slices. Hybrid rates span 25 Mbps to 128 Gbps with a median of 10 Gbps, while cabled fiber spans 40 Mbps to 448 Gbps with a median of 28.5 Gbps. Singleton media such as wireless FSO, wireless VLC, wireless RF, and terahertz should be treated as anchors rather than as distributions.
+
+Quality-indicator synthesis is even more constrained after filtering. Electrical-plane SNR remains in 20 governed records, while optical-plane OSNR drops to zero. In other words, Section V can support electrical-plane-conditioned communication remarks, but it cannot support optical-plane-conditioned cross-media quality comparison in the current release.
+
+\subsection{Sensing Metrics}
+\label{sec:tradeoff-sensing}
+
+The sensing side uses a role-separated vocabulary. $\Delta r_{\min}$ denotes bandwidth-limited physical resolution, $\sigma_r$ denotes estimator-level accuracy, CRB or FIM-type expressions provide bound-level context, and $d_z$ denotes fiber spatial granularity. These quantities are related, but not interchangeable.
+
+\begin{table*}[!t]
+\caption{Governed Sensing-Metric Coverage by Functional Role}
+\label{tab:tradeoff-sensing}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Sensing role} & \textbf{Raw scenario coverage} & \textbf{Governed usable coverage} & \textbf{Governed range / median} & \textbf{Interpretation note} \\
+\midrule
+Resolution ($\Delta r_{\min}$-eligible) & 173/225 eligible records; 170/220 papers & 20/173 eligible records & 0.0025 m to 15 m; median 0.0397 m & Physical resolution is retained only on the role-consistent governed subset \\
+Accuracy ($\sigma_r$) & 186/225 records; 183/220 papers & 16/186 records & 0.001 m to 1000 m; median 0.0575 m & Estimator-level accuracy remains distinct from resolution and is not pooled with $\Delta r_{\min}$ \\
+CRB & 148/225 records; 145/220 papers & 0/148 records & -- & Bound-level reporting remains contextual only after governance filtering \\
+Fiber spatial granularity ($d_z$) & 161/225 records; 158/220 papers & 0/161 records & -- & $d_z$ is retained as fiber-specific context and is never substituted for $\Delta r_{\min}$ \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+Before filtering, sensing coverage appears broad: $\Delta r_{\min}$ is reported in 195 records, $\sigma_r$ in 186, CRB in 148, and $d_z$ in 161. Paper-level coverage is similarly high, but direct comparability is still contingent on governance compliance. After filtering, only 53 of 225 scenarios remain usable, and the surviving role mix is sharply compressed. Only 20 of 173 $\Delta r_{\min}$-eligible records survive, and only 16 of 186 $\sigma_r$ records survive. In contrast, CRB and $d_z$ both fall to zero usable entries in the retained subset.
+
+Medium-conditioned resolution behavior can still be summarized on the admissible subset. The surviving $\Delta r_{\min}$-eligible records are concentrated in hybrid and cabled fiber, with single anchors in wireless FSO and terahertz. Across all usable points, $\Delta r_{\min}$ spans 0.0025 m to 15 m, with a median of 0.0397 m. Within-medium profiles differ materially, so any ranking claim must remain support-weighted rather than universal.
+
+Estimator-level accuracy has a distinct governed profile and should not be conflated with resolution. Only 16 usable records report $\sigma_r$, and those records cluster in hybrid and cabled fiber. The range is broad, but the key interpretive point is structural: a record can be resolution-bearing without being accuracy-bearing, and vice versa. That is why Fig.~\ref{fig:tradeoff-clouds} preserves separate panels for resolution and accuracy.
+
+CRB and $d_z$ should remain contextual in this subsection. Although CRB is reported in many raw records, none survives as a governance-usable comparison point. Likewise, $d_z$ is kept as a fiber-specific quantity and is never used as a proxy for $\Delta r_{\min}$. This is consistent with the aliasing guardrail used throughout the review.
+
+\subsection{Sensing-Communication Trade-off}
+\label{sec:tradeoff-frontier}
+
+The trade-off core of Section V converts the governed metric subsets into operating-cloud and frontier views without relaxing the Section II contract. For ranging, the physical resolution anchor is
+
+\begin{equation}
+\Delta r_{\min} = \frac{v}{2B_{\mathrm{eff}}},
+\end{equation}
+
+and the rate-resolution quotient is
+
+\begin{equation}
+\mathrm{CRQ}_{\Delta} := \frac{R}{\Delta r_{\min}}.
+\end{equation}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{fig_v_1.png}
+\caption{Reader-facing governed operating clouds for Section V. The left panel shows rate-versus-$\Delta r_{\min}$ evidence after admissibility filtering, whereas the right panel shows rate-versus-$\sigma_r$ evidence under the same governed policy. Gray points denote role-conditioned raw context, colored points denote governance-usable records, and the separated panels make explicit that physical resolution and estimator-level accuracy are synthesized as different sensing roles rather than pooled into one axis.}
+\label{fig:tradeoff-clouds}
+\end{figure*}
+
+The governed clouds are intentionally smaller than the raw extraction. The full trade-off table contains 225 scenario points from 220 papers, but Fig.~\ref{fig:tradeoff-clouds} displays only the admissible subsets. In the current release, 20 rate-plus-$\Delta r_{\min}$ points and 16 rate-plus-$\sigma_r$ points survive the governance filter. This is not a cosmetic choice; it is what keeps the synthesis defensible.
+
+Label strings also need to be treated carefully. Many raw points are tagged as rate-versus-RMSE or rate-versus-range-resolution, but only a subset actually carries the governing fields required for admissible comparison. For that reason, labels are treated as narrative cues, while the metric-role columns define the quantitative core.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{fig_v_2.png}
+\caption{Reader-facing sparse frontier view for the CRQ-valid subset of Section V. Faint markers denote the 20 governance-usable CRQ-valid points, whereas the enlarged outlined markers denote the 2 nondominated Pareto points. The figure is therefore a zoomed-in frontier illustration rather than a visualization of the full raw trade-off cloud, and it must be read as bounded evidence rather than as a stable modality ranking.}
+\label{fig:tradeoff-frontier}
+\end{figure*}
+
+CRQ partitioning makes admissibility compression explicit. The extraction pipeline yields 170 CRQ-candidate points, 20 CRQ-valid points, and 2 Pareto points. Within the valid set, all CRQ candidates are also valid, which means the main compression happens before frontier selection. The resulting frontier should therefore be interpreted as an illustrative boundary snapshot rather than a stable envelope of the entire design space.
+
+Within the CRQ-valid set, hybrid dominates the support, followed by cabled fiber, terahertz, and wireless FSO. CRQ spans a wide range, but singleton slices should remain anchors rather than distributions. The frontier itself is even sparser: one hybrid point and one wireless FSO point. The absence of cabled fiber and terahertz from the frontier does not indicate inferiority; it only indicates that current nondominated evidence is sparse and unevenly distributed.
+
+Measurement-plane constraints remain active here as well. The governed subset retains electrical-plane SNR but no optical-plane OSNR, so Fig.~\ref{fig:tradeoff-frontier} cannot support optical-plane-conditioned frontier claims. In the current corpus, that limitation is fundamental, not incidental.
+
+\subsection{Comparative Analysis: Fiber vs. Wireless}
+\label{sec:tradeoff-comparison}
+
+Comparative analysis in Section V is support-weighted rather than ranking-driven. The comparison protocol is simple: first filter by the Section II contract, then keep the Section IV medium labels, and finally restrict claims to slices with enough support to justify a comparison.
+
+\begin{table*}[!t]
+\caption{Comparative Fiber, Wireless, and Hybrid Slices Under Governance Filtering}
+\label{tab:tradeoff-comparison}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.13\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Comparative slice} & \textbf{Governed points (papers)} & \textbf{Median rate} & \textbf{Median $\Delta r_{\min}$} & \textbf{Median $\sigma_r$} & \textbf{Median CRQ (eligible only)} & \textbf{Coupling composition} \\
+\midrule
+Fiber (cabled fiber slice) & 15 (13) & 28.5 Gbps ($n_R=12$) & 5.5 m ($n=4$) & 0.1 m ($n=7$) & $5.50 \times 10^9$ bps/m ($n=4$) & resource\_division 13; joint\_waveform 2 \\
+Wireless (pooled wireless slice) & 9 (9) & 1 Gbps ($n_R=3$) & 0.0025 m ($n=1$) & -- & $4.80 \times 10^{13}$ bps/m ($n=1$) & resource\_division 5; joint\_waveform 4 \\
+Hybrid bridge slice & 27 (27) & 10 Gbps ($n_R=17$) & 0.019075 m ($n=14$) & 0.01 m ($n=8$) & $8.83 \times 10^{10}$ bps/m ($n=14$) & resource\_division 19; joint\_waveform 6; unlabeled 2 \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+The contraction from raw to governed evidence is substantial. The raw cloud contains 225 scenario points across 12 medium labels, but governance filtering retains only 53. The resulting medium mix is dominated by hybrid and cabled fiber, followed by a small wireless tail. This is why Table~\ref{tab:tradeoff-comparison} is framed as a constrained synthesis rather than a direct mirror of raw prevalence.
+
+Fiber and wireless can be contrasted only in a restricted sense. Fiber contributes more governed points and a denser quality profile, whereas wireless contains highly selective anchors that can look strong numerically but are not representative of a broad distribution. Hybrid remains the bridge class and should not be collapsed into either endpoint.
+
+Measurement-plane constraints again limit the interpretation. Electrical-plane SNR remains available for fiber and hybrid, but optical-plane OSNR remains absent from the governed slices. Accordingly, the section can support limited electrical-plane-conditioned remarks, but it cannot establish optical-plane-conditioned fiber-versus-wireless trends.
+
+\subsection{Section V Synthesis}
+\label{sec:tradeoff-synthesis}
+
+Section V closes with a deliberately conservative reading. Pareto interpretation is bounded by three nested layers: the raw trade-off cloud, the governed cloud, and the CRQ-valid subset from which only two Pareto points emerge. The lesson is straightforward: candidate abundance does not translate into frontier-level comparability unless plane, role, and eligibility constraints are all satisfied.
+
+The frontier is also highly selective in composition. Hybrid contributes most of the CRQ-valid support, cabled fiber remains relevant, and the frontier itself contains one hybrid point and one wireless FSO point. That composition should not be over-read as a ranking of medium maturity. It only indicates that the nondominated evidence is sparse and unevenly distributed.
+
+For practical use, three rules follow from Section V. First, decision-stage claims should be restricted to CRQ-valid evidence rather than the full candidate cloud. Second, operating-point discussion should report both $\Delta r_{\min}$ and $\sigma_r$ whenever possible. Third, medium and coupling context should remain attached to every frontier-style interpretation. These rules preserve comparability without overstating maturity.
+
+\begin{quote}
+\textbf{Section V lesson.} Governed trade-off synthesis is already informative for bounded engineering interpretation, but frontier-level generalization remains limited by sparse valid support and uneven reporting discipline.
+\end{quote}

@@ -1,0 +1,693 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_017",
+  "title": "A Survey on IoT-Enabled Home Automation Systems: Attacks and Defenses",
+  "year_online": "2022",
+  "year_issue": "2022",
+  "year_source": "doi",
+  "domain": "IoT-enabled home automation security (attacks and defenses)",
+  "source_path": "data/corp_std/COMST_017/COMST_017.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Stop before references; span tags retained as markers."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 29812,
+    "approx_token_count_total": null,
+    "equation_count_est": 263,
+    "figure_count_est": 70,
+    "table_count_est": 7,
+    "list_count_est": 35,
+    "citation_count_in_body_est": 91,
+    "citation_density_per_1k_words_est": 3.1,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "unknown",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction",
+        "A. Related Surveys",
+        "B. Contributions"
+      ],
+      "objective": "Motivate HA security problem, highlight TAP/cross-platform risks, position gap vs prior surveys, state contributions and roadmap.",
+      "key_components": [
+        "Why HA growth increases attack surface",
+        "TAP model and cross-platform risks",
+        "Related survey comparison showing missing attack+defense coverage",
+        "Contributions list and structure figure"
+      ],
+      "approx_word_share_pct": "7-10",
+      "approx_words_est": 2133,
+      "positioning": {
+        "start_doc_progress_pct_est": 3,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Uses a comparison table in intro to evidence survey gap",
+        "Shows structure figure to orient layers and later sections"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States lack of HA security survey covering both attacks and defenses including TAP risks.",
+          "locator": {
+            "heading": "A. Related Surveys",
+            "paragraph_index_est": 1,
+            "line_range_est": "L40-L75"
+          }
+        },
+        {
+          "claim": "Lists contributions and shows organization/structure.",
+          "locator": {
+            "heading": "B. Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L80-L130"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. AN OVERVIEW OF HA SYSTEMS",
+        "A. Perception Layer of HA Systems",
+        "B. Communication Layer of HA Systems",
+        "C. Application Layer of HA Systems",
+        "D. General Workflow of HA Systems"
+      ],
+      "objective": "Lay out HA layered architecture and workflow as baseline for threat analysis.",
+      "key_components": [
+        "Perception/communication/application layers",
+        "Trigger-Action Programming workflow",
+        "Acronym table and architecture figure"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 2460,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 25
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Places acronym table and architecture figure early for shared vocabulary"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines HA layers and TAP workflow with supporting figure/table.",
+          "locator": {
+            "heading": "II. AN OVERVIEW OF HA SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L130-L190"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. HOME AUTOMATION PLATFORMS",
+        "A. Overview of Platform Architectures",
+        "B. Rule Model",
+        "C. Security Policy"
+      ],
+      "objective": "Compare HA platforms, their rule models, and security policies, forming a taxonomy baseline.",
+      "key_components": [
+        "Platform architectural patterns",
+        "Rule model characteristics",
+        "Security policy comparison table"
+      ],
+      "approx_word_share_pct": "18-22",
+      "approx_words_est": 5642,
+      "positioning": {
+        "start_doc_progress_pct_est": 25,
+        "end_doc_progress_pct_est": 49
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Uses a platform overview table to anchor comparisons of rule/security models"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes platform architectures and rule/security models with comparison table.",
+          "locator": {
+            "heading": "III. HOME AUTOMATION PLATFORMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L190-L270"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "IV. ATTACKS OF HOME AUTOMATION SYSTEMS",
+        "A. Perception Layer Attacks",
+        "B. Communication Layer Attacks",
+        "C. Application Layer Attacks"
+      ],
+      "objective": "Classify and detail HA attacks by layer with vulnerability analysis.",
+      "key_components": [
+        "Layered attack taxonomy (perception/communication/application)",
+        "Representative attack vectors and exploited vulnerabilities",
+        "Discussion of impacts"
+      ],
+      "approx_word_share_pct": "28-32",
+      "approx_words_est": 9125,
+      "positioning": {
+        "start_doc_progress_pct_est": 49,
+        "end_doc_progress_pct_est": 71
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Maps attacks directly to the earlier layer model to keep reader aligned"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details attacks per HA layer and vulnerabilities they exploit.",
+          "locator": {
+            "heading": "IV. ATTACKS OF HOME AUTOMATION SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L270-L360"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. DEFENSES OF HOME AUTOMATION SYSTEMS",
+        "A. Security Requirements of HA Systems",
+        "B. A Taxonomy of Defense Mechanisms",
+        "C. Summary and Comparisons of Typical Defenses"
+      ],
+      "objective": "Identify security requirements and classify defenses for HA systems with comparisons.",
+      "key_components": [
+        "Requirements: integrity, confidentiality, stability",
+        "Defense taxonomy and mechanisms",
+        "Comparative summary table of defenses"
+      ],
+      "approx_word_share_pct": "24-27",
+      "approx_words_est": 7773,
+      "positioning": {
+        "start_doc_progress_pct_est": 71,
+        "end_doc_progress_pct_est": 95
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Begins with requirements to frame defenses, then provides taxonomy and comparison table"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines security requirements and classifies defenses with comparisons.",
+          "locator": {
+            "heading": "V. DEFENSES OF HOME AUTOMATION SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L360-L460"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VI. OPEN RESEARCH ISSUES",
+        "A. Open Issues for Attacks",
+        "B. Open Issues for Defenses"
+      ],
+      "objective": "Highlight open issues for attacks and defenses to guide future research.",
+      "key_components": [
+        "Gaps in attack understanding and modeling",
+        "Gaps in defenses and deployment",
+        "Future directions"
+      ],
+      "approx_word_share_pct": "6-7",
+      "approx_words_est": 1904,
+      "positioning": {
+        "start_doc_progress_pct_est": 95,
+        "end_doc_progress_pct_est": 99
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Open issues mirrored to the attack/defense split for continuity"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States open issues for attacks and for defenses separately.",
+          "locator": {
+            "heading": "VI. OPEN RESEARCH ISSUES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L460-L520"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VII. CONCLUSION"
+      ],
+      "objective": "Summarize survey and reiterate future direction needs.",
+      "key_components": [
+        "Recap attacks/defenses coverage",
+        "Pointer to open research needs"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 165,
+      "positioning": {
+        "start_doc_progress_pct_est": 99,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Brief conclusion keeps focus on forward look"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Restates scope and future needs succinctly.",
+          "locator": {
+            "heading": "VII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L520-L550"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Notes rapid HA adoption and severe security threats amplified by TAP and cross-platform interactions.",
+      "locator": "L10-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States no survey comprehensively covers HA attacks and defenses including TAP-based risks.",
+      "locator": "L40-L75"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Prior surveys address technology or partial security angles but omit integrated attack-defense view.",
+      "locator": "L40-L80"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions: layered architecture, attack taxonomy, defense taxonomy, open issues.",
+      "locator": "L80-L130"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section roadmap with figure.",
+      "locator": "L120-L140"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on HA system security (attacks and defenses) across perception/communication/application layers.",
+      "locator": "L80-L140"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate HA security gap; lay out layered architecture; compare platforms; classify attacks by layer; classify defenses by requirements; list open issues; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by layer",
+    "axes": [
+      "HA layer (perception, communication, application)",
+      "Threat/defense type (attack vs protection)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 6,
+    "branches": [
+      "Perception-layer attacks/defenses",
+      "Communication-layer attacks/defenses",
+      "Application-layer attacks/defenses",
+      "TAP/cross-platform risks"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro/overview use structure and architecture figures plus acronym and comparison tables; platform section uses a large comparison table; attack/defense sections rely on numerous figures per layer and end with summaries.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "architecture",
+        "purpose": "show survey structure and HA layered model",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 8
+        },
+        "evidence_locator": "L110-L140"
+      },
+      {
+        "figure_id": "F02",
+        "type": "architecture",
+        "purpose": "depict HA layered architecture",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 18
+        },
+        "evidence_locator": "L150-L190"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "contrast prior HA surveys vs this work",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 10
+        },
+        "evidence_locator": "L60-L90"
+      },
+      {
+        "table_id": "T02",
+        "type": "summary",
+        "purpose": "overview of HA platforms and policies",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 30
+        },
+        "evidence_locator": "L200-L260"
+      },
+      {
+        "table_id": "T03",
+        "type": "summary",
+        "purpose": "summarize defenses and comparisons",
+        "placement": {
+          "first_mention_section_id": "S05",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 85
+        },
+        "evidence_locator": "L420-L480"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Platform taxonomy",
+        "lesson": "Contrast platform architectures, rule models, and policies to set expectations for threats.",
+        "locator": "L190-L270"
+      },
+      {
+        "location": "Attack section",
+        "lesson": "Map attacks to HA layers to keep threat space aligned with architecture.",
+        "locator": "L270-L360"
+      },
+      {
+        "location": "Defense section",
+        "lesson": "Start with requirements, then classify defenses and compare implementations.",
+        "locator": "L360-L460"
+      },
+      {
+        "location": "Open issues",
+        "lesson": "Revisit the attack/defense split to surface future research gaps.",
+        "locator": "L460-L520"
+      }
+    ],
+    "aha_moment": "Using the same HA-layer taxonomy for attacks and defenses creates a mirrored structure that simplifies navigation of a broad security space."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Open sections by naming the HA layer/topic, then give definitions/examples before taxonomy or lists.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 1.2,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "In summary",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro gap with comparison table and structure figure",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Quantify HA growth and security risk, emphasizing TAP/cross-platform issues.",
+        "Show a comparison table of prior surveys to prove the gap.",
+        "List contributions and include a structure figure to preview the layered taxonomy."
+      ],
+      "why_it_works": "Combines evidence of novelty with early navigation aids and shared vocabulary.",
+      "evidence_locators": [
+        "L10-L130"
+      ]
+    },
+    {
+      "title": "Layered baseline before threats",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Present the layered architecture (perception/communication/application) and TAP workflow.",
+        "Provide an acronym table for clarity.",
+        "Use this baseline to anchor subsequent attack/defense mapping."
+      ],
+      "why_it_works": "Sets a clear scaffold that keeps later taxonomies aligned.",
+      "evidence_locators": [
+        "L130-L200"
+      ]
+    },
+    {
+      "title": "Attack taxonomy mirrored to layers",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Group attacks by HA layer (perception, communication, application).",
+        "For each group, name typical vectors and the vulnerability type.",
+        "Use short summaries/figures to keep breadth readable."
+      ],
+      "why_it_works": "Mirrors the system model, making a broad threat space easy to navigate.",
+      "evidence_locators": [
+        "L270-L360"
+      ]
+    },
+    {
+      "title": "Defense taxonomy framed by requirements",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "State security requirements (integrity, confidentiality, stability).",
+        "Map defenses to HA layers and requirements.",
+        "Summarize in a comparison table noting scope and limitations."
+      ],
+      "why_it_works": "Requirements-first framing keeps defenses purposeful and comparable.",
+      "evidence_locators": [
+        "L360-L460"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings and table cells",
+      "OCR artifacts in tables and symbols"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Figure/table counts heuristic; many figures. Math markers likely include inline notation. Conversion left span tags; content otherwise readable."
+}

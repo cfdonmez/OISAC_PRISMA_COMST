@@ -1,0 +1,196 @@
+{
+  "run_id": "20260102_101150_O_ISAC_016_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101150",
+  "paper_id": "O_ISAC_016",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows the schematic diagram of the proposed photonic sub-THz ISAC system, and Fig. 2, which shows the SNR and BER of the received ISAC signals and pure communication signals under different IOP of the UTC-PDs."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a photonic sub-THz ISAC transmitter, which generates a pair of sub-THz ISAC signals through photonic upconversion. The signals are then transmitted over a 10.3-m wireless distance and received by a communication receiver and a radar receiver. The ISAC coupling mode is based on frequency-division multiplexing (FDM)."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a real-time line rate of 251.03 Gbps and an offline sensing resolution of 2.5 cm. The reported metrics are physically consistent, as the system uses a high-speed photonic sub-THz ISAC transmitter and a radar receiver with a high-resolution sensing capability."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of achieving high-speed real-time communication and high-resolution sensing in a photonic sub-THz ISAC system. However, the system still faces challenges such as the impact of frequency offset and phase noise on the sensing function, and the need for further improvement in the communication and sensing performances."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Demonstration of Photonic Sub-THz ISAC System with Real-Time 251.03-Gbps Communication Rate and Offline 2.5-cm Sensing Resolution",
+        "authors": "Mingzheng Lei, Zhidong Lyu, Qingzhi Zhou, Junhao Zhang, Hao Li, Bingchang Hua, Jiao Zhang, Yuancheng Cai, Junjie Ding, Xingyu Chen, Lu Zhang, Jianjun Yu, and Min Zhu",
+        "year": 2024,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "sub-THz",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "Photonic sub-THz ISAC system for high-speed real-time communication and high-resolution sensing"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Photonic sub-THz ISAC system with real-time 251.03-Gbps communication rate and offline 2.5-cm sensing resolution",
+        "gap_addressed": "High-speed real-time communication and high-resolution sensing in a photonic sub-THz ISAC system",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "frequency_comb"
+        ],
+        "novel_component": "Photonic sub-THz ISAC transmitter",
+        "novel_component_specs": "Ultra-wideband fiber-THz-fiber transmission architecture"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Photonic sub-THz ISAC system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 31,
+        "tx_power_dbm": 8.5,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 31,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 31.38,
+        "comm_fec_type": "sd_fec",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "α=0.7 power to comm"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.01,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model",
+        "backscatter_sensing_type": "rayleigh_phi_otdr"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10.3,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 251.03,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "ber_target": 0.001,
+        "snr_db": 19,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10.3,
+        "range_resolution_m": 0.025,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 31000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "α",
+        "tradeoff_control_range": "0.5-0.9"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      },
+      "provenance": {
+        "source_pointer": "Table 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and the experimental results, and the modelling fidelity and validation strength are high."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows the schematic diagram of the proposed photonic sub-THz ISAC system, and Fig. 2, which shows the SNR and BER of the received ISAC signals and pure communication signals under different IOP of the UTC-PDs.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a photonic sub-THz ISAC transmitter, which generates a pair of sub-THz ISAC signals through photonic upconversion. The signals are then transmitted over a 10.3-m wireless distance and received by a communication receiver and a radar receiver. The ISAC coupling mode is based on frequency-division multiplexing (FDM).\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a real-time line rate of 251.03 Gbps and an offline sensing resolution of 2.5 cm. The reported metrics are physically consistent, as the system uses a high-speed photonic sub-THz ISAC transmitter and a radar receiver with a high-resolution sensing capability.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of achieving high-speed real-time communication and high-resolution sensing in a photonic sub-THz ISAC system. However, the system still faces challenges such as the impact of frequency offset and phase noise on the sensing function, and the need for further improvement in the communication and sensing performances.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Demonstration of Photonic Sub-THz ISAC System with Real-Time 251.03-Gbps Communication Rate and Offline 2.5-cm Sensing Resolution\",\n         \"authors\":\"Mingzheng Lei, Zhidong Lyu, Qingzhi Zhou, Junhao Zhang, Hao Li, Bingchang Hua, Jiao Zhang, Yuancheng Cai, Junjie Ding, Xingyu Chen, Lu Zhang, Jianjun Yu, and Min Zhu\",\n         \"year\":2024,\n         \"venue\":\"Journal of Lightwave Technology\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"sub-THz\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"Photonic sub-THz ISAC system for high-speed real-time communication and high-resolution sensing\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Photonic sub-THz ISAC system with real-time 251.03-Gbps communication rate and offline 2.5-cm sensing resolution\",\n         \"gap_addressed\":\"High-speed real-time communication and high-resolution sensing in a photonic sub-THz ISAC system\",\n         \"performance_enablers\":[\n            \"photonic_dechirping\",\n            \"frequency_comb\"\n         ],\n         \"novel_component\":\"Photonic sub-THz ISAC transmitter\",\n         \"novel_component_specs\":\"Ultra-wideband fiber-THz-fiber transmission architecture\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Photonic sub-THz ISAC system\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":31,\n         \"tx_power_dbm\":8.5,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":31,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":31.38,\n         \"comm_fec_type\":\"sd_fec\",\n         \"sensing_waveform_family\":\"lfm_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"α=0.7 power to comm\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.01,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\",\n         \"backscatter_sensing_type\":\"rayleigh_phi_otdr\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10.3,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"solar\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":251.03,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-6,\n         \"ber_target\":1e-3,\n         \"snr_db\":19,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10.3,\n         \"range_resolution_m\":0.025,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":1,\n         \"velocity_accuracy_mps\":0.1,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":31e9,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"α\",\n         \"tradeoff_control_range\":\"0.5-0.9\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":30,\n         \"opa_beamwidth_deg\":10,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":4\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table 1\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system and the experimental results, and the modelling fidelity and validation strength are high.\"\n   }\n}"
+}

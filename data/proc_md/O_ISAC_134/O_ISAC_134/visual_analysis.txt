@@ -1,0 +1,326 @@
+Image: _page_2_Picture_1.jpeg
+Type: System Diagram / Schematic (Quantum-Enhanced ISAC Transceiver)
+---
+Components:
+- Pump Laser: 1064 nm, 10 W CW.
+- PPLN Crystal: Periodically poled LiNbO3 for SPDC.
+- Signal Photon Source: 1550 nm idler.
+- Idler Photon Source: 1535 nm (retained locally).
+- IQ Modulator: Classical data overlay.
+- EDFA: Signal amplification.
+- Circulator: Tx/Rx port separation.
+- Target Scene.
+- SNSPD: Superconducting nanowire single-photon detector.
+- Coincidence Counter: Entanglement verification.
+- Classical Receiver: Homodyne detection.
+- DSP: Joint quantum-classical processing.
+
+Flow:
+1. Pump → PPLN → Entangled pairs (signal + idler).
+2. Idler → Local SNSPD (retained for coincidence).
+3. Signal → IQ Mod → EDFA → Circulator → Target.
+4. Return → Circulator → SNSPD / Classical Rx.
+5. Coincidence Counter + DSP → Range/Data extraction.
+---
+
+Image: _page_3_Figure_1.jpeg
+Type: Chart (Quantum Illumination Advantage)
+---
+Axes:
+- X-axis: Mean Photon Number (n̄). Range: 0.01 to 100 (log scale).
+- Y-axis: Detection Probability. Range: 0 to 1.
+
+Legend:
+- Quantum Illumination (Blue).
+- Classical Coherent (Red).
+- Classical Thermal (Green).
+
+Data Points (at n̄ = 1):
+- QI: P_detect = 0.92.
+- Classical Coherent: P_detect = 0.78.
+- Classical Thermal: P_detect = 0.45.
+
+Quantum Advantage:
+- 6 dB gain over classical coherent at n̄ = 0.1.
+- Advantage persists up to n̄ ≈ 10.
+---
+
+Image: _page_3_Picture_11.jpeg
+Type: Experimental Setup (Photograph)
+---
+Components Visible:
+- PPLN crystal in oven (50°C stabilized).
+- Fiber coupling optics.
+- SNSPD cryostat (2.5 K).
+- Time-tagging electronics.
+- Optical table with vibration isolation.
+
+Note: Laboratory demonstration of quantum-enhanced sensing.
+---
+
+Image: _page_3_Figure_13.jpeg
+Type: Chart (Coincidence Time Histogram)
+---
+Axes:
+- X-axis: Time Delay (ns). Range: -10 to +10 ns.
+- Y-axis: Coincidence Counts (per 100 s). Range: 0 to 5000.
+
+Data Points:
+- Peak at Δt = 0 ns: 4800 counts.
+- Background (|Δt| > 5 ns): 120 counts.
+- Coincidence-to-accidental ratio (CAR): 40:1.
+- FWHM: 0.8 ns (timing jitter limited).
+---
+
+Image: _page_4_Figure_10.jpeg
+Type: Chart (Multi-Panel: Entanglement Quality)
+---
+Panel (a) - Hong-Ou-Mandel Dip:
+Axes:
+- X-axis: Delay (fs). Range: -500 to +500 fs.
+- Y-axis: Coincidence Rate (normalized). Range: 0 to 1.
+
+Data Points:
+- Dip minimum: 0.08 (visibility = 92%).
+- FWHM: 150 fs.
+- Theoretical visibility limit: 100%.
+
+Panel (b) - Schmidt Number:
+- Estimated K: 1.2 (near ideal K=1).
+- Spectral purity: >97%.
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: Chart (Range Estimation: Quantum vs Classical)
+---
+Axes:
+- X-axis: True Range (m). Range: 0 to 50 m.
+- Y-axis: Range Error (cm). Range: 0 to 20 cm.
+
+Legend:
+- Quantum Illumination (Blue).
+- Classical Coherent (Red).
+- Shot Noise Limit (Black dashed).
+
+Data Points (Quantum):
+- At 10 m: Error = 0.8 cm.
+- At 25 m: Error = 1.5 cm.
+- At 50 m: Error = 3.2 cm.
+
+Data Points (Classical):
+- At 10 m: Error = 2.5 cm.
+- At 25 m: Error = 4.8 cm.
+- At 50 m: Error = 9.5 cm.
+
+Improvement:
+- 3× precision gain at all ranges.
+---
+
+Image: _page_6_Figure_1.jpeg
+Type: Chart (Secure Key Rate)
+---
+Axes:
+- X-axis: Distance (km). Range: 0 to 100 km.
+- Y-axis: Secret Key Rate (bits/s). Range: 10^0 to 10^6 (log scale).
+
+Legend:
+- This work (Blue).
+- BB84 (Red).
+- Classical encryption baseline (Green dashed).
+
+Data Points (This work):
+- At 10 km: SKR = 500 kbps.
+- At 50 km: SKR = 50 kbps.
+- At 100 km: SKR = 5 kbps.
+
+Observation:
+- Maintains quantum security over 100 km fiber.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Communication BER)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 30 dB.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- Theoretical (Dashed).
+
+Data Points (QPSK):
+- At 10 dB: BER = 5×10^-4.
+- At 15 dB: BER = 2×10^-5.
+- At 20 dB: BER = 10^-6.
+
+Observation:
+- 1.5 dB penalty vs theoretical due to quantum overhead.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Constellation Diagram (QPSK with Quantum Overlay)
+---
+Structure:
+- Modulation: QPSK.
+- Quantum pilot insertion: 10% overhead.
+
+Quality:
+- EVM: 8.5% RMS.
+- Phase noise: 3° RMS.
+- Clear 4-point clusters.
+- Slight broadening from photon number uncertainty.
+---
+
+Image: _page_6_Figure_5.jpeg
+Type: Chart (Sensing-Security Trade-off)
+---
+Axes:
+- X-axis: Quantum Pilot Overhead (%). Range: 0 to 50%.
+- Y-axis (Left): Range RMSE (cm). Range: 0 to 10 cm.
+- Y-axis (Right): Secret Key Rate (kbps). Range: 0 to 500 kbps.
+
+Data Points:
+- At 10% overhead: RMSE = 2.5 cm; SKR = 150 kbps.
+- At 20% overhead: RMSE = 1.5 cm; SKR = 300 kbps.
+- At 30% overhead: RMSE = 1.0 cm; SKR = 400 kbps.
+- At 40% overhead: RMSE = 0.8 cm; SKR = 420 kbps.
+
+Pareto Optimal:
+- ~25-30% overhead balances sensing and security.
+---
+
+Image: _page_8_Figure_3.jpeg
+Type: Chart (Multi-Panel: Low-Light Performance)
+---
+Panel (a) - Detection Probability vs Photon Count:
+Axes:
+- X-axis: Received Photons per Pulse. Range: 0.1 to 100 (log).
+- Y-axis: Detection Probability. Range: 0 to 1.
+
+Data Points (Quantum):
+- At 1 photon: P = 0.85.
+- At 0.1 photon: P = 0.35.
+- At 0.01 photon: P = 0.05.
+
+Panel (b) - False Alarm Rate:
+- FAR < 10^-6 for all conditions (coincidence gating).
+---
+
+Image: _page_8_Picture_1.jpeg
+Type: Experimental Setup (Photograph - Free-Space Link)
+---
+Components Visible:
+- 100 mm aperture telescope.
+- Beam steering mirror (FSM).
+- SNSPD module.
+- Atmospheric turbulence simulator.
+- Target retroreflector array.
+
+Test Range:
+- Indoor: 25 m path.
+- Outdoor: Demonstrated 500 m.
+---
+
+Image: _page_9_Figure_11.jpeg
+Type: Chart (Atmospheric Turbulence Effects)
+---
+Axes:
+- X-axis: Fried Parameter r₀ (cm). Range: 1 to 20 cm.
+- Y-axis: Range Error (cm). Range: 0 to 15 cm.
+
+Legend:
+- No adaptive optics (Blue).
+- With FSM correction (Red).
+
+Data Points (with FSM):
+- At r₀ = 5 cm: Error = 2.8 cm.
+- At r₀ = 10 cm: Error = 1.5 cm.
+- At r₀ = 20 cm: Error = 1.0 cm.
+
+Improvement:
+- FSM provides 2-3× error reduction in turbulence.
+---
+
+Image: _page_10_Figure_1.jpeg
+Type: Chart (Multi-Target Scenario)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 50 m.
+- Y-axis: Amplitude (dB). Range: -40 to 0 dB.
+
+Data Points:
+- Target 1: 12.5 m, SNR = 35 dB.
+- Target 2: 28.3 m, SNR = 28 dB.
+- Target 3: 41.8 m, SNR = 22 dB.
+
+Separation:
+- Minimum resolvable: 0.5 m (constrained by timing jitter).
+---
+
+Image: _page_10_Figure_3.jpeg
+Type: Chart (Velocity Measurement)
+---
+Axes:
+- X-axis: True Velocity (m/s). Range: -5 to +5 m/s.
+- Y-axis: Measured Velocity (m/s). Range: -5 to +5 m/s.
+
+Data Points:
+- Linearity: R² = 0.998.
+- RMSE: 2.5 mm/s.
+- Max velocity: ±10 m/s (ambiguity limit).
+---
+
+Image: _page_10_Figure_9.jpeg
+Type: Constellation Diagram (16-QAM Advanced)
+---
+Structure:
+- Modulation: 16-QAM.
+- Data rate: 10 Gbps.
+
+Quality:
+- EVM: 6.2% RMS.
+- Clear 16-point structure.
+- Moderate outer ring compression.
+- Suitable for FEC-assisted operation.
+---
+
+Image: _page_10_Figure_11.jpeg
+Type: Chart (Data Rate vs Range)
+---
+Axes:
+- X-axis: Range (km). Range: 0 to 100 km.
+- Y-axis: Data Rate (Gbps). Range: 0 to 50 Gbps.
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 64-QAM (Green).
+
+Data Points (16-QAM):
+- At 10 km: Rate = 40 Gbps.
+- At 50 km: Rate = 20 Gbps.
+- At 100 km: Rate = 8 Gbps.
+
+Observation:
+- Adaptive modulation extends range at reduced rate.
+---
+
+Image: _page_11_Figure_12.jpeg
+Type: Chart (Comparison with State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[5], Ref[12], Ref[18], This Work].
+- Y-axis (Left): Quantum Advantage (dB). Range: 0 to 10 dB.
+- Y-axis (Right): Data Rate (Gbps). Range: 0 to 50 Gbps.
+
+Data Points:
+- Ref[5]: Advantage = 3 dB; Rate = 0 (sensing only).
+- Ref[12]: Advantage = 6 dB; Rate = 1 Gbps.
+- Ref[18]: Advantage = 4 dB; Rate = 10 Gbps.
+- This Work: Advantage = 6 dB; Rate = 40 Gbps.
+
+Key Achievement:
+- Highest combined quantum advantage + data rate.
+- First demonstration of Tbps-class potential with quantum sensing.
+---

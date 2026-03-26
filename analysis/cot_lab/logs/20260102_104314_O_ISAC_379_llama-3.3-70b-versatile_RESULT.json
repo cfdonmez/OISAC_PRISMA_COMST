@@ -1,0 +1,183 @@
+{
+  "run_id": "20260102_104314_O_ISAC_379_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104314",
+  "paper_id": "O_ISAC_379",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several images, including a conceptual architecture of adaptive photonics-based ISAC networks, a principle of adaptive waveform, an experimental setup, and several spectra and time-domain waveforms of adaptive signals. These images provide a visual representation of the system's design and functionality."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a photonics-based approach to integrate sensing and communication. The ISAC coupling mode is based on frequency-division multiplexing (FDM), where orthogonal frequency-division multiplexing (OFDM) and linear frequency modulation (LFM) signals share the bandwidth. The system allows for adaptive allocation of bandwidths to OFDM and LFM signals according to application requirements."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a maximum data rate of 41.48 Gbps and a minimum resolution of 1.53 cm. These metrics are physically consistent with the system's design and functionality. The use of photonics-based technology enables high-bandwidth and high-frequency signals, resulting in higher communication rates and resolutions."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating sensing and communication in a photonics-based system, allowing for adaptive allocation of bandwidths to OFDM and LFM signals. However, open challenges remain, such as the need for further research on multi-target sensing and imaging, and the development of more advanced signal processing techniques to improve system performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_379",
+        "title": "Demonstration of photonics-based flexible integration of sensing and communication with adaptive waveforms",
+        "authors": "Boyu Dong, Junwen Zhang et al.",
+        "year": 2022,
+        "venue": "Optics Express",
+        "doi": "Not Reported",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "W-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "A photonics-based flexible ISAC system with adaptive waveforms for a fiber-wireless integrated network."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A photonics-based flexible ISAC system with adaptive waveforms for a fiber-wireless integrated network.",
+        "gap_addressed": "The need for a system that can integrate sensing and communication in a photonics-based approach.",
+        "performance_enablers": "photonic_dechirping, coherent_homodyne, joint_waveform",
+        "novel_component": "Not Reported",
+        "novel_component_specs": "Not Reported"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Adaptive Photonics-based ISAC"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 12,
+        "tx_power_dbm": 13,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "alpha=0.5"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 41.48,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "ber_target": 0.001,
+        "snr_db": 20,
+        "osnr_db": 25,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 150,
+        "range_resolution_m": 0.0153,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0.2-0.8"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the system and its performance. The experimental results are well-presented and easy to follow."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several images, including a conceptual architecture of adaptive photonics-based ISAC networks, a principle of adaptive waveform, an experimental setup, and several spectra and time-domain waveforms of adaptive signals. These images provide a visual representation of the system's design and functionality.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a photonics-based approach to integrate sensing and communication. The ISAC coupling mode is based on frequency-division multiplexing (FDM), where orthogonal frequency-division multiplexing (OFDM) and linear frequency modulation (LFM) signals share the bandwidth. The system allows for adaptive allocation of bandwidths to OFDM and LFM signals according to application requirements.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a maximum data rate of 41.48 Gbps and a minimum resolution of 1.53 cm. These metrics are physically consistent with the system's design and functionality. The use of photonics-based technology enables high-bandwidth and high-frequency signals, resulting in higher communication rates and resolutions.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating sensing and communication in a photonics-based system, allowing for adaptive allocation of bandwidths to OFDM and LFM signals. However, open challenges remain, such as the need for further research on multi-target sensing and imaging, and the development of more advanced signal processing techniques to improve system performance.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_379\",\n         \"title\":\"Demonstration of photonics-based flexible integration of sensing and communication with adaptive waveforms\",\n         \"authors\":\"Boyu Dong, Junwen Zhang et al.\",\n         \"year\":2022,\n         \"venue\":\"Optics Express\",\n         \"doi\":\"Not Reported\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"W-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"A photonics-based flexible ISAC system with adaptive waveforms for a fiber-wireless integrated network.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"A photonics-based flexible ISAC system with adaptive waveforms for a fiber-wireless integrated network.\",\n         \"gap_addressed\":\"The need for a system that can integrate sensing and communication in a photonics-based approach.\",\n         \"performance_enablers\":\"photonic_dechirping, coherent_homodyne, joint_waveform\",\n         \"novel_component\":\"Not Reported\",\n         \"novel_component_specs\":\"Not Reported\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Adaptive Photonics-based ISAC\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":12,\n         \"tx_power_dbm\":13,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":100,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":10,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"alpha=0.5\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":10,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":1,\n         \"path_loss_model\":\"friis\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":41.48,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-6,\n         \"ber_target\":1e-3,\n         \"snr_db\":20,\n         \"osnr_db\":25,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":150,\n         \"range_resolution_m\":0.0153,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100e9,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0.2-0.8\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":30,\n         \"opa_beamwidth_deg\":10,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear and detailed description of the system and its performance. The experimental results are well-presented and easy to follow.\"\n   }\n}"
+}

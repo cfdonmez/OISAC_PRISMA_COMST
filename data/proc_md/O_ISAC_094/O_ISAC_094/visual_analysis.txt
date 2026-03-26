@@ -1,0 +1,44 @@
+Image: _page_2_Figure_1.jpeg
+Type: Multimodal ISAC Framework
+---
+**Components:**
+* **UAV Side:**
+    * Multimodal Sensing: HSI ($D^{HSI}$) and LiDAR ($D^{LiDAR}$).
+    * Encoders: Two parallel blue blocks converting data to $S^{HSI}$ and $S^{LiDAR}$.
+    * PE (Perception Enhanced) Module: Includes a Classifier yielding $C^{pre}$.
+    * Semantic Fusion Encoder: Combines $C^{pre}$, $S^{HSI}$, and $S^{LiDAR}$ into semantic vector $S$.
+* **Channel:** Transmits $S$ to the BS side as $\hat{S}$.
+* **BS Side:**
+    * Decoders: Two parallel green blocks yielding reconstructed HSI ($\hat{D}^{HSI}$) and LiDAR ($\hat{D}^{LiDAR}$).
+    * Classifier: Central blue block yielding final classification $C^{fin}$.
+---
+
+Image: _page_2_Picture_24.jpeg
+Type: Semantic Fusion Mechanism (Detail)
+---
+**Structure:** Internal view of the "Perception Enhanced Fusion" block.
+**Inputs:** $C^{pre}$, $S^{HSI}$, $S^{LiDAR}$.
+**Operations:** Shows cross-attention or gated fusion between the classification priors ($C^{pre}$) and the sensing streams ($S^{HSI}, S^{LiDAR}$). Output is the fused vector $S$.
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: Performance Evaluation Grid (4 charts)
+---
+**Axes Extraction:**
+* **X-axis:** SNR (dB) (0 to 18).
+* **Y-axis:** Test Accuracy (%) (30 to 90) or Test NMSE (0.12 to 0.45).
+**Summary:**
+* **Fig 3 (Accuracy/SNR multi-modal):** EndNet with PE (Orange) outperforms base EndNet (Blue) by approx 5-10% at low SNR. Accuracy saturates at ~90% for SNR > 10 dB.
+* **Fig 4 (Accuracy/SNR single-modal):** single-HSI with PE (Green) is highest (~78% at 18 dB). single-LiDAR (Orange) is lowest (~62%).
+* **Bottom Panes (Test NMSE):** EndNet with DeeperNet (Green) achieves lowest error (~0.12 at 18 dB). EndNet with PE (Orange) is consistently lower than base EndNet.
+---
+
+Image: _page_5_Figure_4.jpeg
+Type: Scaling Performance Chart
+---
+**Axes Extraction:**
+* **X-axis:** SNR (dB) (0 to 18).
+* **Y-axis:** Test Accuracy (%) (40 to 90).
+**Variables:** $K=32, 64, 128, 256$ (Sensing/Communication parameter).
+**Performance:** Increasing $K$ significantly improves accuracy. At 0 dB SNR, $K=256$ (blue) achieves ~81% accuracy, while $K=32$ (red) is only at 40%. All saturate near 90% at high SNR (17.5 dB), except $K=32$ which stays around 84%.
+---

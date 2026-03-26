@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Simulation Paper. Proposes VIPAC (Visible Light Integrated Positioning and Communication) using Multi-Task Learning (MTL) and Federated Learning (FL). Jointly performs VLP and VLC Channel Estimation."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: System model (MTL network structure). Fig 2: MTL architecture (Shared network + Sub-networks). Fig 5-9: Simulation results (NMSE, Positioning Error CDF).",
+        "step_1_concept_analysis": "System: Indoor VLC ISAC. Waveform: OFDM with pilots. Method: Deep Learning (MTL for feature sharing, FL for distributed training). Tasks: Channel Estimation (Comm) + Positioning (Sensing).",
+        "step_2_benchmark_verification": "Comm (Channel Est): NMSE ~10^-3 (superior to OMP/LS). Positioning: RMSE ~6.7 cm at 35 dB SNR. Generalization: FL improves robustness to environmental changes.",
+        "step_3_strategic_critique": "Advanced AI/ML application in O-ISAC. Addresses privacy (FL) and resource efficiency (MTL). Focuses on algorithmic improvement rather than new optical hardware."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_039",
+            "title": "Visible Light Integrated Positioning and Communication: A Multi-Task Federated Learning Framework",
+            "authors": "Tiankuo Wei, Sicong Liu, Xiaojiang Du",
+            "year": 2023,
+            "venue": "IEEE Transactions on Mobile Computing",
+            "document_type": "journal",
+            "doi": "10.1109/TMC.2022.3207164"
+        },
+        "classification": {
+            "oisac_medium_class": "visible_light",
+            "carrier_band": "visible",
+            "operational_environment": "indoor",
+            "link_topology": "point_to_multipoint",
+            "mobility_context": "mobile_user"
+        },
+        "application": {
+            "application_domain": [
+                "indoor_positioning",
+                "Lifi"
+            ],
+            "scenario_description": "Indoor VLC network providing simultaneous illumination, communication, and centimeter-level positioning."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "algorithm_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": true
+        },
+        "key_contribution": {
+            "key_contribution": "MTL-based network for joint VLP/CE and Federated Learning framework for privacy/generalization.",
+            "gap_addressed": "Isolated design of VLP/VLC and poor generalization in non-stationary environments.",
+            "performance_enablers": [
+                "machine_learning_isac",
+                "federated_learning"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "SIM_VIPAC_MTFL",
+                "scenario_label": "MTL-FL VLP Global Simulation"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "ofdm",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.02,
+                "notes": "4 LEDs per cluster. OFDM (N=1024, CP=64). 20 MHz bandwidth."
+            },
+            "receiver": {
+                "rx_detection_type": "direct_detection",
+                "rx_detector": "photodiode",
+                "notes": "PD receiving signals from multiple LEDs."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_transmitter",
+                "duplexing_mode": "frequency_division",
+                "notes": "Pilots shared for positioning and CE."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "ofdm",
+                "isac_waveform_relationship": "embedded",
+                "notes": "Pilots embedded in OFDM frame used for both tasks."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "Free Space (Indoor)."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 5.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "5x5x3m room. Channel includes LOS + NLOS (diffusion)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "nmse": 0.0013,
+                "notes": "Focus on Channel Estimation accuracy (NMSE)."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "localization"
+                ],
+                "sensing_range_m": 5.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.067,
+                "notes": "Positioning Error ~6.7 cm at 35dB SNR. 90% CDF < 10cm."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "computational_complexity"
+                ],
+                "tradeoff_representation": "text_description",
+                "notes": "MTL optimizes joint performance."
+            }
+        }
+    ]
+}

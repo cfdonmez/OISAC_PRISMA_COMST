@@ -1,0 +1,399 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_060",
+    "title": "Reconfigurable Intelligent Surfaces in 6G Radio Localization: A Survey of Recent Developments, Opportunities, and Challenges",
+    "authors": [
+        "Anum Umer",
+        "Ivo Müürsepp",
+        "Muhammad Mahtab Alam",
+        "Henk Wymeersch"
+    ],
+    "affiliation": "Tallinn University of Technology / Chalmers University of Technology",
+    "year_online": "2025",
+    "year_issue": "2025",
+    "source_path": "data/corp_std/COMST_060/COMST_060.md",
+    "domain": "RIS / 6G / Radio Localization / mmWave / THz / Near-Field / ISAC / SLAM",
+    "paper_type": "Comprehensive Survey",
+    "analysis_policy": {
+        "focus": "Extract research questions framework, multi-part scenario tables, taxonomy diagrams, frequency band categorization, near/far-field distinction",
+        "depth": "Full paper analysis covering fundamentals, state-of-art by frequency/scenario, and future directions"
+    },
+    "document_stats": {
+        "total_lines": 967,
+        "total_bytes": 266628,
+        "section_count": 5,
+        "figure_count": 9,
+        "table_count": 9,
+        "reference_count": 232
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-V)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "RIS": "Reconfigurable Intelligent Surface",
+            "BS": "Base Station",
+            "UE": "User Equipment",
+            "TOA": "Time of Arrival",
+            "AOA": "Angle of Arrival",
+            "AOD": "Angle of Departure",
+            "TDOA": "Time Difference of Arrival",
+            "RSS": "Received Signal Strength",
+            "CSI": "Channel State Information",
+            "CRLB": "Cramér-Rao Lower Bound",
+            "PEB": "Position Error Bound",
+            "OEB": "Orientation Error Bound",
+            "FIM": "Fisher Information Matrix",
+            "SLAM": "Simultaneous Localization and Mapping",
+            "ISAC": "Integrated Sensing and Communication",
+            "JCAL": "Joint Communication and Localization",
+            "CRF": "Conventional Radio Frequency",
+            "mmW": "Millimeter Wave",
+            "THz": "Terahertz",
+            "STAR-RIS": "Simultaneously Transmitting and Reflecting RIS"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_scope",
+            "subsections": [
+                "A. Related Work and Motivation",
+                "B. Review Method"
+            ],
+            "summary": "Establishes 6G localization challenges, positions RIS as alternative to multiple BSs. Introduces 3 research questions. Compares with existing surveys (Table I-II). Describes systematic review method with search string."
+        },
+        {
+            "section_id": "II",
+            "title": "RIS in Radio Localization",
+            "role": "technology_foundation",
+            "subsections": [
+                "A. Overview of RIS Operation",
+                "B. RIS-Assisted Localization in 6G Networks",
+                "C. RIS Support for Radio Localization",
+                "D. RIS-Assisted Localization Taxonomy"
+            ],
+            "summary": "RIS types (reflective, transmissive, hybrid, STAR, active), signal/channel models, localization fundamentals. Taxonomy with measurements, algorithms, RIS types, deployment considerations, performance metrics."
+        },
+        {
+            "section_id": "III",
+            "title": "State of the Art in RIS-Assisted Radio Localization",
+            "role": "core_literature_survey",
+            "subsections": [
+                "A. RIS-Assisted Outdoor and Far-Field Localization",
+                "B. RIS-Assisted Indoor Localization",
+                "C. RIS-Assisted Near-Field Localization"
+            ],
+            "summary": "Core literature survey organized by scenario (outdoor/indoor) and propagation model (far-field/near-field). Sub-organized by frequency bands (CRF <24GHz, High Freq >24GHz). Tables IV-IX summarize 150+ references."
+        },
+        {
+            "section_id": "IV",
+            "title": "Challenges and Research Outlook",
+            "role": "future_directions",
+            "summary": "13 research challenges: Availability/Scalability/Privacy, Mobile User, Multi-User, Multi-Frequency, ISAC Integration, Deployment, AI Control, Low Latency, RIS Standardization, Multi-Operator, Mobility Control, Hardware Limitations, Calibration, New Antenna Technologies, From RIS to SIM."
+        },
+        {
+            "section_id": "V",
+            "title": "Conclusion",
+            "role": "conclusion",
+            "summary": "Synthesizes survey contributions on RIS-assisted localization taxonomy, recent advancements, opportunities, and challenges."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Comprehensive overview of RIS technology for radio localization in 6G networks with taxonomy, recent developments, and future directions",
+        "delivery_mechanism": "3 Research Questions → RIS Fundamentals → State-of-Art by Scenario/Frequency → Challenges/Future Directions",
+        "unique_contribution": "First comprehensive RIS localization survey with systematic review methodology, detailed taxonomy, multi-table state-of-art breakdown by scenario/frequency/propagation model"
+    },
+    "taxonomy": {
+        "type": "scenario_frequency_propagation_survey",
+        "root_concept": "RIS-Assisted Radio Localization",
+        "categories": [
+            {
+                "name": "Localization Measurement Types",
+                "subcategories": [
+                    "TOA/TDOA",
+                    "AOA/AOD",
+                    "RSS",
+                    "CSI"
+                ]
+            },
+            {
+                "name": "RIS Types",
+                "subcategories": [
+                    "Reflective (Passive)",
+                    "Active",
+                    "Transmissive",
+                    "STAR",
+                    "Hybrid",
+                    "Non-Diagonal Control"
+                ]
+            },
+            {
+                "name": "Frequency Bands",
+                "subcategories": [
+                    "Conventional RF (<24GHz)",
+                    "mmWave (24-100GHz)",
+                    "THz (100GHz+)"
+                ]
+            },
+            {
+                "name": "Deployment Scenarios",
+                "subcategories": [
+                    "Outdoor",
+                    "Indoor"
+                ]
+            },
+            {
+                "name": "Propagation Models",
+                "subcategories": [
+                    "Far-Field",
+                    "Near-Field"
+                ]
+            },
+            {
+                "name": "Localization Algorithms",
+                "subcategories": [
+                    "Geometry-based",
+                    "Kalman Filter",
+                    "Fingerprinting",
+                    "SLAM",
+                    "ML-based"
+                ]
+            }
+        ]
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "Position Error Bound (PEB)",
+            "Orientation Error Bound (OEB)",
+            "Cramér-Rao Lower Bound (CRLB)",
+            "Mean Square Error (MSE)",
+            "Fisher Information Matrix (FIM)",
+            "Signal-to-Noise Ratio (SNR)",
+            "Accuracy",
+            "Coverage",
+            "Data Rate",
+            "Energy Efficiency"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Topic-wise survey comparison (Transmission bands, Environment, Applications)"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Research questions coverage comparison with existing surveys"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Abbreviations list"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "RIS-Assisted Outdoor/Far-Field CRF Band (<24GHz) literature"
+            },
+            {
+                "table_ref": "Table V-VII",
+                "purpose": "RIS-Assisted Outdoor/Far-Field High Frequency Band (>24GHz) literature (3 parts)"
+            },
+            {
+                "table_ref": "Table VIII",
+                "purpose": "RIS-Assisted Indoor Localization literature"
+            },
+            {
+                "table_ref": "Table IX",
+                "purpose": "RIS-Assisted Near-Field Localization literature"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "paper_outline",
+                "example": "Fig. 1 - Overall outline of the article",
+                "purpose": "Visual roadmap of survey structure"
+            },
+            {
+                "type": "architecture_diagram",
+                "example": "Fig. 2 - RIS modes comparison (passive, active, transmissive, STAR)",
+                "purpose": "Illustrate RIS hardware variants"
+            },
+            {
+                "type": "system_flowchart",
+                "example": "Fig. 3 - Processing phases flowchart",
+                "purpose": "Show typical RIS-assisted localization workflow"
+            },
+            {
+                "type": "comparison_diagram",
+                "example": "Fig. 4 - Non-RIS vs RIS-assisted localization",
+                "purpose": "Motivate infrastructure reduction"
+            },
+            {
+                "type": "application_illustration",
+                "example": "Fig. 5 - RIS-assisted localization applications (7 use cases)",
+                "purpose": "RISE-6G project use case families"
+            },
+            {
+                "type": "taxonomy_diagram",
+                "example": "Fig. 6-7 - RIS-assisted localization taxonomy",
+                "purpose": "Visual and detailed taxonomy"
+            },
+            {
+                "type": "state_of_art_breakdown",
+                "example": "Fig. 8 - Literature breakdown (scenario/frequency/RIS type)",
+                "purpose": "Visual summary of covered literature"
+            },
+            {
+                "type": "limitations_illustration",
+                "example": "Fig. 9 - Limitations to RIS-assisted localization (4 scenarios)",
+                "purpose": "Visual representation of challenges"
+            }
+        ]
+    },
+    "synthesis": {
+        "research_questions_framework": [
+            "Q1: How has RIS been used for localization in 6G networks?",
+            "Q2: What are the current trends and developments in RIS for 6G localization?",
+            "Q3: What are future directions, challenges, and limitations?"
+        ],
+        "multi_dimensional_organization": [
+            "By scenario: Outdoor vs Indoor",
+            "By propagation: Far-Field vs Near-Field",
+            "By frequency: CRF (<24GHz) vs High (>24GHz)"
+        ],
+        "key_gap_findings": [
+            "Most studies focus on accuracy, less on coverage/availability",
+            "Mobile user localization underexplored",
+            "Multi-frequency band modeling needed",
+            "RIS standardization in early stages",
+            "Hardware limitations and pixel failures problematic"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Systematic literature review with explicit search string, inclusion/exclusion criteria, reproducibility emphasis",
+        "search_string": "(RIS OR IRS OR LIS) AND (localization OR positioning) AND (6G)",
+        "source_selection": "IEEE Xplore + backward referencing, ~232 references",
+        "distinguishing_features": [
+            "Reproducible systematic review methodology",
+            "3 research questions framework",
+            "Multi-dimensional scenario/frequency organization",
+            "6 multi-part summary tables (Table IV-IX)",
+            "13 future research directions"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with systematic review rigor",
+        "rhetorical_patterns": [
+            "Research questions drive organization",
+            "Tables compare surveys by topic dimensions",
+            "State-of-art uses thematic groupings (a, b, c, d, e, f, g)",
+            "Bullet-point research directions",
+            "Visual taxonomy diagrams"
+        ],
+        "characteristic_phrases": [
+            "In this survey, we seek answers to the following questions",
+            "The unique aspects of our work are stated below",
+            "We conducted our survey systematically",
+            "Based on the review performed in the previous section",
+            "It is, thus, an important area to explore"
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Research Questions Framework",
+            "description": "Open the survey with 3 explicit research questions that drive the paper's organization and are answered in dedicated sections",
+            "structure": [
+                "Introduction states 3 numbered research questions (Q1, Q2, Q3)",
+                "Each major section explicitly answers one question",
+                "Opening paragraph maps sections to questions: 'Section II answers Q1, Section III answers Q2, Section IV answers Q3'",
+                "Comparison table shows how existing surveys address these questions"
+            ],
+            "example_application": "Q1 → Section II (RIS fundamentals), Q2 → Section III (State-of-Art), Q3 → Section IV (Challenges)",
+            "rhetorical_effect": "Clear purpose statement; enables reader to self-select sections; demonstrates unique scope vs existing work",
+            "complexity": "Low - straightforward to implement but highly effective"
+        },
+        {
+            "recipe_name": "Systematic Review Methodology Declaration",
+            "description": "Include a dedicated subsection declaring the systematic review methodology with search string, databases, and inclusion/exclusion criteria",
+            "structure": [
+                "Subsection titled 'Review Method' or 'Search Strategy'",
+                "State keywords derived from research questions",
+                "Present complete search string with logical operators",
+                "List databases searched (IEEE Xplore, etc.)",
+                "Describe inclusion/exclusion criteria",
+                "Mention backward referencing for completeness"
+            ],
+            "example_application": "Section I-B provides search string: ('RIS' OR 'IRS' OR 'LIS') AND ('localization' OR 'positioning') AND ('6G')",
+            "rhetorical_effect": "Establishes academic rigor; ensures reproducibility; differentiates from informal reviews",
+            "complexity": "Medium - requires proper methodology execution"
+        },
+        {
+            "recipe_name": "Multi-Dimensional Scenario Tables (IV-IX Pattern)",
+            "description": "Organize state-of-art literature into multiple tables based on scenario (indoor/outdoor), propagation model (near/far-field), and frequency band",
+            "structure": [
+                "Create separate tables for major scenario combinations",
+                "Consistent columns: RIS Type, Ref, Frequency, Link, System, Purpose, Technique, Performance Metric",
+                "Group references within tables by thematic focus (a. Foundational, b. Novel techniques, c. ISAC, etc.)",
+                "Use abbreviation legend in table caption (R=Reflective, A=Active, S=STAR, H=Hybrid)"
+            ],
+            "example_application": "Tables IV (CRF Outdoor), V-VII (High Freq Outdoor - 3 parts), VIII (Indoor), IX (Near-Field)",
+            "rhetorical_effect": "Enables focused lookup; reveals research distribution across scenarios; comprehensive coverage demonstration",
+            "complexity": "High - requires extensive literature categorization"
+        },
+        {
+            "recipe_name": "Thematic Groupings Within Sections",
+            "description": "Within each major subsection, organize references into labeled thematic groups using alphabetical markers",
+            "structure": [
+                "Use italicized headers with letters: 'a) Foundational studies:', 'b) Novel techniques:', 'c) ISAC:', etc.",
+                "Each group contains 2-5 paragraph summaries of related works",
+                "Maintain consistent grouping categories across similar sections when possible",
+                "Reference specific table entries for each work discussed"
+            ],
+            "example_application": "Section III.A.2 uses: a) Foundational, b) Advanced techniques, c) Beamforming, d) Multiuser, e) Special scenarios, f) High frequency sensing, g) Practical applications",
+            "rhetorical_effect": "Enables thematic reading; reveals research trends within domains; assists navigation",
+            "complexity": "Medium - requires careful categorization"
+        },
+        {
+            "recipe_name": "Visual Taxonomy with Dual Representations",
+            "description": "Present the paper's taxonomy using both diagrammatic (tree structure) and illustrated (scenario visualization) figures",
+            "structure": [
+                "Figure A: Tree-structured taxonomy diagram with hierarchical categories",
+                "Figure B: Illustrated taxonomy showing scenarios in visual form",
+                "Both figures use same categorical structure",
+                "Caption explains the taxonomy dimensions"
+            ],
+            "example_application": "Fig. 6 (taxonomy tree) + Fig. 7 (illustrated scenarios) both show RIS localization dimensions",
+            "rhetorical_effect": "Appeals to different learning styles; reinforces understanding; enables quick reference",
+            "complexity": "Medium - requires consistent visual design"
+        },
+        {
+            "recipe_name": "Bullet-Point Research Directions with Explanatory Paragraphs",
+            "description": "Present future research directions as bullet points with detailed explanatory paragraphs for each",
+            "structure": [
+                "Use bullet point format with italicized topic header",
+                "Follow header with 1-2 detailed paragraphs explaining the challenge",
+                "Include specific sub-challenges within each direction",
+                "Reference related works that motivate the direction",
+                "Suggest specific research questions or approaches"
+            ],
+            "example_application": "Section IV presents 13 research directions (Availability, Mobile User, Multi-User, Multi-Frequency, ISAC, Deployment, AI, Low Latency, Standardization, Multi-Operator, Mobility Control, Hardware, Calibration, New Antenna, SIM)",
+            "rhetorical_effect": "Comprehensive future roadmap; inspires follow-on research; demonstrates author expertise beyond surveying",
+            "complexity": "High - requires forward-looking expertise"
+        }
+    ],
+    "key_concepts": {
+        "ris_localization_advantage": "RIS enables localization with single BS (vs 4+ traditional BSs), provides infrastructure reduction, energy efficiency",
+        "near_vs_far_field": "Near-field uses spherical wave model with wavefront curvature; Far-field uses plane wave assumption; Near-field region increases with frequency and RIS size",
+        "frequency_progression": "CRF (<24GHz) for longer range, mmW/THz (>24GHz) for higher accuracy but limited coverage",
+        "key_metrics": "CRLB and PEB are most common bounds for theoretical localization accuracy analysis"
+    },
+    "quality_flags": {
+        "research_questions_framework": true,
+        "systematic_review_methodology": true,
+        "multi_dimensional_scenario_tables": true,
+        "thematic_groupings": true,
+        "visual_taxonomy": true,
+        "extensive_future_directions": true,
+        "approximately_232_references": true
+    }
+}

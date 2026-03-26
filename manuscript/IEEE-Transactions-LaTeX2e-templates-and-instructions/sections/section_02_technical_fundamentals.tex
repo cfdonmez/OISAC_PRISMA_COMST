@@ -1,0 +1,227 @@
+\section{Technical Fundamentals of O-ISAC}
+\label{sec:technical-fundamentals}
+
+\subsection{Unified O-ISAC System Model and Integration Paradigms}
+
+\subsubsection{Canonical Joint Waveform and Resource Model}
+We define a joint design vector that spans waveform parameters, optical front-end choices, and sensing-task descriptors so that communication and sensing can be compared on a common footing while preserving the physical constraints that distinguish coherent and IM/DD architectures.
+
+For coherent operation, a generic complex baseband observation can be written as
+\begin{equation}
+\mathbf{y}(t)=\mathbf{H}(t;\boldsymbol{\theta})\mathbf{s}(t)+\mathbf{w}(t),
+\end{equation}
+where $\mathbf{y}(t)$ is the received observation, $\mathbf{s}(t)$ is the transmitted waveform, $\mathbf{H}(t;\boldsymbol{\theta})$ is a parametric operator embedding sensing parameters such as delay, Doppler, and angle, and $\mathbf{w}(t)$ is receiver noise.
+
+For IM/DD links, the corresponding real-valued observation is
+\begin{equation}
+y(t)=\mathcal{R}\,\big(x(t)\ast h(t)\big)+n(t), \qquad x(t)\ge 0,
+\end{equation}
+where $x(t)$ is the transmitted optical intensity waveform, $h(t)$ is the intensity channel impulse response, $\mathcal{R}$ is the photodetector responsivity, and $n(t)$ is additive electrical noise.
+
+The review uses an explicit measurement-plane contract:
+\begin{equation}
+\pi(m)\in\{\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\;\text{AMBIGUOUS}\},
+\end{equation}
+where OSNR remains an optical-plane quantity and electrical SNR remains a post-detection quantity. Conversion between the two is not admissible unless the source provides an explicit receiver model. For ranging tasks, the delay-to-range relation $\tau=2r/v$ underpins the bandwidth-limited resolution
+\begin{equation}
+\Delta r_{\min}=\frac{v}{2B_{\text{eff}}},
+\end{equation}
+while fiber sensing reports spatial granularity via $\Delta z$ rather than wireless-style range resolution.
+
+Fig.~\ref{fig:ii-system-model} summarizes the review-facing system abstraction across fiber, FSO, VLC, and photonic-THz settings.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_ii_1.png}
+\caption{Unified O-ISAC system abstraction across modalities. The figure summarizes a common source-modulator-waveform-channel-observation-output chain while retaining a modality-conditioned channel layer, coherent versus IM/DD observation paths, and an integration-depth side panel spanning communication-centric, sensing-centric, and joint-design operating intents.}
+\label{fig:ii-system-model}
+\end{figure*}
+
+\subsubsection{Integration Paradigms}
+We classify integration by mechanism rather than medium. This keeps fiber, FSO, VLC, and photonic-THz cases comparable while preserving their physical constraints.
+
+\paragraph{Communication-centric.}
+Communication performance is primary; sensing operates under communication-driven resource limits. A minimal form is
+\begin{equation}
+\max_{\mathbf{x}\in\mathcal{X}} R(\mathbf{x}) \quad \text{s.t.} \quad J_{\text{sense}}(\mathbf{x})\le \varepsilon.
+\end{equation}
+
+\paragraph{Sensing-centric.}
+Sensing fidelity is primary; communication is constrained to satisfy a service floor. A minimal form is
+\begin{equation}
+\min_{\mathbf{x}\in\mathcal{X}} J_{\text{sense}}(\mathbf{x}) \quad \text{s.t.} \quad R(\mathbf{x})\ge R_0.
+\end{equation}
+
+\paragraph{Joint design.}
+Communication and sensing are co-optimized as an explicit multiobjective trade-off:
+\begin{equation}
+\min_{\mathbf{x}\in\mathcal{X}} \Big[J_{\text{sense}}(\mathbf{x}),\,-R(\mathbf{x})\Big],
+\end{equation}
+or via a scalarization such as
+\begin{equation}
+\min_{\mathbf{x}\in\mathcal{X}} \alpha J_{\text{sense}}(\mathbf{x})-(1-\alpha)R(\mathbf{x}).
+\end{equation}
+
+These paradigms denote operating intent, not mutually exclusive hardware classes. We also use an internal integration-depth variable
+\begin{equation}
+d_{\text{int}}\in\{0,\;1/2,\;1\},
+\end{equation}
+where $0$ denotes coexistence, $1/2$ partial sharing or cooperation, and $1$ full co-design.
+
+\begin{quote}
+\textbf{Lesson (A):} A unified system model combined with explicit measurement-plane mapping is necessary to make later taxonomy and trade-off statements falsifiable rather than narrative.
+\end{quote}
+
+\subsection{Propagation and Channel Models Across Modalities}
+This subsection defines a modality-aware channel layer for O-ISAC. The goal is not to rank modalities, but to expose dominant propagation impairments under a common operator view.
+
+\subsubsection{Fiber Channel}
+Fiber links are naturally represented by a linear dispersive baseband model, with nonlinear wave dynamics added when launch power and distance require it:
+\begin{equation}
+\mathbf{y}(t)=\mathbf{G}_{\text{disp}}(t)\ast \mathbf{s}(t)+\mathbf{w}(t).
+\end{equation}
+For nonlinear regimes, a conceptual NLSE form is
+\begin{equation}
+\frac{\partial A(z,t)}{\partial z}= -\frac{\alpha}{2}A - j\frac{\beta_2}{2}\frac{\partial^2 A}{\partial t^2} + j\gamma|A|^2A + \eta(z,t),
+\end{equation}
+where $A(z,t)$ is the optical field envelope, $\alpha$ is attenuation, $\beta_2$ is group-velocity dispersion, and $\gamma$ is the nonlinear coefficient.
+
+\subsubsection{FSO Channel}
+FSO propagation is dominated by multiplicative effects and path attenuation:
+\begin{equation}
+y = h_{\text{turb}}\,h_{\text{point}}\,h_{\text{att}}\,x + n,\qquad x\ge 0,
+\end{equation}
+with
+\begin{equation}
+h_{\text{att}}=\exp(-\kappa d),
+\end{equation}
+where $d$ is propagation distance and $\kappa$ is the extinction coefficient. Turbulence statistics are often modeled with log-normal or Gamma-Gamma families depending on regime assumptions.
+
+\subsubsection{VLC Channel}
+VLC behavior is geometry-driven and typically represented by an intensity impulse response under Lambertian emission assumptions:
+\begin{equation}
+h(t)=h_{\text{LOS}}(t)+h_{\text{NLOS}}(t).
+\end{equation}
+Shot noise, thermal noise, and ambient-light-induced noise are included according to receiver setup.
+
+\subsubsection{Photonic-THz Bridging}
+Photonic-THz O-ISAC is inherently a two-stage channel chain: optical-domain generation or distribution followed by THz wireless propagation. We therefore model this link as a split channel with an optical stage and a THz stage so that plane conflation is avoided and impairment attribution remains explicit.
+
+\begin{table*}[!t]
+\caption{Modality-Aware Channel and Transceiver Abstraction Summary}
+\label{tab:ii-channel-transceiver}
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.14\textwidth}}
+\toprule
+\textbf{Modality} & \textbf{Channel abstraction} & \textbf{Signaling / detection view} & \textbf{Dominant impairment family} & \textbf{Native sensing abstraction} & \textbf{Governance guard} \\
+\midrule
+Fiber (cabled) & Guided dispersive link; NLSE-style extension in nonlinear regimes & Typically coherent, field-aware observation & Dispersion, Kerr nonlinearity, PMD, phase noise & $\Delta z$ for DAS/OTDR-like spatial granularity & Do not relabel $\Delta z$ as wireless $\Delta r_{\min}$ \\
+FSO & Multiplicative atmosphere-plus-pointing link with path attenuation & IM/DD or coherent depending on receiver chain & Turbulence, pointing error, attenuation & Delay/range estimation under two-way ranging convention & Keep optical-plane and electrical-plane reporting distinct \\
+VLC / LiFi & Lambertian LoS/NLoS CIR with geometry-driven gain & IM/DD with nonnegative intensity waveform & Ambient light, shot/thermal noise, geometry & Positioning/ranging from CIR structure or intensity observations & Do not import coherent-field assumptions into IM/DD interpretations \\
+Photonic-THz bridge & Split chain: optical generation/distribution + THz propagation & Bridged optical front-end plus THz wireless observation & Optical front-end impairments plus frequency-selective THz propagation & Delay/range/angle inference over a two-stage chain & Keep optical generation stage and THz propagation stage separated \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{quote}
+\textbf{Lesson (B):} Channel models are modality-specific in dominant impairments, but the reporting contract is modality-invariant.
+\end{quote}
+
+\subsection{Transceiver and Hardware Abstractions}
+This subsection defines a hardware abstraction layer that remains valid across fiber, FSO, VLC, and photonic-THz implementations. The focus is architectural role rather than device-level ranking.
+
+\subsubsection{Sources and Modulators}
+The source-modulator stack determines whether operation is coherent or IM/DD and sets the feasible waveform interface for joint communication-sensing design. Representative photonic-THz chains use ECL-driven MZM or IQ-modulator front ends, whereas IM/DD VLC implementations use LED or LD intensity modulation with nonnegative optical-intensity constraints.
+
+\subsubsection{Receivers and Detection}
+Receiver architecture defines the observation plane and therefore the admissible signal-quality interpretation. OSNR is optical-plane and electrical SNR or ESNR is post-detection electrical-plane; OSNR-to-SNR conversion is prohibited without an explicit receiver/noise model. Coherent receivers rely on optical-hybrid or balanced-photodetector chains, while IM/DD receivers rely on photodiode-based direct detection.
+
+\subsubsection{Beamforming and Wavefront Control}
+Spatial-control elements such as optical phased arrays shape beam directionality and angular observability while remaining compatible with the source-modulator-channel-detector abstraction. A generic array response can be written as
+\begin{equation}
+\mathbf{a}(\phi)=\left[1,\;e^{jkd\sin\phi},\;\ldots,\;e^{jkd(N-1)\sin\phi}\right]^{\top}.
+\end{equation}
+
+\begin{quote}
+\textbf{Lesson (C):} Hardware commonality is abstraction-level, while implementations remain modality-specific.
+\end{quote}
+
+\subsection{Sensing Principles and the Metric Contract}
+Section II-D defines the metric contract that keeps sensing comparisons valid across O-ISAC modalities. The key separation is between physics-limited resolution, estimator-dependent accuracy, and bound-based limits.
+
+\subsubsection{Ranging, ToF, and FMCW Fundamentals}
+We adopt the two-way delay model with
+\begin{equation}
+\Delta r_{\min} := \frac{v}{2B_{\text{eff}}},
+\end{equation}
+where $v=c$ in free space and $v\approx c/n_g$ in guided media. For ranging tasks, $\tau=2r/v$ links delay and range. Fiber DAS or OTDR records are mapped to $\Delta z$, not to $\Delta r_{\min}$.
+
+\subsubsection{Accuracy and CRB/FIM Bounds}
+Estimator-dependent accuracy is defined as
+\begin{equation}
+\sigma_r := \sqrt{\mathbb{E}[(\hat r-r)^2]},
+\end{equation}
+while a canonical delay-bound form is
+\begin{equation}
+\mathrm{var}(\hat\tau) \ge \frac{1}{8\pi^2\beta^2\,\mathrm{SNR}}.
+\end{equation}
+Here SNR is an abstract estimator-plane quantity unless a source explicitly fixes the measurement plane. This expression does not permit OSNR or electrical-SNR substitution.
+
+\subsubsection{Fiber Spatial Granularity Versus Wireless Range Resolution}
+Fiber spatial granularity and wireless range resolution are not interchangeable metrics. In DAS and OTDR contexts, spatial or distance granularity maps to $\Delta z$; in bandwidth-limited ToF or FMCW ranging contexts, resolution maps to $\Delta r_{\min}$.
+
+\subsubsection{Capacity-Resolution Quotient}
+We define
+\begin{equation}
+\mathrm{CRQ}_{\Delta} := \frac{R}{\Delta r_{\min}} \quad [\mathrm{bps/m}].
+\end{equation}
+This indicator is computed only when both $R$ and $\Delta r_{\min}$ are available from the same scenario record and the measurement-plane note is explicit. If only $\Delta z$ or an ambiguous spatial-resolution field is available, $\mathrm{CRQ}_{\Delta}$ remains undefined.
+
+\begin{table*}[!t]
+\caption{Metric Contract and Comparability Guard Summary}
+\label{tab:ii-metric-contract}
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.15\textwidth} >{\raggedright\arraybackslash}p{0.16\textwidth} >{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.20\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Quantity} & \textbf{Role} & \textbf{Native scope / plane} & \textbf{Admissible use} & \textbf{Forbidden substitution / warning} \\
+\midrule
+$\Delta r_{\min}$ & Bandwidth-limited resolution & Two-way ranging physics & Use as resolution term; combine with $R$ for $\mathrm{CRQ}_{\Delta}$ only when both come from the same scenario & Do not treat as $\sigma_r$ or $\Delta z$ \\
+$\sigma_r$ & Estimator-dependent accuracy & Estimator/noise-model dependent & Report as accuracy or RMSE-style sensing fidelity & Do not relabel as physics-limited resolution \\
+CRB / FIM & Bound-type metric & Model-based lower-bound context & Use to contextualize attainable estimator accuracy & Do not report as measured accuracy or as $\Delta r_{\min}$ \\
+$\Delta z$ & Fiber spatial granularity & Guided sensing and DAS/OTDR contexts & Use for gauge or segment-length style fiber reporting & Do not substitute into $\mathrm{CRQ}_{\Delta}$ or wireless ranging comparisons \\
+$R$ & Communication throughput / rate & Communication objective & Use directly as rate objective; pair with $\Delta r_{\min}$ only under matched scenario records & Not a sensing metric and not a quality-plane surrogate \\
+$\mathrm{CRQ}_{\Delta}$ & Derived joint indicator & Same-scenario derived quantity & Compute only from explicit $R$ and $\Delta r_{\min}$ & Undefined if only $\Delta z$ or ambiguous resolution fields are available \\
+OSNR & Optical-plane quality metric & Pre-detection optical plane & Compare within explicit optical-plane reporting & Do not convert to electrical SNR without an explicit receiver/noise model \\
+SNR / ESNR & Electrical-plane quality metric & Post-detection electrical plane & Compare only within fixed electrical-plane contexts & Do not merge with OSNR as if interchangeable \\
+Ambiguous SNR & Unresolved quality label & Plane unspecified & Flag as ambiguous and exclude from plane-sensitive synthesis & Cannot justify plane separation or cross-plane conversion \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_ii_2.png}
+\caption{Metric contract and admissible comparison map for O-ISAC. The figure visualizes the admissible chain from effective bandwidth to bandwidth-limited resolution $\Delta r_{\min}$, from delay or time-of-flight to range, and from matched $R$ plus $\Delta r_{\min}$ to the derived indicator $\mathrm{CRQ}_{\Delta}$. It keeps estimator-level accuracy $\sigma_r$, bound-type metrics, fiber spatial granularity $\Delta z$, and plane-specific quality metrics explicitly separated.}
+\label{fig:ii-metric-contract}
+\end{figure*}
+
+\begin{quote}
+\textbf{Lesson (D):} Without explicit separation of $\Delta r_{\min}$, $\sigma_r$ or CRB, and $\Delta z$, resolution becomes non-isomorphic and cross-study comparisons become non-defensible.
+\end{quote}
+
+\subsection{ISAC Coupling and Trade-off Foundations}
+
+\subsubsection{Multiobjective Formulation}
+We cast O-ISAC co-design as a multiobjective program over a shared design vector $\mathbf{x}$ that collects waveform, front-end, sensing-task, and processing parameters. Let $f_c(\mathbf{x})$ denote a communication objective and $f_s(\mathbf{x})$ denote a sensing objective, with feasibility $\mathbf{x}\in\mathcal{X}$ capturing nonnegativity, power or bandwidth limits, and hardware constraints. A point $\mathbf{x}^*$ is Pareto-optimal if no other feasible design improves one objective without degrading the other.
+
+\subsubsection{Coupling Mechanisms by Modality}
+Coupling is most stable when categorized by mechanism rather than modality: resource coupling, waveform coupling, hardware coupling, algorithmic coupling, and propagation or environment coupling. These mechanisms manifest differently across modalities, but the coupling logic is invariant.
+
+\subsubsection{What This Enables Later}
+The optimization view provides a common language to map architectures to coupling families, define operating points, and align evaluation protocols with the metric contract. This lets later sections compare designs on consistent objectives without reinterpreting metrics across modalities.
+
+\begin{quote}
+\textbf{Lesson (E):} O-ISAC is a constrained multiobjective design problem; without explicit coupling families and objective forms, cross-architecture comparisons devolve into metric aliasing.
+\end{quote}

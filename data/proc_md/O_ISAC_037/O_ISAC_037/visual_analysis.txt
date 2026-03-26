@@ -1,0 +1,118 @@
+Image: _page_1_Figure_1.jpeg
+Type: System Diagram / Schematic (FMCW LiDAR Waveform Concept)
+---
+Components:
+- Frequency Axis: Showing chirp modulation pattern.
+- Time Axis: Duration of chirp cycles.
+- Tx Chirp: Transmitted frequency-modulated waveform.
+- Rx Chirp: Received waveform with time delay τ.
+- Beat Frequency (fb): Difference frequency for range measurement.
+
+Description:
+- Chirp bandwidth (B): Illustrated span on frequency axis.
+- Chirp period (T): Duration of one complete up/down chirp.
+- Time delay (τ): Proportional to target range (R = c·τ/2).
+- Beat frequency: fb = 2·B·R / (c·T).
+
+Key Parameters (from diagram labels):
+- Chirp slope: S = B/T.
+- Range resolution: ΔR = c/(2B).
+- Maximum unambiguous range: Rmax = c·T/2.
+---
+
+Image: _page_1_Figure_17.jpeg
+Type: Chart (Beat Frequency Spectrum)
+---
+Axes:
+- X-axis: Frequency (MHz). Range: 0 to 50 MHz.
+- Y-axis: Power Spectral Density (dB). Range: -60 to 0 dB.
+
+Observations:
+- Target 1 Peak: 12.5 MHz, Power = -8 dB.
+- Target 2 Peak: 28.3 MHz, Power = -15 dB.
+- Target 3 Peak: 41.7 MHz, Power = -25 dB.
+- Noise Floor: ~-55 dB.
+
+Data Points:
+- SNR Target 1: 47 dB (strongest return).
+- SNR Target 2: 40 dB.
+- SNR Target 3: 30 dB.
+- Peak width (3 dB): ~0.5 MHz (indicates range resolution).
+
+Trend:
+- Beat frequency proportional to target range.
+- Assuming 1 GHz chirp bandwidth and 100 µs period: fb of 12.5 MHz → Range ~62.5 m.
+- fb of 28.3 MHz → Range ~141.5 m.
+- fb of 41.7 MHz → Range ~208.5 m.
+---
+
+Image: _page_1_Figure_20.jpeg
+Type: Chart (Range Accuracy vs SNR)
+---
+Axes:
+- X-axis: SNR (dB). Range: 0 to 40 dB.
+- Y-axis: Range RMSE (cm). Range: 0.1 to 100 cm (log scale).
+
+Legend:
+- 500 MHz Bandwidth (Blue): Moderate resolution.
+- 1 GHz Bandwidth (Red): Standard automotive.
+- 2 GHz Bandwidth (Green): High resolution.
+- 4 GHz Bandwidth (Orange): Ultra-high resolution.
+
+Data Points:
+- At SNR = 10 dB: 500 MHz = 25 cm; 1 GHz = 12 cm; 2 GHz = 6 cm; 4 GHz = 3 cm.
+- At SNR = 20 dB: 500 MHz = 8 cm; 1 GHz = 4 cm; 2 GHz = 2 cm; 4 GHz = 1 cm.
+- At SNR = 30 dB: 500 MHz = 2.5 cm; 1 GHz = 1.3 cm; 2 GHz = 0.6 cm; 4 GHz = 0.3 cm.
+
+Trend:
+- Range accuracy scales as RMSE ∝ 1/(B·√SNR).
+- 4 GHz bandwidth achieves sub-cm accuracy at SNR > 25 dB.
+- Doubling bandwidth halves RMSE (consistent with Cramér-Rao bound).
+---
+
+Image: _page_1_Picture_12.jpeg
+Type: System Diagram / Schematic (Automotive LiDAR ISAC Concept)
+---
+Components:
+- Vehicle: Equipped with LiDAR transceiver.
+- LiDAR Unit: FMCW-based coherent sensor.
+- Target Vehicles: Other cars in traffic.
+- Pedestrians: Moving objects to detect.
+- Infrastructure: Road signs, buildings.
+- V2X Link: Vehicle-to-everything communication overlay.
+- Data Link: Communication channel using sensing waveform.
+
+Flow:
+1. Vehicle LiDAR emits FMCW optical beam.
+2. Beam scans surrounding environment (targets, pedestrians, infrastructure).
+3. Reflected signals processed for range/velocity estimation.
+4. Communication data encoded on same waveform to nearby vehicles (V2V).
+5. Nearby vehicles decode data while performing own sensing.
+6. V2X infrastructure nodes also receive communication overlay.
+---
+
+Image: _page_2_Figure_1.jpeg
+Type: Chart (Simultaneous Ranging and Communication Performance)
+---
+Axes:
+- X-axis: Data Rate (Mbps). Range: 0 to 500 Mbps.
+- Y-axis (Left): Range Accuracy (cm). Range: 0 to 20 cm.
+- Y-axis (Right): BER. Range: 10^-6 to 10^-2 (log scale).
+
+Legend:
+- Range Accuracy (Blue solid): Left axis.
+- BER (Red dashed): Right axis.
+
+Data Points:
+- At 50 Mbps: Range = 1.5 cm; BER = 10^-6.
+- At 100 Mbps: Range = 2.0 cm; BER = 10^-5.
+- At 200 Mbps: Range = 3.5 cm; BER = 10^-4.
+- At 300 Mbps: Range = 6.0 cm; BER = 5×10^-4.
+- At 500 Mbps: Range = 12 cm; BER = 10^-3.
+
+Trend:
+- Range accuracy degrades approximately linearly with data rate.
+- BER increases exponentially with data rate (limited by OSNR).
+- Optimal operating point: ~100-200 Mbps for balanced performance.
+- At 500 Mbps: 8× worse ranging but still sub-BER threshold.
+---

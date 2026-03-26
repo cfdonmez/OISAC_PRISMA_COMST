@@ -1,0 +1,187 @@
+{
+  "run_id": "20260102_101107_O_ISAC_011_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101107",
+  "paper_id": "O_ISAC_011",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the schematic diagram of a RO-ISAC system supporting 3D positioning. Fig. 2 shows the illustration of the reflected signal. Fig. 3 is a 3D illustration of the simulation setup. Fig. 4 compares the BER performance of different modulation orders. Fig. 5 shows the influence of the number of symbols used for cross-correlation calculation on the distance measurement RMSE. Fig. 6 indicates the distance measurement RMSE changes with transmitted SNR under different symbol numbers. Fig. 7 and Fig. 8 show the positioning RMSE distribution when two transmitters are located at different heights."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system is a retroreflective optical ISAC (RO-ISAC) system that uses OFDM for data transmission and positioning. The system uses a corner cube reflector (CCR) to reflect the optical signal back to the transmitter, which then uses cross-correlation calculation to measure the time delay and estimate the distance. The system also uses multiple LEDs to provide diversity gain for communication and improve positioning accuracy."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a range resolution of 1cm and a maximum ranging distance. The simulation results show that the system can achieve a low distance measurement RMSE and positioning RMSE, indicating good physical consistency."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of achieving high-speed communication and positioning functions in indoor environments using a retroreflective optical ISAC system. However, the system's performance may be affected by the height difference between the transmitters and the receiver, and the system's complexity may be increased by the use of multiple LEDs and the cross-correlation calculation."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Retroreflective Optical ISAC Supporting 3D Positioning in Indoor Environments",
+        "authors": "Haochuan Wang, Binbin Zhu, Zhihong Zeng, Sihua Shao, Chen Chen, Min Liu",
+        "year": 2024,
+        "venue": "Optics Letters",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "3D positioning in indoor environments"
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A retroreflective optical ISAC system using OFDM for 3D positioning in indoor environments",
+        "gap_addressed": "Achieving high-speed communication and positioning functions in indoor environments",
+        "performance_enablers": "ofdm_waveform_design",
+        "novel_component": "corner_cube_reflector",
+        "novel_component_specs": "NR"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor 3D positioning"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "ofdm",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 650,
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 30
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "NR",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "nr",
+        "sensing_waveform_family": "ofdm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "nr"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "nr",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "nr",
+        "backscatter_sensing_type": "nr"
+      },
+      "channel_wireless": {
+        "link_distance_m": 5,
+        "path_loss_model": "nr",
+        "turbulence_model": "nr",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "nr",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "nr"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 5,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "nr",
+        "tradeoff_control_range": "nr"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "nr",
+        "ris_phase_bits": "NR"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and simulation setup, and the results are well-presented. However, the paper could benefit from more detailed analysis of the system's performance and limitations."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which illustrates the schematic diagram of a RO-ISAC system supporting 3D positioning. Fig. 2 shows the illustration of the reflected signal. Fig. 3 is a 3D illustration of the simulation setup. Fig. 4 compares the BER performance of different modulation orders. Fig. 5 shows the influence of the number of symbols used for cross-correlation calculation on the distance measurement RMSE. Fig. 6 indicates the distance measurement RMSE changes with transmitted SNR under different symbol numbers. Fig. 7 and Fig. 8 show the positioning RMSE distribution when two transmitters are located at different heights.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system is a retroreflective optical ISAC (RO-ISAC) system that uses OFDM for data transmission and positioning. The system uses a corner cube reflector (CCR) to reflect the optical signal back to the transmitter, which then uses cross-correlation calculation to measure the time delay and estimate the distance. The system also uses multiple LEDs to provide diversity gain for communication and improve positioning accuracy.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a range resolution of 1cm and a maximum ranging distance. The simulation results show that the system can achieve a low distance measurement RMSE and positioning RMSE, indicating good physical consistency.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed system solves the problem of achieving high-speed communication and positioning functions in indoor environments using a retroreflective optical ISAC system. However, the system's performance may be affected by the height difference between the transmitters and the receiver, and the system's complexity may be increased by the use of multiple LEDs and the cross-correlation calculation.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Retroreflective Optical ISAC Supporting 3D Positioning in Indoor Environments\",\n         \"authors\":\"Haochuan Wang, Binbin Zhu, Zhihong Zeng, Sihua Shao, Chen Chen, Min Liu\",\n         \"year\":2024,\n         \"venue\":\"Optics Letters\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"3D positioning in indoor environments\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"A retroreflective optical ISAC system using OFDM for 3D positioning in indoor environments\",\n         \"gap_addressed\":\"Achieving high-speed communication and positioning functions in indoor environments\",\n         \"performance_enablers\":\"ofdm_waveform_design\",\n         \"novel_component\":\"corner_cube_reflector\",\n         \"novel_component_specs\":\"NR\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor 3D positioning\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"led\",\n         \"tx_modulation_type\":\"ofdm\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":650,\n         \"optical_bandwidth_ghz\":\"NR\",\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":30\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":\"NR\",\n         \"rx_modulator_operating_point\":\"NR\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"nr\",\n         \"sensing_waveform_family\":\"ofdm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"nr\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":\"NR\",\n         \"fibre_type\":\"nr\",\n         \"attenuation_db_per_km\":\"NR\",\n         \"dispersion_ps_per_nm_km\":\"NR\",\n         \"nonlinearity_model\":\"nr\",\n         \"backscatter_sensing_type\":\"nr\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":5,\n         \"path_loss_model\":\"nr\",\n         \"turbulence_model\":\"nr\",\n         \"turbulence_Cn2\":\"NR\",\n         \"scintillation_index\":\"NR\",\n         \"pointing_error_model\":\"nr\",\n         \"weather_visibility_m\":\"NR\",\n         \"ambient_light_model\":\"nr\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":\"NR\",\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":\"NR\",\n         \"outage_probability\":\"NR\",\n         \"latency_ms\":\"NR\",\n         \"capacity_bps_hz\":\"NR\"\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":5,\n         \"range_resolution_m\":0.01,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":\"NR\",\n         \"velocity_resolution_mps\":\"NR\",\n         \"velocity_accuracy_mps\":\"NR\",\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":\"NR\",\n         \"sensing_bandwidth_hz\":\"NR\",\n         \"pd_probability_detection\":\"NR\",\n         \"pfa_probability_false_alarm\":\"NR\",\n         \"crb_crlb_value\":\"NR\",\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"nr\",\n         \"tradeoff_control_range\":\"nr\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":\"NR\",\n         \"opa_steering_range_deg\":\"NR\",\n         \"opa_beamwidth_deg\":\"NR\",\n         \"ris_num_elements\":\"NR\",\n         \"ris_type\":\"nr\",\n         \"ris_phase_bits\":\"NR\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system model and simulation setup, and the results are well-presented. However, the paper could benefit from more detailed analysis of the system's performance and limitations.\"\n   }\n}"
+}

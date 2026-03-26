@@ -388,7 +388,7 @@ The study selection process will follow the PRISMA 2020 flow, consisting of iden
 
 ### 7.1 Data Management and Deduplication (Identification)
 
-Search results from all sources will be exported in standard bibliographic formats (e.g., RIS/CSV) and merged into a master dataset. Deduplication will be conducted in a **semi-automated** manner using a custom Python pipeline archived in the repository (e.g., `analysis/notebooks/01_search_and_dedup.ipynb`), with the following procedure:
+Search results from all sources will be exported in standard bibliographic formats (e.g., RIS/CSV) and merged into a master dataset. Deduplication will be conducted in a **semi-automated** manner using a custom Python pipeline archived in the repository (e.g., `analysis/nb/01_search_and_dedup.ipynb`), with the following procedure:
 
 1. **Automated Matching:** Duplicate candidates will be detected using a hierarchy of keys:
    - Exact/near-exact DOI matches (when available),

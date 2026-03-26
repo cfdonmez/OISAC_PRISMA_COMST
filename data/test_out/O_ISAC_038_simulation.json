@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. NOMA based integration of DAS and Coherent Comms. 60 GBaud 16-QAM + 10m PZT sensing over 10km fiber."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 1: NOMA concept and constellation. Figure 2: Setup (AWG, 10km FUT, PZT, Coherent RX). Figure 3: Results (Spectrum, BER, Sensitivity).",
+        "step_1_concept_analysis": "System: Fiber ISAC. Modulation: NOMA (Non-Orthogonal Multiple Access) to overlay LFM sensing tone on 16-QAM comms. Sensing: DAS (Distributed Acoustic Sensing) using Rayleigh backscatter.",
+        "step_2_benchmark_verification": "Comm: 60 GBaud 16-QAM (~240 Gbps, or 480 Gbps inclusive of pol-mux? Text says 60 Gbaud 16-QAM). BER near baseline with >10dB power ratio. Sensing: 10m resolution (PZT detection). Sensitivity high due to pulse compression.",
+        "step_3_strategic_critique": "Novel application of NOMA for ISAC. LFM tone acts as sensing signal AND pilot for FOE/CPR in comms. Solves resource allocation (orthogonal) problem by using power domain."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_038",
+            "title": "Integration of Distributed Sensing into Optical Coherent Networks through Non-Orthogonal Multiple Access",
+            "authors": "Jingchuan Wang, Liwang Lu, Junwei Zhang, Alan Pak Tao Lau, Chao Lu",
+            "year": 2025,
+            "venue": "ACP/IPOC 2024 (Implied by footer '979-8-3503-6765-2/24/$31.00 ©2024 IEEE' - likely conference paper, title suggests journal style but short. Let's assume Conference)",
+            "document_type": "conference_paper",
+            "doi": "unknown"
+        },
+        "classification": {
+            "oisac_medium_class": "cabled_fibre",
+            "carrier_band": "c_band",
+            "operational_environment": "indoor_lab",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "optical_networks",
+                "fiber_sensing"
+            ],
+            "scenario_description": "Metro/Access network with integrated DAS for vibration sensing using NOMA."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "partial_setup_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "NOMA-based integration of DAS and coherent communication.",
+            "gap_addressed": "Resource scarcity in orthogonal multiplexing (TDM/FDM) for sensing.",
+            "performance_enablers": [
+                "noma_multiplexing",
+                "sic_processing"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_NOMA_DAS_COMM",
+                "scenario_label": "NOMA DAS-Comm Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "iq_modulation",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 60.0,
+                "notes": "NLL laser. 60 GBaud 16-QAM + LFM tone."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_intradyne",
+                "rx_detector": "photodiode",
+                "notes": "Coherent receiver with SIC (Successive Interference Cancellation) for Comms. DAS receiver for Sensing."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_transmitter",
+                "duplexing_mode": "power_division",
+                "notes": "NOMA overlay."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "lfm",
+                "isac_waveform_relationship": "superimposed",
+                "notes": "LFM tone superimposed on 16-QAM."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 10.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "rayleigh",
+                "notes": "10 km FUT. 10m PZT for vibration test."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 240.0,
+                "ber": 0.0,
+                "snr_db": 0.0,
+                "notes": "60 GBaud * 4 bits/sym = 240 Gbps. BER analysis shows negligible penalty at >10dB power ratio."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "vibration_sensing"
+                ],
+                "sensing_range_m": 10000.0,
+                "range_resolution_m": 10.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "10m resolution (based on LFM BW). Detects 100Hz vibration."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "power_allocation"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Power Ratio vs BER tradeoff."
+            }
+        }
+    ]
+}

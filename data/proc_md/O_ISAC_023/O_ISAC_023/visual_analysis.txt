@@ -1,0 +1,51 @@
+# Visual Analysis for O_ISAC_023
+
+## Figure 1: DCO-OFDM FSO-ISAC System Model
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_2_Figure_2.jpeg)
+- **Architecture:** 
+  - **Transceiver:** Tx bits -> m-QAM -> Hermitian symmetry -> IDFT/CP -> DAC -> DC bias/Clipping -> Laser Diode -> LiDAR.
+  - **Sensing Path:** Backscattered light (Uncooperative/Cooperative targets) -> Photodiode -> ADC -> Maximum Likelihood Estimation (MLE) for Target Distance.
+  - **Communication Path:** LoS link to Cooperative Target -> Photodiode -> ADC -> DFT -> Equalization -> Demodulation -> Rx bits.
+- **Key Insight:** Common waveform (DCO-OFDM) facilitates dual-service; clipping noise is handled via the Bussgang theorem and equivalent frequency-selective channel modeling.
+
+## Figure 2: Original Signal vs. Clipping Noise PSD
+**File:** [_page_3_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_3_Figure_2.jpeg)
+- **(a) Even Power Allocation:** Original signal PSD is flat (~3x10^-3). Clipping noise PSD is also white (~2.5x10^-4).
+- **(b) Uneven Power Allocation:** Original signal PSD increases with subcarrier index k. Clipping noise PSD becomes **colored (ACGN)**, decreasing with k.
+- **Physics:** Non-linear clipping elicits frequency-selective distortion even in flat channels, necessitating colored noise modeling for Accurate ISAC metrics.
+
+## Figure 3: Iterative Algorithm Convergence
+**File:** [_page_7_Figure_14.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_7_Figure_14.jpeg)
+- **Type:** 2D Parameter Space Sketch ($\mu$ vs $\eta$).
+- **Trajectories:** Shows zigzag convergence of dual variables $(\mu^{(j)}, \eta^{(j)})$ towards the optimal intersection $(\mu_c^*, \eta_c^*)$ defined by $S_1$ (rate) and $S_2$ (sensing) constraints.
+- **Constraint:** Trajectories are bounded by $\mu = \gamma_s(l_2)l_2^2\eta$ (lower) and $\mu = \gamma_s(l_1)l_1^2\eta + \gamma_c(l_1)$ (upper), ensuring stability.
+
+## Figure 4-5: Dual Variable Metrics
+**File:** [_page_9_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_9_Figure_4.jpeg) & [_page_9_Figure_11.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_9_Figure_11.jpeg)
+- **Convergence:** Normalized residual $\epsilon^{(j)}$ decays geometrically. Higher precision targets (3.2 cm) slow convergence (~110 iterations) vs. loose targets (4.4 cm, ~15 iterations).
+- **Values:** $\mu_c^*$ ranges from ~0.6x10^3 to ~2x10^3; $\eta_c^*$ ranges from ~0.1x10^-4 to ~0.8x10^-4 as target precision tightens from 4.4 cm to 3.2 cm.
+
+## Figure 6: Subcarrier Power Allocation
+**File:** [_page_10_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_10_Figure_2.jpeg)
+- **Behaviors:** 
+  - **Optimal Comm:** Flat/uniform distribution to maximize Shannon capacity.
+  - **Optimal Sensing:** Pure high-pass; all power pushed to maximum $k$ to maximize Fisher Information (frequency-weighting $k^2$).
+  - **Tradeoff (CC/SC):** Curves transition smoothly. As $c/2\varsigma_0$ decreases (sharper ranging), power shifts dramatically to the right margin of the subcarrier index.
+
+## Figure 7: Spectral Efficiency vs. Sensing Precision Tradeoff
+**File:** [_page_11_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_11_Figure_2.jpeg)
+- **Frontiers:** Pareto optimization curves for $N=128, 256, 512$.
+- **Saturnality:** 
+  - Right Margin: Spectral efficiency plateaus (e.g., ~3.38 bps/Hz for $N=512$).
+  - Left Margin: Critical collapse of communication rate occurs when attempting to push precision beyond ~2.85 cm.
+- **Duality:** CC and SC scenarios converge on the same physical frontier.
+
+## Figure 8: Computational Complexity
+**File:** [_page_11_Figure_6.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_11_Figure_6.jpeg)
+- **Scaling:** Number of SNDR calculations (complexity metric).
+- **Observation:** Complexity peaks at marginal precision/rate targets; using the "Dual" problem formulation (e.g., switching from CC to SC) allows maintaining complexity within $10^4$ to $10^5$ evaluations.
+
+## Figure 9: Sensing Robustness (RMSE)
+**File:** [_page_12_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_023/O_ISAC_023/_page_12_Figure_2.jpeg)
+- **Scenarios:** Scintillation indices $C_n^2$ from $10^{-14}$ to $2 \times 10^{-13} m^{-2/3}$.
+- **Performance:** For Electrical SNR > 2 dB, all turbulence scenarios converge to cm-level RMSE (approx. 3-8 cm), validating the BCD-optimized DCO-OFDM waveform against atmospheric variations.

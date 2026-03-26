@@ -1,0 +1,126 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. Proposes OCDM-based FMCW ISAC for FSO. Dedicates one subcarrier for FMCW ranging, others for comms. Achieves Gbps rates and cm-level accuracy."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 2: System schematic showing OCDM transmitter and FMCW ranging receiver. Figure 3: Time-frequency diagram showing guard bands. Figures 5-8: Ranging results. Figures 9-11: Communication BER/EVM.",
+        "step_1_concept_analysis": "System: FSO ISAC. Modulation: OCDM (Orthogonal Chirp Division Multiplexing). Sensing: FMCW LiDAR (using one subcarrier). Detection: Coherent (for sensing), IM/DD (for comms - implied by setup description 'coherent demodulation' but text mentions 'direct detection' advantages in intro, however experiment uses coherent detection for sensing and communication data retrieval). *Wait, section III says: 'received communication data ... coherently demodulated'.*",
+        "step_2_benchmark_verification": "Comm: 3.182 Gbps (64-QAM). EVM ~5.8%. BER analysis vs Turbulence. Sensing: Beat frequency linearity R^2=1. Residual error < 0.1m (10cm). Precision < 1mm deviation vs standard FMCW.",
+        "step_3_strategic_critique": "Innovative use of OCDM for FSO-ISAC. Solves the tradeoff between high-speed comms and precise ranging by spectral allocation (subcarrier reservation) with guard bands."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_035",
+            "title": "OCDM-Based FMCW Waveform Design for FSO Integrated Sensing and Communications",
+            "authors": "Zhengchao Ban, Jingbo Tang, Qijie Xie, Yichuan Li",
+            "year": 2025,
+            "venue": "Journal of Lightwave Technology",
+            "document_type": "journal",
+            "doi": "10.1109/JLT.2025.3592208"
+        },
+        "classification": {
+            "oisac_medium_class": "free_space_optics",
+            "carrier_band": "c_band",
+            "operational_environment": "outdoor",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "lidar_communication",
+                "6g_backhaul"
+            ],
+            "scenario_description": "FSO link supporting simultaneous high-speed data and FMCW LiDAR ranging."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_provided"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "OCDM-FMCW waveform design dedicating a subcarrier for ranging.",
+            "gap_addressed": "Low data rates in existing FSO-ISAC and poor ranging accuracy in multi-carrier schemes.",
+            "performance_enablers": [
+                "waveform_diversity",
+                "modulation_innovation"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_OCDM_FSO_ISAC",
+                "scenario_label": "OCDM FSO-ISAC Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "iq_modulation",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 1.0,
+                "notes": "AWG generates OCDM (1024 subcarriers). 512th subcarrier used for ranging. MZM modulation."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_homodyne",
+                "rx_detector": "photodiode",
+                "notes": "Coherent detection for both comms and sensing (beat frequency extraction)."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_front_end",
+                "duplexing_mode": "frequency_division",
+                "notes": "Subcarrier-based division within OCDM symbol."
+            },
+            "waveform": {
+                "comm_waveform_family": "lfm",
+                "comm_modulation_order": 64,
+                "sensing_waveform_family": "lfm",
+                "isac_waveform_relationship": "embedded",
+                "notes": "OCDM uses chirps as subcarriers. Comm data on most subcarriers, Sensing on one dedicated subcarrier."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "Fiber delay line used to mimic FSO delay in lab."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 15.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "Simulated Gamma-Gamma turbulence and lab fiber delay (up to 15m) for ranging proof."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 3.182,
+                "ber": 0.001,
+                "snr_db": 20.0,
+                "notes": "3.182 Gbps with 64-QAM. 6 Gbps max theoretical capacity simulated."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "sensing_range_m": 15.0,
+                "range_resolution_m": 0.15,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.1,
+                "notes": "Centimeter-level accuracy (<0.1m residual error). 15m max delay tested in lab."
+            },
+            "tradeoff": {
+                "coupling_mode": "tight",
+                "tradeoff_type": [
+                    "spectral_efficiency_vs_sensing"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Guard band length tradeoffs: larger guard band = better ranging (less interference) but lower comm capacity."
+            }
+        }
+    ]
+}

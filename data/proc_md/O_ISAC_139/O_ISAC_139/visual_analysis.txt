@@ -1,0 +1,84 @@
+# O_ISAC_139 Visual Analysis
+
+## Image 1: _page_2_Figure_0.jpeg
+- **Type**: System Diagram / Architecture
+- **Description**: End-to-end architecture showing Edge to Cloud continuum.
+- **Components**:
+    - **Edge Layer**:
+        - Beacons (RSSI transmitters).
+        - Trackable Objects (Receivers).
+        - IoT Gateways (Raspberry Pi 기반, inter-gateway cooperation).
+    - **Cloud Layer**:
+        - Streams Aggregation (MQTT/HTTP).
+        - Devices Manager & Repository.
+        - Kafka Cluster.
+        - Stream Pipelines (Flink) featuring RSSI-based Localization Processor and Map Transformer.
+        - Locations Repository.
+- **Protocol**: MQTT used for bridge between Edge and Cloud.
+
+## Image 2: _page_3_Figure_1.jpeg
+- **Type**: Experimental Setup / Illustration
+- **Description**: Hardware setup for LoS/NLoS experimentation.
+- **Hardware**:
+    - Transmitter: TI CC2650 BLE device.
+    - Receiver: Sparkfun ESP32 Thing.
+    - Middleware: IoT Gateway (Raspberry Pi) communicating with Backend Cloud Layer (MQTT over IP/WiFi).
+- **Setup**: Distance ranging from 0.5m to 4m with a step of 0.5m. Movable obstacle placed between Tx and Rx for NLoS scenarios.
+
+## Image 3: _page_4_Figure_1.jpeg
+- **Type**: Flowchart
+- **Description**: MODE+MEAN Filter Flow algorithm.
+- **Steps**:
+    1. Input: last 20 RSSI measurements.
+    2. Count appearances of RSSI values in the window.
+    3. Sort in descending order of frequency.
+    4. Calculate arithmetic mean of the top 3 most frequent values.
+    5. Return result.
+
+## Image 4: _page_4_Figure_11.jpeg
+- **Type**: Flowchart / Algorithm
+- **Description**: Beacon Selection Algorithm for trilateration.
+- **Logic**:
+    - Input: Signal and metadata (LoS/NLoS, mean strength) of available Beacons.
+    - Sorting criteria: 1) LoS-NLoS status (Priority to LoS), 2) Mean RSSI Descending.
+    - Selection: Top 3 beacons are chosen.
+    - Output: Beacons for trilateration.
+
+## Image 5: _page_5_Figure_0.jpeg
+- **Type**: Chart / Graph
+- **Description**: Standard Deviation (STD) of RSSI at different distances for various filters.
+- **Key Data (at 2m distance)**:
+    - Raw: 6.931 dB (highest noise).
+    - Gauss: 1.251 dB (most stable).
+    - Kalman: 1.584 dB.
+    - M+M: 2.478 dB.
+    - FFT: 2.559 dB.
+- **Observation**: Gaussian filter consistently provides the best noise reduction across all distances.
+
+## Image 6: _page_5_Figure_3.jpeg
+- **Type**: Chart / Graph
+- **Description**: Percentage of Outliers detected (defined as |ΔRSSI| > 2 dBm).
+- **Key Data (at 1m distance)**:
+    - Raw: 66.5% outliers.
+    - Gauss: 8.0%.
+    - Kalman: 8.8%.
+    - M+M: 18.1%.
+- **Observation**: Gaussian filter minimizes outliers most effectively in high-noise environments.
+
+## Image 7: _page_5_Figure_8.jpeg
+- **Type**: Chart / Graph
+- **Description**: RSSI Stability (Mean Fluctuation) across distances.
+- **Key Data (at 2m distance)**:
+    - Raw: 5.62 dBm.
+    - Gauss: 0.26 dBm.
+    - Kalman: 0.40 dBm.
+    - M+M: 0.48 dBm.
+- **Observation**: Gaussian filter yields ~95% reduction in fluctuation compared to raw data.
+
+## Image 8: _page_6_Figure_6.jpeg
+- **Type**: Chart / Graph (ROC Curve)
+- **Description**: Receiver Operating Characteristic (ROC) for Random Forest classifier (LoS vs NLoS).
+- **Metrics**: 
+    - AUC = 0.99.
+    - Curve is pushed to the top-left corner, indicating high sensitivity and specificity.
+    - Table in text confirms 96% accuracy for Random Forest.

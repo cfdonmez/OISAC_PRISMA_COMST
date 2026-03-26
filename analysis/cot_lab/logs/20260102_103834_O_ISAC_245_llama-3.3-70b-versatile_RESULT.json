@@ -1,0 +1,193 @@
+{
+  "run_id": "20260102_103834_O_ISAC_245_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103834",
+  "paper_id": "O_ISAC_245",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several visual aids such as system diagrams and line charts. Figure 1 depicts the proposed ISAC system architecture, which includes a base station with Tx and Rx ULAs, K single-antenna users, and L point-like targets. The system operates using OFDM waveform transmission, downlink communication to K users, echo reception for sensing, and joint range-velocity-angle estimation. Other figures show the convergence of sparse vector b, RMSE convergence, and detection probability."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system uses a MIMO-OFDM ISAC baseline and employs a Markov chain Monte Carlo (MCMC)-based sparse Bayesian learning (SBL) algorithm for super-resolution receiver design. The algorithm treats both sparse variables and their associated parameters as random variables, enabling gridless estimation with super-resolution and high precision. The system operates in a mono-static downlink ISAC scenario, where the base station transmits OFDM waveforms to communicate with K single-antenna users and simultaneously illuminates L point-like targets."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports that the proposed algorithm achieves an estimation accuracy on the order of 10^-1 m for range, 10^-1 m/s for velocity, and 10^-2 degree for angle, under conditions where the SNR exceeds 10 dB. The algorithm also demonstrates superior accuracy and efficiency compared to traditional CS methods, especially in low-SNR ISAC environments. The reported metrics are physically consistent with the system design and operation."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed algorithm solves the problem of joint target detection and parameter estimation in ISAC systems, achieving super-resolution and high precision. However, the algorithm's performance may be affected by the choice of hyperparameters, and the computational complexity may be high due to the use of MCMC. Future work may focus on optimizing the proposal distribution and investigating adaptive MCMC strategies to further improve algorithmic efficiency and scalability for more ISAC applications."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_245",
+        "title": "MCMC-Based Sparse Bayesian Learning for Super-Resolution Receiver in ISAC Systems",
+        "authors": "Keying Zhu et al.",
+        "year": 2025,
+        "venue": "IEEE",
+        "doi": "Not Reported",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "mmWave",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "ISAC system with MIMO-OFDM baseline"
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "MCMC-based SBL algorithm for joint target detection and parameter estimation",
+        "gap_addressed": "Super-resolution and high precision in ISAC systems",
+        "performance_enablers": "mcmc_based_sbl",
+        "novel_component": "Adam optimizer for proposal distribution",
+        "novel_component_specs": "mini-batch gradient information"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "ISAC system with MIMO-OFDM baseline"
+      },
+      "transmitter": {
+        "tx_source_type": "ofdm",
+        "tx_modulation_type": "mimo_ofdm",
+        "tx_external_modulator": "none",
+        "wavelength_nm": "Not Reported",
+        "optical_bandwidth_ghz": "Not Reported",
+        "tx_power_dbm": "Not Reported",
+        "aperture_diameter_m": "Not Reported",
+        "beam_divergence_mrad": "Not Reported"
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "not_specified",
+        "rx_aperture_diameter_m": "Not Reported",
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "Not Reported",
+        "rx_modulator_operating_point": "not_specified",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "separate_frontends",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": "Not Reported",
+        "comm_symbol_rate_gbaud": "Not Reported",
+        "comm_fec_type": "Not Reported",
+        "sensing_waveform_family": "same_as_comm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "Not Reported"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "Not Reported",
+        "fibre_type": "Not Reported",
+        "attenuation_db_per_km": "Not Reported",
+        "dispersion_ps_per_nm_km": "Not Reported",
+        "nonlinearity_model": "Not Reported",
+        "backscatter_sensing_type": "Not Reported"
+      },
+      "channel_wireless": {
+        "link_distance_m": "Not Reported",
+        "path_loss_model": "Not Reported",
+        "turbulence_model": "Not Reported",
+        "turbulence_Cn2": "Not Reported",
+        "scintillation_index": "Not Reported",
+        "pointing_error_model": "Not Reported",
+        "weather_visibility_m": "Not Reported",
+        "ambient_light_model": "Not Reported"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "Not Reported",
+        "spectral_efficiency_bps_hz": "Not Reported",
+        "ber": "Not Reported",
+        "ber_target": "Not Reported",
+        "snr_db": "Not Reported",
+        "osnr_db": "Not Reported",
+        "outage_probability": "Not Reported",
+        "latency_ms": "Not Reported",
+        "capacity_bps_hz": "Not Reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": "Not Reported",
+        "range_resolution_m": "Not Reported",
+        "range_accuracy_m": "Not Reported",
+        "angular_resolution_deg": "Not Reported",
+        "velocity_resolution_mps": "Not Reported",
+        "velocity_accuracy_mps": "Not Reported",
+        "localization_error_m": "Not Reported",
+        "spatial_resolution_m": "Not Reported",
+        "sensing_bandwidth_hz": "Not Reported",
+        "pd_probability_detection": "Not Reported",
+        "pfa_probability_false_alarm": "Not Reported",
+        "crb_crlb_value": "Not Reported",
+        "crb_parameter": "Not Reported"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "snr",
+        "tradeoff_control_range": "-20_to_20_db"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "Not Reported",
+        "opa_steering_range_deg": "Not Reported",
+        "opa_beamwidth_deg": "Not Reported",
+        "ris_num_elements": "Not Reported",
+        "ris_type": "Not Reported",
+        "ris_phase_bits": "Not Reported"
+      },
+      "provenance": {
+        "source_pointer": "Table II, p.5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 100
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model, algorithm, and simulation results. However, the experimental setup and validation could be improved."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several visual aids such as system diagrams and line charts. Figure 1 depicts the proposed ISAC system architecture, which includes a base station with Tx and Rx ULAs, K single-antenna users, and L point-like targets. The system operates using OFDM waveform transmission, downlink communication to K users, echo reception for sensing, and joint range-velocity-angle estimation. Other figures show the convergence of sparse vector b, RMSE convergence, and detection probability.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system uses a MIMO-OFDM ISAC baseline and employs a Markov chain Monte Carlo (MCMC)-based sparse Bayesian learning (SBL) algorithm for super-resolution receiver design. The algorithm treats both sparse variables and their associated parameters as random variables, enabling gridless estimation with super-resolution and high precision. The system operates in a mono-static downlink ISAC scenario, where the base station transmits OFDM waveforms to communicate with K single-antenna users and simultaneously illuminates L point-like targets.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports that the proposed algorithm achieves an estimation accuracy on the order of 10^-1 m for range, 10^-1 m/s for velocity, and 10^-2 degree for angle, under conditions where the SNR exceeds 10 dB. The algorithm also demonstrates superior accuracy and efficiency compared to traditional CS methods, especially in low-SNR ISAC environments. The reported metrics are physically consistent with the system design and operation.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed algorithm solves the problem of joint target detection and parameter estimation in ISAC systems, achieving super-resolution and high precision. However, the algorithm's performance may be affected by the choice of hyperparameters, and the computational complexity may be high due to the use of MCMC. Future work may focus on optimizing the proposal distribution and investigating adaptive MCMC strategies to further improve algorithmic efficiency and scalability for more ISAC applications.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_245\",\n         \"title\":\"MCMC-Based Sparse Bayesian Learning for Super-Resolution Receiver in ISAC Systems\",\n         \"authors\":\"Keying Zhu et al.\",\n         \"year\":2025,\n         \"venue\":\"IEEE\",\n         \"doi\":\"Not Reported\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_fso\",\n         \"carrier_band\":\"mmWave\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"ISAC system with MIMO-OFDM baseline\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"MCMC-based SBL algorithm for joint target detection and parameter estimation\",\n         \"gap_addressed\":\"Super-resolution and high precision in ISAC systems\",\n         \"performance_enablers\":\"mcmc_based_sbl\",\n         \"novel_component\":\"Adam optimizer for proposal distribution\",\n         \"novel_component_specs\":\"mini-batch gradient information\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"ISAC system with MIMO-OFDM baseline\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"ofdm\",\n         \"tx_modulation_type\":\"mimo_ofdm\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":\"Not Reported\",\n         \"optical_bandwidth_ghz\":\"Not Reported\",\n         \"tx_power_dbm\":\"Not Reported\",\n         \"aperture_diameter_m\":\"Not Reported\",\n         \"beam_divergence_mrad\":\"Not Reported\"\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"not_specified\",\n         \"rx_aperture_diameter_m\":\"Not Reported\",\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":\"Not Reported\",\n         \"rx_modulator_operating_point\":\"not_specified\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"separate_frontends\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":\"Not Reported\",\n         \"comm_symbol_rate_gbaud\":\"Not Reported\",\n         \"comm_fec_type\":\"Not Reported\",\n         \"sensing_waveform_family\":\"same_as_comm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"Not Reported\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":\"Not Reported\",\n         \"fibre_type\":\"Not Reported\",\n         \"attenuation_db_per_km\":\"Not Reported\",\n         \"dispersion_ps_per_nm_km\":\"Not Reported\",\n         \"nonlinearity_model\":\"Not Reported\",\n         \"backscatter_sensing_type\":\"Not Reported\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":\"Not Reported\",\n         \"path_loss_model\":\"Not Reported\",\n         \"turbulence_model\":\"Not Reported\",\n         \"turbulence_Cn2\":\"Not Reported\",\n         \"scintillation_index\":\"Not Reported\",\n         \"pointing_error_model\":\"Not Reported\",\n         \"weather_visibility_m\":\"Not Reported\",\n         \"ambient_light_model\":\"Not Reported\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":\"Not Reported\",\n         \"spectral_efficiency_bps_hz\":\"Not Reported\",\n         \"ber\":\"Not Reported\",\n         \"ber_target\":\"Not Reported\",\n         \"snr_db\":\"Not Reported\",\n         \"osnr_db\":\"Not Reported\",\n         \"outage_probability\":\"Not Reported\",\n         \"latency_ms\":\"Not Reported\",\n         \"capacity_bps_hz\":\"Not Reported\"\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":\"Not Reported\",\n         \"range_resolution_m\":\"Not Reported\",\n         \"range_accuracy_m\":\"Not Reported\",\n         \"angular_resolution_deg\":\"Not Reported\",\n         \"velocity_resolution_mps\":\"Not Reported\",\n         \"velocity_accuracy_mps\":\"Not Reported\",\n         \"localization_error_m\":\"Not Reported\",\n         \"spatial_resolution_m\":\"Not Reported\",\n         \"sensing_bandwidth_hz\":\"Not Reported\",\n         \"pd_probability_detection\":\"Not Reported\",\n         \"pfa_probability_false_alarm\":\"Not Reported\",\n         \"crb_crlb_value\":\"Not Reported\",\n         \"crb_parameter\":\"Not Reported\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"snr\",\n         \"tradeoff_control_range\":\"-20_to_20_db\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":\"Not Reported\",\n         \"opa_steering_range_deg\":\"Not Reported\",\n         \"opa_beamwidth_deg\":\"Not Reported\",\n         \"ris_num_elements\":\"Not Reported\",\n         \"ris_type\":\"Not Reported\",\n         \"ris_phase_bits\":\"Not Reported\"\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table II, p.5\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":100\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system model, algorithm, and simulation results. However, the experimental setup and validation could be improved.\"\n   }\n}"
+}

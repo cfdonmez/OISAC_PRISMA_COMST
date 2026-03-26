@@ -1,0 +1,14 @@
+- Excerpt 1 (`O_ISAC_003`): "vehicle-to-vehicle (V2V) scenario, focusing on monostatic sensing and bi-static sensing modes."
+  - Locator: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, HeadingPath `*Abstract*`, line span `5-5`.
+- Excerpt 2 (`O_ISAC_003`): "constructed two typical modes of mono-static sensing and bistatic sensing vehicle scenarios, as depicted in Fig. 1."
+  - Locator: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, HeadingPath `## *A. Simulation Scenario Set Up*`, line span `33-33`.
+- Excerpt 3 (`O_ISAC_003`): "target channel received power ratio of mono-static sensing decreases by 30%, while the received power ratio of bi-static sensing is stable at about 1.06%"
+  - Locator: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, HeadingPath `*Abstract*`, line span `5-5`.
+- Excerpt 4 (`O_ISAC_055`): "boomerang transmission technique utilizes OWC to alternately relay data between two vehicles and measure the distance"
+  - Locator: `data/proc_markdowns/O_ISAC_055/O_ISAC_055.md`, HeadingPath `## I. INTRODUCTION`, line span `13-13`.
+- Excerpt 5 (`O_ISAC_055`): "distance between Device A and Device B is D=200 m, and the LoS channel depicted in (4)"
+  - Locator: `data/proc_markdowns/O_ISAC_055/O_ISAC_055.md`, HeadingPath `#### IV. NUMERICAL RESULTS`, line span `212-212`.
+- Excerpt 6 (`O_ISAC_055`): "the achievable data rate, the bit error rate (BER) for communication"
+  - Locator: `data/proc_markdowns/O_ISAC_055/O_ISAC_055.md`, HeadingPath `#### III. PERFORMANCE METRICS AND OPTIMIZATION`, line span `96-96`.
+- Excerpt 7 (`O_ISAC_055`): "Fig. 4 shows the root mean square error (RMSE) of sensing in the asymptotic region, where RMSE approaches CRB"
+  - Locator: `data/proc_markdowns/O_ISAC_055/O_ISAC_055.md`, HeadingPath `#### IV. NUMERICAL RESULTS`, line span `226-226`.

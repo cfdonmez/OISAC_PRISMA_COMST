@@ -1,0 +1,55 @@
+Image: _page_1_Figure_1.jpeg
+Type: System Schematic (O-ISAC Environment)
+---
+**Components:**
+* **O-AP (Optical Access Points):** m, 1, $\mu$ labeled. Circled in dashed line.
+* **Devices (UEs):** Device 1 (laptop), Device 2 (headphones), Device $\nu$ (smartphone).
+* **Sensors:** PD array (photodetector array).
+* **Dimensions:** L (Length), W (Width), H (Height).
+* **Reference System:** (0,0,0) at floor center, (0,0,H) at ceiling center.
+---
+
+Image: _page_3_Figure_1.jpeg
+Type: Timing Diagram (O-ISAC Phases)
+---
+**Phases:**
+* **Phase 1 (Directionless O-ISAC):** O-APs broadcast | UEs decode & O-APs sense | UL (Uplink).
+* **Phase 2 (Directional O-ISAC):** Iterative process: O-APs transmit data to UE-1 | UE1 decodes & O-APs sense | UL ... up to UE-$\nu$.
+---
+
+Image: _page_4_Picture_1.jpeg
+Type: Geometric Diagram (Optical Beam Geometry)
+---
+**Components/Parameters:**
+* **O:** Origin/Center.
+* **$A_0, A$:** Points on the beam boundary/surface.
+* **$B_1$:** Vector/direction of transmission.
+* **Angles:** $\phi$ (zenith angle), $\beta$ (surface normal angle), $\varphi$ (steering/tilt angle), $\theta$ (vector angle relative to normal $n_f$).
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: 3D Surface Plots (System Distribution)
+---
+**Axes:** X [-2, 2], Y [-2, 2].
+**Panels:**
+* (a) **Light Intensity:** Peaks at ~1.4E-4 near center, drops to ~0.6E-4 at edges. 4 O-APs marked at ceiling corners.
+* (b) **BER:** Log scale [$10^{-6}$ to $10^{0}$]. Minimum in central region (~$10^{-5}$), rises sharply towards boundaries.
+* (c) **MSE:** Log scale [$10^{-5}$ to $10^{-2}$]. Minimum at center, peaks at corners (~$10^{-2}$).
+---
+
+Image: _page_5_Figure_3.jpeg
+Type: Performance Comparison Charts
+---
+**Axes:** X: Eb/N0 (dB) [-20 to 80], Y: BER/MSE (Log).
+**Panels:**
+* (a) **BER Performance:**
+    * Separated system (BPSK-OFDM): Drops below $10^{-4}$ at ~75 dB.
+    * Directionless O-ISAC: Similar to separated, drops at ~73 dB.
+    * Directional O-ISAC (16QAM-OFDM): Drops below $10^{-4}$ at ~13 dB.
+    * **Gain:** Directional ISAC achieves a 63.35 dB gain over directionless at $10^{-4}$ BER.
+* (b) **MSE Performance:**
+    * Separated system: $10^{-4}$ MSE at ~58 dB.
+    * Directionless O-ISAC: $10^{-4}$ MSE at ~55 dB.
+    * Directional O-ISAC: $10^{-4}$ MSE at ~18 dB.
+    * **Gain:** 40.42 dB improvement with directional approach; additional 3.03 dB gain over separated system.
+---

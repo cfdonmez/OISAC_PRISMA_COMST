@@ -1,0 +1,204 @@
+Image: _page_5_Figure_2.jpeg
+Type: Unified System Architecture
+---
+**Components:**
+* **Environmental Sensors:** Monitors Salinity/Temp.
+* **LSTM Predictor:** Core forecasting engine (MAE: 0.008 PSU).
+* **DRL Controller:** Decision-making agent for phase shifts.
+* **NSGA-II Optimizer:** Multi-objective refinement unit.
+* **ISAC Base Station:** Source of communications and radar signals.
+* **RIS Array:** Reconfigurable surface for beam steering.
+* **Legitimate Users:** Target receivers providing channel feedback.
+* **Eavesdroppers:** Adversarial targets for signal nullification.
+
+**Operational Flow:**
+1. Sensors feed real-time oceanographic data to the LSTM Predictor.
+2. LSTM provides short-term parameter forecasts to the DRL Controller.
+3. DRL agent evaluates states and interacts with the NSGA-II Optimizer via a Reward Function.
+4. Optimized phase shifts are applied to the RIS Array.
+5. RIS enhances signals toward Legitimate Users and nullifies links toward Eavesdroppers.
+
+**System Metrics:**
+* **BER Reduction:** 41.4%
+* **Secrecy Rate:** 8.2 bps/Hz
+* **Reconfig Latency:** 37.5 μs
+* **Energy Savings:** 22.2%
+---
+
+Image: _page_8_Picture_31.jpeg
+Type: Closed-Loop System Deployment Schematic
+---
+**Components & Scenario:**
+* **Terrestrial/Surface Station:** Includes Radar Tower and Solar-powered LSTM/Control unit.
+* **Underwater Environment:** Depicts turbulence and salinity gradients affecting the beam.
+* **RIS Beamforming:** Underwater array with 5-bit phase control.
+* **Target (Eavesdropper):** Submarine-like entity receiving a reflected/nulling signal.
+* **DRL/NSGA-II Agents:** Feedback-driven optimization loop for Pareto-optimal beamforming ($\Phi, W_t$).
+
+**Flow:** Signal propagates from radar tower to underwater RIS, which adapts its beam shape ($\theta$) based on LSTM forecasts to secure the link against the eavesdropper while maintaining connectivity.
+---
+
+Image: _page_11_Figure_8.jpeg
+Type: BER vs Salinity Performance Chart
+---
+**Axes Extraction:**
+* **X-axis:** Salinity (PSU) | Range: **31.9 to 34.4 PSU**.
+* **Y-axis:** Bit Error Rate (BER) | Range: **1.5e-5 to 6.5e-5**.
+
+**Numerical Data Points:**
+* **Proposed (LSTM-DRL):**
+    - **31.9 PSU:** ~3.2e-5.
+    - **33.5 PSU (Peak performance):** **2.3e-5**.
+    - **34.4 PSU:** ~2.7e-5.
+* **Static RIS [12]:** Starts at **5.5e-5** (31.9 PSU) and stays above 4.8e-5.
+* **Terrestrial DRL [4]:** Ranges from **4.2e-5** down to **3.3e-5** (at 33.5 PSU).
+
+**Trends:** The Proposed LSTM-DRL framework consistently outperforms baselines, maintaining the lowest error rate throughout the salinity sweep. A notable performance "well" is observed at 33.5 PSU.
+---
+
+Image: _page_11_Figure_10.jpeg
+Type: Secrecy Rate vs SNR Analysis
+---
+**Axes Extraction:**
+* **X-axis:** SNR (dB) | Range: **-5 to 20 dB**.
+* **Y-axis:** Secrecy Rate (bps/Hz) | Range: **0 to 8 bps/Hz**.
+
+**Numerical Data Points:**
+* **Proposed (Green):**
+    - **0 dB:** ~1.5 bps/Hz.
+    - **10 dB:** ~6.0 bps/Hz.
+    - **20 dB:** **~7.9 bps/Hz**.
+* **Static RIS (Red):**
+    - **0 dB:** ~1.2 bps/Hz.
+    - **10 dB:** ~4.0 bps/Hz.
+    - **20 dB:** ~5.8 bps/Hz.
+
+**Legend/Thresholds:**
+* **Eavesdropper SNR Limit:** Marked at **-2 dB** (vertical dotted line).
+* **Gain:** Proposed system achieves ~2 bps/Hz higher secrecy rate compared to static RIS at 20 dB SNR.
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: NSGA-II Pareto Front (Secrecy vs Energy)
+---
+**Axes Extraction:**
+* **X-axis:** Secrecy Rate (bps/Hz) | Range: **5 to 8.2 bps/Hz**.
+* **Y-axis:** Energy Efficiency (%) | Range: **15% to 22%**.
+
+**Numerical Data Points:**
+* **Selected Operating Point:** **8.0 bps/Hz** Secrecy Rate at **20%** Energy Efficiency.
+* **Pareto Limits:**
+    - Max Efficiency: **22%** at 5.0 bps/Hz.
+    - Max Secrecy: **~8.2 bps/Hz** at ~15.1% Efficiency.
+
+**Trends:** Inverse relationship between secrecy and efficiency; the curve shows a steep drop in efficiency as secrecy is pushed beyond 7.5 bps/Hz.
+---
+
+Image: _page_12_Figure_7.jpeg
+Type: Control Loop Latency Breakdown
+---
+**Axes Extraction:**
+* **X-axis:** Module (LSTM, DRL, NSGA-II, Actuation, Total).
+* **Y-axis:** Latency (ms) | Range: **0 to 300 ms**.
+
+**Numerical Performance (ms):**
+* **LSTM:** 12.3 ms
+* **DRL:** 18.7 ms
+* **NSGA-II:** 6.7 ms
+* **Actuation:** 9.6 ms
+* **Total End-to-End:** **47.3 ms**
+
+**Thresholds:**
+* **Channel Coherence:** Marked at **100 ms** (Red dashed line).
+* **Coherence Range:** Shaded box from **100 to 300 ms**.
+* **Verdict:** System operates within the coherence window with >50 ms safety margin.
+---
+
+Image: _page_12_Figure_9.jpeg
+Type: Computational Complexity (FLOPs)
+---
+**Axes Extraction:**
+* **X-axis:** Module (LSTM Inference, DRL Optimization, NSGA-II).
+* **Y-axis:** FLOPs per Frame (Log scale) | Range: **6e5 to 3e6**.
+
+**Numerical Values:**
+* **LSTM Inference:** ~1.4e6 FLOPs.
+* **DRL Optimization:** **~2.8e6 FLOPs** (Highest complexity).
+* **NSGA-II:** ~7.2e5 FLOPs.
+
+**Trends:** DRL consumes approximately 2x the FLOPs of LSTM inference per frame.
+---
+
+Image: _page_13_Figure_8.jpeg
+Type: Experimental vs Simulated BER Comparison
+---
+**Axes Extraction:**
+* **X-axis:** Scenario (Low Salinity, High Salinity, Storm).
+* **Y-axis:** Bit Error Rate (BER) | Range: **0 to 3.5e-6**.
+
+**Numerical Benchmarking:**
+* **Low Salinity:** Simulated (~1.2e-6) vs Experimental (**~1.5e-6**).
+* **High Salinity:** Simulated (~2.4e-6) vs Experimental (**~2.6e-6**).
+* **Storm:** Simulated (~3.1e-6) vs Experimental (**~3.3e-6**).
+
+**Verdict:** Experimental deviations are within 8% of simulation values, validating the channel model fidelity.
+---
+
+Image: _page_13_Figure_9.jpeg
+Type: Turbulence Intensity Heatmap
+---
+**Axes Extraction:**
+* **X-axis:** Horizontal Distance (m) | Range: **0 to 10 m**.
+* **Y-axis:** Depth (m) | Range: **0 to 5 m**.
+* **Z-scale:** Turbulence intensity ($\sigma_n^2$) | Range: **-0.96 to 0.96**.
+
+**Spatial Features:**
+* Peak intensity zones (Yellow, ~0.96) identified at coordinates (1.5, 0.5) and (5.0, 3.2).
+* Low intensity zones (Dark Purple, ~-0.96) at (1.5, 3.2) and (8.0, 3.2).
+* Turbulence exhibit spatial periodicity likely due to vertical stratification and wave action models.
+---
+
+Image: _page_13_Figure_10.jpeg
+Type: Secrecy Rate vs Distance
+---
+**Axes Extraction:**
+* **X-axis:** Transmission Distance (m) | Range: **10 to 50 m**.
+* **Y-axis:** Secrecy Rate (bps/Hz) | Range: **2.5 to 8.5 bps/Hz**.
+
+**Numerical Trends:**
+* **LSTM-DRL-NSGA-II (Proposed):** Increases from **6.5** (10m) to **8.2** (50m).
+* **Static RIS:** Decreases from **5.2** (10m) to **4.0** (50m).
+* **Non-RIS UWOC:** Decreases from **4.1** (10m) to **2.8** (50m).
+
+**Observation:** The proposed method's gain factor over Non-RIS systems increases from ~1.5x at 10m to **~2.9x at 50m**.
+---
+
+Image: _page_14_Figure_6.jpeg
+Type: BER vs Turbulence Noise (Array Density Comparison)
+---
+**Axes Extraction:**
+* **X-axis:** Turbulence-Induced Noise (dB) | Range: **0 to 2.5 dB**.
+* **Y-axis:** Bit Error Rate (BER) | Range: **1.2e-5 to 3e-5**.
+
+**Numerical Data Points:**
+* **128 Elements:** BER decreases from **3.0e-5** (0 dB) to **2.1e-5** (2.5 dB).
+* **256 Elements:** BER decreases from **2.6e-5** (0 dB) to **1.6e-5** (2.5 dB).
+* **512 Elements:** BER decreases from **2.0e-5** (0 dB) to **1.2e-5** (2.5 dB).
+
+**Note:** The negative correlation suggests that as noise power increase, the system’s adaptive gain or the specific simulation definition of "noise-induced focus" improves relative performance. Higher element density significantly lowers the error floor.
+---
+
+Image: _page_14_Figure_8.jpeg
+Type: Secrecy Rate vs Noise (Array Density Comparison)
+---
+**Axes Extraction:**
+* **X-axis:** Noise Power ($\sigma_n^2$) | Range: **0.5 to 3.0**.
+* **Y-axis:** Secrecy Rate (bps/Hz) | Range: **1.25 to 1.32 bps/Hz**.
+
+**Numerical Performance:**
+* **N=256:** Drops from **1.318** to **1.290** bps/Hz over the noise range.
+* **N=128:** Drops from **1.313** to **1.275** bps/Hz.
+* **N=64:** Drops from **1.300** to **1.250** bps/Hz.
+
+**Conclusion:** Denser RIS arrays (N=256) provide superior noise resilience, sustaining ~5% higher secrecy rates than the N=64 configuration under high noise ($\sigma_n^2 = 3.0$).
+---

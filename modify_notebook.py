@@ -1,7 +1,7 @@
 import json
 import os
 
-NOTEBOOK_PATH = r"analysis/notebooks/CoT_Pipeline_comstPrev.ipynb"
+NOTEBOOK_PATH = r"analysis/nb/CoT_Pipeline_comstPrev.ipynb"
 
 # Cell 1.2 is already correct in the notebook (defines paths), but we keep it here for reference/completeness if needed.
 # We are primarily focusing on fixing 2.1 and 4.1 where the overrides happen.
@@ -20,7 +20,7 @@ cell_2_1_new = [
     "# CRITICAL FIX: Modify the Config object ON THE RELOADED MODULE\n",
     "v3.Config.PDF_DIR = PDF_DIR\n",
     "v3.Config.MARKDOWN_DIR = MARKDOWN_DIR\n",
-    "v3.Config.OUTPUT_DIR = os.path.join(PROJECT_ROOT, \"data/extraction_results_comstPrev_v3\")\n",
+    "v3.Config.OUTPUT_DIR = os.path.join(PROJECT_ROOT, \"data/ext_res_comstPrev_v3\")\n",
     "v3.Config.CHECKPOINT_FILE = os.path.join(v3.Config.OUTPUT_DIR, \"checkpoint.json\")\n",
     "\n",
     "print(f\"🔧 Config Overridden for ComstPrev:\")\n",

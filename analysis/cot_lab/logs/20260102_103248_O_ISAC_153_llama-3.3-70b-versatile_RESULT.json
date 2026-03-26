@@ -1,0 +1,160 @@
+{
+  "run_id": "20260102_103248_O_ISAC_153_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103248",
+  "paper_id": "O_ISAC_153",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows three types of metasurface structural units, and Fig. 2, which shows the schematic of the SRR unit cell and simulated electric field distribution at the resonant frequency. Fig. 3 presents the fabrication of frequency-selective metasurface, and Fig. 4 shows the schematic and actual setup of the continuous wave THz-FDS system. Other figures, such as Fig. 5, Fig. 6, Fig. 7, Fig. 8, and Fig. 9, provide additional information about the system's performance and results."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves the use of a terahertz metasurface sensor with ultrahigh frequency selectivity and polarization sensitivity. The ISAC coupling mode is based on the interaction between the terahertz waves and the metasurface, which enables the sensing of biochemical substances. The metasurface is designed to have a specific resonant frequency, which is matched with the characteristic absorption peak of the substance to be sensed, allowing for enhanced spectral sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a frequency resolution of 0.05 GHz and a spectral resolution of up to 0.05 GHz, which is consistent with the capabilities of the THz-FDS system used in the experiment. The reported quality factor (Q) values of the metasurface are also consistent with the expected values based on the design and fabrication of the metasurface."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of characterizing terahertz metasurface sensors with ultrahigh frequency selectivity and polarization sensitivity. However, the paper also mentions some limitations, such as the systematic error during the metasurface fabrication and the trade-off between the extraction accuracy of the transmission extreme points and the SNR. These limitations remain as open challenges for future research."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Robust Characterization of Terahertz Metasurface Sensor With Ultrahigh Frequency Selectivity and Polarization Sensitivity",
+        "authors": "Yuan Yuan, Tianyao Zhang, Zhaohui Zhang, Xiaoyan Zhao, Xianhao Wu, Shaowen Zheng, Liang Liang, and Can Cao",
+        "year": 2024,
+        "venue": "IEEE Journal of Selected Topics in Quantum Electronics",
+        "doi": "10.1109/JSEN.2024.3470995"
+      },
+      "classification": {
+        "oisac_medium_class": "terahertz",
+        "carrier_band": "terahertz",
+        "operational_environment": "ambient",
+        "link_topology": "point-to-point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "biochemical sensing",
+        "scenario_description": "The system is designed for biochemical sensing applications, where the metasurface is used to sense the characteristic absorption peaks of biochemical substances."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper presents a novel characterization approach for terahertz metasurface sensors with ultrahigh frequency selectivity and polarization sensitivity.",
+        "gap_addressed": "The paper addresses the gap in the characterization of terahertz metasurface sensors, which is essential for biochemical sensing applications.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "metasurface",
+        "novel_component_specs": "The metasurface is designed to have a specific resonant frequency, which is matched with the characteristic absorption peak of the substance to be sensed."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Terahertz Metasurface Sensor Characterization"
+      },
+      "transmitter": {
+        "tx_source_type": "terahertz",
+        "tx_modulation_type": "amplitude_modulation",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 300,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct_detection",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 1,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OOK",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time_division"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "single_mode",
+        "attenuation_db_per_km": 2,
+        "dispersion_ps_per_nm_km": 10,
+        "nonlinearity_model": "kerr_only"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "snr_db": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 1,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_split",
+        "tradeoff_control_range": "0_to_1"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive evaluation of the terahertz metasurface sensor, including its characterization, performance, and limitations."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows three types of metasurface structural units, and Fig. 2, which shows the schematic of the SRR unit cell and simulated electric field distribution at the resonant frequency. Fig. 3 presents the fabrication of frequency-selective metasurface, and Fig. 4 shows the schematic and actual setup of the continuous wave THz-FDS system. Other figures, such as Fig. 5, Fig. 6, Fig. 7, Fig. 8, and Fig. 9, provide additional information about the system's performance and results.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism involves the use of a terahertz metasurface sensor with ultrahigh frequency selectivity and polarization sensitivity. The ISAC coupling mode is based on the interaction between the terahertz waves and the metasurface, which enables the sensing of biochemical substances. The metasurface is designed to have a specific resonant frequency, which is matched with the characteristic absorption peak of the substance to be sensed, allowing for enhanced spectral sensing.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a frequency resolution of 0.05 GHz and a spectral resolution of up to 0.05 GHz, which is consistent with the capabilities of the THz-FDS system used in the experiment. The reported quality factor (Q) values of the metasurface are also consistent with the expected values based on the design and fabrication of the metasurface.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of characterizing terahertz metasurface sensors with ultrahigh frequency selectivity and polarization sensitivity. However, the paper also mentions some limitations, such as the systematic error during the metasurface fabrication and the trade-off between the extraction accuracy of the transmission extreme points and the SNR. These limitations remain as open challenges for future research.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Robust Characterization of Terahertz Metasurface Sensor With Ultrahigh Frequency Selectivity and Polarization Sensitivity\",\n         \"authors\":\"Yuan Yuan, Tianyao Zhang, Zhaohui Zhang, Xiaoyan Zhao, Xianhao Wu, Shaowen Zheng, Liang Liang, and Can Cao\",\n         \"year\":2024,\n         \"venue\":\"IEEE Journal of Selected Topics in Quantum Electronics\",\n         \"doi\":\"10.1109/JSEN.2024.3470995\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"terahertz\",\n         \"carrier_band\":\"terahertz\",\n         \"operational_environment\":\"ambient\",\n         \"link_topology\":\"point-to-point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"biochemical sensing\",\n         \"scenario_description\":\"The system is designed for biochemical sensing applications, where the metasurface is used to sense the characteristic absorption peaks of biochemical substances.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper presents a novel characterization approach for terahertz metasurface sensors with ultrahigh frequency selectivity and polarization sensitivity.\",\n         \"gap_addressed\":\"The paper addresses the gap in the characterization of terahertz metasurface sensors, which is essential for biochemical sensing applications.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"metasurface\",\n         \"novel_component_specs\":\"The metasurface is designed to have a specific resonant frequency, which is matched with the characteristic absorption peak of the substance to be sensed.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Terahertz Metasurface Sensor Characterization\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"terahertz\",\n         \"tx_modulation_type\":\"amplitude_modulation\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":300,\n         \"optical_bandwidth_ghz\":1,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.01,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct_detection\",\n         \"rx_detector\":\"photodiode\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":1,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"OOK\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time_division\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"single_mode\",\n         \"attenuation_db_per_km\":2,\n         \"dispersion_ps_per_nm_km\":10,\n         \"nonlinearity_model\":\"kerr_only\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":1,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"snr_db\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":1,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_split\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive evaluation of the terahertz metasurface sensor, including its characterization, performance, and limitations.\"\n   }\n}"
+}

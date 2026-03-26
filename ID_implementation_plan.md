@@ -10,29 +10,29 @@
 ## Evidence files to open (paths found)
 
 - O_ISAC_161
-  - JSON: `data/extraction_results_v4/O_ISAC_161_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_161/O_ISAC_161.md`
+  - JSON: `data/ext_res_v4/O_ISAC_161_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_161/O_ISAC_161.md`
 - O_ISAC_068
-  - JSON: `data/extraction_results_v4/O_ISAC_068_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_068/O_ISAC_068/O_ISAC_068.md`
+  - JSON: `data/ext_res_v4/O_ISAC_068_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_068/O_ISAC_068/O_ISAC_068.md`
 - O_ISAC_327
-  - JSON: `data/extraction_results_v4/O_ISAC_327_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_327/O_ISAC_327.md`
+  - JSON: `data/ext_res_v4/O_ISAC_327_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_327/O_ISAC_327.md`
 - O_ISAC_006
-  - JSON: `data/extraction_results_v4/O_ISAC_006_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_006/O_ISAC_006/O_ISAC_006.md`
+  - JSON: `data/ext_res_v4/O_ISAC_006_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_006/O_ISAC_006/O_ISAC_006.md`
 - O_ISAC_368
-  - JSON: `data/extraction_results_v4/O_ISAC_368_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_368/O_ISAC_368.md`
+  - JSON: `data/ext_res_v4/O_ISAC_368_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_368/O_ISAC_368.md`
 - O_ISAC_021
-  - JSON: `data/extraction_results_v4/O_ISAC_021_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_021/O_ISAC_021/O_ISAC_021.md`
+  - JSON: `data/ext_res_v4/O_ISAC_021_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_021/O_ISAC_021/O_ISAC_021.md`
 - O_ISAC_070
-  - JSON: `data/extraction_results_v4/O_ISAC_070_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_070/O_ISAC_070/O_ISAC_070.md`
+  - JSON: `data/ext_res_v4/O_ISAC_070_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_070/O_ISAC_070/O_ISAC_070.md`
 - O_ISAC_163
-  - JSON: `data/extraction_results_v4/O_ISAC_163_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_163/O_ISAC_163.md`
+  - JSON: `data/ext_res_v4/O_ISAC_163_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_163/O_ISAC_163.md`
 - O_ISAC_303
-  - JSON: `data/extraction_results_v4/O_ISAC_303_v4.json`
-  - MD: `data/processed_markdowns/O_ISAC_303/O_ISAC_303.md`
+  - JSON: `data/ext_res_v4/O_ISAC_303_v4.json`
+  - MD: `data/proc_markdowns/O_ISAC_303/O_ISAC_303.md`

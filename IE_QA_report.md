@@ -11,7 +11,7 @@
 - No Delta R or sigma_R in file: Delta R count = 0; sigma_R count = 0.
 - No new citation keys introduced in I-E: only [14] remains.
 - Each contribution maps to >=1 Gap and >=1 Section: yes (C1-C5).
-- Any numbers in I-E are backed by computed stats: see IE_evidence_map.md rows C1-C5.
+- Any numbers in I-E are backed by computed stats: see IE_ev_map.md rows C1-C5.
 
 ## Final Section I-E (verbatim)
 ```markdown

@@ -1,0 +1,217 @@
+{
+  "run_id": "20260102_101321_O_ISAC_026_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101321",
+  "paper_id": "O_ISAC_026",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Figure 1, which shows the concept of adaptive photonic-based ISAC networks based on millimeter wave over fiber, and Figure 2, which shows the schematic of the experiment setup. Figure 3 shows the results of the received optical power on communication and radar sensing, and Figure 4 shows the spectra of the different de-chirped echoes and the measured distance error after calibration."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system is a photonic-based millimeter-wave integrated sensing and communication (ISAC) system. It uses a frequency-division multiplexed waveform, combining a linear frequency modulated (LFM) signal for radar sensing and a subcarrier modulated (SCM) signal for communication. The system has a simple structure and can adapt to the current communication network, achieving high-speed communication and high-resolution sensing simultaneously."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a data rate of 48 Gbit/s in communication-only mode and 8 Gbit/s in ISAC mode, with a sensing resolution of 2.75 cm. The distance error of the system is less than 1 cm after external calibration. These metrics seem physically consistent with the proposed system and experiment setup."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of achieving high-speed communication and high-resolution sensing simultaneously in a photonic-based ISAC system. However, the system still faces challenges such as the need for external calibration to eliminate systematic errors and the potential for interference between the communication and sensing signals."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "W-band Photonic-based Integration of Sensing and Communication with Frequency-division Multiplexed Waveforms in Fiber-wireless Integrated Network",
+        "authors": [
+          "Boyu Dong",
+          "Guoqiang Li",
+          "HaiPeng Wang",
+          "Junlian Jia",
+          "Jianyang Shi",
+          "Junwen Zhang",
+          "Nan Chi"
+        ],
+        "year": 2022,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2022.3145639",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "W-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing",
+          "6g_networks"
+        ],
+        "scenario_description": "The proposed system can be used in various applications such as smart cities, vehicle-to-everything, and industrial manufacturing."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed system achieves high-speed communication and high-resolution sensing simultaneously using a photonic-based ISAC system with a frequency-division multiplexed waveform.",
+        "gap_addressed": "The system solves the problem of achieving high-speed communication and high-resolution sensing simultaneously in a photonic-based ISAC system.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "frequency_division_multiplexing"
+        ],
+        "novel_component": "None",
+        "novel_component_specs": "None"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "W-band Photonic-based ISAC System"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "subcarrier_modulation",
+          "tx_external_modulator": "Mach-Zehnder_modulator",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 12,
+          "tx_power_dbm": 0,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct_detection",
+          "rx_detector": "photodiode",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "Mach-Zehnder_modulator",
+          "rx_modulator_bandwidth_ghz": 10,
+          "rx_modulator_operating_point": "quadrature_bias_point",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "frequency_division_duplexing"
+        },
+        "waveform": {
+          "comm_waveform_family": "subcarrier_modulation",
+          "comm_modulation_order": 16,
+          "comm_symbol_rate_gbaud": 2,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "linear_frequency_modulation",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "frequency_division_multiplexing"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 10,
+          "fibre_type": "single_mode_fiber",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 18,
+          "nonlinearity_model": "kerr_effect"
+        },
+        "channel_wireless": {
+          "link_distance_m": 1,
+          "path_loss_model": "free_space_path_loss",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 1000,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 48,
+          "spectral_efficiency_bps_hz": 4,
+          "ber": 1e-06,
+          "ber_target": 1e-06,
+          "snr_db": 20,
+          "osnr_db": 20,
+          "outage_probability": 0,
+          "latency_ms": 1,
+          "capacity_bps_hz": 4
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization"
+          ],
+          "sensing_range_m": 100,
+          "range_resolution_m": 0.0275,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 0,
+          "velocity_resolution_mps": 0,
+          "velocity_accuracy_mps": 0,
+          "localization_error_m": 0.01,
+          "spatial_resolution_m": 0.0275,
+          "sensing_bandwidth_hz": 9600000000.0,
+          "pd_probability_detection": 1,
+          "pfa_probability_false_alarm": 0,
+          "crb_crlb_value": 0,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "frequency_division_multiplexing_ratio",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Figure 3",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none",
+          "num_trials": 1
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experiment setup and results, and the metrics reported are relevant to the research question."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures, including Figure 1, which shows the concept of adaptive photonic-based ISAC networks based on millimeter wave over fiber, and Figure 2, which shows the schematic of the experiment setup. Figure 3 shows the results of the received optical power on communication and radar sensing, and Figure 4 shows the spectra of the different de-chirped echoes and the measured distance error after calibration.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The proposed system is a photonic-based millimeter-wave integrated sensing and communication (ISAC) system. It uses a frequency-division multiplexed waveform, combining a linear frequency modulated (LFM) signal for radar sensing and a subcarrier modulated (SCM) signal for communication. The system has a simple structure and can adapt to the current communication network, achieving high-speed communication and high-resolution sensing simultaneously.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a data rate of 48 Gbit/s in communication-only mode and 8 Gbit/s in ISAC mode, with a sensing resolution of 2.75 cm. The distance error of the system is less than 1 cm after external calibration. These metrics seem physically consistent with the proposed system and experiment setup.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The proposed system solves the problem of achieving high-speed communication and high-resolution sensing simultaneously in a photonic-based ISAC system. However, the system still faces challenges such as the need for external calibration to eliminate systematic errors and the potential for interference between the communication and sensing signals.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"W-band Photonic-based Integration of Sensing and Communication with Frequency-division Multiplexed Waveforms in Fiber-wireless Integrated Network\",\n           \"authors\": [\"Boyu Dong\", \"Guoqiang Li\", \"HaiPeng Wang\", \"Junlian Jia\", \"Jianyang Shi\", \"Junwen Zhang\", \"Nan Chi\"],\n           \"year\": 2022,\n           \"venue\": \"Journal of Lightwave Technology\",\n           \"doi\": \"10.1109/JLT.2022.3145639\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"W-band\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\", \"6g_networks\"],\n           \"scenario_description\": \"The proposed system can be used in various applications such as smart cities, vehicle-to-everything, and industrial manufacturing.\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The proposed system achieves high-speed communication and high-resolution sensing simultaneously using a photonic-based ISAC system with a frequency-division multiplexed waveform.\",\n           \"gap_addressed\": \"The system solves the problem of achieving high-speed communication and high-resolution sensing simultaneously in a photonic-based ISAC system.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"frequency_division_multiplexing\"],\n           \"novel_component\": \"None\",\n           \"novel_component_specs\": \"None\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"W-band Photonic-based ISAC System\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"subcarrier_modulation\",\n               \"tx_external_modulator\": \"Mach-Zehnder_modulator\",\n               \"wavelength_nm\": 1550,\n               \"optical_bandwidth_ghz\": 12,\n               \"tx_power_dbm\": 0,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct_detection\",\n               \"rx_detector\": \"photodiode\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"Mach-Zehnder_modulator\",\n               \"rx_modulator_bandwidth_ghz\": 10,\n               \"rx_modulator_operating_point\": \"quadrature_bias_point\",\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"frequency_division_duplexing\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"subcarrier_modulation\",\n               \"comm_modulation_order\": 16,\n               \"comm_symbol_rate_gbaud\": 2,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"linear_frequency_modulation\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"frequency_division_multiplexing\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 10,\n               \"fibre_type\": \"single_mode_fiber\",\n               \"attenuation_db_per_km\": 0.2,\n               \"dispersion_ps_per_nm_km\": 18,\n               \"nonlinearity_model\": \"kerr_effect\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 1,\n               \"path_loss_model\": \"free_space_path_loss\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 1000,\n               \"ambient_light_model\": \"none\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 48,\n               \"spectral_efficiency_bps_hz\": 4,\n               \"ber\": 1e-6,\n               \"ber_target\": 1e-6,\n               \"snr_db\": 20,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0,\n               \"latency_ms\": 1,\n               \"capacity_bps_hz\": 4\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization\"],\n               \"sensing_range_m\": 100,\n               \"range_resolution_m\": 0.0275,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 0,\n               \"velocity_resolution_mps\": 0,\n               \"velocity_accuracy_mps\": 0,\n               \"localization_error_m\": 0.01,\n               \"spatial_resolution_m\": 0.0275,\n               \"sensing_bandwidth_hz\": 9.6e9,\n               \"pd_probability_detection\": 1,\n               \"pfa_probability_false_alarm\": 0,\n               \"crb_crlb_value\": 0,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"frequency_division_multiplexing_ratio\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"none\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Figure 3\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"none\",\n               \"num_trials\": 1\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the experiment setup and results, and the metrics reported are relevant to the research question.\"\n   }\n}"
+}

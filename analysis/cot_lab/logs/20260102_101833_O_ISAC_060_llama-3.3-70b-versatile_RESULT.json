@@ -1,0 +1,207 @@
+{
+  "run_id": "20260102_101833_O_ISAC_060_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101833",
+  "paper_id": "O_ISAC_060",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Figure 1, which shows the block diagram of the proposed ISAC-OW system, and Figures 2 and 3, which illustrate the BER performance and ranging result, respectively."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system uses a unified waveform based on QPSK and DSSS, where the user data is loaded onto a PN sequence by direct spread spectrum. This allows for both LiDAR ranging and communication functions to be performed simultaneously."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a BER performance improvement of 1.5dB and 7.5dB under weak and moderate turbulence conditions, respectively, when using spread spectrum. The ranging result shows a high accuracy of 100.011m, indicating the effectiveness of the proposed method."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system addresses the challenge of designing a unified waveform for ISAC-OW systems, enabling both LiDAR ranging and communication functions. However, the system's performance under strong turbulence conditions and its scalability for multiple targets remain open challenges."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "A Unified Waveform for Optical Wireless Integrated Sensing and Communication",
+        "authors": "Minghua Cao, Ying Wang, Yue Zhang, Daqing Gao, Hongtao Zhou",
+        "year": 2022,
+        "venue": "IEEE Journal",
+        "doi": "10.1109/JSTQE.2022.3152125",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "NIR",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing"
+        ],
+        "scenario_description": "Autonomous vehicles"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A unified waveform for ISAC-OW systems based on QPSK and DSSS",
+        "gap_addressed": "Designing a unified waveform for ISAC-OW systems",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "direct_sequence_spread_spectrum"
+        ],
+        "novel_component": "PN sequence generator",
+        "novel_component_specs": "Maximum length linear shift feedback register (LSFR)"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Outdoor FSO, 100m, Weak Turbulence"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "coherent",
+          "tx_external_modulator": "iq_modulator",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 10,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.2,
+          "beam_divergence_mrad": 1
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd",
+          "rx_aperture_diameter_m": 0.2,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "iq_modulator",
+          "rx_modulator_bandwidth_ghz": 10,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "mitp_bias"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "qpsk",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "ldpc",
+          "sensing_waveform_family": "chirp",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "alpha=0.5"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 17,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 100,
+          "path_loss_model": "free_space",
+          "turbulence_model": "gamma_gamma",
+          "turbulence_Cn2": 1e-17,
+          "scintillation_index": 0.1,
+          "pointing_error_model": "gaussian_jitter"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 2,
+          "ber": 0.001,
+          "ber_target": 0.001,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0.01,
+          "latency_ms": 1,
+          "capacity_bps_hz": 2
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 100,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "alpha",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "reflective",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Table I",
+          "value_origin": "reported_table",
+          "confidence_reporting": "ci_reported",
+          "num_trials": 1000
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and simulation parameters, and the results are well-validated through Monte Carlo simulations."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures, including Figure 1, which shows the block diagram of the proposed ISAC-OW system, and Figures 2 and 3, which illustrate the BER performance and ranging result, respectively.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The proposed system uses a unified waveform based on QPSK and DSSS, where the user data is loaded onto a PN sequence by direct spread spectrum. This allows for both LiDAR ranging and communication functions to be performed simultaneously.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a BER performance improvement of 1.5dB and 7.5dB under weak and moderate turbulence conditions, respectively, when using spread spectrum. The ranging result shows a high accuracy of 100.011m, indicating the effectiveness of the proposed method.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The proposed system addresses the challenge of designing a unified waveform for ISAC-OW systems, enabling both LiDAR ranging and communication functions. However, the system's performance under strong turbulence conditions and its scalability for multiple targets remain open challenges.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"A Unified Waveform for Optical Wireless Integrated Sensing and Communication\",\n           \"authors\": \"Minghua Cao, Ying Wang, Yue Zhang, Daqing Gao, Hongtao Zhou\",\n           \"year\": 2022,\n           \"venue\": \"IEEE Journal\",\n           \"doi\": \"10.1109/JSTQE.2022.3152125\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_fso\",\n           \"carrier_band\": \"NIR\",\n           \"operational_environment\": \"outdoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\"],\n           \"scenario_description\": \"Autonomous vehicles\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"A unified waveform for ISAC-OW systems based on QPSK and DSSS\",\n           \"gap_addressed\": \"Designing a unified waveform for ISAC-OW systems\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"direct_sequence_spread_spectrum\"],\n           \"novel_component\": \"PN sequence generator\",\n           \"novel_component_specs\": \"Maximum length linear shift feedback register (LSFR)\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Outdoor FSO, 100m, Weak Turbulence\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"coherent\",\n               \"tx_external_modulator\": \"iq_modulator\",\n               \"wavelength_nm\": 1550,\n               \"optical_bandwidth_ghz\": 10,\n               \"tx_power_dbm\": 10,\n               \"aperture_diameter_m\": 0.2,\n               \"beam_divergence_mrad\": 1\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"balanced_pd\",\n               \"rx_aperture_diameter_m\": 0.2,\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"iq_modulator\",\n               \"rx_modulator_bandwidth_ghz\": 10,\n               \"rx_modulator_operating_point\": \"mitp\",\n               \"false_target_mitigation\": \"mitp_bias\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"full_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"qpsk\",\n               \"comm_modulation_order\": 4,\n               \"comm_symbol_rate_gbaud\": 1,\n               \"comm_fec_type\": \"ldpc\",\n               \"sensing_waveform_family\": \"chirp\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"alpha=0.5\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"smf\",\n               \"attenuation_db_per_km\": 0.2,\n               \"dispersion_ps_per_nm_km\": 17,\n               \"nonlinearity_model\": \"gn_model\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 100,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"gamma_gamma\",\n               \"turbulence_Cn2\": 1e-17,\n               \"scintillation_index\": 0.1,\n               \"pointing_error_model\": \"gaussian_jitter\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 1,\n               \"spectral_efficiency_bps_hz\": 2,\n               \"ber\": 1e-3,\n               \"ber_target\": 1e-3,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0.01,\n               \"latency_ms\": 1,\n               \"capacity_bps_hz\": 2\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 100,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0.1,\n               \"velocity_accuracy_mps\": 0.01,\n               \"localization_error_m\": 0.1,\n               \"spatial_resolution_m\": 0.1,\n               \"sensing_bandwidth_hz\": 100,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.01,\n               \"crb_crlb_value\": 0.01,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"alpha\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"reflective\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table I\",\n               \"value_origin\": \"reported_table\",\n               \"confidence_reporting\": \"ci_reported\",\n               \"num_trials\": 1000\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system model and simulation parameters, and the results are well-validated through Monte Carlo simulations.\"\n   }\n}"
+}

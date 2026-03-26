@@ -1,0 +1,802 @@
+{
+    "schema_version": "1.1",
+    "paper_id": "COMST_020",
+    "title": "A Survey on Multi-AP Coordination Approaches Over Emerging WLANs: Future Directions and Open Challenges",
+    "year": "2023",
+    "domain": "Wireless LAN / Multi-AP Coordination",
+    "source_path": "data/corp_std/COMST_020/COMST_020.md",
+    "analysis_policy": {
+        "include_scope": "Abstract through Conclusion (main body only)",
+        "exclude_scope": "References, author bios/photos, acknowledgments",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Paper has 679 lines with extensive tables and figures on MAP-Co taxonomy"
+    },
+    "document_stats": {
+        "approx_word_count_total": 18000,
+        "approx_token_count_total": 24000,
+        "equation_count_est": 1,
+        "figure_count_est": 12,
+        "table_count_est": 8,
+        "list_count_est": 15,
+        "citation_count_in_body_est": 145,
+        "citation_density_per_1k_words_est": 8.1,
+        "definition_box_or_glossary_present": "yes",
+        "notation_table_present": "yes"
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRODUCTION",
+            "raw_headings": [
+                "I. Introduction"
+            ],
+            "objective": "Establish motivation for MAP-Co, identify research gaps in existing WLAN surveys, and present paper contributions",
+            "key_components": [
+                "WLAN evolution context",
+                "MAP-Co motivation",
+                "Research gap identification",
+                "Three contributions",
+                "Paper organization"
+            ],
+            "approx_word_share_pct": "8-10",
+            "approx_words_est": 1600,
+            "positioning": {
+                "start_doc_progress_pct_est": 1,
+                "end_doc_progress_pct_est": 14
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Strong gap identification via comparison table (Fig. 1)",
+                "Explicit 3-point contribution list",
+                "Visual roadmap (Fig. 2)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Research gap in MAP-Co surveys",
+                    "locator": {
+                        "heading": "I. Introduction",
+                        "paragraph_index_est": 4,
+                        "line_range_est": "L70-L77"
+                    }
+                },
+                {
+                    "claim": "Paper organization roadmap",
+                    "locator": {
+                        "heading": "I. Introduction",
+                        "paragraph_index_est": 5,
+                        "line_range_est": "L78-L93"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "RELATED_WORK",
+            "raw_headings": [
+                "II. Related Surveys",
+                "A. Related Surveys of IEEE 802.11n/ac/ax/be",
+                "B. Related Surveys of IEEE 802.11ad/ay"
+            ],
+            "objective": "Position this survey relative to existing work, demonstrate gap in MAP-Co literature",
+            "key_components": [
+                "IEEE 802.11n/ac/ax/be surveys review",
+                "IEEE 802.11ad/ay surveys review",
+                "Gap identification table (Table II)"
+            ],
+            "approx_word_share_pct": "12-14",
+            "approx_words_est": 2400,
+            "positioning": {
+                "start_doc_progress_pct_est": 14,
+                "end_doc_progress_pct_est": 20
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "1",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "gap",
+                "yes_but",
+                "pivot"
+            ],
+            "notable_moves": [
+                "Comprehensive survey comparison table (Table II)",
+                "Explicit gap demonstration per standard"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Gap in MAP-Co surveys for 802.11be",
+                    "locator": {
+                        "heading": "A. Related Surveys of IEEE 802.11n/ac/ax/be",
+                        "paragraph_index_est": 3,
+                        "line_range_est": "L103-L106"
+                    }
+                },
+                {
+                    "claim": "Gap in MAP-Co surveys for 802.11ay",
+                    "locator": {
+                        "heading": "B. Related Surveys of IEEE 802.11ad/ay",
+                        "paragraph_index_est": 2,
+                        "line_range_est": "L130-L134"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "SYSTEM_MODEL",
+            "raw_headings": [
+                "III. MAP-Co Network Design",
+                "A. MAP-Co Network Architecture",
+                "B. MAP-Co Data Transmission",
+                "C. Summary and Lesson Learned"
+            ],
+            "objective": "Present MAP-Co network architecture taxonomy and data transmission protocols",
+            "key_components": [
+                "MC-based vs MA-based architecture",
+                "Centralized vs distributed comparison",
+                "Data transmission process taxonomy",
+                "Lessons learned summary"
+            ],
+            "approx_word_share_pct": "10-12",
+            "approx_words_est": 2000,
+            "positioning": {
+                "start_doc_progress_pct_est": 20,
+                "end_doc_progress_pct_est": 24
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "organization_map",
+                "limitation"
+            ],
+            "notable_moves": [
+                "Architecture comparison figure (Fig. 3)",
+                "Lessons learned pattern at section end"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Two architecture types defined",
+                    "locator": {
+                        "heading": "A. MAP-Co Network Architecture",
+                        "paragraph_index_est": 1,
+                        "line_range_est": "L140-L152"
+                    }
+                },
+                {
+                    "claim": "Lessons learned summary",
+                    "locator": {
+                        "heading": "C. Summary and Lesson Learned",
+                        "paragraph_index_est": 1,
+                        "line_range_est": "L158-L163"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "TAXONOMY",
+            "raw_headings": [
+                "IV. Multi-AP Channel Sounding",
+                "A. Explicit Channel Sounding",
+                "B. Implicit Channel Sounding"
+            ],
+            "objective": "Comprehensive review of multi-AP channel sounding methods with taxonomy",
+            "key_components": [
+                "Explicit sounding (MC/MA-based, sequential/joint)",
+                "Implicit sounding (MC/MA-based, sequential/joint)",
+                "Overhead reduction methods (Table IV)",
+                "Taxonomy table (Table III)"
+            ],
+            "approx_word_share_pct": "15-18",
+            "approx_words_est": 3000,
+            "positioning": {
+                "start_doc_progress_pct_est": 24,
+                "end_doc_progress_pct_est": 40
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "1",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "organization_map",
+                "yes_but",
+                "limitation"
+            ],
+            "notable_moves": [
+                "Detailed sequence diagrams (Figs. 4-7)",
+                "Pros/cons taxonomy table",
+                "Lessons learned pattern"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Explicit sounding taxonomy",
+                    "locator": {
+                        "heading": "A. Explicit Channel Sounding",
+                        "paragraph_index_est": 2,
+                        "line_range_est": "L176-L186"
+                    }
+                },
+                {
+                    "claim": "Implicit sounding taxonomy",
+                    "locator": {
+                        "heading": "B. Implicit Channel Sounding",
+                        "paragraph_index_est": 1,
+                        "line_range_est": "L249-L267"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "TAXONOMY",
+            "raw_headings": [
+                "V. MAP-Co Based Scheduling Approaches",
+                "A. Coordinated OFDMA",
+                "B. Coordinated Spatial Reuse",
+                "C. Coordinated Beamforming",
+                "D. Joint Transmission"
+            ],
+            "objective": "Comprehensive survey of four MAP-Co scheduling features with state-of-the-art analysis",
+            "key_components": [
+                "C-OFDMA (inter/intra-channel)",
+                "CSR (OPCSR, PCSR, MCSR)",
+                "CBF methods",
+                "JTX approaches",
+                "State-of-the-art tables for each"
+            ],
+            "approx_word_share_pct": "35-40",
+            "approx_words_est": 7000,
+            "positioning": {
+                "start_doc_progress_pct_est": 40,
+                "end_doc_progress_pct_est": 75
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "1",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "1",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "organization_map",
+                "evaluation_framing",
+                "limitation",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "State-of-the-art tables (Tables V, VI, VII, VIII)",
+                "Operation diagrams for each feature",
+                "Lessons learned after each subsection"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "C-OFDMA taxonomy",
+                    "locator": {
+                        "heading": "A. Coordinated OFDMA",
+                        "paragraph_index_est": 2,
+                        "line_range_est": "L279-L294"
+                    }
+                },
+                {
+                    "claim": "CSR taxonomy",
+                    "locator": {
+                        "heading": "B. Coordinated Spatial Reuse",
+                        "paragraph_index_est": 2,
+                        "line_range_est": "L337-L361"
+                    }
+                },
+                {
+                    "claim": "JTX taxonomy",
+                    "locator": {
+                        "heading": "D. Joint Transmission",
+                        "paragraph_index_est": 2,
+                        "line_range_est": null
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "VI. Future Directions and Open Challenges"
+            ],
+            "objective": "Identify future research directions and open challenges for MAP-Co over emerging WLAN",
+            "key_components": [
+                "Channel sounding challenges",
+                "C-OFDMA challenges",
+                "CSR challenges",
+                "CBF challenges",
+                "JTX challenges",
+                "Cross-cutting issues"
+            ],
+            "approx_word_share_pct": "12-15",
+            "approx_words_est": 2500,
+            "positioning": {
+                "start_doc_progress_pct_est": 75,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "gap",
+                "limitation",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Systematic enumeration of open issues per feature",
+                "Cross-layer challenge identification"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Future directions enumeration",
+                    "locator": {
+                        "heading": "VI. Future Directions and Open Challenges",
+                        "paragraph_index_est": 1,
+                        "line_range_est": null
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S07",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "VII. Conclusion"
+            ],
+            "objective": "Summarize contributions and reiterate significance of MAP-Co for future WLAN",
+            "key_components": [
+                "Summary of reviewed features",
+                "Key contributions recap",
+                "Future outlook"
+            ],
+            "approx_word_share_pct": "2-3",
+            "approx_words_est": 400,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "contribution",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Concise contribution summary",
+                "Forward-looking closing statement"
+            ],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_moves_global": {
+        "hook": {
+            "present": "yes",
+            "evidence": "Opens with WLAN evolution and emerging applications (8K video, VR/AR, IoT, telesurgery)",
+            "locator": "L5-L11"
+        },
+        "gap": {
+            "present": "yes",
+            "evidence": "No comprehensive surveys on MAP-Co for future WLAN (explicit statement + Fig. 1 comparison)",
+            "locator": "L70-L77"
+        },
+        "yes_but": {
+            "present": "yes",
+            "evidence": "Existing surveys cover single-AP well, but MAP-Co is understudied",
+            "locator": "L70-L77"
+        },
+        "contribution": {
+            "present": "yes",
+            "evidence": "Three explicit contributions: (1) need identification, (2) taxonomy + survey, (3) future directions",
+            "locator": "L72-L77"
+        },
+        "organization": {
+            "present": "yes",
+            "evidence": "Roadmap paragraph + visual diagram (Fig. 2)",
+            "locator": "L78-L93"
+        },
+        "scope_boundary": {
+            "present": "yes",
+            "evidence": "Focus on MAP-Co features; excludes single-AP features already well surveyed",
+            "locator": "L70-L71"
+        },
+        "transition_starters_top": [
+            {
+                "token": "However",
+                "freq_est": 25
+            },
+            {
+                "token": "Therefore",
+                "freq_est": 35
+            },
+            {
+                "token": "Moreover",
+                "freq_est": 20
+            },
+            {
+                "token": "Hence",
+                "freq_est": 18
+            },
+            {
+                "token": "Similarly",
+                "freq_est": 12
+            }
+        ],
+        "reader_contract_pattern": "'We focus on MAP-Co features for emerging WLANs; exclude single-AP protocols already surveyed; organized as Introduction → Related Surveys → Architecture → Channel Sounding → Scheduling → Future Directions → Conclusion'"
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "hybrid",
+        "axes": [
+            "Architecture type (MC-based vs MA-based)",
+            "Feature type (C-OFDMA, CSR, CBF, JTX)",
+            "Method type (sequential vs joint)"
+        ],
+        "levels_est": 3,
+        "node_count_est": 25,
+        "branches": [
+            "MAP-Co Architecture (MC-based, MA-based)",
+            "Channel Sounding (Explicit, Implicit)",
+            "Scheduling (C-OFDMA, CSR, CBF, JTX)"
+        ],
+        "taxonomy_figure_present": "yes",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [
+                "F01 (Fig. 1 - Gap comparison)",
+                "F02 (Fig. 2 - Paper roadmap)",
+                "F03 (Fig. 3 - Architecture)"
+            ],
+            "table_ids": [
+                "T01 (Table I - Acronyms)",
+                "T02 (Table II - Survey comparison)",
+                "T03 (Table III - Channel sounding taxonomy)",
+                "T04 (Table IV - Overhead reduction)",
+                "T05 (Table V - C-OFDMA SoA)",
+                "T06 (Table VI - CSR SoA)",
+                "T07 (Table VII - CBF SoA)",
+                "T08 (Table VIII - JTX SoA)"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "throughput",
+            "latency",
+            "overhead",
+            "energy efficiency",
+            "scalability",
+            "synchronization",
+            "interference management"
+        ],
+        "tradeoff_axes": [
+            "overhead vs latency",
+            "centralized vs distributed",
+            "sequential vs joint",
+            "spectral efficiency vs energy efficiency"
+        ],
+        "metrics_table_present": "yes",
+        "evidence_locators": [
+            "Table III (channel sounding pros/cons)",
+            "Tables V-VIII (feature-specific evaluations)"
+        ]
+    },
+    "visuals_tables": {
+        "layout_logic": "Figures placed for immediate reference after concept introduction; tables summarize state-of-the-art after detailed discussion",
+        "caption_verbs_top": [
+            {
+                "verb": "depicts",
+                "freq_est": 3
+            },
+            {
+                "verb": "shows",
+                "freq_est": 4
+            },
+            {
+                "verb": "presents",
+                "freq_est": 3
+            },
+            {
+                "verb": "summarizes",
+                "freq_est": 5
+            }
+        ],
+        "figures": [
+            {
+                "figure_id": "F01",
+                "type": "comparison",
+                "purpose": "reader orientation",
+                "placement": {
+                    "first_mention_section_id": "S01",
+                    "first_mention_section_label": "INTRODUCTION",
+                    "doc_progress_pct_est": 12
+                }
+            },
+            {
+                "figure_id": "F02",
+                "type": "pipeline",
+                "purpose": "reader orientation",
+                "placement": {
+                    "first_mention_section_id": "S01",
+                    "first_mention_section_label": "INTRODUCTION",
+                    "doc_progress_pct_est": 13
+                }
+            },
+            {
+                "figure_id": "F03",
+                "type": "architecture",
+                "purpose": "design space map",
+                "placement": {
+                    "first_mention_section_id": "S03",
+                    "first_mention_section_label": "SYSTEM_MODEL",
+                    "doc_progress_pct_est": 22
+                }
+            },
+            {
+                "figure_id": "F04",
+                "type": "scenario",
+                "purpose": "taxonomy anchor",
+                "placement": {
+                    "first_mention_section_id": "S04",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 25
+                }
+            },
+            {
+                "figure_id": "F08",
+                "type": "scenario",
+                "purpose": "design space map",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 42
+                }
+            },
+            {
+                "figure_id": "F10",
+                "type": "comparison",
+                "purpose": "summary",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 50
+                }
+            }
+        ],
+        "tables": [
+            {
+                "table_id": "T01",
+                "type": "other",
+                "purpose": "compression",
+                "placement": {
+                    "first_mention_section_id": "S01",
+                    "first_mention_section_label": "INTRODUCTION",
+                    "doc_progress_pct_est": 3
+                }
+            },
+            {
+                "table_id": "T02",
+                "type": "survey comparison",
+                "purpose": "authority building",
+                "placement": {
+                    "first_mention_section_id": "S02",
+                    "first_mention_section_label": "RELATED_WORK",
+                    "doc_progress_pct_est": 17
+                }
+            },
+            {
+                "table_id": "T03",
+                "type": "qualitative_vs_quantitative",
+                "purpose": "compression",
+                "placement": {
+                    "first_mention_section_id": "S04",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 33
+                }
+            },
+            {
+                "table_id": "T04",
+                "type": "summary",
+                "purpose": "compression",
+                "placement": {
+                    "first_mention_section_id": "S04",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 35
+                }
+            },
+            {
+                "table_id": "T05",
+                "type": "summary",
+                "purpose": "evaluation rubric",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 48
+                }
+            },
+            {
+                "table_id": "T06",
+                "type": "summary",
+                "purpose": "evaluation rubric",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 58
+                }
+            },
+            {
+                "table_id": "T07",
+                "type": "summary",
+                "purpose": "evaluation rubric",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 65
+                }
+            },
+            {
+                "table_id": "T08",
+                "type": "summary",
+                "purpose": "evaluation rubric",
+                "placement": {
+                    "first_mention_section_id": "S05",
+                    "first_mention_section_label": "TAXONOMY",
+                    "doc_progress_pct_est": 72
+                }
+            }
+        ]
+    },
+    "synthesis": {
+        "synthesis_style": "taxonomy-first",
+        "comparative_synthesis_degree": "high",
+        "lesson_blocks": [
+            {
+                "location": "III-C",
+                "lesson": "MC-based architecture offers better control but higher cost; MA-based is more scalable but harder to synchronize",
+                "locator": "L158-L163"
+            },
+            {
+                "location": "IV-A-1",
+                "lesson": "Sequential sounding has lower congestion but higher latency; joint sounding has efficient resource use but higher overhead",
+                "locator": "L204-L210"
+            },
+            {
+                "location": "IV-B-1",
+                "lesson": "MC-based implicit sounding has lower calibration overhead; MA-based struggles with processing power limitations",
+                "locator": "L268-L273"
+            },
+            {
+                "location": "V-A-3",
+                "lesson": "C-OFDMA inter-channel uses combinatorial optimization; intra-channel uses precoding/TPC/MAC-layer methods - all have scalability challenges",
+                "locator": "L329-L336"
+            },
+            {
+                "location": "V-B-3",
+                "lesson": "OPCSR suitable for DL; PCSR more flexible for UL/DL; MCSR reduces overhead via grouping but limited to static environments",
+                "locator": "L362-L367"
+            },
+            {
+                "location": "V-C-3",
+                "lesson": "CBF effective for interference cancellation but requires precise CSI and synchronization across APs",
+                "locator": null
+            },
+            {
+                "location": "V-D-3",
+                "lesson": "JTX improves edge-user performance but faces synchronization and signaling overhead challenges",
+                "locator": null
+            }
+        ],
+        "aha_moment": "The paper reveals that MAP-Co is fundamentally about trading off centralization benefits (better control, synchronization) against distribution benefits (scalability, cost), with each feature (C-OFDMA, CSR, CBF, JTX) requiring feature-specific optimization strategies."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "selection_criteria": "Not explicitly stated - appears to be expert-driven literature selection focusing on IEEE 802.11 standards documents and related research",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Forward-looking scope definition + relationship to previous section",
+        "math_handling_strategy": "inline minimal",
+        "listicle_usage": "light",
+        "list_density_per_1k_words_est": 0.8,
+        "signposting_devices": [
+            "In this section",
+            "Therefore",
+            "Hence",
+            "Moreover",
+            "Similarly",
+            "The remainder of this paper",
+            "can also be seen in Fig."
+        ],
+        "definition_density_est": "medium"
+    },
+    "quality_flags": {
+        "conversion_noise": [
+            "Some table cell content may be merged",
+            "HTML span tags present from PDF conversion"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [
+            "Exact figure captions partially unclear",
+            "Some table cell boundaries ambiguous"
+        ],
+        "confidence": "high"
+    },
+    "notes": "This is a comprehensive narrative survey on Multi-AP Coordination (MAP-Co) for IEEE 802.11be and 802.11ay WLANs. Key structural pattern: Each major feature (channel sounding, C-OFDMA, CSR, CBF, JTX) follows a consistent template: (1) concept/operation explanation, (2) state-of-the-art review with taxonomy table, (3) summary and lessons learned. The 'lessons learned' pattern is a distinctive rhetorical device used throughout. The paper serves as a bridge between cellular CoMP concepts and emerging WLAN MAP-Co implementations."
+}

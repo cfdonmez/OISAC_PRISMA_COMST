@@ -1,0 +1,193 @@
+{
+  "run_id": "20260102_101408_O_ISAC_031_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101408",
+  "paper_id": "O_ISAC_031",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Figure 1, which illustrates the phenomenon of signal self-interference in ISAC systems, and Figure 2, which presents the system setup of the proposed CCFD ISAC system. Figure 3 shows the numerical results of the CCFD ISAC system, including the SIC capability, communication performance, and radar sensing performance."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system is a photonics-enabled full-duplex millimeter-wave integrated sensing and communication (ISAC) system. The system utilizes optical-domain millimeter-wave self-interference cancellation (SIC) to achieve co-frequency and co-time full-duplex operation. The ISAC coupling mode is based on a single waveform that serves both sensing and communication functions, with the communication symbol embedded in each time slot of the linear frequency modulated (LFM) carrier."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a self-interference cancellation (SIC) depth of 43.7 dB for the LFM-BPSK signal with a 10 GHz bandwidth. The communication performance is evaluated, and a bit error rate (BER) of 0 is reported. The radar sensing performance is also evaluated, with a peak-to-sidelobe ratio (PSLR) of 15.35 dB reported."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of self-interference in full-duplex ISAC systems, achieving a high SIC depth and enabling effective communication and radar sensing. However, the system's complexity and the need for precise control of the optical and electrical components may pose challenges for practical implementation. Further research is needed to address these challenges and to explore the potential applications of the proposed system."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Photonics-enabled full-duplex millimeter-wave integrated sensing and communication",
+        "authors": "Can Wang, Zhidong Lyu, Lu Zhang, Xianbin Yu",
+        "year": 2023,
+        "venue": "Journal/Conference",
+        "doi": "DOI",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "millimeter-wave",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "The proposed system is designed for indoor positioning and sensing applications."
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed system achieves a high SIC depth of 43.7 dB for the LFM-BPSK signal with a 10 GHz bandwidth, enabling effective communication and radar sensing.",
+        "gap_addressed": "The system solves the problem of self-interference in full-duplex ISAC systems.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "optical_domain_sic"
+        ],
+        "novel_component": "Dual parallel Mach-Zehnder modulator (DPMZM)",
+        "novel_component_specs": "Extinction ratio: 25 dB, Insertion loss: 5 dB, $V_{\\pi}$ : 4V"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor positioning and sensing"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "MZM",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 5,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "MZM",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "lfm_bpsk",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 10,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 0.1,
+        "scintillation_index": 0.5,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_split",
+        "tradeoff_control_range": "0-1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 1,
+        "opa_steering_range_deg": 10,
+        "opa_beamwidth_deg": 1,
+        "ris_num_elements": 10,
+        "ris_type": "reflective",
+        "ris_phase_bits": 2
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 100
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and its components, and the numerical results are well-presented. However, the paper could benefit from more detailed information about the experimental setup and the measurement procedures."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Figure 1, which illustrates the phenomenon of signal self-interference in ISAC systems, and Figure 2, which presents the system setup of the proposed CCFD ISAC system. Figure 3 shows the numerical results of the CCFD ISAC system, including the SIC capability, communication performance, and radar sensing performance.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system is a photonics-enabled full-duplex millimeter-wave integrated sensing and communication (ISAC) system. The system utilizes optical-domain millimeter-wave self-interference cancellation (SIC) to achieve co-frequency and co-time full-duplex operation. The ISAC coupling mode is based on a single waveform that serves both sensing and communication functions, with the communication symbol embedded in each time slot of the linear frequency modulated (LFM) carrier.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a self-interference cancellation (SIC) depth of 43.7 dB for the LFM-BPSK signal with a 10 GHz bandwidth. The communication performance is evaluated, and a bit error rate (BER) of 0 is reported. The radar sensing performance is also evaluated, with a peak-to-sidelobe ratio (PSLR) of 15.35 dB reported.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed system solves the problem of self-interference in full-duplex ISAC systems, achieving a high SIC depth and enabling effective communication and radar sensing. However, the system's complexity and the need for precise control of the optical and electrical components may pose challenges for practical implementation. Further research is needed to address these challenges and to explore the potential applications of the proposed system.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Photonics-enabled full-duplex millimeter-wave integrated sensing and communication\",\n         \"authors\":\"Can Wang, Zhidong Lyu, Lu Zhang, Xianbin Yu\",\n         \"year\":2023,\n         \"venue\":\"Journal/Conference\",\n         \"doi\":\"DOI\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"millimeter-wave\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"The proposed system is designed for indoor positioning and sensing applications.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed system achieves a high SIC depth of 43.7 dB for the LFM-BPSK signal with a 10 GHz bandwidth, enabling effective communication and radar sensing.\",\n         \"gap_addressed\":\"The system solves the problem of self-interference in full-duplex ISAC systems.\",\n         \"performance_enablers\":[\n            \"photonic_dechirping\",\n            \"optical_domain_sic\"\n         ],\n         \"novel_component\":\"Dual parallel Mach-Zehnder modulator (DPMZM)\",\n         \"novel_component_specs\":\"Extinction ratio: 25 dB, Insertion loss: 5 dB, $V_{\\\\pi}$ : 4V\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor positioning and sensing\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"MZM\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":10,\n         \"tx_power_dbm\":5,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"MZM\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"lfm_bpsk\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"lfm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"power_split\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":10,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":0.1,\n         \"scintillation_index\":0.5,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":0,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.1,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.1,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_split\",\n         \"tradeoff_control_range\":\"0-1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":1,\n         \"opa_steering_range_deg\":10,\n         \"opa_beamwidth_deg\":1,\n         \"ris_num_elements\":10,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":2\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table I\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":100\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system and its components, and the numerical results are well-presented. However, the paper could benefit from more detailed information about the experimental setup and the measurement procedures.\"\n   }\n}"
+}

@@ -1,0 +1,230 @@
+Image: _page_1_Figure_3.jpeg
+Type: Spectral Analysis and Signal Processing Concepts
+---
+**Components:**
+* **(a) Square-law detection (SLD):** Shows the transformation from an optical signal (centered at fc) to a baseband signal (0 to B) which includes the desired signal and Signal-to-Signal Beat Interference (SSBI).
+* **(b) Interference Mitigation Techniques:**
+    * **High pass filtering:** Shows the signal at an Intermediate Frequency (fIF) to separate it from the low-frequency SSBI.
+    * **DSP elimination (KK/Iteration):** Shows the original baseband signal with SSBI and then the filtered signal where SSBI is removed via Kramers-Kronig (KK) or iterative algorithms.
+* **(c) Nonlinear matched filtering:** Illustrates the proposed method where SSBI is exploited (matched) to improve the SNR of the baseband signal.
+---
+
+Image: _page_2_Figure_3.jpeg
+Type: Operational Schematic and Spectral Evolution
+---
+**Components:**
+* **Fig (a) System Flow:**
+    * **Tx Side:** Two lasers (a, b) combined at an Optical Coupler (OC). Output (c) goes to a THz Photodiode (PD). Output (d) is the THz wireless signal.
+    * **Wireless Channel:** Signal propagates through "Communication or Sensing Wireless Channels".
+    * **Rx Side:** THz Envelope Detector (ED) produces output (e).
+    * **Processing Paths:** 
+        1. **KK Receiver:** Recovers binary "Communication Data".
+        2. **MF + NMF:** Produces a "Ranging Peak" for sensing.
+* **Fig (b) Spectra Mapping:**
+    * **a:** Laser 1 at frequency f1.
+    * **b:** Laser 2 modulated with "Signal" from f2 to f2+B.
+    * **c:** Combined spectra showing f1 and the modulated f2.
+    * **d:** Down-converted THz signal from fTHz to fTHz+B.
+    * **e:** Baseband signal after ED (0 to B), showing both "Signal" and the triangular-shaped "SSBI".
+---
+
+Image: _page_2_Picture_11.jpeg
+Type: Signal Vector Constellations
+---
+**Components:**
+* **(a) Single Signal Vector:** Complex plane (Re/Im) showing a vector E*exp(-j*pi/4) and the added signal s(t). The signal is represented as a blue cloud/cluster around the carrier tip.
+* **(b) Carrier Modulation:** Shows the vector rotating at frequency omega. The signal s(t) creates a blue ring (annulus) around the origin in the complex plane.
+**Quality:**
+The signal clusters are well-defined as noise-like spreads around a high-power carrier, typical of high-CSPR (Carrier-to-Signal Power Ratio) systems used in THz envelope detection.
+---
+
+Image: _page_3_Figure_14.jpeg
+Type: Power Spectra and Ambiguity Functions
+---
+**Axes Extraction (a & b) - Power Density:**
+* **X-axis:** Frequency (GHz, -6 to 6).
+* **Y-axis:** Power/Frequency (dB/Hz, -80 to 0).
+* **Trends:** Chart (a) shows a flat power spectral density for the OFDM signal across approx. 5 GHz bandwidth. Chart (b) shows the SSBI spectrum which has a downward slope towards higher frequencies.
+**Axes Extraction (c & d) - Ambiguity Function:**
+* **X-axis:** Delay tau (s, -6e-10 to 6e-10 i.e., -0.6 ns to 0.6 ns).
+* **Y-axis:** Ambiguity Function (dB, -60 to 10).
+**Data Points:**
+* **(c) OFDM Sensing:** 3dB peak width (Delta R3dB) = 0.17 ns (corresponding to 2.6 cm resolution). Peak-to-Sidelobe Ratio (PSLR) = 13 dB. Zero-to-zero width (Delta R0) = 0.2 ns (3 cm).
+* **(d) SSBI Sensing:** 3dB peak width (Delta R3dB) = 0.13 ns (corresponding to 1.9 cm resolution). Peak-to-Sidelobe Ratio (PSLR) = 26 dB. Delta R0 = 0.2 ns (3 cm).
+**Analysis:** The SSBI signal provides a 2x improvement in PSLR and approx. 27% better 3dB resolution compared to the original OFDM signal.
+---
+
+Image: _page_3_Figure_16.jpeg
+Type: Resolution vs Bandwidth Chart
+---
+**Axes Extraction:**
+* **X-axis:** Bandwidth (GHz, 5 to 30).
+* **Y-axis:** 3dB Resolution (cm, 0 to 4).
+**Data Points:**
+* **OFDM (Blue Line):** 
+    * At 5 GHz (B1): 2.64 cm.
+    * At 18 GHz (B2): 0.73 cm.
+* **SSBI (Green Line):**
+    * At 5 GHz (A1): 1.90 cm.
+    * At 18 GHz (A2): 0.52 cm.
+* **Comparison Points:**
+    * To reach 1.90 cm resolution, OFDM needs 7 GHz (C1).
+    * To reach 0.52 cm resolution, OFDM needs 25 GHz (C2).
+**Trends:** SSBI consistently provides better ranging resolution for the same bandwidth across the entire 5-30 GHz range.
+---
+
+Image: _page_4_Figure_3.jpeg
+Type: Statistical Distribution of Signal Components
+---
+**Axes Extraction (a) - Time Domain:**
+* **X-axis:** Time (us, 0 to 0.1).
+* **Y-axis:** Amplitude (a.u., -1 to 1).
+* **Legend:** OFDM (blue), SSBI (green), SSBI * h1(-t) (red).
+**Axes Extraction (b) - PDF:**
+* **X-axis:** Amplitude (a.u., -1 to 1).
+* **Y-axis:** Estimated PDF (0 to 35).
+**Data Points:**
+* **OFDM (blue):** Follows a Gaussian distribution with a Peak PDF around 2.
+* **SSBI (green):** Follows a Chi-square distribution with a Peak PDF around 7.5 (shifted from zero).
+* **Joint Distribution (red):** Shows a very narrow, high-intensity peak (Peak PDF > 25) centered at zero, indicating the effectiveness of the nonlinear matched filtering in concentrating signal energy.
+---
+
+Image: _page_5_Figure_3.jpeg
+Type: Signal Processing Flowchart (NMF)
+---
+**Components:**
+* **Input:** Received signal after ED (contains Signal + SSBI).
+* **MF Path:** Conventional Matched Filter produces R11(t) (peak with sidelobes) and noise R21(t). Output R_MF(t).
+* **NMF Path:** Nonlinear Matched Filter produces noise R12(t) and a sharper peak R22(t). Output R_NMF(t).
+* **Combined:** The two paths are summed: R(t) = R11(t) + k*R11(t)*exp(j*theta).
+**Final Output Characteristics:**
+The Composite Sensing Signal shows:
+- Increased 3dB Resolution (Delta R3dB arrow up).
+- Increased PSLR (arrow up).
+- Increased SNR (arrow up).
+---
+
+Image: _page_5_Figure_5.jpeg
+Type: Detailed System Block Diagram
+---
+**Components:**
+* **Central Office (CO):**
+    * **Transmitter:** LD2 (Laser), AWG (Arbitrary Waveform Generator), IQMZM, EDFA (Amplifier), OF (Optical Filter), LD1 (LO Laser), OC (Coupler), VOA (Variable Optical Attenuator), PC (Polarization Controller), THz PD (Photodiode), PA (Power Amplifier), TxA (THz Antenna).
+    * **Sensing Receiver (Sens. End):** RxA-S (Antenna), LNA (Amplifier), THz ED (Envelope Detector), DSP-S block (comprising Resample, LPF, Down Convert, NMF).
+* **Communication Receiver (Comm. End):**
+    * RxA-C (Antenna), LNA, THz ED, DSP-C block (comprising Resample, KK, Synchronization, LPF, Down Convert, Equalization, QAM DeMod, BER Calculation).
+* **Wireless Channel:** Signal is transmitted to a Sensing Target and reflected back to CO, or sent to a separate Comm. End.
+---
+
+Image: _page_5_Picture_9.jpeg
+Type: Laboratory Experimental Setup Photo
+---
+**Labels:**
+Shows the physical hardware on an optical table:
+- **Lasers:** LD1, LD2.
+- **Modulator:** IQMZM.
+- **Instrumentation:** AWG, Spectrum Analyzer, Oscilloscope.
+- **Fibers/Components:** EDFA, OF, OC, VOA, PC.
+- **THz Hardware:** THz PD, PA, TxA, RxA-C, LNA, THz ED.
+---
+
+Image: _page_6_Figure_10.jpeg
+Type: Measured Signal Spectra
+---
+**Axes Extraction (a) - Optical Domain:**
+* **X-axis:** Frequency (THz, 193.05 to 193.35).
+* **Y-axis:** Power (dBm, -60 to 20).
+* **Data Points:** Two distinct optical tones separated by approx. 0.15 THz (actual label $f_{THz} \approx 144 GHz$).
+**Axes Extraction (b) - Electrical Domain:**
+* **X-axis:** Frequency (GHz, 0 to 10).
+* **Y-axis:** Power (dBm, -160 to -100).
+---
+
+Image: _page_6_Figure_12.jpeg
+Type: Communication Performance (BER vs CSPR)
+---
+**Axes Extraction:**
+* **X-axis:** CSPR (dB) [for (a)] or CSPR-Tx (dB) [for (b)] (0 to 15).
+* **Y-axis:** BER (10^-4 to 10^0).
+* **Legend:** 
+    - w/o KK (blue circle dashed)
+    - w/ KK (blue circle solid)
+    - TxRCF-w/o KK (red triangle dashed)
+    - TxRCF-w/ KK (red triangle solid)
+**Data Points:**
+* **(a) B2B Configuration:** 
+    - Conventional w/o KK fails to reach the 3.8e-3 FEC threshold for almost all CSPR.
+    - With KK, the BER drops sharply, hitting a minimum of ~2.2e-4 at 8 dB CSPR. 
+    - Using Tx-RCF (Radio Frequency Carrier-like filtering) slightly increases BER compared to raw KK but significantly improves PAPR.
+* **(b) 1.5m Wireless Configuration:**
+    - Minimum BER achieved is ~1.5e-3 at 6 dB CSPR with KK processing.
+    - Performance degrades slightly at higher CSPR due to signal-signal beat noise.
+**Constellations:**
+16QAM constellations are shown. At the optimal point (circle with arrow), the clusters are sharp and distinct. Away from the optimal (dashed circle), clusters are blurred by interference.
+---
+
+Image: _page_6_Figure_5.jpeg
+Type: Spectral Analysis and PAPR Comparison
+---
+**Axes Extraction (a) - Power Density:**
+* **X-axis:** Frequency (GHz, 4 to 14).
+* **Y-axis:** Power/Frequency (dB/Hz, -180 to -60).
+* **Labeling:** Shows the narrow-band Virtual Carrier (VC) at approx. 6.5 GHz and the wide-band OFDM signal from 6.5 to 11.5 GHz.
+**Axes Extraction (b) - PAPR:**
+* **X-axis:** CSPR-Tx (dB, 0 to 15).
+* **Y-axis:** PAPR (dB, 4 to 18).
+**Data Points:**
+* **Standard OFDM (blue dashed):** Constant high PAPR at ~13.5 dB.
+* **OFDM-RCF (red hollow circle):** Reduces PAPR to ~9.5 dB.
+* **VC-OFDM (red dashed square):** Decreases linearly with CSPR from 11.5 dB to 6.5 dB.
+* **VC-OFDM-RCF (red solid square):** Best performance, reducing PAPR from 10 dB to <6 dB at 15 dB CSPR.
+---
+
+Image: _page_7_Figure_3.jpeg
+Type: Time-Domain Signal Amplitudes
+---
+**Axes Extraction:**
+* **X-axis:** Time (s, 0 to 1.5e-5).
+* **Y-axis:** Amplitude (a.u., -1.5 to 1.5).
+**Data Points:**
+* **(a) Transmitter (Tx):**
+    - **Tx1 (w/o TxRCF):** Peak-to-average characteristic results in 12.89 dB PAPR (visual estimation of envelope).
+    - **Tx2 (w/ TxRCF):** Amplitude is more constrained, resulting in 9.56 dB PAPR.
+* **(b) Receiver (Rx):**
+    - **Rx1 (w/o TxRCF):** Measured at 13.10 dB.
+    - **Rx2 (w/ TxRCF):** Measured at 11.63 dB.
+---
+
+Image: _page_8_Figure_3.jpeg
+Type: Ranging Peak Comparison (SNR & Resolution)
+---
+**Axes Extraction (Top: a, b, c):**
+* **X-axis:** Time (us, 0 to 3).
+* **Y-axis:** Power (dB, -40 to 20).
+**Axes Extraction (Bottom: d, e, f - Zooms):**
+* **X-axis:** Time (us, 1.6434 to 1.6446).
+* **Y-axis:** Power (dB, -30 to 20).
+**Data Points (Quantitative Comparison):**
+* **(a, d) Peak from NMF:** SNR = 36.29 dB. PSLR = 21.92 dB. Delta R3dB = 0.13 ns (1.94 cm).
+* **(b, e) Peak from MF (Standard):** SNR = 40.82 dB. PSLR = 12.29 dB. Delta R3dB = 0.17 ns (2.60 cm).
+* **(c, f) Proposed Combined Peak:** SNR = 41.92 dB. PSLR = 15.74 dB. Delta R3dB = 0.13 ns (1.95 cm).
+**Analysis:** The proposed method maintains the superior resolution of NMF (approx. 2cm) while exceeding the SNR of standard MF by >1 dB.
+---
+
+Image: _page_8_Figure_5.jpeg
+Type: Sensing Metric Trends vs CSPR
+---
+**Axes Extraction (a):**
+* **X-axis:** CSPR-Tx (dB, -2 to 10).
+* **Y-axis:** PSLR (dB, 10 to 25).
+**Data Points:**
+* **MF (blue):** Constant PSLR at 12.2 dB.
+* **NMF (green):** Starts at 22.3 dB at 0 dB CSPR and decreases to approx. 12.5 dB at 9 dB CSPR.
+**Axes Extraction (b):**
+* **X-axis:** CSPR-Tx (dB, -2 to 10).
+* **Y-axis:** 3dB Resolution (cm, 1.5 to 3).
+**Data Points:**
+* **MF (blue):** Constant resolution at 2.6 cm.
+* **NMF (green):** Constant superior resolution at approx. 1.95 cm across the entire range.
+---
+

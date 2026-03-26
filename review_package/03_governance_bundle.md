@@ -1,4 +1,4 @@
-﻿# Review Bundle\n\n## analysis/II_metric_governance.md\n\n# II Metric Governance Layer (PRISMA-Consistent)
+﻿# Review Bundle\n\n## analysis/II_met_gov.md\n\n# II Metric Governance Layer (PRISMA-Consistent)
 
 Purpose
 - Provide a defensible, PRISMA-aligned metric contract for Section II that constrains later synthesis (Sections IV-V) without introducing new evidence claims.
@@ -28,9 +28,9 @@ Disambiguation rules
 Edge case
 - Fiber studies may report aggregate multi-core/WDM throughput; do not compare with single-link wireless rates without stating aggregation scope.
 Schema mapping (candidate fields)
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.data_rate_gbps
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.capacity_bps_hz
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.spectral_efficiency_bps_hz
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.data_rate_gbps
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.capacity_bps_hz
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.spectral_efficiency_bps_hz
 
 Metric A2) Effective bandwidth B_eff
 Definition + unit
@@ -48,7 +48,7 @@ Disambiguation rules
 Edge case
 - Some studies report allocated bandwidth but not effective bandwidth; treat as non-computable for Delta r_min in synthesis.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.sensing_bandwidth_hz
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.sensing_bandwidth_hz
 
 Metric B) Delta r_min (bandwidth-limited two-way range resolution)
 Definition + unit
@@ -68,9 +68,9 @@ Do-not-compare warnings
 Edge case
 - Hybrid-labeled records may include photonic-THz bridging; require sensing_task_type or wireless carrier band to qualify as Delta r_min.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_resolution_m
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.sensing_task_type
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].study_level.classification.oisac_medium_class
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_resolution_m
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.sensing_task_type
+- data/ext_res_v4/extraction_v4_unified.json -> [i].study_level.classification.oisac_medium_class
 
 Metric C) sigma_r (estimator-dependent accuracy)
 Definition + unit
@@ -88,8 +88,8 @@ Disambiguation rules
 Edge case
 - VLC localization often reports 2D/3D error without dimensionality; keep as "reported accuracy".
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_accuracy_m
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.localization_error_m
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_accuracy_m
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.localization_error_m
 
 Metric D) CRB/FIM-derived bounds
 Definition + unit
@@ -107,8 +107,8 @@ Disambiguation rules
 Edge case
 - Some works report variance vs standard deviation; treat as reported, do not take square-root without explicit evidence.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.crb_crlb_value
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.crb_parameter
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.crb_crlb_value
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.crb_parameter
 
 Metric E) Delta z (fiber spatial granularity / gauge length)
 Definition + unit
@@ -128,8 +128,8 @@ Do-not-compare warnings
 Edge case
 - Some fiber works report gauge length in text but not normalized; ensure units are meters before use.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.spatial_resolution_m
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].study_level.classification.oisac_medium_class
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.spatial_resolution_m
+- data/ext_res_v4/extraction_v4_unified.json -> [i].study_level.classification.oisac_medium_class
 
 Metric F) Signal quality plane (OSNR vs electrical SNR)
 Definition + unit
@@ -147,9 +147,9 @@ Disambiguation rules
 Edge case
 - Some records list OSNR but use IM/DD; flag as potentially inconsistent and avoid synthesis claims.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.osnr_db
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.snr_db
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].receiver.rx_detection_type
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.osnr_db
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.snr_db
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].receiver.rx_detection_type
 
 Metric G) Trade-off constructs (CRQ_Delta and Pareto set)
 Definition + unit
@@ -167,14 +167,14 @@ Disambiguation rules
 Edge case
 - Hybrid modality labels may hide photonic-THz cases; require explicit ranging task or range_resolution_m.
 Schema mapping
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.data_rate_gbps
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_resolution_m
-- data/extraction_results_v4/extraction_v4_unified.json -> [i].scenario_level[*].tradeoff.*
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].comm_metrics.data_rate_gbps
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].sensing_metrics.range_resolution_m
+- data/ext_res_v4/extraction_v4_unified.json -> [i].scenario_level[*].tradeoff.*
 
-\n\n## analysis/II_schema_map.md\n\n# II Schema Map (Optional)
+\n\n## analysis/II_sch_map.md\n\n# II Schema Map (Optional)
 
 Source
-- data/extraction_results_v4/extraction_v4_unified.json
+- data/ext_res_v4/extraction_v4_unified.json
 
 Modality labels
 - study_level.classification.oisac_medium_class

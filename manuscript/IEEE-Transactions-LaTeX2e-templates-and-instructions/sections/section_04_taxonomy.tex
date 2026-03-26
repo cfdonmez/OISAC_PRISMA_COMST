@@ -1,0 +1,228 @@
+\section{Unified O-ISAC Taxonomy}
+\label{sec:taxonomy}
+
+Section~\ref{sec:taxonomy} converts the physical-layer contract of Section~II and the evidence base of Section~\ref{sec:review-methodology} into a single taxonomy for cross-modality synthesis. The goal is not to rank modalities, but to define a consistent classification frame that keeps communication-sensing comparisons traceable across fiber, FSO, VLC/LiFi, photonic-THz, and hybrid systems.
+
+\subsection{Taxonomy Design Principles}
+\subsubsection{Design Requirements}
+Section~\ref{sec:taxonomy} builds a unified O-ISAC taxonomy for cross-modality synthesis, not modality ranking. The taxonomy must therefore satisfy three requirements. First, cross-modality comparability: studies are grouped by axes that separate substrate, integration architecture, observability conditions, and sensing objective. Second, evidence traceability: each axis label must be recoverable from document-level descriptors. Third, metric governance consistency with Section~II: synthesis is admissible only if measurement plane and metric role remain explicit.
+
+These requirements are motivated by representative cross-modality evidence where integration and sensing objectives are shared but physical assumptions differ materially. The practical implication is simple: Section~IV does not ask which modality is best in absolute terms. It asks whether two results are comparable under the same taxonomy state and governance contract.
+
+\subsubsection{Axis Definitions}
+To enforce deterministic synthesis, each study $p$ is mapped to
+\[
+T(p) = (m(p), i(p), d(p), s(p)).
+\]
+Here, $m(p)$ denotes medium class, $i(p)$ denotes integration class, $d(p)$ denotes detection or observability class, and $s(p)$ denotes sensing-task class. Each axis isolates one comparability condition, and joint interpretation requires all four axes simultaneously.
+
+\begin{table*}[!t]
+\caption{Axis Definitions for the Unified O-ISAC Taxonomy}
+\label{tab:taxonomy-axes}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.14\textwidth}p{0.20\textwidth}p{0.26\textwidth}X}
+\toprule
+\textbf{Axis} & \textbf{Meaning} & \textbf{Corpus-level pattern} & \textbf{Comparability guard} \\
+\midrule
+Medium & Propagation and deployment substrate. & Hybrid, fiber, VLC/LiFi, FSO, and a small terahertz proxy class. & Compare only within medium-conditioned subsets. \\
+Integration & Shared front-end or separate front-end architecture. & Shared front-end dominates the corpus. & Do not merge co-designed and coexistence regimes. \\
+Detection / plane & Direct or coherent observability. & Direct and coherent dominate, with a small residual tail. & Preserve plane semantics and receiver assumptions. \\
+Task class & Primary sensing objective. & Ranging dominates, with localization and vibration as secondary patterns. & Avoid cross-task pooling without task conditioning. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsubsection{Mapping Rules}
+Deterministic mapping is required because many O-ISAC papers report multi-stage systems, multi-task outcomes, or partially implicit measurement assumptions. The mapping pipeline follows six principles: structured descriptors first; textual fallback if missing; multi-task keeps all labels with one primary only for tabulation; hybrids remain hybrid; labels are normalized before aggregation; contradictions are retained and flagged.
+
+Measurement-plane governance follows the Section~II contract:
+\[
+\pi(m) \in \{\text{OPTICAL\_PLANE}, \text{ELECTRICAL\_PLANE}, \text{AMBIGUOUS}\}.
+\]
+No implicit OSNR-to-SNR substitution is allowed without an explicit receiver or noise model. Metric governance is equally strict: resolution and accuracy are distinct roles and must remain separate in synthesis statements.
+
+\begin{table*}[!t]
+\caption{Operational Taxonomy Contract}
+\label{tab:taxonomy-contract}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.24\textwidth}X}
+\toprule
+\textbf{Element} & \textbf{Role in Taxonomy} & \textbf{Operational Rule} \\
+\midrule
+Design requirements & Defines admissible synthesis scope & Enforce comparability, traceability, and Section~II governance consistency. \\
+Axis assignment & Encodes medium, integration, observability, and task. & Map each study deterministically and preserve hybrid or ambiguous labels. \\
+Measurement-plane governance & Protects signal-domain validity. & Require explicit receiver or noise modeling before any plane conversion. \\
+Metric governance & Protects metric-role validity. & Keep $\Delta r_{\min}$ and $\sigma_r$ separate. \\
+Ambiguity handling & Preserves uncertainty information. & Retain contradictions and down-weight ambiguous evidence. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{quote}
+\textbf{Lesson (A):} Unified O-ISAC taxonomy is defensible only when four-axis classification, deterministic mapping, and measurement-metric governance are enforced jointly under explicit ambiguity retention.
+\end{quote}
+
+\subsection{Medium-Based Classes}
+This subsection instantiates Axis 1 by grouping studies according to normalized medium labels and then conditioning mechanism, detection, and task interpretation on that grouping. At the corpus level ($N=220$), the main synthesis frame is dominated by hybrid systems, followed by cabled fiber, VLC/LiFi, FSO, and a small terahertz proxy class.
+
+\begin{table*}[!t]
+\caption{Medium-Based Taxonomy Classes}
+\label{tab:medium-classes}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.17\textwidth}p{0.13\textwidth}p{0.18\textwidth}p{0.18\textwidth}p{0.18\textwidth}X}
+\toprule
+\textbf{Medium class} & \textbf{Share} & \textbf{Integration profile} & \textbf{Detection profile} & \textbf{Sensing emphasis} & \textbf{Representative studies} \\
+\midrule
+Fiber (cabled) & 45/220 (20.5\%) & Shared front-end dominant & Coherent-leading & Ranging, vibration, and localization & \cite{O_ISAC_006,O_ISAC_033,O_ISAC_046} \\
+FSO & 19/220 (8.6\%) & Shared front-end dominant & Direct/coherent mixed & Ranging dominant, small localization tail & \cite{O_ISAC_021,O_ISAC_035,O_ISAC_199} \\
+VLC/LiFi & 25/220 (11.4\%) & Shared front-end dominant & Direct-detection dominant & Ranging and localization-heavy tail & \cite{O_ISAC_068,O_ISAC_303,O_ISAC_039} \\
+Photonic-THz proxy & 1/220 (0.5\%) & Shared front-end & Direct & Ranging & \cite{O_ISAC_016,O_ISAC_105,O_ISAC_070} \\
+Hybrid systems & 116/220 (52.7\%) & Shared front-end dominant & Near-balanced coherent/direct & Ranging dominant, multi-task tail & \cite{O_ISAC_021,O_ISAC_077,O_ISAC_199} \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsubsection{Fiber (Cabled) O-ISAC}
+The cabled-fiber class is the guided-medium anchor for O-ISAC because the propagation environment and infrastructure coupling are sufficiently controlled to expose integration and observability effects without free-space geometry uncertainty. Evidence-conditioned synthesis shows 45 cabled-fiber records, with shared front-end integration dominating and coherent observability appearing more frequently than direct detection. Primary task distribution is ranging-led, followed by vibration and 2D localization. Fiber results should therefore be interpreted as communication-sensing co-design under guided-channel assumptions, not as a direct baseline for wireless classes.
+
+\subsubsection{Free-Space Optical (FSO) O-ISAC}
+The FSO class isolates optical wireless links where atmospheric and alignment conditions materially affect both communication reliability and sensing confidence. The corpus contains 19 FSO records, with shared front-end still dominant but separate-front-end coexistence visible. Detection is mixed with a direct lead, and task concentration remains narrow, with ranging dominant and only a small localization tail.
+
+\subsubsection{Visible Light and LiFi O-ISAC}
+The VLC/LiFi class captures intensity-domain indoor systems where communication, illumination, and sensing objectives are jointly constrained by the same optical front-end and deployment geometry. The corpus contains 25 VLC/LiFi records, with direct detection overwhelmingly dominant. Task emphasis is split between ranging and localization, making VLC/LiFi the strongest localization-oriented class among the main wireless media.
+
+\subsubsection{Photonic-THz Bridging}
+Photonic-THz analysis must be framed as a bridge between optical distribution and high-frequency wireless operation. The explicit terahertz proxy class is small, but the broader photonic-THz bridge behavior appears across hybrid records. Accordingly, terahertz is used as an explicit proxy class, while the system-level bridge behavior is interpreted jointly with the hybrid class.
+
+\subsubsection{Hybrid Systems}
+Hybrid systems are the structural core of O-ISAC synthesis because they expose cross-medium transferability and integration trade-offs in one model. The hybrid class is the majority class with 116 records. Detection is near-balanced between coherent and direct, and the task profile is ranging-dominant with a meaningful multi-task tail. Hybrid evidence supports broad transferability analysis, but only when mechanism and detection conditioning remain explicit.
+
+\begin{quote}
+\textbf{Lesson (B):} Medium class determines dominant physical constraints, but comparability is recovered only when all classes are interpreted under a common metric-governance contract.
+\end{quote}
+
+\subsection{Integration Mechanisms}
+This subsection instantiates Axis 2 using normalized mechanism labels. At corpus scale, shared-front-end architectures dominate, while separate-front-end architectures remain a meaningful minority. The asymmetry is not uniform across media, so integration conclusions must be conditioned by substrate.
+
+\begin{table*}[!t]
+\caption{Integration Mechanisms in the O-ISAC Corpus}
+\label{tab:integration-mechanisms}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.16\textwidth}p{0.26\textwidth}X}
+\toprule
+\textbf{Mechanism} & \textbf{Evidence intensity} & \textbf{Interpretation} & \textbf{Governance note} \\
+\midrule
+Shared waveform & Moderate evidence. & Couples sensing and communication at waveform level. & Preserve role-specific metrics and plane labels. \\
+Shared hardware & Lower explicit support. & Couples front-end resources and calibration constraints. & Avoid assuming broad generality from shared front-end labels alone. \\
+Shared resources & Highest concept-level support. & Coordinates time, frequency, and power allocation. & Interpret as a control-plane mechanism spanning coupled and coexistence architectures. \\
+Shared processing & Strong evidence. & Couples decoding and sensing inference at algorithmic level. & Evaluate gains alongside robustness to mismatch. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsubsection{Shared Waveform}
+Shared waveform is the most direct mechanism-level expression of integration because it forces communication and sensing to inhabit the same modulation or probing structure. Evidence is concentrated in systems that co-design waveform structure, training patterns, or probing sequences, and the main governance constraint is to preserve metric roles when comparing results.
+
+\subsubsection{Shared Hardware}
+Shared hardware captures front-end co-design, calibration discipline, and impairment co-propagation. Explicit hardware-sharing claims are less common than shared-front-end labels, so this mechanism should be treated as selective rather than universal.
+
+\subsubsection{Shared Resources}
+Shared resources has the highest concept-level support and reflects coordination of time, frequency, and power without requiring full waveform or hardware unification. This is a practical mechanism under heterogeneous deployment constraints, but it must still respect metric-role separation.
+
+\subsubsection{Shared Processing}
+Shared processing couples communication decoding and sensing inference at the algorithmic level. It is especially relevant in hybrid settings where multi-stage pipelines benefit from joint inference, provided that model assumptions remain transparent.
+
+\begin{quote}
+\textbf{Lesson (C):} Integration mechanisms should be interpreted as evidence-weighted coupling layers over the shared-front-end/separate-front-end axis, where stronger coordination improves joint efficiency only when governance constraints preserve metric and measurement-plane comparability.
+\end{quote}
+
+\subsection{Signal Dimension and Detection}
+This subsection formalizes how detection model and signal observability constrain valid cross-study comparison. Direct and coherent labels dominate the corpus, with a small residual tail that must remain explicit rather than absorbed into the major classes.
+
+\begin{table*}[!t]
+\caption{Detection and Observability Classes}
+\label{tab:detection-classes}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.20\textwidth}p{0.20\textwidth}p{0.26\textwidth}X}
+\toprule
+\textbf{Class} & \textbf{Evidence intensity} & \textbf{Anchor} & \textbf{Governance implication} \\
+\midrule
+IM/DD regime & Moderate. & Direct-detection-heavy VLC/LiFi and direct subsets in FSO and fiber. & Interpret under intensity-domain semantics; no implicit OSNR-to-SNR transfer. \\
+Coherent detection & Strong. & Fiber and hybrid anchors with coherent-leading subclusters. & Preserve receiver and noise-model transparency before cross-regime comparison. \\
+Intensity-only observability & Strongest explicit reporting. & Dominant in direct-detection corpora. & Do not infer phase-sensitive behavior from intensity-only evidence. \\
+Complex-field observability & Smaller but important. & Coherent-leading fiber/hybrid subset. & Keep field-aware estimator behavior separate from intensity-only aggregation. \\
+Residual receiver labels & Sparse tail. & Unknown, envelope detection, MIMO, and other low-support labels. & Retain explicit tail labels and do not silently absorb them into major bins. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsubsection{IM/DD vs. Coherent Detection}
+IM/DD and coherent detection are not interchangeable because they operate on different observables and induce different estimator and impairment sensitivities. At taxonomy level, direct and coherent detections account for nearly the entire corpus. Medium-conditioned counts sharpen the distinction: fiber is coherent-leading, VLC/LiFi is strongly direct-heavy, FSO is mixed, and hybrid remains near-balanced. Comparisons across these regimes must therefore be framed as model-conditioned contrasts, not one-dimensional performance rankings.
+
+\subsubsection{Intensity-Only vs. Complex-Field Observability}
+Observability class determines which information is directly measurable and, consequently, which estimation structures are physically admissible. Intensity-only observability supports lower-complexity chains, whereas complex-field observability can expose phase-dependent structure at the cost of stricter calibration and front-end requirements. Identical task labels can therefore encode materially different uncertainty behavior depending on observability.
+
+\subsubsection{Metric Reporting Implications}
+Once detection and observability are fixed, metric comparability depends on measurement-plane governance and metric-role separation. Section~II remains binding through $\pi(m)$ and the distinction between $\Delta r_{\min}$ and $\sigma_r$. The contract-violation audit reports ambiguity flags, so ambiguous records are retained for transparency and interpreted conservatively.
+
+\begin{quote}
+\textbf{Lesson (D):} Detection and observability labels are only the first step; valid O-ISAC synthesis requires joint enforcement of receiver-model transparency, measurement-plane separation, and non-alias metric reporting.
+\end{quote}
+
+\subsection{Taxonomy Summary Views}
+\subsubsection{Taxonomy Figure}
+Fig.~\ref{fig:taxonomy-medium-map} is intentionally reader-facing. It turns the dominant O-ISAC medium classes into semantic schematics and connects them to integration style and detection regime. The figure is designed to teach what fiber, FSO, VLC/LiFi, hybrid, and THz-linked O-ISAC mean at a glance before the reader moves to count-heavy synthesis.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_iv_1.png}
+\caption{Reader-facing semantic taxonomy map for O-ISAC. The figure makes the dominant medium classes visually identifiable through compact schematics for fiber, FSO, VLC/LiFi, hybrid, and THz-linked systems, and then links these classes to integration style and detection regime. Its role is explanatory rather than rank-implying.}
+\label{fig:taxonomy-medium-map}
+\end{figure*}
+
+Section~II governance remains binding at figure level. Even with a more didactic visual language, the interpretation is valid only under plane-aware metric semantics.
+
+\subsubsection{Taxonomy Table}
+The matrix companion to Fig.~\ref{fig:taxonomy-medium-map} encodes clustered patterns rather than one-row-per-paper listings. It links deployment context, integration mechanism, detection or observability class, and metric roles within a single textual anchor.
+
+\begin{table*}[!t]
+\caption{Taxonomy Summary Clusters}
+\label{tab:taxonomy-summary}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.17\textwidth}p{0.16\textwidth}p{0.17\textwidth}p{0.16\textwidth}X}
+\toprule
+\textbf{Cluster} & \textbf{Deployment scenario} & \textbf{Integration} & \textbf{Detection} & \textbf{Task} & \textbf{Primary metrics} \\
+\midrule
+Fiber-guided & Long-reach cabled monitoring. & Shared-front-end dominant. & Coherent-leading. & Ranging and vibration. & BER, FEC margin, spatial granularity. \\
+FSO wireless optical & Outdoor and inter-building links. & Shared-front-end with separate-front-end minority. & Direct/coherent mixed. & Ranging dominant. & BER, outage, range resolution. \\
+VLC/LiFi indoor & Illumination-constrained access. & Shared-front-end dominant. & Direct-detection and intensity-only dominant. & Ranging and localization. & Throughput, BER, localization error. \\
+Hybrid bridge & Fiber-wireless and photonic-THz bridging. & Shared-front-end dominant. & Near-balanced coherent/direct. & Ranging with multi-task tail. & Throughput, BER, range and localization metrics. \\
+Residual low-support & Specialized or emerging cases. & Mixed. & Mostly direct with sparse alternatives. & Heterogeneous. & Context-dependent. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_iv_2.png}
+\caption{Reader-facing medium-task specialization view for O-ISAC. The figure highlights how the dominant medium classes connect to their representative sensing emphases, making ranging dominance, VLC/LiFi localization concentration, fiber vibration salience, and hybrid multi-task breadth visually legible without implying superiority.}
+\label{fig:taxonomy-task-view}
+\end{figure*}
+
+Fig.~\ref{fig:taxonomy-task-view} complements Table~\ref{tab:taxonomy-summary} by showing how the main medium classes align with their dominant sensing emphases and where the literature remains task-concentrated versus task-diverse.
+
+\begin{quote}
+\textbf{Lesson (E):} Figure-table dual representation is necessary to keep taxonomy synthesis transparent, auditable, and governance-consistent when translating corpus structure into downstream trade-off analysis.
+\end{quote}

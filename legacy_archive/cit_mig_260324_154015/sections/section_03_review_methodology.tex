@@ -1,0 +1,82 @@
+\section{Review Methodology (PRISMA 2020)}
+\label{sec:review-methodology}
+
+\subsection{Protocol and Registration}
+This systematic review follows the \textit{Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020} statement and the PRISMA-S extension for literature-search reporting. To improve transparency and reduce reporting bias, the protocol, including the research questions, search strategy, and eligibility criteria, was registered with the Open Science Framework (OSF) on February 12, 2026 under Registration ID \texttt{7f6wb}. The protocol metadata are available at \url{https://osf.io/7f6wb}.
+
+\subsection{Information Sources and Search Strategy}
+A comprehensive literature search for the PRISMA identification stage was conducted across IEEE Xplore, Scopus, and Web of Science, all last searched on November 30, 2025. Supplementary templates were retained for arXiv and TechRxiv to support preprint monitoring and version tracing, but they did not contribute separate records to the canonical PRISMA flow in this review (\texttt{other\_sources\_results = 0}).
+
+The executed search strategy used two mandatory concept blocks and one optional refinement block:
+\begin{enumerate}
+    \item Integrated sensing and communication concepts, including ``integrated sensing and communication'', ISAC, ``joint sensing and communication'', and related variants.
+    \item Optical-medium terms restricting retrieval to optical carriers and platforms, including optical, photonic, fiber, fibre, FSO, VLC, LiFi, and LiDAR.
+    \item Physical-layer refinement terms, such as waveform, modulation, signal model, channel model, or optical front-end, used only when a database required extra disambiguation.
+\end{enumerate}
+
+The exact executed strings and run-level logs were preserved in the study records for auditability. The search was frozen as of November 30, 2025.
+
+\subsection{Eligibility Criteria}
+To keep the review focused on the optical domain, strict inclusion and exclusion criteria were applied.
+
+\begin{table*}[!t]
+\caption{Eligibility Criteria Applied for Study Selection}
+\label{tab:eligibility-criteria}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}XX}
+\toprule
+\textbf{Criterion} & \textbf{Inclusion Requirements} & \textbf{Exclusion Conditions} \\
+\midrule
+Domain Scope & Systems using optical carrier frequencies for joint sensing and communication. & RF-only ISAC systems lacking an optical component; biomedical or chemical sensing without data transmission. \\
+Integration Level & True O-ISAC with shared hardware or waveforms, or coexistence strategies operating at the physical or link layer. & Disjoint systems: pure optical sensing or pure optical communications without explicit integration mechanisms. \\
+Publication and Time & Peer-reviewed journal articles and full-length conference papers in English, primarily within the 2020--2025 core window. & Short abstracts, non-English publications, and grey literature lacking peer review. \\
+Technical Content & Studies reporting at least one sensing metric and one communication metric. & Studies lacking technical depth on integration mechanisms, trade-offs, or performance evaluation. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Study Selection and PRISMA Flow}
+Study selection followed a three-step PRISMA workflow: deduplication, screening, and eligibility assessment. Two reviewers first calibrated the eligibility criteria on a pilot sample of 50 records, then independently conducted title/abstract screening and full-text review. Any record marked ``Include'' or ``Unsure'' by at least one reviewer advanced to full-text review. Disagreements were resolved by consensus discussion and, when needed, third-reviewer arbitration.
+
+The canonical aggregate counts were maintained in the structured screening ledger. In the reconciled record, 222 full-text articles were assessed, 2 were excluded at the full-text stage, and the final included corpus comprised 220 studies. The attrition summary is shown in Table~\ref{tab:prisma-flow}.
+
+\begin{table*}[!t]
+\caption{PRISMA 2020 Flow Summary}
+\label{tab:prisma-flow}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabularx}{\textwidth}{p{0.20\textwidth}p{0.17\textwidth}X}
+\toprule
+\textbf{Stage} & \textbf{Count} & \textbf{Notes} \\
+\midrule
+Identification & 980 & Records identified from IEEE Xplore, Scopus, and Web of Science. \\
+Duplicate removal & 280 & Automatic removal of duplicate records across databases. \\
+Screening & 700 & Title and abstract screening after deduplication. \\
+Screening exclusions & 478 & Irrelevant topic, RF-only, or out-of-scope records. \\
+Eligibility & 222 & Full-text articles assessed for eligibility. \\
+Full-text exclusions & 2 & Non-O-ISAC or unverifiable full-text records. \\
+Included & 220 & Studies included in the final review corpus. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Data Extraction and Taxonomical Classification}
+Data extraction used a standardized structured schema to map the O-ISAC landscape. Key variables included modality coverage, integration depth, quantitative performance metrics, and validation level. These extracted fields feed the quantitative trade-off frontiers evaluated in Section~V and the taxonomy synthesis in Section~IV.
+
+\subsection{Quality Appraisal (TQAF)}
+To assess the reliability of the surveyed literature, we developed a custom Technical Quality Assessment Form (TQAF). Each included study was independently evaluated across five dimensions:
+\begin{enumerate}
+    \item Modeling fidelity.
+    \item Experimental validity.
+    \item Metric completeness.
+    \item Reproducibility.
+    \item Clarity.
+\end{enumerate}
+
+Each dimension was scored on a 0--2 scale. Disagreements were resolved by consensus discussion or third-party arbitration. While TQAF scores did not determine exclusion, they are used throughout the review to weight the strength of evidence and to highlight methodological gaps where high-impact claims lack rigorous validation.
+
+\subsection{Data Synthesis Strategy}
+Given the heterogeneity of metrics across fiber, FSO, and VLC domains, a formal statistical meta-analysis was not feasible. Instead, the review uses a structured qualitative and quantitative descriptive synthesis driven by the taxonomy. The literature is first organized by physical modality to reveal domain-specific integration techniques. The resulting mapping then supports the quantitative trade-off analysis in Section~V, where rate--resolution frontiers are used to identify empirical Pareto regions in the joint sensing and communication space.

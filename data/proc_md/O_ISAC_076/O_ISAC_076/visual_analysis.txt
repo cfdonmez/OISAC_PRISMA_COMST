@@ -1,0 +1,117 @@
+Image: _page_1_Figure_10.jpeg
+Type: Signal Spectra and DSP Logic Diagrams
+---
+**Section (a-c) - Spectra:**
+* Illustrates the subcarrier structure with four main data bands and two auxiliary tones at frequencies f1 and f2.
+* (b) RX-Spectra shows polarization rotation (signals on both X and Y tracks).
+* (c) Post-Demux shows restoration of the pilot tones to their original polarization context (f1 on X, f2 on Y).
+**Section (d) - DSP with FPTs:**
+* **Logic Flow:** Data Block -> FOE (Frequency Pilot Tone based) -> Fitting -> Frequency Offset Compensation -> CPE (Common Phase Error) -> Pol. Demux.
+* **Sensing Branch:** A parallel path extracts the phase (phi_laser + phi_vib) from the FPTs, then uses Down-sampling and BPF to isolate the vibration phase (phi_vib).
+**Section (e) - DSP without FPTs:**
+* Uses conventional CMMA, Max-FFT FOE, and BPS-based CPE for comparison, lacking the targeted pilot tone extraction for sensing.
+---
+
+Image: _page_1_Figure_8.jpeg
+Type: Network Protection Schematic
+---
+**Components:** Coherent Tx 1 & 2, Coherent Rx 1 & 2, Optical Distribution Frame (ODF).
+**Flow:**
+* **Section (a):** Defines a "Working Path" (red) and a "Protect Path" (blue). A vibration (hammer icon) occurs on the Working Path.
+* **Section (b):** Schematic of system resilience where the sensing information (vibration detection) can trigger path switching or restoration, ensuring signal continuity (indicated by arrows at Rx).
+---
+
+Image: _page_2_Figure_11.jpeg
+Type: Algorithm Flowcharts
+---
+**Section (a):** Dynamic Frequency Offset Estimation (FOE) block diagram showing processing of Data Blocks 1 to N into FOE estimates, which are then combined via "Fitting".
+**Section (b):** FPT-based FOE details. FPTs are extracted, FFT is performed, and frequency offsets (FO1, FO2) of the pilot tones f1 and f2 are calculated. The final FO is the average: (FO1 + FO2) / 2.
+---
+
+Image: _page_3_Figure_14.jpeg
+Type: Performance and Verification Charts
+---
+**Section (a) - BER vs PSR:** Chart.
+* **Axes:** X-axis: Pilot-to-Signal Power Ratio (PSR) (dB), Range: -25 to 0. Y-axis: BER, Range: 10^-7 to 10^-1.
+* **Data Points:** For OSNR 25dB, min BER is ~10^-6 at PSR = -15dB.
+* **Trends:** BER improves as PSR increases from -25dB to -15dB, then degrades as the pilot tone consumes too much signal power.
+**Section (b) & (c) - PSD comparison:** Charts.
+* **Axes:** X-axis: Frequency (kHz), Range: 0 to 50. Y-axis: Power (dB), Range: 60 to 140 (b), 60 to 120 (c).
+* **Trends:** FPT-based processing (b) provides higher dynamic range and clearer peaks across different block lengths (1024-8192) compared to conventional processing (c).
+**Section (d) - Trace Alignment:** Chart.
+* **Axes:** X-axis: Time (ms), Range: 0 to 1.2. Y-axis: Frequency Offset (MHz), Range: -80 to 40.
+* **Data Points:** The "w Fitting" (yellow) curve perfectly tracks the "Ground Truth" sinusoidal offset.
+---
+
+Image: _page_4_Figure_10.jpeg
+Type: System Schematic and DSP Block Diagram
+---
+**Experimental Setup:**
+* **Components:** 100 kHz ECL, DP-IQ Modulator, AWG, RF Amplifier, SSMF, PZT (Vibration source), VOA, EDFA, Local Oscillator (LO) ECL, Integrated Coherent Receiver (ICR), 64 GSa/s RTO.
+* **Flow:** Tx-DSP prepares 16QAM signals with FPTs. The optical signal undergoes SSMF transmission and PZT vibration. At the Rx, the ICR performs coherent detection, followed by Rx-DSP which separates communication and sensing tasks.
+**DSP Blocks:**
+* **Tx-DSP:** PRBS -> 16QAM -> Nyquist -> Mux -> FPTs Insertion.
+* **Rx-DSP:** FPT-Based FOE & CPE -> Communication path (Pol. Demux, Equalization) and Sensing path (Down sampling, BPF).
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Signal Quality Improvement Charts
+---
+**Axes Extraction:**
+* **X-axis:** Frequency (kHz), Range: 0 to 50.
+* **Y-axis:** Power (dB), Range: 50 to 110.
+**Data Points:**
+* **Plot (a):** At 10kHz, "w FPT" is ~85dB while "w/o FPT" is ~94dB (9dB difference).
+* **Plot (d):** Shows a 14dB SNR enhancement with FPT-based processing.
+**Trends:** Demonstrates substantial power spectral density gains in sensing signal recovery when using pilot tones.
+---
+
+Image: _page_5_Figure_12.jpeg
+Type: Bit Error Rate (BER) Analysis
+---
+**Section (a) - BER vs ROP:**
+* **Axes:** X-axis: Received Optical Power (ROP) (dBm), Range: -33 to -26. Y-axis: BER, Range: 10^-4 to 10^-2.
+* **Data Points:** At ROP -30dBm, BER is ~10^-3. Red dashed line marks the 7% FEC limit (3.8x10^-3).
+* **Constellation Inset:** 16QAM constellation at -26dBm ROP, showing well-separated, clear clusters.
+**Section (b) - BER vs Voltage:**
+* **Axes:** X-axis: Voltage (V), Range: 2 to 20. Y-axis: BER, Range: 10^-3 to 10^-4.
+* **Trends:** BER remains stable at approx. 1x10^-4 as the PZT driving voltage increases, showing communication robustness to vibration.
+---
+
+Image: _page_5_Figure_14.jpeg
+Type: Multi-Vibration Analysis Charts
+---
+**Section (a) - Recovered Phase:** Phase (rad) vs Time (ms). Shows clean sine waves for 10, 20, 30, and 40 kHz vibrations.
+**Section (b) - Power Spectra:** Power (dB) vs Frequency (kHz). Sharp peaks at 10, 20, 30, 40 kHz respectively.
+**Section (c) - Cycle Comparison:** With FPTs, phase peaks are ~18 rad. Without FPTs, they are similar but noisier.
+**Section (d) - SNR comparison:** w FPTs shows 18 dB SNR gain at the vibration frequency peak. w/o FPTs shows only 8 dB.
+**Section (e):** Shows a 10 dB power difference in the 10-20 kHz region between the methods.
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Performance Optimization Chart
+---
+**Axes:** X-axis: PSR (dB), Range: -25 to 0. Y-axis: BER, Range: 10^-4 to 10^-2 (Log scale).
+**Data Points:** Optimal PSR is identified at -15 dB with a minimum BER of ~5x10^-5.
+**Trends:** Higher pilot power creates interference (at 0 dB PSR, BER > 10^-3); lower power lacks SNR (at -25 dB PSR, BER > 2x10^-4).
+---
+
+Image: _page_5_Figure_4.jpeg
+Type: Signal Spectra Plots
+---
+**Axes:** X-axis: Frequency (GHz), Range: -20 to 20. Y-axis: Power (dB), Range: 40 to 140.
+* **Observation:** Shows the full bandwidth including dual-polarization data bands and the distinctive pilot tone spikes at ±10 GHz. The inset in (a) zooms to -10.3 GHz showing a sharp 50dB peak.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Linearity and Accuracy Validation Charts
+---
+**Section (a) - Amplitude Linearity:**
+* **Axes:** X-axis: Voltage Amplitude (V), Range: 2 to 20. Y-axis: Phase Amplitude (rad), Range: 0 to 40.
+* **Data Points:** Linear trend for 30kHz vibration.
+* **Model:** y = 1.4668x + 1.2357 with R² = 0.9972.
+**Section (b) - Frequency Accuracy:**
+* **Axes:** X-axis: Vibration Frequency (kHz), Range: 10 to 40. Y-axis: Measured Frequency (kHz), Range: 10 to 40.
+* **Data Points:** Points at 10, 20, 30, 40 kHz align perfectly with the diagonal.
+* **Model:** y = 0.9843x + 0.0168 with R² = 0.99995.
+---

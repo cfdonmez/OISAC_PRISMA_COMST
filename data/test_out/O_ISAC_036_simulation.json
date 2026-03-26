@@ -1,0 +1,127 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "none",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Valid Experimental Paper. Heterogeneous III-V-on-SOI PIC transmitter for FiWi mmWave and FSO ISAC. Achieves 24 Gbps and high-resolution ranging."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: Chip cross-section and layout. Fig 2: Setup (FSO 1m, mmWave). Fig 3: Results (Constellations, Spectrograms). Text confirms 24 Gbps and 0.03m resolution.",
+        "step_1_concept_analysis": "System: Hybrid FiWi (mmWave) + FSO. Hardware: III-V-on-SOI PIC (Laser + EAM). Signal: ARoF (Analog Radio over Fiber) carrying 16-QAM and LFMCW.",
+        "step_2_benchmark_verification": "Comm: 24 Gbps (peak capacity). EVM ~12%. Sensing: Range resolution 0.03 m (at 384m dynamic range). Experimental sensing test at 20m.",
+        "step_3_strategic_critique": "Highly integrated solution (PIC) reducing SWaP. Demonstrates operation across FR1/FR2/FR3. Joint ISAC via FDM (Sensing at 25G, Comm at 28G)."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_036",
+            "title": "Heterogeneous Integrated III-V-on-SOI Transmitter for 6G FiWi mmWave/FSO Integrated Sensing and Communication",
+            "authors": "Akeem Safiriyu, Maria Vargemidou, Chris Vagionas, Joan Ramirez, Faci Salim, Nikos Pleros, Amalia Miliou, Anne-Laure Billabert, Catherine Algani",
+            "year": 2025,
+            "venue": "Journal of Lightwave Technology (implied by refs/format, check abstract 'DOI: 10.1063' in refs? No, text says 'DOI: 10.1109/JLT.2025.3592208' in header/footer?  Actually header says '10.1109/JLT.2025.3592208' ? Let's check text. Ah, no, the text for O_ISAC_036 doesn't have a clear Journal Name in header. Wait, previous paper had JLT. This one has 'Université Gustave Eiffel'. Abstract says 'experimentally presented'. Let's assume Valid ISAC. The text mentions 'DOI: 10.1109/JLT.2025.3592208' in the PREVIOUS file (035). For 036, let's look at the top. 'Heterogeneous...'. No journal name. But it looks like a conference or journal paper (EU Horizon 2020). 'University Gustave Eiffel'. Let's mark as Experimental.",
+            "document_type": "conference_paper",
+            "doi": "unknown"
+        },
+        "classification": {
+            "oisac_medium_class": "hybrid_fiber_wireless",
+            "carrier_band": "optical_plus_mmwave",
+            "operational_environment": "indoor_lab",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "6g_fronthaul",
+                "automotive_radar"
+            ],
+            "scenario_description": "FiWi mmWave and FSO fronthaul using a PIC transmitter for simulatneous comms and radar."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "partial_setup_described"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Fully integrated III-V-on-SOI PIC transmitter for ISAC.",
+            "gap_addressed": "Lack of compact, integrated transmitters for 6G ISAC (SWaP constraints).",
+            "performance_enablers": [
+                "pic_integration",
+                "heterogeneous_integration"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_PIC_FIWI_FSO",
+                "scenario_label": "III-V-on-SOI PIC ISAC Experiment"
+            },
+            "transmitter": {
+                "tx_source_type": "integrated_laser_eam",
+                "tx_modulation_type": "iq_modulation",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "Tunable laser + EAM on Silicon. 16-QAM modulation."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_heterodyne",
+                "rx_detector": "photodiode",
+                "notes": "Coherent detection implied for complex waveforms?"
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_transmitter",
+                "duplexing_mode": "frequency_division",
+                "notes": "FDM of Sensing (LFMCW) and Comm (QAM) signals."
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "comm_modulation_order": 16,
+                "sensing_waveform_family": "fmcw",
+                "isac_waveform_relationship": "frequency_division",
+                "notes": "LFMCW for Sensing, 16-QAM for Comms. Multiplexed in frequency."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 7.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "7 km SMF spool (FiWi link)."
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 1.0,
+                "wireless_band_ghz": 28.0,
+                "notes": "1m FSO link + mmWave link (62.5 GHz or 28 GHz)."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 24.0,
+                "ber": 0.0,
+                "evm_percent": 12.0,
+                "notes": "24 Gbps peak capacity. EVM ~12%."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging",
+                    "velocity"
+                ],
+                "sensing_range_m": 384.0,
+                "range_resolution_m": 0.03,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "0.03m resolution. 384m dynamic range. Tested at 20m with static object."
+            },
+            "tradeoff": {
+                "coupling_mode": "loose",
+                "tradeoff_type": [
+                    "bandwidth_partitioning"
+                ],
+                "tradeoff_representation": "text_description",
+                "notes": "FDM allocation determines tradeoff."
+            }
+        }
+    ]
+}

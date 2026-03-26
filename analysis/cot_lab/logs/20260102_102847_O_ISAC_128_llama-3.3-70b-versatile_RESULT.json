@@ -1,0 +1,205 @@
+{
+  "run_id": "20260102_102847_O_ISAC_128_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102847",
+  "paper_id": "O_ISAC_128",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the principles of dual comb and match filter DAS. Fig. 2 shows the dual comb enabled ISAC experimental setup over a fiber access network, including spectrums at different locations. Fig. 3 presents the recovered traces from different paths, differential phase variation, and reconstructed vibrations of each path. Fig. 4 displays the demodulated SNR with sensing on/off in different launch powers and the performance of commonly used short-reach modulation with sensing on."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a dual-comb-enabled integrated sensing and communication method, where two optical combs are generated from a single narrow linewidth seed laser. One comb is dedicated to communication, and the other has a slightly offset frequency spacing for sensing. The combs are modulated with FMCW, allowing for the separation of Rayleigh backscattering by different frequency bands. This configuration enables low-bandwidth coherent receivers to accurately reconstruct the sensing information."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a sensing spatial resolution of up to 0.5 meters for various modulation schemes and across various fiber lengths. The communication performance is also evaluated, showing no significant penalty with the sensing function activated. The results are physically consistent, considering the dual-comb configuration and FMCW modulation."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating sensing and communication in a fiber access network without adding complexity to the user-end equipment. The proposed dual-comb-enabled ISAC scheme allows for real-time, independent sensing of all channels within the network. However, open challenges remain, such as further improving the sensing resolution, reducing the system's complexity, and demonstrating its scalability in larger networks."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Dual comb enabled simultaneously multi-path sensing and communication over fiber access network",
+        "authors": "Jingchuan Wang, Huan He, Yaxi Yan, Liwang Lu, Li Wang, Zhiyong Zhao, Hwa Yaw Tam, Alan Pak Tao Lau, Chao Lu",
+        "year": 2024,
+        "venue": "Photonics Research Institute (PRI), The Hong Kong Polytechnic University",
+        "doi": "Not reported",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "industrial_manufacturing",
+          "fibre_network_monitoring"
+        ],
+        "scenario_description": "Fiber access network with multiple paths"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Dual-comb-enabled integrated sensing and communication method for fiber access networks",
+        "gap_addressed": "Integrating sensing and communication in a fiber access network without adding complexity to the user-end equipment",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "frequency_comb"
+        ],
+        "novel_component": "Dual-comb generator",
+        "novel_component_specs": "Narrow linewidth seed laser, IQ modulator, and PM-EDFA"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Fiber access network with multiple paths"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "iq_modulator",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 0.1,
+          "tx_power_dbm": 5,
+          "aperture_diameter_m": 0.001,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd",
+          "rx_aperture_diameter_m": 0.001,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "iq_modulator",
+          "rx_modulator_bandwidth_ghz": 25,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "mitp_bias"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "pam4",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 23,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "fmcw",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0.353,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 17,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 0,
+          "path_loss_model": "not_applicable",
+          "turbulence_model": "not_applicable",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "not_applicable",
+          "weather_visibility_m": 0,
+          "ambient_light_model": "not_applicable"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 92,
+          "spectral_efficiency_bps_hz": 3.5,
+          "ber": 0.001,
+          "ber_target": 0.001,
+          "snr_db": 20,
+          "osnr_db": 30,
+          "outage_probability": 0.01,
+          "latency_ms": 10,
+          "capacity_bps_hz": 100
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "vibration"
+          ],
+          "sensing_range_m": 50,
+          "range_resolution_m": 0.5,
+          "range_accuracy_m": 0.1,
+          "angular_resolution_deg": 0,
+          "velocity_resolution_mps": 0,
+          "velocity_accuracy_mps": 0,
+          "localization_error_m": 0,
+          "spatial_resolution_m": 0.5,
+          "sensing_bandwidth_hz": 200000000.0,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": "rate_vs_rmse",
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "launch_power",
+          "tradeoff_control_range": "2-9 dBm"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "not_applicable",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Fig. 3",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none_reported",
+          "num_trials": 1
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and methodology. The results are well-presented, and the trade-offs between sensing and communication performance are discussed."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which illustrates the principles of dual comb and match filter DAS. Fig. 2 shows the dual comb enabled ISAC experimental setup over a fiber access network, including spectrums at different locations. Fig. 3 presents the recovered traces from different paths, differential phase variation, and reconstructed vibrations of each path. Fig. 4 displays the demodulated SNR with sensing on/off in different launch powers and the performance of commonly used short-reach modulation with sensing on.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a dual-comb-enabled integrated sensing and communication method, where two optical combs are generated from a single narrow linewidth seed laser. One comb is dedicated to communication, and the other has a slightly offset frequency spacing for sensing. The combs are modulated with FMCW, allowing for the separation of Rayleigh backscattering by different frequency bands. This configuration enables low-bandwidth coherent receivers to accurately reconstruct the sensing information.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a sensing spatial resolution of up to 0.5 meters for various modulation schemes and across various fiber lengths. The communication performance is also evaluated, showing no significant penalty with the sensing function activated. The results are physically consistent, considering the dual-comb configuration and FMCW modulation.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating sensing and communication in a fiber access network without adding complexity to the user-end equipment. The proposed dual-comb-enabled ISAC scheme allows for real-time, independent sensing of all channels within the network. However, open challenges remain, such as further improving the sensing resolution, reducing the system's complexity, and demonstrating its scalability in larger networks.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Dual comb enabled simultaneously multi-path sensing and communication over fiber access network\",\n         \"authors\":\"Jingchuan Wang, Huan He, Yaxi Yan, Liwang Lu, Li Wang, Zhiyong Zhao, Hwa Yaw Tam, Alan Pak Tao Lau, Chao Lu\",\n         \"year\":2024,\n         \"venue\":\"Photonics Research Institute (PRI), The Hong Kong Polytechnic University\",\n         \"doi\":\"Not reported\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":[\"industrial_manufacturing\", \"fibre_network_monitoring\"],\n         \"scenario_description\":\"Fiber access network with multiple paths\"\n      },\n      \"evidence\":{\n         \"evidence_type\":[\"experimental\"],\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Dual-comb-enabled integrated sensing and communication method for fiber access networks\",\n         \"gap_addressed\":\"Integrating sensing and communication in a fiber access network without adding complexity to the user-end equipment\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"frequency_comb\"],\n         \"novel_component\":\"Dual-comb generator\",\n         \"novel_component_specs\":\"Narrow linewidth seed laser, IQ modulator, and PM-EDFA\"\n      }\n   },\n   \"scenario_level\":[\n      {\n         \"identification\":{\n            \"experiment_id\":\"E1\",\n            \"scenario_label\":\"Fiber access network with multiple paths\"\n         },\n         \"transmitter\":{\n            \"tx_source_type\":\"laser\",\n            \"tx_modulation_type\":\"im_dd\",\n            \"tx_external_modulator\":\"iq_modulator\",\n            \"wavelength_nm\":1550,\n            \"optical_bandwidth_ghz\":0.1,\n            \"tx_power_dbm\":5,\n            \"aperture_diameter_m\":0.001,\n            \"beam_divergence_mrad\":10\n         },\n         \"receiver\":{\n            \"rx_detection_type\":\"coherent\",\n            \"rx_detector\":\"balanced_pd\",\n            \"rx_aperture_diameter_m\":0.001,\n            \"rx_photonic_processing\":\"photonic_dechirping\",\n            \"rx_modulator_type\":\"iq_modulator\",\n            \"rx_modulator_bandwidth_ghz\":25,\n            \"rx_modulator_operating_point\":\"mitp\",\n            \"false_target_mitigation\":\"mitp_bias\"\n         },\n         \"integration\":{\n            \"hardware_sharing_mode\":\"shared_frontend\",\n            \"duplexing_mode\":\"full_duplex\"\n         },\n         \"waveform\":{\n            \"comm_waveform_family\":\"pam4\",\n            \"comm_modulation_order\":4,\n            \"comm_symbol_rate_gbaud\":23,\n            \"comm_fec_type\":\"none\",\n            \"sensing_waveform_family\":\"fmcw\",\n            \"isac_waveform_relationship\":\"single_dual_function\",\n            \"resource_partition\":\"time\"\n         },\n         \"channel_fiber\":{\n            \"fibre_length_km\":0.353,\n            \"fibre_type\":\"smf\",\n            \"attenuation_db_per_km\":0.2,\n            \"dispersion_ps_per_nm_km\":17,\n            \"nonlinearity_model\":\"gn_model\"\n         },\n         \"channel_wireless\":{\n            \"link_distance_m\":0,\n            \"path_loss_model\":\"not_applicable\",\n            \"turbulence_model\":\"not_applicable\",\n            \"turbulence_Cn2\":0,\n            \"scintillation_index\":0,\n            \"pointing_error_model\":\"not_applicable\",\n            \"weather_visibility_m\":0,\n            \"ambient_light_model\":\"not_applicable\"\n         },\n         \"comm_metrics\":{\n            \"data_rate_gbps\":92,\n            \"spectral_efficiency_bps_hz\":3.5,\n            \"ber\":1e-3,\n            \"ber_target\":1e-3,\n            \"snr_db\":20,\n            \"osnr_db\":30,\n            \"outage_probability\":0.01,\n            \"latency_ms\":10,\n            \"capacity_bps_hz\":100\n         },\n         \"sensing_metrics\":{\n            \"sensing_task_type\":[\"ranging\", \"vibration\"],\n            \"sensing_range_m\":50,\n            \"range_resolution_m\":0.5,\n            \"range_accuracy_m\":0.1,\n            \"angular_resolution_deg\":0,\n            \"velocity_resolution_mps\":0,\n            \"velocity_accuracy_mps\":0,\n            \"localization_error_m\":0,\n            \"spatial_resolution_m\":0.5,\n            \"sensing_bandwidth_hz\":200e6,\n            \"pd_probability_detection\":0.9,\n            \"pfa_probability_false_alarm\":0.1,\n            \"crb_crlb_value\":0.01,\n            \"crb_parameter\":\"range\"\n         },\n         \"tradeoff\":{\n            \"coupling_mode\":\"resource_division\",\n            \"tradeoff_type\":\"rate_vs_rmse\",\n            \"tradeoff_representation\":\"curve\",\n            \"tradeoff_control_parameter\":\"launch_power\",\n            \"tradeoff_control_range\":\"2-9 dBm\"\n         },\n         \"enabling_tech_details\":{\n            \"opa_num_emitters\":0,\n            \"opa_steering_range_deg\":0,\n            \"opa_beamwidth_deg\":0,\n            \"ris_num_elements\":0,\n            \"ris_type\":\"not_applicable\",\n            \"ris_phase_bits\":0\n         },\n         \"provenance\":{\n            \"source_pointer\":\"Fig. 3\",\n            \"value_origin\":\"reported_text\",\n            \"confidence_reporting\":\"none_reported\",\n            \"num_trials\":1\n         }\n      }\n   ],\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and methodology. The results are well-presented, and the trade-offs between sensing and communication performance are discussed.\"\n   }\n}"
+}

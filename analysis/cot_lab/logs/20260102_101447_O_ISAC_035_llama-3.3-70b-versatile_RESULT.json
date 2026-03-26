@@ -1,0 +1,164 @@
+{
+  "run_id": "20260102_101447_O_ISAC_035_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101447",
+  "paper_id": "O_ISAC_035",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the FMCW LiDAR principle, and Fig. 2, which shows the schematic diagram of the proposed ISAC system. Fig. 3 presents the time-frequency diagram of the OCDM-based ISAC waveform. Fig. 4 depicts the experimental setup of the proposed FSO-ISAC system. Fig. 5 shows the obtained beat frequencies for different fiber delay line lengths. Fig. 6 compares the measured target distance with the corresponding pre-set fiber delay length. Fig. 7 illustrates the deviation between the OCDM-based FMCW ranging and the standard unmodulated FMCW ranging. Fig. 8 presents the obtained beat frequencies when the OCDM-based FMCW waveform experiences different delays. Fig. 9 shows the constellation diagrams for 4-QAM, 16-QAM, and 64-QAM. Fig. 10 illustrates the BER performance of the QAM modulation scheme when the Gamma-Gamma fading model is considered. Fig. 11 shows the BER performance of the 16-QAM modulation scheme under different FSO conditions. Fig. 12 illustrates the relationship amongst the ranging distance, the communication capacity, and the guard band length. Fig. 13 presents the relationship between the attainable ranging distance and the communication data capacity under different signal bandwidths. Fig. 14 shows the relationship between the attainable ranging distance and the communication data capacity under different symbol periods. Fig. 15 illustrates the PAPR characteristics of the OCDM and OCDM-based ISAC signals with 1024 chirps modulated in 16-QAM."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system uses an OCDM-based FMCW waveform design for FSO integrated sensing and communication. The OCDM waveform is split into ranging subcarriers and communication subcarriers. The system uses a Mach-Zehnder modulator (MZM) to generate an optical double side-band signal with a suppressed carrier. The signal is then transmitted through the FSO channel and received by a photodetector. The received signal is then demodulated using a local laser pump and converted back to an RF signal. The system uses a simplified FMCW ranging receiver design, which mixes the echo signal with a local optical reference signal to obtain the beat frequency. The beat frequency is then used to evaluate the target distance. The system also uses an OCDM demodulation module to demodulate the communication data."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a centimeter-level ranging accuracy and a communication rate of 3.182 Gbps. The system uses a guard band to prevent interference between the ranging and communication subcarriers. The paper also reports a deviation between the OCDM-based FMCW ranging and the standard unmodulated FMCW ranging of within 1 mm. The system's performance is also evaluated under different FSO conditions, including atmospheric turbulence and pointing errors."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of achieving high-accuracy ranging and high-speed communication using a single FSO waveform. The system also addresses the issue of interference between the ranging and communication subcarriers. However, the system's performance is affected by the length of the guard band, which can impact the attainable ranging distance and communication data capacity. The system's performance is also affected by atmospheric turbulence and pointing errors, which can degrade the BER performance. The paper also highlights the need for further research on the optimization of the OCDM parameters and the investigation of the system's performance under different FSO conditions."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "OCDM-Based FMCW Waveform Design for FSO Integrated Sensing and Communications",
+        "authors": "Zhengchao Ban, Jingbo Tang, Qijie Xie, and Yichuan Li",
+        "year": 2025,
+        "venue": "IEEE Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2025.3592208",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "C-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "The proposed system is designed for FSO integrated sensing and communication applications, including 6G networks."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed system uses an OCDM-based FMCW waveform design for FSO integrated sensing and communication, which achieves high-accuracy ranging and high-speed communication using a single FSO waveform.",
+        "gap_addressed": "The proposed system addresses the issue of interference between the ranging and communication subcarriers and achieves high-accuracy ranging and high-speed communication using a single FSO waveform.",
+        "performance_enablers": "orthogonal_chirp_division_multiplexing",
+        "novel_component": "OCDM-based FMCW waveform design",
+        "novel_component_specs": "The OCDM-based FMCW waveform design uses a guard band to prevent interference between the ranging and communication subcarriers."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "FSO-ISAC system with OCDM-based FMCW waveform design"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 1
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 1,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "fmcw_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "free_space",
+        "turbulence_model": "gamma_gamma",
+        "turbulence_Cn2": 0.5,
+        "scintillation_index": 0.5,
+        "pointing_error_model": "rayleigh",
+        "weather_visibility_m": 10
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 3.182,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "guard_band_length",
+        "tradeoff_control_range": "0-10"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and the experimental setup. The results are well-presented and easy to follow."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which illustrates the FMCW LiDAR principle, and Fig. 2, which shows the schematic diagram of the proposed ISAC system. Fig. 3 presents the time-frequency diagram of the OCDM-based ISAC waveform. Fig. 4 depicts the experimental setup of the proposed FSO-ISAC system. Fig. 5 shows the obtained beat frequencies for different fiber delay line lengths. Fig. 6 compares the measured target distance with the corresponding pre-set fiber delay length. Fig. 7 illustrates the deviation between the OCDM-based FMCW ranging and the standard unmodulated FMCW ranging. Fig. 8 presents the obtained beat frequencies when the OCDM-based FMCW waveform experiences different delays. Fig. 9 shows the constellation diagrams for 4-QAM, 16-QAM, and 64-QAM. Fig. 10 illustrates the BER performance of the QAM modulation scheme when the Gamma-Gamma fading model is considered. Fig. 11 shows the BER performance of the 16-QAM modulation scheme under different FSO conditions. Fig. 12 illustrates the relationship amongst the ranging distance, the communication capacity, and the guard band length. Fig. 13 presents the relationship between the attainable ranging distance and the communication data capacity under different signal bandwidths. Fig. 14 shows the relationship between the attainable ranging distance and the communication data capacity under different symbol periods. Fig. 15 illustrates the PAPR characteristics of the OCDM and OCDM-based ISAC signals with 1024 chirps modulated in 16-QAM.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system uses an OCDM-based FMCW waveform design for FSO integrated sensing and communication. The OCDM waveform is split into ranging subcarriers and communication subcarriers. The system uses a Mach-Zehnder modulator (MZM) to generate an optical double side-band signal with a suppressed carrier. The signal is then transmitted through the FSO channel and received by a photodetector. The received signal is then demodulated using a local laser pump and converted back to an RF signal. The system uses a simplified FMCW ranging receiver design, which mixes the echo signal with a local optical reference signal to obtain the beat frequency. The beat frequency is then used to evaluate the target distance. The system also uses an OCDM demodulation module to demodulate the communication data.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a centimeter-level ranging accuracy and a communication rate of 3.182 Gbps. The system uses a guard band to prevent interference between the ranging and communication subcarriers. The paper also reports a deviation between the OCDM-based FMCW ranging and the standard unmodulated FMCW ranging of within 1 mm. The system's performance is also evaluated under different FSO conditions, including atmospheric turbulence and pointing errors.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed system solves the problem of achieving high-accuracy ranging and high-speed communication using a single FSO waveform. The system also addresses the issue of interference between the ranging and communication subcarriers. However, the system's performance is affected by the length of the guard band, which can impact the attainable ranging distance and communication data capacity. The system's performance is also affected by atmospheric turbulence and pointing errors, which can degrade the BER performance. The paper also highlights the need for further research on the optimization of the OCDM parameters and the investigation of the system's performance under different FSO conditions.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"OCDM-Based FMCW Waveform Design for FSO Integrated Sensing and Communications\",\n         \"authors\":\"Zhengchao Ban, Jingbo Tang, Qijie Xie, and Yichuan Li\",\n         \"year\":2025,\n         \"venue\":\"IEEE Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2025.3592208\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_fso\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"The proposed system is designed for FSO integrated sensing and communication applications, including 6G networks.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed system uses an OCDM-based FMCW waveform design for FSO integrated sensing and communication, which achieves high-accuracy ranging and high-speed communication using a single FSO waveform.\",\n         \"gap_addressed\":\"The proposed system addresses the issue of interference between the ranging and communication subcarriers and achieves high-accuracy ranging and high-speed communication using a single FSO waveform.\",\n         \"performance_enablers\":\"orthogonal_chirp_division_multiplexing\",\n         \"novel_component\":\"OCDM-based FMCW waveform design\",\n         \"novel_component_specs\":\"The OCDM-based FMCW waveform design uses a guard band to prevent interference between the ranging and communication subcarriers.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"FSO-ISAC system with OCDM-based FMCW waveform design\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":1,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":1\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":1,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"fmcw_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"gamma_gamma\",\n         \"turbulence_Cn2\":0.5,\n         \"scintillation_index\":0.5,\n         \"pointing_error_model\":\"rayleigh\",\n         \"weather_visibility_m\":10\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":3.182,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":0.01,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"guard_band_length\",\n         \"tradeoff_control_range\":\"0-10\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system model and the experimental setup. The results are well-presented and easy to follow.\"\n   }\n}"
+}

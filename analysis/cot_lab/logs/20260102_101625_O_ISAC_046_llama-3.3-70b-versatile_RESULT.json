@@ -1,0 +1,185 @@
+{
+  "run_id": "20260102_101625_O_ISAC_046_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101625",
+  "paper_id": "O_ISAC_046",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig.1(a) which shows the experimental setup, Fig.1(b) which displays the WDM signal spectrum at core-4, and Fig.2 which presents the impact of PI bandwidth on communication and sensing performance."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a co-wavelength-channel integration of ultra-low-frequency distributed acoustic sensing (DAS) and high-capacity communication over a 38-km weakly-coupled seven-core fiber. The ISAC coupling mode is achieved through frequency division multiplexing of the digital subcarrier modulation (DSM) signal and the chirped-pulse sensing signal at the same wavelength channel."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the sensing sensitivity of 3.89 - nε Hz @0.1-Hz with 20-m spatial-resolution and the transmission capacity of 241.85-Tb/s, are physically consistent with the hardware and methods described in the paper."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating ultra-low-frequency DAS and high-capacity communication over a long-distance fiber link. However, the open challenge of further improving the sensing sensitivity and transmission capacity while reducing the system complexity and cost remains."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Co-wavelength-channel Integration of Ultra-lowfrequency Distributed Acoustic Sensing and High-Capacity Communication",
+        "authors": "Long Gu, Meng Xiang, Zebing Zhang, Chaocheng Liu, Pengbai Xu, Wei Sun, Jun Yang, Songnian Fu, Yuncai Wang, Yuwen Qin",
+        "year": 2024,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2024.3391234",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "submarine_fiber_optical_networks",
+          "distributed_sensing"
+        ],
+        "scenario_description": "Ultra-low-frequency distributed acoustic sensing and high-capacity communication over a long-distance fiber link"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Co-wavelength-channel integration of ultra-low-frequency DAS and high-capacity communication over a 38-km weakly-coupled seven-core fiber",
+        "gap_addressed": "Integration of DAS and high-capacity communication over long-distance fiber links",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "frequency_division_multiplexing"
+        ],
+        "novel_component": "Seven-core fiber with low inter-core crosstalk",
+        "novel_component_specs": "Inter-core crosstalk: -60 dB/100km, attenuation: 0.18 dB/km, CD: 20.05 ps/km/nm"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Ultra-low-frequency DAS and high-capacity communication over 38-km seven-core fiber"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550.12,
+        "optical_bandwidth_ghz": 500,
+        "tx_power_dbm": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator",
+        "rx_modulator_bandwidth_ghz": 40,
+        "rx_modulator_operating_point": "mitp"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "dp_16qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 36,
+        "comm_fec_type": "sd_fec",
+        "sensing_waveform_family": "chirp_fmcw",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "frequency_division_multiplexing"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 38,
+        "fibre_type": "seven_core_fiber",
+        "attenuation_db_per_km": 0.18,
+        "dispersion_ps_per_nm_km": 20.05,
+        "nonlinearity_model": "gn_model"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 241850,
+        "spectral_efficiency_bps_hz": 50.4,
+        "ber": 0.001,
+        "snr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 38000,
+        "range_resolution_m": 20,
+        "range_accuracy_m": 10,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 10,
+        "spatial_resolution_m": 20,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1e-10,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "pi_bandwidth",
+        "tradeoff_control_range": "0-10 ghz"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Table II, p.5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the experimental setup and results, with a high level of modelling fidelity and validation strength."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig.1(a) which shows the experimental setup, Fig.1(b) which displays the WDM signal spectrum at core-4, and Fig.2 which presents the impact of PI bandwidth on communication and sensing performance.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a co-wavelength-channel integration of ultra-low-frequency distributed acoustic sensing (DAS) and high-capacity communication over a 38-km weakly-coupled seven-core fiber. The ISAC coupling mode is achieved through frequency division multiplexing of the digital subcarrier modulation (DSM) signal and the chirped-pulse sensing signal at the same wavelength channel.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the sensing sensitivity of 3.89 - nε Hz @0.1-Hz with 20-m spatial-resolution and the transmission capacity of 241.85-Tb/s, are physically consistent with the hardware and methods described in the paper.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating ultra-low-frequency DAS and high-capacity communication over a long-distance fiber link. However, the open challenge of further improving the sensing sensitivity and transmission capacity while reducing the system complexity and cost remains.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Co-wavelength-channel Integration of Ultra-lowfrequency Distributed Acoustic Sensing and High-Capacity Communication\",\n         \"authors\":\"Long Gu, Meng Xiang, Zebing Zhang, Chaocheng Liu, Pengbai Xu, Wei Sun, Jun Yang, Songnian Fu, Yuncai Wang, Yuwen Qin\",\n         \"year\":2024,\n         \"venue\":\"Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2024.3391234\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":[\"submarine_fiber_optical_networks\", \"distributed_sensing\"],\n         \"scenario_description\":\"Ultra-low-frequency distributed acoustic sensing and high-capacity communication over a long-distance fiber link\"\n      },\n      \"evidence\":{\n         \"evidence_type\":[\"experimental\"],\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Co-wavelength-channel integration of ultra-low-frequency DAS and high-capacity communication over a 38-km weakly-coupled seven-core fiber\",\n         \"gap_addressed\":\"Integration of DAS and high-capacity communication over long-distance fiber links\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"frequency_division_multiplexing\"],\n         \"novel_component\":\"Seven-core fiber with low inter-core crosstalk\",\n         \"novel_component_specs\":\"Inter-core crosstalk: -60 dB/100km, attenuation: 0.18 dB/km, CD: 20.05 ps/km/nm\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Ultra-low-frequency DAS and high-capacity communication over 38-km seven-core fiber\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"iq_modulator\",\n         \"wavelength_nm\":1550.12,\n         \"optical_bandwidth_ghz\":500,\n         \"tx_power_dbm\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"iq_modulator\",\n         \"rx_modulator_bandwidth_ghz\":40,\n         \"rx_modulator_operating_point\":\"mitp\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"dp_16qam\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":36,\n         \"comm_fec_type\":\"sd_fec\",\n         \"sensing_waveform_family\":\"chirp_fmcw\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"frequency_division_multiplexing\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":38,\n         \"fibre_type\":\"seven_core_fiber\",\n         \"attenuation_db_per_km\":0.18,\n         \"dispersion_ps_per_nm_km\":20.05,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":241850,\n         \"spectral_efficiency_bps_hz\":50.4,\n         \"ber\":1e-3,\n         \"snr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":[\"ranging\", \"localization_2d\"],\n         \"sensing_range_m\":38000,\n         \"range_resolution_m\":20,\n         \"range_accuracy_m\":10,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":10,\n         \"spatial_resolution_m\":20,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":1e-10,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"pi_bandwidth\",\n         \"tradeoff_control_range\":\"0-10 ghz\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table II, p.5\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear and detailed description of the experimental setup and results, with a high level of modelling fidelity and validation strength.\"\n   }\n}"
+}

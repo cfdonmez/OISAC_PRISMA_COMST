@@ -1,0 +1,67 @@
+# O_ISAC_138 Visual Analysis
+
+## Image 1: _page_2_Figure_13.jpeg
+- **Type**: System Diagram / Illustration
+- **Description**: System architecture of U2U mmWave communication empowered by multimodal perception.
+- **Components**:
+    - Transmitter UAV: mmWave Transmitter, GPS.
+    - Receiver UAV: mmWave Receiver, GPS, FMCW Radar, 3D LiDAR, 360° RGB Camera.
+    - Environment: Urban scenario with buildings and vehicles.
+    - Link: mmWave Communication Link between UAVs.
+
+## Image 2: _page_4_Figure_3.jpeg
+- **Type**: System Block Diagram
+- **Description**: Overall architecture of MPFusionNet.
+- **Workflow**:
+    - Preprocessing: Semantic Segmentation (Image), Frame Alignment (LiDAR), Dynamic Feature Removal (Radar), Temporal Interpolation (GPS).
+    - Stages: Dual-stage feature extraction & fusion (Layer-1/2/3 Blocks and MPFusionNet modules).
+    - Components: ResNet-18, ASPP (Atrous Spatial Pyramid Pooling), SE (Squeeze-and-Excitation), Multi-Head Attention, MLP.
+    - Output: Beam Classification MLP predicting the optimal beam.
+
+## Image 3: _page_9_Figure_7.jpeg
+- **Type**: Chart / Graph
+- **Description**: Comparison of training and validation cross-entropy loss.
+- **Key Data**:
+    - Number of Epochs: 1 to 20.
+    - Curves: train-4-layers, valid-4-layers, train-3-layers, valid-3-layers, train-2-layers, valid-2-layers.
+    - Observations: 3-layer configuration achieves the lowest final loss (~2 x 10^-3).
+
+## Image 4: _page_9_Figure_12.jpeg
+- **Type**: Chart / Graph
+- **Description**: Top-1 and Top-3 beam prediction accuracy vs Epochs for different 3D convolutional layer depths.
+- **Observations**: 3-layer model peaks at ~80% Top-1 and ~97% Top-3 accuracy.
+
+## Image 5: _page_10_Figure_3.jpeg
+- **Type**: Chart / Graph
+- **Description**: Top-1 and Top-3 accuracy comparison for MPFusion layer configurations (1, 2, 3 layers).
+- **Observations**: 2-MPFusion and 3-MPFusion are nearly identical, with 2 layers being more efficient. Top-3 accuracy exceeds 97%.
+
+## Image 6: _page_10_Figure_7.jpeg
+- **Type**: Chart / Graph
+- **Description**: Performance comparison between MPFusion and ResNet-18 baseline.
+- **Key Data**: MPFusion (red) reaches ~82% Top-1, significantly outperforming the ResNet-18 baseline (blue) which levels off ~62%.
+
+## Image 7: _page_10_Figure_12.jpeg
+- **Type**: Chart / Graph (Box Plot)
+- **Description**: Beam prediction accuracy distribution across different Scenarios (1-4) and Scenario All.
+- **Observations**: Scenario 1 has the highest variance (78-99%). Scenario All median is ~95%.
+
+## Image 8: _page_11_Figure_5.jpeg
+- **Type**: Chart / Graph (Box Plot)
+- **Description**: Comparison of Top-1 to Top-3 accuracy for Image, Lidar, Radar, and Fusion.
+- **Key Data**: Fusion (red) significantly outperforms single modalities. Top-1 Fusion ~78%, Top-3 Fusion ~95%. Single modalities (Image, Lidar, Radar) are all below 60% for Top-1.
+
+## Image 9: _page_11_Figure_9.jpeg
+- **Type**: Chart / Graph (Box Plot)
+- **Description**: Top-3 accuracy of two-modality fusion schemes.
+- **Key Data**: RGB + LiDAR (~94.6%) is the best-performing pair, followed by RGB + Radar and RGB + GPS.
+
+## Image 10: _page_11_Figure_11.jpeg
+- **Type**: Chart / Graph (Box Plot)
+- **Description**: Top-3 accuracy distributions under (a) Daytime and (b) Nighttime conditions.
+- **Observations**: Daytime median is higher (~96% for RGB+LiDAR+Radar) compared to Nighttime (~93% for LiDAR+Radar+GPS). Nighttime performance relies more on non-visual sensors.
+
+## Image 11: _page_12_Figure_4.jpeg
+- **Type**: Chart / Graph
+- **Description**: Top-3 accuracy under different RGB occlusion levels (0% to 40%).
+- **Observations**: Schemes involving RGB (red, blue, green) drop from ~95.8% to ~91.5%. The LiDAR + Radar + GPS scheme (purple) is robust and remains flat at ~94.2%.

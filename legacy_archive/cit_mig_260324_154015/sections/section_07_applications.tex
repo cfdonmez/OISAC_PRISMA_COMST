@@ -1,0 +1,161 @@
+\section{Applications and Use Cases Across Domains}
+\label{sec:applications}
+
+Section VII translates the application evidence base into deployment-facing use cases while staying inside the classification and governance contracts fixed earlier in the manuscript. Whenever medium labels are used below, they inherit the Section IV normalized vocabulary, namely cabled fiber, FSO, VLC/LiFi, photonic-THz or terahertz proxy, and hybrid systems. Likewise, any OPA or ORIS mention remains contextual in the Section VI sense and is not used by itself to assign an application domain. Finally, any SNR-family quantity reported in this section is treated as a communication-plane variable unless the cited paper explicitly states an optical-plane model; no implicit OSNR-to-SNR conversion is implied.
+
+\begin{table*}[!t]
+\caption{Application Portfolio Matrix of Representative Cases.}
+\label{tab:app-portfolio}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.12\textwidth} p{0.18\textwidth} p{0.22\textwidth} p{0.22\textwidth} p{0.13\textwidth} p{0.10\textwidth}}
+\toprule
+Vertical & Scenario motif & Comm-plane metrics & Sensing-plane metrics & Dominant component & Representative cite keys \\
+\midrule
+VII-A & Outdoor V2V/UAV optical corridors & V2V transmission-quality behavior, throughput-oriented resource and trajectory control & Received-power-ratio behavior, RMS delay-spread trends, FSO channel-gain estimation & Conventional & O-ISAC-003, O-ISAC-005 \\
+VII-A & Cabled-fiber corridor DAS + coherent carriage & 50--60 GBaud 16-QAM, coexistence penalty & Distributed vibration monitoring, 1 m spatial resolution, interference-fading suppression & Conventional & O-ISAC-038, O-ISAC-074 \\
+VII-B & Retroreflective indoor VLC/LiFi localization & BER vs. reported electrical-plane SNR & Distance-measurement RMSE, positioning RMSE & Conventional & O-ISAC-011 \\
+VII-B & Two-phase indoor LED O-AP deployment & BER gains, directional and directionless operation & Coordinate MSE, sub-$10^{-4}$ operating point & Conventional & O-ISAC-108 \\
+VII-C & Autonomous-vehicle ISAC-OW V2V & BER vs. reported electrical-plane SNR under turbulence & LiDAR ranging estimate & Conventional & O-ISAC-060 \\
+VII-C & Vehicular-network FSO ISAC link (LFM-CPM) & BER, achievable data rate & ToF-oriented CRB, RMSE & Conventional & O-ISAC-055 \\
+VII-D & Secure underwater OWC link & BER reduction, secrecy-rate outcomes & Environmental-state prediction MAE & Conventional & O-ISAC-127 \\
+VII-D & SMART subsea cable monitoring & 20 GBaud DP-QAM16 transmission, Q-factor gain & In-line temperature sensing resolution & Conventional & O-ISAC-220 \\
+VII-E & LEO photonic O-ISAC payload & 29.99 Mbps, BER below pre-FEC threshold & Range-resolution behavior & Conventional & O-ISAC-187 \\
+VII-E & Multi-beam satellite payload & BER, EVM, 2.4 Gbps 16-QAM link & Range resolution, remote-sensing descriptors & Conventional & O-ISAC-195 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_vii_1.jpg}
+\caption{Cross-domain deployment synthesis of O-ISAC applications under the strict evidence view over the canonical 220-paper corpus and 48 micro-domains. The figure clusters the five macro-domain panels around recurring deployment motifs and uses compact representative metric cues to show how communication-side and sensing-side reporting co-appear across domains. OPA/ORIS mentions remain contextual and do not define domain assignment in Section VII.}
+\label{fig:apps-cross-domain}
+\end{figure*}
+
+The figure should be read as a deployment-orientation map rather than a scorecard: the counts delimit evidence support, while the domain cards summarize the kinds of communication-side and sensing-side cues that recur in each macro domain.
+
+\subsection{Smart Infrastructure and Outdoor Urban Sensing-Communication}
+\label{subsec:apps-smart-infra}
+
+Urban smart-infrastructure deployments use O-ISAC when the same optical platform must carry operational traffic while exposing environment and link state for control and supervision [O-ISAC-003, O-ISAC-005, O-ISAC-276]. The representative evidence covers outdoor mobility corridors, metro and industrial cabled-fiber corridors, and live metropolitan access supervision, each with explicit sensing-plane and communication-plane reporting [O-ISAC-003, O-ISAC-038, O-ISAC-064, O-ISAC-276].
+
+\paragraph{Outdoor mobility corridors.}
+The first scenario class spans vehicular and UAV-assisted optical links. Sensing is reported through received-power-ratio behavior, RMS delay-spread trends, and FSO channel-gain estimation, while communication is evaluated through transmission-quality behavior and throughput-oriented resource and trajectory control [O-ISAC-003, O-ISAC-005]. The implementations are conventional, with VLC, FSO, and RF transceiver/control designs rather than explicit OPA or ORIS hardware [O-ISAC-003, O-ISAC-005].
+
+\paragraph{Cabled-fiber corridor sensing-communication.}
+The second scenario class is characterized by 10--10.4 km cabled-fiber spans and interference-fading behavior in Rayleigh backscatter traces [O-ISAC-038, O-ISAC-074]. Sensing is expressed through distributed vibration monitoring and interference-fading suppression, while communication is demonstrated through coherent payload transport at 50--60 GBaud 16-QAM [O-ISAC-038, O-ISAC-074].
+
+\paragraph{Metropolitan deployed-fiber supervision.}
+Metropolitan access supervision introduces point-to-multipoint topology and splitter branch-overlap risk [O-ISAC-064, O-ISAC-276]. Event observability is reported through direct magnitude readout in live XGS-PON tests, whereas downstream traffic tests report no baseline performance difference between regular and upgraded remote nodes in the tested setup [O-ISAC-276].
+
+\paragraph{Outdoor FSO ranging-communication.}
+Outdoor FSO links reflect free-space geometry, line-of-sight dependence, and atmospheric-loss or turbulence exposure [O-ISAC-012, O-ISAC-034]. Range observability is evaluated through MSE or RMSE behavior, and communication reliability is reported through code-rate and BER behavior in multi-user optical ISAC evaluations [O-ISAC-012, O-ISAC-034].
+
+\subsubsection{Key Takeaways}
+\begin{itemize}
+\item Outdoor O-ISAC behavior is strongly scenario-vector dependent across mobility, weather, and topology.
+\item Fiber-corridor deployments can co-support vibration sensing and high-rate coherent communication under controlled coexistence design.
+\item Live access supervision shows that sensing readout and communication continuity can be jointly maintained in tested point-to-multipoint operation.
+\item Reported optical ISAC evaluations keep BER and ranging-error metrics separated, typically using MSE or RMSE for sensing.
+\end{itemize}
+
+\subsection{Indoor Environments}
+\label{subsec:apps-indoor}
+
+Indoor O-ISAC deployments are characterized by shared optical infrastructure that must deliver communication service while extracting environment- or user-state information in the same transceiver workflow [O-ISAC-011, O-ISAC-030]. The evidence base covers retroreflective VLC localization and lamp-centered human-centric interaction, both of which preserve communication continuity while sensing tasks execute [O-ISAC-011, O-ISAC-030].
+
+\paragraph{Retroreflective VLC localization.}
+The room-scale retroreflective setting uses a PD/CCR loop and cross-correlation delay estimation. Sensing is evaluated through distance-measurement RMSE and positioning RMSE, while communication is tracked through BER versus electrical-plane SNR [O-ISAC-011].
+
+\paragraph{Lamp-centered interaction.}
+VLC-capable lamps can support gesture-aware control and data communication in occupied indoor spaces. Sensing is reported through reflected-light gesture recognition, and communication is maintained through BER behavior and prototype throughput [O-ISAC-030].
+
+\paragraph{Two-phase indoor LED O-ISAC.}
+Indoor O-AP layouts with multi-device PD-array reception and directionless-to-directional operation provide explicit dual-plane metrics. Sensing is summarized by coordinate MSE, while communication is summarized by BER and reported directional gains [O-ISAC-108].
+
+\paragraph{Indoor VLC-CDMA.}
+Indoor VLC-CDMA studies show that BER degrades with user count because of multi-user interference, while no explicit sensing KPI is reported in the selected scenario [O-ISAC-388].
+
+\subsubsection{Key Takeaways}
+\begin{itemize}
+\item Indoor evidence consistently couples communication service with localization or gesture-driven sensing.
+\item Scenario diversity spans both user-centric interaction and infrastructure-centric localization.
+\item Later-stage indoor deployments often keep explicit dual-plane metrics, with BER and coordinate MSE forming the most conservative pair.
+\item Room geometry and user density remain the primary deployment descriptors for synthesis.
+\end{itemize}
+
+\subsection{Automotive Transportation}
+\label{subsec:apps-automotive}
+
+Within Section VII, the automotive vertical covers moving-road contexts that require concurrent optical connectivity and environment-aware operation in the same workflow [O-ISAC-003, O-ISAC-164]. The evidence base is deployment-facing and includes V2V and V2X exchanges, optical source-receiver pairing in driving scenes, and co-present sensing and communication functions under mobility and outdoor illumination variability [O-ISAC-003, O-ISAC-060, O-ISAC-164].
+
+\paragraph{Autonomous-vehicle ISAC-OW V2V.}
+Two autonomous-vehicle nodes, Gamma-Gamma turbulence, and a LiDAR-plus-communication setup provide a representative case. Sensing is reported as a LiDAR ranging estimate, while communication is characterized through BER versus electrical-plane SNR [O-ISAC-060].
+
+\paragraph{Outdoor OCC-based V2X.}
+V2V/V2I/I2V exchange with vehicular or infrastructure emitters uses normalized sensing and communication gains as separate metrics. Sensing gain decreases with higher relative motion or scene complexity, and communication gain is analyzed versus communication frequency and exposure-time settings [O-ISAC-164].
+
+\paragraph{V2V VLC.}
+Front-rear V2V spacing with mono-static and bi-static propagation keeps target-channel received-power ratio and RMS delay-spread trends as the sensing-side evidence, while communication is implicit rather than separately quantified [O-ISAC-003].
+
+\paragraph{Vehicular-network FSO ISAC.}
+Vehicular FSO links with turbulence-aware channel modeling report ToF-oriented CRB and RMSE on the sensing side and BER plus achievable data rate on the communication side [O-ISAC-055].
+
+\subsubsection{Key Takeaways}
+\begin{itemize}
+\item Automotive O-ISAC is dominated by mobility, line-of-sight variation, and turbulence-aware deployment conditions.
+\item Communication and sensing remain metric-separated, typically BER or rate on one side and CRB/RMSE or ranging on the other.
+\item Deployment evidence is conventional and waveform-centric rather than hardware-innovation centric.
+\item Exposure-time tuning and motion dependence are recurring control variables in vehicular optical links.
+\end{itemize}
+
+\subsection{Underwater, Subsea, and Space Links}
+\label{subsec:apps-underwater-space}
+
+The remaining verticals extend the same dual-plane logic to harsher propagation regimes. Underwater OWC studies emphasize secure links and environmental prediction, while SMART subsea cable work couples communication throughput with distributed temperature sensing [O-ISAC-127, O-ISAC-220]. Space and satellite payloads report BER, EVM, and Mbps/Gbps throughput on the communication side and range-resolution or imaging descriptors on the sensing side [O-ISAC-187, O-ISAC-195].
+
+\subsubsection{Key Takeaways}
+\begin{itemize}
+\item Underwater evidence keeps secrecy and environmental prediction separate from the communication plane.
+\item Subsea monitoring remains one of the clearest examples of communication-plus-sensing co-design in cabled infrastructure.
+\item LEO and satellite payloads show that photonic O-ISAC is not limited to terrestrial deployments.
+\item The dominant component label remains conventional across the sampled cases.
+\end{itemize}
+
+\subsection{Dual-View Consistency Layer}
+\label{subsec:apps-dualview}
+
+The dual-view consistency layer is a methodological audit rather than a deployment vertical. It compares structured application tags against raw and strict evidence counts in order to expose where the corpus expands or contracts under gating.
+
+\begin{table*}[!t]
+\caption{Dual-View Discrepancy Summary.}
+\label{tab:dualview-summary}
+\centering
+\scriptsize
+\begin{tabular}{lrrrrrl}
+\toprule
+macro\_domain & flag\_count & raw\_count & strict\_count & raw\_only\_delta & strict\_only\_delta & example\_key \\
+\midrule
+automotive\_transportation & 76 & 212 & 104 & 136 & 28 & O\_ISAC\_010 \\
+indoor\_environments & 65 & 175 & 81 & 110 & 16 & O\_ISAC\_013 \\
+smart\_infrastructure & 103 & 220 & 203 & 117 & 100 & O\_ISAC\_071 \\
+underwater\_harsh & 16 & 122 & 23 & 106 & 7 & O\_ISAC\_021 \\
+space\_satellite & 17 & 134 & 34 & 117 & 17 & O\_ISAC\_070 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The layer shows that raw-versus-strict gating materially changes observed coverage in every audited domain, but the differences are domain dependent and should not be collapsed into a single correction factor. Section VII therefore reads these cross-domain patterns as evidence-accounting signals rather than as deployment-maturity rankings.
+
+\subsubsection{Key Takeaways}
+\begin{itemize}
+\item Raw-versus-strict gating materially changes coverage in every audited domain.
+\item Strict-gated extraction can still exceed structured tags by a large margin.
+\item Domain-dependent annotation bias remains a risk because identical gates yield very different strict deltas across domains.
+\item Unresolved scope-mismatch and weak-evidence rows are quarantined from headline prevalence claims.
+\end{itemize}
+
+\paragraph{Section VII summary.}
+Section VII concludes that deployment evidence is concentrated in a limited set of application settings, and that credible synthesis requires explicit separation of communication-side metrics, sensing-side metrics, and domain-specific deployment assumptions.

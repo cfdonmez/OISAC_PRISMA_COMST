@@ -1,0 +1,442 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_066",
+    "title": "Spectrum Sharing and Interference Management for 6G LEO Satellite–Terrestrial Network Integration",
+    "authors": [
+        "Navid Heydarishahreza",
+        "Tao Han",
+        "Nirwan Ansari"
+    ],
+    "affiliation": "Helen and John C. Hartmann Department of Electrical and Computer Engineering, New Jersey Institute of Technology",
+    "year_online": "2024",
+    "year_issue": "2025",
+    "source_path": "data/corp_std/COMST_066/COMST_066.md",
+    "domain": "LEO Satellite / Terrestrial Network Integration / Spectrum Sharing / Interference Management / 6G NTN",
+    "paper_type": "Comprehensive Survey with Physical Layer Focus",
+    "analysis_policy": {
+        "focus": "Extract interference taxonomy, lessons learned patterns, and algorithm presentation formats",
+        "depth": "Full paper analysis including 8 sections, extensive tables, algorithm boxes"
+    },
+    "document_stats": {
+        "total_lines": 935,
+        "total_bytes": 211442,
+        "section_count": 8,
+        "figure_count": 14,
+        "table_count": 9,
+        "reference_count": 180
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-VIII)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "LITNet": "LEO satellite-Integrated Terrestrial Network",
+            "IBI": "Inter-Beam Interference",
+            "ISI": "Inter-Satellite Interference",
+            "LTI": "LEO satellite-Terrestrial infrastructure Interference",
+            "CR": "Cognitive Radio",
+            "RSMA": "Rate-Splitting Multiple Access",
+            "OTFS": "Orthogonal Time Frequency Space",
+            "RIS": "Reconfigurable Intelligent Surface",
+            "NTN": "Non-Terrestrial Network",
+            "EZ": "Exclusion Zone"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_positioning",
+            "subsections": [
+                "Preliminary",
+                "Previous Comparable Research",
+                "Contributions and Structure"
+            ],
+            "summary": "Motivates spectrum sharing due to satellite proliferation (Starlink growth shown), identifies gap in comprehensive LITNet interference surveys, presents comparison table against 10 prior surveys.",
+            "key_claims": [
+                "Traditional interference management methods fail for LEO challenges",
+                "No prior survey comprehensively covers IBI, ISI, and LTI together",
+                "AI integration in spectrum sharing is emerging trend"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Fundamentals of LEO Satellite-Integrated Terrestrial Networks (LITNets)",
+            "role": "background_foundation",
+            "subsections": [
+                "Integrated Architecture",
+                "Constellation",
+                "Handover",
+                "Intrinsic Channel Impairment Factors",
+                "Satellite Edge Computing",
+                "Diversity Schemes"
+            ],
+            "summary": "Comprehensive foundation covering 6 aspects: architecture (complementary vs enhanced), constellation types (Walker Delta/Star), handover types, channel impairments (delay, Doppler, attenuation), edge computing, diversity.",
+            "key_claims": [
+                "6G requires 3D coverage beyond 2D terrestrial",
+                "LEO satellites preferred for lower PL and delay",
+                "URLLC requirements challenging for satellite due to propagation delay"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "Spectrum Sharing and Interference",
+            "role": "problem_characterization",
+            "subsections": [
+                "Cognitive Techniques",
+                "Co-Frequency Interference Types in LITNets",
+                "Spectrum Sharing and System Performance Metrics"
+            ],
+            "summary": "Introduces CR concepts, overlay vs underlay spectrum sharing, spectrum sensing techniques (ED, MFD, CFD). Defines 8 interference patterns and categorizes into IBI, ISI, LTI.",
+            "key_claims": [
+                "Overlay relies on spectrum holes, underlay introduces CFI",
+                "8 potential interference patterns identified by FCC TAC",
+                "Security challenges from spectrum sharing need robust protocols"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "Inter-Beam Interference (IBI)",
+            "role": "interference_type_1",
+            "subsections": [
+                "Antennas and Beam Patterns",
+                "Beam-Splash and Side-Lobe Leakage"
+            ],
+            "summary": "Covers active vs passive antennas, beam-splash phenomenon, side-lobe leakage. Mitigation via transmit precoding and zero-forcing.",
+            "key_claims": [
+                "Active steerable antennas track high-demand regions",
+                "Zero-forcing precoding adapts from GSO to LEO"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "Inter-Satellite Interference (ISI)",
+            "role": "interference_type_2",
+            "subsections": [
+                "Exclusion Zone",
+                "Joint Beam and Power Optimization"
+            ],
+            "summary": "Two mitigation approaches: exclusion zone (spatial isolation angle optimization) and joint beam-power optimization (beam hopping, resource allocation). Includes Algorithm 1 for beam shut-off/switching.",
+            "key_claims": [
+                "Spatial isolation angle optimization reduces ISI",
+                "Resource allocation divided into beam hopping, frequency selection, power allocation",
+                "Dense constellations and Doppler shift are unique LEO challenges"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "LEO Satellite-Terrestrial Infrastructure Interference (LTI)",
+            "role": "interference_type_3",
+            "subsections": [
+                "Frequency Pairing Modes",
+                "Multiple Access Design",
+                "RISs"
+            ],
+            "summary": "Normal vs reverse frequency pairing, RSMA advantages over OMA/NOMA/SDMA, OTFS modulation for Doppler resilience, RIS integration for signal phase manipulation.",
+            "key_claims": [
+                "Reverse pairing shifts interference source from devices to BSs",
+                "RSMA provides spectral/energy/computational efficiency",
+                "OTFS transforms time-varying channels to time-invariant",
+                "RIS adds spatial dimensions for spectrum efficiency"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "AI and Spectrum Sharing",
+            "role": "enabling_technology",
+            "subsections": [
+                "Interference Detection",
+                "Resource Allocation",
+                "Large Language Models (LLMs) and Interference Management"
+            ],
+            "summary": "AI for interference detection (44% false detection reduction), DRL for resource allocation, LLMs for policy interpretation and power control recommendations.",
+            "key_claims": [
+                "ML reduces false detection probability by 44%",
+                "DRL-based allocation achieves near-optimal performance",
+                "LLMs can interpret policies and recommend power control"
+            ]
+        },
+        {
+            "section_id": "VIII",
+            "title": "Research Challenges and Future Directions",
+            "role": "synthesis_and_directions",
+            "subsections": [
+                "Extreme Heterogeneity",
+                "RSMA and NOMA",
+                "OTFS",
+                "Application of LLMs"
+            ],
+            "summary": "Four key future directions: heterogeneity management, RSMA/NOMA integration, OTFS adoption, LLM applications for intelligent interference management.",
+            "key_claims": [
+                "Multi-tier hybrid networks increase heterogeneity",
+                "RSMA adoption in NTN needs demonstration",
+                "OTFS transition from OFDM feasible"
+            ]
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Provide comprehensive exploration of interference in LITNets encompassing all types (IBI, ISI, LTI) with mitigation strategies",
+        "delivery_mechanism": "Fundamentals → Spectrum Sharing Concepts → IBI → ISI → LTI → AI → Future Directions",
+        "unique_contribution": "First survey to systematically categorize all three interference types (IBI, ISI, LTI) in LITNets with physical layer mechanisms"
+    },
+    "taxonomy": {
+        "type": "interference_type_classification",
+        "root_concept": "Co-Frequency Interference in LITNets",
+        "dimensions": [
+            {
+                "dimension": "Interference Types",
+                "categories": [
+                    "IBI (Inter-Beam)",
+                    "ISI (Inter-Satellite)",
+                    "LTI (LEO-Terrestrial)"
+                ]
+            },
+            {
+                "dimension": "Spectrum Sharing Modes",
+                "categories": [
+                    "Overlay (spectrum holes)",
+                    "Underlay (with CFI)"
+                ]
+            },
+            {
+                "dimension": "Frequency Pairing",
+                "categories": [
+                    "Normal pairing (same UL/DL)",
+                    "Reverse pairing (crossed UL/DL)"
+                ]
+            },
+            {
+                "dimension": "ISI Mitigation",
+                "categories": [
+                    "Exclusion Zone",
+                    "Joint Beam and Power Optimization"
+                ]
+            },
+            {
+                "dimension": "Multiple Access",
+                "categories": [
+                    "OMA",
+                    "NOMA",
+                    "SDMA",
+                    "RSMA"
+                ]
+            }
+        ]
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "SINR (Signal-to-Interference-and-Noise Ratio)",
+            "INR (Interference-to-Noise Ratio)",
+            "Throughput (capacity)",
+            "Spectral efficiency",
+            "Detection probability",
+            "False detection rate"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Contrast with 10 previous surveys across 7 coverage dimensions (LITNets, Spectrum sharing, IBI, ISI, LTI, AI)"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Important acronyms and full forms (38 entries)"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Reviewed articles on LITNets fundamentals by classification"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "Reviewed articles on spectrum sharing and interference"
+            },
+            {
+                "table_ref": "Table V",
+                "purpose": "Reviewed articles on IBI"
+            },
+            {
+                "table_ref": "Table VI",
+                "purpose": "Reviewed articles on ISI"
+            },
+            {
+                "table_ref": "Table VII",
+                "purpose": "Reviewed articles on LTI"
+            },
+            {
+                "table_ref": "Table VIII",
+                "purpose": "NTN system parameters for simulation"
+            },
+            {
+                "table_ref": "Table IX",
+                "purpose": "Reviewed articles on AI and spectrum sharing"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "article_structure_diagram",
+                "example": "Fig. 1 - Structure of this article",
+                "purpose": "Navigation roadmap showing section organization"
+            },
+            {
+                "type": "architecture_diagram",
+                "example": "Fig. 2 - LITNets architecture",
+                "purpose": "Show complementary and enhanced architecture modes"
+            },
+            {
+                "type": "constellation_visualization",
+                "example": "Fig. 3, 4 - Starlink/OneWeb geometries and growth",
+                "purpose": "Demonstrate satellite proliferation"
+            },
+            {
+                "type": "interference_scenario_diagram",
+                "example": "Fig. 6 - Interference scenarios between LEO satellites",
+                "purpose": "8 interference patterns aggressor→victim"
+            },
+            {
+                "type": "resource_allocation_diagram",
+                "example": "Fig. 10 - Resource allocation and BHTP",
+                "purpose": "Beam hopping and frequency selection visualization"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Three-pronged interference taxonomy with unified mitigation framework",
+        "key_paradigm": "LITNets require intelligent multi-dimensional interference management across IBI, ISI, and LTI",
+        "gap_identification": [
+            "No comprehensive survey covering all three interference types",
+            "Physical layer mechanisms under-explored",
+            "AI/LLM integration nascent",
+            "RSMA demonstration in NTN needed",
+            "OTFS practical adoption barriers"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Interference taxonomy-driven organization with physical layer focus",
+        "source_selection": "180+ references covering 2017-2024 literature",
+        "distinguishing_features": [
+            "Lessons Learned synthesis after each subsection",
+            "Per-section literature summary tables",
+            "Algorithm box presentation",
+            "Multi-dimensional coverage comparison table",
+            "FCC TAC report integration for interference patterns"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with systematic organization",
+        "rhetorical_patterns": [
+            "Lessons Learned boxes after subsections",
+            "Category-based literature tables",
+            "Algorithm pseudocode presentation",
+            "Aggressor-victim interference framing",
+            "Numbered contribution lists"
+        ],
+        "characteristic_phrases": [
+            "Lessons Learned: From the analysis of...",
+            "Table X summarizes the articles discussed in this section",
+            "The unique challenges that LEO satellites face in addressing...",
+            "The proposed LITNet employs..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Per-Subsection Lessons Learned Synthesis",
+            "description": "Conclude each subsection with a distinctive 'Lessons Learned' paragraph summarizing key takeaways in prose form",
+            "structure": [
+                "Start with 'Lessons Learned:' in italics",
+                "Synthesize 3-5 key points from the subsection",
+                "Reference specific papers that support each lesson",
+                "Use semicolons to separate distinct lessons",
+                "End with forward-looking implication"
+            ],
+            "example_application": "Every subsection in Sections II-VII ends with Lessons Learned paragraph",
+            "rhetorical_effect": "Reinforces key takeaways; aids retention; enables quick scanning",
+            "complexity": "Low - requires distillation skill"
+        },
+        {
+            "recipe_name": "Per-Section Literature Summary Table",
+            "description": "Include a table at the end of each major section summarizing reviewed articles by classification category",
+            "structure": [
+                "Column 1: Classification (sub-topic category)",
+                "Column 2: Reference number(s)",
+                "Column 3: Summary (1-2 sentence contribution)",
+                "Group rows by classification",
+                "Reference table in text: 'Table X summarizes the articles discussed in this section'"
+            ],
+            "example_application": "Tables III-IX each summarize section-specific literature",
+            "rhetorical_effect": "Organizes large literature set; enables targeted reading; shows coverage depth",
+            "complexity": "Medium - requires systematic literature organization"
+        },
+        {
+            "recipe_name": "Multi-Dimensional Survey Comparison Table",
+            "description": "Position survey contribution using a table with topic coverage dimensions as columns and checkmarks indicating coverage",
+            "structure": [
+                "Rows: Prior survey references sorted by year",
+                "Columns: Key topic dimensions (e.g., LITNets, Spectrum sharing, IBI, ISI, LTI, AI)",
+                "Use checkmarks (✓) for covered, × for not covered",
+                "Final row: 'Ours' with comprehensive coverage shown",
+                "Include 'Main Contributions' column with brief description"
+            ],
+            "example_application": "Table I comparing 10 prior surveys across 7 dimensions",
+            "rhetorical_effect": "Clearly demonstrates gaps; justifies survey need; shows comprehensive scope",
+            "complexity": "Medium - requires thorough literature review"
+        },
+        {
+            "recipe_name": "Algorithm Box Presentation",
+            "description": "Present key procedures/algorithms in numbered algorithmic pseudocode format within a boxed environment",
+            "structure": [
+                "Title: 'Algorithm N: [Descriptive Name]'",
+                "Reference citation in brackets",
+                "Numbered steps with clear actions",
+                "Use if/then/end if for conditionals",
+                "Bold keywords (if, then, end)",
+                "Define variables/sets at start"
+            ],
+            "example_application": "Algorithm 1: Beam Shut-Off and Switching (Beam Hopping)",
+            "rhetorical_effect": "Enables reproducibility; clarifies complex procedures; professional presentation",
+            "complexity": "Low - requires procedural clarity"
+        },
+        {
+            "recipe_name": "Three-Tier Interference Taxonomy",
+            "description": "Organize interference discussion using a clear three-tier hierarchy with dedicated sections for each type",
+            "structure": [
+                "Define interference types with distinct acronyms (IBI, ISI, LTI)",
+                "Provide visual diagram showing all interference patterns",
+                "Dedicate separate section to each interference type",
+                "Within each section: causes → mitigation techniques → lessons learned",
+                "Reference FCC or regulatory documents for authority"
+            ],
+            "example_application": "Sections IV (IBI), V (ISI), VI (LTI) each dedicate full section to interference type",
+            "rhetorical_effect": "Creates clear mental model; enables systematic coverage; aids navigation",
+            "complexity": "Medium - requires careful taxonomy design"
+        },
+        {
+            "recipe_name": "Aggressor-Victim Interference Pattern Enumeration",
+            "description": "Enumerate interference scenarios using aggressor→victim notation with risk assessment for each pattern",
+            "structure": [
+                "List all possible source-destination pairs (e.g., Gateway to Gateway, Satellite to UE)",
+                "Use bullet points with dash sub-bullets",
+                "Assess risk level for each (zero risk, small risk, etc.)",
+                "Explain conditions that change risk level",
+                "Highlight mitigation factors (angular separation, distance, directional antennas)"
+            ],
+            "example_application": "Section III-B lists 8 interference patterns with risk assessments",
+            "rhetorical_effect": "Comprehensive enumeration; practical risk assessment; actionable guidance",
+            "complexity": "Low - requires systematic enumeration"
+        }
+    ],
+    "key_concepts": {
+        "litnet": "LEO satellite-Integrated Terrestrial Network for 6G",
+        "exclusion_zone": "Geographic area where spectrum sharing is disabled",
+        "beam_hopping": "Dynamic beam scheduling for interference mitigation",
+        "reverse_pairing": "Cross-direction spectrum sharing (satellite UL with terrestrial DL)"
+    },
+    "quality_flags": {
+        "lessons_learned_pattern": true,
+        "per_section_tables": true,
+        "algorithm_boxes": true,
+        "interference_taxonomy": true,
+        "survey_comparison_table": true,
+        "approximately_180_references": true,
+        "fcc_regulatory_integration": true
+    }
+}

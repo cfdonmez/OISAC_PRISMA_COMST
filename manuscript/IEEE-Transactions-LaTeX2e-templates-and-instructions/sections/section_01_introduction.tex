@@ -1,0 +1,257 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{The Convergence of Sensing and Communication: A 6G Imperative}
+
+\IEEEPARstart{T}{he} escalating complexity of the electromagnetic environment has intensified demands for ultra-reliable wireless connectivity, driving significant interest in Integrated Sensing and Communication (ISAC) systems \cite{O_ISAC_070}. This integrated approach enables ultra-efficient spectrum utilization and significantly reduces hardware costs and, more importantly, establishes a foundational framework for achieving seamless connectivity in future wireless networks \cite{O_ISAC_070}. ISAC has now emerged as a core enabler in 6G networks and is recognized as one of the six key usage scenarios by both the ITU-R IMT-2030 framework \cite{O_ISAC_162} and 3GPP \cite{O_ISAC_162}, spanning the coexistence, cooperation, and co-design of communication and sensing functionalities \cite{O_ISAC_070}.
+
+The intelligence of future society necessitates an immediate requirement for ultra-high-speed communication and ultra-resolution sensing in the 6G era \cite{O_ISAC_016}. As intelligent applications, including robot navigation, augmented reality, autonomous driving, and human--machine interaction, continue to proliferate, these emerging services require highly reliable wireless communication and high-accuracy environment sensing simultaneously \cite{O_ISAC_351}. Wireless communication frequency bands are gradually transitioning to higher frequency ranges, encompassing millimeter-wave (mmWave) and terahertz (THz), to fulfill the ultra-high data-rate requirements of this vision. \textbf{Despite significant progress in RF-based ISAC}, the conventional independent design of communication and sensing systems generally occupies disjoint spectral resources, profoundly aggravating spectrum congestion \cite{O_ISAC_351}. Moreover, using traditional all-electronic approaches to generate mmWave or THz signals will inevitably encounter challenges such as high complexity and \textbf{bandwidth limitation}, which significantly increase system cost \cite{O_ISAC_286}. To the best of our knowledge, conventional RF-ISAC systems face three fundamental constraints:
+
+\begin{enumerate}
+\item \textbf{Spectrum Congestion}: With the rapid advance of wireless mobile devices, RF communication and sensing systems face spectrum congestion, limited bandwidth, and susceptibility to electromagnetic interference \cite{O_ISAC_068}. The exponentially growing demand for mobile data, coupled with stringent sensing-resolution requirements in emerging applications such as holographic telepresence, digital twins, and autonomous navigation, has created significant pressure on the congested RF spectrum \cite{O_ISAC_161}.
+\item \textbf{Limited Resolution and Bandwidth}: The spatial resolution achievable in the mmWave band is fundamentally limited to approximately centimeter level, which is insufficient for millimeter-precision applications \cite{O_ISAC_021}. Furthermore, RF-ISAC systems commonly suffer from \textbf{spectrum scarcity, high power consumption, and limited sensing capabilities} \cite{O_ISAC_203}.
+\item \textbf{Hardware Constraints}: Purely electrical THz systems struggle to achieve the wide bandwidth and flexible reconfigurability demanded by 6G \cite{O_ISAC_070}. The construction of mmWave/THz ISAC systems using purely electrical means is associated with bandwidth and frequency-adjustability limitations that increase overall system complexity \cite{O_ISAC_286}.
+\end{enumerate}
+
+\textbf{Recent advances in photonic THz techniques have opened new opportunities} for transcending these RF limitations. \textbf{Optical Integrated Sensing and Communication (O-ISAC)} has emerged as a transformative paradigm that unifies perception, transmission, and processing on optical carriers \cite{O_ISAC_021}. \textbf{Fig.~\ref{fig:intro-paradigm}} illustrates this paradigm evolution through three distinct phases: \textbf{(A)} the fundamental spectral and bandwidth constraints of conventional RF-ISAC, \textbf{(B)} the transformative opportunities of the optical domain, leveraging the 28.3--845 THz spectrum to enable Tb/s-class capacity and millimeter-scale resolution, and \textbf{(C)} the unified taxonomy of this review, which branches O-ISAC into fiber-based, wireless (FSO/THz), and VLC modalities. Our systematic analysis of \textbf{220 peer-reviewed O-ISAC studies (2020--2025)} reveals that optical ISAC prototypes have already pushed these limits: photonic-terahertz integration has achieved \textbf{120 Gb/s wireless throughput with 2.5 mm sensing resolution} \cite{O_ISAC_105}, corresponding to $\mathrm{CRQ}_{\Delta} \approx 4.8\times10^{13}$ bps/m \cite{O_ISAC_105}. Earlier photonic sub-THz demonstrations report $\mathrm{CRQ}_{\Delta}$ on the order of $1.0\times10^{13}$ bps/m \cite{O_ISAC_016}.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig1.png}
+\caption{The O-ISAC paradigm evolution. (A) RF-ISAC systems in sub-6 GHz/mmWave bands often face deployment-constrained spectrum and hardware limits, motivating a transition toward photonic carriers to pursue Tb/s-class capacity and millimeter-scale sensing targets. (B) Optical ISAC leverages the broad photonic spectrum ($\approx 28.3$--845 THz), with implementations clustering in operational windows (telecom for fiber and NIR/visible/photonic-THz for wireless). (C) The review taxonomy branches Optical ISAC into fiber-based, free-space/photonic-THz, and VLC/LiFi modalities, each characterized by distinct signal models and dominant impairments.}
+\label{fig:intro-paradigm}
+\end{figure*}
+
+Recent photonic and fiber demonstrations illustrate the rate--resolution frontier: a 275 GHz LFM-QAM system reports 120 Gb/s with a two-way bandwidth-limited range resolution of $\Delta r_{\min} \approx 2.5$ mm, yielding $\mathrm{CRQ}_{\Delta} := R / \Delta r_{\min} = 4.8\times10^{13}$ bps/m (equivalently 480 Gb/s/cm) \cite{O_ISAC_105}; a D-band sub-THz FDM link delivers 251.03 Gb/s with $\Delta r_{\min} = 2.5$ cm \cite{O_ISAC_016}; and co-wavelength DAS/DSM over a 38 km seven-core fiber sustains 241.85 Tb/s while sensing 0.1 Hz vibrations with 20 m spatial granularity \cite{O_ISAC_046}. These exemplars highlight the bandwidth advantages of optical carriers and motivate a systematic question.
+
+\emph{These demonstrations motivate a fundamental question: What unique properties of the optical domain enable such performance gains, and how can these advantages be systematically exploited for next-generation ISAC systems?} To address this question, we now examine the physical foundations that position the optical spectrum as the natural substrate for high-performance ISAC.
+
+Table~\ref{tab:intro-related} previews the axis-based comparison of related review- and survey-style works discussed in Section~\ref{sec:intro-related}.
+
+\begin{table*}[!t]
+\caption{Axis-Based Comparison of This Review with Existing Related Review- and Survey-Style Works}
+\label{tab:intro-related}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ccccccccccc}
+\toprule
+Ref. & Year & Tier & Modality Scope (F / FSO / VLC / THz) & Int. Depth & Methodology & Taxonomy & Metrics & Benchmark & Transfer & Enablers \\
+\midrule
+\cite{O_ISAC_161} & 2025 & 2 & Out / Out / Out / Out & Full & Review & Part & -- & -- & -- & -- \\
+\cite{O_ISAC_068} & 2023 & 2 & Out / Out / Full / Out & Full & Narrative & -- & -- & -- & -- & -- \\
+\cite{O_ISAC_327} & 2024 & 2 & Out / Out / Full / Out & Part & Survey & Part & -- & -- & -- & -- \\
+\cite{O_ISAC_006} & 2024 & 2 & Full / Out / Out / Out & Part & Review & -- & Part & -- & -- & -- \\
+\cite{O_ISAC_368} & 2023 & 2 & Full / Out / Out / Out & Part & Review & -- & -- & -- & -- & -- \\
+\cite{O_ISAC_021} & 2023 & 2 & Out / Full / Out / Out & Full & Tutorial & Part & Part & -- & -- & Part \\
+\cite{O_ISAC_070} & 2025 & 2 & Out / Out / Out / Full & Full & Narrative & Part & -- & -- & -- & -- \\
+\cite{O_ISAC_163} & 2025 & 2 & Out / Out / Out / Out & Full & Survey & Part & -- & -- & Part & Full \\
+\cite{O_ISAC_303} & 2024 & 1 & Out / Out / Full / Out & Full & Review & Part & Part & -- & -- & -- \\
+This Review & 2026 & -- & Full / Full / Full / Full & Full & PRISMA 2020 & Full & Full & Full & Full & Full \\
+\bottomrule
+\end{tabular}
+\vspace{0.4em}
+
+\parbox{0.96\textwidth}{\footnotesize \textit{Legend:} Full = strong/explicit (Score 1); Part = partial/within-modality (Score 0.5); Out = out-of-scope; -- = absent (Score 0). THz denotes photonic-THz / optical-THz bridging O-ISAC, not generic RF THz-ISAC hardware surveys.}
+\end{table*}
+
+\subsection{The Optical Opportunity: A Vast and Untapped Frontier}
+
+Moving from the RF spectrum crisis to a potential solution, the optical domain, spanning the infrared (IR), visible, and ultraviolet bands, presents an opportunity of transformative scale. While RF-ISAC operates within a congested spectrum below 300 GHz, O-ISAC nominally spans approximately \textbf{28.3 THz to 845 THz} (corresponding to wavelengths from 355 nm to 10.6 $\mu$m), though practical systems cluster within established atmospheric transmission windows and fiber telecom bands \cite{O_ISAC_021}. In this review, Photo-THz O-ISAC refers to photonics-enabled architectures where optical carriers are used for generation/LO/distribution, while the wireless propagation carrier resides in the sub-THz/THz band, thus forming an optical--THz bridging modality. This subsection elucidates the fundamental physical advantages that position the optical domain as the natural substrate for next-generation ISAC systems.
+
+\subsubsection{Quantitative Comparison: RF-ISAC vs. O-ISAC}
+
+To ground our analysis in empirical data, Table~\ref{tab:intro-rf-vs-optical} presents a head-to-head comparison between RF-ISAC modalities and O-ISAC, synthesized from our systematic corpus analysis of 220 peer-reviewed studies \cite{O_ISAC_021}.
+
+\begin{table*}[!t]
+\caption{RF-ISAC vs. O-ISAC Performance Comparison}
+\label{tab:intro-rf-vs-optical}
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{Y Y Y Y}
+\toprule
+\textbf{Characteristic} & \textbf{RF-ISAC (Sub-6 GHz / mmWave)} & \textbf{Wireless O-ISAC (FSO / VLC / Photo-THz)} & \textbf{Wired O-ISAC (Fiber Sensing)} \\
+\midrule
+\textbf{Carrier Frequency} & 2.4--100 GHz & 0.1--10 THz (Photo-THz) + 28.3--845 THz (FSO/VLC) & 193 THz (C-band / L-band) \\
+\textbf{Physics Model} & Diffuse multipath (rich) & Line-of-sight dominated & Guided mode (low loss, dispersive) \\
+\textbf{Signal Type} & Complex (I/Q) & Real (IM/DD) or complex (coherent FSO) & Complex (coherent phase/polarization) \\
+\textbf{Key Impairments} & Interference, multipath fading & Ambient light, turbulence, pointing error & Nonlinearity (Kerr), PMD, phase noise \\
+\textbf{Sensing Task} & Radar (range/Doppler) & Localization, gesture, surface profiling & DAS (vibration), strain, temperature \\
+\textbf{Peak Data Rate} & $\sim$10--20 Gb/s & $\sim$100--120 Gb/s \cite{O_ISAC_105} & $>$200 Tb/s (aggregate) \cite{O_ISAC_046} \\
+\textbf{Resolution} & cm-level & mm-level (2.5 mm) \cite{O_ISAC_105} & m-level (spatial) / $n\varepsilon$ (strain) \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsubsection{Three Competitive Advantages of O-ISAC}
+
+Drawing from the generalized O-ISAC system architecture proposed in \cite{O_ISAC_021}, we identify three fundamental advantages that differentiate optical approaches from their RF counterparts. Fig.~\ref{fig:intro-advantages} provides a technical zoom-in on the physical mechanisms underlying these advantages, contrasting optical physics with RF constraints.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig2.png}
+\caption{Physical mechanisms behind the three competitive advantages of O-ISAC. (Left) Capacity scaling is achieved via dense multiplexing (WDM/SDM), enabling aggregate rates of 241.85 Tb/s in wired systems \cite{O_ISAC_046} and dense parallel channels in wireless settings \cite{O_ISAC_021}. (Center) Sensing precision is driven by ultra-wide effective bandwidth, enabling wireless range resolution down to $\Delta r_{\min} = 2.5$ mm and $\mathrm{CRQ}_{\Delta} = 4.8\times10^{13}$ bps/m (480 Gb/s/cm) \cite{O_ISAC_105}. (Right) Spatial isolation is inherent to narrow optical beams, reducing multi-user interference and RF-EMI susceptibility compared to wide RF sectors.}
+\label{fig:intro-advantages}
+\end{figure*}
+
+\paragraph{Advantage 1: Capacity Scaling Through Spectral Abundance and Multiplexing}
+The optical spectrum, spanning \textbf{28.3 THz to 845 THz} \cite{O_ISAC_021}, offers massive resources for dense multiplexing. Unlike RF systems limited by sub-6 GHz blocks, optical carriers support substantial parallelism, as illustrated in Fig.~\ref{fig:intro-advantages}:
+\begin{itemize}
+\item \textbf{Wireless Parallelism}: Experimental demonstrations of Mode Division Multiplexing (MDM) combined with WDM have realized \textbf{64 parallel channels} (16 wavelengths $\times$ 4 OAM modes) to scale wireless throughput \cite{O_ISAC_021}.
+\item \textbf{Wired Aggregate Capacity}: In the cabled domain, Space Division Multiplexing (SDM) using 7-core fiber has achieved an aggregate capacity of \textbf{241.85 Tb/s} (96 WDM channels $\times$ 7 cores) over 38 km \cite{O_ISAC_046}.
+\end{itemize}
+\emph{These independent demonstrations validate the scalability of optical multiplexing beyond single-link RF limits.}
+
+\paragraph{Advantage 2: Enhancing Sensing Precision via Ultra-Wide Bandwidth}
+Range resolution ($\Delta r_{\min}$) is bandwidth-limited in two-way sensing according to $\Delta r_{\min} = v/(2B_{\text{eff}})$. The ultra-wide bandwidths available in the optical domain enable millimeter-level resolution that is physically difficult for narrowband RF systems to match:
+\begin{itemize}
+\item \textbf{Wireless Ranging}: Photonic-THz systems have demonstrated a \textbf{range resolution of 2.5 mm} alongside 120 Gb/s data transmission \cite{O_ISAC_105}.
+\item \textbf{Capacity-Resolution Quotient}: This combination yields $\mathrm{CRQ}_{\Delta} := R / \Delta r_{\min} = 4.8\times10^{13}$ bps/m (480 Gb/s/cm) for wireless ranging \cite{O_ISAC_105}.
+\end{itemize}
+\emph{We strictly distinguish bandwidth-limited range resolution ($\Delta r_{\min}$) from SNR-dependent range accuracy ($\sigma_r = \sqrt{\mathbb{E}[(\hat r-r)^2]}$). While fiber DAS achieves meter-level spatial granularity ($\Delta z \approx 20$ m \cite{O_ISAC_046}), its sensing value lies in ultra-sensitive vibration detection rather than high-resolution ranging.}
+
+\paragraph{Advantage 3: Spatial Isolation and Reduced RF-EMI Coupling}
+The high directionality of optical beams provides deployment-dependent spatial isolation, significantly reducing multi-user interference compared to wide-beam RF sectors in clear line-of-sight scenarios \cite{O_ISAC_021}. While wireless O-ISAC links remain susceptible to atmospheric turbulence and ambient light \cite{O_ISAC_003}, their reduced susceptibility to conventional RF electromagnetic interference and narrow beam divergence, typically on the order of milliradians \cite{O_ISAC_021}, enable dense spatial reuse in deployment scenarios with favorable propagation conditions.
+
+\subsubsection{Unified O-ISAC Taxonomy}
+
+Having established the physical mechanisms behind the three optical advantages, capacity scaling via multiplexing, bandwidth-limited ranging resolution, and directional spatial isolation, we next formalize the scope of this review. The O-ISAC literature does not constitute a single monolithic system class; rather, it clusters into distinct modalities determined by the propagation medium and the associated signal/impairment models. Fig.~\ref{fig:intro-taxonomy} summarizes the resulting evidence-based taxonomy from our PRISMA-compliant 2020--2025 corpus, organizing O-ISAC into four modalities with their representative operating windows, dominant techniques, and canonical sensing--communication metrics.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig3.png}
+\caption{Unified taxonomy of O-ISAC modalities derived from a systematic PRISMA-compliant analysis of 220 primary studies (2020--2025). (Top-left) Fiber O-ISAC leverages DAS/DSCM infrastructure for long-haul sensing and Tb/s-class data transmission. (Top-right) Free-space optical O-ISAC targets outdoor inter-building links with coherent detection and atmospheric compensation. (Bottom-left) VLC O-ISAC supports indoor lighting, connectivity, and sub-centimeter positioning. (Bottom-right) Photonic THz O-ISAC bridges optical and wireless THz domains to achieve the highest reported $\mathrm{CRQ}_{\Delta}$ metrics, exceeding 100 Gb/s/cm, i.e., $1.0\times10^{13}$ bps/m.}
+\label{fig:intro-taxonomy}
+\end{figure*}
+
+\begin{enumerate}
+\item \textbf{Fiber O-ISAC (Cabled)}: Integration of DAS/DFOS with coherent optical transmission over single-mode or few-mode fibers. Key techniques include $\phi$-OTDR, DSCM, and WDM-based sensing--communication multiplexing.
+\item \textbf{Free-Space Optical (FSO) O-ISAC}: Outdoor or inter-building links using 1550 nm laser transmission with atmospheric channel compensation. Reported ranges remain below 1 km while supporting 100 Gb/s-class capacity.
+\item \textbf{Visible Light Communication (VLC) O-ISAC}: Indoor systems leveraging LED illumination infrastructure for simultaneous lighting, communication, and positioning. Representative modulations include DCO-OFDM, CE-OFDM, and OOK.
+\item \textbf{Photo-THz O-ISAC}: Photonic-assisted sub-THz (100--300 GHz) systems bridging optical generation with wireless THz transmission. This emerging modality offers the highest reported $\mathrm{CRQ}_{\Delta}$ values, exceeding 100 Gb/s/cm \cite{O_ISAC_016}.
+\end{enumerate}
+
+This unified taxonomy bridges the previously disjoint communities of optical communications, distributed fiber sensing, and optical wireless research, providing a coherent framework for cross-domain technology transfer. At the same time, these modality boundaries expose a deeper issue: terminology, metrics, and evaluation protocols remain inconsistent across communities, motivating the fragmentation challenge discussed next.
+
+\subsection{The Fragmentation Challenge: A Landscape Without Unity}
+
+Despite the compelling physical advantages outlined above, the O-ISAC research landscape remains highly fragmented. Our systematic analysis of \textbf{220 peer-reviewed O-ISAC studies (2020--2025)} reveals four intertwined manifestations of this fragmentation, inconsistent terminology, non-standardized sensing metrics, siloed modality communities, and limited cross-domain technology transfer, together impeding reproducibility, cross-study comparability, and ultimately the maturation of a unified 6G optical sensing--communication framework.
+
+\textbf{Terminology Proliferation}: A foundational barrier to synthesis is the proliferation of synonymous and near-synonymous terms for closely related concepts. For instance, a single work may frame ISAC under an umbrella of aliases such as ``radar-communication (RadCom), joint radar-communication (JRC), and other related terms'' \cite{O_ISAC_161}, while VLC-centric studies describe ``Joint Communication and Sensing (JCS), also known as Integrated Sensing and Communication (ISAC), [and] Sensing-Communication Integration (SCI)'' \cite{O_ISAC_068}. In the fiber community, the vocabulary further diverges into ``ISAC-OF,'' ``fiber-ISAC,'' and ``photonic ISAC'' \cite{O_ISAC_041}, \cite{O_ISAC_033}. This aliasing is not merely cosmetic: it complicates systematic discovery, inflates perceived novelty through re-labeling, and obscures conceptual linkages across modalities and hardware assumptions.
+
+\textbf{Metric Non-Isomorphism}: Equally problematic is the absence of a shared sensing-performance language. A first-order example is the recurrent conflation of \textbf{physical resolution limits} with \textbf{estimator-dependent accuracy} and \textbf{information-/estimation-theoretic bounds}. For ranging, the bandwidth-limited physical resolution is governed by
+\begin{equation}
+\Delta r_{\min} = \frac{v}{2B_{\text{eff}}},
+\end{equation}
+where $v=c$ in free space and $v \approx c/n_g$ in guided media with group index $n_g$. In contrast, reported ``accuracy'' metrics, RMSE, $\sigma_r = \sqrt{\mathbb{E}[(\hat r-r)^2]}$, or localization error, are inherently SNR-dependent and estimator-dependent, while CRB/FIM-based quantities characterize information-/estimation-theoretic bounds under an explicitly stated observation model \cite{O_ISAC_013}, \cite{O_ISAC_050}, \cite{O_ISAC_056}. The practical consequence is that papers can report ``resolution'' in incommensurate senses: fiber DAS studies may report spatial resolution as a minimum resolvable segment length \cite{O_ISAC_013}, whereas FSO ranging papers may report range resolution via bandwidth-derived definitions \cite{O_ISAC_035}. Additionally, signal quality is not referenced to a consistent measurement plane: coherent fiber systems often report OSNR in the optical domain \cite{O_ISAC_028}, whereas VLC systems typically report electrical SNR after photodetection \cite{O_ISAC_009}.
+
+\textbf{Sub-Domain Siloing and Limited Cross-Citation}: The literature has evolved along several largely independent trajectories, fiber DAS/communication co-design, FSO ranging--communication integration, VLC positioning--data links, and photonic-THz ISAC, each anchored in distinct channel models, transceiver paradigms, and evaluation benchmarks, with limited cross-pollination \cite{O_ISAC_033}, \cite{O_ISAC_050}, \cite{O_ISAC_082}. Consequently, what appears as a trade-off frontier in one modality is often not directly comparable to another without carefully harmonized assumptions and metrics. This siloing is echoed in recent assessments: ``VLC and VLP systems are usually designed separately... mutual benefits between positioning and communication have not been utilized effectively'' \cite{O_ISAC_039}, and ``interoperability and certification across sectors remain a significant barrier'' \cite{O_ISAC_161}.
+
+\textbf{Weak Cross-Domain Technology Transfer}: Beyond vocabulary and metrics, fragmentation manifests as limited portability of methods and abstractions. Waveform and probing strategies developed in fiber-ISAC contexts, such as LFM-embedded training structures \cite{O_ISAC_042} and polarization-based sensing probes \cite{O_ISAC_074}, are only rarely transferred to free-space or VLC channels. Conversely, VLC-driven approaches, such as multi-carrier localization with m-CAP \cite{O_ISAC_022} and learning-enabled joint positioning \cite{O_ISAC_039}, seldom reappear in FSO or photonic-THz settings. Hardware constraints further impede transfer: coherent fiber transceivers rely on DSP-intensive equalization and phase-sensitive reception \cite{O_ISAC_033}, whereas IM/DD LED-based O-ISAC is amplitude-constrained and often bandwidth-limited \cite{O_ISAC_054}.
+
+\textbf{The Missing Unifying Framework}: Collectively, these issues point to a critical gap: the absence of a unified physical-layer taxonomy, a standardized performance-reporting contract, and a cross-modality benchmark suite. A minimal reporting contract should specify communication performance (rate, BER/FEC margin); sensing performance separated into physical resolution $\Delta r_{\min}$, estimator-level error (RMSE/$\sigma_r$), and information-/estimation-theoretic bounds (CRB/FIM); signal quality defined at an explicit reference plane (electrical SNR vs.\ OSNR); and channel/scenario assumptions that govern comparability. Recent calls for a standard VLC channel model following the 3GPP methodology \cite{O_ISAC_327} and for standardization efforts facilitating interoperability \cite{O_ISAC_068}, \cite{O_ISAC_082} underscore the urgency of this unification. Without such a framework, O-ISAC risks continued siloing, duplicated effort, and missed opportunities for cross-domain synergy.
+
+\subsection{Related Surveys and Gap Analysis}
+\label{sec:intro-related}
+
+The rapid maturation of RF-based ISAC has given rise to a well-developed survey landscape in the radio-frequency domain, where comprehensive tutorials address waveform design, beamforming strategies, and information-theoretic limits for dual-function radar--communication systems. Hardware-centric ISAC transceiver surveys provide useful background but do not address optical modalities \cite{O_ISAC_161}. In contrast, the optical ISAC domain remains comparatively underserved: existing review-style works are distributed across disjoint modality communities, VLC positioning, distributed fiber sensing, FSO channel modeling, and photonic-THz transmission, with limited cross-pollination and no unifying systematic treatment. This subsection maps the current landscape of related survey-style works and identifies the critical gaps that motivate the present systematic review.
+
+\textbf{VLC Positioning and Indoor Optical Surveys}: A growing body of work examines visible light communication for indoor positioning and data transmission. Studies exploring joint communication and sensing prospects through visible light highlight the potential of VLC for simultaneous high-speed data links and localization, while noting that spectrum scarcity, interference management, and hardware limitations remain significant barriers \cite{O_ISAC_068}. Channel characterization surveys for VLC-IoE applications in 6G provide detailed modeling of indoor optical propagation but focus primarily on the communication link rather than integrated sensing functionality \cite{O_ISAC_327}.
+
+\textbf{Distributed Fiber Sensing and Fiber-ISAC Reviews}: In the cabled domain, distributed fiber optic sensing techniques, particularly $\phi$-OTDR-based DAS, have reached commercial maturity for infrastructure monitoring. Recent works addressing integrated sensing and communication in optical fiber present representative system architectures \cite{O_ISAC_006}, while demonstrations of co-route fiber recognition, status diagnosis, and high-precision vibration localization illustrate the growing interest in fiber-ISAC integration \cite{O_ISAC_041}, \cite{O_ISAC_090}, \cite{O_ISAC_189}.
+
+\textbf{FSO Channel Modeling and Photonic-THz Surveys}: Free-space optical and photonic-terahertz research constitutes a third cluster of related work. Conceptual overviews of optical integrated sensing and communication discuss architectures, potentials, and challenges for FSO-ISAC \cite{O_ISAC_021}, while waveform-centric studies, including OCDM-based FMCW design for FSO ISAC \cite{O_ISAC_035} and photonic-based flexible ISAC with multiple-target detection capability \cite{O_ISAC_058}, advance signal-processing techniques without synthesizing findings across the FSO--fiber--VLC divide. In the photonic-THz domain, survey-style treatments summarize recent worldwide research efforts and extrapolate technological evolution tendencies \cite{O_ISAC_070}, complemented by demonstrations achieving 251 Gb/s real-time communication with centimeter-scale sensing \cite{O_ISAC_016}.
+
+\textbf{True O-ISAC Surveys}: Within our systematic corpus of 220 studies, only one work explicitly frames optical ISAC as its primary subject: the VLC-based LiSAC review \cite{O_ISAC_303}. A separate RIS-for-ISAC survey \cite{O_ISAC_163} provides enabling-technology context but remains RF/THz-centric and is therefore treated as Tier-2 in Table~\ref{tab:intro-related}. Notably, the VLC review does not apply a systematic methodology such as PRISMA and remains anchored to a single modality rather than spanning the full fiber--FSO--VLC--photo-THz spectrum under a unified physical-layer abstraction.
+
+\textbf{Gap Synthesis}: Within the optical-ISAC corpus considered in this review, our analysis reveals five critical gaps that distinguish the current landscape from a unified framework. First, no cross-modality, modality-agnostic taxonomy spanning fiber, FSO, VLC/LiFi, and photo-THz under a single PHY abstraction is available. Second, PRISMA-aligned systematic methodology is not adopted in the identified survey-style works. Third, metric normalization remains unresolved: no standardized reporting contract consistently separates bandwidth-limited physical resolution from estimator-dependent accuracy and information-/estimation-theoretic bounds, nor does a common convention exist for signal-quality reporting across modalities. Fourth, cross-domain technology transfer is underexplored. Fifth, emerging enabling technologies, such as optical RIS and optical phased arrays, are treated in a fragmented, technology-centric manner rather than through a systematic synthesis of integration pathways and modality-agnostic design abstractions.
+
+These gaps collectively establish the rationale for this review: a PRISMA-compliant systematic review that unifies O-ISAC across all four modalities, establishes a standardized taxonomy and reporting contract, and synthesizes quantitative trade-off frontiers to guide future research.
+
+\begin{quote}
+\textbf{Lesson 1:} Without axis-aligned reporting (scope--taxonomy--metrics--benchmarks--transfer), the existing survey landscape cannot be converted into a defensible cross-modality O-ISAC research gap.
+\end{quote}
+
+\subsection{Contributions of This Review}
+
+To close the five gaps identified above, we provide evidence-backed contributions grounded in the PRISMA corpus and extraction schema:
+\begin{enumerate}
+\item \textbf{PRISMA evidence base and quality scoring (Gap 2)}: We apply the PRISMA 2020 protocol [14] to a unified corpus of 220 studies with bibliographic year metadata available for 219 records, 210 of them in 2020--2025, and report complete five-dimension TQAF scores for 208 studies.
+\item \textbf{Cross-modality taxonomy with measured coverage (Gap 1)}: We construct a unified taxonomy spanning fiber, FSO, VLC/visible-light, photo-THz, and hybrid O-ISAC; the extracted medium labels include 46 fiber, 19 FSO, 26 VLC/visible-light/UV, 1 photo-THz, and 116 hybrid studies.
+\item \textbf{Standardized reporting contract and trade-off synthesis (Gap 3)}: We normalize reporting using $\Delta r_{\min}$, $\sigma_r$, and $\mathrm{CRQ}_{\Delta}$ and quantify coverage across the corpus, including 217 studies that report data-rate metrics and 213 that report a resolution-type metric.
+\item \textbf{Enabler-centric synthesis across optical platforms (Gap 5)}: We quantify enabling-technology prevalence to ground Section~VI, including machine learning (53 studies), optical RIS (8 studies), and optical phased arrays (7 studies).
+\item \textbf{Cross-domain transfer map tied to applications (Gap 4)}: We build a modality-application transfer map in Section~VII; 15 application domains appear in at least two modality classes, and 8 appear in at least three.
+\end{enumerate}
+
+\begin{quote}
+\textbf{Lesson 2:} A systematic, PRISMA-based methodology enables reproducible evidence synthesis and uncovers research gaps that are invisible in narrative reviews.
+\end{quote}
+
+\subsection{Organization of This Paper}
+
+The remainder of this review is organized as follows:
+\begin{itemize}
+\item \textbf{Section II (Technical Fundamentals)} provides the physical-layer foundations of optical sensing and communication, covering modulation schemes, channel models, and hardware architectures.
+\item \textbf{Section III (Methodology)} details the PRISMA 2020-compliant systematic review methodology, including search strategy, eligibility criteria, study selection process, and the five-dimensional Technical Quality Assessment Form.
+\item \textbf{Section IV (Unified O-ISAC Taxonomy)} presents the proposed cross-domain taxonomy, organizing 220 studies by medium, integration mechanism, and signal dimension.
+\item \textbf{Section V (Performance Trade-off Analysis)} synthesizes quantitative performance metrics to characterize rate--resolution trade-offs and Pareto-optimal operating regions.
+\item \textbf{Section VI (Enabling Technologies)} analyzes key enabling technologies including ORIS, OPA, photonics-assisted signal generation, and machine learning integration.
+\item \textbf{Section VII (Applications and Use Cases)} synthesizes representative use cases across smart infrastructure, indoor environments, automotive transportation, underwater/subsea monitoring, and space/satellite networks.
+\item \textbf{Section VIII (Open Challenges and Research Roadmap)} synthesizes five challenge domains, organizes a dependency-aware research agenda toward 6G integration, and closes with a cross-section alignment audit that verifies continuity with Sections~V--VII.
+\item \textbf{Section IX (Conclusions)} summarizes the key findings and provides closing remarks.
+\end{itemize}
+
+\subsection{Notation and Acronyms}
+
+For the reader's convenience, the mathematical notation conventions and the most frequently used acronyms in this paper are defined in Tables~\ref{tab:intro-notation} and \ref{tab:intro-acronyms}, respectively.
+
+\begin{table}[!t]
+\caption{Mathematical Notation Conventions}
+\label{tab:intro-notation}
+\centering
+\footnotesize
+\begin{tabularx}{\columnwidth}{>{\raggedright\arraybackslash}p{0.33\columnwidth} Y}
+\toprule
+\textbf{Symbol} & \textbf{Definition} \\
+\midrule
+$\lambda$ & Optical wavelength (nm) \\
+$B_{\text{eff}}$ & Effective signal bandwidth (Hz) \\
+$R$ & Data rate (bit/s) \\
+$d$ & Target distance/range (m) \\
+$\Delta r_{\min}$ & Bandwidth-limited two-way range resolution (m) \\
+$\sigma_r = \sqrt{\mathbb{E}[(\hat r-r)^2]}$ & Range estimation error / RMSE (m) \\
+$\mathrm{SNR}$ & Signal-to-noise ratio \\
+$\mathrm{BER}$ & Bit error rate \\
+$\alpha$ & Power-allocation factor in communication--sensing trade-offs \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table*}[!t]
+\caption{Frequently Used Acronyms}
+\label{tab:intro-acronyms}
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} Y >{\raggedright\arraybackslash}p{0.18\textwidth} Y}
+\toprule
+\textbf{Acronym} & \textbf{Definition} & \textbf{Acronym} & \textbf{Definition} \\
+\midrule
+ISAC & Integrated Sensing and Communication & ORIS & Optical Reconfigurable Intelligent Surface \\
+O-ISAC & Optical Integrated Sensing and Communication & OPA & Optical Phased Array \\
+ISAC-OF & Integrated Sensing and Communication in Optical Fiber & PIC & Photonic Integrated Circuit \\
+DFS & Distributed Fiber Sensing & CCR & Corner Cube Reflector \\
+DAS & Distributed Acoustic Sensing & RO-ISAC & Retroreflective O-ISAC \\
+VLC & Visible Light Communication & $\phi$-OTDR & Phase-Sensitive Optical Time-Domain Reflectometry \\
+FSO & Free-Space Optical & SMF & Single-Mode Fiber \\
+OWC & Optical Wireless Communication & FMF & Few-Mode Fiber \\
+LFM & Linear Frequency Modulation & MCF & Multi-Core Fiber \\
+OFDM & Orthogonal Frequency Division Multiplexing & WDM & Wavelength Division Multiplexing \\
+DCO-OFDM & DC-biased Optical OFDM & DSCM & Digital Subcarrier Multiplexing \\
+OCDM & Orthogonal Chirp Division Multiplexing & THz & Terahertz \\
+IM/DD & Intensity Modulation / Direct Detection & MIMO & Multiple-Input Multiple-Output \\
+PRISMA & Preferred Reporting Items for Systematic Reviews and Meta-Analyses & TQAF & Technical Quality Assessment Form \\
+RMSE & Root Mean Square Error & CRB & Cram\'er--Rao Bound \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+

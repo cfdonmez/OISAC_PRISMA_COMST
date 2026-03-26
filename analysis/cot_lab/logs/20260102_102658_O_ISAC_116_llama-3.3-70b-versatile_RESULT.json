@@ -1,0 +1,203 @@
+{
+  "run_id": "20260102_102658_O_ISAC_116_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102658",
+  "paper_id": "O_ISAC_116",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper presents a solar-blind UV communication system with non-line-of-sight (NLOS) capability, achieving full-room coverage with a data rate of 2 Mbps. The system uses a UV LED array and a photomultiplier tube (PMT) as the receiver. The paper also demonstrates the potential for integrated sensing and communication (ISAC) using the system."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The system uses a UV LED array with a combined output power of 0.45 W and a PMT with a 44° field of view. The system achieves NLOS communication by detecting scattered/reflected UV photons from the room ceiling. The paper also explores the potential for ISAC by exploiting the increased scattering of UV photons due to the presence of aerosol/particles in the channel."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The paper presents a comparison between the proposed NLOS system and a traditional line-of-sight (LOS) system. The results show that the NLOS system achieves a wider coverage area and is more robust to misalignment between the transmitter and receiver. The paper also presents a BER and SNR analysis for the NLOS system, demonstrating its feasibility for high-fidelity data transmission."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The paper demonstrates the potential of the proposed system for ISAC applications, such as smoke detection in enclosed environments. The system's ability to detect changes in the received signal power due to scattering by aerosol/particles makes it a promising solution for secure and adaptable communication in challenging environments."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Enhanced Room Coverage With Photon-Level NLOS Ultraviolet Optical Wireless Communication",
+        "authors": [
+          "Jian Sha",
+          "Tilahun Zerihun Gutema",
+          "Wasiu O. Popool"
+        ],
+        "year": 2025,
+        "venue": "IEEE Photonics Technology Letters",
+        "doi": "10.1109/LPT.2025.3559423",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_uv",
+        "carrier_band": "uv",
+        "operational_environment": "indoor",
+        "link_topology": "nlos",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "indoor_positioning",
+          "security_surveillance"
+        ],
+        "scenario_description": "The system is designed for indoor UV communication with NLOS capability, achieving full-room coverage with a data rate of 2 Mbps."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper presents a solar-blind UV communication system with NLOS capability, achieving full-room coverage with a data rate of 2 Mbps.",
+        "gap_addressed": "The system addresses the limitation of traditional LOS systems, which require strict alignment between the transmitter and receiver.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform_design"
+        ],
+        "novel_component": "UV LED array",
+        "novel_component_specs": "Combined output power of 0.45 W"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "NLOS UV communication"
+        },
+        "transmitter": {
+          "tx_source_type": "uv_led",
+          "tx_modulation_type": "ook",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 265,
+          "optical_bandwidth_ghz": 0.118,
+          "tx_power_dbm": -10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 83
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pmt",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 0,
+          "rx_modulator_operating_point": "none",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "separate_frontends",
+          "duplexing_mode": "half_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 0.002,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "same_as_comm",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "none"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 2.2,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 1000,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 0.002,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 2.18e-05,
+          "ber_target": 2.7e-05,
+          "snr_db": 7.19,
+          "osnr_db": 0,
+          "outage_probability": 0,
+          "latency_ms": 0,
+          "capacity_bps_hz": 0
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "localization_2d"
+          ],
+          "sensing_range_m": 2.2,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0,
+          "velocity_accuracy_mps": 0,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 0,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": 0,
+          "crb_parameter": "none"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "single_point",
+          "tradeoff_control_parameter": "tx_power",
+          "tradeoff_control_range": "0_to_10_dbm"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Fig. 6",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none",
+          "num_trials": 1
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper presents a well-designed experiment with clear results and discussion."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper presents a solar-blind UV communication system with non-line-of-sight (NLOS) capability, achieving full-room coverage with a data rate of 2 Mbps. The system uses a UV LED array and a photomultiplier tube (PMT) as the receiver. The paper also demonstrates the potential for integrated sensing and communication (ISAC) using the system.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The system uses a UV LED array with a combined output power of 0.45 W and a PMT with a 44° field of view. The system achieves NLOS communication by detecting scattered/reflected UV photons from the room ceiling. The paper also explores the potential for ISAC by exploiting the increased scattering of UV photons due to the presence of aerosol/particles in the channel.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"The paper presents a comparison between the proposed NLOS system and a traditional line-of-sight (LOS) system. The results show that the NLOS system achieves a wider coverage area and is more robust to misalignment between the transmitter and receiver. The paper also presents a BER and SNR analysis for the NLOS system, demonstrating its feasibility for high-fidelity data transmission.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The paper demonstrates the potential of the proposed system for ISAC applications, such as smoke detection in enclosed environments. The system's ability to detect changes in the received signal power due to scattering by aerosol/particles makes it a promising solution for secure and adaptable communication in challenging environments.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Enhanced Room Coverage With Photon-Level NLOS Ultraviolet Optical Wireless Communication\",\n           \"authors\": [\"Jian Sha\", \"Tilahun Zerihun Gutema\", \"Wasiu O. Popool\"],\n           \"year\": 2025,\n           \"venue\": \"IEEE Photonics Technology Letters\",\n           \"doi\": \"10.1109/LPT.2025.3559423\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_uv\",\n           \"carrier_band\": \"uv\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"nlos\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"indoor_positioning\", \"security_surveillance\"],\n           \"scenario_description\": \"The system is designed for indoor UV communication with NLOS capability, achieving full-room coverage with a data rate of 2 Mbps.\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper presents a solar-blind UV communication system with NLOS capability, achieving full-room coverage with a data rate of 2 Mbps.\",\n           \"gap_addressed\": \"The system addresses the limitation of traditional LOS systems, which require strict alignment between the transmitter and receiver.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"joint_waveform_design\"],\n           \"novel_component\": \"UV LED array\",\n           \"novel_component_specs\": \"Combined output power of 0.45 W\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"NLOS UV communication\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"uv_led\",\n               \"tx_modulation_type\": \"ook\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 265,\n               \"optical_bandwidth_ghz\": 0.118,\n               \"tx_power_dbm\": -10,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 83\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct\",\n               \"rx_detector\": \"pmt\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"none\",\n               \"rx_modulator_type\": \"none\",\n               \"rx_modulator_bandwidth_ghz\": 0,\n               \"rx_modulator_operating_point\": \"none\",\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"separate_frontends\",\n               \"duplexing_mode\": \"half_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ook\",\n               \"comm_modulation_order\": 2,\n               \"comm_symbol_rate_gbaud\": 0.002,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"same_as_comm\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"none\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"none\",\n               \"attenuation_db_per_km\": 0,\n               \"dispersion_ps_per_nm_km\": 0,\n               \"nonlinearity_model\": \"none\",\n               \"backscatter_sensing_type\": \"none\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 2.2,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 1000,\n               \"ambient_light_model\": \"none\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 0.002,\n               \"spectral_efficiency_bps_hz\": 1,\n               \"ber\": 2.18e-5,\n               \"ber_target\": 2.7e-5,\n               \"snr_db\": 7.19,\n               \"osnr_db\": 0,\n               \"outage_probability\": 0,\n               \"latency_ms\": 0,\n               \"capacity_bps_hz\": 0\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"localization_2d\"],\n               \"sensing_range_m\": 2.2,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0,\n               \"velocity_accuracy_mps\": 0,\n               \"localization_error_m\": 0.1,\n               \"spatial_resolution_m\": 0.1,\n               \"sensing_bandwidth_hz\": 0,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.1,\n               \"crb_crlb_value\": 0,\n               \"crb_parameter\": \"none\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\"],\n               \"tradeoff_representation\": \"single_point\",\n               \"tradeoff_control_parameter\": \"tx_power\",\n               \"tradeoff_control_range\": \"0_to_10_dbm\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"none\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Fig. 6\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"none\",\n               \"num_trials\": 1\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper presents a well-designed experiment with clear results and discussion.\"\n   }\n}"
+}

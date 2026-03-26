@@ -1,0 +1,192 @@
+{
+  "run_id": "20260102_101824_O_ISAC_059_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101824",
+  "paper_id": "O_ISAC_059",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper discusses the integration of Terrestrial Networks (TNs) and Non-Terrestrial Networks (NTNs) for 6G networks, focusing on the potential of Integrated Sensing and Communication (ISAC). Figures 1, 2, and 3 illustrate the concept of ISAC, TN-NTN architectures, and a two-layer control system, respectively."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The paper explores the concept of ISAC, which involves the integration of sensing and communication functionalities. The authors discuss the potential benefits of ISAC, including improved sensing accuracy, enhanced communication performance, and increased efficiency. The paper also highlights the importance of managing and orchestrating TN-NTN architectures for ISAC."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The paper discusses the challenges associated with integrating TNs and NTNs, including the need for advanced management and orchestration techniques. The authors highlight the importance of considering the dynamic nature of NTNs and the need for flexible and resilient architectures. The paper also mentions the potential benefits of using ISAC in various applications, such as vehicular networks, industrial IoT, and space sustainability."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The paper provides a comprehensive overview of the current state of ISAC and its potential applications. The authors highlight the importance of considering the integration of TNs and NTNs for ISAC and discuss the challenges associated with managing and orchestrating these architectures. The paper also provides insights into the potential benefits of using ISAC in various applications and highlights the need for further research in this area."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Terrestrial and Non-Terrestrial Networks for Integrated Sensing and Communication",
+        "authors": [
+          "Francesco Matera",
+          "Marina Settembre",
+          "Ernestina Cianca",
+          "Marina Ruggieri"
+        ],
+        "year": 2024,
+        "venue": "IEEE International Mediterranean Conference on Communications and Networking",
+        "doi": "10.1109/MeditCom54998.2024.10118911",
+        "document_type": "conference"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "mmWave",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "mobile"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing",
+          "space_sustainability"
+        ],
+        "scenario_description": "Integrated Sensing and Communication for 6G networks"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a framework for integrating Terrestrial Networks and Non-Terrestrial Networks for Integrated Sensing and Communication",
+        "gap_addressed": "The paper addresses the gap in the current literature by providing a comprehensive overview of the potential benefits and challenges of ISAC",
+        "performance_enablers": [
+          "joint_waveform_design",
+          "machine_learning"
+        ],
+        "novel_component": "None",
+        "novel_component_specs": "None"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "ISAC for 6G networks"
+      },
+      "transmitter": {
+        "tx_source_type": "mmWave",
+        "tx_modulation_type": "OFDM",
+        "tx_external_modulator": "None",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "PIN_PD",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "MZM",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "MITP",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OFDM",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "LDPC",
+        "sensing_waveform_family": "chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "alpha=0.5"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "SMF",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "GN_model",
+        "backscatter_sensing_type": "Rayleigh"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1000,
+        "path_loss_model": "FSPL",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 10,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization"
+        ],
+        "sensing_range_m": 1000,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "[0, 1]"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive overview of the potential benefits and challenges of ISAC, but lacks experimental validation."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper discusses the integration of Terrestrial Networks (TNs) and Non-Terrestrial Networks (NTNs) for 6G networks, focusing on the potential of Integrated Sensing and Communication (ISAC). Figures 1, 2, and 3 illustrate the concept of ISAC, TN-NTN architectures, and a two-layer control system, respectively.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The paper explores the concept of ISAC, which involves the integration of sensing and communication functionalities. The authors discuss the potential benefits of ISAC, including improved sensing accuracy, enhanced communication performance, and increased efficiency. The paper also highlights the importance of managing and orchestrating TN-NTN architectures for ISAC.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"The paper discusses the challenges associated with integrating TNs and NTNs, including the need for advanced management and orchestration techniques. The authors highlight the importance of considering the dynamic nature of NTNs and the need for flexible and resilient architectures. The paper also mentions the potential benefits of using ISAC in various applications, such as vehicular networks, industrial IoT, and space sustainability.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The paper provides a comprehensive overview of the current state of ISAC and its potential applications. The authors highlight the importance of considering the integration of TNs and NTNs for ISAC and discuss the challenges associated with managing and orchestrating these architectures. The paper also provides insights into the potential benefits of using ISAC in various applications and highlights the need for further research in this area.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Terrestrial and Non-Terrestrial Networks for Integrated Sensing and Communication\",\n           \"authors\": [\"Francesco Matera\", \"Marina Settembre\", \"Ernestina Cianca\", \"Marina Ruggieri\"],\n           \"year\": 2024,\n           \"venue\": \"IEEE International Mediterranean Conference on Communications and Networking\",\n           \"doi\": \"10.1109/MeditCom54998.2024.10118911\",\n           \"document_type\": \"conference\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"mmWave\",\n           \"operational_environment\": \"outdoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"mobile\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\", \"space_sustainability\"],\n           \"scenario_description\": \"Integrated Sensing and Communication for 6G networks\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper proposes a framework for integrating Terrestrial Networks and Non-Terrestrial Networks for Integrated Sensing and Communication\",\n           \"gap_addressed\": \"The paper addresses the gap in the current literature by providing a comprehensive overview of the potential benefits and challenges of ISAC\",\n           \"performance_enablers\": [\"joint_waveform_design\", \"machine_learning\"],\n           \"novel_component\": \"None\",\n           \"novel_component_specs\": \"None\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"ISAC for 6G networks\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"mmWave\",\n           \"tx_modulation_type\": \"OFDM\",\n           \"tx_external_modulator\": \"None\",\n           \"wavelength_nm\": 1550,\n           \"optical_bandwidth_ghz\": 10,\n           \"tx_power_dbm\": 10,\n           \"aperture_diameter_m\": 0.1,\n           \"beam_divergence_mrad\": 10\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"coherent\",\n           \"rx_detector\": \"PIN_PD\",\n           \"rx_aperture_diameter_m\": 0.1,\n           \"rx_photonic_processing\": \"photonic_dechirping\",\n           \"rx_modulator_type\": \"MZM\",\n           \"rx_modulator_bandwidth_ghz\": 10,\n           \"rx_modulator_operating_point\": \"MITP\",\n           \"false_target_mitigation\": \"mitp_bias\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"full_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"OFDM\",\n           \"comm_modulation_order\": 64,\n           \"comm_symbol_rate_gbaud\": 10,\n           \"comm_fec_type\": \"LDPC\",\n           \"sensing_waveform_family\": \"chirp\",\n           \"isac_waveform_relationship\": \"single_dual_function\",\n           \"resource_partition\": \"alpha=0.5\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": 10,\n           \"fibre_type\": \"SMF\",\n           \"attenuation_db_per_km\": 0.2,\n           \"dispersion_ps_per_nm_km\": 18,\n           \"nonlinearity_model\": \"GN_model\",\n           \"backscatter_sensing_type\": \"Rayleigh\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": 1000,\n           \"path_loss_model\": \"FSPL\",\n           \"turbulence_model\": \"lognormal\",\n           \"turbulence_Cn2\": 1e-15,\n           \"scintillation_index\": 0.1,\n           \"pointing_error_model\": \"gaussian_jitter\",\n           \"weather_visibility_m\": 1000,\n           \"ambient_light_model\": \"solar\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 10,\n           \"spectral_efficiency_bps_hz\": 10,\n           \"ber\": 1e-6,\n           \"ber_target\": 1e-6,\n           \"snr_db\": 10,\n           \"osnr_db\": 20,\n           \"outage_probability\": 0.01,\n           \"latency_ms\": 10,\n           \"capacity_bps_hz\": 10\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\", \"localization\"],\n           \"sensing_range_m\": 1000,\n           \"range_resolution_m\": 1,\n           \"range_accuracy_m\": 0.1,\n           \"angular_resolution_deg\": 1,\n           \"velocity_resolution_mps\": 1,\n           \"velocity_accuracy_mps\": 0.1,\n           \"localization_error_m\": 0.1,\n           \"spatial_resolution_m\": 1,\n           \"sensing_bandwidth_hz\": 100,\n           \"pd_probability_detection\": 0.9,\n           \"pfa_probability_false_alarm\": 0.01,\n           \"crb_crlb_value\": 0.1,\n           \"crb_parameter\": \"range\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"alpha\",\n           \"tradeoff_control_range\": \"[0, 1]\"\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a comprehensive overview of the potential benefits and challenges of ISAC, but lacks experimental validation.\"\n   }\n}"
+}

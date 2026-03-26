@@ -1,0 +1,367 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic (VLC-based ISAC Architecture)
+---
+Components:
+- LED Array: Multi-element visible light transmitter.
+- Driver Circuit: Modulates LEDs with communication/sensing signal.
+- Optical Channel: Free-space propagation with multipath.
+- Photodetector (PD): Receives optical signal.
+- TIA (Trans-impedance Amplifier): Converts photocurrent to voltage.
+- ADC: Digitizes received signal.
+- DSP: Joint demodulation and sensing extraction.
+- User Device: Mobile terminal with VLC receiver.
+- Illumination Zone: Coverage area for dual-function operation.
+
+Flow:
+1. LED Array driven with modulated signal (communication + sensing pilots).
+2. Optical signal propagates through channel to User Device.
+3. PD converts optical power to photocurrent.
+4. TIA amplifies signal for ADC.
+5. DSP extracts data and performs positioning/sensing.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: System Diagram / Schematic (Hybrid RF-VLC ISAC)
+---
+Components:
+- RF BS (Base Station): mmWave/sub-6GHz transmitter.
+- VLC AP (Access Point): LED-based optical transmitter.
+- UE (User Equipment): Dual-mode receiver.
+- Radar Module: Integrated with RF BS for sensing.
+- Positioning Engine: Combines VLC and RF for localization.
+- Central Controller: Coordinates RF and VLC resources.
+- Backhaul: Fiber connection to core network.
+
+Flow:
+1. Central Controller allocates resources between RF BS and VLC AP.
+2. RF BS transmits data and radar waveforms to UE.
+3. VLC AP provides high-rate downlink and positioning pilots.
+4. UE receives both RF and VLC signals.
+5. Positioning Engine fuses VLC RSS/ToA with RF AoA for localization.
+6. Radar Module extracts target information from RF reflections.
+---
+
+Image: _page_7_Figure_2.jpeg
+Type: Chart (Multi-Panel: VLC Channel Characteristics)
+---
+Panel (a) - Optical Power Distribution:
+Axes:
+- X-axis: Room Position X (m). Range: 0 to 5 m.
+- Y-axis: Room Position Y (m). Range: 0 to 5 m.
+- Color Scale: Received Power (dBm). Range: -30 to -10 dBm.
+
+Observations:
+- Peak power: -10 dBm directly under LED (2.5m, 2.5m).
+- Edge power: -28 dBm at corners.
+- 3 dB coverage radius: ~2 m from center.
+
+Panel (b) - Channel Impulse Response:
+Axes:
+- X-axis: Time (ns). Range: 0 to 50 ns.
+- Y-axis: Normalized Amplitude. Range: 0 to 1.0.
+
+Observations:
+- LOS component: Peak at t = 8 ns, amplitude = 1.0.
+- First reflection: t = 18 ns, amplitude = 0.25.
+- Second reflection: t = 28 ns, amplitude = 0.08.
+- RMS delay spread: ~5 ns.
+---
+
+Image: _page_13_Figure_2.jpeg
+Type: Chart (BER vs SNR for VLC Modulation)
+---
+Axes:
+- X-axis: Electrical SNR (dB). Range: 0 to 30 dB.
+- Y-axis: BER. Range: 10^-6 to 10^0 (log scale).
+
+Legend:
+- OOK (Blue): On-off keying.
+- 4-PPM (Red): 4-ary pulse position modulation.
+- OFDM-16QAM (Green): Multi-carrier with 16-QAM.
+- DCO-OFDM (Orange): DC-biased optical OFDM.
+
+Data Points:
+- At SNR = 10 dB: OOK = 10^-3; 4-PPM = 10^-4; OFDM-16QAM = 10^-2; DCO = 10^-2.
+- At SNR = 15 dB: OOK = 10^-5; 4-PPM = 10^-6; OFDM-16QAM = 10^-4; DCO = 10^-3.
+- At SNR = 20 dB: OOK = 10^-6; 4-PPM = <10^-6; OFDM-16QAM = 10^-5; DCO = 10^-5.
+
+Trend:
+- PPM achieves best power efficiency (~3 dB gain over OOK at BER 10^-5).
+- OFDM variants offer higher spectral efficiency but require higher SNR.
+---
+
+Image: _page_13_Figure_7.jpeg
+Type: Chart (Positioning Accuracy vs LED Density)
+---
+Axes:
+- X-axis: LED Density (per m²). Range: 0.1 to 2.0 LEDs/m².
+- Y-axis: Positioning RMSE (cm). Range: 1 to 50 cm (log scale).
+
+Legend:
+- RSS-based (Blue): Received signal strength.
+- ToA-based (Red): Time of arrival.
+- AoA-based (Green): Angle of arrival.
+- Hybrid RSS+AoA (Orange): Fusion approach.
+
+Data Points:
+- At 0.25 LEDs/m²: RSS = 35 cm; ToA = 20 cm; AoA = 25 cm; Hybrid = 15 cm.
+- At 0.5 LEDs/m²: RSS = 18 cm; ToA = 10 cm; AoA = 12 cm; Hybrid = 7 cm.
+- At 1.0 LEDs/m²: RSS = 8 cm; ToA = 5 cm; AoA = 6 cm; Hybrid = 3 cm.
+
+Trend:
+- Accuracy scales approximately as 1/√(LED density).
+- Hybrid fusion achieves ~50% improvement over single-method.
+- Sub-5 cm accuracy achievable with >1 LED/m².
+---
+
+Image: _page_13_Figure_12.jpeg
+Type: Chart (Throughput vs Illumination Level)
+---
+Axes:
+- X-axis: Illumination (lux). Range: 100 to 1000 lux.
+- Y-axis: Achievable Data Rate (Mbps). Range: 0 to 200 Mbps.
+
+Legend:
+- Communication Only (Blue): Maximum rate.
+- ISAC 5 cm target (Red): With positioning constraint.
+- ISAC 10 cm target (Green): Relaxed positioning.
+
+Data Points:
+- At 300 lux: Comm = 80 Mbps; 5cm = 55 Mbps; 10cm = 70 Mbps.
+- At 500 lux: Comm = 130 Mbps; 5cm = 95 Mbps; 10cm = 115 Mbps.
+- At 800 lux: Comm = 180 Mbps; 5cm = 140 Mbps; 10cm = 165 Mbps.
+
+Trend:
+- Throughput scales linearly with illumination (more optical power).
+- 5 cm positioning constraint reduces rate by ~25%.
+- 10 cm constraint has ~12% rate penalty.
+---
+
+Image: _page_13_Figure_13.jpeg
+Type: Constellation Diagram (OFDM-16QAM VLC)
+---
+Structure:
+- Modulation Format: 16-QAM.
+- Subcarriers: Visible as overlaid constellation.
+- Grid: 4×4 standard QAM arrangement.
+
+Quality:
+- Cluster Separation: Good separation for inner symbols.
+- Noise Spread: Moderate circular spread (~10% of grid spacing).
+- EVM (estimated): ~11% RMS.
+- Outer symbols slightly more affected by clipping distortion.
+---
+
+Image: _page_13_Figure_14.jpeg
+Type: Chart (Positioning Error CDF)
+---
+Axes:
+- X-axis: Positioning Error (cm). Range: 0 to 30 cm.
+- Y-axis: CDF. Range: 0 to 1.0.
+
+Legend:
+- RSS Only (Blue): Single technique.
+- ToA Only (Red): Single technique.
+- Hybrid RSS+ToA (Green): Fusion.
+- With Motion Tracking (Orange): Kalman filtered.
+
+Data Points:
+- 50th percentile: RSS = 12 cm; ToA = 8 cm; Hybrid = 5 cm; Tracked = 3 cm.
+- 90th percentile: RSS = 22 cm; ToA = 15 cm; Hybrid = 10 cm; Tracked = 6 cm.
+- 95th percentile: RSS = 28 cm; ToA = 18 cm; Hybrid = 12 cm; Tracked = 8 cm.
+
+Trend:
+- Kalman filtering with motion model achieves best accuracy.
+- 90% of positions within 6 cm using hybrid + tracking.
+---
+
+Image: _page_14_Figure_2.jpeg
+Type: Chart (Multi-User Capacity)
+---
+Axes:
+- X-axis: Number of Users. Range: 1 to 20.
+- Y-axis: Sum Rate (Mbps). Range: 0 to 500 Mbps.
+
+Legend:
+- TDMA (Blue): Time division.
+- FDMA (Red): Frequency division.
+- NOMA (Green): Non-orthogonal.
+- SDMA (Orange): Spatial division (multi-LED).
+
+Data Points:
+- At 5 users: TDMA = 120 Mbps; FDMA = 130 Mbps; NOMA = 180 Mbps; SDMA = 220 Mbps.
+- At 10 users: TDMA = 150 Mbps; FDMA = 165 Mbps; NOMA = 280 Mbps; SDMA = 380 Mbps.
+- At 20 users: TDMA = 180 Mbps; FDMA = 200 Mbps; NOMA = 350 Mbps; SDMA = 480 Mbps.
+
+Trend:
+- SDMA with multiple LEDs provides best scaling.
+- NOMA achieves ~40% gain over orthogonal methods.
+- Per-user rate decreases but sum rate increases with users.
+---
+
+Image: _page_14_Figure_9.jpeg
+Type: Chart (Sensing vs Communication Trade-off)
+---
+Axes:
+- X-axis: Positioning Pilot Overhead (%). Range: 0 to 50%.
+- Y-axis (Left): Data Rate (Mbps). Range: 0 to 150 Mbps.
+- Y-axis (Right): Positioning RMSE (cm). Range: 0 to 25 cm.
+
+Legend:
+- Data Rate (Blue solid): Left axis.
+- Positioning RMSE (Red dashed): Right axis.
+
+Data Points:
+- At 10% overhead: Rate = 135 Mbps; RMSE = 18 cm.
+- At 20% overhead: Rate = 120 Mbps; RMSE = 10 cm.
+- At 30% overhead: Rate = 105 Mbps; RMSE = 6 cm.
+- At 40% overhead: Rate = 90 Mbps; RMSE = 4 cm.
+
+Trend:
+- Data rate decreases linearly with pilot overhead.
+- Positioning RMSE improves sub-linearly (~1/√overhead).
+- Optimal operating point: 20-30% overhead for balanced performance.
+---
+
+Image: _page_14_Figure_11.jpeg
+Type: Chart (Motion Detection Accuracy)
+---
+Axes:
+- X-axis: Target Speed (m/s). Range: 0 to 5 m/s.
+- Y-axis: Detection Probability. Range: 0.5 to 1.0.
+
+Legend:
+- Differential RSS (Blue): Basic motion detection.
+- Doppler-based (Red): Frequency shift analysis.
+- Machine Learning (Green): CNN classifier.
+
+Data Points:
+- At 0.5 m/s: Diff RSS = 0.65; Doppler = 0.80; ML = 0.92.
+- At 1.0 m/s: Diff RSS = 0.78; Doppler = 0.90; ML = 0.97.
+- At 2.0 m/s: Diff RSS = 0.88; Doppler = 0.95; ML = 0.99.
+- At 5.0 m/s: Diff RSS = 0.95; Doppler = 0.98; ML = 0.999.
+
+Trend:
+- ML-based detection achieves >95% at speeds >0.5 m/s.
+- Doppler requires ~1 m/s for 90% detection.
+- All methods converge to >95% at higher speeds.
+---
+
+Image: _page_14_Figure_16.jpeg
+Type: Chart (Latency Analysis for VLC-ISAC)
+---
+Axes:
+- X-axis: Frame Duration (ms). Range: 0.5 to 10 ms.
+- Y-axis: End-to-End Latency (ms). Range: 0 to 20 ms.
+
+Legend:
+- Communication Only (Blue): Data path latency.
+- Positioning Only (Red): Sensing path latency.
+- Joint ISAC (Green): Combined processing.
+
+Data Points:
+- At 1 ms frame: Comm = 2.5 ms; Pos = 5 ms; ISAC = 6 ms.
+- At 2 ms frame: Comm = 4 ms; Pos = 6 ms; ISAC = 7 ms.
+- At 5 ms frame: Comm = 7 ms; Pos = 9 ms; ISAC = 10 ms.
+
+Trend:
+- ISAC latency ~20% higher than communication only.
+- Positioning adds ~2-3 ms processing overhead.
+- Sub-10 ms latency achievable with 2 ms frames.
+---
+
+Image: _page_15_Figure_2.jpeg
+Type: Chart (Energy Efficiency)
+---
+Axes:
+- X-axis: Data Rate (Mbps). Range: 0 to 200 Mbps.
+- Y-axis: Energy per Bit (nJ/bit). Range: 1 to 100 nJ/bit (log scale).
+
+Legend:
+- VLC Only (Blue): Optical communication.
+- RF Only (Red): WiFi/Cellular.
+- Hybrid VLC+RF (Green): Combined system.
+
+Data Points:
+- At 50 Mbps: VLC = 5 nJ/bit; RF = 15 nJ/bit; Hybrid = 8 nJ/bit.
+- At 100 Mbps: VLC = 8 nJ/bit; RF = 20 nJ/bit; Hybrid = 12 nJ/bit.
+- At 200 Mbps: VLC = 15 nJ/bit; RF = 35 nJ/bit; Hybrid = 20 nJ/bit.
+
+Trend:
+- VLC ~3× more energy-efficient than RF at same rate.
+- Hybrid offers balance between efficiency and coverage.
+- Energy per bit increases with rate due to higher modulation requirements.
+---
+
+Image: _page_15_Figure_6.jpeg
+Type: Chart (Coverage Probability)
+---
+Axes:
+- X-axis: Target Data Rate (Mbps). Range: 0 to 200 Mbps.
+- Y-axis: Coverage Probability. Range: 0 to 1.0.
+
+Legend:
+- VLC Only (Blue): Limited coverage.
+- RF Only (Red): Wide coverage.
+- Hybrid VLC+RF (Green): Combined.
+
+Data Points:
+- At 50 Mbps target: VLC = 0.75; RF = 0.95; Hybrid = 0.98.
+- At 100 Mbps target: VLC = 0.55; RF = 0.80; Hybrid = 0.92.
+- At 150 Mbps target: VLC = 0.35; RF = 0.60; Hybrid = 0.78.
+
+Trend:
+- VLC coverage drops rapidly above 100 Mbps.
+- Hybrid maintains >90% coverage up to 100 Mbps.
+- RF provides ubiquitous but lower-rate coverage.
+---
+
+Image: _page_15_Figure_8.jpeg
+Type: Chart (Handover Performance)
+---
+Axes:
+- X-axis: User Mobility (m/s). Range: 0 to 3 m/s.
+- Y-axis: Handover Success Rate (%). Range: 80 to 100%.
+
+Legend:
+- Reactive Handover (Blue): Based on signal drop.
+- Predictive Handover (Red): ML-based prediction.
+- Hybrid VLC-RF (Green): Seamless switching.
+
+Data Points:
+- At 0.5 m/s: Reactive = 96%; Predictive = 99%; Hybrid = 99.5%.
+- At 1.0 m/s: Reactive = 92%; Predictive = 97%; Hybrid = 99%.
+- At 2.0 m/s: Reactive = 85%; Predictive = 93%; Hybrid = 97%.
+- At 3.0 m/s: Reactive = 78%; Predictive = 88%; Hybrid = 94%.
+
+Trend:
+- Reactive handover degrades rapidly above 1.5 m/s.
+- Predictive ML improves success by 5-10%.
+- Hybrid VLC-RF maintains >94% even at walking speeds.
+---
+
+Image: _page_15_Figure_12.jpeg
+Type: Chart (System Throughput vs Room Size)
+---
+Axes:
+- X-axis: Room Area (m²). Range: 10 to 100 m².
+- Y-axis: Aggregate Throughput (Mbps). Range: 0 to 400 Mbps.
+
+Legend:
+- Single LED (Blue): One access point.
+- 4 LEDs (Red): Multi-AP deployment.
+- 9 LEDs (Green): Dense deployment.
+
+Data Points:
+- At 25 m²: 1 LED = 150 Mbps; 4 LED = 350 Mbps; 9 LED = 400 Mbps.
+- At 50 m²: 1 LED = 80 Mbps; 4 LED = 280 Mbps; 9 LED = 380 Mbps.
+- At 100 m²: 1 LED = 40 Mbps; 4 LED = 180 Mbps; 9 LED = 320 Mbps.
+
+Trend:
+- Single LED scales poorly with room size (~1/R² power law).
+- Dense 9-LED deployment maintains >300 Mbps up to 100 m².
+- Spatial reuse essential for large area coverage.
+---
+
+Note: Images _page_17_Picture_10.jpeg, _page_17_Picture_12.jpeg, _page_17_Picture_15.jpeg are author photographs and contain no scientific data for extraction.
+---

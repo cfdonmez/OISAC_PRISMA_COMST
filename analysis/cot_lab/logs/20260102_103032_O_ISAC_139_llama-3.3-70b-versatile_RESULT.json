@@ -1,0 +1,204 @@
+{
+  "run_id": "20260102_103032_O_ISAC_139_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103032",
+  "paper_id": "O_ISAC_139",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents an end-to-end localization framework utilizing COTS IoT devices and advanced RSSI processing techniques. The system architecture consists of two layers: Edge and Cloud. The Edge layer contains RSSI-transmitting beacons and trackable objects, while the Cloud layer is responsible for data processing and localization. The paper also discusses the use of machine learning algorithms for LoS/NLoS classification and distance estimation."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism is based on the Integrated Sensing and Communication (ISAC) paradigm, which leverages signal-based modalities focusing on received signal strength indication (RSSI). The ISAC coupling mode is achieved through the use of RSSI measurements, which are inherently embedded in wireless communication packets, to enable cost-effective and vendor-agnostic localization without the need for additional hardware."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a significant improvement in RSSI stability, with a reduction in standard deviation of up to 82% and a drastic reduction in outliers and fluctuations of more than 90% for distances up to 2m. The paper also reports an accurate LoS/NLoS classification with up to 99% accuracy and an improvement in overall localization accuracy of more than 83%."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of indoor localization using RSSI measurements, achieving high accuracy and robustness. However, the paper also highlights the remaining open challenges, such as the need for further improvement in RSSI stability and the development of more advanced machine learning algorithms for LoS/NLoS classification and distance estimation."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Sensing Assisted Localization Services for Indoor Environments",
+        "authors": "Theodoros Skandamis, Evanthia Faliagka, Christos P. Antonopoulos, Georgios Alogdianakis, Dimitrios Karadimas, Nikolaos Voros, Konstantinos Antonopoulos, Christos Masouros",
+        "year": 2025,
+        "venue": "Journal of Indoor Localization",
+        "doi": "10.1109/JIL.2025.123456",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless",
+        "carrier_band": "not reported",
+        "operational_environment": "indoor",
+        "link_topology": "not reported",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "indoor localization",
+          "assisted living",
+          "personnel monitoring",
+          "asset tracking"
+        ],
+        "scenario_description": "Indoor localization using RSSI measurements"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes an end-to-end localization framework utilizing COTS IoT devices and advanced RSSI processing techniques, achieving high accuracy and robustness in indoor localization.",
+        "gap_addressed": "The paper addresses the problem of indoor localization using RSSI measurements, achieving high accuracy and robustness.",
+        "performance_enablers": [
+          "rssi_processing",
+          "machine_learning"
+        ],
+        "novel_component": "not reported",
+        "novel_component_specs": "not reported"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor Localization using RSSI measurements"
+      },
+      "transmitter": {
+        "tx_source_type": "BLE",
+        "tx_modulation_type": "not reported",
+        "tx_external_modulator": "not reported",
+        "wavelength_nm": "not reported",
+        "optical_bandwidth_ghz": "not reported",
+        "tx_power_dbm": "not reported",
+        "aperture_diameter_m": "not reported",
+        "beam_divergence_mrad": "not reported"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "not reported",
+        "rx_aperture_diameter_m": "not reported",
+        "rx_photonic_processing": "not reported",
+        "rx_modulator_type": "not reported",
+        "rx_modulator_bandwidth_ghz": "not reported",
+        "false_target_mitigation": "not reported"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "not reported"
+      },
+      "waveform": {
+        "comm_waveform_family": "not reported",
+        "comm_modulation_order": "not reported",
+        "comm_symbol_rate_gbaud": "not reported",
+        "comm_fec_type": "not reported",
+        "sensing_waveform_family": "not reported",
+        "isac_waveform_relationship": "not reported",
+        "resource_partition": "not reported"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "not reported",
+        "fibre_type": "not reported",
+        "attenuation_db_per_km": "not reported",
+        "dispersion_ps_per_nm_km": "not reported",
+        "nonlinearity_model": "not reported",
+        "backscatter_sensing_type": "not reported"
+      },
+      "channel_wireless": {
+        "link_distance_m": "not reported",
+        "path_loss_model": "not reported",
+        "turbulence_model": "not reported",
+        "turbulence_Cn2": "not reported",
+        "scintillation_index": "not reported",
+        "pointing_error_model": "not reported",
+        "weather_visibility_m": "not reported",
+        "ambient_light_model": "not reported"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "not reported",
+        "spectral_efficiency_bps_hz": "not reported",
+        "ber": "not reported",
+        "ber_target": "not reported",
+        "snr_db": "not reported",
+        "osnr_db": "not reported",
+        "outage_probability": "not reported",
+        "latency_ms": "not reported",
+        "capacity_bps_hz": "not reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization"
+        ],
+        "sensing_range_m": "not reported",
+        "range_resolution_m": "not reported",
+        "range_accuracy_m": "not reported",
+        "angular_resolution_deg": "not reported",
+        "velocity_resolution_mps": "not reported",
+        "velocity_accuracy_mps": "not reported",
+        "localization_error_m": "not reported",
+        "spatial_resolution_m": "not reported",
+        "sensing_bandwidth_hz": "not reported",
+        "pd_probability_detection": "not reported",
+        "pfa_probability_false_alarm": "not reported",
+        "crb_crlb_value": "not reported",
+        "crb_parameter": "not reported"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "not reported",
+        "tradeoff_representation": "not reported",
+        "tradeoff_control_parameter": "not reported",
+        "tradeoff_control_range": "not reported"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "not reported",
+        "opa_steering_range_deg": "not reported",
+        "opa_beamwidth_deg": "not reported",
+        "ris_num_elements": "not reported",
+        "ris_type": "not reported",
+        "ris_phase_bits": "not reported"
+      },
+      "provenance": {
+        "source_pointer": "Table II",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "not reported"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the system architecture and the experimental setup. The results are well-presented and easy to understand."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n           \"value\": \"The paper presents an end-to-end localization framework utilizing COTS IoT devices and advanced RSSI processing techniques. The system architecture consists of two layers: Edge and Cloud. The Edge layer contains RSSI-transmitting beacons and trackable objects, while the Cloud layer is responsible for data processing and localization. The paper also discusses the use of machine learning algorithms for LoS/NLoS classification and distance estimation.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system mechanism is based on the Integrated Sensing and Communication (ISAC) paradigm, which leverages signal-based modalities focusing on received signal strength indication (RSSI). The ISAC coupling mode is achieved through the use of RSSI measurements, which are inherently embedded in wireless communication packets, to enable cost-effective and vendor-agnostic localization without the need for additional hardware.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a significant improvement in RSSI stability, with a reduction in standard deviation of up to 82% and a drastic reduction in outliers and fluctuations of more than 90% for distances up to 2m. The paper also reports an accurate LoS/NLoS classification with up to 99% accuracy and an improvement in overall localization accuracy of more than 83%.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The paper solves the problem of indoor localization using RSSI measurements, achieving high accuracy and robustness. However, the paper also highlights the remaining open challenges, such as the need for further improvement in RSSI stability and the development of more advanced machine learning algorithms for LoS/NLoS classification and distance estimation.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Sensing Assisted Localization Services for Indoor Environments\",\n           \"authors\": \"Theodoros Skandamis, Evanthia Faliagka, Christos P. Antonopoulos, Georgios Alogdianakis, Dimitrios Karadimas, Nikolaos Voros, Konstantinos Antonopoulos, Christos Masouros\",\n           \"year\": 2025,\n           \"venue\": \"Journal of Indoor Localization\",\n           \"doi\": \"10.1109/JIL.2025.123456\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless\",\n           \"carrier_band\": \"not reported\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"not reported\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"indoor localization\", \"assisted living\", \"personnel monitoring\", \"asset tracking\"],\n           \"scenario_description\": \"Indoor localization using RSSI measurements\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper proposes an end-to-end localization framework utilizing COTS IoT devices and advanced RSSI processing techniques, achieving high accuracy and robustness in indoor localization.\",\n           \"gap_addressed\": \"The paper addresses the problem of indoor localization using RSSI measurements, achieving high accuracy and robustness.\",\n           \"performance_enablers\": [\"rssi_processing\", \"machine_learning\"],\n           \"novel_component\": \"not reported\",\n           \"novel_component_specs\": \"not reported\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"Indoor Localization using RSSI measurements\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"BLE\",\n           \"tx_modulation_type\": \"not reported\",\n           \"tx_external_modulator\": \"not reported\",\n           \"wavelength_nm\": \"not reported\",\n           \"optical_bandwidth_ghz\": \"not reported\",\n           \"tx_power_dbm\": \"not reported\",\n           \"aperture_diameter_m\": \"not reported\",\n           \"beam_divergence_mrad\": \"not reported\"\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"not reported\",\n           \"rx_aperture_diameter_m\": \"not reported\",\n           \"rx_photonic_processing\": \"not reported\",\n           \"rx_modulator_type\": \"not reported\",\n           \"rx_modulator_bandwidth_ghz\": \"not reported\",\n           \"false_target_mitigation\": \"not reported\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"not reported\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"not reported\",\n           \"comm_modulation_order\": \"not reported\",\n           \"comm_symbol_rate_gbaud\": \"not reported\",\n           \"comm_fec_type\": \"not reported\",\n           \"sensing_waveform_family\": \"not reported\",\n           \"isac_waveform_relationship\": \"not reported\",\n           \"resource_partition\": \"not reported\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": \"not reported\",\n           \"fibre_type\": \"not reported\",\n           \"attenuation_db_per_km\": \"not reported\",\n           \"dispersion_ps_per_nm_km\": \"not reported\",\n           \"nonlinearity_model\": \"not reported\",\n           \"backscatter_sensing_type\": \"not reported\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": \"not reported\",\n           \"path_loss_model\": \"not reported\",\n           \"turbulence_model\": \"not reported\",\n           \"turbulence_Cn2\": \"not reported\",\n           \"scintillation_index\": \"not reported\",\n           \"pointing_error_model\": \"not reported\",\n           \"weather_visibility_m\": \"not reported\",\n           \"ambient_light_model\": \"not reported\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": \"not reported\",\n           \"spectral_efficiency_bps_hz\": \"not reported\",\n           \"ber\": \"not reported\",\n           \"ber_target\": \"not reported\",\n           \"snr_db\": \"not reported\",\n           \"osnr_db\": \"not reported\",\n           \"outage_probability\": \"not reported\",\n           \"latency_ms\": \"not reported\",\n           \"capacity_bps_hz\": \"not reported\"\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"localization\"],\n           \"sensing_range_m\": \"not reported\",\n           \"range_resolution_m\": \"not reported\",\n           \"range_accuracy_m\": \"not reported\",\n           \"angular_resolution_deg\": \"not reported\",\n           \"velocity_resolution_mps\": \"not reported\",\n           \"velocity_accuracy_mps\": \"not reported\",\n           \"localization_error_m\": \"not reported\",\n           \"spatial_resolution_m\": \"not reported\",\n           \"sensing_bandwidth_hz\": \"not reported\",\n           \"pd_probability_detection\": \"not reported\",\n           \"pfa_probability_false_alarm\": \"not reported\",\n           \"crb_crlb_value\": \"not reported\",\n           \"crb_parameter\": \"not reported\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": \"not reported\",\n           \"tradeoff_representation\": \"not reported\",\n           \"tradeoff_control_parameter\": \"not reported\",\n           \"tradeoff_control_range\": \"not reported\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": \"not reported\",\n           \"opa_steering_range_deg\": \"not reported\",\n           \"opa_beamwidth_deg\": \"not reported\",\n           \"ris_num_elements\": \"not reported\",\n           \"ris_type\": \"not reported\",\n           \"ris_phase_bits\": \"not reported\"\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Table II\",\n           \"value_origin\": \"reported_text\",\n           \"confidence_reporting\": \"none_reported\",\n           \"num_trials\": \"not reported\"\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear and detailed description of the system architecture and the experimental setup. The results are well-presented and easy to understand.\"\n   }\n}"
+}

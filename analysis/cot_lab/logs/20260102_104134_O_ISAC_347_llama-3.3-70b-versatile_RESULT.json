@@ -1,0 +1,210 @@
+{
+  "run_id": "20260102_104134_O_ISAC_347_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104134",
+  "paper_id": "O_ISAC_347",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures and diagrams, including a system schematic of an optical fiber ISAC system with 4-PAM-LFM, an algorithm diagram of the Learned Digital Back-Propagation (LDBP) principle, signal spectra of the ISAC signals, and performance charts showing the learning curve and parameter sweep plots."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a unified waveform, 4-PAM-LFM, which integrates communication and sensing. The LFM optical carrier is modulated with a PAM4 signal for communication, and the Rayleigh backscattered light is used for sensing. The LDBP algorithm is used to compensate for nonlinear impairments in the fiber optic channel."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a data rate of 8 GBaud/s and a sensing range of 25 km. The LDBP algorithm achieves an SNR gain of ~1.5 dB, and the optimal launch power is around 9-10 dBm. The initial frequency of the LFM optical carrier affects the compensation efficiency of LDBP, with higher frequencies resulting in worse compensation results."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of nonlinear impairment compensation in optical fiber ISAC systems using the LDBP algorithm. However, the initial frequency of the LFM optical carrier is a critical factor that affects the compensation efficiency, and further research is needed to optimize this parameter. Additionally, the paper highlights the importance of considering the physical impairments of the fiber optic channel in the design of ISAC systems."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_347",
+        "title": "Learned Digital Back-Propagation for an optical-domain waveform integrated with communication and sensing",
+        "authors": "Zhiyi Chen et al.",
+        "year": 2023,
+        "venue": "ACM ICCNS 2023",
+        "doi": "10.1145/3638782.3638830",
+        "document_type": "conference"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "optical_networks",
+          "6g_networks"
+        ],
+        "scenario_description": "Optical fiber ISAC system with 4-PAM-LFM waveform"
+      },
+      "evidence": {
+        "evidence_type": [
+          "simulation",
+          "analytical"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "LDBP algorithm for nonlinear impairment compensation in optical fiber ISAC systems",
+        "gap_addressed": "Nonlinear impairment compensation in optical fiber ISAC systems",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "electronic_dechirping",
+          "matched_filtering"
+        ],
+        "novel_component": "LDBP algorithm",
+        "novel_component_specs": "4-layer deep neural network with 52 trainable parameters"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Optical fiber ISAC system with 4-PAM-LFM waveform"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "mzm",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 9,
+          "tx_power_dbm": 11,
+          "aperture_diameter_m": null,
+          "beam_divergence_mrad": null
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd",
+          "rx_aperture_diameter_m": null,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "mzm",
+          "rx_modulator_bandwidth_ghz": 9,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "mitp_bias"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "pam4",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 8,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "lfm",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "alpha=0.5"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 25,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 16,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": null,
+          "path_loss_model": null,
+          "turbulence_model": null,
+          "turbulence_Cn2": null,
+          "scintillation_index": null,
+          "pointing_error_model": null,
+          "weather_visibility_m": null,
+          "ambient_light_model": null
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 8,
+          "spectral_efficiency_bps_hz": null,
+          "ber": 0.001,
+          "ber_target": 0.001,
+          "snr_db": 17,
+          "osnr_db": null,
+          "outage_probability": null,
+          "latency_ms": null,
+          "capacity_bps_hz": null
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 25000,
+          "range_resolution_m": null,
+          "range_accuracy_m": null,
+          "angular_resolution_deg": null,
+          "velocity_resolution_mps": null,
+          "velocity_accuracy_mps": null,
+          "localization_error_m": null,
+          "spatial_resolution_m": null,
+          "sensing_bandwidth_hz": null,
+          "pd_probability_detection": null,
+          "pfa_probability_false_alarm": null,
+          "crb_crlb_value": null,
+          "crb_parameter": null
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "alpha",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": null,
+          "opa_steering_range_deg": null,
+          "opa_beamwidth_deg": null,
+          "ris_num_elements": null,
+          "ris_type": null,
+          "ris_phase_bits": null
+        },
+        "provenance": {
+          "source_pointer": "Table II, p.5",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none_reported",
+          "num_trials": null
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and the LDBP algorithm, and the results are well-validated through simulation and analysis."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures and diagrams, including a system schematic of an optical fiber ISAC system with 4-PAM-LFM, an algorithm diagram of the Learned Digital Back-Propagation (LDBP) principle, signal spectra of the ISAC signals, and performance charts showing the learning curve and parameter sweep plots.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system uses a unified waveform, 4-PAM-LFM, which integrates communication and sensing. The LFM optical carrier is modulated with a PAM4 signal for communication, and the Rayleigh backscattered light is used for sensing. The LDBP algorithm is used to compensate for nonlinear impairments in the fiber optic channel.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a data rate of 8 GBaud/s and a sensing range of 25 km. The LDBP algorithm achieves an SNR gain of ~1.5 dB, and the optimal launch power is around 9-10 dBm. The initial frequency of the LFM optical carrier affects the compensation efficiency of LDBP, with higher frequencies resulting in worse compensation results.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The paper solves the problem of nonlinear impairment compensation in optical fiber ISAC systems using the LDBP algorithm. However, the initial frequency of the LFM optical carrier is a critical factor that affects the compensation efficiency, and further research is needed to optimize this parameter. Additionally, the paper highlights the importance of considering the physical impairments of the fiber optic channel in the design of ISAC systems.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_347\",\n           \"title\": \"Learned Digital Back-Propagation for an optical-domain waveform integrated with communication and sensing\",\n           \"authors\": \"Zhiyi Chen et al.\",\n           \"year\": 2023,\n           \"venue\": \"ACM ICCNS 2023\",\n           \"doi\": \"10.1145/3638782.3638830\",\n           \"document_type\": \"conference\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"cabled_fibre\",\n           \"carrier_band\": \"C-band\",\n           \"operational_environment\": \"lab\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"optical_networks\", \"6g_networks\"],\n           \"scenario_description\": \"Optical fiber ISAC system with 4-PAM-LFM waveform\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"simulation\", \"analytical\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"LDBP algorithm for nonlinear impairment compensation in optical fiber ISAC systems\",\n           \"gap_addressed\": \"Nonlinear impairment compensation in optical fiber ISAC systems\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"electronic_dechirping\", \"matched_filtering\"],\n           \"novel_component\": \"LDBP algorithm\",\n           \"novel_component_specs\": \"4-layer deep neural network with 52 trainable parameters\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Optical fiber ISAC system with 4-PAM-LFM waveform\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"mzm\",\n               \"wavelength_nm\": 1550,\n               \"optical_bandwidth_ghz\": 9,\n               \"tx_power_dbm\": 11,\n               \"aperture_diameter_m\": null,\n               \"beam_divergence_mrad\": null\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"balanced_pd\",\n               \"rx_aperture_diameter_m\": null,\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"mzm\",\n               \"rx_modulator_bandwidth_ghz\": 9,\n               \"rx_modulator_operating_point\": \"mitp\",\n               \"false_target_mitigation\": \"mitp_bias\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"full_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"pam4\",\n               \"comm_modulation_order\": 4,\n               \"comm_symbol_rate_gbaud\": 8,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"lfm\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"alpha=0.5\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 25,\n               \"fibre_type\": \"smf\",\n               \"attenuation_db_per_km\": 0.2,\n               \"dispersion_ps_per_nm_km\": 16,\n               \"nonlinearity_model\": \"gn_model\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": null,\n               \"path_loss_model\": null,\n               \"turbulence_model\": null,\n               \"turbulence_Cn2\": null,\n               \"scintillation_index\": null,\n               \"pointing_error_model\": null,\n               \"weather_visibility_m\": null,\n               \"ambient_light_model\": null\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 8,\n               \"spectral_efficiency_bps_hz\": null,\n               \"ber\": 1e-3,\n               \"ber_target\": 1e-3,\n               \"snr_db\": 17,\n               \"osnr_db\": null,\n               \"outage_probability\": null,\n               \"latency_ms\": null,\n               \"capacity_bps_hz\": null\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 25000,\n               \"range_resolution_m\": null,\n               \"range_accuracy_m\": null,\n               \"angular_resolution_deg\": null,\n               \"velocity_resolution_mps\": null,\n               \"velocity_accuracy_mps\": null,\n               \"localization_error_m\": null,\n               \"spatial_resolution_m\": null,\n               \"sensing_bandwidth_hz\": null,\n               \"pd_probability_detection\": null,\n               \"pfa_probability_false_alarm\": null,\n               \"crb_crlb_value\": null,\n               \"crb_parameter\": null\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"alpha\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": null,\n               \"opa_steering_range_deg\": null,\n               \"opa_beamwidth_deg\": null,\n               \"ris_num_elements\": null,\n               \"ris_type\": null,\n               \"ris_phase_bits\": null\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table II, p.5\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"none_reported\",\n               \"num_trials\": null\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system model and the LDBP algorithm, and the results are well-validated through simulation and analysis.\"\n   }\n}"
+}

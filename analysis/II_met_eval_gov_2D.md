@@ -1,0 +1,163 @@
+# Section II-D: Performance Metric Governance
+
+## 1. Metric Catalog (Detected Usage)
+- **Resolution**: 149 occurrences
+- **BER**: 148 occurrences
+- **SNR**: 126 occurrences
+- **Throughput**: 102 occurrences
+- **Accuracy**: 81 occurrences
+- **Data Rate**: 56 occurrences
+- **Pd (Detect Prob)**: 53 occurrences
+- **Resolution (Delta)**: 50 occurrences
+- **Accuracy (RMSE/CRB)**: 39 occurrences
+- **Capacity**: 38 occurrences
+- **EVM**: 32 occurrences
+- **Pfa (False Alarm)**: 29 occurrences
+- **OSNR**: 24 occurrences
+- **RMSE**: 21 occurrences
+- **Pd**: 20 occurrences
+- **SNR (Electrical Plane)**: 17 occurrences
+- **ROC**: 13 occurrences
+- **OSNR (Optical Plane)**: 13 occurrences
+- **CRB**: 13 occurrences
+- **Range Resolution**: 12 occurrences
+- **Accuracy (RMSE)**: 12 occurrences
+- **Spectral Efficiency**: 11 occurrences
+- **PSLR**: 11 occurrences
+- **MSE**: 10 occurrences
+- **Bandwidth**: 9 occurrences
+- **Sensitivity**: 9 occurrences
+- **CRLB**: 8 occurrences
+- **Pfa**: 8 occurrences
+- **SNDR**: 8 occurrences
+- **None**: 7 occurrences
+- **Fisher Information**: 5 occurrences
+- **Ranging Resolution**: 5 occurrences
+- **SSNR**: 5 occurrences
+- **Data Transmission Rate**: 4 occurrences
+- **Spatial Resolution**: 4 occurrences
+- **SINR**: 4 occurrences
+- **Current**: 4 occurrences
+- **PAPR**: 3 occurrences
+- **ISLR**: 3 occurrences
+- **Detection Probability**: 3 occurrences
+- **OSNR (Optical Plane) vs SNR (Electrical Plane)**: 3 occurrences
+- **Modulation**: 3 occurrences
+- **Code Rate**: 2 occurrences
+- **Sum Rate**: 2 occurrences
+- **Mutual Information (MI)**: 2 occurrences
+- **Resolution (Distance)**: 2 occurrences
+- **Refractive Index Sensitivity**: 2 occurrences
+- **Salinity Sensitivity**: 2 occurrences
+- **Temperature Sensitivity**: 2 occurrences
+- **SIC depth**: 2 occurrences
+- **Signal Quality**: 2 occurrences
+- **Achievable Rate**: 2 occurrences
+- **Insertion Loss (IL)**: 2 occurrences
+- **Mode Dependent Loss (MDL)**: 2 occurrences
+- **Crosstalk**: 2 occurrences
+- **Resolution (Range)**: 2 occurrences
+- **Accuracy (Distance Error)**: 2 occurrences
+- **ENR**: 2 occurrences
+- **CSR**: 2 occurrences
+- **Bit Rate**: 2 occurrences
+- **Rate**: 2 occurrences
+- **O-SNR**: 2 occurrences
+- **Contrast**: 2 occurrences
+- **AFR**: 2 occurrences
+- **PFR**: 2 occurrences
+- **Spectral Efficiency (SE)**: 2 occurrences
+- **Detect Probability (Pd)**: 2 occurrences
+- **Latency**: 2 occurrences
+- **Gain**: 2 occurrences
+- **Communication Distance**: 2 occurrences
+- **SER**: 2 occurrences
+- **Achievable Transmission Rate**: 2 occurrences
+- **Miss Detection Probability**: 2 occurrences
+- **KL Divergence**: 2 occurrences
+- **Detection**: 2 occurrences
+- **Packet Loss Rate**: 2 occurrences
+- **Received Power**: 2 occurrences
+- **Receiver Sensitivity**: 2 occurrences
+- **SNR threshold**: 1 occurrences
+- **SMSR**: 1 occurrences
+- **Steering Range**: 1 occurrences
+- **Sensing Range**: 1 occurrences
+- **Detect Prob**: 1 occurrences
+- **Accuracy (Power Distribution)**: 1 occurrences
+- **Accuracy (Power Profile)**: 1 occurrences
+- **Distance Resolution**: 1 occurrences
+- **Pressure Sensitivity**: 1 occurrences
+- **Transmission Rate**: 1 occurrences
+- **Ranging Accuracy**: 1 occurrences
+- **Precision**: 1 occurrences
+- **NAR**: 1 occurrences
+- **F1-score**: 1 occurrences
+- **Detection Distance**: 1 occurrences
+- **Range Precision**: 1 occurrences
+- **Achievable Data Rate**: 1 occurrences
+- **Cramer-Rao Bound**: 1 occurrences
+- **IQ skew**: 1 occurrences
+- **IQ Skew**: 1 occurrences
+- **DIR**: 1 occurrences
+- **Vibration-induced phase extraction**: 1 occurrences
+- **Limit of Detection (LoD)**: 1 occurrences
+- **Signal-to-Noise Ratio**: 1 occurrences
+- **Time Constant (TC)**: 1 occurrences
+- **NMSE**: 1 occurrences
+- **Classification Accuracy**: 1 occurrences
+- **Frequency**: 1 occurrences
+- **Received Signal Power**: 1 occurrences
+- **Object Detection**: 1 occurrences
+- **Q-factor**: 1 occurrences
+- **MTF**: 1 occurrences
+- **Relative Pose Estimation Error**: 1 occurrences
+- **Sensing Capacity**: 1 occurrences
+- **Number of Modes**: 1 occurrences
+- **Path Loss**: 1 occurrences
+- **Shadow Fading**: 1 occurrences
+- **SNR/OSNR**: 1 occurrences
+- **Secrecy Rate**: 1 occurrences
+- **Energy Efficiency**: 1 occurrences
+- **MAE**: 1 occurrences
+- **PER**: 1 occurrences
+- **Goodput**: 1 occurrences
+- **TDOA Error**: 1 occurrences
+- **Mass Loading**: 1 occurrences
+- **Plume Height**: 1 occurrences
+- **Distance Estimation**: 1 occurrences
+- **Speed Estimation**: 1 occurrences
+- **Angle Estimation**: 1 occurrences
+- **Position Modulation**: 1 occurrences
+- **Change Detection**: 1 occurrences
+- **Modulation Gain**: 1 occurrences
+- **Contrast Gain**: 1 occurrences
+- **Responsivity**: 1 occurrences
+- **Detectivity**: 1 occurrences
+- **Absorption Efficiency**: 1 occurrences
+- **Quantum Efficiency**: 1 occurrences
+- **Coupling Efficiency**: 1 occurrences
+- **Null Frequency**: 1 occurrences
+- **SE**: 1 occurrences
+- **Q factor**: 1 occurrences
+- **Accuracy (Ranging Error)**: 1 occurrences
+- **Power Consumption**: 1 occurrences
+- **Pd/Pfa**: 1 occurrences
+- **Cancellation Depth**: 1 occurrences
+- **Maximum Unambiguous Range**: 1 occurrences
+- **Peak-to-Sidelobe Ratio**: 1 occurrences
+- **NDR**: 1 occurrences
+- **Modulation Scheme**: 1 occurrences
+- **Light Intensity**: 1 occurrences
+- **Spectrum**: 1 occurrences
+- **Polarization**: 1 occurrences
+- **Launching Power**: 1 occurrences
+- **Strain Resolution**: 1 occurrences
+- **Frequency Response**: 1 occurrences
+- **PMNR**: 1 occurrences
+- **Data Transmission Distance**: 1 occurrences
+
+## 2. Symbol Conventions (Consensus)
+- **Resolution**: $\Delta r$ (Range), $\Delta v$ (Velocity)
+- **Accuracy**: $\sigma$ (RMSE), CRB (Lower Bound)
+- **Detection**: $P_d$ (Prob Detection), $P_{fa}$ (False Alarm)

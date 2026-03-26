@@ -1,0 +1,153 @@
+{
+  "run_id": "20260102_103344_O_ISAC_159_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103344",
+  "paper_id": "O_ISAC_159",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a photonics-aided THz integrated sensing and communication system based on a subcarrier-chirp inter-embedded waveform. The system uses a coherent optical frequency comb (OFC) for up-conversion and achieves simultaneous 88-Gbps data rate and 8-mm radial resolution over a 10.2-m wireless transmission."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism is based on a subcarrier-chirp inter-embedded (SCIE) method, which embeds subcarrier communication signals in the idle time-frequency gaps of a linear frequency-modulated continuous wave (LFMCW). The ISAC coupling mode is a co-time and co-frequency (CTCF) mode, where the sensing and communication functions share the same time and frequency resources."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the 88-Gbps data rate and 8-mm radial resolution, are physically consistent with the system's architecture and the principles of photonics-aided THz ISAC systems."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of achieving high data rates and high-resolution sensing in a photonics-aided THz ISAC system. However, open challenges remain, such as further improving the system's performance, reducing the complexity of the system, and demonstrating its feasibility in practical scenarios."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_159",
+        "title": "Photonics-Aided THz Integrated Sensing and Communication System Based on a Subcarrier-Chirp Inter-Embedded Waveform",
+        "authors": "Junhao Zhang, Mingzheng Lei, Jianjun Yu et al.",
+        "year": 2025,
+        "venue": "IEEE OJCOMS",
+        "doi": "10.1109/OJCOMS.2025.3545896"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "D-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "The system is designed for 6G networks, which require high data rates and high-resolution sensing."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a subcarrier-chirp inter-embedded (SCIE) method for photonics-aided THz ISAC systems, which achieves high data rates and high-resolution sensing.",
+        "gap_addressed": "The paper addresses the challenge of achieving high data rates and high-resolution sensing in photonics-aided THz ISAC systems.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "Subcarrier-Chirp Inter-Embedded (SCIE) waveform",
+        "novel_component_specs": "The SCIE waveform is designed to embed subcarrier communication signals in the idle time-frequency gaps of a linear frequency-modulated continuous wave (LFMCW)."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor D-band ISAC"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 25.8,
+        "tx_power_dbm": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodetector",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator",
+        "rx_modulator_bandwidth_ghz": 25.8
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 6,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfmcw",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18
+      },
+      "channel_wireless": {
+        "link_distance_m": 10.2,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 88,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "snr_db": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10.2,
+        "range_resolution_m": 0.008,
+        "range_accuracy_m": 0.001
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "0-1"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper presents a well-designed experiment with clear results and discussions."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper presents a photonics-aided THz integrated sensing and communication system based on a subcarrier-chirp inter-embedded waveform. The system uses a coherent optical frequency comb (OFC) for up-conversion and achieves simultaneous 88-Gbps data rate and 8-mm radial resolution over a 10.2-m wireless transmission.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism is based on a subcarrier-chirp inter-embedded (SCIE) method, which embeds subcarrier communication signals in the idle time-frequency gaps of a linear frequency-modulated continuous wave (LFMCW). The ISAC coupling mode is a co-time and co-frequency (CTCF) mode, where the sensing and communication functions share the same time and frequency resources.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the 88-Gbps data rate and 8-mm radial resolution, are physically consistent with the system's architecture and the principles of photonics-aided THz ISAC systems.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of achieving high data rates and high-resolution sensing in a photonics-aided THz ISAC system. However, open challenges remain, such as further improving the system's performance, reducing the complexity of the system, and demonstrating its feasibility in practical scenarios.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_159\",\n         \"title\":\"Photonics-Aided THz Integrated Sensing and Communication System Based on a Subcarrier-Chirp Inter-Embedded Waveform\",\n         \"authors\":\"Junhao Zhang, Mingzheng Lei, Jianjun Yu et al.\",\n         \"year\":2025,\n         \"venue\":\"IEEE OJCOMS\",\n         \"doi\":\"10.1109/OJCOMS.2025.3545896\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"D-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"The system is designed for 6G networks, which require high data rates and high-resolution sensing.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a subcarrier-chirp inter-embedded (SCIE) method for photonics-aided THz ISAC systems, which achieves high data rates and high-resolution sensing.\",\n         \"gap_addressed\":\"The paper addresses the challenge of achieving high data rates and high-resolution sensing in photonics-aided THz ISAC systems.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"Subcarrier-Chirp Inter-Embedded (SCIE) waveform\",\n         \"novel_component_specs\":\"The SCIE waveform is designed to embed subcarrier communication signals in the idle time-frequency gaps of a linear frequency-modulated continuous wave (LFMCW).\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor D-band ISAC\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"iq_modulator\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":25.8,\n         \"tx_power_dbm\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"photodetector\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"iq_modulator\",\n         \"rx_modulator_bandwidth_ghz\":25.8\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"qam\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":6,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfmcw\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10.2,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":88,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-6,\n         \"snr_db\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10.2,\n         \"range_resolution_m\":0.008,\n         \"range_accuracy_m\":0.001\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_ratio\",\n         \"tradeoff_control_range\":\"0-1\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper presents a well-designed experiment with clear results and discussions.\"\n   }\n}"
+}

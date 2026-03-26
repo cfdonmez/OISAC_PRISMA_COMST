@@ -1,0 +1,217 @@
+{
+  "run_id": "20260102_103120_O_ISAC_144_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103120",
+  "paper_id": "O_ISAC_144",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the WSDT framework, and Figs. 2-6, which show the heliostat structure, sensor array layout, and stress/displacement distributions under different wind speeds."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves a multichannel wind-signal driven digital twin (WSDT) framework for a 50 m^2 heliostat. The ISAC coupling mode is based on integrated sensing and communication, where the heliostat is treated as an intelligent sensing node, collecting environmental and structural response signals through multichannel sensors."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports on the stress and displacement distributions of the heliostat under different wind speeds, which are physically consistent with the expected behavior of the structure under wind loads."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of real-time structural health monitoring of a heliostat using a WSDT framework. However, open challenges remain, such as the development of more advanced signal processing algorithms and the integration of the WSDT framework with other renewable energy systems."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Multichannel Wind-Signal Driven Digital Twin for a 50 m^2 Heliostat",
+        "authors": [
+          "Chao Ma",
+          "Yang Xiang",
+          "Yiming Xue",
+          "Siyuan Zhang",
+          "Yun Wang",
+          "Danlei Chen",
+          "Rui Wang",
+          "Luoxiao Yang"
+        ],
+        "year": 2025,
+        "venue": "Journal of Solar Energy Engineering",
+        "doi": "10.1115/1.4054567",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "other",
+        "operational_environment": "outdoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "concentrated_solar_power"
+        ],
+        "scenario_description": "Real-time structural health monitoring of a 50 m^2 heliostat"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Proposed a multichannel wind-signal driven digital twin (WSDT) framework for real-time structural health monitoring of a 50 m^2 heliostat",
+        "gap_addressed": "Lack of real-time structural health monitoring for heliostats",
+        "performance_enablers": [
+          "compressed_sensing",
+          "uniform_design",
+          "edge_cloud_collaboration"
+        ],
+        "novel_component": "WSDT framework",
+        "novel_component_specs": "9-channel wind pressure sensor array, edge microcontroller, cloud-based finite element model"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Heliostat under critical wind load"
+      },
+      "transmitter": {
+        "tx_source_type": "other",
+        "tx_modulation_type": "not_specified",
+        "tx_external_modulator": "none",
+        "wavelength_nm": "not_applicable",
+        "optical_bandwidth_ghz": "not_applicable",
+        "tx_power_dbm": "not_applicable",
+        "aperture_diameter_m": "not_applicable",
+        "beam_divergence_mrad": "not_applicable"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "other",
+        "rx_aperture_diameter_m": "not_applicable",
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "not_applicable",
+        "rx_modulator_operating_point": "not_applicable",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "separate_frontends",
+        "duplexing_mode": "not_applicable"
+      },
+      "waveform": {
+        "comm_waveform_family": "not_applicable",
+        "comm_modulation_order": "not_applicable",
+        "comm_symbol_rate_gbaud": "not_applicable",
+        "comm_fec_type": "not_applicable",
+        "sensing_waveform_family": "other",
+        "isac_waveform_relationship": "not_applicable",
+        "resource_partition": "not_applicable"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "not_applicable",
+        "fibre_type": "not_applicable",
+        "attenuation_db_per_km": "not_applicable",
+        "dispersion_ps_per_nm_km": "not_applicable",
+        "nonlinearity_model": "not_applicable",
+        "backscatter_sensing_type": "not_applicable"
+      },
+      "channel_wireless": {
+        "link_distance_m": "not_applicable",
+        "path_loss_model": "not_applicable",
+        "turbulence_model": "not_applicable",
+        "turbulence_Cn2": "not_applicable",
+        "scintillation_index": "not_applicable",
+        "pointing_error_model": "not_applicable",
+        "weather_visibility_m": "not_applicable",
+        "ambient_light_model": "not_applicable"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "not_applicable",
+        "spectral_efficiency_bps_hz": "not_applicable",
+        "ber": "not_applicable",
+        "ber_target": "not_applicable",
+        "snr_db": "not_applicable",
+        "osnr_db": "not_applicable",
+        "outage_probability": "not_applicable",
+        "latency_ms": "not_applicable",
+        "capacity_bps_hz": "not_applicable"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "localization_2d",
+          "localization_3d"
+        ],
+        "sensing_range_m": "not_applicable",
+        "range_resolution_m": "not_applicable",
+        "range_accuracy_m": "not_applicable",
+        "angular_resolution_deg": "not_applicable",
+        "velocity_resolution_mps": "not_applicable",
+        "velocity_accuracy_mps": "not_applicable",
+        "localization_error_m": "not_applicable",
+        "spatial_resolution_m": "not_applicable",
+        "sensing_bandwidth_hz": "not_applicable",
+        "pd_probability_detection": "not_applicable",
+        "pfa_probability_false_alarm": "not_applicable",
+        "crb_crlb_value": "not_applicable",
+        "crb_parameter": "not_applicable"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "not_applicable",
+        "tradeoff_control_range": "not_applicable"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "not_applicable",
+        "opa_steering_range_deg": "not_applicable",
+        "opa_beamwidth_deg": "not_applicable",
+        "ris_num_elements": "not_applicable",
+        "ris_type": "not_applicable",
+        "ris_phase_bits": "not_applicable"
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_table",
+        "confidence_reporting": "none_reported",
+        "num_trials": "not_applicable"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the WSDT framework and its components, and the results are well-supported by simulations and analytical models."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n           \"value\": \"The paper includes several figures, including Fig. 1, which illustrates the WSDT framework, and Figs. 2-6, which show the heliostat structure, sensor array layout, and stress/displacement distributions under different wind speeds.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system mechanism involves a multichannel wind-signal driven digital twin (WSDT) framework for a 50 m^2 heliostat. The ISAC coupling mode is based on integrated sensing and communication, where the heliostat is treated as an intelligent sensing node, collecting environmental and structural response signals through multichannel sensors.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports on the stress and displacement distributions of the heliostat under different wind speeds, which are physically consistent with the expected behavior of the structure under wind loads.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The paper solves the problem of real-time structural health monitoring of a heliostat using a WSDT framework. However, open challenges remain, such as the development of more advanced signal processing algorithms and the integration of the WSDT framework with other renewable energy systems.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Multichannel Wind-Signal Driven Digital Twin for a 50 m^2 Heliostat\",\n           \"authors\": [\"Chao Ma\", \"Yang Xiang\", \"Yiming Xue\", \"Siyuan Zhang\", \"Yun Wang\", \"Danlei Chen\", \"Rui Wang\", \"Luoxiao Yang\"],\n           \"year\": 2025,\n           \"venue\": \"Journal of Solar Energy Engineering\",\n           \"doi\": \"10.1115/1.4054567\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"other\",\n           \"operational_environment\": \"outdoor\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"concentrated_solar_power\"],\n           \"scenario_description\": \"Real-time structural health monitoring of a 50 m^2 heliostat\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"Proposed a multichannel wind-signal driven digital twin (WSDT) framework for real-time structural health monitoring of a 50 m^2 heliostat\",\n           \"gap_addressed\": \"Lack of real-time structural health monitoring for heliostats\",\n           \"performance_enablers\": [\"compressed_sensing\", \"uniform_design\", \"edge_cloud_collaboration\"],\n           \"novel_component\": \"WSDT framework\",\n           \"novel_component_specs\": \"9-channel wind pressure sensor array, edge microcontroller, cloud-based finite element model\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"Heliostat under critical wind load\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"other\",\n           \"tx_modulation_type\": \"not_specified\",\n           \"tx_external_modulator\": \"none\",\n           \"wavelength_nm\": \"not_applicable\",\n           \"optical_bandwidth_ghz\": \"not_applicable\",\n           \"tx_power_dbm\": \"not_applicable\",\n           \"aperture_diameter_m\": \"not_applicable\",\n           \"beam_divergence_mrad\": \"not_applicable\"\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"other\",\n           \"rx_aperture_diameter_m\": \"not_applicable\",\n           \"rx_photonic_processing\": \"none\",\n           \"rx_modulator_type\": \"none\",\n           \"rx_modulator_bandwidth_ghz\": \"not_applicable\",\n           \"rx_modulator_operating_point\": \"not_applicable\",\n           \"false_target_mitigation\": \"none\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"separate_frontends\",\n           \"duplexing_mode\": \"not_applicable\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"not_applicable\",\n           \"comm_modulation_order\": \"not_applicable\",\n           \"comm_symbol_rate_gbaud\": \"not_applicable\",\n           \"comm_fec_type\": \"not_applicable\",\n           \"sensing_waveform_family\": \"other\",\n           \"isac_waveform_relationship\": \"not_applicable\",\n           \"resource_partition\": \"not_applicable\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": \"not_applicable\",\n           \"fibre_type\": \"not_applicable\",\n           \"attenuation_db_per_km\": \"not_applicable\",\n           \"dispersion_ps_per_nm_km\": \"not_applicable\",\n           \"nonlinearity_model\": \"not_applicable\",\n           \"backscatter_sensing_type\": \"not_applicable\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": \"not_applicable\",\n           \"path_loss_model\": \"not_applicable\",\n           \"turbulence_model\": \"not_applicable\",\n           \"turbulence_Cn2\": \"not_applicable\",\n           \"scintillation_index\": \"not_applicable\",\n           \"pointing_error_model\": \"not_applicable\",\n           \"weather_visibility_m\": \"not_applicable\",\n           \"ambient_light_model\": \"not_applicable\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": \"not_applicable\",\n           \"spectral_efficiency_bps_hz\": \"not_applicable\",\n           \"ber\": \"not_applicable\",\n           \"ber_target\": \"not_applicable\",\n           \"snr_db\": \"not_applicable\",\n           \"osnr_db\": \"not_applicable\",\n           \"outage_probability\": \"not_applicable\",\n           \"latency_ms\": \"not_applicable\",\n           \"capacity_bps_hz\": \"not_applicable\"\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"localization_2d\", \"localization_3d\"],\n           \"sensing_range_m\": \"not_applicable\",\n           \"range_resolution_m\": \"not_applicable\",\n           \"range_accuracy_m\": \"not_applicable\",\n           \"angular_resolution_deg\": \"not_applicable\",\n           \"velocity_resolution_mps\": \"not_applicable\",\n           \"velocity_accuracy_mps\": \"not_applicable\",\n           \"localization_error_m\": \"not_applicable\",\n           \"spatial_resolution_m\": \"not_applicable\",\n           \"sensing_bandwidth_hz\": \"not_applicable\",\n           \"pd_probability_detection\": \"not_applicable\",\n           \"pfa_probability_false_alarm\": \"not_applicable\",\n           \"crb_crlb_value\": \"not_applicable\",\n           \"crb_parameter\": \"not_applicable\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"not_applicable\",\n           \"tradeoff_control_range\": \"not_applicable\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": \"not_applicable\",\n           \"opa_steering_range_deg\": \"not_applicable\",\n           \"opa_beamwidth_deg\": \"not_applicable\",\n           \"ris_num_elements\": \"not_applicable\",\n           \"ris_type\": \"not_applicable\",\n           \"ris_phase_bits\": \"not_applicable\"\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Table I\",\n           \"value_origin\": \"reported_table\",\n           \"confidence_reporting\": \"none_reported\",\n           \"num_trials\": \"not_applicable\"\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear and detailed description of the WSDT framework and its components, and the results are well-supported by simulations and analytical models.\"\n   }\n}"
+}

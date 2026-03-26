@@ -1,0 +1,241 @@
+\section{Enabling Technologies and System-Level Co-Design for Optical ISAC}
+\label{sec:enablers}
+
+Section VI explains how O-ISAC becomes practically realizable by linking enabling technologies to channel robustness, joint optimization, runtime overhead, and benchmarking discipline. The section is deliberately enabler-centric. Optical phased arrays, optical reconfigurable intelligent surfaces, photonics-assisted signal generation, and machine-learning integration are retained as the named anchors, but they are interpreted through system-level feasibility rather than as a component catalog. This preserves the measurement governance introduced earlier in the paper and keeps the trade-off caution from Section V visible while we move from frontier interpretation to deployability.
+
+Throughout this section, ORIS is used as the canonical umbrella term for optical RIS-style programmable surfaces. The main purpose is consistency: beam steering, environment shaping, robustness, and multi-user optimization can then be discussed without symbol drift.
+
+\begin{table*}[!t]
+\caption{Core Notation for Section VI}
+\label{tab:enablers-notation}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.52\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Used in} \\
+\midrule
+$x(t)$ & Optical transmit waveform or equivalent sampled signal & VI-C, VI-E \\
+$\ell$ & Link distance in benchmark scenario disclosure & VI-D \\
+$\bar P$ & Average optical power budget & VI-C, VI-D \\
+$P_{\max}$ & Peak optical power budget & VI-C, VI-D \\
+$H$ & End-to-end channel coefficient or gain & VI-B \\
+$H_l$ & Deterministic or path-loss component of $H$ & VI-B \\
+$H_a$ & Atmospheric or medium-turbulence component of $H$ & VI-B \\
+$H_p$ & Pointing or misalignment component of $H$ & VI-B \\
+$\gamma$ & Reliability proxy evaluated on a declared detection plane & VI-B, VI-E \\
+$\gamma_{\text{th}}$ & Reliability threshold for outage control & VI-B \\
+$\varepsilon$ & Allowed outage probability target & VI-B, VI-C \\
+$m_{\text{res}}$ & Role-consistent resolution or granularity metric & VI-D \\
+$m_{\text{acc}}$ & Empirical sensing accuracy metric & VI-D \\
+$m_{\text{bnd}}$ & Bound-type sensing metric family & VI-D \\
+$\sigma_r$ & Estimator-dependent sensing accuracy metric when reported & VI-D \\
+$\Theta$ & ORIS diagonal response matrix & VI-A, VI-C, VI-E, VI-F \\
+$\beta_n$ & ORIS amplitude coefficient of element $n$ & VI-A \\
+$\theta_n$ & ORIS phase of element $n$ & VI-A, VI-E \\
+$Q$ & Number of phase-quantization levels & VI-A, VI-E \\
+$\mathbf{w}_k$ & Beamforming vector for user $k$ & VI-C, VI-E \\
+$\mathrm{SINR}_k$ & User-$k$ communication quality metric & VI-E \\
+$\mathrm{CRB}$ & Bound-type sensing metric; not interchangeable with empirical accuracy metrics & VI-C, VI-D, VI-E, VI-F \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{equation}
+\label{eq:enablers-unified-model}
+\begin{aligned}
+y_k &= \left(h_{d,k} + \mathbf{h}_{r,k}^{T}\Theta\mathbf{g}\right)x + n_k, \\
+\Theta &= \operatorname{diag}\!\left(\beta_n e^{j\theta_n}\right), \\
+\theta_n &\in \left\{0,\frac{2\pi}{Q},\ldots,\frac{2\pi(Q-1)}{Q}\right\}.
+\end{aligned}
+\end{equation}
+
+Equation~\eqref{eq:enablers-unified-model} is a compact abstraction reused across the section. It is deliberately simple: the point is not to claim a single universal O-ISAC channel, but to provide a notation scaffold for programmable optics, robustness, co-design, and multi-user control.
+
+\subsection{Programmable Optical Enablers}
+\label{sec:enablers-programmable}
+
+Programmable optical enablers matter because they convert propagation from a mostly fixed medium into a controllable medium. OPA studies expose transmit-side beam agility and angular selectivity, while ORIS studies expose environment-side path shaping, blockage mitigation, and alignment assistance. The two technologies should therefore be read as complementary control authorities rather than as interchangeable devices.
+
+\begin{table*}[!t]
+\caption{Programmable Optical Enabler Families in O-ISAC}
+\label{tab:enablers-families}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.24\textwidth} >{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}p{0.17\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Enabler family} & \textbf{Primary control role} & \textbf{Evidence posture in this review} & \textbf{Main constraints} & \textbf{Role in the argument} \\
+\midrule
+OPA & Transmit-side beam agility, angular selectivity, joint communication-sensing steering & Primary evidence core; broader structured traces are treated as support context & Grating lobes, finite field of view, insertion loss, channel-loss sensitivity & Carries the strongest beam-control narrative in VI-A \\
+ORIS & Environment-side path shaping, blockage mitigation, alignment assistance, non-line-of-sight reconstruction & Primary evidence core; broader structured traces are treated as support context & Refresh latency, attenuation, phase quantization, coherence-time mismatch, control overhead & Carries the strongest propagation-control narrative in VI-A \\
+PIC and programmable photonics & Integration substrate for packaging, routing, and scalable optical control & Supporting only; used to explain how controllable optics may be integrated & Calibration burden, packaging complexity, insertion loss, hardware-stack dependence & Supplies integration context beneath OPA/ORIS \\
+Photonics-assisted signal generation / photonic-THz bridge & Source and distribution pathway for hybrid optical-wireless control chains & Bridge evidence only; relevant for hybrid interpretation but not a standalone maturity claim & Stage-aware modeling, cross-plane reporting, front-end chain complexity & Connects enablers to hybrid and transfer-oriented system views \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+A compact steering anchor for OPA is
+
+\begin{equation}
+AF(\theta)=\sum_{m=0}^{M-1} a_m \exp\!\left(j\left(kdm\sin\theta+\phi_m\right)\right),
+\qquad
+\phi_m^{\star}=-kdm\sin\theta_0,
+\end{equation}
+
+which steers the main lobe toward $\theta_0$ under accurate phase control. In practice, finite receiver FoV, grating-lobe behavior, insertion loss, and channel impairments prevent ideal steering gains from translating directly into reproducible O-ISAC gains.
+
+PIC, programmable photonics, and photonics-assisted signal generation belong here only as enabling substrates beneath these control surfaces, not as a detached component inventory. Their main value is explanatory: they clarify packaging, integration pathway, and hardware-stack feasibility behind OPA/ORIS-style controllability, but they do not yet carry the same headline evidence weight as the primary programmable-surface and beam-steering narratives.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{fig_vi_1.jpg}
+\caption{Section VI enabler landscape across medium classes. The matrix reports canonical corpus concentration by medium while preserving the stricter study-level headline interpretation used earlier for OPA, ORIS, and ML/AI. OPA and ORIS should therefore be read as primary programmable-enabler evidence cores, whereas PIC, photonic generation, and programmable photonics remain supporting substrate families whose contextual traces do not by themselves imply co-equal maturity.}
+\label{fig:enablers-landscape}
+\end{figure*}
+
+\begin{quote}
+\textbf{VI-A takeaway.} OPA evidence is strongest on beam agility and communication-sensing coupling, while ORIS evidence is strongest on alignment robustness and non-line-of-sight support. Quantized control, insertion loss, and refresh latency remain practical bottlenecks, so the most defensible reading is that programmable optics expose a promising but unevenly validated control space.
+\end{quote}
+
+\subsection{Channel Impairments and Robustness}
+\label{sec:enablers-robustness}
+
+Robustness is a first-order concern in O-ISAC because the same optical impairments can degrade communication reliability and sensing fidelity together. Across free-space, visible-light, and hybrid optical settings, the literature repeatedly models end-to-end gain as a composition of deterministic loss, atmospheric or medium turbulence, and pointing or alignment components.
+
+\begin{equation}
+\label{eq:enablers-robustness}
+H = H_l H_a H_p,
+\qquad
+P_{\text{out}}=\Pr\!\left(\gamma(H)<\gamma_{\text{th}}\right)\le \varepsilon.
+\end{equation}
+
+This chance-constrained view links physical impairment statistics directly to reliability targets. The important review-level point is that $\gamma$ must stay tied to one declared detection plane per scenario; the expression does not permit implicit OSNR-to-electrical-SNR conversion or blind pooling of coherent and direct observations.
+
+Practical mitigation therefore combines design-time robustness with runtime adaptation through tracking, refresh control, environment-aware reconfiguration, and fallback or diversity mechanisms. The message is simple: controllability only matters if it remains useful under the actual impairment regime.
+
+\begin{quote}
+\textbf{VI-B takeaway.} Current literature supports robustness-aware optical design, but cross-paper outage definitions and confidence reporting remain heterogeneous. The real question is no longer whether robustness matters, but how to compare robustness claims under a common impairment and reporting contract.
+\end{quote}
+
+\subsection{Joint Co-Design and Resource Optimization}
+\label{sec:enablers-codesign}
+
+Joint co-design is required because waveform, beam, power, and ORIS controls share physical constraints. In IM/DD implementations, feasible signaling must satisfy nonnegativity and optical power bounds, while coherent or programmable settings add quantization, steering, and update constraints.
+
+\begin{equation}
+\label{eq:enablers-feasible-set}
+\mathcal U=\{x(t):x(t)\ge 0,\;\mathbb{E}[x(t)]\le \bar P,\;\max_t x(t)\le P_{\max}\},
+\end{equation}
+
+\begin{equation}
+\label{eq:enablers-objective}
+\max_{\mathbf{w},\Theta,\,x\in\mathcal U}\;\alpha R(\mathbf{w},\Theta)-(1-\alpha)\,\mathrm{CRB}(\mathbf{w},\Theta),\qquad \alpha\in[0,1].
+\end{equation}
+
+The weight $\alpha$ sets the communication-sensing operating point and can be extended with reliability and latency constraints when channel dynamics are explicit. Within this subsection, $\mathrm{CRB}$ is retained as a bound-type sensing term; it should not be read as interchangeable with empirical accuracy metrics such as $\sigma_r$ or with bandwidth-limited resolution terms.
+
+Two maturity caveats must remain visible. First, this section contains more structured OPA and ORIS traces than strong study-level evidence of deliberate full-stack co-design adoption. Second, many reported formulations remain exemplar-driven studies under controlled assumptions rather than reproducibly benchmarked integrated stacks. It is therefore safer to say that the literature exposes a structured control space for co-design than to say that it already establishes mature multi-objective practice.
+
+\begin{quote}
+\textbf{VI-C takeaway.} Evidence is strongest for structured optimization in a limited set of well-specified OPA, DCO-OFDM, and dynamic underwater exemplars. The main gap is not the absence of optimization methods, but the absence of harmonized disclosure of constraints, runtime burden, operating assumptions, and replication quality.
+\end{quote}
+
+\subsection{Experimental Validation, Benchmarking, and Reporting Contract}
+\label{sec:enablers-benchmarking}
+
+The literature now contains both experimental demonstrations and simulation-heavy studies, but cross-paper comparability remains weak because scenario definitions, baselines, and KPI contracts differ. This makes benchmarking the hinge of Section VI: the earlier subsections show that the control space is rich, but this subsection explains why that richness does not automatically translate into cumulative scientific maturity.
+
+\begin{equation}
+\label{eq:enablers-benchmark}
+\mathbf{s}=\{\ell,\,C_n^2,\,\sigma_{\text{jitter}},\,\lambda,\,B,\,N_{\text{ORIS}},\,M_{\text{OPA}},\,\bar P,\,P_{\max},\,T_{\text{update}}\},
+\qquad
+\mathbf{m}=(R,\,\mathrm{BER},\,m_{\text{res}},\,m_{\text{acc}},\,m_{\text{bnd}},\,P_{\text{out}},\,\text{latency},\,\text{energy}).
+\end{equation}
+
+Here $\ell$ denotes link distance, $m_{\text{res}}$ denotes a role-consistent resolution or granularity metric, $m_{\text{acc}}$ denotes an empirical accuracy metric such as $\sigma_r$, and $m_{\text{bnd}}$ denotes a bound-type metric such as $\mathrm{CRB}$ or CRLB. For Section II consistency, $m_{\text{res}}$ may be instantiated by $\Delta r_{\min}$ in bandwidth-limited ranging settings or by $d_z$ in fiber spatial-granularity settings, but these are not interchangeable and should never be collapsed into a single pooled number without task and medium conditioning.
+
+\begin{table*}[!t]
+\caption{Reporting Fields Needed for Reproducible O-ISAC Experiments and Simulations}
+\label{tab:enablers-reporting}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.22\textwidth} >{\raggedright\arraybackslash}p{0.44\textwidth} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Item} & \textbf{Minimum required fields} & \textbf{Why it matters} \\
+\midrule
+Scenario vector disclosure & Full $\mathbf{s}$ values, mobility profile, channel model family & Prevents hidden scenario drift across papers \\
+KPI contract disclosure & Full $\mathbf{m}$ values with units, confidence intervals, and metric-role notes & Supports fair comparison without role aliasing \\
+Baseline taxonomy & At least one separated baseline and one practical baseline & Prevents inflated gains from weak references \\
+Runtime and control budget & Solver runtime, $T_{\text{update}}$, hardware timing, feedback overhead & Distinguishes deployable from offline-only designs \\
+Reproducibility package & Parameter files, script versions, data provenance, random seeds & Enables external replication and audit \\
+Safety and operating envelope & Optical power settings and safety-margin reporting method & Necessary for translation to certified deployments \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{fig_vi_2.jpg}
+\caption{From programmable enablers to deployment-ready O-ISAC. The layered systems map shows how optical enablers, medium-specific impairments, control logic, and benchmark discipline are coupled in Section VI. The deployment and benchmark gate should be read as the hinge that determines whether enabler-level gains remain comparable beyond isolated demonstrations and can be handed off to application-facing synthesis in Section VII.}
+\label{fig:enablers-benchmark}
+\end{figure*}
+
+\begin{quote}
+\textbf{VI-D takeaway.} The strongest immediate need is a shared benchmark contract rather than more isolated case studies. Benchmark discipline is what turns promising enablers into cumulative evidence and determines which claims remain credible once the discussion moves beyond single-link exemplars.
+\end{quote}
+
+\subsection{Networked and Multi-User O-ISAC}
+\label{sec:enablers-networked}
+
+Networked O-ISAC introduces burdens that do not appear in single-link settings: multi-user interference, feedback overhead, sensing-fusion consistency, and coordination delay. The corpus already reports explicit field-of-view and grating-lobe interference effects in multi-user OPA settings, tracking burden growth with user count in mobile ORIS systems, and protocol-level overhead sensitivity in VLC-based networked settings.
+
+\begin{equation}
+\label{eq:enablers-networked}
+\max_{\{\mathbf{w}_k\},\Theta}\;\sum_{k}\omega_k\log\!\left(1+\mathrm{SINR}_k\right)-\lambda\,\mathrm{CRB}(\Theta)
+\quad
+\text{s.t.}\quad \sum_k\|\mathbf{w}_k\|_2^2\le P,\quad \theta_n\in\mathcal Q.
+\end{equation}
+
+This formulation makes communication, sensing, and ORIS quantization constraints explicit in one multi-user program. Its interpretation still requires fixed detection semantics for $\mathrm{SINR}_k$ and a role-consistent sensing objective rather than a mixed resolution-accuracy score. More importantly for the review narrative, this subsection is where Section VI begins to connect directly to Section VII: once user count, fusion policy, fairness, and control overhead become dominant, the question becomes whether a deployment setting can absorb the coordination cost.
+
+\begin{quote}
+\textbf{VI-E takeaway.} Multi-user optical O-ISAC is supported by a growing set of targeted studies, but network-level overhead metrics, control-plane timing, and cooperative benchmark contracts remain under-standardized.
+\end{quote}
+
+\subsection{AI/ML and Security-Aware Adaptation}
+\label{sec:enablers-ai-security}
+
+AI-assisted adaptation and security-aware design are emerging layers in O-ISAC, especially in dynamic channels where static policies may underperform. At the study-level tag view established earlier in the manuscript, machine learning appears frequently, but only a limited subset supports direct interpretation as reproducible adaptation or security-aware control in Section VI. The available literature therefore contains targeted reports of learning-driven adaptation together with secrecy, authentication, and resilience formulations, but jointly validated AI-plus-security optical benchmarks remain limited.
+
+\begin{equation}
+\label{eq:enablers-secrecy}
+R_s=[R_b-R_e]^+,
+\end{equation}
+
+\begin{equation}
+\label{eq:enablers-robust-ai}
+\max_{\mathbf{u}}\;\min_{a\in\mathcal A}\;\alpha R(\mathbf{u})+\beta R_s(\mathbf{u},a)-(1-\alpha-\beta)\,\mathrm{CRB}(\mathbf{u}),
+\qquad
+\alpha\ge 0,\;\beta\ge 0,\;\alpha+\beta\le 1.
+\end{equation}
+
+Here $\mathbf{u}$ includes transmitter and ORIS controls inherited from the unified model. This framing captures the central tension of the subsection: adaptation gains are only meaningful if they survive uncertainty, overhead, and adversarial pressure rather than only nominal channels. In most cases, the current evidence should be read as focused demonstrations of learning or secrecy mechanisms, not yet as reproducible proof of mature end-to-end AI-secure O-ISAC stacks.
+
+This is also the place where maturity asymmetry must remain visible. OPA and ORIS mechanics are presently better evidenced than long-horizon AI adaptation, trust, and adversarial robustness under reproducible protocols. That should be written as a maturity signal, not as a dismissal of the topic, because it helps keep Section VIII grounded later in the manuscript.
+
+\begin{quote}
+\textbf{VI-F takeaway.} AI/ML and security are relevant emerging directions in optical O-ISAC, but current evidence is uneven and should be synthesized cautiously. The field still needs reproducible attack models, overhead-aware reporting, and benchmark-quality evaluation of adaptation under domain shift before strong maturity claims are warranted.
+\end{quote}
+
+\subsection{Section VI Synthesis and Transition}
+\label{sec:enablers-synthesis}
+
+Taken together, VI-A to VI-F suggest that one of the main bottlenecks in optical ISAC is no longer the absence of promising enablers, but the absence of stable reporting and benchmarking contracts that let the community compare those enablers under common assumptions. OPA and ORIS broaden controllability, robustness models determine whether that controllability survives real channels, co-design methods organize the resulting trade space, benchmarking decides which gains are actually comparable, and networked plus adaptive layers reveal what is required for deployment-facing viability.
+
+Supporting substrate themes such as PIC and photonic integration help explain how these levers may be packaged, but they currently play a secondary interpretive role rather than carrying the section's strongest evidence claims. The practical conclusion is deliberately modest: optical enablers are promising and increasingly structured, but their reported benefits remain scenario-dependent until the community adopts common contracts for control overhead, update latency, benchmark assumptions, and sensing-quality definition.
+
+\begin{quote}
+\textbf{Section VI lesson.} The field already contains promising enablers, but reproducible comparison is still the limiting factor. Section VII can therefore focus on which deployment patterns can absorb these coupled design choices in a defensible way.
+\end{quote}

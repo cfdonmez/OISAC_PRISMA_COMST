@@ -12,7 +12,7 @@
 - goldenModel.md: enforce gap-selling logic and evidence traceability; avoid legacy script-derived claims.
 
 ## 2) Data fields found in extraction_results_v4
-Source: data/extraction_results_v4/extraction_v4_unified.json (221 records) joined with data/processed_markdowns/O_ISAC_* by Paper_ID.
+Source: data/ext_res_v4/extraction_v4_unified.json (221 records) joined with data/proc_markdowns/O_ISAC_* by Paper_ID.
 - study_level.bibliographic.year
 - study_level.classification.oisac_medium_class
 - study_level.application.application_domain

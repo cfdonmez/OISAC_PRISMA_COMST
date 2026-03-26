@@ -1,0 +1,501 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_070",
+    "title": "UAV-Assisted Communications With RF Energy Harvesting: A Comprehensive Survey",
+    "authors": [
+        "Gaurav Kumar Pandey",
+        "Devendra Singh Gurjar",
+        "Suneel Yadav",
+        "Yuming Jiang",
+        "Chau Yuen"
+    ],
+    "affiliation": "NIT Silchar India, IIIT Allahabad India, NTNU Norway, NTU Singapore",
+    "year_online": "2024",
+    "year_issue": "2025",
+    "source_path": "data/corp_std/COMST_070/COMST_070.md",
+    "domain": "UAV Communications / RF Energy Harvesting / SWIPT / B5G Wireless Networks",
+    "paper_type": "Comprehensive Survey with Analytical Modeling",
+    "analysis_policy": {
+        "focus": "Extract UAV-EH integration taxonomy, SWIPT receiver architectures, and state-of-the-art technique categorization",
+        "depth": "Full paper analysis including 10 sections and extensive literature tables"
+    },
+    "document_stats": {
+        "total_lines": 1724,
+        "total_bytes": 430620,
+        "section_count": 10,
+        "figure_count": 38,
+        "table_count": 14,
+        "reference_count": 300
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-X)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "UAV": "Unmanned Aerial Vehicle",
+            "RF-EH": "Radio Frequency Energy Harvesting",
+            "SWIPT": "Simultaneous Wireless Information and Power Transfer",
+            "WPT": "Wireless Power Transfer",
+            "WPCN": "Wireless-Powered Communication Network",
+            "TS": "Time-Switching",
+            "PS": "Power-Splitting",
+            "A2G": "Air-to-Ground",
+            "HAP": "Higher-Altitude Platform",
+            "LAP": "Lower-Altitude Platform",
+            "NOMA": "Non-Orthogonal Multiple Access",
+            "m-MIMO": "Massive MIMO",
+            "MEC": "Mobile Edge Computing",
+            "BSC": "Backscatter Communication",
+            "AmBSC": "Ambient Backscatter Communication"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_positioning",
+            "subsections": [
+                "Review of Existing Surveys",
+                "Contributions of This Paper",
+                "Organization of This Paper"
+            ],
+            "summary": "Motivates RF-EH integration with UAV communications for B5G networks. Provides two detailed comparison tables (Table II, III) contrasting prior surveys.",
+            "key_claims": [
+                "IoT connections projected to grow from 15.7B (2023) to 38.9B (2029)",
+                "UAV's SWAP constraints limit operational duration",
+                "First comprehensive survey on RF-EH for diverse UAV-enabled communications",
+                "Covers standardization, industrial developments, and channel modeling"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "UAV Communications: Preliminaries, Developments, and Challenges",
+            "role": "foundational_taxonomy",
+            "subsections": [
+                "UAVs Taxonomy",
+                "UAV Standardization",
+                "Industrial Developments",
+                "Design and Deployment Challenges"
+            ],
+            "summary": "Comprehensive UAV taxonomy by flying mechanism, payload, altitude, power source. Details 3GPP Rel-15/17/18 standards, IEEE/ITU standards. Lists industrial projects (Google Loon, Amazon Prime Air, Nokia F-cell, etc.).",
+            "key_claims": [
+                "UAVs classified by: physics (fixed/rotary/hybrid), payload, altitude (HAP/LAP), power source, tethering",
+                "3GPP Rel-17 specifies CCC modes and KPIs for UAV services",
+                "UAV market expected to grow from $26.2B (2022) to $38.3B (2027)",
+                "Energy constraints split into communication and propulsion energy"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "EH Techniques: Preliminaries and Developments",
+            "role": "technical_foundations",
+            "subsections": [
+                "Early Approach Towards EH",
+                "EH From RF Signals",
+                "SWIPT",
+                "Research Projects and Industrial Developments"
+            ],
+            "summary": "Comprehensive EH technique taxonomy (solar, thermal, mechanical, RF) in Table VI. Details RF-EH receiver architectures: separate, TS, PS, antenna switching, hybrid TS-PS. Lists EH-based research projects.",
+            "key_claims": [
+                "RF-EH power density: μW-mW range with 50-75% conversion efficiency",
+                "Dedicated vs ambient RF sources categorization",
+                "Four SWIPT receiver architectures: separate, TS, PS, antenna switching",
+                "Hybrid TS-PS outperforms individual protocols at different SNR regimes"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "EH With UAV Communications",
+            "role": "analytical_modeling",
+            "subsections": [
+                "RF-EH Empowered UAV Communications",
+                "UAV-Enabled RF-EH"
+            ],
+            "summary": "Original analytical modeling with composite Nakagami-m/shadowing channel. Derives OP, ST, EE expressions. Provides numerical insights on PS factor optimization.",
+            "key_claims": [
+                "Two scenarios: EH-empowered UAV vs UAV-enabled EH",
+                "Composite channel: Nakagami-m + log-normal shadowing",
+                "OP minimum at β=0.45-0.65 PS factor range",
+                "Higher target rates require lower optimal β values"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "EH in UAV Communications With Physical Layer Techniques",
+            "role": "state_of_art_review_1",
+            "subsections": [
+                "Massive-MIMO",
+                "NOMA",
+                "Backscatter Communications",
+                "Multi-User",
+                "Multi-UAV/Swarm",
+                "PHY-Security"
+            ],
+            "summary": "Extensive literature review organized by physical layer technique. Each subsection has summary table + key insights.",
+            "key_claims": [
+                "m-MIMO UAVs reduce interference through 3D beamforming",
+                "NOMA-empowered UAVs leverage SIC and superposition coding",
+                "AmBSCs enable μW power consumption for IoT devices",
+                "Multi-UAV swarms improve coverage but face collision avoidance challenges"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "EH in UAV-Enabled Communication Networks",
+            "role": "state_of_art_review_2",
+            "subsections": [
+                "Cooperative Relaying",
+                "Cognitive Radio Networks",
+                "Satellite-Aerial-Terrestrial Networks",
+                "IoT Networks"
+            ],
+            "summary": "Literature categorized by network type with summary tables. Covers DF/AF relaying, spectrum sensing, LEO/GEO SATN integration.",
+            "key_claims": [
+                "DF outperforms AF at high SNR; AF more robust at low SNR",
+                "CRNs enable spectrum-efficient UAV communications",
+                "SATNs provide global coverage with reduced latency via UAV middle layer",
+                "IoT-UAV integration addresses remote sensing and data collection"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "EH in UAV Communications With Advanced Computing Technologies",
+            "role": "state_of_art_review_3",
+            "subsections": [
+                "Mobile Edge Computing"
+            ],
+            "summary": "Analysis of MEC integration with EH-UAV communications for task offloading and computation.",
+            "key_claims": [
+                "UAV-MEC reduces latency for computation-intensive IoT tasks",
+                "Joint EH and computation offloading optimization required"
+            ]
+        },
+        {
+            "section_id": "VIII",
+            "title": "EH in UAV Communications With ML/AI Algorithms",
+            "role": "state_of_art_review_4",
+            "subsections": [
+                "Deep Reinforcement Learning",
+                "Federated Learning"
+            ],
+            "summary": "ML/AI techniques for trajectory optimization, resource allocation, and EH parameter tuning.",
+            "key_claims": [
+                "DRL solves high-dimensional trajectory optimization",
+                "Federated learning enables privacy-preserving UAV coordination"
+            ]
+        },
+        {
+            "section_id": "IX",
+            "title": "Future Research Directions",
+            "role": "future_directions",
+            "summary": "Identifies open challenges: RIS integration, THz communication, security, standardization, sustainable UAV design.",
+            "key_claims": [
+                "RIS-UAV integration for enhanced EH and coverage",
+                "THz bands for high-capacity UAV fronthaul",
+                "Blockchain for secure UAV coordination"
+            ]
+        },
+        {
+            "section_id": "X",
+            "title": "Conclusion",
+            "role": "synthesis",
+            "summary": "Summarizes RF-EH as viable solution for UAV power constraints; emphasizes need for continued standardization and practical implementations."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Provide comprehensive survey on RF-EH techniques for UAV-enabled communications with taxonomy, standardization, analytical modeling, and state-of-the-art review",
+        "delivery_mechanism": "Progressive structure from fundamentals through analytical modeling to categorized literature review with key insights",
+        "unique_contribution": "First survey combining UAV taxonomy, 3GPP standardization, RF-EH receiver architectures, original analytical modeling, and comprehensive state-of-the-art categorization"
+    },
+    "taxonomy": {
+        "type": "multi_dimensional_hierarchical",
+        "root_concept": "UAV-Assisted RF-EH Communications",
+        "primary_dimensions": [
+            {
+                "dimension": "UAV Classification",
+                "categories": [
+                    "Fixed-wing",
+                    "Rotary-wing",
+                    "Hybrid"
+                ],
+                "attributes": [
+                    "Payload (micro/small/medium/large)",
+                    "Altitude (HAP/LAP)",
+                    "Power source",
+                    "Tethering"
+                ]
+            },
+            {
+                "dimension": "EH Techniques",
+                "categories": [
+                    "Solar",
+                    "Thermal",
+                    "Mechanical",
+                    "RF"
+                ],
+                "power_density_ranges": [
+                    "Solar: 7-26.7 mW/cm²",
+                    "Thermal: 14 μW/cm²",
+                    "RF: μW-mW"
+                ]
+            },
+            {
+                "dimension": "SWIPT Receiver Architectures",
+                "categories": [
+                    "Separate Receiver",
+                    "Time-Switching",
+                    "Power-Splitting",
+                    "Antenna Switching",
+                    "Hybrid TS-PS"
+                ],
+                "parameters": [
+                    "α (TS factor)",
+                    "β (PS factor)"
+                ]
+            },
+            {
+                "dimension": "State-of-the-Art Techniques",
+                "categories": [
+                    "Physical Layer",
+                    "Communication Networks",
+                    "Advanced Computing",
+                    "ML/AI"
+                ],
+                "physical_layer": [
+                    "m-MIMO",
+                    "NOMA",
+                    "BSC",
+                    "Multi-User",
+                    "Multi-UAV",
+                    "PHY-Security"
+                ],
+                "networks": [
+                    "Cooperative Relaying",
+                    "CRN",
+                    "SATN",
+                    "IoT"
+                ],
+                "computing": [
+                    "MEC"
+                ],
+                "ml_ai": [
+                    "DRL",
+                    "FL"
+                ]
+            }
+        ]
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "Outage Probability (OP)",
+            "System Throughput (ST)",
+            "Energy Efficiency (EE)",
+            "Secrecy Outage Probability (SOP)",
+            "Secrecy Rate",
+            "Coverage Probability",
+            "Flight Duration"
+        ],
+        "analytical_modeling": {
+            "channel_model": "Composite Nakagami-m + log-normal shadowing",
+            "path_loss_model": "Elevation angle-dependent probabilistic LoS/NLoS",
+            "key_equations": [
+                "P(v) = Av³ + B/v (fixed-wing propulsion)",
+                "Hybrid TS-PS EH formulation"
+            ]
+        },
+        "comparison_tables": [
+            {
+                "table_ref": "Table II",
+                "purpose": "Compare prior surveys (2018-2022) on UAV/EH key technologies"
+            },
+            {
+                "table_ref": "Table III",
+                "purpose": "Compare recent surveys (2023-2024) on EH-UAV key technologies"
+            },
+            {
+                "table_ref": "Table VI",
+                "purpose": "Summarize EH methods with power density and applications"
+            },
+            {
+                "table_ref": "Table VII",
+                "purpose": "Experimental RF-EH results in different scenarios"
+            },
+            {
+                "table_ref": "Tables IX-XIV",
+                "purpose": "Per-subsection literature summaries with problem categories and optimization objectives"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "application_overview",
+                "example": "Fig. 1 - UAV-aided communication networks for various applications",
+                "purpose": "Show diverse UAV application scenarios"
+            },
+            {
+                "type": "taxonomy_comparison",
+                "example": "Fig. 3 - Comparison of different UAVs based on various attributes",
+                "purpose": "Multi-attribute UAV taxonomy visualization"
+            },
+            {
+                "type": "receiver_architecture",
+                "example": "Fig. 10 - Different receiver architectures for SWIPT",
+                "purpose": "Four SWIPT receiver types with block diagrams"
+            },
+            {
+                "type": "system_model",
+                "example": "Fig. 12 - System model for energy constrained UAV-assisted network",
+                "purpose": "Analytical modeling setup with transmission block"
+            },
+            {
+                "type": "performance_curves",
+                "example": "Figs. 13-15 - OP/ST/EE vs β curves",
+                "purpose": "Numerical insights from analytical modeling"
+            },
+            {
+                "type": "subsystem_architecture",
+                "example": "Figs. 17-20 - m-MIMO/NOMA/BSC/Multi-UAV system models",
+                "purpose": "Per-subsection technical illustrations"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Four-tier categorization: Physical Layer → Networks → Computing → ML/AI",
+        "key_paradigm": "RF-EH enables sustainable UAV operations; UAVs enable RF-EH for remote IoT",
+        "gap_identification": [
+            "RIS integration with EH-UAV systems",
+            "THz communication for UAV fronthaul",
+            "Practical non-linear EH receiver models",
+            "Security for multi-UAV swarm coordination",
+            "Standardization for RF-EH protocols"
+        ],
+        "future_recommendations": [
+            "Joint trajectory and EH parameter optimization with DRL",
+            "RIS-assisted EH-UAV for coverage enhancement",
+            "Blockchain-based secure UAV coordination",
+            "Integrated sensing and communication for UAVs"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Comprehensive survey with original analytical modeling and categorized literature review",
+        "source_selection": "~300 references covering UAV communications, EH techniques, and B5G technologies",
+        "distinguishing_features": [
+            "Two-table survey comparison (historical + recent)",
+            "Original analytical modeling with OP/ST/EE derivations",
+            "Per-subsection Key Insights synthesis",
+            "Extensive per-technique literature tables with problem categories",
+            "Industrial developments and standardization coverage"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with analytical depth",
+        "rhetorical_patterns": [
+            "Taxonomy-first organization",
+            "Table-driven survey comparison",
+            "Per-section Key Insights synthesis",
+            "Problem-category literature classification",
+            "Numerical insight derivation"
+        ],
+        "characteristic_phrases": [
+            "Key Insights of This Section:",
+            "Contemporary Research Endeavors:",
+            "With this regard...",
+            "In this direction..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Dual Survey Comparison Tables",
+            "description": "Use two comparison tables: one for historical surveys (5+ years) and one for recent surveys (1-2 years) to show both evolution and current gap",
+            "structure": [
+                "Table II: Historical surveys (2018-2022) with technology coverage matrix",
+                "Table III: Recent surveys (2023-2024) with specific gap identification",
+                "Narrative explaining how prior works differ from 'This work'"
+            ],
+            "example_application": "Tables II and III comparing 11 prior surveys with checkmark technology coverage",
+            "rhetorical_effect": "Demonstrates comprehensive prior art knowledge; clearly positions contribution; shows field maturity",
+            "complexity": "Medium - requires extensive literature cataloging"
+        },
+        {
+            "recipe_name": "Key Insights Synthesis Per Subsection",
+            "description": "End each technical subsection with explicit bullet-point 'Key Insights' summarizing actionable takeaways",
+            "structure": [
+                "After Contemporary Research Endeavors narrative",
+                "Add explicit heading '2) Key Insights of This Section:'",
+                "4-5 bullet points synthesizing lessons learned",
+                "Focus on what readers should remember, not just what was discussed"
+            ],
+            "example_application": "Every subsection in Sections V-VIII ends with Key Insights",
+            "rhetorical_effect": "Enables quick scanning; provides clear takeaways; aids dissertation-style reading",
+            "complexity": "Low - requires synthesis mindset during writing"
+        },
+        {
+            "recipe_name": "Problem Category Literature Tables",
+            "description": "For each technique category, create a table classifying works by problem category, solving technique, and optimization objectives",
+            "structure": [
+                "Columns: Works, Model, Problem Category/Technique, Objective columns (trajectory/attributes/throughput/outages), Protocol",
+                "One row per cited work with concise descriptors",
+                "Checkmarks for optimization objectives covered"
+            ],
+            "example_application": "Tables IX-XIV for NOMA, BSC, Multi-User, Multi-UAV, PHY-Security",
+            "rhetorical_effect": "Enables quick reference; shows breadth of coverage; facilitates gap identification",
+            "complexity": "High - requires systematic literature classification"
+        },
+        {
+            "recipe_name": "Original Analytical Modeling Section",
+            "description": "Include a dedicated section with original analytical modeling using representative system model to provide fresh numerical insights",
+            "structure": [
+                "Define system model with figure",
+                "State channel model assumptions",
+                "Derive key metrics (OP, ST, EE) mathematically",
+                "Present numerical results with multiple parameter sweeps",
+                "Draw insights about optimal parameter ranges"
+            ],
+            "example_application": "Section IV with composite channel model and OP/ST/EE derivations",
+            "rhetorical_effect": "Demonstrates technical depth; provides actionable numerical insights; distinguishes from pure literature surveys",
+            "complexity": "High - requires mathematical derivation skills"
+        },
+        {
+            "recipe_name": "Four-Tier State-of-the-Art Categorization",
+            "description": "Organize state-of-the-art review into four distinct tiers: Physical Layer → Networks → Computing → ML/AI",
+            "structure": [
+                "Section V: Physical layer techniques (MIMO, NOMA, PHY-security)",
+                "Section VI: Network types (relaying, CRN, SATN, IoT)",
+                "Section VII: Computing technologies (MEC, fog)",
+                "Section VIII: ML/AI algorithms (DRL, FL)",
+                "Each tier with subsections, tables, and key insights"
+            ],
+            "example_application": "Sections V-VIII organized by technology abstraction layer",
+            "rhetorical_effect": "Provides clear navigation; separates concerns; enables modular reading",
+            "complexity": "Medium - requires careful categorization"
+        },
+        {
+            "recipe_name": "UAV-EH Dual Scenario Framing",
+            "description": "Frame the survey around two symmetric scenarios: 'Technology-empowered UAV' and 'UAV-enabled Technology'",
+            "structure": [
+                "Scenario 1: RF-EH empowered UAV (UAV harvests energy)",
+                "Scenario 2: UAV-enabled RF-EH (UAV transmits energy to devices)",
+                "Map each literature work to one of the two scenarios",
+                "Use scenario distinction in table classifications"
+            ],
+            "example_application": "Section IV distinguishes EH-empowered UAV vs UAV-enabled EH",
+            "rhetorical_effect": "Provides symmetric framework; enables comprehensive coverage; clarifies paper positioning",
+            "complexity": "Low - requires clear scenario definition"
+        }
+    ],
+    "key_concepts": {
+        "rf_eh_uav_integration": "Fusion of RF-EH techniques with UAV communications to address onboard power constraints and enable sustainable aerial platforms",
+        "swipt": "Technique enabling simultaneous wireless information and power transfer through TS, PS, or hybrid receiver architectures",
+        "composite_channel": "A2G channel model combining Nakagami-m fading with log-normal shadowing and probabilistic LoS/NLoS"
+    },
+    "quality_flags": {
+        "comprehensive_survey": true,
+        "original_analytical_modeling": true,
+        "dual_survey_comparison": true,
+        "per_subsection_key_insights": true,
+        "extensive_literature_tables": true,
+        "industrial_developments_covered": true,
+        "standardization_covered": true,
+        "approximately_300_references": true
+    }
+}

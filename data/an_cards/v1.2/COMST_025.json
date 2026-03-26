@@ -1,0 +1,740 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_025",
+  "title": "A Systematic Survey on Security in Anonymity Networks: Vulnerabilities, Attacks, Defenses, and Formalization",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi",
+  "domain": "Security in anonymity networks (Tor, I2P, Freenet)",
+  "source_path": "data/corp_std/COMST_025/COMST_025.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Span tags retained; nomenclature excluded."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 45170,
+    "approx_token_count_total": null,
+    "equation_count_est": 597,
+    "figure_count_est": 46,
+    "table_count_est": 12,
+    "list_count_est": 39,
+    "citation_count_in_body_est": 214,
+    "citation_density_per_1k_words_est": 4.7,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "unknown",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction",
+        "A. Motivation",
+        "B. Our Contributions",
+        "C. Comparisons With Other Works",
+        "D. Scope of the Survey"
+      ],
+      "objective": "Motivate security issues in anonymity networks, state contributions, compare with prior works, and define scope.",
+      "key_components": [
+        "Importance of anonymity networks (Tor, I2P, Freenet)",
+        "Motivation for security survey",
+        "Contribution list",
+        "Comparison with related surveys",
+        "Scope boundaries"
+      ],
+      "approx_word_share_pct": "7-9",
+      "approx_words_est": 5073,
+      "positioning": {
+        "start_doc_progress_pct_est": 2,
+        "end_doc_progress_pct_est": 17
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Contains explicit comparison with other works and scope subsection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States contributions and compares with other works.",
+          "locator": {
+            "heading": "B. Our Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L107-L140"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. BACKGROUND",
+        "A. Tor",
+        "B. I2P",
+        "C. Freenet",
+        "D. Other Notable Anonymity Networks",
+        "E. Formal Security",
+        "F. Survey Methodology"
+      ],
+      "objective": "Provide background on major anonymity networks and formal security concepts; describe survey methodology.",
+      "key_components": [
+        "Tor overview",
+        "I2P overview",
+        "Freenet overview",
+        "Other anonymity networks",
+        "Formal security notions",
+        "Survey methodology"
+      ],
+      "approx_word_share_pct": "12-14",
+      "approx_words_est": 6266,
+      "positioning": {
+        "start_doc_progress_pct_est": 17,
+        "end_doc_progress_pct_est": 32
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Includes survey methodology within background"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers Tor, I2P, Freenet, other networks, and formal security.",
+          "locator": {
+            "heading": "II. BACKGROUND",
+            "paragraph_index_est": 1,
+            "line_range_est": "L161-L333"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. VULNERABILITIES IN ANONYMITY NETWORKS",
+        "A. Protocol Vulnerabilities in Tor",
+        "B. Metadata Leakage in Tor",
+        "C. Overlay Nature in Tor",
+        "D. Vulnerabilities in I2P and Freenet"
+      ],
+      "objective": "Survey vulnerability types across Tor, I2P, and Freenet.",
+      "key_components": [
+        "Protocol vulnerabilities",
+        "Metadata leakage",
+        "Overlay nature weaknesses",
+        "Non-Tor vulnerabilities"
+      ],
+      "approx_word_share_pct": "12-14",
+      "approx_words_est": 4638,
+      "positioning": {
+        "start_doc_progress_pct_est": 32,
+        "end_doc_progress_pct_est": 42
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Separates Tor-specific from other network vulnerabilities"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details protocol, metadata, overlay vulnerabilities and those in I2P/Freenet.",
+          "locator": {
+            "heading": "III. VULNERABILITIES IN ANONYMITY NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L341-L472"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. ATTACKS IN ANONYMITY NETWORKS",
+        "A. Protocol Attacks in Tor",
+        "B. WF Attacks in Tor",
+        "C. AS/State-Level Adversary Attacks in Tor",
+        "D. Attacks in I2P and Freenet"
+      ],
+      "objective": "Survey attacks on anonymity networks, grouped by target and network.",
+      "key_components": [
+        "Protocol attacks in Tor",
+        "Website fingerprinting (WF) attacks",
+        "AS/state-level adversary attacks",
+        "Attacks on I2P/Freenet"
+      ],
+      "approx_word_share_pct": "18-20",
+      "approx_words_est": 8393,
+      "positioning": {
+        "start_doc_progress_pct_est": 42,
+        "end_doc_progress_pct_est": 59
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Attack taxonomy mirrors vulnerability split; Tor dominates coverage"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers protocol, WF, AS/state adversary attacks in Tor and attacks in I2P/Freenet.",
+          "locator": {
+            "heading": "IV. ATTACKS IN ANONYMITY NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L496-L691"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. DEFENSES IN ANONYMITY NETWORKS",
+        "A. Defenses Against Protocol Attacks in Tor",
+        "B. WF Defense in Tor",
+        "C. Defenses Against AS/State-Level Adversary in Tor",
+        "D. Defenses Against Attacks in I2P and Freenet"
+      ],
+      "objective": "Review defenses for anonymity networks aligned with attack categories.",
+      "key_components": [
+        "Protocol defenses",
+        "WF defenses",
+        "AS/state-level defenses",
+        "I2P/Freenet defenses"
+      ],
+      "approx_word_share_pct": "16-18",
+      "approx_words_est": 7079,
+      "positioning": {
+        "start_doc_progress_pct_est": 59,
+        "end_doc_progress_pct_est": 75
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Defense taxonomy mirrors attack taxonomy for alignment"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Describes defenses against protocol, WF, AS/state attacks in Tor and attacks in I2P/Freenet.",
+          "locator": {
+            "heading": "V. DEFENSES IN ANONYMITY NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L707-L871"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "VI. FORMAL SECURITY IN ANONYMITY NETWORKS",
+        "A. The Importance of Formal Security",
+        "B. Formal Security for Anonymity Networks",
+        "C. Formal Security for AS/State-Level Adversary",
+        "D. Formal Security for Other Emerging Attacks"
+      ],
+      "objective": "Discuss formal security notions and analyses for anonymity networks.",
+      "key_components": [
+        "Importance of formal security",
+        "Formal security for anonymity networks",
+        "AS/state adversary formalization",
+        "Emerging attack formalization"
+      ],
+      "approx_word_share_pct": "9-11",
+      "approx_words_est": 5050,
+      "positioning": {
+        "start_doc_progress_pct_est": 75,
+        "end_doc_progress_pct_est": 89
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "gap",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Formal security gets its own section after defenses"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers formal security importance and methods for anonymity networks and adversaries.",
+          "locator": {
+            "heading": "VI. FORMAL SECURITY IN ANONYMITY NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L881-L969"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VII. CHALLENGES AND FUTURE DIRECTIONS",
+        "A. Comprehensive and Continuous Security Analysis",
+        "B. Emerging Attacks in Anonymity Networks",
+        "C. Insufficient Defenses in Anonymity Networks",
+        "D. Insufficient Formal Methods for Anonymity Networks",
+        "E. Other Research Directions",
+        "F. Evolution Trends"
+      ],
+      "objective": "List challenges and future directions for anonymity network security and formalization.",
+      "key_components": [
+        "Need for continuous analysis",
+        "Emerging attacks",
+        "Defense gaps",
+        "Formal methods gaps",
+        "Other directions and evolution"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": 5534,
+      "positioning": {
+        "start_doc_progress_pct_est": 89,
+        "end_doc_progress_pct_est": 97
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Challenge themes tied to earlier sections (attacks, defenses, formalization)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Identifies challenges including continuous analysis, emerging attacks, defense and formal method gaps, evolution trends.",
+          "locator": {
+            "heading": "VII. CHALLENGES AND FUTURE DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L985-L1059"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VIII. CONCLUSION"
+      ],
+      "objective": "Summarize survey and restate future needs.",
+      "key_components": [
+        "Recap vulnerabilities/attacks/defenses/formal security",
+        "Pointers to future directions"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 133,
+      "positioning": {
+        "start_doc_progress_pct_est": 97,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Very brief conclusion"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Restates survey coverage and future directions.",
+          "locator": {
+            "heading": "VIII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L1068-L1072"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights importance of anonymity networks and emerging security threats.",
+      "locator": "L20-L60"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States that existing surveys lack comprehensive coverage of vulnerabilities, attacks, defenses, and formalization.",
+      "locator": "L107-L140"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges prior surveys but notes incomplete scope.",
+      "locator": "L123-L157"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions explicitly.",
+      "locator": "L107-L157"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "States survey structure and scope.",
+      "locator": "L157-L161"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on vulnerabilities, attacks, defenses, and formalization for Tor/I2P/Freenet.",
+      "locator": "L157-L161"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate and scope; provide background; survey vulnerabilities; survey attacks; survey defenses; discuss formal security; list challenges; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by security stage and network",
+    "axes": [
+      "Security stage (vulnerabilities, attacks, defenses, formalization)",
+      "Network (Tor, I2P, Freenet, others)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 8,
+    "branches": [
+      "Tor vulnerabilities/attacks/defenses",
+      "I2P vulnerabilities/attacks/defenses",
+      "Freenet vulnerabilities/attacks/defenses",
+      "Formal security analyses"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "anonymity",
+      "performance/latency",
+      "robustness",
+      "resistance to specific attacks"
+    ],
+    "tradeoff_axes": [
+      "anonymity vs performance",
+      "security vs overhead"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L881-L969"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Background uses figures/tables to explain networks; vulnerability/attack/defense sections include tables and figures; formal security and challenges are text-heavy.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "taxonomy",
+        "purpose": "show survey scope and taxonomy across networks",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 20
+        },
+        "evidence_locator": "L163-L259"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "compare this survey to prior works",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 10
+        },
+        "evidence_locator": "L123-L157"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Vulnerabilities section",
+        "lesson": "Different layers (protocol, metadata, overlay) expose distinct weaknesses in Tor vs I2P/Freenet.",
+        "locator": "L341-L472"
+      },
+      {
+        "location": "Attacks section",
+        "lesson": "Attack taxonomy mirrors vulnerabilities; WF and AS-level adversaries dominate Tor threats.",
+        "locator": "L500-L691"
+      },
+      {
+        "location": "Defenses section",
+        "lesson": "Defense strategies map to attack types; Tor has richer defenses than I2P/Freenet.",
+        "locator": "L707-L871"
+      },
+      {
+        "location": "Formal security section",
+        "lesson": "Formal methods remain limited; need stronger models for AS/state adversaries and emerging attacks.",
+        "locator": "L881-L969"
+      },
+      {
+        "location": "Challenges section",
+        "lesson": "Future work spans continuous analysis, emerging attacks, defense gaps, formal method gaps, and evolution trends.",
+        "locator": "L985-L1059"
+      }
+    ],
+    "aha_moment": "Keeping vulnerabilities, attacks, defenses, and formal security aligned by network yields a coherent map for addressing anonymity network threats."
+  },
+
+  "methodology": {
+    "survey_method": "systematic",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Open with theme and network scope, then enumerate subcategories with figures/tables as needed.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "medium",
+    "list_density_per_1k_words_est": 0.9,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "Furthermore",
+      "Finally"
+    ],
+    "definition_density_est": "medium"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Intro gap + comparison table",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "State motivation for security in anonymity networks.",
+        "List contributions.",
+        "Add a comparison table versus prior surveys.",
+        "Define survey scope explicitly."
+      ],
+      "why_it_works": "Combines authority building with clear scope.",
+      "evidence_locators": [
+        "L107-L157"
+      ]
+    },
+    {
+      "title": "Network background before threats",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Brief each target network (Tor, I2P, Freenet, others).",
+        "Introduce formal security notions.",
+        "Describe survey methodology.",
+        "Use visuals/tables to anchor understanding."
+      ],
+      "why_it_works": "Gives readers context before vulnerability/attack taxonomies.",
+      "evidence_locators": [
+        "L161-L333"
+      ]
+    },
+    {
+      "title": "Aligned vulnerability/attack/defense taxonomy",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "List vulnerabilities by layer and network.",
+        "Mirror attack taxonomy to vulnerabilities.",
+        "Mirror defense taxonomy to attacks.",
+        "Highlight gaps per network."
+      ],
+      "why_it_works": "Alignment simplifies cross-reference and gap spotting.",
+      "evidence_locators": [
+        "L341-L871"
+      ]
+    },
+    {
+      "title": "Challenges tied to prior gaps",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List challenges per theme (analysis, attacks, defenses, formal methods, evolution).",
+        "Tie each challenge back to earlier gaps.",
+        "Keep subsections concise."
+      ],
+      "why_it_works": "Maintains continuity from survey to future work.",
+      "evidence_locators": [
+        "L985-L1059"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "OCR artifacts in tables and figures"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; Tor coverage dominates. Figures/tables across background and security sections; formal methods coverage relatively brief."
+}

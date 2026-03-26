@@ -1,0 +1,156 @@
+{
+  "run_id": "20260102_102725_O_ISAC_119_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102725",
+  "paper_id": "O_ISAC_119",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a W-band fiber-wireless link with integrated sensing and communication functions enabled by electromagnetic polarization multiplexing. The system uses asymmetrical single-sideband modulation along with optical heterodyne up-conversion to generate ultra-wideband sensing and communication waveforms in W-band. The electromagnetic polarization multiplexing allows the radar and communication signals to operate in a co-time and co-frequency (CTCF) mode without time-frequency competition."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism is based on electromagnetic polarization multiplexing, which enables the radar and communication signals to operate in a CTCF mode without time-frequency competition. The ISAC coupling mode is achieved through the use of two orthogonal electromagnetic polarizations, allowing the sensing and communication signals to transmit simultaneously without interference."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the spatial resolution of up to 15 mm and data rate as high as 92 Gbit/s, are physically consistent with the system's design and capabilities. The use of electromagnetic polarization multiplexing and asymmetrical single-sideband modulation enables the generation of ultra-wideband sensing and communication waveforms, which can support high-resolution sensing and high-data-rate communication."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating sensing and communication in a W-band fiber-wireless link without time-frequency competition. However, the remaining open challenges include further improving the system's performance, such as increasing the spatial resolution and data rate, and reducing the complexity and cost of the system. Additionally, the system's scalability and robustness in practical scenarios need to be further investigated."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Integration of Sensing and Communication in a W-Band Fiber-Wireless Link Enabled by Electromagnetic Polarization Multiplexing",
+        "authors": "Mingzheng Lei, Min Zhu, Yuancheng Cai, Miaomiao Fang, Wei Luo, Jiao Zhang, Bingchang Hua, Yucong Zou, Xiang Liu, Weidong Tong, Jianjun Yu",
+        "year": 2023,
+        "venue": "IEEE Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2023.3280388",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "W-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "industrial_manufacturing",
+        "scenario_description": "The system can be used in industrial manufacturing scenarios where both high-resolution sensing and high-data-rate communication are required."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a W-band fiber-wireless link with integrated sensing and communication functions enabled by electromagnetic polarization multiplexing, which allows for ultra-high spatial resolution and ultra-large communication capacity without time-frequency competition.",
+        "gap_addressed": "The paper addresses the challenge of integrating sensing and communication in a W-band fiber-wireless link without time-frequency competition.",
+        "performance_enablers": "electromagnetic_polarization_multiplexing",
+        "novel_component": "asymmetrical single-sideband modulation",
+        "novel_component_specs": "The asymmetrical single-sideband modulation is used to generate ultra-wideband sensing and communication waveforms in W-band."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "W-band fiber-wireless link with integrated sensing and communication"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "I/Q modulator",
+        "wavelength_nm": 1558.492,
+        "optical_bandwidth_ghz": 20,
+        "tx_power_dbm": 14.4
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodetector",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "I/Q modulator",
+        "rx_modulator_bandwidth_ghz": 20
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "16QAM",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 11.5,
+        "comm_fec_type": "LDPC",
+        "sensing_waveform_family": "LFMCW",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "SMF",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10.8,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 92,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.001,
+        "snr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.015,
+        "range_accuracy_m": 0.003
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "[0, 1]"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the system and its performance, and the results are well-supported by experimental data."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper presents a W-band fiber-wireless link with integrated sensing and communication functions enabled by electromagnetic polarization multiplexing. The system uses asymmetrical single-sideband modulation along with optical heterodyne up-conversion to generate ultra-wideband sensing and communication waveforms in W-band. The electromagnetic polarization multiplexing allows the radar and communication signals to operate in a co-time and co-frequency (CTCF) mode without time-frequency competition.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism is based on electromagnetic polarization multiplexing, which enables the radar and communication signals to operate in a CTCF mode without time-frequency competition. The ISAC coupling mode is achieved through the use of two orthogonal electromagnetic polarizations, allowing the sensing and communication signals to transmit simultaneously without interference.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the spatial resolution of up to 15 mm and data rate as high as 92 Gbit/s, are physically consistent with the system's design and capabilities. The use of electromagnetic polarization multiplexing and asymmetrical single-sideband modulation enables the generation of ultra-wideband sensing and communication waveforms, which can support high-resolution sensing and high-data-rate communication.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating sensing and communication in a W-band fiber-wireless link without time-frequency competition. However, the remaining open challenges include further improving the system's performance, such as increasing the spatial resolution and data rate, and reducing the complexity and cost of the system. Additionally, the system's scalability and robustness in practical scenarios need to be further investigated.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Integration of Sensing and Communication in a W-Band Fiber-Wireless Link Enabled by Electromagnetic Polarization Multiplexing\",\n         \"authors\":\"Mingzheng Lei, Min Zhu, Yuancheng Cai, Miaomiao Fang, Wei Luo, Jiao Zhang, Bingchang Hua, Yucong Zou, Xiang Liu, Weidong Tong, Jianjun Yu\",\n         \"year\":2023,\n         \"venue\":\"IEEE Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2023.3280388\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"W-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"industrial_manufacturing\",\n         \"scenario_description\":\"The system can be used in industrial manufacturing scenarios where both high-resolution sensing and high-data-rate communication are required.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a W-band fiber-wireless link with integrated sensing and communication functions enabled by electromagnetic polarization multiplexing, which allows for ultra-high spatial resolution and ultra-large communication capacity without time-frequency competition.\",\n         \"gap_addressed\":\"The paper addresses the challenge of integrating sensing and communication in a W-band fiber-wireless link without time-frequency competition.\",\n         \"performance_enablers\":\"electromagnetic_polarization_multiplexing\",\n         \"novel_component\":\"asymmetrical single-sideband modulation\",\n         \"novel_component_specs\":\"The asymmetrical single-sideband modulation is used to generate ultra-wideband sensing and communication waveforms in W-band.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"W-band fiber-wireless link with integrated sensing and communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"I/Q modulator\",\n         \"wavelength_nm\":1558.492,\n         \"optical_bandwidth_ghz\":20,\n         \"tx_power_dbm\":14.4\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"photodetector\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"I/Q modulator\",\n         \"rx_modulator_bandwidth_ghz\":20\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"16QAM\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":11.5,\n         \"comm_fec_type\":\"LDPC\",\n         \"sensing_waveform_family\":\"LFMCW\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"SMF\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10.8,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":92,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-3,\n         \"snr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.015,\n         \"range_accuracy_m\":0.003\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_ratio\",\n         \"tradeoff_control_range\":\"[0, 1]\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear and detailed description of the system and its performance, and the results are well-supported by experimental data.\"\n   }\n}"
+}

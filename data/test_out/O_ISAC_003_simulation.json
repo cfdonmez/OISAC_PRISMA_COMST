@@ -1,0 +1,145 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "simulation_only",
+        "data_completeness": "medium",
+        "needs_spot_check": false,
+        "notes": "Channel modeling paper. No Comm metrics (Rate/BER) - only channel characterization."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 1 & 2: 3D Ray-tracing simulation in Zemax for V2V scenario. Figure 3: Channel Impulse Response (CIR) showing long trailing for Mono-static vs short for Bi-static. Figure 4: Path Loss curves defining 'effective sensing distance'. Figure 6: RMS Delay Spread linear fits.",
+        "step_1_concept_analysis": "System: Visible Light Communication (VLC) in V2V. Mode: ISAC Channel Modeling (not waveform design). Coupling: Investigates physical channel properties for Mono-static vs Bi-static configurations. Framework: 3GPP ISAC channel model (Target + Background).",
+        "step_2_benchmark_verification": "Type: Pure Simulation (Ray Tracing). No experimental data. Comm Metrics (Rate/BER) are NR because the paper focuses on channel characterization (CIR, RMS DS). Sensing 'Effective Distance' is defined based on 25dB path loss threshold: ~4m for Mono, 5-10m for Bi-static.",
+        "step_3_strategic_critique": "Contribution: Characterizes the ISAC channel large-scale fading and dispersion (RMS DS) for V2V. Key Finding: Bi-static sensing has lower and decreasing RMS delay spread (better for high-speed), whereas Mono-static increases with distance. Gap: Simulation only; no actual modulation/demodulation simulation to measuring BER or Sensing Accuracy (RMSE)."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_003",
+            "title": "Analysis of Visible Light-Based ISAC Channel Characteristics in a V2V Scenario",
+            "authors": "Peiyao Dong, Pan Tang, Yue Yin, Lei Tian, Jianhua Zhang",
+            "year": 2025,
+            "venue": "2025 IEEE Wireless Communications and Networking Conference (WCNC)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "wireless_vlc",
+            "carrier_band": "visible",
+            "operational_environment": "outdoor",
+            "link_topology": "bistatic",
+            "mobility_context": "mobile"
+        },
+        "application": {
+            "application_domain": [
+                "vehicular",
+                "6g_networks"
+            ],
+            "scenario_description": "V2V communication and sensing using LED taillights. Comparison of mono-static and bi-static sensing channel properties."
+        },
+        "evidence": {
+            "evidence_type": [
+                "simulation"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "insufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Comparative analysis of CIR, Path Loss, and RMS Delay Spread for Mono-static vs Bi-static VLC-ISAC channels in V2V.",
+            "gap_addressed": "Lack of specific channel characterization for outdoor V2V visible light ISAC considering target/background separation.",
+            "performance_enablers": [
+                "balanced_detection",
+                "other"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "S1_MonoStatic",
+                "scenario_label": "Mono-static V2V Sensing (Simulation)"
+            },
+            "transmitter": {
+                "tx_source_type": "led",
+                "tx_modulation_type": "not_specified",
+                "wavelength_nm": "NR",
+                "beam_divergence_mrad": 2094.0,
+                "notes": "120 degree view angle = ~2094 mrad. LED Power 1.8W."
+            },
+            "receiver": {
+                "rx_detection_type": "direct",
+                "rx_detector": "pin_pd",
+                "rx_photonic_processing": "none",
+                "notes": "180 degree FOV PD."
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "full_duplex"
+            },
+            "waveform": {
+                "comm_waveform_family": "other",
+                "sensing_waveform_family": "other",
+                "isac_waveform_relationship": "single_dual_function",
+                "notes": "Focus is on Channel Impulse Response, not specific waveform modulation."
+            },
+            "channel_wireless": {
+                "link_distance_m": 4.0,
+                "path_loss_model": "3gpp_isac_framework",
+                "ambient_light_model": "NR"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": "NR",
+                "ber": "NR",
+                "snr_db": "NR"
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "obstacle_detection"
+                ],
+                "sensing_range_m": 4.0,
+                "range_resolution_m": "NR",
+                "velocity_resolution_mps": "NR",
+                "notes": "Effective sensing range limited to 4m by 25dB path loss threshold."
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "other"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "RMS Delay Spread vs Distance tradeoff."
+            }
+        },
+        {
+            "identification": {
+                "experiment_id": "S2_BiStatic",
+                "scenario_label": "Bi-static V2V Sensing (Simulation)"
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend"
+            },
+            "channel_wireless": {
+                "link_distance_m": 10.0
+            },
+            "comm_metrics": {
+                "data_rate_gbps": "NR"
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "obstacle_detection"
+                ],
+                "sensing_range_m": 10.0
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "other"
+                ],
+                "tradeoff_representation": "curve"
+            }
+        }
+    ]
+}

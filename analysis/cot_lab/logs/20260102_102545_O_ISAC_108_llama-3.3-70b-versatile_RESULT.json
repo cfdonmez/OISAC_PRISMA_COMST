@@ -1,0 +1,315 @@
+{
+  "run_id": "20260102_102545_O_ISAC_108_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102545",
+  "paper_id": "O_ISAC_108",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper presents a new optical integrated sensing and communication (O-ISAC) framework tailored for cost-effective Light-Emitting Diode (LED). The system unfolds in two phases: directionless O-ISAC and directional O-ISAC. In the first phase, distributed optical access points emit non-directional light for communication and leverage small-aperture imaging principles for sensing. In the second phase, optical beamforming is used to concentrate light, resulting in substantial performance enhancements in both communication and sensing."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The O-ISAC system integrates optical communication and optical sensing capabilities within a single framework. The system's performance is positively correlated, circumventing the tradeoff that has plagued RF-ISAC systems. The paper reveals the synergistic effect of optical communication and optical sensing, which share the common goal of maximizing the received light intensity at the target device."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "Numerical and simulation results demonstrate the feasibility and impressive performance of O-ISAC. The system exhibits a 2.70 dB gain in BER performance in the directionless phase and a 63.35 dB gain in the directional phase, compared to a separate communication and sensing system. The sensing MSE is lower than 10^-4, corresponding to a localization accuracy of 1 cm."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The O-ISAC system provides robust and efficient indoor optical communication while simultaneously enhancing device localization accuracy. The system's ability to concentrate light intensity on the target device using optical beamforming makes it a promising solution for next-generation indoor wireless communication and sensing applications."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O-ISAC-001",
+        "title": "Optical Integrated Sensing and Communication with Light-Emitting Diode",
+        "authors": [
+          "Runxin Zhang",
+          "Yulin Shao",
+          "Menghan Li",
+          "Lu Lu",
+          "Yonina C. Eldar"
+        ],
+        "year": 2024,
+        "venue": "IEEE Journal on Selected Areas in Communications",
+        "doi": "10.1109/JSAC.2024.3061118",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "indoor_positioning",
+          "6g_networks"
+        ],
+        "scenario_description": "Indoor optical communication and sensing using LED-based O-ISAC"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A new O-ISAC framework tailored for cost-effective commercial LEDs, leveraging optical beamforming to concentrate light intensity on the target device",
+        "gap_addressed": "The tradeoff between communication and sensing performance in RF-ISAC systems",
+        "performance_enablers": [
+          "joint_waveform_design",
+          "optical_beamforming"
+        ],
+        "novel_component": "Collimating lens for optical beamforming",
+        "novel_component_specs": "Custom-designed lens for concentrating light intensity"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Directionless O-ISAC"
+        },
+        "transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 650,
+          "optical_bandwidth_ghz": 1,
+          "tx_power_dbm": 20,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 1,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "tdm"
+        },
+        "waveform": {
+          "comm_waveform_family": "ofdm",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_train",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 10,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 100,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 0.0001,
+          "ber_target": 0.0001,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0,
+          "latency_ms": 1,
+          "capacity_bps_hz": 1
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "localization_2d"
+          ],
+          "sensing_range_m": 10,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.01,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "power_ratio",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Table II, p.5",
+          "value_origin": "reported_text",
+          "confidence_reporting": "ci_reported",
+          "num_trials": 1000
+        }
+      },
+      {
+        "identification": {
+          "experiment_id": "E2",
+          "scenario_label": "Directional O-ISAC"
+        },
+        "transmitter": {
+          "tx_source_type": "led",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 650,
+          "optical_bandwidth_ghz": 1,
+          "tx_power_dbm": 20,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 1,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "tdm"
+        },
+        "waveform": {
+          "comm_waveform_family": "ofdm",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_train",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "none",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "none",
+          "backscatter_sensing_type": "none"
+        },
+        "channel_wireless": {
+          "link_distance_m": 10,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 100,
+          "ambient_light_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 0.0001,
+          "ber_target": 0.0001,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0,
+          "latency_ms": 1,
+          "capacity_bps_hz": 1
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "localization_2d"
+          ],
+          "sensing_range_m": 10,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.01,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "power_ratio",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Table III, p.7",
+          "value_origin": "reported_text",
+          "confidence_reporting": "ci_reported",
+          "num_trials": 1000
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive analysis of the O-ISAC system, including the system model, signal processing, and performance evaluation. The simulation results demonstrate the effectiveness of the proposed system."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper presents a new optical integrated sensing and communication (O-ISAC) framework tailored for cost-effective Light-Emitting Diode (LED). The system unfolds in two phases: directionless O-ISAC and directional O-ISAC. In the first phase, distributed optical access points emit non-directional light for communication and leverage small-aperture imaging principles for sensing. In the second phase, optical beamforming is used to concentrate light, resulting in substantial performance enhancements in both communication and sensing.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The O-ISAC system integrates optical communication and optical sensing capabilities within a single framework. The system's performance is positively correlated, circumventing the tradeoff that has plagued RF-ISAC systems. The paper reveals the synergistic effect of optical communication and optical sensing, which share the common goal of maximizing the received light intensity at the target device.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"Numerical and simulation results demonstrate the feasibility and impressive performance of O-ISAC. The system exhibits a 2.70 dB gain in BER performance in the directionless phase and a 63.35 dB gain in the directional phase, compared to a separate communication and sensing system. The sensing MSE is lower than 10^-4, corresponding to a localization accuracy of 1 cm.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The O-ISAC system provides robust and efficient indoor optical communication while simultaneously enhancing device localization accuracy. The system's ability to concentrate light intensity on the target device using optical beamforming makes it a promising solution for next-generation indoor wireless communication and sensing applications.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O-ISAC-001\",\n           \"title\": \"Optical Integrated Sensing and Communication with Light-Emitting Diode\",\n           \"authors\": [\"Runxin Zhang\", \"Yulin Shao\", \"Menghan Li\", \"Lu Lu\", \"Yonina C. Eldar\"],\n           \"year\": 2024,\n           \"venue\": \"IEEE Journal on Selected Areas in Communications\",\n           \"doi\": \"10.1109/JSAC.2024.3061118\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_vlc\",\n           \"carrier_band\": \"visible\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"indoor_positioning\", \"6g_networks\"],\n           \"scenario_description\": \"Indoor optical communication and sensing using LED-based O-ISAC\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"A new O-ISAC framework tailored for cost-effective commercial LEDs, leveraging optical beamforming to concentrate light intensity on the target device\",\n           \"gap_addressed\": \"The tradeoff between communication and sensing performance in RF-ISAC systems\",\n           \"performance_enablers\": [\"joint_waveform_design\", \"optical_beamforming\"],\n           \"novel_component\": \"Collimating lens for optical beamforming\",\n           \"novel_component_specs\": \"Custom-designed lens for concentrating light intensity\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Directionless O-ISAC\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"led\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 650,\n               \"optical_bandwidth_ghz\": 1,\n               \"tx_power_dbm\": 20,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct\",\n               \"rx_detector\": \"pin_pd\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"none\",\n               \"rx_modulator_type\": \"none\",\n               \"rx_modulator_bandwidth_ghz\": 1,\n               \"rx_modulator_operating_point\": \"mitp\",\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"tdm\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ofdm\",\n               \"comm_modulation_order\": 4,\n               \"comm_symbol_rate_gbaud\": 1,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"pulse_train\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"time\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"none\",\n               \"attenuation_db_per_km\": 0,\n               \"dispersion_ps_per_nm_km\": 0,\n               \"nonlinearity_model\": \"none\",\n               \"backscatter_sensing_type\": \"none\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 10,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 100,\n               \"ambient_light_model\": \"none\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 1,\n               \"spectral_efficiency_bps_hz\": 1,\n               \"ber\": 1e-4,\n               \"ber_target\": 1e-4,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0,\n               \"latency_ms\": 1,\n               \"capacity_bps_hz\": 1\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"localization_2d\"],\n               \"sensing_range_m\": 10,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0.1,\n               \"velocity_accuracy_mps\": 0.01,\n               \"localization_error_m\": 0.01,\n               \"spatial_resolution_m\": 0.1,\n               \"sensing_bandwidth_hz\": 100,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.1,\n               \"crb_crlb_value\": 0.01,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"joint_waveform\",\n               \"tradeoff_type\": [\"rate_vs_rmse\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"power_ratio\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"none\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table II, p.5\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"ci_reported\",\n               \"num_trials\": 1000\n           }\n       },\n       {\n           \"identification\": {\n               \"experiment_id\": \"E2\",\n               \"scenario_label\": \"Directional O-ISAC\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"led\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 650,\n               \"optical_bandwidth_ghz\": 1,\n               \"tx_power_dbm\": 20,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct\",\n               \"rx_detector\": \"pin_pd\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"none\",\n               \"rx_modulator_type\": \"none\",\n               \"rx_modulator_bandwidth_ghz\": 1,\n               \"rx_modulator_operating_point\": \"mitp\",\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"tdm\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ofdm\",\n               \"comm_modulation_order\": 4,\n               \"comm_symbol_rate_gbaud\": 1,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"pulse_train\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"time\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"none\",\n               \"attenuation_db_per_km\": 0,\n               \"dispersion_ps_per_nm_km\": 0,\n               \"nonlinearity_model\": \"none\",\n               \"backscatter_sensing_type\": \"none\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 10,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 100,\n               \"ambient_light_model\": \"none\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 1,\n               \"spectral_efficiency_bps_hz\": 1,\n               \"ber\": 1e-4,\n               \"ber_target\": 1e-4,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0,\n               \"latency_ms\": 1,\n               \"capacity_bps_hz\": 1\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"localization_2d\"],\n               \"sensing_range_m\": 10,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0.1,\n               \"velocity_accuracy_mps\": 0.01,\n               \"localization_error_m\": 0.01,\n               \"spatial_resolution_m\": 0.1,\n               \"sensing_bandwidth_hz\": 100,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.1,\n               \"crb_crlb_value\": 0.01,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"joint_waveform\",\n               \"tradeoff_type\": [\"rate_vs_rmse\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"power_ratio\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"none\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table III, p.7\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"ci_reported\",\n               \"num_trials\": 1000\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a comprehensive analysis of the O-ISAC system, including the system model, signal processing, and performance evaluation. The simulation results demonstrate the effectiveness of the proposed system.\"\n   }\n}"
+}

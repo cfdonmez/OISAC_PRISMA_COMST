@@ -1,0 +1,886 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_075",
+    "title": "Wireless Access for V2X Communications: Research, Challenges and Opportunities",
+    "paper_meta": {
+        "doi": "10.1109/COMST.2024.3384132",
+        "year_online": "2024",
+        "year_issue": "2024",
+        "venue": "IEEE COMST",
+        "source_path": "data/corp_std/COMST_075/COMST_075.md"
+    },
+    "analysis_policy": {
+        "include_scope": "Abstract through Section VI Conclusion (main body only)",
+        "exclude_scope": "References (L890+)",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Tutorial-review (1197 lines, ~60K words) on wireless access for V2X communications. Provides comprehensive comparison between DSRC (802.11p/bd) and C-V2X (4G/5G). Features explicit debate framing, extensive literature tables, and forward-looking enabling technologies section. Concludes C-V2X is better suited for V2X."
+    },
+    "document_stats": {
+        "approx_word_count_total": 60000,
+        "approx_token_count_total": 82000,
+        "equation_count_est": 3,
+        "figure_count_est": 18,
+        "table_count_est": 16,
+        "list_count_est": 80,
+        "citation_count_in_body_est": 292,
+        "citation_density_per_1k_words_est": 4.9,
+        "definition_box_or_glossary_present": "yes",
+        "notation_table_present": "yes"
+    },
+    "normalization": {
+        "section_ontology": "INTRO|RELATED|SYSTEM_MODEL|TAXONOMY|EVALUATION|CHALLENGES|CONCLUSION|OTHER",
+        "section_order_canonical": [
+            "INTRO",
+            "OTHER",
+            "OTHER",
+            "EVALUATION",
+            "CHALLENGES",
+            "CONCLUSION"
+        ],
+        "mapping_notes": "Section I→INTRO (includes Related Work), Section II→OTHER (V2X Overview with history/applications/messages), Section III→OTHER (Wireless Technologies: DSRC, C-V2X), Section IV→EVALUATION (DSRC vs C-V2X Debate with literature review), Section V→CHALLENGES (Enabling Technologies/Future Directions), Section VI→CONCLUSION."
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "I. Introduction",
+                "A. Related Work"
+            ],
+            "objective": "Motivate V2X communications, introduce the DSRC vs C-V2X debate, survey related work, and outline paper structure",
+            "key_components": [
+                "Occluded pedestrian edge case figure",
+                "Abbreviations table",
+                "Paper structure figure",
+                "Related work subsection covering 30+ surveys"
+            ],
+            "approx_word_share_pct": 10,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 10
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "scope_boundary",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Edge case figure as visual hook",
+                "Explicit scope statement limiting to wireless access layer",
+                "Abbreviations table (Table I)",
+                "Paper structure figure (Fig. 2)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Edge case motivation figure",
+                    "locator": {
+                        "heading": "Fig. 1",
+                        "line_range": "L21-23"
+                    }
+                },
+                {
+                    "claim": "Abbreviations table",
+                    "locator": {
+                        "heading": "Table I",
+                        "line_range": "L45-117"
+                    }
+                },
+                {
+                    "claim": "Paper structure figure",
+                    "locator": {
+                        "heading": "Fig. 2",
+                        "line_range": "L120-122"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "II. Overview of V2X Communications",
+                "A. History of V2X Communications",
+                "B. V2X Applications and Requirements",
+                "1) BSA",
+                "2) ASA",
+                "C. V2X Messages",
+                "1) CAMs",
+                "2) DENMs"
+            ],
+            "objective": "Provide comprehensive overview of V2X ecosystem: types (V2V/V2I/V2N/V2P), history, applications, requirements, and message formats",
+            "key_components": [
+                "V2X types explanation (V2V, V2I, V2N, V2P)",
+                "History from 1970s to present",
+                "BSA/ASA requirements tables",
+                "CAM/DENM message structure figures",
+                "Requirements tables (II-X)"
+            ],
+            "approx_word_share_pct": 20,
+            "positioning": {
+                "start_doc_progress_pct_est": 10,
+                "end_doc_progress_pct_est": 30
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "organization_map",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "BSA/ASA taxonomy",
+                "Detailed requirements tables per application category",
+                "CAM/DENM message structure diagrams"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Vehicle perception bubble figure",
+                    "locator": {
+                        "heading": "Fig. 3",
+                        "line_range": "L144-146"
+                    }
+                },
+                {
+                    "claim": "V2X communications types figure",
+                    "locator": {
+                        "heading": "Fig. 4",
+                        "line_range": "L148-150"
+                    }
+                },
+                {
+                    "claim": "BSA requirements summary table",
+                    "locator": {
+                        "heading": "Table II",
+                        "line_range": "L168-177"
+                    }
+                },
+                {
+                    "claim": "ASA requirements summary table",
+                    "locator": {
+                        "heading": "Table VI",
+                        "line_range": "L265-272"
+                    }
+                },
+                {
+                    "claim": "CAM message structure figure",
+                    "locator": {
+                        "heading": "Fig. 5",
+                        "line_range": "L342-344"
+                    }
+                },
+                {
+                    "claim": "DENM message structure figure",
+                    "locator": {
+                        "heading": "Fig. 6",
+                        "line_range": "L355-357"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "III. Wireless Access Technologies for V2X Communications",
+                "A. DSRC",
+                "1) PHY Layer",
+                "2) MAC Layer",
+                "3) IEEE 802.11bd",
+                "B. C-V2X",
+                "1) 4G LTE",
+                "2) 5G NR"
+            ],
+            "objective": "Deep-dive into candidate wireless access technologies: DSRC (802.11p/bd) and C-V2X (4G LTE, 5G NR)",
+            "key_components": [
+                "Wireless spectrum allocation figure",
+                "IEEE WAVE stack figure",
+                "DSRC spectrum/OFDM/frame figures",
+                "4G/5G architecture figures",
+                "5G NR numerology table",
+                "Sidelink modes explanation"
+            ],
+            "approx_word_share_pct": 20,
+            "positioning": {
+                "start_doc_progress_pct_est": 30,
+                "end_doc_progress_pct_est": 50
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "organization_map",
+                "limitation"
+            ],
+            "notable_moves": [
+                "Parallel technology coverage (DSRC then C-V2X)",
+                "Layer-by-layer explanation (PHY, MAC)",
+                "Next-gen coverage (802.11bd, 5G NR)"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Wireless spectrum allocation figure",
+                    "locator": {
+                        "heading": "Fig. 7",
+                        "line_range": "L382-384"
+                    }
+                },
+                {
+                    "claim": "IEEE WAVE stack figure",
+                    "locator": {
+                        "heading": "Fig. 8",
+                        "line_range": "L405-407"
+                    }
+                },
+                {
+                    "claim": "4G LTE architecture figure",
+                    "locator": {
+                        "heading": "Fig. 12",
+                        "line_range": "L448-450"
+                    }
+                },
+                {
+                    "claim": "5G NR numerology table",
+                    "locator": {
+                        "heading": "Table XI",
+                        "line_range": "L484-494"
+                    }
+                },
+                {
+                    "claim": "5G core architecture figure",
+                    "locator": {
+                        "heading": "Fig. 15",
+                        "line_range": "L470-472"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "EVALUATION",
+            "raw_headings": [
+                "IV. Addressing the DSRC vs. C-V2X Debate",
+                "A. DSRC-Only Evaluations",
+                "1) Literature",
+                "2) Discussion",
+                "B. C-V2X-Only Evaluations",
+                "1) Literature",
+                "2) Discussion",
+                "C. Comparative Evaluations",
+                "1) Literature",
+                "2) Discussion",
+                "3) Summary"
+            ],
+            "objective": "Comprehensive comparative evaluation of DSRC and C-V2X via literature review and analysis",
+            "key_components": [
+                "DSRC literature table (Table XIII)",
+                "C-V2X literature tables (XIV, XV)",
+                "Comparative literature table (XVI)",
+                "Radio robustness analysis",
+                "Resource allocation analysis",
+                "Summary/verdict section"
+            ],
+            "approx_word_share_pct": 35,
+            "positioning": {
+                "start_doc_progress_pct_est": 50,
+                "end_doc_progress_pct_est": 85
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "organization_map",
+                "evaluation_framing",
+                "contribution"
+            ],
+            "notable_moves": [
+                "Debate framing in section title",
+                "Three-part structure (DSRC-only, C-V2X-only, Comparative)",
+                "Per-technology literature tables",
+                "Two-aspect analysis (radio robustness, resource allocation)",
+                "Explicit summary/verdict"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "DSRC literature summary table",
+                    "locator": {
+                        "heading": "Table XIII",
+                        "line_range": "L559-601"
+                    }
+                },
+                {
+                    "claim": "C-V2X literature summary table",
+                    "locator": {
+                        "heading": "Table XIV",
+                        "line_range": "L624-669"
+                    }
+                },
+                {
+                    "claim": "Comparative literature table",
+                    "locator": {
+                        "heading": "Table XVI",
+                        "line_range": "L753-781"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "V. Enabling Technologies and Future Research Directions",
+                "A. Advanced Modulation and Massive Multiple Access",
+                "1) mmWave",
+                "2) Massive MIMO",
+                "3) OTFS",
+                "4) NOMA",
+                "B. Computation and Network Management At Scale",
+                "1) MEC",
+                "2) Vehicular Cloud/Fog Computing"
+            ],
+            "objective": "Survey enabling technologies that can address remaining V2X challenges",
+            "key_components": [
+                "mmWave/IRS discussion",
+                "Massive MIMO for congestion",
+                "OTFS modulation for Doppler",
+                "NOMA for capacity",
+                "MEC/SDN/NFV for latency",
+                "Fog/Cloud computing"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 85,
+                "end_doc_progress_pct_est": 97
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "gap",
+                "organization_map",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Two-category structure (modulation/access, computation/management)",
+                "Per-technology explanation with V2X relevance",
+                "OTFS transform figure",
+                "NOMA comparison figure"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "OTFS transform figure",
+                    "locator": {
+                        "heading": "Fig. 17",
+                        "line_range": "L848-850"
+                    }
+                },
+                {
+                    "claim": "NOMA vs OMA figure",
+                    "locator": {
+                        "heading": "Fig. 18",
+                        "line_range": "L866-868"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "VI. Conclusion"
+            ],
+            "objective": "Synthesize findings and deliver verdict on DSRC vs C-V2X",
+            "key_components": [
+                "Summary of both technologies",
+                "Explicit verdict (C-V2X)",
+                "Remaining challenges",
+                "Future outlook"
+            ],
+            "approx_word_share_pct": 3,
+            "positioning": {
+                "start_doc_progress_pct_est": 97,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "contribution",
+                "limitation",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Explicit technology verdict",
+                "Concise synthesis"
+            ],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_contract": {
+        "intro_move_sequence": [
+            "hook",
+            "gap",
+            "yes_but",
+            "scope_boundary",
+            "contribution",
+            "organization_map"
+        ],
+        "move_evidence": [
+            {
+                "move": "hook",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L11-27"
+                }
+            },
+            {
+                "move": "scope_boundary",
+                "locator": {
+                    "heading": "I. Introduction",
+                    "line_range": "L37-38"
+                }
+            }
+        ],
+        "reader_contract_pattern": "We first overview V2X communications and its standardization (Section II), then describe candidate technologies (Section III), review and compare their performance (Section IV), and finally highlight enabling technologies (Section V)."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "by technology candidate",
+        "axes": [
+            "Technology type (DSRC, C-V2X)",
+            "Generation (802.11p/bd, 4G/5G)",
+            "V2X type (V2V, V2I, V2N, V2P)",
+            "Application category (BSA, ASA)",
+            "Evaluation method (simulation, implementation)"
+        ],
+        "levels_est": 3,
+        "node_count_est": 30,
+        "branches": [
+            "V2X Types (V2V, V2I, V2N, V2P)",
+            "Applications (BSA: Safety/Traffic/Infotainment, ASA: Platooning/Advanced Driving/Extended Sensors/Remote Driving)",
+            "DSRC (802.11p, 802.11bd)",
+            "C-V2X (4G LTE Mode 3/4, 5G NR Mode 1/2)",
+            "Enabling Technologies (mmWave, MIMO, OTFS, NOMA, MEC, Fog)"
+        ],
+        "taxonomy_figure_present": "no",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [],
+            "table_ids": [
+                "T02",
+                "T06",
+                "T11",
+                "T13",
+                "T14",
+                "T15",
+                "T16"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Latency",
+            "Throughput",
+            "Reliability (PRR/PDR/PER)",
+            "Range",
+            "Capacity",
+            "Channel Busy Ratio (CBR)"
+        ],
+        "tradeoff_axes": [
+            "Latency vs reliability",
+            "Range vs throughput",
+            "DSRC simplicity vs C-V2X coverage"
+        ],
+        "where_used": [
+            {
+                "section": "S04",
+                "table_ids": [
+                    "T12",
+                    "T13",
+                    "T14",
+                    "T15",
+                    "T16"
+                ],
+                "figures": []
+            }
+        ]
+    },
+    "visual_strategy": {
+        "global_layout_logic": "Tutorial-review structure: comprehensive background (V2X overview, requirements), deep technology dive (DSRC, C-V2X), systematic comparison (literature tables), forward-looking (enabling technologies). Heavy use of architecture diagrams and comparison tables.",
+        "artifact_inventory": {
+            "figures": [
+                {
+                    "id": "F01",
+                    "type": "illustration",
+                    "purpose": "motivation/hook",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 2
+                    },
+                    "locator": "L21-23"
+                },
+                {
+                    "id": "F02",
+                    "type": "taxonomy",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 8
+                    },
+                    "locator": "L120-122"
+                },
+                {
+                    "id": "F03",
+                    "type": "illustration",
+                    "purpose": "concept illustration",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 12
+                    },
+                    "locator": "L144-146"
+                },
+                {
+                    "id": "F04",
+                    "type": "architecture",
+                    "purpose": "concept illustration",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 13
+                    },
+                    "locator": "L148-150"
+                }
+            ],
+            "tables": [
+                {
+                    "id": "T01",
+                    "type": "glossary",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 4
+                    },
+                    "locator": "L45-117"
+                },
+                {
+                    "id": "T02",
+                    "type": "taxonomy",
+                    "purpose": "BSA requirements summary",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 15
+                    },
+                    "locator": "L168-177"
+                },
+                {
+                    "id": "T06",
+                    "type": "taxonomy",
+                    "purpose": "ASA requirements summary",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "OTHER",
+                        "doc_progress_pct_est": 22
+                    },
+                    "locator": "L265-272"
+                },
+                {
+                    "id": "T13",
+                    "type": "comparison",
+                    "purpose": "DSRC literature summary",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "EVALUATION",
+                        "doc_progress_pct_est": 55
+                    },
+                    "locator": "L559-601"
+                },
+                {
+                    "id": "T14",
+                    "type": "comparison",
+                    "purpose": "C-V2X literature summary",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "EVALUATION",
+                        "doc_progress_pct_est": 60
+                    },
+                    "locator": "L624-669"
+                },
+                {
+                    "id": "T16",
+                    "type": "comparison",
+                    "purpose": "Comparative literature summary",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "EVALUATION",
+                        "doc_progress_pct_est": 75
+                    },
+                    "locator": "L753-781"
+                }
+            ]
+        },
+        "caption_style_metrics": {
+            "caption_verbs_top": [
+                {
+                    "verb": "structure",
+                    "freq_est": 4
+                },
+                {
+                    "verb": "overview",
+                    "freq_est": 4
+                },
+                {
+                    "verb": "requirements",
+                    "freq_est": 8
+                }
+            ],
+            "avg_caption_length_est": 12
+        }
+    },
+    "synthesis": {
+        "synthesis_style": "tutorial",
+        "comparative_synthesis_degree": "very high",
+        "lesson_blocks": [
+            {
+                "location": "Section IV.A.2 (DSRC Discussion)",
+                "lesson": "DSRC suffers from Doppler effects at high speeds (>160km/h), NLOS significantly reduces range (~50%), and congestion causes severe QoS degradation due to EDCA MAC protocol. TDMA or centralized control may address congestion issues.",
+                "locator": "L547-622"
+            },
+            {
+                "location": "Section IV.B.2 (C-V2X Discussion)",
+                "lesson": "C-V2X has more robust physical layer but suffers from centralized core latency (4G LTE). 5G NR with distributed 5GC addresses latency. SB-SPS mechanism has half-duplex collision issues. Flexible numerology helps with TTI-related latency.",
+                "locator": "L720-750"
+            },
+            {
+                "location": "Section IV.C.3 (Summary)",
+                "lesson": "C-V2X has superior application coverage and graceful degradation under congestion. DSRC has latency advantages in uncongested close-range scenarios. 802.11bd constrained by backward compatibility; 5G NR designed for evolution. C-V2X is the more suitable candidate.",
+                "locator": "L803-810"
+            }
+        ],
+        "aha_moment": "The paper's key insight is that the DSRC vs C-V2X debate should not be framed as 'which is better' but 'which has smaller gap to close'. While DSRC excels in uncongested direct communications, C-V2X already covers all V2X types (V2V/V2I/V2N/V2P) through existing infrastructure. The remaining challenges for C-V2X (sidelink congestion, latency) are being actively addressed by 5G NR evolution, whereas DSRC would need to build entirely new infrastructure for V2N/V2P coverage."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Each major section opens with context-setting paragraph, then uses numbered/lettered subsections for parallel structure. Discussion subsections follow Literature subsections.",
+        "math_handling_strategy": "light",
+        "listicle_usage": "moderate",
+        "signposting_devices": [
+            "Paper structure figure",
+            "Abbreviations table",
+            "Explicit debate framing",
+            "Literature summary tables",
+            "Summary subsections"
+        ],
+        "definition_density_est": "high"
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Debate-Framed Comparative Section",
+            "steps": [
+                "Frame the comparison as a 'debate' in section title",
+                "Structure as three parts: Technology A-only, Technology B-only, Comparative",
+                "For each part: Literature subsection (table), then Discussion subsection",
+                "In Discussion, organize by common evaluation aspects (e.g., radio robustness, resource allocation)",
+                "Conclude with explicit Summary/Verdict subsection",
+                "State clear winner with reasoning"
+            ],
+            "applies_to_sections": [
+                "EVALUATION",
+                "TAXONOMY"
+            ],
+            "why_it_works": "Debate framing engages reader interest; three-part structure ensures thoroughness; discussion-after-literature enables synthesis; explicit verdict provides clear takeaway; tables enable quick lookup",
+            "evidence_locators": [
+                {
+                    "heading": "IV. Addressing the DSRC vs. C-V2X Debate",
+                    "line_range": "L512-810"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Per-Technology Literature Summary Table",
+            "steps": [
+                "Define table columns: Author, Year, Spec/Generation, Evaluation Method, Metrics",
+                "Group papers chronologically within technology category",
+                "Separate simulation/analysis from implementation studies",
+                "Include metric columns to enable cross-paper comparison",
+                "Place table at start of Literature subsection",
+                "Reference table entries in Discussion subsection"
+            ],
+            "applies_to_sections": [
+                "EVALUATION",
+                "RELATED"
+            ],
+            "why_it_works": "Tables provide at-a-glance literature landscape; metric columns enable quick filtering; chronological order shows evolution; evaluation method distinction highlights research gaps",
+            "evidence_locators": [
+                {
+                    "heading": "Table XIII",
+                    "line_range": "L559-601"
+                },
+                {
+                    "heading": "Table XIV",
+                    "line_range": "L624-669"
+                },
+                {
+                    "heading": "Table XVI",
+                    "line_range": "L753-781"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Requirements-First Application Taxonomy",
+            "steps": [
+                "Define broad application categories (e.g., BSA, ASA)",
+                "For each category, create dedicated requirements table",
+                "Include columns: Application, Use Case, V2X Type, Latency, Frequency, Reliability, Range",
+                "Organize applications hierarchically within categories",
+                "Reference requirements when evaluating technologies later"
+            ],
+            "applies_to_sections": [
+                "OTHER",
+                "TAXONOMY"
+            ],
+            "why_it_works": "Requirements-first approach grounds later evaluation; tables enable cross-application comparison; explicit metrics create evaluation framework; hierarchical organization aids navigation",
+            "evidence_locators": [
+                {
+                    "heading": "Table II",
+                    "line_range": "L168-177"
+                },
+                {
+                    "heading": "Table VI",
+                    "line_range": "L265-272"
+                },
+                {
+                    "heading": "Tables III-V, VII-X",
+                    "line_range": "L172-320"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Visual Hook with Edge Case",
+            "steps": [
+                "Identify concrete edge case that motivates the technology need",
+                "Create/include figure illustrating the edge case visually",
+                "Place figure prominently in first paragraph of Introduction",
+                "Use figure to transition from problem to solution space",
+                "Reference figure when discussing specific use cases later"
+            ],
+            "applies_to_sections": [
+                "INTRO"
+            ],
+            "why_it_works": "Visual hooks are memorable; edge cases make abstract problems concrete; early placement establishes motivation; concrete example creates urgency",
+            "evidence_locators": [
+                {
+                    "heading": "Fig. 1",
+                    "line_range": "L21-23"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Enabling Technologies as Future Directions",
+            "steps": [
+                "Identify 4-6 emerging technologies that address current limitations",
+                "Group technologies into 2-3 categories (e.g., radio, infrastructure)",
+                "For each technology: explain concept, discuss relevance to topic, cite key works",
+                "Highlight how technology addresses specific limitations from evaluation",
+                "Place section after main evaluation, before conclusion"
+            ],
+            "applies_to_sections": [
+                "CHALLENGES",
+                "OTHER"
+            ],
+            "why_it_works": "Forward-looking section adds value beyond literature review; categorization aids understanding; explicit connection to limitations shows relevance; emerging nature attracts researcher interest",
+            "evidence_locators": [
+                {
+                    "heading": "V. Enabling Technologies and Future Research Directions",
+                    "line_range": "L811-888"
+                }
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [
+            "HTML span tags throughout",
+            "Some table formatting artifacts"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [],
+        "confidence": "high"
+    },
+    "notes": "Excellent example of tutorial-review structure with debate-framed comparative analysis. Key patterns: (1) Edge case visual hook, (2) Comprehensive abbreviations table, (3) Requirements-first taxonomy (BSA/ASA), (4) Parallel technology deep-dives (DSRC, C-V2X), (5) Three-part comparative section (A-only, B-only, Comparative), (6) Per-technology literature tables with metrics, (7) Enabling technologies section for future directions, (8) Explicit verdict in Summary. The paper's strength is its clear positioning as a debate-resolver with explicit verdict, not just a neutral survey."
+}

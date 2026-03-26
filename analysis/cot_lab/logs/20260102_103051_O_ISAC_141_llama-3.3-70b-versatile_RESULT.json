@@ -1,0 +1,209 @@
+{
+  "run_id": "20260102_103051_O_ISAC_141_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103051",
+  "paper_id": "O_ISAC_141",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a system model for an electromagnetic field exposure-aware AI framework for integrated sensing and communications-enabled ambient backscatter wireless networks. The system consists of a cellular network with a single cell, multiple user proximity wireless devices (UPWDs), and a base station (BS). The UPWDs communicate with the BS using ambient backscatter communication (ABC) and power-domain non-orthogonal multiple access (PD-NOMA). The system aims to minimize the electromagnetic field (EMF) exposure during uplink transmissions while ensuring quality of service (QoS) requirements."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a k-medoids clustering approach to group UPWDs into clusters, and then assigns a subcarrier to each cluster. The power allocation is done using a water-filling algorithm, which takes into account the channel gain and interference for each user in the cluster. The system also uses successive interference cancellation (SIC) to decode the received signal at the BS. The ISAC coupling mode is achieved through the use of ABC, which enables the UPWDs to reflect the RF signals and modulate them to carry information."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper presents simulation results that show the performance of the proposed system in terms of aggregated uplink EMF exposure. The results are compared to other methods, such as OFDMA and PD-NOMA without ABC. The proposed system shows a significant reduction in EMF exposure, especially at lower required bit rates."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of minimizing EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks. However, the paper also highlights the need for further research in optimizing the system parameters, such as the number of clusters and the power allocation strategy, to achieve better performance. Additionally, the paper notes that the system assumes a fixed number of subcarriers and time slots, which may not be realistic in practical scenarios."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Electromagnetic Field Exposure-Aware AI Framework for Integrated Sensing and Communications-Enabled Ambient Backscatter Wireless Networks",
+        "authors": "Muhammad Ali Jamshed, Yazdan Ahmad Qadri, Ali Nauman, and Haejoon Jung",
+        "year": 2024,
+        "venue": "IEEE Journal on the Internet of Things",
+        "doi": "10.1109/JIOT.2024.3394041",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless",
+        "carrier_band": "other",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing",
+          "security_surveillance"
+        ],
+        "scenario_description": "The system is designed for ISAC-enabled ABC-assisted cellular networks, where UPWDs communicate with a BS using ABC and PD-NOMA."
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a k-medoids clustering approach and a water-filling algorithm for power allocation to minimize EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks.",
+        "gap_addressed": "The paper addresses the problem of minimizing EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "machine_learning"
+        ],
+        "novel_component": "k-medoids clustering approach",
+        "novel_component_specs": "The k-medoids clustering approach is used to group UPWDs into clusters, and then assign a subcarrier to each cluster."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "ISAC-enabled ABC-assisted cellular network"
+      },
+      "transmitter": {
+        "tx_source_type": "other",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 0,
+        "optical_bandwidth_ghz": 0,
+        "tx_power_dbm": 0,
+        "aperture_diameter_m": 0,
+        "beam_divergence_mrad": 0
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "none",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "other",
+        "comm_modulation_order": 0,
+        "comm_symbol_rate_gbaud": 0,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "other",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 500,
+        "path_loss_model": "rayleigh_fading",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 0,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0,
+        "spectral_efficiency_bps_hz": 0,
+        "ber": 0,
+        "ber_target": 0,
+        "snr_db": 0,
+        "osnr_db": 0,
+        "outage_probability": 0,
+        "latency_ms": 0,
+        "capacity_bps_hz": 0
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 0,
+        "range_resolution_m": 0,
+        "range_accuracy_m": 0,
+        "angular_resolution_deg": 0,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 0,
+        "spatial_resolution_m": 0,
+        "sensing_bandwidth_hz": 0,
+        "pd_probability_detection": 0,
+        "pfa_probability_false_alarm": 0,
+        "crb_crlb_value": 0,
+        "crb_parameter": "none"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "none",
+        "tradeoff_control_range": "none"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 0
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper presents a comprehensive system model and simulation results to validate the performance of the proposed system."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n           \"value\": \"The paper presents a system model for an electromagnetic field exposure-aware AI framework for integrated sensing and communications-enabled ambient backscatter wireless networks. The system consists of a cellular network with a single cell, multiple user proximity wireless devices (UPWDs), and a base station (BS). The UPWDs communicate with the BS using ambient backscatter communication (ABC) and power-domain non-orthogonal multiple access (PD-NOMA). The system aims to minimize the electromagnetic field (EMF) exposure during uplink transmissions while ensuring quality of service (QoS) requirements.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system uses a k-medoids clustering approach to group UPWDs into clusters, and then assigns a subcarrier to each cluster. The power allocation is done using a water-filling algorithm, which takes into account the channel gain and interference for each user in the cluster. The system also uses successive interference cancellation (SIC) to decode the received signal at the BS. The ISAC coupling mode is achieved through the use of ABC, which enables the UPWDs to reflect the RF signals and modulate them to carry information.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper presents simulation results that show the performance of the proposed system in terms of aggregated uplink EMF exposure. The results are compared to other methods, such as OFDMA and PD-NOMA without ABC. The proposed system shows a significant reduction in EMF exposure, especially at lower required bit rates.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The paper solves the problem of minimizing EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks. However, the paper also highlights the need for further research in optimizing the system parameters, such as the number of clusters and the power allocation strategy, to achieve better performance. Additionally, the paper notes that the system assumes a fixed number of subcarriers and time slots, which may not be realistic in practical scenarios.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Electromagnetic Field Exposure-Aware AI Framework for Integrated Sensing and Communications-Enabled Ambient Backscatter Wireless Networks\",\n           \"authors\": \"Muhammad Ali Jamshed, Yazdan Ahmad Qadri, Ali Nauman, and Haejoon Jung\",\n           \"year\": 2024,\n           \"venue\": \"IEEE Journal on the Internet of Things\",\n           \"doi\": \"10.1109/JIOT.2024.3394041\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless\",\n           \"carrier_band\": \"other\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\", \"security_surveillance\"],\n           \"scenario_description\": \"The system is designed for ISAC-enabled ABC-assisted cellular networks, where UPWDs communicate with a BS using ABC and PD-NOMA.\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper proposes a k-medoids clustering approach and a water-filling algorithm for power allocation to minimize EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks.\",\n           \"gap_addressed\": \"The paper addresses the problem of minimizing EMF exposure during uplink transmissions in ISAC-enabled ABC-assisted cellular networks.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"machine_learning\"],\n           \"novel_component\": \"k-medoids clustering approach\",\n           \"novel_component_specs\": \"The k-medoids clustering approach is used to group UPWDs into clusters, and then assign a subcarrier to each cluster.\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"ISAC-enabled ABC-assisted cellular network\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"other\",\n           \"tx_modulation_type\": \"im_dd\",\n           \"tx_external_modulator\": \"none\",\n           \"wavelength_nm\": 0,\n           \"optical_bandwidth_ghz\": 0,\n           \"tx_power_dbm\": 0,\n           \"aperture_diameter_m\": 0,\n           \"beam_divergence_mrad\": 0\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"pin_pd\",\n           \"rx_aperture_diameter_m\": 0,\n           \"rx_photonic_processing\": \"none\",\n           \"rx_modulator_type\": \"none\",\n           \"rx_modulator_bandwidth_ghz\": 0,\n           \"rx_modulator_operating_point\": \"none\",\n           \"false_target_mitigation\": \"none\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"full_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"other\",\n           \"comm_modulation_order\": 0,\n           \"comm_symbol_rate_gbaud\": 0,\n           \"comm_fec_type\": \"none\",\n           \"sensing_waveform_family\": \"other\",\n           \"isac_waveform_relationship\": \"single_dual_function\",\n           \"resource_partition\": \"none\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": 0,\n           \"fibre_type\": \"none\",\n           \"attenuation_db_per_km\": 0,\n           \"dispersion_ps_per_nm_km\": 0,\n           \"nonlinearity_model\": \"none\",\n           \"backscatter_sensing_type\": \"none\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": 500,\n           \"path_loss_model\": \"rayleigh_fading\",\n           \"turbulence_model\": \"none\",\n           \"turbulence_Cn2\": 0,\n           \"scintillation_index\": 0,\n           \"pointing_error_model\": \"none\",\n           \"weather_visibility_m\": 0,\n           \"ambient_light_model\": \"none\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 0,\n           \"spectral_efficiency_bps_hz\": 0,\n           \"ber\": 0,\n           \"ber_target\": 0,\n           \"snr_db\": 0,\n           \"osnr_db\": 0,\n           \"outage_probability\": 0,\n           \"latency_ms\": 0,\n           \"capacity_bps_hz\": 0\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n           \"sensing_range_m\": 0,\n           \"range_resolution_m\": 0,\n           \"range_accuracy_m\": 0,\n           \"angular_resolution_deg\": 0,\n           \"velocity_resolution_mps\": 0,\n           \"velocity_accuracy_mps\": 0,\n           \"localization_error_m\": 0,\n           \"spatial_resolution_m\": 0,\n           \"sensing_bandwidth_hz\": 0,\n           \"pd_probability_detection\": 0,\n           \"pfa_probability_false_alarm\": 0,\n           \"crb_crlb_value\": 0,\n           \"crb_parameter\": \"none\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"none\",\n           \"tradeoff_control_range\": \"none\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": 0,\n           \"opa_steering_range_deg\": 0,\n           \"opa_beamwidth_deg\": 0,\n           \"ris_num_elements\": 0,\n           \"ris_type\": \"none\",\n           \"ris_phase_bits\": 0\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Table I\",\n           \"value_origin\": \"reported_text\",\n           \"confidence_reporting\": \"none\",\n           \"num_trials\": 0\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper presents a comprehensive system model and simulation results to validate the performance of the proposed system.\"\n   }\n}"
+}

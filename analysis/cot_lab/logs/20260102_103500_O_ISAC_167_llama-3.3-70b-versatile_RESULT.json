@@ -1,0 +1,187 @@
+{
+  "run_id": "20260102_103500_O_ISAC_167_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103500",
+  "paper_id": "O_ISAC_167",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper contains 16 images, including system diagrams, multi-panel charts, line charts, 3D charts, and 2D time-frequency diagrams. These images illustrate the proposed multi-service ISAC system, experimental setup, and results, including BER curves, time-frequency diagrams, and power spectral density plots."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed ISAC system uses a narrow-linewidth laser (NLL) and a wide-linewidth laser (WLL) to support multiple modulation formats, including PAM-4, UFMC, and coherent 16-QAM signals. The system operates in dual-mode configuration, with the NLL used for continuous transmission and the WLL used for pulsed transmission when vibration is detected. The ISAC coupling mode is based on the use of Rayleigh backscattering (RBS) light, which is mixed with a local light frequency-shifted by an acoustic optical modulator (AOM) to detect vibration events."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the spatial resolution of 2.4 m, SNR of RBS frequency shift of 28 dB, and SNR of vibration frequency identification of 20 dB, are physically consistent with the experimental setup and results. The system's performance is also compared to theoretical predictions, showing good agreement."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed ISAC system solves the problem of supporting multiple modulation formats and achieving high spatial resolution and SNR for vibration detection. However, the system's performance may be affected by nonlinearity and polarization-dependent effects, which are potential open challenges for future research."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_167",
+        "title": "Multi-Service ISAC System for Industrial IoT",
+        "authors": "Jiajia Shen et al.",
+        "year": 2025,
+        "venue": "Optics and Lasers in Engineering",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "indoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "industrial_manufacturing",
+        "scenario_description": "Industrial IoT application scenario"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed ISAC system supports multiple modulation formats and achieves high spatial resolution and SNR for vibration detection.",
+        "gap_addressed": "The system addresses the need for a multi-service ISAC system that can support various modulation formats and achieve high performance for vibration detection.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "Narrow-linewidth laser (NLL) and wide-linewidth laser (WLL)",
+        "novel_component_specs": "NLL linewidth <1 kHz, WLL linewidth ~150 MHz"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Industrial IoT application scenario"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550.061,
+        "optical_bandwidth_ghz": 25,
+        "tx_power_dbm": 15,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 0.01
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "not_specified",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "pam",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 25,
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 12,
+        "fibre_type": "ssmf",
+        "attenuation_db_per_km": 0.183,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "ignored",
+        "backscatter_sensing_type": "rayleigh_phi_otdr"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0,
+        "path_loss_model": "NR",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 0,
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 100,
+        "spectral_efficiency_bps_hz": 2,
+        "ber": 0.001,
+        "ber_target": 0.0038,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 1,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 12000,
+        "range_resolution_m": 2.4,
+        "range_accuracy_m": 1,
+        "angular_resolution_deg": 0,
+        "velocity_resolution_mps": 0,
+        "velocity_accuracy_mps": 0,
+        "localization_error_m": 1,
+        "spatial_resolution_m": 2.4,
+        "sensing_bandwidth_hz": 10000,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "NR",
+        "tradeoff_control_range": "NR"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and results, and the authors discuss the limitations and potential applications of the proposed ISAC system."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper contains 16 images, including system diagrams, multi-panel charts, line charts, 3D charts, and 2D time-frequency diagrams. These images illustrate the proposed multi-service ISAC system, experimental setup, and results, including BER curves, time-frequency diagrams, and power spectral density plots.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed ISAC system uses a narrow-linewidth laser (NLL) and a wide-linewidth laser (WLL) to support multiple modulation formats, including PAM-4, UFMC, and coherent 16-QAM signals. The system operates in dual-mode configuration, with the NLL used for continuous transmission and the WLL used for pulsed transmission when vibration is detected. The ISAC coupling mode is based on the use of Rayleigh backscattering (RBS) light, which is mixed with a local light frequency-shifted by an acoustic optical modulator (AOM) to detect vibration events.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the spatial resolution of 2.4 m, SNR of RBS frequency shift of 28 dB, and SNR of vibration frequency identification of 20 dB, are physically consistent with the experimental setup and results. The system's performance is also compared to theoretical predictions, showing good agreement.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed ISAC system solves the problem of supporting multiple modulation formats and achieving high spatial resolution and SNR for vibration detection. However, the system's performance may be affected by nonlinearity and polarization-dependent effects, which are potential open challenges for future research.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_167\",\n         \"title\":\"Multi-Service ISAC System for Industrial IoT\",\n         \"authors\":\"Jiajia Shen et al.\",\n         \"year\":2025,\n         \"venue\":\"Optics and Lasers in Engineering\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"industrial_manufacturing\",\n         \"scenario_description\":\"Industrial IoT application scenario\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed ISAC system supports multiple modulation formats and achieves high spatial resolution and SNR for vibration detection.\",\n         \"gap_addressed\":\"The system addresses the need for a multi-service ISAC system that can support various modulation formats and achieve high performance for vibration detection.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"Narrow-linewidth laser (NLL) and wide-linewidth laser (WLL)\",\n         \"novel_component_specs\":\"NLL linewidth <1 kHz, WLL linewidth ~150 MHz\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Industrial IoT application scenario\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"im_dd\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550.061,\n         \"optical_bandwidth_ghz\":25,\n         \"tx_power_dbm\":15,\n         \"aperture_diameter_m\":0.01,\n         \"beam_divergence_mrad\":0.01\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":0,\n         \"rx_modulator_operating_point\":\"not_specified\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"pam\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":25,\n         \"comm_fec_type\":\"NR\",\n         \"sensing_waveform_family\":\"pulse_train\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"NR\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":12,\n         \"fibre_type\":\"ssmf\",\n         \"attenuation_db_per_km\":0.183,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"ignored\",\n         \"backscatter_sensing_type\":\"rayleigh_phi_otdr\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":0,\n         \"path_loss_model\":\"NR\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\",\n         \"weather_visibility_m\":0,\n         \"ambient_light_model\":\"NR\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":100,\n         \"spectral_efficiency_bps_hz\":2,\n         \"ber\":1e-3,\n         \"ber_target\":3.8e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0,\n         \"latency_ms\":1,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":12000,\n         \"range_resolution_m\":2.4,\n         \"range_accuracy_m\":1,\n         \"angular_resolution_deg\":0,\n         \"velocity_resolution_mps\":0,\n         \"velocity_accuracy_mps\":0,\n         \"localization_error_m\":1,\n         \"spatial_resolution_m\":2.4,\n         \"sensing_bandwidth_hz\":10000,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.1,\n         \"crb_crlb_value\":1,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"NR\",\n         \"tradeoff_control_range\":\"NR\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and results, and the authors discuss the limitations and potential applications of the proposed ISAC system.\"\n   }\n}"
+}

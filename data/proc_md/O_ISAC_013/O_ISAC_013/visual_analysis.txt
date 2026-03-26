@@ -1,0 +1,50 @@
+# Visual Analysis for O_ISAC_013
+
+## Figure 1: Vibration Demodulation Flowchart
+**File:** [_page_0_Figure_6.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_0_Figure_6.jpeg)
+- **Type:** Flowchart / Diagram.
+- **Process:** Reference/Test signals -> Deskew Filter -> FFT -> Sliding Window -> IFFT -> Pearson-CC Calculation -> PELT Algorithm -> Differential Pearson-CC -> Threshold Comparison ($TH=0.0197$) -> Vibration Amplitude Extraction.
+
+## Figure 2: PELT Algorithmic Flow
+**File:** [_page_3_Figure_12.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_3_Figure_12.jpeg)
+- **Type:** Mathematical Flowchart.
+- **Decisions:** 
+  - No vibration: Total cost < Segmented cost.
+  - Vibration at 'b': Segmentation at 'b' minimizes cost.
+  - Multiple vibrations: Segmentation at multiple points 'b' & 'c'.
+
+## Figure 3: Pearson-CC vs. Vibration Amplitude (Simulation)
+**File:** [_page_5_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_5_Figure_2.jpeg)
+- **Trends:** Pearson-CC decreases monotonically as vibration amplitude increases (0 to 60 n$\epsilon$).
+- **Linearity:** Differential Pearson-CC shows high linearity with strain amplitude below $2\pi$ phase shift limit.
+
+## Figure 4: Experimental OFDR Setup
+**File:** [_page_6_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_6_Figure_2.jpeg)
+- **Type:** System Schematic.
+- **Components:** Silicon-chip Laser (1550nm), AWG, MZI/MI Auxiliary Interferometers, 100.9 km SMF (FUT), PZT1 & PZT2 for vibration excitation.
+- **Novelty:** Internal modulation only, no optical amplifiers.
+
+## Figure 5: Experimental Vibration Detection at 100.9 km
+**File:** [_page_7_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_7_Figure_2.jpeg)
+- **(a) Rayleigh Backscattering:** SNR $\sim 10$ dB at 102.42 km.
+- **(b) Distributed Pearson-CC:** Shows a clear stairstep drop at the vibration site.
+- **(c) Differential Pearson-CC:** Single sharp peak at **100.936 km** exceeding threshold $TH=0.0197$.
+
+## Figure 7: Vibration Amplitude Calibration Curve
+**File:** [_page_7_Figure_7.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_7_Figure_7.jpeg)
+- **Data:** Amplitude (n$\epsilon$) vs. Differential Pearson-CC.
+- **Regression:** $y = 0.0227x$
+- **Performance:** **$R^2 = 0.9993$**, RMSE = 0.0011.
+- **Resolution:** Calculated Strain Resolution $S_r = \textbf{868 p$\epsilon$}$.
+
+## Figure 8: Simultaneous Multiple Vibration Detection
+**File:** [_page_8_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_8_Figure_2.jpeg)
+- **Results:** 
+  - Event 1: **100.930 km** ($3.39$ n$\epsilon$).
+  - Event 2: **101.897 km** ($3.17$ n$\epsilon$).
+- **Insight:** Successfully discriminates two events separated by $\sim 1$ km over a 100+ km trace.
+
+## Figure 10: Comparison with CCSA Method
+**File:** [_page_9_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_013/O_ISAC_013/_page_9_Figure_4.jpeg)
+- **CCSA Performance:** $R^2 = 0.6513$, RMSE = 26.546.
+- **Conclusion:** Pearson-CC method (Fig 7) is significantly more accurate and linear than traditional CCSA.

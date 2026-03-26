@@ -1,0 +1,291 @@
+================================================================================
+O_ISAC_172 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Joint Break-Point Localization Sensing Based on OFDR and Non-Disruptive Communication Fiber ISAC System
+Authors: Mingxuan Ma et al. (Hangzhou Dianzi University)
+Journal: Optics and Laser Technology 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_2.jpeg
+### Type: System Diagram (OFDR-Based ISAC-OF Architecture)
+
+### Components:
+- **TX (Transmitter):**
+  - DFB laser (directly modulated)
+  - AWG for super-triangular waveform
+  - 99:1 optical coupler
+  - MZM for communication modulation
+
+- **Fiber Link:**
+  - Standard SMF
+  - Circulator for bidirectional operation
+
+- **Com. RX (Communication Receiver):**
+  - Photodetector (PD)
+  - DSP for PAM4 demodulation
+
+- **Sen. RX (Sensing Receiver):**
+  - 1:1 optical coupler
+  - Balanced photodetector (BPD)
+  - FFT + peak finding
+
+### Signal Flow:
+- LFM optical signal: v₀ to v₀+B sweep
+- Communication: intensity modulated (IMDD)
+- Sensing: frequency domain (OFDR)
+
+### Key Equations:
+- E_LFM = exp[i2π(v₀t + 2B/T·t²)] (up-sweep)
+- d = c·τ/2n (distance calculation)
+
+### O-ISAC Relevance:
+- Single wavelength for sensing + communication
+- Non-disruptive monitoring of fiber network
+---
+
+## Image: _page_3_Figure_10.jpeg
+### Type: Signal Flow Diagram (Sliding-Windows Normalization)
+
+### Input Signal (I):
+- Periodic power fading from DFB laser
+- Amplitude variation due to frequency sweep
+- Communication signal superimposed
+
+### Processing Steps:
+1. Segment by sliding window (size l)
+2. Min-max normalization per segment
+3. i_out = Σ (i_k - min(i_k)) / (max(i_k) - min(i_k))
+
+### Output Signal (II):
+- Uniform amplitude distribution
+- Communication information preserved
+- Periodic fading suppressed
+
+### Algorithm Complexity:
+- O(n) time complexity
+- Real-time processing on DSP/FPGA
+
+### O-ISAC Relevance:
+- Enables IMDD communication with swept laser
+- Critical for system performance
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: Multi-Panel Diagram (Experimental Setup)
+
+### Panel (a) - System Configuration:
+- DFB laser: DFB-1550-I-N-1-PM
+- AWG: Siglent SDG1022X (2 channels)
+- Starting wavelength: 1549.25 nm
+- Sweep range: ~0.26 nm (33 GHz)
+- MZM: LN81S-FC
+- VOA for power control
+- PD: KG-PR-200M-A-FC (200 MHz BW)
+- DSO: Keysight MSO9404A (4 GHz, 20 GSa/s)
+- BPD: Thorlabs PDB415C (100 MHz)
+- Test fiber: 20 km SMF
+- LFM repetition: 5 kHz
+
+### Panel (b) - LFM Optical Spectrum:
+- Center: 1549.25 nm
+- Width: ~0.26 nm
+- Flat-top profile
+
+### Panel (c) - DFB Linewidth Measurement:
+- Measured linewidth: ~2.448 MHz
+- Coherence length: ~83.77 m
+- Max sensing range: ~41.88 m
+
+### O-ISAC Relevance:
+- Low-cost DML-based implementation
+- IMDD compatible architecture
+---
+
+## Image: _page_4_Figure_4.jpeg
+### Type: Multi-Panel Chart (Communication Performance)
+
+### Panel (a) - Received Signal (Before SN):
+- Strong periodic power fading
+- Amplitude modulation from laser sweep
+- PAM4 signal degraded
+
+### Panel (b) - Eye Diagram (Before SN):
+- Closed/distorted eye
+- Levels not distinguishable
+
+### Panel (c) - Received Signal (After SN):
+- Power fading suppressed
+- Uniform amplitude
+- PAM4 levels visible
+
+### Panel (d) - Eye Diagram (After SN):
+- Open eye diagram
+- 4 distinct levels
+- Clean transitions
+
+### Panel (e) - BER vs Window Length:
+- X-axis: Window length (samples)
+- Y-axis: BER
+- Optimal window: 925 samples
+- BER minimum at optimal size
+
+### Panel (f) - BER vs ROP:
+- X-axis: Received optical power (dBm)
+- Y-axis: BER
+- Curves: OFDR-ISAC w/o SN, OFDR-ISAC w/ SN, IMDD
+- OFDR-ISAC w/ SN: ~0.6 dB penalty vs IMDD
+- HD-FEC threshold achieved at -21 dBm
+
+### Key Performance (Experiment):
+| Metric | Value |
+|--------|-------|
+| Data rate | 25 Mbps |
+| Modulation | PAM4 |
+| Power penalty | ~0.6 dB |
+| ROP @ FEC | -21 dBm |
+
+### O-ISAC Relevance:
+- SN algorithm enables viable communication
+- Minimal penalty vs standard IMDD
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Multi-Panel Chart (Simulation - High Speed)
+
+### Panel (a) - Received Signal (Before SN):
+- Similar periodic fading pattern
+- Higher data rate: 25 Gbps
+
+### Panel (b) - Eye Diagram (Before SN):
+- Distorted eye
+- Cross-talk between levels
+
+### Panel (c) - Received Signal (After SN):
+- Fading suppressed
+- Clean PAM4 waveform
+
+### Panel (d) - Eye Diagram (After SN):
+- Open eye
+- 4 clear levels
+- Good signal integrity
+
+### Panel (e) - BER vs Window Length:
+- Optimal window size clearer to identify
+- Higher comm/sweep rate ratio
+
+### Panel (f) - BER vs ROP (Simulation):
+- OFDR-ISAC: ~0.98 dB penalty
+- HD-FEC @ -12.7 dBm
+- 20 km SMF transmission
+
+### Key Performance (Simulation):
+| Metric | Value |
+|--------|-------|
+| Data rate | 25 Gbps |
+| Fiber length | 20 km |
+| Laser linewidth | 1 kHz |
+| Sweep frequency | 2.5 kHz |
+| Power penalty | ~0.98 dB |
+
+### O-ISAC Relevance:
+- Scalable to high-speed communication
+- Practical for optical access networks
+---
+
+## Image: _page_5_Figure_8.jpeg
+### Type: Multi-Panel Chart (Sensing Performance - Experiment)
+
+### Panel (a) - Measured vs Actual Distance:
+- X-axis: Actual distance (m): 0-40
+- Y-axis: Measured distance (m)
+- Linear relationship up to 38 m
+- Beyond 38 m: sensing fails (coherence limit)
+
+### Panel (b) - Sensing Error:
+- X-axis: Actual distance (m)
+- Y-axis: Error (cm)
+- 0-20 m: ±20 cm error
+- 20-38 m: ±40 cm error
+- OFDR-ISAC vs Sensing-only comparison
+
+### Panel (c) - FFT Spectrum at 0 m (OFDR-ISAC):
+- X-axis: Frequency (MHz)
+- Y-axis: Amplitude
+- FWHM: 458 kHz
+- Distance resolution: 12.28 cm
+
+### Panel (d) - FFT Spectrum at 0 m (Sensing-only):
+- FWHM: 424 kHz
+- Distance resolution: 11.34 cm
+- Slightly better without communication
+
+### Key Performance (Experiment):
+| Metric | OFDR-ISAC | Sensing-only |
+|--------|-----------|--------------|
+| Max range | 38 m | 38 m |
+| Resolution | 12.28 cm | 11.34 cm |
+| Error (0-20m) | ±20 cm | ±15 cm |
+| Error (20-38m) | ±40 cm | ±30 cm |
+
+### O-ISAC Relevance:
+- Cm-level resolution for fault localization
+- Communication signal has minimal impact
+---
+
+## Image: _page_6_Figure_11.jpeg
+### Type: Multi-Panel Chart (Simulation - Long Range Sensing)
+
+### Panel (a) - Measured vs Actual Distance:
+- X-axis: Actual distance (km): 0-20
+- Y-axis: Measured distance (km)
+- Perfect linear relationship
+- Full 20 km range with narrow linewidth
+
+### Panel (b) - Sensing Error:
+- X-axis: Actual distance (km)
+- Y-axis: Error (cm)
+- OFDR-ISAC: ±2 cm error
+- Sensing-only: slightly better
+
+### Panel (c) - FFT Spectrum at 1 km (OFDR-ISAC):
+- FWHM: 1.13 MHz
+- Distance resolution: 0.7 m
+
+### Panel (d) - FFT Spectrum at 1 km (Sensing-only):
+- FWHM: 0.05 MHz
+- Distance resolution: 3.3 cm
+
+### Key Performance (Simulation, 1 kHz linewidth):
+| Metric | OFDR-ISAC | Sensing-only |
+|--------|-----------|--------------|
+| Max range | 20 km | 20 km |
+| Resolution | 0.7 m | 3.3 cm |
+| Error | ±2 cm | <±1 cm |
+
+### Insight:
+- Narrow linewidth → long coherence → long range
+- High-speed comm signals degrade sensing resolution
+- Trade-off between comm and sensing
+
+### O-ISAC Relevance:
+- Scalable to 20 km with narrow linewidth laser
+- Suitable for PON fault monitoring
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 7 (2 journal headers skipped)
+- System Diagrams: 2
+- Multi-panel Charts: 5
+
+Key Technical Findings:
+1. Platform: OFDR-based ISAC on optical fiber
+2. Communication: 25 Mbps (exp), 25 Gbps (sim), PAM4
+3. Sensing: Break-point localization via Fresnel reflection
+4. Resolution: 12.28 cm (exp), 0.7 m (high-speed sim)
+5. Range: 38 m (exp, 2.448 MHz linewidth), 20 km (sim, 1 kHz)
+6. Key Innovation: Sliding-windows normalization for power fading
+7. Power Penalty: 0.6-0.98 dB vs standard IMDD
+8. Application: Intelligent optical network monitoring
+================================================================================

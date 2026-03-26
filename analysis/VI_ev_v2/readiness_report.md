@@ -1,0 +1,33 @@
+section6A_evidence.csv: OK
+section6B_opa_metrics.csv: OK
+section6C_ris_metrics.csv: OK
+section6D_evidence.csv: OK
+section6E_summary_table.csv: OK
+section6E_summary.json: OK
+section6E_medium_slices.csv: OK
+evidence_graph.jsonl: OK
+retrieval_hits.jsonl: OK
+anchor_table.csv: OK
+axis_definitions.md: OK
+mapping_rules.md: OK
+cluster_map.csv: OK
+contract_violations.csv: OK
+s6f_dual_view_cmp.csv: MISSING
+s6f_dual_view_ex.csv: MISSING
+section6F_dual_view_report.md: MISSING
+
+section6A_rows: 5045
+section6A_unique_papers: 220
+section6B_rows: 122
+section6B_unique_papers: 121
+section6C_rows: 125
+section6C_unique_papers: 124
+section6D_rows: 1305
+section6D_unique_papers: 220
+canonical_denominator_note: manuscript-facing Section VI reporting uses the reconciled N=220 corpus; raw extraction artifacts may still expose one stale pre-reconciliation paper id.
+n_opa_papers: 121
+n_ris_papers: 124
+n_pic_papers: 24
+n_ml_papers: 45
+n_photonic_generation_papers: 126
+contract_violations_rows: 687

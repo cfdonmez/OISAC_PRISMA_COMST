@@ -1,0 +1,329 @@
+================================================================================
+O_ISAC_167 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Multi-Service ISAC System for Industrial IoT
+Authors: Jiajia Shen et al. (Soochow University)
+Journal: Optics and Lasers in Engineering 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Picture_2.jpeg
+### Type: System Diagram (Multi-Service ISAC for IIoT)
+
+### Components:
+- **Transmitter Side:**
+  - Narrow-linewidth laser (NLL, <1 kHz linewidth)
+  - Wide-linewidth laser (WLL, ~150 MHz)
+  - Mach-Zehnder Modulator (MZM)
+  - Acoustic Optical Modulator (AOM)
+
+- **Fiber Link:**
+  - 12-km SSMF
+  - PZT at 10-km position (vibration source)
+  - Rayleigh backscattering (RBS)
+
+- **Receiver Side:**
+  - Remote IM/DD receiver
+  - Coherent receiver
+  - Sensing receiver (BPD)
+
+### Operation Modes:
+1. **Normal (no vibration):** NLL active, continuous transmission
+2. **Vibration detected:** Switch to WLL, pulse mode for localization
+
+### Service Types:
+- PAM-4 (25 GBaud)
+- 16-QAM UFMC (25 GBaud)
+- PDM 16-QAM coherent (20 GBaud)
+
+### O-ISAC Relevance:
+- Multi-service ISAC on same wavelength channel
+- Fiber-based distributed sensing + communication
+---
+
+## Image: _page_2_Picture_4.jpeg
+### Type: Diagram (Strain-Induced Fiber Behavior)
+
+### Physical Model:
+- Fiber under strain from PZT
+- Refractive index change: δn
+- Length change: δL
+- Strain: V = δL/L
+
+### Key Equations:
+- Phase variation: Δφ = (4π/λ)(n + C_ε)VL
+- C_ε = refractive index strain coefficient (-0.1649 /με)
+
+### O-ISAC Relevance:
+- Fundamental physics for fiber vibration sensing
+---
+
+## Image: _page_3_Figure_10.jpeg
+### Type: Multi-Panel Diagram (Experimental Setup)
+
+### Panel (a) - System Architecture:
+- NLL (15 dBm, <1 kHz linewidth)
+- 90/10 splitter
+- AWG (50 GSa/s for PAM/UFMC, 64 GSa/s for coherent)
+- MZM modulator
+- Circulator
+- 12-km SSMF + PZT
+- Remote receivers (IM/DD and coherent)
+- Sensing receiver with BPD (1.6 GHz bandwidth)
+
+### Panel (b) - RBS Spectrum (No Vibration):
+- Constant beat frequency at 200 MHz
+
+### Panel (c) - RBS Spectrum (With Vibration):
+- Frequency shift visible around beat frequency
+
+### Physical Parameters:
+| Parameter | Value |
+|-----------|-------|
+| Wavelength | 1550.061 nm (C-band) |
+| Laser linewidth | <1 kHz |
+| Fiber attenuation | 0.183 dB/km |
+| ADC resolution | 14 bits |
+| Fiber length | 12 km |
+| Signal power | 5.5 dBm |
+
+### O-ISAC Relevance:
+- Dual-mode sensing: Continuous (frequency) + Pulsed (location)
+---
+
+## Image: _page_4_Figure_9.jpeg
+### Type: Line Chart (BER vs Received Optical Power)
+
+### Axes:
+- X-axis: Received optical power (dBm)
+- Y-axis: Bit Error Rate (BER)
+
+### Curves and FEC Threshold (3.8×10⁻³):
+| Signal Type | FEC Power |
+|-------------|-----------|
+| PAM-4 (25 GBaud) | -18 dBm |
+| 16-QAM UFMC (25 GBaud) | -17 dBm |
+| PDM 16-QAM coherent (20 GBaud) | -28 dBm |
+
+### Insets:
+- PAM-4 eye diagram (clear opening)
+- 16-QAM UFMC constellation
+- PDM 16-QAM coherent constellation
+
+### O-ISAC Relevance:
+- Signal transmission unaffected by sensing processes
+- Multi-format compatibility validated
+---
+
+## Image: _page_4_Figure_12.jpeg
+### Type: 2D Chart (RBS Time-Frequency Diagram)
+
+### Axes:
+- X-axis: Time
+- Y-axis: Frequency (around 200 MHz beat)
+
+### Key Observation:
+- Clear RBS frequency shift visible
+- SNR of RBS frequency shift: 28 dB
+
+### O-ISAC Relevance:
+- Vibration detection via frequency analysis
+---
+
+## Image: _page_4_Figure_13.jpeg
+### Type: 3D Chart (RBS Time-Frequency Mapping)
+
+### Axes:
+- X-axis: Time
+- Y-axis: Frequency
+- Z-axis: Amplitude (dB)
+
+### Key Metrics:
+- SNR of RBS frequency shift: 28 dB
+- Clear frequency modulation pattern
+
+### O-ISAC Relevance:
+- 3D visualization of vibration-induced RBS shift
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Multi-Panel Chart (PAM-4 Sensing Performance)
+
+### Panel (a) - Time-Frequency Diagram:
+- PZT frequencies: 1000, 1500, 2000 Hz
+- PZT voltage: 30 V
+- Theoretical D (orange dashed) matches experiment
+
+### Panel (b) - Power Spectral Density:
+- Different vibration frequencies
+- SNR of vibration frequency ID: ~20 dB
+
+### Key Insight:
+- Higher PZT frequency → larger RBS frequency shift D
+- D proportional to U × f_p
+
+### O-ISAC Relevance:
+- PAM transmission + vibration sensing validated
+---
+
+## Image: _page_5_Figure_7.jpeg
+### Type: Multi-Panel Chart (UFMC Sensing Performance)
+
+### Panel (a) - Time-Frequency Diagram:
+- PZT voltages: 20, 30, 40 V
+- PZT frequency: 1000 Hz
+- Theoretical D matches experimental
+
+### Panel (b) - Power Spectral Density:
+- Different PZT voltages
+- SNR of vibration frequency ID: ~20 dB
+
+### Key Insight:
+- Higher PZT voltage → larger RBS frequency shift
+- Theory-experiment alignment confirmed
+
+### O-ISAC Relevance:
+- UFMC transmission + vibration sensing validated
+---
+
+## Image: _page_6_Figure_2.jpeg
+### Type: Multi-Panel Chart (Coherent 16-QAM Sensing)
+
+### Panel (a) - Time-Frequency at Different Frequencies:
+- 1000, 1500, 2000 Hz
+- 30 V PZT voltage
+
+### Panel (b) - Time-Frequency at Different Voltages:
+- 20, 30, 40 V
+- 1000 Hz PZT frequency
+
+### Panel (c) - Power Spectral Density:
+- SNR of vibration frequency ID: ~15 dB
+- Lower than PAM due to polarization effects
+
+### O-ISAC Relevance:
+- Coherent transmission compatible with sensing
+- PDM introduces slight SNR degradation
+---
+
+## Image: _page_6_Figure_11.jpeg
+### Type: Dual-Panel Chart (Sampling Period Effect)
+
+### Panel (a) - T = 0.1 ms:
+- Blurred time-frequency diagram
+- 2 sampling points per 0.2 ms
+
+### Panel (b) - T = 0.05 ms:
+- Clear waveform visible
+- 4 sampling points per 0.2 ms
+- Better time resolution
+
+### Key Equation:
+f_resp = (1/2) × (f_s/N)
+
+### Key Insight:
+- Shorter sampling period → better resolution
+- Maximum frequency response decoupled from pulse rate
+
+### O-ISAC Relevance:
+- Continuous wave sensing overcomes pulse limitations
+---
+
+## Image: _page_7_Figure_9.jpeg
+### Type: Line Chart (Vibration Location Detection)
+
+### X-axis: Fiber distance (m)
+### Y-axis: RMS value (normalized)
+
+### Measured Values:
+- Vibration peak at 10 km position
+- Rising-edge resolution: 2.4 m
+- Peak width: 4.9 m
+
+### Theoretical:
+- Δz = c × T_pulse / (2n)
+- 30 ns pulse → ~3 m theoretical
+
+### O-ISAC Relevance:
+- Precise vibration localization achieved
+---
+
+## Image: _page_7_Figure_11.jpeg
+### Type: 3D Bar Chart (SNR Analysis)
+
+### Axes:
+- X-axis: Pulse width (ns)
+- Y-axis: PZT voltage (V)
+- Z-axis: SNR (dB) at different frequencies
+
+### Key Finding:
+- SNR increases with decreasing pulse width
+- PZT voltage/frequency have minimal impact on SNR
+- SNR depends on LO/RBS power ratio
+
+### O-ISAC Relevance:
+- Pulse width optimization for localization SNR
+---
+
+## Image: _page_7_Figure_13.jpeg
+### Type: Dual-Panel Chart (Nonlinearity Analysis)
+
+### Panel (a) - SBS Threshold:
+- X-axis: Input optical power (dBm)
+- Y-axis: Output power (dBm)
+- SBS threshold: ~7 dBm
+- Operating point: 5.5 dBm (below threshold)
+
+### Panel (b) - RBS Spectra:
+- At 13 dBm: SBS dominates
+- At 5.5 dBm: RBS dominates, >10 dB suppression of Brillouin
+
+### Key Finding:
+- Minimal nonlinearity impact at operating power
+- Brillouin shift (~10-20 GHz) outside BPD bandwidth
+
+### O-ISAC Relevance:
+- Nonlinear effects properly managed
+---
+
+## Image: _page_8_Figure_2.jpeg
+### Type: 3D Chart (UFMC RBS Time-Frequency)
+
+### Similar to PAM results:
+- Clear frequency modulation pattern
+- Vibration detection during UFMC transmission
+
+### O-ISAC Relevance:
+- Multi-carrier ISAC validated
+---
+
+## Image: _page_8_Figure_4.jpeg
+### Type: 3D Chart (PDM 16-QAM RBS Time-Frequency)
+
+### Observation:
+- 20 dB SNR (lower than PAM's 28 dB)
+- Polarization-dependent effects cause degradation
+
+### O-ISAC Relevance:
+- Coherent transmission compatible but with trade-off
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 16 (2 journal headers skipped)
+- System Diagrams: 2
+- Multi-panel Charts: 6
+- Line Charts: 2
+- 3D Charts: 4
+- 2D Time-Frequency: 2
+
+Key Technical Findings:
+1. Platform: Fiber-based ISAC for Industrial IoT
+2. Signals: PAM-4, UFMC 16-QAM, PDM coherent 16-QAM
+3. Fiber Link: 12 km SSMF, 1550 nm C-band
+4. Spatial Resolution: 2.4 m (30 ns pulse)
+5. SNR: 28 dB (RBS frequency shift), 20 dB (vibration ID)
+6. Key Innovation: Continuous wave sensing decouples frequency response
+7. BER Performance: All signals below FEC threshold
+8. Dual-Mode: Continuous (frequency) + Pulsed (localization)
+================================================================================

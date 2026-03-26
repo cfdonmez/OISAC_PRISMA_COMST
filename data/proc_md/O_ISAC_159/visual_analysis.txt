@@ -1,0 +1,180 @@
+================================================================================
+O_ISAC_159 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Photonics-Aided THz Integrated Sensing and Communication System Based on a Subcarrier-Chirp Inter-Embedded Waveform
+Authors: Junhao Zhang, Mingzheng Lei, Jianjun Yu et al. (Southeast University / Fudan University)
+Journal: IEEE OJCOMS (2025)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_1.jpeg
+### Type: Signal Waveform Diagram
+
+### Title: Time-frequency diagram of the designed ISAC waveform (SCIE)
+
+### Visuals:
+- **Structure:** Linear Frequency Modulated Continuous Wave (LFMCW) "Chirp" signal (blue lines).
+- **Embedding:** Subcarrier (SC) communication signals (colored blocks) embedded in the "idle" time-frequency gaps.
+- **Concept:** "Subcarrier-Chirp Inter-Embedded (SCIE)" method.
+- **Segmentation:** 4 Sub-bands. Chirp occupies 1/4 time slot; Data occupies the rest.
+
+### O-ISAC Relevance:
+- Novel "Co-Time Co-Frequency" (CTCF) waveform design.
+- Maximizes "Density of Information-Resolution Quotient" (DIRQ).
+
+---
+
+## Image: _page_2_Picture_4.jpeg
+### Type: System Block Diagram
+
+### Title: Schematic Diagram of Proposed Photonics-Aided ISAC Architecture
+
+### Visuals:
+- **Tx:** Optical Frequency Comb (OFC) -> WSS -> EDFA -> IQ Modulator (driven by AWG).
+- **Up-Conversion:** Photonic mixing (Carrier + LO) -> UTC-PD -> Horn Antenna (HA1).
+- **Channel:** D-band (150 GHz) Wireless Link (10.2 m).
+- **Rx (Comm):** Mixer (down-conversion) -> ADC (DSO).
+- **Rx (Radar):** Mixer (de-chirping) -> ADC.
+
+### O-ISAC Relevance:
+- Standard "Photonics-Aided THz ISAC" architecture.
+- Key Components: UTC-PD for THz generation, OFC for frequency stability.
+
+---
+
+## Image: _page_4_Figure_1.jpeg
+### Type: Experimental Setup Photos
+
+### Title: Experimental Setup of Photonics-Aided D-band ISAC System
+
+### Visuals:
+- **Photos:** Real-world lab bench photos.
+- **Components:** Fiber spools, Optical modulators, Horn Antennas (Tx/Rx), Targets (metal plates).
+- **Spectra:** Optical spectrum showing Carrier and LO separated by ~150 GHz.
+
+### O-ISAC Relevance:
+- Validates the feasibility of the proposed architecture.
+- Confirms 150 GHz (D-band) operation.
+
+---
+
+## Image: _page_5_Figure_3.jpeg
+### Type: Signal Spectrum & Spectrogram
+
+### Title: Electrical Spectrum and Time-Frequency Diagram of "6GBd-[4, 16, 16, 4] QAM"
+
+### Visuals:
+- **(a) Spectrum:** 4 distinct subcarriers embedded within the chirp bandwidth.
+- **(b) Spectrogram:** Visual confirmation of the SCIE pattern (Chirp lines + Data blocks).
+- **Modulation:** Mixed QAM (4QAM on edges, 16QAM in center).
+
+### O-ISAC Relevance:
+- Proof of waveform generation fidelity.
+
+---
+
+## Image: _page_6_Figure_1.jpeg
+### Type: Performance Graph (BER)
+
+### Title: BER Performance of ISAC Waveforms with Different SC Modulation
+
+### Data:
+- **X-axis:** Input Optical Power (dBm).
+- **Y-axis:** BER (10^-5 to 10^-1).
+- **Constellations:** Clear 4QAM and 16QAM constellations.
+- **Result:** Error-free transmission achieved at >4 dBm optical power.
+
+### O-ISAC Relevance:
+- Validates 88 Gbps communication capability.
+
+---
+
+## Image: _page_6_Figure_10.jpeg
+### Type: Performance Graph (BER)
+
+### Title: BER Performance with All 16QAM Modulation
+
+### Visuals:
+- **Comparison:** [5, 6, 6, 5] GBd layout.
+- **Result:** Consistent performance across subcarriers, maximizing rate.
+
+### O-ISAC Relevance:
+- Capacity optimization.
+
+---
+
+## Image: _page_7_Figure_7.jpeg
+### Type: Sensing Results (1D Range Profile)
+
+### Title: Normalized Cross-Correlation Results (10 mm spacing)
+
+### Data:
+- **X-axis:** Distance (cm).
+- **Peaks:** Sharp correlation peaks indicating target positions.
+- **Resolution:** Clearly resolves 10 mm spacing.
+- **Comparison:** Pure LFMCW (Blue) vs SCIE Waveforms (Red/Green). No degradation in resolution.
+
+### O-ISAC Relevance:
+- Proves that embedding data into the chirp does NOT degrade sensing resolution (1 cm achieved).
+
+---
+
+## Image: _page_8_Figure_1.jpeg
+### Type: Sensing Results (2D ISAR)
+
+### Title: 2D Imaging Results
+
+### Visuals:
+- **Plot:** Range vs Velocity/Azimuth (2D Heatmap).
+- **Targets:** 3 distinct points resolved in 2D space.
+
+### O-ISAC Relevance:
+- Demonstrates ISAR (Inverse Synthetic Aperture Radar) capability.
+
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Sensing Results (High Precision)
+
+### Title: Normalized Cross-Correlation Results (8 mm spacing)
+
+### Data:
+- **Resolution Limit:** Successfully resolves 8 mm gap.
+- **Note:** Theoretical limit ~5.81 mm.
+
+### O-ISAC Relevance:
+- High-precision sensing (sub-cm resolution) at THz frequencies.
+
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 9
+- Waveform/Spectrograms: 2
+- Block Diagrams/Schematics: 1
+- Setup Photos: 1
+- Performance Graphs (BER): 2
+- Sensing Results (1D/2D): 3
+
+Key Technical Findings:
+1. **Waveform:** "Subcarrier-Chirp Inter-Embedded" (SCIE). Embeds data in the "idle" time/freq gaps of a chirp.
+2. **Frequency:** D-band (150 GHz) generated via Photonics (UTC-PD).
+3. **Performance:**
+   - Data Rate: 88 Gbps (16QAM).
+   - Range Resolution: 8 mm.
+   - Range: 10.2 m (Wireless).
+4. **Metric:** Introduces "Density of Information-Resolution Quotient" (DIRQ) as a figure of merit (46.2 x 10^-2).
+
+Key Innovations:
+1. **SCIE Waveform:** Efficiently uses T-F resources without breaking the high TBP of the chirp (unlike standard OFDM which might have high PAPR or lower resolution).
+2. **Photonics-Aided:** Enables ultra-wideband (>25 GHz) bandwidth at 150 GHz.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Frequency | 150 GHz (D-band) |
+| Bandwidth | 25.8 GHz |
+| Data Rate | 88 Gbps |
+| Range Res | 8 mm |
+| Distance | 10.2 m |
+================================================================================

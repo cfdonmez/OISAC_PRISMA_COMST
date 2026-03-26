@@ -1,0 +1,119 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Schematic (Fig. 1)
+---
+**Components & Service Area:**
+- **Room Dimensions:** 4m x 4m x 3m (X from -2 to 2, Y from -2 to 2, Z from 0 to 3).
+- **Transmitters:** 4 LEDs mounted on the ceiling at Z=3m. Positions: (-1,1), (1,1), (1,-1), (-1,-1).
+- **Reflective Surfaces:** Dual Optical IRS arrays (IRS I and IRS II) mounted on opposing walls at the midpoints. Each array consists of 21x21 passive reflective units.
+- **Reference Grid:** Location Fingerprints distributed on the floor (Z=0m plane in diagram, Z=1m plane height mentioned for targets) with spacing S=20cm.
+---
+
+Image: _page_2_Figure_11.jpeg
+Type: System Schematic (Fig. 2)
+---
+**Propagation Geometry:**
+- **Components:** LED transmitters (LED 1 to M), Optical IRS units (n_s = 1 to N_s), and Photodiodes (PD of User 1 to L).
+- **Angular Definition:** 
+  - phi_{m,n_s}: Emission angle from LED.
+  - alpha_{m,n_s}: Incident angle at IRS unit.
+  - beta_{m,n_s}: Reflection angle from IRS unit.
+  - psi_{m,n_s}: Incident angle at PD receiver.
+- **Flow:** Light signal from LED m -> reflect via IRS n_s -> receive at PD User l.
+---
+
+Image: _page_8_Figure_8.jpeg
+Type: 3D Surface Plot (PE Distribution - Matrix DE-WI)
+---
+**Axes & Ranges:**
+- **X/Y-axis:** Room coordinates (m) | Range: -2 to 2.
+- **Z-axis:** Positioning Error (PE) in meters | Range: 0.0 to 0.8.
+**Numerical Notes:**
+- PE distribution using IRS I and fingerprint matrix database.
+- High error clusters (0.6 - 0.8m) are visible at the edges and corners furthest from IRS I.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: 3D Surface Plot (PE Distribution - Tensor DE-WI)
+---
+**Numerical Notes:**
+- PE distribution for IRSPba using the fingerprint tensor database.
+- Peak errors (up to 0.8m) are concentrated in a "wall-effect" region near the wall where the single IRS array is located, but errors in the opposite half are reduced compared to the matrix approach.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: 3D Surface Plot (PE Distribution - IRSPba Dual IRS)
+---
+**Numerical Notes:**
+- Demonstrates PE for the basic IRSPba method when using both IRS I and IRS II.
+- Peaks of ~0.8-1.0m persist at the corners and near-wall regions (y near +/- 2m).
+---
+
+Image: _page_9_Figure_4.jpeg
+Type: 3D Surface Plot (PE Distribution - IRSPad)
+---
+**Numerical Notes:**
+- Shows the improved IRSPad method with the two-step localization strategy.
+- Result: Peak errors are drastically suppressed from ~1.0m to approx **0.18m**. Most of the service area exhibits PE < 0.1m, with flat "valleys" of high precision (near 0.02m) in the center.
+---
+
+Image: _page_9_Figure_9.jpeg
+Type: 3D Surface Plot (PE Distribution - WKNN-ED)
+---
+**Numerical Notes:**
+- PE distribution for WKNN-ED within the IRSPad framework.
+- Result: Max PE is ~0.22m, showing slightly higher fluctuation/noise sensitivity than DE-WI.
+---
+
+Image: _page_9_Figure_11.jpeg
+Type: 3D Surface Plot (PE Distribution - WKNN-SCD)
+---
+**Numerical Notes:**
+- PE distribution for WKNN-SCD within the IRSPad framework.
+- Result: Max PE is approx 0.25m.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Chart (Average PE vs SNR)
+---
+**Axes Extraction:**
+- **X-axis:** SNR (dB) | Range: 5 to 50.
+- **Y-axis:** Average PE (m) | Range: 0 to 1.2.
+**Numerical Trends:**
+- **IRSPba (DE-WI):** 1.08 m (5dB) -> 0.075 m (50dB).
+- **IRSPad (DE-WI):** 0.28 m (5dB) -> **0.017 m** (50dB).
+- **IRSPad (WKNN-ED):** 0.12 m (5dB) -> 0.067 m (50dB).
+- **IRSPad (WKNN-SCD):** 0.11 m (5dB) -> 0.044 m (50dB).
+---
+
+Image: _page_10_Figure_4.jpeg
+Type: Chart (CDF of PE)
+---
+**Data Points (90% Confidence Interval):**
+- **DE-WI (IRSPad):** PE < 0.079 m.
+- **WKNN-ED (IRSPad):** PE < 0.097 m.
+- **WKNN-SCD (IRSPad):** PE < 0.101 m.
+- **Comparison:** DE-WI shows a significantly sharper rise, indicating tighter error grouping.
+---
+
+Image: _page_10_Figure_8.jpeg
+Type: Chart (PE vs Neighboring Points K)
+---
+**Axes Extraction:**
+- **X-axis:** K | Range: 1 to 15.
+- **Y-axis:** Average PE (m) | Range: 0 to 0.2.
+**Numerical Trends:**
+- All methods perform poorly at K=1 (~0.19m error).
+- **DE-WI:** Minimum error (~0.024m) achieved at **K=3**.
+- **WKNN:** Local peak at K=3 (~0.08m) followed by decrease, with minimum around K=8-10 (~0.03m).
+---
+
+Image: _page_10_Figure_10.jpeg
+Type: Chart (PE vs Spacing S)
+---
+**Axes Extraction:**
+- **X-axis:** Fingerprint spacing S (m) | Range: 0.1 to 0.6.
+- **Y-axis:** Average PE (m) | Range: 0 to 0.2.
+**Numerical Trends:**
+- **At S=0.2m (System Setting):** DE-WI PE = 0.033m, WKNN-ED = 0.067m, WKNN-SCD = 0.045m.
+- **At S=0.6m:** Errors for all algorithms increase to ~0.17 - 0.20 m.
+---

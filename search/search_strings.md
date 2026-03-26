@@ -2,7 +2,18 @@
 **Date:** 2025-11-30
 **Protocol Section:** 6.2
 
-Use these strings to search the respective databases. Export results as CSV or RIS and place them in `data/raw_search_results/`.
+Formal PRISMA identification stage for the current freeze:
+- `IEEE Xplore`
+- `Scopus`
+- `Web of Science`
+
+The three sources above define the canonical identification counts reported in `screening/prisma_flow_counts.csv`.
+
+Supplementary monitoring note:
+- A template for `arXiv / TechRxiv` is retained below for version tracing and future updates.
+- It is not part of the current canonical PRISMA flow unless separately executed and logged.
+
+Use the formal-database strings below to search the respective sources. Export results as CSV or RIS and place them in `data/raw_search_results/`.
 
 ## 1. IEEE Xplore
 **Fields:** Metadata (Title, Abstract, Keywords)
@@ -26,7 +37,7 @@ TS=( ("integrated sensing and communication" OR ISAC OR "joint sensing and commu
 ```
 *Filter by: Document Types: (Article OR Proceedings Paper) AND Language: (English)*
 
-## 4. arXiv / TechRxiv
+## 4. arXiv / TechRxiv (Supplementary Monitoring Template)
 **Command:**
 ```text
 ("integrated sensing and communication" OR "joint sensing and communication" OR ISAC) AND (optical OR "optical fiber" OR "optical fibre" OR FSO OR VLC OR LiFi OR LiDAR OR "optical radar")

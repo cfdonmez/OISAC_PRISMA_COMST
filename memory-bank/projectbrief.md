@@ -34,7 +34,7 @@
 
 ## 📋 Critical Constraints
 
-1. **Protocol Adherence** - Tüm kararlar `protocol/prisma_protocol.md`'ye uygun
+1. **Protocol Adherence** - Tüm kararlar `protocol/prisma_proto.md`'ye uygun
 2. **Data Integrity** - Orijinal veriler korunmalı
 3. **Reproducibility** - Tüm metodoloji version-controlled
 4. **PRISMA Compliance** - 27 maddelik checklist
@@ -69,5 +69,5 @@
 ## 🔗 Ana Referanslar
 
 - **PRISMA 2020:** [prisma-statement.org](http://www.prisma-statement.org/)
-- **Protokol:** `protocol/prisma_protocol.md`
-- **Extraction Schema:** `analysis/cot_laboratory/modules/formatting/schema_v2.yaml`
+- **Protokol:** `protocol/prisma_proto.md`
+- **Extraction Schema:** `analysis/cot_lab/modules/formatting/schema_v2.yaml`

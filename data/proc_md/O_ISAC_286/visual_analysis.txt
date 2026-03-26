@@ -1,0 +1,267 @@
+================================================================================
+O_ISAC_286 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Photonics-assisted integrated sensing and communication with ranging
+       resolution improvement by multiple signal classification
+Authors: Lanfeng Peng et al. (Sun Yat-sen University)
+Journal: Optics Express 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Picture_4.jpeg
+### Type: Conceptual Application Diagram
+
+### Title: Fusion of Photonics-Assisted System and ISAC
+
+### Components:
+- Base stations (urban)
+- Vehicles with O/E modules
+- Mobile communication networks
+- Vehicle networks
+- Remote sensing systems
+
+### Key Concept:
+- Photonics-enabled infrastructure
+- Seamless integration with ITS
+
+### O-ISAC Relevance:
+- Application scenario
+---
+
+## Image: _page_3_Picture_7.jpeg
+### Type: System Architecture
+
+### Title: Photonics-Aided MMW ISAC System
+
+### Components:
+- LD1/LD2 (heterodyne)
+- OC × 2
+- MZM (intensity modulation)
+- PD (envelope detection)
+- Tx/Rx Antennas
+- Target
+
+### Signal Flow:
+1. Real OFDM → MZM
+2. Optical heterodyne: fc = |f1-f2|
+3. Wireless transmission
+4. Envelope detection
+5. DSP (comm/radar)
+
+### O-ISAC Relevance:
+- Simple IM/DD architecture
+---
+
+## Image: _page_4_Figure_5.jpeg
+### Type: Block Diagram
+
+### Title: Decision Feedback Frequency Domain VNLE
+
+### Processing Steps:
+1. FFT demodulation
+2. ISFA equalization
+3. Symbol decision
+4. Remodulation (IFFT)
+5. Nonlinear noise estimation
+6. LS algorithm for taps
+7. Subtract + one-tap eq
+
+### Nonlinear Model:
+- 1st order: H1(p)X1(n,p)
+- 2nd order: ΣH2,k(p)X2,k(n,p)
+- 3rd order: H3(p)X3(n,p)
+
+### O-ISAC Relevance:
+- Communication NL compensation
+---
+
+## Image: _page_5_Figure_7.jpeg
+### Type: MUSIC Algorithm Diagram
+
+### Title: Multiple Signal Classification for Ranging
+
+### Steps:
+1. Radar transfer vector Hradar
+2. Covariance: RHH = HradarHradar^H
+3. Eigenvalue decomposition
+4. Noise subspace En
+5. Steering vector a(τ̂)
+6. Spectrum: F = 1/(a^H En En^H a)
+7. Peak search → delay τ
+
+### Key Concept:
+- Subspace orthogonality
+- Super-resolution ranging
+
+### O-ISAC Relevance:
+- Algorithm for limited BW
+---
+
+## Image: _page_6_Figure_4.jpeg
+### Type: Experimental Setup Photo + Diagram
+
+### Title: Photonics-Assisted ISAC Experimental Setup
+
+### Components:
+- DAC: 2.5 GSa/s
+- LD1: 193.10 THz
+- LD2: 193.13 THz → fc = 30 GHz
+- MZM: Fujitsu 7938
+- PC + VOA + OC
+- Mixer: IF = 4 GHz (LO = 26 GHz)
+- OSC
+
+### Parameters:
+- OFDM BW: 1 GHz
+- Subcarriers: 128
+- Symbol: 0.128 µs + 8 ns CP
+- Modulation: 16-QAM
+- Data rate: 4 Gbps
+- Distance: 1 m
+
+### O-ISAC Relevance:
+- Full experimental validation
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: Dual-Panel BER Analysis
+
+### Title: Communication Performance Analysis
+
+### Panel (a) - BER vs Vpp:
+| Method | Optimal Vpp |
+|--------|-------------|
+| ISFA | 480 mV |
+| FD-VNLE | 520 mV |
+| DF-FD-VNLE | 520 mV |
+
+### Panel (b) - BER vs ROP:
+| Method | Sensitivity @ HD-FEC |
+|--------|---------------------|
+| ISFA | baseline |
+| FD-VNLE | +0.9 dB |
+| DF-FD-VNLE | +1.8 dB |
+
+### Inset: 16-QAM Constellations
+- ISFA: Distorted
+- FD-VNLE: Improved
+- DF-FD-VNLE: Clear
+
+### O-ISAC Relevance:
+- NL equalization benefit
+---
+
+## Image: _page_8_Figure_4.jpeg
+### Type: Dual-Panel Ranging Analysis
+
+### Title: Single Target Ranging Performance
+
+### Panel (a) - Estimated vs Actual:
+- FFT: Stepwise (15 cm resolution)
+- CZT: Linear tracking
+- MUSIC: Linear tracking + higher accuracy
+
+### Inset: 1 cm Resolution Test
+- Target: 0.99-1.01 m
+- MUSIC tracks 1 cm steps
+
+### Panel (b) - Estimation Error:
+| Method | Mean Error |
+|--------|-----------|
+| FFT | ~7.5 cm |
+| CZT | -0.73 cm |
+| MUSIC | 0.17 cm |
+
+### Key Finding:
+- 15× resolution improvement
+- FFT: 15 cm → MUSIC: 1 cm
+
+### O-ISAC Relevance:
+- Super-resolution ranging
+---
+
+## Image: _page_8_Figure_7.jpeg
+### Type: Ranging Spectrum Comparison
+
+### Title: Single Target Normalized Ranging Spectrum (1 m)
+
+### Results:
+| Method | PSLR |
+|--------|------|
+| CZT | 14.5 dB |
+| MUSIC | 33.1 dB |
+| Improvement | 18.6 dB |
+
+### Key Finding:
+- Sharp MUSIC peak
+- Low sidelobes for target detection
+
+### O-ISAC Relevance:
+- PSLR improvement
+---
+
+## Image: _page_9_Figure_4.jpeg
+### Type: Triple-Panel Multi-Target Ranging
+
+### Title: Multi-Target Ranging Resolution
+
+### Panel (a) - 9 cm separation:
+- All methods: Single peak
+- Cannot distinguish targets
+
+### Panel (b) - 10 cm separation:
+- FFT: Still overlapped
+- CZT/MUSIC: Two peaks visible
+- MUSIC PSLR improvement: 4.2 dB
+
+### Panel (c) - 21 cm separation:
+- FFT: Just barely resolves
+- MUSIC PSLR improvement: 4.7 dB
+
+### Key Finding:
+- Multi-target resolution:
+  - FFT: 21 cm
+  - MUSIC: 10 cm
+
+### O-ISAC Relevance:
+- Multi-target detection
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 9 (all scientific)
+- Conceptual Diagrams: 2
+- Algorithm Diagrams: 2
+- Experimental Setup: 1
+- BER Analysis: 1
+- Ranging Analysis: 3
+
+Key Technical Findings:
+1. Platform: Photonics-assisted MMW OFDM ISAC
+2. Carrier: 30 GHz
+3. Bandwidth: 1 GHz
+4. Modulation: 16-QAM
+5. Data Rate: 4 Gbps
+6. Wireless Distance: 1 m
+
+Key Innovations:
+1. DF-FD-VNLE for nonlinear compensation
+2. MUSIC algorithm for super-resolution
+3. Intensity modulation + envelope detection
+4. Low-cost IM/DD architecture
+5. Subspace decomposition for ranging
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Communication Sensitivity | +1.8 dB (vs ISFA) |
+| Single-target Resolution | 15 cm → 1 cm |
+| Multi-target Resolution | 21 cm → 10 cm |
+| PSLR Improvement | 18.6 dB |
+| EVM | <HD-FEC threshold |
+
+Resolution Improvement:
+- FFT (baseline): 15 cm
+- CZT: ~2 cm (limited PSLR)
+- MUSIC: 1 cm (single), 10 cm (multi)
+================================================================================

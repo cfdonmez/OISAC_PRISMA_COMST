@@ -1,0 +1,130 @@
+================================================================================
+O_ISAC_377 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Photonics-aided integrated sensing and communications in mmW bands based on a DC-offset QPSK-encoded LFMCW
+Authors: Mingzheng Lei, Min Zhu et al. (Southeast University / Purple Mountain Labs)
+Journal: Optica Open (2022) / J. Lightwave Technol. (Implied context)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_3_Figure_6.jpeg
+### Type: System Architecture
+
+### Title: Schematic Diagram of Proposed Photonics-Aided mmW ISAC
+
+### Visuals:
+- **Tx:** OFC -> WSS -> I/Q Modulator (driven by DC-offset QPSK-LFMCW).
+- **Up-conversion:** Photonic mixing of Signal Light (SL) and LO -> UTC-PD -> 28 GHz mmW.
+- **Radar Rx:** LNA -> Mixer (De-chirp) -> LPF -> OSC.
+- **Comms Rx:** Mixer (Down-convert) -> ADC -> Pulse Compression Sync -> De-chirp.
+
+### O-ISAC Relevance:
+- Complete hardware topology for a "Joint Waveform" ISAC system where the waveform itself (DC-offset) enables the dual function.
+---
+
+## Image: _page_6_Figure_7.jpeg
+### Type: Experimental Setup Photo
+
+### Title: Experimental Set-up and Dual-User Scene
+
+### Visuals:
+- **Optical Bench:** Fiber spools, Modulators, EDFAs.
+- **RF Front-end:** Horn Antennas (Tx, Rx1, Rx2).
+- **Targets:** Two Metal Plates (User 1, User 2) placed 10-20 cm apart.
+- **Key Insight:** Real-world free-space transmission experiment at 28 GHz.
+
+### O-ISAC Relevance:
+- Validates the feasibility of the proposed scheme in a realistic lab environment.
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Waveform Analysis
+
+### Title: Time-Frequency and Correlation Properties
+
+### Panel (a) Time-Frequency:
+- **Yellow Ribbon:** QPSK-encoded LFMCW (Modulated part).
+- **Bright Central Line:** Pure LFMCW component (due to DC Offset).
+- **Significance:** The "Pure" line enables robust sensing even with data modulation.
+
+### Panel (b) Cross-Correlation:
+- **Blue (Cross):** Matches **Pink (Auto)**.
+- **Result:** DC-offset ensures the ISAC waveform retains ideal pulse compression properties for synchronization.
+
+### O-ISAC Relevance:
+- Physical layer proof of why "DC-Offset" enables simultaneous high-performance sensing and comms.
+---
+
+## Image: _page_8_Figure_7.jpeg
+### Type: Sensing Results (Single User)
+
+### Title: Single-User De-chirped Spectrum
+
+### Data:
+- **Peaks:** Sharp peaks corresponding to 1200, 1400, 1600 mm distances.
+- **Error:** Distance error < 20 mm.
+- **SIR:** Signal-to-Interference Ratio ~14.5 dB (Sensing peak vs QPSK noise floor).
+
+### O-ISAC Relevance:
+- Demonstrates cm-level ranging accuracy despite the wideband QPSK modulation noise.
+---
+
+## Image: _page_9_Figure_4.jpeg
+### Type: Sensing Results (Dual User)
+
+### Title: Dual-User De-chirped Spectrum
+
+### Data:
+- **Resolution Limit:** Two peaks clearly resolved at d = 10.40 cm separation (Freq separation 0.35 MHz).
+- **Unresolved:** Signal merges into one peak if < 10 cm.
+
+### O-ISAC Relevance:
+- Establishes the range resolution limit (10.4 cm) of this specific setup.
+---
+
+## Image: _page_11_Figure_3.jpeg
+### Type: Communication Results
+
+### Title: EVM vs ROP and Constellations
+
+### Data:
+- **Rate:** 11.5 Gbit/s (Net).
+- **EVM:** Below 7% FEC limit at -8 dBm ROP.
+- **Constellations:** Clear QPSK clusters.
+- **Robustness:** Error-free transmission achieved at -3 dBm.
+
+### O-ISAC Relevance:
+- Proves that the "Sensing" waveform (LFMCW) does not destroy the "Comms" capability (11.5 Gbps is a very competitive rate).
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 6
+- Architecture/Setup: 2
+- Waveform Physics: 1
+- Sensing (Ranging): 2
+- Comms (EVM/Constellation): 1
+
+Key Technical Findings:
+1. **Waveform:** DC-offset QPSK-LFMCW.
+   - **DC Offset function:** Preserves a "pure" chirp component for sensing and sync.
+   - **QPSK function:** High-speed data payload.
+2. **Frequency:** 28 GHz (Ka-Band), generated via Optical Frequency Comb.
+3. **Performance:**
+   - **Data Rate:** 11.5 Gbps.
+   - **Sensing Resolution:** ~10 cm (Dual target), ~2 cm accuracy (Single target).
+4. **Tunability:** Verified from 26 to 40 GHz.
+
+Key Innovations:
+1. **DC-Offset Optimization:** Balancing the power between the Sensing Component (Pure Chirp) and Comms Component (QPSK noise).
+2. **Baseband Generation:** avoiding expensive high-frequency DACs.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Frequency | 28 GHz (26-40 tunable) |
+| Data Rate | 11.5 Gbps |
+| Range Res | 10.4 cm |
+| Ranging Error | < 20 mm |
+| Waveform | DC-Offset QPSK-LFMCW |
+================================================================================

@@ -1,0 +1,489 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_072",
+    "title": "Vehicle as a Service (VaaS): Leverage Vehicles to Build Service Networks and Capabilities for Smart Cities",
+    "authors": [
+        "Xianhao Chen",
+        "Yiqin Deng",
+        "Haichuan Ding",
+        "Guanqiao Qu",
+        "Haixia Zhang",
+        "Pan Li",
+        "Yuguang Fang"
+    ],
+    "affiliation": "University of Hong Kong, Shandong University, Beijing Institute of Technology, Case Western Reserve University, City University of Hong Kong",
+    "year_online": "2024",
+    "year_issue": "2024",
+    "source_path": "data/corp_std/COMST_072/COMST_072.md",
+    "domain": "Vehicular Edge Computing / Smart Cities / IoV / Mobile Edge Computing",
+    "paper_type": "Position Paper with Literature Survey",
+    "analysis_policy": {
+        "focus": "Paradigm proposal extraction with emphasis on architectural design, service taxonomy, and integration with 5G+",
+        "depth": "Full paper analysis including all 11 sections"
+    },
+    "document_stats": {
+        "total_lines": 809,
+        "total_bytes": 231734,
+        "section_count": 11,
+        "figure_count": 14,
+        "table_count": 4,
+        "reference_count": 198
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-XI)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "VaaS": "Vehicle as a Service",
+            "SCCSI": "Sensing, Communications, Computing, Storage, Intelligence",
+            "PoC": "Point of Connection",
+            "SSP": "Secondary Service Provider",
+            "CR": "Cognitive Radio",
+            "SDN": "Software-Defined Networking",
+            "MEC": "Multi-access Edge Computing",
+            "FL": "Federated Learning",
+            "CAV": "Connected and Autonomous Vehicle",
+            "ICN": "Information-Centric Networking"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation",
+            "summary": "Introduces smart city vision through Alice scenario, identifies 5G+ cost limitations, and proposes VaaS as cost-effective alternative. Key insight: vehicles parked 23h/day with powerful SCCSI resources.",
+            "key_claims": [
+                "5G+ CAPEX and OPEX bottleneck commercial success",
+                "Vehicles will be SCCSI-empowered supercomputers on wheels (320-2000 TOPS)",
+                "VaaS reverses paradigm: vehicles as resource suppliers, not just consumers"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "VaaS-Empowered Applications in Smart Cities",
+            "role": "use_cases",
+            "subsections": [
+                "Public Safety",
+                "Smart Mobility",
+                "Smart and Connected Health",
+                "Smart Living"
+            ],
+            "summary": "Presents application scenarios: crime detection via collaborative perception, HD map updates, traffic regulation, smart parking, connected healthcare, dining recommendations.",
+            "key_claims": [
+                "VaaS enables city-wide safety net via citizen-contributed surveillance",
+                "Small proportion of autonomous vehicles can regulate traffic flow",
+                "24/7 health monitoring continuity across environments"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "From VANETs to VaaS: What Upgrades Are Needed?",
+            "role": "gap_analysis",
+            "subsections": [
+                "Co-Existence With Primary Services",
+                "Integrated SCCSI Design",
+                "Sustainable Incentive Design"
+            ],
+            "summary": "Identifies three upgrade requirements: spectrum perspective (CR for primary/secondary coexistence), computing perspective (safety-first resource harvesting), integrated SCCSI convergence.",
+            "key_claims": [
+                "DSRC/C-V2X alone insufficient for crowdsourced services",
+                "Cognitive radio enables differentiated QoS guarantees",
+                "End-to-end service-oriented metrics require joint optimization"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "The Architecture of the SCCSI Service Network",
+            "role": "architecture_proposal",
+            "subsections": [
+                "Overview",
+                "Components (PoC, End Users, SSP)",
+                "Functional Design",
+                "Benefits"
+            ],
+            "summary": "Proposes SCCSI service network: PoCs as mobile/fixed nodes with CR capabilities, SSP for centralized intelligence, SDN-based control plane, SCCSI resource map, incentive platform.",
+            "key_claims": [
+                "PoC concept: SCCSI-equipped network connecting device (sensing + CR + computing + storage)",
+                "SSP provides C/U plane decoupling aligned with 5G+",
+                "VaaS extends 5G+ coverage to remote areas bridging digital divide"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "Sensing as a Service",
+            "role": "technical_deep_dive",
+            "summary": "Reviews vehicular crowdsensing: multi-modal sensors (cameras, LiDAR, 4D radar), vehicle selection strategies, cooperative perception for communication-efficient data sharing, privacy-aware sensing.",
+            "key_claims": [
+                "Tesla has 9 cameras; Mercedes/Honda introduced LiDAR in 2021",
+                "Task-oriented communication reduces sensing data via spatial confidence maps",
+                "Privacy preserved through feature extraction and differential privacy"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "Communications as a Service",
+            "role": "technical_deep_dive",
+            "subsections": [
+                "Multi-Hop Backhauling",
+                "Store-Carry-Forward"
+            ],
+            "summary": "Reviews vehicular relay networks: parked vehicle mesh, platooning networks, position-based routing; store-carry-forward for content pushing and data mule operations.",
+            "key_claims": [
+                "5G NR V2X supports sidelink and UE relaying for multi-hop",
+                "Opportunistic content caching via passing vehicles reduces backhaul cost",
+                "120 taxis achieved 80% downtown coverage in 24h (Rome study)"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "Computing as a Service",
+            "role": "technical_deep_dive",
+            "subsections": [
+                "Computing Capabilities",
+                "Computing Servers on Move",
+                "Temporary Stationary Servers"
+            ],
+            "summary": "Reviews vehicular edge computing: NVIDIA DRIVE Thor (2000 TOPS), V2V offloading, device-to-vehicle offloading, parked vehicles as computing clusters, stopped vehicles at intersections.",
+            "key_claims": [
+                "NVIDIA DRIVE Thor achieves 2000 TOPS for Level 5 autonomy",
+                "Electric vehicles can provide computing while charging",
+                "50% of US injury crashes occur at intersections - VaaS can help"
+            ]
+        },
+        {
+            "section_id": "VIII",
+            "title": "Storage as a Service",
+            "role": "technical_deep_dive",
+            "subsections": [
+                "Parked Vehicles as Caching Nodes",
+                "Moving Vehicles as Caching Nodes"
+            ],
+            "summary": "Reviews vehicular edge caching: reactive vs proactive caching, ICN for distributed content retrieval, LSTM-based travel time prediction for content placement.",
+            "key_claims": [
+                "Autonomous vehicles generate up to 4TB/day requiring large storage",
+                "ICN enables anycasting robust to vehicle arrivals/departures",
+                "Centralized PoC can maintain lookup table for QoS guarantees"
+            ]
+        },
+        {
+            "section_id": "IX",
+            "title": "Intelligence as a Service",
+            "role": "technical_deep_dive",
+            "subsections": [
+                "Edge Learning (Data-Partition, Model-Partition)",
+                "Edge Inference"
+            ],
+            "summary": "Reviews vehicular FL and split learning: data-partition training (FL with vehicle selection), model-partition (split learning in platoons), collaborative inference for autonomous driving.",
+            "key_claims": [
+                "Tesla Autopilot involves 48 neural networks",
+                "FL design must consider vehicle sojourn time and trajectory prediction",
+                "Split learning preferable for small dataset + large model"
+            ]
+        },
+        {
+            "section_id": "X",
+            "title": "Open Problems, Challenges, and Research Opportunities",
+            "role": "future_directions",
+            "subsections": [
+                "Architecture",
+                "Service Provisioning",
+                "Incentive Design",
+                "Network for SCCSI Convergence",
+                "Security & Privacy"
+            ],
+            "summary": "Identifies research challenges: controllable PoC dispatch, service migration, digital twin integration, multi-hop task delivery, market-based incentives, ISAC, data privacy.",
+            "key_claims": [
+                "UAV dispatch for edge computing is emerging hot topic",
+                "Joint sensing-communication-computing optimization needed",
+                "Differential privacy and secure aggregation critical for FL"
+            ]
+        },
+        {
+            "section_id": "XI",
+            "title": "Conclusion",
+            "role": "synthesis",
+            "summary": "Summarizes VaaS vision as cost-effective complement to 5G+, emphasizes SCCSI convergence and paradigm shift from vehicles as consumers to suppliers."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Advocate VaaS paradigm as cost-effective alternative/complement to 5G+ for smart city SCCSI service provisioning",
+        "delivery_mechanism": "Position paper structure: vision → use cases → upgrade requirements → architecture → service-by-service review → open challenges",
+        "unique_contribution": "First survey to comprehensively review vehicles as both mobile edge servers AND communicators forming an SCCSI service network with multi-dimensional resource convergence"
+    },
+    "taxonomy": {
+        "type": "service_oriented_multi_layer",
+        "root_concept": "Vehicle as a Service (VaaS)",
+        "primary_dimensions": [
+            {
+                "dimension": "Service Types",
+                "categories": [
+                    "Sensing",
+                    "Communications",
+                    "Computing",
+                    "Storage",
+                    "Intelligence"
+                ],
+                "evaluation_criteria": [
+                    "Latency",
+                    "Coverage",
+                    "Cost",
+                    "Privacy",
+                    "Reliability"
+                ]
+            },
+            {
+                "dimension": "Vehicle States",
+                "categories": [
+                    "Moving",
+                    "Parked",
+                    "Stopped at intersection",
+                    "Platooning"
+                ],
+                "implications": [
+                    "Resource availability",
+                    "Contact time",
+                    "Energy constraints",
+                    "Reliability"
+                ]
+            },
+            {
+                "dimension": "PoC Classification",
+                "categories": [
+                    "Fixed vs Mobile",
+                    "SSP-deployed vs Privately-owned",
+                    "Opportunistic vs Controllable"
+                ]
+            }
+        ],
+        "visualization": {
+            "figure_ref": "Fig. 4",
+            "type": "system_architecture_diagram",
+            "description": "SCCSI service network architecture showing PoCs, SSP, and 5G+ integration"
+        }
+    },
+    "evaluation_framework": {
+        "comparison_dimensions": [
+            "Traditional VANETs vs SCCSI Service Network",
+            "Prior vehicular computing surveys comparison (Table I)"
+        ],
+        "metrics_implied": [
+            "Throughput improvement",
+            "Latency reduction",
+            "AI model accuracy",
+            "Energy efficiency",
+            "Spectrum efficiency",
+            "Storage space"
+        ],
+        "qualitative_comparison": {
+            "table_ref": "Table I",
+            "criteria": [
+                "Focus on vehicles as resources",
+                "Literature review",
+                "SCCSI convergence",
+                "Architectural design",
+                "Network edge"
+            ]
+        }
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "paper_organization",
+                "example": "Fig. 1 - Paper structure and interdependencies",
+                "purpose": "Reader navigation guide"
+            },
+            {
+                "type": "use_case_illustration",
+                "example": "Fig. 2 - VaaS for public safety",
+                "purpose": "Concrete application scenario"
+            },
+            {
+                "type": "system_architecture",
+                "example": "Fig. 4 - SCCSI service network architecture",
+                "purpose": "Proposed architecture visualization"
+            },
+            {
+                "type": "component_specification",
+                "example": "Fig. 5 - PoC illustration",
+                "purpose": "Key component definition"
+            },
+            {
+                "type": "integration_diagram",
+                "example": "Fig. 6 - SDN-based SCCSI integration",
+                "purpose": "Functional design visualization"
+            },
+            {
+                "type": "timeline_milestones",
+                "example": "Fig. 8 - CAD milestones with SCCSI capabilities",
+                "purpose": "Technology evolution context"
+            },
+            {
+                "type": "comparison_radar",
+                "example": "Fig. 7 - QoS comparison VaaS vs 5G+",
+                "purpose": "Benefit visualization"
+            },
+            {
+                "type": "simulation_results",
+                "example": "Fig. 12 - Social welfare vs vehicle arrival rate",
+                "purpose": "Quantitative validation"
+            }
+        ],
+        "table_usage": [
+            {
+                "table": "Table I",
+                "purpose": "Compare with prior surveys on focus, literature review, SCCSI convergence"
+            },
+            {
+                "table": "Table II",
+                "purpose": "Define key abbreviations (VaaS, SCCSI, PoC, SSP)"
+            },
+            {
+                "table": "Table III",
+                "purpose": "Compare traditional VANETs vs SCCSI service network"
+            },
+            {
+                "table": "Table IV",
+                "purpose": "Review distributed ML works over vehicles"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Service-oriented taxonomy with architectural framework proposal",
+        "key_paradigm_shift": "Vehicles as resource SUPPLIERS (not just consumers) forming mobile edge infrastructure",
+        "gap_identification": [
+            "Integrated SCCSI optimization largely unexplored",
+            "Controllable PoC dispatch under-researched",
+            "Multi-hop task delivery and routing not well studied",
+            "Joint ISAC design for vehicular networks emerging",
+            "Privacy-preserving mechanisms for FL over vehicles needed"
+        ],
+        "future_recommendations": [
+            "Digital twin for real-time network simulation",
+            "UAV integration for controllable edge computing",
+            "Game-theoretic incentive mechanisms",
+            "Differential privacy and secure aggregation",
+            "VLP integration for ISAC-enabled VaaS"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Position paper with comprehensive literature review",
+        "source_selection": "198 references covering vehicular networking, edge computing, smart cities, FL",
+        "distinguishing_features": [
+            "First survey on vehicles as SCCSI suppliers (not just consumers)",
+            "Comprehensive 5-dimensional service taxonomy (SCCSI)",
+            "Architectural proposal with PoC, SSP, SDN concepts",
+            "Integration perspective with 5G+ systems"
+        ]
+    },
+    "style": {
+        "register": "Position paper - visionary with technical depth",
+        "rhetorical_patterns": [
+            "Narrative scenario opening (Alice story)",
+            "Problem-solution framing (5G+ cost → VaaS solution)",
+            "Service-by-service deep dive",
+            "Comprehensive open challenges enumeration"
+        ],
+        "characteristic_phrases": [
+            "This position paper aims to provide...",
+            "supercomputers on wheels",
+            "push services closer to users at the edge",
+            "as a first step towards..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Narrative Scenario Hook",
+            "description": "Open a position paper with a concrete user story that illustrates the envisioned paradigm before diving into technical details",
+            "structure": [
+                "Create relatable character (Alice visiting city)",
+                "Walk through scenario with technology seamlessly integrated",
+                "Mention specific applications (localization, recommendation, autonomous driving, AR)",
+                "Transition: 'The above story is just a glimpse of...'",
+                "Define broader context and problem space"
+            ],
+            "example_application": "Alice's smart city journey demonstrating VaaS capabilities",
+            "rhetorical_effect": "Grounds abstract concepts in tangible user experience; creates emotional connection",
+            "complexity": "Medium - requires creative scenario design"
+        },
+        {
+            "recipe_name": "Paradigm Reversal Framing",
+            "description": "Frame a new paradigm by explicitly reversing the conventional perspective on a technology's role",
+            "structure": [
+                "State conventional view (vehicles as END USERS)",
+                "Identify underutilized resources in conventional view (cars parked 23h/day)",
+                "Propose reversal (vehicles as RESOURCE SUPPLIERS)",
+                "Articulate implications of reversal",
+                "Coin memorable term (VaaS, SCCSI)"
+            ],
+            "example_application": "VaaS reverses vehicular networking from consumer-centric to supplier-centric",
+            "rhetorical_effect": "Creates 'aha moment'; establishes novel contribution",
+            "complexity": "Low-Medium - requires identifying implicit assumptions"
+        },
+        {
+            "recipe_name": "Upgrade Requirements Bridge Section",
+            "description": "Create a critical bridge section that identifies gaps between existing technology and envisioned paradigm",
+            "structure": [
+                "Title: 'From X to Y: What Upgrades Are Needed?'",
+                "For each gap: State limitation → Explain why → Propose upgrade direction",
+                "Cover multiple perspectives (spectrum, computing, incentive)",
+                "Frame upgrades as design requirements for proposed architecture"
+            ],
+            "example_application": "Section III bridging VANETs to VaaS via CR, SCCSI integration, incentives",
+            "rhetorical_effect": "Justifies need for proposed architecture; structures problem space",
+            "complexity": "Medium - requires deep understanding of existing limitations"
+        },
+        {
+            "recipe_name": "Multi-Dimensional Service Taxonomy",
+            "description": "Organize a position paper around comprehensive service dimensions rather than technology components",
+            "structure": [
+                "Define service dimensions (SCCSI: Sensing, Comms, Computing, Storage, Intelligence)",
+                "Dedicate equal sections to each dimension",
+                "Within each: state capability → review prior work → identify integration opportunities",
+                "Emphasize convergence and coupling across dimensions"
+            ],
+            "example_application": "Sections V-IX covering SCCSI services with tight coupling emphasis",
+            "rhetorical_effect": "Establishes comprehensive coverage; enables modular reading",
+            "complexity": "Medium-High - requires balanced depth across dimensions"
+        },
+        {
+            "recipe_name": "Technology Milestone Timeline",
+            "description": "Include a timeline figure showing key technology milestones to contextualize capability evolution",
+            "structure": [
+                "Identify key years with significant capability additions",
+                "For each milestone: company, product, specific capability metric",
+                "Focus on enabling technologies for proposed paradigm",
+                "Show progression toward envisioned capabilities"
+            ],
+            "example_application": "Fig. 8: CAD milestones from Tesla cameras to NVIDIA DRIVE Thor 2000 TOPS",
+            "rhetorical_effect": "Demonstrates technology maturity; provides evidence for timing",
+            "complexity": "Low - requires industry knowledge gathering"
+        },
+        {
+            "recipe_name": "Survey Differentiation Matrix",
+            "description": "Use a comprehensive comparison table to differentiate from prior surveys across multiple criteria",
+            "structure": [
+                "List prior surveys/articles with year",
+                "Define distinguishing criteria as columns",
+                "Use checkmarks/crosses for binary coverage",
+                "Highlight comprehensive coverage of current work",
+                "Include 'Ours' row with all checkmarks"
+            ],
+            "example_application": "Table I: 11 prior works × 5 criteria, only 'Ours' has all checkmarks",
+            "rhetorical_effect": "Establishes novelty; positions contribution clearly",
+            "complexity": "Low-Medium - requires thorough related work analysis"
+        }
+    ],
+    "key_concepts": {
+        "PoC": "Point of Connection - SCCSI-equipped network device installable on vehicles or fixed infrastructure",
+        "SSP": "Secondary Service Provider - centralized entity managing VaaS with C/U plane decoupling",
+        "SCCSI_Service_Network": "Integrated fixed + mobile infrastructure providing sensing, comms, computing, storage, intelligence services"
+    },
+    "quality_flags": {
+        "position_paper": true,
+        "comprehensive_literature_review": true,
+        "architectural_proposal": true,
+        "five_dimensional_service_taxonomy": true,
+        "5G_plus_integration": true,
+        "open_challenges_enumerated": true,
+        "198_references": true
+    }
+}

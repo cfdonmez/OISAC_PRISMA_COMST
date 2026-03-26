@@ -1,0 +1,155 @@
+================================================================================
+O_ISAC_340 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: 6G-EWOC: AI-Enhanced Fiber-Wireless Optical 6G Network in Support of Connected Mobility
+Authors: Eleni Theodoropoulou et al. (OTE SA, Greece)
+Journal: 6G-EWOC Project / IEEE Conf (Implied)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_2_Figure_2.jpeg
+### Type: Combined Technical Diagram (Scenario + Data)
+
+### Title: OWC Scenarios and Performance
+
+### Panel (a) Scenarios:
+- Wide-Beam V2V OWC (Headlights/Taillights)
+- Pencil-Beam V2I OWC (RRH to Vehicle)
+- Fi-Wi-Fi Bridge (FSO backhaul between fiber segments)
+
+### Panel (b) Bandwidth Comparison (Chart):
+- Comparison of LED vs Laser e/o response
+- LED (Blue): Limited bandwidth, steep drop-off
+- Laser (Red): Broad bandwidth (>10 GHz), suitable for >10 Gbps
+
+### Panel (c) V2I RRH (Photo/Schematic):
+- Photonic Lantern as Optical FPA
+- Component: Single Mode Fiber Bundle
+- Function: Beamforming/Steering
+
+### Panel (d) Fi-Wi-Fi Bridge (Histogram):
+- Received Optical Power (ROP) Histogram
+- Stability profile shown (Mean ROP ~ -5 to -10 dBm)
+
+### O-ISAC Relevance:
+- Core physical layer technologies for Optical ISAC (V2X Scenarios)
+---
+
+## Image: _page_4_Figure_4.jpeg
+### Type: System Architecture Diagram
+
+### Title: 6G-EWOC High-Level Architecture
+
+### Layers:
+1. Physical Infrastructure (Access/Fronthaul):
+   - OWC / C-V2X / 5G RRH
+   - Photonic Switched Network (WDM/SDM)
+   - Edge Data Center (MEC)
+2. Control & Orchestration:
+   - SDN Controller
+   - AI-Orchestrator
+3. Use Cases (Top):
+   - Intersection
+   - Traffic Optimization
+   - Emergency Services
+
+### Interconnections:
+- OWC Links (Red)
+- Fiber/Ethernet Links (Blue)
+- RF Links (Wireless)
+
+### O-ISAC Relevance:
+- Network-level integration of Sensing and Communication
+---
+
+## Image: _page_4_Figure_20.jpeg
+### Type: Connectivity Schematic
+
+### Title: 6G-EWOC Connectivity Architecture
+
+### Detailed Components:
+- **Vehicle Side:**
+  - OWC Transceiver (Headlamps)
+  - 5G UE / C-V2X Unit
+  - Sensors (LiDAR, Camera) -> Sensor Fusion Unit
+- **Infrastructure Side:**
+  - OWC RRH (Remote Radio Head)
+  - 5G gNB
+  - Optical Fronthaul (WDM)
+  - Edge Cloud (AI/ML Processing)
+
+### Signal Flow:
+- Sensor Data -> OWC/RF -> Edge -> AI Processing -> Feedback
+
+### O-ISAC Relevance:
+- Detailed hardware/interface view for ISAC V2X
+---
+
+## Image: _page_4_Figure_22.jpeg
+### Type: Demo Setup Block Diagram
+
+### Title: Demo 1: OWC Connectivity
+
+### Components:
+- OWC System
+- 5G System (Parallel)
+- Traffic Generator
+- Analyzers (Throughput, Latency)
+
+### Scope:
+- Indoor & Outdoor validation
+- KPI Assessment: Throughput, Latency, BER
+
+### O-ISAC Relevance:
+- Validation plan for OWC in ISAC context
+---
+
+## Image: _page_4_Figure_24.jpeg
+### Type: Demo Setup Block Diagram
+
+### Title: Demo 3: End-to-End Application
+
+### Components:
+- Vehicle Emulation
+- Network Emulation (GNS3/Mininet)
+- Application Server (Data Fusion)
+- Output: Situational Awareness Map
+
+### O-ISAC Relevance:
+- Application layer utilization of ISAC data
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (Focus on technical/architectural figures, skipped 6 concept renders)
+- System Architecture: 2
+- Technical Scenarios/Data: 1
+- Demo/Testbed Schematics: 2
+
+Key Technical Findings:
+1. **Architecture:** Hybrid OWC + C-V2X approach. OWC for high-bandwidth/short-range, RF for coverage.
+2. **Components:**
+   - Laser-based transmitters preferred for >10 Gb/s (Fig 1b).
+   - Photonic Lantern FPA for beam steering (Fig 1c).
+   - Photonic Switching in Fronthaul for low latency.
+3. **ISAC Integration:**
+   - JCAS (Joint Communication and Sensing) explicitly mentioned in architecture.
+   - Connected LiDAR/Radar data fusion at the Edge.
+4. **Performance Targets (KPIs from Text/Fig):**
+   - V2V Data Rate: >100 Mbps
+   - V2I Data Rate: >1 Gbps (Long Range), >10 Gbps (Short Range)
+   - Latency: Ultra-low (optimized via photonic switching)
+
+Key Innovations:
+1. **Fi-Wi-Fi Bridge:** Transparent fiber extension via FSO.
+2. **AI-Enhanced Fronthaul:** SDN + AI for dynamic resource allocation.
+3. **Photonic Lantern Beamforming:** Novel antenna concept for V2I OWC.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| V2V Rate | >100 Mb/s |
+| V2I Rate | 1 - 10 Gb/s |
+| Range (V2I)| >200 m (1 Gb/s) |
+| Tech | Laser + FPA |
+================================================================================

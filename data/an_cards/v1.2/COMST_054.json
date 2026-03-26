@@ -1,0 +1,793 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_054",
+  "title": "Optical Wireless Communication in Atmosphere and Underwater: Statistical Models, Improvement Techniques, and Recent Applications",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "frontmatter",
+  "domain": "Optical Wireless Communication (OWC) / FSO / UOWC",
+  "source_path": "data/corp_std/COMST_054/COMST_054.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Abbreviation list treated as glossary; page/span markers ignored."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 35295,
+    "approx_token_count_total": null,
+    "equation_count_est": 347,
+    "figure_count_est": 14,
+    "table_count_est": 0,
+    "list_count_est": 396,
+    "citation_count_in_body_est": 546,
+    "citation_density_per_1k_words_est": 15.5,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION",
+        "A. Motivation and Contribution"
+      ],
+      "objective": "Highlight OWC relevance for 6G/IoT, contrast atmospheric vs underwater contexts, cite prior surveys, and state contributions.",
+      "key_components": [
+        "OWC role in 6G/IoT and multi-environment scope",
+        "Gap versus prior surveys",
+        "Contribution bullets",
+        "Roadmap pointer"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 3800,
+      "positioning": {
+        "start_doc_progress_pct_est": 2,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Leads with 6G/IoT demand and multi-environment scope to hook.",
+        "States prior survey gaps before listing contributions."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Positions OWC as a 6G candidate across air/space/underwater and notes survey gap.",
+          "locator": {
+            "heading": "I. INTRODUCTION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L20-L75"
+          }
+        },
+        {
+          "claim": "Lists contributions covering models, improvement techniques, and future directions.",
+          "locator": {
+            "heading": "A. Motivation and Contribution",
+            "paragraph_index_est": 1,
+            "line_range_est": "L160-L190"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. OPTICAL WIRELESS COMMUNICATION SYSTEMS",
+        "A. Transmitter",
+        "B. Receiver",
+        "C. Benefits of using OWC"
+      ],
+      "objective": "Provide system-level components and basic benefits to ground later modeling.",
+      "key_components": [
+        "Transmitter building blocks",
+        "Receiver building blocks",
+        "Benefits summary"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 3200,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot"
+      ],
+      "notable_moves": [
+        "Keeps subsections short to avoid bogging before challenges."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces transmitter/receiver elements for OWC.",
+          "locator": {
+            "heading": "II. OPTICAL WIRELESS COMMUNICATION SYSTEMS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L196-L235"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "III. OWC LIMITATIONS AND CHALLENGES",
+        "A. Atmospheric Environment",
+        "B. Underwater Environment",
+        "C. Alignment and Tracking",
+        "D. Blockages and Obstructions",
+        "E. Deployment and Maintenance",
+        "Summary and Lessons Learned"
+      ],
+      "objective": "Enumerate environment-specific and operational challenges across atmospheric and underwater OWC.",
+      "key_components": [
+        "Atmospheric impairments",
+        "Underwater impairments",
+        "Pointing/alignment issues",
+        "Blockage/deployment constraints",
+        "Lessons summary"
+      ],
+      "approx_word_share_pct": "14-16",
+      "approx_words_est": 5600,
+      "positioning": {
+        "start_doc_progress_pct_est": 18,
+        "end_doc_progress_pct_est": 30
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Splits challenges by environment and operational factors, then recaps lessons."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists atmospheric and underwater channel challenges and alignment issues.",
+          "locator": {
+            "heading": "III. OWC LIMITATIONS AND CHALLENGES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L232-L345"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "IV. EXPERIMENTAL OWCS DEMONSTRATIONS",
+        "A. Atmospheric OWC",
+        "B. UOWC"
+      ],
+      "objective": "Summarize experimental demonstrations in atmospheric and underwater contexts.",
+      "key_components": [
+        "Atmospheric demo summaries",
+        "Underwater demo summaries",
+        "Key findings per demo"
+      ],
+      "approx_word_share_pct": "8-10",
+      "approx_words_est": 3200,
+      "positioning": {
+        "start_doc_progress_pct_est": 30,
+        "end_doc_progress_pct_est": 38
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot"
+      ],
+      "notable_moves": [
+        "Keeps demos bifurcated by environment for quick comparison."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Provides atmospheric and underwater demo summaries.",
+          "locator": {
+            "heading": "IV. EXPERIMENTAL OWCS DEMONSTRATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L353-L410"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "V. OWC CHANNEL MODELS",
+        "A. Turbulent Channel Models",
+        "B. Pointing Error Models",
+        "C. AOA Models",
+        "D. Noise Models"
+      ],
+      "objective": "Catalog statistical channel models for atmospheric and underwater OWC, including turbulence, pointing, AOA, and noise.",
+      "key_components": [
+        "Model families and regimes",
+        "Parameters and applicability",
+        "Notes on tractability/validity",
+        "Pointers to summary tables (if any)"
+      ],
+      "approx_word_share_pct": "18-20",
+      "approx_words_est": 6800,
+      "positioning": {
+        "start_doc_progress_pct_est": 38,
+        "end_doc_progress_pct_est": 48
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "evaluation_framing",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Uses sub-buckets by impairment type to keep a heavy model inventory navigable.",
+        "Highlights tractability/validity ranges to guide model choice."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces turbulence, pointing, AOA, and noise model families with notes on regimes.",
+          "locator": {
+            "heading": "V. OWC CHANNEL MODELS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L441-L540"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VI. PERFORMANCE IMPROVEMENT TECHNIQUES",
+        "A. Aperture Averaging",
+        "B. Spatial Diversity",
+        "C. Reconfigurable Intelligent Surfaces",
+        "D. AI in OWC"
+      ],
+      "objective": "Survey techniques to mitigate impairments and enhance OWC performance.",
+      "key_components": [
+        "Technique description and rationale",
+        "Relation to earlier channel impairments",
+        "Pros/limitations",
+        "Brief positioning within OWC"
+      ],
+      "approx_word_share_pct": "16-18",
+      "approx_words_est": 6400,
+      "positioning": {
+        "start_doc_progress_pct_est": 48,
+        "end_doc_progress_pct_est": 57
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Uses a repeating mini-template: technique description -> benefit -> limitation."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists aperture averaging, diversity, RIS, and AI as mitigation levers.",
+          "locator": {
+            "heading": "VI. PERFORMANCE IMPROVEMENT TECHNIQUES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L569-L640"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VII. ACTIVE RESEARCH IN OWCS",
+        "A. OWC for 6G",
+        "B. Integrated Sensing and Communications in OWC",
+        "C. Security in OWCS"
+      ],
+      "objective": "Showcase current research themes linking OWC to 6G, sensing, and security.",
+      "key_components": [
+        "6G positioning of OWC",
+        "ISAC applications",
+        "Security considerations"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 4200,
+      "positioning": {
+        "start_doc_progress_pct_est": 57,
+        "end_doc_progress_pct_est": 63
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "pivot",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Aligns research themes with earlier mitigation and modeling sections to show continuity."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Positions OWC within 6G, ISAC, and security research agendas.",
+          "locator": {
+            "heading": "VII. ACTIVE RESEARCH IN OWCS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L642-L720"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VIII. FUTURE DIRECTIONS",
+        "A. Standardization",
+        "B. Practical Guidance",
+        "C. Benchmark Framework for OWC Performance Assessment"
+      ],
+      "objective": "Set out future directions around standardization, practical guidelines, and benchmarking.",
+      "key_components": [
+        "Standardization needs",
+        "Practical deployment guidance",
+        "Benchmarking framework proposal"
+      ],
+      "approx_word_share_pct": "6-8",
+      "approx_words_est": 2600,
+      "positioning": {
+        "start_doc_progress_pct_est": 63,
+        "end_doc_progress_pct_est": 69
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "0",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "organization_map",
+        "gap",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Pairs standardization needs with practical guidance and benchmarking to make future work concrete."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Calls for standardization and benchmarking frameworks.",
+          "locator": {
+            "heading": "VIII. FUTURE DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L722-L755"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S09",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "IX. CONCLUSIONS"
+      ],
+      "objective": "Recap the survey and reaffirm the role of OWC across environments.",
+      "key_components": [
+        "Brief recap",
+        "Reminder of challenges and mitigation themes",
+        "Forward-looking close"
+      ],
+      "approx_word_share_pct": "2-3",
+      "approx_words_est": 900,
+      "positioning": {
+        "start_doc_progress_pct_est": 69,
+        "end_doc_progress_pct_est": 71
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "1",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "contribution",
+        "limitation",
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Keeps closing succinct and forward-facing."
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Provides a brief recap and forward-looking statement.",
+          "locator": {
+            "heading": "IX. CONCLUSIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L762-L780"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Positions OWC as a 6G candidate spanning atmosphere and underwater with rising IoT demand.",
+      "locator": "I. INTRODUCTION L20-L75"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes prior surveys are partial and lack unified coverage of statistical models, mitigation, and future directions across environments.",
+      "locator": "A. Motivation and Contribution L160-L190"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges existing OWC work but argues missing integrated treatment of atmosphere and underwater with improvement techniques.",
+      "locator": "A. Motivation and Contribution L170-L195"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions on models, improvement techniques, applications, and future directions.",
+      "locator": "A. Motivation and Contribution L160-L190"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section organization after contributions.",
+      "locator": "I. INTRODUCTION L190-L205"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Clarifies focus on atmospheric and underwater OWC and excludes general RF-only perspectives.",
+      "locator": "I. INTRODUCTION L70-L120"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "We motivate multi-environment OWC, review systems and challenges, catalog models and improvements, outline active research and future directions, then conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "hybrid",
+    "axes": [
+      "environment (atmospheric vs underwater)",
+      "impairment/mitigation type (turbulence, pointing, noise, alignment, diversity, RIS, AI)"
+    ],
+    "levels_est": 3,
+    "node_count_est": 18,
+    "branches": [
+      "Systems (Tx/Rx/benefits)",
+      "Challenges (atmospheric, underwater, alignment, deployment)",
+      "Channel models (turbulence, pointing, AOA, noise)",
+      "Improvement techniques (aperture averaging, diversity, RIS, AI)",
+      "Research themes (6G, ISAC, security)",
+      "Future directions (standards, practice, benchmarking)"
+    ],
+    "taxonomy_figure_present": "no",
+    "taxonomy_table_present": "no",
+    "taxonomy_artifacts": {
+      "figure_ids": [],
+      "table_ids": []
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "no",
+    "dimensions": [],
+    "tradeoff_axes": [],
+    "metrics_table_present": "no",
+    "evidence_locators": []
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Figures scattered to illustrate systems, challenges, models, and techniques; no formal tables, relying on text summaries.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "depicts",
+        "freq_est": null
+      },
+      {
+        "verb": "presents",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "scenario",
+        "purpose": "Orient readers to OWC environments and system elements",
+        "placement": {
+          "first_mention_section_id": "S02",
+          "first_mention_section_label": "SYSTEM_MODEL",
+          "doc_progress_pct_est": 15
+        },
+        "evidence_locator": "Fig. 1 system overview in early sections"
+      },
+      {
+        "figure_id": "F02",
+        "type": "comparison",
+        "purpose": "Contrast atmospheric vs underwater OWC challenges/links",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "CHALLENGES",
+          "doc_progress_pct_est": 25
+        },
+        "evidence_locator": "Challenges section figure contrasting environments"
+      }
+    ],
+    "tables": []
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Challenges",
+        "lesson": "Separate atmospheric and underwater impairments, then capture alignment/deployment issues to guide mitigation choices.",
+        "locator": "III. OWC LIMITATIONS AND CHALLENGES L232-L345"
+      },
+      {
+        "location": "Channel models",
+        "lesson": "Group models by impairment type and note validity/tractability to steer selection.",
+        "locator": "V. OWC CHANNEL MODELS L441-L540"
+      },
+      {
+        "location": "Improvement techniques",
+        "lesson": "Pair each mitigation (aperture averaging, diversity, RIS, AI) with its target impairment and limitation.",
+        "locator": "VI. PERFORMANCE IMPROVEMENT TECHNIQUES L569-L640"
+      },
+      {
+        "location": "Future directions",
+        "lesson": "Anchor future work in standards, practical guidance, and benchmarking frameworks for multi-environment OWC.",
+        "locator": "VIII. FUTURE DIRECTIONS L722-L755"
+      }
+    ],
+    "aha_moment": "By structuring the survey around environment-specific challenges, aligned models, and matching mitigation techniques, the reader can map each impairment to a modeled regime and a remedy."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "Curated atmospheric and underwater OWC literature; no explicit database filters stated.",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Opens with a scope sentence and a short list of subsection aims.",
+    "math_handling_strategy": "progressive deepening",
+    "listicle_usage": "heavy",
+    "list_density_per_1k_words_est": 11.2,
+    "signposting_devices": [
+      "In this section",
+      "Next",
+      "Furthermore"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Environment-split challenge list",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Divide challenges by environment (atmosphere vs underwater), then add operational factors like alignment and deployment.",
+        "Close with a short lessons-learned paragraph to keep the list cohesive.",
+        "Point forward to mitigation techniques."
+      ],
+      "why_it_works": "Chunking by environment plus a recap prevents a long challenge list from feeling scattered.",
+      "evidence_locators": [
+        "III. OWC LIMITATIONS AND CHALLENGES L232-L345"
+      ]
+    },
+    {
+      "title": "Model matrix by impairment type",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "List model families grouped by impairment (turbulence, pointing, AOA, noise).",
+        "Note validity regimes and tractability hints for each.",
+        "Reference any summary tables/figures if available."
+      ],
+      "why_it_works": "Readers can quickly select models aligned to specific impairments and know their applicability.",
+      "evidence_locators": [
+        "V. OWC CHANNEL MODELS L441-L540"
+      ]
+    },
+    {
+      "title": "Mitigation mini-template",
+      "applies_to_sections": [
+        "OTHER"
+      ],
+      "steps": [
+        "For each technique, give one-sentence description and target impairment.",
+        "Add a benefit sentence and a limitation/constraint sentence.",
+        "Keep each entry concise to sustain pacing."
+      ],
+      "why_it_works": "A fixed micro-structure keeps multiple techniques skimmable and comparable.",
+      "evidence_locators": [
+        "VI. PERFORMANCE IMPROVEMENT TECHNIQUES L569-L640"
+      ]
+    },
+    {
+      "title": "Research-theme triad",
+      "applies_to_sections": [
+        "OTHER"
+      ],
+      "steps": [
+        "Select three active themes (e.g., 6G alignment, ISAC, security).",
+        "For each, provide a short rationale and link back to earlier models/mitigations.",
+        "End with a forward-looking cue."
+      ],
+      "why_it_works": "Triads keep momentum and show continuity across sections.",
+      "evidence_locators": [
+        "VII. ACTIVE RESEARCH IN OWCS L642-L720"
+      ]
+    },
+    {
+      "title": "Future-work scaffold",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Frame future directions around standards, practical guidance, and benchmarking.",
+        "Tie each to specific prior challenges or gaps.",
+        "Use concise bullets to avoid diluting urgency."
+      ],
+      "why_it_works": "Organizing future work around actionable scaffolds makes the close practical and memorable.",
+      "evidence_locators": [
+        "VIII. FUTURE DIRECTIONS L722-L755"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span/page markers in headings",
+      "Glitchy abbreviation list formatting",
+      "Image placeholders instead of figures"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "DOI/year not visible in text; year assumed from metadata",
+      "References likely included in line counts",
+      "Figure/table IDs not explicitly labeled"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts are heuristic; references likely included because reference heading was not parsed cleanly. No tables detected; figures inferred from placeholders."
+}

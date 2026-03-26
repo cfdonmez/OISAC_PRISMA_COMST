@@ -1,0 +1,309 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic (Dual-Comb ISAC Transceiver)
+---
+Components:
+- OFC 1: Optical Frequency Comb 1 (Signal), 100 MHz rep rate.
+- OFC 2: Optical Frequency Comb 2 (LO), 100 MHz + Δf (1 kHz offset).
+- EDFA ×2: Erbium-doped fiber amplifiers (23 dBm each).
+- IQ Modulator: 40 GHz bandwidth, data encoding.
+- Circulator: High isolation Tx/Rx routing.
+- Collimator: Free-space coupling.
+- Target: Distributed reflectors.
+- Balanced PD: Dual-comb heterodyne detection.
+- ADC: 250 MSa/s (downconverted RF).
+- DSP: Multi-carrier processing.
+
+Flow:
+1. OFC 1 → IQ Mod (OFDM data) → EDFA → Circulator → Collimator → Target.
+2. Return signal → Collimator → Circulator.
+3. OFC 2 (LO) + Return → Balanced PD (multi-heterodyne).
+4. ADC → DSP (range, velocity, data extraction).
+
+Key Parameters:
+- 50 comb lines (5 THz span).
+- 100 GHz line spacing.
+- Effective sensing BW: 5 THz.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Chart (Dual-Comb Optical Spectrum)
+---
+Axes:
+- X-axis: Wavelength (nm). Range: 1530 to 1570 nm.
+- Y-axis: Power (dBm). Range: -40 to 0 dBm.
+
+Data Points:
+- Center wavelength: 1550 nm.
+- Comb span: 40 nm (5 THz).
+- Number of lines: ~50.
+- Line spacing: 100 GHz (0.8 nm).
+- Per-line power: -5 to -15 dBm (varies with line).
+- OSNR (per line): >30 dB.
+- Flatness: ±5 dB across span.
+
+Observations:
+- Sech² envelope from mode-locked source.
+- Central 20 lines within 3 dB flatness.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Chart (RF Spectrum - Multi-Heterodyne Beat Notes)
+---
+Axes:
+- X-axis: RF Frequency (MHz). Range: 0 to 50 MHz.
+- Y-axis: Power (dBm). Range: -80 to -20 dBm.
+
+Data Points:
+- Beat note spacing: Δf = 1 kHz.
+- Number of RF tones: 50.
+- SNR per tone: 45-55 dB.
+- Highest SNR: Tone 25 (center) = 55 dB.
+- Lowest SNR: Tone 1, 50 (edges) = 45 dB.
+
+Observation:
+- Compressed 5 THz optical span into 50 MHz RF.
+- Compression factor: 100,000×.
+---
+
+Image: _page_4_Figure_7.jpeg
+Type: Chart (Multi-Panel: Dual-Comb Ranging)
+---
+Panel (a) - Interferogram:
+Axes:
+- X-axis: Time (µs). Range: 0 to 1000 µs.
+- Y-axis: Amplitude (a.u.). Range: -1 to +1.
+
+Data Points:
+- Burst period: 1 ms (1/Δf).
+- Burst FWHM: 2 µs.
+- Signal-to-noise: 42 dB.
+
+Panel (b) - Range Profile (Fourier Transform):
+Axes:
+- X-axis: Range (m). Range: 0 to 150 m.
+- Y-axis: Amplitude (dB). Range: -60 to 0 dB.
+
+Data Points:
+- Target 1: 25.2 m, amplitude = -5 dB.
+- Target 2: 68.7 m, amplitude = -12 dB.
+- Target 3: 112.4 m, amplitude = -22 dB.
+- Range resolution: 30 µm (from 5 THz BW).
+---
+
+Image: _page_5_Figure_2.jpeg
+Type: Chart (Range Accuracy vs Averaging Time)
+---
+Axes:
+- X-axis: Averaging Time (ms). Range: 1 to 1000 ms.
+- Y-axis: Range Precision (µm). Range: 0.1 to 100 µm (log scale).
+
+Legend:
+- Measured (Blue).
+- Theoretical (Red dashed).
+
+Data Points:
+- At 1 ms: Precision = 50 µm.
+- At 10 ms: Precision = 15 µm.
+- At 100 ms: Precision = 5 µm.
+- At 1000 ms: Precision = 1.5 µm.
+
+Trend:
+- Scales as 1/sqrt(T) — Allan deviation behavior.
+- Matches theoretical limit within 10%.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Multi-Panel: Simultaneous Communication)
+---
+Panel (a) - Constellation (16-QAM per comb line):
+- Modulation: 16-QAM.
+- Per-line data rate: 10 Gbps.
+- EVM variation: 5.5-8.2% RMS across 50 lines.
+- Average EVM: 6.8% RMS.
+
+Panel (b) - BER per Comb Line:
+Axes:
+- X-axis: Comb Line Index. Range: 1 to 50.
+- Y-axis: BER. Range: 10^-6 to 10^-2 (log scale).
+
+Data Points:
+- Lines 1-10 (edge): BER = 10^-4 to 10^-3.
+- Lines 11-40 (center): BER = 10^-6 to 10^-5.
+- Lines 41-50 (edge): BER = 10^-4 to 10^-3.
+
+Trend:
+- Central lines perform 10-100× better due to higher OSNR.
+---
+
+Image: _page_6_Figure_4.jpeg
+Type: Chart (Aggregate Throughput)
+---
+Axes:
+- X-axis: Number of Active Comb Lines. Range: 10 to 50.
+- Y-axis: Aggregate Data Rate (Tbps). Range: 0 to 0.6 Tbps.
+
+Legend:
+- Measured (Blue).
+- Theoretical (Red dashed).
+
+Data Points:
+- 10 lines: Rate = 100 Gbps.
+- 25 lines: Rate = 250 Gbps.
+- 40 lines: Rate = 400 Gbps.
+- 50 lines: Rate = 500 Gbps.
+
+Observation:
+- Linear scaling: 10 Gbps/line.
+- Total capacity: 0.5 Tbps with 50 lines.
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Chart (Multi-Panel: Velocity Measurement)
+---
+Panel (a) - Doppler Shift vs True Velocity:
+Axes:
+- X-axis: True Velocity (m/s). Range: -10 to +10 m/s.
+- Y-axis: Measured Doppler Shift (Hz). Range: -130 to +130 kHz.
+
+Data Points:
+- At +5 m/s: Doppler = +64.5 kHz.
+- At -5 m/s: Doppler = -64.5 kHz.
+- At +10 m/s: Doppler = +129 kHz.
+- Sensitivity: 12.9 kHz/(m/s) @ 1550 nm.
+
+Panel (b) - Velocity Error:
+- RMSE: 0.8 mm/s over 10 m/s range.
+- Linearity: R² = 0.9999.
+---
+
+Image: _page_8_Figure_4.jpeg
+Type: Chart (Sensing-Communication Trade-off: Dual-Comb)
+---
+Axes:
+- X-axis: Communication Data Rate (Tbps). Range: 0 to 0.6 Tbps.
+- Y-axis: Range Precision (µm). Range: 1 to 100 µm (log scale).
+
+Legend:
+- This work (Blue star).
+- Prior dual-comb (Red triangles).
+- Prior FMCW (Green squares).
+
+Data Points:
+- This work: Rate = 0.5 Tbps; Precision = 5 µm.
+- Prior DC [15]: Rate = 0.01 Tbps; Precision = 1 µm.
+- Prior DC [22]: Rate = 0.1 Tbps; Precision = 10 µm.
+- FMCW [31]: Rate = 0.05 Tbps; Precision = 50 µm.
+
+Pareto Position:
+- 5× higher rate than [22] at comparable precision.
+- 10× better precision than FMCW at 10× rate.
+---
+
+Image: _page_9_Figure_2.jpeg
+Type: Chart (Multi-Panel: Multi-Target Tracking)
+---
+Panel (a) - 3D Point Cloud:
+Axes:
+- X-axis: X Position (m). Range: -20 to +20 m.
+- Y-axis: Y Position (m). Range: 0 to 150 m.
+- Z-axis: Z Height (m). Range: 0 to 5 m.
+
+Data Points:
+- 15 targets detected.
+- Position RMSE (X,Y): 2.5 cm.
+- Position RMSE (Z): 3.8 cm.
+- Update rate: 1 kHz.
+
+Panel (b) - Tracking Trajectory:
+- Target 1: Linear motion, velocity = 2.1 m/s, error = 0.5 mm/s.
+- Target 2: Oscillating, amplitude = 0.5 m, f = 0.5 Hz, error = 1.2 mm/s.
+---
+
+Image: _page_9_Figure_4.jpeg
+Type: Chart (Phase Noise Analysis)
+---
+Axes:
+- X-axis: Offset Frequency (Hz). Range: 1 to 10^6 Hz.
+- Y-axis: Phase Noise (dBc/Hz). Range: -140 to -60 dBc/Hz.
+
+Legend:
+- OFC 1 (Blue).
+- OFC 2 (Red).
+- After common-mode cancellation (Green).
+
+Data Points:
+- At 100 Hz: OFC = -80 dBc/Hz; After CMC = -120 dBc/Hz.
+- At 1 kHz: OFC = -95 dBc/Hz; After CMC = -130 dBc/Hz.
+- At 10 kHz: OFC = -105 dBc/Hz; After CMC = -135 dBc/Hz.
+
+Improvement:
+- Common-mode cancellation provides 35-40 dB reduction.
+- Enables sub-µm precision at long range.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Chart (Long-Range Demonstration)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 500 m.
+- Y-axis: SNR (dB). Range: 0 to 60 dB.
+
+Legend:
+- Measured (Blue).
+- 1/R² theoretical (Red dashed).
+
+Data Points:
+- At 50 m: SNR = 55 dB.
+- At 100 m: SNR = 49 dB.
+- At 200 m: SNR = 43 dB.
+- At 300 m: SNR = 38 dB.
+- At 500 m: SNR = 30 dB.
+
+Observation:
+- SNR follows 1/R² (6 dB per doubling).
+- Detectable (SNR >20 dB) to beyond 1 km.
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Chart (BER vs SNR: Multi-Carrier)
+---
+Axes:
+- X-axis: SNR (dB). Range: 10 to 40 dB.
+- Y-axis: BER. Range: 10^-7 to 10^-1 (log scale).
+
+Legend:
+- Single-carrier 16-QAM (Blue).
+- 50-carrier average (Red).
+- Theoretical 16-QAM (Black dashed).
+
+Data Points:
+- Single at 20 dB: BER = 2×10^-3.
+- Multi at 20 dB: BER = 5×10^-4.
+- Single at 30 dB: BER = 5×10^-5.
+- Multi at 30 dB: BER = 10^-6.
+
+Improvement:
+- Multi-carrier averaging provides 1.5-2 dB gain.
+---
+
+Image: _page_11_Figure_4.jpeg
+Type: Chart (Comparison with State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[8], Ref[15], Ref[24], This Work].
+- Y-axis (Left): Range Precision (µm). Range: 0.1 to 100 µm (log).
+- Y-axis (Right): Data Rate (Tbps). Range: 0 to 0.6 Tbps.
+
+Data Points:
+- Ref[8]: Precision = 0.5 µm; Rate = 0 (sensing only).
+- Ref[15]: Precision = 1 µm; Rate = 10 Gbps.
+- Ref[24]: Precision = 20 µm; Rate = 100 Gbps.
+- This Work: Precision = 5 µm; Rate = 500 Gbps.
+
+Key Achievement:
+- Best combined figure-of-merit: (Rate × 1/Precision).
+- 50× throughput vs [15] at 5× precision penalty (acceptable trade-off).
+---
+
+Note: Images _page_13_Picture_30.jpeg, _page_13_Picture_35.jpeg, _page_13_Picture_40.jpeg, _page_14_Picture_3.jpeg, _page_14_Picture_6.jpeg, _page_14_Picture_10.jpeg are author photographs and contain no scientific data for extraction.
+---

@@ -1,0 +1,87 @@
+Image: _page_1_Figure_2.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+* **RO-ISAC transceiver:** MLS generation, OFDM mod., Power allocation, D/A, DC bias, LED/LD (Tx), PD (Rx), A/D, Up-sampling, Cross correlation.
+* **RO-ISAC receiver:** PD, A/D, Sync, De-meaning, OFDM demod.
+* **Sensing Target:** Corner Cube Reflector (CCR) with parameters Ls (shield length), L (reflector depth), and Dr (diameter).
+**Flow:**
+1. **Transmitter:** Input bits are OFDM-modulated and PPC (Physical Parameter Control) bits generate a Maximum Length Sequence (MLS).
+2. **Integration:** Power allocation integrates OFDM and MLS into a hybrid waveform. After D/A conversion and DC biasing, the signal is transmitted via LED/LD.
+3. **Communication Rx:** The "Transmitted signal" is received by the RO-ISAC receiver's PD, digitized, synchronized, and demodulated to recover output bits.
+4. **Sensing Rx:** The "Reflected signal" from the CCR is captured by the transceiver's Sensing PD, digitized, and cross-correlated with the up-sampled reference hybrid signal to estimate distance.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Time-Domain Waveform Charts
+---
+**Axes Extraction:**
+* **X-axis:** Sample index, Range: 0 to 3200.
+* **Y-axis:** Amplitude, Range: -4 to 4 (a, b), -6 to 6 (c), -5 to 5 (d).
+**Data Points:**
+* Shows 3200 samples of the hybrid OFDM-MLS waveform (blue) superimposed on the raw MLS sequence (red).
+* **Section (a):** Low MLS amplitude (near 0) within the OFDM noise.
+* **Section (b):** MLS amplitude is approx. ±1.
+* **Section (c):** MLS amplitude increases to approx. ±2.
+* **Section (d):** MLS amplitude is approx. ±3, dominating the waveform peaks which reach ±5.
+**Trends:** Illustrates different power allocation ratios (β) where higher β values result in larger MLS amplitudes relative to the OFDM signal.
+---
+
+Image: _page_2_Picture_7.jpeg
+Type: Experimental Setup Diagram and Photo
+---
+**Section (a) - Block Diagram:**
+* **Components:** AWG (Arbitrary Waveform Generator), BLED module (Blue LED), PD module (Photodiode), DSO ports 1 & 2 (Digital Storage Oscilloscope), CCR (Corner Cube Reflector), APD (Avalanche Photodiode).
+* **Flow:** Tx signal from AWG drives the BLED. Transmitted light is split: one path goes to the PD for direct monitoring (Rx signal 1 on DSO port 1). The other path reflects off the CCR and is detected by the APD (Rx signal 2 on DSO port 2).
+**Section (b) - Setup Photo:**
+* Lists: DC supply (two units), AWG, PD module, DSO, BLED module, CCR, APD.
+* **Observation:** Lab-bench optical wireless communication (OWC) setup with professional-grade test and measurement equipment.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Cross-correlation Charts
+---
+**Section (a) - Absolute Profile:**
+* **Axes:** X-axis: Cross-correlation index, Range: 0 to 350. Y-axis: Cross-correlation profile (x10^4), Range: 0 to 18x10^4.
+* **Data Points:** Peak value for β=∞ is ~16.5x10^4 at index ~75. For β=1, peak is ~3.5x10^4. OFDM-only (green dotted) is approx. 2x10^4.
+* **Trends:** Compares OFDM-MLS (red) with OFDM-PAM (blue dashed). The MLS-based integration maintains sharper peaks and higher correlation values compared to PAM for the same power ratio β.
+**Section (b) - Normalized Profile:**
+* **Axes:** X-axis: Cross-correlation index, Range: 0 to 350. Y-axis: Cross-correlation profile, Range: 0 to 0.16.
+* **Trends:** Shows the cross-correlation profile becoming more defined as β increases from 0 (OFDM only) to ∞ (MLS only).
+---
+
+Image: _page_3_Figure_4.jpeg
+Type: Sensing Performance Charts (RMSE)
+---
+**Axes Extraction:**
+* **X-axis:** Distance (cm), Range: 48, 72, 96, 120 cm.
+* **Y-axis:** RMSE (cm), Range: 0 to 8 cm (a), 0.5 to 2 cm (b).
+**Data Points:**
+* **Plot (a):** At 120cm, OFDM-only RMSE is ~8cm, while MLS-only (black) is ~5.8cm.
+* **Plot (b):** At 120cm, β=10 RMSE is ~1.6cm, compared to β=1 which is ~1.8cm.
+**Trends:** Ranging RMSE consistently increases with distance. Increasing the power ratio β (more sensing pulse power) results in a proportional decrease in ranging error (RMSE).
+---
+
+Image: _page_3_Figure_7.jpeg
+Type: Communication Performance Charts (BER)
+---
+**Axes Extraction:**
+* **X-axis:** Distance (cm), Range: 48, 72, 96, 120 cm.
+* **Y-axis:** BER, Range: 10^-4 to 10^-1.
+**Data Points:**
+* **Plot (a):** At 72cm, β=1 BER is ~10^-3. β=10 BER is ~2x10^-2.
+* **Plot (b):** At 96cm, OFDM-only BER is ~1.5x10^-3.
+**Trends:** There is a performance trade-off compared to Figure 4. As β increases, the BER degrades significantly. The "3.8x10^-3" line (FEC threshold) indicates that at 120cm, only low β values (e.g., β=1, 2) or pure OFDM maintain communications below threshold.
+---
+
+Image: _page_4_Figure_2.jpeg
+Type: Joint Performance Trade-off Charts
+---
+**Axes Extraction:**
+* **X-axis:** β (Power ratio), Range: 0 to 5.
+* **Y-axes:** RMSE (cm) [Left: 3.5 to 5], BER [Right: 10^-4 to 10^-2].
+**Data Points:**
+* **Plot (a):** At β=2, RMSE is ~4.15 cm and BER is ~10^-3.
+* **Plot (b):** At β=1, RMSE is ~1.31 cm and BER is ~10^-3.
+**Trends:** Explicitly demonstrates the ISAC trade-off: The blue curve (RMSE) decreases as β increases (improving sensing), while the red curve (BER) increases as β increases (degrading communication).
+---

@@ -2,7 +2,7 @@
 import pandas as pd
 
 try:
-    df = pd.read_csv('analysis/phase1_screening/ai_screening_decisions_scopus.csv')
+    df = pd.read_csv('analysis/ph1_scr/ai_scr_dec_scopus.csv')
     included = df[df['Decision'] == 'Included']
     
     md_content = '# 🤖 AI-Screened Included Candidates (Scopus)\n\n'
@@ -15,7 +15,7 @@ try:
         reason = str(row['Reason']).replace('|', '-')
         md_content += f"| {row['Track_ID']} | {title} | {row.get('Confidence', 'N/A')} | {reason} |\n"
     
-    output_path = 'analysis/phase1_screening/ai_included_candidates.md'
+    output_path = 'analysis/ph1_scr/ai_included_candidates.md'
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(md_content)
         

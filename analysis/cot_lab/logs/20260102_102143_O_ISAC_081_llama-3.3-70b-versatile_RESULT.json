@@ -1,0 +1,207 @@
+{
+  "run_id": "20260102_102143_O_ISAC_081_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102143",
+  "paper_id": "O_ISAC_081",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures and tables that provide visual details about the proposed traveling wave antenna-on-display (TWAoD) for integrated sensing and communication (ISAC) applications. Figure 1 illustrates the concept of a single-platform TWAoD array within a mobile terminal for 2-dimensional frequency scanning and phase scanning modes. Figure 2 presents the proposed TWAoD ISAC antenna structure utilizing FS/PS modes for different scenarios. Figure 3 shows the frequency scanning (FS) mode at the xoz-plane and phase scanning (PS) mode at the yoz-plane. Figure 4 displays the configuration of the proposed TWAoD unit cell in the display region and its simulated dispersion diagram. Figure 5 illustrates the design scheme of the proposed TWAoD unit cell. Figure 6 presents the current vector diagram and electric-field distribution of the proposed unit cell. Figure 7 shows the 3-D view of a single radiating element and its simulated radiation patterns. Figure 8 presents the configuration of the 1×8 TWAoD array with passive and active feeding types. Figure 9 displays the simulated radiation patterns of the proposed 2-D beam steering antenna at different frequencies and phase shifts. Figure 10 shows the simulated and measured S-parameter and peak realized gain of the proposed 1×8 TWAoD array. Figure 11 presents the simulated and measured beam steering patterns for FS and PS modes. Figure 12 illustrates the configuration of the proposed FPC-based diplexer for ISAC applications and its simulated and measured S-parameters. Figure 13 shows the photograph of the fabricated TWAoD array with a diplexer for ISAC systems and its configuration. Figure 14 displays the configuration of the proposed ISAC TWAoD array with an FPC-based ISAC active feed network and its simulated and measured H-/E-plane radiation patterns. Figure 15 presents the proposed test setup for evaluating the ISAC system's radar and communication performance."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed TWAoD features a traveling wave antenna integrated into the transparent region of the display panel, enabling simultaneous 2-D phase and frequency beam scanning for ISAC applications. The TWAoD utilizes a grid-shaped with cross-over patch structure, allowing for EH1-mode radiation and enabling 2-D beam scanning through frequency-dependent angle variation and phased array principles."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports experimental results showing that the TWAoD achieves high gain and dual-mode capability for radar and communication at 24 and 28 GHz, respectively. The measured impedance bandwidth ascertains |S11| < -10dB across 20-40 GHz, and the peak gain is achieved in the range of 10-12 dBi (simulated)/9.8-11.3 dBi (measured) across the operating bands (22-38GHz). The measured H-plane scanning angle is set as -52° to +47° in the 22–37 GHz, and the E-plane phase beam scanning pattern achieves approximately ±58° at 28 GHz."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed TWAoD addresses the core limitations of current ISAC antennas, including large physical footprint and limited beam steering capabilities. However, the paper does not discuss the potential challenges and limitations of integrating the TWAoD with other components in a real-world system, such as the impact of display panel manufacturing process variations on antenna performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Traveling Wave Antenna-on-Display featuring Simultaneous 2-D Phase and Frequency Beam Scanning for Integrated Sensing and Communication",
+        "authors": "Dongseop Lee and Wonbin Hong",
+        "year": 2023,
+        "venue": "IEEE Journal",
+        "doi": "10.1109/JOURNAL.2023.3265745",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "mmWave",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "indoor_positioning"
+        ],
+        "scenario_description": "The proposed TWAoD is designed for integrated sensing and communication applications in mobile devices and automotive display platforms."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed TWAoD features a traveling wave antenna integrated into the transparent region of the display panel, enabling simultaneous 2-D phase and frequency beam scanning for ISAC applications.",
+        "gap_addressed": "The proposed TWAoD addresses the core limitations of current ISAC antennas, including large physical footprint and limited beam steering capabilities.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform_design"
+        ],
+        "novel_component": "The proposed TWAoD unit cell features a grid-shaped with cross-over patch structure, allowing for EH1-mode radiation.",
+        "novel_component_specs": "The TWAoD unit cell is designed with a grid-shaped feed and cross-over patch structure, enabling EH1-mode radiation and 2-D beam scanning."
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "TWAoD with FPC-based diplexer"
+        },
+        "transmitter": {
+          "tx_source_type": "mmWave",
+          "tx_modulation_type": "QPSK",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 10,
+          "optical_bandwidth_ghz": 20,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "PIN_PD",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "Mach-Zehnder",
+          "rx_modulator_bandwidth_ghz": 20,
+          "rx_modulator_operating_point": "MITP",
+          "false_target_mitigation": "none"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "QPSK",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 1,
+          "comm_fec_type": "LDPC",
+          "sensing_waveform_family": "chirp",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time_division"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 1,
+          "fibre_type": "SMF",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 10,
+          "nonlinearity_model": "GN_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 10,
+          "path_loss_model": "free_space",
+          "turbulence_model": "lognormal",
+          "turbulence_Cn2": 1e-15,
+          "scintillation_index": 0.1,
+          "pointing_error_model": "gaussian_jitter"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 10,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 1e-06,
+          "ber_target": 1e-06,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0.01,
+          "latency_ms": 1,
+          "capacity_bps_hz": 10
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 100,
+          "range_resolution_m": 1,
+          "range_accuracy_m": 0.1,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 1,
+          "velocity_accuracy_mps": 0.1,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.1,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse",
+            "rate_vs_range_resolution"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "α",
+          "tradeoff_control_range": "[0, 1]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 10,
+          "opa_steering_range_deg": 30,
+          "opa_beamwidth_deg": 10,
+          "ris_num_elements": 100,
+          "ris_type": "reflective",
+          "ris_phase_bits": 4
+        },
+        "provenance": {
+          "source_pointer": "Table II",
+          "value_origin": "reported_table",
+          "confidence_reporting": "ci_reported",
+          "num_trials": 10
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the proposed TWAoD and its performance. The experimental results are well-presented and easy to follow."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures and tables that provide visual details about the proposed traveling wave antenna-on-display (TWAoD) for integrated sensing and communication (ISAC) applications. Figure 1 illustrates the concept of a single-platform TWAoD array within a mobile terminal for 2-dimensional frequency scanning and phase scanning modes. Figure 2 presents the proposed TWAoD ISAC antenna structure utilizing FS/PS modes for different scenarios. Figure 3 shows the frequency scanning (FS) mode at the xoz-plane and phase scanning (PS) mode at the yoz-plane. Figure 4 displays the configuration of the proposed TWAoD unit cell in the display region and its simulated dispersion diagram. Figure 5 illustrates the design scheme of the proposed TWAoD unit cell. Figure 6 presents the current vector diagram and electric-field distribution of the proposed unit cell. Figure 7 shows the 3-D view of a single radiating element and its simulated radiation patterns. Figure 8 presents the configuration of the 1×8 TWAoD array with passive and active feeding types. Figure 9 displays the simulated radiation patterns of the proposed 2-D beam steering antenna at different frequencies and phase shifts. Figure 10 shows the simulated and measured S-parameter and peak realized gain of the proposed 1×8 TWAoD array. Figure 11 presents the simulated and measured beam steering patterns for FS and PS modes. Figure 12 illustrates the configuration of the proposed FPC-based diplexer for ISAC applications and its simulated and measured S-parameters. Figure 13 shows the photograph of the fabricated TWAoD array with a diplexer for ISAC systems and its configuration. Figure 14 displays the configuration of the proposed ISAC TWAoD array with an FPC-based ISAC active feed network and its simulated and measured H-/E-plane radiation patterns. Figure 15 presents the proposed test setup for evaluating the ISAC system's radar and communication performance.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The proposed TWAoD features a traveling wave antenna integrated into the transparent region of the display panel, enabling simultaneous 2-D phase and frequency beam scanning for ISAC applications. The TWAoD utilizes a grid-shaped with cross-over patch structure, allowing for EH1-mode radiation and enabling 2-D beam scanning through frequency-dependent angle variation and phased array principles.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports experimental results showing that the TWAoD achieves high gain and dual-mode capability for radar and communication at 24 and 28 GHz, respectively. The measured impedance bandwidth ascertains |S11| < -10dB across 20-40 GHz, and the peak gain is achieved in the range of 10-12 dBi (simulated)/9.8-11.3 dBi (measured) across the operating bands (22-38GHz). The measured H-plane scanning angle is set as -52° to +47° in the 22–37 GHz, and the E-plane phase beam scanning pattern achieves approximately ±58° at 28 GHz.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The proposed TWAoD addresses the core limitations of current ISAC antennas, including large physical footprint and limited beam steering capabilities. However, the paper does not discuss the potential challenges and limitations of integrating the TWAoD with other components in a real-world system, such as the impact of display panel manufacturing process variations on antenna performance.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Traveling Wave Antenna-on-Display featuring Simultaneous 2-D Phase and Frequency Beam Scanning for Integrated Sensing and Communication\",\n           \"authors\": \"Dongseop Lee and Wonbin Hong\",\n           \"year\": 2023,\n           \"venue\": \"IEEE Journal\",\n           \"doi\": \"10.1109/JOURNAL.2023.3265745\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"mmWave\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"indoor_positioning\"],\n           \"scenario_description\": \"The proposed TWAoD is designed for integrated sensing and communication applications in mobile devices and automotive display platforms.\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The proposed TWAoD features a traveling wave antenna integrated into the transparent region of the display panel, enabling simultaneous 2-D phase and frequency beam scanning for ISAC applications.\",\n           \"gap_addressed\": \"The proposed TWAoD addresses the core limitations of current ISAC antennas, including large physical footprint and limited beam steering capabilities.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"joint_waveform_design\"],\n           \"novel_component\": \"The proposed TWAoD unit cell features a grid-shaped with cross-over patch structure, allowing for EH1-mode radiation.\",\n           \"novel_component_specs\": \"The TWAoD unit cell is designed with a grid-shaped feed and cross-over patch structure, enabling EH1-mode radiation and 2-D beam scanning.\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"TWAoD with FPC-based diplexer\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"mmWave\",\n               \"tx_modulation_type\": \"QPSK\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 10,\n               \"optical_bandwidth_ghz\": 20,\n               \"tx_power_dbm\": 10,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"PIN_PD\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"Mach-Zehnder\",\n               \"rx_modulator_bandwidth_ghz\": 20,\n               \"rx_modulator_operating_point\": \"MITP\",\n               \"false_target_mitigation\": \"none\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"full_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"QPSK\",\n               \"comm_modulation_order\": 4,\n               \"comm_symbol_rate_gbaud\": 1,\n               \"comm_fec_type\": \"LDPC\",\n               \"sensing_waveform_family\": \"chirp\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"time_division\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 1,\n               \"fibre_type\": \"SMF\",\n               \"attenuation_db_per_km\": 0.2,\n               \"dispersion_ps_per_nm_km\": 10,\n               \"nonlinearity_model\": \"GN_model\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 10,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"lognormal\",\n               \"turbulence_Cn2\": 1e-15,\n               \"scintillation_index\": 0.1,\n               \"pointing_error_model\": \"gaussian_jitter\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 10,\n               \"spectral_efficiency_bps_hz\": 1,\n               \"ber\": 1e-6,\n               \"ber_target\": 1e-6,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0.01,\n               \"latency_ms\": 1,\n               \"capacity_bps_hz\": 10\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 100,\n               \"range_resolution_m\": 1,\n               \"range_accuracy_m\": 0.1,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 1,\n               \"velocity_accuracy_mps\": 0.1,\n               \"localization_error_m\": 0.1,\n               \"spatial_resolution_m\": 1,\n               \"sensing_bandwidth_hz\": 100,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.01,\n               \"crb_crlb_value\": 0.1,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"α\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 10,\n               \"opa_steering_range_deg\": 30,\n               \"opa_beamwidth_deg\": 10,\n               \"ris_num_elements\": 100,\n               \"ris_type\": \"reflective\",\n               \"ris_phase_bits\": 4\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table II\",\n               \"value_origin\": \"reported_table\",\n               \"confidence_reporting\": \"ci_reported\",\n               \"num_trials\": 10\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear and detailed description of the proposed TWAoD and its performance. The experimental results are well-presented and easy to follow.\"\n   }\n}"
+}

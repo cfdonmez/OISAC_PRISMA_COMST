@@ -1,0 +1,125 @@
+---
+directory: O_ISAC_133
+---
+
+### Image Analysis: UAV-based IPSAC Scenario
+**File:** _page_2_Figure_2.jpeg
+**Type:** System Diagram / Schematic
+**Scenario:**
+- **Link:** Integrated Passive Sensing and Communication (IPSAC).
+- **Entities:** Transmitting UAV (IPSAC UAV) and Receiving UAV.
+- **Paths:** 
+  - Line-of-Sight (LOS) path directly between UAVs.
+  - Non-Line-of-Sight (NLOS) paths reflected from buildings/ground.
+- **Metrics:** Time Difference of Arrival (TDOA) for ranging information.
+
+---
+
+### Image Analysis: CEO-OFDM System Block Diagram
+**File:** _page_3_Figure_2.jpeg
+**Type:** System Diagram / Schematic
+**Components:**
+- **Transmitter:** M-QAM Mapping -> Hermitian Symmetry -> IFFT -> P/S Conversion -> Power Index (beta) -> L-CEO-OFDM Modulation -> Cyclic Prefix (CP) Addition.
+- **Channel:** h(n) (LOS + NLOS).
+- **Receiver:** y(n) -> L-CEO-OFDM Reconstruction -> CP Passive Sensing Algorithm -> Binary Data Demodulation.
+**Key Feature:** Direct use of CP autocorrelation for sensing without extra pilot signals.
+
+---
+
+### Image Analysis: Passive Sensing Algorithm Flowchart
+**File:** _page_4_Figure_2.jpeg
+**Type:** Flowchart / Diagram
+**Steps:**
+1. Received signal y(n) buffering.
+2. Signal reconstruction for multiple slots (L=1, 2, 3).
+3. Sliding window correlation using the CP.
+4. Objective function R calculation for each epsilon (delay candidate).
+5. Maximization to find estimated delay (TOA/TDOA).
+
+---
+
+### Image Analysis: BER and TDOA Error vs beta/Pmax
+**File:** _page_6_Figure_22.jpeg
+**Type:** Chart / Graph
+**Axes:**
+- **Left Y-axis:** BER (10^0 to 10^-8).
+- **Right Y-axis:** TDOA Error (s) (0 to 9 x 10^-6).
+- **X-axis:** beta/Pmax (0.1 to 2.0).
+**Legends:**
+- DCO-OFDM, ACO-OFDM, CEO-OFDM.
+**Numerical Data:**
+- **Optimal BER:** Achieved at beta/Pmax = 0.14 (DCO), 0.57 (ACO), and 0.71 (CEO).
+- CEO-OFDM BER drops below 10^-7 at beta/Pmax ~ 0.8.
+- **TDOA Error:** CEO-OFDM consistently lowest (~10^-7 s), followed by ACO (~5 x 10^-7 s) and DCO (~8 x 10^-7 s).
+
+---
+
+### Image Analysis: TDOA Error vs Transmission Rate
+**File:** _page_7_Figure_2.jpeg
+**Type:** Chart / Graph
+**Axes:**
+- **X-axis:** Transmission Rate (bps) (0 to 5 x 10^9).
+- **Y-axis:** TDOA Error (s) (0 to 7 x 10^-6).
+**Findings:** 
+- Error increases with rate due to higher bandwidth noise.
+- CEO-OFDM at beta/Pmax = 0.71 shows the most stable performance (flattest curve near 0.5 x 10^-6 s).
+
+---
+
+### Image Analysis: TDOA Error vs Frame Number (M)
+**File:** _page_7_Figure_4.jpeg
+**Type:** Chart / Graph
+**Axes:**
+- **X-axis:** Frame Number M (1 to 15).
+- **Y-axis:** TDOA Error (s) (10^-5 to 10^-9 log scale).
+**Data Points:**
+- At M=1: Error ~ 10^-7 s.
+- At M=15: Error ~ 10^-9 s (nanosecond precision).
+- Numerical annotation: CEO-OFDM is "four times lower" error than DCO and "two times lower" than ACO.
+
+---
+
+### Image Analysis: CRLB and MSE for Distance Estimation
+**File:** _page_7_Figure_8.jpeg
+**Type:** Chart / Graph
+**Axes:**
+- **X-axis:** beta/Pmax (0 to 5).
+- **Y-axis:** Variance (m^2) (10^-2 to 10^8).
+**Curves:**
+- CEO-OFDM Simulation MSE matches its CRLB closely, minimizing at beta/Pmax ~ 2.2 with variance ~ 10^-1 m^2 (decimeter level).
+- Convergence: N=512 subcarriers brings MSE closer to the CRLB than N=256.
+
+---
+
+### Image Analysis: Distributions of Distance and Velocity Estimates
+**File:** _page_8_Figure_2, _page_8_Figure_4, _page_8_Figure_6
+**Type:** Distribution Plots (Histograms & Scatter)
+**Axes:**
+- **X-axis:** Distance (m) (-350 to 1150).
+- **Y-axis:** Velocity (m/s) (0 to 600).
+**Progress (M=1 to M=5):**
+- **M=1:** Wide scatter, 3-sigma ellipse covers ~[0, 800] m and [200, 450] m/s.
+- **M=3:** Scatter tightens significantly around Target (400 m, 330 m/s).
+- **M=5:** Extremely tight cluster, variance < 50 m for distance and < 20 m/s for velocity.
+- CEO-OFDM has the tightest distribution compared to ACO and DCO.
+
+---
+
+### Image Analysis: Multipath Channel Response
+**File:** _page_9_Figure_2.jpeg
+**Type:** Stem Plot
+**Axes:**
+- **X-axis:** Discrete Sample Index (0 to 18).
+- **Y-axis:** Normalized Amplitude (0 to 1).
+**Data Points:**
+- LOS peak at index 9 (Amplitude ~ 0.9 for Gamma=10dB, ~ 0.85 for Gamma=5dB).
+- Exponentially decaying NLOS taps from index 10 to 18.
+
+---
+
+### Image Analysis: Distance/Velocity in Multipath Channel
+**File:** _page_9_Figure_7.jpeg
+**Type:** Distribution Plots
+**(a) Gamma = 5 dB:** Higher variance, distribution spread wider.
+**(b) Gamma = 10 dB:** Tight distribution around target.
+**Findings:** Even with significant NLOS (5 dB), the CEO-OFDM algorithm identifies the LOS peak reliably.

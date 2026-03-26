@@ -1,0 +1,189 @@
+{
+  "run_id": "20260102_101901_O_ISAC_063_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101901",
+  "paper_id": "O_ISAC_063",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper discusses a method for characterizing the full-field frequency response of a coherent Transmitter Optical Sub-Assembly (TOSA). The method uses multiple dual-tone signals with specially designed frequency positions to extract the amplitude frequency response (AFR) and phase frequency response (PFR) of the TOSA. The paper includes several figures, including a schematic of the TOSA, simulation results, and experimental results."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves using multiple dual-tone signals to characterize the TOSA's frequency response. The ISAC coupling mode is not explicitly mentioned, but the paper focuses on characterizing the TOSA's frequency response, which is a crucial aspect of ISAC systems."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a maximum AFR deviation of less than 1 dB over the 10 dB bandwidth and a maximum PFR deviation of less than 0.25 rad. These values are physically consistent with the expected performance of a TOSA."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of characterizing the full-field frequency response of a TOSA using a simple and precise method. The remaining open challenge is to further improve the accuracy and robustness of the method for various TOSA architectures and operating conditions."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Simple and Precise Characterization of Full-Field Frequency Response for Coherent TOSA",
+        "authors": "Ruitao Wu, Jilong Li, Gai Zhou, Meng Xiang, Li Zhang, Yuwen Qin, and Songnian Fu",
+        "year": 2024,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2024.3352493"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab"
+      },
+      "application": {
+        "application_domain": "optical_communication",
+        "scenario_description": "Characterization of TOSA frequency response for coherent optical communication systems"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A simple and precise method for characterizing the full-field frequency response of a coherent TOSA",
+        "gap_addressed": "The need for a simple and accurate method for characterizing TOSA frequency response",
+        "performance_enablers": "multiple_dual-tone_signals",
+        "novel_component": "none",
+        "novel_component_specs": "none"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "TOSA characterization"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 40,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.001,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.001,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 2,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "separate_frontends",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 64,
+        "comm_fec_type": "hd_fec",
+        "sensing_waveform_family": "chirp_fmcw",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0.1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 640,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.001,
+        "ber_target": 0.01,
+        "snr_db": 20,
+        "osnr_db": 25,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "0_to_1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 10,
+        "opa_beamwidth_deg": 1,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 8
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_text",
+        "confidence_reporting": "std_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the method and experimental results."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper discusses a method for characterizing the full-field frequency response of a coherent Transmitter Optical Sub-Assembly (TOSA). The method uses multiple dual-tone signals with specially designed frequency positions to extract the amplitude frequency response (AFR) and phase frequency response (PFR) of the TOSA. The paper includes several figures, including a schematic of the TOSA, simulation results, and experimental results.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism involves using multiple dual-tone signals to characterize the TOSA's frequency response. The ISAC coupling mode is not explicitly mentioned, but the paper focuses on characterizing the TOSA's frequency response, which is a crucial aspect of ISAC systems.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a maximum AFR deviation of less than 1 dB over the 10 dB bandwidth and a maximum PFR deviation of less than 0.25 rad. These values are physically consistent with the expected performance of a TOSA.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of characterizing the full-field frequency response of a TOSA using a simple and precise method. The remaining open challenge is to further improve the accuracy and robustness of the method for various TOSA architectures and operating conditions.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Simple and Precise Characterization of Full-Field Frequency Response for Coherent TOSA\",\n         \"authors\":\"Ruitao Wu, Jilong Li, Gai Zhou, Meng Xiang, Li Zhang, Yuwen Qin, and Songnian Fu\",\n         \"year\":2024,\n         \"venue\":\"Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2024.3352493\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\"\n      },\n      \"application\":{\n         \"application_domain\":\"optical_communication\",\n         \"scenario_description\":\"Characterization of TOSA frequency response for coherent optical communication systems\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"A simple and precise method for characterizing the full-field frequency response of a coherent TOSA\",\n         \"gap_addressed\":\"The need for a simple and accurate method for characterizing TOSA frequency response\",\n         \"performance_enablers\":\"multiple_dual-tone_signals\",\n         \"novel_component\":\"none\",\n         \"novel_component_specs\":\"none\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"TOSA characterization\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"iq_modulator\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":40,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.001,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.001,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":2,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"separate_frontends\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"qam\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":64,\n         \"comm_fec_type\":\"hd_fec\",\n         \"sensing_waveform_family\":\"chirp_fmcw\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"power_split\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":0.1,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":640,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-3,\n         \"ber_target\":1e-2,\n         \"snr_db\":20,\n         \"osnr_db\":25,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100e6,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_ratio\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":10,\n         \"opa_beamwidth_deg\":1,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":8\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table I\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"std_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear and detailed description of the method and experimental results.\"\n   }\n}"
+}

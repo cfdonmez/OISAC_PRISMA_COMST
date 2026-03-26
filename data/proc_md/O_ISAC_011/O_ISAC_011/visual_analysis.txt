@@ -1,0 +1,58 @@
+# Visual Analysis for O_ISAC_011
+
+## Figure 1: RO-ISAC System Architecture
+**File:** [_page_0_Figure_15.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_0_Figure_15.jpeg)
+- **Type:** System Diagram
+- **Description:** Illustrates a Retroreflective Optical ISAC (RO-ISAC) system with 4 transceivers at the ceiling and a receiver with a Corner Cube Reflector (CCR).
+- **Signal Flow:** 
+  - **Downlink:** Transceiver 2 (example) performs OFDM modulation -> D/A -> DC bias -> LED/LD.
+  - **Sensing:** Signal reflects from CCR in the receiver -> PD in Transceiver -> A/D -> Cross-correlation with transmitted bits to estimate distance.
+  - **Communication:** Receiver PD -> A/D -> OFDM Demodulation -> Output bits.
+- **Components:** OFDM mod/demod, DAC/ADC, LED/LD, PD, CCR (geometry: $L_x \times L_y \times D_r$).
+
+## Figure 2: Reflected Signal Time Domain Structure
+**File:** [_page_1_Figure_16.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_1_Figure_16.jpeg)
+- **Type:** Schematic
+- **Description:** Timeline of the signal captured by the transceiver PD showing an interference signal followed by the target (reflected) signal, then interference again.
+
+## Figure 3: Simulation Environment (5m x 5m x 3m)
+**File:** [_page_2_Figure_15.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_2_Figure_15.jpeg)
+- **Type:** 3D Setup Diagram
+- **Coordinates:**
+  - Room: $5 \times 5 \times 3$ meters.
+  - Tx Units (Tx1-Tx4): Mounted on ceiling ($Z \approx 3$m). Each has an LED and PD.
+  - Receiver: Central position ($X=2.5, Y=2.5, Z=1.0$m) containing CCR and PD.
+
+## Figure 4: BER Performance vs. Transmitted SNR
+**File:** [_page_2_Figure_21.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_2_Figure_21.jpeg)
+- **Trends:**
+  - **M=2 (BPSK):** BER $\sim 10^{-7}$ at **106 dB** SNR.
+  - **M=4 (QPSK):** BER $\sim 10^{-7}$ at **109 dB** SNR.
+  - **M=8 (8-QAM):** BER $\sim 10^{-7}$ at **114 dB** SNR.
+  - **M=16 (16-QAM):** BER $\sim 10^{-7}$ at **116 dB** SNR.
+- **Insight:** 3 dB penalty between BPSK and QPSK; larger gap for higher orders.
+
+## Figure 5: Distance RMSE vs. Symbol Count
+**File:** [_page_3_Figure_1.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_3_Figure_1.jpeg)
+- **Data (Range Resolution = 1cm):**
+  - **10 Symbols:** RMSE $\approx 6.8$ cm.
+  - **16 Symbols:** RMSE $\approx 1.0$ cm.
+  - **20 Symbols:** RMSE $\approx 0.6$ cm.
+- **Insight:** Modulation order $M$ has no impact on ranging accuracy; precision improves sharply with averaging over more symbols.
+
+## Figure 6: Distance RMSE vs. SNR (Different Symbol Lengths)
+**File:** [_page_3_Figure_5.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_3_Figure_5.jpeg)
+- **Symbol = 10:** Slopes down severely; achieves saturation (RMSE < 1cm) at **105 dB**.
+- **Symbol = 20:** Saturates much earlier at **103 dB**.
+- **Symbol = 30:** Effective ranging down to **101 dB**.
+
+## Figure 7: Spatial RMSE Distribution (Tx at 2.95m Height)
+**File:** [_page_3_Figure_7.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_3_Figure_7.jpeg)
+- **Description:** Highest errors concentrated when transmitters are at nearly equal heights.
+- **Peak RMSE:** $\sim 25$ cm in corner/edge regions.
+
+## Figure 8: Spatial RMSE Distribution (Tx at 2.5m Height)
+**File:** [_page_3_Figure_10.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_011/O_ISAC_011/_page_3_Figure_10.jpeg)
+- **Description:** Error distribution when a height diversity of 0.5m is introduced between Tx pairs.
+- **Max RMSE:** Reduced to **3.5 cm**. 
+- **Insight:** Geometric diversity (height difference) is critical for 3D positioning stability in LLSE.

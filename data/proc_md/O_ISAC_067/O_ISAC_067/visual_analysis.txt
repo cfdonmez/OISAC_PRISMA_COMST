@@ -1,0 +1,154 @@
+Image: _page_1_Figure_0.jpeg
+Type: System Diagram / Scenario Map
+---
+**Components:**
+- **TX (Transmitter):** Located at the bottom right of the central area.
+- **RX (Receiver):** Located at the bottom left, separated from TX by **3.378 m**.
+- **CNC Machine:** Large industrial component centered at the top.
+- **Forklift Truck:** Moving object on the right side.
+- **Path:** Indicated by a green dashed arrow labeled "d = 0 m" to "d = 5 m".
+- **Vertex:** Labeled with a height of **1.689 m**.
+- **Angles:** Measurement sectors shown from **-60° to 60°**.
+
+**Flow:**
+The diagram illustrates an indoor industrial propagation scenario. A forklift moves along a linear path (d = 0 to 5 m). Signals from the TX reflect off the CNC machine and the forklift to reach the RX. The geometry defines a bistatic sensing/communication setup with a 1.689 m depth and 3.378 m baseline.
+---
+
+Image: _page_1_Figure_11.jpeg
+Type: Chart / Scatter Plot
+---
+**Axes Extraction:**
+- **X-axis:** AoD (Angle of Departure) (deg) [Range: -120 to 45].
+- **Y-axis:** EoD (Elevation of Departure) (deg) [Range: -15 to 30].
+
+**Data Points:**
+- **(a):** Scatter points represent multi-path components (MPCs). 
+- Strong clusters at **AoD ≈ -95°, EoD ≈ 0°** (CNC machine location).
+- Vertical cluster at **AoD ≈ -90°** ranging from **EoD -10° to 30°**.
+- Isolated points scattered on wall/ceiling structures.
+
+**Legend/Trends:**
+- The plot visualizes the spatial distribution of reflections in the industrial environment, mapped onto a grayscale panoramic photo for context.
+---
+
+Image: _page_1_Figure_12.jpeg
+Type: Chart / Scatter Plot
+---
+**Axes Extraction:**
+- **X-axis:** AoD (Angle of Departure) (deg) [Range: -120 to 45].
+- **Y-axis:** EoD (Elevation of Departure) (deg) [Range: -15 to 30].
+
+**Data Points:**
+- **(b):** Similar to (a) but shows a shift in MPCs.
+- Prominent cluster at **AoD ≈ -45°, EoD ≈ 0°**, corresponding to the forklift's position.
+- Main CNC reflection stays anchored at **AoD ≈ -90°**.
+
+**Legend/Trends:**
+- Illustrates the dynamic nature of the channel as the forklift moves, creating new reflection clusters (sensing targets).
+---
+
+Image: _page_2_Figure_14.jpeg
+Type: Chart / Color Map
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Forklift truck position d (m) [Range: 0 to 5].
+- **Color Scale:** Normalized Power (dB) [Range: -40 to 0].
+
+**Data Points:**
+- **(a) Measurements:**
+- Dominant vertical line at **distance ≈ 6.8 m** (Reflection on CNC machine).
+- Curved arc moving from **5 m to 6 m** as d increases (Forklift truck reflection).
+- Faint multi-path components visible up to 15 m.
+
+**Legend/Trends:**
+- Higher power (yellow/light green) indicates static and mobile reflectors. The curved trajectory clearly tracks the forklift's movement in the distance-position plane.
+---
+
+Image: _page_2_Figure_15.jpeg
+Type: Chart / Color Map
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Forklift truck position d (m) [Range: 0 to 5].
+- **Color Scale:** Normalized Power (dB) [Range: -50 to 0].
+
+**Data Points:**
+- **(b) Simulations:**
+- Sharp vertical line at **6.8 m** (CNC reflection).
+- Clear parabolic arc for the forklift between **5.2 m and 6.0 m**.
+- Discrete vertical lines at **~8.5 m, ~9.8 m, and ~13.5 m** (high-order reflections).
+
+**Legend/Trends:**
+- Ray-tracing (RT) simulations show cleaner, more defined paths compared to measurements, including high-order reflections that are less obstructed in the model.
+---
+
+Image: _page_3_Figure_0.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Norm. RX power (dB) [Range: -30 to 0].
+
+**Data Points:**
+- **(a):** 
+- Peak at **5.8 m** (-12 dB) for Forklift.
+- Sharp peak at **6.7 m** (0 dB) for CNC machine.
+- Measurement (Blue) shows "Destructive fading" with 10-15 dB fluctuations around 10 m.
+
+**Legend/Trends:**
+- **Variables:** Meas. (Measurement) vs RT (Ray Tracing).
+- **Trend:** RT predicts the main peaks accurately but fails to capture the complex fading observed in the physical measurements.
+---
+
+Image: _page_3_Figure_1.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Norm. RX power (dB) [Range: -30 to 0].
+
+**Data Points:**
+- **(b):**
+- Forklift peak at **5.5 m** (-6 dB).
+- CNC peak at **6.8 m** (0 dB).
+- Floating peak at **~12 m** (-15 dB) labeled "Not obstructed in simulations".
+
+**Legend/Trends:**
+- **Variables:** Meas. vs RT.
+- **Trend:** Shows better alignment between simulation and measurement for the main reflectors in this specific snapshot.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Norm. RX power (dB) [Range: -30 to 0].
+
+**Data Points:**
+- **(c):**
+- Forklift (body and mast) peak at **5.5 m**.
+- Simulation (Red) shows "Destructive fading" compared to a sharper peak in measurement at **~5.5 m**.
+- Component at **~7 m** (-12 dB) is labeled "CNC machine (only in measurements)".
+
+**Legend/Trends:**
+- Highlights discrepancies where the simulation model misses real-world reflections or vice versa.
+---
+
+Image: _page_3_Figure_3.jpeg
+Type: Chart / Graph
+---
+**Axes Extraction:**
+- **X-axis:** Propagation distance (m) [Range: 0 to 20].
+- **Y-axis:** Norm. RX power (dB) [Range: -30 to 0].
+
+**Data Points:**
+- **(d):**
+- Forklift body at **5.5 m** (-22 dB).
+- Forklift mast at **6.2 m** (-14 dB).
+- Main CNC peak at **6.7 m** (0 dB).
+
+**Legend/Trends:**
+- Demonstrates the ability to resolve sub-components of a complex target (body vs. mast of a forklift) using high-resolution propagation distance analysis.
+---

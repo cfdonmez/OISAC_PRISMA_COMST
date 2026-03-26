@@ -1,0 +1,508 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_069",
+    "title": "Two Decades of Research Progress in Resource Allocation for PLC Systems: From Core Concepts to Frontiers",
+    "authors": [
+        "Yan F. Coutinho",
+        "Ândrei Camponogara",
+        "Mateus de L. Filomeno",
+        "Marcello L. R. de Campos",
+        "Andrea M. Tonello",
+        "Moisés V. Ribeiro"
+    ],
+    "affiliation": "Federal University of Juiz de Fora, Federal University of Paraná, Federal University of Rio de Janeiro, Alpen-Adria University Klagenfurt",
+    "year_online": "2024",
+    "year_issue": "2024",
+    "source_path": "data/corp_std/COMST_069/COMST_069.md",
+    "domain": "Power Line Communication / Resource Allocation / OFDM / Smart Grid",
+    "paper_type": "Comprehensive Historical Survey with Dual-Perspective Taxonomy",
+    "analysis_policy": {
+        "focus": "Extract dual-perspective taxonomy pattern, chronological review methodology, and lessons learned synthesis",
+        "depth": "Full paper analysis including 9 sections, dual taxonomies, and 20-year chronological review"
+    },
+    "document_stats": {
+        "total_lines": 1102,
+        "total_bytes": 261402,
+        "section_count": 9,
+        "figure_count": 12,
+        "table_count": 5,
+        "reference_count": 265
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-IX)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "PLC": "Power Line Communication",
+            "RA": "Resource Allocation",
+            "BB-PLC": "Broadband Power Line Communication",
+            "NB-PLC": "Narrowband Power Line Communication",
+            "LTI": "Linear Time Invariant",
+            "LPTV": "Linear Periodically Time Variant",
+            "nSNR": "Normalized Signal-to-Noise Ratio",
+            "DMT": "Discrete Multitone",
+            "OFDMA": "Orthogonal Frequency Division Multiple Access",
+            "CCo": "Central Coordinator",
+            "SG": "Smart Grid",
+            "SH": "Smart Home"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "role": "motivation_and_positioning",
+            "subsections": [
+                "Motivation and Comparison With Other Surveys",
+                "Scope and Contributions",
+                "Outline of the Survey"
+            ],
+            "summary": "Motivates RA for PLC systems as enabling technology for smart grid, home networking, and in-vehicle communications. Positions paper using two comparison tables (Table I: RA surveys, Table II: PLC surveys) showing gap in RA+PLC combined coverage.",
+            "key_claims": [
+                "PLC systems have achieved significant maturity over a century",
+                "Electric power systems impose severe constraints on data communication",
+                "First comprehensive survey combining PLC and RA fundamentals with dual-methodology approach",
+                "Covers single- and multi-user scenarios with chronological progression"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Power Line Communication",
+            "role": "foundational_background",
+            "subsections": [
+                "Motivations",
+                "Main Characteristics",
+                "Limitations",
+                "Regulation and Standardization",
+                "Takeaways"
+            ],
+            "summary": "Provides PLC fundamentals: motivations (ubiquity, channel capacity, vehicle applications, sensing), characteristics (EMI, attenuation, load dynamics), limitations (connection points, cable count), and regulatory constraints.",
+            "key_claims": [
+                "Frequency band up to 100 MHz offers channel capacity over 1 Gbps",
+                "Channel capacities beyond 1 Tbps possible with power lines as waveguides up to 100 GHz",
+                "PLC systems are secondary spectrum users with PSD mask constraints"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "A PLC-Centric Taxonomy of Resource Allocation",
+            "role": "taxonomy_1_domain_centric",
+            "subsections": [
+                "Voltage Level",
+                "Frequency Band",
+                "Channel and Noise Type",
+                "Environment",
+                "Application",
+                "Takeaways"
+            ],
+            "summary": "First taxonomy perspective: organizes RA works by PLC-specific criteria (voltage level, frequency band, channel/noise model, environment, application). Includes percentage distribution figures for each dimension.",
+            "key_claims": [
+                "LV electric power systems most investigated due to indoor/outdoor coverage",
+                "BB-PLC research dominates due to data rate demands",
+                "LTI channel model most adopted despite LPTV reality",
+                "Home networking is primary application, followed by Smart Grid"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "Optimization-Oriented View of Resource Allocation",
+            "role": "taxonomy_2_optimization_centric",
+            "subsections": [
+                "Objective Functions",
+                "Constraints",
+                "Resources",
+                "Channel State Information Knowledge",
+                "Takeaways"
+            ],
+            "summary": "Second taxonomy perspective: frames RA as optimization problem with four components (objective functions, constraints, resources, CSI). Details rate-adaptive vs margin-adaptive criteria.",
+            "key_claims": [
+                "Four components: objective functions, constraints, resources, CSI",
+                "Rate-adaptive most adopted criterion",
+                "Resources: frequency, time, power/bits, code",
+                "nSNR coherence bandwidth is crucial parameter for multicarrier PLC"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "Resource Allocation in Single-User Systems",
+            "role": "chronological_review_1",
+            "subsections": [
+                "General Understanding",
+                "Chronological Perspective",
+                "Takeaways"
+            ],
+            "summary": "Chronological review of single-user RA (2003-2022). Covers bit-loading algorithms (water-filling, Chow's, Levin-Campello), LPTV channel exploitation, and complexity reduction techniques.",
+            "key_claims": [
+                "Peak research activity 2006-2018",
+                "TCRA, SCRA, STCRA techniques for complexity reduction",
+                "nSNR coherence bandwidth introduced in 2017",
+                "Hybrid PLC/WLC systems emerged post-2020"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "Resource Allocation in Multi-User Systems",
+            "role": "chronological_review_2",
+            "subsections": [
+                "General Understanding",
+                "Chronological Perspective",
+                "Takeaways"
+            ],
+            "summary": "Chronological review of multi-user RA (2000-2020). Covers OFDMA evolution, cross-layer approaches, cooperative communication, NOMA integration, and hybrid PLC-VLC systems.",
+            "key_claims": [
+                "Research concentrated 2006-2019, aligned with IEEE/ITU-T standardization",
+                "Three types of data rate maximization: sum rate, weighted sum, min-user",
+                "Post-2015 shift toward Smart Grid applications",
+                "NOMA adoption emerged in 2019"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "Remarks and Lessons Learned",
+            "role": "synthesis_and_lessons",
+            "summary": "Synthesizes key findings: RA evolution from static to dynamic schemes, channel model challenges, application-specific requirements, hybrid system opportunities.",
+            "key_claims": [
+                "RA evolved from simple/static to sophisticated/dynamic schemes",
+                "Non-uniformity in channel modeling is serious concern",
+                "Hybrid PLC+WLC systems are strong research direction",
+                "Energy efficiency and privacy constraints not yet adequately addressed"
+            ]
+        },
+        {
+            "section_id": "VIII",
+            "title": "Research Opportunities",
+            "role": "future_directions",
+            "summary": "Identifies research gaps: AI/ML integration, 6G compatibility, Age of Information metrics, impedance matching, in-band full duplex, semantic communications.",
+            "key_claims": [
+                "AI/ML for solving complex non-convex RA problems",
+                "AoI metric for freshness-constrained applications",
+                "Impedance matching constraint in RA formulation",
+                "Semantic communications as future direction"
+            ]
+        },
+        {
+            "section_id": "IX",
+            "title": "Conclusions",
+            "role": "summary",
+            "summary": "Concludes with emphasis on dual-perspective taxonomy approach and chronological narrative contribution."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Provide comprehensive 20-year historical survey on RA for PLC systems using dual-perspective taxonomy and chronological narrative",
+        "delivery_mechanism": "PLC-centric taxonomy → Optimization-centric taxonomy → Single-user chronology → Multi-user chronology → Lessons learned → Future directions",
+        "unique_contribution": "First survey combining PLC fundamentals with RA fundamentals using complementary perspectives and chronological evolution tracking"
+    },
+    "taxonomy": {
+        "type": "dual_perspective_complementary",
+        "root_concept": "Resource Allocation for PLC Systems",
+        "perspective_1": {
+            "name": "PLC-Centric Taxonomy",
+            "dimensions": [
+                {
+                    "dimension": "Voltage Level",
+                    "categories": [
+                        "High-voltage (35-230kV)",
+                        "Medium-voltage (1-35kV)",
+                        "Low-voltage (<1kV)"
+                    ],
+                    "distribution": "LV dominant"
+                },
+                {
+                    "dimension": "Frequency Band",
+                    "categories": [
+                        "Narrowband (<500kHz)",
+                        "Broadband (1.7-100MHz)"
+                    ],
+                    "distribution": "BB-PLC dominant"
+                },
+                {
+                    "dimension": "Channel Type",
+                    "categories": [
+                        "LTI",
+                        "LPTV",
+                        "Measured"
+                    ]
+                },
+                {
+                    "dimension": "Noise Type",
+                    "categories": [
+                        "AWGN",
+                        "ACN (Colored)",
+                        "AIN (Impulsive)",
+                        "Measured"
+                    ]
+                },
+                {
+                    "dimension": "Environment",
+                    "categories": [
+                        "Indoor (home/building/vehicle)",
+                        "Outdoor (transmission/distribution)"
+                    ]
+                },
+                {
+                    "dimension": "Application",
+                    "categories": [
+                        "Home Network",
+                        "Smart Grid",
+                        "Access Network",
+                        "In-vehicle"
+                    ]
+                }
+            ]
+        },
+        "perspective_2": {
+            "name": "Optimization-Centric Taxonomy",
+            "dimensions": [
+                {
+                    "dimension": "Objective Functions",
+                    "categories": [
+                        "Data rate maximization",
+                        "SNR maximization",
+                        "Secrecy rate maximization",
+                        "Error rate minimization",
+                        "Utility maximization",
+                        "Power minimization"
+                    ],
+                    "criteria": [
+                        "Rate-adaptive",
+                        "Margin-adaptive"
+                    ]
+                },
+                {
+                    "dimension": "Constraints",
+                    "categories": [
+                        "Error rate",
+                        "Transmission power",
+                        "Data rate",
+                        "Delay",
+                        "Fairness",
+                        "Interference"
+                    ]
+                },
+                {
+                    "dimension": "Resources",
+                    "categories": [
+                        "Frequency/Bandwidth",
+                        "Time",
+                        "Power/Bits",
+                        "Code"
+                    ]
+                },
+                {
+                    "dimension": "CSI Knowledge",
+                    "categories": [
+                        "Perfect CSI",
+                        "Imperfect CSI"
+                    ]
+                }
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "Data rate (achievable/sum rate)",
+            "BER/SER (Bit/Symbol Error Rate)",
+            "Energy efficiency",
+            "Computational complexity",
+            "Fairness",
+            "Outage probability",
+            "Secrecy rate"
+        ],
+        "optimization_approaches": [
+            "Water-filling algorithm",
+            "Chow's algorithm",
+            "Levin-Campello algorithm (greedy)",
+            "KKT-based methods",
+            "Convex optimization",
+            "Heuristic algorithms"
+        ],
+        "comparison_tables": [
+            {
+                "table_ref": "Table I",
+                "purpose": "Compare RA surveys across technologies (DSL, WLC, PLC, VLC, Fiber-optic)"
+            },
+            {
+                "table_ref": "Table II",
+                "purpose": "Compare PLC surveys by research topic and RA coverage"
+            },
+            {
+                "table_ref": "Table IV",
+                "purpose": "Single-user RA progress: year, description, convexity, algorithm, optimality"
+            },
+            {
+                "table_ref": "Table V",
+                "purpose": "Multi-user RA progress: year, description, convexity, algorithm, optimality"
+            }
+        ]
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "survey_organization",
+                "example": "Fig. 1 - Organization of the survey",
+                "purpose": "Visual roadmap of paper structure"
+            },
+            {
+                "type": "percentage_distribution",
+                "example": "Figs. 4-8 - Percentage pies for each taxonomy dimension",
+                "purpose": "Quantitative research effort distribution"
+            },
+            {
+                "type": "taxonomy_visualization",
+                "example": "Fig. 3 - PLC-centric taxonomy with paper mappings",
+                "purpose": "Hierarchical categorization with literature mapping"
+            },
+            {
+                "type": "yearly_publication_count",
+                "example": "Figs. 11, 12 - Number of papers over years",
+                "purpose": "Research activity timeline"
+            },
+            {
+                "type": "four_component_framework",
+                "example": "Fig. 9 - Four components of RA for PLC systems",
+                "purpose": "Optimization framework visualization"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Dual-perspective complementary taxonomy followed by chronological narrative",
+        "key_paradigm": "PLC-centric view emphasizes domain context; Optimization-centric view emphasizes technical formulation",
+        "gap_identification": [
+            "AI/ML for complex non-convex RA problems",
+            "Age of Information (AoI) metrics",
+            "Impedance matching as optimization constraint",
+            "In-band full duplex for PLC",
+            "Semantic communications integration",
+            "Energy harvesting constraints"
+        ],
+        "lessons_learned": [
+            "RA evolved from static to dynamic schemes",
+            "Channel model non-uniformity limits practical applicability",
+            "Hybrid PLC+WLC systems offer best of both worlds",
+            "Complexity reduction techniques essential for practical deployment",
+            "Cross-layer optimization improves but increases complexity"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Dual-perspective taxonomy + Chronological narrative",
+        "source_selection": "~265 references spanning 20 years (2000-2024)",
+        "distinguishing_features": [
+            "Dual survey comparison tables (RA surveys + PLC surveys)",
+            "Complementary PLC-centric and Optimization-centric taxonomies",
+            "Year-by-year chronological review with era-based groupings",
+            "Synthesis tables with optimization metadata (convexity, algorithm, optimality)",
+            "Percentage distribution figures for each taxonomy dimension",
+            "Explicit 'Takeaways' subsections per major section"
+        ]
+    },
+    "style": {
+        "register": "Technical survey with historical narrative",
+        "rhetorical_patterns": [
+            "Dual-perspective complementary framing",
+            "Chronological year-by-year narrative",
+            "Era-based grouping with thematic summaries",
+            "Per-section Takeaways synthesis",
+            "Optimization metadata tables"
+        ],
+        "characteristic_phrases": [
+            "In this sense...",
+            "Consequently...",
+            "Unfortunately...",
+            "A brief description of the main contributions in this period is as follows:",
+            "The major contributions from this era can be outlined as follows:"
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Dual-Perspective Complementary Taxonomy",
+            "description": "Present two complementary taxonomies from different viewpoints to provide comprehensive coverage: one domain-centric (PLC-centric) and one methodology-centric (optimization-centric)",
+            "structure": [
+                "Section III: Domain-centric taxonomy (PLC-specific criteria)",
+                "Section IV: Methodology-centric taxonomy (optimization formulation)",
+                "Each perspective organized with multiple dimensions",
+                "Cross-references between perspectives"
+            ],
+            "example_application": "Section III (PLC-centric: voltage, frequency, noise, environment, application) + Section IV (Optimization: objectives, constraints, resources, CSI)",
+            "rhetorical_effect": "Provides multiple entry points for readers; shows technical depth from different angles; accommodates different reader backgrounds",
+            "complexity": "High - requires deep expertise in both domain and methodology"
+        },
+        {
+            "recipe_name": "Year-by-Year Chronological Narrative with Era Groupings",
+            "description": "Organize literature review as year-by-year progression grouped into thematic eras, with each era introduced by a contextual paragraph",
+            "structure": [
+                "Era introduction paragraph (e.g., '2003-2009', '2010-2015', '2016+') with thematic summary",
+                "Year-by-year bullet points within each era",
+                "Each year entry summarizes key papers with context and limitations",
+                "Final 'Takeaways' subsection synthesizing the section"
+            ],
+            "example_application": "Sections V and VI organize 20 years of research into 3 eras each, with detailed year-by-year entries",
+            "rhetorical_effect": "Creates compelling narrative of field evolution; helps readers understand how ideas build on each other; provides historical context for current state",
+            "complexity": "Medium - requires systematic literature organization"
+        },
+        {
+            "recipe_name": "Optimization Metadata Table",
+            "description": "For each chronological section, include a summary table with optimization-specific metadata: convexity, solution/algorithm, optimality",
+            "structure": [
+                "Columns: Year, Reference, Description, Convexity, Solution/Algorithm, Optimality",
+                "One row per key contribution",
+                "Convexity: Convex/Non-convex/Relaxed-convex",
+                "Optimality: Optimal/Suboptimal"
+            ],
+            "example_application": "Tables IV and V summarizing single-user and multi-user RA contributions",
+            "rhetorical_effect": "Enables quick algorithmic comparisons; highlights optimization approach evolution; facilitates reproducibility assessment",
+            "complexity": "Medium - requires technical analysis of each paper"
+        },
+        {
+            "recipe_name": "Percentage Distribution Figures Per Taxonomy Dimension",
+            "description": "For each dimension in the domain-centric taxonomy, include a pie chart showing the percentage of papers in each category",
+            "structure": [
+                "One pie chart per taxonomy dimension",
+                "Percentages derived from paper count",
+                "Placed immediately after dimension discussion"
+            ],
+            "example_application": "Figs. 4-8 showing distribution across voltage levels, frequency bands, channel/noise types, environments, applications",
+            "rhetorical_effect": "Quantifies research effort distribution; identifies under-explored areas; provides evidence for gap claims",
+            "complexity": "Low - requires systematic paper classification"
+        },
+        {
+            "recipe_name": "Per-Section Takeaways Subsection",
+            "description": "End each major section with an explicit 'Takeaways' subsection synthesizing key insights",
+            "structure": [
+                "2-4 paragraph synthesis",
+                "Highlights main findings from the section",
+                "Identifies gaps or limitations",
+                "Connects to subsequent sections"
+            ],
+            "example_application": "Subsections II-E, III-F, IV-E, V-C, VI-C all end with Takeaways",
+            "rhetorical_effect": "Aids reader retention; enables quick scanning; ensures key messages are explicit",
+            "complexity": "Low - requires synthesis mindset"
+        },
+        {
+            "recipe_name": "Dual Survey Comparison Tables in Introduction",
+            "description": "Present two comparison tables in introduction: one for related surveys on the methodology (RA) and one for related surveys on the domain (PLC)",
+            "structure": [
+                "Table I: RA surveys across different technologies (DSL, WLC, VLC, PLC)",
+                "Table II: PLC surveys with RA coverage indicator",
+                "'This survey' row in both tables showing comprehensive coverage",
+                "Narrative explaining the gap at intersection"
+            ],
+            "example_application": "Tables I and II in Section I-A showing limited RA+PLC intersection",
+            "rhetorical_effect": "Clearly establishes novelty; shows awareness of both fields; justifies dual-perspective approach",
+            "complexity": "Medium - requires comprehensive literature awareness"
+        }
+    ],
+    "key_concepts": {
+        "resource_allocation": "Optimization of limited resources (frequency, time, power, code) within communication systems to meet QoS requirements",
+        "nSNR_coherence_bandwidth": "Maximum frequency bandwidth in which same amount of power and bits can be allocated; key parameter for multicarrier PLC over AC systems",
+        "lptv_channel": "Linear Periodically Time Variant channel model capturing cyclostationary behavior synchronous to mains frequency"
+    },
+    "quality_flags": {
+        "comprehensive_historical_survey": true,
+        "dual_perspective_taxonomy": true,
+        "chronological_narrative": true,
+        "optimization_metadata_tables": true,
+        "percentage_distribution_figures": true,
+        "per_section_takeaways": true,
+        "lessons_learned_section": true,
+        "approximately_265_references": true
+    }
+}

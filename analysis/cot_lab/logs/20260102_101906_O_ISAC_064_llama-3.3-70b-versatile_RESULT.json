@@ -1,0 +1,149 @@
+{
+  "run_id": "20260102_101906_O_ISAC_064_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101906",
+  "paper_id": "O_ISAC_064",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper discusses integrated sensing and communications for metropolitan environments, focusing on distributed optical fiber vibration sensing (DOFVS) and its applications in smart cities. Figure 1 shows an example route of the deployed fiber under study in Hong Kong."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The system mechanism involves using fiber interferometry to add vibration sensing to unidirectional coherent transmissions, integrating sensing with coherent transmissions by inserting linear frequency modulation (LFM) probe into the training symbols of optical communication data frames, and combining DAS and optical heterodyne radio over fiber by substituting traditional single-tone carrier with LFM carrier."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The paper reports various applications of the proposed system, including traffic monitoring and other smart city applications, using multiple deployed fibers across Hong Kong. However, specific performance metrics such as range resolution, range accuracy, and data rate are not explicitly reported in the provided text."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The solved problem is the integration of sensing and communications in metropolitan environments using distributed optical fiber vibration sensing. The remaining open challenge is the widespread deployment and commercialization of such systems. The strategic implication is the potential for smart city applications, including real-time traffic monitoring, security, and intrusion detection."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Integrated Sensing and Communications for Metropolitan Environments",
+        "authors": "Yaxi Yan, Jingming Zhang, Yinghuan Li, Liwang Lu, Jingchuan Wang, Kausthubh Chandramouli, Chao Lu and Alan Pak Tao Lau",
+        "year": 2025,
+        "venue": "Unknown",
+        "doi": "NR",
+        "document_type": "conference"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "NR",
+        "operational_environment": "urban",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "smart_cities",
+          "traffic_monitoring",
+          "security"
+        ],
+        "scenario_description": "Metropolitan environments with deployed fibers"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": false,
+        "reproducibility_artifacts": "insufficient"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "Integration of sensing and communications in metropolitan environments using distributed optical fiber vibration sensing",
+        "gap_addressed": "Lack of integrated sensing and communications systems for smart city applications",
+        "performance_enablers": [
+          "joint_waveform_design",
+          "photonic_dechirping"
+        ],
+        "novel_component": "NR",
+        "novel_component_specs": "NR"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Fiber-based sensing and communications"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "coherent",
+          "tx_external_modulator": "NR",
+          "wavelength_nm": "NR",
+          "optical_bandwidth_ghz": "NR",
+          "tx_power_dbm": "NR"
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "NR",
+          "rx_aperture_diameter_m": "NR",
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "NR",
+          "rx_modulator_bandwidth_ghz": "NR"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "NR"
+        },
+        "waveform": {
+          "comm_waveform_family": "NR",
+          "comm_modulation_order": "NR",
+          "comm_symbol_rate_gbaud": "NR",
+          "comm_fec_type": "NR",
+          "sensing_waveform_family": "lfm_chirp",
+          "isac_waveform_relationship": "joint_waveform"
+        },
+        "channel_fiber": {
+          "fibre_length_km": "NR",
+          "fibre_type": "NR",
+          "attenuation_db_per_km": "NR",
+          "dispersion_ps_per_nm_km": "NR"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": "NR",
+          "spectral_efficiency_bps_hz": "NR",
+          "ber": "NR"
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "vibration"
+          ],
+          "sensing_range_m": "NR",
+          "range_resolution_m": "NR",
+          "range_accuracy_m": "NR"
+        },
+        "tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": "NR",
+          "tradeoff_representation": "NR"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 1,
+      "tqaf_validation_strength": 1,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 0,
+      "tqaf_reproducibility": 1,
+      "tqaf_notes": "The paper lacks specific performance metrics and detailed experimental results."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper discusses integrated sensing and communications for metropolitan environments, focusing on distributed optical fiber vibration sensing (DOFVS) and its applications in smart cities. Figure 1 shows an example route of the deployed fiber under study in Hong Kong.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The system mechanism involves using fiber interferometry to add vibration sensing to unidirectional coherent transmissions, integrating sensing with coherent transmissions by inserting linear frequency modulation (LFM) probe into the training symbols of optical communication data frames, and combining DAS and optical heterodyne radio over fiber by substituting traditional single-tone carrier with LFM carrier.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"The paper reports various applications of the proposed system, including traffic monitoring and other smart city applications, using multiple deployed fibers across Hong Kong. However, specific performance metrics such as range resolution, range accuracy, and data rate are not explicitly reported in the provided text.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The solved problem is the integration of sensing and communications in metropolitan environments using distributed optical fiber vibration sensing. The remaining open challenge is the widespread deployment and commercialization of such systems. The strategic implication is the potential for smart city applications, including real-time traffic monitoring, security, and intrusion detection.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Integrated Sensing and Communications for Metropolitan Environments\",\n           \"authors\": \"Yaxi Yan, Jingming Zhang, Yinghuan Li, Liwang Lu, Jingchuan Wang, Kausthubh Chandramouli, Chao Lu and Alan Pak Tao Lau\",\n           \"year\": 2025,\n           \"venue\": \"Unknown\",\n           \"doi\": \"NR\",\n           \"document_type\": \"conference\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"cabled_fibre\",\n           \"carrier_band\": \"NR\",\n           \"operational_environment\": \"urban\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"smart_cities\", \"traffic_monitoring\", \"security\"],\n           \"scenario_description\": \"Metropolitan environments with deployed fibers\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": false,\n           \"reproducibility_artifacts\": \"insufficient\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"Integration of sensing and communications in metropolitan environments using distributed optical fiber vibration sensing\",\n           \"gap_addressed\": \"Lack of integrated sensing and communications systems for smart city applications\",\n           \"performance_enablers\": [\"joint_waveform_design\", \"photonic_dechirping\"],\n           \"novel_component\": \"NR\",\n           \"novel_component_specs\": \"NR\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Fiber-based sensing and communications\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"coherent\",\n               \"tx_external_modulator\": \"NR\",\n               \"wavelength_nm\": \"NR\",\n               \"optical_bandwidth_ghz\": \"NR\",\n               \"tx_power_dbm\": \"NR\"\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"NR\",\n               \"rx_aperture_diameter_m\": \"NR\",\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"NR\",\n               \"rx_modulator_bandwidth_ghz\": \"NR\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"NR\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"NR\",\n               \"comm_modulation_order\": \"NR\",\n               \"comm_symbol_rate_gbaud\": \"NR\",\n               \"comm_fec_type\": \"NR\",\n               \"sensing_waveform_family\": \"lfm_chirp\",\n               \"isac_waveform_relationship\": \"joint_waveform\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": \"NR\",\n               \"fibre_type\": \"NR\",\n               \"attenuation_db_per_km\": \"NR\",\n               \"dispersion_ps_per_nm_km\": \"NR\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": \"NR\",\n               \"spectral_efficiency_bps_hz\": \"NR\",\n               \"ber\": \"NR\"\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"vibration\"],\n               \"sensing_range_m\": \"NR\",\n               \"range_resolution_m\": \"NR\",\n               \"range_accuracy_m\": \"NR\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"joint_waveform\",\n               \"tradeoff_type\": \"NR\",\n               \"tradeoff_representation\": \"NR\"\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 1,\n       \"tqaf_validation_strength\": 1,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 0,\n       \"tqaf_reproducibility\": 1,\n       \"tqaf_notes\": \"The paper lacks specific performance metrics and detailed experimental results.\"\n   }\n}"
+}

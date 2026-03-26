@@ -1,0 +1,70 @@
+Image: _page_0_Picture_12.jpeg
+Type: System Diagram / Schematic
+---
+Components:
+- Tx Antenna: Transmitter for the ISAC signal.
+- Rx Antenna: Receiver for target reflections and communication signals.
+- PD (Photodetector): Interfaces the optical signal to the RF domain for transmission.
+- LNA (Low Noise Amplifier): Amplifies the weak received RF signal.
+- Transmission and Reception Layer: Middleware handling signal routing.
+- Baseband SIC: Digital self-interference cancellation block.
+- Signal Modulators and Demodulators: Baseband processing units for comms.
+
+Flow:
+1. Signal Modulator produces the baseband signal.
+2. The signal is routed through the Transmission layer to the PD and Tx antenna.
+3. Crucially, a "Self-Interference Signal" path represents leakage from Tx to Rx antennas (RF Analog Signal SIC).
+4. The Rx antenna captures the target reflection + interference.
+5. The LNA amplifies the composite signal.
+6. The Baseband SIC block uses a reference from the Tx path (blue arrow) to cancel the interference in the Rx path (pink arrow) before the signal reaches the Demodulator.
+---
+
+Image: _page_1_Figure_11.jpeg
+Type: System Diagram / Schematic
+---
+Components:
+- LD1, LD2, LD3: Laser Diodes providing optical carriers (193.1 THz and LO).
+- DAC: Generates the digital LFM-BPSK waveform.
+- MZM / DPMZM: Mach-Zehnder Modulators for signal/LO and SIC modulation.
+- OC1, OC2, OC3: Optical Couplers for signal splitting/combining.
+- Horn Antennas: mmW interfaces for transmission and reception.
+- EA / ED: Electrical Amplifier and Delay for reference signal balancing.
+- PD1: Generates the 100 GHz mmW signal.
+- PD2: Coherent receiver photodetector.
+- Mixer/LO1/LPF: RF down-conversion chain.
+- ADC: Captures the final processed signal for DSP.
+
+Flow:
+1. LD1 is modulated by the ISAC signal (from DAC) using an MZM.
+2. This is combined with LD2 and sent to PD1 to generate a 100 GHz mmW carrier for the Tx antenna.
+3. A copy of the Tx signal (RF) is taken, adjusted via ED (delay) and EA (amplitude).
+4. This reference signal is used to modulate sub-MZM2 of a DPMZM (biased at MITP).
+5. The received signal (from Rx antenna/LNA1) modulates sub-MZM1.
+6. Spectral Diagrams (A, B, C) illustrate the cancellation:
+   - A: Self-interference spectra at point A.
+   - B: Reference signal spectra at point B (anti-phase).
+   - C: Resultant spectra at point C showing SI suppression and the target signal.
+7. The output is processed through a heterodyne receiver (PD2/Mixer/ADC).
+---
+
+Image: _page_2_Figure_13.jpeg
+Type: Performance Charts (Multiple)
+---
+Chart (a) - Full-Duplex Reception (SIC Depth)
+- Axes Extraction: X-axis: Frequency (GHz), 80 to 120. Y-axis: Amplitude (dBm), -60 to 0.
+- Legend: "with SIC" (red) vs "w/o SIC" (blue).
+- Data Points: The Peak suppression (SIC Depth) is recorded at **43.7 dB** at approx 103 GHz.
+
+Chart (b) - Communication Reception (Signal Recovery)
+- Axes Extraction: X-axis: Time (ns), 0 to 100. Y-axis: Normalized Amplitude, -1 to 1.
+- Legend: DAC generated (blue) vs Post ADC (red).
+- Trend: The recovered BPSK signal (red) tracks the reference (blue) almost perfectly, indicating successful demodulation after interference removal.
+
+Chart (c) - Radar Reception (Ranging)
+- Axes Extraction: X-axis: Time (ns), -50 to 50. Y-axis: Normalized Amplitude, 0 to 0.9.
+- Data Points: A sharp ranging peak is clearly visible at **30 ns**, matching the simulated target delay distance.
+
+Chart (d) - Radar Reception (Zoomed Correlation)
+- Axes Extraction: X-axis: Time (ns), -0.6 to 0.6. Y-axis: Normalized Amplitude, 0 to 1.
+- Data Points: The **PSLR (Peak-to-Side-Lobe Ratio) is calculated as 15.35 dB**, demonstrating high sensing resolution and low floor noise.
+---

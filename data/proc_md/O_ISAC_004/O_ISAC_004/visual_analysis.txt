@@ -1,0 +1,60 @@
+PAPER: O_ISAC_004
+TITLE: Integrating Sensing and Telecommunication Based on an Adiabatic-tapered Few-mode-fiber
+
+================================================================================
+IMAGE: _page_0_Figure_15.jpeg
+TYPE: System Diagram
+DESCRIPTION: Schematic of the experimental setup for integrated sensing and telecommunication based on a tapered few-mode fiber (FMF).
+COMPONENTS:
+- SC (Supercontinuum): Broadband source for sensing.
+- CW (Continuous Wave): Laser for communication.
+- DP-IQ-MOD: Dual-polarization IQ modulator.
+- AWG: Arbitrary Waveform Generator.
+- MUX: Mode multiplexer (LP01, LP11).
+- Tapered FMF2: Sensing area where evanescent field interacts with the environment (depicted with a water droplet).
+- SMF: Single-mode fiber connections.
+- OSA: Optical Spectrum Analyzer for sensing data extraction.
+- Coherent Receiver + RTOS: For communication signal demodulation.
+================================================================================
+IMAGE: _page_1_Figure_0.jpeg
+TYPE: Chart / Graph (Spectral & Cross-section)
+DESCRIPTION: Transmission loss of the LP11 mode and mode field distribution.
+COMPONENTS:
+- Top: Loss (dB, 0 to -1.2) vs Wavelength (nm, 1520 to 1580).
+- Bottom: Schematic of the tapered fiber showing LP11 mode profile (two-lobed) and scattering in the sensing area.
+================================================================================
+IMAGE: _page_1_Figure_4.jpeg
+TYPE: Chart / Graph (Simulation)
+DESCRIPTION: Simulated transmission spectra for the tapered FMF with various refractive indices.
+X-AXIS: Wavelength (nm) [Range: 1510 to 1550].
+Y-AXIS: Transmission (dB) [Range: -8 to -4].
+LEGEND: Refractive indices from 1.318 to 1.326.
+INSET: 3dB bandwidth shift vs Refractive index. Linear fit shows sensitivity S = 681.23 pm/RIU.
+================================================================================
+IMAGE: _page_1_Figure_6.jpeg
+TYPE: Chart / Graph (Experimental)
+DESCRIPTION: Measured transmission spectra for the tapered FMF under experimental refractive index changes.
+X-AXIS: Wavelength (nm) [Range: 1530 to 1570].
+Y-AXIS: Transmission (dB) [Range: -40 to -10].
+INSET: 3dB bandwidth shift vs Refractive index. Linear fit shows experimental sensitivity S = 671.25 pm/RIU.
+================================================================================
+IMAGE: _page_1_Figure_9.jpeg
+TYPE: Constellation Maps
+DESCRIPTION: Received constellation diagrams at SNR = 30 dB for different modulation formats.
+PANELS:
+- (a) QPSK: 4 clean clusters.
+- (b) 16QAM: 4x4 grid.
+- (c) 32QAM: Cross-shaped constellation.
+- (d) 64QAM: 8x8 grid.
+================================================================================
+IMAGE: _page_1_Figure_11.jpeg
+TYPE: Chart / Graph (BER)
+DESCRIPTION: Bit Error Rate (BER) vs OSNR (Signal-to-Noise Ratio).
+X-AXIS: SNR (dB) [Range: 0 to 20].
+Y-AXIS: BER [Log scale, 10^-8 to 10^0].
+LEGEND: QPSK (black square), 16QAM (red circle), 32QAM (blue triangle), 64QAM (green inverted triangle).
+DATA:
+- 7% overhead FEC limit: Mark at 3.8 x 10^-3.
+- QPSK performance: Reaches FEC limit at ~8 dB SNR.
+- 64QAM performance: Reaches FEC limit at ~17.5 dB SNR.
+================================================================================

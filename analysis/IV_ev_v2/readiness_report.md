@@ -1,0 +1,13 @@
+section4A_evidence.csv: OK
+section4B_evidence.csv: OK
+section4C_evidence.csv: OK
+section4D_evidence.csv: OK
+section4E_summary_table.csv: OK
+section4E_taxonomy_tree.json: OK
+evidence_graph.jsonl: OK
+retrieval_hits.jsonl: OK
+anchor_table.csv: OK
+axis_definitions.md: OK
+mapping_rules.md: OK
+cluster_map.csv: OK
+contract_violations.csv: OK

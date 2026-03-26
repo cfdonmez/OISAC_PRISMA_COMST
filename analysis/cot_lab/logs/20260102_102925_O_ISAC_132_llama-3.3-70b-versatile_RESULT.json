@@ -1,0 +1,189 @@
+{
+  "run_id": "20260102_102925_O_ISAC_132_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102925",
+  "paper_id": "O_ISAC_132",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper discusses terahertz band communication and sensing, with a focus on photon-assisted technology. It presents various experimental setups and results, including large capacity transmission, long distance transmission, real-time communication, and integrated sensing and communication. The paper includes several figures and tables, such as Figure 1, which shows the experimental setup of the integrated optical wireless transmission system, and Table I, which summarizes representative achievements in large capacity terahertz transmission."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism is based on photon-assisted technology, which uses optical signals to generate terahertz signals. The ISAC coupling mode is achieved through frequency division multiplexing (FDM) or time division multiplexing (TDM), where the sensing and communication signals are multiplexed and transmitted simultaneously."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports several experimental results, including a 6.4 Tbit/s terahertz signal transmission over 20 km fiber and 54 m wireless distance, and a 400 m wireless transmission of a 335 GHz terahertz signal with a net bit rate of 25.6 Gbit/s. These results demonstrate the physical consistency of the reported metrics, such as rate and resolution, and show the potential of photon-assisted technology for high-speed and long-distance terahertz communication."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves several problems, such as achieving high-speed and long-distance terahertz communication, and demonstrating the potential of photon-assisted technology for integrated sensing and communication. However, there are still open challenges, such as improving the efficiency of photoelectric conversion, increasing the flexibility of terahertz antennas, and developing new materials and devices for terahertz communication."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Broadband Photon-Assisted Terahertz Communication and Sensing",
+        "authors": "Jianjun Yu, Yanyi Wang, Junjie Ding, Jiao Zhang, Weiping Li, Feng Wang, Chen Wang, Kaihui Wang, Yuxuan Tan, Min Zhu, Yuancheng Cai, Bingchang Hua, Mingzheng Lei, Tangyao Xie, Jianguo Yu, Feng Zhao, Wen Zhou, Xiaohu You",
+        "year": 2023,
+        "venue": "IEEE Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2023.3252821",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "terahertz",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "The paper discusses the application of photon-assisted technology for terahertz communication and sensing in 6G networks."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper demonstrates the potential of photon-assisted technology for high-speed and long-distance terahertz communication, and shows the feasibility of integrated sensing and communication using photon-assisted technology.",
+        "gap_addressed": "The paper addresses the challenge of achieving high-speed and long-distance terahertz communication, and demonstrates the potential of photon-assisted technology for integrated sensing and communication.",
+        "performance_enablers": "photon_assisted_technology",
+        "novel_component": "photon_assisted_transmitter",
+        "novel_component_specs": "The photon-assisted transmitter uses a combination of optical and electrical components to generate terahertz signals."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Terahertz communication and sensing"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "iq_modulator",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "iq_modulator",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "frequency_offset_estimation"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 20,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "frequency_division_multiplexing"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 20,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 100,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "snr_db": 20,
+        "osnr_db": 25,
+        "outage_probability": 0.001,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1e-06,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_range",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0_to_1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive overview of photon-assisted technology for terahertz communication and sensing, and demonstrates the potential of this technology for high-speed and long-distance communication."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper discusses terahertz band communication and sensing, with a focus on photon-assisted technology. It presents various experimental setups and results, including large capacity transmission, long distance transmission, real-time communication, and integrated sensing and communication. The paper includes several figures and tables, such as Figure 1, which shows the experimental setup of the integrated optical wireless transmission system, and Table I, which summarizes representative achievements in large capacity terahertz transmission.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism is based on photon-assisted technology, which uses optical signals to generate terahertz signals. The ISAC coupling mode is achieved through frequency division multiplexing (FDM) or time division multiplexing (TDM), where the sensing and communication signals are multiplexed and transmitted simultaneously.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports several experimental results, including a 6.4 Tbit/s terahertz signal transmission over 20 km fiber and 54 m wireless distance, and a 400 m wireless transmission of a 335 GHz terahertz signal with a net bit rate of 25.6 Gbit/s. These results demonstrate the physical consistency of the reported metrics, such as rate and resolution, and show the potential of photon-assisted technology for high-speed and long-distance terahertz communication.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves several problems, such as achieving high-speed and long-distance terahertz communication, and demonstrating the potential of photon-assisted technology for integrated sensing and communication. However, there are still open challenges, such as improving the efficiency of photoelectric conversion, increasing the flexibility of terahertz antennas, and developing new materials and devices for terahertz communication.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Broadband Photon-Assisted Terahertz Communication and Sensing\",\n         \"authors\":\"Jianjun Yu, Yanyi Wang, Junjie Ding, Jiao Zhang, Weiping Li, Feng Wang, Chen Wang, Kaihui Wang, Yuxuan Tan, Min Zhu, Yuancheng Cai, Bingchang Hua, Mingzheng Lei, Tangyao Xie, Jianguo Yu, Feng Zhao, Wen Zhou, Xiaohu You\",\n         \"year\":2023,\n         \"venue\":\"IEEE Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2023.3252821\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"terahertz\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"The paper discusses the application of photon-assisted technology for terahertz communication and sensing in 6G networks.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper demonstrates the potential of photon-assisted technology for high-speed and long-distance terahertz communication, and shows the feasibility of integrated sensing and communication using photon-assisted technology.\",\n         \"gap_addressed\":\"The paper addresses the challenge of achieving high-speed and long-distance terahertz communication, and demonstrates the potential of photon-assisted technology for integrated sensing and communication.\",\n         \"performance_enablers\":\"photon_assisted_technology\",\n         \"novel_component\":\"photon_assisted_transmitter\",\n         \"novel_component_specs\":\"The photon-assisted transmitter uses a combination of optical and electrical components to generate terahertz signals.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Terahertz communication and sensing\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"iq_modulator\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"photodiode\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"iq_modulator\",\n         \"rx_modulator_bandwidth_ghz\":100,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"frequency_offset_estimation\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"qam\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":20,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfm\",\n         \"isac_waveform_relationship\":\"joint_waveform\",\n         \"resource_partition\":\"frequency_division_multiplexing\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":20,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"friis\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":100,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-6,\n         \"snr_db\":20,\n         \"osnr_db\":25,\n         \"outage_probability\":1e-3,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":1,\n         \"velocity_accuracy_mps\":0.1,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100e9,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":1e-6,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_range\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":30,\n         \"opa_beamwidth_deg\":10,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":4\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table I\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive overview of photon-assisted technology for terahertz communication and sensing, and demonstrates the potential of this technology for high-speed and long-distance communication.\"\n   }\n}"
+}

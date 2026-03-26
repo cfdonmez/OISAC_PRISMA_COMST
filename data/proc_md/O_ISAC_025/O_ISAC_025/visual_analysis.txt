@@ -1,0 +1,25 @@
+# Visual Analysis for O_ISAC_025
+
+## Figure 1: Optical Transport Network Architecture for ISAC
+**File:** [_page_1_Figure_3.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_025/O_ISAC_025/_page_1_Figure_3.jpeg)
+- **Topologies (Inset 1):** Interconnects RUs (BS1, BS2, BS3) via an Access Network to an Aggregation Network (containing an **All-optical fast switch**) and ultimately to MEC Servers (Server 1/2) and the Central Cloud.
+- **Waveform (Inset 2):** 5G-NR compliant OFDM spectrum centered at 3445 MHz with ~10 MHz bandwidth.
+- **Radar Metrics (Inset 3):** Range-Velocity maps for BS2 and BS3.
+  - **BS2:** Strong echo detection at ~200 m (object closely located).
+  - **BS3:** Weaker echo detection at ~400 m with higher noise floor.
+- **Data Load (Inset 4):** Throughput of IQ sensing streams.
+  - **1x stream (BS3):** ~200 Mbps.
+  - **2x streams (BS3, BS2):** ~380 Mbps.
+  - **3x streams (BS3, BS2, BS1):** ~550 Mbps.
+- **Control (Inset 5):** E2E Orchestrator coordinates the Control and Sensing Planes to optimize resource allocation based on IQ stream quality.
+
+## Figure 2: Management Policy Optimization Results
+**File:** [_page_2_Figure_2.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_025/O_ISAC_025/_page_2_Figure_2.jpeg)
+- **Policies Compared:** Single (blue), Optimal (orange), All-Active (grey).
+- **(a) Network Utilization:** Ratio of links used. "Optimal" approach uses ~0.6-0.8 utilization depending on object position, remaining significantly more efficient (~30% less links) than "All-Active" (which stays at ~0.85).
+- **(b) Echo Signal Gain:** Measured echo margin (dB) across positions (pos0-pos5). "Optimal" matches the performance of "All-Active" (peak ~6 dB) by selectively routing only informative streams.
+- **(c) Tradeoff Summary:** Scatter plot of Echo Signal Gain vs. Network Utilization.
+  - **Single:** Lowest utilization (~0.58) but lowest gain (~2.0 dB).
+  - **Optimal:** Mid utilization (~0.66) with high gain (~2.96 dB).
+  - **All-Active:** Highest utilization (~0.85) with identical high gain (~3.0 dB).
+- **Conclusion:** Optimal policy provides 50% fewer resource needs compared to the delta between single and all-active for the same sensing accuracy.

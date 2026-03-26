@@ -1,0 +1,81 @@
+Image: _page_0_Figure_12.jpeg
+Type: System Diagram / Schematic (Photonic Integrated ISAC Architecture)
+---
+Components:
+- Laser Source: Tunable CW laser (center wavelength not specified).
+- MZM (Mach-Zehnder Modulator): Electro-optic modulator for signal encoding.
+- AWG (Arbitrary Waveform Generator): Generates baseband waveform for modulation.
+- PIC (Photonic Integrated Circuit): Integrated platform hosting multiple functions.
+- EDFA: Erbium-doped fiber amplifier for signal amplification.
+- Circulator: 3-port optical circulator for Tx/Rx isolation.
+- Tx Antenna: Optical aperture or collimator for transmission.
+- Target: Reflective object for sensing.
+- Rx Antenna: Collection optics for received signal.
+- Photodetector (PD): Converts optical signal to electrical.
+- ADC: Analog-to-digital converter for digitization.
+- DSP: Digital signal processing for data recovery and sensing estimation.
+
+Flow:
+1. Laser Source generates CW optical carrier.
+2. AWG provides modulating waveform to MZM.
+3. MZM imprints ISAC waveform onto optical carrier.
+4. EDFA amplifies modulated signal.
+5. Circulator routes signal to Tx Antenna.
+6. Optical beam illuminates Target and propagates to Rx.
+7. Rx Antenna collects backscattered/direct signal.
+8. Circulator routes received signal to PD.
+9. PD converts to electrical signal.
+10. ADC digitizes the signal.
+11. DSP performs joint demodulation and sensing parameter extraction.
+---
+
+Image: _page_2_Figure_4.jpeg
+Type: Chart (BER vs Received Optical Power)
+---
+Axes:
+- X-axis: Received Optical Power (dBm). Range: -30 to -10 dBm.
+- Y-axis: BER. Range: 10^-7 to 10^0 (log scale).
+
+Legend:
+- Communication Only (Blue solid): No sensing overhead.
+- ISAC 10% Sensing (Red dashed): 10% resources for sensing.
+- ISAC 20% Sensing (Green dotted): 20% resources for sensing.
+- ISAC 30% Sensing (Orange dash-dot): 30% resources for sensing.
+
+Data Points:
+- Communication Only: BER = 10^-3 at -22 dBm; BER = 10^-6 at -18 dBm.
+- ISAC 10%: BER = 10^-3 at -21 dBm; BER = 10^-6 at -17 dBm.
+- ISAC 20%: BER = 10^-3 at -19 dBm; BER = 10^-6 at -15 dBm.
+- ISAC 30%: BER = 10^-3 at -17 dBm; BER = 10^-6 at -13 dBm.
+
+Trend:
+- Each 10% sensing overhead incurs ~1.5-2 dB power penalty for same BER.
+- 30% sensing overhead results in total ~5 dB penalty compared to communication-only.
+- All configurations achieve BER <10^-6 with sufficient received power.
+---
+
+Image: _page_2_Figure_8.jpeg
+Type: Chart (Range Resolution vs Bandwidth)
+---
+Axes:
+- X-axis: Signal Bandwidth (GHz). Range: 0.1 to 10 GHz (log scale).
+- Y-axis: Range Resolution (cm). Range: 1 to 1000 cm (log scale).
+
+Legend:
+- Theoretical Limit (Blue solid): c/(2B) resolution bound.
+- Measured Performance (Red circles): Experimental data points.
+- Post-Processing Enhanced (Green triangles): With super-resolution DSP.
+
+Data Points:
+- At 0.5 GHz: Theoretical = 30 cm; Measured = 35 cm; Enhanced = 25 cm.
+- At 1 GHz: Theoretical = 15 cm; Measured = 18 cm; Enhanced = 12 cm.
+- At 2 GHz: Theoretical = 7.5 cm; Measured = 9 cm; Enhanced = 6 cm.
+- At 5 GHz: Theoretical = 3 cm; Measured = 4 cm; Enhanced = 2.5 cm.
+- At 10 GHz: Theoretical = 1.5 cm; Measured = 2 cm; Enhanced = 1.2 cm.
+
+Trend:
+- Range resolution inversely proportional to bandwidth (ΔR = c/2B).
+- Measured values 15-25% worse than theoretical due to practical impairments.
+- Post-processing enhancement achieves ~15-20% improvement over raw measurements.
+- 10 GHz bandwidth enables sub-2 cm range resolution.
+---

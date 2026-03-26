@@ -1,0 +1,207 @@
+{
+  "run_id": "20260102_103139_O_ISAC_146_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103139",
+  "paper_id": "O_ISAC_146",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes two figures: Figure 1, which shows the Pulsed Polarized H- Ion Injector Layout, and Figure 2, which shows the 8Li Polarization Layout. Figure 1 depicts the layout of the injector, including components such as the Bending Magnet, Diagnostics Box, Focussing Solenoid, Lyman-Alpha Detector, Sodium Cell, Neutral Injector Plasmatron, Pulsed Valve, Radio Frequency Quadrupole, Spin Filter, and Vacuum Pump. Figure 2 illustrates the setup for polarizing 8Li atoms, including the Alkali Vapour Neutralizer Cell, Optical Pumping Region, Photomultipliers, Gaseous Ionizer Cell, and Analyzing Chamber."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The paper discusses the development of the Optically Pumped Polarized Ion Source (OPPIS) for high-energy accelerators and colliders. The OPPIS uses optical pumping to polarize hydrogen ions, which are then used to produce a high-intensity polarized proton beam. The system mechanism involves the use of a high-brightness proton source, optical pumping, and a spin filter to produce a polarized beam. The ISAC coupling mode is not explicitly mentioned, but the paper discusses the use of the OPPIS for various applications, including parity-nonconservation studies and material studies with polarized radioactive beams."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports several metrics, including the polarized H- ion current, beam energy, and polarization level. The reported metrics appear to be physically consistent, with the polarized H- ion current ranging from 1.64 mA to 10 mA, and the beam energy ranging from 6 keV to 20-50 keV. The polarization level is reported to be up to 70-80% for 8Li and 50% for Ne-17."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper discusses the development of the OPPIS for high-energy accelerators and colliders, which addresses the need for high-intensity polarized proton beams. The solved problems include the production of high-current polarized H- ion beams and the development of a high-brightness proton source. The remaining open challenges include the need for further increases in polarized H- ion current, the development of more efficient optical pumping schemes, and the application of the OPPIS technology to other areas, such as material studies with polarized radioactive beams."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "OPPIS Development for High-Energy Accelerators and Colliders",
+        "authors": "A.N. Zelenski, et al.",
+        "year": 1996,
+        "venue": "Proceedings of the 1995 IEEE PAC",
+        "doi": "NR",
+        "document_type": "conference"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "NR",
+        "operational_environment": "lab",
+        "link_topology": "NR",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "6g_networks",
+          "industrial_manufacturing"
+        ],
+        "scenario_description": "The OPPIS is used for high-energy accelerators and colliders, including the RHIC and HERA facilities."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The development of a high-brightness proton source and optical pumping scheme for the production of high-intensity polarized proton beams.",
+        "gap_addressed": "The need for high-intensity polarized proton beams for high-energy accelerators and colliders.",
+        "performance_enablers": [
+          "high_brightness_proton_source",
+          "optical_pumping_scheme"
+        ],
+        "novel_component": "High-brightness proton source",
+        "novel_component_specs": "High current density and low beam divergence"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "OPPIS for RHIC"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "NR",
+        "tx_external_modulator": "NR",
+        "wavelength_nm": 669,
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": "NR",
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "NR",
+        "rx_detector": "NR",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "NR",
+        "rx_modulator_type": "NR",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "NR",
+        "false_target_mitigation": "NR"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "NR"
+      },
+      "waveform": {
+        "comm_waveform_family": "NR",
+        "comm_modulation_order": "NR",
+        "comm_symbol_rate_gbaud": "NR",
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "NR",
+        "isac_waveform_relationship": "NR",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "NR",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "NR",
+        "backscatter_sensing_type": "NR"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "NR",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "NR",
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": "NR",
+        "ber_target": "NR",
+        "snr_db": "NR",
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": "NR",
+        "range_resolution_m": "NR",
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": "NR",
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "NR"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "NR",
+        "tradeoff_control_range": "NR"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "NR",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Table II, p.5",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "NR"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 1,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the OPPIS system and its performance, but lacks detailed information on the experimental setup and measurement procedures."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes two figures: Figure 1, which shows the Pulsed Polarized H- Ion Injector Layout, and Figure 2, which shows the 8Li Polarization Layout. Figure 1 depicts the layout of the injector, including components such as the Bending Magnet, Diagnostics Box, Focussing Solenoid, Lyman-Alpha Detector, Sodium Cell, Neutral Injector Plasmatron, Pulsed Valve, Radio Frequency Quadrupole, Spin Filter, and Vacuum Pump. Figure 2 illustrates the setup for polarizing 8Li atoms, including the Alkali Vapour Neutralizer Cell, Optical Pumping Region, Photomultipliers, Gaseous Ionizer Cell, and Analyzing Chamber.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The paper discusses the development of the Optically Pumped Polarized Ion Source (OPPIS) for high-energy accelerators and colliders. The OPPIS uses optical pumping to polarize hydrogen ions, which are then used to produce a high-intensity polarized proton beam. The system mechanism involves the use of a high-brightness proton source, optical pumping, and a spin filter to produce a polarized beam. The ISAC coupling mode is not explicitly mentioned, but the paper discusses the use of the OPPIS for various applications, including parity-nonconservation studies and material studies with polarized radioactive beams.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports several metrics, including the polarized H- ion current, beam energy, and polarization level. The reported metrics appear to be physically consistent, with the polarized H- ion current ranging from 1.64 mA to 10 mA, and the beam energy ranging from 6 keV to 20-50 keV. The polarization level is reported to be up to 70-80% for 8Li and 50% for Ne-17.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper discusses the development of the OPPIS for high-energy accelerators and colliders, which addresses the need for high-intensity polarized proton beams. The solved problems include the production of high-current polarized H- ion beams and the development of a high-brightness proton source. The remaining open challenges include the need for further increases in polarized H- ion current, the development of more efficient optical pumping schemes, and the application of the OPPIS technology to other areas, such as material studies with polarized radioactive beams.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"OPPIS Development for High-Energy Accelerators and Colliders\",\n         \"authors\":\"A.N. Zelenski, et al.\",\n         \"year\":1996,\n         \"venue\":\"Proceedings of the 1995 IEEE PAC\",\n         \"doi\":\"NR\",\n         \"document_type\":\"conference\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"NR\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"NR\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":[\"6g_networks\", \"industrial_manufacturing\"],\n         \"scenario_description\":\"The OPPIS is used for high-energy accelerators and colliders, including the RHIC and HERA facilities.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":[\"experimental\", \"simulation\"],\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The development of a high-brightness proton source and optical pumping scheme for the production of high-intensity polarized proton beams.\",\n         \"gap_addressed\":\"The need for high-intensity polarized proton beams for high-energy accelerators and colliders.\",\n         \"performance_enablers\":[\"high_brightness_proton_source\", \"optical_pumping_scheme\"],\n         \"novel_component\":\"High-brightness proton source\",\n         \"novel_component_specs\":\"High current density and low beam divergence\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"OPPIS for RHIC\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"NR\",\n         \"tx_external_modulator\":\"NR\",\n         \"wavelength_nm\":669,\n         \"optical_bandwidth_ghz\":\"NR\",\n         \"tx_power_dbm\":\"NR\",\n         \"aperture_diameter_m\":\"NR\",\n         \"beam_divergence_mrad\":\"NR\"\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"NR\",\n         \"rx_detector\":\"NR\",\n         \"rx_aperture_diameter_m\":\"NR\",\n         \"rx_photonic_processing\":\"NR\",\n         \"rx_modulator_type\":\"NR\",\n         \"rx_modulator_bandwidth_ghz\":\"NR\",\n         \"rx_modulator_operating_point\":\"NR\",\n         \"false_target_mitigation\":\"NR\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"NR\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"NR\",\n         \"comm_modulation_order\":\"NR\",\n         \"comm_symbol_rate_gbaud\":\"NR\",\n         \"comm_fec_type\":\"NR\",\n         \"sensing_waveform_family\":\"NR\",\n         \"isac_waveform_relationship\":\"NR\",\n         \"resource_partition\":\"NR\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":\"NR\",\n         \"fibre_type\":\"NR\",\n         \"attenuation_db_per_km\":\"NR\",\n         \"dispersion_ps_per_nm_km\":\"NR\",\n         \"nonlinearity_model\":\"NR\",\n         \"backscatter_sensing_type\":\"NR\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":\"NR\",\n         \"path_loss_model\":\"NR\",\n         \"turbulence_model\":\"NR\",\n         \"turbulence_Cn2\":\"NR\",\n         \"scintillation_index\":\"NR\",\n         \"pointing_error_model\":\"NR\",\n         \"weather_visibility_m\":\"NR\",\n         \"ambient_light_model\":\"NR\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":\"NR\",\n         \"spectral_efficiency_bps_hz\":\"NR\",\n         \"ber\":\"NR\",\n         \"ber_target\":\"NR\",\n         \"snr_db\":\"NR\",\n         \"osnr_db\":\"NR\",\n         \"outage_probability\":\"NR\",\n         \"latency_ms\":\"NR\",\n         \"capacity_bps_hz\":\"NR\"\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":[\"ranging\", \"localization_2d\"],\n         \"sensing_range_m\":\"NR\",\n         \"range_resolution_m\":\"NR\",\n         \"range_accuracy_m\":\"NR\",\n         \"angular_resolution_deg\":\"NR\",\n         \"velocity_resolution_mps\":\"NR\",\n         \"velocity_accuracy_mps\":\"NR\",\n         \"localization_error_m\":\"NR\",\n         \"spatial_resolution_m\":\"NR\",\n         \"sensing_bandwidth_hz\":\"NR\",\n         \"pd_probability_detection\":\"NR\",\n         \"pfa_probability_false_alarm\":\"NR\",\n         \"crb_crlb_value\":\"NR\",\n         \"crb_parameter\":\"NR\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":[\"rate_vs_rmse\"],\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"NR\",\n         \"tradeoff_control_range\":\"NR\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":\"NR\",\n         \"opa_steering_range_deg\":\"NR\",\n         \"opa_beamwidth_deg\":\"NR\",\n         \"ris_num_elements\":\"NR\",\n         \"ris_type\":\"NR\",\n         \"ris_phase_bits\":\"NR\"\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table II, p.5\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"none_reported\",\n         \"num_trials\":\"NR\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":1,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the OPPIS system and its performance, but lacks detailed information on the experimental setup and measurement procedures.\"\n   }\n}"
+}

@@ -1,0 +1,377 @@
+================================================================================
+O_ISAC_300 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Preamble-Free Synchronization Based on Dual-chirp Waveforms for
+       Photonic THz-ISAC
+Authors: Zhidong Lyu et al. (Zhejiang University / KTH / RISE)
+Journal: Journal of Lightwave Technology 2024
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_4.jpeg
+### Type: Time-Frequency Diagram
+
+### Title: Dual-Chirp Integrated Waveform Principle
+
+### Structure:
+- Up-chirp carrier (modulated with QPSK)
+- Down-chirp sync pilot (unmodulated)
+- Time slots: T_s (symbol duration)
+- Bandwidth: B (full chirp)
+
+### Key Concept:
+- Quasi-orthogonal chirp pair
+- Preamble-free synchronization
+- Opposite slopes for separation
+
+### O-ISAC Relevance:
+- Core waveform design
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: Correlation Coefficient Plot
+
+### Title: Cross-Correlation vs Time-Bandwidth Product (α=-1)
+
+### X-axis: TBWP (10^2 to 10^6)
+### Y-axis: Correlation coefficient (dB)
+
+### Trend:
+- Higher TBWP → Lower correlation
+- At TBWP = 10 kHz·s: ~-23 dB
+
+### Key Finding:
+- Quasi-orthogonality achieved
+- Sufficient margin for ISAC
+
+### O-ISAC Relevance:
+- Theoretical validation
+---
+
+## Image: _page_2_Figure_10.jpeg
+### Type: Correlation vs Fractional Slope
+
+### Title: Cross-Correlation vs Fractional Slope α
+
+### X-axis: α (-1 to 1)
+### Y-axis: Correlation coefficient (dB)
+
+### Curves:
+- Theoretical analysis
+- Simulation (with modulation)
+
+### Key Finding:
+- α = -1 (opposite slope) is optimal
+- ~-23 dB at α = -1
+
+### O-ISAC Relevance:
+- Optimal pilot selection
+---
+
+## Image: _page_3_Figure_2.jpeg
+### Type: Achievable Rate Chart
+
+### Title: Achievable Rate vs SNR at Different Amplitude Ratios
+
+### Curves:
+- ρ = 5, 10, 15, ∞ (no pilot)
+
+### Key Finding:
+- Higher ρ → Higher rate at high SNR
+- Low SNR: Rate insensitive to ρ
+- Trade-off: Sync vs communication
+
+### O-ISAC Relevance:
+- Rate optimization
+---
+
+## Image: _page_4_Figure_2.jpeg
+### Type: System Architecture Diagram
+
+### Title: Dual-Chirp Photonic THz-ISAC System
+
+### Transmitter:
+- LD (1550 nm, <100 kHz linewidth)
+- PM + RF (37.5 GHz) → OFC
+- WSS → 300 GHz spacing
+- EDFA1/EDFA2
+- IQ-MOD + AWG (120 GSa/s)
+- UTC-PD → 300 GHz THz signal
+- Horn antenna + lenses
+
+### Receiver:
+- Schottky mixer (24× LO, 11.8 GHz)
+- IF = 16.8 GHz
+- DSO (160 GSa/s)
+
+### Wireless:
+- 1 m LOS link
+
+### O-ISAC Relevance:
+- Complete THz-ISAC system
+---
+
+## Image: _page_4_Figure_4.jpeg
+### Type: Triple-Panel Optical Spectra
+
+### Title: Optical/Electrical Spectra at Key Points
+
+### Panel (a) - Point A (OFC):
+- 37.5 GHz comb spacing
+- Multiple coherent lines
+
+### Panel (b) - Point B (EDFA2):
+- 300 GHz spacing
+- Carrier + LO
+
+### Panel (c) - Point C (IF):
+- Center: 16.8 GHz
+- 10 GHz bandwidth
+
+### O-ISAC Relevance:
+- Spectral characterization
+---
+
+## Image: _page_4_Figure_9.jpeg
+### Type: Dual-Panel Spectrogram
+
+### Title: LMS Filter Effect on Dual-Chirp
+
+### Panel (a) - Before LMS:
+- Both up/down chirps visible
+
+### Panel (b) - After LMS:
+- Down-chirp removed
+- Only up-chirp remains
+
+### O-ISAC Relevance:
+- DSP validation
+---
+
+## Image: _page_5_Figure_2.jpeg
+### Type: Triple-Panel Temporal Waveforms
+
+### Title: Baseband Waveforms at Different ρ
+
+### Panels (a-c): ρ = 5, 10, 15
+- QPSK phase discontinuities visible
+- Higher ρ → less pilot interference
+
+### Key Finding:
+- ρ = 5: Slight phase difference after filtering
+- ρ = 15: Near-transparent filtering
+
+### O-ISAC Relevance:
+- Amplitude ratio effect
+---
+
+## Image: _page_5_Figure_10.jpeg
+### Type: Triple-Panel Sync Results
+
+### Title: Synchronization Performance vs ρ
+
+### Panels (a-c): ρ = 5, 10, 15
+
+### Results:
+| ρ | Noise Floor |
+|---|-------------|
+| 5 | <-20 dB |
+| 10 | ~-17 dB |
+| 15 | -14 dB |
+
+### Key Finding:
+- Clear sync peak in all cases
+- Sync overhead saving: >13 dB vs prior work
+
+### O-ISAC Relevance:
+- Preamble-free sync achieved
+---
+
+## Image: _page_5_Figure_12.jpeg
+### Type: EVM vs Optical Power (No LMS)
+
+### Title: Communication Performance Without LMS
+
+### Curves: ρ = 5, 10, 15
+### Data Rate: 20 Gbps
+
+### Results @ 8 dBm:
+| ρ | EVM | Threshold |
+|---|-----|-----------|
+| 5 | HD-FEC | 7% overhead |
+| 10, 15 | KP4-FEC | 5% overhead |
+
+### O-ISAC Relevance:
+- Baseline communication
+---
+
+## Image: _page_6_Figure_2.jpeg
+### Type: EVM vs LMS Tap Number
+
+### Title: LMS Filter Optimization
+
+### X-axis: Tap number (0-500)
+### Curves: ρ = 5, 10, 15
+
+### Key Finding:
+- Convergence at ~200 taps
+- 2.5 ns processing delay
+- Effective down-chirp removal
+
+### Inset: Constellation without LMS
+
+### O-ISAC Relevance:
+- DSP complexity
+---
+
+## Image: _page_6_Figure_4.jpeg
+### Type: EVM vs Optical Power (With LMS)
+
+### Title: Communication Performance With LMS
+
+### Curves:
+- ρ = 5, 10, 15
+- Standard QPSK baseline
+
+### Results:
+- <0.5 dB degradation vs baseline
+- All ρ below KP4-FEC @ 8 dBm
+
+### Inset: QPSK constellations
+
+### O-ISAC Relevance:
+- Minimal communication loss
+---
+
+## Image: _page_6_Figure_9.jpeg
+### Type: Autocorrelation Comparison
+
+### Title: Range Profile Comparison
+
+### Curves:
+- Traditional dual-chirp
+- Proposed integrated waveform
+
+### Results:
+| Waveform | PSLR |
+|----------|------|
+| Traditional | 14.5 dB |
+| Proposed | 29.2 dB |
+| Gain | 14.7 dB |
+
+### Key Finding:
+- Communication modulation improves PSLR
+- Thumbtack-shaped profile
+
+### O-ISAC Relevance:
+- Superior sensing performance
+---
+
+## Image: _page_7_Figure_2.jpeg
+### Type: Radar Range Profile
+
+### Title: Two-Target Ranging Experiment
+
+### Targets: 2.00 cm separation
+
+### Results:
+- Measured: 1.37 MHz → 2.06 cm
+- Actual: 2.00 cm
+- Error: 0.06 cm
+
+### Key Finding:
+- 1.5 cm resolution verified
+- Two targets clearly separated
+
+### O-ISAC Relevance:
+- cm-level ranging
+---
+
+## Image: _page_7_Figure_4.jpeg
+### Type: EVM/PSLR vs Data Rate
+
+### Title: Performance Trade-off
+
+### X-axis: Data Rate (Gbps)
+### Y-axes: EVM (%), PSLR (dB)
+
+### Trend:
+- Higher rate → Higher PSLR
+- Higher rate → Higher EVM
+
+### Key Finding:
+- 20 Gbps achieves 29.2 dB PSLR
+- PSLR limited by noise floor
+
+### O-ISAC Relevance:
+- Rate-sensing trade-off
+---
+
+## Image: _page_7_Figure_6.jpeg
+### Type: SINR/SNR vs Amplitude Ratio
+
+### Title: Communication-Sync Trade-off
+
+### X-axis: Amplitude ratio ρ
+
+### Curves:
+- SINR_com (increasing)
+- SNR_sync (decreasing)
+
+### Key Finding:
+- Higher ρ → Better SINR_com
+- Higher ρ → Lower SNR_sync
+- Application-dependent optimization
+
+### O-ISAC Relevance:
+- System parameter selection
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 16 (all scientific)
+- System Diagrams: 2
+- Spectral Analysis: 2
+- Correlation Analysis: 2
+- Temporal Waveforms: 2
+- Sync Performance: 1
+- EVM Analysis: 4
+- Radar Profiles: 2
+- Trade-off Charts: 1
+
+Key Technical Findings:
+1. Platform: Photonic THz-ISAC
+2. Carrier: 300 GHz
+3. Bandwidth: 10 GHz
+4. Data Rate: 20 Gbps
+5. Modulation: QPSK on up-chirp
+6. Sync: Down-chirp pilot (α = -1)
+7. TBWP: 10 kHz·s
+
+Key Innovations:
+1. Preamble-free synchronization
+2. Quasi-orthogonal dual-chirp
+3. LMS filter for pilot removal
+4. Communication modulation improves PSLR
+5. <0.5% sync power overhead
+6. 13 dB power saving vs prior work
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Data Rate | 20 Gbps |
+| PSLR | 29.2 dB |
+| Range Resolution | 1.5 cm |
+| Range Accuracy | 0.06 cm |
+| Sync Overhead | <0.5% |
+| EVM Degradation | <0.5 dB |
+| Wireless Link | 1 m LOS |
+
+Comparison (Table I):
+| Method | Rate | PSLR | Res. |
+|--------|------|------|------|
+| OFDM [14] | 1.56 Gbps | 14.5 dB | 30 cm |
+| DSSS [19] | 0.33 Gbps | 20.0 dB | 7.5 cm |
+| LFM-PSK [25] | 6 Gbps | 20.9 dB | 1.3 cm |
+| This work | 20 Gbps | 29.2 dB | 1.5 cm |
+================================================================================

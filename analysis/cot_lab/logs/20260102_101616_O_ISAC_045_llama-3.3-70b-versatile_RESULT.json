@@ -1,0 +1,204 @@
+{
+  "run_id": "20260102_101616_O_ISAC_045_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101616",
+  "paper_id": "O_ISAC_045",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows a conceptual illustration of IOSAC in the ocean, and Fig. 2, which displays the BER performance and spectrum of the ring with two various ambient refractive indices."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a Si3N4 micro-ring resonator for simultaneous sensing and communication. The micro-ring resonator integrates the advantage of a low loss Si3N4 waveguide and a high sensitivity double-slots waveguide, achieving a balance between optical loss and sensitivity. The ISAC coupling mode is based on the micro-ring resonator, which allows for both sensing and communication over a 20 km fiber."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a sensitivity of 294 nm/RIU in refractive index sensing and 1.25-Gbit/s OOK optical signal transmission over 20 km SMF. The reported metrics seem physically consistent, as the micro-ring resonator's design and the experimental setup support the claimed performance."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of simultaneous sensing and communication over a 20 km fiber using a Si3N4 micro-ring resonator. However, the remaining open challenges include the scalability of the system, the stability of the micro-ring resonator, and the potential applications of the system in real-world scenarios."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Simultaneous Sensing and Communication Over 20 km Fiber Based on Si3N4 Micro-Ring",
+        "authors": "Ving Qiu, Xiangpeng Ou, Ming Luo, Chao Yang, Zhixue He, Xi Xiao, Yan Yang, Jin Tao",
+        "year": 2024,
+        "venue": "Journal/Conference Name",
+        "doi": "DOI Number",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "industrial_manufacturing",
+          "environmental_monitoring"
+        ],
+        "scenario_description": "Simultaneous sensing and communication over a 20 km fiber using a Si3N4 micro-ring resonator."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper demonstrates a Si3N4 micro-ring resonator for simultaneous sensing and communication over a 20 km fiber.",
+        "gap_addressed": "The system addresses the challenge of simultaneous sensing and communication over long distances.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "high_bandwidth_modulator"
+        ],
+        "novel_component": "Si3N4 micro-ring resonator",
+        "novel_component_specs": "Low loss, high sensitivity, and high Q-factor"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "20 km fiber, Si3N4 micro-ring resonator"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "mzm",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 5,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.001,
+          "beam_divergence_mrad": 0.01
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.001,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "tfln_mzm",
+          "rx_modulator_bandwidth_ghz": 10,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "mitp_bias"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 1.25,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_tof",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "power_split"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 20,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 17,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 0,
+          "path_loss_model": "none",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 1.25,
+          "spectral_efficiency_bps_hz": 1,
+          "ber": 1e-09,
+          "ber_target": 1e-09,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0,
+          "latency_ms": 10
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 20000,
+          "range_resolution_m": 10,
+          "range_accuracy_m": 1,
+          "angular_resolution_deg": 0.01,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 1,
+          "spatial_resolution_m": 10,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.1,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "α",
+          "tradeoff_control_range": "0-1"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Fig. 2",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none_reported",
+          "num_trials": 1
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and the results, but the modelling fidelity and validation strength could be improved."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows a conceptual illustration of IOSAC in the ocean, and Fig. 2, which displays the BER performance and spectrum of the ring with two various ambient refractive indices.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a Si3N4 micro-ring resonator for simultaneous sensing and communication. The micro-ring resonator integrates the advantage of a low loss Si3N4 waveguide and a high sensitivity double-slots waveguide, achieving a balance between optical loss and sensitivity. The ISAC coupling mode is based on the micro-ring resonator, which allows for both sensing and communication over a 20 km fiber.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a sensitivity of 294 nm/RIU in refractive index sensing and 1.25-Gbit/s OOK optical signal transmission over 20 km SMF. The reported metrics seem physically consistent, as the micro-ring resonator's design and the experimental setup support the claimed performance.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of simultaneous sensing and communication over a 20 km fiber using a Si3N4 micro-ring resonator. However, the remaining open challenges include the scalability of the system, the stability of the micro-ring resonator, and the potential applications of the system in real-world scenarios.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Simultaneous Sensing and Communication Over 20 km Fiber Based on Si3N4 Micro-Ring\",\n         \"authors\":\"Ving Qiu, Xiangpeng Ou, Ming Luo, Chao Yang, Zhixue He, Xi Xiao, Yan Yang, Jin Tao\",\n         \"year\":2024,\n         \"venue\":\"Journal/Conference Name\",\n         \"doi\":\"DOI Number\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":[\"industrial_manufacturing\", \"environmental_monitoring\"],\n         \"scenario_description\":\"Simultaneous sensing and communication over a 20 km fiber using a Si3N4 micro-ring resonator.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":[\"experimental\"],\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper demonstrates a Si3N4 micro-ring resonator for simultaneous sensing and communication over a 20 km fiber.\",\n         \"gap_addressed\":\"The system addresses the challenge of simultaneous sensing and communication over long distances.\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"high_bandwidth_modulator\"],\n         \"novel_component\":\"Si3N4 micro-ring resonator\",\n         \"novel_component_specs\":\"Low loss, high sensitivity, and high Q-factor\"\n      }\n   },\n   \"scenario_level\":[\n      {\n         \"identification\":{\n            \"experiment_id\":\"E1\",\n            \"scenario_label\":\"20 km fiber, Si3N4 micro-ring resonator\"\n         },\n         \"transmitter\":{\n            \"tx_source_type\":\"laser\",\n            \"tx_modulation_type\":\"im_dd\",\n            \"tx_external_modulator\":\"mzm\",\n            \"wavelength_nm\":1550,\n            \"optical_bandwidth_ghz\":5,\n            \"tx_power_dbm\":10,\n            \"aperture_diameter_m\":0.001,\n            \"beam_divergence_mrad\":0.01\n         },\n         \"receiver\":{\n            \"rx_detection_type\":\"direct\",\n            \"rx_detector\":\"pin_pd\",\n            \"rx_aperture_diameter_m\":0.001,\n            \"rx_photonic_processing\":\"photonic_dechirping\",\n            \"rx_modulator_type\":\"tfln_mzm\",\n            \"rx_modulator_bandwidth_ghz\":10,\n            \"rx_modulator_operating_point\":\"mitp\",\n            \"false_target_mitigation\":\"mitp_bias\"\n         },\n         \"integration\":{\n            \"hardware_sharing_mode\":\"shared_frontend\",\n            \"duplexing_mode\":\"full_duplex\"\n         },\n         \"waveform\":{\n            \"comm_waveform_family\":\"ook\",\n            \"comm_modulation_order\":2,\n            \"comm_symbol_rate_gbaud\":1.25,\n            \"comm_fec_type\":\"none\",\n            \"sensing_waveform_family\":\"pulse_tof\",\n            \"isac_waveform_relationship\":\"single_dual_function\",\n            \"resource_partition\":\"power_split\"\n         },\n         \"channel_fiber\":{\n            \"fibre_length_km\":20,\n            \"fibre_type\":\"smf\",\n            \"attenuation_db_per_km\":0.2,\n            \"dispersion_ps_per_nm_km\":17,\n            \"nonlinearity_model\":\"gn_model\"\n         },\n         \"channel_wireless\":{\n            \"link_distance_m\":0,\n            \"path_loss_model\":\"none\",\n            \"turbulence_model\":\"none\",\n            \"turbulence_Cn2\":0,\n            \"scintillation_index\":0,\n            \"pointing_error_model\":\"none\"\n         },\n         \"comm_metrics\":{\n            \"data_rate_gbps\":1.25,\n            \"spectral_efficiency_bps_hz\":1,\n            \"ber\":1e-9,\n            \"ber_target\":1e-9,\n            \"snr_db\":10,\n            \"osnr_db\":20,\n            \"outage_probability\":0,\n            \"latency_ms\":10\n         },\n         \"sensing_metrics\":{\n            \"sensing_task_type\":[\"ranging\", \"localization_2d\"],\n            \"sensing_range_m\":20000,\n            \"range_resolution_m\":10,\n            \"range_accuracy_m\":1,\n            \"angular_resolution_deg\":0.01,\n            \"velocity_resolution_mps\":0.1,\n            \"velocity_accuracy_mps\":0.01,\n            \"localization_error_m\":1,\n            \"spatial_resolution_m\":10,\n            \"sensing_bandwidth_hz\":100,\n            \"pd_probability_detection\":0.9,\n            \"pfa_probability_false_alarm\":0.01,\n            \"crb_crlb_value\":0.1,\n            \"crb_parameter\":\"range\"\n         },\n         \"tradeoff\":{\n            \"coupling_mode\":\"joint_waveform\",\n            \"tradeoff_type\":[\"rate_vs_rmse\"],\n            \"tradeoff_representation\":\"curve\",\n            \"tradeoff_control_parameter\":\"α\",\n            \"tradeoff_control_range\":\"0-1\"\n         },\n         \"enabling_tech_details\":{\n            \"opa_num_emitters\":0,\n            \"opa_steering_range_deg\":0,\n            \"opa_beamwidth_deg\":0,\n            \"ris_num_elements\":0,\n            \"ris_type\":\"none\",\n            \"ris_phase_bits\":0\n         },\n         \"provenance\":{\n            \"source_pointer\":\"Fig. 2\",\n            \"value_origin\":\"reported_text\",\n            \"confidence_reporting\":\"none_reported\",\n            \"num_trials\":1\n         }\n      }\n   ],\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and the results, but the modelling fidelity and validation strength could be improved.\"\n   }\n}"
+}

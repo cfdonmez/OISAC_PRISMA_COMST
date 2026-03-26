@@ -1,0 +1,121 @@
+================================================================================
+O_ISAC_354 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Integrated Sensing and Communication Chip Based on III-Nitride for Motion Detection
+Authors: Xin Li, Mingyu Han et al. (Nanjing University of Posts and Telecommunications)
+Journal: ACS Omega (2023)
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Picture_6.jpeg
+### Type: Conceptual Device Diagram
+
+### Title: Schematic of Monolithic III-Nitride Photonics Chip
+
+### Visuals:
+- **Layout:** One receiver (Center) and Four transmitters (Corners). *Note: Text says "One receiver and two transmitters" wired.*
+- **Material:** InGaN/GaN MQWs on Sapphire.
+- **Function:** Green light emission (Tx) and detection (Rx) on the same chip.
+
+### O-ISAC Relevance:
+- Monolithic integration of visible light ISAC terminals.
+---
+
+## Image: _page_2_Figure_3.jpeg
+### Type: Optoelectronic Characterization
+
+### Title: I-V, C-V, and Spectral Characteristics
+
+### Panels:
+- (a) I-V Curve: Turn-on at 2.3V. Saturation current 100 mA @ 3.7V.
+- (c) EL Spectrum: Peak at **521.4 nm (Green)**.
+- (c) Responsivity: Overlaps with EL in range **490-536 nm**.
+- **Key Finding:** Sufficient spectral overlap (46 nm) allows the chip to detect its own light.
+
+### O-ISAC Relevance:
+- Physical basis for "Self-Detecting" communication chips.
+---
+
+## Image: _page_2_Figure_8.jpeg
+### Type: Motion Sensing Results
+
+### Title: Motion Detection Setup and Photocurrent Response
+
+### Panel (a) Setup:
+- Chip -> Lens -> Rotating Mirror -> Lens -> Chip.
+- Reflected Green Light path.
+
+### Panel (b) Results:
+- **Variable Speed:** 28, 70, 100 rpm.
+- **Waveform:** Periodic photocurrent fluctuations matching the rotation period.
+
+### Panel (c) Bias Effect:
+- Higher Tx Bias (2.6 -> 3.0 V) increases photocurrent amplitude (3 -> 9 nA).
+
+### O-ISAC Relevance:
+- Verification of rotational speed sensing using the monolithic chip.
+---
+
+## Image: _page_3_Figure_3.jpeg
+### Type: Communication Performance (Tx Mode)
+
+### Title: Free-Space VLC Test (Transmitter Only)
+
+### Data:
+- **Data Rate:** 24 Mbps.
+- **Modulation:** On-Off Keying (OOK) / Random Binary Sequence.
+- **Bandwidth:** 28.2 MHz (at 10 mA).
+- **Signal:** Clean square waves captured by APD.
+
+### O-ISAC Relevance:
+- Baseline VLC capability (Green light, 24 Mbps).
+---
+
+## Image: _page_3_Figure_10.jpeg
+### Type: Transceiver Integrated Communication
+
+### Title: Chip-to-Chip (Self) Communication
+
+### Scenario:
+- Light emitted by Tx part, reflected by mirror, detecting by Rx part of *same* chip.
+- Rate: **26 kbps**.
+
+### Panel (c) Eye Diagram:
+- Open eye at 26 kbps.
+- Note: Rate is much lower than Tx-only (24 Mbps) due to low collection efficiency of the on-chip receiver compared to a dedicated APD.
+
+### O-ISAC Relevance:
+- Demonstration of a fully integrated, standalone ISAC transceiver loop.
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5
+- Device Schematic: 1
+- Characterization (Spectra): 1
+- Motion Sensing: 1
+- VLC Performance (Tx & Trx): 2
+
+Key Technical Findings:
+1. **Wavelength:** Green (521 nm), distinct from the Blue (462 nm) variant in O_ISAC_350.
+2. **Spectral Overlap:** 46 nm overlap (490-536 nm) allows self-detection.
+3. **Sensing:** Rotational speed detection (28-100 rpm).
+4. **Communication Rates:**
+   - Tx Mode (with external APD): 24 Mbps.
+   - Trx Mode (Self-detect): 26 kbps.
+5. **Bandwidth:** 28.2 MHz.
+
+Key Innovations:
+1. Green-light Monolithic GaN ISAC chip.
+2. 46 nm spectral overlap enabling self-sensing without phosphors or external detectors.
+
+Performance Highlights:
+| Metric | Value |
+|--------|-------|
+| Color | Green (521 nm)|
+| Overlap | 46 nm |
+| Tx Rate | 24 Mbps |
+| Trx Rate | 26 kbps |
+| Bandwidth| 28.2 MHz |
+| Max Speed| 100 rpm |
+================================================================================

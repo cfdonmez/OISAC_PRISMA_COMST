@@ -19,7 +19,7 @@ This directory contains the entire technical engine for the **O-ISAC Systematic 
 ## 🚀 Key Files
 
 ### Operational
-*   **[`DAILY_WORKFLOW.md`](DAILY_WORKFLOW.md)**: Standard Operating Procedure (SOP) for daily research activities. **Start here** to understand *how* to use this system day-to-day.
+*   **[`daily_flow.md`](daily_flow.md)**: Standard Operating Procedure (SOP) for daily research activities. **Start here** to understand *how* to use this system day-to-day.
 
 ### Configuration
 *   **[`oisac_extraction_schema_v2.yaml`](oisac_extraction_schema_v2.yaml)**: The master JSON schema defining *what* data we extract from every paper.

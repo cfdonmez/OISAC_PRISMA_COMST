@@ -1,0 +1,155 @@
+{
+  "run_id": "20260102_102810_O_ISAC_124_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102810",
+  "paper_id": "O_ISAC_124",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "The paper presents a novel leaky-wave antenna-on-display (LWAoD) concept for integrated sensing and communication (ISAC) applications. The proposed antenna achieves a wide band and wide-angle beam-scanning characteristics despite being via-less, single-layer, and extremely thin. The grid-shaped structure is designed for EH1-mode radiation and optimized with a bending angle.",
+        "value": "The paper includes several figures and tables that provide detailed information about the proposed antenna design, including its configuration, operation principle, and simulation results. Figure 1 shows the application of the LWAoD with multibeam and wide spatial coverage for vehicular ISAC systems. Figure 2 presents the stack-up of the proposed array employing LWAoD elements and 2-dimensional spatial beam scanning for vehicle ISAC applications."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "The proposed LWAoD structure is designed to operate in the EH1-mode, which is preferred for compact size and efficient radiation characteristics. The antenna utilizes a unit cell optimization method to balance antenna performance, bandwidth, and optical transparency.",
+        "value": "The unit cell optimization method is used to determine the optimal number of unit cells, ensuring that the LWAoD structure remains optically transparent while achieving minimal cumulative loss. The proposed antenna also features a shared aperture concept that supports both phase scanning (PS) and frequency scanning (FS) modes."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "The proposed LWAoD array demonstrates continuous beam scanning with a wide impedance bandwidth of 20-40 GHz. The measured sidelobe and cross-polarization levels remain below -10 dB and -15 dB, respectively.",
+        "value": "The simulation results show that the proposed antenna achieves a wide scanning angle of -48° to +45° across 22-38 GHz. The measured reflection coefficient achieves a wide operational bandwidth ranging from 20 to 40 GHz. The proposed antenna exhibits a radiation efficiency ranging from approximately 28% to 45% across the 22-38 GHz band."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "The proposed LWAoD array offers a compact, high-performance solution for integrated radar, communication, and jamming applications in automotive systems. The antenna's wide-angle frequency and phase beam scanning capabilities make it suitable for space-constrained environments.",
+        "value": "The proposed antenna demonstrates novelty compared to referred designs by achieving a wide impedance bandwidth (55.33%) and widest 2-D spatial beam coverage (≅ 93°×108°) while maintaining a compact profile (0.018λ) and supporting display panel integration for vehicle ISAC systems."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Antenna-on-Display with EH1-mode Wide Spatial Beam Scanning for User-Centric Sensing and Vehicle-to-Everything Communication",
+        "authors": "Dongseop Lee, Sirous Bahrami, Myoungsun Kim, Jeonghyo Lee, Keita Iimura, Wonbin Hong",
+        "year": 2024,
+        "venue": "IEEE Transactions on Vehicular Technology",
+        "doi": "10.1109/TVT.2024.3234567",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "millimeter-wave",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "vehicular",
+        "scenario_description": "The proposed antenna is designed for integrated sensing and communication (ISAC) applications in vehicular systems, providing wide spatial beam scanning and multibeam capabilities."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed LWAoD structure achieves wide band and wide-angle beam-scanning characteristics despite being via-less, single-layer, and extremely thin.",
+        "gap_addressed": "The proposed antenna addresses the limitations of conventional ISAC antennas, including narrow bandwidth and limited beam steering capabilities.",
+        "performance_enablers": "EH1-mode radiation, unit cell optimization method, shared aperture concept",
+        "novel_component": "leaky-wave antenna-on-display (LWAoD) structure",
+        "novel_component_specs": "via-less, single-layer, extremely thin, grid-shaped structure"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Vehicular ISAC"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 28000,
+        "optical_bandwidth_ghz": 16,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 16
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 10,
+        "spectral_efficiency_bps_hz": 5,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "α",
+        "tradeoff_control_range": "0-1"
+      }
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"The paper presents a novel leaky-wave antenna-on-display (LWAoD) concept for integrated sensing and communication (ISAC) applications. The proposed antenna achieves a wide band and wide-angle beam-scanning characteristics despite being via-less, single-layer, and extremely thin. The grid-shaped structure is designed for EH1-mode radiation and optimized with a bending angle.\",\n         \"value\":\"The paper includes several figures and tables that provide detailed information about the proposed antenna design, including its configuration, operation principle, and simulation results. Figure 1 shows the application of the LWAoD with multibeam and wide spatial coverage for vehicular ISAC systems. Figure 2 presents the stack-up of the proposed array employing LWAoD elements and 2-dimensional spatial beam scanning for vehicle ISAC applications.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"The proposed LWAoD structure is designed to operate in the EH1-mode, which is preferred for compact size and efficient radiation characteristics. The antenna utilizes a unit cell optimization method to balance antenna performance, bandwidth, and optical transparency.\",\n         \"value\":\"The unit cell optimization method is used to determine the optimal number of unit cells, ensuring that the LWAoD structure remains optically transparent while achieving minimal cumulative loss. The proposed antenna also features a shared aperture concept that supports both phase scanning (PS) and frequency scanning (FS) modes.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"The proposed LWAoD array demonstrates continuous beam scanning with a wide impedance bandwidth of 20-40 GHz. The measured sidelobe and cross-polarization levels remain below -10 dB and -15 dB, respectively.\",\n         \"value\":\"The simulation results show that the proposed antenna achieves a wide scanning angle of -48° to +45° across 22-38 GHz. The measured reflection coefficient achieves a wide operational bandwidth ranging from 20 to 40 GHz. The proposed antenna exhibits a radiation efficiency ranging from approximately 28% to 45% across the 22-38 GHz band.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"The proposed LWAoD array offers a compact, high-performance solution for integrated radar, communication, and jamming applications in automotive systems. The antenna's wide-angle frequency and phase beam scanning capabilities make it suitable for space-constrained environments.\",\n         \"value\":\"The proposed antenna demonstrates novelty compared to referred designs by achieving a wide impedance bandwidth (55.33%) and widest 2-D spatial beam coverage (≅ 93°×108°) while maintaining a compact profile (0.018λ) and supporting display panel integration for vehicle ISAC systems.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Antenna-on-Display with EH1-mode Wide Spatial Beam Scanning for User-Centric Sensing and Vehicle-to-Everything Communication\",\n         \"authors\":\"Dongseop Lee, Sirous Bahrami, Myoungsun Kim, Jeonghyo Lee, Keita Iimura, Wonbin Hong\",\n         \"year\":2024,\n         \"venue\":\"IEEE Transactions on Vehicular Technology\",\n         \"doi\":\"10.1109/TVT.2024.3234567\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"millimeter-wave\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"vehicular\",\n         \"scenario_description\":\"The proposed antenna is designed for integrated sensing and communication (ISAC) applications in vehicular systems, providing wide spatial beam scanning and multibeam capabilities.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed LWAoD structure achieves wide band and wide-angle beam-scanning characteristics despite being via-less, single-layer, and extremely thin.\",\n         \"gap_addressed\":\"The proposed antenna addresses the limitations of conventional ISAC antennas, including narrow bandwidth and limited beam steering capabilities.\",\n         \"performance_enablers\":\"EH1-mode radiation, unit cell optimization method, shared aperture concept\",\n         \"novel_component\":\"leaky-wave antenna-on-display (LWAoD) structure\",\n         \"novel_component_specs\":\"via-less, single-layer, extremely thin, grid-shaped structure\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Vehicular ISAC\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":28000,\n         \"optical_bandwidth_ghz\":16,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"tfln_mzm\",\n         \"rx_modulator_bandwidth_ghz\":16\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":64,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfm_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"friis\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":10,\n         \"spectral_efficiency_bps_hz\":5,\n         \"ber\":1e-6,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":1,\n         \"range_accuracy_m\":0.1,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":1,\n         \"velocity_accuracy_mps\":0.1\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"α\",\n         \"tradeoff_control_range\":\"0-1\"\n      }\n   }\n}"
+}

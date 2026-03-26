@@ -1,17 +1,57 @@
 # Tech Context
 
-**Son Güncelleme:** 2025-12-16
-
+**Son Guncelleme:** 2026-03-24
 
 ---
 
-## 🔬 Domain Terimleri (O-ISAC)
+## Operational LaTeX Context
 
-| Terim | Açıklama |
+- Aktif journal-track authoring klasoru:
+  - `manuscript/IEEE-Transactions-LaTeX2e-templates-and-instructions/`
+- Ana manuscript dosyasi:
+  - `oisac_review_working.tex`
+- Frontmatter dosyasi:
+  - `oisac_frontmatter.tex`
+- Native section yapisi:
+  - `sections/section_01_introduction.tex`
+  - `sections/section_02_technical_fundamentals.tex`
+  - `sections/section_03_review_methodology.tex`
+  - `sections/section_04_taxonomy.tex`
+  - `sections/section_05_tradeoff.tex`
+  - `sections/section_06_enablers.tex`
+  - `sections/section_07_applications.tex`
+  - `sections/section_08_challenges.tex`
+  - `sections/section_09_conclusion.tex`
+- Lokal bibliography:
+  - `references.bib`
+- Lokal figure kaynaklari:
+  - `figures/`
+  - `fig_v_1.png`
+  - `fig_v_2.png`
+  - `fig_vi_1.jpg`
+  - `fig_vi_2.jpg`
+- Build script:
+  - `build_oisac_review_working.ps1`
+- Build zinciri:
+  - `pdflatex -> bibtex -> pdflatex -> pdflatex`
+- Son dogrulanan cikti:
+  - `manuscript/IEEE-Transactions-LaTeX2e-templates-and-instructions/oisac_review_working_build_20260324_214338.pdf`
+  - `32 sayfa`
+- Teknik durum:
+  - unresolved citation yok
+  - undefined reference yok
+  - LaTeX error yok
+  - overfull/underfull box ve float/page-budget sorunlari devam ediyor
+
+---
+
+## Domain Terimleri (O-ISAC)
+
+| Terim | Aciklama |
 |-------|----------|
 | **O-ISAC** | Optical Integrated Sensing and Communication |
-| **Fiber-ISAC** | Fiber üzerinde sensing (DAS, vibration) + haberleşme |
-| **Wireless O-ISAC** | FSO, VLC, LiDAR tabanlı ISAC |
+| **Fiber-ISAC** | Fiber uzerinde sensing (DAS, vibration) ve haberlesme |
+| **Wireless O-ISAC** | FSO, VLC, LiDAR tabanli ISAC |
 | **FSO** | Free-Space Optical |
 | **VLC** | Visible Light Communication |
 | **DAS** | Distributed Acoustic Sensing |
@@ -24,80 +64,78 @@
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanilan Teknolojiler
 
 ### Python Paketleri
 
-| Paket | Amaç |
+| Paket | Amac |
 |-------|------|
-| `marker-pdf` | PDF → Markdown dönüşümü (OCR) |
-| `transformers` | Florence-2/BLIP görsel analiz |
-| `torch` | PyTorch (GPU için) |
-| `flash_attn` | Model hızlandırma (Florence-2) |
+| `marker-pdf` | PDF to Markdown donusumu (OCR) |
+| `transformers` | Florence-2 / BLIP tabanli gorsel analiz |
+| `torch` | PyTorch |
+| `flash_attn` | Florence-2 hizlandirma |
 | `timm` | Vision model backbone |
 | `groq` | Groq API client |
-| `pandas` | Veri işleme |
+| `pandas` | Veri isleme |
 | `pyyaml` | YAML okuma |
-
 
 ### API'ler
 
-| API | Amaç |
+| API | Amac |
 |-----|------|
 | Groq | LLM inference (Llama 3.3 70B) |
 
 ### Modeller
 
-| Model | Amaç |
+| Model | Amac |
 |-------|------|
-| `llama-3.3-70b-versatile` | Metin extraction (default) |
-| `meta-llama/llama-4-scout-17b-16e-instruct` | Vision + metin (resim varsa) |
-| `microsoft/Florence-2-large` | **Lokal** görsel analiz (Captioning/OCR) |
-| BLIP | Görsel captioning (Legacy/Backup) |
-| DePlot | Chart/grafik analizi (Legacy/Backup) |
-
+| `llama-3.3-70b-versatile` | Metin extraction |
+| `meta-llama/llama-4-scout-17b-16e-instruct` | Vision + metin |
+| `microsoft/Florence-2-large` | Lokal gorsel analiz (captioning/OCR) |
+| BLIP | Gorsel captioning (legacy/backup) |
+| DePlot | Chart/grafik analizi (legacy/backup) |
 
 ---
 
-## 📊 Extraction Şeması (Schema v2.1)
+## Extraction Semasi (Schema v2.1)
 
-**Dosya:** `analysis/cot_laboratory/modules/formatting/schema_v2.yaml`
+**Dosya:** `analysis/cot_lab/modules/formatting/schema_v2.yaml`
 
-### Ana Bölümler
+### Ana Bolumler
 
-1. **reasoning_trace** - Chain-of-Thought adımları
+1. **reasoning_trace**
    - `step_0_visual_inspection`
    - `step_1_concept_analysis`
    - `step_2_benchmark_verification`
    - `step_3_strategic_critique`
 
-2. **study_level** - Paper seviyesi bilgiler
-   - bibliographic (title, authors, year, venue, doi)
-   - classification (medium, band, environment)
-   - application (domain, scenario)
-   - evidence (type, baselines, reproducibility)
-   - key_contribution (contribution, gap, enablers)
+2. **study_level**
+   - bibliographic
+   - classification
+   - application
+   - evidence
+   - key_contribution
 
-3. **scenario_level** - Experiment seviyesi bilgiler
-   - transmitter (source, modulation, wavelength)
-   - receiver (detection, detector, processing)
-   - waveform (comm, sensing, relationship)
-   - channel (fiber or wireless parameters)
-   - comm_metrics (rate, BER, SNR)
-   - sensing_metrics (range, resolution, accuracy)
-   - tradeoff (coupling, type, control)
+3. **scenario_level**
+   - transmitter
+   - receiver
+   - waveform
+   - channel
+   - comm_metrics
+   - sensing_metrics
+   - tradeoff
 
 ---
 
-## 📏 Metrikler
+## Metrikler
 
-### Communication Metrikleri
+### Communication
 - Data Rate (Gbps)
-- BER (Bit Error Rate)
+- BER
 - SNR (dB)
 - Spectral Efficiency (bits/s/Hz)
 
-### Sensing Metrikleri
+### Sensing
 - Range Resolution (m)
 - Sensing Range (m)
 - Range Accuracy (m)
@@ -105,9 +143,15 @@
 
 ---
 
-## 💻 Çalışma Ortamı
+## Calisma Ortami
 
-- **Platform:** Google Colab
-- **GPU:** T4 veya A100 (Phase 1 & 2 için)
-- **API Key:** Colab Secrets'da `GROQ_API_KEY`
-- **Drive Path:** `/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST`
+- Platform:
+  - onceki extraction turlari agirlikli olarak Google Colab tabanli ilerledi
+- GPU:
+  - T4 veya A100 kullanildi
+- API key:
+  - `GROQ_API_KEY`
+- Tarihsel drive path:
+  - `/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST`
+- Guncel local workspace:
+  - `C:\\Users\\fdonmez\\Drive'im (cfdonmez@gmail.com)\\AKU_WorkSpace\\survey_fdgit\\OISAC_PRISMA_COMST`

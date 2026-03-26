@@ -1,0 +1,125 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "high",
+        "data_completeness": "high",
+        "needs_spot_check": true,
+        "notes": "Microwave Photonics ISAC. The carrier is 60 GHz mmWave (RF), generated using optical techniques (OFC, Heterodyne). The transmission medium is RF (wireless), not Optical (FSO/VLC). It is technically 'Photonics-Assisted RF ISAC' rather than 'Optical Wireless ISAC'. Included based on user list."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: System schematic shows Laser Diodes -> Modulators -> Photodiode -> Horn Antenna (RF Radiation). Fig 2: Optical Spectra and Electrical Spectrogram (55-65 GHz). Fig 3: Eye diagram. Fig 4: Radar Range Profile (1.8cm resolution).",
+        "step_1_concept_analysis": "System: Photonic-based mmWave ISAC. Generation: Optical Frequency Comb (OFC) + LFM + OOK. De-chirping: Photonic mixing. Transmission: 60 GHz mmWave via Horn Antenna.",
+        "step_2_benchmark_verification": "Comm: 1 Gbps OOK. Sensing: 1.8 cm resolution. Link: 1 meter +.",
+        "step_3_strategic_critique": "Novelty is the Photonic generation/processing for wideband mmWave ISAC. Allows breaking electronic bottlenecks. However, channel is RF."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_057",
+            "title": "60-GHz photonic millimeter-wave joint radar-communication system",
+            "authors": "Wenlin Bai, Xihua Zou, Peixuan Li, Wei Pan, Lianshan Yan, Bin Luo",
+            "year": 2024,
+            "venue": "Unknown (Likely IEEE Conf or JLT based on style)",
+            "document_type": "conference_paper",
+            "doi": ""
+        },
+        "classification": {
+            "oisac_medium_class": "microwave_photonics",
+            "carrier_band": "mm_wave",
+            "operational_environment": "indoor_lab",
+            "link_topology": "point_to_point",
+            "mobility_context": "stationary"
+        },
+        "application": {
+            "application_domain": [
+                "autonomous_vehicles",
+                "uav_networks"
+            ],
+            "scenario_description": "High-resolution radar and high-speed comms for V2X/UAVs using 60 GHz band."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experiment"
+            ],
+            "validation_baselines_present": false,
+            "reproducibility_artifacts": "none"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Photonic generation and processing of 60 GHz LFM-OOK joint ISAC signal. Achieves 1.8cm range resolution and 1 Gbps data rate.",
+            "gap_addressed": "Electronic bandwidth limitations for generating ultra-wideband mmWave ISAC signals.",
+            "performance_enablers": [
+                "microwave_photonics",
+                "optical_heterodyning"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_60GHZ_PHOTONIC",
+                "scenario_label": "60 GHz Photonic ISAC"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "optical_heterodyning",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": 9.0,
+                "notes": "Laser (1550nm) used to generate RF. RF Bandwidth = 9 GHz (55-64 GHz)."
+            },
+            "receiver": {
+                "rx_detection_type": "coherent_detection",
+                "rx_detector": "photodiode",
+                "notes": "High-speed PD (70 GHz) for generation. Low-speed PD for de-chirped processing."
+            },
+            "integration": {
+                "hardware_sharing_mode": "unified_waveform",
+                "duplexing_mode": "full_duplex",
+                "notes": "LFM (Sensing) + OOK (Comm) on same 60 GHz carrier."
+            },
+            "waveform": {
+                "comm_waveform_family": "ook",
+                "comm_modulation_order": 2,
+                "sensing_waveform_family": "lfm",
+                "isac_waveform_relationship": "superimposed_waveform",
+                "notes": "OOK modulated on top of LFM envelope (Inter-pulse or Integrated? Paper says 'directly modulated onto the amplitude envelop of LFMCW')."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 1.0,
+                "wireless_band_ghz": 60.0,
+                "notes": "1 meter wireless link (Lab setup). 60 GHz Carrier."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 1.0,
+                "ber": 0.0,
+                "notes": "Eye diagram Open. 1 Gbps achieved."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "sensing_range_m": 1.2,
+                "range_resolution_m": 0.018,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.001,
+                "notes": "1.8 cm resolution verified with two targets."
+            },
+            "tradeoff": {
+                "coupling_mode": "tightly_coupled",
+                "tradeoff_type": [
+                    "none"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "Simultaneous operation."
+            }
+        }
+    ]
+}

@@ -5,9 +5,9 @@ import shutil
 
 BASE_DIR = r'c:\Users\fatih\gdrive\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST'
 CANDIDATES_PATH = os.path.join(BASE_DIR, 'scopus_candidates.csv')
-AI_RESULTS_PATH = os.path.join(BASE_DIR, 'analysis/phase1_screening/ai_screening_decisions_scopus.csv')
-MAIN_LIST_PATH = os.path.join(BASE_DIR, 'analysis/phase1_screening/included_studies_list.csv')
-ARCHIVE_DIR = os.path.join(BASE_DIR, 'analysis/phase1_screening/logs_archive')
+AI_RESULTS_PATH = os.path.join(BASE_DIR, 'analysis/ph1_scr/ai_scr_dec_scopus.csv')
+MAIN_LIST_PATH = os.path.join(BASE_DIR, 'analysis/ph1_scr/included_studies_list.csv')
+ARCHIVE_DIR = os.path.join(BASE_DIR, 'analysis/ph1_scr/logs_archive')
 
 os.makedirs(ARCHIVE_DIR, exist_ok=True)
 
@@ -93,9 +93,9 @@ try:
     # 7. Cleanup / Archive
     # Move intermediate files to archive to keep folder clean
     # We keep 'screening_log.csv' as it is the master log.
-    # We move 'ai_screening_decisions_scopus.csv' and 'ai_included_candidates.md' (optional)
+    # We move 'ai_scr_dec_scopus.csv' and 'ai_included_candidates.md' (optional)
     
-    shutil.copy2(AI_RESULTS_PATH, os.path.join(ARCHIVE_DIR, 'ai_screening_decisions_scopus_v1.csv'))
+    shutil.copy2(AI_RESULTS_PATH, os.path.join(ARCHIVE_DIR, 'ai_scr_dec_scopus_v1.csv'))
     print(f"🧹 Archived intermediate file to {ARCHIVE_DIR}")
 
 except Exception as e:

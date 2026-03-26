@@ -20,7 +20,7 @@ Bu dosya repodaki tüm önemli dosyaların ne işe yaradığını açıklar.
 
 ### `analysis/` - Analiz Araçları
 
-#### `analysis/notebooks/` - Colab Notebook'ları
+#### `analysis/nb/` - Colab Notebook'ları
 
 | Dosya | Amaç | Durum |
 |-------|------|-------|
@@ -33,7 +33,7 @@ Bu dosya repodaki tüm önemli dosyaların ne işe yaradığını açıklar.
 | `test_v21_single_paper.py` | Tek paper test scripti | Test |
 | `archive/` | Eski/kullanılmayan dosyalar | Arşiv |
 
-#### `analysis/cot_laboratory/` - Chain-of-Thought Sistemi
+#### `analysis/cot_lab/` - Chain-of-Thought Sistemi
 
 ```
 cot_laboratory/
@@ -59,7 +59,7 @@ cot_laboratory/
 └── run_prototype.py       # Tek paper test scripti
 ```
 
-#### `analysis/_archive_20260205/` - Arsiv
+#### `analysis/arch_20260205/` - Arsiv
 
 | Icerik | Amac |
 |--------|------|
@@ -95,8 +95,8 @@ cot_laboratory/
 
 | Dosya | Amaç |
 |-------|------|
-| `prisma_protocol.md` | **ANA PROTOKOL** - Tüm kurallar (86KB) |
-| `PRISMA_2020_Checklist.md` | PRISMA 2020 kontrol listesi |
+| `prisma_proto.md` | **ANA PROTOKOL** - Tüm kurallar (86KB) |
+| `prisma_2020_chk.md` | PRISMA 2020 kontrol listesi |
 
 ---
 
@@ -105,10 +105,10 @@ cot_laboratory/
 | Dosya | Amaç |
 |-------|------|
 | `ROADMAP.md` | Proje yol haritası |
-| `PROJECT_STATUS.md` | Detaylı durum (eski REMINDER) |
-| `AI_Co_Pilot_Workflow.md` | AI ile çalışma rehberi |
-| `survey_writing_guide.md` | IEEE COMST yazım rehberi |
-| `DAILY_WORKFLOW.md` | **GÜNLÜK RUTİN** - Arama, eleme ve veri çıkarma akışı |
+| `proj_status.md` | Detaylı durum (eski REMINDER) |
+| `ai_copilot_flow.md` | AI ile çalışma rehberi |
+| `surv_write_guide.md` | IEEE COMST yazım rehberi |
+| `daily_flow.md` | **GÜNLÜK RUTİN** - Arama, eleme ve veri çıkarma akışı |
 
 ---
 
@@ -166,13 +166,13 @@ cot_laboratory/
 1. `memory-bank/master_writing_guide.md` - **MASTER YAZIM REHBERİ** ⭐
 2. `memory-bank/activeContext.md` - Güncel durum
 3. `memory-bank/surveyOutline.md` - Onaylı makale yapısı
-4. `analysis/notebooks/CoT_Master_Pipeline.ipynb` - Ana notebook
-5. `analysis/cot_laboratory/core/assembler.py` - CoT motoru
-6. `analysis/cot_laboratory/modules/formatting/schema_v2.yaml` - JSON şeması
-7. `analysis/notebooks/extraction_pipeline_v3.py` - Phase 1&2 motoru
-8. `protocol/prisma_protocol.md` - Ana protokol
-9. `data/processed_markdowns/` - İşlenmiş veriler
-10. `analysis/cot_laboratory/logs/` - Çalıştırma kayıtları
+4. `analysis/nb/CoT_Master_Pipeline.ipynb` - Ana notebook
+5. `analysis/cot_lab/core/assembler.py` - CoT motoru
+6. `analysis/cot_lab/modules/formatting/schema_v2.yaml` - JSON şeması
+7. `analysis/nb/extraction_pipeline_v3.py` - Phase 1&2 motoru
+8. `protocol/prisma_proto.md` - Ana protokol
+9. `data/proc_markdowns/` - İşlenmiş veriler
+10. `analysis/cot_lab/logs/` - Çalıştırma kayıtları
 
 ---
 
@@ -185,14 +185,14 @@ cot_laboratory/
 | `drafts/section_02B_channel_models.md` | Section II-B draft (channel models across modalities) |
 | `drafts/section_02C_transceiver_hardware.md` | Section II-C draft (hardware abstractions) |
 
-### `analysis/II_evidence_v2/` - New Audits / Evidence
+### `analysis/II_ev_v2/` - New Audits / Evidence
 | File | Purpose |
 |------|---------|
-| `analysis/II_evidence_v2/section_02A_audit.md` | II-A writing recipe audit |
-| `analysis/II_evidence_v2/section_02B_audit.md` | II-B writing recipe audit |
-| `analysis/section_02C_audit.md` | II-C writing recipe audit |
-| `analysis/II_evidence_v2/section2A_evidence.csv` | II-A evidence anchors |
-| `analysis/II_evidence_v2/patch_notes_for_writing_2B.md` | II-B evidence notes |
+| `analysis/II_ev_v2/section_02A_audit.md` | II-A writing recipe audit |
+| `analysis/II_ev_v2/section_02B_audit.md` | II-B writing recipe audit |
+| `analysis/s02C_aud.md` | II-C writing recipe audit |
+| `analysis/II_ev_v2/section2A_evidence.csv` | II-A evidence anchors |
+| `analysis/II_ev_v2/patch_notes_for_writing_2B.md` | II-B evidence notes |
 
 ### `review_package/` - COMST Reviewer Bundle
 | File | Purpose |

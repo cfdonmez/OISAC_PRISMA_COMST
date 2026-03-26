@@ -1,0 +1,146 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "hybrid_thz",
+        "data_completeness": "high",
+        "needs_spot_check": false,
+        "notes": "Photonic THz system - optical generation but THz transmission. High performance metrics."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Figure 1 compares waveforms (OFDM, OTFS, LFM-PSK). Figure 2 shows the 'Multi-channel coherent fusion' setup with Optical Frequency Comb and WDM. Figure 3 shows experimental results: Range-Doppler map (spectrogram) and EVM vs Frequency Offset.",
+        "step_1_concept_analysis": "System: Photonic-assisted Terahertz ISAC. The carrier is THz (generated optically), not pure optical (FSO/VLC), hence classified as 'hybrid'. Waveform: LFM-PSK (Radar-centric) and LFM-QAM (Multi-channel). Approach: Uses photonic bandwidth to generate wideband THz signals for high resolution.",
+        "step_2_benchmark_verification": "Metrics are exceptionally high: 120 Gbps (Comm) and 2.5 mm (Sensing) for the multi-channel setup. For the single channel LFM-PSK: 6 Gbps and 1.3 cm resolution. These are consistent with wideband THz capabilities. 20m link compensation is also mentioned.",
+        "step_3_strategic_critique": "Contribution: Overcomes electronic bottlenecks in THz generation using photonics. 'Coherent Fusion' allows breaking the trade-off between rate and resolution. Gap: Hardware cost/complexity is high (requires frequency combs, optical modulators)."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_002",
+            "title": "Photonic Terahertz Integrated Sensing and Communication (ISAC) Systems",
+            "authors": "Lu Zhang, Zhidong Lyu, Oskars Ozolins, Xiaodan Pang, Xianbin Yu",
+            "year": 2025,
+            "venue": "Inferred from context (Copyright 2025 The Author(s), likely Journal or Conf)",
+            "document_type": "journal",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "hybrid",
+            "carrier_band": "other",
+            "operational_environment": "lab",
+            "link_topology": "point_to_point",
+            "mobility_context": "static"
+        },
+        "application": {
+            "application_domain": [
+                "6g_networks",
+                "wireless_backhaul"
+            ],
+            "scenario_description": "Photonic THz wireless link for simultaneous high-speed 6G backhaul and centimeter/millimeter-level sensing."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experimental",
+                "analytical"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "insufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "Proposal of LFM-PSK and Multi-channel LFM-QAM coherent fusion for Photonic THz ISAC, achieving 120 Gbps/2.5 mm.",
+            "gap_addressed": "Electronic bottlenecks in THz ISAC and trade-off between communication rate and sensing resolution.",
+            "performance_enablers": [
+                "frequency_comb",
+                "joint_waveform_design",
+                "photonic_mixing"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "E1_SingleChannel_LFM_PSK",
+                "scenario_label": "1-meter Wireless Link (LFM-PSK)"
+            },
+            "transmitter": {
+                "tx_source_type": "laser",
+                "tx_modulation_type": "mixed",
+                "tx_external_modulator": "iq_modulator",
+                "wavelength_nm": 1550.0,
+                "optical_bandwidth_ghz": "NR",
+                "notes": "1550nm inferred from standard telecom components (EDFA, WSS)"
+            },
+            "receiver": {
+                "rx_detection_type": "coherent",
+                "rx_detector": "other",
+                "rx_photonic_processing": "photonic_mixing",
+                "notes": "UTC-PD for THz generation, Mixer for downconversion"
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend",
+                "duplexing_mode": "not_specified"
+            },
+            "waveform": {
+                "comm_waveform_family": "psk",
+                "sensing_waveform_family": "lfm_chirp",
+                "isac_waveform_relationship": "single_dual_function"
+            },
+            "channel_wireless": {
+                "link_distance_m": 1.0,
+                "turbulence_model": "none"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 6.0,
+                "ber": "NR",
+                "snr_db": "NR"
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "range_resolution_m": 0.013,
+                "sensing_range_m": "NR",
+                "sidelobe_level_db": 20.9
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "rate_vs_range_resolution"
+                ],
+                "tradeoff_representation": "single_point"
+            }
+        },
+        {
+            "identification": {
+                "experiment_id": "E2_MultiChannel_Fusion",
+                "scenario_label": "Multi-channel Coherent Fusion (Sim/Exp)"
+            },
+            "integration": {
+                "hardware_sharing_mode": "shared_frontend"
+            },
+            "waveform": {
+                "comm_waveform_family": "qam",
+                "sensing_waveform_family": "lfm_chirp",
+                "isac_waveform_relationship": "single_dual_function"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 120.0
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "ranging"
+                ],
+                "range_resolution_m": 0.0025
+            },
+            "tradeoff": {
+                "coupling_mode": "joint_waveform",
+                "tradeoff_type": [
+                    "rate_vs_range_resolution"
+                ],
+                "tradeoff_representation": "single_point"
+            }
+        }
+    ]
+}

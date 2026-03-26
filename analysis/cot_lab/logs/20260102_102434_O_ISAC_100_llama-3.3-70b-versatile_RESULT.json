@@ -1,0 +1,166 @@
+{
+  "run_id": "20260102_102434_O_ISAC_100_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102434",
+  "paper_id": "O_ISAC_100",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper discusses an enhanced asymmetrically clipped direct-current-biased optical orthogonal frequency division multiplexing (EADO-OFDM) scheme for flexible waveform design and resource allocation in optical wireless integrated sensing and communication (OW-ISAC). The system framework is illustrated in Fig. 1, and the signal processing procedures are shown in Fig. 2."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The EADO-OFDM scheme is proposed for OW-ISAC, which can adaptively assign part of the odd subcarriers to DCO-OFDM. The system framework is based on a LiDAR that can transmit and receive optical signals simultaneously, and the signal processing techniques are discussed for both communication and sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper provides a detailed analysis of the signal model and signal processing techniques for EADO-OFDM, including the modeling of clipping noise and the derivation of expressions for SNDR on each subcarrier. The physical consistency of the reported metrics is validated through numerical simulations."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of flexible waveform design and resource allocation for OW-ISAC, but the remaining open challenges include the optimization of system parameters and the improvement of sensing precision in the presence of atmospheric turbulence."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Optical Wireless Integrated Sensing and Communication Based on EADO-OFDM: A Flexible Resource Allocation Perspective",
+        "authors": "Yunfeng Wen, Fang Yang, Jian Song, and Zhu Han",
+        "year": 2025,
+        "venue": "IEEE Transactions on Wireless Communications",
+        "doi": "10.1109/TWC.2025.3557061"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "The system is designed for indoor positioning and communication applications."
+      },
+      "evidence": {
+        "evidence_type": "analytical",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes an EADO-OFDM scheme for OW-ISAC, which can adaptively assign part of the odd subcarriers to DCO-OFDM.",
+        "gap_addressed": "The paper addresses the problem of flexible waveform design and resource allocation for OW-ISAC.",
+        "performance_enablers": "joint_waveform_design",
+        "novel_component": "EADO-OFDM scheme",
+        "novel_component_specs": "The EADO-OFDM scheme can subsume DCO-OFDM, ACO-OFDM, and ADO-OFDM through flexible power allocation and subcarrier assignment."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor OW-ISAC with EADO-OFDM"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 905,
+        "optical_bandwidth_ghz": 195.3,
+        "tx_power_dbm": 0,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 0.5
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "time_frequency"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 50,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 5e-14,
+        "scintillation_index": 0.5,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 5,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 0.1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "rho",
+        "tradeoff_control_range": "0_to_1"
+      }
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper discusses an enhanced asymmetrically clipped direct-current-biased optical orthogonal frequency division multiplexing (EADO-OFDM) scheme for flexible waveform design and resource allocation in optical wireless integrated sensing and communication (OW-ISAC). The system framework is illustrated in Fig. 1, and the signal processing procedures are shown in Fig. 2.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The EADO-OFDM scheme is proposed for OW-ISAC, which can adaptively assign part of the odd subcarriers to DCO-OFDM. The system framework is based on a LiDAR that can transmit and receive optical signals simultaneously, and the signal processing techniques are discussed for both communication and sensing.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper provides a detailed analysis of the signal model and signal processing techniques for EADO-OFDM, including the modeling of clipping noise and the derivation of expressions for SNDR on each subcarrier. The physical consistency of the reported metrics is validated through numerical simulations.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of flexible waveform design and resource allocation for OW-ISAC, but the remaining open challenges include the optimization of system parameters and the improvement of sensing precision in the presence of atmospheric turbulence.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Optical Wireless Integrated Sensing and Communication Based on EADO-OFDM: A Flexible Resource Allocation Perspective\",\n         \"authors\":\"Yunfeng Wen, Fang Yang, Jian Song, and Zhu Han\",\n         \"year\":2025,\n         \"venue\":\"IEEE Transactions on Wireless Communications\",\n         \"doi\":\"10.1109/TWC.2025.3557061\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"The system is designed for indoor positioning and communication applications.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"analytical\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes an EADO-OFDM scheme for OW-ISAC, which can adaptively assign part of the odd subcarriers to DCO-OFDM.\",\n         \"gap_addressed\":\"The paper addresses the problem of flexible waveform design and resource allocation for OW-ISAC.\",\n         \"performance_enablers\":\"joint_waveform_design\",\n         \"novel_component\":\"EADO-OFDM scheme\",\n         \"novel_component_specs\":\"The EADO-OFDM scheme can subsume DCO-OFDM, ACO-OFDM, and ADO-OFDM through flexible power allocation and subcarrier assignment.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor OW-ISAC with EADO-OFDM\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"im_dd\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":905,\n         \"optical_bandwidth_ghz\":195.3,\n         \"tx_power_dbm\":0,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":0.5\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"tfln_mzm\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfm_chirp\",\n         \"isac_waveform_relationship\":\"joint_waveform\",\n         \"resource_partition\":\"time_frequency\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":50,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":5e-14,\n         \"scintillation_index\":0.5,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"solar\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":5,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":0.1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.1,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"rho\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      }\n   }\n}"
+}

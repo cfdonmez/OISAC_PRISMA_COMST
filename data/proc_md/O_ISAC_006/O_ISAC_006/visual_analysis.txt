@@ -1,0 +1,97 @@
+PAPER: O_ISAC_006
+TITLE: Recent Advancements and Challenges in Integrated Sensing and Communication in Optical Fiber
+
+================================================================================
+IMAGE: _page_1_Picture_4.jpeg
+TYPE: Flowchart / DSP Scheme
+DESCRIPTION: Two DSP schemes for anomaly detection in SOP extraction.
+COMPONENTS:
+- Scheme (a): SOPAS Anomaly Detector. 
+  - Input: Polarimeter S[n].
+  - Process: Cosine Similarity -> arccos(.) -> Smoothing LPF -> Threshold Detector.
+  - Output: d[n].
+- Scheme (b): SOP-PSDG Anomaly Detector.
+  - Input: Polarimeter S[n].
+  - Process: PSD computation (FFT, square, HPF) for S1[n], S2[n], S3[n] -> Summation -> Update PSD statistics -> Normalization -> Smoothing LPF -> Threshold Detector.
+  - Output: d[n].
+================================================================================
+IMAGE: _page_1_Picture_7.jpeg
+TYPE: Experimental Setup
+DESCRIPTION: Integrated coherent transmission and distributed fiber sensing in a C+L WDM system.
+COMPONENTS:
+- ECL1 (C-Band), ECL2 (L-Band).
+- DP IQ Modulator, AWG.
+- EDFA, WDM-MUX.
+- Optical Fiber: Two 25.5km spans.
+- SOP scrambling points (a, b, c).
+- LO1, LO2.
+- ICR1 (Integrated Coherent Receiver).
+- RTO (Real-Time Oscilloscope).
+================================================================================
+IMAGE: _page_1_Figure_11.jpeg
+TYPE: Experimental Setup
+DESCRIPTION: Vibration detection and localization based on forward transmitted light.
+COMPONENTS:
+- Transmitter: PM-16QAM, AWG, OE4040-VLN Laser (Linewidth < 7Hz).
+- Dual Pol. MZM I/Q.
+- LO Homodyne.
+- Mechanical Shaker.
+- 32-km SMF (Turin metropolitan area).
+- Receiver: VOA, Dual Pol. 90 deg Hybrid, BPD, RTO (200 Gsa/s), DSP.
+- DSP Sub-blocks: Resampling (2 sample-per-symbol), Frequency Offset Compensation, Chromatic Dispersion Compensation, 2x2 Complex Adaptive Equalization, Carrier Phase Recovery.
+- Output: SOP and phase (theta).
+================================================================================
+IMAGE: _page_1_Figure_13.jpeg
+TYPE: Experimental Setup
+DESCRIPTION: 32km SMF link in Turin for ISAC experiments.
+COMPONENTS:
+- CWL (Continuous-Wave Laser).
+- SSB module, MZM, EDFA.
+- Circular (Cir.).
+- SMF.
+- Coherent Detection, DSO, Offline DSP.
+- Legend: 90% path to SSB/MZM, 10% path to Coherent Detection.
+================================================================================
+IMAGE: _page_2_Figure_8.jpeg
+TYPE: Schematic Diagram
+DESCRIPTION: SDM-based ISAC-OF scheme using a 7-core optical fiber.
+COMPONENTS:
+- Data source: 93L-45G-16QAM data.
+- Fan-in/out.
+- 7-core fiber: 1 Sensing channel, 6 Communication channels.
+- Sensing path: Laser -> Coupler -> AOM -> EDFA -> Circular -> Fiber -> Fan-in/out -> Data receiver.
+- Bottom sensing receiver: Coupler -> PD -> ADC -> DSP.
+================================================================================
+IMAGE: _page_2_Figure_12.jpeg
+TYPE: Schematic Diagram
+DESCRIPTION: Synchronous data transmission and DAS within the same wavelength channel.
+COMPONENTS:
+- CWL.
+- SSB module (LFM wave input).
+- MZM (Trans. code input).
+- EDFA, Circular (Cir.), SMF.
+- Rayleigh scattering light (dashed arrow).
+- Coherent Detection (Cosine wave input), DSO, Offline DSP.
+================================================================================
+IMAGE: _page_3_Figure_1.jpeg
+TYPE: Schematic Diagram
+DESCRIPTION: ISAC solution utilizing communication data frame structures with LFM sensing probes.
+COMPONENTS:
+- Tx DSP, AWG.
+- Laser @ 1550nm.
+- DP IQ Modulator, SOA, EDFA1, OBPF.
+- Circular (Cir.), FUT (Fiber Under Test), PZT.
+- Sens. DSP, Coherent Receiver.
+- ISAC header block: Training sequence + LFM Pilots.
+- MSG (Microwave Signal Generator), MZM, EDFA3, WS.
+================================================================================
+IMAGE: _page_3_Figure_7.jpeg
+TYPE: Experimental Structure / Spectrum
+DESCRIPTION: DSCM-based P2MP system for endogenous DAS.
+COMPONENTS:
+- (a) Setup: Laser, IQ Modulator, AWG, Tx DSP, EDFA, OBPF, Circular, 10KM fiber, PZT, WS, VOA, PC.
+- Comm. Receiver: LO, 90 deg Hybrid, ICR, 80G Sa/s DSO, Rx DSP.
+- Sens. Receiver: Intensity Modulator, 90 deg Hybrid, 1G Sa/s DSO, Rx DSP.
+- (b) Transmitted Spectrum: Shows Leaf1, Leaf2, and Pilots (Pilot1, Pilot2).
+- (c) Received Spectrum: Separate spectra for Leaf1 and Leaf2.
+================================================================================

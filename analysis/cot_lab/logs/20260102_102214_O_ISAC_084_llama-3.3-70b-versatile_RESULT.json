@@ -1,0 +1,209 @@
+{
+  "run_id": "20260102_102214_O_ISAC_084_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102214",
+  "paper_id": "O_ISAC_084",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates two sample applications of LumiPane in smart bus stops, and Fig. 2, which compares traditional VLS with LumiPane. Fig. 3 shows the system architecture of LumiPane, comprising a transmitter based on LCLV and a multichannel receiver circuit. Fig. 4 illustrates the signal processing workflow for gesture recognition and ambient light communication. Fig. 5 depicts the electrical characteristics of LCLV, and Fig. 6 shows the architecture of the 1DConvTrans model."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "LumiPane is an intelligent interaction system that combines visible light communication signals and gesture sensing signals for integrated transmission. It leverages the dimming characteristics of a liquid crystal light valve (LCLV) and employs a demodulation scheme that combines trend and threshold techniques. The system uses a decoupling algorithm to separate the sensing signal from the communication signal, and then uses a 1DConvTrans model for gesture recognition."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The system achieves a maximum rate of 60bps without the need for an active light source, and the 1DConvTrans model achieves an accuracy rate of 97.6% for gesture recognition. The system's performance is quite impressive for VLC using inexpensive LCLV instead of the costly LCD shutter, while still ensuring effective sensing capabilities."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The system solves the problem of integrating gesture sensing with ambient light communication, and achieves high-quality ambient light communication at a maximum rate of 60bps without the need for an active light source. However, the system's performance in outdoor environments is affected by dynamic variations in light, and interference issues may arise when scaling up to busy public spaces. Future work will focus on enhancing the communication performance in outdoor environments and addressing interference issues."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "LumiPane: Intelligent Interaction through Gesture Sensing and Ambient Light Communication",
+        "authors": "Liguang Ruan, Jiarong Li, Chenxin Liang, Xiaojun Liang, Jiaqi Yin, Wenbo Ding",
+        "year": 2024,
+        "venue": "IEEE",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "indoor_positioning",
+          "security_surveillance"
+        ],
+        "scenario_description": "Smart bus stops that can communicate with smartphones to transmit current location information and provide contactless control panels for viewing maps."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The first ISAC system that combines ambient light communication with gesture recognition, providing new insights into outdoor VLC and VLS.",
+        "gap_addressed": "The inability to completely block ambient light, which is addressed by designing the VLS component of the system onto the LCLV array.",
+        "performance_enablers": [
+          "joint_waveform",
+          "photonic_dechirping",
+          "tfln_modulator"
+        ],
+        "novel_component": "LCLV array",
+        "novel_component_specs": "Custom-built using 3D printing to enhance its adaptability to various lighting conditions."
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Indoor VLC"
+        },
+        "transmitter": {
+          "tx_source_type": "lclv",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "none",
+          "wavelength_nm": 650,
+          "optical_bandwidth_ghz": 100,
+          "tx_power_dbm": 10,
+          "aperture_diameter_m": 0.1,
+          "beam_divergence_mrad": 10
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "photodiode",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "none",
+          "rx_modulator_type": "none",
+          "rx_modulator_bandwidth_ghz": 100,
+          "rx_modulator_operating_point": "mitp"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "half_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ook",
+          "comm_modulation_order": 2,
+          "comm_symbol_rate_gbaud": 0.06,
+          "comm_fec_type": "none",
+          "sensing_waveform_family": "pulse_tof",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 0,
+          "fibre_type": "nr",
+          "attenuation_db_per_km": 0,
+          "dispersion_ps_per_nm_km": 0,
+          "nonlinearity_model": "nr",
+          "backscatter_sensing_type": "nr"
+        },
+        "channel_wireless": {
+          "link_distance_m": 1,
+          "path_loss_model": "free_space",
+          "turbulence_model": "none",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "none",
+          "weather_visibility_m": 1000,
+          "ambient_light_model": "sunlight"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 6e-05,
+          "spectral_efficiency_bps_hz": 0.1,
+          "ber": 0.01,
+          "ber_target": 0.01,
+          "snr_db": 10,
+          "osnr_db": 20,
+          "outage_probability": 0.01,
+          "latency_ms": 10,
+          "capacity_bps_hz": 0.1
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 1,
+          "range_resolution_m": 0.1,
+          "range_accuracy_m": 0.01,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01,
+          "localization_error_m": 0.1,
+          "spatial_resolution_m": 0.1,
+          "sensing_bandwidth_hz": 100,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "tx_power",
+          "tradeoff_control_range": "[0, 10]"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "none",
+          "ris_phase_bits": 0
+        },
+        "provenance": {
+          "source_pointer": "Table I",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none_reported",
+          "num_trials": 1000
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The system's performance is quite impressive for VLC using inexpensive LCLV instead of the costly LCD shutter, while still ensuring effective sensing capabilities."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures, including Fig. 1, which illustrates two sample applications of LumiPane in smart bus stops, and Fig. 2, which compares traditional VLS with LumiPane. Fig. 3 shows the system architecture of LumiPane, comprising a transmitter based on LCLV and a multichannel receiver circuit. Fig. 4 illustrates the signal processing workflow for gesture recognition and ambient light communication. Fig. 5 depicts the electrical characteristics of LCLV, and Fig. 6 shows the architecture of the 1DConvTrans model.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"LumiPane is an intelligent interaction system that combines visible light communication signals and gesture sensing signals for integrated transmission. It leverages the dimming characteristics of a liquid crystal light valve (LCLV) and employs a demodulation scheme that combines trend and threshold techniques. The system uses a decoupling algorithm to separate the sensing signal from the communication signal, and then uses a 1DConvTrans model for gesture recognition.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The system achieves a maximum rate of 60bps without the need for an active light source, and the 1DConvTrans model achieves an accuracy rate of 97.6% for gesture recognition. The system's performance is quite impressive for VLC using inexpensive LCLV instead of the costly LCD shutter, while still ensuring effective sensing capabilities.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The system solves the problem of integrating gesture sensing with ambient light communication, and achieves high-quality ambient light communication at a maximum rate of 60bps without the need for an active light source. However, the system's performance in outdoor environments is affected by dynamic variations in light, and interference issues may arise when scaling up to busy public spaces. Future work will focus on enhancing the communication performance in outdoor environments and addressing interference issues.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"LumiPane: Intelligent Interaction through Gesture Sensing and Ambient Light Communication\",\n           \"authors\": \"Liguang Ruan, Jiarong Li, Chenxin Liang, Xiaojun Liang, Jiaqi Yin, Wenbo Ding\",\n           \"year\": 2024,\n           \"venue\": \"IEEE\",\n           \"doi\": \"NR\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_vlc\",\n           \"carrier_band\": \"visible\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"indoor_positioning\", \"security_surveillance\"],\n           \"scenario_description\": \"Smart bus stops that can communicate with smartphones to transmit current location information and provide contactless control panels for viewing maps.\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The first ISAC system that combines ambient light communication with gesture recognition, providing new insights into outdoor VLC and VLS.\",\n           \"gap_addressed\": \"The inability to completely block ambient light, which is addressed by designing the VLS component of the system onto the LCLV array.\",\n           \"performance_enablers\": [\"joint_waveform\", \"photonic_dechirping\", \"tfln_modulator\"],\n           \"novel_component\": \"LCLV array\",\n           \"novel_component_specs\": \"Custom-built using 3D printing to enhance its adaptability to various lighting conditions.\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Indoor VLC\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"lclv\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"none\",\n               \"wavelength_nm\": 650,\n               \"optical_bandwidth_ghz\": 100,\n               \"tx_power_dbm\": 10,\n               \"aperture_diameter_m\": 0.1,\n               \"beam_divergence_mrad\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"direct\",\n               \"rx_detector\": \"photodiode\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"none\",\n               \"rx_modulator_type\": \"none\",\n               \"rx_modulator_bandwidth_ghz\": 100,\n               \"rx_modulator_operating_point\": \"mitp\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"half_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ook\",\n               \"comm_modulation_order\": 2,\n               \"comm_symbol_rate_gbaud\": 0.06,\n               \"comm_fec_type\": \"none\",\n               \"sensing_waveform_family\": \"pulse_tof\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"time\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 0,\n               \"fibre_type\": \"nr\",\n               \"attenuation_db_per_km\": 0,\n               \"dispersion_ps_per_nm_km\": 0,\n               \"nonlinearity_model\": \"nr\",\n               \"backscatter_sensing_type\": \"nr\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 1,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"none\",\n               \"turbulence_Cn2\": 0,\n               \"scintillation_index\": 0,\n               \"pointing_error_model\": \"none\",\n               \"weather_visibility_m\": 1000,\n               \"ambient_light_model\": \"sunlight\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 0.00006,\n               \"spectral_efficiency_bps_hz\": 0.1,\n               \"ber\": 0.01,\n               \"ber_target\": 0.01,\n               \"snr_db\": 10,\n               \"osnr_db\": 20,\n               \"outage_probability\": 0.01,\n               \"latency_ms\": 10,\n               \"capacity_bps_hz\": 0.1\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 1,\n               \"range_resolution_m\": 0.1,\n               \"range_accuracy_m\": 0.01,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0.1,\n               \"velocity_accuracy_mps\": 0.01,\n               \"localization_error_m\": 0.1,\n               \"spatial_resolution_m\": 0.1,\n               \"sensing_bandwidth_hz\": 100,\n               \"pd_probability_detection\": 0.9,\n               \"pfa_probability_false_alarm\": 0.01,\n               \"crb_crlb_value\": 0.01,\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"tx_power\",\n               \"tradeoff_control_range\": \"[0, 10]\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": 0,\n               \"opa_steering_range_deg\": 0,\n               \"opa_beamwidth_deg\": 0,\n               \"ris_num_elements\": 0,\n               \"ris_type\": \"none\",\n               \"ris_phase_bits\": 0\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Table I\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"none_reported\",\n               \"num_trials\": 1000\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The system's performance is quite impressive for VLC using inexpensive LCLV instead of the costly LCD shutter, while still ensuring effective sensing capabilities.\"\n   }\n}"
+}

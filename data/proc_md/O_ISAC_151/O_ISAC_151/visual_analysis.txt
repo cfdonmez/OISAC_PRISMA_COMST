@@ -1,0 +1,26 @@
+# O_ISAC_151 Visual Analysis
+
+## 1. System Architecture
+- **Fig. 1 (_page_3_Figure_0.jpeg) & Fig. 4 (_page_6_Figure_0.jpeg)**: BigFiberNet 3-Layer Architecture.
+    - **Layer 1: Fabric-Based Sensing**: 16-channel multifunctional fibers in mattresses and clothing.
+    - **Layer 2: Mobile Edge Intelligence**: Uses Local LLMs for semantic summarization and resource reasoning (PPO algorithm).
+    - **Layer 3: Remote Cloud**: Maintains User Demand Space and Data Semantic Summary models; performs model alignment via RLHF.
+
+## 2. Hardware and Signal Processing
+- **Fig. 2 (_page_4_Figure_0.jpeg)**: Fabric sensing components.
+    - **Non-chip sensing**: 16 multifunctional fibers woven into mattresses/cotton.
+    - **Wearable Intelligence**: Smart clothing (shirts) with textile dry electrodes (metal electrode replacement).
+    - **Signal Preprocessing (02)**: Shows the transition from Raw Data (noisy voltage spikes) to Frequency Domain (FFT analysis) and Waveform Restoration.
+    - **Data Visualization (03)**: Posture analysis and human body temperature segmentation mapping.
+
+## 3. Cognitive Modeling and Optimization
+- **Fig. 3 (_page_5_Figure_0.jpeg) & Fig. 5 (_page_7_Figure_0.jpeg)**: LLM-based Cognition.
+    - **Semantic Space**: t-SNE visualization of user behavior (Bedroom, Bathroom, Studio, Living Room, Gym).
+    - **User Profile**: Case study of "Emily Johnson" (9 years old) used to align semantic summaries with history.
+    - **RLHF**: Illustrates human feedback loops to refine the "Wakefulness" description in the semantic summary model.
+
+## 4. Performance Metrics
+- **Fig. 6 (_page_8_Figure_0.jpeg)**: Simulation Results.
+    - **(a-c)**: Importance weights for Pressure/Temperature resolution and latency derived from semantic similarity.
+    - **(e) Total Score vs Bandwidth**: PPO-based dynamic adaptive algorithm (Ours) reaches a score of ~1.6 at 40MB, significantly higher than Raw Data (~0.6) or fixed compression ratios (0.4/0.5/0.6).
+    - **(f) Total Delay vs Bandwidth**: PPO algorithm reduces total delay to ~0.015s at 40MB, while Raw Data/Preprocessing remain above 0.04s.

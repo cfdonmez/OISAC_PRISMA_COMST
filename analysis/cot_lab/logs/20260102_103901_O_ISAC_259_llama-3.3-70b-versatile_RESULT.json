@@ -1,0 +1,185 @@
+{
+  "run_id": "20260102_103901_O_ISAC_259_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103901",
+  "paper_id": "O_ISAC_259",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper contains several images, including system block diagrams, signal structure diagrams, amplitude comparison plots, PAPR analysis plots, BER curves, ambiguity function plots, range profiles, velocity profiles, and radar images. These images provide visual evidence of the proposed OFDM-ISAC waveform design and its performance in terms of PAPR reduction, BER, and sensing capabilities."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system uses a novel degree of freedom, frequency-domain phase difference (PD), to design an OFDM-ISAC waveform that simultaneously meets sensing and communication requirements. The ISAC coupling mode is based on the PD between the transmit signal and a preset information signal, allowing for flexible design of the waveform while maintaining a low PAPR."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a PAPR reduction of 6.7 dB, from 9.7 dB to 3.0 dB, and a BER improvement of nearly an order of magnitude in the AWGN channel. The sensing performance is evaluated through ambiguity function analysis and radar imaging, showing a sharp peak and rapidly decreasing sidelobes in the ambiguity function and successful detection of all four targets in the radar image."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed OFDM-ISAC waveform design solves the problem of high PAPR in traditional OFDM systems while maintaining good sensing performance. However, the design of the waveform and the selection of the PD threshold require careful consideration to balance PAPR reduction and sensing performance. Open challenges include further optimization of the waveform design and the development of more efficient algorithms for solving the nonconvex optimization problem."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_259",
+        "title": "Low-PAPR OFDM-ISAC Waveform Design Based on Frequency-Domain Phase Differences",
+        "authors": "Kaimin Li et al.",
+        "year": 2025,
+        "venue": "IEEE IoT Journal",
+        "doi": "10.1109/JIOT.2025.3599171"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "vehicular",
+        "scenario_description": "Vehicle-to-everything (V2X) communication and sensing"
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed OFDM-ISAC waveform design uses a novel degree of freedom, frequency-domain phase difference (PD), to achieve low PAPR while maintaining good sensing performance.",
+        "gap_addressed": "The high PAPR problem in traditional OFDM systems is addressed while maintaining good sensing performance.",
+        "performance_enablers": "frequency_domain_phase_difference",
+        "novel_component": "PD-based OFDM-ISAC waveform",
+        "novel_component_specs": "The waveform is designed using an ADMM-based algorithm with a PD threshold of 0.6"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor V2X communication and sensing"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "ofdm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-14,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 10,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 1,
+        "localization_error_m": 1,
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": 1000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "theta",
+        "tradeoff_control_range": "(0, pi/4)"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model, waveform design, and performance evaluation. However, the experimental setup and results could be more detailed."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper contains several images, including system block diagrams, signal structure diagrams, amplitude comparison plots, PAPR analysis plots, BER curves, ambiguity function plots, range profiles, velocity profiles, and radar images. These images provide visual evidence of the proposed OFDM-ISAC waveform design and its performance in terms of PAPR reduction, BER, and sensing capabilities.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system uses a novel degree of freedom, frequency-domain phase difference (PD), to design an OFDM-ISAC waveform that simultaneously meets sensing and communication requirements. The ISAC coupling mode is based on the PD between the transmit signal and a preset information signal, allowing for flexible design of the waveform while maintaining a low PAPR.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a PAPR reduction of 6.7 dB, from 9.7 dB to 3.0 dB, and a BER improvement of nearly an order of magnitude in the AWGN channel. The sensing performance is evaluated through ambiguity function analysis and radar imaging, showing a sharp peak and rapidly decreasing sidelobes in the ambiguity function and successful detection of all four targets in the radar image.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed OFDM-ISAC waveform design solves the problem of high PAPR in traditional OFDM systems while maintaining good sensing performance. However, the design of the waveform and the selection of the PD threshold require careful consideration to balance PAPR reduction and sensing performance. Open challenges include further optimization of the waveform design and the development of more efficient algorithms for solving the nonconvex optimization problem.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_259\",\n         \"title\":\"Low-PAPR OFDM-ISAC Waveform Design Based on Frequency-Domain Phase Differences\",\n         \"authors\":\"Kaimin Li et al.\",\n         \"year\":2025,\n         \"venue\":\"IEEE IoT Journal\",\n         \"doi\":\"10.1109/JIOT.2025.3599171\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"vehicular\",\n         \"scenario_description\":\"Vehicle-to-everything (V2X) communication and sensing\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed OFDM-ISAC waveform design uses a novel degree of freedom, frequency-domain phase difference (PD), to achieve low PAPR while maintaining good sensing performance.\",\n         \"gap_addressed\":\"The high PAPR problem in traditional OFDM systems is addressed while maintaining good sensing performance.\",\n         \"performance_enablers\":\"frequency_domain_phase_difference\",\n         \"novel_component\":\"PD-based OFDM-ISAC waveform\",\n         \"novel_component_specs\":\"The waveform is designed using an ADMM-based algorithm with a PD threshold of 0.6\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor V2X communication and sensing\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":10,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"tfln_mzm\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"ofdm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":10,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-14,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"solar\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":10,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":1,\n         \"range_accuracy_m\":1,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":1,\n         \"velocity_accuracy_mps\":1,\n         \"localization_error_m\":1,\n         \"spatial_resolution_m\":1,\n         \"sensing_bandwidth_hz\":1e6,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":1,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"theta\",\n         \"tradeoff_control_range\":\"(0, pi/4)\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":30,\n         \"opa_beamwidth_deg\":10,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":4\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system model, waveform design, and performance evaluation. However, the experimental setup and results could be more detailed.\"\n   }\n}"
+}

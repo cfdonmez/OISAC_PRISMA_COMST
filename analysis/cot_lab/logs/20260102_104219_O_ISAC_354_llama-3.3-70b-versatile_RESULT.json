@@ -1,0 +1,192 @@
+{
+  "run_id": "20260102_104219_O_ISAC_354_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104219",
+  "paper_id": "O_ISAC_354",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several images, including a conceptual device diagram of a monolithic III-nitride photonics chip for motion detection, optoelectronic characterization (I-V, C-V, and spectral characteristics), motion sensing results, and communication performance (Tx mode and Trx mode)."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system mechanism involves a monolithic III-nitride photonics chip with a transmitter and receiver on a sapphire wafer with InGaN/GaN multiple quantum wells. The ISAC coupling mode is based on the coexistence of luminescence and detection properties of III-nitride multiple quantum wells, allowing for self-detection and motion sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the 24 Mbps transmission rate and 26 kbps receiving rate, are physically consistent with the system's capabilities and the experimental setup."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating motion sensing and visible light communication in a single chip, but open challenges remain, such as improving the 3 dB modulation bandwidth and reducing the active region's area to increase the diode's lighting and detection performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_354",
+        "title": "Integrated Sensing and Communication Chip Based on III-Nitride for Motion Detection",
+        "authors": "Xin Li, Mingyu Han et al.",
+        "year": 2023,
+        "venue": "ACS Omega",
+        "doi": "10.1021/acsomega.3c00521"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "Motion detection and visible light communication in indoor environments"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Monolithic III-nitride photonics chip for motion detection and visible light communication",
+        "gap_addressed": "Integration of motion sensing and visible light communication in a single chip",
+        "performance_enablers": "joint_waveform",
+        "novel_component": "III-nitride multiple quantum wells",
+        "novel_component_specs": "46 nm spectral overlap, 521.4 nm peak wavelength"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor motion detection and VLC"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 521.4,
+        "optical_bandwidth_ghz": 28.2,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.00024,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.00024,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "none",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "half_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ook",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 24,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_tof",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "none"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0.1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.024,
+        "spectral_efficiency_bps_hz": 0.5,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 0.5
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 0.1,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 10,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "single_point",
+        "tradeoff_control_parameter": "tx_bias",
+        "tradeoff_control_range": "2.6-3.0 V"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Figure 3",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and results, but lacks detailed information on the modeling and simulation methods used."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several images, including a conceptual device diagram of a monolithic III-nitride photonics chip for motion detection, optoelectronic characterization (I-V, C-V, and spectral characteristics), motion sensing results, and communication performance (Tx mode and Trx mode).\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system mechanism involves a monolithic III-nitride photonics chip with a transmitter and receiver on a sapphire wafer with InGaN/GaN multiple quantum wells. The ISAC coupling mode is based on the coexistence of luminescence and detection properties of III-nitride multiple quantum wells, allowing for self-detection and motion sensing.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the 24 Mbps transmission rate and 26 kbps receiving rate, are physically consistent with the system's capabilities and the experimental setup.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating motion sensing and visible light communication in a single chip, but open challenges remain, such as improving the 3 dB modulation bandwidth and reducing the active region's area to increase the diode's lighting and detection performance.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_354\",\n         \"title\":\"Integrated Sensing and Communication Chip Based on III-Nitride for Motion Detection\",\n         \"authors\":\"Xin Li, Mingyu Han et al.\",\n         \"year\":2023,\n         \"venue\":\"ACS Omega\",\n         \"doi\":\"10.1021/acsomega.3c00521\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_vlc\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"Motion detection and visible light communication in indoor environments\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Monolithic III-nitride photonics chip for motion detection and visible light communication\",\n         \"gap_addressed\":\"Integration of motion sensing and visible light communication in a single chip\",\n         \"performance_enablers\":\"joint_waveform\",\n         \"novel_component\":\"III-nitride multiple quantum wells\",\n         \"novel_component_specs\":\"46 nm spectral overlap, 521.4 nm peak wavelength\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor motion detection and VLC\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"led\",\n         \"tx_modulation_type\":\"im_dd\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":521.4,\n         \"optical_bandwidth_ghz\":28.2,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.00024,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.00024,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":0,\n         \"rx_modulator_operating_point\":\"none\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"half_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ook\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":24,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"pulse_tof\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"none\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"none\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"none\",\n         \"backscatter_sensing_type\":\"none\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":0.1,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":0.024,\n         \"spectral_efficiency_bps_hz\":0.5,\n         \"ber\":1e-6,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":0.5\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":0.1,\n         \"range_resolution_m\":0.01,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":10,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.1,\n         \"localization_error_m\":0.01,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"single_point\",\n         \"tradeoff_control_parameter\":\"tx_bias\",\n         \"tradeoff_control_range\":\"2.6-3.0 V\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Figure 3\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"none\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and results, but lacks detailed information on the modeling and simulation methods used.\"\n   }\n}"
+}

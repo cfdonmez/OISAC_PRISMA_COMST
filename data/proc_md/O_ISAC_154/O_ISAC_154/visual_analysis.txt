@@ -1,0 +1,160 @@
+Image: _page_1_Figure_3.jpeg
+Type: System Diagram / Schematic (Silicon Photonic ISAC Transceiver)
+---
+Components:
+- Laser Source: External, 1550 nm, <100 kHz linewidth.
+- Grating Coupler: Fiber-to-chip interface.
+- MZM Array: 4× Mach-Zehnder modulators.
+- MMI Coupler: 1×4 splitter.
+- Thermo-optic Phase Shifter: Beamforming.
+- Ge PD Array: 4× germanium photodetectors.
+- OPA (Optical Phased Array): 16 elements.
+- Edge Coupler: High-power output.
+
+Die Specifications:
+- Die size: 4.2 × 5.8 mm.
+- Technology: 220 nm SOI.
+- Power: 250 mW total.
+
+Flow:
+1. Laser → Grating Coupler → MMI Splitter → 4× MZM.
+2. MZM outputs → Phase Shifters → Combiner → OPA.
+3. Return: OPA → Ge PD Array → TIA (off-chip).
+---
+
+Image: _page_1_Figure_8.jpeg
+Type: Chart (Insertion Loss Budget)
+---
+Axes:
+- X-axis: Component. Categories: [Coupler, MMI, MZM, Phase Shifter, OPA, Total].
+- Y-axis: Insertion Loss (dB). Range: 0 to 15 dB.
+
+Data Points:
+- Grating Coupler: 3.5 dB.
+- MMI Splitter: 0.8 dB.
+- MZM: 4.2 dB.
+- Phase Shifter: 0.5 dB.
+- OPA: 2.5 dB.
+- Total: 11.5 dB.
+
+Observation: MZM dominates loss; edge coupler reduces to 9 dB.
+---
+
+Image: _page_1_Figure_10.jpeg
+Type: Chart (OPA Beam Steering Response)
+---
+Axes:
+- X-axis: Steering Angle (°). Range: -60 to +60°.
+- Y-axis: Beam Power (dB, normalized). Range: -20 to 0 dB.
+
+Legend:
+- θ = 0° (Blue).
+- θ = ±30° (Red).
+- θ = ±45° (Green).
+
+Data Points:
+- At 0°: Main lobe = 0 dB; Sidelobe = -15 dB.
+- At ±30°: Main lobe = -1 dB; Sidelobe = -12 dB.
+- At ±45°: Main lobe = -3 dB; Sidelobe = -10 dB.
+
+3 dB Beamwidth: 5° at broadside.
+---
+
+Image: _page_2_Figure_1.jpeg
+Type: Chart (Multi-Panel: Communication Performance)
+---
+Panel (a) - BER vs Received Power:
+Axes:
+- X-axis: Received Optical Power (dBm). Range: -25 to -5 dBm.
+- Y-axis: BER. Range: 10^-7 to 10^-2 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- HD-FEC threshold (Dashed).
+
+Data Points (16-QAM):
+- At -15 dBm: BER = 3×10^-4.
+- At -10 dBm: BER = 2×10^-6.
+
+Panel (b) - Data Rate vs Distance:
+- At 1 m: 80 Gbps (64-QAM).
+- At 5 m: 40 Gbps (16-QAM).
+- At 10 m: 20 Gbps (QPSK).
+---
+
+Image: _page_2_Figure_3.jpeg
+Type: Chart (Multi-Panel: Sensing Performance)
+---
+Panel (a) - Range Profile:
+Axes:
+- X-axis: Range (m). Range: 0 to 20 m.
+- Y-axis: Power (dB). Range: -40 to 0 dB.
+
+Data Points:
+- Target 1: Range = 5.2 m, SNR = 32 dB.
+- Target 2: Range = 12.8 m, SNR = 25 dB.
+
+Resolution: 1.5 cm (10 GHz BW).
+
+Panel (b) - Velocity Profile:
+Axes:
+- X-axis: Velocity (m/s). Range: -5 to +5 m/s.
+- Y-axis: Power (dB). Range: -30 to 0 dB.
+
+Data Points:
+- Target 1: v = +1.2 m/s, SNR = 28 dB.
+- Target 2: v = -0.8 m/s, SNR = 22 dB.
+
+RMSE: 0.8 cm range; 1.5 mm/s velocity.
+---
+
+Image: _page_2_Figure_12.jpeg
+Type: Constellation Diagram (16-QAM)
+---
+Structure:
+- Modulation: 16-QAM.
+- Symbol rate: 10 GBaud.
+- Data rate: 40 Gbps.
+
+Quality:
+- EVM: 8.2% RMS.
+- Well-defined 16-point grid.
+- Minor outer corner spreading.
+- I/Q power balance: <0.5 dB.
+- Phase error: 1.8° RMS.
+---
+
+Image: _page_2_Figure_19.jpeg
+Type: Constellation Diagram (QPSK)
+---
+Structure:
+- Modulation: QPSK.
+- Symbol rate: 20 GBaud.
+- Data rate: 40 Gbps.
+
+Quality:
+- EVM: 5.5% RMS.
+- Compact 4-point clusters.
+- Excellent phase separation (>40°).
+- Suitable for extended range operation.
+---
+
+Image: _page_3_Figure_6.jpeg
+Type: Chart (Comparison with State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[5], Ref[12], Ref[18], This Work].
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 100 Gbps.
+- Y-axis (Right): Sensing RMSE (cm). Range: 0 to 5 cm.
+
+Data Points:
+- Ref[5]: Rate = 25 Gbps; RMSE = 3.5 cm.
+- Ref[12]: Rate = 40 Gbps; RMSE = 2.0 cm.
+- Ref[18]: Rate = 60 Gbps; RMSE = 1.5 cm.
+- This Work: Rate = 80 Gbps; RMSE = 0.8 cm.
+
+Key Achievement:
+- Highest silicon photonic ISAC: 80 Gbps + 0.8 cm RMSE.
+- 4.2 × 5.8 mm die, 250 mW power.
+---

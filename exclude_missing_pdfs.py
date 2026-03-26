@@ -4,9 +4,9 @@ import os
 
 # Paths
 base_dir = r'c:\Users\fatih\gdrive\AKU_WorkSpace\survey_fdgit\OISAC_PRISMA_COMST'
-included_csv_path = os.path.join(base_dir, 'analysis/phase1_screening/included_studies_list.csv')
-log_csv_path = os.path.join(base_dir, 'analysis/phase1_screening/screening_log.csv')
-pdf_dir = os.path.join(base_dir, 'data/retrieved_docs')
+included_csv_path = os.path.join(base_dir, 'analysis/ph1_scr/included_studies_list.csv')
+log_csv_path = os.path.join(base_dir, 'analysis/ph1_scr/screening_log.csv')
+pdf_dir = os.path.join(base_dir, 'data/ret_docs')
 
 # 1. Identify Missing PDFs
 if not os.path.exists(included_csv_path):

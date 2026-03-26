@@ -1,0 +1,184 @@
+================================================================================
+O_ISAC_242 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Sliding window-based LSTM scheme for PAM-4 photonics-assisted W-band ISAC systems
+Authors: Jing He et al. (Hunan University)
+Journal: IEEE 2025
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_1_Figure_5.jpeg
+### Type: Algorithm Block Diagram
+
+### Title: Sliding Window-Based LSTM Network for PAM-4 Receiver
+
+### Input:
+- PAM-4 signal sequence
+- X = [x_k, ..., x_{k-L-1}, x_{k-L}]
+- Symbol at current time step
+
+### Sliding Window:
+- Pre-set parameters:
+  - Starting position: 0
+  - Length: 2 (optimal)
+  - Step size: 1
+- Moves along time direction
+- Captures subsequences
+
+### LSTM Network:
+- Input layer: 1 node
+- Hidden layer: 128 nodes
+- Output layer: 1 node
+- Adam optimizer
+- Learning rate: 0.005
+
+### Output:
+- Equalized symbol x̂_k
+- PAM-4 demodulation
+
+### O-ISAC Relevance:
+- ML-based equalization for ISAC
+---
+
+## Image: _page_2_Figure_6.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: PAM-4 Photonics-Assisted W-band ISAC System
+
+### Transmitter (Tx):
+- ECL1: 1556.67 nm
+- ECL2: 1555.86 nm (optical heterodyne)
+- AWG: 12 GSa/s, 4.8 GHz BW
+- MZM modulator
+- 3 dB OC for combining
+- 50 km SSMF (10 dB loss)
+- EDFA + VOA (2-4 dBm)
+- PD → 100 GHz W-band
+- EA + HA transmission
+
+### Communication Receiver (Com Rx):
+- HA capture (1m wireless)
+- Free-space loss: 72.4 dB
+- ED (6 GHz BW)
+- EA + DSO (25 GSa/s)
+- DSP: LSTM demodulation
+
+### Radar Receiver (Radar Rx):
+- Corner reflector echo
+- HA + ED + EA + DSO
+- Correlation-based ranging
+
+### Panel (a):
+- Optical spectrum after OC
+- Two wavelengths visible
+
+### Panel (b):
+- Experimental scene photo
+- Corner reflector setup
+
+### O-ISAC Relevance:
+- Complete W-band ISAC testbed
+---
+
+## Image: _page_2_Figure_10.jpeg
+### Type: Line Chart (BER Comparison)
+
+### Title: BER Performance: VNE vs FFE vs LSTM
+
+### Axes:
+- X-axis: ROP (dBm): 2-4
+- Y-axis: BER: 10⁻⁴ to 10⁻¹
+
+### Methods:
+| Method | BER @ 4 dBm |
+|--------|-------------|
+| FFE | 2.8×10⁻² |
+| VNE | 2.4×10⁻² |
+| LSTM | 3.3×10⁻⁴ |
+
+### Key Finding:
+- LSTM achieves SD-FEC @ 3 dBm
+- 1.2 dB sensitivity improvement
+- Nonlinear equalization advantage
+
+### O-ISAC Relevance:
+- LSTM outperforms traditional equalizers
+---
+
+## Image: _page_2_Figure_15.jpeg
+### Type: Correlation Peak Chart
+
+### Title: Distance Estimation via Correlation-Based Ranging
+
+### Targets:
+- Target 1: 30 cm (peak @ 1475224)
+- Target 2: 60 cm (peak @ 1475240)
+
+### Calculation:
+- Peak difference: 16 samples
+- ΔR = c × Δx / (2 × fs)
+- Estimated: 30 cm difference ✓
+
+### O-ISAC Relevance:
+- Correlation ranging validation
+---
+
+## Image: _page_3_Figure_8.jpeg
+### Type: Bar Chart (Ranging Errors)
+
+### Title: Ranging Errors for Different Measurement Points
+
+### Axes:
+- X-axis: Actual distance (cm): 30-150
+- Y-axis: Ranging error (cm)
+
+### Results @ 8 GSa/s:
+| Distance | Error |
+|----------|-------|
+| 30 cm | 0.36 cm |
+| 60 cm | 0.48 cm |
+| 90 cm | 0.33 cm |
+| 120 cm | 0.41 cm |
+| 150 cm | 0.62 cm |
+
+### Average Error: 0.43 cm
+
+### Resolution:
+- δr = c / (2 × fs)
+- @ 8 GSa/s: 1.875 cm
+- @ 4 GSa/s: 3.75 cm
+
+### O-ISAC Relevance:
+- Centimeter-level ranging accuracy
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (all scientific)
+- Algorithm Diagrams: 1
+- Experimental Setup: 1
+- Performance Charts: 3
+
+Key Technical Findings:
+1. Platform: Photonics-assisted W-band ISAC
+2. Waveform: PAM-4 (single unified signal)
+3. mmWave: 100 GHz (W-band)
+4. Symbol Rate: 0.8 GBaud
+5. Fiber: 50 km SSMF
+6. Wireless: 1 m
+7. Data Rate: 1.6 Gbit/s (PAM-4)
+
+Key Innovations:
+1. Sliding window-based LSTM equalization
+2. Optimal window length = 2
+3. Correlation-based ranging scheme
+4. Single PAM-4 for dual functionality
+5. Optical heterodyne mmWave generation
+
+Performance Highlights:
+- BER: 3.3×10⁻⁴ @ 4 dBm ROP
+- Sensitivity: 1.2 dB better than VNE
+- Resolution: 1.875 cm @ 8 GSa/s
+- Average ranging error: 0.43 cm
+- 5 targets tested: 30-150 cm
+================================================================================

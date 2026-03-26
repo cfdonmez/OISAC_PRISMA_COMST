@@ -1,0 +1,29 @@
+# O_ISAC_145 Visual Analysis
+
+## 1. System Model & Architecture
+- **Fig. 1 (_page_3_Figure_9.jpeg)**: Hybrid WBAN On-In communication scenario.
+    - **Components**: Implant (Alice) -> Wireless Channel (RF/Optical) -> Body Coordinator (Bob).
+    - **Security**: Semantic TX/RX for classification; Jammer on Bob's side to confuse eavesdropper (Eve).
+- **Fig. 2 (_page_4_Figure_3.jpeg)**: Wiretap channel model with intentional jamming.
+    - Alice sends $x_S$; Bob sends $x_J$ to jam Eve's reception $y_E$.
+
+## 2. Experimental Data (SNR Heatmaps & Plots)
+- **Fig. 5 & 6 (_page_10_Figure_14.jpeg, _page_10_Figure_16.jpeg)**: UWB SNR Heatmaps.
+    - Max SNR observed in phantoms/tissue ranges from 50 dB to 57 dB depending on thickness and antenna.
+- **Fig. 7 (_page_10_Figure_19.jpeg, _page_10_Figure_21.jpeg)**: SEE measurements.
+    - **NIR SEE**: Peaks at approx 3 bit/Hz/J for biological tissue (Sample #7).
+    - **Phantom SEE**: Ranges from 1.8 to 3 bit/Hz/J depending on sample thickness (15-53 mm).
+
+## 3. Optimization Performance (Optical Only)
+- **Fig. 8 (_page_11_Figure_3.jpeg)**: Optical SEE vs $P_{max}$.
+    - (a) SEE Maximization (Algorithm 1): Reaches ~2.9 bit/Hz/J and stays constant (safe/efficient).
+    - (b) SR Maximization / (c) No Optimization: Peaks and then decays due to excessive power consumption.
+- **Fig. 9 (_page_11_Figure_5.jpeg)**: Optical Secrecy Rate (SR) vs $P_{max}$.
+    - SR optimization (a) reaches ~25 bit/s/Hz.
+    - SEE optimization (b) saturates at ~12 bit/s/Hz to save energy.
+
+## 4. Optimization Performance (Hybrid RF-Optical)
+- **Fig. 10 (_page_11_Figure_14.jpeg)**: Hybrid SEE vs $P_{max}$.
+    - Reaches a higher peak of ~3.7 bit/Hz/J due to joint resource allocation.
+- **Fig. 11 (_page_11_Figure_16.jpeg)**: Hybrid Secrecy Rate (SR) vs $P_{max}$.
+    - Peak SR reaches ~40 bit/s/Hz under joint optimization.

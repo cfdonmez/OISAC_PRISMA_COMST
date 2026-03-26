@@ -3,9 +3,9 @@ import re
 import os
 
 # --- Configuration ---
-SCOPUS_FILE = r"data/search_logs/scopus_export_Dec 28-2025_b7fbefb1-055d-45f8-a240-8163c71acaa5.csv"
-INCLUDED_LIST = r"analysis/phase1_screening/included_studies_list.csv"
-SCREENING_LOG = r"analysis/phase1_screening/screening_log.csv"
+SCOPUS_FILE = r"data/srch_logs/scopus_export_Dec 28-2025_b7fbefb1-055d-45f8-a240-8163c71acaa5.csv"
+INCLUDED_LIST = r"analysis/ph1_scr/included_studies_list.csv"
+SCREENING_LOG = r"analysis/ph1_scr/screening_log.csv"
 OUTPUT_CANDIDATES = r"scopus_candidates.csv"
 OUTPUT_SCREENING_ENTRIES = r"scopus_screening_entries.csv"
 

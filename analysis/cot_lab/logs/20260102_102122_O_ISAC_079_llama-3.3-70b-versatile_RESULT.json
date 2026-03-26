@@ -1,0 +1,205 @@
+{
+  "run_id": "20260102_102122_O_ISAC_079_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102122",
+  "paper_id": "O_ISAC_079",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the proposed working principle of the LFM carrier-enabled SHCD architecture, and Fig. 2, which shows the experimental setup and communication performance evaluation. Fig. 3 displays the sensing performance evaluation, including MPI location, TL measurement, and vibration recovery."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a linear frequency-modulated (LFM) carrier-enabled self-homodyne coherent detection (SHCD) architecture to integrate high-fidelity communication and optical frequency-domain reflectometry (OFDR)-based sensing. The LFM carrier is used for both communication and sensing, with the sensing functionality achieved through the OFDR mechanism in the local oscillator (LO) path."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a 25-Gbaud DP-16QAM signal transmission performance with less than 1 dB penalty compared to a conventional single-carrier SHCD system. The OFDR sensing performance achieves a 2-cm spatial resolution for distributed MPI/TL detection and large-strain vibration monitoring capability. These metrics are physically consistent with the proposed system architecture and the experimental setup."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating high-fidelity communication and sensing in a SHCD system without additional spectrum occupation. The proposed system achieves high-accuracy MPI localization, transmission loss measurement, and large-strain vibration monitoring. However, the paper does not discuss the scalability of the system to longer distances or the impact of fiber nonlinearity on the sensing performance, which are potential open challenges."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "LFM Carrier Enabled Integrated Sensing and Communication in Self-homodyne Coherent Detection Transmission System",
+        "authors": "Shuyan Chen, Bowen Yin, Huan He, Yang Shi, Mingming Zhang, Zhiyong Zhao, Ming Tang",
+        "year": 2025,
+        "venue": "Journal/Conference Name",
+        "doi": "DOI Number",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "fibre_network_monitoring",
+          "6g_networks"
+        ],
+        "scenario_description": "The system is designed for fiber network monitoring and 6G networks."
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a novel LFM carrier-enabled SHCD architecture for integrated sensing and communication.",
+        "gap_addressed": "The system addresses the challenge of integrating high-fidelity communication and sensing in a SHCD system without additional spectrum occupation.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform"
+        ],
+        "novel_component": "LFM generator module",
+        "novel_component_specs": "5 GHz bandwidth, 2-ms period"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "SHCD system with LFM carrier"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 5,
+        "tx_power_dbm": 13,
+        "aperture_diameter_m": 0.001,
+        "beam_divergence_mrad": 0.01
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.001,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 5,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "dp_16qam",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 25,
+        "comm_fec_type": "fec",
+        "sensing_waveform_family": "lfm_chirp",
+        "isac_waveform_relationship": "joint_waveform",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "mcf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 20,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 0,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 0,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 200,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 10000,
+        "range_resolution_m": 0.02,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 0.01,
+        "velocity_resolution_mps": 0.01,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.02,
+        "sensing_bandwidth_hz": 1000000,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_split",
+        "tradeoff_control_range": "0-1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      },
+      "provenance": {
+        "source_pointer": "Fig. 2",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and the results are well-validated."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which illustrates the proposed working principle of the LFM carrier-enabled SHCD architecture, and Fig. 2, which shows the experimental setup and communication performance evaluation. Fig. 3 displays the sensing performance evaluation, including MPI location, TL measurement, and vibration recovery.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a linear frequency-modulated (LFM) carrier-enabled self-homodyne coherent detection (SHCD) architecture to integrate high-fidelity communication and optical frequency-domain reflectometry (OFDR)-based sensing. The LFM carrier is used for both communication and sensing, with the sensing functionality achieved through the OFDR mechanism in the local oscillator (LO) path.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a 25-Gbaud DP-16QAM signal transmission performance with less than 1 dB penalty compared to a conventional single-carrier SHCD system. The OFDR sensing performance achieves a 2-cm spatial resolution for distributed MPI/TL detection and large-strain vibration monitoring capability. These metrics are physically consistent with the proposed system architecture and the experimental setup.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating high-fidelity communication and sensing in a SHCD system without additional spectrum occupation. The proposed system achieves high-accuracy MPI localization, transmission loss measurement, and large-strain vibration monitoring. However, the paper does not discuss the scalability of the system to longer distances or the impact of fiber nonlinearity on the sensing performance, which are potential open challenges.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"LFM Carrier Enabled Integrated Sensing and Communication in Self-homodyne Coherent Detection Transmission System\",\n         \"authors\":\"Shuyan Chen, Bowen Yin, Huan He, Yang Shi, Mingming Zhang, Zhiyong Zhao, Ming Tang\",\n         \"year\":2025,\n         \"venue\":\"Journal/Conference Name\",\n         \"doi\":\"DOI Number\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":[\"fibre_network_monitoring\", \"6g_networks\"],\n         \"scenario_description\":\"The system is designed for fiber network monitoring and 6G networks.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":[\"experimental\"],\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a novel LFM carrier-enabled SHCD architecture for integrated sensing and communication.\",\n         \"gap_addressed\":\"The system addresses the challenge of integrating high-fidelity communication and sensing in a SHCD system without additional spectrum occupation.\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"joint_waveform\"],\n         \"novel_component\":\"LFM generator module\",\n         \"novel_component_specs\":\"5 GHz bandwidth, 2-ms period\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"SHCD system with LFM carrier\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":5,\n         \"tx_power_dbm\":13,\n         \"aperture_diameter_m\":0.001,\n         \"beam_divergence_mrad\":0.01\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.001,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":5,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"dp_16qam\",\n         \"comm_modulation_order\":16,\n         \"comm_symbol_rate_gbaud\":25,\n         \"comm_fec_type\":\"fec\",\n         \"sensing_waveform_family\":\"lfm_chirp\",\n         \"isac_waveform_relationship\":\"joint_waveform\",\n         \"resource_partition\":\"power_split\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":10,\n         \"fibre_type\":\"mcf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":20,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":0,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\",\n         \"weather_visibility_m\":0,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":200,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":[\"ranging\", \"localization_2d\"],\n         \"sensing_range_m\":10000,\n         \"range_resolution_m\":0.02,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":0.01,\n         \"velocity_resolution_mps\":0.01,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.01,\n         \"spatial_resolution_m\":0.02,\n         \"sensing_bandwidth_hz\":1000000,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":[\"rate_vs_rmse\"],\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_split\",\n         \"tradeoff_control_range\":\"0-1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Fig. 2\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"ci_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and the results are well-validated.\"\n   }\n}"
+}

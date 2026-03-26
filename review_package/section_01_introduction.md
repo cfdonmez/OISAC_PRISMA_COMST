@@ -174,7 +174,7 @@ The remainder of this survey is organized as follows, and an overview is illustr
 
 - **Section VII (Applications and Use Cases)**: Discusses O-ISAC applications across smart infrastructure, transportation, healthcare, and industrial IoT domains.
 
-- **Section VIII (Open Challenges and Research Roadmap)**: Identifies critical gaps and outlines a future research agenda toward 6G integration.
+- **Section VIII (Open Challenges and Research Roadmap)**: Synthesizes five challenge domains, organizes a capstone dependency-aware research agenda toward 6G integration, and closes with a cross-section alignment audit that verifies continuity with Sections V-VII.
 
 - **Section IX (Conclusions)**: Summarizes the key findings and provides closing remarks.
 

@@ -1,0 +1,625 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_033",
+  "title": "Beam Alignment in mmWave V2X Communications: A Survey",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi",
+  "domain": "mmWave V2X beam alignment",
+  "source_path": "data/corp_std/COMST_033/COMST_033.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Span tags retained; tables use markdown/HTML mix; treat abbreviation table as glossary."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 23164,
+    "approx_token_count_total": null,
+    "equation_count_est": 293,
+    "figure_count_est": 27,
+    "table_count_est": 12,
+    "list_count_est": 7,
+    "citation_count_in_body_est": 172,
+    "citation_density_per_1k_words_est": 7.4,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction"
+      ],
+      "objective": "Motivate the need for efficient beam alignment in mmWave V2X, contrast with prior mmWave/V2X surveys, and state contributions/structure.",
+      "key_components": [
+        "V2X/mmWave motivation and challenges (mobility, blockage, training overhead)",
+        "Comparison tables of general mobile vs V2X challenges and prior surveys",
+        "Contribution bullets and paper organization"
+      ],
+      "approx_word_share_pct": "7-9",
+      "approx_words_est": 1804,
+      "positioning": {
+        "start_doc_progress_pct_est": 4,
+        "end_doc_progress_pct_est": 11
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Uses two early tables to contrast V2X vs general mobile challenges and to benchmark prior surveys before stating contributions"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States survey gap in mmWave V2X beam alignment, lists contributions, and provides organization roadmap.",
+          "locator": {
+            "heading": "I. Introduction",
+            "paragraph_index_est": 6,
+            "line_range_est": "L120-L200"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. BACKGROUND",
+        "A. MmWave Characteristics",
+        "B. MmWave-Enabled Vehicular Networks",
+        "C. Standards of V2X Communications",
+        "D. Performance Metrics for MmWave V2X Beam Alignment"
+      ],
+      "objective": "Provide mmWave characteristics, vehicular network context, standards overview, and preliminary performance metrics for beam alignment.",
+      "key_components": [
+        "Propagation/channel/beamforming fundamentals with equations and figures",
+        "Vehicular network context and use cases",
+        "Standards landscape (DSRC, LTE-V2X, NR-V2X, ISO/3GPP references)",
+        "Early performance metrics primer for beam alignment"
+      ],
+      "approx_word_share_pct": "22-25",
+      "approx_words_est": 5503,
+      "positioning": {
+        "start_doc_progress_pct_est": 11,
+        "end_doc_progress_pct_est": 41
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Includes an abbreviation/glossary table to standardize notation before taxonomy",
+        "Pairs channel/beamforming fundamentals with standards context to anchor later methods"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes mmWave propagation, V2X standards, and preliminary performance metrics.",
+          "locator": {
+            "heading": "II. BACKGROUND",
+            "paragraph_index_est": 2,
+            "line_range_est": "L210-L360"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. BEAM ALIGNMENT SOLUTIONS IN MMWAVE V2X COMMUNICATION",
+        "A. Beam Sweeping",
+        "B. AoA/AoD Estimation",
+        "C. Black-Box Optimization",
+        "D. Side Information"
+      ],
+      "objective": "Classify beam alignment solutions for mmWave V2X by method family and compare their procedures and trade-offs.",
+      "key_components": [
+        "Beam sweeping variants and training overhead",
+        "Angle estimation methods (AoA/AoD)",
+        "Black-box optimization approaches",
+        "Side-information methods (tracking, prediction, blockage mitigation) with comparisons"
+      ],
+      "approx_word_share_pct": "41-43",
+      "approx_words_est": 9612,
+      "positioning": {
+        "start_doc_progress_pct_est": 41,
+        "end_doc_progress_pct_est": 67
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Method taxonomy organized by four families, with side-information block further split into tracking/prediction subthemes"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details four beam alignment method families and contrasts their workflows.",
+          "locator": {
+            "heading": "III. BEAM ALIGNMENT SOLUTIONS IN MMWAVE V2X COMMUNICATION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L360-L520"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "IV. PERFORMANCE METRICS OF BEAM ALIGNMENT IN MMWAVE V2X COMMUNICATIONS",
+        "A. Beam Alignment Overhead",
+        "B. Beam Alignment Accuracy"
+      ],
+      "objective": "Define performance metrics for beam alignment, separating overhead measures from accuracy measures.",
+      "key_components": [
+        "Beam alignment overhead metrics (latency, effective achievable rate)",
+        "Beam alignment accuracy metrics (power loss, throughput ratio, alignment probability)",
+        "Examples/comparisons across the four method families"
+      ],
+      "approx_word_share_pct": "17-19",
+      "approx_words_est": 4068,
+      "positioning": {
+        "start_doc_progress_pct_est": 67,
+        "end_doc_progress_pct_est": 93
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Splits metrics into overhead vs accuracy to mirror trade-off discussion"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Introduces overhead and accuracy metrics and applies them to compare methods.",
+          "locator": {
+            "heading": "IV. PERFORMANCE METRICS OF BEAM ALIGNMENT IN MMWAVE V2X COMMUNICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L520-L680"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "V. RESEARCH DIRECTIONS",
+        "A. ML-Based Beam Alignment",
+        "B. Adaptation of Beamwidth Size",
+        "C. Sensing-Aware Channel Measurement",
+        "D. Mobility Prediction",
+        "E. UAV-Aided V2X Communication",
+        "F. Intelligent Reflecting Surface (IRS) for Beam Alignment",
+        "G. Future Research Avenues for Established Beam Alignment Methods"
+      ],
+      "objective": "Outline future research directions across method families and enabling technologies for beam alignment in mmWave V2X.",
+      "key_components": [
+        "ML-based beam alignment",
+        "Adaptive beamwidth strategies",
+        "Sensing-aware channel measurement",
+        "Mobility prediction",
+        "UAV-aided V2X communication",
+        "IRS-assisted alignment",
+        "Open avenues tied to the four method families"
+      ],
+      "approx_word_share_pct": "5-7",
+      "approx_words_est": 1403,
+      "positioning": {
+        "start_doc_progress_pct_est": 93,
+        "end_doc_progress_pct_est": 99
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Future directions are mapped to method families and enabling tech (ML, IRS, UAVs)"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists future directions including ML, adaptive beamwidth, sensing-aware measurement, mobility prediction, UAV/IRS assistance, and method-specific avenues.",
+          "locator": {
+            "heading": "V. RESEARCH DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L680-L740"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VI. CONCLUSION"
+      ],
+      "objective": "Summarize the survey, restate method taxonomy and metrics, and point to future directions.",
+      "key_components": [
+        "Recap of method taxonomy and performance metrics",
+        "Reminder of research directions"
+      ],
+      "approx_word_share_pct": "0.5-1",
+      "approx_words_est": 164,
+      "positioning": {
+        "start_doc_progress_pct_est": 99,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Brief closing that re-emphasizes future work"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Concludes by summarizing methods/metrics and pointing to future work.",
+          "locator": {
+            "heading": "VI. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L740-L760"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Motivates autonomous driving and the need for mmWave bandwidth with reliable beam alignment.",
+      "locator": "L10-L70"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes that prior mmWave/V2X surveys do not focus on beam alignment challenges, metrics, and future directions.",
+      "locator": "L70-L150"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges existing mmWave and V2X surveys but highlights missing integrated beam alignment focus.",
+      "locator": "L120-L180"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions covering method taxonomy, metrics, and research directions.",
+      "locator": "L150-L210"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section-by-section roadmap referencing Fig. 2 structure.",
+      "locator": "L200-L230"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus restricted to beam alignment methods, metrics, and future directions in mmWave V2X.",
+      "locator": "L150-L230"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate mmWave V2X needs; contrast with prior surveys; offer a taxonomy of beam alignment methods; define performance metrics; propose research directions; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by method family",
+    "axes": [
+      "Method family (beam sweeping, AoA/AoD estimation, black-box optimization, side information)",
+      "Use of auxiliary information (tracking, prediction, blockage mitigation)"
+    ],
+    "levels_est": 2,
+    "node_count_est": 8,
+    "branches": [
+      "Beam sweeping variants",
+      "AoA/AoD estimation",
+      "Black-box optimization",
+      "Side-information methods: tracking, prediction, blockage-aware"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "latency",
+      "effective achievable rate",
+      "power loss",
+      "throughput ratio",
+      "alignment probability"
+    ],
+    "tradeoff_axes": [
+      "overhead vs alignment accuracy",
+      "beam training cost vs robustness"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L520-L700"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro uses tables to position gap; early figures show V2X scenario and paper structure; background uses figures for propagation/channel classifications and beamforming; taxonomy sections include method flow figures; metrics and future directions are text-heavy.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "architecture",
+        "purpose": "depict mmWave-enabled V2X scenario and survey structure",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 8
+        },
+        "evidence_locator": "L60-L140"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "compare V2X vs general mobile challenges and prior surveys",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 7
+        },
+        "evidence_locator": "L40-L120"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Beam sweeping",
+        "lesson": "Baseline but overhead-heavy; needs fast training or assistance.",
+        "locator": "L380-L430"
+      },
+      {
+        "location": "AoA/AoD estimation",
+        "lesson": "Angle-based methods reduce search but hinge on estimation accuracy under mobility.",
+        "locator": "L430-L470"
+      },
+      {
+        "location": "Side information",
+        "lesson": "Tracking/prediction/blockage cues cut overhead and boost robustness in high mobility.",
+        "locator": "L470-L520"
+      },
+      {
+        "location": "Performance metrics",
+        "lesson": "Separating overhead vs accuracy metrics clarifies design trade-offs across methods.",
+        "locator": "L520-L700"
+      },
+      {
+        "location": "Research directions",
+        "lesson": "Future work aligns with method gaps: ML, adaptive beamwidth, sensing, mobility prediction, UAV/IRS assistance.",
+        "locator": "L680-L740"
+      }
+    ],
+    "aha_moment": "A method-family taxonomy coupled with split overhead vs accuracy metrics makes beam alignment design choices traceable to V2X mobility and blockage constraints."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Introduce context/problem, then outline subcategories and supporting figures before drilling into method details.",
+    "math_handling_strategy": "heavy formalism",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 0.3,
+    "signposting_devices": [
+      "Specifically",
+      "Furthermore",
+      "In this paper",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Gap framing with dual comparison tables",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "Present scenario motivation and challenges.",
+        "Use one table to contrast general vs target domain challenges, and another to benchmark prior surveys.",
+        "Follow with explicit contribution bullets and organization map."
+      ],
+      "why_it_works": "Tables make the gap tangible before contributions, improving credibility and reader orientation.",
+      "evidence_locators": [
+        "L40-L200"
+      ]
+    },
+    {
+      "title": "Background + standards + glossary before taxonomy",
+      "applies_to_sections": [
+        "SYSTEM_MODEL"
+      ],
+      "steps": [
+        "Lay out propagation/channel/beamforming fundamentals with equations and figures.",
+        "Summarize relevant standards and abbreviations.",
+        "Preview performance metrics to prime readers for later evaluations."
+      ],
+      "why_it_works": "Builds a common technical baseline and vocabulary, reducing friction in later method comparisons.",
+      "evidence_locators": [
+        "L210-L360"
+      ]
+    },
+    {
+      "title": "Method-family taxonomy with assisted sub-branches",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Organize methods into four families (sweeping, AoA/AoD, black-box, side information).",
+        "Within side-information, add sub-branches (tracking, prediction, blockage-aware) and compare trade-offs.",
+        "Use figures/tables to keep branches parallel."
+      ],
+      "why_it_works": "A parallel taxonomy keeps diverse techniques comparable and highlights where assistance reduces overhead.",
+      "evidence_locators": [
+        "L360-L520"
+      ]
+    },
+    {
+      "title": "Metrics split then future agenda",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK",
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Separate overhead and accuracy metrics and relate each to method families.",
+        "After metrics, map future directions to the identified overhead/accuracy gaps (ML, adaptive beamwidth, sensing, mobility, UAV/IRS).",
+        "Keep subsections concise and cross-refer to prior methods."
+      ],
+      "why_it_works": "Linking metrics to methods and then to future work makes the research agenda traceable and actionable.",
+      "evidence_locators": [
+        "L520-L740"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "Residual special characters in tables",
+      "Mixed HTML/markdown tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; heavy equation use; abbreviation table functions as glossary. Tables in intro and background contain mixed encoding artifacts."
+}

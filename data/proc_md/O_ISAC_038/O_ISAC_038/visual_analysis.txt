@@ -1,0 +1,92 @@
+Image: _page_0_Figure_11.jpeg
+Type: System Diagram / Schematic (Photonic Radar Transceiver)
+---
+Components:
+- MLL (Mode-Locked Laser): Generates optical frequency comb.
+- Comb Lines: Multiple wavelengths for multi-target sensing.
+- MZM (Mach-Zehnder Modulator): Modulates comb with radar waveform.
+- AWG (Arrayed Waveguide Grating): Demultiplexes comb lines to separate paths.
+- PA (Power Amplifiers): Boosts individual channel powers.
+- Antenna Array: Phased array for beam steering.
+- Target: Object reflecting radar signal.
+- LNA (Low Noise Amplifiers): Amplifies received signals.
+- PD Array: Photodetector array for optical-to-electrical conversion.
+- DSP: Digital signal processing for target extraction.
+
+Flow:
+1. MLL generates wideband optical frequency comb.
+2. MZM modulates comb with FMCW or pulsed radar waveform.
+3. AWG separates comb lines to individual spatial channels.
+4. PA amplifies each channel for transmission.
+5. Antenna Array emits RF signals toward Target.
+6. Reflected RF signals received by Antenna Array.
+7. LNAs amplify received signals.
+8. PD Array converts back to optical domain.
+9. DSP extracts range, velocity, and angular information.
+---
+
+Image: _page_1_Figure_8.jpeg
+Type: Chart (Phase Noise Comparison)
+---
+Axes:
+- X-axis: Offset Frequency (Hz). Range: 10^1 to 10^7 Hz (log scale).
+- Y-axis: Phase Noise (dBc/Hz). Range: -160 to -60 dBc/Hz.
+
+Legend:
+- MLL-based Comb (Blue): Photonic source.
+- Electronic Synthesizer (Red): Conventional RF source.
+- Cavity-Stabilized Laser (Green): Ultra-low noise reference.
+
+Data Points:
+- At 1 kHz offset: MLL = -110 dBc/Hz; Electronic = -90 dBc/Hz; Cavity = -130 dBc/Hz.
+- At 10 kHz offset: MLL = -125 dBc/Hz; Electronic = -105 dBc/Hz; Cavity = -145 dBc/Hz.
+- At 100 kHz offset: MLL = -140 dBc/Hz; Electronic = -115 dBc/Hz; Cavity = -155 dBc/Hz.
+- At 1 MHz offset: MLL = -150 dBc/Hz; Electronic = -125 dBc/Hz; Cavity = -160 dBc/Hz.
+
+Trend:
+- MLL achieves 15-25 dB lower phase noise than electronic synthesizers.
+- Cavity-stabilized laser provides additional 15-20 dB improvement over MLL.
+- Photonic approach enables superior Doppler resolution due to lower phase noise.
+---
+
+Image: _page_2_Figure_4.jpeg
+Type: Chart (Multi-Panel: Range-Doppler and Angular Resolution)
+---
+Panel (a) - Range-Doppler Map:
+Axes:
+- X-axis: Range (m). Range: 0 to 500 m.
+- Y-axis: Velocity (m/s). Range: -50 to +50 m/s.
+- Color Scale: Power (dB). Range: -50 to 0 dB.
+
+Observations:
+- Target 1: Range = 120 m, Velocity = +25 m/s, Power = -8 dB.
+- Target 2: Range = 280 m, Velocity = -15 m/s, Power = -18 dB.
+- Target 3: Range = 420 m, Velocity = 0 m/s, Power = -30 dB.
+- Noise floor: ~-48 dB.
+
+Panel (b) - Angular Spectrum:
+Axes:
+- X-axis: Azimuth Angle (°). Range: -60 to +60°.
+- Y-axis: Elevation Angle (°). Range: -30 to +30°.
+- Color Scale: Power (dB). Range: -40 to 0 dB.
+
+Observations:
+- Target 1: Azimuth = +15°, Elevation = +5°.
+- Target 2: Azimuth = -20°, Elevation = -10°.
+- Angular resolution: ~2° (3 dB beamwidth visible).
+
+Panel (c) - Communication Constellation:
+Structure:
+- Modulation Format: 16-QAM overlaid on radar waveform.
+- Grid: 4×4 constellation points.
+
+Quality:
+- EVM (estimated): ~8% based on cluster spread.
+- Clear separation between all 16 symbols.
+- Slight phase rotation visible (~3°).
+
+Data Points (Combined ISAC Performance):
+- Max detection range: 420 m with 18 dB SNR.
+- Data rate (concurrent): 100 Mbps using 16-QAM.
+- Angular accuracy: <1° RMS.
+---

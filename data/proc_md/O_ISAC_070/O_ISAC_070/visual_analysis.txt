@@ -1,0 +1,100 @@
+Image: _page_2_Figure_8.jpeg
+Type: System Diagram / Functional Comparison
+---
+**Components:**
+- **Multi-carrier integrated waveform:**
+    - **OFDM:** Sinc-shaped subcarriers in frequency domain, processed via IDFT.
+    - **OCDM:** Linearly chirped subcarriers in time-frequency plane, processed via IDFnT (Inverse Discrete Fractional Fourier Transform).
+- **Single-carrier integrated waveform:**
+    - **LFMCW:** Linearly Frequency Modulated Continuous Wave (Radar).
+    - **SC:** Single Carrier modulation (Communication).
+    - **LFM-PSK:** PSK data embedded onto an LFM chirp.
+
+**Flow:**
+The diagram compares waveform integration strategies. In multi-carrier systems, OFDM transitions to OCDM via fractional transform to improve chirp-like sensing properties. In single-carrier systems, radar (LFMCW) and communication (SC) signals are combined or embedded (LFM-PSK) to share the same time-frequency resources.
+---
+
+Image: _page_4_Figure_14.jpeg
+Type: System Diagram / Schematic
+---
+**Components:**
+- **Photonic THz-ISAC Transmitter:** LD (Laser Diode), PM (Phase Modulator), WSS (Wavelength Selective Switch), EDFA (1 & 2), PC (1, 2, 3), AWG, IQM, UTC-PD (Uni-Traveling-Carrier Photodiode), Tx Antenna.
+- **Com. Receiver:** Rx Antenna, Mixer1, LO1, LNA1, DSO (Digital Storage Oscilloscope).
+- **Rad. Receiver:** Rx Antenna, Mixer2, LO2, LNA2, DSO.
+- **DSP Blocks:** Tx DSP (S/P, Mod, IFFT/IDFnT, Up/Dn-chirp), Rx Com. DSP (Sync, FFT/DFnT, Equ, BER Calculation).
+
+**Flow:**
+Optical carriers from an LD are modulated and split by WSS into dual paths (PC1/PC2). Data is modulated via IQM (driven by AWG) and recombined for UTC-PD, which generates THz signals. The transmitted THz-ISAC signal is received by separate Communication and Radar receivers. The DSP blocks manage waveform synthesis (Up/Down chirps) and high-speed data recovery.
+---
+
+Image: _page_5_Figure_7.jpeg
+Type: Chart / Grid Plot (Performance Metrics)
+---
+**Axes Extraction:**
+- **(a) BER:** Y: BER [$10^{-3}$ to $10^{-1}$]; X: Photocurrent [1 to 3.5 mA].
+- **(b) SNR:** Y: SNR (dB) [12 to 17]; X: Index [0 to 70].
+- **(c) PSLR:** Y: PSLR (dB) [-80 to 0]; X: Index [0 to 1024].
+- **(d, e, f):** Performance vs. weighting factor $w_c$ [0 to 1].
+
+**Data Points:**
+- **(a):** OCDM (Red) reaches the **HD-FEC limit (approx 3.8x10⁻³)** at **2.5 mA**. OFDM (Blue) requires **>3.5 mA** to reach the same limit.
+- **(b):** OCDM shows a much flatter SNR profile (~15.2 dB) across the Index compared to the fluctuating OFDM (~12.5 to 16.5 dB).
+- **(c):** PSLR for both is approx **-40 dB** beyond the main lobe, with OCDM showing slightly lower side lobes at high indices.
+
+**Legend/Trends:**
+- **Variables:** OFDM vs OCDM.
+- **Trend:** OCDM provides superior communication reliability (lower BER) and consistent subcarrier quality (flat SNR) compared to traditional OFDM in THz-ISAC links.
+---
+
+Image: _page_5_Figure_9.jpeg
+Type: Chart / Graph (Wireless Link Validation)
+---
+**Axes Extraction:**
+- **(a) BER:** Y: log10(BER) [-7.5 to -2]; X: Data Rate (Gbit/s) [2 to 6].
+- **(b) PSLR:** Y: PSLR (dB) [14 to 24]; X: Data Rate (Gbit/s) [0 to 6].
+- **(c) Gain/Loss:** Y: PSLR Gain (Left) [0 to 6 dB]; MSE Loss (Right) [-6 to 0 dB].
+
+**Data Points:**
+- **(a):** At **6 Gbit/s**, Wireless BER is **~10⁻³** (just below FEC limit), while Back-to-back is **~10⁻⁵·²**.
+- **(b):** Theoretical PSLR reaches **~23.5 dB** at 6 Gbit/s, while Wireless performance is limited to **~19.8 dB**.
+- **(c):** PSLR Gain increases linearly with data rate, reaching **~6 dB** at 6 Gbit/s, while MSE Loss drops to **-5 dB**.
+
+**Legend/Trends:**
+- **Variables:** Back-to-back, Wireless, Theoretical.
+- High data rates (up to 6 Gbit/s) degrade BER but offer significant PSLR gains for radar sensing.
+---
+
+Image: _page_6_Figure_7.jpeg
+Type: Chart / Grid Plot (Robustness Analysis)
+---
+**Axes Extraction:**
+- **(a, b):** Y: EVM (%) [15 to 50]; X: Optical Power (dBm) [2 to 10].
+- **(c) Spectrum:** Y: Amplitude (dB) [-60 to 0]; X: Frequency (MHz) [-12 to 12].
+- **(d, e):** Y: EVM (%) [15 to 60]; X: Frequency Offset (GHz) [-5 to 5] / Optical Power (dBm).
+
+**Data Points:**
+- **(a):** Increasing optical power from 2 to 10 dBm drops EVM from **45% to ~25%**.
+- **(c):** Shows a dual-peak spectrum separated by **1.37 MHz**.
+- **(d):** Frequency offset of ±5 GHz causes EVM to spike to **~55%** without FOE, while FOE maintains it at **~20%**.
+
+**Legend/Trends:**
+- **Variables:** ρ=5, 10, 15; w/ FOE vs w/o FOE.
+- Illustrates the critical role of Frequency Offset Estimation (FOE) in maintaining EVM below the 7% HD-FEC threshold (dashed horizontal lines).
+---
+
+Image: _page_7_Figure_8.jpeg
+Type: Chart / Multi-modal Analysis
+---
+**Axes Extraction:**
+- **(a) Resolution Schematic:** Illustrates CH1, CH2, CH3 sub-bands and their synthetic bandwidth resolution enhancement.
+- **(b) EVM:** Y: EVM (%) [14 to 24]; X: Photocurrent (mA) [1.0 to 3.5].
+- **(c) Radar Profile:** Y: Normalized Amplitude (dB) [-60 to 0]; X: Relative Distance (cm) [-3 to 3].
+
+**Data Points:**
+- **(b):** CH1 (Black) shows best performance, dropping to **14.8% EVM** at 3.5 mA. CH2 (Red) is worst at **~17.0%**.
+- **(c):** Proposed method (Red) achieves a much narrower main lobe with resolution of **2.3 mm**, compared to the traditional broader profile. An inset shows two targets separated by **Δr = 3.0 mm**.
+
+**Legend/Trends:**
+- **Variables:** Traditional vs Proposed.
+- **Trend:** The synthetic bandwidth approach improves range resolution significantly (down to 2.3 mm) while keeping communication EVM within acceptable limits for a THz-ISAC system.
+---

@@ -1,0 +1,21 @@
+Image: _page_0_Picture_16.jpeg
+Type: Sensing Setup Schematic
+---
+**Components:**
+* **Sensing Unit:** Laser, 3x3 Coupler, 2 Photo-detectors (PD).
+* **PON Cable:** Passive Optical Network cable acting as the sensing medium.
+* **FRMs (Faraday Rotator Mirrors):** Termination points at the end of the fiber.
+**Flow:** Laser light enters 3x3 coupler -> travels through PON cable -> reflects off FRMs -> returning signal is detected by PDs to extract phase/strain information.
+---
+
+Image: _page_1_Picture_1.jpeg
+Type: Network Architecture (ISAC-PON)
+---
+**Components:**
+* **Central Office:** Contains OLT (Optical Line Terminal) and Sensing Unit, joined via a CEx (Coexistence) element.
+* **(a) Dual-feeder fiber:** OLT and Sensing Unit share a dual-fiber path to the remote node.
+* **(b) Feeder fiber:** OLT and Sensing Unit share a single fiber.
+* **Remote Node:** 2xn or 1xn SPLITTER connecting to ONUs (Optical Network Units) in residential/commercial buildings.
+* **Buildings:** Residential houses and high-rise apartments EQUIPPED with ONUs. 
+**Flow:** Integrated data (from OLT) and sensing (from Sensing Unit) signals coexist on the feeder fiber, enabling simultaneous communication and infrastructure/environmental sensing across the PON.
+---

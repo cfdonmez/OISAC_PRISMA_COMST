@@ -1,0 +1,178 @@
+{
+  "run_id": "20251210_143852_O_ISAC_029_llama-3.3-70b-versatile",
+  "timestamp": "20251210_143852",
+  "paper_id": "O_ISAC_029",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "The paper proposes a THz photonic-based ISAC system for fiber-wireless networks. It uses a thin-film lithium niobate Mach-Zehnder modulator (TFLN-MZM) for full-photonic direct reception and de-chirping of D-band LFM echo signals. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "The system uses a TFLN-MZM for direct reception and de-chirping of THz LFM echo signals. The TFLN-MZM operates at the minimum transmission point (MITP), which provides optimal suppression of false targets. The system achieves a calibrated mean ranging error of less than 3 mm."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "The paper demonstrates a photonic-based THz ISAC system for fiber-wireless networks. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s. The impact of different fiber lengths on communication and radar sensing performance is assessed."
+      }
+    ],
+    "study_level": {
+      "bibliographic": [
+        {
+          "key": "title",
+          "type": "string",
+          "required": true,
+          "value": "THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network"
+        },
+        {
+          "key": "authors",
+          "type": "string",
+          "required": true,
+          "value": "Boyu Dong, Zhongya Li, Sizhe Xing, Yinjun Liu, Junhao Zhao, Ouhan Huang, Junlian Jia, Jianyang Shi, Yingjun Zhou, Haipeng Wang, Nan Chi, Junwen Zhang"
+        },
+        {
+          "key": "year",
+          "type": "integer",
+          "required": true,
+          "value": 2025
+        },
+        {
+          "key": "venue",
+          "type": "string",
+          "required": true,
+          "value": "IEEE Transactions on Microwave Theory and Techniques"
+        }
+      ],
+      "classification": [
+        {
+          "key": "oisac_medium_class",
+          "type": "enum",
+          "required": true,
+          "value": "wireless_fso"
+        },
+        {
+          "key": "operational_environment",
+          "type": "enum",
+          "required": false,
+          "value": "indoor"
+        }
+      ],
+      "application": [
+        {
+          "key": "application_domain",
+          "type": "enum_multi",
+          "required": false,
+          "value": [
+            "6g_networks"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "key": "evidence_type",
+          "type": "enum_multi",
+          "required": true,
+          "value": [
+            "analytical",
+            "simulation",
+            "experimental"
+          ]
+        }
+      ],
+      "enabling_tech": [
+        {
+          "key": "key_contribution",
+          "type": "string",
+          "required": true,
+          "value": "Full-photonic direct reception and de-chirping of THz LFM echo signals using a TFLN-MZM"
+        }
+      ]
+    },
+    "scenario_level": {
+      "identification": [
+        {
+          "key": "experiment_id",
+          "type": "string",
+          "required": true,
+          "value": "E1"
+        }
+      ],
+      "transmitter": [
+        {
+          "key": "tx_source_type",
+          "type": "enum",
+          "required": true,
+          "value": "laser"
+        }
+      ],
+      "receiver": [
+        {
+          "key": "rx_detection_type",
+          "type": "enum",
+          "required": true,
+          "value": "coherent"
+        }
+      ],
+      "integration": [
+        {
+          "key": "hardware_sharing_mode",
+          "type": "enum",
+          "required": true,
+          "value": "shared_frontend"
+        }
+      ],
+      "waveform": [
+        {
+          "key": "comm_waveform_family",
+          "type": "enum",
+          "required": true,
+          "value": "qam"
+        },
+        {
+          "key": "sensing_waveform_family",
+          "type": "enum",
+          "required": true,
+          "value": "lfm_chirp"
+        }
+      ],
+      "comm_metrics": [
+        {
+          "key": "data_rate_gbps",
+          "type": "float",
+          "unit": "Gbps",
+          "required": false,
+          "value": 116
+        }
+      ],
+      "sensing_metrics": [
+        {
+          "key": "sensing_task_type",
+          "type": "enum_multi",
+          "required": true,
+          "value": [
+            "ranging",
+            "localization_3d"
+          ]
+        },
+        {
+          "key": "range_resolution_m",
+          "type": "float",
+          "unit": "m",
+          "required": false,
+          "value": 0.006
+        }
+      ]
+    }
+  },
+  "raw_response": "```json\n{\n  \"reasoning_trace\": [\n    {\n      \"key\": \"step_1_concept_analysis\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"description\": \"The paper proposes a THz photonic-based ISAC system for fiber-wireless networks. It uses a thin-film lithium niobate Mach-Zehnder modulator (TFLN-MZM) for full-photonic direct reception and de-chirping of D-band LFM echo signals. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s.\"\n    },\n    {\n      \"key\": \"step_2_benchmark_verification\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"description\": \"The system uses a TFLN-MZM for direct reception and de-chirping of THz LFM echo signals. The TFLN-MZM operates at the minimum transmission point (MITP), which provides optimal suppression of false targets. The system achieves a calibrated mean ranging error of less than 3 mm.\"\n    },\n    {\n      \"key\": \"step_3_strategic_critique\",\n      \"type\": \"string\",\n      \"required\": true,\n      \"description\": \"The paper demonstrates a photonic-based THz ISAC system for fiber-wireless networks. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s. The impact of different fiber lengths on communication and radar sensing performance is assessed.\"\n    }\n  ],\n  \"study_level\": {\n    \"bibliographic\": [\n      {\n        \"key\": \"title\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"value\": \"THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network\"\n      },\n      {\n        \"key\": \"authors\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"value\": \"Boyu Dong, Zhongya Li, Sizhe Xing, Yinjun Liu, Junhao Zhao, Ouhan Huang, Junlian Jia, Jianyang Shi, Yingjun Zhou, Haipeng Wang, Nan Chi, Junwen Zhang\"\n      },\n      {\n        \"key\": \"year\",\n        \"type\": \"integer\",\n        \"required\": true,\n        \"value\": 2025\n      },\n      {\n        \"key\": \"venue\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"value\": \"IEEE Transactions on Microwave Theory and Techniques\"\n      }\n    ],\n    \"classification\": [\n      {\n        \"key\": \"oisac_medium_class\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"wireless_fso\"\n      },\n      {\n        \"key\": \"operational_environment\",\n        \"type\": \"enum\",\n        \"required\": false,\n        \"value\": \"indoor\"\n      }\n    ],\n    \"application\": [\n      {\n        \"key\": \"application_domain\",\n        \"type\": \"enum_multi\",\n        \"required\": false,\n        \"value\": [\"6g_networks\"]\n      }\n    ],\n    \"evidence\": [\n      {\n        \"key\": \"evidence_type\",\n        \"type\": \"enum_multi\",\n        \"required\": true,\n        \"value\": [\"analytical\", \"simulation\", \"experimental\"]\n      }\n    ],\n    \"enabling_tech\": [\n      {\n        \"key\": \"key_contribution\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"value\": \"Full-photonic direct reception and de-chirping of THz LFM echo signals using a TFLN-MZM\"\n      }\n    ]\n  },\n  \"scenario_level\": {\n    \"identification\": [\n      {\n        \"key\": \"experiment_id\",\n        \"type\": \"string\",\n        \"required\": true,\n        \"value\": \"E1\"\n      }\n    ],\n    \"transmitter\": [\n      {\n        \"key\": \"tx_source_type\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"laser\"\n      }\n    ],\n    \"receiver\": [\n      {\n        \"key\": \"rx_detection_type\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"coherent\"\n      }\n    ],\n    \"integration\": [\n      {\n        \"key\": \"hardware_sharing_mode\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"shared_frontend\"\n      }\n    ],\n    \"waveform\": [\n      {\n        \"key\": \"comm_waveform_family\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"qam\"\n      },\n      {\n        \"key\": \"sensing_waveform_family\",\n        \"type\": \"enum\",\n        \"required\": true,\n        \"value\": \"lfm_chirp\"\n      }\n    ],\n    \"comm_metrics\": [\n      {\n        \"key\": \"data_rate_gbps\",\n        \"type\": \"float\",\n        \"unit\": \"Gbps\",\n        \"required\": false,\n        \"value\": 116\n      }\n    ],\n    \"sensing_metrics\": [\n      {\n        \"key\": \"sensing_task_type\",\n        \"type\": \"enum_multi\",\n        \"required\": true,\n        \"value\": [\"ranging\", \"localization_3d\"]\n      },\n      {\n        \"key\": \"range_resolution_m\",\n        \"type\": \"float\",\n        \"unit\": \"m\",\n        \"required\": false,\n        \"value\": 0.006\n      }\n    ]\n  }\n}\n```"
+}

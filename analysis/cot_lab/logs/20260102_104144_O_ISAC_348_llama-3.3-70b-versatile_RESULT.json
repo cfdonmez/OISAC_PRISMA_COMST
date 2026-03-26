@@ -1,0 +1,177 @@
+{
+  "run_id": "20260102_104144_O_ISAC_348_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104144",
+  "paper_id": "O_ISAC_348",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper contains several figures and charts, including a conceptual diagram of the ISAC-OF system, an experimental setup diagram, performance charts (BER), sensing results (vibration), and frequency response analysis. The figures show the operating principle of the ISAC-OF, the experimental setup, and the results of the transmission performance and sensing performance."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The ISAC-OF system uses a periodic linear frequency modulation (LFM) light as the optical carrier and sensing probe. The LFM optical carrier is generated with single-sideband (SSB) modulation and is used to carry a 4-level pulse amplitude-modulation (PAM4) signal. The system uses the same wavelength channel for simultaneous data transmission and distributed vibration sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a 56 Gbit/s PAM4 signal transmission and distributed vibration measurements with a 4 m spatial resolution, 4.32-ne/√Hz strain resolution, and an effective sampling rate in excess of 42 kHz. The reported metrics are physically consistent with the hardware and system parameters described in the paper."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of integrating high-speed optical communication and distributed sensing in an optical fibre, achieving better transmission performance and larger launching power. However, the system is complicated and requires further simplification. The paper also highlights the potential of the integrated sensing and communication in optical fibre for various applications, including urban structure imaging, ocean seismic detection, and safety monitoring of underground embedded pipelines."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_348",
+        "title": "Integrated sensing and communication in an optical fibre",
+        "authors": "Haijun He et al.",
+        "year": 2023,
+        "venue": "Light: Science & Applications",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "industrial_manufacturing",
+        "scenario_description": "NR"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper demonstrates a scheme of integrated sensing and communication in an optical fibre (ISAC-OF) using the same wavelength channel for simultaneous data transmission and distributed vibration sensing.",
+        "gap_addressed": "The paper addresses the problem of integrating high-speed optical communication and distributed sensing in an optical fibre.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "LFM optical carrier",
+        "novel_component_specs": "NR"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "ISAC-OF"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "mzm",
+          "wavelength_nm": 1549.5,
+          "optical_bandwidth_ghz": 1,
+          "tx_power_dbm": 15
+        },
+        "receiver": {
+          "rx_detection_type": "direct",
+          "rx_detector": "pin_pd",
+          "rx_aperture_diameter_m": 0.01,
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "mzm",
+          "rx_modulator_bandwidth_ghz": 1
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "pam4",
+          "comm_modulation_order": 4,
+          "comm_symbol_rate_gbaud": 14,
+          "comm_fec_type": "NR",
+          "sensing_waveform_family": "lfm_chirp",
+          "isac_waveform_relationship": "single_dual_function"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 24.5,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 16,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 0,
+          "path_loss_model": "NR",
+          "turbulence_model": "NR",
+          "turbulence_Cn2": 0,
+          "scintillation_index": 0,
+          "pointing_error_model": "NR"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 56,
+          "spectral_efficiency_bps_hz": 2,
+          "ber": 0.0038,
+          "snr_db": 10,
+          "osnr_db": 20
+        },
+        "sensing_metrics": {
+          "sensing_task_type": "vibration",
+          "sensing_range_m": 24500,
+          "range_resolution_m": 4,
+          "range_accuracy_m": 0.1,
+          "angular_resolution_deg": 0,
+          "velocity_resolution_mps": 0,
+          "velocity_accuracy_mps": 0,
+          "localization_error_m": 0,
+          "spatial_resolution_m": 4,
+          "sensing_bandwidth_hz": 1000000,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.01,
+          "crb_crlb_value": 0.01,
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": "rate_vs_rmse",
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "launching_power",
+          "tradeoff_control_range": "9-17 dBm"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": 0,
+          "opa_steering_range_deg": 0,
+          "opa_beamwidth_deg": 0,
+          "ris_num_elements": 0,
+          "ris_type": "NR",
+          "ris_phase_bits": 0
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "NR"
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper contains several figures and charts, including a conceptual diagram of the ISAC-OF system, an experimental setup diagram, performance charts (BER), sensing results (vibration), and frequency response analysis. The figures show the operating principle of the ISAC-OF, the experimental setup, and the results of the transmission performance and sensing performance.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The ISAC-OF system uses a periodic linear frequency modulation (LFM) light as the optical carrier and sensing probe. The LFM optical carrier is generated with single-sideband (SSB) modulation and is used to carry a 4-level pulse amplitude-modulation (PAM4) signal. The system uses the same wavelength channel for simultaneous data transmission and distributed vibration sensing.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a 56 Gbit/s PAM4 signal transmission and distributed vibration measurements with a 4 m spatial resolution, 4.32-ne/√Hz strain resolution, and an effective sampling rate in excess of 42 kHz. The reported metrics are physically consistent with the hardware and system parameters described in the paper.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of integrating high-speed optical communication and distributed sensing in an optical fibre, achieving better transmission performance and larger launching power. However, the system is complicated and requires further simplification. The paper also highlights the potential of the integrated sensing and communication in optical fibre for various applications, including urban structure imaging, ocean seismic detection, and safety monitoring of underground embedded pipelines.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_348\",\n         \"title\":\"Integrated sensing and communication in an optical fibre\",\n         \"authors\":\"Haijun He et al.\",\n         \"year\":2023,\n         \"venue\":\"Light: Science & Applications\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"industrial_manufacturing\",\n         \"scenario_description\":\"NR\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper demonstrates a scheme of integrated sensing and communication in an optical fibre (ISAC-OF) using the same wavelength channel for simultaneous data transmission and distributed vibration sensing.\",\n         \"gap_addressed\":\"The paper addresses the problem of integrating high-speed optical communication and distributed sensing in an optical fibre.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"LFM optical carrier\",\n         \"novel_component_specs\":\"NR\"\n      }\n   },\n   \"scenario_level\":[\n      {\n         \"identification\":{\n            \"experiment_id\":\"E1\",\n            \"scenario_label\":\"ISAC-OF\"\n         },\n         \"transmitter\":{\n            \"tx_source_type\":\"laser\",\n            \"tx_modulation_type\":\"im_dd\",\n            \"tx_external_modulator\":\"mzm\",\n            \"wavelength_nm\":1549.5,\n            \"optical_bandwidth_ghz\":1,\n            \"tx_power_dbm\":15\n         },\n         \"receiver\":{\n            \"rx_detection_type\":\"direct\",\n            \"rx_detector\":\"pin_pd\",\n            \"rx_aperture_diameter_m\":0.01,\n            \"rx_photonic_processing\":\"photonic_dechirping\",\n            \"rx_modulator_type\":\"mzm\",\n            \"rx_modulator_bandwidth_ghz\":1\n         },\n         \"integration\":{\n            \"hardware_sharing_mode\":\"shared_frontend\",\n            \"duplexing_mode\":\"full_duplex\"\n         },\n         \"waveform\":{\n            \"comm_waveform_family\":\"pam4\",\n            \"comm_modulation_order\":4,\n            \"comm_symbol_rate_gbaud\":14,\n            \"comm_fec_type\":\"NR\",\n            \"sensing_waveform_family\":\"lfm_chirp\",\n            \"isac_waveform_relationship\":\"single_dual_function\"\n         },\n         \"channel_fiber\":{\n            \"fibre_length_km\":24.5,\n            \"fibre_type\":\"smf\",\n            \"attenuation_db_per_km\":0.2,\n            \"dispersion_ps_per_nm_km\":16,\n            \"nonlinearity_model\":\"gn_model\"\n         },\n         \"channel_wireless\":{\n            \"link_distance_m\":0,\n            \"path_loss_model\":\"NR\",\n            \"turbulence_model\":\"NR\",\n            \"turbulence_Cn2\":0,\n            \"scintillation_index\":0,\n            \"pointing_error_model\":\"NR\"\n         },\n         \"comm_metrics\":{\n            \"data_rate_gbps\":56,\n            \"spectral_efficiency_bps_hz\":2,\n            \"ber\":3.8e-3,\n            \"snr_db\":10,\n            \"osnr_db\":20\n         },\n         \"sensing_metrics\":{\n            \"sensing_task_type\":\"vibration\",\n            \"sensing_range_m\":24500,\n            \"range_resolution_m\":4,\n            \"range_accuracy_m\":0.1,\n            \"angular_resolution_deg\":0,\n            \"velocity_resolution_mps\":0,\n            \"velocity_accuracy_mps\":0,\n            \"localization_error_m\":0,\n            \"spatial_resolution_m\":4,\n            \"sensing_bandwidth_hz\":1000000,\n            \"pd_probability_detection\":0.9,\n            \"pfa_probability_false_alarm\":0.01,\n            \"crb_crlb_value\":0.01,\n            \"crb_parameter\":\"range\"\n         },\n         \"tradeoff\":{\n            \"coupling_mode\":\"resource_division\",\n            \"tradeoff_type\":\"rate_vs_rmse\",\n            \"tradeoff_representation\":\"curve\",\n            \"tradeoff_control_parameter\":\"launching_power\",\n            \"tradeoff_control_range\":\"9-17 dBm\"\n         },\n         \"enabling_tech_details\":{\n            \"opa_num_emitters\":0,\n            \"opa_steering_range_deg\":0,\n            \"opa_beamwidth_deg\":0,\n            \"ris_num_elements\":0,\n            \"ris_type\":\"NR\",\n            \"ris_phase_bits\":0\n         }\n      }\n   ],\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"NR\"\n   }\n}"
+}

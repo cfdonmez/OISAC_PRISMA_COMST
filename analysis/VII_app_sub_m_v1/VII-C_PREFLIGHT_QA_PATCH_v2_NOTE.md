@@ -1,0 +1,9 @@
+- Replaced the prior axis-definitions-only Scope Evidence block with evidence-backed scope locking.
+- Added evidence-pack distribution using `analysis/VII_ev_v2/section7C_evidence.csv`.
+- New distribution statement: `automotive_transportation = 1157/1157 rows (100.00%)` in `macro_domain`.
+- Added two direct processed-markdown excerpts with lexical cues for automotive scope.
+- Cite-keys used for excerpts: `O_ISAC_003`, `O_ISAC_164`.
+- Locator 1: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, `# I. INTRODUCTION`, line `11`.
+- Locator 2: `data/proc_markdowns/O_ISAC_164/O_ISAC_164.md`, `### *2.1. OC-ISAC Architecture*`, line `55`.
+- Path resolution summary for excerpt keys: `file_index.csv` hits `0/2`; fallback `analysis/II_md_inv.csv` used (`Y`) with `2/2` hits.
+- All non-scope QA sections (cite-key existence, path-resolution section, stoplight readiness) were preserved unchanged.

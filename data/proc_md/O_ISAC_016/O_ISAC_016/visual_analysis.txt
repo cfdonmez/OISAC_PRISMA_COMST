@@ -1,0 +1,29 @@
+# Visual Analysis for O_ISAC_016
+
+## Figure 1: Photonic Sub-THz ISAC System Overview
+**File:** [_page_1_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_016/O_ISAC_016/_page_1_Figure_0.jpeg)
+- **Type:** Integrated System Schematic, Hardware Photos, and Optical/IF Spectra.
+- **(a) System Architecture:**
+  - **Transmitter (Tx):** 
+    - **Optical Source:** LD1 coupled to a Phase Modulator (PM) driven by RF1 (31 GHz) to generate an Optical Frequency Comb (OFC).
+    - **Filtering:** OBPF1 and OBPF2 isolate the -2nd and +2nd order sidebands for local oscillation and signal modulation.
+    - **Integrated Signals:** Real-time 251.03 Gbps DP-QAM signals (OTU-Tx) and Offline LFM signals (AWG + IQ Mod).
+    - **THz Conversion:** Heterodyne beating in UTC-PD1/2 produces 151 GHz communication and 124 GHz LFM sensing signals.
+  - **Receivers:** 
+    - **Comm Rx:** Horn antennas (HA3/4) -> Harmonic Mixers (HM1/2) -> DPol-MZM for optical coherent detection via OTU-Rx.
+    - **Radar Rx:** HA5 -> HM3 -> Mixer -> DSO (1.25 GSa/s data acquisition).
+- **(e) Optical Spectra:** Shows wavelength peaks at ~1549.32 nm (DP-COM) and 1550.032 (OFC carrier). 
+- **(f) IF Spectrum:** Characterizes received signals with a **37.66 GHz bandwidth** for communication and **10 GHz bandwidth** for LFM sensing.
+
+## Figure 2: Communication Performance Analysis
+**File:** [_page_1_Figure_9.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_016/O_ISAC_016/_page_1_Figure_9.jpeg)
+- **(a) SNR vs. IOP (dBm):** Comparison between ISAC and pure communication modes. 100GbE SNR rises from 11 dB (2 dBm) to 19 dB (8 dBm). 200GbE mode yields a stable ~19 dB SNR across the 4-9 dBm IOP range.
+- **(b) BER vs. IOP (dBm):** Displays the transition below the **SD-FEC threshold ($2.2 \times 10^{-2}$)**. 100GbE BER reaches $\approx 1.6 \times 10^{-6}$ at 8.5 dBm IOP. 200GbE BER (16QAM) is successfully maintained below the threshold at ~19 dB SNR.
+- **(c) BER & SNR vs. ROP (dBm):** At OTU-Rx, BER improves from $4 \times 10^{-4}$ (-24 dBm) to stable levels at -15 dBm. SNR plateaus at ~19 dB.
+
+## Figure 3 & 4: Sensing Performance and Target Imaging
+**Files:** [_page_2_Picture_7.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_016/O_ISAC_016/_page_2_Picture_7.jpeg), [_page_2_Figure_10.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_016/O_ISAC_016/_page_2_Figure_10.jpeg)
+- **Radar Setup (Fig 3):** Three metal targets spaced at **10.0 cm** (Target 1-2) and **2.5 cm** (Target 2-3).
+- **Cross-correlation (Fig 4a):** Normalized amplitude vs. Range. Primary peak at **10.315 m**. Secondary peaks accurately resolve target spacings at ~10.3 cm and ~3.5 cm offsets.
+- **2D Imaging (Fig 4b):** Range-Doppler map clearly resolves the three targets. 
+- **Metric Achievement:** Confirmed **2.5-cm radial sensing resolution** and a Capacity-Resolution Quotient (CRQ) of **100.41 Gbps/cm**.

@@ -1,0 +1,173 @@
+================================================================================
+O_ISAC_248 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Exploitation of FMF capabilities for joint communications and sensing
+Authors: Stefano Gaiani et al. (Politecnico di Milano)
+Conference: IEEE 2024/2025
+Generated: 2026-01-02 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_17.jpeg
+### Type: System Schematic
+
+### Title: FMF Sensing via Higher-Order Mode IMXT
+
+### Structure:
+- Mode MUX (input)
+- Few-Mode Fiber (FMF)
+- Mode DEMUX (output)
+- LP01: TLC signal
+- Higher-order modes: Sensing
+
+### Key Concept:
+- IMXT from LP01 excites higher modes
+- Power variation detects perturbations
+- Free sensing capability
+
+### O-ISAC Relevance:
+- Modal crosstalk for sensing
+---
+
+## Image: _page_1_Figure_1.jpeg
+### Type: Matrix Heatmap
+
+### Title: Measured IMXT Matrix of Mode MUX/DEMUX Pair
+
+### Dimensions:
+- 15 × 15 spatial modes
+- 5 mode groups
+
+### Key Values:
+| Mode | IMXT from LP01 |
+|------|----------------|
+| LP11a/b | -16 dB |
+| LP02, LP21a/b | -20 dB |
+| Higher groups | Negligible |
+
+### Highlighted Column:
+- Red rectangle: LP01 to all modes
+- Shows IMXT spectrum
+
+### O-ISAC Relevance:
+- Crosstalk characterization for sensing
+---
+
+## Image: _page_2_Figure_0.jpeg
+### Type: Experimental Setup Diagram
+
+### Title: Setup for Sensing FMF Assessment
+
+### Components:
+- DFB laser (1550 nm)
+- MZM (10 Gbaud OOK)
+- PRBS 2^16-1
+- Mode MUX (15 modes, MPLC)
+- 20m FMF (lab setup)
+- Acoustic speaker (vibration)
+- AWG for fp control
+- Mode DEMUX
+- VOA + PD + BER tester
+
+### Sensing Path:
+- LP11a, LP11b selected
+- Low-noise 100 kHz PDs
+- Oscilloscope monitoring
+
+### Parameters:
+- LP01 launch power: -2 dBm
+- LP01 receive power: -6 dBm
+
+### O-ISAC Relevance:
+- Complete JCAS testbed
+---
+
+## Image: _page_2_Figure_2.jpeg
+### Type: Quad-Panel Time/Frequency Analysis
+
+### Title: LP11a and LP11b Mode Response to Vibration
+
+### Top Left - 100 Hz Time Domain:
+- LP11a (red) and LP11b (blue)
+- Complementary power variation
+- Clear 100 Hz periodicity
+
+### Top Right - 200 Hz Time Domain:
+- Same complementary behavior
+- 200 Hz periodicity
+
+### Bottom Left - 100 Hz Spectrum:
+- Peak at 100 Hz clearly visible
+- Harmonics present
+- Mode-dependent response
+
+### Bottom Right - 200 Hz Spectrum:
+- Peak at 200 Hz
+- Different harmonic content
+
+### Key Finding:
+- Modes sense perturbation
+- Complementary response (LP11a ↑ → LP11b ↓)
+- Distinct frequency signatures
+
+### O-ISAC Relevance:
+- Vibration sensing validated
+---
+
+## Image: _page_2_Figure_8.jpeg
+### Type: BER Curves
+
+### Title: BER vs Received Power (Perturbed vs Unperturbed)
+
+### Axes:
+- X-axis: Received optical power (dBm): -18.2 to -14.2
+- Y-axis: BER: 10^-11 to 10^-3
+
+### Curves:
+- Unperturbed FMF (red circles)
+- 100 Hz vibration (blue squares)
+- 200 Hz vibration (cyan triangles)
+
+### Key Finding:
+- All three curves superimposed
+- No detrimental effect from perturbation
+- Communication unaffected by sensing
+
+### Performance:
+- BER 10^-3 @ -18.2 dBm
+- BER 4×10^-11 @ -14.2 dBm
+
+### O-ISAC Relevance:
+- True joint operation demonstrated
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 5 (all scientific)
+- System Diagrams: 2
+- Matrix Heatmap: 1
+- Time/Frequency Analysis: 1
+- BER Curves: 1
+
+Key Technical Findings:
+1. Platform: Few-Mode Fiber JCAS
+2. Fiber: 15-mode FMF (5 groups)
+3. Wavelength: 1550 nm
+4. Data Rate: 10 Gb/s OOK
+5. Fiber Length: 20 m (lab)
+6. Modes: LP11a, LP11b for sensing
+
+Key Innovations:
+1. IMXT-based sensing (free from MUX)
+2. No separate laser for sensing
+3. Mode power variation detection
+4. Complementary mode response
+5. Frequency-domain vibration sensing
+6. MPLC-based mode MUX/DEMUX
+
+Performance Highlights:
+- Communication: BER ~10^-3 @ -18.2 dBm
+- Sensing: 100 Hz, 200 Hz vibration detected
+- No interference between C&S
+- Higher-order modes excited by TLC signal
+- Dual functionality with single source
+================================================================================

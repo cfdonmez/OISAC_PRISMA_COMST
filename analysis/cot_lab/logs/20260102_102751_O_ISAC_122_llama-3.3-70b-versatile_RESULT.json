@@ -1,0 +1,193 @@
+{
+  "run_id": "20260102_102751_O_ISAC_122_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102751",
+  "paper_id": "O_ISAC_122",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the principle of the super-resolution diffractive neural network (S-DNN) for all-optical DOA estimation. Fig. 2 shows the experimental system used to characterize the S-DNN. Fig. 3 presents a comparison of the angular response between the S-DNN and a lens system. Fig. 4 displays the experimental results of the confusion and energy distribution matrices for the test samples. Fig. 5 demonstrates the broadband DOA estimation performance of the S-DNN. Fig. 6 illustrates the application of DOA estimation with passive S-DNNs for RIS-based communications."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The S-DNN is a passive, all-optical system that uses diffractive neural networks to estimate the direction of arrival (DOA) of electromagnetic waves. The system consists of multiple layers of sub-wavelength diffractive elements that modulate the amplitude and phase of the incident light field, generating a super-oscillatory angular response within a local angular range. The S-DNN can be designed to operate in either 1D or 2D estimation modes to estimate the elevation and azimuth angles of the targets individually or simultaneously."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports that the S-DNN achieves an angular resolution of 1°, which is four times higher than the diffraction-limited resolution. The system also demonstrates broadband super-resolution DOA estimation over a wide field of view, with an estimation delay that is in principle two to four orders of magnitude lower than commercial devices."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The S-DNN solves the problem of achieving super-resolution DOA estimation beyond the diffraction limit, eliminating the need for traditional RF circuits or digital processing systems. However, the system still requires further development to achieve reconfigurability and to integrate with other systems, such as RIS-based communications."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "All-optical computing for super-resolution direction of arrival estimation",
+        "authors": "Sheng Gao, Zhi Sun, Hang Chen, Yuan Shen, Haiou Zhang, Xing Lin",
+        "year": 2024,
+        "venue": "Light Science & Applications",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "other",
+        "carrier_band": "other",
+        "operational_environment": "lab",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "other",
+        "scenario_description": "All-optical direction of arrival estimation"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "Super-resolution diffractive neural network for all-optical DOA estimation",
+        "gap_addressed": "Achieving super-resolution DOA estimation beyond the diffraction limit",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "Diffractive neural network",
+        "novel_component_specs": "Sub-wavelength diffractive elements"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "All-optical DOA estimation"
+      },
+      "transmitter": {
+        "tx_source_type": "other",
+        "tx_modulation_type": "not_specified",
+        "tx_external_modulator": "none",
+        "wavelength_nm": "NR",
+        "optical_bandwidth_ghz": "NR",
+        "tx_power_dbm": "NR",
+        "aperture_diameter_m": "NR",
+        "beam_divergence_mrad": "NR"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "other",
+        "rx_aperture_diameter_m": "NR",
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "NR",
+        "rx_modulator_operating_point": "not_specified",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "other"
+      },
+      "waveform": {
+        "comm_waveform_family": "other",
+        "comm_modulation_order": "NR",
+        "comm_symbol_rate_gbaud": "NR",
+        "comm_fec_type": "NR",
+        "sensing_waveform_family": "other",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "NR"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "NR",
+        "fibre_type": "NR",
+        "attenuation_db_per_km": "NR",
+        "dispersion_ps_per_nm_km": "NR",
+        "nonlinearity_model": "NR",
+        "backscatter_sensing_type": "NR"
+      },
+      "channel_wireless": {
+        "link_distance_m": "NR",
+        "path_loss_model": "NR",
+        "turbulence_model": "NR",
+        "turbulence_Cn2": "NR",
+        "scintillation_index": "NR",
+        "pointing_error_model": "NR",
+        "weather_visibility_m": "NR",
+        "ambient_light_model": "NR"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": "NR",
+        "spectral_efficiency_bps_hz": "NR",
+        "ber": "NR",
+        "ber_target": "NR",
+        "snr_db": "NR",
+        "osnr_db": "NR",
+        "outage_probability": "NR",
+        "latency_ms": "NR",
+        "capacity_bps_hz": "NR"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "direction_of_arrival",
+        "sensing_range_m": "NR",
+        "range_resolution_m": "NR",
+        "range_accuracy_m": "NR",
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": "NR",
+        "velocity_accuracy_mps": "NR",
+        "localization_error_m": "NR",
+        "spatial_resolution_m": "NR",
+        "sensing_bandwidth_hz": "NR",
+        "pd_probability_detection": "NR",
+        "pfa_probability_false_alarm": "NR",
+        "crb_crlb_value": "NR",
+        "crb_parameter": "NR"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "NR",
+        "tradeoff_control_range": "NR"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "NR",
+        "opa_steering_range_deg": "NR",
+        "opa_beamwidth_deg": "NR",
+        "ris_num_elements": "NR",
+        "ris_type": "NR",
+        "ris_phase_bits": "NR"
+      },
+      "provenance": {
+        "source_pointer": "Fig. 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "NR",
+        "num_trials": "NR"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and its components, and the experimental results are well-presented."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which illustrates the principle of the super-resolution diffractive neural network (S-DNN) for all-optical DOA estimation. Fig. 2 shows the experimental system used to characterize the S-DNN. Fig. 3 presents a comparison of the angular response between the S-DNN and a lens system. Fig. 4 displays the experimental results of the confusion and energy distribution matrices for the test samples. Fig. 5 demonstrates the broadband DOA estimation performance of the S-DNN. Fig. 6 illustrates the application of DOA estimation with passive S-DNNs for RIS-based communications.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The S-DNN is a passive, all-optical system that uses diffractive neural networks to estimate the direction of arrival (DOA) of electromagnetic waves. The system consists of multiple layers of sub-wavelength diffractive elements that modulate the amplitude and phase of the incident light field, generating a super-oscillatory angular response within a local angular range. The S-DNN can be designed to operate in either 1D or 2D estimation modes to estimate the elevation and azimuth angles of the targets individually or simultaneously.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports that the S-DNN achieves an angular resolution of 1°, which is four times higher than the diffraction-limited resolution. The system also demonstrates broadband super-resolution DOA estimation over a wide field of view, with an estimation delay that is in principle two to four orders of magnitude lower than commercial devices.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The S-DNN solves the problem of achieving super-resolution DOA estimation beyond the diffraction limit, eliminating the need for traditional RF circuits or digital processing systems. However, the system still requires further development to achieve reconfigurability and to integrate with other systems, such as RIS-based communications.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"All-optical computing for super-resolution direction of arrival estimation\",\n         \"authors\":\"Sheng Gao, Zhi Sun, Hang Chen, Yuan Shen, Haiou Zhang, Xing Lin\",\n         \"year\":2024,\n         \"venue\":\"Light Science & Applications\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"other\",\n         \"carrier_band\":\"other\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"other\",\n         \"scenario_description\":\"All-optical direction of arrival estimation\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"Super-resolution diffractive neural network for all-optical DOA estimation\",\n         \"gap_addressed\":\"Achieving super-resolution DOA estimation beyond the diffraction limit\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"Diffractive neural network\",\n         \"novel_component_specs\":\"Sub-wavelength diffractive elements\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"All-optical DOA estimation\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"other\",\n         \"tx_modulation_type\":\"not_specified\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":\"NR\",\n         \"optical_bandwidth_ghz\":\"NR\",\n         \"tx_power_dbm\":\"NR\",\n         \"aperture_diameter_m\":\"NR\",\n         \"beam_divergence_mrad\":\"NR\"\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"other\",\n         \"rx_aperture_diameter_m\":\"NR\",\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":\"NR\",\n         \"rx_modulator_operating_point\":\"not_specified\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"other\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"other\",\n         \"comm_modulation_order\":\"NR\",\n         \"comm_symbol_rate_gbaud\":\"NR\",\n         \"comm_fec_type\":\"NR\",\n         \"sensing_waveform_family\":\"other\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"NR\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":\"NR\",\n         \"fibre_type\":\"NR\",\n         \"attenuation_db_per_km\":\"NR\",\n         \"dispersion_ps_per_nm_km\":\"NR\",\n         \"nonlinearity_model\":\"NR\",\n         \"backscatter_sensing_type\":\"NR\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":\"NR\",\n         \"path_loss_model\":\"NR\",\n         \"turbulence_model\":\"NR\",\n         \"turbulence_Cn2\":\"NR\",\n         \"scintillation_index\":\"NR\",\n         \"pointing_error_model\":\"NR\",\n         \"weather_visibility_m\":\"NR\",\n         \"ambient_light_model\":\"NR\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":\"NR\",\n         \"spectral_efficiency_bps_hz\":\"NR\",\n         \"ber\":\"NR\",\n         \"ber_target\":\"NR\",\n         \"snr_db\":\"NR\",\n         \"osnr_db\":\"NR\",\n         \"outage_probability\":\"NR\",\n         \"latency_ms\":\"NR\",\n         \"capacity_bps_hz\":\"NR\"\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"direction_of_arrival\",\n         \"sensing_range_m\":\"NR\",\n         \"range_resolution_m\":\"NR\",\n         \"range_accuracy_m\":\"NR\",\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":\"NR\",\n         \"velocity_accuracy_mps\":\"NR\",\n         \"localization_error_m\":\"NR\",\n         \"spatial_resolution_m\":\"NR\",\n         \"sensing_bandwidth_hz\":\"NR\",\n         \"pd_probability_detection\":\"NR\",\n         \"pfa_probability_false_alarm\":\"NR\",\n         \"crb_crlb_value\":\"NR\",\n         \"crb_parameter\":\"NR\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"joint_waveform\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"NR\",\n         \"tradeoff_control_range\":\"NR\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":\"NR\",\n         \"opa_steering_range_deg\":\"NR\",\n         \"opa_beamwidth_deg\":\"NR\",\n         \"ris_num_elements\":\"NR\",\n         \"ris_type\":\"NR\",\n         \"ris_phase_bits\":\"NR\"\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Fig. 1\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"NR\",\n         \"num_trials\":\"NR\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system and its components, and the experimental results are well-presented.\"\n   }\n}"
+}

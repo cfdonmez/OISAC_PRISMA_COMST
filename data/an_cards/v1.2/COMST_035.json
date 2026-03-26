@@ -1,0 +1,739 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_035",
+  "title": "Data and Model Poisoning Backdoor Attacks on Wireless Federated Learning, and the Defense Mechanisms: A Comprehensive Survey",
+  "year_online": "2024",
+  "year_issue": "2024",
+  "year_source": "doi",
+  "domain": "Backdoor attacks and defenses in wireless federated learning",
+  "source_path": "data/corp_std/COMST_035/COMST_035.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Span tags and mixed HTML/markdown tables retained; treat abbreviation/notation tables as glossary."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 25051,
+    "approx_token_count_total": null,
+    "equation_count_est": 311,
+    "figure_count_est": 41,
+    "table_count_est": 15,
+    "list_count_est": 28,
+    "citation_count_in_body_est": 233,
+    "citation_density_per_1k_words_est": 9.3,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. Introduction",
+        "A. Motivation",
+        "B. Review of Existing Surveys and Gap Analysis",
+        "C. Scope and Contributions",
+        "D. Structure of This Survey"
+      ],
+      "objective": "Motivate WFL backdoor risks, review survey gaps, define scope/contributions, and present structure.",
+      "key_components": [
+        "WFL use case and threat motivation",
+        "Gap vs prior surveys",
+        "Scope and contribution list",
+        "Organization roadmap"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 2591,
+      "positioning": {
+        "start_doc_progress_pct_est": 2,
+        "end_doc_progress_pct_est": 12
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Early separate subsections for survey gap, scope, and contributions"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States lack of surveys covering both data/model poisoning backdoor attacks and defenses in WFL, lists contributions, and outlines structure.",
+          "locator": {
+            "heading": "C. Scope and Contributions",
+            "paragraph_index_est": 1,
+            "line_range_est": "L120-L190"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. BACKGROUND AND THREAT MODELS",
+        "A. Overview of Wireless Communications Technologies",
+        "B. Overview of WFL",
+        "C. Features of WFL",
+        "D. Overview of Backdoor Attacks on WFL",
+        "E. Evaluation Metrics for Backdoor Attacks",
+        "F. Performance Analysis of Backdoor Attacks"
+      ],
+      "objective": "Provide WFL background, threat models, key features, backdoor overview, and evaluation metrics.",
+      "key_components": [
+        "Wireless comms context for WFL",
+        "WFL workflow and features",
+        "Threat model and backdoor basics",
+        "Attack evaluation metrics and analysis"
+      ],
+      "approx_word_share_pct": "21-23",
+      "approx_words_est": 5527,
+      "positioning": {
+        "start_doc_progress_pct_est": 12,
+        "end_doc_progress_pct_est": 34
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Integrates metrics and performance analysis into background to prime later comparisons"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes WFL workflow, threat model, backdoor basics, and metrics.",
+          "locator": {
+            "heading": "II. BACKGROUND AND THREAT MODELS",
+            "paragraph_index_est": 2,
+            "line_range_est": "L200-L320"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. STATUS QUO OF BACKDOOR ATTACKS ON WFL",
+        "A. Backdoor Attacks at Local Data Collection Phase",
+        "B. Backdoor Attacks at Local Model Training Phase",
+        "C. Backdoor Attacks at Aggregation Phase",
+        "D. Summary"
+      ],
+      "objective": "Classify backdoor attacks on WFL by pipeline phase and summarize findings.",
+      "key_components": [
+        "Data collection phase attacks",
+        "Local training phase attacks",
+        "Aggregation phase attacks",
+        "Comparative summary"
+      ],
+      "approx_word_share_pct": "16-18",
+      "approx_words_est": 4203,
+      "positioning": {
+        "start_doc_progress_pct_est": 34,
+        "end_doc_progress_pct_est": 51
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Phase-based taxonomy covering data, training, and aggregation with a closing summary"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Details phase-wise backdoor attacks and synthesizes them.",
+          "locator": {
+            "heading": "III. STATUS QUO OF BACKDOOR ATTACKS ON WFL",
+            "paragraph_index_est": 1,
+            "line_range_est": "L320-L440"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "IV. LATEST DEFENSE METHODOLOGIES AGAINST BACKDOOR ATTACKS",
+        "A. Defense at Local Training Phase",
+        "Local end:",
+        "B. Defense Before Aggregation Phase",
+        "C. Defense During Aggregation Phase",
+        "D. Defense After Aggregation Phase",
+        "E. Summary"
+      ],
+      "objective": "Survey defense methodologies for WFL backdoors across pipeline phases and summarize.",
+      "key_components": [
+        "Local training defenses",
+        "Client-side safeguards (local end)",
+        "Pre-aggregation defenses",
+        "Aggregation-time defenses",
+        "Post-aggregation defenses",
+        "Summary of defenses"
+      ],
+      "approx_word_share_pct": "25-27",
+      "approx_words_est": 6456,
+      "positioning": {
+        "start_doc_progress_pct_est": 51,
+        "end_doc_progress_pct_est": 77
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Defense taxonomy mirrors attack phases and includes a dedicated local-end subsection"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers defenses at local, pre-aggregation, aggregation, and post-aggregation stages with a summary.",
+          "locator": {
+            "heading": "IV. LATEST DEFENSE METHODOLOGIES AGAINST BACKDOOR ATTACKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L440-L620"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "EVALUATION_FRAMEWORK",
+      "raw_headings": [
+        "V. PERFORMANCE EVALUATION AND COMPARISON",
+        "A. Comparison Among Backdoor Attack Strategies",
+        "B. Comparison Among Backdoor Attack Defense Methods",
+        "C. Summary"
+      ],
+      "objective": "Compare performance of backdoor attacks and defenses using defined metrics.",
+      "key_components": [
+        "Attack strategy comparisons",
+        "Defense method comparisons",
+        "Comparison summary"
+      ],
+      "approx_word_share_pct": "6-7",
+      "approx_words_est": 1618,
+      "positioning": {
+        "start_doc_progress_pct_est": 77,
+        "end_doc_progress_pct_est": 83
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Side-by-side comparisons for both attacks and defenses before lessons"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Compares backdoor attack strategies and defense methods using prior metrics.",
+          "locator": {
+            "heading": "V. PERFORMANCE EVALUATION AND COMPARISON",
+            "paragraph_index_est": 1,
+            "line_range_est": "L620-L700"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "OTHER",
+      "raw_headings": [
+        "VI. LESSONS LEARNED",
+        "A. Backdoor Attack Methods",
+        "B. Backdoor Defense"
+      ],
+      "objective": "Summarize lessons from attack and defense analyses.",
+      "key_components": [
+        "Lessons for attack methods",
+        "Lessons for defense methods"
+      ],
+      "approx_word_share_pct": "4-5",
+      "approx_words_est": 1146,
+      "positioning": {
+        "start_doc_progress_pct_est": 83,
+        "end_doc_progress_pct_est": 88
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary"
+      ],
+      "notable_moves": [
+        "Explicit lessons subsections split for attacks and defenses"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Distills lessons from attack and defense sections separately.",
+          "locator": {
+            "heading": "VI. LESSONS LEARNED",
+            "paragraph_index_est": 1,
+            "line_range_est": "L700-L750"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VII. CHALLENGES, OPEN PROBLEMS, AND FUTURE RESEARCH DIRECTIONS",
+        "A. Backdoor Attacks on WFL",
+        "B. Defense Methods in WFL"
+      ],
+      "objective": "Highlight challenges and open problems for backdoor attacks and defenses in WFL.",
+      "key_components": [
+        "Attack-side challenges and open problems",
+        "Defense-side challenges and research directions"
+      ],
+      "approx_word_share_pct": "9-11",
+      "approx_words_est": 2480,
+      "positioning": {
+        "start_doc_progress_pct_est": 88,
+        "end_doc_progress_pct_est": 96
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Challenges split by attack and defense perspectives"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists open problems for attacks and defenses and proposes future research.",
+          "locator": {
+            "heading": "VII. CHALLENGES, OPEN PROBLEMS, AND FUTURE RESEARCH DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L750-L820"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S08",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VIII. CONCLUSION"
+      ],
+      "objective": "Summarize survey scope and reiterate outlook.",
+      "key_components": [
+        "Recap of backdoor attack/defense coverage",
+        "Reminder of challenges and future work"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 510,
+      "positioning": {
+        "start_doc_progress_pct_est": 96,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Short close pointing back to future directions"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Concludes by summarizing attacks/defenses and restating future work.",
+          "locator": {
+            "heading": "VIII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L820-L840"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Highlights prevalence of WFL and risk of backdoor attacks in wireless settings.",
+      "locator": "L10-L70"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "Notes prior surveys cover WFL or backdoors partially but not joint data/model poisoning attacks with defenses across phases.",
+      "locator": "L70-L140"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges existing surveys yet stresses missing combined attack+defense treatment for WFL.",
+      "locator": "L110-L170"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions: comprehensive attack taxonomy, phase-aligned defenses, comparisons, lessons, and future directions.",
+      "locator": "L150-L210"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides section roadmap in introduction.",
+      "locator": "L180-L220"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focus on data and model poisoning backdoor attacks and defenses in WFL, including metrics and comparisons.",
+      "locator": "L140-L210"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate WFL backdoor risks; identify survey gap; present phase-based attacks; follow with phase-aligned defenses; compare performance; offer lessons and future directions."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "by pipeline phase",
+    "axes": [
+      "Pipeline phase (data collection, local training, aggregation)",
+      "Attack/defense alignment"
+    ],
+    "levels_est": 2,
+    "node_count_est": 6,
+    "branches": [
+      "Data collection attacks",
+      "Local training attacks",
+      "Aggregation attacks",
+      "Local training defenses",
+      "Pre-/during/post-aggregation defenses"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F02"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "attack success rate",
+      "model accuracy",
+      "backdoor persistence",
+      "communication/computation overhead",
+      "detection effectiveness"
+    ],
+    "tradeoff_axes": [
+      "attack stealth vs success",
+      "defense robustness vs cost"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L260-L330"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro and related work include tables/figures to set gaps; background uses figures for WFL workflow and threat models; attack and defense sections use tables/figures per phase; comparison section uses tables; lessons/challenges are text-heavy.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "roadmap",
+        "purpose": "show survey structure and WFL threat overview",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 6
+        },
+        "evidence_locator": "L40-L120"
+      },
+      {
+        "figure_id": "F02",
+        "type": "taxonomy",
+        "purpose": "depict phase-based attack/defense taxonomy",
+        "placement": {
+          "first_mention_section_id": "S03",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 36
+        },
+        "evidence_locator": "L330-L400"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "survey comparison",
+        "purpose": "compare existing surveys and highlight gap",
+        "placement": {
+          "first_mention_section_id": "S01",
+          "first_mention_section_label": "INTRODUCTION",
+          "doc_progress_pct_est": 9
+        },
+        "evidence_locator": "L100-L170"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "high",
+    "lesson_blocks": [
+      {
+        "location": "Attack phases",
+        "lesson": "Phase-based view clarifies where triggers/poisoning are injected and how stealth is maintained.",
+        "locator": "L330-L450"
+      },
+      {
+        "location": "Defense phases",
+        "lesson": "Phase-aligned defenses (local to post-aggregation) must balance robustness with overhead.",
+        "locator": "L440-L620"
+      },
+      {
+        "location": "Performance comparisons",
+        "lesson": "Using common metrics (success rate, accuracy, persistence) enables cross-method benchmarking.",
+        "locator": "L620-L700"
+      },
+      {
+        "location": "Lessons learned",
+        "lesson": "Separate lessons for attacks vs defenses surface asymmetric risks and mitigation levers.",
+        "locator": "L700-L750"
+      },
+      {
+        "location": "Challenges",
+        "lesson": "Future work should target scalable defenses, adaptive attacks, and realistic wireless constraints.",
+        "locator": "L750-L820"
+      }
+    ],
+    "aha_moment": "Mirroring attack and defense taxonomies across WFL phases, then benchmarking with shared metrics, turns a sprawling threat landscape into parallel, comparable tracks."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "yes",
+    "selection_criteria": "keywords on backdoor attacks/defenses in WFL across IEEE, ACM, AIAA, Elsevier, Springer, Taylor & Francis, Scientific, SIAM, Wiley, Hindawi",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "yes",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "Introduce phase or mission, then enumerate methods with figures/tables and close with summaries or lessons.",
+    "math_handling_strategy": "heavy formalism",
+    "listicle_usage": "light",
+    "list_density_per_1k_words_est": 1.1,
+    "signposting_devices": [
+      "Specifically",
+      "Furthermore",
+      "In this survey",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Gap-first intro with scope and structure",
+      "applies_to_sections": [
+        "INTRODUCTION"
+      ],
+      "steps": [
+        "State the WFL backdoor risk and why wireless settings are vulnerable.",
+        "Compare prior surveys to show the missing joint attack+defense view.",
+        "List scope/contributions and provide a section roadmap."
+      ],
+      "why_it_works": "Makes novelty explicit and orients readers before deep taxonomy.",
+      "evidence_locators": [
+        "L100-L220"
+      ]
+    },
+    {
+      "title": "Phase-aligned attack taxonomy",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Organize attacks by WFL phase (data collection, local training, aggregation).",
+        "Describe key mechanisms per phase.",
+        "Close with a concise summary."
+      ],
+      "why_it_works": "Phase framing mirrors the WFL pipeline and clarifies injection points.",
+      "evidence_locators": [
+        "L320-L450"
+      ]
+    },
+    {
+      "title": "Defense taxonomy mirroring attacks",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK"
+      ],
+      "steps": [
+        "Align defenses to the same phases (local, pre-aggregation, aggregation, post-aggregation).",
+        "Include a short local-end subsection when client specifics matter.",
+        "Summarize cross-phase trade-offs."
+      ],
+      "why_it_works": "Parallelism with attacks makes mitigation mapping straightforward.",
+      "evidence_locators": [
+        "L440-L620"
+      ]
+    },
+    {
+      "title": "Metrics-driven comparison then lessons/challenges",
+      "applies_to_sections": [
+        "EVALUATION_FRAMEWORK",
+        "OTHER",
+        "CHALLENGES"
+      ],
+      "steps": [
+        "Define common metrics (success rate, accuracy, persistence, overhead).",
+        "Compare attack and defense methods using these metrics.",
+        "Follow with lessons split by attacks vs defenses, then challenges/future work."
+      ],
+      "why_it_works": "Common metrics enable fair comparisons and set up actionable lessons and research agenda.",
+      "evidence_locators": [
+        "L260-L820"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "Mixed HTML/markdown tables",
+      "Encoding artifacts in tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; heavy equations and figures; glossary/notation tables present. Encoding artifacts remain in some tables."
+}

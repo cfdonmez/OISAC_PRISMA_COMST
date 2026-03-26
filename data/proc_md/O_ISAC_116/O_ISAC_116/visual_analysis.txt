@@ -1,0 +1,66 @@
+Image: _page_1_Figure_2.jpeg
+Type: Chart (SNR and Bit Allocation)
+---
+**Axes:** X: Subcarrier Index [0 to 500], Y: SNR (dB) [left, 5 to 25] and Bit Allocation (bit/sym) [right, 0 to 7].
+**Observations:**
+* **SNR (blue curve):** Peaks at ~25 dB around subcarrier 80 and gradually decays to ~6 dB at subcarrier 500.
+* **Bit Allocation (red stepped):** Tracks the SNR, starting at 6 bit/sym for high SNR regions and dropping to 1-0 bit/sym as SNR degrades at higher frequencies.
+---
+
+Image: _page_1_Figure_4.jpeg
+Type: Chart (Data Rate vs Misalignment)
+---
+**Axes:** X: Misalignment Angle ($^\circ$) [0 to 20], Y: Data Rate (Gbps) [0 to 1.4].
+**Observations:**
+* Data rate starts at 1.24 Gbps at $0^\circ$.
+* Stays above 1 Gbps up to $8^\circ$.
+* Drops sharply between $8^\circ$ and $12^\circ$ down to ~0.35 Gbps.
+* Ends at ~0.18 Gbps at $20^\circ$.
+---
+
+Image: _page_1_Picture_10.jpeg
+Type: System Diagram (Optical Scattering System)
+---
+**Components:**
+* **Transmitter:** AWG -> Amp -> Bias Tee (with DC Bias) -> LED Array.
+* **Link:** Light from LED array undergoes scattering and ceiling reflection (2.2 m ceiling height).
+* **Receiver:** PMT (Photomultiplier Tube) with $44^\circ$ FOV -> TIA -> Oscilloscope -> Laptop.
+* **Grid:** Illustrates a 2D testing grid labeled A, B, C... and 1, 2, 3...
+---
+
+Image: _page_2_Figure_4.jpeg
+Type: Chart (BER and Received Power vs Position)
+---
+**Axes:** X: Positions [A7 to M7], Y: BER [left, $10^{-5}$ to $10^{-1}$] and Power (dBm) [right, -84 to -68].
+**Observations:**
+* **Received Signal Power (red):** Symmetric bell shape, peaking at ~-68.5 dBm at position G7.
+* **BER (blue):** "U" shaped. MF (Matched Filter) detection BER (solid) reaches a minimum of $<2 \times 10^{-5}$ at H7. PC detection BER (dashed) is slightly higher.
+---
+
+Image: _page_2_Figure_10.jpeg
+Type: Heatmaps (SNR and BER Distribution)
+---
+<b>Rows:</b> (a) - (c) representing different test conditions/configurations.
+<b>Cols:</b>
+* **BER Map:** Shows discrete cells (A-M, 1-9). Blue regions represent low BER ($\le 2.2 \times 10^{-5}$), Red regions represent high BER ($> 2.7 \times 10^{-2}$).
+* **SNR Map:** Corresponds to BER, with central yellow regions reaching ~13 dB and outer blue regions dropping to ~0 dB.
+---
+
+Image: _page_2_Picture_2.jpeg
+Type: Photograph (Lab Environment)
+---
+**Content:**
+* Shows the real-world experimental setup in a lab.
+* **Tx (Transmitter):** Mounted on a table with a reflector.
+* **Rx (Receiver):** Located on a separate table.
+* **Ceiling:** Standard office ceiling tiles, used for the NLOS reflection experiments.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Chart (SNR vs Time with Smoke)
+---
+**Axes:** X: Time Lapse (min) [0 to 90], Y: SNR (dB) [5 to 12].
+**Observations:**
+* **No Smoke (red dashed):** Constant baseline at ~5.1 dB.
+* **With Smoke (blue circles):** SNR starts high (~11.3 dB) due to added scattering paths providing more signal to the NLOS receiver, then gradually decays to ~8.8 dB as smoke absorbs more light over 90 minutes.
+---

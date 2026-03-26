@@ -1,0 +1,156 @@
+{
+  "run_id": "20260102_102356_O_ISAC_096_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102356",
+  "paper_id": "O_ISAC_096",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper discusses the concept of nanoantennas and their potential applications in various fields, including 6G wireless communication, IoT, smart cities, healthcare, and medical imaging. The images provided show different types of nanoantennas, such as nanowires, nanoloops, bow-tie antennas, and Yagi-Uda antennas."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The paper explores the fundamental aspects of nanoantennas, including their operating principles, design parameters, and applications. The ISAC coupling mode is not explicitly mentioned, but the paper discusses the potential of nanoantennas in integrated sensing and communication systems."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports on the potential of nanoantennas in various applications, including 6G wireless communication, but does not provide specific metrics on rate or resolution. However, it discusses the challenges and limitations of nanoantennas, such as their limited compatibility with planar structures and the need for high-power THz wave transmitters."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper highlights the potential of nanoantennas in various applications, but also discusses the challenges and limitations that need to be addressed. The solved problems include the development of nanoantennas with high gain and wide bandwidth, while the remaining open challenges include the need for high-power THz wave transmitters and the limited compatibility of nanoantennas with planar structures."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Nanoantennas and Nanoradars: The Future of Integrated Sensing and Communication at the Nanoscale",
+        "authors": "M. Javad Fakhimi, Ozgur B. Akan",
+        "year": 2024,
+        "venue": "IEEE",
+        "doi": "10.1109/TMBMC.2024.3434545",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "terahertz",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "6g_networks",
+        "scenario_description": "The paper discusses the potential of nanoantennas in 6G wireless communication and other applications."
+      },
+      "evidence": {
+        "evidence_type": "analytical",
+        "validation_baselines_present": false,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper explores the fundamental aspects of nanoantennas and their potential applications in various fields.",
+        "gap_addressed": "The paper addresses the need for high-power THz wave transmitters and the limited compatibility of nanoantennas with planar structures.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "nanoantennas",
+        "novel_component_specs": "high gain and wide bandwidth"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Nanoantennas for 6G Wireless Communication"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "fmcw_chirp",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 10,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 0.1,
+        "scintillation_index": 0.5
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 10,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0-1"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive review of nanoantennas and their potential applications, but lacks experimental validation."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper discusses the concept of nanoantennas and their potential applications in various fields, including 6G wireless communication, IoT, smart cities, healthcare, and medical imaging. The images provided show different types of nanoantennas, such as nanowires, nanoloops, bow-tie antennas, and Yagi-Uda antennas.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The paper explores the fundamental aspects of nanoantennas, including their operating principles, design parameters, and applications. The ISAC coupling mode is not explicitly mentioned, but the paper discusses the potential of nanoantennas in integrated sensing and communication systems.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports on the potential of nanoantennas in various applications, including 6G wireless communication, but does not provide specific metrics on rate or resolution. However, it discusses the challenges and limitations of nanoantennas, such as their limited compatibility with planar structures and the need for high-power THz wave transmitters.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper highlights the potential of nanoantennas in various applications, but also discusses the challenges and limitations that need to be addressed. The solved problems include the development of nanoantennas with high gain and wide bandwidth, while the remaining open challenges include the need for high-power THz wave transmitters and the limited compatibility of nanoantennas with planar structures.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Nanoantennas and Nanoradars: The Future of Integrated Sensing and Communication at the Nanoscale\",\n         \"authors\":\"M. Javad Fakhimi, Ozgur B. Akan\",\n         \"year\":2024,\n         \"venue\":\"IEEE\",\n         \"doi\":\"10.1109/TMBMC.2024.3434545\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"terahertz\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"6g_networks\",\n         \"scenario_description\":\"The paper discusses the potential of nanoantennas in 6G wireless communication and other applications.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"analytical\",\n         \"validation_baselines_present\":false,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper explores the fundamental aspects of nanoantennas and their potential applications in various fields.\",\n         \"gap_addressed\":\"The paper addresses the need for high-power THz wave transmitters and the limited compatibility of nanoantennas with planar structures.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"nanoantennas\",\n         \"novel_component_specs\":\"high gain and wide bandwidth\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Nanoantennas for 6G Wireless Communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.01,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"photonic_dechirping\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":64,\n         \"comm_symbol_rate_gbaud\":10,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"fmcw_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":10,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10,\n         \"path_loss_model\":\"friis\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":0.1,\n         \"scintillation_index\":0.5\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":10,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0-1\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive review of nanoantennas and their potential applications, but lacks experimental validation.\"\n   }\n}"
+}

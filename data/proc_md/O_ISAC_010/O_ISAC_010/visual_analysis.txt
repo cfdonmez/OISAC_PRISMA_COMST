@@ -1,0 +1,55 @@
+# Visual Analysis for O_ISAC_010
+
+## Figure 1: PoF Characterization over SMF
+**Files:**
+- [(a) Setup Diagram](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_1_Figure_6.jpeg)
+- [(b) Power Scaling Chart](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_1_Figure_8.jpeg)
+- **Type:** (a) Schematic, (b) Line Chart.
+- **Description:** Preliminary test of 1064nm high-power fiber laser (HPFL) transmission over single-mode fiber (SMF) to identify Stimulated Raman Scattering (SRS) thresholds.
+- **Data (Collected Power at 10W Input):**
+  - **1 km:** ~7.6 W (Linear, no SRS).
+  - **2 km:** ~5.2 W (Saturation starts at ~9W input).
+  - **3 km:** ~2.9 W (Strong SRS saturation starts at ~6W input).
+- **Outcome:** 1 km link chosen for subsequent multi-core experiments to maintain linearity.
+
+## Figure 2: Integrated PoF and DMT Transmission Setup
+**File:** [_page_2_Figure_0.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_2_Figure_0.jpeg)
+- **Type:** System Diagram
+- **Description:** Experimental architecture for simultaneous transmission of 60W power and high-speed data over a 7-core Weakly Coupled Multi-Core Fiber (WC-MCF).
+- **Core Allocation:** 1 core for 1550nm DMT signal (IM-DD), 6 cores for 1064nm PoF signals.
+- **Key Components:** AWG (120 GSa/s), MZM (45 GHz), Fan-In/Fan-Out modules, 1-km WC-7CF (41.5 µm pitch), PPC (Photovoltaic Power Converters).
+- **Insets:** (a) Microscope cross-section of the 7-core fiber, (b) physical FIFO device.
+
+## Figure 3: DSP Flow for DMT Modulation/Demodulation
+**File:** [_page_2_Figure_5.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_2_Figure_5.jpeg)
+- **Type:** Block Diagram
+- **Stages:**
+  - **TX:** QAM Mapping -> IFFT (DMT Modulation) -> CP Addition -> RRC Filtering -> Resampling.
+  - **RX:** Resampling -> Matched Filtering -> Synchronization -> FFE Equalization -> FFT -> BER/SNR Calc.
+
+## Figure 4: FIFO Insertion Loss and Link Linearity
+**File:** [_page_3_Figure_1.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_3_Figure_1.jpeg)
+- **Chart (a):** Insertion loss of the FIFO module per channel ($0.5$ dB to $3.0$ dB). Ch4 exhibits highest loss.
+- **Chart (b):** Collected power per core vs. launched power ($1$-$10$ W). Strict linearity indicates no SRS/SBS effects in the 1-km MCF link.
+
+## Figure 5: Communication Performance across Cores
+**File:** [_page_3_Figure_4.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_3_Figure_4.jpeg)
+- **SNR Analysis:**
+  - **50 GBaud:** SNR consistently $\sim 22.0$-$23.5$ dB. 5/7 cores meet 3GPP requirement (EVM < 8%).
+  - **60 GBaud:** SNR drops to $\sim 21.7$-$23.3$ dB.
+  - **Feed Light Impact:** Negligible performance degradation when PoF is active.
+- **BER Analysis:** All cores stay below the SD-FEC threshold ($2 \times 10^{-2}$). At 50 GBaud, BER is $\sim 3 \times 10^{-3} - 8 \times 10^{-3}$.
+- **Constellations:** 64-QAM clusters remain well-defined, verifying high-speed signal integrity under 60W optical power.
+
+## Figure 6: Total Power and Conversion Efficiency
+**File:** [_page_3_Figure_7.jpeg](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_3_Figure_7.jpeg)
+- **Metrics:**
+  - **Total Collected Power:** Scales linearly up to **32.4 W**.
+  - **OPTE:** Remains constant at approximately **53.9%** across the entire power range.
+
+## Figure 7 & 8: System Stability over Time
+**Files:**
+- [Page 4 Figure 0](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_4_Figure_0.jpeg)
+- [Page 4 Figure 2](file:///g:/Drive'ım/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST/data/proc_markdowns/O_ISAC_010/O_ISAC_010/_page_4_Figure_2.jpeg)
+- **Observation:** Monitored over 60 minutes.
+- **Fluctuation:** Individual cores and total power (target 32.5W) show $<1\%$ variation, demonstrating robust stability for remote RU powering.

@@ -1,0 +1,184 @@
+{
+  "run_id": "20260102_104115_O_ISAC_327_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104115",
+  "paper_id": "O_ISAC_327",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper contains various figures and diagrams, including a concept diagram of 6G VLC-IoE applications, a taxonomy chart of VLC channel modeling methods, an experimental setup diagram for time-domain VLC channel measurement, data plots of indoor channel characteristics, and system schematics of RIS-assisted VLC and VLC-ISAC channel models."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The paper discusses the concept of Visible Light Communication (VLC) and its application in Internet of Everything (IoE) scenarios. The system mechanism involves the use of light-emitting diodes (LEDs) for both illumination and data transmission. The ISAC coupling mode is not explicitly mentioned, but the paper touches on the idea of integrating sensing and communication in VLC systems."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports various metrics, including path loss exponent (PLE), root mean square delay spread (RMS DS), and optical path loss (OPL). These metrics are physically consistent with the expected behavior of VLC channels, considering factors such as multipath dispersion, reflection, and absorption."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of characterizing and modeling VLC channels for IoE applications. However, open challenges remain, such as the need for more accurate and generalizable channel models, the impact of new technologies like RIS on VLC channels, and the integration of sensing and communication in VLC systems."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_327",
+        "title": "Channel Characterization and Modeling for VLC-IoE Applications in 6G: A Survey",
+        "authors": "Pan Tang et al.",
+        "year": 2024,
+        "venue": "IEEE Internet of Things Journal",
+        "doi": "10.1109/JIOT.2024.3430326",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "VLC-based indoor positioning system"
+      },
+      "evidence": {
+        "evidence_type": "analytical",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": true,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "A comprehensive survey of VLC channel characterization and modeling for IoE applications in 6G",
+        "gap_addressed": "The need for accurate and generalizable VLC channel models for IoE applications",
+        "performance_enablers": "VLC channel modeling methods, RIS technology",
+        "novel_component": "RIS-assisted VLC system",
+        "novel_component_specs": "MSA and MA configurations"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor VLC scenario"
+      },
+      "transmitter": {
+        "tx_source_type": "LED",
+        "tx_modulation_type": "IM/DD",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 630,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "PD",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 0,
+        "rx_modulator_operating_point": "MITP",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "separate_frontends",
+        "duplexing_mode": "half_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OOK",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time_division"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "localization_2d",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0_to_1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 10,
+        "ris_type": "metasurface",
+        "ris_phase_bits": 2
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive survey of VLC channel characterization and modeling for IoE applications in 6G, with a clear and well-structured presentation of the material."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper contains various figures and diagrams, including a concept diagram of 6G VLC-IoE applications, a taxonomy chart of VLC channel modeling methods, an experimental setup diagram for time-domain VLC channel measurement, data plots of indoor channel characteristics, and system schematics of RIS-assisted VLC and VLC-ISAC channel models.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The paper discusses the concept of Visible Light Communication (VLC) and its application in Internet of Everything (IoE) scenarios. The system mechanism involves the use of light-emitting diodes (LEDs) for both illumination and data transmission. The ISAC coupling mode is not explicitly mentioned, but the paper touches on the idea of integrating sensing and communication in VLC systems.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports various metrics, including path loss exponent (PLE), root mean square delay spread (RMS DS), and optical path loss (OPL). These metrics are physically consistent with the expected behavior of VLC channels, considering factors such as multipath dispersion, reflection, and absorption.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of characterizing and modeling VLC channels for IoE applications. However, open challenges remain, such as the need for more accurate and generalizable channel models, the impact of new technologies like RIS on VLC channels, and the integration of sensing and communication in VLC systems.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_327\",\n         \"title\":\"Channel Characterization and Modeling for VLC-IoE Applications in 6G: A Survey\",\n         \"authors\":\"Pan Tang et al.\",\n         \"year\":2024,\n         \"venue\":\"IEEE Internet of Things Journal\",\n         \"doi\":\"10.1109/JIOT.2024.3430326\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"VLC-based indoor positioning system\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"analytical\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":true,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"A comprehensive survey of VLC channel characterization and modeling for IoE applications in 6G\",\n         \"gap_addressed\":\"The need for accurate and generalizable VLC channel models for IoE applications\",\n         \"performance_enablers\":\"VLC channel modeling methods, RIS technology\",\n         \"novel_component\":\"RIS-assisted VLC system\",\n         \"novel_component_specs\":\"MSA and MA configurations\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor VLC scenario\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"LED\",\n         \"tx_modulation_type\":\"IM/DD\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":630,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"PD\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":0,\n         \"rx_modulator_operating_point\":\"MITP\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"separate_frontends\",\n         \"duplexing_mode\":\"half_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"OOK\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"pulse_train\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time_division\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"none\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"none\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"localization_2d\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":10,\n         \"ris_type\":\"metasurface\",\n         \"ris_phase_bits\":2\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive survey of VLC channel characterization and modeling for IoE applications in 6G, with a clear and well-structured presentation of the material.\"\n   }\n}"
+}

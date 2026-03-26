@@ -1,0 +1,297 @@
+{
+  "run_id": "20251210_143015_O_ISAC_029_llama-3.3-70b-versatile",
+  "timestamp": "20251210_143015",
+  "paper_id": "O_ISAC_029",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The paper presents a THz photonic-based ISAC system designed for fiber-wireless networks. It uses a thin-film lithium niobate Mach-Zehnder modulator (TFLN-MZM) for full-photonic direct reception and de-chirping of D-band LFM echo signals. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s at a center frequency of 134 GHz."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The system's performance is evaluated in terms of sensing and communication metrics. For sensing, it achieves a calibrated mean ranging error of less than 3 mm. For communication, it achieves a peak data rate of 116 Gbit/s with a BER below 1E-2 over 20-km fiber transmission."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The paper demonstrates a novel approach to integrating sensing and communication in THz band using photonic technology. It highlights the potential for seamless integration with fiber-wireless networks and the impact of different fiber lengths on system performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": [
+        {
+          "key": "record_id",
+          "value": "O_ISAC_001"
+        },
+        {
+          "key": "title",
+          "value": "THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network"
+        },
+        {
+          "key": "authors",
+          "value": "Boyu Dong, Zhongya Li, Sizhe Xing, Yinjun Liu, Junhao Zhao, Ouhan Huang, Junlian Jia, Jianyang Shi, Yingjun Zhou, Haipeng Wang, Nan Chi, Junwen Zhang"
+        },
+        {
+          "key": "year",
+          "value": 2025
+        },
+        {
+          "key": "venue",
+          "value": "IEEE Transactions on Microwave Theory and Techniques"
+        },
+        {
+          "key": "doi",
+          "value": "10.1109/TMTT.2025.3549729"
+        },
+        {
+          "key": "document_type",
+          "value": "journal"
+        }
+      ],
+      "classification": [
+        {
+          "key": "oisac_medium_class",
+          "value": "wireless_fso"
+        },
+        {
+          "key": "carrier_band",
+          "value": "THz"
+        },
+        {
+          "key": "operational_environment",
+          "value": "indoor"
+        },
+        {
+          "key": "link_topology",
+          "value": "point_to_point"
+        },
+        {
+          "key": "mobility_context",
+          "value": "static"
+        }
+      ],
+      "application": [
+        {
+          "key": "application_domain",
+          "value": [
+            "6g_networks",
+            "vehicular",
+            "industrial_manufacturing"
+          ]
+        },
+        {
+          "key": "scenario_description",
+          "value": "Fiber-wireless network for 6G applications"
+        }
+      ],
+      "evidence": [
+        {
+          "key": "evidence_type",
+          "value": [
+            "analytical",
+            "simulation",
+            "experimental"
+          ]
+        },
+        {
+          "key": "validation_baselines_present",
+          "value": true
+        },
+        {
+          "key": "reproducibility_artifacts",
+          "value": "data_available"
+        }
+      ],
+      "enabling_tech": [
+        {
+          "key": "ris_present",
+          "value": false
+        },
+        {
+          "key": "opa_present",
+          "value": false
+        },
+        {
+          "key": "machine_learning_used",
+          "value": false
+        }
+      ],
+      "key_contribution": [
+        {
+          "key": "key_contribution",
+          "value": "Full-photonic direct reception and de-chirping of THz LFM echo signals using TFLN-MZM"
+        },
+        {
+          "key": "gap_addressed",
+          "value": "Direct reception and de-chirping of THz LFM signals without electronic down-conversion"
+        },
+        {
+          "key": "performance_enablers",
+          "value": [
+            "photonic_dechirping",
+            "joint_waveform_design",
+            "tfln_modulator"
+          ]
+        },
+        {
+          "key": "novel_component",
+          "value": "TFLN-MZM with high bandwidth and low half-wave voltage"
+        }
+      ]
+    },
+    "scenario_level": [
+      {
+        "identification": [
+          {
+            "key": "experiment_id",
+            "value": "E1"
+          },
+          {
+            "key": "scenario_label",
+            "value": "D-band THz ISAC system"
+          }
+        ],
+        "transmitter": [
+          {
+            "key": "tx_source_type",
+            "value": "laser"
+          },
+          {
+            "key": "tx_modulation_type",
+            "value": "coherent"
+          },
+          {
+            "key": "tx_external_modulator",
+            "value": "mzm"
+          },
+          {
+            "key": "wavelength_nm",
+            "value": 1550
+          },
+          {
+            "key": "optical_bandwidth_ghz",
+            "value": 30
+          },
+          {
+            "key": "tx_power_dbm",
+            "value": 14.5
+          }
+        ],
+        "receiver": [
+          {
+            "key": "rx_detection_type",
+            "value": "coherent"
+          },
+          {
+            "key": "rx_detector",
+            "value": "bpd"
+          },
+          {
+            "key": "rx_photonic_processing",
+            "value": "photonic_dechirping"
+          },
+          {
+            "key": "rx_modulator_type",
+            "value": "tfln_mzm"
+          }
+        ],
+        "integration": [
+          {
+            "key": "hardware_sharing_mode",
+            "value": "shared_frontend"
+          },
+          {
+            "key": "duplexing_mode",
+            "value": "tdm"
+          }
+        ],
+        "waveform": [
+          {
+            "key": "comm_waveform_family",
+            "value": "qam"
+          },
+          {
+            "key": "comm_modulation_order",
+            "value": 16
+          },
+          {
+            "key": "comm_symbol_rate_gbaud",
+            "value": 29
+          },
+          {
+            "key": "sensing_waveform_family",
+            "value": "lfm_chirp"
+          },
+          {
+            "key": "isac_waveform_relationship",
+            "value": "single_dual_function"
+          }
+        ],
+        "comm_metrics": [
+          {
+            "key": "data_rate_gbps",
+            "value": 116
+          },
+          {
+            "key": "spectral_efficiency_bps_hz",
+            "value": 4
+          },
+          {
+            "key": "ber",
+            "value": 0.001
+          }
+        ],
+        "sensing_metrics": [
+          {
+            "key": "sensing_task_type",
+            "value": [
+              "ranging",
+              "localization_2d"
+            ]
+          },
+          {
+            "key": "sensing_range_m",
+            "value": 0.77
+          },
+          {
+            "key": "range_resolution_m",
+            "value": 0.006
+          },
+          {
+            "key": "range_accuracy_m",
+            "value": 0.003
+          }
+        ]
+      }
+    ],
+    "quality_assessment": [
+      {
+        "key": "tqaf_modelling_fidelity",
+        "value": 2
+      },
+      {
+        "key": "tqaf_validation_strength",
+        "value": 2
+      },
+      {
+        "key": "tqaf_experimental_validity",
+        "value": 2
+      },
+      {
+        "key": "tqaf_metric_completeness",
+        "value": 2
+      },
+      {
+        "key": "tqaf_reproducibility",
+        "value": 2
+      }
+    ]
+  },
+  "raw_response": "```json\n{\n  \"reasoning_trace\": [\n    {\n      \"key\": \"step_1_concept_analysis\",\n      \"type\": \"string\",\n      \"value\": \"The paper presents a THz photonic-based ISAC system designed for fiber-wireless networks. It uses a thin-film lithium niobate Mach-Zehnder modulator (TFLN-MZM) for full-photonic direct reception and de-chirping of D-band LFM echo signals. The system achieves a range resolution of 6 mm and a peak data rate of 116 Gbit/s at a center frequency of 134 GHz.\"\n    },\n    {\n      \"key\": \"step_2_benchmark_verification\",\n      \"type\": \"string\",\n      \"value\": \"The system's performance is evaluated in terms of sensing and communication metrics. For sensing, it achieves a calibrated mean ranging error of less than 3 mm. For communication, it achieves a peak data rate of 116 Gbit/s with a BER below 1E-2 over 20-km fiber transmission.\"\n    },\n    {\n      \"key\": \"step_3_strategic_critique\",\n      \"type\": \"string\",\n      \"value\": \"The paper demonstrates a novel approach to integrating sensing and communication in THz band using photonic technology. It highlights the potential for seamless integration with fiber-wireless networks and the impact of different fiber lengths on system performance.\"\n    }\n  ],\n  \"study_level\": {\n    \"bibliographic\": [\n      {\n        \"key\": \"record_id\",\n        \"value\": \"O_ISAC_001\"\n      },\n      {\n        \"key\": \"title\",\n        \"value\": \"THz Integrated Sensing and Communication With Full-Photonic Direct LFM Reception and De-Chirping for D-Band Fiber-Wireless Network\"\n      },\n      {\n        \"key\": \"authors\",\n        \"value\": \"Boyu Dong, Zhongya Li, Sizhe Xing, Yinjun Liu, Junhao Zhao, Ouhan Huang, Junlian Jia, Jianyang Shi, Yingjun Zhou, Haipeng Wang, Nan Chi, Junwen Zhang\"\n      },\n      {\n        \"key\": \"year\",\n        \"value\": 2025\n      },\n      {\n        \"key\": \"venue\",\n        \"value\": \"IEEE Transactions on Microwave Theory and Techniques\"\n      },\n      {\n        \"key\": \"doi\",\n        \"value\": \"10.1109/TMTT.2025.3549729\"\n      },\n      {\n        \"key\": \"document_type\",\n        \"value\": \"journal\"\n      }\n    ],\n    \"classification\": [\n      {\n        \"key\": \"oisac_medium_class\",\n        \"value\": \"wireless_fso\"\n      },\n      {\n        \"key\": \"carrier_band\",\n        \"value\": \"THz\"\n      },\n      {\n        \"key\": \"operational_environment\",\n        \"value\": \"indoor\"\n      },\n      {\n        \"key\": \"link_topology\",\n        \"value\": \"point_to_point\"\n      },\n      {\n        \"key\": \"mobility_context\",\n        \"value\": \"static\"\n      }\n    ],\n    \"application\": [\n      {\n        \"key\": \"application_domain\",\n        \"value\": [\"6g_networks\", \"vehicular\", \"industrial_manufacturing\"]\n      },\n      {\n        \"key\": \"scenario_description\",\n        \"value\": \"Fiber-wireless network for 6G applications\"\n      }\n    ],\n    \"evidence\": [\n      {\n        \"key\": \"evidence_type\",\n        \"value\": [\"analytical\", \"simulation\", \"experimental\"]\n      },\n      {\n        \"key\": \"validation_baselines_present\",\n        \"value\": true\n      },\n      {\n        \"key\": \"reproducibility_artifacts\",\n        \"value\": \"data_available\"\n      }\n    ],\n    \"enabling_tech\": [\n      {\n        \"key\": \"ris_present\",\n        \"value\": false\n      },\n      {\n        \"key\": \"opa_present\",\n        \"value\": false\n      },\n      {\n        \"key\": \"machine_learning_used\",\n        \"value\": false\n      }\n    ],\n    \"key_contribution\": [\n      {\n        \"key\": \"key_contribution\",\n        \"value\": \"Full-photonic direct reception and de-chirping of THz LFM echo signals using TFLN-MZM\"\n      },\n      {\n        \"key\": \"gap_addressed\",\n        \"value\": \"Direct reception and de-chirping of THz LFM signals without electronic down-conversion\"\n      },\n      {\n        \"key\": \"performance_enablers\",\n        \"value\": [\"photonic_dechirping\", \"joint_waveform_design\", \"tfln_modulator\"]\n      },\n      {\n        \"key\": \"novel_component\",\n        \"value\": \"TFLN-MZM with high bandwidth and low half-wave voltage\"\n      }\n    ]\n  },\n  \"scenario_level\": [\n    {\n      \"identification\": [\n        {\n          \"key\": \"experiment_id\",\n          \"value\": \"E1\"\n        },\n        {\n          \"key\": \"scenario_label\",\n          \"value\": \"D-band THz ISAC system\"\n        }\n      ],\n      \"transmitter\": [\n        {\n          \"key\": \"tx_source_type\",\n          \"value\": \"laser\"\n        },\n        {\n          \"key\": \"tx_modulation_type\",\n          \"value\": \"coherent\"\n        },\n        {\n          \"key\": \"tx_external_modulator\",\n          \"value\": \"mzm\"\n        },\n        {\n          \"key\": \"wavelength_nm\",\n          \"value\": 1550\n        },\n        {\n          \"key\": \"optical_bandwidth_ghz\",\n          \"value\": 30\n        },\n        {\n          \"key\": \"tx_power_dbm\",\n          \"value\": 14.5\n        }\n      ],\n      \"receiver\": [\n        {\n          \"key\": \"rx_detection_type\",\n          \"value\": \"coherent\"\n        },\n        {\n          \"key\": \"rx_detector\",\n          \"value\": \"bpd\"\n        },\n        {\n          \"key\": \"rx_photonic_processing\",\n          \"value\": \"photonic_dechirping\"\n        },\n        {\n          \"key\": \"rx_modulator_type\",\n          \"value\": \"tfln_mzm\"\n        }\n      ],\n      \"integration\": [\n        {\n          \"key\": \"hardware_sharing_mode\",\n          \"value\": \"shared_frontend\"\n        },\n        {\n          \"key\": \"duplexing_mode\",\n          \"value\": \"tdm\"\n        }\n      ],\n      \"waveform\": [\n        {\n          \"key\": \"comm_waveform_family\",\n          \"value\": \"qam\"\n        },\n        {\n          \"key\": \"comm_modulation_order\",\n          \"value\": 16\n        },\n        {\n          \"key\": \"comm_symbol_rate_gbaud\",\n          \"value\": 29\n        },\n        {\n          \"key\": \"sensing_waveform_family\",\n          \"value\": \"lfm_chirp\"\n        },\n        {\n          \"key\": \"isac_waveform_relationship\",\n          \"value\": \"single_dual_function\"\n        }\n      ],\n      \"comm_metrics\": [\n        {\n          \"key\": \"data_rate_gbps\",\n          \"value\": 116\n        },\n        {\n          \"key\": \"spectral_efficiency_bps_hz\",\n          \"value\": 4\n        },\n        {\n          \"key\": \"ber\",\n          \"value\": 1E-3\n        }\n      ],\n      \"sensing_metrics\": [\n        {\n          \"key\": \"sensing_task_type\",\n          \"value\": [\"ranging\", \"localization_2d\"]\n        },\n        {\n          \"key\": \"sensing_range_m\",\n          \"value\": 0.77\n        },\n        {\n          \"key\": \"range_resolution_m\",\n          \"value\": 0.006\n        },\n        {\n          \"key\": \"range_accuracy_m\",\n          \"value\": 0.003\n        }\n      ]\n    }\n  ],\n  \"quality_assessment\": [\n    {\n      \"key\": \"tqaf_modelling_fidelity\",\n      \"value\": 2\n    },\n    {\n      \"key\": \"tqaf_validation_strength\",\n      \"value\": 2\n    },\n    {\n      \"key\": \"tqaf_experimental_validity\",\n      \"value\": 2\n    },\n    {\n      \"key\": \"tqaf_metric_completeness\",\n      \"value\": 2\n    },\n    {\n      \"key\": \"tqaf_reproducibility\",\n      \"value\": 2\n    }\n  ]\n}\n```"
+}

@@ -1,0 +1,940 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_007",
+    "title": "A Survey of mmWave-Based Human Sensing: Technology, Platforms and Applications",
+    "paper_meta": {
+        "doi": "10.1109/COMST.2023.3298300",
+        "year_online": "2023",
+        "year_issue": "2023",
+        "venue": "IEEE COMST",
+        "source_path": "data/corp_std/COMST_007/COMST_007.md"
+    },
+    "analysis_policy": {
+        "include_scope": "Abstract through Section VIII Conclusion (main body only)",
+        "exclude_scope": "References (L720+), author biographies",
+        "segmentation_unit": "markdown_headings",
+        "notes": "Heavily structured survey with pipeline-based organization and comprehensive comparison tables. Paper uses sensing granularity as primary taxonomy axis."
+    },
+    "document_stats": {
+        "approx_word_count_total": 28000,
+        "approx_token_count_total": 38000,
+        "equation_count_est": 12,
+        "figure_count_est": 17,
+        "table_count_est": 8,
+        "list_count_est": 85,
+        "citation_count_in_body_est": 131,
+        "citation_density_per_1k_words_est": 4.7,
+        "definition_box_or_glossary_present": "no",
+        "notation_table_present": "no"
+    },
+    "normalization": {
+        "section_ontology": "INTRO|RELATED|SYSTEM_MODEL|TAXONOMY|EVALUATION|CHALLENGES|CONCLUSION|OTHER",
+        "section_order_canonical": [
+            "INTRO",
+            "RELATED",
+            "SYSTEM_MODEL",
+            "SYSTEM_MODEL",
+            "TAXONOMY",
+            "OTHER",
+            "CHALLENGES",
+            "CONCLUSION"
+        ],
+        "mapping_notes": "Section I→INTRO, Section II (Related Work)→RELATED, Section III (Platform & Datasets)→SYSTEM_MODEL, Section IV (Key Techniques)→SYSTEM_MODEL, Section V (Sensing Task)→TAXONOMY, Section VI (Applications)→OTHER, Section VII (Challenges & Future)→CHALLENGES, Section VIII→CONCLUSION"
+    },
+    "section_flow": [
+        {
+            "section_id": "S01",
+            "section_label": "INTRO",
+            "raw_headings": [
+                "I. INTRODUCTION"
+            ],
+            "objective": "Establish mmWave sensing advantages, identify human sensing challenges, position paper against existing surveys, present contributions",
+            "key_components": [
+                "Technology motivation",
+                "Comparison with alternatives (camera, Lidar, ultrasonic)",
+                "Human sensing challenges (four bullets)",
+                "Contribution summary (four bullets)",
+                "Paper organization"
+            ],
+            "approx_word_share_pct": 8,
+            "positioning": {
+                "start_doc_progress_pct_est": 0,
+                "end_doc_progress_pct_est": 5
+            },
+            "moves_present": {
+                "hook": "1",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "hook",
+                "gap",
+                "yes_but",
+                "scope_boundary",
+                "contribution",
+                "organization_map"
+            ],
+            "notable_moves": [
+                "Four-challenge framing for human sensing",
+                "Explicit comparison with alternative technologies",
+                "Visual article organization figure"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Hook: mmWave sensing advantages",
+                    "locator": {
+                        "heading": "I. INTRODUCTION",
+                        "line_range": "L27-29"
+                    }
+                },
+                {
+                    "claim": "Gap: need for comprehensive survey",
+                    "locator": {
+                        "heading": "I. INTRODUCTION",
+                        "line_range": "L39-40"
+                    }
+                },
+                {
+                    "claim": "Contributions list",
+                    "locator": {
+                        "heading": "I. INTRODUCTION",
+                        "line_range": "L41-53"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S02",
+            "section_label": "RELATED",
+            "raw_headings": [
+                "II. RELATED WORK"
+            ],
+            "objective": "Compare against related surveys, establish novelty through survey comparison table",
+            "key_components": [
+                "Survey comparison table (Table I)",
+                "Detailed comparison with most related work",
+                "Novelty statement"
+            ],
+            "approx_word_share_pct": 4,
+            "positioning": {
+                "start_doc_progress_pct_est": 5,
+                "end_doc_progress_pct_est": 8
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "1",
+                "yes_but": "1",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "gap",
+                "yes_but",
+                "contribution"
+            ],
+            "notable_moves": [
+                "Survey comparison table with taxonomy column",
+                "Four-point novelty enumeration"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Survey comparison table",
+                    "locator": {
+                        "heading": "Table I",
+                        "line_range": "L65-77"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S03",
+            "section_label": "SYSTEM_MODEL",
+            "raw_headings": [
+                "III. PLATFORM & DATASETS",
+                "A. FMCW Radar",
+                "B. 60GHz Probe",
+                "C. Customized Hardware",
+                "D. Datasets",
+                "E. Summary"
+            ],
+            "objective": "Provide comprehensive hardware platform reference and public dataset inventory",
+            "key_components": [
+                "FMCW radar block diagram",
+                "Hardware comparison table (Table II)",
+                "Customized hardware table (Table III)",
+                "Dataset comparison table (Table IV)",
+                "Platform selection guidance"
+            ],
+            "approx_word_share_pct": 12,
+            "positioning": {
+                "start_doc_progress_pct_est": 8,
+                "end_doc_progress_pct_est": 18
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Multi-column hardware comparison",
+                "Dataset inventory with consistent attributes",
+                "Section summary with selection guidance"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Hardware comparison table",
+                    "locator": {
+                        "heading": "Table II",
+                        "line_range": "L107-121"
+                    }
+                },
+                {
+                    "claim": "Dataset comparison table",
+                    "locator": {
+                        "heading": "Table IV",
+                        "line_range": "L162-173"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S04",
+            "section_label": "SYSTEM_MODEL",
+            "raw_headings": [
+                "IV. KEY TECHNIQUES",
+                "A. Human Sensing Pipeline",
+                "B. Data Capture",
+                "C. Signal Preprocessing",
+                "D. Feature Extraction",
+                "E. Sensing Model",
+                "F. Summary"
+            ],
+            "objective": "Present unified human sensing pipeline with modular technique breakdown",
+            "key_components": [
+                "Pipeline overview figure",
+                "Data capture (FMCW vs probe)",
+                "Signal forms (spectrum, phase, point cloud)",
+                "Denoising techniques",
+                "Feature extraction (time/frequency)",
+                "Sensing models (knowledge vs DL)",
+                "Technique comparison"
+            ],
+            "approx_word_share_pct": 14,
+            "positioning": {
+                "start_doc_progress_pct_est": 18,
+                "end_doc_progress_pct_est": 28
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "organization_map",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Pipeline-based progressive disclosure",
+                "Mathematical signal processing equations",
+                "Comparison subsections at end of each component"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Pipeline overview",
+                    "locator": {
+                        "heading": "A. Human Sensing Pipeline",
+                        "line_range": "L201-205"
+                    }
+                },
+                {
+                    "claim": "Point cloud generation flowchart",
+                    "locator": {
+                        "heading": "Fig. 4",
+                        "line_range": "L240-242"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S05",
+            "section_label": "TAXONOMY",
+            "raw_headings": [
+                "V. SENSING TASK",
+                "A. Tracking & Localization",
+                "B. Motion Recognition",
+                "C. Biometric Measurement",
+                "D. Human Imaging",
+                "E. Lessons Learned"
+            ],
+            "objective": "Systematic review of sensing tasks organized by sensing granularity, with per-task comparison tables and lessons learned synthesis",
+            "key_components": [
+                "Four-category taxonomy figure",
+                "Tracking & localization comparison table (Table V)",
+                "Motion recognition comparison table (Table VI)",
+                "Biometric measurement comparison table (Table VII)",
+                "Human imaging comparison table (Table VIII)",
+                "Lessons learned synthesis"
+            ],
+            "approx_word_share_pct": 42,
+            "positioning": {
+                "start_doc_progress_pct_est": 28,
+                "end_doc_progress_pct_est": 70
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "1",
+                "scope_boundary": "1",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "1",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "organization_map",
+                "scope_boundary",
+                "evaluation_framing"
+            ],
+            "notable_moves": [
+                "Four-category sensing granularity taxonomy",
+                "Per-category comparison tables with consistent columns",
+                "Bold method names for quick scanning",
+                "Lessons learned synthesis section"
+            ],
+            "evidence_locators": [
+                {
+                    "claim": "Taxonomy figure",
+                    "locator": {
+                        "heading": "Fig. 5",
+                        "line_range": "L293-295"
+                    }
+                },
+                {
+                    "claim": "Tracking comparison table",
+                    "locator": {
+                        "heading": "Table V",
+                        "line_range": "L309-324"
+                    }
+                },
+                {
+                    "claim": "Lessons learned",
+                    "locator": {
+                        "heading": "E. Lessons Learned",
+                        "line_range": "L640-653"
+                    }
+                }
+            ]
+        },
+        {
+            "section_id": "S06",
+            "section_label": "OTHER",
+            "raw_headings": [
+                "VI. APPLICATION SCENARIOS"
+            ],
+            "objective": "Map sensing capabilities to real-world application domains",
+            "key_components": [
+                "Application domain mapping",
+                "Use case examples"
+            ],
+            "approx_word_share_pct": 5,
+            "positioning": {
+                "start_doc_progress_pct_est": 70,
+                "end_doc_progress_pct_est": 75
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [],
+            "notable_moves": [
+                "Application-to-technique mapping"
+            ],
+            "evidence_locators": []
+        },
+        {
+            "section_id": "S07",
+            "section_label": "CHALLENGES",
+            "raw_headings": [
+                "VII. CHALLENGES AND FUTURE DIRECTIONS",
+                "A. Hardware and Platform",
+                "B. Enhancing the Applicability",
+                "C. Novel Sensing Schemes",
+                "D. Integration with New Mediums"
+            ],
+            "objective": "Identify open challenges and future research directions across hardware, applicability, novel schemes, and integration dimensions",
+            "key_components": [
+                "Hardware limitations and evolution",
+                "Cross-scenario portability",
+                "Novel sensing modalities",
+                "ISAC and THz integration"
+            ],
+            "approx_word_share_pct": 18,
+            "positioning": {
+                "start_doc_progress_pct_est": 75,
+                "end_doc_progress_pct_est": 95
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "0",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "1",
+                "evaluation_framing": "0",
+                "future_directions_framing": "1"
+            },
+            "move_sequence_est": [
+                "limitation",
+                "future_directions_framing"
+            ],
+            "notable_moves": [
+                "Four-dimension future directions structure",
+                "ISAC discussion"
+            ],
+            "evidence_locators": []
+        },
+        {
+            "section_id": "S08",
+            "section_label": "CONCLUSION",
+            "raw_headings": [
+                "VIII. CONCLUSION"
+            ],
+            "objective": "Summarize contributions and key findings",
+            "key_components": [
+                "Summary of coverage",
+                "Final remarks"
+            ],
+            "approx_word_share_pct": 2,
+            "positioning": {
+                "start_doc_progress_pct_est": 95,
+                "end_doc_progress_pct_est": 100
+            },
+            "moves_present": {
+                "hook": "0",
+                "gap": "0",
+                "yes_but": "0",
+                "contribution": "1",
+                "organization_map": "0",
+                "scope_boundary": "0",
+                "pivot": "0",
+                "limitation": "0",
+                "evaluation_framing": "0",
+                "future_directions_framing": "0"
+            },
+            "move_sequence_est": [
+                "contribution"
+            ],
+            "notable_moves": [],
+            "evidence_locators": []
+        }
+    ],
+    "rhetorical_contract": {
+        "intro_move_sequence": [
+            "hook",
+            "gap",
+            "yes_but",
+            "scope_boundary",
+            "contribution",
+            "organization_map"
+        ],
+        "move_evidence": [
+            {
+                "move": "hook",
+                "locator": {
+                    "heading": "I. INTRODUCTION",
+                    "line_range": "L11-12"
+                }
+            },
+            {
+                "move": "gap",
+                "locator": {
+                    "heading": "I. INTRODUCTION",
+                    "line_range": "L39-40"
+                }
+            },
+            {
+                "move": "contribution",
+                "locator": {
+                    "heading": "I. INTRODUCTION",
+                    "line_range": "L41-49"
+                }
+            },
+            {
+                "move": "organization_map",
+                "locator": {
+                    "heading": "I. INTRODUCTION",
+                    "line_range": "L53"
+                }
+            }
+        ],
+        "reader_contract_pattern": "We first present hardware platforms and datasets (Section III), then key techniques following a sensing pipeline (Section IV), then systematically review sensing tasks by granularity (Section V), followed by applications (Section VI) and challenges/future directions (Section VII)."
+    },
+    "taxonomy": {
+        "present": "yes",
+        "classification_strategy": "by sensing granularity",
+        "axes": [
+            "Sensing granularity",
+            "Signal form",
+            "Algorithm type",
+            "Hardware platform"
+        ],
+        "levels_est": 3,
+        "node_count_est": 50,
+        "branches": [
+            "Tracking & Localization",
+            "Motion Recognition (Activity/Gesture/Handwriting)",
+            "Biometric Measurement (Gait/Vital/Sound)",
+            "Human Imaging"
+        ],
+        "taxonomy_figure_present": "yes",
+        "taxonomy_table_present": "yes",
+        "taxonomy_artifacts": {
+            "figure_ids": [
+                "F05"
+            ],
+            "table_ids": [
+                "T05",
+                "T06",
+                "T07",
+                "T08"
+            ]
+        }
+    },
+    "evaluation_framework": {
+        "present": "yes",
+        "dimensions": [
+            "Signal form",
+            "Algorithm",
+            "Hardware platform",
+            "Performance metric"
+        ],
+        "tradeoff_axes": [
+            "Accuracy vs computational cost",
+            "Point cloud sparsity vs imaging resolution",
+            "Domain knowledge vs deep learning"
+        ],
+        "where_used": [
+            {
+                "section": "S03",
+                "table_ids": [
+                    "T02",
+                    "T03",
+                    "T04"
+                ]
+            },
+            {
+                "section": "S05",
+                "table_ids": [
+                    "T05",
+                    "T06",
+                    "T07",
+                    "T08"
+                ]
+            }
+        ]
+    },
+    "visual_strategy": {
+        "global_layout_logic": "Figures provide system diagrams (block diagrams, pipelines, architectures) and taxonomy overviews while tables provide systematic literature comparisons. Each major sensing task category has its own comparison table with consistent columns. The paper uses bold method names in tables for quick reference.",
+        "artifact_inventory": {
+            "figures": [
+                {
+                    "id": "F01",
+                    "type": "roadmap",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S01",
+                        "first_mention_section_label": "INTRO",
+                        "doc_progress_pct_est": 5
+                    },
+                    "locator": "L61-63"
+                },
+                {
+                    "id": "F02",
+                    "type": "architecture",
+                    "purpose": "reader orientation",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 10
+                    },
+                    "locator": "L95-97"
+                },
+                {
+                    "id": "F03",
+                    "type": "architecture",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 20
+                    },
+                    "locator": "L195-197"
+                },
+                {
+                    "id": "F04",
+                    "type": "flowchart",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S04",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 24
+                    },
+                    "locator": "L240-242"
+                },
+                {
+                    "id": "F05",
+                    "type": "taxonomy",
+                    "purpose": "design space map",
+                    "placement": {
+                        "first_mention_section_id": "S05",
+                        "first_mention_section_label": "TAXONOMY",
+                        "doc_progress_pct_est": 29
+                    },
+                    "locator": "L293-295"
+                }
+            ],
+            "tables": [
+                {
+                    "id": "T01",
+                    "type": "survey comparison",
+                    "purpose": "authority building",
+                    "placement": {
+                        "first_mention_section_id": "S02",
+                        "first_mention_section_label": "RELATED",
+                        "doc_progress_pct_est": 6
+                    },
+                    "locator": "L65-77"
+                },
+                {
+                    "id": "T02",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 11
+                    },
+                    "locator": "L107-121"
+                },
+                {
+                    "id": "T04",
+                    "type": "summary",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S03",
+                        "first_mention_section_label": "SYSTEM_MODEL",
+                        "doc_progress_pct_est": 16
+                    },
+                    "locator": "L162-173"
+                },
+                {
+                    "id": "T05",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S05",
+                        "first_mention_section_label": "TAXONOMY",
+                        "doc_progress_pct_est": 32
+                    },
+                    "locator": "L309-324"
+                },
+                {
+                    "id": "T06",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S05",
+                        "first_mention_section_label": "TAXONOMY",
+                        "doc_progress_pct_est": 38
+                    },
+                    "locator": "L346-382"
+                },
+                {
+                    "id": "T07",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S05",
+                        "first_mention_section_label": "TAXONOMY",
+                        "doc_progress_pct_est": 50
+                    },
+                    "locator": "L464-493"
+                },
+                {
+                    "id": "T08",
+                    "type": "comparison",
+                    "purpose": "compression",
+                    "placement": {
+                        "first_mention_section_id": "S05",
+                        "first_mention_section_label": "TAXONOMY",
+                        "doc_progress_pct_est": 62
+                    },
+                    "locator": "L587-604"
+                }
+            ]
+        },
+        "caption_style_metrics": {
+            "caption_verbs_top": [
+                {
+                    "verb": "comparison",
+                    "freq_est": 5
+                },
+                {
+                    "verb": "overview",
+                    "freq_est": 3
+                },
+                {
+                    "verb": "flowchart",
+                    "freq_est": 2
+                }
+            ],
+            "avg_caption_length_est": 12
+        }
+    },
+    "synthesis": {
+        "synthesis_style": "tutorial",
+        "comparative_synthesis_degree": "high",
+        "lesson_blocks": [
+            {
+                "location": "Section III.E (Summary)",
+                "lesson": "Platform selection depends on sensing task requirements; vital sensing needs high bandwidth, human imaging needs 2D antenna arrays",
+                "locator": "L179-188"
+            },
+            {
+                "location": "Section IV.F (Summary)",
+                "lesson": "Point clouds + deep learning suit contour tasks; phase waveforms + frequency analysis suit micro-motion tasks",
+                "locator": "L283-287"
+            },
+            {
+                "location": "Section V.E (Lessons Learned)",
+                "lesson": "Different sensing tasks have different technical frameworks and challenges; signal form selection is task-dependent",
+                "locator": "L640-653"
+            }
+        ],
+        "aha_moment": "The paper's power lies in its pipeline-based organization combined with sensing-granularity taxonomy—by decomposing mmWave sensing into data capture → preprocessing → feature extraction → model stages, it creates a modular framework where readers can mix-and-match techniques. The per-category comparison tables with consistent columns (Signal Form, Algorithm, Hardware, Performance) enable rapid technique selection."
+    },
+    "methodology": {
+        "survey_method": "narrative",
+        "search_strategy_present": "no",
+        "prisma_elements": [],
+        "transparency_flags": {
+            "databases_named": "no",
+            "time_window_named": "no",
+            "inclusion_exclusion_explicit": "no"
+        }
+    },
+    "style": {
+        "section_openers_pattern": "Section opens with task definition and core challenge statement, followed by alternative solutions overview",
+        "math_handling_strategy": "inline moderate",
+        "listicle_usage": "heavy",
+        "signposting_devices": [
+            "In this section",
+            "Specifically",
+            "Furthermore",
+            "To this end",
+            "Results show that"
+        ],
+        "definition_density_est": "medium"
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Pipeline-Based Survey Organization",
+            "steps": [
+                "Identify the processing stages of the domain (data capture → preprocessing → feature extraction → model → task)",
+                "Create a section for each pipeline stage with technique taxonomy",
+                "Include block diagram figure showing pipeline flow",
+                "End each stage section with 'Comparison' or 'Summary' subsection with selection guidance",
+                "Dedicate main taxonomy section to end-to-end task-level analysis"
+            ],
+            "applies_to_sections": [
+                "SYSTEM_MODEL",
+                "TAXONOMY"
+            ],
+            "why_it_works": "Pipeline decomposition creates natural modularity; readers can navigate to specific stages; enables mix-and-match technique selection; mirrors how practitioners actually build systems",
+            "evidence_locators": [
+                {
+                    "heading": "A. Human Sensing Pipeline",
+                    "line_range": "L201-205"
+                },
+                {
+                    "heading": "F. Summary",
+                    "line_range": "L283-287"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Per-Category Comparison Table with Consistent Columns",
+            "steps": [
+                "Define consistent column headers across all category tables (Method, Signal Form, Algorithm, Hardware Platform, Performance)",
+                "Bold method names for quick scanning",
+                "Include performance metrics in same units within category",
+                "Place table at start of each category section as reference",
+                "Provide narrative description of key methods after table"
+            ],
+            "applies_to_sections": [
+                "TAXONOMY"
+            ],
+            "why_it_works": "Consistent columns enable cross-paper comparison; bold method names serve as entry points; performance metrics allow quantitative evaluation; narrative after table provides depth",
+            "evidence_locators": [
+                {
+                    "heading": "Table V",
+                    "line_range": "L309-324"
+                },
+                {
+                    "heading": "Table VI",
+                    "line_range": "L346-382"
+                },
+                {
+                    "heading": "Table VII",
+                    "line_range": "L464-493"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Core Challenge + Solution Pattern for Task Categories",
+            "steps": [
+                "Open category with 1-2 sentence definition of the task",
+                "State the 'core challenge' explicitly in bold or emphasized text",
+                "Enumerate alternative solution approaches",
+                "Present representative works that address the challenge",
+                "Include method-specific figures for flagship works"
+            ],
+            "applies_to_sections": [
+                "TAXONOMY"
+            ],
+            "why_it_works": "Challenge framing focuses reader attention; explicit enumeration of approaches provides roadmap; flagship work deep-dives provide depth while table provides breadth",
+            "evidence_locators": [
+                {
+                    "heading": "A. Tracking & Localization",
+                    "line_range": "L297-303"
+                },
+                {
+                    "heading": "B. Motion Recognition",
+                    "line_range": "L341-345"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Hardware Platform and Dataset Inventory Section",
+            "steps": [
+                "Create hardware comparison table with technical specs (frequency, antenna size, sampling rate, etc.)",
+                "Group devices by type (commercial vs customized)",
+                "Create dataset comparison table with consistent attributes (sensors, format, subjects, activities, frames)",
+                "Include section summary with platform selection guidance for different tasks",
+                "Reference specific products/datasets when discussing techniques later"
+            ],
+            "applies_to_sections": [
+                "SYSTEM_MODEL"
+            ],
+            "why_it_works": "Provides practitioners with equipment selection guide; establishes reproducibility context; consistent dataset attributes enable fair comparison; selection guidance adds actionable value",
+            "evidence_locators": [
+                {
+                    "heading": "Table II",
+                    "line_range": "L107-121"
+                },
+                {
+                    "heading": "Table IV",
+                    "line_range": "L162-173"
+                },
+                {
+                    "heading": "E. Summary",
+                    "line_range": "L179-188"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Lessons Learned Synthesis Section",
+            "steps": [
+                "Place at end of main taxonomy section before challenges",
+                "Synthesize cross-category insights (e.g., technique selection patterns)",
+                "Identify common technical trade-offs",
+                "Provide explicit recommendations for practitioners",
+                "Connect to challenges section that follows"
+            ],
+            "applies_to_sections": [
+                "TAXONOMY"
+            ],
+            "why_it_works": "Elevates survey from description to prescription; provides actionable guidance for practitioners; creates bridge from detailed review to future directions; distills wisdom from exhaustive coverage",
+            "evidence_locators": [
+                {
+                    "heading": "E. Lessons Learned",
+                    "line_range": "L640-653"
+                }
+            ]
+        },
+        {
+            "recipe_name": "Survey Comparison Table with Taxonomy Column",
+            "steps": [
+                "Define comparison dimensions beyond coverage (Signal Sources, Application Scenarios, Sensing Tasks, Taxonomy)",
+                "Include 'This Survey' row at bottom showing comprehensive coverage",
+                "Use Taxonomy column to highlight organizational innovation",
+                "Reference in text to explicitly state differentiation",
+                "Use as transition to novelty claims"
+            ],
+            "applies_to_sections": [
+                "RELATED"
+            ],
+            "why_it_works": "Taxonomy column highlights methodological contribution; 'This Survey' row creates visual contrast; multi-dimensional comparison more persuasive than single-axis positioning",
+            "evidence_locators": [
+                {
+                    "heading": "Table I",
+                    "line_range": "L65-77"
+                }
+            ]
+        }
+    ],
+    "quality_flags": {
+        "conversion_noise": [
+            "Some HTML formatting artifacts (<br>, <sup>)",
+            "Complex table layouts with cell breaks"
+        ],
+        "non_body_leakage": "no",
+        "missingness": [
+            "Section VI (Applications) and Section VII (Challenges) details not fully viewed due to truncation"
+        ],
+        "confidence": "high"
+    },
+    "notes": "Exemplary 'pipeline + taxonomy' survey pattern. Key distinguishing features: (1) Pipeline-based decomposition of sensing system (Data Capture → Preprocessing → Feature Extraction → Model → Task), (2) Sensing granularity as primary taxonomy axis (Tracking → Motion → Biometric → Imaging), (3) Per-category comparison tables with consistent columns, (4) Hardware and dataset inventory sections, (5) Lessons Learned synthesis section. The paper's structure enables both breadth (via tables) and depth (via flagship work descriptions with figures)."
+}

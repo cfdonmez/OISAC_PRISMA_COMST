@@ -1,0 +1,10 @@
+- Replaced the old axis-string-only "Scope Evidence" block with evidence-pack distribution plus source-text excerpts.
+- New distribution statement uses `section7D_evidence.csv` column `macro_domain`.
+- Added scope coverage count: `underwater_harsh = 298/298 (100.00%)`.
+- Added excerpt (`O_ISAC_127`): "Underwater Optical Wireless Communication systems are subject to significant degradation due to dynamic salinity gradients."
+- Locator: `data/proc_markdowns/O_ISAC_127/O_ISAC_127/O_ISAC_127.md`, HeadingPath `**ABSTRACT**`, line `23`.
+- Added excerpt (`O_ISAC_220`): "is an ISAC configuration for subsea monitoring via telecommunication cables."
+- Locator: `data/proc_markdowns/O_ISAC_220/O_ISAC_220.md`, HeadingPath `1. INTRODUCTION`, line `19`.
+- Cite-keys used for scope hardening: `O_ISAC_127`, `O_ISAC_220`.
+- Path resolution summary: `file_index.csv` hits `0/2` for excerpt keys; fallback `II_markdown_inventory.csv` used (`Y`) with `2/2` hits.
+- All non-scope QA sections were preserved unchanged.

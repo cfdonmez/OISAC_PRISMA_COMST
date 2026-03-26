@@ -1,0 +1,186 @@
+{
+  "run_id": "20260102_104107_O_ISAC_324_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104107",
+  "paper_id": "O_ISAC_324",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper contains several images, including network architecture diagrams, concept diagrams, signal processing schematics, experimental setup diagrams, phase space scatter plots, frequency spectra, cross-correlation plots, noise analysis charts, performance charts, waveform comparisons, spectrum anomalies, and linearity plots. These images provide visual representations of the proposed integrated sensing and quantum communication network (ISAQN) scheme, including its architecture, signal processing, and experimental results."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The ISAQN scheme integrates sensing and quantum communication through a round-trip multiband structure, where multiple child nodes modulate quantum signals and pilot signals, which are then transmitted back to the center node. The center node uses coherent demodulation and phase unwrapping to recover the vibration waveform. The scheme uses frequency division multiplexing (FDM) to differentiate between signals from different child nodes."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a secure key rate (SKR) of approximately 0.7 Mbits/s for each user under 10-km standard fiber transmission, with a vibration response bandwidth ranging from 1 Hz to 2 kHz, a strain resolution of 0.50 nε/√Hz, and a spatial resolution of 0.20 m under shot-noise-limited detection. These metrics are physically consistent with the proposed scheme and experimental setup."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The ISAQN scheme addresses the challenge of integrating sensing and quantum communication in a multipoint network, achieving simultaneous QKD and distributed sensing. However, the scheme is susceptible to practical security attacks, such as phase remapping and Trojan-horse attacks, which need to be addressed in future research."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_324",
+        "title": "Integrated Distributed Sensing and Quantum Communication Networks",
+        "authors": "Yuehan Xu et al.",
+        "year": 2024,
+        "venue": "Research (Science Partner Journal)",
+        "doi": "https://doi.org/10.34133/research.0416",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_multipoint",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "quantum_communication",
+        "scenario_description": "The proposed ISAQN scheme is designed for secure key distribution and distributed sensing in a multipoint network."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed ISAQN scheme integrates sensing and quantum communication through a round-trip multiband structure, enabling simultaneous QKD and distributed sensing in a multipoint network.",
+        "gap_addressed": "The scheme addresses the challenge of integrating sensing and quantum communication in a multipoint network.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "TFLN-MZM",
+        "novel_component_specs": "Half-wave voltage ≤3V, optical insertion loss 7.1dB"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "ISAQN Experiment"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 0,
+        "aperture_diameter_m": 0.01,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "tfln_mzm",
+        "rx_modulator_bandwidth_ghz": 100,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "gmcs",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "lfm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "α=0.7 power to comm"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1000,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "thermal_noise"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.7,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-09,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.001,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 1000,
+        "range_resolution_m": 0.2,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.2,
+        "sensing_bandwidth_hz": 2000,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 1e-06,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "α",
+        "tradeoff_control_range": "0.5-0.9"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 10,
+        "opa_beamwidth_deg": 1,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear and detailed description of the proposed ISAQN scheme, including its architecture, signal processing, and experimental results. The scheme is experimentally demonstrated, and the results show a good agreement with the theoretical predictions."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper contains several images, including network architecture diagrams, concept diagrams, signal processing schematics, experimental setup diagrams, phase space scatter plots, frequency spectra, cross-correlation plots, noise analysis charts, performance charts, waveform comparisons, spectrum anomalies, and linearity plots. These images provide visual representations of the proposed integrated sensing and quantum communication network (ISAQN) scheme, including its architecture, signal processing, and experimental results.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The ISAQN scheme integrates sensing and quantum communication through a round-trip multiband structure, where multiple child nodes modulate quantum signals and pilot signals, which are then transmitted back to the center node. The center node uses coherent demodulation and phase unwrapping to recover the vibration waveform. The scheme uses frequency division multiplexing (FDM) to differentiate between signals from different child nodes.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a secure key rate (SKR) of approximately 0.7 Mbits/s for each user under 10-km standard fiber transmission, with a vibration response bandwidth ranging from 1 Hz to 2 kHz, a strain resolution of 0.50 nε/√Hz, and a spatial resolution of 0.20 m under shot-noise-limited detection. These metrics are physically consistent with the proposed scheme and experimental setup.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The ISAQN scheme addresses the challenge of integrating sensing and quantum communication in a multipoint network, achieving simultaneous QKD and distributed sensing. However, the scheme is susceptible to practical security attacks, such as phase remapping and Trojan-horse attacks, which need to be addressed in future research.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_324\",\n         \"title\":\"Integrated Distributed Sensing and Quantum Communication Networks\",\n         \"authors\":\"Yuehan Xu et al.\",\n         \"year\":2024,\n         \"venue\":\"Research (Science Partner Journal)\",\n         \"doi\":\"https://doi.org/10.34133/research.0416\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_multipoint\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"quantum_communication\",\n         \"scenario_description\":\"The proposed ISAQN scheme is designed for secure key distribution and distributed sensing in a multipoint network.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed ISAQN scheme integrates sensing and quantum communication through a round-trip multiband structure, enabling simultaneous QKD and distributed sensing in a multipoint network.\",\n         \"gap_addressed\":\"The scheme addresses the challenge of integrating sensing and quantum communication in a multipoint network.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"TFLN-MZM\",\n         \"novel_component_specs\":\"Half-wave voltage ≤3V, optical insertion loss 7.1dB\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"ISAQN Experiment\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":0,\n         \"aperture_diameter_m\":0.01,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"tfln_mzm\",\n         \"rx_modulator_bandwidth_ghz\":100,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"gmcs\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":10,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"lfm\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"α=0.7 power to comm\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":10,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":1000,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"thermal_noise\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":0.7,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"ber_target\":1e-9,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":1e-3,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":1000,\n         \"range_resolution_m\":0.2,\n         \"range_accuracy_m\":0.1,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.2,\n         \"sensing_bandwidth_hz\":2000,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":1e-6,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"α\",\n         \"tradeoff_control_range\":\"0.5-0.9\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":10,\n         \"opa_steering_range_deg\":10,\n         \"opa_beamwidth_deg\":1,\n         \"ris_num_elements\":100,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":4\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear and detailed description of the proposed ISAQN scheme, including its architecture, signal processing, and experimental results. The scheme is experimentally demonstrated, and the results show a good agreement with the theoretical predictions.\"\n   }\n}"
+}

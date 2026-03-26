@@ -1,0 +1,45 @@
+Image: _page_1_Figure_0.jpeg
+Type: Technology Roadmap / Concept Map
+---
+**Flow:**
+* **Scenarios:** IoVT, IoDT, IIoT, IoMT.
+* **Data Sources:** camera, base station, GPS, Lidar.
+* **Data Types:** image, Range-Velocity, Position, Point cloud.
+* **Methods:**
+    * **Signal Processing:** FFT, MUSIC. Referenced tool: MATLAB.
+    * **Artificial Intelligence:** TensorFlow, PyTorch, ChatGPT.
+* **Problems:** Target Sensing, Object Detection, Beam Management.
+* **Applications:** Autopilot, Health Monitoring, intelligent manufacturing, low-altitude economy.
+---
+
+Image: _page_2_Figure_0.jpeg
+Type: Application Scenarios Diagram
+---
+**Panels:**
+* **IoVT (Internet of Vehicular Things):** Shows ISAC Base Station (BS), Lidar, and camera monitoring a street with a "GPS & ISAC CAV" (Connected and Autonomous Vehicle).
+* **IoDT (Internet of Drone Things):** Shows drones communicating via ISAC links near a factory. Label: "GPS & ISAC UAV".
+* **IIoT (Industrial IoT):** Shows robotic arms and "GPS & ISAC AGV" (Automated Guided Vehicle) in a warehouse.
+* **IoMT (Internet of Medical Things):** Shows an ISAC-enabled smart hospital room with a patient and a "GPS & ISAC SMD" (Smart Medical Device).
+---
+
+Image: _page_4_Figure_0.jpeg
+Type: Deep Learning Architecture (Neural Network Schematic)
+---
+**Components:**
+* **Preprocessing:** 
+    * Vision -> Masking.
+    * Radar -> BEV (Bird's Eye View).
+    * Lidar -> RDM (Range-Doppler Map).
+    * Position -> Normalization.
+* **Encoding:** $3 \times 7 \times 7$ Conv followed by $1 \times 3 \times 3$ Maxpool.
+* **Feature Extraction 1:** Layer 1 & Layer 2 (ResNet based).
+* **Adaptive Fusion:** Transformer-Merged-Attention 1.
+* **Feature Extraction 2:** Layer 3 & Layer 4 (ResNet based).
+* **Adaptive Fusion:** Transformer-Merged-Attention 2.
+* **Output Stage:** Shared MLP -> Beam.
+**Layer Details (Inset):**
+* Layer 1: Two $3 \times 64$ blocks.
+* Layer 2: Two $3 \times 128$ blocks.
+* Layer 3: Two $3 \times 256$ blocks.
+* Layer 4: Two $3 \times 512$ blocks.
+---

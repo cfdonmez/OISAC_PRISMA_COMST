@@ -1,0 +1,20 @@
+section5A_evidence.csv: OK
+s5b_met_gov.csv: OK
+section5C_tradeoff_points.csv: OK
+s5c_trade_mnts.csv: OK
+section5D_modality_slices.csv: OK
+section5E_pareto_points.csv: OK
+section5E_summary_table.csv: OK
+section5E_summary.json: OK
+evidence_graph.jsonl: OK
+retrieval_hits.jsonl: OK
+anchor_table.csv: OK
+axis_definitions.md: OK
+mapping_rules.md: OK
+cluster_map.csv: OK
+contract_violations.csv: OK
+
+section5A_rows: 2352
+section5A_unique_papers: 221
+section5C_points_rows: 226
+anchor_rows: 2540

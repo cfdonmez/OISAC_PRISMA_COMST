@@ -1,0 +1,187 @@
+{
+  "run_id": "20260102_104210_O_ISAC_351_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104210",
+  "paper_id": "O_ISAC_351",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several figures and diagrams that illustrate the proposed system architecture, including a schematic geometry model of integrated ToF sensing and communication, a timing diagram of modulation and demodulation signals for a Hamiltonian coding scheme, a block diagram of the integrated depth sensing and communication system, and experimental setup photos."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a Hamiltonian coding scheme to integrate ToF depth sensing and optical communication. The proposed system achieves a measurement accuracy of tens of millimeters and zero error code in communication, with a data rate of 20 Mbps. The system also uses a multi-frequency fusion algorithm to remove phase ambiguity and improve measurement precision."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a depth error of 11.64 mm and a mean BER of nearly 0 for single-frequency modulation, and a depth error of 4.46 mm and a mean BER of nearly 0 for multi-frequency fusion. These results are physically consistent and demonstrate the feasibility of the proposed system."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system solves the problem of integrating ToF depth sensing and optical communication using a single waveform, and demonstrates a high measurement accuracy and low BER. However, the system still faces challenges such as phase ambiguity and limited measurement range, which are addressed using a multi-frequency fusion algorithm."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_351",
+        "title": "Integrated high precision time-of-flight depth sensing and optical communication based on Hamiltonian coding",
+        "authors": "Lijuan Tang, Lilin Liu et al.",
+        "year": 2023,
+        "venue": "Optics Communications",
+        "doi": "Not reported",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "The system is designed for indoor positioning and 3D sensing applications."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed system integrates ToF depth sensing and optical communication using a Hamiltonian coding scheme, achieving a high measurement accuracy and low BER.",
+        "gap_addressed": "The system addresses the challenge of integrating ToF depth sensing and optical communication using a single waveform.",
+        "performance_enablers": "Hamiltonian coding, multi-frequency fusion",
+        "novel_component": "Avalanche photodiode (APD) receiver",
+        "novel_component_specs": "High sensitivity and low noise"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor ToF sensing and communication"
+      },
+      "transmitter": {
+        "tx_source_type": "LED",
+        "tx_modulation_type": "Hamiltonian coding",
+        "tx_external_modulator": "None",
+        "wavelength_nm": 442,
+        "optical_bandwidth_ghz": 20,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "Direct detection",
+        "rx_detector": "Avalanche photodiode (APD)",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "None",
+        "rx_modulator_type": "None",
+        "rx_modulator_bandwidth_ghz": 20,
+        "rx_modulator_operating_point": "Not reported",
+        "false_target_mitigation": "Not reported"
+      },
+      "integration": {
+        "hardware_sharing_mode": "Shared frontend",
+        "duplexing_mode": "Half-duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "BPSK",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 0.02,
+        "comm_fec_type": "None",
+        "sensing_waveform_family": "Hamiltonian coding",
+        "isac_waveform_relationship": "Single dual-function waveform",
+        "resource_partition": "Not reported"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "Not reported",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "Not reported",
+        "backscatter_sensing_type": "Not reported"
+      },
+      "channel_wireless": {
+        "link_distance_m": 2,
+        "path_loss_model": "Free space",
+        "turbulence_model": "Not reported",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "Not reported",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "Not reported"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.02,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0,
+        "latency_ms": 1,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 2,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 20000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "Joint waveform",
+        "tradeoff_type": "Rate vs range resolution",
+        "tradeoff_representation": "Curve",
+        "tradeoff_control_parameter": "Modulation frequency",
+        "tradeoff_control_range": "20-100 MHz"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "Not reported",
+        "ris_phase_bits": 0
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system architecture and experimental setup, and reports comprehensive results on the system's performance."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several figures and diagrams that illustrate the proposed system architecture, including a schematic geometry model of integrated ToF sensing and communication, a timing diagram of modulation and demodulation signals for a Hamiltonian coding scheme, a block diagram of the integrated depth sensing and communication system, and experimental setup photos.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a Hamiltonian coding scheme to integrate ToF depth sensing and optical communication. The proposed system achieves a measurement accuracy of tens of millimeters and zero error code in communication, with a data rate of 20 Mbps. The system also uses a multi-frequency fusion algorithm to remove phase ambiguity and improve measurement precision.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a depth error of 11.64 mm and a mean BER of nearly 0 for single-frequency modulation, and a depth error of 4.46 mm and a mean BER of nearly 0 for multi-frequency fusion. These results are physically consistent and demonstrate the feasibility of the proposed system.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed system solves the problem of integrating ToF depth sensing and optical communication using a single waveform, and demonstrates a high measurement accuracy and low BER. However, the system still faces challenges such as phase ambiguity and limited measurement range, which are addressed using a multi-frequency fusion algorithm.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_351\",\n         \"title\":\"Integrated high precision time-of-flight depth sensing and optical communication based on Hamiltonian coding\",\n         \"authors\":\"Lijuan Tang, Lilin Liu et al.\",\n         \"year\":2023,\n         \"venue\":\"Optics Communications\",\n         \"doi\":\"Not reported\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"The system is designed for indoor positioning and 3D sensing applications.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed system integrates ToF depth sensing and optical communication using a Hamiltonian coding scheme, achieving a high measurement accuracy and low BER.\",\n         \"gap_addressed\":\"The system addresses the challenge of integrating ToF depth sensing and optical communication using a single waveform.\",\n         \"performance_enablers\":\"Hamiltonian coding, multi-frequency fusion\",\n         \"novel_component\":\"Avalanche photodiode (APD) receiver\",\n         \"novel_component_specs\":\"High sensitivity and low noise\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor ToF sensing and communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"LED\",\n         \"tx_modulation_type\":\"Hamiltonian coding\",\n         \"tx_external_modulator\":\"None\",\n         \"wavelength_nm\":442,\n         \"optical_bandwidth_ghz\":20,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"Direct detection\",\n         \"rx_detector\":\"Avalanche photodiode (APD)\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"None\",\n         \"rx_modulator_type\":\"None\",\n         \"rx_modulator_bandwidth_ghz\":20,\n         \"rx_modulator_operating_point\":\"Not reported\",\n         \"false_target_mitigation\":\"Not reported\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"Shared frontend\",\n         \"duplexing_mode\":\"Half-duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"BPSK\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":0.02,\n         \"comm_fec_type\":\"None\",\n         \"sensing_waveform_family\":\"Hamiltonian coding\",\n         \"isac_waveform_relationship\":\"Single dual-function waveform\",\n         \"resource_partition\":\"Not reported\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"Not reported\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"Not reported\",\n         \"backscatter_sensing_type\":\"Not reported\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":2,\n         \"path_loss_model\":\"Free space\",\n         \"turbulence_model\":\"Not reported\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"Not reported\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"Not reported\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":0.02,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0,\n         \"latency_ms\":1,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":2,\n         \"range_resolution_m\":0.01,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.1,\n         \"localization_error_m\":0.01,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":20e6,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.1,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"Joint waveform\",\n         \"tradeoff_type\":\"Rate vs range resolution\",\n         \"tradeoff_representation\":\"Curve\",\n         \"tradeoff_control_parameter\":\"Modulation frequency\",\n         \"tradeoff_control_range\":\"20-100 MHz\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"Not reported\",\n         \"ris_phase_bits\":0\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the system architecture and experimental setup, and reports comprehensive results on the system's performance.\"\n   }\n}"
+}

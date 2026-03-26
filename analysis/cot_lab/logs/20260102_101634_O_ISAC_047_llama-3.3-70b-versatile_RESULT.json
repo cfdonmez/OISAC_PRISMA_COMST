@@ -1,0 +1,205 @@
+{
+  "run_id": "20260102_101634_O_ISAC_047_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101634",
+  "paper_id": "O_ISAC_047",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which illustrates the digital signal processing (DSP) for the transceiver of the OTFS-based photonics-assisted W-band fiber-wireless ISAC system. Fig. 2 shows the traditional 2D-DFT and proposed ZP-2D-DFT schemes. Fig. 3 presents the experimental setup of the OTFS-based photonics-assisted W-band fiber-wireless ISAC system. Fig. 4 displays the SNR distribution on effective subcarriers for OFDM and OTFS signals. Fig. 5 shows the relationship between BER and ROP for OFDM and OTFS signals. Fig. 6 presents the received constellation diagrams for OFDM and OTFS signals. Fig. 7 illustrates the relationship between distance estimation and the factor Ar for the proposed ZP-2D-DFT scheme. Fig. 8 shows the normalized amplitude of the distance estimation result for the traditional 2D-DFT and proposed ZP-2D-DFT schemes. Fig. 9 presents the 3 dB main-lobe width of the distance estimation result for the traditional 2D-DFT and proposed ZP-2D-DFT schemes."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses an OTFS waveform based on photonics-assisted technology in a W-band fiber-wireless ISAC system. The OTFS signal is modulated in the delay-Doppler (DD) domain, which enhances the robustness of the signal against frequency-selective fading. A zero-padding two-dimensional discrete Fourier transform (ZP-2D-DFT) scheme is proposed for the OTFS-based photonics-assisted W-band fiber-wireless ISAC system."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a communication data rate of 5.44 Gbit/s and a theoretical ranging resolution of 1.58 cm. The experimental results show that the proposed ZP-2D-DFT scheme can effectively improve the sensing accuracy and theoretical resolution of the ISAC system."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of achieving high communication data rates and accurate ranging resolutions in a W-band fiber-wireless ISAC system. However, the remaining open challenges include further improving the sensing accuracy and theoretical resolution of the ISAC system, as well as exploring the application of the proposed ZP-2D-DFT scheme in other scenarios."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Zero-Padding 2D-DFT Scheme for Photonics-Assisted W-Band Fiber-Wireless ISAC System With Orthogonal Time Frequency Space Modulation",
+        "authors": "Jing He, Lede Yin, Kang Liu, Shijie Xiao, and Zuo Chen",
+        "year": 2025,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2025.3602312",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "W-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing",
+          "indoor_positioning"
+        ],
+        "scenario_description": "W-band fiber-wireless ISAC system for indoor positioning and sensing"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a zero-padding two-dimensional discrete Fourier transform (ZP-2D-DFT) scheme for the OTFS-based photonics-assisted W-band fiber-wireless ISAC system, which can effectively improve the sensing accuracy and theoretical resolution of the ISAC system.",
+        "gap_addressed": "The paper addresses the problem of achieving high communication data rates and accurate ranging resolutions in a W-band fiber-wireless ISAC system.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform"
+        ],
+        "novel_component": "OTFS waveform based on photonics-assisted technology",
+        "novel_component_specs": "The OTFS waveform is modulated in the delay-Doppler (DD) domain, which enhances the robustness of the signal against frequency-selective fading."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "W-band fiber-wireless ISAC system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 1.36,
+        "tx_power_dbm": 5,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "otfs",
+        "comm_modulation_order": 16,
+        "comm_symbol_rate_gbaud": 1.36,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "otfs",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 50,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 3.2,
+        "path_loss_model": "friis",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 5.44,
+        "spectral_efficiency_bps_hz": 4,
+        "ber": 0.01,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.001,
+        "latency_ms": 1,
+        "capacity_bps_hz": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 1000000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "joint_waveform",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_split",
+        "tradeoff_control_range": "[0, 1]"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 10,
+        "opa_steering_range_deg": 30,
+        "opa_beamwidth_deg": 10,
+        "ris_num_elements": 100,
+        "ris_type": "reflective",
+        "ris_phase_bits": 4
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_text",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 100
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system and the experimental setup. The results are well-presented and easy to understand."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures, including Fig. 1, which illustrates the digital signal processing (DSP) for the transceiver of the OTFS-based photonics-assisted W-band fiber-wireless ISAC system. Fig. 2 shows the traditional 2D-DFT and proposed ZP-2D-DFT schemes. Fig. 3 presents the experimental setup of the OTFS-based photonics-assisted W-band fiber-wireless ISAC system. Fig. 4 displays the SNR distribution on effective subcarriers for OFDM and OTFS signals. Fig. 5 shows the relationship between BER and ROP for OFDM and OTFS signals. Fig. 6 presents the received constellation diagrams for OFDM and OTFS signals. Fig. 7 illustrates the relationship between distance estimation and the factor Ar for the proposed ZP-2D-DFT scheme. Fig. 8 shows the normalized amplitude of the distance estimation result for the traditional 2D-DFT and proposed ZP-2D-DFT schemes. Fig. 9 presents the 3 dB main-lobe width of the distance estimation result for the traditional 2D-DFT and proposed ZP-2D-DFT schemes.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system uses an OTFS waveform based on photonics-assisted technology in a W-band fiber-wireless ISAC system. The OTFS signal is modulated in the delay-Doppler (DD) domain, which enhances the robustness of the signal against frequency-selective fading. A zero-padding two-dimensional discrete Fourier transform (ZP-2D-DFT) scheme is proposed for the OTFS-based photonics-assisted W-band fiber-wireless ISAC system.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a communication data rate of 5.44 Gbit/s and a theoretical ranging resolution of 1.58 cm. The experimental results show that the proposed ZP-2D-DFT scheme can effectively improve the sensing accuracy and theoretical resolution of the ISAC system.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The paper solves the problem of achieving high communication data rates and accurate ranging resolutions in a W-band fiber-wireless ISAC system. However, the remaining open challenges include further improving the sensing accuracy and theoretical resolution of the ISAC system, as well as exploring the application of the proposed ZP-2D-DFT scheme in other scenarios.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Zero-Padding 2D-DFT Scheme for Photonics-Assisted W-Band Fiber-Wireless ISAC System With Orthogonal Time Frequency Space Modulation\",\n           \"authors\": \"Jing He, Lede Yin, Kang Liu, Shijie Xiao, and Zuo Chen\",\n           \"year\": 2025,\n           \"venue\": \"Journal of Lightwave Technology\",\n           \"doi\": \"10.1109/JLT.2025.3602312\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"W-band\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\", \"indoor_positioning\"],\n           \"scenario_description\": \"W-band fiber-wireless ISAC system for indoor positioning and sensing\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper proposes a zero-padding two-dimensional discrete Fourier transform (ZP-2D-DFT) scheme for the OTFS-based photonics-assisted W-band fiber-wireless ISAC system, which can effectively improve the sensing accuracy and theoretical resolution of the ISAC system.\",\n           \"gap_addressed\": \"The paper addresses the problem of achieving high communication data rates and accurate ranging resolutions in a W-band fiber-wireless ISAC system.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"joint_waveform\"],\n           \"novel_component\": \"OTFS waveform based on photonics-assisted technology\",\n           \"novel_component_specs\": \"The OTFS waveform is modulated in the delay-Doppler (DD) domain, which enhances the robustness of the signal against frequency-selective fading.\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"W-band fiber-wireless ISAC system\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"laser\",\n           \"tx_modulation_type\": \"coherent\",\n           \"tx_external_modulator\": \"mzm\",\n           \"wavelength_nm\": 1550,\n           \"optical_bandwidth_ghz\": 1.36,\n           \"tx_power_dbm\": 5,\n           \"aperture_diameter_m\": 0.1,\n           \"beam_divergence_mrad\": 10\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"coherent\",\n           \"rx_detector\": \"pin_pd\",\n           \"rx_aperture_diameter_m\": 0.1,\n           \"rx_photonic_processing\": \"photonic_dechirping\",\n           \"rx_modulator_type\": \"mzm\",\n           \"rx_modulator_bandwidth_ghz\": 10,\n           \"rx_modulator_operating_point\": \"mitp\",\n           \"false_target_mitigation\": \"mitp_bias\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"full_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"otfs\",\n           \"comm_modulation_order\": 16,\n           \"comm_symbol_rate_gbaud\": 1.36,\n           \"comm_fec_type\": \"ldpc\",\n           \"sensing_waveform_family\": \"otfs\",\n           \"isac_waveform_relationship\": \"single_dual_function\",\n           \"resource_partition\": \"time\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": 50,\n           \"fibre_type\": \"smf\",\n           \"attenuation_db_per_km\": 0.2,\n           \"dispersion_ps_per_nm_km\": 17,\n           \"nonlinearity_model\": \"gn_model\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": 3.2,\n           \"path_loss_model\": \"friis\",\n           \"turbulence_model\": \"lognormal\",\n           \"turbulence_Cn2\": 1e-15,\n           \"scintillation_index\": 0.1,\n           \"pointing_error_model\": \"gaussian_jitter\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 5.44,\n           \"spectral_efficiency_bps_hz\": 4,\n           \"ber\": 1e-2,\n           \"snr_db\": 10,\n           \"osnr_db\": 20,\n           \"outage_probability\": 1e-3,\n           \"latency_ms\": 1,\n           \"capacity_bps_hz\": 10\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n           \"sensing_range_m\": 100,\n           \"range_resolution_m\": 0.1,\n           \"range_accuracy_m\": 0.01,\n           \"angular_resolution_deg\": 1,\n           \"velocity_resolution_mps\": 0.1,\n           \"velocity_accuracy_mps\": 0.01,\n           \"localization_error_m\": 0.1,\n           \"spatial_resolution_m\": 0.1,\n           \"sensing_bandwidth_hz\": 1e9,\n           \"pd_probability_detection\": 0.9,\n           \"pfa_probability_false_alarm\": 0.01,\n           \"crb_crlb_value\": 0.01,\n           \"crb_parameter\": \"range\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"joint_waveform\",\n           \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"power_split\",\n           \"tradeoff_control_range\": \"[0, 1]\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": 10,\n           \"opa_steering_range_deg\": 30,\n           \"opa_beamwidth_deg\": 10,\n           \"ris_num_elements\": 100,\n           \"ris_type\": \"reflective\",\n           \"ris_phase_bits\": 4\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Table I\",\n           \"value_origin\": \"reported_text\",\n           \"confidence_reporting\": \"ci_reported\",\n           \"num_trials\": 100\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system and the experimental setup. The results are well-presented and easy to understand.\"\n   }\n}"
+}

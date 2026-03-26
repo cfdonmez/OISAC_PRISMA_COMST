@@ -1,0 +1,131 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "medium",
+        "data_completeness": "medium",
+        "needs_spot_check": false,
+        "notes": "Architectural/Concept paper. Discusses ISAC in TN-NTN (Terrestrial & Non-Terrestrial) networks. Mentions FSO/Optical channels as one of the physical layers, but focus is on Management & Orchestration (O-RAN, 3GPP)."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig 1: Generic OFDM ISAC resource grid. Fig 2: TN-NTN 3D Network Architecture (Satellites, Drones, Ground). Fig 3: O-RAN Management Architecture (RIC, SMO).",
+        "step_1_concept_analysis": "Focus is on high-level network architecture (TN-NTN) and how to manage ISAC data using O-RAN/3GPP frameworks (RIC, NWDAF).",
+        "step_2_benchmark_verification": "No specific experimental results or performance benchmarks (BER, CRB, etc.).",
+        "step_3_strategic_critique": "Valuable for the 'Network Levels' or 'Challenges' section of the survey, specifically regarding the integration of FSO-based NTN nodes into a larger 6G ISAC manageent plane."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_059",
+            "title": "Terrestrial and Non-Terrestrial Networks for Integrated Sensing and Communication",
+            "authors": "Francesco Matera, Marina Settembre, Ernestina Cianca, Marina Ruggieri, Arcangela Rago, Alessio Fascista, Giuseppe Piro, Luigi Alfredo Grieco, Francesco Malandrino, Giuseppe Virone, Simone Morosi",
+            "year": 2024,
+            "venue": "MeditCom (likely based on Ref 20) or similar IEEE Conference",
+            "document_type": "conference_paper",
+            "doi": ""
+        },
+        "classification": {
+            "oisac_medium_class": "hybrid_medium",
+            "carrier_band": [
+                "mm_wave",
+                "thz",
+                "optical"
+            ],
+            "operational_environment": "satellite_network",
+            "link_topology": "mesh_network",
+            "mobility_context": "high_mobility"
+        },
+        "application": {
+            "application_domain": [
+                "satellite_networks",
+                "network_management",
+                "space_sustainability"
+            ],
+            "scenario_description": "Management and Orchestration (M&O) of Integrated Terrestrial and Non-Terrestrial Networks (TN-NTN) for ISAC."
+        },
+        "evidence": {
+            "evidence_type": [
+                "concept_proposal"
+            ],
+            "validation_baselines_present": false,
+            "reproducibility_artifacts": "none"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": true
+        },
+        "key_contribution": {
+            "key_contribution": "Proposal to use O-RAN (RIC) and 3GPP (NWDAF) architectures for collecting and analyzing sensing data in TN-NTN systems.",
+            "gap_addressed": "Lack of unified Management and Orchestration (M&O) frameworks for ISAC in heterogeneous TN-NTN networks.",
+            "performance_enablers": [
+                "network_slicing",
+                "artificial_intelligence",
+                "o_ran"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "CONCEPT_TN_NTN_MO",
+                "scenario_label": "TN-NTN ISAC Management"
+            },
+            "transmitter": {
+                "tx_source_type": "various",
+                "tx_modulation_type": "other",
+                "wavelength_nm": 0.0,
+                "optical_bandwidth_ghz": 0.0,
+                "notes": "Discusses multi-band (mmWave, THz, Optical) but no specific Tx implementation."
+            },
+            "receiver": {
+                "rx_detection_type": "other",
+                "rx_detector": "other",
+                "notes": "Focus on data collection and logical processing in RIC/NWDAF."
+            },
+            "integration": {
+                "hardware_sharing_mode": "other",
+                "duplexing_mode": "other",
+                "notes": "Resource sharing (OFDM) mentioned generically."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "comm_modulation_order": 0,
+                "sensing_waveform_family": "ofdm",
+                "isac_waveform_relationship": "resource_sharing",
+                "notes": "Time/Frequency resource sharing of OFDM symbols (Fig 1)."
+            },
+            "channel_fibre": {
+                "fibre_length_km": 0.0,
+                "attenuation_db_per_km": 0.0,
+                "backscatter_sensing_type": "none",
+                "notes": "N/A"
+            },
+            "channel_wireless": {
+                "wireless_distance_m": 0.0,
+                "wireless_band_ghz": 0.0,
+                "notes": "N/A"
+            },
+            "comm_metrics": {
+                "data_rate_gbps": 0.0,
+                "ber": 0.0,
+                "notes": "No quantitative metrics."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "network_sensing"
+                ],
+                "sensing_range_m": 0.0,
+                "range_resolution_m": 0.0,
+                "velocity_resolution_ms": 0.0,
+                "range_accuracy_m": 0.0,
+                "notes": "No quantitative metrics."
+            },
+            "tradeoff": {
+                "coupling_mode": "other",
+                "tradeoff_type": [
+                    "none"
+                ],
+                "tradeoff_representation": "none",
+                "notes": "Discusses M&O trade-offs qualitatively."
+            }
+        }
+    ]
+}

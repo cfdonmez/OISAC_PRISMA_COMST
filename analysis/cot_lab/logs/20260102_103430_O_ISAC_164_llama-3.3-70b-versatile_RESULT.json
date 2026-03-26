@@ -1,0 +1,186 @@
+{
+  "run_id": "20260102_103430_O_ISAC_164_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103430",
+  "paper_id": "O_ISAC_164",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several images, including a system diagram of an OCC-based V2X scenario, a block diagram of the OC-ISAC architecture, a diagram of the voxel-to-pixel channel model, and several charts and photographs related to the experimental setup and results."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The paper proposes an OC-ISAC system model for outdoor V2X communication, which leverages the optoelectronic conversion capabilities of image sensors to enable simultaneous environmental perception and data communication. The system categorizes light sources into two types: communication light and sensing light. The communication light is emitted by vehicle and infrastructure LEDs and transmitted through intensity modulation, while the sensing light includes sunlight, moonlight, and artificial illumination, providing environmental information through reflection."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper presents a voxel-to-pixel channel model to characterize the spatially distributed nature of light interaction in OC-ISAC. The model incorporates voxel-dependent reflection and luminous factors to describe pixel value variations caused by transceiver mobility and LED flicker. The paper also analyzes the impact of camera exposure time on the joint performance of sensing and communication, demonstrating that the choice of exposure time directly determines the extent of distortion and the achievable communication bandwidth in the OC-ISAC system."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper addresses the problem of optimizing camera exposure time to maximize the average performance of both communication and sensing in OC-ISAC systems. The proposed suboptimal algorithm achieves a near-optimal exposure time with O(1) complexity, reducing the computational complexity from O(N) required by numerical search, while introducing only a modest average normalized deviation of 5.71%. The paper also highlights the potential of OC-ISAC for vehicular applications, including cooperative sensing and communication among vehicles and infrastructure to enhance situational awareness, network intelligence, and road safety."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_164",
+        "title": "Optical Camera-Based Integrated Sensing and Communication for V2X Applications: Model and Optimization",
+        "authors": "Ke Dong et al.",
+        "year": 2025,
+        "venue": "Sensors",
+        "doi": "10.3390/s25227061",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "visible",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "mobile"
+      },
+      "application": {
+        "application_domain": "vehicular",
+        "scenario_description": "V2X communication scenario"
+      },
+      "evidence": {
+        "evidence_type": "analytical",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a novel OC-ISAC system model for outdoor V2X communication, which leverages the optoelectronic conversion capabilities of image sensors to enable simultaneous environmental perception and data communication.",
+        "gap_addressed": "The paper addresses the problem of optimizing camera exposure time to maximize the average performance of both communication and sensing in OC-ISAC systems.",
+        "performance_enablers": "joint_waveform",
+        "novel_component": "image sensor",
+        "novel_component_specs": "high sensitivity and low noise"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "V2X communication scenario"
+      },
+      "transmitter": {
+        "tx_source_type": "LED",
+        "tx_modulation_type": "intensity_modulation",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 650,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 100,
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OOK",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "pulse_tof",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none",
+        "backscatter_sensing_type": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 10000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 100,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "exposure_time",
+        "tradeoff_control_range": "0_to_10_ms"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive analysis of the OC-ISAC system, including the impact of camera exposure time on the joint performance of sensing and communication. The proposed suboptimal algorithm achieves a near-optimal exposure time with O(1) complexity, reducing the computational complexity from O(N) required by numerical search, while introducing only a modest average normalized deviation of 5.71%."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several images, including a system diagram of an OCC-based V2X scenario, a block diagram of the OC-ISAC architecture, a diagram of the voxel-to-pixel channel model, and several charts and photographs related to the experimental setup and results.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The paper proposes an OC-ISAC system model for outdoor V2X communication, which leverages the optoelectronic conversion capabilities of image sensors to enable simultaneous environmental perception and data communication. The system categorizes light sources into two types: communication light and sensing light. The communication light is emitted by vehicle and infrastructure LEDs and transmitted through intensity modulation, while the sensing light includes sunlight, moonlight, and artificial illumination, providing environmental information through reflection.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper presents a voxel-to-pixel channel model to characterize the spatially distributed nature of light interaction in OC-ISAC. The model incorporates voxel-dependent reflection and luminous factors to describe pixel value variations caused by transceiver mobility and LED flicker. The paper also analyzes the impact of camera exposure time on the joint performance of sensing and communication, demonstrating that the choice of exposure time directly determines the extent of distortion and the achievable communication bandwidth in the OC-ISAC system.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper addresses the problem of optimizing camera exposure time to maximize the average performance of both communication and sensing in OC-ISAC systems. The proposed suboptimal algorithm achieves a near-optimal exposure time with O(1) complexity, reducing the computational complexity from O(N) required by numerical search, while introducing only a modest average normalized deviation of 5.71%. The paper also highlights the potential of OC-ISAC for vehicular applications, including cooperative sensing and communication among vehicles and infrastructure to enhance situational awareness, network intelligence, and road safety.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_164\",\n         \"title\":\"Optical Camera-Based Integrated Sensing and Communication for V2X Applications: Model and Optimization\",\n         \"authors\":\"Ke Dong et al.\",\n         \"year\":2025,\n         \"venue\":\"Sensors\",\n         \"doi\":\"10.3390/s25227061\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"outdoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"mobile\"\n      },\n      \"application\":{\n         \"application_domain\":\"vehicular\",\n         \"scenario_description\":\"V2X communication scenario\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"analytical\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a novel OC-ISAC system model for outdoor V2X communication, which leverages the optoelectronic conversion capabilities of image sensors to enable simultaneous environmental perception and data communication.\",\n         \"gap_addressed\":\"The paper addresses the problem of optimizing camera exposure time to maximize the average performance of both communication and sensing in OC-ISAC systems.\",\n         \"performance_enablers\":\"joint_waveform\",\n         \"novel_component\":\"image sensor\",\n         \"novel_component_specs\":\"high sensitivity and low noise\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"V2X communication scenario\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"LED\",\n         \"tx_modulation_type\":\"intensity_modulation\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":650,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":100,\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"OOK\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"pulse_tof\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"none\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"none\",\n         \"backscatter_sensing_type\":\"none\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\",\n         \"weather_visibility_m\":10000,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":1,\n         \"ber\":1e-6,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":1,\n         \"range_accuracy_m\":0.1,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.1,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"exposure_time\",\n         \"tradeoff_control_range\":\"0_to_10_ms\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive analysis of the OC-ISAC system, including the impact of camera exposure time on the joint performance of sensing and communication. The proposed suboptimal algorithm achieves a near-optimal exposure time with O(1) complexity, reducing the computational complexity from O(N) required by numerical search, while introducing only a modest average normalized deviation of 5.71%.\"\n   }\n}"
+}

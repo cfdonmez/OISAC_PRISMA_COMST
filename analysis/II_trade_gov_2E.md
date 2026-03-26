@@ -1,0 +1,102 @@
+# Section II-E: Trade-off Governance (Draft)
+
+## 1. Coupling Families (Detected Usage)
+- **waveform_coupling**: 150 occurrences
+- **resource_coupling**: 63 occurrences
+- **NONE detected**: 50 occurrences
+- **algorithmic_coupling**: 38 occurrences
+- **multi_objective**: 37 occurrences
+- **hardware_coupling**: 32 occurrences
+
+## 2. Optimization Methods (Detected Usage)
+- **NONE detected**: 198 occurrences
+- **NONE**: 36 occurrences
+- **weighted_sum**: 33 occurrences
+- **trade-off**: 5 occurrences
+- **elliptical search algorithm**: 4 occurrences
+- **None**: 4 occurrences
+- **alternating_optimization**: 4 occurrences
+- **block_coordinate_descent**: 3 occurrences
+- **trade-off_formulation**: 3 occurrences
+- **Pareto**: 3 occurrences
+- **trade-off formulation**: 3 occurrences
+- **NSGA-II**: 3 occurrences
+- **reinforcement learning**: 2 occurrences
+- **reinforcement_learning**: 2 occurrences
+- **iterative_algorithm**: 2 occurrences
+- **joint_optimization**: 2 occurrences
+- **multi_task_learning**: 2 occurrences
+- **CMA and SCA**: 2 occurrences
+- **optimization**: 2 occurrences
+- **tradeoff**: 2 occurrences
+- **adaptive power allocation**: 2 occurrences
+- **unknown**: 2 occurrences
+- **trade-off analysis**: 2 occurrences
+- **weighted sum**: 2 occurrences
+- **Pareto optimization**: 2 occurrences
+- **semidefinite relaxation**: 2 occurrences
+- **linear programming**: 2 occurrences
+- **parameter optimization**: 2 occurrences
+- **pairwise_coding**: 1 occurrences
+- **Pareto_optimization**: 1 occurrences
+- **frequency division multiplexing**: 1 occurrences
+- **flexible_time-frequency_division_multiplexing**: 1 occurrences
+- **adjusting_bandwidth_and_duration**: 1 occurrences
+- **shared_transceiver**: 1 occurrences
+- **two-phase_optimization**: 1 occurrences
+- **optical_beamforming**: 1 occurrences
+- **bandwidth allocation**: 1 occurrences
+- **comparison**: 1 occurrences
+- **adaptive_adjustment**: 1 occurrences
+- **dynamic_FOE**: 1 occurrences
+- **FPTs-based_dynamic_FOE**: 1 occurrences
+- **experimental results**: 1 occurrences
+- **nonlinear_matched_filtering**: 1 occurrences
+- **KK_algorithm**: 1 occurrences
+- **nonlinear matched filtering**: 1 occurrences
+- **constrained optimization**: 1 occurrences
+- **received light intensity maximization**: 1 occurrences
+- **optical beamforming**: 1 occurrences
+- **joint optimization**: 1 occurrences
+- **Capon_beamforming**: 1 occurrences
+- **APES_beamforming**: 1 occurrences
+- **linear_fitting**: 1 occurrences
+- **multimodal_fusion**: 1 occurrences
+- **beam_pruning**: 1 occurrences
+- **Weighted Sum**: 1 occurrences
+- **Alternating Optimization**: 1 occurrences
+- **integrated_waveform_design**: 1 occurrences
+- **joint_electrical_frequency_modulation_and_optical_SSB_modulation**: 1 occurrences
+- **DSCM_with_RRC_filtering**: 1 occurrences
+- **space-time_coding_equalization**: 1 occurrences
+- **MCMC-based SBL**: 1 occurrences
+- **ADMM**: 1 occurrences
+- **integrated_optoelectronic_chip**: 1 occurrences
+- **adjusting_transmitter_bias_voltage**: 1 occurrences
+- **multi_frequency_fusion**: 1 occurrences
+- **adaptive_waveform_adjustment**: 1 occurrences
+- **frequency-division_multiplexing**: 1 occurrences
+
+## 3. Trade-off Axis Pairs (Top 15)
+- **NONE detected** vs **NONE detected**: 184
+- **spectral_efficiency** vs **Fisher_information**: 6
+- **communication_performance** vs **sensing_performance**: 6
+- **NONE** vs **NONE**: 4
+- **SINR** vs **ISLR**: 4
+- **spectral_efficiency** vs **ranging_accuracy**: 3
+- **None** vs **None**: 3
+- **UAV's sum-throughput** vs **FSO backhaul capacity**: 2
+- **UAV's directional antenna beamwidth** vs **bandwidth allocation**: 2
+- **sum_rate** vs **mutual_information**: 2
+- **BER** vs **OSNR**: 2
+- **BER** vs **RMSE**: 2
+- **optical power** vs **electro-optics bandwidth**: 2
+- **positioning_accuracy** vs **channel_estimation_accuracy**: 2
+- **range_resolution** vs **data_rate**: 2
+
+## 4. Do-Not-Conflate Rules
+- **Resolution** (Δr) ≠ **Accuracy** (σ_r / RMSE)
+- **CRB** (theoretical bound) ≠ **Empirical RMSE**
+- **Pd/Pfa** (detection) ≠ **σ_r** (estimation)
+- **OSNR** (optical plane) ≠ **SNR** (electrical plane)
+- **Pareto** (multi-objective) ≠ **Weighted Sum** (scalarization)

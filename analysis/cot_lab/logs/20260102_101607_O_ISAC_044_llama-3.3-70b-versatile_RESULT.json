@@ -1,0 +1,164 @@
+{
+  "run_id": "20260102_101607_O_ISAC_044_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101607",
+  "paper_id": "O_ISAC_044",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a photonic-based W-band integrated sensing and communication system with flexible time-frequency division multiplexed waveforms for a fiber-wireless network. The system uses a combination of linear frequency modulation (LFM) and subcarrier modulation (SCM) signals to achieve a tradeoff between range resolution, data rate, and detection distance. The system's performance is evaluated through experiments and simulations, demonstrating its ability to achieve high range resolution and data rates. The paper also discusses the influence of system delay, phase noise, and carrier-to-signal power ratio on the system's performance."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a photonic-based approach to generate W-band millimeter-wave signals, which are then transmitted over a fiber-wireless network. The ISAC coupling mode is based on a time-frequency division multiplexing (TFDM) scheme, which allows for flexible tradeoffs between range resolution, data rate, and detection distance. The system uses a combination of LFM and SCM signals to achieve this tradeoff."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a range resolution of 1.59-4.39 cm and a data rate of 15-60 Gbps, which are physically consistent with the system's design and parameters. The system's performance is also evaluated through experiments and simulations, which demonstrate its ability to achieve high range resolution and data rates."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of achieving a tradeoff between range resolution, data rate, and detection distance in a photonic-based ISAC system. However, the paper also identifies several open challenges, including the influence of system delay, phase noise, and carrier-to-signal power ratio on the system's performance. Additionally, the paper highlights the need for further research on the integration of ISAC systems with fiber-wireless networks."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Photonic-Based W-Band Integrated Sensing and Communication System With Flexible Time-Frequency Division Multiplexed Waveforms for Fiber-Wireless Network",
+        "authors": "Boyu Dong, Junlian Jia, Li Tao, Guoqiang Li, Zhongya Li, Changle Huang, Jianyang Shi, Haipeng Wang, Zhenzhou Tang, Junwen Zhang, Shilong Pan, Nan Chi",
+        "year": 2024,
+        "venue": "IEEE Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2024.3354070"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "W-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "vehicular",
+        "scenario_description": "The system is designed for vehicular applications, such as vehicle-to-everything (V2X) communication and radar sensing."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a photonic-based W-band ISAC system with flexible TFDM waveforms for a fiber-wireless network, achieving a tradeoff between range resolution, data rate, and detection distance.",
+        "gap_addressed": "The paper addresses the challenge of achieving a tradeoff between range resolution, data rate, and detection distance in a photonic-based ISAC system.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "None",
+        "novel_component_specs": "None"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Vehicular scenario"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "MZM",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 12,
+        "tx_power_dbm": 13,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OFDM",
+        "comm_modulation_order": 32,
+        "comm_symbol_rate_gbaud": 10,
+        "comm_fec_type": "LDPC",
+        "sensing_waveform_family": "LFM",
+        "isac_waveform_relationship": "joint_waveform"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 10,
+        "fibre_type": "SMF",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "GN_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 1,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "AWGN"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 60,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10,
+        "capacity_bps_hz": 100
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.01,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 1,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100000000.0,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0-1"
+      }
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper presents a photonic-based W-band integrated sensing and communication system with flexible time-frequency division multiplexed waveforms for a fiber-wireless network. The system uses a combination of linear frequency modulation (LFM) and subcarrier modulation (SCM) signals to achieve a tradeoff between range resolution, data rate, and detection distance. The system's performance is evaluated through experiments and simulations, demonstrating its ability to achieve high range resolution and data rates. The paper also discusses the influence of system delay, phase noise, and carrier-to-signal power ratio on the system's performance.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses a photonic-based approach to generate W-band millimeter-wave signals, which are then transmitted over a fiber-wireless network. The ISAC coupling mode is based on a time-frequency division multiplexing (TFDM) scheme, which allows for flexible tradeoffs between range resolution, data rate, and detection distance. The system uses a combination of LFM and SCM signals to achieve this tradeoff.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a range resolution of 1.59-4.39 cm and a data rate of 15-60 Gbps, which are physically consistent with the system's design and parameters. The system's performance is also evaluated through experiments and simulations, which demonstrate its ability to achieve high range resolution and data rates.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of achieving a tradeoff between range resolution, data rate, and detection distance in a photonic-based ISAC system. However, the paper also identifies several open challenges, including the influence of system delay, phase noise, and carrier-to-signal power ratio on the system's performance. Additionally, the paper highlights the need for further research on the integration of ISAC systems with fiber-wireless networks.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Photonic-Based W-Band Integrated Sensing and Communication System With Flexible Time-Frequency Division Multiplexed Waveforms for Fiber-Wireless Network\",\n         \"authors\":\"Boyu Dong, Junlian Jia, Li Tao, Guoqiang Li, Zhongya Li, Changle Huang, Jianyang Shi, Haipeng Wang, Zhenzhou Tang, Junwen Zhang, Shilong Pan, Nan Chi\",\n         \"year\":2024,\n         \"venue\":\"IEEE Journal of Lightwave Technology\",\n         \"doi\":\"10.1109/JLT.2024.3354070\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"W-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"vehicular\",\n         \"scenario_description\":\"The system is designed for vehicular applications, such as vehicle-to-everything (V2X) communication and radar sensing.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a photonic-based W-band ISAC system with flexible TFDM waveforms for a fiber-wireless network, achieving a tradeoff between range resolution, data rate, and detection distance.\",\n         \"gap_addressed\":\"The paper addresses the challenge of achieving a tradeoff between range resolution, data rate, and detection distance in a photonic-based ISAC system.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"None\",\n         \"novel_component_specs\":\"None\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Vehicular scenario\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"MZM\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":12,\n         \"tx_power_dbm\":13,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"photodiode\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"OFDM\",\n         \"comm_modulation_order\":32,\n         \"comm_symbol_rate_gbaud\":10,\n         \"comm_fec_type\":\"LDPC\",\n         \"sensing_waveform_family\":\"LFM\",\n         \"isac_waveform_relationship\":\"joint_waveform\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":10,\n         \"fibre_type\":\"SMF\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"GN_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":1,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"AWGN\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":60,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":100\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.01,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":1,\n         \"velocity_accuracy_mps\":1,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.1,\n         \"sensing_bandwidth_hz\":100e6,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0-1\"\n      }\n   }\n}"
+}

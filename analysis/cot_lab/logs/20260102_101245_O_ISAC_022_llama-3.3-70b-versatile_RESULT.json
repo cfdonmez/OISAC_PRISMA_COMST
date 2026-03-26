@@ -1,0 +1,177 @@
+{
+  "run_id": "20260102_101245_O_ISAC_022_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101245",
+  "paper_id": "O_ISAC_022",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper proposes a joint visible light communication and sensing system using m-CAP modulation and RSS-based trilateration. The system consists of 9 access points (APs) installed on the ceiling of a 4m x 4m x 2.5m room, each using 4 Lumileds LUXEON LED chips. The system provides an illuminance between 300 and 500 lux over the whole room and achieves a positioning error lower than 7.17 cm in 90% of the cases, with a continuous data connectivity at 32 Mbps."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses m-CAP modulation, which is a variant of CAP modulation that changes the conventional CAP into a multi-carrier format by separating the frequency spectrum into multiple sub-bands. The system also uses RSS-based trilateration for positioning, which estimates the distance between the UE and the APs based on the received signal strength."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the positioning error and data rate, are physically consistent with the system architecture and parameters. The system's performance is also compared to other existing works, showing that it can provide a very interesting indoor positioning solution."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The system solves the problem of providing a joint visible light communication and sensing system with high accuracy and data rate. However, there are still open challenges, such as optimizing the AP layout, light sources parameters, and MAC cycle structure, as well as reducing the interdependence between communication and sensing."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Joint Visible Light Sensing and Communication Using m-CAP Modulation",
+        "authors": "Lina Shi, Bastien Béchadergue, Luc Chassagne, Hongyu Guan",
+        "year": 2022,
+        "venue": "IEEE Transactions on Broadcasting",
+        "doi": "10.1109/TBC.2022.3201649"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "The system is designed for indoor positioning and communication in a 4m x 4m x 2.5m room."
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": false,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The system uses m-CAP modulation and RSS-based trilateration for joint visible light communication and sensing.",
+        "gap_addressed": "The system addresses the problem of providing a joint visible light communication and sensing system with high accuracy and data rate.",
+        "performance_enablers": "m-CAP modulation, RSS-based trilateration",
+        "novel_component": "Lumileds LUXEON LED chips",
+        "novel_component_specs": "4 LED chips, 220 lm, 90 lm/W"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor positioning and communication"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "m-CAP",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 620,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 30
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "photodiode",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "half_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "m-CAP",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "RSS",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 2.5,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none",
+        "weather_visibility_m": 10,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.032,
+        "spectral_efficiency_bps_hz": 10,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 20,
+        "osnr_db": 20,
+        "outage_probability": 0.1,
+        "latency_ms": 10,
+        "capacity_bps_hz": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "localization_2d",
+        "sensing_range_m": 4,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.07,
+        "angular_resolution_deg": 10,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.1,
+        "localization_error_m": 0.07,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 10,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.1,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "m",
+        "tradeoff_control_range": "1-10"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The system is simulated and the results are compared to other existing works."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper proposes a joint visible light communication and sensing system using m-CAP modulation and RSS-based trilateration. The system consists of 9 access points (APs) installed on the ceiling of a 4m x 4m x 2.5m room, each using 4 Lumileds LUXEON LED chips. The system provides an illuminance between 300 and 500 lux over the whole room and achieves a positioning error lower than 7.17 cm in 90% of the cases, with a continuous data connectivity at 32 Mbps.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses m-CAP modulation, which is a variant of CAP modulation that changes the conventional CAP into a multi-carrier format by separating the frequency spectrum into multiple sub-bands. The system also uses RSS-based trilateration for positioning, which estimates the distance between the UE and the APs based on the received signal strength.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The reported metrics, such as the positioning error and data rate, are physically consistent with the system architecture and parameters. The system's performance is also compared to other existing works, showing that it can provide a very interesting indoor positioning solution.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The system solves the problem of providing a joint visible light communication and sensing system with high accuracy and data rate. However, there are still open challenges, such as optimizing the AP layout, light sources parameters, and MAC cycle structure, as well as reducing the interdependence between communication and sensing.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Joint Visible Light Sensing and Communication Using m-CAP Modulation\",\n         \"authors\":\"Lina Shi, Bastien Béchadergue, Luc Chassagne, Hongyu Guan\",\n         \"year\":2022,\n         \"venue\":\"IEEE Transactions on Broadcasting\",\n         \"doi\":\"10.1109/TBC.2022.3201649\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_vlc\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"The system is designed for indoor positioning and communication in a 4m x 4m x 2.5m room.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":false,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The system uses m-CAP modulation and RSS-based trilateration for joint visible light communication and sensing.\",\n         \"gap_addressed\":\"The system addresses the problem of providing a joint visible light communication and sensing system with high accuracy and data rate.\",\n         \"performance_enablers\":\"m-CAP modulation, RSS-based trilateration\",\n         \"novel_component\":\"Lumileds LUXEON LED chips\",\n         \"novel_component_specs\":\"4 LED chips, 220 lm, 90 lm/W\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor positioning and communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"led\",\n         \"tx_modulation_type\":\"m-CAP\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":620,\n         \"optical_bandwidth_ghz\":10,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":30\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"photodiode\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"half_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"m-CAP\",\n         \"comm_modulation_order\":64,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"RSS\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"time\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"none\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"none\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":2.5,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\",\n         \"weather_visibility_m\":10,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":0.032,\n         \"spectral_efficiency_bps_hz\":10,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":20,\n         \"osnr_db\":20,\n         \"outage_probability\":0.1,\n         \"latency_ms\":10,\n         \"capacity_bps_hz\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"localization_2d\",\n         \"sensing_range_m\":4,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.07,\n         \"angular_resolution_deg\":10,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.1,\n         \"localization_error_m\":0.07,\n         \"spatial_resolution_m\":0.1,\n         \"sensing_bandwidth_hz\":10,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.1,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"m\",\n         \"tradeoff_control_range\":\"1-10\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The system is simulated and the results are compared to other existing works.\"\n   }\n}"
+}

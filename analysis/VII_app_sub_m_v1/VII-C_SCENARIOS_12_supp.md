@@ -1,0 +1,8 @@
+- Scenario 1 excerpt A (`O_ISAC_060`): "Fig. 1 shows a block diagram of the proposed ISAC-OW system for autonomous vehicles."
+  - Locator: `data/proc_markdowns/O_ISAC_060/O_ISAC_060.md`, HeadingPath `#### II. SYSTEM MODEL`, line span `55-55`.
+- Scenario 1 excerpt B (`O_ISAC_060`): "the ranging result is 100.011 m."
+  - Locator: `data/proc_markdowns/O_ISAC_060/O_ISAC_060.md`, HeadingPath `#### C. LiDAR Performance`, line span `197-197`.
+- Scenario 2 excerpt A (`O_ISAC_164`): "vehicles exchange information with other vehicles (V2V) or infrastructure (V2I/I2V) to enhance traffic efficiency and safety."
+  - Locator: `data/proc_markdowns/O_ISAC_164/O_ISAC_164.md`, HeadingPath `### *2.1. OC-ISAC Architecture*`, line span `55-55`.
+- Scenario 2 excerpt B (`O_ISAC_164`): "faster relative motion between the transceiver and the environment—or sensing in a more complex scene—leads to a reduction in sensing gain"
+  - Locator: `data/proc_markdowns/O_ISAC_164/O_ISAC_164.md`, HeadingPath `#### 5.3. Normalized Gains for Communication and Sensing`, line span `410-410`.

@@ -136,8 +136,8 @@ BATCH
 - paper_ids ({n}): {paper_ids_block}
 
 REPO PATHS (RELATIVE)
-- extraction repo: data/extraction_results_v4/
-- markdown repo:   data/processed_markdowns/
+- extraction repo: data/ext_res_v4/
+- markdown repo:   data/proc_markdowns/
 - outputs:         analysis/
 
 SECTION II ANCHOR MAP (MUST USE)
@@ -163,11 +163,11 @@ HARD RULES
 6) STOP after this batch.
 
 DISCOVERY (STRUCTURED)
-A) Locate canonical extraction source(s) under data/extraction_results_v4/.
+A) Locate canonical extraction source(s) under data/ext_res_v4/.
    - Use unified JSON/JSONL/CSV if present, else per-paper JSON.
    - For each paper_id, record exact extraction_json_path.
 B) For each paper_id, locate processed markdown:
-   - Search under data/processed_markdowns/** for a .md containing the paper_id.
+   - Search under data/proc_markdowns/** for a .md containing the paper_id.
    - Record markdown_path.
 
 TWO-STAGE EVIDENCE MECHANISM (RECALL↑ then PRECISION↑)
@@ -227,7 +227,7 @@ OVERRIDE LOGIC (STRICT)
 OUTPUTS (WRITE / APPEND SAFELY)
 Create analysis/ if missing.
 
-1) analysis/II_text_candidates_index.csv   (Stage-1 output)
+1) analysis/II_txt_cand_idx.csv   (Stage-1 output)
    - If rows for (batch_id, paper_id) exist, remove them first, then append.
    Columns:
    batch_id, paper_id, section2_anchor, extraction_json_path, markdown_path,
@@ -235,7 +235,7 @@ Create analysis/ if missing.
    candidate_locator_drmin, candidate_locator_dz, candidate_locator_osnr, candidate_locator_esnr,
    invalid_reason
 
-2) analysis/II_text_evidence_index.csv     (Stage-2 verified output)
+2) analysis/II_txt_ev_idx.csv     (Stage-2 verified output)
    - If rows for (batch_id, paper_id) exist, remove them first, then append.
    Columns:
    batch_id, paper_id, section2_anchor, extraction_json_path, markdown_path,
@@ -248,7 +248,7 @@ Create analysis/ if missing.
    paper_id, section2_anchor, resolution_defensibility_label, snr_plane_label, rule_applied,
    markdown_path, extraction_json_path
 
-4) analysis/II_anchor_coverage_running.csv   (append/update)
+4) analysis/II_anchor_cov_run.csv   (append/update)
    - Maintain running counts per anchor over ALL batches processed so far.
    Columns:
    section2_anchor,

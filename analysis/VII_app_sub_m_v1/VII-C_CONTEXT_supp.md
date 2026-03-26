@@ -1,0 +1,8 @@
+- Excerpt 1 (`O_ISAC_003`): "vehicle-to-vehicle (V2V) scenario, focusing on monostatic sensing and bi-static sensing modes."
+  - Locator: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, HeadingPath `*Abstract*`, line span `5-5`.
+- Excerpt 2 (`O_ISAC_003`): "signals from unilateral car taillights in a V2V scenario."
+  - Locator: `data/proc_markdowns/O_ISAC_003/O_ISAC_003.md`, HeadingPath `# I. INTRODUCTION`, line span `15-15`.
+- Excerpt 3 (`O_ISAC_164`): "In vehicular communication networks, optical camera communication (OCC) has emerged as a promising alternative for V2X connectivity."
+  - Locator: `data/proc_markdowns/O_ISAC_164/O_ISAC_164.md`, HeadingPath `# **1. Introduction**`, line span `33-33`.
+- Excerpt 4 (`O_ISAC_164`): "vehicles exchange information with other vehicles (V2V) or infrastructure (V2I/I2V) to enhance traffic efficiency and safety."
+  - Locator: `data/proc_markdowns/O_ISAC_164/O_ISAC_164.md`, HeadingPath `### *2.1. OC-ISAC Architecture*`, line span `55-55`.

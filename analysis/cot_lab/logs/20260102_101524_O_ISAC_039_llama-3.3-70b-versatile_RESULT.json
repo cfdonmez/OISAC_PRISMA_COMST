@@ -1,0 +1,157 @@
+{
+  "run_id": "20260102_101524_O_ISAC_039_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101524",
+  "paper_id": "O_ISAC_039",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a Visible Light Integrated Positioning and Communication (VIPAC) framework, which integrates the functionalities of both accurate positioning and efficient communication for visible light networks. The system model consists of a multi-LED orthogonal frequency division multiplexing (OFDM)-based VLC system using intensity modulation/direct detection (IM/DD). The proposed framework utilizes a multi-task learning (MTL)-based deep neural network to learn the mutual beneficial features between the positioning and channel estimation tasks."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The VIPAC framework integrates positioning and communication tasks by utilizing the channel state information to facilitate location precision for the VLP task, and vice versa, the positioning information also brings about benefits to channel estimation for the VLC task. The MTL-based network architecture is composed of a sparsity-aware shared network and two task-oriented sub-networks for channel estimation and positioning, respectively."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper provides a theoretical analysis of the performance bounds of positioning and channel estimation accuracy. The Cramér-Rao lower bound (CRLB) is derived for the channel estimation and positioning tasks, which serves as a benchmark to evaluate the performance of the proposed VIPAC framework."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed VIPAC framework addresses the limitations of traditional VLP and VLC systems by integrating the two tasks and exploiting the mutual benefits between them. However, the framework assumes a static environment and does not consider the impact of mobility on the system performance. Future work can focus on extending the framework to dynamic environments and investigating the effects of user mobility on the VIPAC system."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Visible Light Integrated Positioning and Communication: A Multi-Task Federated Learning Framework",
+        "authors": "Tiankuo Wei, Sicong Liu, Xiaojiang Du",
+        "year": 2022,
+        "venue": "IEEE Transactions on Mobile Computing",
+        "doi": "10.1109/TMC.2022.3207164"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_vlc",
+        "carrier_band": "visible",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "indoor_positioning",
+        "scenario_description": "The proposed VIPAC framework is designed for indoor positioning and communication applications."
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed VIPAC framework integrates positioning and communication tasks using a multi-task learning-based deep neural network.",
+        "gap_addressed": "The framework addresses the limitations of traditional VLP and VLC systems by exploiting the mutual benefits between the two tasks.",
+        "performance_enablers": "multi_task_learning",
+        "novel_component": "MTL-based deep neural network",
+        "novel_component_specs": "The network consists of a sparsity-aware shared network and two task-oriented sub-networks for channel estimation and positioning."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor Visible Light Communication"
+      },
+      "transmitter": {
+        "tx_source_type": "led",
+        "tx_modulation_type": "ofdm",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 630,
+        "optical_bandwidth_ghz": 100,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 30
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pd",
+        "rx_aperture_diameter_m": 0.01,
+        "rx_photonic_processing": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "joint_waveform"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 2,
+        "dispersion_ps_per_nm_km": 17,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 5,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "solar"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 2,
+        "ber": 0.001,
+        "ber_target": 0.001,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 5,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_split",
+        "tradeoff_control_range": "0.1-0.9"
+      }
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper presents a Visible Light Integrated Positioning and Communication (VIPAC) framework, which integrates the functionalities of both accurate positioning and efficient communication for visible light networks. The system model consists of a multi-LED orthogonal frequency division multiplexing (OFDM)-based VLC system using intensity modulation/direct detection (IM/DD). The proposed framework utilizes a multi-task learning (MTL)-based deep neural network to learn the mutual beneficial features between the positioning and channel estimation tasks.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The VIPAC framework integrates positioning and communication tasks by utilizing the channel state information to facilitate location precision for the VLP task, and vice versa, the positioning information also brings about benefits to channel estimation for the VLC task. The MTL-based network architecture is composed of a sparsity-aware shared network and two task-oriented sub-networks for channel estimation and positioning, respectively.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper provides a theoretical analysis of the performance bounds of positioning and channel estimation accuracy. The Cramér-Rao lower bound (CRLB) is derived for the channel estimation and positioning tasks, which serves as a benchmark to evaluate the performance of the proposed VIPAC framework.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed VIPAC framework addresses the limitations of traditional VLP and VLC systems by integrating the two tasks and exploiting the mutual benefits between them. However, the framework assumes a static environment and does not consider the impact of mobility on the system performance. Future work can focus on extending the framework to dynamic environments and investigating the effects of user mobility on the VIPAC system.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Visible Light Integrated Positioning and Communication: A Multi-Task Federated Learning Framework\",\n         \"authors\":\"Tiankuo Wei, Sicong Liu, Xiaojiang Du\",\n         \"year\":2022,\n         \"venue\":\"IEEE Transactions on Mobile Computing\",\n         \"doi\":\"10.1109/TMC.2022.3207164\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_vlc\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"indoor_positioning\",\n         \"scenario_description\":\"The proposed VIPAC framework is designed for indoor positioning and communication applications.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed VIPAC framework integrates positioning and communication tasks using a multi-task learning-based deep neural network.\",\n         \"gap_addressed\":\"The framework addresses the limitations of traditional VLP and VLC systems by exploiting the mutual benefits between the two tasks.\",\n         \"performance_enablers\":\"multi_task_learning\",\n         \"novel_component\":\"MTL-based deep neural network\",\n         \"novel_component_specs\":\"The network consists of a sparsity-aware shared network and two task-oriented sub-networks for channel estimation and positioning.\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor Visible Light Communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"led\",\n         \"tx_modulation_type\":\"ofdm\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":630,\n         \"optical_bandwidth_ghz\":100,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":30\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"direct\",\n         \"rx_detector\":\"pd\",\n         \"rx_aperture_diameter_m\":0.01,\n         \"rx_photonic_processing\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"pulse_train\",\n         \"isac_waveform_relationship\":\"joint_waveform\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":2,\n         \"dispersion_ps_per_nm_km\":17,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":5,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"solar\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":2,\n         \"ber\":1e-3,\n         \"ber_target\":1e-3,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":5,\n         \"range_resolution_m\":0.1,\n         \"range_accuracy_m\":0.01,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_split\",\n         \"tradeoff_control_range\":\"0.1-0.9\"\n      }\n   }\n}"
+}

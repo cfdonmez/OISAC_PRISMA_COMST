@@ -34,18 +34,18 @@ The selection process followed a three-phase screening workflow conducted by **t
 ```mermaid
 graph TD
     subgraph Identification
-        A1[Records identified from<br/>IEEE Xplore & Scopus<br/>k = 416]
+        A1[Records identified from<br/>databases and other sources<br/>k = TBD]
     end
     
     subgraph Screening
-        A1 --> B1[Duplicates removed<br/>k = 152]
-        B1 --> B2[Records screened<br/>k = 264]
-        B2 --> B3[Excluded by Title/Abstract<br/>k = 175]
+        A1 --> B1[Duplicates removed<br/>k = TBD]
+        B1 --> B2[Records screened<br/>k = TBD]
+        B2 --> B3[Excluded by Title/Abstract<br/>k = TBD]
     end
     
     subgraph Eligibility
-        B2 --> C1[Sought for retrieval<br/>k = 243]
-        C1 --> C2[Not retrieved<br/>No full text available<br/>k = 23]
+        B2 --> C1[Full-text assessed<br/>k = 222]
+        C1 --> C2[Full-text excluded<br/>k = 1]
     end
     
     subgraph Included

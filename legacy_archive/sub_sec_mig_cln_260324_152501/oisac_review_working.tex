@@ -1,0 +1,76 @@
+\documentclass[10pt,journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage[
+  pipeTables,
+  tableCaptions,
+  texMathDollars,
+  texMathDoubleBackslash,
+  texMathSingleBackslash
+]{markdown}
+\usepackage{newunicodechar}
+
+% Temporary Unicode cleanup while the review body is still imported from markdown.
+\newunicodechar{○}{\ensuremath{\circ}}
+\newunicodechar{●}{\ensuremath{\bullet}}
+\newunicodechar{◐}{\ensuremath{\odot}}
+\newunicodechar{≈}{\ensuremath{\approx}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{μ}{\ensuremath{\mu}}
+\newunicodechar{α}{\ensuremath{\alpha}}
+\newunicodechar{β}{\ensuremath{\beta}}
+\newunicodechar{γ}{\ensuremath{\gamma}}
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{ε}{\ensuremath{\epsilon}}
+\newunicodechar{η}{\ensuremath{\eta}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{φ}{\ensuremath{\phi}}
+\newunicodechar{σ}{\ensuremath{\sigma}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+
+\graphicspath{{./figures/}{./}}
+\hyphenation{op-tical net-works pho-ton-ics tera-hertz}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\markdownSetup{
+  rendererPrototypes = {
+    image = {
+      \begin{figure*}[!t]
+        \centering
+        \includegraphics[
+          width=\textwidth,
+          height=0.42\textheight,
+          keepaspectratio
+        ]{#3}
+        \par\smallskip
+        {\footnotesize #1\par}
+      \end{figure*}
+    },
+  }
+}
+
+\begin{document}
+
+% Front matter is separated so that journal metadata can be edited without
+% touching the imported body during the transition phase.
+\input{oisac_frontmatter.tex}
+
+% Native LaTeX migration starts with Section I, which contains the most
+% fragile front-matter-adjacent tables and figures.
+\input{sections/section_01_introduction.tex}
+
+% Sections II onward remain in a cleaned markdown derivative during the
+% staged migration to native LaTeX.
+\markdownInput{oisac_review_remaining_body.md}
+
+\end{document}

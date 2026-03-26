@@ -1,8 +1,8 @@
-# 📡 O-ISAC Systematic Review (PRISMA 2020)
+# 📡 O-ISAC Systematic Survey (PRISMA 2020)
 
 > **"Optical Integrated Sensing and Communication: A Unified Survey"**
 
-Hoş geldiniz! 👋 Bu repo, **IEEE Communications Surveys & Tutorials (COMST)** dergisi için hazırlanan akademik bir sistematik derleme (survey) projesinin **tüm mutfağını** barındırır.
+Hoş geldiniz! 👋 Bu repo, **IEEE Communications Surveys & Tutorials (COMST)** dergisi için hazırlanan akademik bir sistematik survey (derleme) projesinin **tüm mutfağını** barındırır.
 
 Burada, literatürdeki binlerce makalenin nasıl tarandığını, nasıl elendiğini ve yapay zeka destekli araçlarla nasıl analiz edildiğini **şeffaf bir şekilde** görebilirsiniz.
 
@@ -22,15 +22,15 @@ Bu repo, bu soruyu cevaplamak için yapılan **bilimsel yolculuğun** dijital ka
 
 | Aşama | Ne Yapıyoruz? | Durum |
 |:---|:---|:---:|
-| **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_protocol.md)) | ✅ Tamamlandı |
+| **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_proto.md)) | ✅ Tamamlandı |
 | **2. Arama** | 1200+ makaleyi veritabanlarından bulduk. | ✅ Tamamlandı |
 | **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (223+ dahil edildi). | ✅ Tamamlandı |
 | **4. PDF Toplama** | Dahil edilen 223+ makalenin tam metinlerini topladık. | ✅ Tamamlandı |
 | **5. Veri Madenciliği** | **Pipeline V4 (Vision + CoT)** ile derin analiz yapıyoruz. | 🟢 Devam Ediyor (200+ İşlendi) |
-| **6. Benchmark** | V4 vs Legacy sonuçlarını kıyaslıyoruz. | 🟢 Devam Ediyor ([Benchmark Lab](analysis/notebooks/06_Extraction_Benchmark_Lab.ipynb)) |
+| **6. Benchmark** | V4 vs Legacy sonuçlarını kıyaslıyoruz. | 🟢 Devam Ediyor ([Benchmark Lab](analysis/nb/06_Extraction_Benchmark_Lab.ipynb)) |
 | **7. Yazım** | Sonuçları COMST taslağına dönüştürüyoruz. | 🟡 Hazırlanıyor |
 
-> **Canlı Süreç:** Bu proje "Onion" (Soğan) mimarisiyle katman katman derinleşir. ([Detaylı Takip Dosyası](data/extraction_tracker.md))
+> **Canlı Süreç:** Bu proje "Onion" (Soğan) mimarisiyle katman katman derinleşir. ([Detaylı Takip Dosyası](data/ext_track.md))
 
 ---
 
@@ -60,8 +60,8 @@ graph LR
 
 ## 📂 Dosyalar Nerede? (Harita)
 
-*   `data/`: **Hazine.** JSON verileri ve [`extraction_tracker.md`](data/extraction_tracker.md).
-*   `analysis/notebooks/`: **Laboratuvar.** `CoT_Master_Pipeline.ipynb` ve `06_Extraction_Benchmark_Lab.ipynb`.
+*   `data/`: **Hazine.** JSON verileri ve [`ext_track.md`](data/ext_track.md).
+*   `analysis/nb/`: **Laboratuvar.** `CoT_Master_Pipeline.ipynb` ve `06_Extraction_Benchmark_Lab.ipynb`.
 *   `protocol/`: **Anayasa.** PRISMA protokolü.
 
 ---

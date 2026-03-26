@@ -1,0 +1,125 @@
+# Folder Inventory: analysis
+
+- Generated on: 2026-03-26
+- Scope: only the first level inside `analysis/`
+- Selection rule: first root folder alphabetically after excluding `.agent/`, `.git/`, `.venv/`, `.vscode/`, and `manuscript/`
+
+## Subfolders (23)
+
+- `II_evidence_v2`
+- `II_evidence_v3`
+- `IV_evidence_v1`
+- `IV_evidence_v2`
+- `VIII_camera_ready_merge_v1`
+- `VIII_challenges_subsections_v1`
+- `VIII_challenges_subsections_v1_micro`
+- `VIII_evidence_v1`
+- `VII_applications_subsections_v1`
+- `VII_applications_subsections_v1_micro`
+- `VII_camera_ready_merge_v1`
+- `VII_evidence_v2`
+- `VI_evidence_v2`
+- `V_evidence_v1`
+- `V_evidence_v2`
+- `_archive_20260205`
+- `cot_laboratory`
+- `deep_research`
+- `manifest_v1`
+- `notebooks`
+- `patches`
+- `phase1_screening`
+- `phase2_extraction`
+
+## Files (87)
+
+- `IC_C3_audit_v3_2.csv`
+- `IC_I-C_skeleton_v3_2.md`
+- `IC_QA_report_v3.txt`
+- `IC_QA_report_v3_1.txt`
+- `IC_QA_report_v3_2.txt`
+- `IC_conflicts_gold_v3_2.csv`
+- `IC_evidence_claims.csv`
+- `IC_evidence_claims_v2.csv`
+- `IC_evidence_claims_v3.csv`
+- `IC_evidence_claims_v3_1.csv`
+- `IC_evidence_gold_v3_2.csv`
+- `IC_evidence_summary.md`
+- `IC_evidence_summary_v2.md`
+- `IC_evidence_summary_v3.md`
+- `IC_evidence_summary_v3_1.md`
+- `IC_term_metric_conflicts.csv`
+- `IC_term_metric_conflicts_v2.csv`
+- `IC_term_metric_conflicts_v3.csv`
+- `IC_term_metric_conflicts_v3_1.csv`
+- `ID_COMST_style_alignment.md`
+- `ID_gap_matrix.csv`
+- `ID_gap_summary.md`
+- `ID_outline_skeleton.md`
+- `ID_survey_catalog.csv`
+- `II_channel_governance.md`
+- `II_high_confidence_QA.md`
+- `II_high_confidence_artifacts.md`
+- `II_high_confidence_metric_index.csv`
+- `II_high_confidence_summary.md`
+- `II_markdown_inventory.csv`
+- `II_metric_evaluation_governance_2D.md`
+- `II_metric_governance.md`
+- `II_schema_map.md`
+- `II_section2_evidence_coverage_matrix.csv`
+- `II_section2_evidence_coverage_report.md`
+- `II_section2_gapfill_plan.md`
+- `II_semantic_audit_artifacts.md`
+- `II_semantic_audit_report.md`
+- `II_text_candidates_index.csv`
+- `II_text_evidence_index.csv`
+- `II_text_evidence_index_only_evidence.csv`
+- `II_tradeoff_governance_2E.md`
+- `NEW_COMST_020_blueprint.json`
+- `PRISMA_STATUS.md`
+- `README.md`
+- `analyze_layout.py`
+- `analyze_rhetoric.py`
+- `analyze_style.py`
+- `calculate_authors.py`
+- `codex_batch_state.json`
+- `corpus_fidelity_report.csv`
+- `corpus_structure.json`
+- `corpus_structure_summary.csv`
+- `distill_gold_v3_2.py`
+- `extract_gap_methods.py`
+- `extract_phrasebank.py`
+- `extract_structure.py`
+- `gap_analysis.py`
+- `gap_methodology_report.csv`
+- `gap_report.json`
+- `generate_manifest.py`
+- `generate_trend_plots.py`
+- `layout_stats.json`
+- `llm_analysis_card_template.json`
+- `llm_analysis_card_template_v1.2.json`
+- `mine_IC_evidence.py`
+- `mine_IC_evidence_v3.py`
+- `mine_IC_evidence_v3_1.py`
+- `mine_ID_surveys_v1.py`
+- `mine_ID_surveys_v2.py`
+- `mine_ID_surveys_v2_1.py`
+- `mine_ID_surveys_v2_2.py`
+- `mine_ID_surveys_v2_3.py`
+- `mine_ID_surveys_v2_3_1.py`
+- `oisac_extraction_schema.yaml`
+- `oisac_extraction_schema_v2.yaml`
+- `phrasebank.json`
+- `references.bib`
+- `rhetoric_report.json`
+- `section_02C_audit.md`
+- `section_08_reference_sweep_note.md`
+- `section_08_repo_decision_matrix.md`
+- `section_IC_draft_v1.md`
+- `standardize_corpus.py`
+- `stylometric_report.json`
+- `synthesis_report.md`
+- `synthesis_v4_unified.py`
+- `synthesize_conflicts.py`
+- `validate_corpus.py`
+- `writing_blueprints_master.json`
+- `writing_blueprints_schema.json`

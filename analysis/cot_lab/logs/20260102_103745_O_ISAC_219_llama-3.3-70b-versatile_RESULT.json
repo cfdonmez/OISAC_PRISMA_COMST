@@ -1,0 +1,203 @@
+{
+  "run_id": "20260102_103745_O_ISAC_219_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103745",
+  "paper_id": "O_ISAC_219",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several figures and charts that illustrate the system model, waveform design, and performance metrics of the proposed MU-RO-ISAC system. Figure 1 shows the system block diagram, Figure 2 illustrates the OFDM-MLS-CIM waveform, and Figure 3 depicts the superposed OFDM-MLS-CIM waveforms with different VPP allocation ratios. Additionally, there are several charts that present the BER performance, cross-correlation results, and ranging RMSE of the system."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed MU-RO-ISAC system uses a novel OFDM-MLS-CIM waveform to support both communication and sensing for multiple users. The system mechanism involves OFDM-MLS-CIM modulation, where the input bits of multiple users are modulated into an OFDM signal and an MLS signal, which are then superposed to form the OFDM-MLS-CIM signal. The ISAC coupling mode is based on the superposition of the OFDM and MLS signals, allowing for flexible performance trade-off between communication and sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a data rate of 125 Mbps for OFDM modulation and 7.8 Mbps for CIM modulation, resulting in an overall data rate of 132.8 Mbps for the OFDM-MLS-CIM signal. The ranging resolution is reported to be 6 cm. These metrics are physically consistent with the system parameters and waveform design."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed MU-RO-ISAC system solves the problem of supporting multiple users with flexible performance trade-off between communication and sensing. However, the system still faces challenges such as error propagation during IC-aided joint sensing, which needs to be addressed to enhance the sensing performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_219",
+        "title": "Multiuser Retroreflective Optical ISAC: Waveform Design, Joint Sensing and Multiple Access",
+        "authors": "Weiren Wang et al.",
+        "year": 2025,
+        "venue": "IEEE",
+        "doi": "Not reported",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "Not reported",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing",
+          "indoor_positioning"
+        ],
+        "scenario_description": "Multiuser retroreflective optical ISAC system"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Novel OFDM-MLS-CIM waveform design for multiuser retroreflective optical ISAC",
+        "gap_addressed": "Supporting multiple users with flexible performance trade-off between communication and sensing",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "joint_waveform_design"
+        ],
+        "novel_component": "OFDM-MLS-CIM modulator",
+        "novel_component_specs": "Supports flexible VPP allocation ratio"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Two-user RO-ISAC system"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": "Not reported",
+        "optical_bandwidth_ghz": "Not reported",
+        "tx_power_dbm": "Not reported",
+        "aperture_diameter_m": "Not reported",
+        "beam_divergence_mrad": "Not reported"
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "apd_pd",
+        "rx_aperture_diameter_m": "Not reported",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": "Not reported",
+        "false_target_mitigation": "ic_aided"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "half_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": "Not reported",
+        "comm_fec_type": "Not reported",
+        "sensing_waveform_family": "mls",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "flexible"
+      },
+      "channel_fiber": {
+        "fibre_length_km": "Not reported",
+        "fibre_type": "Not reported",
+        "attenuation_db_per_km": "Not reported",
+        "dispersion_ps_per_nm_km": "Not reported",
+        "nonlinearity_model": "Not reported"
+      },
+      "channel_wireless": {
+        "link_distance_m": "Not reported",
+        "path_loss_model": "Not reported",
+        "turbulence_model": "Not reported",
+        "turbulence_Cn2": "Not reported",
+        "scintillation_index": "Not reported",
+        "pointing_error_model": "Not reported",
+        "weather_visibility_m": "Not reported",
+        "ambient_light_model": "Not reported"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.1328,
+        "spectral_efficiency_bps_hz": "Not reported",
+        "ber": "Not reported",
+        "ber_target": "Not reported",
+        "snr_db": "Not reported",
+        "osnr_db": "Not reported",
+        "outage_probability": "Not reported",
+        "latency_ms": "Not reported",
+        "capacity_bps_hz": "Not reported"
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging"
+        ],
+        "sensing_range_m": "Not reported",
+        "range_resolution_m": 0.06,
+        "range_accuracy_m": "Not reported",
+        "angular_resolution_deg": "Not reported",
+        "velocity_resolution_mps": "Not reported",
+        "velocity_accuracy_mps": "Not reported",
+        "localization_error_m": "Not reported",
+        "spatial_resolution_m": "Not reported",
+        "sensing_bandwidth_hz": "Not reported",
+        "pd_probability_detection": "Not reported",
+        "pfa_probability_false_alarm": "Not reported",
+        "crb_crlb_value": "Not reported",
+        "crb_parameter": "Not reported"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "VPP allocation ratio",
+        "tradeoff_control_range": "0.1 to 0.3"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": "Not reported",
+        "opa_steering_range_deg": "Not reported",
+        "opa_beamwidth_deg": "Not reported",
+        "ris_num_elements": "Not reported",
+        "ris_type": "Not reported",
+        "ris_phase_bits": "Not reported"
+      },
+      "provenance": {
+        "source_pointer": "Figure 4",
+        "value_origin": "reported_text",
+        "confidence_reporting": "none_reported",
+        "num_trials": "Not reported"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model, waveform design, and performance metrics, and includes experimental results to validate the proposed system."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n           \"value\": \"The paper includes several figures and charts that illustrate the system model, waveform design, and performance metrics of the proposed MU-RO-ISAC system. Figure 1 shows the system block diagram, Figure 2 illustrates the OFDM-MLS-CIM waveform, and Figure 3 depicts the superposed OFDM-MLS-CIM waveforms with different VPP allocation ratios. Additionally, there are several charts that present the BER performance, cross-correlation results, and ranging RMSE of the system.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The proposed MU-RO-ISAC system uses a novel OFDM-MLS-CIM waveform to support both communication and sensing for multiple users. The system mechanism involves OFDM-MLS-CIM modulation, where the input bits of multiple users are modulated into an OFDM signal and an MLS signal, which are then superposed to form the OFDM-MLS-CIM signal. The ISAC coupling mode is based on the superposition of the OFDM and MLS signals, allowing for flexible performance trade-off between communication and sensing.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper reports a data rate of 125 Mbps for OFDM modulation and 7.8 Mbps for CIM modulation, resulting in an overall data rate of 132.8 Mbps for the OFDM-MLS-CIM signal. The ranging resolution is reported to be 6 cm. These metrics are physically consistent with the system parameters and waveform design.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The proposed MU-RO-ISAC system solves the problem of supporting multiple users with flexible performance trade-off between communication and sensing. However, the system still faces challenges such as error propagation during IC-aided joint sensing, which needs to be addressed to enhance the sensing performance.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_219\",\n           \"title\": \"Multiuser Retroreflective Optical ISAC: Waveform Design, Joint Sensing and Multiple Access\",\n           \"authors\": \"Weiren Wang et al.\",\n           \"year\": 2025,\n           \"venue\": \"IEEE\",\n           \"doi\": \"Not reported\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"hybrid\",\n           \"carrier_band\": \"Not reported\",\n           \"operational_environment\": \"indoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\", \"indoor_positioning\"],\n           \"scenario_description\": \"Multiuser retroreflective optical ISAC system\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"Novel OFDM-MLS-CIM waveform design for multiuser retroreflective optical ISAC\",\n           \"gap_addressed\": \"Supporting multiple users with flexible performance trade-off between communication and sensing\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"joint_waveform_design\"],\n           \"novel_component\": \"OFDM-MLS-CIM modulator\",\n           \"novel_component_specs\": \"Supports flexible VPP allocation ratio\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"Two-user RO-ISAC system\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"laser\",\n           \"tx_modulation_type\": \"im_dd\",\n           \"tx_external_modulator\": \"none\",\n           \"wavelength_nm\": \"Not reported\",\n           \"optical_bandwidth_ghz\": \"Not reported\",\n           \"tx_power_dbm\": \"Not reported\",\n           \"aperture_diameter_m\": \"Not reported\",\n           \"beam_divergence_mrad\": \"Not reported\"\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"apd_pd\",\n           \"rx_aperture_diameter_m\": \"Not reported\",\n           \"rx_modulator_type\": \"none\",\n           \"rx_modulator_bandwidth_ghz\": \"Not reported\",\n           \"false_target_mitigation\": \"ic_aided\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"half_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"ofdm\",\n           \"comm_modulation_order\": 2,\n           \"comm_symbol_rate_gbaud\": \"Not reported\",\n           \"comm_fec_type\": \"Not reported\",\n           \"sensing_waveform_family\": \"mls\",\n           \"isac_waveform_relationship\": \"single_dual_function\",\n           \"resource_partition\": \"flexible\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": \"Not reported\",\n           \"fibre_type\": \"Not reported\",\n           \"attenuation_db_per_km\": \"Not reported\",\n           \"dispersion_ps_per_nm_km\": \"Not reported\",\n           \"nonlinearity_model\": \"Not reported\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": \"Not reported\",\n           \"path_loss_model\": \"Not reported\",\n           \"turbulence_model\": \"Not reported\",\n           \"turbulence_Cn2\": \"Not reported\",\n           \"scintillation_index\": \"Not reported\",\n           \"pointing_error_model\": \"Not reported\",\n           \"weather_visibility_m\": \"Not reported\",\n           \"ambient_light_model\": \"Not reported\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 0.1328,\n           \"spectral_efficiency_bps_hz\": \"Not reported\",\n           \"ber\": \"Not reported\",\n           \"ber_target\": \"Not reported\",\n           \"snr_db\": \"Not reported\",\n           \"osnr_db\": \"Not reported\",\n           \"outage_probability\": \"Not reported\",\n           \"latency_ms\": \"Not reported\",\n           \"capacity_bps_hz\": \"Not reported\"\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\"],\n           \"sensing_range_m\": \"Not reported\",\n           \"range_resolution_m\": 0.06,\n           \"range_accuracy_m\": \"Not reported\",\n           \"angular_resolution_deg\": \"Not reported\",\n           \"velocity_resolution_mps\": \"Not reported\",\n           \"velocity_accuracy_mps\": \"Not reported\",\n           \"localization_error_m\": \"Not reported\",\n           \"spatial_resolution_m\": \"Not reported\",\n           \"sensing_bandwidth_hz\": \"Not reported\",\n           \"pd_probability_detection\": \"Not reported\",\n           \"pfa_probability_false_alarm\": \"Not reported\",\n           \"crb_crlb_value\": \"Not reported\",\n           \"crb_parameter\": \"Not reported\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"VPP allocation ratio\",\n           \"tradeoff_control_range\": \"0.1 to 0.3\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": \"Not reported\",\n           \"opa_steering_range_deg\": \"Not reported\",\n           \"opa_beamwidth_deg\": \"Not reported\",\n           \"ris_num_elements\": \"Not reported\",\n           \"ris_type\": \"Not reported\",\n           \"ris_phase_bits\": \"Not reported\"\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Figure 4\",\n           \"value_origin\": \"reported_text\",\n           \"confidence_reporting\": \"none_reported\",\n           \"num_trials\": \"Not reported\"\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system model, waveform design, and performance metrics, and includes experimental results to validate the proposed system.\"\n   }\n}"
+}

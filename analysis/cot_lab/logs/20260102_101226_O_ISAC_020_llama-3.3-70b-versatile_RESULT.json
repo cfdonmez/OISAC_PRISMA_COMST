@@ -1,0 +1,164 @@
+{
+  "run_id": "20260102_101226_O_ISAC_020_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101226",
+  "paper_id": "O_ISAC_020",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "value": "The paper presents a photonic integrated sensing and communication system using submarine fiber optic cables for coastal event monitoring. Figures 1-6 show the existing global submarine telecommunication optical cables, the photonic ISAC system, and the results of ocean wave analysis, earthquake detection, and ferry monitoring."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "value": "The system utilizes the existing monitoring channel of the commercial fiber optic communication system for sensing, realizing various maritime sensing and monitoring functions without affecting the ongoing optical communication. The photonic ISAC system uses phase-sensitive optical time-domain reflectometry (Phi-OTDR) technology to detect acoustic signals caused by geological and marine activities."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "value": "The system has been tested and validated through experiments, demonstrating its ability to detect and analyze ocean waves, earthquakes, and ferry movements. The results show that the system can detect ocean surface gravity waves and underwater seismic waves, and monitor ferry movements with high accuracy."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "value": "The photonic ISAC system has the potential to provide a new supplementary approach for conventional methods of geological and oceanic observation, with advantages such as low cost, versatility, and minimal impact on marine life and the environment. However, further research is needed to develop more advanced signal processing methods and AI algorithms to analyze and recognize different oceanic signals more accurately and automatically."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Photonic Integrated Sensing and Communication System Harnessing Submarine Fiber Optic Cables for Coastal Event Monitoring",
+        "authors": "Shaoyi Chen, Kun Zhu, Jun Han, Qi Sui, and Zhaohui Li",
+        "year": 2022,
+        "venue": "Journal of Lightwave Technology",
+        "doi": "10.1109/JLT.2022.3149119",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "marine",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "environmental_monitoring",
+          "oceanography",
+          "geophysics"
+        ],
+        "scenario_description": "Coastal event monitoring using submarine fiber optic cables"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "Photonic integrated sensing and communication system using submarine fiber optic cables for coastal event monitoring",
+        "gap_addressed": "Conventional methods of geological and oceanic observation have limitations in terms of cost, versatility, and impact on marine life and the environment",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "distributed_fiber_sensing"
+        ],
+        "novel_component": "Phi-OTDR technology",
+        "novel_component_specs": "Highly coherent optical source, Rayleigh backscattering of the submarine fiber"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Ocean wave analysis"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "im_dd",
+          "tx_external_modulator": "mzm",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 10,
+          "tx_power_dbm": 10
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd",
+          "rx_aperture_diameter_m": 0.1,
+          "rx_photonic_processing": "photonic_dechirping"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "ofdm",
+          "comm_modulation_order": 16,
+          "comm_symbol_rate_gbaud": 10,
+          "comm_fec_type": "ldpc",
+          "sensing_waveform_family": "chirp_fmcw",
+          "isac_waveform_relationship": "single_dual_function"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 10,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 17,
+          "nonlinearity_model": "gn_model"
+        },
+        "channel_wireless": {
+          "link_distance_m": 1000,
+          "path_loss_model": "free_space",
+          "turbulence_model": "lognormal",
+          "turbulence_Cn2": 1e-15,
+          "scintillation_index": 0.5
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 10,
+          "spectral_efficiency_bps_hz": 2,
+          "ber": 1e-06,
+          "snr_db": 10
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 1000,
+          "range_resolution_m": 10,
+          "range_accuracy_m": 1,
+          "angular_resolution_deg": 1,
+          "velocity_resolution_mps": 0.1,
+          "velocity_accuracy_mps": 0.01
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": [
+            "rate_vs_rmse"
+          ],
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "alpha",
+          "tradeoff_control_range": "[0, 1]"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper presents a well-designed and well-executed experiment, with clear results and conclusions. However, further research is needed to develop more advanced signal processing methods and AI algorithms to analyze and recognize different oceanic signals more accurately and automatically."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"value\": \"The paper presents a photonic integrated sensing and communication system using submarine fiber optic cables for coastal event monitoring. Figures 1-6 show the existing global submarine telecommunication optical cables, the photonic ISAC system, and the results of ocean wave analysis, earthquake detection, and ferry monitoring.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"value\": \"The system utilizes the existing monitoring channel of the commercial fiber optic communication system for sensing, realizing various maritime sensing and monitoring functions without affecting the ongoing optical communication. The photonic ISAC system uses phase-sensitive optical time-domain reflectometry (Phi-OTDR) technology to detect acoustic signals caused by geological and marine activities.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"value\": \"The system has been tested and validated through experiments, demonstrating its ability to detect and analyze ocean waves, earthquakes, and ferry movements. The results show that the system can detect ocean surface gravity waves and underwater seismic waves, and monitor ferry movements with high accuracy.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"value\": \"The photonic ISAC system has the potential to provide a new supplementary approach for conventional methods of geological and oceanic observation, with advantages such as low cost, versatility, and minimal impact on marine life and the environment. However, further research is needed to develop more advanced signal processing methods and AI algorithms to analyze and recognize different oceanic signals more accurately and automatically.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Photonic Integrated Sensing and Communication System Harnessing Submarine Fiber Optic Cables for Coastal Event Monitoring\",\n           \"authors\": \"Shaoyi Chen, Kun Zhu, Jun Han, Qi Sui, and Zhaohui Li\",\n           \"year\": 2022,\n           \"venue\": \"Journal of Lightwave Technology\",\n           \"doi\": \"10.1109/JLT.2022.3149119\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"cabled_fibre\",\n           \"carrier_band\": \"C-band\",\n           \"operational_environment\": \"marine\",\n           \"link_topology\": \"point_to_point\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"environmental_monitoring\", \"oceanography\", \"geophysics\"],\n           \"scenario_description\": \"Coastal event monitoring using submarine fiber optic cables\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": true\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"Photonic integrated sensing and communication system using submarine fiber optic cables for coastal event monitoring\",\n           \"gap_addressed\": \"Conventional methods of geological and oceanic observation have limitations in terms of cost, versatility, and impact on marine life and the environment\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"distributed_fiber_sensing\"],\n           \"novel_component\": \"Phi-OTDR technology\",\n           \"novel_component_specs\": \"Highly coherent optical source, Rayleigh backscattering of the submarine fiber\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Ocean wave analysis\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"im_dd\",\n               \"tx_external_modulator\": \"mzm\",\n               \"wavelength_nm\": 1550,\n               \"optical_bandwidth_ghz\": 10,\n               \"tx_power_dbm\": 10\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"balanced_pd\",\n               \"rx_aperture_diameter_m\": 0.1,\n               \"rx_photonic_processing\": \"photonic_dechirping\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"full_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"ofdm\",\n               \"comm_modulation_order\": 16,\n               \"comm_symbol_rate_gbaud\": 10,\n               \"comm_fec_type\": \"ldpc\",\n               \"sensing_waveform_family\": \"chirp_fmcw\",\n               \"isac_waveform_relationship\": \"single_dual_function\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": 10,\n               \"fibre_type\": \"smf\",\n               \"attenuation_db_per_km\": 0.2,\n               \"dispersion_ps_per_nm_km\": 17,\n               \"nonlinearity_model\": \"gn_model\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 1000,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"lognormal\",\n               \"turbulence_Cn2\": 1e-15,\n               \"scintillation_index\": 0.5\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 10,\n               \"spectral_efficiency_bps_hz\": 2,\n               \"ber\": 1e-6,\n               \"snr_db\": 10\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 1000,\n               \"range_resolution_m\": 10,\n               \"range_accuracy_m\": 1,\n               \"angular_resolution_deg\": 1,\n               \"velocity_resolution_mps\": 0.1,\n               \"velocity_accuracy_mps\": 0.01\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"resource_division\",\n               \"tradeoff_type\": [\"rate_vs_rmse\"],\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"alpha\",\n               \"tradeoff_control_range\": \"[0, 1]\"\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper presents a well-designed and well-executed experiment, with clear results and conclusions. However, further research is needed to develop more advanced signal processing methods and AI algorithms to analyze and recognize different oceanic signals more accurately and automatically.\"\n   }\n}"
+}

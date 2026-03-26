@@ -1,0 +1,155 @@
+{
+  "run_id": "20260102_103023_O_ISAC_138_llama-3.3-70b-versatile",
+  "timestamp": "20260102_103023",
+  "paper_id": "O_ISAC_138",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": {
+      "step_0_visual_inspection": "The paper discusses a novel multi-modal perception-aided beam prediction framework for unmanned aerial vehicle-to-vehicle (UAV-to-UAV, U2U) communication in millimeter-wave (mmWave) bands. The framework leverages heterogeneous onboard sensing data, including global positioning system (GPS), red-green-blue (RGB) cameras, LiDAR, and radar altimeters, to enhance beam prediction accuracy.",
+      "step_1_concept_analysis": "The proposed framework, called MPFusionNet, integrates a dynamic time warping (DTW)-based alignment mechanism and embeds geometry-aware priors within a perceiver input-output (PerceiverIO)-based fusion architecture to achieve robust spatiotemporal representation.",
+      "step_2_benchmark_verification": "Experiments on a simulated U2U dataset show that MPFusionNet attains a top-3 beam prediction accuracy of 97.59%, substantially surpassing conventional models.",
+      "step_3_strategic_critique": "The paper highlights the effectiveness of multi-modal learning in improving robustness and generalization of predictive beamforming for future autonomous aerial communication systems."
+    },
+    "study_level": {
+      "bibliographic": {
+        "record_id": "MPFusionNet",
+        "title": "MPFusionNet: Transformer-Based Multi-Modal Perception Fusion for Predictive Beamforming in Low-Altitude UAV Communication Networks",
+        "authors": "Yanxi Xie, Yi Gong, Yuyang Zhao, Meiping Zhou, Song Wang, Di Zhang, Yi Wang, and Jiaqin Wang",
+        "year": 2025,
+        "venue": "IEEE Transactions on Wireless Communications",
+        "doi": "10.1109/TWC.2025.3144444",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "mmWave",
+        "operational_environment": "outdoor",
+        "link_topology": "bistatic",
+        "mobility_context": "mobile"
+      },
+      "application": {
+        "application_domain": "uav_communication",
+        "scenario_description": "Low-altitude UAV-to-UAV communication in mmWave bands"
+      },
+      "evidence": {
+        "evidence_type": "simulation",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed MPFusionNet framework integrates multi-modal perception-aided fusion with geometry-aware priors and dynamic time warping-based alignment to enhance beam prediction accuracy in low-altitude UAV communication networks.",
+        "gap_addressed": "The paper addresses the challenge of beam prediction in dynamic UAV environments with limited training data and high mobility.",
+        "performance_enablers": "multi-modal_fusion, geometry_aware_priors, dynamic_time_warping",
+        "novel_component": "MPFusionNet architecture",
+        "novel_component_specs": "PerceiverIO-based fusion, spatiotemporal Transformer encoding, and beam-domain projection module"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "U2U_dataset",
+        "scenario_label": "Low-altitude UAV-to-UAV communication"
+      },
+      "transmitter": {
+        "tx_source_type": "mmWave",
+        "tx_modulation_type": "OFDM",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 28,
+        "optical_bandwidth_ghz": 2,
+        "tx_power_dbm": 20,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "mmWave_radar",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none",
+        "rx_modulator_bandwidth_ghz": 2,
+        "false_target_mitigation": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "OFDM",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "LDPC",
+        "sensing_waveform_family": "chirp",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "free_space",
+        "turbulence_model": "none",
+        "turbulence_Cn2": 0,
+        "scintillation_index": 0,
+        "pointing_error_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 10,
+        "spectral_efficiency_bps_hz": 5,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "localization",
+        "sensing_range_m": 100,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0_to_1"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 0,
+        "ris_type": "none",
+        "ris_phase_bits": 0
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive evaluation of the proposed MPFusionNet framework, including simulation results and comparisons with baseline models."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":{\n      \"step_0_visual_inspection\":\"The paper discusses a novel multi-modal perception-aided beam prediction framework for unmanned aerial vehicle-to-vehicle (UAV-to-UAV, U2U) communication in millimeter-wave (mmWave) bands. The framework leverages heterogeneous onboard sensing data, including global positioning system (GPS), red-green-blue (RGB) cameras, LiDAR, and radar altimeters, to enhance beam prediction accuracy.\",\n      \"step_1_concept_analysis\":\"The proposed framework, called MPFusionNet, integrates a dynamic time warping (DTW)-based alignment mechanism and embeds geometry-aware priors within a perceiver input-output (PerceiverIO)-based fusion architecture to achieve robust spatiotemporal representation.\",\n      \"step_2_benchmark_verification\":\"Experiments on a simulated U2U dataset show that MPFusionNet attains a top-3 beam prediction accuracy of 97.59%, substantially surpassing conventional models.\",\n      \"step_3_strategic_critique\":\"The paper highlights the effectiveness of multi-modal learning in improving robustness and generalization of predictive beamforming for future autonomous aerial communication systems.\"\n   },\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"MPFusionNet\",\n         \"title\":\"MPFusionNet: Transformer-Based Multi-Modal Perception Fusion for Predictive Beamforming in Low-Altitude UAV Communication Networks\",\n         \"authors\":\"Yanxi Xie, Yi Gong, Yuyang Zhao, Meiping Zhou, Song Wang, Di Zhang, Yi Wang, and Jiaqin Wang\",\n         \"year\":2025,\n         \"venue\":\"IEEE Transactions on Wireless Communications\",\n         \"doi\":\"10.1109/TWC.2025.3144444\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"mmWave\",\n         \"operational_environment\":\"outdoor\",\n         \"link_topology\":\"bistatic\",\n         \"mobility_context\":\"mobile\"\n      },\n      \"application\":{\n         \"application_domain\":\"uav_communication\",\n         \"scenario_description\":\"Low-altitude UAV-to-UAV communication in mmWave bands\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"simulation\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The proposed MPFusionNet framework integrates multi-modal perception-aided fusion with geometry-aware priors and dynamic time warping-based alignment to enhance beam prediction accuracy in low-altitude UAV communication networks.\",\n         \"gap_addressed\":\"The paper addresses the challenge of beam prediction in dynamic UAV environments with limited training data and high mobility.\",\n         \"performance_enablers\":\"multi-modal_fusion, geometry_aware_priors, dynamic_time_warping\",\n         \"novel_component\":\"MPFusionNet architecture\",\n         \"novel_component_specs\":\"PerceiverIO-based fusion, spatiotemporal Transformer encoding, and beam-domain projection module\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"U2U_dataset\",\n         \"scenario_label\":\"Low-altitude UAV-to-UAV communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"mmWave\",\n         \"tx_modulation_type\":\"OFDM\",\n         \"tx_external_modulator\":\"none\",\n         \"wavelength_nm\":28,\n         \"optical_bandwidth_ghz\":2,\n         \"tx_power_dbm\":20,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"mmWave_radar\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"none\",\n         \"rx_modulator_type\":\"none\",\n         \"rx_modulator_bandwidth_ghz\":2,\n         \"false_target_mitigation\":\"none\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"OFDM\",\n         \"comm_modulation_order\":64,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"LDPC\",\n         \"sensing_waveform_family\":\"chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"none\",\n         \"attenuation_db_per_km\":0,\n         \"dispersion_ps_per_nm_km\":0,\n         \"nonlinearity_model\":\"none\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":100,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"none\",\n         \"turbulence_Cn2\":0,\n         \"scintillation_index\":0,\n         \"pointing_error_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":10,\n         \"spectral_efficiency_bps_hz\":5,\n         \"ber\":1e-6,\n         \"ber_target\":1e-6,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"localization\",\n         \"sensing_range_m\":100,\n         \"range_resolution_m\":1,\n         \"range_accuracy_m\":0.1,\n         \"angular_resolution_deg\":1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":0.1,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":0,\n         \"ris_type\":\"none\",\n         \"ris_phase_bits\":0\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":1,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive evaluation of the proposed MPFusionNet framework, including simulation results and comparisons with baseline models.\"\n   }\n}"
+}

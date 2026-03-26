@@ -1,0 +1,205 @@
+{
+  "run_id": "20260102_101643_O_ISAC_048_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101643",
+  "paper_id": "O_ISAC_048",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "The paper proposes a direct-current-biased optical OFDM (DCO-OFDM) scheme for free space optical (FSO) integrated sensing and communication (ISAC). The system model is illustrated in Fig. 1, which shows the FSO-ISAC transceiver based on a LiDAR. The signal processing procedures are described, including the time-domain OFDM signal expression and the clipping noise modelled by the Bussgang theorem.",
+        "value": "The system model of the DCO-OFDM scheme for FSO-ISAC is illustrated in Fig. 1, which shows the FSO-ISAC transceiver based on a LiDAR."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "The paper formulates an optimization problem in the communication-centric scenario, which jointly optimizes the direct-current (DC) bias and the normalized power allocation for each subcarrier. The non-convex optimization problem is decomposed into two sub-problems to obtain a concise solution, and an iterative algorithm is proposed to optimize power allocation.",
+        "value": "The optimization problem is formulated to maximize the spectral efficiency for communication while guaranteeing the sensing precision."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "The paper conducts numerical simulations to demonstrate the effectiveness of the proposed algorithm and reveal the trade-off between communication and sensing functionalities of the OFDM-based FSO-ISAC. The simulation configurations are shown in Table I, and the results are illustrated in Figs. 2-4.",
+        "value": "The numerical simulations demonstrate the effectiveness of the proposed algorithm and reveal the trade-off between communication and sensing functionalities."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "The paper concludes that the proposed DCO-OFDM scheme and the iterative algorithm can efficiently optimize the power allocation for FSO-ISAC, and the trade-off between communication and sensing functionalities can be modified by tuning the desired sensing precision.",
+        "value": "The proposed DCO-OFDM scheme and the iterative algorithm can efficiently optimize the power allocation for FSO-ISAC, and the trade-off between communication and sensing functionalities can be modified by tuning the desired sensing precision."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Power Allocation for OFDM-Based Free Space Optical Integrated Sensing and Communication",
+        "authors": "Yunfeng Wen, Fang Yang, Jian Song, and Zhu Han",
+        "year": 2023,
+        "venue": "IEEE Transactions on Communications",
+        "doi": "10.1109/TCOMM.2023.3265735",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "visible",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing"
+        ],
+        "scenario_description": "Free space optical integrated sensing and communication"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a direct-current-biased optical OFDM (DCO-OFDM) scheme for free space optical (FSO) integrated sensing and communication (ISAC) and formulates an optimization problem to jointly optimize the direct-current (DC) bias and the normalized power allocation for each subcarrier.",
+        "gap_addressed": "The paper addresses the gap of optimizing power allocation for FSO-ISAC systems.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "electronic_dechirping"
+        ],
+        "novel_component": "DCO-OFDM scheme",
+        "novel_component_specs": "The DCO-OFDM scheme is designed to optimize the power allocation for FSO-ISAC systems."
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Outdoor FSO, 100m, LoS"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 1,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 1
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 1,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "ofdm",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "time"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 100,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 1e-06,
+        "ber_target": 1e-06,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 1,
+        "capacity_bps_hz": 1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 100,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.1,
+        "sensing_bandwidth_hz": 1,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse",
+          "rate_vs_range_resolution"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_allocation",
+        "tradeoff_control_range": "[0, 1]"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 1,
+        "opa_steering_range_deg": 10,
+        "opa_beamwidth_deg": 1,
+        "ris_num_elements": 1,
+        "ris_type": "reflective",
+        "ris_phase_bits": 2
+      },
+      "provenance": {
+        "source_pointer": "Table I",
+        "value_origin": "reported_table",
+        "confidence_reporting": "ci_reported",
+        "num_trials": 1000
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and the optimization problem. The numerical simulations demonstrate the effectiveness of the proposed algorithm."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"The paper proposes a direct-current-biased optical OFDM (DCO-OFDM) scheme for free space optical (FSO) integrated sensing and communication (ISAC). The system model is illustrated in Fig. 1, which shows the FSO-ISAC transceiver based on a LiDAR. The signal processing procedures are described, including the time-domain OFDM signal expression and the clipping noise modelled by the Bussgang theorem.\",\n           \"value\": \"The system model of the DCO-OFDM scheme for FSO-ISAC is illustrated in Fig. 1, which shows the FSO-ISAC transceiver based on a LiDAR.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"The paper formulates an optimization problem in the communication-centric scenario, which jointly optimizes the direct-current (DC) bias and the normalized power allocation for each subcarrier. The non-convex optimization problem is decomposed into two sub-problems to obtain a concise solution, and an iterative algorithm is proposed to optimize power allocation.\",\n           \"value\": \"The optimization problem is formulated to maximize the spectral efficiency for communication while guaranteeing the sensing precision.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"The paper conducts numerical simulations to demonstrate the effectiveness of the proposed algorithm and reveal the trade-off between communication and sensing functionalities of the OFDM-based FSO-ISAC. The simulation configurations are shown in Table I, and the results are illustrated in Figs. 2-4.\",\n           \"value\": \"The numerical simulations demonstrate the effectiveness of the proposed algorithm and reveal the trade-off between communication and sensing functionalities.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"The paper concludes that the proposed DCO-OFDM scheme and the iterative algorithm can efficiently optimize the power allocation for FSO-ISAC, and the trade-off between communication and sensing functionalities can be modified by tuning the desired sensing precision.\",\n           \"value\": \"The proposed DCO-OFDM scheme and the iterative algorithm can efficiently optimize the power allocation for FSO-ISAC, and the trade-off between communication and sensing functionalities can be modified by tuning the desired sensing precision.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Power Allocation for OFDM-Based Free Space Optical Integrated Sensing and Communication\",\n           \"authors\": \"Yunfeng Wen, Fang Yang, Jian Song, and Zhu Han\",\n           \"year\": 2023,\n           \"venue\": \"IEEE Transactions on Communications\",\n           \"doi\": \"10.1109/TCOMM.2023.3265735\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_fso\",\n           \"carrier_band\": \"visible\",\n           \"operational_environment\": \"outdoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\"],\n           \"scenario_description\": \"Free space optical integrated sensing and communication\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The paper proposes a direct-current-biased optical OFDM (DCO-OFDM) scheme for free space optical (FSO) integrated sensing and communication (ISAC) and formulates an optimization problem to jointly optimize the direct-current (DC) bias and the normalized power allocation for each subcarrier.\",\n           \"gap_addressed\": \"The paper addresses the gap of optimizing power allocation for FSO-ISAC systems.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"electronic_dechirping\"],\n           \"novel_component\": \"DCO-OFDM scheme\",\n           \"novel_component_specs\": \"The DCO-OFDM scheme is designed to optimize the power allocation for FSO-ISAC systems.\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"Outdoor FSO, 100m, LoS\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"laser\",\n           \"tx_modulation_type\": \"im_dd\",\n           \"tx_external_modulator\": \"mzm\",\n           \"wavelength_nm\": 1550,\n           \"optical_bandwidth_ghz\": 1,\n           \"tx_power_dbm\": 10,\n           \"aperture_diameter_m\": 0.1,\n           \"beam_divergence_mrad\": 1\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"pin_pd\",\n           \"rx_aperture_diameter_m\": 0.1,\n           \"rx_photonic_processing\": \"photonic_dechirping\",\n           \"rx_modulator_type\": \"mzm\",\n           \"rx_modulator_bandwidth_ghz\": 1,\n           \"rx_modulator_operating_point\": \"mitp\",\n           \"false_target_mitigation\": \"mitp_bias\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"full_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"ofdm\",\n           \"comm_modulation_order\": 4,\n           \"comm_symbol_rate_gbaud\": 1,\n           \"comm_fec_type\": \"ldpc\",\n           \"sensing_waveform_family\": \"ofdm\",\n           \"isac_waveform_relationship\": \"single_dual_function\",\n           \"resource_partition\": \"time\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": 0,\n           \"fibre_type\": \"smf\",\n           \"attenuation_db_per_km\": 0.2,\n           \"dispersion_ps_per_nm_km\": 18,\n           \"nonlinearity_model\": \"gn_model\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": 100,\n           \"path_loss_model\": \"free_space\",\n           \"turbulence_model\": \"lognormal\",\n           \"turbulence_Cn2\": 1e-15,\n           \"scintillation_index\": 0.1,\n           \"pointing_error_model\": \"gaussian_jitter\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 1,\n           \"spectral_efficiency_bps_hz\": 1,\n           \"ber\": 1e-6,\n           \"ber_target\": 1e-6,\n           \"snr_db\": 10,\n           \"osnr_db\": 20,\n           \"outage_probability\": 0.01,\n           \"latency_ms\": 1,\n           \"capacity_bps_hz\": 1\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n           \"sensing_range_m\": 100,\n           \"range_resolution_m\": 0.1,\n           \"range_accuracy_m\": 0.01,\n           \"angular_resolution_deg\": 1,\n           \"velocity_resolution_mps\": 0.1,\n           \"velocity_accuracy_mps\": 0.01,\n           \"localization_error_m\": 0.01,\n           \"spatial_resolution_m\": 0.1,\n           \"sensing_bandwidth_hz\": 1,\n           \"pd_probability_detection\": 0.9,\n           \"pfa_probability_false_alarm\": 0.01,\n           \"crb_crlb_value\": 0.01,\n           \"crb_parameter\": \"range\"\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\", \"rate_vs_range_resolution\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"power_allocation\",\n           \"tradeoff_control_range\": \"[0, 1]\"\n       },\n       \"enabling_tech_details\": {\n           \"opa_num_emitters\": 1,\n           \"opa_steering_range_deg\": 10,\n           \"opa_beamwidth_deg\": 1,\n           \"ris_num_elements\": 1,\n           \"ris_type\": \"reflective\",\n           \"ris_phase_bits\": 2\n       },\n       \"provenance\": {\n           \"source_pointer\": \"Table I\",\n           \"value_origin\": \"reported_table\",\n           \"confidence_reporting\": \"ci_reported\",\n           \"num_trials\": 1000\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system model and the optimization problem. The numerical simulations demonstrate the effectiveness of the proposed algorithm.\"\n   }\n}"
+}

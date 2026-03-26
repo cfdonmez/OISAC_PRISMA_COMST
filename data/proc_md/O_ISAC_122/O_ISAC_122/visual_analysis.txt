@@ -1,0 +1,94 @@
+Image: _page_1_Figure_13.jpeg
+Type: System Architecture Schematic (S-DNN for Sensing)
+---
+**Components:**
+* **Target Signal Source:** Far-field transmitter node emitting broadband spatial electromagnetic (EM) wavefronts.
+* **Input Plane:** The initial boundary (coordinate system x, z) where incident planewaves are sampled.
+* **Passive Intelligent Surfaces (PIS/S-DNN):** A cascade of multilayer meta-structures consisting of sub-wavelength diffractive elements (meta-atoms). These act as programmable phase/amplitude masks.
+* **Output Plane:** A 1D/2D detector array (0-9 regions) that spatially integrates modulated EM field intensities.
+* **Far-field Plane:** Illustration of 1D and 2D "Super-oscillatory regions" where the estimation mode operates beyond the diffraction limit.
+
+**Operational Flow:**
+Incident broadband waves (Equation 1 in text) propagate through the S-DNN's cascaded layers (L=4). Each layer performs a complex-valued modulation (t_i^l) according to Rayleigh-Sommerfeld diffraction theory. The network is trained to map specific Direction-of-Arrival (DOA) angles to high-intensity foci at designated detectors, enabling all-optical processing at the speed of light.
+---
+
+Image: _page_1_Picture_17.jpeg
+Type: Experimental Hardware Setup
+---
+**Labeled Components:**
+1. **Horn Antennas (Target Sources):** Triple-feed system for multi-source/coherent emulation in the microwave band (X/K-band).
+2. **Power Divider:** RF network feeding the sources from a common oscillator to maintain phase coherence.
+3. **VNA (Vector Network Analyzer):** High-precision instrument measuring complex S-parameters and recording the diffracted field at probe positions.
+4. **S-DNN Stack:** The physical implementation of the PIS, mounted on a custom 3D-printed or machined holder.
+5. **Angular Rotation Stage:** Large circular goniometer with degree markings [centered at 0°, ranging ±90°] for characterizing the Field of View (FOV).
+6. **xy-plane Translation Stage:** Precision stepper-motor stage for mapping the output power distribution.
+7. **Waveguide Probe:** Monopole/waveguide sensor harvesting the local EM field at the S-DNN output plane.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Schematic (Four-layer S-DNN)
+---
+**Detailed Description:**
+Close-up of the **Four-layer S-DNN** (L1, L2, L3, L4). Each layer is a passive intelligent surface (PIS) with a 32x32 array of modulation units. Each unit is sized at approximately λ/2 (half-wavelength) to provide sufficient degrees of freedom for wavefront shaping and super-oscillatory kernel generation.
+---
+
+Image: _page_2_Figure_3.jpeg
+Type: Chart (Super-oscillatory angular response)
+---
+**Axes Extraction:**
+* **X-axis:** Incident planewave angle (°) | Range: **-5.0° to +5.0°** in 1° primary increments.
+* **Left Y-axis:** Energy ratio (dB) | Range: **0.0 to 3.0 dB** (applies to S-DNN).
+* **Right Y-axis:** Energy Ratio (dB) | Range: **0 to 15 dB** (applies to Lens).
+
+**Data Points & Technical Synthesis:**
+* **S-DNN Response (Blue):** Exhibits a classical super-oscillatory profile with 7 sharp sub-diffraction-limited peaks. Peak values occur at 0° (~0.8 dB), ±1.5° (~1.4 dB), ±2.7° (~1.1 dB), and ±4.3° (~1.3 dB). Distinct nulls (<-10 dB effective suppression) are observed at ±1.0°, ±2.0°, ±3.2°, and ±4.5°.
+* **Comparison with Lens (Orange):** The standard lens system shows a wide main lobe (~4° width at 3dB down) and negligible sidelobe structure within this narrow range.
+* **Resolution Gain:** The S-DNN achieves a 1° angular resolution, which is 4x superior to the Rayleigh diffraction limit (~4°) defined by the aperture of the system.
+---
+
+Image: _page_2_Figure_7.jpeg
+Type: Performance Evaluation (Confusion & Energy Matrices)
+---
+**Extracted Data (Quantitative Analysis):**
+* **Confusion Matrix (Single Target):** 10x10 matrix. Input targets (0-9) vs. Detection regions (0-9). **Diagonal = 10** for all entries. **Accuracy = 100%**. This indicates zero cross-interval misclassification.
+* **Energy Matrix (Single Target):** Diagonal energy peaks: region 0 (~44 dB), region 1 (~33 dB), region 3 (~30 dB). Off-diagonal attenuation is consistently > 10 dB for non-adjacent regions.
+* **Two-Target Scenario (Confusion):** Targets at intervals (0&1, 1&2, etc.). Diagonal values range from **8 to 10**, with minimal leakage (values ~1-2) to adjacent regions, proving high resolving power for multiple coherent sources.
+* **Two-Target Scenario (Energy):** Peak energy stays confined to the corresponding detection regions (e.g., Target 0&1 shows energy concentrated in output rows 0 and 1).
+---
+
+Image: _page_2_Figure_9.jpeg
+Type: Schematic (Three-layer S-DNN)
+---
+**Description:**
+Physical layout illustrating a **three-layer S-DNN** configuration. This setup is utilized for wide-FOV DOA estimation (up to ±15°) with slightly lower resolution (3°) but higher robusticity/bandwidth, demonstrating architecture versatility.
+---
+
+Image: _page_2_Figure_10.jpeg
+Type: Chart (Experimental broadband DOA estimation)
+---
+**Axes Extraction:**
+* **X-axis:** Frequency (GHz) | Range: **25.0 to 30.0 GHz**.
+* **Y-axis:** Confidence value (%) | Range: **70% to 100%**.
+
+**Statistical Data Points:**
+* **Lower Bound (25 GHz):** Confidence ~96.5%.
+* **Upper Bound (30 GHz):** Confidence ~96.2%.
+* **Peak Performance (27.5 GHz):** Confidence of **98.2%**.
+* **Broadband Stability:** The confidence profile stays rigidly above the **95% threshold** (red dashed line) across the entire 5 GHz bandwidth, indicating the dispersion-resistant nature of the S-DNN training.
+---
+
+Image: _page_3_Figure_2.jpeg
+Type: Application Scenario & ISAC System Performance
+---
+**System Scenario (Integrated Sensing and Communication):**
+* **Network Nodes:** Base station (13.5°), RIS (Reflection-Control), and Mobile User.
+* **Operational Flow:** The passive S-DNN performs "DOA Estimation" of the user. This data is fed to an FPGA which updates the "RC RIS" phase profile for "Beamforming tracking." This enables communication even under NLOS (Obstruction) conditions.
+
+**Detected Amplitude Chart Analysis:**
+* **X-axis:** User angle (°) | Range: **-15° to +12°**.
+* **Y-axis:** Detected amplitude (dB) | Range: **-80 to -50 dB**.
+* **Performance Gains:**
+    * **With S-DNN Assistance (Blue):** Maintains a high and flat signal level at **-56 dB average**.
+    * **Without S-DNN (Orange):** Shows deep fades reaching **-78 dB**, with an average power deficit of **~18 dB**.
+* **PhD Conclusion:** The S-DNN enables real-time, low-power beam tracking, effectively converting a sensing outcome (DOA) into a communication benefit (link budget gain) with near-zero computational latency.
+---

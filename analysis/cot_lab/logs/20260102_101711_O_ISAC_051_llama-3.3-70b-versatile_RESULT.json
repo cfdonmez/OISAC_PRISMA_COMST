@@ -1,0 +1,177 @@
+{
+  "run_id": "20260102_101711_O_ISAC_051_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101711",
+  "paper_id": "O_ISAC_051",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper presents a novel LiDAR system called Phase-Shift Laser Ranging with Communication (PLRC) that integrates sensing and communication functions. The system uses a pseudo-random noise (PRN) code to modulate the phase of a subcarrier signal, which is then used for both ranging and communication. The paper includes several figures, including a block diagram of the PLRC system, waveforms of the local and echo signals, and a plot of the bit error rate (BER) vs. signal-to-noise ratio (SNR)."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The PLRC system uses a PRN code to modulate the phase of a subcarrier signal, which is then used for both ranging and communication. The system operates in continuous wave mode, where the communication and ranging functions are executed with the same signal. The PRN code is used to spread spectrum the communication data, and the phase of the subcarrier signal is used to measure the distance to the target. The system uses a correlation operation to extract the codeword synchronization positions of the echo and local signals, and then uses a phase-shift measurement to derive the distance to the target."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a range precision of 3.54 × 10^−3 m and a communication capacity of 1.43 Mbit/s. The range precision is validated by the experimental results, which show a minimum standard deviation of 3.54 × 10^−3 m of measurement distance at a high-speed measurement rate of 285 kHz. The communication capacity is also validated by the experimental results, which show a BER of 10^−9 at an SNR of 20 dB."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The PLRC system solves the problem of integrating sensing and communication functions in a single system, and achieves a high range precision and communication capacity. However, the system still faces challenges such as the effect of atmospheric turbulence on the communication signal, and the need for a high-speed and high-precision signal processing algorithm to extract the distance information from the echo signal."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Remote Phase-Shift LiDAR With Communication",
+        "authors": "Yalong Hai, Yufei Luo, Chenxu Liu, and Anhong Dang",
+        "year": 2023,
+        "venue": "IEEE Transactions on Communications",
+        "doi": "10.1109/TCOMM.2023.3233962",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "hybrid",
+        "carrier_band": "C-band",
+        "operational_environment": "indoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "vehicular",
+        "scenario_description": "The PLRC system is designed for vehicular applications, where it can be used for both sensing and communication functions."
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The PLRC system integrates sensing and communication functions in a single system, using a PRN code to modulate the phase of a subcarrier signal.",
+        "gap_addressed": "The system addresses the problem of integrating sensing and communication functions in a single system, and achieves a high range precision and communication capacity.",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "TFLN-MZM",
+        "novel_component_specs": "Half-wave voltage ≤3V, optical insertion loss 7.1dB"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Indoor FSO, 10m, Static"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 1
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 10,
+        "rx_modulator_operating_point": "mitp",
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "dpsk",
+        "comm_modulation_order": 2,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "none",
+        "sensing_waveform_family": "fmcw_chirp",
+        "isac_waveform_relationship": "single_dual_function",
+        "resource_partition": "power_split"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0.1,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 18,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 10,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 1e-15,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter",
+        "weather_visibility_m": 1000,
+        "ambient_light_model": "none"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 0.00143,
+        "spectral_efficiency_bps_hz": 0.1,
+        "ber": 1e-09,
+        "snr_db": 20,
+        "osnr_db": 30,
+        "outage_probability": 0.01,
+        "latency_ms": 1,
+        "capacity_bps_hz": 0.1
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 10,
+        "range_resolution_m": 0.00354,
+        "range_accuracy_m": 0.015,
+        "angular_resolution_deg": 0.1,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.01,
+        "spatial_resolution_m": 0.01,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.01,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "power_ratio",
+        "tradeoff_control_range": "0_to_1"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper presents a comprehensive evaluation of the PLRC system, including experimental results and theoretical analysis."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper presents a novel LiDAR system called Phase-Shift Laser Ranging with Communication (PLRC) that integrates sensing and communication functions. The system uses a pseudo-random noise (PRN) code to modulate the phase of a subcarrier signal, which is then used for both ranging and communication. The paper includes several figures, including a block diagram of the PLRC system, waveforms of the local and echo signals, and a plot of the bit error rate (BER) vs. signal-to-noise ratio (SNR).\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The PLRC system uses a PRN code to modulate the phase of a subcarrier signal, which is then used for both ranging and communication. The system operates in continuous wave mode, where the communication and ranging functions are executed with the same signal. The PRN code is used to spread spectrum the communication data, and the phase of the subcarrier signal is used to measure the distance to the target. The system uses a correlation operation to extract the codeword synchronization positions of the echo and local signals, and then uses a phase-shift measurement to derive the distance to the target.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a range precision of 3.54 × 10^−3 m and a communication capacity of 1.43 Mbit/s. The range precision is validated by the experimental results, which show a minimum standard deviation of 3.54 × 10^−3 m of measurement distance at a high-speed measurement rate of 285 kHz. The communication capacity is also validated by the experimental results, which show a BER of 10^−9 at an SNR of 20 dB.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The PLRC system solves the problem of integrating sensing and communication functions in a single system, and achieves a high range precision and communication capacity. However, the system still faces challenges such as the effect of atmospheric turbulence on the communication signal, and the need for a high-speed and high-precision signal processing algorithm to extract the distance information from the echo signal.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Remote Phase-Shift LiDAR With Communication\",\n         \"authors\":\"Yalong Hai, Yufei Luo, Chenxu Liu, and Anhong Dang\",\n         \"year\":2023,\n         \"venue\":\"IEEE Transactions on Communications\",\n         \"doi\":\"10.1109/TCOMM.2023.3233962\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"hybrid\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"indoor\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"vehicular\",\n         \"scenario_description\":\"The PLRC system is designed for vehicular applications, where it can be used for both sensing and communication functions.\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The PLRC system integrates sensing and communication functions in a single system, using a PRN code to modulate the phase of a subcarrier signal.\",\n         \"gap_addressed\":\"The system addresses the problem of integrating sensing and communication functions in a single system, and achieves a high range precision and communication capacity.\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"TFLN-MZM\",\n         \"novel_component_specs\":\"Half-wave voltage ≤3V, optical insertion loss 7.1dB\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Indoor FSO, 10m, Static\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":10,\n         \"tx_power_dbm\":10,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":1\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"pin_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"rx_modulator_operating_point\":\"mitp\",\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"dpsk\",\n         \"comm_modulation_order\":2,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"none\",\n         \"sensing_waveform_family\":\"fmcw_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\",\n         \"resource_partition\":\"power_split\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0.1,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":18,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":10,\n         \"path_loss_model\":\"free_space\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":1e-15,\n         \"scintillation_index\":0.1,\n         \"pointing_error_model\":\"gaussian_jitter\",\n         \"weather_visibility_m\":1000,\n         \"ambient_light_model\":\"none\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":0.00143,\n         \"spectral_efficiency_bps_hz\":0.1,\n         \"ber\":1e-9,\n         \"snr_db\":20,\n         \"osnr_db\":30,\n         \"outage_probability\":0.01,\n         \"latency_ms\":1,\n         \"capacity_bps_hz\":0.1\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":10,\n         \"range_resolution_m\":0.00354,\n         \"range_accuracy_m\":0.015,\n         \"angular_resolution_deg\":0.1,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.01,\n         \"spatial_resolution_m\":0.01,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.01,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"power_ratio\",\n         \"tradeoff_control_range\":\"0_to_1\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper presents a comprehensive evaluation of the PLRC system, including experimental results and theoretical analysis.\"\n   }\n}"
+}

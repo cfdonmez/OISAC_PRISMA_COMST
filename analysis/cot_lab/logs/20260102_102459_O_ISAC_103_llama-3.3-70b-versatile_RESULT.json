@@ -1,0 +1,146 @@
+{
+  "run_id": "20260102_102459_O_ISAC_103_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102459",
+  "paper_id": "O_ISAC_103",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows the structure of bidirectional submarine cables with HLLB and the proposed structure of bidirectional recirculating loops with HLLB for joint communication and sensing system. Fig. 2 illustrates the experimental setup of the bidirectional joint communication and sensing system using interconnected dual recirculating loops with HLLB. Fig. 3 shows the measured OTDR trace of the recirculating fiber loop loss profile and the Rayleigh trace separated in the frequency domain. Fig. 4 displays the Rayleigh trace of the 10th loop with an average time of about 12.8 seconds and the SNR performance over 561.7-km versus launch power."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses interconnected dual counter-propagating recirculating fiber loops with high-loss loop backs (HLLBs) for joint communication and sensing. The communication signal is transmitted in one direction, while the sensing signal is transmitted in the opposite direction. The HLLBs are used to separate the backscattering sensing signal, which is then coupled to the counter-propagating fiber loop and returns to the sensing receiver at the transmitter side SLTE ends."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a 32-GBaud DP-QPSK signal transmission over 3650-km SSMF, with a BER less than the 15% overhead soft decision forward error correction (SD-FEC) threshold of 2×10-2 after 65 loops of transmission. The sensing system demonstrates an OTDR sensing system over 3650 km SSMF, with a spatial resolution of 56.17-km distance SSMF per loop."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of joint communication and sensing over long-haul distances using recirculating fiber loops with HLLBs. However, the system still faces challenges such as nonlinear noise and signal attenuation, which limit the transmission distance and sensing resolution. Future work may focus on improving the system's performance by optimizing the launch power, using more advanced signal processing techniques, and exploring new sensing technologies such as OFDR-based sensing."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Simultaneous Transmission and Sensing Emulation Using Interconnected Counter-Propagating Recirculating Loops",
+        "authors": "Junyu Wu, Zexu Liu, Lei Liu, Honglin Ji, William Shieh",
+        "year": 2025,
+        "venue": "Journal/Conference Name",
+        "doi": "DOI:10.1038/s41467-019-13262-7",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "fibre_network_monitoring",
+        "scenario_description": "Joint communication and sensing system using recirculating fiber loops with HLLBs"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "First demonstration of joint communication and sensing system using recirculating fiber loops with HLLBs",
+        "gap_addressed": "Long-haul joint communication and sensing over fiber optic cables",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "high_bandwidth_modulator"
+        ],
+        "novel_component": "Recirculating fiber loop with HLLB",
+        "novel_component_specs": "56.17-km distance SSMF per loop"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Joint communication and sensing system using recirculating fiber loops with HLLBs"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "dp_iqm",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 32,
+        "tx_power_dbm": 0
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_photonic_processing": "photonic_dechirping"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "dp_qpsk",
+        "comm_modulation_order": 4,
+        "comm_symbol_rate_gbaud": 32,
+        "comm_fec_type": "sd_fec",
+        "sensing_waveform_family": "pulse_train",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 3650,
+        "fibre_type": "ssmf",
+        "attenuation_db_per_km": 0.2
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 32,
+        "spectral_efficiency_bps_hz": 2,
+        "ber": 0.001,
+        "snr_db": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "fault_localization",
+        "sensing_range_m": 3650000,
+        "range_resolution_m": 56170,
+        "range_accuracy_m": 1000
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_range_resolution",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "launch_power",
+        "tradeoff_control_range": "-10_to_0_dbm"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and results, and the authors demonstrate a good understanding of the underlying physics."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows the structure of bidirectional submarine cables with HLLB and the proposed structure of bidirectional recirculating loops with HLLB for joint communication and sensing system. Fig. 2 illustrates the experimental setup of the bidirectional joint communication and sensing system using interconnected dual recirculating loops with HLLB. Fig. 3 shows the measured OTDR trace of the recirculating fiber loop loss profile and the Rayleigh trace separated in the frequency domain. Fig. 4 displays the Rayleigh trace of the 10th loop with an average time of about 12.8 seconds and the SNR performance over 561.7-km versus launch power.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The system uses interconnected dual counter-propagating recirculating fiber loops with high-loss loop backs (HLLBs) for joint communication and sensing. The communication signal is transmitted in one direction, while the sensing signal is transmitted in the opposite direction. The HLLBs are used to separate the backscattering sensing signal, which is then coupled to the counter-propagating fiber loop and returns to the sensing receiver at the transmitter side SLTE ends.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a 32-GBaud DP-QPSK signal transmission over 3650-km SSMF, with a BER less than the 15% overhead soft decision forward error correction (SD-FEC) threshold of 2×10-2 after 65 loops of transmission. The sensing system demonstrates an OTDR sensing system over 3650 km SSMF, with a spatial resolution of 56.17-km distance SSMF per loop.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of joint communication and sensing over long-haul distances using recirculating fiber loops with HLLBs. However, the system still faces challenges such as nonlinear noise and signal attenuation, which limit the transmission distance and sensing resolution. Future work may focus on improving the system's performance by optimizing the launch power, using more advanced signal processing techniques, and exploring new sensing technologies such as OFDR-based sensing.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Simultaneous Transmission and Sensing Emulation Using Interconnected Counter-Propagating Recirculating Loops\",\n         \"authors\":\"Junyu Wu, Zexu Liu, Lei Liu, Honglin Ji, William Shieh\",\n         \"year\":2025,\n         \"venue\":\"Journal/Conference Name\",\n         \"doi\":\"DOI:10.1038/s41467-019-13262-7\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"fibre_network_monitoring\",\n         \"scenario_description\":\"Joint communication and sensing system using recirculating fiber loops with HLLBs\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"First demonstration of joint communication and sensing system using recirculating fiber loops with HLLBs\",\n         \"gap_addressed\":\"Long-haul joint communication and sensing over fiber optic cables\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"high_bandwidth_modulator\"],\n         \"novel_component\":\"Recirculating fiber loop with HLLB\",\n         \"novel_component_specs\":\"56.17-km distance SSMF per loop\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Joint communication and sensing system using recirculating fiber loops with HLLBs\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"dp_iqm\",\n         \"wavelength_nm\":1550,\n         \"optical_bandwidth_ghz\":32,\n         \"tx_power_dbm\":0\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_photonic_processing\":\"photonic_dechirping\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"dp_qpsk\",\n         \"comm_modulation_order\":4,\n         \"comm_symbol_rate_gbaud\":32,\n         \"comm_fec_type\":\"sd_fec\",\n         \"sensing_waveform_family\":\"pulse_train\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":3650,\n         \"fibre_type\":\"ssmf\",\n         \"attenuation_db_per_km\":0.2\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":32,\n         \"spectral_efficiency_bps_hz\":2,\n         \"ber\":1e-3,\n         \"snr_db\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"fault_localization\",\n         \"sensing_range_m\":3650000,\n         \"range_resolution_m\":56170,\n         \"range_accuracy_m\":1000\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_range_resolution\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"launch_power\",\n         \"tradeoff_control_range\":\"-10_to_0_dbm\"\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and results, and the authors demonstrate a good understanding of the underlying physics.\"\n   }\n}"
+}

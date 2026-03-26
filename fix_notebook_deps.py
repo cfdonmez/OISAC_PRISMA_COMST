@@ -1,7 +1,7 @@
 import json
 import os
 
-NOTEBOOK_PATH = r"analysis/notebooks/CoT_Pipeline_comstPrev.ipynb"
+NOTEBOOK_PATH = r"analysis/nb/CoT_Pipeline_comstPrev.ipynb"
 
 # Define the new cell contents for 1.1
 cell_1_1_new = [

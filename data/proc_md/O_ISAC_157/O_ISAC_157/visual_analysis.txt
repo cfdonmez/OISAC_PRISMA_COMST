@@ -1,0 +1,129 @@
+PAPER: O_ISAC_157
+TITLE: SDOA-Net: An Efficient Deep-Learning-Based DOA Estimation Network for Imperfect Array
+
+================================================================================
+IMAGE: _page_2_Picture_14.jpeg
+TYPE: System Model / Diagram
+DESCRIPTION: Schematic of an imperfect antenna array receiving signal for DOA estimation.
+COMPONENTS: 
+- 4-element Uniform Linear Array (ULA).
+- Impairments labeled: Mutual coupling effect (blue arrows between elements), Position perturbation, Inconsistent gains and phases, Nonlinear effect.
+- RF blocks: Connected to each antenna element.
+- Baseband signal processing: Large block receiving RF outputs.
+- Output: Estimated DOA.
+================================================================================
+IMAGE: _page_4_Figure_2.jpeg
+TYPE: Neural Network Architecture
+DESCRIPTION: Detailed structure of the SDOA-Net for DOA estimation.
+COMPONENTS:
+- Input: Received signals M_B x 2N (Real and Imaginary parts).
+- Input Layer (FC): 2N x M_f*M_r.
+- FC Output: M_B x M_f*M_r.
+- Convolution Layers: Two blocks showing 1D convolution (M_f filters), Reshape, and Batch normalization + ReLU.
+- Output Layer (FC): Reshaped complex vector mapped to Real and Imaginary parts.
+================================================================================
+IMAGE: _page_4_Picture_17.jpeg
+TYPE: Schematic / Flowchart
+DESCRIPTION: High-level abstraction of the SDOA-Net functional flow.
+COMPONENTS:
+- Input Y -> f_1.
+- Hidden blocks: Series of {f_2 -> f_3 -> f_4} modules repeated.
+- Output f_5 -> G.
+================================================================================
+IMAGE: _page_5_Figure_2.jpeg
+TYPE: Processing Flow / Complex Vector Mapping
+DESCRIPTION: Visualization of how SDOA-Net output g(m) is processed into a spatial spectrum.
+STEPS:
+1. g(m) split into Real part g_{0:N-1}(m) and Imaginary part g_{N:2N-1}(m).
+2. Combined into Complex vector: g_{0:N-1}(m) + j*g_{N:2N-1}(m).
+3. Complex vector multiplied by Steering vector a(zeta).
+4. Output: Spatial spectrum (Amplitude vs Spatial angle).
+================================================================================
+IMAGE: _page_6_Figure_2.jpeg
+TYPE: Flowchart
+DESCRIPTION: 7-step training procedure for SDOA-Net to handle imperfect arrays.
+STEPS:
+1. Start.
+2. Perfect array using all the data.
+3. Position perturbations using all the data.
+4. Inconsistent gains using all the data.
+5. Inconsistent phases using all the data.
+6. Mutual coupling effect using all the data.
+7. Nonlinear effect using all the data.
+8. All the imperfect effect using all the data.
+9. Condition: Is training completed? (No -> Loop back to step 2; Yes -> End).
+================================================================================
+IMAGE: _page_5_Figure_14.jpeg
+TYPE: Chart / Graph
+DESCRIPTION: Approximated spatial spectrum vs Ground-truth DOA.
+X-AXIS: Spatial angle (deg) [-50 to 50].
+Y-AXIS: Amplitude [0 to 1.2].
+DATA:
+- Single peak at ~-25 deg.
+- Two close peaks at ~12 deg and ~22 deg.
+- Ground-truth DOA marked by orange dots/lines.
+OBSERVATION: SDOA-Net accurately approximates the peaks corresponding to the true DOAs.
+================================================================================
+IMAGE: _page_7_Figure_10.jpeg
+TYPE: Chart / Graph (Hyperparameter Analysis)
+DESCRIPTION: RMSE of DOA estimation vs SNR for different standard deviations (sigma_G).
+X-AXIS: SNR (dB) [0 to 30].
+Y-AXIS: The RMSE of DOA estimation (deg) [0 to 3.5].
+LEGEND: Standard deviation (sigma_G) from 10 to 140.
+TREND: Performance improves as SNR increases. The optimal sigma_G is found to be 100 (cyan square), yielding the lowest RMSE (~0.6 deg at 30 dB SNR).
+================================================================================
+IMAGE: _page_7_Figure_12.jpeg
+TYPE: Performance Plot (Comparative)
+DESCRIPTION: Spatial spectrum comparison of Proposed method vs MUSIC, ANM, FFT, and OMP.
+X-AXIS: Spatial angle (deg) [-50 to 50].
+Y-AXIS: The spatial spectrum [0 to 1].
+OBSERVATION: The "Proposed method" (red) shows sharpest peaks and least sidelobes compared to others, which show significant distortion or false peaks.
+================================================================================
+IMAGE: _page_7_Figure_2.jpeg
+TYPE: Chart / Graph (Hyperparameter Analysis)
+DESCRIPTION: RMSE of DOA estimation vs SNR for different numbers of network layers.
+X-AXIS: SNR (dB) [0 to 30].
+Y-AXIS: The RMSE of DOA estimation (deg) [0.5 to 2.5].
+LEGEND: Layers = 2, 4, 6, 8, 10, 12, 14.
+TREND: Optimal number of layers is 6 (blue square), providing the lowest RMSE (~0.6 deg at 20-30 dB SNR range).
+================================================================================
+IMAGE: _page_7_Figure_4.jpeg
+TYPE: Chart / Graph (Hyperparameter Analysis)
+DESCRIPTION: RMSE of DOA estimation vs SNR for different numbers of convolution filters.
+X-AXIS: SNR (dB) [0 to 30].
+Y-AXIS: The RMSE of DOA estimation (deg) [0.5 to 2.5].
+LEGEND: Filters = 2, 4, 6, 8, 10.
+TREND: Filters = 2 (red circle) and Filters = 10 (orange circle) perform similarly well, with 2 filters being the most efficient choice for low RMSE.
+================================================================================
+IMAGE: _page_8_Figure_2.jpeg
+TYPE: Performance Plot (Comparative)
+DESCRIPTION: RMSE of DOA estimation vs SNR for Proposed method vs existing algorithms.
+X-AXIS: SNR (dB) [0 to 30].
+Y-AXIS: The RMSE of DOA estimation (deg) [0.5 to 5]. (Log-like scale for RMSE).
+LEGEND: Proposed method (red), ANM (blue), FFT (green), MUSIC (yellow), OMP (purple).
+TREND: Proposed method has significantly lower RMSE across all SNR levels. At SNR=10dB, Proposed RMSE < 1 deg, others > 1.5 deg.
+================================================================================
+IMAGE: _page_8_Figure_8.jpeg
+TYPE: Performance Plot (Robustness)
+DESCRIPTION: RMSE of DOA estimation vs The imperfect factor (scaling of array impairments).
+X-AXIS: The imperfect factor [0.1 to 1.0].
+Y-AXIS: The RMSE of DOA estimation (deg) [0.2 to 2].
+LEGEND: Proposed method (red), FFT (purple), OMP (orange), ANM (green), MUSIC (cyan).
+TREND: As the imperfect factor increases (array gets more distorted), the Proposed method shows much higher robustness, keeping RMSE ~0.8 deg at factor 1.0, while others spike to > 1.6 deg.
+================================================================================
+IMAGE: _page_9_Figure_2.jpeg
+TYPE: Performance Plot (DL Comparison)
+DESCRIPTION: Spatial spectrum comparison between Proposed method and "Deep frequency network".
+X-AXIS: Spatial angle (deg) [-50 to 50].
+Y-AXIS: The spatial spectrum [0 to 1].
+DETAILS: Ground truth DOAs marked with black dots. 
+OBSERVATION: Proposed method (red) has smooth, accurate peaks aligned with ground truth. "Deep frequency network" (blue triangles) has higher sidelobes and misses the exact ground truth peak magnitude/location.
+================================================================================
+IMAGE: _page_9_Figure_4.jpeg
+TYPE: Performance Plot (DL Comparison)
+DESCRIPTION: Comparative RMSE vs SNR for Proposed method vs "Deep frequency network".
+X-AXIS: SNR (dB) [0 to 30].
+Y-AXIS: The RMSE of DOA estimation (deg) [0.4 to 20]. (Log scale).
+LEGEND: Proposed method (red), FFT (blue), OMP (orange), Deep frequency network (green).
+OBSERVATION: The existing "Deep frequency network" shows very poor performance (RMSE ~20 deg) because it is not designed to handle imperfect arrays, whereas the Proposed method maintains RMSE < 1 deg.
+================================================================================

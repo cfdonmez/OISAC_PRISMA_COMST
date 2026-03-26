@@ -1,0 +1,158 @@
+Image: _page_1_Figure_0.jpeg
+Type: System Diagram / Schematic (Fiber-Wireless ISAC for 5G/6G Fronthaul)
+---
+Components:
+- Central Office (CO): BBU pool, OLT.
+- Feeder Fiber: 25 km SMF-28.
+- Remote Radio Head (RRH): ONU, LNA, PA.
+- Analog RoF Link: 1550 nm, DWDM 100 GHz grid.
+- Antenna Array: 8×8 massive MIMO.
+- User Equipment (UE): Multiple mobile devices.
+- Radar Target: Vehicle in coverage area.
+- Frequency: mmWave 28 GHz / sub-6 GHz dual-band.
+
+Sub-components:
+- MZM: Mach-Zehnder modulator at CO.
+- EDFA: Booster and pre-amplifier.
+- PD: High-speed photodetector at RRH.
+- DSP: Centralized at CO for joint processing.
+
+Flow:
+1. BBU → MZM → EDFA → Feeder Fiber → RRH.
+2. RRH: PD → PA → Antenna Array → UE + Radar targets.
+3. Return: Antenna → LNA → PD → Fiber → CO → DSP.
+---
+
+Image: _page_2_Figure_2.jpeg
+Type: Chart (Fiber Dispersion Impact on mmWave)
+---
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 50 km.
+- Y-axis: RF Power Penalty (dB). Range: 0 to 20 dB.
+
+Legend:
+- 28 GHz (Blue).
+- 39 GHz (Red).
+- 60 GHz (Green).
+
+Data Points:
+- At 10 km: 28 GHz = 1.5 dB; 39 GHz = 3 dB; 60 GHz = 7 dB.
+- At 25 km: 28 GHz = 4 dB; 39 GHz = 8 dB; 60 GHz = 18 dB.
+- At 50 km: 28 GHz = 8 dB; 39 GHz = 16 dB (saturates).
+
+Observation:
+- Higher mmWave frequencies suffer more dispersion penalty.
+- 28 GHz viable to 40+ km; 60 GHz limited to <15 km.
+---
+
+Image: _page_2_Picture_0.jpeg
+Type: Experimental Setup (Photograph)
+---
+Components Visible:
+- OLT chassis with DWDM cards.
+- 25 km fiber spool.
+- RRH module with antenna.
+- Oscilloscope for signal monitoring.
+- RF spectrum analyzer.
+
+Note: Laboratory demonstration of fiber-wireless ISAC fronthaul.
+---
+
+Image: _page_3_Figure_9.jpeg
+Type: Chart (Range-Doppler Map)
+---
+Axes:
+- X-axis: Range (m). Range: 0 to 200 m.
+- Y-axis: Velocity (m/s). Range: -30 to +30 m/s.
+- Color: Power (dB). Range: -40 to 0 dB.
+
+Data Points (Detected Targets):
+- Target 1: Range = 45 m, Velocity = +12 m/s, SNR = 38 dB.
+- Target 2: Range = 112 m, Velocity = -8 m/s, SNR = 32 dB.
+- Target 3: Range = 168 m, Velocity = +2 m/s, SNR = 25 dB.
+
+Resolution:
+- Range resolution: 0.75 m (200 MHz BW).
+- Velocity resolution: 0.5 m/s.
+---
+
+Image: _page_4_Figure_8.jpeg
+Type: Chart (BER vs Fiber Length)
+---
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 50 km.
+- Y-axis: BER. Range: 10^-7 to 10^-2 (log scale).
+
+Legend:
+- QPSK (Blue).
+- 16-QAM (Red).
+- 64-QAM (Green).
+- HD-FEC threshold (Black dashed).
+
+Data Points (16-QAM):
+- At 10 km: BER = 5×10^-6.
+- At 25 km: BER = 2×10^-4.
+- At 40 km: BER = 8×10^-4.
+- At 50 km: BER = 3×10^-3 (below FEC).
+
+Maximum Reach:
+- QPSK: >50 km.
+- 16-QAM: ~45 km.
+- 64-QAM: ~30 km.
+---
+
+Image: _page_4_Figure_9.jpeg
+Type: Chart (Sensing Accuracy vs Fiber Length)
+---
+Axes:
+- X-axis: Fiber Length (km). Range: 0 to 50 km.
+- Y-axis: Range RMSE (m). Range: 0 to 2 m.
+
+Legend:
+- With dispersion compensation (Blue).
+- Without compensation (Red).
+
+Data Points (With compensation):
+- At 10 km: RMSE = 0.15 m.
+- At 25 km: RMSE = 0.25 m.
+- At 50 km: RMSE = 0.45 m.
+
+Data Points (Without compensation):
+- At 10 km: RMSE = 0.3 m.
+- At 25 km: RMSE = 0.8 m.
+- At 50 km: RMSE = 1.8 m.
+
+Improvement: Dispersion compensation provides 3-4× accuracy gain.
+---
+
+Image: _page_5_Figure_0.jpeg
+Type: Constellation Diagram (64-QAM After Fiber Transmission)
+---
+Structure:
+- Modulation: 64-QAM.
+- Fiber length: 25 km.
+
+Quality:
+- EVM: 5.8% RMS.
+- Clear 64-point structure.
+- Slight outer corner compression (fiber nonlinearity).
+- Phase noise: 2.5° RMS.
+- Suitable for HD-FEC assisted operation.
+---
+
+Image: _page_5_Figure_1.jpeg
+Type: Chart (Aggregate Performance Summary)
+---
+Axes:
+- X-axis: Metric. Categories: [Data Rate, Range Resolution, Max Range, Velocity Resolution].
+- Y-axis: Value (normalized or absolute).
+
+Data Points:
+- Data Rate: 10 Gbps (per RRH).
+- Range Resolution: 0.75 m (200 MHz OFDM).
+- Max Sensing Range: 200 m (outdoor).
+- Velocity Resolution: 0.5 m/s.
+
+Key Achievement:
+- Simultaneous 10 Gbps communication + 0.75 m sensing over 25 km fiber.
+---

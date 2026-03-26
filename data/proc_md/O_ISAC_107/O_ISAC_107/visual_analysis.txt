@@ -1,0 +1,319 @@
+Image: _page_2_Figure_2.jpeg
+Type: System Diagram / Schematic (Coherent ISAC Transceiver with Machine Learning)
+---
+Components:
+- ECL: External Cavity Laser at 1550.12 nm, linewidth <100 kHz.
+- IQ Modulator: Dual-parallel MZM for coherent modulation.
+- DAC: 84 GSa/s digital-to-analog converter.
+- EDFA: 23 dBm output power.
+- Circulator: High isolation Tx/Rx routing.
+- Collimator: Free-space beam forming.
+- Target: Distributed reflectors.
+- 90° Hybrid: Coherent receiver front-end.
+- Balanced PDs: 4-channel balanced photodetectors.
+- ADC: 100 GSa/s real-time digitizer.
+- ML Engine: Neural network inference unit (GPU/FPGA).
+- DSP: Joint radar-comm signal processing.
+
+Flow:
+1. ECL → IQ Mod (data from DAC) → EDFA → Circulator → Collimator.
+2. Free-space propagation to Target.
+3. Return signal → Collimator → Circulator → 90° Hybrid.
+4. LO from ECL → 90° Hybrid → Balanced PDs → ADC.
+5. ADC → ML Engine (target classification) → DSP (parameter extraction).
+---
+
+Image: _page_5_Picture_11.jpeg
+Type: Experimental Setup (Photograph - Transmitter Side)
+---
+Components Visible:
+- Optical bench with vibration isolation.
+- Laser module (ECL with TEC).
+- IQ modulator (LiNbO3, fiber-pigtailed).
+- EDFA (benchtop unit).
+- Fiber patch panels.
+- AWG (100 GSa/s, 8-bit resolution).
+- RF cables and bias tees.
+- Optical spectrum analyzer (background).
+
+Layout:
+- Left: Source and modulation subsystem.
+- Center: Amplification stage.
+- Right: Fiber routing to free-space optics.
+---
+
+Image: _page_5_Picture_13.jpeg
+Type: Experimental Setup (Photograph - Receiver and Target)
+---
+Components Visible:
+- Collimator pair on optical rail.
+- Target scene: 3 corner cube reflectors at various ranges.
+- Coherent receiver module.
+- Real-time oscilloscope (Keysight, 256 GHz).
+- GPU server for ML processing.
+- Fiber connections to 90° hybrid.
+
+Target Positions:
+- Target A: ~15 m range.
+- Target B: ~28 m range.
+- Target C: ~42 m range.
+---
+
+Image: _page_6_Figure_2.jpeg
+Type: Chart (Optical Spectrum - Coherent OFDM)
+---
+Axes:
+- X-axis: Wavelength (nm). Range: 1549.5 to 1550.5 nm.
+- Y-axis: Power (dBm). Range: -50 to -5 dBm.
+
+Data Points:
+- Center wavelength: 1550.12 nm.
+- Signal bandwidth: 20 GHz (0.16 nm).
+- Peak power: -8 dBm.
+- OSNR: 38 dB (0.1 nm RBW).
+- ASE floor: -46 dBm.
+
+Observations:
+- Flat-topped OFDM spectrum.
+- Spectral efficiency: 4 bits/s/Hz (target).
+---
+
+Image: _page_7_Picture_2.jpeg
+Type: System Diagram / Schematic (ML-Assisted Signal Processing Pipeline)
+---
+Components:
+- Input Layer: Raw IQ samples (complex).
+- Feature Extraction: FFT, range-Doppler, constellation.
+- CNN Block: 5-layer convolutional network.
+- LSTM Block: Temporal sequence processing.
+- Fusion Layer: Multi-task attention mechanism.
+- Output Heads: [Range, Velocity, Angle, Communication Symbols].
+
+Architecture Details:
+- CNN: 64-128-256-256-128 filters.
+- LSTM: 2 layers, 256 hidden units.
+- Training samples: 500,000.
+- Inference latency: 2.5 ms per frame.
+---
+
+Image: _page_7_Figure_4.jpeg
+Type: Chart (ML Training Convergence)
+---
+Axes:
+- X-axis: Epoch. Range: 0 to 100.
+- Y-axis (Left): Loss. Range: 0 to 2.
+- Y-axis (Right): Accuracy (%). Range: 50 to 100%.
+
+Legend:
+- Training Loss (Blue).
+- Validation Loss (Red).
+- Target Classification Accuracy (Green).
+
+Data Points:
+- Epoch 10: Train Loss = 0.85; Val Loss = 0.92; Acc = 78%.
+- Epoch 30: Train Loss = 0.35; Val Loss = 0.42; Acc = 91%.
+- Epoch 50: Train Loss = 0.18; Val Loss = 0.25; Acc = 96%.
+- Epoch 100: Train Loss = 0.08; Val Loss = 0.15; Acc = 98.2%.
+
+Trend:
+- Convergence by epoch 60.
+- No significant overfitting (val-train gap <0.07).
+---
+
+Image: _page_8_Figure_2.jpeg
+Type: Chart (Range Estimation: Traditional vs ML)
+---
+Axes:
+- X-axis: True Range (m). Range: 5 to 50 m.
+- Y-axis: Estimated Range (m). Range: 5 to 50 m.
+
+Legend:
+- FFT-based (Blue circles).
+- ML-based (Red triangles).
+- Ideal (Black dashed).
+
+Data Points:
+- At 15 m: FFT = 15.3 m (error 0.3 m); ML = 15.05 m (error 0.05 m).
+- At 28 m: FFT = 28.8 m (error 0.8 m); ML = 28.1 m (error 0.1 m).
+- At 42 m: FFT = 43.2 m (error 1.2 m); ML = 42.2 m (error 0.2 m).
+
+Improvement:
+- ML reduces RMSE by 5-6× vs traditional FFT.
+---
+
+Image: _page_8_Figure_8.jpeg
+Type: Constellation Diagram (64-QAM Coherent)
+---
+Structure:
+- Modulation Format: 64-QAM.
+- Grid: 8×8 constellation points.
+
+Quality:
+- EVM: 4.8% RMS (excellent).
+- Clear cluster separation.
+- Minimal phase noise.
+- SNR estimated: >28 dB.
+- Compatible with SD-FEC (overhead <15%).
+---
+
+Image: _page_8_Figure_9.jpeg
+Type: Constellation Diagram (Reference - Back-to-Back)
+---
+Structure:
+- Modulation: 64-QAM.
+- Configuration: B2B (no channel).
+
+Quality:
+- EVM: 3.2% RMS (baseline).
+- Near-ideal constellation.
+- Implementation penalty from Figure 8: 1.6% EVM.
+---
+
+Image: _page_8_Figure_10.jpeg
+Type: Chart (Multi-Panel: Target Classification Performance)
+---
+Panel (a) - Confusion Matrix (3 targets):
+- Target A → A: 97%; A → B: 2%; A → C: 1%.
+- Target B → B: 96%; B → A: 3%; B → C: 1%.
+- Target C → C: 98%; C → A: 1%; C → B: 1%.
+- Overall accuracy: 97%.
+
+Panel (b) - Precision/Recall:
+- Target A: Precision = 0.96; Recall = 0.97.
+- Target B: Precision = 0.95; Recall = 0.96.
+- Target C: Precision = 0.98; Recall = 0.98.
+- F1 Score (macro): 0.966.
+---
+
+Image: _page_10_Figure_2.jpeg
+Type: Chart (Multi-Panel: Range-Doppler with ML Enhancement)
+---
+Panel (a) - Traditional FFT Processing:
+Axes:
+- X-axis: Range (m). Range: 0 to 60 m.
+- Y-axis: Velocity (m/s). Range: -10 to +10 m/s.
+- Color: Power (dB). Range: -40 to 0 dB.
+
+Data Points:
+- Target 1: (15, +2) m/s, SNR = 28 dB, sidelobe clutter visible.
+- Target 2: (28, -3.5) m/s, SNR = 25 dB.
+- Target 3: (42, 0) m/s, SNR = 22 dB.
+
+Panel (b) - ML-Enhanced Processing:
+Data Points:
+- Target 1: (15, +2) m/s, SNR = 42 dB, clean detection.
+- Target 2: (28, -3.5) m/s, SNR = 38 dB.
+- Target 3: (42, 0) m/s, SNR = 35 dB.
+
+Improvement:
+- ML provides 12-15 dB SNR gain.
+- Sidelobe suppression: >20 dB.
+---
+
+Image: _page_11_Figure_2.jpeg
+Type: Chart (BER vs SNR: Traditional vs ML Demodulation)
+---
+Axes:
+- X-axis: SNR (dB). Range: 10 to 35 dB.
+- Y-axis: BER. Range: 10^-6 to 10^-1 (log scale).
+
+Legend:
+- Traditional DSP (Blue).
+- ML-based (Red).
+- Theoretical 64-QAM (Black dashed).
+
+Data Points:
+- At 20 dB: Traditional = 5×10^-3; ML = 8×10^-4.
+- At 25 dB: Traditional = 3×10^-4; ML = 2×10^-5.
+- At 30 dB: Traditional = 1×10^-5; ML = 5×10^-6.
+
+Improvement:
+- ML provides 2-3 dB gain at BER = 10^-4.
+- Approaches theoretical limit at high SNR.
+---
+
+Image: _page_12_Figure_2.jpeg
+Type: Chart (Joint Performance: Communication Rate vs Sensing Accuracy)
+---
+Axes:
+- X-axis: Communication Data Rate (Gbps). Range: 20 to 80 Gbps.
+- Y-axis: Range RMSE (cm). Range: 0 to 15 cm.
+
+Legend:
+- Traditional ISAC (Blue).
+- ML-enhanced ISAC (Red).
+- Pareto boundary (Dashed).
+
+Data Points (Traditional):
+- 40 Gbps: RMSE = 5 cm.
+- 60 Gbps: RMSE = 8 cm.
+- 80 Gbps: RMSE = 12 cm.
+
+Data Points (ML-enhanced):
+- 40 Gbps: RMSE = 1.5 cm.
+- 60 Gbps: RMSE = 2.5 cm.
+- 80 Gbps: RMSE = 4 cm.
+
+Pareto Improvement:
+- ML expands Pareto frontier by 3× in sensing.
+---
+
+Image: _page_12_Figure_4.jpeg
+Type: Chart (Latency Analysis)
+---
+Axes:
+- X-axis: Processing Stage. Categories: [ADC, FFT, ML Inference, Tracking, Total].
+- Y-axis: Latency (ms). Range: 0 to 10 ms.
+
+Data Points:
+- ADC buffer: 1.0 ms.
+- FFT processing: 0.5 ms.
+- ML inference: 2.5 ms.
+- Tracking update: 0.8 ms.
+- Total latency: 4.8 ms.
+
+Observation:
+- ML inference dominates (52% of total).
+- Real-time operation achievable at 200 Hz update rate.
+---
+
+Image: _page_12_Figure_6.jpeg
+Type: Chart (Multi-Panel: Robustness Analysis)
+---
+Panel (a) - Performance vs Occlusion:
+Axes:
+- X-axis: Target Occlusion (%). Range: 0 to 80%.
+- Y-axis: Detection Probability (%). Range: 0 to 100%.
+
+Data Points:
+- Traditional: 90% at 0%; 50% at 40%; 10% at 80%.
+- ML-enhanced: 98% at 0%; 85% at 40%; 55% at 80%.
+
+Panel (b) - Performance vs Clutter:
+Axes:
+- X-axis: Clutter Density (targets/m²). Range: 0 to 1.
+- Y-axis: False Alarm Rate (%). Range: 0 to 30%.
+
+Data Points:
+- Traditional: 5% at 0.2; 15% at 0.6; 28% at 1.0.
+- ML-enhanced: 2% at 0.2; 5% at 0.6; 10% at 1.0.
+---
+
+Image: _page_13_Figure_2.jpeg
+Type: Chart (Comparison: State-of-the-Art)
+---
+Axes:
+- X-axis: Reference. Categories: [Ref[15], Ref[22], Ref[31], This Work].
+- Y-axis (Left): Data Rate (Gbps). Range: 0 to 100 Gbps.
+- Y-axis (Right): Range RMSE (cm). Range: 0 to 20 cm.
+
+Data Points:
+- Ref[15]: Rate = 25 Gbps; RMSE = 8 cm.
+- Ref[22]: Rate = 40 Gbps; RMSE = 5 cm.
+- Ref[31]: Rate = 60 Gbps; RMSE = 6 cm.
+- This Work: Rate = 80 Gbps; RMSE = 2.5 cm.
+
+Key Achievement:
+- 2× higher rate than Ref[22] at 50% better sensing.
+- Best-in-class combined ISAC performance.
+---

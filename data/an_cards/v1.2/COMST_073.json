@@ -1,0 +1,485 @@
+{
+    "schema_version": "1.2",
+    "paper_id": "COMST_073",
+    "title": "Visible Light Positioning as a Next-Generation Indoor Positioning Technology: A Tutorial",
+    "authors": [
+        "Sander Bastiaens",
+        "Morteza Alijani",
+        "Wout Joseph",
+        "David Plets"
+    ],
+    "affiliation": "imec-WAVES, Ghent University",
+    "year_online": "2024",
+    "year_issue": "2024",
+    "source_path": "data/corp_std/COMST_073/COMST_073.md",
+    "domain": "Visible Light Positioning / Indoor Localization / Optical Wireless",
+    "analysis_policy": {
+        "focus": "Comprehensive tutorial extraction with emphasis on system design, component taxonomy, localization algorithms, and practical deployment guidance",
+        "depth": "Full paper analysis including all 7 major sections and subsections"
+    },
+    "document_stats": {
+        "total_lines": 1632,
+        "total_bytes": 513503,
+        "section_count": 7,
+        "figure_count": 22,
+        "table_count": 3,
+        "equation_count": 42,
+        "reference_count": 469
+    },
+    "normalization": {
+        "heading_style": "Roman numeral major sections (I-VII) with letter subsections (A, B, C)",
+        "citation_style": "IEEE numeric [1]",
+        "terminology_standardization": {
+            "VLP": "Visible Light Positioning",
+            "IPS": "Indoor Positioning System",
+            "RSS": "Received Signal Strength",
+            "TOA": "Time of Arrival",
+            "TDOA": "Time Difference of Arrival",
+            "AOA": "Angle of Arrival",
+            "PD": "Photodiode",
+            "LED": "Light-Emitting Diode",
+            "uVLP": "Unmodulated VLP",
+            "MBF": "Model-Based Fingerprinting",
+            "Li-Fi": "Light Fidelity"
+        }
+    },
+    "section_flow": [
+        {
+            "section_id": "I",
+            "title": "Introduction",
+            "page_span": [
+                1,
+                2
+            ],
+            "role": "motivation",
+            "summary": "Introduces VLP as next-generation indoor positioning, presents Scopus publication trends, and differentiates this tutorial from existing surveys via comparison table.",
+            "key_claims": [
+                "VLP can provide centimetre-order accuracy at low cost",
+                "No appropriate VLP tutorial exists covering all aspects",
+                "VLP is a key candidate for 6G wireless networks"
+            ]
+        },
+        {
+            "section_id": "II",
+            "title": "Context",
+            "page_span": [
+                2,
+                6
+            ],
+            "role": "background",
+            "subsections": [
+                "Location-Based Services",
+                "Indoor Positioning Systems",
+                "Rationale of VLP",
+                "Illumination Requirements"
+            ],
+            "summary": "Provides comprehensive IPS taxonomy, positions VLP in the technology landscape, discusses LED revolution and LaaS business model, and covers illumination constraints (flicker, glare, uniformity).",
+            "key_claims": [
+                "Indoor LBS is flourishing with 80-90% of human time spent indoors",
+                "No dominant IPS standard exists - landscape is fragmented",
+                "LED modulation must exceed 3kHz to avoid temporal light artifacts"
+            ]
+        },
+        {
+            "section_id": "III",
+            "title": "Components and Paradigms of VLP Systems",
+            "page_span": [
+                6,
+                19
+            ],
+            "role": "technical_foundation",
+            "subsections": [
+                "Communication Architecture",
+                "Transmitters",
+                "Receivers",
+                "Transceiver Architectures",
+                "Propagation Medium",
+                "Propagation Models",
+                "Angular Characteristics",
+                "Physical/Link Layer"
+            ],
+            "summary": "Exhaustive taxonomy of VLP components: transmitters (fluorescent, LED, micro-LED, laser), receivers (camera, photodiode, solar cell), propagation models (LOS/NLOS), modulation schemes, and MAC protocols.",
+            "key_claims": [
+                "Phosphor-type LEDs have 2-20MHz 3dB bandwidth",
+                "Small-scale fading is negligible due to sensor area >> wavelength",
+                "FDMA is the most common MAC for VLP due to synchronization challenges"
+            ]
+        },
+        {
+            "section_id": "IV",
+            "title": "VLP Localization Techniques and Algorithms",
+            "page_span": [
+                19,
+                22
+            ],
+            "role": "methodology",
+            "subsections": [
+                "Localization Techniques (TOA, RSS, AOA)",
+                "Localization Algorithms"
+            ],
+            "summary": "Covers positioning principles (RSS, TOA, TDOA, AOA) with VLP-specific adaptations, discusses ML approaches, provides mathematical formulations for trilateration and angulation.",
+            "key_claims": [
+                "RSS is the most straightforward and widely-implemented approach for VLP",
+                "AOA is inherently more accurate but requires angular diversity receivers",
+                "ML approaches achieve cm-level accuracy but require dense training grids"
+            ]
+        },
+        {
+            "section_id": "V",
+            "title": "A Primer on RSS VLP Systems with a Single Photodiode",
+            "page_span": [
+                22,
+                30
+            ],
+            "role": "tutorial_core",
+            "subsections": [
+                "Incentive",
+                "Transmitter",
+                "Receiver",
+                "Signal Model",
+                "Localization Algorithms",
+                "Experimental Setup and Results"
+            ],
+            "summary": "Step-by-step guide for building a single-PD RSS VLP system: hardware selection, signal processing, 9 localization algorithms (trilateration, CMD, weighted LS, fingerprinting, MBF, MLE), and 42m×21m industrial deployment with p50=29cm error.",
+            "key_claims": [
+                "VLP receiver BOM can be as low as €28",
+                "Industrial deployment achieved p50=29cm, p75=58cm error",
+                "Model-based fingerprinting eliminates need for on-site calibration"
+            ]
+        },
+        {
+            "section_id": "VI",
+            "title": "Open Challenges and Future Roadmap",
+            "page_span": [
+                30,
+                33
+            ],
+            "role": "future_directions",
+            "subsections": [
+                "Open Challenges (Cost, Accuracy, Standardization)",
+                "Opportunities (AI/ML, Hybrid Systems, uVLP, Solar Cells, RIS)"
+            ],
+            "summary": "Identifies key barriers: LED driver retrofit cost, lack of standardization, receiver tilt sensitivity, non-Lambertian sources. Proposes solutions: AI for calibration, hybrid VLP+UWB, unmodulated VLP, RIS for coverage.",
+            "key_claims": [
+                "No consensus VLP system has been identified",
+                "IEEE 802.15.7 standard underused for VLP",
+                "VLP RIS research is nonexistent as of September 2023"
+            ]
+        },
+        {
+            "section_id": "VII",
+            "title": "Conclusion",
+            "page_span": [
+                33,
+                33
+            ],
+            "role": "synthesis",
+            "summary": "Summarizes VLP benefits for smart applications, reiterates tutorial contributions, and emphasizes practical deployment guidance."
+        }
+    ],
+    "rhetorical_contract": {
+        "promise": "Provide an all-encompassing VLP tutorial with complete end-to-end hardware and software description",
+        "delivery_mechanism": "Layer-by-layer tutorial structure from IPS context through component taxonomy to practical implementation",
+        "unique_contribution": "First survey covering all aspects: illumination, transmitter/receiver hardware, modulation, localization, and hands-on primer"
+    },
+    "taxonomy": {
+        "type": "multi_dimensional_hierarchical",
+        "root_concept": "Visible Light Positioning Systems",
+        "primary_dimensions": [
+            {
+                "dimension": "Transmitter Types",
+                "categories": [
+                    "Fluorescent",
+                    "LED (phosphor/RGB/micro)",
+                    "Laser Diode",
+                    "OLED"
+                ],
+                "evaluation_criteria": [
+                    "Modulation bandwidth",
+                    "Luminous efficacy",
+                    "Cost",
+                    "Lifespan"
+                ]
+            },
+            {
+                "dimension": "Receiver Types",
+                "categories": [
+                    "Camera (CMOS rolling shutter)",
+                    "Photodiode (PIN/APD)",
+                    "Solar Cell",
+                    "Quadrant PD"
+                ],
+                "evaluation_criteria": [
+                    "Bandwidth",
+                    "Sensitivity",
+                    "Cost",
+                    "Energy harvesting"
+                ]
+            },
+            {
+                "dimension": "Localization Techniques",
+                "categories": [
+                    "RSS",
+                    "TOA/TDOA",
+                    "AOA",
+                    "CSI",
+                    "Fingerprinting"
+                ],
+                "evaluation_criteria": [
+                    "Accuracy",
+                    "Complexity",
+                    "Calibration effort",
+                    "Hardware requirements"
+                ]
+            },
+            {
+                "dimension": "Modulation Schemes",
+                "categories": [
+                    "Single-carrier (OOK, PWM, PPM)",
+                    "Multi-carrier (DCO-OFDM, ACO-OFDM)",
+                    "Color (CSK, CIM)"
+                ],
+                "evaluation_criteria": [
+                    "Spectral efficiency",
+                    "Dimming compatibility",
+                    "TLA avoidance"
+                ]
+            }
+        ],
+        "visualization": {
+            "figure_ref": "Fig. 2",
+            "type": "hierarchical_tree",
+            "description": "IPS technology classification by coverage area and operational principle"
+        }
+    },
+    "evaluation_framework": {
+        "metrics_used": [
+            "Positioning accuracy (p50, p75, p90 in cm)",
+            "Cost (LED retrofit, receiver BOM)",
+            "Modulation bandwidth (MHz)",
+            "Update rate (Hz)",
+            "Energy consumption",
+            "Deployment scalability",
+            "Calibration effort"
+        ],
+        "comparison_dimensions": [
+            "IPS technologies (VLP vs UWB vs WiFi vs BLE)",
+            "Transmitter types (LED vs Laser vs Fluorescent)",
+            "Receiver types (Camera vs PD vs Solar Cell)",
+            "Localization algorithms (Trilateration vs Fingerprinting vs MLE)"
+        ],
+        "experimental_validation": {
+            "testbed": "42m × 21m industrial depot with 14 COB LEDs",
+            "ground_truth": "LIDAR-enabled AGV (5cm accuracy)",
+            "results": {
+                "p50_error": "29cm",
+                "p75_error": "58cm",
+                "receiver_cost": "€28 BOM"
+            }
+        }
+    },
+    "visual_strategy": {
+        "figure_types": [
+            {
+                "type": "publication_trend",
+                "example": "Fig. 1 - Scopus VLP publication count by year",
+                "purpose": "Demonstrate growing research interest"
+            },
+            {
+                "type": "taxonomy_tree",
+                "example": "Fig. 2 - IPS classification by coverage and principle",
+                "purpose": "Position VLP in technology landscape"
+            },
+            {
+                "type": "schematic_diagram",
+                "example": "Fig. 5 - VLP/VLC building block diagram",
+                "purpose": "Show system architecture"
+            },
+            {
+                "type": "characteristic_curve",
+                "example": "Fig. 6 - LED I-P curve with efficiency droop",
+                "purpose": "Explain hardware behavior"
+            },
+            {
+                "type": "circuit_equivalent",
+                "example": "Fig. 8 - Photodiode equivalent circuit",
+                "purpose": "Enable receiver design"
+            },
+            {
+                "type": "propagation_geometry",
+                "example": "Fig. 10 - LOS/NLOS channel model",
+                "purpose": "Define signal propagation"
+            },
+            {
+                "type": "modulation_taxonomy",
+                "example": "Fig. 11 - VLP/VLC modulation scheme tree",
+                "purpose": "Classify physical layer options"
+            },
+            {
+                "type": "cost_accuracy_scatter",
+                "example": "Fig. 15 - IPS cost vs accuracy landscape",
+                "purpose": "Identify VLP market opportunity"
+            },
+            {
+                "type": "experimental_results",
+                "example": "Fig. 22 - Trajectory vs VLP estimates",
+                "purpose": "Validate industrial deployment"
+            }
+        ],
+        "table_usage": [
+            {
+                "table": "Table I",
+                "purpose": "Compare this tutorial with previous surveys",
+                "technique": "Feature matrix with coverage depth indicators"
+            },
+            {
+                "table": "Table II",
+                "purpose": "Photodiode characteristics (Si PIN/APD, Ge, InGaAs)",
+                "technique": "Specifications comparison table"
+            }
+        ]
+    },
+    "synthesis": {
+        "integration_approach": "Tutorial-style progressive disclosure from fundamentals to implementation",
+        "gap_identification": [
+            "No consensus VLP system identified",
+            "Lack of standardization (unlike UWB)",
+            "Insufficient large-scale mobile evaluations",
+            "Non-Lambertian transmitter modeling",
+            "Receiver tilt compensation"
+        ],
+        "future_recommendations": [
+            "AI/ML for reduced calibration effort",
+            "Hybrid VLP+IMU fusion",
+            "Unmodulated VLP using LED characteristic frequencies",
+            "Solar cell receivers for energy-constrained IoT",
+            "Reconfigurable Intelligent Surfaces for coverage extension",
+            "IEEE 802.15.7 standard enhancement for VLP"
+        ]
+    },
+    "methodology": {
+        "survey_approach": "Comprehensive tutorial with hands-on primer",
+        "source_selection": "469 references covering VLP, VLC, indoor positioning, optical wireless",
+        "analysis_technique": "Component-by-component taxonomy with practical implementation guidance",
+        "distinguishing_features": [
+            "End-to-end system description (first for VLP)",
+            "Industrial-scale experimental validation",
+            "9 localization algorithms with complexity analysis",
+            "€28 receiver BOM specification"
+        ]
+    },
+    "style": {
+        "register": "Tutorial-academic with practical engineering focus",
+        "rhetorical_patterns": [
+            "Progressive disclosure from theory to practice",
+            "Equation-supported explanations",
+            "Component taxonomy with trade-off analysis",
+            "Industrial deployment case study"
+        ],
+        "characteristic_phrases": [
+            "This tutorial investigates VLP in depth",
+            "The purpose of this section is to provide a basic guideline",
+            "As attested by Fig. X's...",
+            "For an in-depth discussion, the reader is referred to..."
+        ]
+    },
+    "reusable_writing_recipes": [
+        {
+            "recipe_name": "Tutorial-Style Progressive Disclosure",
+            "description": "Structure a survey as a progressive tutorial that builds from context through components to hands-on implementation",
+            "structure": [
+                "Context and motivation (positioning in technology landscape)",
+                "Component taxonomy (each building block in depth)",
+                "Technique classification (algorithms with mathematical formulation)",
+                "Hands-on primer (step-by-step implementation guide)",
+                "Experimental validation (real-world deployment results)",
+                "Open challenges and roadmap"
+            ],
+            "example_application": "VLP tutorial: IPS context → Components → Algorithms → Single-PD primer → Industrial deployment → Future",
+            "rhetorical_effect": "Enables readers to both understand and implement the technology",
+            "complexity": "High - requires comprehensive coverage with implementation depth"
+        },
+        {
+            "recipe_name": "Survey Comparison Table in Introduction",
+            "description": "Use a feature matrix to differentiate the current work from existing surveys, showing coverage depth",
+            "structure": [
+                "List previous surveys/tutorials with citations",
+                "Define coverage dimensions as columns",
+                "Use qualitative indicators (No/Limited/Yes/In-depth)",
+                "Highlight gaps that current work fills"
+            ],
+            "example_application": "Table I: 9 previous works × 7 coverage dimensions, showing this tutorial covers all 'In-depth'",
+            "rhetorical_effect": "Justifies contribution and establishes novelty",
+            "complexity": "Medium - requires thorough literature review"
+        },
+        {
+            "recipe_name": "Multi-Dimensional Component Taxonomy",
+            "description": "Present system components along multiple classification dimensions with evaluation criteria for each",
+            "structure": [
+                "Identify component categories (transmitters, receivers, modulation)",
+                "For each category, define types with characteristics",
+                "Provide trade-off analysis (bandwidth vs cost vs power)",
+                "Include specification tables with market examples"
+            ],
+            "example_application": "Transmitters: Fluorescent→LED→μLED→Laser with bandwidth/efficacy/cost trade-offs",
+            "rhetorical_effect": "Enables informed component selection for system design",
+            "complexity": "Medium-High - requires technical depth across components"
+        },
+        {
+            "recipe_name": "Hands-On Primer Section",
+            "description": "Dedicate a major section to step-by-step implementation guidance with specific hardware recommendations",
+            "structure": [
+                "Motivate the specific configuration chosen",
+                "Specify transmitter hardware (part numbers, driving parameters)",
+                "Specify receiver hardware (PD model, amplifier, DAQ)",
+                "Signal model with equations",
+                "Algorithm options with complexity comparison",
+                "Experimental setup description with BOM cost"
+            ],
+            "example_application": "Section V: RSS VLP with single PD - Bridgelux COB + Thorlabs PDA100A2 + NI DAQ = €28",
+            "rhetorical_effect": "Transforms survey into actionable guide; enables replication",
+            "complexity": "High - requires practical implementation experience"
+        },
+        {
+            "recipe_name": "Cost-Accuracy Landscape Positioning",
+            "description": "Use a 2D scatter plot to position the surveyed technology against competitors on key trade-off dimensions",
+            "structure": [
+                "Define axes (typically cost vs accuracy, or similar trade-off)",
+                "Plot competing technologies with their typical ranges",
+                "Identify market gaps (unfilled regions)",
+                "Position the surveyed technology's potential"
+            ],
+            "example_application": "Fig. 15: IPS cost vs accuracy - VLP targets low-cost/high-accuracy gap between WiFi and UWB",
+            "rhetorical_effect": "Visualizes market opportunity and technology differentiation",
+            "complexity": "Medium - requires competitive landscape knowledge"
+        },
+        {
+            "recipe_name": "Industrial Deployment Validation",
+            "description": "Include a real-world deployment case study with ground-truth comparison",
+            "structure": [
+                "Describe deployment environment (dimensions, conditions)",
+                "Specify infrastructure (LED count, placement, modulation)",
+                "Describe ground-truth system (LIDAR AGV, cm-level accuracy)",
+                "Present trajectory comparison visualization",
+                "Report quantitative results (p50, p75, p90 errors)",
+                "Discuss practical limitations and lessons learned"
+            ],
+            "example_application": "42m×21m depot with 14 COB LEDs, LIDAR AGV ground truth, p50=29cm achieved",
+            "rhetorical_effect": "Validates practical viability beyond lab conditions",
+            "complexity": "Very High - requires access to industrial testbed"
+        }
+    ],
+    "key_equations": {
+        "channel_gain_LOS": "h_c,LOS = [(m+1)A_R / (2πd²)] cos^m(φ) T_s(ψ) τ(ψ) cos(ψ), 0≤ψ≤ψ_c",
+        "distance_estimation": "d_i = [(m+1)A_R h^(m+1) P_t,i / (2π P_R,i)]^(1/(m+3))",
+        "trilateration": "x̂ = (A^T A)^(-1) A^T b"
+    },
+    "quality_flags": {
+        "comprehensive_taxonomy": true,
+        "practical_implementation_guide": true,
+        "industrial_validation": true,
+        "standardization_discussion": true,
+        "future_roadmap": true,
+        "469_references": true
+    }
+}

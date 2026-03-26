@@ -1,0 +1,101 @@
+Image: _page_1_Figure_2.jpeg
+Type: Signal Structure & Spectrum Diagram
+---
+### Panel (a): Frame & Packet Structure
+1.  **Frame Structure:** Composed of **ISACH** (Initial sensing/acquisition channel header?) + **Payload**.
+2.  **Detailed ISACH Breakdown:**
+    *   **Training Sequence (A+B+C):** Used for synchronization.
+        *   **TS-A:** "Frame synchronization & FOE" (Frequency Offset Estimation).
+        *   **TS-B:** "SOP estimation" (State of Polarization?).
+        *   **TS-C:** "Equalizer training".
+    *   **LFM Pilots:** A linear frequency modulation (chirp) signal added (+) to the sequence. Waveform shown as a chirp.
+3.  **Timing:**
+    *   **Sensing:** Round trip time happens during the ISACH/LFM period.
+    *   **Telecom:** Payload transmission follows.
+
+### Panel (b): Frequency Division
+*   **X-Axis:** Frequency.
+*   **Components:**
+    *   **Lfm1, Lfm2 ... LfmM (N/2) ... LfmN:** Discrete frequency blocks/subcarriers allocated for sensing (LFM) vs others.
+    *   **Rs/2:** Nyquist frequency limit.
+
+### Panel (c): Time-Frequency Correspondence
+*   **Time Domain:** Shows time slots [Lfm1] [Payload] [Lfm2] [Payload] etc.
+    *   The "round trip time" is indicated as the window within which the sensing signal returns.
+    *   Orange bar (LFM/Header) is the "Sensing" part.
+    *   Blue/White blocks (Payload) are the "Telecom" part.
+*   **Frequency Domain:**
+    *   **Telecom spectrum:** Broad, flat-top spectrum centered at 0 (baseband).
+    *   **LFM Pilots:** Located at the High Frequency edge (near Rs/2), appearing as a narrow pilot tone/band within the dashed oval.
+    *   **Bandwidth:** -Rs/2 to Rs/2.
+---
+Image: _page_2_Figure_2.jpeg
+Type: Experimental Setup Schematic
+---
+### Key Components & Path Flow
+1.  **Transmitter Side (Tx):**
+    *   **Laser:** Source.
+    *   **Tx DSP -> AWG:** Digital Signal Processing drives Arbitrary Waveform Generator.
+    *   **DP-IQM:** Dual-Polarization IQ Modulator. Modulates Laser light with AWG signal.
+    *   **SOA:** Semiconductor Optical Amplifier.
+    *   **EDFA1:** Erbium-Doped Fiber Amplifier (Booster).
+    *   **OBPF:** Optical Bandpass Filter.
+2.  **Sensing Path Components:**
+    *   **Cir. (Circulator):** Port 1 -> Port 2 -> Port 3.
+    *   **FUT:** Fiber Under Test (connected to Port 2). Ends with **0.5m PZT** (Piezo-Electric Transducer for vibration emulation).
+    *   **Return Path:** Reflected signal enters Port 2 -> Exits Port 3 -> **EDFA2** -> **Sensing DSP**.
+3.  **Sensing DSP Block:**
+    *   **ICR+DSO2:** Integrated Coherent Receiver + Digital Storage Oscilloscope.
+    *   **DSP Functions:** "FOE, Match filter, Segment Sync., Delay&RVS, Phase unwrap".
+4.  **Telecom Path Components (Downlink):**
+    *   Signal passes through FUT? (Diagram suggests signal goes *through* FUT to Telecom part).
+    *   **ECL:** External Cavity Laser (Local Oscillator).
+    *   **Rx Telecom DSP:**
+        *   **90deg Hybrid + BPD + DSO1:** Coherent detection front-end.
+        *   **Offline Telecom DSP:** "Frame sync., CD comp., TS-aided FOE, CMA, TS-aided DD-LMS, EKF Decision".
+5.  **Interference/Modulation Generation:**
+    *   **MSG -> MZM -> EDFA3 -> WS:** A separate branch (possibly creating interference or a second channel?) feeding into the system via **WS** (Wavelength Selector/Switch?). *Correction: This path actually feeds backwards or into the loop? It connects to the Fiber link via a component triangle (Coupler/Amplifier) before EDFA2? Flow is ambiguous here but clearly an auxiliary modulation source.*
+
+### Flow Description
+A coherent optical system performing simultaneous sensing and communication.
+*   **Sensing:** Uses backscattering/reflection from the FUT (via Circulator) to detect PZT vibration. Processed by **Sensing DSP**.
+*   **Communication:** Transmits data through the FUT to a coherent receiver (**Telecom part**). Processed by **Telecom DSP**.
+---
+Image: _page_2_Figure_5.jpeg
+Type: Data Chart (Multi-Panel)
+---
+### Panel (a) Left: Waterfall Plot
+*   **Y-Axis:** Time (ms) [Range: 0 - 14].
+*   **X-Axis:** Distance (km) [Range: 9.975 - 10.0].
+*   ** Visuals:**
+    *   Blue background (low energy).
+    *   Regular bright Yellow/Green spots at ~10.0 km mark.
+    *   Repeats periodically every ~1.2 ms? (10 spots in ~12ms).
+    *   Indicates periodic sensing events/reflections at the end of the fiber (10km).
+
+### Panel (b) Center: Spatial & Spectral Analysis
+*   **Main Plot:**
+    *   **X-Axis:** Distance (km) [Range: 9.995 - 10.00].
+    *   **Y-Axis:** Var (rad^2) [Range: 0 - 3.5].
+    *   **Feature:** A strong, sharp peak at ~9.999 km.
+    *   **Width:** Labeled "0.5m" width for the main peak base.
+*   **Inset Plot:**
+    *   **Y-Axis:** PSD (dB rad^2/Hz).
+    *   **X-Axis:** Frequency (Hz) [Range: 0 - 2500].
+    *   **Feature:** Signal peak at ~800 Hz.
+    *   **SNR:** "21.3dB" indicated dynamic range drop from peak.
+
+### Panel (c) Right: BER & PSD SNR vs STPR
+*   **X-Axis:** STPR (dB) [Range: w/o sensing, 0, 2, 4, 6, 8, 10, 12]. *Sensing-to-Pilot Power Ratio?*
+*   **Left Y-Axis (Blue Circles):** BER [Log Scale: 10^-4 to 2x10^-2].
+    *   **Trend:** BER increases (worsens) as STPR increases.
+    *   **Threshold:** "7% HD-FEC" line at BER ~3.8x10^-3.
+    *   **Crossing Point:** Crosses FEC threshold at STPR ~6 dB.
+*   **Right Y-Axis (Purple Triangles):** PSD SNR (dB) [Range: 8 - 24].
+    *   **Trend:** SNR increases as STPR increases.
+    *   **Data Points:**
+        *   STPR 0dB -> SNR ~9 dB.
+        *   STPR 6dB -> SNR ~17 dB.
+        *   STPR 12dB -> SNR ~24 dB.
+*   **Trade-off:** Increasing STPR improves Sensing SNR (Panel Right Y-axis) but degrades Communication BER (Left Y-axis). Optimal point is likely around 6dB where BER is just below FEC limit.
+---

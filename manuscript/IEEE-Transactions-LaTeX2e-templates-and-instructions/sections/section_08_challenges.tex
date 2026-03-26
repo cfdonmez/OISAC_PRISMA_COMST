@@ -1,0 +1,143 @@
+\section{Open Challenges and Research Roadmap}
+\label{sec:challenges}
+
+Section VIII synthesizes open challenges and frames a deployment-facing research roadmap for optical integrated sensing and communication. The challenge map is treated as an organizational taxonomy and is scoped with five exact domains: \texttt{standardization\_interoperability}, \texttt{hardware\_scalability\_efficiency}, \texttt{channel\_modeling\_evaluation}, \texttt{security\_privacy\_reliability}, and \texttt{deployment\_convergence\_roadmap}. This structure is used to consolidate heterogeneous findings into a consistent challenge lens, not to assert closed-form completeness.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth,height=0.42\textheight,keepaspectratio]{figures/fig_viii_1.jpg}
+\caption{Challenge-to-roadmap dependency map for O-ISAC. The figure organizes the five Section VIII challenge domains around a central shared-system-pressure hub and a roadmap-outcome cluster while preserving the review's evidence-aware, dependency-driven interpretation. The bottom bridge ribbon should be read as a manuscript-level reminder that Section VIII is informed by Section V tradeoffs, constrained by Section VI enablers and benchmarks, and validated against Section VII deployments.}
+\label{fig:challenge-roadmap}
+\end{figure*}
+
+The figure should be read as a dependency map rather than a maturity ladder: the domain cards identify where pressure accumulates, the central hub identifies what kind of pressure is shared across domains, and the outcome cluster summarizes what a credible roadmap must eventually deliver.
+
+\subsection{Standardization and Interoperability}
+
+Evidence from representative studies indicates that interoperability pressure already appears where sensing and communication must co-exist on shared infrastructure \cite{O_ISAC_220,O_ISAC_025,O_ISAC_161}. In SMART subsea settings, standardization is explicitly tied to joint-task-force framing and integrated sensing-communication operation over telecommunication cables \cite{O_ISAC_220}. In optical transport support for ISAC, architecture-level interconnection across RAN, MEC, and SDN-controlled transport highlights practical interoperability requirements spanning radio, transport, and sensing workflows \cite{O_ISAC_025}.
+
+\paragraph{Challenge case 1: standards vocabulary and reference-model divergence.}
+Without aligned standardization vocabulary and reference-model assumptions, implementations can expose incompatible expectations for integrated sensing-communication operation, which limits cross-system comparability and deployment transferability \cite{O_ISAC_220,O_ISAC_161}.
+
+\paragraph{Challenge case 2: cross-domain interoperability friction in transport-supported ISAC.}
+When communication and sensing flows are jointly carried but interoperability assumptions differ across transport, orchestration, and sensing-processing stages, routing and capacity decisions can become brittle under operational variability \cite{O_ISAC_025}.
+
+\paragraph{Challenge case 3: PtMP branch-attribution and measurement-semantics misalignment.}
+In point-to-multipoint access deployments, sensing pipelines can fail to provide unambiguous branch-level attribution when monitoring assumptions are not aligned with deployment topology and loss conditions \cite{O_ISAC_104}.
+
+\paragraph{Challenge case 4: sensing-payload formatting and DSP-compatibility contract gaps.}
+When sensing payload placement and frequency-allocation assumptions are not explicitly aligned with communication signal structure, interoperability can break at receiver processing boundaries and low-interference joint operation becomes fragile \cite{O_ISAC_220}.
+
+\subsection{Hardware Scalability and Efficiency}
+
+Section VIII-B defines \texttt{hardware\_scalability\_efficiency} as a cross-cutting bottleneck because hardware-plane burdens accumulate even when integrated waveforms improve joint operation \cite{O_ISAC_035,O_ISAC_162,O_ISAC_093,O_ISAC_171}. Communication-plane outcomes are relevant but secondary in this context; the primary blocker is hardware-plane feasibility under scaling, power, and implementation constraints.
+
+\paragraph{Challenge case 1: front-end co-design scalability bottleneck.}
+Evidence indicates that independently operated sensing and communication stacks increase hardware complexity, cost, and spectrum inefficiency \cite{O_ISAC_237}. Evidence also indicates that bistatic sensing support can become infeasible on common communication receivers because required analogue FMCW hardware is unavailable \cite{O_ISAC_237}.
+
+\paragraph{Challenge case 2: edge energy-latency hardware ceiling.}
+Edge deployments face strict hardware feasibility limits because energy budgets are often below 1 watt and processing delays can exceed 50 milliseconds \cite{O_ISAC_093}. A second pressure point is orchestration complexity in localization-focused ORIS processing \cite{O_ISAC_112}.
+
+\paragraph{Challenge case 3: integration-level hardware co-design and baseband cost escalation.}
+Optimizing one shared transceiver for sensing and communication is highly challenging because requirements conflict at architecture level \cite{O_ISAC_161}. High mobility and severe path loss can also push beam-steering demands beyond economically viable conventional antenna designs \cite{O_ISAC_142}.
+
+\paragraph{Challenge case 4: beam-control scalability, FLOP growth, and latency envelope limits.}
+Communication-plane beamforming overhead becomes large in highly mobile cells, while conventional delay-line beam control can require substantial switching/control burden as steering granularity tightens \cite{O_ISAC_134,O_ISAC_171}.
+
+\subsection{Channel Modeling and Evaluation}
+
+Channel modeling and evaluation are foundational for O-ISAC credibility because conclusions are not transferable without validated propagation assumptions across environments and implementations \cite{O_ISAC_005,O_ISAC_327}. Turbulence, pointing, and blockage factors remain a core bottleneck, and evaluation practice further needs metric-plane alignment so that communication metrics and sensing metrics are not mixed in a single unlabeled claim \cite{O_ISAC_381,O_ISAC_050}.
+
+\paragraph{Challenge case 1: weather-conditioned channel-model transferability gap.}
+Adverse weather can materially change channel behavior, so assumptions tuned under one condition can fail under another condition \cite{O_ISAC_005}.
+
+\paragraph{Challenge case 2: LOS/NLOS decomposition and scatterer-state identifiability gap.}
+Practical modeling must decouple LOS and NLOS paths and jointly estimate scattering-related states; otherwise, model mismatch remains likely under multipath conditions \cite{O_ISAC_050}.
+
+\paragraph{Challenge case 3: comm-plane metric interface coupling under evaluation conditions.}
+Evaluation pipelines rely on BER and capacity outcomes, and these outcomes shift with transmission-distance settings, which creates comparability risk when studies report metrics without a harmonized condition contract \cite{O_ISAC_381}.
+
+\paragraph{Challenge case 4: benchmark contract fragmentation across channel modeling studies.}
+Heterogeneous measurement campaigns, scenario types, and model families reduce direct comparability across studies, and a standard VLC channel model remains necessary for 6G evaluation workflows \cite{O_ISAC_327}.
+
+\subsection{Security, Privacy, and Reliability}
+
+Evidence indicates that O-ISAC links couple security, privacy, and reliability because sensing increases observability while communication paths keep exploitable attack surfaces \cite{O_ISAC_145,O_ISAC_039,O_ISAC_156,O_ISAC_041}. Physical-layer threat exposure, privacy leakage, authentication and trust posture, and fail-safe integrity monitoring jointly frame this domain.
+
+\paragraph{Challenge case 1: physical-layer confidentiality and trust exposure in hybrid links.}
+Wireless links can remain susceptible to eavesdropping, and trust in received sensing/communication outputs can degrade when adversaries manipulate observations \cite{O_ISAC_145}.
+
+\paragraph{Challenge case 2: privacy leakage pressure in multi-user sensing-learning pipelines.}
+Distributed training can involve sensitive location and trajectory information, so privacy exposure can increase if update exchange and aggregation boundaries are weakly specified \cite{O_ISAC_039}.
+
+\paragraph{Challenge case 3: authentication and trust exposure under dense, heterogeneous connectivity.}
+Key-based encryption and authentication may be less well-tailored at massive scale, and dynamic key management can become a trust bottleneck \cite{O_ISAC_156}.
+
+\paragraph{Challenge case 4: fail-safe integrity monitoring in disruption-prone networks.}
+Transport-network ISAC evidence reports real-time warning pathways that can reduce service-interruption risk under sudden failures \cite{O_ISAC_041}.
+
+\subsection{Deployment Convergence and Roadmap}
+
+For \texttt{deployment\_convergence\_roadmap}, evidence suggests that deployment convergence remains a distinct bottleneck beyond standards, hardware, channel modeling, and security \cite{O_ISAC_039,O_ISAC_151,O_ISAC_163,O_ISAC_200}. Across the micro-evidence set, four motifs recur: coupling between sensing-positioning and communication-channel-estimation tasks, orchestration and state-fusion stress, staged roll-out and readiness gating, and governance for transferability through compatibility, model validity, and provenance controls.
+
+\paragraph{Roadmap case 1: coupled deployment dependency between sensing and communication tasks.}
+Separate task pipelines may keep bottlenecks at deployment interfaces when convergence is assumed too early \cite{O_ISAC_039}.
+
+\paragraph{Roadmap case 2: staged roll-out and readiness gating under multi-issue integration pressure.}
+Deployment planning may understate coordination requirements across multiple design issues if convergence is treated as immediate \cite{O_ISAC_163}.
+
+\paragraph{Roadmap case 3: orchestration and state-fusion fragility in multimodal context loops.}
+Multimodal sensing states and context annotations may drift across update loops under resource stress if orchestration assumptions are fixed before interfaces stabilize \cite{O_ISAC_151}.
+
+\paragraph{Roadmap case 4: open-source governance and transferability risk across heterogeneous stacks.}
+Transferability may weaken because infrastructure compatibility conditions and model-validity assumptions can vary across deployments \cite{O_ISAC_200}.
+
+\subsection{Capstone Dependency Synthesis}
+
+Section VIII-F acts as a capstone synthesis rather than a new domain: it summarizes cross-domain dependency coverage and then organizes a prioritized agenda linked to those dependencies. The observed pattern is that domains A and C appear as the densest linkage hubs, while domain E appears underlinked; this is treated as a linkage-gap and governance observation, not as a statement of lower importance.
+
+\begin{table*}[!t]
+\caption{Prioritized Research Agenda.}
+\label{tab:agenda}
+\centering
+\scriptsize
+\begin{tabular}{p{0.12\textwidth} p{0.22\textwidth} p{0.12\textwidth} p{0.25\textwidth} p{0.12\textwidth} p{0.08\textwidth}}
+\toprule
+Agenda ID & Title & Linked domains & Linkage rationale & Representative support & Priority \\
+\midrule
+F-AG01 & Align interoperability rules with evaluation baselines & A,C & A/C hotspot across Sections V--VII & \cite{O_ISAC_133} & P1 \\
+F-AG02 & Reduce multi-slot resource contention in optical ISAC & A,B,C & Shared A/B/C resource pressure & \cite{O_ISAC_049} & P1 \\
+F-AG03 & Hybrid stacks may require a unified security-evaluation framework & A,C,D & A/C/D cross-layer security linkage & \cite{O_ISAC_156} & P1 \\
+F-AG04 & Prototype calibration may require hardware-scaling coordination & A,B,D & A/B/D prototype-to-scale calibration pressure & \cite{O_ISAC_107} & P2 \\
+F-AG05 & Sustain lower-coverage security and reliability threads & D & Persistent D-domain continuity signal & Targeted D-domain signal & P2 \\
+F-AG06 & Strengthen deployment-convergence evidence through governance-aware integration studies & A,C,E & Underlinked E-domain convergence pathway & Deployment-convergence underlinkage & P2 \\
+F-AG07 & Maintain balanced cross-domain research coverage & A,B,C,D,E & Cross-domain balance under finite bandwidth & Aggregate coverage balance & P3 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Cross-Section Alignment Check}
+
+Section VIII-G functions as a capstone cross-section alignment audit rather than a new challenge domain. It checks whether strict Section VIII challenge evidence is reflected in the upstream linkage signals inherited from Sections V, VI, and VII. The alignment summary shows a fully matched pattern for the A-D domains, while deployment convergence remains a zero-row in the present summary.
+
+\begin{table*}[!t]
+\caption{Cross-Section Alignment Summary.}
+\label{tab:alignment}
+\centering
+\scriptsize
+\begin{tabular}{p{0.22\textwidth} r r r p{0.28\textwidth}}
+\toprule
+Domain & Strict evidence & Linked upstream & Unmatched strict & Interpretation \\
+\midrule
+standardization\_interoperability & 55 & 55 & 0 & perfectly aligned \\
+hardware\_scalability\_efficiency & 25 & 25 & 0 & perfectly aligned \\
+channel\_modeling\_evaluation & 54 & 54 & 0 & perfectly aligned \\
+security\_privacy\_reliability & 18 & 18 & 0 & perfectly aligned \\
+deployment\_convergence\_roadmap & 0 & 0 & 0 & zero-row; no upstream linkage currently evidenced \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Section VIII Summary}
+
+Section VIII concludes that the next phase of O-ISAC research should not prioritize isolated record demonstrations alone; it should prioritize interoperable reporting practice, reproducible evaluation workflows, clearer channel and benchmark definitions, implementation-scalable hardware pathways, and domain-aware deployment validation.

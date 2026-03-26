@@ -1,0 +1,688 @@
+{
+  "schema_version": "1.2",
+  "paper_id": "COMST_023",
+  "title": "A Survey on Trust Models in Heterogeneous Networks",
+  "year_online": "2022",
+  "year_issue": "2022",
+  "year_source": "doi",
+  "domain": "Trust models in heterogeneous networks",
+  "source_path": "data/corp_std/COMST_023/COMST_023.md",
+
+  "analysis_policy": {
+    "include_scope": "Abstract through Conclusion/Challenges (main body only)",
+    "exclude_scope": "References, author bios/photos, acknowledgments, appendix, nomenclature",
+    "segmentation_unit": "markdown_headings",
+    "notes": "Nomenclature excluded; span tags retained."
+  },
+
+  "document_stats": {
+    "approx_word_count_total": 29740,
+    "approx_token_count_total": null,
+    "equation_count_est": 447,
+    "figure_count_est": 16,
+    "table_count_est": 11,
+    "list_count_est": 62,
+    "citation_count_in_body_est": 134,
+    "citation_density_per_1k_words_est": 4.5,
+    "definition_box_or_glossary_present": "yes",
+    "notation_table_present": "yes",
+    "inventory_completeness": "subset"
+  },
+
+  "section_flow": [
+    {
+      "section_id": "S01",
+      "section_label": "INTRODUCTION",
+      "raw_headings": [
+        "I. INTRODUCTION"
+      ],
+      "objective": "Motivate trust modeling in heterogeneous networks, outline challenges, and set survey scope.",
+      "key_components": [
+        "HetNet context and trust importance",
+        "Challenges motivating survey",
+        "Scope of trust models in HetNets"
+      ],
+      "approx_word_share_pct": "7-9",
+      "approx_words_est": 2314,
+      "positioning": {
+        "start_doc_progress_pct_est": 1,
+        "end_doc_progress_pct_est": 18
+      },
+      "moves_present": {
+        "hook": "1",
+        "gap": "1",
+        "yes_but": "1",
+        "contribution": "1",
+        "organization_map": "1",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "hook",
+        "gap",
+        "contribution",
+        "organization_map"
+      ],
+      "notable_moves": [
+        "Long intro establishes need and preview of taxonomy"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "States lack of comprehensive trust model survey in HetNets and contributions.",
+          "locator": {
+            "heading": "I. INTRODUCTION",
+            "paragraph_index_est": 3,
+            "line_range_est": "L40-L80"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S02",
+      "section_label": "SYSTEM_MODEL",
+      "raw_headings": [
+        "II. PRELIMINARIES",
+        "A. Heterogeneous Networks",
+        "B. Trust and Reputation",
+        "C. Trust Models",
+        "D. Quality of Trust",
+        "E. Trustworthy Networking"
+      ],
+      "objective": "Define HetNet context, trust/reputation concepts, trust models, quality dimensions, and trustworthy networking.",
+      "key_components": [
+        "HetNet definition",
+        "Trust and reputation basics",
+        "Trust model notions",
+        "Quality of trust dimensions",
+        "Trustworthy networking"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 2066,
+      "positioning": {
+        "start_doc_progress_pct_est": 18,
+        "end_doc_progress_pct_est": 33
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Builds vocabulary before evaluation and taxonomy"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines trust/reputation, trust models, quality of trust, and trustworthy networking.",
+          "locator": {
+            "heading": "II. PRELIMINARIES",
+            "paragraph_index_est": 1,
+            "line_range_est": "L116-L150"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S03",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "III. EVALUATION CRITERIA ON TRUST MODELS",
+        "A. Subjectivity (Su)",
+        "B. Dynamicity (Dy)",
+        "C. Context-Awareness (Ca)",
+        "D. Privacy Preservation (PP)",
+        "E. Scalability (Sc)",
+        "F. Robustness (Ro)",
+        "G. Overhead (O)",
+        "H. Explainability (Ex)",
+        "I. User Acceptance (UA)"
+      ],
+      "objective": "Enumerate evaluation criteria for trust models in HetNets.",
+      "key_components": [
+        "Subjectivity",
+        "Dynamicity",
+        "Context-awareness",
+        "Privacy preservation",
+        "Scalability",
+        "Robustness",
+        "Overhead",
+        "Explainability",
+        "User acceptance"
+      ],
+      "approx_word_share_pct": "10-12",
+      "approx_words_est": 2336,
+      "positioning": {
+        "start_doc_progress_pct_est": 33,
+        "end_doc_progress_pct_est": 42
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Criteria listed as subsections to guide later model assessment"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Defines evaluation criteria such as subjectivity, dynamicity, context-awareness, privacy, scalability, robustness, overhead, explainability, user acceptance.",
+          "locator": {
+            "heading": "III. EVALUATION CRITERIA ON TRUST MODELS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L150-L216"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S04",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "IV. TAXONOMIES OF TRUST MODELS AND APPLICATIONS",
+        "A. Taxonomy of Trust Models",
+        "B. Taxonomy of Applications"
+      ],
+      "objective": "Provide taxonomy of trust models and related applications in HetNets.",
+      "key_components": [
+        "Trust model categories",
+        "Applications taxonomy",
+        "Figures/tables supporting classification"
+      ],
+      "approx_word_share_pct": "13-15",
+      "approx_words_est": 3810,
+      "positioning": {
+        "start_doc_progress_pct_est": 42,
+        "end_doc_progress_pct_est": 52
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Keeps models and applications taxonomies adjacent to enable mapping"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Classifies trust models and applications in HetNets.",
+          "locator": {
+            "heading": "IV. TAXONOMIES OF TRUST MODELS AND APPLICATIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L216-L300"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S05",
+      "section_label": "TAXONOMY",
+      "raw_headings": [
+        "V. TRUST MODELS IN HETEROGENEOUS NETWORKS",
+        "A. Decision Models in HetNets",
+        "B. Evaluation Models in HetNets",
+        "C. Management Models in HetNets"
+      ],
+      "objective": "Survey trust models in HetNets across decision, evaluation, and management categories.",
+      "key_components": [
+        "Decision models",
+        "Evaluation models",
+        "Management models",
+        "Sub-criteria discussion (context-awareness, robustness, overhead)"
+      ],
+      "approx_word_share_pct": "45-50",
+      "approx_words_est": 14919,
+      "positioning": {
+        "start_doc_progress_pct_est": 52,
+        "end_doc_progress_pct_est": 74
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "1",
+        "future_directions_framing": "0"
+      },
+      "move_sequence_est": [
+        "scope_boundary",
+        "evaluation_framing"
+      ],
+      "notable_moves": [
+        "Large evaluation and management subsections with embedded sub-criteria bullets"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Covers decision, evaluation, and management trust models in HetNets with context/robustness/overhead considerations.",
+          "locator": {
+            "heading": "V. TRUST MODELS IN HETEROGENEOUS NETWORKS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L299-L482"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S06",
+      "section_label": "CHALLENGES",
+      "raw_headings": [
+        "VI. OPEN ISSUES AND FUTURE RESEARCH DIRECTIONS",
+        "A. Heterogeneity and Context-awareness",
+        "B. Privacy Preservation",
+        "C. Overhead",
+        "D. Explainability",
+        "E. User Acceptance",
+        "F. Quality of Trust",
+        "G. Cold Start",
+        "H. Trust Verification"
+      ],
+      "objective": "Enumerate open issues and future research directions for trust in HetNets.",
+      "key_components": [
+        "Heterogeneity/context-awareness",
+        "Privacy",
+        "Overhead",
+        "Explainability",
+        "User acceptance",
+        "Quality of trust",
+        "Cold start",
+        "Trust verification"
+      ],
+      "approx_word_share_pct": "7-9",
+      "approx_words_est": 2570,
+      "positioning": {
+        "start_doc_progress_pct_est": 91,
+        "end_doc_progress_pct_est": 98
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "1",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "1",
+        "pivot": "1",
+        "limitation": "1",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Short subsections per open issue for scanability"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Lists open issues including heterogeneity, privacy, overhead, explainability, user acceptance, quality, cold start, verification.",
+          "locator": {
+            "heading": "VI. OPEN ISSUES AND FUTURE RESEARCH DIRECTIONS",
+            "paragraph_index_est": 1,
+            "line_range_est": "L595-L640"
+          }
+        }
+      ]
+    },
+    {
+      "section_id": "S07",
+      "section_label": "CONCLUSION",
+      "raw_headings": [
+        "VII. CONCLUSION"
+      ],
+      "objective": "Summarize survey and point to future work.",
+      "key_components": [
+        "Recap of trust model taxonomy and evaluations",
+        "Restated open issues"
+      ],
+      "approx_word_share_pct": "1-2",
+      "approx_words_est": 252,
+      "positioning": {
+        "start_doc_progress_pct_est": 99,
+        "end_doc_progress_pct_est": 100
+      },
+      "moves_present": {
+        "hook": "0",
+        "gap": "0",
+        "yes_but": "0",
+        "contribution": "0",
+        "organization_map": "0",
+        "scope_boundary": "0",
+        "pivot": "0",
+        "limitation": "0",
+        "evaluation_framing": "0",
+        "future_directions_framing": "1"
+      },
+      "move_sequence_est": [
+        "future_directions_framing"
+      ],
+      "notable_moves": [
+        "Concise conclusion pointing back to open issues"
+      ],
+      "evidence_locators": [
+        {
+          "claim": "Summarizes survey and reiterates future directions.",
+          "locator": {
+            "heading": "VII. CONCLUSION",
+            "paragraph_index_est": 1,
+            "line_range_est": "L642-L650"
+          }
+        }
+      ]
+    }
+  ],
+
+  "rhetorical_moves_global": {
+    "hook": {
+      "present": "yes",
+      "evidence": "Emphasizes importance of trust for heterogeneous networks and motivates survey.",
+      "locator": "L8-L40"
+    },
+    "gap": {
+      "present": "yes",
+      "evidence": "States that comprehensive trust model surveys for HetNets are missing.",
+      "locator": "L40-L70"
+    },
+    "yes_but": {
+      "present": "yes",
+      "evidence": "Acknowledges existing works but notes incomplete coverage.",
+      "locator": "L40-L70"
+    },
+    "contribution": {
+      "present": "yes",
+      "evidence": "Lists contributions in the introduction.",
+      "locator": "L70-L90"
+    },
+    "organization": {
+      "present": "yes",
+      "evidence": "Provides organization roadmap.",
+      "locator": "L90-L110"
+    },
+    "scope_boundary": {
+      "present": "yes",
+      "evidence": "Focuses on trust models, evaluation criteria, taxonomies, and open issues in HetNets.",
+      "locator": "L70-L110"
+    },
+    "transition_starters_top": [
+      {
+        "token": "however",
+        "freq_est": null
+      },
+      {
+        "token": "therefore",
+        "freq_est": null
+      },
+      {
+        "token": "finally",
+        "freq_est": null
+      }
+    ],
+    "reader_contract_pattern": "Motivate and position the survey; define preliminaries; list evaluation criteria; provide model/application taxonomies; survey trust models; list open issues; conclude."
+  },
+
+  "taxonomy": {
+    "present": "yes",
+    "classification_strategy": "hybrid (criteria + model/application type)",
+    "axes": [
+      "Evaluation criteria (Su, Dy, Ca, PP, Sc, Ro, O, Ex, UA)",
+      "Model/application taxonomy (decision, evaluation, management; application categories)"
+    ],
+    "levels_est": 3,
+    "node_count_est": 12,
+    "branches": [
+      "Decision models",
+      "Evaluation models",
+      "Management models",
+      "Application categories (various domains)",
+      "Evaluation criteria dimensions"
+    ],
+    "taxonomy_figure_present": "yes",
+    "taxonomy_table_present": "yes",
+    "taxonomy_artifacts": {
+      "figure_ids": [
+        "F01"
+      ],
+      "table_ids": [
+        "T01"
+      ]
+    }
+  },
+
+  "evaluation_framework": {
+    "present": "yes",
+    "dimensions": [
+      "subjectivity",
+      "dynamicity",
+      "context-awareness",
+      "privacy",
+      "scalability",
+      "robustness",
+      "overhead",
+      "explainability",
+      "user acceptance"
+    ],
+    "tradeoff_axes": [
+      "robustness vs overhead",
+      "privacy vs context-awareness"
+    ],
+    "metrics_table_present": "yes",
+    "evidence_locators": [
+      "L150-L216"
+    ]
+  },
+
+  "visuals_tables": {
+    "layout_logic": "Intro and preliminaries are text-heavy; evaluation criteria and taxonomies use figures/tables; trust model sections include sub-criteria bullets and summaries; open issues are text subsections.",
+    "caption_verbs_top": [
+      {
+        "verb": "illustrates",
+        "freq_est": null
+      },
+      {
+        "verb": "summarizes",
+        "freq_est": null
+      },
+      {
+        "verb": "shows",
+        "freq_est": null
+      },
+      {
+        "verb": "compares",
+        "freq_est": null
+      }
+    ],
+    "figures": [
+      {
+        "figure_id": "F01",
+        "type": "taxonomy",
+        "purpose": "depict trust model taxonomy and evaluation criteria",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 45
+        },
+        "evidence_locator": "L216-L260"
+      }
+    ],
+    "tables": [
+      {
+        "table_id": "T01",
+        "type": "summary",
+        "purpose": "summarize trust model categories/applications or evaluation criteria",
+        "placement": {
+          "first_mention_section_id": "S04",
+          "first_mention_section_label": "TAXONOMY",
+          "doc_progress_pct_est": 45
+        },
+        "evidence_locator": "L220-L260"
+      }
+    ]
+  },
+
+  "synthesis": {
+    "synthesis_style": "taxonomy-first",
+    "comparative_synthesis_degree": "medium",
+    "lesson_blocks": [
+      {
+        "location": "Evaluation criteria section",
+        "lesson": "Criteria define the lens for later model assessment.",
+        "locator": "L150-L216"
+      },
+      {
+        "location": "Taxonomy section",
+        "lesson": "Separating model and application taxonomies clarifies mapping between trust techniques and use cases.",
+        "locator": "L216-L299"
+      },
+      {
+        "location": "Trust models section",
+        "lesson": "Decision, evaluation, and management models address different stages of trust in HetNets.",
+        "locator": "L299-L482"
+      },
+      {
+        "location": "Open issues",
+        "lesson": "Future work clusters around heterogeneity/context, privacy, overhead, explainability, user acceptance, quality, cold start, verification.",
+        "locator": "L595-L640"
+      }
+    ],
+    "aha_moment": "Building criteria first, then taxonomies, then detailed models creates a layered path to open issues for trust in HetNets."
+  },
+
+  "methodology": {
+    "survey_method": "narrative",
+    "search_strategy_present": "no",
+    "selection_criteria": "not stated",
+    "prisma_elements": [],
+    "transparency_flags": {
+      "databases_named": "no",
+      "time_window_named": "no",
+      "inclusion_exclusion_explicit": "no"
+    }
+  },
+
+  "style": {
+    "section_openers_pattern": "State topic then enumerate sub-dimensions, often as bullets, followed by summaries.",
+    "math_handling_strategy": "inline minimal",
+    "listicle_usage": "medium",
+    "list_density_per_1k_words_est": 2.1,
+    "signposting_devices": [
+      "In this paper",
+      "Specifically",
+      "Furthermore",
+      "Finally"
+    ],
+    "definition_density_est": "high"
+  },
+
+  "reusable_writing_recipes": [
+    {
+      "title": "Criteria-first before taxonomy",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "List evaluation criteria as short subsections.",
+        "Use them as lenses for later model taxonomy.",
+        "Keep criteria concise and named."
+      ],
+      "why_it_works": "Gives readers an evaluation lens before diving into models.",
+      "evidence_locators": [
+        "L150-L216"
+      ]
+    },
+    {
+      "title": "Dual taxonomy (models and applications)",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Present trust model categories.",
+        "Present application taxonomy separately.",
+        "Highlight mapping between them."
+      ],
+      "why_it_works": "Separating models from applications clarifies coverage and mapping.",
+      "evidence_locators": [
+        "L216-L299"
+      ]
+    },
+    {
+      "title": "Stage-based trust model coverage",
+      "applies_to_sections": [
+        "TAXONOMY"
+      ],
+      "steps": [
+        "Organize models into decision, evaluation, and management stages.",
+        "Within evaluation, call out context/robustness/overhead sub-criteria.",
+        "Maintain consistent structure across stages."
+      ],
+      "why_it_works": "Stage framing helps readers see where each model fits in trust lifecycle.",
+      "evidence_locators": [
+        "L299-L482"
+      ]
+    },
+    {
+      "title": "Open issues as concise themed bullets",
+      "applies_to_sections": [
+        "CHALLENGES"
+      ],
+      "steps": [
+        "List each open issue as its own short subsection.",
+        "Tie each issue back to criteria or model gaps.",
+        "Keep prose tight to maintain momentum into conclusion."
+      ],
+      "why_it_works": "Concise themes are easy to scan and action.",
+      "evidence_locators": [
+        "L595-L640"
+      ]
+    }
+  ],
+
+  "quality_flags": {
+    "conversion_noise": [
+      "Span tags in headings",
+      "OCR artifacts in bullets/tables"
+    ],
+    "non_body_leakage": "yes",
+    "missingness": [
+      "token counts",
+      "exact doc progress percentages"
+    ],
+    "confidence": "medium"
+  },
+
+  "notes": "Counts heuristic; rich equations and lists. Bulleted sub-criteria appear inside trust model sections."
+}

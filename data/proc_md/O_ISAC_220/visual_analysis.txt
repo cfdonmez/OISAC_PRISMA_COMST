@@ -1,0 +1,311 @@
+================================================================================
+O_ISAC_220 - VISUAL ANALYSIS (PhD-Level Structured Format)
+Paper: Advanced SMART network: empowering subsea monitoring with dense photonic integrated sensing and communication
+Authors: Jiaqi Cai et al. (Soochow University)
+Journal: Photonics Research 2025
+Generated: 2026-01-01 by Enhanced Prompt v1.0
+================================================================================
+
+## Image: _page_0_Picture_3.jpeg
+### Type: Non-Scientific (Journal Logo)
+### Note: Chinese Laser Press logo - SKIPPED
+---
+
+## Image: _page_1_Figure_9.jpeg
+### Type: System Schematic
+
+### Title: SMART Network Architecture
+
+### Panel (a) - Network Overview:
+- Submarine cable across ocean floor
+- Multiple sensing joints (repeaters)
+- Shore-based transceivers
+- Real-time data to cloud
+
+### Panel (b) - Sensing Joint Detail:
+- EDFA for signal amplification
+- Electronic sensors:
+  - Speedometer
+  - Accelerometer
+  - Thermometer
+- E/O conversion via FPGA
+- FM modulation for sensing
+- Optical SSB modulation
+- Coupler for ISAC integration
+
+### DSCM Structure:
+- 4 subcarriers per wavelength
+- RRC filtering for blanks
+- Sensing in frequency gaps
+
+### O-ISAC Relevance:
+- Fiber-based ISAC for ocean monitoring
+---
+
+## Image: _page_3_Figure_18.jpeg
+### Type: Experimental Setup (Multi-Panel)
+
+### Panel (a) - DSCM Signaling:
+- Space-time coding (Hadamard matrix)
+- 4 parallel tributaries
+- RRC filtering + FFT
+- Upsampling + frequency shift
+
+### Panel (b) - Physical Link:
+- ECL light source @ 1549.97 nm
+- I/Q modulator (40 GHz BW)
+- AWG DAC (45 GHz analog BW)
+- PDME for DP signals
+- 2 spans × ~50 km SMF (G654.E)
+- EDFA pre-amplification
+
+### Panel (c) - Sensing Joint:
+- DS18B20 thermometer probe
+- Water tank for temperature test
+- FPGA for LUT mapping
+- DAC bandwidth: 100 MHz
+- Frequency range: 0-64 MHz
+
+### Panel (d) - Receiver DSP:
+- Resampling to 4 SPS
+- FOE (shared with sensing)
+- Matched filter
+- CDR, CDC, MIMO equalization
+
+### Key Parameters:
+| Parameter | Value |
+|-----------|-------|
+| Baud | 20 GBaud |
+| Modulation | DP-QAM16 |
+| Link | 2×50 km = 100 km |
+| Temp resolution | 0.0625°C |
+| Freq step | 50 kHz |
+
+### O-ISAC Relevance:
+- Complete SMART testbed
+---
+
+## Image: _page_4_Figure_8.jpeg
+### Type: RTL Schematic Diagram
+
+### Title: FPGA RTL Logic for Temperature-to-Frequency LUT
+
+### Components:
+- DS18B20 module (temperature input)
+- Adder module
+- ROM IP core
+- Sinusoidal wave generator
+
+### Data Flow:
+- Temperature → Address → ROM → Frequency
+- 0-80°C input range
+- 0-64 MHz output range
+- 50 kHz steps
+
+### O-ISAC Relevance:
+- FM sensing implementation
+---
+
+## Image: _page_5_Figure_3.jpeg
+### Type: Dual-Panel Spectrum
+
+### Panel (a) - Electrical Spectrum:
+- FM waveform at different temperatures
+- Multiple harmonic images
+- Imaged waves for precise sensing
+- No need for perfect freq alignment
+
+### Panel (b) - Optical Spectrum:
+- Sensing signal: SSB with >20 dB carrier suppression
+- ISAC signal: 4 DSCM subcarriers
+- Sensing carrier outside comm band
+- Low interference achieved
+
+### O-ISAC Relevance:
+- Dense multiplexing validation
+---
+
+## Image: _page_5_Figure_11.jpeg
+### Type: Dual-Panel Analysis
+
+### Panel (a) - ISAC Electrical Spectrum:
+- 4 DSCM subcarriers visible
+- Frequency blanks from RRC
+- Sensing signal positions marked
+- Inset (i): Harmonic up to 11th order
+- Inset (ii): FOE via optical carrier
+
+### Panel (b) - Harmonic Wave ER:
+- X-axis: Harmonic order (1-11)
+- Y-axis: Extinction Ratio (dB)
+- Positive ER up to 9th order
+- Fluctuation observed
+
+### Constellations:
+- Base-band subcarrier: Best quality
+- Higher-frequency: Worse due to device BW
+
+### O-ISAC Relevance:
+- Higher harmonics improve sensing accuracy
+---
+
+## Image: _page_6_Figure_3.jpeg
+### Type: Triple-Panel Q Factor Chart
+
+### Title: Q Factors vs LOP for Different DSP Methods
+
+### Panel (a) - Traditional DSCM:
+- Q factor: ~8.5-9.5 dB
+- Subcarrier deviation: ~2 dB
+- Higher freq SC worse
+
+### Panel (b) - With FFE:
+- Improved overall Q
+- Deviation still present
+- Not fully balanced
+
+### Panel (c) - Space-Time Coding:
+- Consistent Q across all SC
+- ~0.2 dB improvement
+- Balanced performance
+
+### Key Finding:
+- 20°C vs 60°C: No comm impact
+- LOP 1-11 dBm: Stable (nonlinearity mitigated)
+- Space-time coding superior
+
+### O-ISAC Relevance:
+- Advanced DSP improves DSCM
+---
+
+## Image: _page_6_Figure_8.jpeg
+### Type: Line Chart (SSB Impact)
+
+### Title: ISAC Performance vs SSB Modulation Frequency
+
+### Axes:
+- X-axis: SSB frequency (GHz)
+- Y-axis (left): Q factor (dB)
+- Y-axis (right): Max harmonic order
+
+### Key Observations:
+- Q factor robust to SSB drift
+- Misallocation → harmonic order drops to 3
+- Optimal: sensing outside DSCM band
+
+### O-ISAC Relevance:
+- Adaptive wavelength allocation critical
+---
+
+## Image: _page_7_Figure_5.jpeg
+### Type: Multi-Line Chart (Frequency vs Temperature)
+
+### Title: Measured Δf Between Harmonic Waves vs Temperature
+
+### Axes:
+- X-axis: Temperature (°C): 25-60
+- Y-axis: Δf (GHz)
+
+### Harmonic Orders:
+| Order | Freq Range | Slope |
+|-------|------------|-------|
+| 1st | 0-0.13 GHz | 1.6 MHz/°C |
+| 5th | 0-0.65 GHz | 8 MHz/°C |
+| 9th | 0-1.17 GHz | 14.4 MHz/°C |
+
+### Key Finding:
+- Linear relationship confirmed
+- Higher order → larger frequency chirp
+- 9th harmonic: 9× accuracy improvement
+
+### Inset:
+- Mercury thermometer calibration
+- 36.3-39°C fine range
+
+### O-ISAC Relevance:
+- Higher harmonics for better sensing
+---
+
+## Image: _page_7_Figure_10.jpeg
+### Type: Quad-Panel DFT Analysis
+
+### Panel (a)-(c) - Δf vs DFT Length:
+- (a) 1st harmonic: Saturates at L=950,000
+- (b) 5th harmonic: Saturates at L=240,000
+- (c) 9th harmonic: Saturates at L=100,000
+
+### Temp Levels:
+- 20-60°C range tested
+
+### Panel (d) - Min DFT Length vs Harmonic:
+- 1st: ~950k samples
+- 5th: ~240k samples
+- 9th: ~100k samples
+- 9× faster with 9th harmonic
+
+### Key Formula:
+L > f_s / (2N × k × T_min)
+
+### O-ISAC Relevance:
+- Trade-off: accuracy vs speed
+---
+
+## Image: _page_8_Figure_3.jpeg
+### Type: Triple-Panel Error Bar Chart
+
+### Title: Sensed Temperature Error vs DFT Length
+
+### Panel (a) - 1st Harmonic:
+- Long DFT needed for accuracy
+- Error: ±1-2°C at short L
+
+### Panel (b) - 5th Harmonic:
+- Reduced DFT length
+- Error: ±0.5°C
+
+### Panel (c) - 9th Harmonic:
+- Shortest DFT needed
+- Error: ±0.0625°C (DS18B20 limit!)
+- Fastest monitoring
+
+### Key Achievement:
+- 0.0625°C resolution achieved
+- Communication-compatible DSP
+- 9× faster than 1st harmonic
+
+### O-ISAC Relevance:
+- Sensor resolution limit reached
+---
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+Total Images Analyzed: 10 (1 logo skipped)
+- System Diagrams: 2
+- Experimental Setup: 1
+- RTL Schematic: 1
+- Spectrum Analysis: 2
+- Performance Charts: 4
+
+Key Technical Findings:
+1. Platform: SMART Submarine Cable ISAC
+2. Communication: 20 GBaud DP-QAM16
+3. Link: 100 km (2×50 km SMF)
+4. Sensing: DS18B20 thermometer
+5. Temp Resolution: 0.0625°C
+6. Freq Modulation: 0-64 MHz
+
+Key Innovations:
+1. DSCM + FM for dense ISAC
+2. Optical SSB for adaptive allocation
+3. Harmonic wave analysis (up to 11th order)
+4. Space-time coding for DSCM equalization
+5. Communication-compatible DSP for sensing
+6. 9th harmonic: 9× faster monitoring
+
+Performance Highlights:
+- Q factor: ~0.2 dB improvement with STC
+- Sensing: DS18B20 resolution limit achieved
+- No communication degradation from sensing
+- Robust to SSB frequency drift
+================================================================================

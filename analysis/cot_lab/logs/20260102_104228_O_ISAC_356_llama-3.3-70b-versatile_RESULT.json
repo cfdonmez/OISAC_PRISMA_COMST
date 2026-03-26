@@ -1,0 +1,205 @@
+{
+  "run_id": "20260102_104228_O_ISAC_356_llama-3.3-70b-versatile",
+  "timestamp": "20260102_104228",
+  "paper_id": "O_ISAC_356",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures: Figure 1 shows a comparison of recent ISAC demonstrations in terms of data rate and range resolution. Figure 2 illustrates the experimental setup, including the generation of a coherent optical frequency comb and the modulation of the optical carriers. Figure 3 presents the results, including the error vector magnitude (EVM) performance of the 16-QAM and 32-QAM signals, as well as the radar range profile."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The system uses a photonic terahertz integrated sensing and communication (THz-ISAC) approach, which combines a dual-chirp-based integrated waveform with coherent fusion processing (CFP) to achieve high data rates and range resolutions. The ISAC coupling mode is based on the use of a single waveform for both sensing and communication, with the CFP algorithm used to synthesize a wide bandwidth from fragmented channels."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The reported metrics, such as the 120 Gbit/s data rate and 2.5 mm range resolution, are physically consistent with the system's architecture and the CFP algorithm used. The use of a dual-chirp-based integrated waveform and the CFP algorithm enables the system to achieve high data rates and range resolutions."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The system solves the problem of achieving high data rates and range resolutions in a photonic THz-ISAC system. However, open challenges remain, such as further improving the system's performance, reducing the complexity of the CFP algorithm, and demonstrating the system's scalability and robustness in various environments."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_356",
+        "title": "Photonic THz-ISAC Demonstration with Simultaneous 120Gbit/s Communication and 2.5mm Sensing Resolution",
+        "authors": "Zhidong Lyu, Lu Zhang et al.",
+        "year": 2023,
+        "venue": "Conf. / Journal Draft",
+        "doi": "Not provided",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "THz",
+        "operational_environment": "lab",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "6g_networks"
+        ],
+        "scenario_description": "Photonic THz-ISAC system for high-speed communication and high-resolution sensing"
+      },
+      "evidence": {
+        "evidence_type": [
+          "experimental"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "Demonstration of a photonic THz-ISAC system with simultaneous 120Gbit/s communication and 2.5mm sensing resolution",
+        "gap_addressed": "Achieving high data rates and range resolutions in a photonic THz-ISAC system",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "coherent_fusion_processing"
+        ],
+        "novel_component": "Dual-chirp-based integrated waveform",
+        "novel_component_specs": "25 GHz channel spacing, 120 GSa/s AWG"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "Photonic THz-ISAC system"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "coherent",
+          "tx_external_modulator": "iq_modulator",
+          "wavelength_nm": 1552,
+          "optical_bandwidth_ghz": 25,
+          "tx_power_dbm": "Not provided",
+          "aperture_diameter_m": "Not provided",
+          "beam_divergence_mrad": "Not provided"
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "utc_pd",
+          "rx_aperture_diameter_m": "Not provided",
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "iq_modulator",
+          "rx_modulator_bandwidth_ghz": 25,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "mitp_bias"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "qam",
+          "comm_modulation_order": 16,
+          "comm_symbol_rate_gbaud": 10,
+          "comm_fec_type": "hd_fec",
+          "sensing_waveform_family": "chirp",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "alpha=0.7"
+        },
+        "channel_fiber": {
+          "fibre_length_km": "Not provided",
+          "fibre_type": "smf",
+          "attenuation_db_per_km": "Not provided",
+          "dispersion_ps_per_nm_km": "Not provided",
+          "nonlinearity_model": "gn_model",
+          "backscatter_sensing_type": "rayleigh_phi_otdr"
+        },
+        "channel_wireless": {
+          "link_distance_m": 0.5,
+          "path_loss_model": "free_space",
+          "turbulence_model": "lognormal",
+          "turbulence_Cn2": "Not provided",
+          "scintillation_index": "Not provided",
+          "pointing_error_model": "gaussian_jitter",
+          "weather_visibility_m": "Not provided",
+          "ambient_light_model": "background_noise"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 120,
+          "spectral_efficiency_bps_hz": "Not provided",
+          "ber": "Not provided",
+          "ber_target": "Not provided",
+          "snr_db": "Not provided",
+          "osnr_db": "Not provided",
+          "outage_probability": "Not provided",
+          "latency_ms": "Not provided",
+          "capacity_bps_hz": "Not provided"
+        },
+        "sensing_metrics": {
+          "sensing_task_type": [
+            "ranging",
+            "localization_2d"
+          ],
+          "sensing_range_m": 0.5,
+          "range_resolution_m": 0.0025,
+          "range_accuracy_m": "Not provided",
+          "angular_resolution_deg": "Not provided",
+          "velocity_resolution_mps": "Not provided",
+          "velocity_accuracy_mps": "Not provided",
+          "localization_error_m": "Not provided",
+          "spatial_resolution_m": "Not provided",
+          "sensing_bandwidth_hz": "Not provided",
+          "pd_probability_detection": "Not provided",
+          "pfa_probability_false_alarm": "Not provided",
+          "crb_crlb_value": "Not provided",
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "joint_waveform",
+          "tradeoff_type": "rate_vs_rmse",
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "alpha",
+          "tradeoff_control_range": "0.5-0.8"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": "Not provided",
+          "opa_steering_range_deg": "Not provided",
+          "opa_beamwidth_deg": "Not provided",
+          "ris_num_elements": "Not provided",
+          "ris_type": "reflective",
+          "ris_phase_bits": "Not provided"
+        },
+        "provenance": {
+          "source_pointer": "Figure 1",
+          "value_origin": "reported_text",
+          "confidence_reporting": "ci_reported",
+          "num_trials": "Not provided"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and the results, with a good balance between theoretical and experimental aspects."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures: Figure 1 shows a comparison of recent ISAC demonstrations in terms of data rate and range resolution. Figure 2 illustrates the experimental setup, including the generation of a coherent optical frequency comb and the modulation of the optical carriers. Figure 3 presents the results, including the error vector magnitude (EVM) performance of the 16-QAM and 32-QAM signals, as well as the radar range profile.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The system uses a photonic terahertz integrated sensing and communication (THz-ISAC) approach, which combines a dual-chirp-based integrated waveform with coherent fusion processing (CFP) to achieve high data rates and range resolutions. The ISAC coupling mode is based on the use of a single waveform for both sensing and communication, with the CFP algorithm used to synthesize a wide bandwidth from fragmented channels.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The reported metrics, such as the 120 Gbit/s data rate and 2.5 mm range resolution, are physically consistent with the system's architecture and the CFP algorithm used. The use of a dual-chirp-based integrated waveform and the CFP algorithm enables the system to achieve high data rates and range resolutions.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The system solves the problem of achieving high data rates and range resolutions in a photonic THz-ISAC system. However, open challenges remain, such as further improving the system's performance, reducing the complexity of the CFP algorithm, and demonstrating the system's scalability and robustness in various environments.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_356\",\n           \"title\": \"Photonic THz-ISAC Demonstration with Simultaneous 120Gbit/s Communication and 2.5mm Sensing Resolution\",\n           \"authors\": \"Zhidong Lyu, Lu Zhang et al.\",\n           \"year\": 2023,\n           \"venue\": \"Conf. / Journal Draft\",\n           \"doi\": \"Not provided\",\n           \"document_type\": \"journal\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_fso\",\n           \"carrier_band\": \"THz\",\n           \"operational_environment\": \"lab\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"6g_networks\"],\n           \"scenario_description\": \"Photonic THz-ISAC system for high-speed communication and high-resolution sensing\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"experimental\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"Demonstration of a photonic THz-ISAC system with simultaneous 120Gbit/s communication and 2.5mm sensing resolution\",\n           \"gap_addressed\": \"Achieving high data rates and range resolutions in a photonic THz-ISAC system\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"coherent_fusion_processing\"],\n           \"novel_component\": \"Dual-chirp-based integrated waveform\",\n           \"novel_component_specs\": \"25 GHz channel spacing, 120 GSa/s AWG\"\n       }\n   },\n   \"scenario_level\": [\n       {\n           \"identification\": {\n               \"experiment_id\": \"E1\",\n               \"scenario_label\": \"Photonic THz-ISAC system\"\n           },\n           \"transmitter\": {\n               \"tx_source_type\": \"laser\",\n               \"tx_modulation_type\": \"coherent\",\n               \"tx_external_modulator\": \"iq_modulator\",\n               \"wavelength_nm\": 1552,\n               \"optical_bandwidth_ghz\": 25,\n               \"tx_power_dbm\": \"Not provided\",\n               \"aperture_diameter_m\": \"Not provided\",\n               \"beam_divergence_mrad\": \"Not provided\"\n           },\n           \"receiver\": {\n               \"rx_detection_type\": \"coherent\",\n               \"rx_detector\": \"utc_pd\",\n               \"rx_aperture_diameter_m\": \"Not provided\",\n               \"rx_photonic_processing\": \"photonic_dechirping\",\n               \"rx_modulator_type\": \"iq_modulator\",\n               \"rx_modulator_bandwidth_ghz\": 25,\n               \"rx_modulator_operating_point\": \"mitp\",\n               \"false_target_mitigation\": \"mitp_bias\"\n           },\n           \"integration\": {\n               \"hardware_sharing_mode\": \"shared_frontend\",\n               \"duplexing_mode\": \"full_duplex\"\n           },\n           \"waveform\": {\n               \"comm_waveform_family\": \"qam\",\n               \"comm_modulation_order\": 16,\n               \"comm_symbol_rate_gbaud\": 10,\n               \"comm_fec_type\": \"hd_fec\",\n               \"sensing_waveform_family\": \"chirp\",\n               \"isac_waveform_relationship\": \"single_dual_function\",\n               \"resource_partition\": \"alpha=0.7\"\n           },\n           \"channel_fiber\": {\n               \"fibre_length_km\": \"Not provided\",\n               \"fibre_type\": \"smf\",\n               \"attenuation_db_per_km\": \"Not provided\",\n               \"dispersion_ps_per_nm_km\": \"Not provided\",\n               \"nonlinearity_model\": \"gn_model\",\n               \"backscatter_sensing_type\": \"rayleigh_phi_otdr\"\n           },\n           \"channel_wireless\": {\n               \"link_distance_m\": 0.5,\n               \"path_loss_model\": \"free_space\",\n               \"turbulence_model\": \"lognormal\",\n               \"turbulence_Cn2\": \"Not provided\",\n               \"scintillation_index\": \"Not provided\",\n               \"pointing_error_model\": \"gaussian_jitter\",\n               \"weather_visibility_m\": \"Not provided\",\n               \"ambient_light_model\": \"background_noise\"\n           },\n           \"comm_metrics\": {\n               \"data_rate_gbps\": 120,\n               \"spectral_efficiency_bps_hz\": \"Not provided\",\n               \"ber\": \"Not provided\",\n               \"ber_target\": \"Not provided\",\n               \"snr_db\": \"Not provided\",\n               \"osnr_db\": \"Not provided\",\n               \"outage_probability\": \"Not provided\",\n               \"latency_ms\": \"Not provided\",\n               \"capacity_bps_hz\": \"Not provided\"\n           },\n           \"sensing_metrics\": {\n               \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n               \"sensing_range_m\": 0.5,\n               \"range_resolution_m\": 0.0025,\n               \"range_accuracy_m\": \"Not provided\",\n               \"angular_resolution_deg\": \"Not provided\",\n               \"velocity_resolution_mps\": \"Not provided\",\n               \"velocity_accuracy_mps\": \"Not provided\",\n               \"localization_error_m\": \"Not provided\",\n               \"spatial_resolution_m\": \"Not provided\",\n               \"sensing_bandwidth_hz\": \"Not provided\",\n               \"pd_probability_detection\": \"Not provided\",\n               \"pfa_probability_false_alarm\": \"Not provided\",\n               \"crb_crlb_value\": \"Not provided\",\n               \"crb_parameter\": \"range\"\n           },\n           \"tradeoff\": {\n               \"coupling_mode\": \"joint_waveform\",\n               \"tradeoff_type\": \"rate_vs_rmse\",\n               \"tradeoff_representation\": \"curve\",\n               \"tradeoff_control_parameter\": \"alpha\",\n               \"tradeoff_control_range\": \"0.5-0.8\"\n           },\n           \"enabling_tech_details\": {\n               \"opa_num_emitters\": \"Not provided\",\n               \"opa_steering_range_deg\": \"Not provided\",\n               \"opa_beamwidth_deg\": \"Not provided\",\n               \"ris_num_elements\": \"Not provided\",\n               \"ris_type\": \"reflective\",\n               \"ris_phase_bits\": \"Not provided\"\n           },\n           \"provenance\": {\n               \"source_pointer\": \"Figure 1\",\n               \"value_origin\": \"reported_text\",\n               \"confidence_reporting\": \"ci_reported\",\n               \"num_trials\": \"Not provided\"\n           }\n       }\n   ],\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 2,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the experimental setup and the results, with a good balance between theoretical and experimental aspects.\"\n   }\n}"
+}

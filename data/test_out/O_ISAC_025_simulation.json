@@ -1,0 +1,115 @@
+{
+    "_extraction_flags": {
+        "eligibility_concern": "borderline_topic",
+        "data_completeness": "medium",
+        "needs_spot_check": true,
+        "notes": "BORDERLINE: This is about Optical Transport Network optimizing RF-ISAC services, NOT optical sensing+communication. The optical network transports IQ echo streams from RF BSs to MEC servers. Sensing is RF-based (5G-NR OFDM radar at 3.4 GHz). Optical component is purely transport/networking, not ISAC sensing."
+    },
+    "reasoning_trace": {
+        "step_0_visual_inspection": "Fig.1: Architecture shows optical transport network (access/aggregation switches) connecting RF Base Stations (USRP B210/N310) to MEC servers. 5G-NR OFDM at 3.4 GHz. Range-velocity maps from RF echo processing. Fig.2: Network utilization vs sensing policies comparison.",
+        "step_1_concept_analysis": "System: RF-ISAC (5G-NR passive radar) with optical transport network for IQ stream delivery. Sensing: RF echo-based object detection via OFDM radar. Communication: 5G-NR fronthaul/backhaul. Optical's role: Transport infrastructure, NOT sensing medium. SDN orchestration optimizes routing for both IQ sensing and comm streams.",
+        "step_2_benchmark_verification": "RF sensing at 3445 MHz, 10 MHz BW. Object detection at 200-400m range. IQ stream throughput: ~200 Mbps (1 BS) to ~550 Mbps (3 BSs). Network utilization: Optimal policy ~0.66 vs All-Active ~0.85. Echo SNR gain: ~2.96 dB for optimal. All-optical fast switch for low latency.",
+        "step_3_strategic_critique": "Contribution: SDN-orchestrated optical transport network optimization for ISAC services. Novel 'optimal' routing policy reduces network utilization by 30% while maintaining sensing quality. Gap: This is network-layer optimization, NOT O-ISAC. The sensing and communication are RF-based, optical is only transport medium."
+    },
+    "study_level": {
+        "bibliographic": {
+            "record_id": "O_ISAC_025",
+            "title": "Optical Transport Network Optimization Supporting Integrated Sensing and Communication Services",
+            "authors": "Markos Anastasopoulos, Jesús Gutiérrez, Anna Tzanakaki",
+            "year": 2024,
+            "venue": "OFC/NFOEC (inferred from OCIS codes)",
+            "document_type": "conference",
+            "doi": "NR"
+        },
+        "classification": {
+            "oisac_medium_class": "hybrid_fiber_wireless",
+            "carrier_band": "sub-6GHz",
+            "operational_environment": "outdoor",
+            "link_topology": "distributed_fibre",
+            "mobility_context": "mobile"
+        },
+        "application": {
+            "application_domain": [
+                "6g_networks",
+                "critical_infrastructure"
+            ],
+            "scenario_description": "6G ISAC network where optical transport network interconnects RAN (RF BSs) with MEC servers for joint communication and sensing service support."
+        },
+        "evidence": {
+            "evidence_type": [
+                "experimental"
+            ],
+            "validation_baselines_present": true,
+            "reproducibility_artifacts": "parameters_sufficient"
+        },
+        "enabling_tech": {
+            "ris_present": false,
+            "opa_present": false,
+            "machine_learning_used": false
+        },
+        "key_contribution": {
+            "key_contribution": "SDN-orchestrated optical transport network optimization for RF-ISAC services. 'Optimal' dynamic routing policy selectively transports high-SNR IQ echo streams, reducing network utilization by 30% while maintaining sensing accuracy.",
+            "gap_addressed": "Previous ISAC work focused on RF signal processing; this addresses transport network optimization for IQ echo stream delivery.",
+            "performance_enablers": [
+                "sdn_orchestration",
+                "all_optical_switching",
+                "distributed_architecture",
+                "other"
+            ]
+        }
+    },
+    "scenario_level": [
+        {
+            "identification": {
+                "experiment_id": "EXP_OTN_ISAC",
+                "scenario_label": "Optical Transport Network for 5G-NR ISAC"
+            },
+            "transmitter": {
+                "tx_source_type": "other",
+                "tx_modulation_type": "other",
+                "wavelength_nm": "NR",
+                "notes": "RF transmitter: 5G-NR OFDM at 3445 MHz (sub-6GHz), 10 MHz bandwidth. USRP B210/N310 SDR. Optical transport: 1/10/40/100 GbE links."
+            },
+            "receiver": {
+                "rx_detection_type": "other",
+                "rx_detector": "other",
+                "notes": "RF sensing receiver processes IQ echo streams at MEC servers. Optical network uses optoelectronic and all-optical fast switches."
+            },
+            "integration": {
+                "hardware_sharing_mode": "separate_frontends",
+                "duplexing_mode": "tdm",
+                "notes": "RF generates ISAC signals. Optical only transports IQ streams. Sensing and comm streams share optical network capacity via SDN optimization."
+            },
+            "waveform": {
+                "comm_waveform_family": "ofdm",
+                "sensing_waveform_family": "ofdm_sensing",
+                "isac_waveform_relationship": "single_dual_function",
+                "notes": "5G-NR OFDM serves as passive OFDM radar. Echoes from objects are collected and transported via optical network to MEC for processing."
+            },
+            "channel_wireless": {
+                "link_distance_m": 400.0,
+                "notes": "RF wireless channel emulated via GNU Radio. Object detection at 200-400m range. SNR threshold determines which echo streams are used."
+            },
+            "comm_metrics": {
+                "data_rate_gbps": "NR",
+                "notes": "IQ stream throughput: 200-550 Mbps depending on number of active BSs. Fronthaul/backhaul requirements not explicitly stated."
+            },
+            "sensing_metrics": {
+                "sensing_task_type": [
+                    "target_detection",
+                    "localization_2d"
+                ],
+                "sensing_range_m": 400.0,
+                "notes": "RF-based passive radar using 5G-NR echoes. Range-velocity maps generated. Object detection accuracy improves with multi-BS fusion."
+            },
+            "tradeoff": {
+                "coupling_mode": "resource_division",
+                "tradeoff_type": [
+                    "network_utilization_vs_sensing"
+                ],
+                "tradeoff_representation": "curve",
+                "notes": "Optimal policy: ~0.66 network utilization, ~2.96 dB echo gain. All-Active: ~0.85 utilization, ~3.0 dB gain. 30% efficiency improvement with optimal routing."
+            }
+        }
+    ]
+}

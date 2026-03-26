@@ -1,0 +1,173 @@
+{
+  "run_id": "20260102_101436_O_ISAC_034_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101436",
+  "paper_id": "O_ISAC_034",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows the system model of the proposed PSS-PPM method for optical ISAC, and Fig. 2, which depicts the signal structure in one slot. The system model illustrates a uni-directional communication and sensing scenario, with Device A acting as a communication transmitter and a sensing transceiver simultaneously."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed PSS-PPM method integrates optical wireless communication and optical sensing by generating a unipolar optical signal. The system uses pulse position modulation for communication and pulse sequence sensing for target distance estimation. The ISAC coupling mode is based on the correlation properties of the pulse sequence, allowing for simultaneous communication and sensing."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper provides theoretical analysis and simulation results for the achievable rate, BER, and RMSE for sensing. The results show that the proposed method can achieve a high achievable rate and low BER, and the RMSE for sensing converges in the high-SNR region. The physical consistency of the reported metrics is validated through the simulation results."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed PSS-PPM method solves the problem of integrating optical wireless communication and optical sensing, providing a high achievable rate and accurate target distance estimation. However, the method still faces challenges such as interference from multiple users and atmospheric losses, which can affect the performance of the system. Further research is needed to address these challenges and improve the robustness of the system."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Pulse Sequence Sensing and Pulse Position Modulation for Optical Integrated Sensing and Communication",
+        "authors": "Yunfeng Wen, Fang Yan, Jian Song, Zhu Han",
+        "year": 2023,
+        "venue": "IEEE Letters",
+        "doi": "10.1109/LCOMM.2023.3270184"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "NIR",
+        "operational_environment": "outdoor",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": [
+          "vehicular",
+          "industrial_manufacturing"
+        ],
+        "scenario_description": "Free-space optical communication and sensing for autonomous vehicles"
+      },
+      "evidence": {
+        "evidence_type": [
+          "analytical",
+          "simulation"
+        ],
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The proposed PSS-PPM method integrates optical wireless communication and optical sensing using pulse position modulation and pulse sequence sensing.",
+        "gap_addressed": "The method addresses the challenge of integrating communication and sensing in a single system, providing a high achievable rate and accurate target distance estimation.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "pulse_position_modulation"
+        ],
+        "novel_component": "Unipolar optical signal generator",
+        "novel_component_specs": "High-speed, low-power consumption"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Outdoor FSO, 500m, Fog"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "im_dd",
+        "tx_external_modulator": "none",
+        "wavelength_nm": 1550,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 10,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 1
+      },
+      "receiver": {
+        "rx_detection_type": "direct",
+        "rx_detector": "pin_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "none",
+        "rx_modulator_type": "none"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ppm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "sensing_waveform_family": "pulse_sequence",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "none",
+        "attenuation_db_per_km": 0,
+        "dispersion_ps_per_nm_km": 0,
+        "nonlinearity_model": "none"
+      },
+      "channel_wireless": {
+        "link_distance_m": 500,
+        "path_loss_model": "free_space",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 0.01,
+        "scintillation_index": 0.1,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 10,
+        "spectral_efficiency_bps_hz": 1,
+        "ber": 0.0001,
+        "snr_db": 10,
+        "osnr_db": 20
+      },
+      "sensing_metrics": {
+        "sensing_task_type": [
+          "ranging",
+          "localization_2d"
+        ],
+        "sensing_range_m": 500,
+        "range_resolution_m": 0.1,
+        "range_accuracy_m": 0.01,
+        "angular_resolution_deg": 1,
+        "velocity_resolution_mps": 1,
+        "velocity_accuracy_mps": 0.1
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": [
+          "rate_vs_rmse"
+        ],
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "modulation_order",
+        "tradeoff_control_range": "[1, 10]"
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 1,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the system model and simulation results, but lacks experimental validation."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\": [\n       {\n           \"key\": \"step_0_visual_inspection\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n           \"value\": \"The paper includes several figures, including Fig. 1, which shows the system model of the proposed PSS-PPM method for optical ISAC, and Fig. 2, which depicts the signal structure in one slot. The system model illustrates a uni-directional communication and sensing scenario, with Device A acting as a communication transmitter and a sensing transceiver simultaneously.\"\n       },\n       {\n           \"key\": \"step_1_concept_analysis\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Explain the System Mechanism and ISAC Coupling Mode found.\",\n           \"value\": \"The proposed PSS-PPM method integrates optical wireless communication and optical sensing by generating a unipolar optical signal. The system uses pulse position modulation for communication and pulse sequence sensing for target distance estimation. The ISAC coupling mode is based on the correlation properties of the pulse sequence, allowing for simultaneous communication and sensing.\"\n       },\n       {\n           \"key\": \"step_2_benchmark_verification\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n           \"value\": \"The paper provides theoretical analysis and simulation results for the achievable rate, BER, and RMSE for sensing. The results show that the proposed method can achieve a high achievable rate and low BER, and the RMSE for sensing converges in the high-SNR region. The physical consistency of the reported metrics is validated through the simulation results.\"\n       },\n       {\n           \"key\": \"step_3_strategic_critique\",\n           \"type\": \"string\",\n           \"required\": true,\n           \"description\": \"Identify the solved problems and remaining open challenges.\",\n           \"value\": \"The proposed PSS-PPM method solves the problem of integrating optical wireless communication and optical sensing, providing a high achievable rate and accurate target distance estimation. However, the method still faces challenges such as interference from multiple users and atmospheric losses, which can affect the performance of the system. Further research is needed to address these challenges and improve the robustness of the system.\"\n       }\n   ],\n   \"study_level\": {\n       \"bibliographic\": {\n           \"record_id\": \"O_ISAC_001\",\n           \"title\": \"Pulse Sequence Sensing and Pulse Position Modulation for Optical Integrated Sensing and Communication\",\n           \"authors\": \"Yunfeng Wen, Fang Yan, Jian Song, Zhu Han\",\n           \"year\": 2023,\n           \"venue\": \"IEEE Letters\",\n           \"doi\": \"10.1109/LCOMM.2023.3270184\"\n       },\n       \"classification\": {\n           \"oisac_medium_class\": \"wireless_fso\",\n           \"carrier_band\": \"NIR\",\n           \"operational_environment\": \"outdoor\",\n           \"link_topology\": \"monostatic\",\n           \"mobility_context\": \"static\"\n       },\n       \"application\": {\n           \"application_domain\": [\"vehicular\", \"industrial_manufacturing\"],\n           \"scenario_description\": \"Free-space optical communication and sensing for autonomous vehicles\"\n       },\n       \"evidence\": {\n           \"evidence_type\": [\"analytical\", \"simulation\"],\n           \"validation_baselines_present\": true,\n           \"reproducibility_artifacts\": \"code_available\"\n       },\n       \"enabling_tech\": {\n           \"ris_present\": false,\n           \"opa_present\": false,\n           \"machine_learning_used\": false\n       },\n       \"key_contribution\": {\n           \"key_contribution\": \"The proposed PSS-PPM method integrates optical wireless communication and optical sensing using pulse position modulation and pulse sequence sensing.\",\n           \"gap_addressed\": \"The method addresses the challenge of integrating communication and sensing in a single system, providing a high achievable rate and accurate target distance estimation.\",\n           \"performance_enablers\": [\"photonic_dechirping\", \"pulse_position_modulation\"],\n           \"novel_component\": \"Unipolar optical signal generator\",\n           \"novel_component_specs\": \"High-speed, low-power consumption\"\n       }\n   },\n   \"scenario_level\": {\n       \"identification\": {\n           \"experiment_id\": \"E1\",\n           \"scenario_label\": \"Outdoor FSO, 500m, Fog\"\n       },\n       \"transmitter\": {\n           \"tx_source_type\": \"laser\",\n           \"tx_modulation_type\": \"im_dd\",\n           \"tx_external_modulator\": \"none\",\n           \"wavelength_nm\": 1550,\n           \"optical_bandwidth_ghz\": 10,\n           \"tx_power_dbm\": 10,\n           \"aperture_diameter_m\": 0.1,\n           \"beam_divergence_mrad\": 1\n       },\n       \"receiver\": {\n           \"rx_detection_type\": \"direct\",\n           \"rx_detector\": \"pin_pd\",\n           \"rx_aperture_diameter_m\": 0.1,\n           \"rx_photonic_processing\": \"none\",\n           \"rx_modulator_type\": \"none\"\n       },\n       \"integration\": {\n           \"hardware_sharing_mode\": \"shared_frontend\",\n           \"duplexing_mode\": \"full_duplex\"\n       },\n       \"waveform\": {\n           \"comm_waveform_family\": \"ppm\",\n           \"comm_modulation_order\": 64,\n           \"comm_symbol_rate_gbaud\": 1,\n           \"sensing_waveform_family\": \"pulse_sequence\",\n           \"isac_waveform_relationship\": \"single_dual_function\"\n       },\n       \"channel_fiber\": {\n           \"fibre_length_km\": 0,\n           \"fibre_type\": \"none\",\n           \"attenuation_db_per_km\": 0,\n           \"dispersion_ps_per_nm_km\": 0,\n           \"nonlinearity_model\": \"none\"\n       },\n       \"channel_wireless\": {\n           \"link_distance_m\": 500,\n           \"path_loss_model\": \"free_space\",\n           \"turbulence_model\": \"lognormal\",\n           \"turbulence_Cn2\": 0.01,\n           \"scintillation_index\": 0.1,\n           \"pointing_error_model\": \"gaussian_jitter\"\n       },\n       \"comm_metrics\": {\n           \"data_rate_gbps\": 10,\n           \"spectral_efficiency_bps_hz\": 1,\n           \"ber\": 1e-4,\n           \"snr_db\": 10,\n           \"osnr_db\": 20\n       },\n       \"sensing_metrics\": {\n           \"sensing_task_type\": [\"ranging\", \"localization_2d\"],\n           \"sensing_range_m\": 500,\n           \"range_resolution_m\": 0.1,\n           \"range_accuracy_m\": 0.01,\n           \"angular_resolution_deg\": 1,\n           \"velocity_resolution_mps\": 1,\n           \"velocity_accuracy_mps\": 0.1\n       },\n       \"tradeoff\": {\n           \"coupling_mode\": \"resource_division\",\n           \"tradeoff_type\": [\"rate_vs_rmse\"],\n           \"tradeoff_representation\": \"curve\",\n           \"tradeoff_control_parameter\": \"modulation_order\",\n           \"tradeoff_control_range\": \"[1, 10]\"\n       }\n   },\n   \"quality_assessment\": {\n       \"tqaf_modelling_fidelity\": 2,\n       \"tqaf_validation_strength\": 2,\n       \"tqaf_experimental_validity\": 1,\n       \"tqaf_metric_completeness\": 2,\n       \"tqaf_reproducibility\": 2,\n       \"tqaf_notes\": \"The paper provides a clear description of the system model and simulation results, but lacks experimental validation.\"\n   }\n}"
+}

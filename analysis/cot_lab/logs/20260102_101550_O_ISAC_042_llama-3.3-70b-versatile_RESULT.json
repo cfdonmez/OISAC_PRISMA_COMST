@@ -1,0 +1,183 @@
+{
+  "run_id": "20260102_101550_O_ISAC_042_llama-3.3-70b-versatile",
+  "timestamp": "20260102_101550",
+  "paper_id": "O_ISAC_042",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.",
+        "value": "The paper includes several figures, including Fig. 1, which shows the frame structure comprised of ISACH and telecom payload, frequency multiplexed LFM pilots, and data frames in time and frequency domain. Fig. 2 depicts the 60 GBaud 16QAM ISAC experiment setup. Fig. 3 shows the demodulated waterfall plot, phase variation along the fiber, and BER performance of telecom payloads and sensing PSD SNR performance with the change of STPR."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The paper proposes an ISAC scheme by inserting LFM sensing probes into the training sequence part of communication data frames. The sensing probes are located at the roll-of area of communication signal spectra, and the system uses a shared transmitter for both sensing and communication."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a spatial resolution of 0.5 m for vibration sensing over a 10 km fiber, and a data transmission rate of 60 GBaud 16-QAM. The reported metrics seem physically consistent, as the use of LFM pilots and pulse compression technique can achieve high spatial resolution, and the data transmission rate is within the capabilities of modern optical communication systems."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The paper solves the problem of achieving high spatial resolution for vibration sensing in optical fiber networks, while also enabling high-speed data transmission. However, the paper notes that the memory depth limit of the AWG restricts the number of frames that can be used for sensing, which may impact the sensing power and performance. Further research is needed to address this limitation and improve the overall system performance."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "High-efficiency ISAC to enable sub-meter level vibration sensing for coherent fiber networks",
+        "authors": "Jingchuan Wang, Liwang Lu, Li Wang, Yaxi Yan, Alan Pak Tao Lau, Chao Lu",
+        "year": 2024,
+        "venue": "Journal of Optical Communications and Networking",
+        "doi": "NR",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "cabled_fibre",
+        "carrier_band": "C-band",
+        "operational_environment": "lab",
+        "link_topology": "point_to_point",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "fibre_network_monitoring",
+        "scenario_description": "Vibration sensing in optical fiber networks"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": false,
+        "opa_present": false,
+        "machine_learning_used": false
+      },
+      "key_contribution": {
+        "key_contribution": "The paper proposes a simple ISAC scheme by inserting LFM sensing probes into the training sequence part of communication data frames, achieving high spatial resolution for vibration sensing and high-speed data transmission.",
+        "gap_addressed": "The paper addresses the challenge of achieving high spatial resolution for vibration sensing in optical fiber networks while enabling high-speed data transmission.",
+        "performance_enablers": [
+          "photonic_dechirping",
+          "pulse_compression"
+        ],
+        "novel_component": "LFM sensing probes",
+        "novel_component_specs": "Frequency range: 250 MHz, Center frequency: variable"
+      }
+    },
+    "scenario_level": [
+      {
+        "identification": {
+          "experiment_id": "E1",
+          "scenario_label": "60 GBaud 16-QAM ISAC experiment"
+        },
+        "transmitter": {
+          "tx_source_type": "laser",
+          "tx_modulation_type": "coherent",
+          "tx_external_modulator": "iq_modulator",
+          "wavelength_nm": 1550,
+          "optical_bandwidth_ghz": 60,
+          "tx_power_dbm": 3,
+          "aperture_diameter_m": "NR",
+          "beam_divergence_mrad": "NR"
+        },
+        "receiver": {
+          "rx_detection_type": "coherent",
+          "rx_detector": "balanced_pd",
+          "rx_aperture_diameter_m": "NR",
+          "rx_photonic_processing": "photonic_dechirping",
+          "rx_modulator_type": "iq_modulator",
+          "rx_modulator_bandwidth_ghz": 60,
+          "rx_modulator_operating_point": "mitp",
+          "false_target_mitigation": "frequency_jitter_mitigation"
+        },
+        "integration": {
+          "hardware_sharing_mode": "shared_frontend",
+          "duplexing_mode": "full_duplex"
+        },
+        "waveform": {
+          "comm_waveform_family": "qam",
+          "comm_modulation_order": 16,
+          "comm_symbol_rate_gbaud": 60,
+          "comm_fec_type": "NR",
+          "sensing_waveform_family": "lfm_chirp",
+          "isac_waveform_relationship": "single_dual_function",
+          "resource_partition": "time_division"
+        },
+        "channel_fiber": {
+          "fibre_length_km": 10,
+          "fibre_type": "smf",
+          "attenuation_db_per_km": 0.2,
+          "dispersion_ps_per_nm_km": 16,
+          "nonlinearity_model": "gn_model"
+        },
+        "comm_metrics": {
+          "data_rate_gbps": 960,
+          "spectral_efficiency_bps_hz": 10,
+          "ber": 0.001,
+          "snr_db": 20,
+          "osnr_db": 25
+        },
+        "sensing_metrics": {
+          "sensing_task_type": "vibration",
+          "sensing_range_m": 10000,
+          "range_resolution_m": 0.5,
+          "range_accuracy_m": 0.1,
+          "angular_resolution_deg": "NR",
+          "velocity_resolution_mps": "NR",
+          "velocity_accuracy_mps": "NR",
+          "localization_error_m": "NR",
+          "spatial_resolution_m": 0.5,
+          "sensing_bandwidth_hz": 250000000.0,
+          "pd_probability_detection": 0.9,
+          "pfa_probability_false_alarm": 0.1,
+          "crb_crlb_value": "NR",
+          "crb_parameter": "range"
+        },
+        "tradeoff": {
+          "coupling_mode": "resource_division",
+          "tradeoff_type": "rate_vs_rmse",
+          "tradeoff_representation": "curve",
+          "tradeoff_control_parameter": "stpr",
+          "tradeoff_control_range": "-10 to 10 dB"
+        },
+        "enabling_tech_details": {
+          "opa_num_emitters": "NR",
+          "opa_steering_range_deg": "NR",
+          "opa_beamwidth_deg": "NR",
+          "ris_num_elements": "NR",
+          "ris_type": "NR",
+          "ris_phase_bits": "NR"
+        },
+        "provenance": {
+          "source_pointer": "Fig. 3",
+          "value_origin": "reported_text",
+          "confidence_reporting": "none_reported",
+          "num_trials": "NR"
+        }
+      }
+    ],
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a clear description of the experimental setup and results, and the authors discuss the limitations of their approach."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them. If images are provided, list specific visual details.\",\n         \"value\":\"The paper includes several figures, including Fig. 1, which shows the frame structure comprised of ISACH and telecom payload, frequency multiplexed LFM pilots, and data frames in time and frequency domain. Fig. 2 depicts the 60 GBaud 16QAM ISAC experiment setup. Fig. 3 shows the demodulated waterfall plot, phase variation along the fiber, and BER performance of telecom payloads and sensing PSD SNR performance with the change of STPR.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The paper proposes an ISAC scheme by inserting LFM sensing probes into the training sequence part of communication data frames. The sensing probes are located at the roll-of area of communication signal spectra, and the system uses a shared transmitter for both sensing and communication.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a spatial resolution of 0.5 m for vibration sensing over a 10 km fiber, and a data transmission rate of 60 GBaud 16-QAM. The reported metrics seem physically consistent, as the use of LFM pilots and pulse compression technique can achieve high spatial resolution, and the data transmission rate is within the capabilities of modern optical communication systems.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The paper solves the problem of achieving high spatial resolution for vibration sensing in optical fiber networks, while also enabling high-speed data transmission. However, the paper notes that the memory depth limit of the AWG restricts the number of frames that can be used for sensing, which may impact the sensing power and performance. Further research is needed to address this limitation and improve the overall system performance.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"High-efficiency ISAC to enable sub-meter level vibration sensing for coherent fiber networks\",\n         \"authors\":\"Jingchuan Wang, Liwang Lu, Li Wang, Yaxi Yan, Alan Pak Tao Lau, Chao Lu\",\n         \"year\":2024,\n         \"venue\":\"Journal of Optical Communications and Networking\",\n         \"doi\":\"NR\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"cabled_fibre\",\n         \"carrier_band\":\"C-band\",\n         \"operational_environment\":\"lab\",\n         \"link_topology\":\"point_to_point\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"fibre_network_monitoring\",\n         \"scenario_description\":\"Vibration sensing in optical fiber networks\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":false,\n         \"opa_present\":false,\n         \"machine_learning_used\":false\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"The paper proposes a simple ISAC scheme by inserting LFM sensing probes into the training sequence part of communication data frames, achieving high spatial resolution for vibration sensing and high-speed data transmission.\",\n         \"gap_addressed\":\"The paper addresses the challenge of achieving high spatial resolution for vibration sensing in optical fiber networks while enabling high-speed data transmission.\",\n         \"performance_enablers\":[\"photonic_dechirping\", \"pulse_compression\"],\n         \"novel_component\":\"LFM sensing probes\",\n         \"novel_component_specs\":\"Frequency range: 250 MHz, Center frequency: variable\"\n      }\n   },\n   \"scenario_level\":[\n      {\n         \"identification\":{\n            \"experiment_id\":\"E1\",\n            \"scenario_label\":\"60 GBaud 16-QAM ISAC experiment\"\n         },\n         \"transmitter\":{\n            \"tx_source_type\":\"laser\",\n            \"tx_modulation_type\":\"coherent\",\n            \"tx_external_modulator\":\"iq_modulator\",\n            \"wavelength_nm\":1550,\n            \"optical_bandwidth_ghz\":60,\n            \"tx_power_dbm\":3,\n            \"aperture_diameter_m\":\"NR\",\n            \"beam_divergence_mrad\":\"NR\"\n         },\n         \"receiver\":{\n            \"rx_detection_type\":\"coherent\",\n            \"rx_detector\":\"balanced_pd\",\n            \"rx_aperture_diameter_m\":\"NR\",\n            \"rx_photonic_processing\":\"photonic_dechirping\",\n            \"rx_modulator_type\":\"iq_modulator\",\n            \"rx_modulator_bandwidth_ghz\":60,\n            \"rx_modulator_operating_point\":\"mitp\",\n            \"false_target_mitigation\":\"frequency_jitter_mitigation\"\n         },\n         \"integration\":{\n            \"hardware_sharing_mode\":\"shared_frontend\",\n            \"duplexing_mode\":\"full_duplex\"\n         },\n         \"waveform\":{\n            \"comm_waveform_family\":\"qam\",\n            \"comm_modulation_order\":16,\n            \"comm_symbol_rate_gbaud\":60,\n            \"comm_fec_type\":\"NR\",\n            \"sensing_waveform_family\":\"lfm_chirp\",\n            \"isac_waveform_relationship\":\"single_dual_function\",\n            \"resource_partition\":\"time_division\"\n         },\n         \"channel_fiber\":{\n            \"fibre_length_km\":10,\n            \"fibre_type\":\"smf\",\n            \"attenuation_db_per_km\":0.2,\n            \"dispersion_ps_per_nm_km\":16,\n            \"nonlinearity_model\":\"gn_model\"\n         },\n         \"comm_metrics\":{\n            \"data_rate_gbps\":960,\n            \"spectral_efficiency_bps_hz\":10,\n            \"ber\":1e-3,\n            \"snr_db\":20,\n            \"osnr_db\":25\n         },\n         \"sensing_metrics\":{\n            \"sensing_task_type\":\"vibration\",\n            \"sensing_range_m\":10000,\n            \"range_resolution_m\":0.5,\n            \"range_accuracy_m\":0.1,\n            \"angular_resolution_deg\":\"NR\",\n            \"velocity_resolution_mps\":\"NR\",\n            \"velocity_accuracy_mps\":\"NR\",\n            \"localization_error_m\":\"NR\",\n            \"spatial_resolution_m\":0.5,\n            \"sensing_bandwidth_hz\":250e6,\n            \"pd_probability_detection\":0.9,\n            \"pfa_probability_false_alarm\":0.1,\n            \"crb_crlb_value\":\"NR\",\n            \"crb_parameter\":\"range\"\n         },\n         \"tradeoff\":{\n            \"coupling_mode\":\"resource_division\",\n            \"tradeoff_type\":\"rate_vs_rmse\",\n            \"tradeoff_representation\":\"curve\",\n            \"tradeoff_control_parameter\":\"stpr\",\n            \"tradeoff_control_range\":\"-10 to 10 dB\"\n         },\n         \"enabling_tech_details\":{\n            \"opa_num_emitters\":\"NR\",\n            \"opa_steering_range_deg\":\"NR\",\n            \"opa_beamwidth_deg\":\"NR\",\n            \"ris_num_elements\":\"NR\",\n            \"ris_type\":\"NR\",\n            \"ris_phase_bits\":\"NR\"\n         },\n         \"provenance\":{\n            \"source_pointer\":\"Fig. 3\",\n            \"value_origin\":\"reported_text\",\n            \"confidence_reporting\":\"none_reported\",\n            \"num_trials\":\"NR\"\n         }\n      }\n   ],\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a clear description of the experimental setup and results, and the authors discuss the limitations of their approach.\"\n   }\n}"
+}

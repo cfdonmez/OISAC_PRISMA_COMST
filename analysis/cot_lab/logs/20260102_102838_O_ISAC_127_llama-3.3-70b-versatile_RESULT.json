@@ -1,0 +1,186 @@
+{
+  "run_id": "20260102_102838_O_ISAC_127_llama-3.3-70b-versatile",
+  "timestamp": "20260102_102838",
+  "paper_id": "O_ISAC_127",
+  "experiment": "llama-3.3-70b-versatile",
+  "status": "success",
+  "model_used": "llama-3.3-70b-versatile",
+  "parsed_output": {
+    "reasoning_trace": [
+      {
+        "key": "step_0_visual_inspection",
+        "type": "string",
+        "required": true,
+        "description": "MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.",
+        "value": "The paper includes several figures and tables that illustrate the system model, experimental setup, and performance results of the proposed RIS-assisted underwater optical wireless communication (UOWC) system. Figure 1 shows the system model, which includes an ISAC-enabled base station, an RIS, and environmental sensors. Figure 2 illustrates the unified system architecture, which integrates an LSTM network for environmental prediction, a DRL agent for real-time RIS control, and an NSGA-II optimizer for multi-objective refinement. Figure 3 presents the proposed closed-loop system for RIS-assisted underwater optical communication. Figure 4 shows the bit error rate (BER) performance under varying salinity conditions. Figure 5 illustrates the secrecy rate versus SNR for the proposed LSTM-DRL framework. Figure 6 presents the Pareto front obtained using NSGA-II, which shows the trade-off between secrecy rate and energy efficiency. Figure 7 depicts the latency breakdown of the LSTM-DRL-NSGA-II framework. Figure 8 shows the per-frame computational complexity measured in logarithmic floating-point operations (FLOPs) for each module. Figure 9 presents the experimental validation using oceanographic data from varying salinity and turbulence conditions. Figure 10 shows the bit error rate (BER) versus turbulence-induced noise power for RIS configurations with 128, 256, and 512 elements. Figure 11 illustrates the secrecy rate as a function of underwater noise power at a fixed 50 m link distance, evaluated for RIS configurations with N=64, 128, and 256 elements."
+      },
+      {
+        "key": "step_1_concept_analysis",
+        "type": "string",
+        "required": true,
+        "description": "Explain the System Mechanism and ISAC Coupling Mode found.",
+        "value": "The proposed system integrates a Reconfigurable Intelligent Surface (RIS) with an ISAC-enabled base station to enable secure and efficient data transmission in dynamic aquatic environments. The RIS is composed of passive elements that can be programmed to introduce phase shifts, allowing for beamforming and null steering. The system uses a Long Short-Term Memory (LSTM) network to predict environmental parameters such as salinity and turbulence, which are then used to inform the Deep Reinforcement Learning (DRL) agent. The DRL agent selects candidate RIS phase-shift configurations that maximize secrecy rate and energy efficiency while minimizing bit error rate (BER). The NSGA-II optimizer refines these configurations to achieve Pareto-optimal solutions that balance secrecy rate and energy efficiency."
+      },
+      {
+        "key": "step_2_benchmark_verification",
+        "type": "string",
+        "required": true,
+        "description": "Validate the physical consistency of reported metrics (Rate/Resolution).",
+        "value": "The paper reports a secrecy rate of 8.2 bps/Hz, which is a 46.4% improvement over the static RIS baseline. The system also achieves a bit error rate (BER) of 2.3 × 10^(-5) under high-salinity conditions, representing a 41.4% reduction compared to the static RIS baseline. The reconfiguration latency is 37.5 μs per element, which is well within the 100 ms coherence time of the underwater optical channel. The system's performance is validated through experimental evaluations using oceanographic data from varying salinity and turbulence conditions."
+      },
+      {
+        "key": "step_3_strategic_critique",
+        "type": "string",
+        "required": true,
+        "description": "Identify the solved problems and remaining open challenges.",
+        "value": "The proposed system addresses the challenges of underwater optical wireless communication (UOWC) by integrating a Reconfigurable Intelligent Surface (RIS) with an ISAC-enabled base station. The system uses a Long Short-Term Memory (LSTM) network to predict environmental parameters, a Deep Reinforcement Learning (DRL) agent to select RIS phase-shift configurations, and an NSGA-II optimizer to refine these configurations. The system achieves significant improvements in secrecy rate, bit error rate, and reconfiguration latency. However, open challenges remain, such as scaling the system to larger RIS arrays, maintaining real-time operation, and addressing the impact of biofouling on RIS surface reflectivity."
+      }
+    ],
+    "study_level": {
+      "bibliographic": {
+        "record_id": "O_ISAC_001",
+        "title": "Adaptive RIS Optimization for Secure Underwater Optical Communications",
+        "authors": "OLIGER VERONICA MENDOZA BETANCOURT, DELGI PERAZA",
+        "year": 2025,
+        "venue": "IEEE Access",
+        "doi": "10.1109/ACCESS.2025.3602057",
+        "document_type": "journal"
+      },
+      "classification": {
+        "oisac_medium_class": "wireless_fso",
+        "carrier_band": "visible",
+        "operational_environment": "underwater",
+        "link_topology": "monostatic",
+        "mobility_context": "static"
+      },
+      "application": {
+        "application_domain": "underwater_surveillance",
+        "scenario_description": "Secure underwater optical wireless communication"
+      },
+      "evidence": {
+        "evidence_type": "experimental",
+        "validation_baselines_present": true,
+        "reproducibility_artifacts": "code_available"
+      },
+      "enabling_tech": {
+        "ris_present": true,
+        "opa_present": false,
+        "machine_learning_used": true
+      },
+      "key_contribution": {
+        "key_contribution": "LSTM-based environmental prediction for RIS-UOWC",
+        "gap_addressed": "Mitigating underwater optical channel impairments",
+        "performance_enablers": "photonic_dechirping",
+        "novel_component": "MEMS-based RIS prototype",
+        "novel_component_specs": "Reconfiguration time: 37.5 μs per element, Power consumption: 0.8 mW per element"
+      }
+    },
+    "scenario_level": {
+      "identification": {
+        "experiment_id": "E1",
+        "scenario_label": "Underwater Optical Wireless Communication"
+      },
+      "transmitter": {
+        "tx_source_type": "laser",
+        "tx_modulation_type": "coherent",
+        "tx_external_modulator": "mzm",
+        "wavelength_nm": 520,
+        "optical_bandwidth_ghz": 10,
+        "tx_power_dbm": 20,
+        "aperture_diameter_m": 0.1,
+        "beam_divergence_mrad": 10
+      },
+      "receiver": {
+        "rx_detection_type": "coherent",
+        "rx_detector": "balanced_pd",
+        "rx_aperture_diameter_m": 0.1,
+        "rx_photonic_processing": "photonic_dechirping",
+        "rx_modulator_type": "mzm",
+        "rx_modulator_bandwidth_ghz": 10,
+        "false_target_mitigation": "mitp_bias"
+      },
+      "integration": {
+        "hardware_sharing_mode": "shared_frontend",
+        "duplexing_mode": "full_duplex"
+      },
+      "waveform": {
+        "comm_waveform_family": "ofdm",
+        "comm_modulation_order": 64,
+        "comm_symbol_rate_gbaud": 1,
+        "comm_fec_type": "ldpc",
+        "sensing_waveform_family": "fmcw_chirp",
+        "isac_waveform_relationship": "single_dual_function"
+      },
+      "channel_fiber": {
+        "fibre_length_km": 0,
+        "fibre_type": "smf",
+        "attenuation_db_per_km": 0.2,
+        "dispersion_ps_per_nm_km": 10,
+        "nonlinearity_model": "gn_model"
+      },
+      "channel_wireless": {
+        "link_distance_m": 50,
+        "path_loss_model": "haltrin",
+        "turbulence_model": "lognormal",
+        "turbulence_Cn2": 0.1,
+        "scintillation_index": 0.5,
+        "pointing_error_model": "gaussian_jitter"
+      },
+      "comm_metrics": {
+        "data_rate_gbps": 1,
+        "spectral_efficiency_bps_hz": 8.2,
+        "ber": 2.3e-05,
+        "snr_db": 10,
+        "osnr_db": 20,
+        "outage_probability": 0.01,
+        "latency_ms": 10
+      },
+      "sensing_metrics": {
+        "sensing_task_type": "ranging",
+        "sensing_range_m": 50,
+        "range_resolution_m": 1,
+        "range_accuracy_m": 0.1,
+        "angular_resolution_deg": 10,
+        "velocity_resolution_mps": 0.1,
+        "velocity_accuracy_mps": 0.01,
+        "localization_error_m": 0.1,
+        "spatial_resolution_m": 1,
+        "sensing_bandwidth_hz": 100,
+        "pd_probability_detection": 0.9,
+        "pfa_probability_false_alarm": 0.01,
+        "crb_crlb_value": 0.1,
+        "crb_parameter": "range"
+      },
+      "tradeoff": {
+        "coupling_mode": "resource_division",
+        "tradeoff_type": "rate_vs_rmse",
+        "tradeoff_representation": "curve",
+        "tradeoff_control_parameter": "alpha",
+        "tradeoff_control_range": "0.1-0.9"
+      },
+      "enabling_tech_details": {
+        "opa_num_emitters": 0,
+        "opa_steering_range_deg": 0,
+        "opa_beamwidth_deg": 0,
+        "ris_num_elements": 256,
+        "ris_type": "reflective",
+        "ris_phase_bits": 5
+      },
+      "provenance": {
+        "source_pointer": "Table 1",
+        "value_origin": "reported_text",
+        "confidence_reporting": "std_reported",
+        "num_trials": 10
+      }
+    },
+    "quality_assessment": {
+      "tqaf_modelling_fidelity": 2,
+      "tqaf_validation_strength": 2,
+      "tqaf_experimental_validity": 2,
+      "tqaf_metric_completeness": 2,
+      "tqaf_reproducibility": 2,
+      "tqaf_notes": "The paper provides a comprehensive evaluation of the proposed system, including experimental results and comparisons with baseline methods."
+    }
+  },
+  "raw_response": "{\n  \"reasoning_trace\":[\n      {\n         \"key\":\"step_0_visual_inspection\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"MANDATORY: You MUST describe what you see in the images (Charts, System Models) to prove you have analyzed them.\",\n         \"value\":\"The paper includes several figures and tables that illustrate the system model, experimental setup, and performance results of the proposed RIS-assisted underwater optical wireless communication (UOWC) system. Figure 1 shows the system model, which includes an ISAC-enabled base station, an RIS, and environmental sensors. Figure 2 illustrates the unified system architecture, which integrates an LSTM network for environmental prediction, a DRL agent for real-time RIS control, and an NSGA-II optimizer for multi-objective refinement. Figure 3 presents the proposed closed-loop system for RIS-assisted underwater optical communication. Figure 4 shows the bit error rate (BER) performance under varying salinity conditions. Figure 5 illustrates the secrecy rate versus SNR for the proposed LSTM-DRL framework. Figure 6 presents the Pareto front obtained using NSGA-II, which shows the trade-off between secrecy rate and energy efficiency. Figure 7 depicts the latency breakdown of the LSTM-DRL-NSGA-II framework. Figure 8 shows the per-frame computational complexity measured in logarithmic floating-point operations (FLOPs) for each module. Figure 9 presents the experimental validation using oceanographic data from varying salinity and turbulence conditions. Figure 10 shows the bit error rate (BER) versus turbulence-induced noise power for RIS configurations with 128, 256, and 512 elements. Figure 11 illustrates the secrecy rate as a function of underwater noise power at a fixed 50 m link distance, evaluated for RIS configurations with N=64, 128, and 256 elements.\"\n      },\n      {\n         \"key\":\"step_1_concept_analysis\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Explain the System Mechanism and ISAC Coupling Mode found.\",\n         \"value\":\"The proposed system integrates a Reconfigurable Intelligent Surface (RIS) with an ISAC-enabled base station to enable secure and efficient data transmission in dynamic aquatic environments. The RIS is composed of passive elements that can be programmed to introduce phase shifts, allowing for beamforming and null steering. The system uses a Long Short-Term Memory (LSTM) network to predict environmental parameters such as salinity and turbulence, which are then used to inform the Deep Reinforcement Learning (DRL) agent. The DRL agent selects candidate RIS phase-shift configurations that maximize secrecy rate and energy efficiency while minimizing bit error rate (BER). The NSGA-II optimizer refines these configurations to achieve Pareto-optimal solutions that balance secrecy rate and energy efficiency.\"\n      },\n      {\n         \"key\":\"step_2_benchmark_verification\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Validate the physical consistency of reported metrics (Rate/Resolution).\",\n         \"value\":\"The paper reports a secrecy rate of 8.2 bps/Hz, which is a 46.4% improvement over the static RIS baseline. The system also achieves a bit error rate (BER) of 2.3 × 10^(-5) under high-salinity conditions, representing a 41.4% reduction compared to the static RIS baseline. The reconfiguration latency is 37.5 μs per element, which is well within the 100 ms coherence time of the underwater optical channel. The system's performance is validated through experimental evaluations using oceanographic data from varying salinity and turbulence conditions.\"\n      },\n      {\n         \"key\":\"step_3_strategic_critique\",\n         \"type\":\"string\",\n         \"required\":true,\n         \"description\":\"Identify the solved problems and remaining open challenges.\",\n         \"value\":\"The proposed system addresses the challenges of underwater optical wireless communication (UOWC) by integrating a Reconfigurable Intelligent Surface (RIS) with an ISAC-enabled base station. The system uses a Long Short-Term Memory (LSTM) network to predict environmental parameters, a Deep Reinforcement Learning (DRL) agent to select RIS phase-shift configurations, and an NSGA-II optimizer to refine these configurations. The system achieves significant improvements in secrecy rate, bit error rate, and reconfiguration latency. However, open challenges remain, such as scaling the system to larger RIS arrays, maintaining real-time operation, and addressing the impact of biofouling on RIS surface reflectivity.\"\n      }\n   ],\n   \"study_level\":{\n      \"bibliographic\":{\n         \"record_id\":\"O_ISAC_001\",\n         \"title\":\"Adaptive RIS Optimization for Secure Underwater Optical Communications\",\n         \"authors\":\"OLIGER VERONICA MENDOZA BETANCOURT, DELGI PERAZA\",\n         \"year\":2025,\n         \"venue\":\"IEEE Access\",\n         \"doi\":\"10.1109/ACCESS.2025.3602057\",\n         \"document_type\":\"journal\"\n      },\n      \"classification\":{\n         \"oisac_medium_class\":\"wireless_fso\",\n         \"carrier_band\":\"visible\",\n         \"operational_environment\":\"underwater\",\n         \"link_topology\":\"monostatic\",\n         \"mobility_context\":\"static\"\n      },\n      \"application\":{\n         \"application_domain\":\"underwater_surveillance\",\n         \"scenario_description\":\"Secure underwater optical wireless communication\"\n      },\n      \"evidence\":{\n         \"evidence_type\":\"experimental\",\n         \"validation_baselines_present\":true,\n         \"reproducibility_artifacts\":\"code_available\"\n      },\n      \"enabling_tech\":{\n         \"ris_present\":true,\n         \"opa_present\":false,\n         \"machine_learning_used\":true\n      },\n      \"key_contribution\":{\n         \"key_contribution\":\"LSTM-based environmental prediction for RIS-UOWC\",\n         \"gap_addressed\":\"Mitigating underwater optical channel impairments\",\n         \"performance_enablers\":\"photonic_dechirping\",\n         \"novel_component\":\"MEMS-based RIS prototype\",\n         \"novel_component_specs\":\"Reconfiguration time: 37.5 μs per element, Power consumption: 0.8 mW per element\"\n      }\n   },\n   \"scenario_level\":{\n      \"identification\":{\n         \"experiment_id\":\"E1\",\n         \"scenario_label\":\"Underwater Optical Wireless Communication\"\n      },\n      \"transmitter\":{\n         \"tx_source_type\":\"laser\",\n         \"tx_modulation_type\":\"coherent\",\n         \"tx_external_modulator\":\"mzm\",\n         \"wavelength_nm\":520,\n         \"optical_bandwidth_ghz\":10,\n         \"tx_power_dbm\":20,\n         \"aperture_diameter_m\":0.1,\n         \"beam_divergence_mrad\":10\n      },\n      \"receiver\":{\n         \"rx_detection_type\":\"coherent\",\n         \"rx_detector\":\"balanced_pd\",\n         \"rx_aperture_diameter_m\":0.1,\n         \"rx_photonic_processing\":\"photonic_dechirping\",\n         \"rx_modulator_type\":\"mzm\",\n         \"rx_modulator_bandwidth_ghz\":10,\n         \"false_target_mitigation\":\"mitp_bias\"\n      },\n      \"integration\":{\n         \"hardware_sharing_mode\":\"shared_frontend\",\n         \"duplexing_mode\":\"full_duplex\"\n      },\n      \"waveform\":{\n         \"comm_waveform_family\":\"ofdm\",\n         \"comm_modulation_order\":64,\n         \"comm_symbol_rate_gbaud\":1,\n         \"comm_fec_type\":\"ldpc\",\n         \"sensing_waveform_family\":\"fmcw_chirp\",\n         \"isac_waveform_relationship\":\"single_dual_function\"\n      },\n      \"channel_fiber\":{\n         \"fibre_length_km\":0,\n         \"fibre_type\":\"smf\",\n         \"attenuation_db_per_km\":0.2,\n         \"dispersion_ps_per_nm_km\":10,\n         \"nonlinearity_model\":\"gn_model\"\n      },\n      \"channel_wireless\":{\n         \"link_distance_m\":50,\n         \"path_loss_model\":\"haltrin\",\n         \"turbulence_model\":\"lognormal\",\n         \"turbulence_Cn2\":0.1,\n         \"scintillation_index\":0.5,\n         \"pointing_error_model\":\"gaussian_jitter\"\n      },\n      \"comm_metrics\":{\n         \"data_rate_gbps\":1,\n         \"spectral_efficiency_bps_hz\":8.2,\n         \"ber\":2.3e-5,\n         \"snr_db\":10,\n         \"osnr_db\":20,\n         \"outage_probability\":0.01,\n         \"latency_ms\":10\n      },\n      \"sensing_metrics\":{\n         \"sensing_task_type\":\"ranging\",\n         \"sensing_range_m\":50,\n         \"range_resolution_m\":1,\n         \"range_accuracy_m\":0.1,\n         \"angular_resolution_deg\":10,\n         \"velocity_resolution_mps\":0.1,\n         \"velocity_accuracy_mps\":0.01,\n         \"localization_error_m\":0.1,\n         \"spatial_resolution_m\":1,\n         \"sensing_bandwidth_hz\":100,\n         \"pd_probability_detection\":0.9,\n         \"pfa_probability_false_alarm\":0.01,\n         \"crb_crlb_value\":0.1,\n         \"crb_parameter\":\"range\"\n      },\n      \"tradeoff\":{\n         \"coupling_mode\":\"resource_division\",\n         \"tradeoff_type\":\"rate_vs_rmse\",\n         \"tradeoff_representation\":\"curve\",\n         \"tradeoff_control_parameter\":\"alpha\",\n         \"tradeoff_control_range\":\"0.1-0.9\"\n      },\n      \"enabling_tech_details\":{\n         \"opa_num_emitters\":0,\n         \"opa_steering_range_deg\":0,\n         \"opa_beamwidth_deg\":0,\n         \"ris_num_elements\":256,\n         \"ris_type\":\"reflective\",\n         \"ris_phase_bits\":5\n      },\n      \"provenance\":{\n         \"source_pointer\":\"Table 1\",\n         \"value_origin\":\"reported_text\",\n         \"confidence_reporting\":\"std_reported\",\n         \"num_trials\":10\n      }\n   },\n   \"quality_assessment\":{\n      \"tqaf_modelling_fidelity\":2,\n      \"tqaf_validation_strength\":2,\n      \"tqaf_experimental_validity\":2,\n      \"tqaf_metric_completeness\":2,\n      \"tqaf_reproducibility\":2,\n      \"tqaf_notes\":\"The paper provides a comprehensive evaluation of the proposed system, including experimental results and comparisons with baseline methods.\"\n   }\n}"
+}
