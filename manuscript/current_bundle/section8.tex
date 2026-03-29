@@ -1,0 +1,417 @@
+\section{OPEN CHALLENGES AND RESEARCH ROADMAP}
+
+Section VIII synthesizes open challenges and frames a deployment-facing research roadmap for optical integrated sensing and communication. In this review, the challenge map is treated as an organizational taxonomy and is scoped with five exact domains: \texttt{standardization\_interoperability}, \texttt{hardware\_scalability\_efficiency}, \texttt{channel\_modeling\_evaluation}, \texttt{security\_privacy\_reliability}, and \texttt{deployment\_convergence\_roadmap}. This structure is used to consolidate heterogeneous findings into a consistent challenge lens, not to assert closed-form completeness. Representative evidence indicates that standards alignment and interoperability remain active issues in subsea-integrated settings \cite{O_ISAC_220}, while shared-waveform designs continue to expose hardware and implementation complexity tradeoffs in communication-plus-ranging pipelines \cite{O_ISAC_035}. This prioritization supports a traceable transition from challenge diagnosis to roadmap planning.
+
+The evidence policy for this section is intentionally strict. DIRECT support is restricted to text-anchored excerpt rows in the subsection evidence CSVs, whereas upstream bridge rows linking Sections V/VI/VII are treated as INDIRECT by design and interpreted cautiously. Under this policy, representative works show persistent channel-modeling and evaluation consistency gaps in deterministic high-frequency sensing studies \cite{O_ISAC_115}, and they also indicate security-facing reliability concerns when sensing and communication functions are co-integrated on the same transmission substrate \cite{O_ISAC_202}. For roadmap framing, deployment convergence is treated as an open issue tied to technology-readiness and multi-constraint rollout planning, with representative survey evidence emphasizing practical integration dependencies \cite{O_ISAC_163}.
+
+At the manuscript level, this section operationalizes protocol RQ3 by translating the evidence pack into methodological gaps, 6G-facing integration pressure, and a conservative research agenda. Section V established where comparison remains admissible, Section VI bounded what enabling stacks can realistically support, and Section VII showed where deployment evidence actually concentrates; Section VIII converts those upstream signals into a challenge-to-roadmap reading rather than reopening them as separate evidence pools. Consistent with the review's TQAF-aware synthesis policy, prioritization is interpreted cautiously whenever support remains indirect, weak, or FLAGGED, and any implication for optical RIS, ORIS, or optical phased arrays is treated only as a forward-looking architectural implication rather than as a separate evidence-bearing challenge domain.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/fig_viii_1.jpg}
+    \caption{Challenge-to-roadmap dependency map for O-ISAC. The figure organizes the five Section VIII challenge domains around a central shared-system-pressure hub and a roadmap-outcome cluster while preserving the review's evidence-aware, dependency-driven interpretation. The bottom bridge ribbon should be read as a manuscript-level reminder that Section VIII is informed by Section V tradeoffs, constrained by Section VI enablers and benchmarks, and validated against Section VII deployments.}
+    \label{fig:fig_viii_1}
+\end{figure}
+
+The figure should be read as a dependency map rather than a maturity ladder: the domain cards identify where pressure accumulates, the central hub identifies what kind of pressure is shared across domains, and the outcome cluster summarizes what a credible roadmap must eventually deliver.
+
+\subsection{Standardization and Interoperability Challenges}
+
+\paragraph{Context}
+VIII-A (Standardization and Interoperability Challenges) frames the \texttt{standardization\_interoperability} domain as a deployment-facing bottleneck rather than a closed technical problem. Evidence from representative studies indicates that interoperability pressure already appears where sensing and communication must co-exist on shared infrastructure. In SMART subsea settings, standardization is explicitly tied to joint-task-force framing and integrated sensing-communication operation over telecommunication cables \cite{O_ISAC_220}. In optical transport support for ISAC, architecture-level interconnection across RAN, MEC, and SDN-controlled transport highlights practical interoperability requirements spanning radio, transport, and sensing workflows \cite{O_ISAC_025}. A hardware-centric ISAC transceiver review further indicates that emerging standardization efforts and early commercial prototypes are moving the field from isolated demonstrations toward implementation-oriented integration \cite{O_ISAC_161}. Accordingly, this subsection treats \texttt{standardization\_interoperability} as an open issue focused on interface alignment, cross-domain control consistency, and implementation-ready integration boundaries, with cautious interpretation of any upstream bridge evidence because Section V/VI/VII links are INDIRECT by design.
+
+\paragraph{Challenge Case 1: Standards Vocabulary and Reference-Model Divergence}
+\begin{enumerate}
+    \item \textbf{Failure mode.} Without aligned standardization vocabulary and reference-model assumptions, implementations can expose incompatible expectations for integrated sensing-communication operation, which limits cross-system comparability and deployment transferability \cite{O_ISAC_220, O_ISAC_161}.
+    \item \textbf{Affected interfaces/layers.} The most exposed points are control-plane terminology alignment, sensing-metadata semantics, timing/synchronization assumptions, and transceiver-to-orchestration interface consistency across multi-domain deployments \cite{O_ISAC_220, O_ISAC_161}.
+    \item \textbf{Evidence snippet summary.} Evidence indicates that SMART-oriented integrated operation is explicitly tied to a standardized framing under a joint task-force context \cite{O_ISAC_220}. A hardware-centric transceiver survey also reports intensified industry activity around standardization and prototype transition, indicating that interface consistency has shifted from conceptual discussion to implementation pressure \cite{O_ISAC_161}.
+    \item \textbf{Practical implication for roadmap.} The roadmap should treat reference-model and terminology alignment as a prerequisite gating item for credible cross-platform evaluation in this domain \cite{O_ISAC_220, O_ISAC_161}.
+\end{enumerate}
+
+\paragraph{Challenge Case 2: Cross-Domain Interoperability Friction in Transport-Supported ISAC}
+\begin{enumerate}
+    \item \textbf{Failure mode.} When communication and sensing flows are jointly carried but interoperability assumptions differ across transport, orchestration, and sensing-processing stages, routing and capacity decisions can become brittle under operational variability \cite{O_ISAC_025}.
+    \item \textbf{Affected interfaces/layers.} Friction appears at data-plane IQ stream handling, control-plane orchestration and SDN policy exchange, sensing metadata exchange, and timing/latency coordination between access and aggregation segments \cite{O_ISAC_025}.
+    \item \textbf{Evidence snippet summary.} A transport-oriented ISAC architecture shows explicit RAN-core/MEC interconnection requirements and a joint optimization workflow for communication-plus-sensing flows, indicating nontrivial multi-interface coupling \cite{O_ISAC_025}.
+    \item \textbf{Practical implication for roadmap.} Evidence indicates that interoperability profiling across joint sensing/communication transport workflows should remain a first-order roadmap risk item \cite{O_ISAC_025}.
+\end{enumerate}
+
+\paragraph{Challenge Case 3: PtMP Branch-Attribution and Measurement-Semantics Misalignment}
+\begin{enumerate}
+    \item \textbf{Failure mode.} In point-to-multipoint access deployments, sensing pipelines can fail to provide unambiguous branch-level attribution when monitoring assumptions are not aligned with deployment topology and loss conditions, weakening interoperability at the measurement-contract level \cite{O_ISAC_104}.
+    \item \textbf{Affected interfaces/layers.} The main pressure points are sensing-metadata semantics (which branch/event a stream represents), evaluation/reporting contracts for anomaly attribution, and control-layer interpretation of branch-specific sensing quality under splitter loss \cite{O_ISAC_104}.
+    \item \textbf{Evidence snippet summary.} INDIRECT evidence indicates that PtMP structure is described as a practical challenge for fiber-based sensing in deployed access infrastructure, and that splitter-induced link-budget loss can drive sensing failure conditions \cite{O_ISAC_104}.
+    \item \textbf{Practical implication for roadmap.} The roadmap should treat branch-attribution semantics and reporting consistency as a first-class interoperability checkpoint before cross-vendor scaling in access scenarios \cite{O_ISAC_104}.
+\end{enumerate}
+
+\paragraph{Challenge Case 4: Sensing-Payload Formatting and DSP-Compatibility Contract Gaps}
+\begin{enumerate}
+    \item \textbf{Failure mode.} When sensing payload placement and frequency-allocation assumptions are not explicitly aligned with communication signal structure, interoperability can break at receiver processing boundaries and low-interference joint operation becomes fragile \cite{O_ISAC_220}.
+    \item \textbf{Affected interfaces/layers.} Critical interfaces include data-plane sensing-payload formatting, frequency/timing alignment between sensing joints and shore transceivers, and receiver-side DSP interface contracts used for joint demodulation \cite{O_ISAC_220}.
+    \item \textbf{Evidence snippet summary.} Evidence indicates that SMART-oriented dense integration must address precise allocation of sensing information into communication frequency blanks, and that communication-compatible DSP is treated as a compatibility condition \cite{O_ISAC_220}.
+    \item \textbf{Practical implication for roadmap.} Roadmap staging should prioritize explicit format-and-DSP conformance checks for sensing payload interoperability in dense integrated links \cite{O_ISAC_220}.
+\end{enumerate}
+
+\paragraph{Math Anchor}
+Decision variables are profile/format selection, sensing-payload placement policy, and receiver DSP processing mode:
+
+\[
+\begin{aligned}
+u &= (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}),\\
+\max_{u}\quad & J_{\mathrm{perf}}(u),\\
+\text{s.t.}\quad
+& u_{\mathrm{profile}} \in \mathcal{U}_{\mathrm{SMART\_conform}},\\
+& (u_{\mathrm{placement}},u_{\mathrm{profile}}) \in \mathcal{U}_{\mathrm{blank\_allocation}},\\
+& (u_{\mathrm{dsp}},u_{\mathrm{placement}}) \in \mathcal{U}_{\mathrm{dsp\_compatible}},\\
+& u \in \mathcal{U}_{\mathrm{PtMP\_attribution}},\quad J_{\mathrm{perf}}(u) \in \mathcal{J}_{\mathrm{QoS\_acceptable}}.
+\end{aligned}
+\]
+
+This anchor uses Option-2 because the available evidence is constraint-centric rather than weight-tuning-centric: SMART is explicitly presented as a standardized configuration, and dense operation is explicitly tied to precise placement of sensing information into communication frequency blanks \cite{O_ISAC_220}. The compatibility requirement is also textual and direct, since sensing transmission format design is linked to communication-compatible DSP behavior, so the feasible set must jointly constrain placement policy and DSP processing mode \cite{O_ISAC_220}. For access-network interoperability, PON evidence reports both standards-linked spectral-occupancy requirements and PtMP ambiguity risk under simultaneous interrogation of multiple drop fibers, which motivates an explicit attribution-integrity constraint \cite{O_ISAC_104}. Finally, the symbolic objective $J_{\mathrm{perf}}$ is retained as a communication-plus-sensing QoS proxy because spectral-efficiency degradation and sensing-failure risk are both documented in the evidence base \cite{O_ISAC_220, O_ISAC_104}.
+
+\paragraph{Key Takeaways and Research Priorities}
+\begin{itemize}
+    \item Interoperability risk in VIII-A is not only a standards-label issue; it also appears in branch-level sensing semantics and attribution contracts under PtMP operation \cite{O_ISAC_104}.
+    \item Format compatibility between sensing payloads and communication-oriented DSP flows is a deployment-facing interoperability dependency in dense integrated links \cite{O_ISAC_220}.
+    \item Evidence indicates that evaluation/reporting contracts and signal-format contracts should be prioritized separately because they fail at different interfaces \cite{O_ISAC_104, O_ISAC_220}.
+    \item working hypothesis: a compact conformance profile coupling branch-attribution semantics with DSP-interface checks may reduce cross-platform integration ambiguity.
+\end{itemize}
+
+\subsection{Hardware Scalability and Efficiency Challenges}
+
+\paragraph{Context}
+Section VIII-B defines \texttt{hardware\_scalability\_efficiency} as a cross-cutting bottleneck because hardware-plane burdens accumulate even when integrated waveforms improve joint operation \cite{O_ISAC_035, O_ISAC_162}. Evidence indicates that complexity growth is driven by extra baseband processing, filtering, and coordination overhead as integration depth increases \cite{O_ISAC_162}. Representative works also report power/SWaP pressure at edge hardware, including sub-watt energy budgets with delays beyond tens of milliseconds for complex processing pipelines \cite{O_ISAC_093}. A further friction point is implementation scaling in beamforming hardware: fine steering granularity is achievable, but control-system and fabrication burdens increase with larger arrays and tighter precision requirements \cite{O_ISAC_171}. Communication-plane outcomes (rate/BER) and sensing-plane outcomes (resolution/accuracy) are relevant but secondary in this context; the primary blocker is hardware-plane feasibility under scaling, power, and implementation constraints \cite{O_ISAC_093, O_ISAC_162, O_ISAC_171}.
+
+\paragraph{Challenge Case 1: Front-End Co-Design Scalability Bottleneck}
+\begin{enumerate}
+    \item \textbf{Failure mode.} Evidence indicates that independently operated sensing and communication stacks increase hardware complexity, cost, and spectrum inefficiency \cite{O_ISAC_237}. Evidence also indicates that bistatic sensing support can become infeasible on common communication receivers because required analogue FMCW hardware is unavailable \cite{O_ISAC_237}.
+    \item \textbf{Affected layers/resources.} The primary impact is hardware-plane: RF front-end sharing, receiver-chain composition, and implementation burden in sensing-aided estimation and interference-cancellation pipelines \cite{O_ISAC_237}. Evidence further indicates that reducing RF hardware complexity and simplifying the FMCW receiver remains a central implementation pressure \cite{O_ISAC_035}.
+    \item \textbf{Evidence snippet summary.} Representative texts report both baseline hardware-duplication burden and explicit computational stacks for channel estimation, interference cancellation, and sensing algorithms \cite{O_ISAC_237}. Complementary evidence reports simplified receiver design as a hardware-efficiency target \cite{O_ISAC_035}.
+    \item \textbf{Practical implication for roadmap.} For VIII-B, evidence indicates an implementation bottleneck where hardware simplification must keep pace with added receiver processing blocks \cite{O_ISAC_237, O_ISAC_035}.
+\end{enumerate}
+
+\paragraph{Challenge Case 2: Edge Energy-Latency Hardware Ceiling}
+\begin{enumerate}
+    \item \textbf{Failure mode.} Evidence indicates that edge deployments face strict hardware feasibility limits because energy budgets are often below 1 watt and processing delays can exceed 50 milliseconds \cite{O_ISAC_093}.
+    \item \textbf{Affected layers/resources.} The primary impacts are hardware-plane power/SWaP budgets, edge inference latency budgets, and terminal DSP burdens \cite{O_ISAC_093, O_ISAC_095}. Evidence also indicates increased computational complexity for a single ORIS unit during localization \cite{O_ISAC_112}.
+    \item \textbf{Evidence snippet summary.} Representative evidence reports sub-watt edge budgets and delay escalation for complex tasks \cite{O_ISAC_093}, and reports that FOE-free processing is used to reduce terminal complexity and power consumption \cite{O_ISAC_095}. Additional evidence reports higher localization-stage complexity for ORIS-aided processing \cite{O_ISAC_112}.
+    \item \textbf{Practical implication for roadmap.} Communication-plane and sensing-plane metric gains remain conditional on hardware-plane energy and latency envelopes in edge and terminal implementations \cite{O_ISAC_093, O_ISAC_095, O_ISAC_112}.
+\end{enumerate}
+
+\paragraph{Challenge Case 3: Integration-Level Hardware Co-Design and Baseband Cost Escalation}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Integration-level hardware co-design and baseband cost escalation under \texttt{hardware\_scalability\_efficiency}.
+    \item \textbf{Failure mode.} Evidence indicates that optimizing one shared transceiver for sensing and communication is highly challenging because requirements conflict at architecture level \cite{O_ISAC_161}. Evidence also indicates that high mobility and severe path loss can push beam-steering demands beyond economically viable conventional antenna designs \cite{O_ISAC_142}.
+    \item \textbf{Affected layers/resources.} The dominant impact is hardware-plane: antenna/RF architecture choices that require continuous trade-off balancing during development \cite{O_ISAC_161}. A second impact is baseband resource pressure, where reused OFDM signals may introduce additional processing complexity and cost \cite{O_ISAC_162}.
+    \item \textbf{Evidence snippet summary.} Representative texts report that many architectural/electrical parameters require careful balancing \cite{O_ISAC_161}, and that integration level governs extra baseband cost exposure \cite{O_ISAC_162}. Related evidence also reports unresolved analogue front-end drift effects in practical operation \cite{O_ISAC_162}.
+    \item \textbf{Practical implication for roadmap.} The VIII-B roadmap should treat integration-level complexity accounting as a hardware gate before scale-out to path-loss-constrained deployments \cite{O_ISAC_161, O_ISAC_142, O_ISAC_162}.
+\end{enumerate}
+
+\paragraph{Challenge Case 4: Beam-Control Scalability, FLOP Growth, and Latency Envelope Limits}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Beam-control scalability, FLOP growth, and latency envelope limits in large-array operation.
+    \item \textbf{Failure mode.} Evidence indicates that communication-plane beamforming overhead becomes large in highly mobile cells \cite{O_ISAC_134}. Evidence also indicates that conventional delay-line beam control can require substantial switching/control burden as steering granularity tightens \cite{O_ISAC_171}.
+    \item \textbf{Affected layers/resources.} The primary impacts are hardware-plane beam-control complexity and compute-plane FLOP/latency budgets in multimodal beam prediction pipelines \cite{O_ISAC_134, O_ISAC_171}. Representative measurements report millisecond-level processing latency and model-stage complexity concentration \cite{O_ISAC_134}.
+    \item \textbf{Evidence snippet summary.} Representative studies report communication-overhead pressure \cite{O_ISAC_134}, MMT-dominated complexity and measurable processing latency \cite{O_ISAC_134}, and beam-control complexity reduction with scalable frequency-comb steering \cite{O_ISAC_171}.
+    \item \textbf{Practical implication for roadmap.} The VIII-B roadmap should co-design steering granularity, model complexity, and hardware budget jointly, rather than scaling them independently \cite{O_ISAC_134, O_ISAC_171}.
+\end{enumerate}
+
+\paragraph{Math Anchor}
+Selected form: Option-2 (resource-constrained performance optimization).
+
+\[
+\begin{aligned}
+\max_{u=(u_{arch},u_{proc},u_{ctrl})} \quad & U_{perf}(u;s)=\beta_c U_{comm}(u;s_{comm})+\beta_s U_{sens}(u;s_{sens}) \\
+\text{s.t.} \quad & C_{hw}(u;s) \le C_{max}, \\
+& L_{hw}(u;s) \le L_{max}, \\
+& P_{hw}(u;s) \le P_{max}, \\
+& O_{ctrl}(u;s) \le O_{max}.
+\end{aligned}
+\]
+
+This anchor adopts Option-2 because direct evidence supports four distinct hardware constraints for VIII-B: computational burden, processing-latency envelope, energy constraint, and beam-control overhead \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. The decision variable tuple $u=(u_{arch},u_{proc},u_{ctrl})$ captures architecture choice, processing schedule, and control-update policy under scenario context $s=(s_{shared},s_{mob},s_{array})$, where shared transceiver use, high mobility, and large-array steering pressure are explicitly evidenced \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. Plane separation is explicit in $U_{perf}$: $U_{comm}$ denotes comm-plane utility (beamforming/communication efficiency), while $U_{sens}$ denotes sensing-plane utility (sensing/imaging capability). Constraint $C_{hw}$ bounds compute and baseband complexity, $L_{hw}$ bounds delay, $P_{hw}$ bounds hardware energy demand, and $O_{ctrl}$ bounds steering/control overhead. This keeps hardware scalability and efficiency primary, while permitting performance optimization only inside hardware-feasible regions.
+
+\paragraph{Key Takeaways and Research Priorities}
+\begin{itemize}
+    \item Build integration-level complexity ledgers that jointly track RF architecture constraints and baseband-cost escalation before deployment decisions \cite{O_ISAC_161, O_ISAC_162}.
+    \item Prioritize hardware-plane beam-control schemes that avoid switch-count explosion while preserving fine steering granularity for large arrays \cite{O_ISAC_171}.
+    \item Add calibration-aware front-end drift handling as a first-class hardware requirement for sustained field performance \cite{O_ISAC_162}.
+    \item Co-design multimodal pipeline FLOPs, latency envelopes, and beam-pruning strategy to reduce communication-plane overhead without destabilizing beam quality \cite{O_ISAC_134}.
+\end{itemize}
+
+\subsection{Channel Modeling and Evaluation Challenges}
+
+\paragraph{Context}
+Evidence indicates that channel modeling and evaluation are foundational for O-ISAC credibility because conclusions are not transferable without validated propagation assumptions across environments and implementations \cite{O_ISAC_005, O_ISAC_327}. Turbulence, pointing, and blockage factors remain a core bottleneck: weather-dependent attenuation and alignment-sensitive behavior can shift effective channel conditions across deployments \cite{O_ISAC_005, O_ISAC_327}. NLoS geometry and intermittency are also unresolved, since multipath and scatterer-dependent effects require explicit modeling and estimation rather than fixed simplifications \cite{O_ISAC_050}. Evaluation practice further needs metric-plane alignment: comm-plane indicators such as BER/capacity should be interpreted together with sensing-plane estimation outcomes, not in isolation \cite{O_ISAC_381, O_ISAC_050}. Finally, benchmarking and reproducibility depend on consistent channel-model disclosure and measurement-campaign comparability, which remains an open issue for reliable cross-study roadmap decisions \cite{O_ISAC_327}.
+
+\paragraph{Challenge Case 1: Weather-Conditioned Channel-Model Transferability Gap}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Weather-conditioned channel-model transferability gap in O-ISAC evaluation.
+    \item \textbf{Failure mode.} Evidence indicates that adverse weather can materially change channel behavior, so assumptions tuned under one condition can fail under another condition \cite{O_ISAC_005}. Evidence also indicates that sensing feedback is tied to the back-scattered signal relation with forward channel gain, creating model drift risk when this relation changes \cite{O_ISAC_005}.
+    \item \textbf{Affected interfaces/assumptions.} The most affected interfaces are atmospheric attenuation assumptions, back-scattered-feedback-to-channel-gain mapping, and scenario conditioning for channel-state estimation \cite{O_ISAC_005}.
+    \item \textbf{Evidence snippet summary.} Representative text reports that adverse weather reduces FSO link reliability and that evaluation is performed using a realistic channel model with climatic data \cite{O_ISAC_005}. This indicates that portability of conclusions depends on environmental conditioning, not only algorithm selection \cite{O_ISAC_005}.
+    \item \textbf{Practical implication for roadmap.} The VIII-C roadmap should treat climate-conditioned model validation as a prerequisite before cross-scenario comparison claims \cite{O_ISAC_005}.
+\end{enumerate}
+
+\paragraph{Challenge Case 2: LOS/NLOS Decomposition and Scatterer-State Identifiability Gap}
+\begin{enumerate}
+    \item \textbf{Challenge title.} LOS/NLOS decomposition and scatterer-state identifiability gap in channel evaluation.
+    \item \textbf{Failure mode.} Evidence indicates that practical modeling must decouple LOS and NLOS paths and jointly estimate scattering-related states; otherwise, model mismatch remains likely under multipath conditions \cite{O_ISAC_050}.
+    \item \textbf{Affected interfaces/assumptions.} The key interfaces are LOS/NLOS decomposition assumptions, equivalent NLOS channel-state representation, and estimation burden in non-convex settings \cite{O_ISAC_050}.
+    \item \textbf{Evidence snippet summary.} Representative text reports an equivalent discrete channel remodeling method that decouples LOS and NLOS paths and a joint estimation strategy for scattering states \cite{O_ISAC_050}. Conclusion text further indicates multipath-interference and random-fading sensitivity in evaluation \cite{O_ISAC_050}.
+    \item \textbf{Practical implication for roadmap.} The VIII-C roadmap should prioritize explicit reporting of decomposition assumptions and estimation scope before claiming robust cross-study comparability \cite{O_ISAC_050}.
+\end{enumerate}
+
+\paragraph{Challenge Case 3: Comm-Plane Metric Interface Coupling Under Evaluation Conditions}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Comm-plane metric interface coupling under evaluation conditions.
+    \item \textbf{Failure mode.} Evidence indicates that evaluation pipelines rely on comm-plane BER and comm-plane capacity outcomes, and these outcomes shift with transmission-distance settings \cite{O_ISAC_381}. This creates a comparability risk when studies report metrics without a harmonized condition contract \cite{O_ISAC_381}.
+    \item \textbf{Affected assumptions/interfaces.} The affected interfaces are metric-definition choices, measurement-condition declarations, and channel-capacity interpretation boundaries across test distances and hardware capture constraints \cite{O_ISAC_381}.
+    \item \textbf{Evidence snippet summary.} Representative text reports BER-to-capacity evaluation and distance-conditioned BER/rate behavior \cite{O_ISAC_381}. Additional text indicates capacity degradation with distance growth, reinforcing condition-sensitive evaluation outcomes \cite{O_ISAC_381}.
+    \item \textbf{Practical implication for roadmap.} The VIII-C roadmap should treat condition-tagged comm-plane reporting as mandatory before cross-paper ranking claims \cite{O_ISAC_381}.
+\end{enumerate}
+
+\paragraph{Challenge Case 4: Benchmark Contract Fragmentation Across Channel Modeling Studies}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Benchmark contract fragmentation across channel modeling studies.
+    \item \textbf{Failure mode.} Evidence indicates that channel-modeling evidence is distributed across heterogeneous measurement campaigns, scenario types, and model families, reducing direct comparability across studies \cite{O_ISAC_327}. Evidence also indicates that new technologies and applications introduce additional modeling challenges that invalidate static benchmark assumptions \cite{O_ISAC_327}.
+    \item \textbf{Affected assumptions/interfaces.} The affected interfaces are reporting contracts for channel-model class, measurement-campaign provenance, and framework compatibility for standardization-oriented evaluation \cite{O_ISAC_327}.
+    \item \textbf{Evidence snippet summary.} Representative text reports broad survey coverage of measurement campaigns and model families, and explicitly states that a standard VLC channel model is needed for 6G evaluation workflows \cite{O_ISAC_327}.
+    \item \textbf{Practical implication for roadmap.} The VIII-C roadmap should treat benchmark-contract normalization as a prerequisite for reproducible evidence aggregation \cite{O_ISAC_327}.
+\end{enumerate}
+
+\paragraph{Math Anchor}
+Selected form: Option-B (benchmark-contract constrained evaluation).
+
+\[
+\max_{\pi}\; U_{\mathrm{eval}}(\pi)
+\]
+\[
+\text{s.t.}\; \pi \in \Pi_{\mathrm{contract}},\quad
+\Pi_{\mathrm{contract}} = \{\kappa_{\mathrm{cond}},\,\gamma_{\mathrm{geom}},\,\mu_{\mathrm{metric}},\,\delta_{\mathrm{prov}}\}
+\]
+
+This anchor maps VIII-C to benchmark-contract constrained evaluation by forcing each result protocol to carry channel-condition tags and scenario-geometry descriptors before cross-paper comparison, which directly follows weather-conditioned channel behavior and geometry-dependent reporting contexts \cite{O_ISAC_005, O_ISAC_327}. The term $\mu_{\mathrm{metric}}$ is comm-plane specific and binds BER-capacity definitions to evaluation conditions (for example distance-conditioned reporting), while sensing-plane metrics are intentionally not instantiated because direct sensing-plane evidence is not present in the locked evidence subset \cite{O_ISAC_381}. The term $\delta_{\mathrm{prov}}$ encodes measurement-campaign and dataset/testbed provenance so that the documented need for a standard model becomes an enforceable contract item rather than a narrative recommendation \cite{O_ISAC_327}.
+
+\paragraph{Key Takeaways and Research Priorities}
+\begin{itemize}
+    \item Define an evaluation-contract minimum that records channel-model class plus measurement-campaign lineage before any cross-study synthesis step \cite{O_ISAC_327}.
+    \item Require comm-plane metric declarations to be bound to measurement conditions in result tables to reduce hidden comparability drift \cite{O_ISAC_381}.
+    \item Add a standard-framework compatibility field in benchmarks to align evidence with shared 6G evaluation baselines \cite{O_ISAC_327}.
+    \item working hypothesis: a compact reporting card will reduce audit friction in Section VIII-C evidence integration.
+\end{itemize}
+
+\subsection{Security, Privacy, and Reliability Challenges}
+
+\paragraph{Context}
+For VIII-D under \texttt{security\_privacy\_reliability}, evidence indicates that O-ISAC links couple security, privacy, and reliability because sensing increases observability while communication paths keep exploitable attack surfaces \cite{O_ISAC_145, O_ISAC_039}. Physical-layer threat exposure remains a core motif: wireless transmissions can be susceptible to eavesdropping, so robust protection assumptions should be treated as conditional rather than guaranteed \cite{O_ISAC_145}. A second motif is privacy leakage via sensing-enabled learning pipelines, where confidential user information can be involved and requires controlled data-handling practices \cite{O_ISAC_039}. A third motif concerns authentication/trust posture, which remains tied to physical-layer security mechanisms and legitimacy checks in hybrid deployments \cite{O_ISAC_145}. A fourth motif is fail-safe integrity monitoring, where transport-network ISAC evidence reports real-time warning pathways that can reduce service-interruption risk under disruptive vibration events \cite{O_ISAC_041}. Together, these motifs frame VIII-D as a coupled risk-governance challenge, not a single-metric security problem.
+
+\paragraph{Challenge Case 1: Physical-Layer Confidentiality and Trust Exposure in Hybrid Links}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Physical-layer confidentiality and trust exposure in hybrid RF-OWC security operation.
+    \item \textbf{Failure mode.} Evidence indicates that wireless links can remain susceptible to eavesdropping, and trust in received sensing/communication outputs can degrade when adversaries manipulate observations \cite{O_ISAC_145}.
+    \item \textbf{Affected interfaces/layers.} The affected interfaces include physical-layer signal confidentiality, jammer-aware channel behavior, and trust interpretation in edge decision loops that consume sensing-assisted communication outputs \cite{O_ISAC_145}.
+    \item \textbf{Evidence snippet summary.} Representative text states that wireless transmissions are susceptible to eavesdropping and require robust security treatment \cite{O_ISAC_145}. Additional text reports attacker-side falsification risk that can undermine output trustworthiness in hybrid sensing/communication contexts \cite{O_ISAC_145}.
+    \item \textbf{Practical implication for roadmap.} The VIII-D roadmap should treat confidentiality-integrity checks as a coupled risk surface that requires safeguards before cross-scenario security claims \cite{O_ISAC_145}.
+\end{enumerate}
+
+\paragraph{Challenge Case 2: Privacy Leakage Pressure in Multi-User Sensing-Learning Pipelines}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Privacy leakage pressure in federated multi-user sensing-learning pipelines.
+    \item \textbf{Failure mode.} Evidence indicates that distributed VIPAC training can involve sensitive location/trajectory information, so privacy exposure can increase if update exchange and aggregation boundaries are weakly specified \cite{O_ISAC_039}.
+    \item \textbf{Affected interfaces/layers.} The affected layers include metadata/privacy governance at user agents, model-update interfaces between agents and server, and orchestration policies that separate local datasets from shared parameters \cite{O_ISAC_039}.
+    \item \textbf{Evidence snippet summary.} Representative text reports explicit privacy-preservation intent in federated training and highlights confidential data-leakage concern in centralized handling \cite{O_ISAC_039}. Additional text reports that only model weights are transmitted while local datasets remain local at user agents \cite{O_ISAC_039}.
+    \item \textbf{Practical implication for roadmap.} The VIII-D roadmap should treat privacy controls and update-interface constraints as mandatory context tags for reliability and trust evaluation across studies \cite{O_ISAC_039}.
+\end{enumerate}
+
+\paragraph{Challenge Case 3: Authentication and Trust Exposure Under Dense, Heterogeneous Connectivity}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Authentication and trust exposure under dense, heterogeneous connectivity in security\_privacy\_reliability.
+    \item \textbf{Failure mode.} Evidence indicates that key-based encryption and authentication may be less well-tailored at massive scale, and dynamic key management can become a trust bottleneck \cite{O_ISAC_156}.
+    \item \textbf{Affected interfaces/layers.} Affected layers include physical-layer confidentiality/authentication primitives, key-management and distribution interfaces, and edge trust loops that depend on message legitimacy and integrity checks \cite{O_ISAC_156}.
+    \item \textbf{Evidence snippet summary.} Representative text states that dense-network operation raises dynamic key-management concerns, while authentication and integrity remain crucial security processes \cite{O_ISAC_156}. The same source treats confidentiality, authentication, and malicious-node detection as coupled targets \cite{O_ISAC_156}.
+    \item \textbf{Practical implication for roadmap.} The VIII-D roadmap should treat authentication and trust as lifecycle constraints requiring explicit safeguards and conservative claims across heterogeneous deployments \cite{O_ISAC_156}.
+\end{enumerate}
+
+\paragraph{Challenge Case 4: Fail-Safe Integrity Monitoring for Co-Route Fiber Disruption Risk}
+\begin{enumerate}
+    \item \textbf{Challenge title.} Fail-safe integrity monitoring for co-route fiber disruption risk in transport-network operation.
+    \item \textbf{Failure mode.} Evidence indicates that co-route fiber faults can propagate into service interruption, and sudden failures can degrade reliability when warning response is delayed \cite{O_ISAC_041}.
+    \item \textbf{Affected interfaces/layers.} Affected interfaces include transport physical infrastructure, sensing-communication coexistence paths, SDN-linked monitoring loops, and edge orchestration decisions for service continuity \cite{O_ISAC_041}.
+    \item \textbf{Evidence snippet summary.} Representative text states that interruption events can significantly impede IoE operation and that real-time monitoring/warning is necessary under sudden failures \cite{O_ISAC_041}. Additional text reports SDN-linked timely alerting and service adjustment steps to avoid interruption propagation \cite{O_ISAC_041}.
+    \item \textbf{Practical implication for roadmap.} The VIII-D roadmap should prioritize integrity-monitoring readiness in fail-safe loops before claiming reliability under disruption \cite{O_ISAC_041}.
+\end{enumerate}
+
+\paragraph{Math Anchor}
+Selected form: Option-1 (risk-constrained service utility).
+\begin{itemize}
+    \item Why Option-2 is weaker: explicit overhead and availability constraint semantics are not directly grounded in the selected evidence subset.
+\end{itemize}
+
+\[
+\begin{aligned}
+\max_{u=(u_{\mathrm{auth}},u_{\mathrm{mon}},u_{\mathrm{priv}})} \quad & U_{\mathrm{service}}(u) \\
+\text{s.t.} \quad & R_{\mathrm{int}}(u) \le \varepsilon_{\mathrm{int}}, \\
+& L_{\mathrm{priv}}(u) \le \varepsilon_{\mathrm{priv}}, \\
+& A_{\mathrm{auth}}(u) \ge \tau_{\mathrm{auth}}.
+\end{aligned}
+\]
+
+Evidence indicates that service utility is exposed when network interruption events occur and when falsification risks degrade trustworthiness, so $R_{\mathrm{int}}$ is linked to interruption and integrity-monitoring risk under SDN alerting and service-adjustment workflows \cite{O_ISAC_041, O_ISAC_145}. Evidence also reports confidential-data leakage concern and a model-update exchange rule, which directly supports the privacy-leakage constraint $L_{\mathrm{priv}}$ and the $u_{\mathrm{priv}}$ policy component \cite{O_ISAC_039}. For authentication feasibility, evidence indicates that dense heterogeneous connectivity raises dynamic key-management burden while authentication and integrity remain central security processes, supporting $A_{\mathrm{auth}}$ and the $u_{\mathrm{auth}}$ policy component \cite{O_ISAC_156}. The monitoring component $u_{\mathrm{mon}}$ maps to real-time warning, alert-routing, and service-adjustment evidence \cite{O_ISAC_041}. All thresholds are kept symbolic ($\varepsilon_{\mathrm{int}}$, $\varepsilon_{\mathrm{priv}}$, $\tau_{\mathrm{auth}}$) because no bound values are fixed in the extracted source text.
+
+\paragraph{Key Takeaways and Research Priorities}
+\begin{itemize}
+    \item Dense heterogeneous operation can stress key-management assumptions; reliability evaluation should expose trust-loop dependencies rather than assuming static credential logistics \cite{O_ISAC_156}.
+    \item Confidentiality, authentication, and malicious-node detection are coupled; fail-safe reliability studies should keep integrity checks as first-class evaluation artifacts \cite{O_ISAC_156}.
+    \item Co-route fiber disruption risk is operationally significant; security/privacy framing should be tied to continuity and survivability checks \cite{O_ISAC_041}.
+    \item SDN-linked alerting and service adjustment are central to fail-safe behavior; reliability roadmaps should require integrity-monitoring hooks in control loops \cite{O_ISAC_041}.
+\end{itemize}
+
+\subsection{Deployment Convergence and Roadmap Challenges}
+
+\paragraph{Context}
+For VIII-E under \texttt{deployment\_convergence\_roadmap}, evidence suggests that deployment convergence remains a distinct bottleneck beyond standards, hardware, channel modeling, and security, because sensing and communication functions may remain insufficiently co-integrated in practice \cite{O_ISAC_039}. Across the micro-evidence set, four motifs recur: coupling between sensing-positioning and communication-channel-estimation tasks, orchestration and state-fusion stress, staged roll-out and readiness gating, and governance for transferability through compatibility, model validity, and provenance controls \cite{O_ISAC_039, O_ISAC_151, O_ISAC_163, O_ISAC_200}.
+
+\paragraph{Roadmap Case 1: Coupled deployment dependency between sensing and communication tasks}
+When convergence is assumed too early, separate task pipelines may keep bottlenecks at deployment interfaces \cite{O_ISAC_039}. Affected layers include sensing-positioning interfaces, channel-estimation interfaces, and orchestration loops coordinating shared model states in nonstationary contexts \cite{O_ISAC_039}. Source text reports both isolated-design limits and a unified architecture coupling these tasks, suggesting that convergence assumptions require explicit interface-level gating before portability interpretation \cite{O_ISAC_039}.
+
+\paragraph{Roadmap Case 2: Staged roll-out and readiness gating under multi-issue integration pressure}
+If convergence is treated as immediate, deployment planning may understate coordination requirements across multiple design issues, and readiness interpretation can remain unstable across settings \cite{O_ISAC_163}. Affected layers include deployment orchestration, readiness signaling, and governance interfaces mapping application expectations to implementation constraints \cite{O_ISAC_163}. Evidence indicating that practical implementation and eventual roll-out require issues to be addressed together supports symbolic staged roll-out framing \cite{O_ISAC_163}.
+
+\paragraph{Roadmap Case 3: Orchestration and state-fusion fragility in multimodal context loops}
+If orchestration assumptions are fixed before interfaces stabilize, multimodal sensing states and context annotations may drift across update loops under resource stress \cite{O_ISAC_151}. Affected layers include orchestration APIs for multimodal inputs, context metadata interfaces (location/time), encoder update loops, and policy gates for state handoff \cite{O_ISAC_151}. Evidence on multimodal physical quantities, contextual enrichment, and encoder-based semantic representations, together with edge-compute and bandwidth stress statements, suggests that context-bearing fusion contracts require readiness-oriented gating \cite{O_ISAC_151}.
+
+\paragraph{Roadmap Case 4: Open-source governance and transferability risk across heterogeneous stacks}
+If convergence is inferred from isolated implementations, transferability may weaken because infrastructure compatibility conditions and model-validity assumptions can vary across deployments \cite{O_ISAC_200}. Affected layers include reference-stack governance, interoperability with standard DSP pipelines, provenance policy, and audit pathways for deployment claims \cite{O_ISAC_200}. Evidence reports open-source hooks, compatibility pathways, incompatibility risk in some infrastructures, and a realistic time-varying model gap, indicating that governed validation traces remain necessary for portability interpretation \cite{O_ISAC_200}.
+
+\paragraph{Math Anchor}
+Selected form: readiness-gated deployment utility.
+
+\[
+\begin{aligned}
+\max_{u=(u_{\mathrm{arch}},u_{\mathrm{api}},u_{\mathrm{stack}},u_{\mathrm{model}},u_{\mathrm{audit}})} \quad & U_{\mathrm{deploy}}(u) \\
+\text{s.t.} \quad & g_{\mathrm{ready}}(u) \ge 0, \\
+& \operatorname{compat}_{\mathrm{infra}}(u)=1, \\
+& \operatorname{budget}_{\mathrm{edge}}(u) \le B_{\mathrm{edge}},\; \operatorname{budget}_{\mathrm{bw}}(u) \le B_{\mathrm{bw}}, \\
+& \operatorname{valid}_{\mathrm{model}}(u)=1,\; \operatorname{prov}_{\mathrm{audit}}(u)=1.
+\end{aligned}
+\]
+
+Here, $U_{\mathrm{deploy}}$ and $g_{\mathrm{ready}}$ map to coupling and staged deployment pressure \cite{O_ISAC_039, O_ISAC_163}, $u_{\mathrm{api}}$ with budget constraints captures context-fusion orchestration stress under edge/bandwidth limitations \cite{O_ISAC_151}, and governance constraints map to compatibility, model-validity, and provenance evidence from open-source and model-gap statements \cite{O_ISAC_200}. Symbolic $B_{\mathrm{edge}}$ and $B_{\mathrm{bw}}$ are retained because no numeric deployment budgets are fixed in the cited excerpts.
+
+\paragraph{Key Takeaways and Research Priorities}
+\begin{itemize}
+    \item Deployment evaluation can require minimum interface contracts that bind sensing-positioning and channel-estimation coupling with explicit orchestration handoff checks \cite{O_ISAC_039, O_ISAC_151}.
+    \item Roadmap claims can require staged readiness gates rather than immediate convergence assumptions when multi-issue integration pressure is present \cite{O_ISAC_163}.
+    \item Governance baselines can require compatibility checks, model-validity checks, and provenance/audit traces before transferability interpretation \cite{O_ISAC_200}.
+    \item Open-source reference stacks can support reproducibility, but deployment portability may still depend on explicit validation boundaries \cite{O_ISAC_200}.
+\end{itemize}
+
+The discussion now shifts from domain-wise challenge clusters to a cross-domain capstone synthesis layer.
+
+\subsection{Capstone Dependency Synthesis and Prioritized Research Agenda}
+
+Section VIII-F acts as a capstone synthesis rather than a new Axis-2 domain: it summarizes cross-domain dependency coverage and then organizes a prioritized agenda linked to those dependencies. Table VIII-F-1 is derived from linkage counts across Sections V-VII and should be read as an observational co-linkage summary, not as a causal graph. Existing IVLCS/ISAC evidence indicates that shared sensing and communication resources can tighten coordination pressure \cite{O_ISAC_049}, repeatable calibration routines can remain restrictive when transfer is attempted across settings \cite{O_ISAC_107}, and power-limited OWC integration can add bandwidth and noise-management pressure \cite{O_ISAC_133}. In the observed linkage summary, domains A and C appear as the densest linkage hubs, while domain E appears underlinked; VIII-F treats that pattern as a linkage-gap and governance observation, not as a statement of lower importance.
+
+\begin{table}[htbp]
+\caption{Dependency Coverage Summary across A-E domains (observational linkage counts).}
+\label{tab:viii_f_1}
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+domain & linked\_section5 & linked\_section6 & linked\_section7 & status \\
+\hline
+standardization\_interoperability & 55 & 55 & 55 & covered \\
+channel\_modeling\_evaluation & 54 & 54 & 54 & covered \\
+hardware\_scalability\_efficiency & 25 & 25 & 25 & covered \\
+security\_privacy\_reliability & 18 & 18 & 18 & covered \\
+deployment\_convergence\_roadmap & 0 & 0 & 0 & isolated \\
+\hline
+\end{tabular}
+\end{table}
+
+Table VIII-F-2 converts these observations into an organizational shortlist. The cite-key-supported agenda items remain explicit: F-AG01 aligns interoperability and evaluation baselines under the A/C hotspot \cite{O_ISAC_133}, F-AG02 keeps A/B/C resource contention in scope \cite{O_ISAC_049}, F-AG03 retains conservative wording for a hybrid security-evaluation thread that may require a unified analytical framework \cite{O_ISAC_156}, and F-AG04 retains conservative wording for prototype-to-scale coordination under calibration overhead \cite{O_ISAC_107}. These rows remain tied to their source papers and are not generalized beyond the cited evidence.
+
+The remaining rows preserve coverage-derived agenda slots rather than new literature claims. F-AG05 is carried by the lower but nonzero D coverage signal, F-AG06 explicitly addresses the E-domain linkage gap as a convergence and governance problem, and F-AG07 preserves balanced A-E coverage under limited editorial or research bandwidth. Accordingly, P1, P2, and P3 are organizational labels assigned from observed co-linkage density, summary coverage, and FLAGGED-evidence concentration rather than scientific rankings. The prioritization anchor below is included only as a review-level organizational guide, and the outcome cluster in Fig. VIII-1 should be read in the same bounded sense.
+
+Within this capstone layer, any optical RIS, ORIS, or optical phased array implication remains a forward-looking architectural hook for future integration under RQ3, not a sixth challenge domain and not a direct claim of deployment readiness.
+
+\begin{table}[htbp]
+\caption{Prioritized Research Agenda (dependency-aware, evidence-linked, non-causal synthesis).}
+\label{tab:viii_f_2}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|p{3.4cm}|p{1.6cm}|p{3.6cm}|p{3.8cm}|c|c|}
+\hline
+agenda\_id & title & linked\_domains & linkage\_rationale & representative\_support & priority\_tier & wording\_mode \\
+\hline
+F-AG01 & Align interoperability rules with evaluation baselines & A,C & A/C hotspot across Sections V-VII & O\_ISAC\_133; dense interoperability-evaluation linkage & P1 & normal \\
+F-AG02 & Reduce multi-slot resource contention in optical ISAC & A,B,C & shared A/B/C resource pressure across Sections V-VII & O\_ISAC\_049; joint sensing-communication resource coupling & P1 & normal \\
+F-AG03 & Hybrid stacks may require a unified security-evaluation framework & A,C,D & A/C/D cross-layer security linkage & O\_ISAC\_156; hybrid security-evaluation coupling & P1 & conservative \\
+F-AG04 & Prototype calibration may require hardware-scaling coordination & A,B,D & A/B/D prototype-to-scale calibration pressure & O\_ISAC\_107; calibration overhead in scaling-oriented settings & P2 & conservative \\
+F-AG05 & Sustain lower-coverage security and reliability threads & D & persistent but lower-density D-domain continuity signal & targeted D-domain continuity signal & P2 & normal \\
+F-AG06 & Strengthen deployment-convergence evidence through governance-aware integration studies & A,C,E & underlinked E-domain convergence pathway & deployment-convergence underlinkage in the current linkage summary & P2 & normal \\
+F-AG07 & Maintain balanced cross-domain research coverage & A,B,C,D,E & cross-domain balance under finite research bandwidth & aggregate cross-domain coverage balance & P3 & normal \\
+\hline
+\end{tabular}%
+}
+\end{table}
+
+\paragraph{VIII-F Math Anchor (Review-Level Organizational Prioritization Scaffold)}
+
+\[
+\begin{aligned}
+\max_{x \in \{0,1\}^N}\quad & \sum_{i=1}^{N} w_i x_i \\
+\text{s.t.}\quad & \sum_{i=1}^{N} c_i x_i \le B,\\
+& \mathrm{cover}_d(x) \ge z_d,\quad d \in \{A,B,C,D,E\}_{\mathrm{selected}},\\
+& \mathrm{risk\_flag}(x) \le R_{\max}.
+\end{aligned}
+\]
+
+Here, $x_i$ marks whether agenda item $i$ is prioritized; $w_i$ is an evidence or dependency weight drawn from the VIII-F linkage summary; $c_i$ is a symbolic editorial or research bandwidth cost; $cover_d$ is a domain-coverage indicator; and $risk\_flag$ limits the concentration of FLAGGED-evidence items. This is a review-level organizational guide, not a validated scientific law and not a claim of deployment certainty.
+
+The section then closes with an alignment and traceability audit layer across the established domains.
+
+\subsection{Cross-Section Alignment and Evidence-Consistency Check}
+
+Section VIII-G functions as a capstone cross-section alignment audit rather than a new Axis-2 challenge domain. It checks whether strict Section VIII challenge evidence is reflected in the upstream linkage signals inherited from Sections V, VI, and VII. Under the fixed A-E challenge inventory, this layer serves as a traceability and evidence-consistency check across the established domains, not as an extension of the domain set.
+
+The alignment summary shows a fully matched pattern for the A-D domains: \texttt{standardization\_interoperability}, \texttt{hardware\_scalability\_efficiency}, \texttt{channel\_modeling\_evaluation}, and \texttt{security\_privacy\_reliability} each have equal strict and upstream counts, with \texttt{unmatched\_strict\_count = 0}. For \texttt{deployment\_convergence\_roadmap}, both strict and upstream counts remain zero, so the row should be read only as a zero/underlinked evidence state within the present summary. The alignment indicates continuity across the existing challenge inventory and does not show completeness of the review, maturity of a domain, or any importance ranking.
+
+\begin{table}[htbp]
+\caption{Cross-section alignment summary between strict Section VIII evidence and upstream linkage signals.}
+\label{tab:viii_g_1}
+\centering
+\begin{tabular}{|l|c|c|c|l|}
+\hline
+domain & strict\_evidence\_count & linked\_any\_upstream\_count & unmatched\_strict\_count & interpretation \\
+\hline
+standardization\_interoperability & 55 & 55 & 0 & perfectly aligned \\
+hardware\_scalability\_efficiency & 25 & 25 & 0 & perfectly aligned \\
+channel\_modeling\_evaluation & 54 & 54 & 0 & perfectly aligned \\
+security\_privacy\_reliability & 18 & 18 & 0 & perfectly aligned \\
+deployment\_convergence\_roadmap & 0 & 0 & 0 & zero-row; no upstream linkage currently evidenced \\
+\hline
+\end{tabular}
+\end{table}
+
+Methodological caution remains necessary when the alignment layer is interpreted beyond aggregate continuity. In the present locked summary, no populated paper-level discrepancy examples are available for any domain. Accordingly, VIII-G can verify whether strict Section VIII evidence remains connected to upstream signals at the aggregate level, but it cannot support paper-level discrepancy narratives in the current version of the alignment layer.
+
+For final roadmap integration, VIII-G therefore strengthens traceability, not causal inference, and it should remain a continuity check across the established challenge inventory rather than a completeness or maturity claim.
+
+\begin{table}[htbp]
+\caption{Availability of paper-level discrepancy examples in the present alignment summary.}
+\label{tab:viii_g_2}
+\centering
+\begin{tabular}{|l|c|l|}
+\hline
+domain & populated\_discrepancy\_example & interpretation\_limit \\
+\hline
+standardization\_interoperability & no & aggregate continuity only \\
+hardware\_scalability\_efficiency & no & aggregate continuity only \\
+channel\_modeling\_evaluation & no & aggregate continuity only \\
+security\_privacy\_reliability & no & aggregate continuity only \\
+deployment\_convergence\_roadmap & no & zero-row remains aggregate-only \\
+\hline
+\end{tabular}
+\end{table}

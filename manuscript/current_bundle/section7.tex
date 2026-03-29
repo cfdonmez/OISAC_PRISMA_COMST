@@ -1,0 +1,172 @@
+\section{APPLICATIONS AND USE CASES ACROSS DOMAINS}
+
+Section VII translates the application evidence base into deployment-facing use cases while staying inside the classification and governance contracts fixed earlier in the manuscript. Whenever medium labels are used below, they inherit the Section IV normalized vocabulary, namely cabled fiber, FSO, VLC/LiFi, photonic-THz or terahertz proxy, and hybrid systems. Likewise, any OPA or ORIS mention remains contextual in the Section VI sense and is not used by itself to assign an application domain. Finally, any SNR-family quantity reported in this section is treated as a communication-plane variable as defined in the cited source unless the cited paper explicitly states an optical-plane model; no implicit OSNR-to-SNR conversion is implied.
+
+\begin{table}[htbp]
+\caption{Application Portfolio Matrix}
+\label{tab:section7_portfolio}
+\centering
+\begin{tabular}{|p{2.1cm}|p{3.0cm}|p{3.0cm}|p{3.0cm}|p{2.2cm}|p{2.7cm}|}
+\hline
+Vertical (VII-A..VII-E) & Scenario motif (short) & Comm-plane metrics & Sensing-plane metrics & Dominant component & Representative cite keys \\
+\hline
+VII-A & Outdoor V2V/UAV optical corridors & V2V transmission-quality behavior, throughput-oriented resource and trajectory control & received-power-ratio behavior, RMS delay-spread trends, FSO channel-gain estimation & Conventional & \cite{O_ISAC_003,O_ISAC_005} \\
+VII-A & Cabled-fiber corridor DAS + coherent carriage & 50-60 GBaud 16-QAM, coexistence penalty & distributed vibration monitoring, 1 m spatial resolution, interference-fading suppression & Conventional & \cite{O_ISAC_038,O_ISAC_074} \\
+VII-B & Retroreflective indoor VLC/LiFi localization & BER vs reported electrical-plane SNR & distance-measurement RMSE, positioning RMSE & Conventional & \cite{O_ISAC_011} \\
+VII-B & Two-phase indoor LED O-AP deployment & BER gains (2.70 dB directionless; 63.35 dB directional) & coordinate MSE (including $<10^{-4}$ operating point) & Conventional & \cite{O_ISAC_108} \\
+VII-C & Autonomous-vehicle ISAC-OW V2V & BER vs reported electrical-plane SNR under turbulence & LiDAR ranging estimate (100.011 m for 100 m reference) & Conventional & \cite{O_ISAC_060} \\
+VII-C & Vehicular-network FSO ISAC link (LFM-CPM) & BER, achievable data rate & ToF-oriented CRB, RMSE & Conventional & \cite{O_ISAC_055} \\
+VII-D & Secure underwater OWC link & BER reduction, secrecy-rate outcomes & environmental-state prediction MAE (0.008 PSU) & Conventional & \cite{O_ISAC_127} \\
+VII-D & SMART subsea cable monitoring & 20 GBaud DP-QAM16 transmission, Q-factor gain & in-line temperature sensing resolution ($0.0625\,^{\circ}\mathrm{C}$) & Conventional & \cite{O_ISAC_220} \\
+VII-E & LEO photonic O-ISAC payload & 29.99 Mbps, BER below 7\% pre-FEC threshold at 500 kHz Doppler & range-resolution behavior better than 0.146 m & Conventional & \cite{O_ISAC_187} \\
+VII-E & Multi-beam satellite payload & BER ($8.15 \times 10^{-7}$), EVM (6.74\%), 2.4 Gbps 16-QAM link & range resolution (14.9 cm), remote-sensing and imaging descriptors & Conventional & \cite{O_ISAC_195} \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{figures/fig_vii_1.jpg}
+    \caption{Cross-domain deployment synthesis of O-ISAC applications under the strict evidence view over the canonical 220-paper corpus and 48 micro-domains. The figure clusters the five macro-domain panels around recurring deployment motifs and uses compact representative metric cues to show how communication-side and sensing-side reporting co-appear across domains. OPA/ORIS mentions remain contextual and do not define domain assignment in Section VII.}
+    \label{fig:fig_vii_1}
+\end{figure}
+
+The figure should be read as a deployment-orientation map rather than a scorecard: the counts delimit evidence support, while the domain cards summarize the kinds of communication-side and sensing-side cues that recur in each macro domain.
+
+\subsection{VII-A. Smart Infrastructure \& Outdoor Urban Sensing-Communication}
+
+\textbf{Context.} Urban smart-infrastructure deployments use O-ISAC when the same optical platform must carry operational traffic while exposing environment and link state for control and supervision \cite{O_ISAC_003,O_ISAC_005,O_ISAC_276}. Across representative studies, this vertical covers outdoor mobility corridors, metro and industrial cabled-fiber corridors, and live metropolitan access supervision, each with explicit sensing-plane and communication-plane reporting \cite{O_ISAC_003,O_ISAC_038,O_ISAC_064,O_ISAC_276}.
+
+\textbf{Scenarios.} Outdoor mobility corridors combine vehicular and UAV-assisted optical links, with V2V distance variation, weather-dependent FSO attenuation, and throughput-oriented trajectory control. Distributed fiber corridor studies report vibration monitoring at 1 m spatial resolution together with coherent 50--60 GBaud 16-QAM carriage and coexistence penalty tracking. Metropolitan access supervision remains a deployed-fiber monitoring case in which direct event observability and downstream traffic continuity are both evaluated \cite{O_ISAC_003,O_ISAC_005,O_ISAC_038,O_ISAC_074,O_ISAC_064,O_ISAC_276}.
+
+\textbf{Math anchor.}
+\[
+\max_{u,\pi,T}\ \alpha R_{\mathrm{comm}}(u,\pi;s) - (1-\alpha) J_{\mathrm{sense}}(u,T;s)
+\]
+\[
+\text{s.t.}\ \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\quad 0 \le p_k \le P_m,\ \forall k,
+\]
+\[
+\mathrm{BER}(u,\pi;s) \le \beta_{\mathrm{rel}}.
+\]
+
+Here, $u$ denotes waveform and link-adaptation settings and $s$ denotes deployment state such as distance, load, and atmospheric condition \cite{O_ISAC_034,O_ISAC_048}. The communication plane is captured by $R_{\mathrm{comm}}$ and BER reliability, while the sensing plane is captured by $J_{\mathrm{sense}}$ as a ranging-error surrogate \cite{O_ISAC_034,O_ISAC_048}. The per-subcarrier cap $P_m$ follows reported maximum normalized subcarrier-power allocation, and the BER bound is treated as a service reliability target with $10^{-4}$ as an illustrative reported operating point rather than a universal fixed threshold \cite{O_ISAC_034,O_ISAC_048}.
+
+\textbf{Key takeaways and application priorities.} Outdoor O-ISAC behavior is scenario-vector dependent across mobility, weather, and topology. Fiber-corridor deployments can co-support vibration sensing and high-rate coherent communication under controlled coexistence design. Live access supervision shows that sensing readout and communication continuity can be jointly maintained in tested point-to-multipoint operation. Reported optical ISAC evaluations use BER and ranging-error metrics such as MSE or RMSE to keep communication-plane and sensing-plane assessment separable.
+
+\subsection{VII-B. Indoor Environments}
+
+\textbf{Context.} Indoor O-ISAC deployments are characterized by shared optical infrastructure that must deliver communication service while extracting environment- or user-state information in the same transceiver workflow \cite{O_ISAC_011,O_ISAC_030}. The evidence base covers retroreflective VLC localization and lamp-centered human interaction, with communication continuity reported while sensing tasks execute.
+
+\textbf{Scenarios.} Retroreflective indoor VLC/LiFi localization uses a 5 m $\times$ 5 m $\times$ 3 m room, four-LED transmitter geometry, and PD/CCR loops with delay estimation; sensing is reported through distance-measurement RMSE and positioning RMSE, while communication is reported by BER versus electrical-plane SNR \cite{O_ISAC_011}. A second motif uses a VLC-capable desk lamp with ring-shaped multi-LED emission and co-located PD reception to support gesture recognition above 90\% accuracy while maintaining uplink/downlink BER and 220 kbps throughput \cite{O_ISAC_030}. A later two-phase indoor LED O-ISAC case adds distributed O-APs, coordinate MSE, and reported sensing MSE below $10^{-4}$, while a multi-user VLC-CDMA case emphasizes BER degradation under user-count growth \cite{O_ISAC_108,O_ISAC_388}.
+
+\textbf{Math anchor.}
+\[
+\min_{u}\ \alpha\,\mathrm{BER}(u;s) + (1-\alpha)\,\mathrm{MSE}_{\mathrm{pos}}(u;s),
+\qquad
+s=(g_{\mathrm{room}},\rho_{\mathrm{user}}).
+\]
+
+Here, $u$ denotes indoor control variables such as resource allocation and waveform adaptation policy over the shared communication-sensing optical stack \cite{O_ISAC_108,O_ISAC_388}. Communication-plane quality is represented by BER, while sensing-plane quality is represented by position-coordinate MSE.
+
+\textbf{Key takeaways and application priorities.} Indoor O-ISAC evidence couples practical communication service with localization or gesture-driven sensing in shared lighting-centric infrastructure. Scenario diversity spans both user-centric interaction and infrastructure-centric localization, and both report explicit communication-plane metrics while sensing is active. Among later-stage indoor deployments, the two-phase LED O-AP case provides explicit dual-plane metrics, whereas the multi-user VLC-CDMA case is communication-heavy with no explicit sensing KPI.
+
+\subsection{VII-C. Automotive Transportation}
+
+\textbf{Context.} The VII-C vertical is locked to automotive transportation, where O-ISAC is deployed in moving-road contexts that require concurrent optical connectivity and environment-aware operation in the same workflow \cite{O_ISAC_003,O_ISAC_060,O_ISAC_164}. Representative motifs include taillight/headlight signaling, camera-based OCC reception, and FSO-style vehicular relay links.
+
+\textbf{Scenarios.} An autonomous-vehicle ISAC-OW V2V system reports a LiDAR ranging estimate of 100.011 m for a 100 m reference target and BER versus electrical-plane SNR under turbulence \cite{O_ISAC_060}. An outdoor OCC-based V2X deployment tunes exposure time and tracks normalized sensing gain $G_e$ and normalized communication gain $G_c$ under mobility and illumination variation \cite{O_ISAC_164}. A V2V VLC case emphasizes target/background sensing through received-power ratio and delay-spread trends, while a vehicular-network FSO ISAC link with LFM-CPM reports ToF-oriented CRB/RMSE alongside BER and achievable rate \cite{O_ISAC_003,O_ISAC_055}.
+
+\textbf{Math anchor.}
+\[
+\max_{u,\pi,T}\ \alpha R_{\mathrm{comm}}(u,\pi;s)-(1-\alpha)J_{\mathrm{sense}}(u,T;s)
+\]
+\[
+\text{s.t.}\ \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\quad 0 \le p_k \le P_m,\ \forall k,\quad \mathrm{BER}(u,\pi;s)\le \beta_{\mathrm{rel}}.
+\]
+
+The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors, while the communication plane is represented by BER or achievable rate.
+
+\textbf{Key takeaways and application priorities.} Vehicular optical ISAC is strongly scenario dependent, with mobility, turbulence, and exposure-time control all shaping deployment behavior. The studies keep sensing-plane and comm-plane metrics separate, and the dominant component label remains Conventional because the cited implementations are built around optical sources, receivers, and DSP rather than explicit ORIS/OPA hardware.
+
+\subsection{VII-D. Underwater and Harsh-Environment OWC}
+
+\textbf{Context.} Underwater and harsh-environment OWC cases emphasize deployment survival under attenuation, turbulence, and environmental variability \cite{O_ISAC_127,O_ISAC_220}. The vertical is split between secure underwater communication and subsea cable monitoring.
+
+\textbf{Scenarios.} Secure underwater OWC links report BER reduction and secrecy-rate outcomes while also predicting environmental state through mean absolute error of 0.008 PSU \cite{O_ISAC_127}. SMART subsea cable monitoring combines 20 GBaud DP-QAM16 transmission and Q-factor gains with in-line temperature sensing resolution of $0.0625\,^{\circ}\mathrm{C}$ \cite{O_ISAC_220}.
+
+\textbf{Math anchor.}
+\[
+\max_u\ \alpha R_{\mathrm{comm}}(u;s)-(1-\alpha)J_{\mathrm{sense}}(u;s)
+\]
+\[
+\text{s.t.}\ \mathrm{BER}(u;s)\le \epsilon_{\mathrm{comm}},\quad \mathrm{MAE}(u;s)\le \epsilon_{\mathrm{sense}}.
+\]
+
+\textbf{Key takeaways and application priorities.} The underwater/harsh-environment vertical is dominated by environmental stress and secure operation rather than by headline rate alone. The sensing side is often environmental-state prediction or thermal monitoring, while the communication side remains BER- and secrecy-oriented.
+
+\subsection{VII-E. Space and Satellite Networks}
+
+\textbf{Context.} Space and satellite O-ISAC is deployed in satellite-network settings rather than terrestrial access domains \cite{O_ISAC_089,O_ISAC_137,O_ISAC_187,O_ISAC_195}. In this scope, communication-plane operation is centered on optical inter-satellite connectivity and constellation relay behavior, while sensing-plane operation is integrated on the same payload chain to support remote observation and environment-aware functions.
+
+\textbf{Scenarios.} A spaceborne optical ISL backbone for constellation networking emphasizes throughput-oriented inter-satellite transport and relay operation over laser ISLs \cite{O_ISAC_089}. A LEO photonic O-ISAC payload under dynamic Doppler conditions reports range-resolution better than 0.146 m together with 29.99 Mbps and BER below the 7\% pre-FEC threshold at 500 kHz Doppler \cite{O_ISAC_187}. Ground-to-satellite SLR integration layers ranging and data transfer on the same pulse framework, and a multi-beam satellite payload combines remote-sensing descriptors with 2.4 Gbps communication and BER/EVM reporting \cite{O_ISAC_137,O_ISAC_195}.
+
+\textbf{Math anchor.}
+\[
+\max_{u\in\mathcal{U}(s)}\;\alpha R_{\mathrm{comm}}(u;s)-(1-\alpha)J_{\mathrm{sense}}(u;s)
+\]
+\[
+\text{s.t. } \mathrm{BER}(u;s)\le\epsilon_{\mathrm{comm}},\quad \rho_{\mathrm{range}}(u;s)\le\epsilon_{\mathrm{sense}},\quad s=(s_{\mathrm{LEO}},s_{\mathrm{mb}}).
+\]
+
+\textbf{Key takeaways and application priorities.} Space-satellite O-ISAC spans ISL backbone networking, LEO Doppler-robust payloads, SLR integration, and multi-beam Earth-observation payloads. Communication-plane reporting and sensing-plane reporting are both explicit, but they are carried by different metric families and must remain separated in synthesis. All four scenarios remain Conventional because no source explicitly establishes OPA- or ORIS-dominant deployment control.
+
+\subsection{VII-F. Cross-Domain Application Synthesis}
+
+\textbf{Context.} Section VII-F is treated as a cross-domain applications layer for O-ISAC rather than a single vertical slice. Under the frozen manuscript policy, Section VII uses strict evidence counts over the canonical 220-paper included corpus as its primary coverage view, while structured `study_flag_count` values are retained only in VII-G as a secondary consistency lens. On that primary view, the evidence base covers 220 included papers and 48 micro-domains, with strongest macro coverage in smart infrastructure, automotive transportation, and indoor environments. The subsection keeps comm-plane and sensing-plane evidence separated while comparing transferable design patterns across domains \cite{O_ISAC_074,O_ISAC_164,O_ISAC_187}.
+
+\textbf{Scenarios.} Endogenous telecom cabled-fiber monitoring and carriage co-design uses a 10.4 km span with dual-polarization chirp training and coherent payload-plus-sensing coexistence, reporting 1 m spatial resolution and 50 GBaud 16-QAM transmission \cite{O_ISAC_074}. A photonic Doppler-robust payload link in LEO uses chirp-multiplexed operation to report range behavior better than 0.146 m alongside 29.99 Mbps and BER below the 7\% pre-FEC threshold at 500 kHz Doppler \cite{O_ISAC_187}. A vehicular OC-ISAC camera link integrates cooperative road awareness with normalized sensing and communication gains \cite{O_ISAC_164}, and an indoor localization-plus-access deployment with distributed optical access points reports room-geometry-driven ranging/positioning together with BER behavior \cite{O_ISAC_011,O_ISAC_108}.
+
+\textbf{Math anchor.}
+\[
+\max_{x,z,g,y}\; \sum_{d \in D} W_d z_d + \sum_{a \in A} V_a g_a - \lambda \sum_{d<q} L_{d,q}(1-y_{d,q})
+\]
+\[
+\text{s.t. } z_d \le \sum_{i=1}^{N} M_{i,d}x_i,\quad g_a \le \sum_{i=1}^{N} U_{i,a}x_i,\quad \sum_{i=1}^{N}x_i \le B
+\]
+\[
+y_{d,q}\le z_d,\quad y_{d,q}\le z_q,\quad x_i \in \{0,1\},\quad z_d,g_a,y_{d,q}\in\{0,1\}.
+\]
+
+Here, $x$ is the scenario or paper-selection vector, coverage terms are parameterized by macro- and micro-domain evidence counts, and the transfer penalty is parameterized by shared-medium cross-domain structure.
+
+\textbf{Key takeaways and application priorities.} Cross-domain coverage statistics justify the scenario set on the strict primary view, and transfer-map evidence shows that several macros share medium structure, especially hybrid and VLC-oriented entries. Across all four scenarios, sensing-plane and comm-plane reporting remain explicitly separated, and the evidence-bound synthesis remains Conventional at scenario level unless explicit OPA or ORIS dominance is directly reported.
+
+Therefore, VII-G reconciles findings through dual-view consistency accounting by building on the coverage-and-transfer synthesis.
+
+\subsection{VII-G. Dual-View Consistency Layer}
+
+\begin{table}[htbp]
+\caption{Dual-View Discrepancy Summary}
+\label{tab:section7_dualview}
+\centering
+\begin{tabular}{|p{3.1cm}|c|c|c|c|c|p{2.2cm}|p{3.0cm}|}
+\hline
+macro\_domain & flag\_count & raw\_count & strict\_count & raw\_only\_delta & strict\_only\_delta & example\_key & row refs \\
+\hline
+automotive\_transportation & 76 & 212 & 104 & 136 & 28 & O\_ISAC\_010 & comparison row \#4; examples row \#9 \\
+indoor\_environments & 65 & 175 & 81 & 110 & 16 & O\_ISAC\_013 & comparison row \#3; examples row \#7 \\
+smart\_infrastructure & 103 & 220 & 203 & 117 & 100 & O\_ISAC\_071 & comparison row \#2; examples row \#4 \\
+underwater\_harsh & 16 & 122 & 23 & 106 & 7 & O\_ISAC\_021 & comparison row \#5; examples row \#12 \\
+space\_satellite & 17 & 134 & 34 & 117 & 17 & O\_ISAC\_070 & comparison row \#6; examples row \#16 \\
+\hline
+\end{tabular}
+\end{table}
+
+\textbf{Context.} VII-G is treated as a dual-view consistency layer rather than a vertical application survey. The subsection compares study-level structured application tags with extracted evidence-row counts under raw and strict gates. This framing is used to assess where structured annotation and evidence extraction align or diverge across all five macro domains. Numerically, the contrast space spans large raw-only surpluses together with domain-dependent strict-view retention. The intent is methodological: expose view-dependent coverage patterns before interpreting domain conclusions. Accordingly, raw and study-flag discrepancies are treated here as audit diagnostics only; headline prevalence claims elsewhere in Section VII follow the strict primary view.
+
+\textbf{Cases.} Automotive shows the largest raw-only expansion, with a raw surplus of 136 and a strict surplus of 28 relative to structured tags. Indoor contracts from raw-only 110 to strict-only 16. Smart infrastructure still retains a large strict-view uplift of 100 over tags. Underwater contracts from raw-only 106 to strict-only 7, while space retains a strict-view uplift of 17. Across all five domains, strict retention relative to raw evidence differs materially, reinforcing that one gate setting does not yield uniform coverage behavior across macro domains.
+
+\textbf{Key takeaways and application priorities.} Raw-versus-strict gating materially changes observed coverage in every audited domain. Strict-gated extraction can still exceed structured tags by a large margin, especially in smart infrastructure and automotive, while indoor and underwater remain modest after contraction. Each domain case is evidence-anchored at two levels: numeric discrepancy through comparison rows and representativeness through example rows. Domain-dependent annotation and extraction bias remains a risk because identical gates yield very different strict deltas across domains. Unresolved scope-mismatch and weak-evidence rows are therefore quarantined from headline prevalence claims and retained only in this audit-oriented consistency layer.
+
+Therefore, Section VIII reads these cross-domain patterns as challenge signals and roadmap inputs rather than as deployment-maturity rankings.
