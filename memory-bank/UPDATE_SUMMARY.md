@@ -1,5 +1,44 @@
 # Memory-Bank Update Summary
 
+### Kayit: 2026-04-04 (Current bundle LaTeX cleanup + IEEEtran transition sync)
+- `manuscript/current_bundle/section1.tex` through `section8.tex` yeni bir IEEE-facing cleanup pass'inden gecti.
+- En belirgin yapisal degisim tablo tarafinda oldu:
+  - buyuk tablolar `\resizebox` merkezli sikistirma mantigindan uzaklastirildi
+  - `tabularx` + `booktabs` + kontrollu `\tabcolsep` / `\arraystretch` ayarlariyla daha editlenebilir ve IEEEtran column-constraint aware hale getirildi
+- `manuscript/current_bundle/` artik yalnizca bir okuma bundle'i degil; yerel derleme omurgasi da var:
+  - `main.tex`
+  - `references.bib`
+  - `included_studies_appendix.tex`
+  - `generate_included_studies_appendix.py`
+- `manuscript/finalManuscript/` altinda yeni IEEEtran-oriented calisma alani olustu:
+  - `IEEEtran.cls`
+  - `New_IEEEtran_how-to.tex`
+  - `New_IEEEtran_how-to.pdf`
+  - `bare_jrnl_new_sample4.tex`
+  - local `references.bib`
+  - figure copies
+- IEEEtran reference setinden cikarilan operasyonel kurallar memory-bank seviyesinde sabitlendi:
+  - single-column first, wide floats only when readability forces `figure*` / `table*`
+  - figures: `\caption` after `\includegraphics`, then `\label`
+  - tables: caption on top, `\label` after `\caption`
+  - `IEEEtran.cls` table floats default = `\footnotesize`
+- `bare_jrnl_new_sample4.tex` icin kritik not:
+  - survey body IEEEtran file icine merge edilmis durumda
+  - ancak conclusion sonrasinda template/demo kuyrugu halen mevcut
+  - submission-ready freeze oncesi bu template tail temizlenmeli
+- Onceki top-level manuscript pair artik superseded gorunuyor:
+  - `manuscript/comst_template.tex`
+  - `manuscript/references.bib`
+  aktif replacement'lar `current_bundle/` ve `finalManuscript/` icinde tutuluyor.
+- Repo hygiene icin yeni ignore politikalari eklendi:
+  - bundle build outputs
+  - IEEEtran local aux outputs
+  - accidental `* (1).md` duplicate copies
+- Bu update sonrasi immediate operational step:
+  - memory-bank sync kapat
+  - curated manuscript/source set'i commit et
+  - `main` -> `origin/main` push yap
+
 ### Kayit: 2026-03-18 (Section II role clarification / support contract lock)
 - Section II repo-ici olarak yeniden netlestirildi:
   - "technical fundamentals / reading contract" bolumu
@@ -691,4 +730,3 @@
 
 ### Kayit: 2026-02-09
 - Section IV-VI evidence durumu + Section 7 plan + iyilestirme notlari + hatirlatma listesi
-

@@ -317,17 +317,19 @@ Section VIII-F acts as a capstone synthesis rather than a new Axis-2 domain: it 
 \caption{Dependency Coverage Summary across A-E domains (observational linkage counts).}
 \label{tab:viii_f_1}
 \centering
-\begin{tabular}{|l|c|c|c|c|}
-\hline
-domain & linked\_section5 & linked\_section6 & linked\_section7 & status \\
-\hline
-standardization\_interoperability & 55 & 55 & 55 & covered \\
-channel\_modeling\_evaluation & 54 & 54 & 54 & covered \\
-hardware\_scalability\_efficiency & 25 & 25 & 25 & covered \\
-security\_privacy\_reliability & 18 & 18 & 18 & covered \\
-deployment\_convergence\_roadmap & 0 & 0 & 0 & isolated \\
-\hline
-\end{tabular}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{3.6cm} C{1.7cm} C{1.7cm} C{1.7cm} Y}
+\toprule
+Domain & Section V links & Section VI links & Section VII links & Status \\
+\midrule
+Standardization / interoperability & 55 & 55 & 55 & Covered \\
+Channel modeling / evaluation & 54 & 54 & 54 & Covered \\
+Hardware scalability / efficiency & 25 & 25 & 25 & Covered \\
+Security / privacy / reliability & 18 & 18 & 18 & Covered \\
+Deployment convergence / roadmap & 0 & 0 & 0 & Isolated \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 Table VIII-F-2 converts these observations into an organizational shortlist. The cite-key-supported agenda items remain explicit: F-AG01 aligns interoperability and evaluation baselines under the A/C hotspot \cite{O_ISAC_133}, F-AG02 keeps A/B/C resource contention in scope \cite{O_ISAC_049}, F-AG03 retains conservative wording for a hybrid security-evaluation thread that may require a unified analytical framework \cite{O_ISAC_156}, and F-AG04 retains conservative wording for prototype-to-scale coordination under calibration overhead \cite{O_ISAC_107}. These rows remain tied to their source papers and are not generalized beyond the cited evidence.
@@ -336,25 +338,25 @@ The remaining rows preserve coverage-derived agenda slots rather than new litera
 
 Within this capstone layer, any optical RIS, ORIS, or optical phased array implication remains a forward-looking architectural hook for future integration under RQ3, not a sixth challenge domain and not a direct claim of deployment readiness.
 
-\begin{table}[htbp]
+\begin{table}[p]
 \caption{Prioritized Research Agenda (dependency-aware, evidence-linked, non-causal synthesis).}
 \label{tab:viii_f_2}
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|p{3.4cm}|p{1.6cm}|p{3.6cm}|p{3.8cm}|c|c|}
-\hline
-agenda\_id & title & linked\_domains & linkage\_rationale & representative\_support & priority\_tier & wording\_mode \\
-\hline
-F-AG01 & Align interoperability rules with evaluation baselines & A,C & A/C hotspot across Sections V-VII & O\_ISAC\_133; dense interoperability-evaluation linkage & P1 & normal \\
-F-AG02 & Reduce multi-slot resource contention in optical ISAC & A,B,C & shared A/B/C resource pressure across Sections V-VII & O\_ISAC\_049; joint sensing-communication resource coupling & P1 & normal \\
-F-AG03 & Hybrid stacks may require a unified security-evaluation framework & A,C,D & A/C/D cross-layer security linkage & O\_ISAC\_156; hybrid security-evaluation coupling & P1 & conservative \\
-F-AG04 & Prototype calibration may require hardware-scaling coordination & A,B,D & A/B/D prototype-to-scale calibration pressure & O\_ISAC\_107; calibration overhead in scaling-oriented settings & P2 & conservative \\
-F-AG05 & Sustain lower-coverage security and reliability threads & D & persistent but lower-density D-domain continuity signal & targeted D-domain continuity signal & P2 & normal \\
-F-AG06 & Strengthen deployment-convergence evidence through governance-aware integration studies & A,C,E & underlinked E-domain convergence pathway & deployment-convergence underlinkage in the current linkage summary & P2 & normal \\
-F-AG07 & Maintain balanced cross-domain research coverage & A,B,C,D,E & cross-domain balance under finite research bandwidth & aggregate cross-domain coverage balance & P3 & normal \\
-\hline
-\end{tabular}%
-}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{1.1cm} Y C{1.3cm} Y Y C{1.0cm} C{1.45cm}}
+\toprule
+ID & Title & Linked domains & Linkage rationale & Representative support & Tier & Mode \\
+\midrule
+F-AG01 & Align interoperability rules with evaluation baselines & A, C & A/C hotspot across Sections V--VII & \texttt{O\_ISAC\_133}; dense interoperability-evaluation linkage & P1 & Normal \\
+F-AG02 & Reduce multi-slot resource contention in optical ISAC & A, B, C & Shared A/B/C resource pressure across Sections V--VII & \texttt{O\_ISAC\_049}; joint sensing-communication resource coupling & P1 & Normal \\
+F-AG03 & Hybrid stacks may require a unified security-evaluation framework & A, C, D & A/C/D cross-layer security linkage & \texttt{O\_ISAC\_156}; hybrid security-evaluation coupling & P1 & Cons. \\
+F-AG04 & Prototype calibration may require hardware-scaling coordination & A, B, D & A/B/D prototype-to-scale calibration pressure & \texttt{O\_ISAC\_107}; calibration overhead in scaling-oriented settings & P2 & Cons. \\
+F-AG05 & Sustain lower-coverage security and reliability threads & D & Persistent but lower-density D-domain continuity signal & Targeted D-domain continuity signal & P2 & Normal \\
+F-AG06 & Strengthen deployment-convergence evidence through governance-aware integration studies & A, C, E & Underlinked E-domain convergence pathway & Deployment-convergence underlinkage in the current linkage summary & P2 & Normal \\
+F-AG07 & Maintain balanced cross-domain research coverage & A, B, C, D, E & Cross-domain balance under finite research bandwidth & Aggregate cross-domain coverage balance & P3 & Normal \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \paragraph{VIII-F Math Anchor (Review-Level Organizational Prioritization Scaffold)}
@@ -382,17 +384,19 @@ The alignment summary shows a fully matched pattern for the A-D domains: \texttt
 \caption{Cross-section alignment summary between strict Section VIII evidence and upstream linkage signals.}
 \label{tab:viii_g_1}
 \centering
-\begin{tabular}{|l|c|c|c|l|}
-\hline
-domain & strict\_evidence\_count & linked\_any\_upstream\_count & unmatched\_strict\_count & interpretation \\
-\hline
-standardization\_interoperability & 55 & 55 & 0 & perfectly aligned \\
-hardware\_scalability\_efficiency & 25 & 25 & 0 & perfectly aligned \\
-channel\_modeling\_evaluation & 54 & 54 & 0 & perfectly aligned \\
-security\_privacy\_reliability & 18 & 18 & 0 & perfectly aligned \\
-deployment\_convergence\_roadmap & 0 & 0 & 0 & zero-row; no upstream linkage currently evidenced \\
-\hline
-\end{tabular}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{3.6cm} C{1.6cm} C{1.8cm} C{1.8cm} Y}
+\toprule
+Domain & Strict evidence & Upstream links & Unmatched strict & Interpretation \\
+\midrule
+Standardization / interoperability & 55 & 55 & 0 & Perfectly aligned \\
+Hardware scalability / efficiency & 25 & 25 & 0 & Perfectly aligned \\
+Channel modeling / evaluation & 54 & 54 & 0 & Perfectly aligned \\
+Security / privacy / reliability & 18 & 18 & 0 & Perfectly aligned \\
+Deployment convergence / roadmap & 0 & 0 & 0 & Zero row; no upstream linkage is evidenced in the current summary \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 Methodological caution remains necessary when the alignment layer is interpreted beyond aggregate continuity. In the present locked summary, no populated paper-level discrepancy examples are available for any domain. Accordingly, VIII-G can verify whether strict Section VIII evidence remains connected to upstream signals at the aggregate level, but it cannot support paper-level discrepancy narratives in the current version of the alignment layer.
@@ -403,15 +407,17 @@ For final roadmap integration, VIII-G therefore strengthens traceability, not ca
 \caption{Availability of paper-level discrepancy examples in the present alignment summary.}
 \label{tab:viii_g_2}
 \centering
-\begin{tabular}{|l|c|l|}
-\hline
-domain & populated\_discrepancy\_example & interpretation\_limit \\
-\hline
-standardization\_interoperability & no & aggregate continuity only \\
-hardware\_scalability\_efficiency & no & aggregate continuity only \\
-channel\_modeling\_evaluation & no & aggregate continuity only \\
-security\_privacy\_reliability & no & aggregate continuity only \\
-deployment\_convergence\_roadmap & no & zero-row remains aggregate-only \\
-\hline
-\end{tabular}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{3.6cm} C{2.0cm} Y}
+\toprule
+Domain & Example present & Interpretation limit \\
+\midrule
+Standardization / interoperability & No & Aggregate continuity only \\
+Hardware scalability / efficiency & No & Aggregate continuity only \\
+Channel modeling / evaluation & No & Aggregate continuity only \\
+Security / privacy / reliability & No & Aggregate continuity only \\
+Deployment convergence / roadmap & No & Zero row remains aggregate-only \\
+\bottomrule
+\end{tabularx}
 \end{table}

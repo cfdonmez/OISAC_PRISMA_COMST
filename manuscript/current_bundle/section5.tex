@@ -1,3 +1,5 @@
+\FloatBarrier
+
 \section{COMMUNICATION-SENSING TRADEOFF SYNTHESIS}
 
 Building on the Section II metric-governance contract and the Section IV taxonomy state, Section V operationalizes the standardized reporting-contract and trade-off-synthesis promise introduced in Section I by converting broad study-level evidence into governed, scenario-level quantitative interpretation. It should therefore be read as the review's admissibility-controlled synthesis layer: Section IV determines which records are structurally comparable, and Section V asks what remains quantitatively interpretable once plane and metric-role consistency are enforced.
@@ -9,15 +11,17 @@ Section V-A works on governed scenario records by default rather than corpus-lev
 \caption{Governed Communication-Metric Coverage and Plane-Aware Availability}
 \label{tab:comm_metrics}
 \centering
-\begin{tabular}{|p{3cm}|p{3.6cm}|p{3.8cm}|p{3cm}|p{4.1cm}|}
-\hline
-Communication metric & Raw scenario coverage & Governed usable coverage & Governed range / median & Interpretation note \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.5cm}Y Y L{2.2cm}Y@{}}
+\toprule
+\thead{Communication metric} & \thead{Raw scenario coverage} & \thead{Governed usable coverage} & \thead{Governed range /\\median} & \thead{Interpretation note} \\
+\midrule
 Rate ($R$) & 197/225 records; 194/220 papers & 33 rate-bearing records within 53 governed scenarios & 25 Mbps to 448 Gbps; median 10 Gbps & Supports comparative communication synthesis only with explicit support-size caveats \\
 Electrical-plane SNR & 190/225 records; 186/220 papers & 20/53 governed records & 7--22 dB; median 10 dB & The only governed quality indicator that survives filtering across more than one medium slice \\
 Optical-plane OSNR & 169/225 records; 166/220 papers & 0/53 governed records & -- & All OSNR-bearing records are blocked by plane-mixing in this release \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 Before governance filtering, communication reporting appears broad. The trade-off point set contains 225 scenario records from 220 papers, with rate reported in 197/225 records (87.6\%), electrical-plane SNR in 190/225 (84.4\%), and optical-plane OSNR in 169/225 (75.1\%). At paper level, at least one rate value appears in 194/220 papers, at least one SNR value in 186/220 papers, and at least one OSNR value in 166/220 papers. However, raw prevalence should not be confused with synthesis readiness. All 169 OSNR-bearing records co-report SNR and are flagged as plane-mixed, which means that unfiltered counts overstate the amount of quality evidence that can support defensible cross-study comparison.
@@ -43,16 +47,18 @@ Section V-B keeps the same governed scenario scope but reorganizes sensing evide
 \caption{Governed Sensing-Metric Coverage by Functional Role}
 \label{tab:sensing_metrics}
 \centering
-\begin{tabular}{|p{3.2cm}|p{3.7cm}|p{3.8cm}|p{3cm}|p{4.1cm}|}
-\hline
-Sensing role & Raw scenario coverage & Governed usable coverage & Governed range / median & Interpretation note \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.6cm}Y Y L{2.2cm}Y@{}}
+\toprule
+\thead{Sensing role} & \thead{Raw scenario coverage} & \thead{Governed usable coverage} & \thead{Governed range /\\median} & \thead{Interpretation note} \\
+\midrule
 Resolution ($\Delta r_{\min}$-eligible) & 173/225 eligible records; 170/220 papers & 20/173 eligible records & 0.0025 m to 15 m; median 0.0397 m & Physical resolution is retained only on the role-consistent governed subset \\
 Accuracy ($\sigma_r$) & 186/225 records; 183/220 papers & 16/186 records & 0.001 m to 1000 m; median 0.0575 m & Estimator-level accuracy remains distinct from resolution and is not pooled with $\Delta r_{\min}$ \\
 CRB & 148/225 records; 145/220 papers & 0/148 records & -- & Bound-level reporting remains contextual only after governance filtering \\
 Fiber spatial granularity ($\Delta z$) & 161/225 records; 158/220 papers & 0/161 records & -- & $\Delta z$ is retained as fiber-specific context and is never substituted for $\Delta r_{\min}$ \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 Before governance filtering, sensing coverage appears broad at both scenario and paper levels. Across 225 scenario points, $\Delta r_{\min}$ is reported in 195 records (86.7\%), with 173 records (76.9\%) marked $\Delta r_{\min}$-eligible; $\sigma_r$ appears in 186 records (82.7\%); CRB appears in 148 records (65.8\%); and $\Delta z$ appears in 161 records (71.6\%). Paper-level coverage remains similarly high: 192/220 papers report $\Delta r_{\min}$, 170/220 include at least one $\Delta r_{\min}$-eligible scenario, 183/220 report $\sigma_r$, 145/220 report CRB, and 158/220 report $\Delta z$, although only 27/220 contain $\Delta z$-eligible contexts under the contract. Consequently, extraction-level richness is substantial, but direct comparability is still contingent on governance compliance.
@@ -89,7 +95,7 @@ The full trade-off table contains 225 scenario points from 220 papers, but Fig.~
 
 Trade-off dimensions are present in labels, but not always in governed metric content. In the raw set, 212 points carry rate-versus-RMSE labeling and 35 carry rate-versus-range-resolution labeling; in the usable subset, these counts become 47 and 5, respectively. However, only 14 of the 47 usable rate-versus-RMSE-labeled points actually report $\sigma_r$, and none of the 5 usable rate-versus-range-resolution-labeled points is $\Delta r_{\min}$-eligible. Therefore, dimensional interpretation in V-C is grounded in governed metric availability rather than label strings alone. Consequently, labels are treated as narrative cues, while eligibility-filtered fields define the quantitative core.
 
-Coupling-mode coverage exhibits a similar asymmetry. Across all 225 points, resource_division appears in 180 points and joint_waveform in 41 points, with 4 points carrying missing or non-standard coupling labels. In the 53 governed points, resource_division remains dominant (38), joint_waveform remains secondary (13), and 2 points remain unlabeled. Therefore, coupling comparisons are informative but incomplete, and Table VII preserves an explicit unlabeled category for auditability rather than forcing every point into a binary allocation.
+Coupling-mode coverage exhibits a similar asymmetry. Across all 225 points, \texttt{resource\_division} appears in 180 points and \texttt{joint\_waveform} in 41 points, with 4 points carrying missing or non-standard coupling labels. In the 53 governed points, \texttt{resource\_division} remains dominant (38), \texttt{joint\_waveform} remains secondary (13), and 2 points remain unlabeled. Therefore, coupling comparisons are informative but incomplete, and Table VII preserves an explicit unlabeled category for auditability rather than forcing every point into a binary allocation.
 
 The governed operating region can still be summarized numerically with clear caveats. Within the usable subset, rate is reported in 33 points, spanning 25 Mbps to 448 Gbps with a median of 10 Gbps. $\Delta r_{\min}$-eligible values appear in 20 points, spanning 0.0025--15 m (median 0.0397 m), while $\sigma_r$ appears in 16 points, spanning 0.001--1000 m (median 0.0575 m). Overlap remains limited: 20 points support rate-plus-$\Delta r_{\min}$ interpretation, 16 support rate-plus-$\sigma_r$ interpretation, and only 13 support the full triplet (rate, $\Delta r_{\min}$, $\sigma_r$). Therefore, Fig.~\ref{fig:fig_v_1} presents separate resolution-coupled and accuracy-coupled layers rather than a pooled sensing axis.
 
@@ -97,7 +103,7 @@ CRQ partitioning makes admissibility compression explicit. The point taxonomy is
 
 Within the CRQ-valid set, medium-conditioned heterogeneity remains visible but support is uneven. The 20 valid points are distributed across hybrid (14), cabled fiber (4), terahertz (1), and wireless FSO (1). CRQ spans $6.67 \times 10^8$ to $4.8 \times 10^{13}$ bps/m, with a median of $4.33 \times 10^{10}$ bps/m. Hybrid has the strongest support and a median of $8.83 \times 10^{10}$ bps/m, while cabled fiber has a lower median of $5.5 \times 10^9$ bps/m. However, terahertz and wireless FSO remain single-point anchors. Therefore, cross-medium interpretation should be coverage-weighted and explicitly non-ranking when support collapses to singleton slices.
 
-Pareto interpretation requires an additional caution layer. The Pareto file contains 2 points from 2 papers: one hybrid and one wireless FSO. Both are rate-versus-RMSE points with CRQ value $4.8 \times 10^{13}$ bps/m, and coupling modes split one-to-one between resource_division and joint_waveform. Because this frontier is minimal, Fig.~\ref{fig:fig_v_2} should be interpreted as an illustrative boundary snapshot rather than a stable envelope of the O-ISAC design space. Consequently, V-C uses Pareto points as exemplar operating points, not as a basis for modality-wide conclusions.
+Pareto interpretation requires an additional caution layer. The Pareto file contains 2 points from 2 papers: one hybrid and one wireless FSO. Both are rate-versus-RMSE points with CRQ value $4.8 \times 10^{13}$ bps/m, and coupling modes split one-to-one between \texttt{resource\_division} and \texttt{joint\_waveform}. Because this frontier is minimal, Fig.~\ref{fig:fig_v_2} should be interpreted as an illustrative boundary snapshot rather than a stable envelope of the O-ISAC design space. Consequently, V-C uses Pareto points as exemplar operating points, not as a basis for modality-wide conclusions.
 
 \begin{figure}[htbp]
     \centering
@@ -117,23 +123,23 @@ Limitations remain material for V-C. The governance audit reports 299 MAJOR viol
 \end{quote}
 
 \subsection{Comparative Analysis: Fiber vs Wireless}
-Section V-D keeps the same governed scenario scope but changes the question from ``what is available?'' to ``what can be compared responsibly?''. The comparison protocol has three steps. First, candidate points are filtered by the Section II governance contract (plane separation, metric-role separation, and alias controls). Second, medium labels are kept exactly as normalized in Section IV (cabled_fibre, wireless_*, hybrid, and residual classes). Third, comparative claims are restricted to sample-supported slices and reported with explicit coverage caveats. Therefore, Table VII is the primary comparative anchor, and this subsection is framed as evidence-weighted comparison rather than ranking.
+Section V-D keeps the same governed scenario scope but changes the question from ``what is available?'' to ``what can be compared responsibly?''. The comparison protocol has three steps. First, candidate points are filtered by the Section II governance contract (plane separation, metric-role separation, and alias controls). Second, medium labels are kept exactly as normalized in Section IV (\texttt{cabled\_fibre}, \texttt{wireless\_*}, \texttt{hybrid}, and residual classes). Third, comparative claims are restricted to sample-supported slices and reported with explicit coverage caveats. Therefore, Table VII is the primary comparative anchor, and this subsection is framed as evidence-weighted comparison rather than ranking.
 
 \begin{table}[htbp]
 \caption{Governed Fiber, Wireless, and Hybrid Slices}
 \label{tab:comparative_slices}
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|c|p{2.2cm}|p{2.3cm}|p{2.3cm}|p{3cm}|p{4.6cm}|}
-\hline
-Comparative slice & Governed points (papers) & Median rate & Median $\Delta r_{\min}$ & Median $\sigma_r$ & Median CRQ (eligible only) & Coupling composition \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{2.3cm} C{1.6cm} Y Y Y Y Y}
+\toprule
+Comparative slice & Governed points\\(papers) & Median rate & Median $\Delta r_{\min}$ & Median $\sigma_r$ & Median CRQ\\(eligible only) & Coupling composition \\
+\midrule
 Fiber (cabled fiber slice) & 15 (13) & 28.5 Gbps (\texttt{n\_rate=12}) & 5.5 m (\texttt{n=4}) & 0.1 m (\texttt{n=7}) & $5.50 \times 10^9$ bps/m (\texttt{n=4}) & \texttt{resource\_division} 13; \texttt{joint\_waveform} 2 \\
 Wireless (pooled wireless slice) & 9 (9) & 1 Gbps (\texttt{n\_rate=3}) & 0.0025 m (\texttt{n=1}) & -- & $4.80 \times 10^{13}$ bps/m (\texttt{n=1}) & \texttt{resource\_division} 5; \texttt{joint\_waveform} 4 \\
 Hybrid bridge slice & 27 (27) & 10 Gbps (\texttt{n\_rate=17}) & 0.019075 m (\texttt{n=14}) & 0.01 m (\texttt{n=8}) & $8.83 \times 10^{10}$ bps/m (\texttt{n=14}) & \texttt{resource\_division} 19; \texttt{joint\_waveform} 6; unlabeled 2 \\
-\hline
-\end{tabular}%
-}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 The contraction from raw to governed evidence is substantial and directly shapes what can be compared. The raw trade-off set contains 225 scenario points across 12 medium labels, dominated by hybrid (117) and cabled fiber (47), followed by wireless VLC (27), wireless FSO (19), generic wireless (6), and a long tail of low-support classes. Governance filtering blocks 172 points (76.4\%) and retains 53 points (23.6\%). The governed medium mix then becomes hybrid (27), cabled fiber (15), wireless FSO (5), generic wireless (2), wireless RF (1), wireless VLC (1), terahertz (1), and other (1). Consequently, V-D should be interpreted as a constrained synthesis over a reduced admissible set, not as a direct mirror of raw-corpus prevalence.
@@ -159,7 +165,7 @@ Limitations are explicit and materially relevant for comparative claims. The gov
 \subsection*{Section V closeout synthesis}
 Pareto interpretation in Section V remains bounded by three nested evidence layers: the raw trade-off cloud (225 points), the governed cloud (53 points), and the CRQ-valid subset (20 points) from which only 2 Pareto points are selected. Consequently, Fig.~\ref{fig:fig_v_2} is interpreted as a governance-conditioned frontier view rather than as a direct projection of the raw operating landscape. This compression is analytically central, not cosmetic: candidate abundance does not translate into frontier-level comparability unless plane, role, and eligibility constraints are simultaneously satisfied.
 
-The frontier is also highly selective in composition. Within the CRQ-valid subset, hybrid contributes 14 points, cabled fiber 4, terahertz 1, and wireless FSO 1; however, the Pareto set itself contains only one hybrid point and one wireless FSO point. Therefore, the absence of fiber and terahertz points from the frontier cannot be interpreted as inferiority. It only indicates that current nondominated evidence is sparse and unevenly distributed across media. The same caution applies to coupling mode: the valid set is resource-division-led (15 points versus 3 joint-waveform points, plus 2 unlabeled points), yet the frontier splits one-to-one between resource_division and joint_waveform. Accordingly, Section V supports conditional design interpretation, not stable medium-wide or coupling-wide ranking.
+The frontier is also highly selective in composition. Within the CRQ-valid subset, hybrid contributes 14 points, cabled fiber 4, terahertz 1, and wireless FSO 1; however, the Pareto set itself contains only one hybrid point and one wireless FSO point. Therefore, the absence of fiber and terahertz points from the frontier cannot be interpreted as inferiority. It only indicates that current nondominated evidence is sparse and unevenly distributed across media. The same caution applies to coupling mode: the valid set is resource-division-led (15 points versus 3 joint-waveform points, plus 2 unlabeled points), yet the frontier splits one-to-one between \texttt{resource\_division} and \texttt{joint\_waveform}. Accordingly, Section V supports conditional design interpretation, not stable medium-wide or coupling-wide ranking.
 
 Metric-role and measurement-plane constraints remain active at this closing stage. All CRQ-valid points are $\Delta r_{\min}$-eligible, but only 13/20 also report $\sigma_r$, and only 1 of the 2 Pareto points includes $\sigma_r$. Likewise, OSNR is absent from the governed, valid, and Pareto subsets, while electrical-plane SNR remains available in 20 governed points, 12 valid points, and 1 Pareto point. Therefore, frontier interpretation is stronger for rate-versus-resolution than for rate-versus-accuracy, and it cannot support optical-plane-conditioned frontier claims. Fig.~\ref{fig:fig_v_2} should therefore be captioned as sparse illustrative evidence of admissible extreme operating points under the current reporting contract.
 

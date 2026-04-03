@@ -8,10 +8,12 @@ Throughout this section, we use \textbf{ORIS (Optical Reconfigurable Intelligent
 \caption{Unified Notation for Section VI}
 \label{tab:section6_notation}
 \centering
-\begin{tabular}{|c|p{7.4cm}|p{2.8cm}|}
-\hline
-Symbol & Meaning & Used in \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}Y L{2.2cm}@{}}
+\toprule
+\thead{Symbol} & \thead{Meaning} & \thead{Used in} \\
+\midrule
 $x(t)$ & Optical transmit waveform or equivalent sampled signal & VI-C, VI-E \\
 $\ell$ & Link distance in benchmark scenario disclosure & VI-D \\
 $\bar P$ & Average optical power budget & VI-C, VI-D \\
@@ -34,8 +36,8 @@ $Q$ & Number of phase-quantization levels & VI-A, VI-E \\
 $\mathbf{w}_k$ & Beamforming vector for user $k$ & VI-C, VI-E \\
 $\mathrm{SINR}_k$ & User-$k$ communication quality metric & VI-E \\
 $\mathrm{CRB}$ & Bound-type sensing metric; not interchangeable with empirical accuracy metrics & VI-C, VI-D, VI-E, VI-F \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \begin{quote}
@@ -73,16 +75,18 @@ PIC, programmable photonics, and photonics-assisted signal-generation themes bel
 \caption{Section VI-A Comparison of Programmable Optical Enabler Families}
 \label{tab:vi_a_enablers}
 \centering
-\begin{tabular}{|p{2.5cm}|p{4.4cm}|p{4.0cm}|p{3.1cm}|}
-\hline
-Enabler family & Primary control role in O-ISAC & Strongest evidence posture in this review & Main deployment constraints \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}Y Y Y@{}}
+\toprule
+\thead{Enabler family} & \thead{Primary control role in O-ISAC} & \thead{Strongest evidence posture in this review} & \thead{Main deployment constraints} \\
+\midrule
 OPA & Transmit-side beam agility, angular selectivity, joint communication-sensing steering & Primary evidence core; Section I contribution count is 7 study-level papers, while broader structured traces are treated only as support context & Grating lobes, finite receiver FoV, insertion loss, atmospheric/channel loss sensitivity \\
 ORIS & Environment-side path shaping, blockage mitigation, alignment assistance, NLoS reconstruction & Primary evidence core; Section I contribution count is 8 study-level papers, while broader structured traces are treated only as support context & Refresh latency, attenuation, phase quantization, coherence-time mismatch, control overhead \\
 PIC / programmable photonics & Integration substrate for packaging, routing, and scalable optical control & Qualitative/supporting only; used to explain how controllable optics may be integrated, not to claim mature O-ISAC adoption & Calibration burden, packaging complexity, insertion loss, hardware-stack dependence \\
 Photonics-assisted signal generation / photonic-THz bridge & Source and distribution pathway for hybrid optical-wireless control chains & Bridge evidence only; relevant for hybrid system interpretation but not a standalone maturity claim in VI-A & Stage-aware modeling, cross-plane reporting, front-end chain complexity \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 Evidence note: OPA/ORIS prevalence wording follows the strict study-level contribution view used in Section I; broader structured traces from the wider Section VI evidence audit remain contextual and are not interpreted here as direct adoption prevalence. In whole-manuscript terms, Table VI-A.1 is the compact enabler-capability artifact that later application and challenge sections can inherit without re-inflating prevalence claims.
@@ -150,18 +154,20 @@ Here $\ell$ denotes link distance, $m_{\text{res}}$ denotes a role-consistent re
 \caption{Reporting Fields for Reproducible O-ISAC Experiments and Simulations}
 \label{tab:vi_d_reporting}
 \centering
-\begin{tabular}{|p{3.2cm}|p{4.5cm}|p{5.0cm}|}
-\hline
-Item & Minimum required fields & Why it matters \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.8cm}Y Y@{}}
+\toprule
+\thead{Item} & \thead{Minimum required fields} & \thead{Why it matters} \\
+\midrule
 Scenario vector disclosure & Full $\mathbf{s}$ values, mobility profile, channel model family & Prevents hidden scenario drift across papers \\
 KPI contract disclosure & Full $\mathbf{m}$ values with units, confidence intervals, and metric-role notes & Supports fair comparison of communication and sensing quality without role aliasing \\
 Baseline taxonomy & At least one separated baseline and one practical baseline & Prevents inflated gains from weak references \\
 Runtime and control budget & Solver runtime, $T_{\text{update}}$, hardware timing, feedback overhead & Distinguishes deployable from offline-only designs \\
 Reproducibility package & Parameter files, script versions, data provenance, random seeds & Enables external replication and audit \\
 Safety and operating envelope & Optical power settings and safety-margin reporting method & Necessary for translation to certified deployments \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 The benchmark chain in VI-D is also the structural backbone of the section as a whole, and Fig. VI-2 captures that systems-level coupling from enabler choice to deployment-ready evaluation. In whole-manuscript terms, Table VI-2 is the reporting and constraint contract that later deployment-oriented discussion in Section VII and challenge synthesis in Section VIII can inherit directly.
@@ -169,9 +175,11 @@ The benchmark chain in VI-D is also the structural backbone of the section as a 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{figures/fig_vi_2.jpg}
-    \caption{From programmable enablers to deployment-ready O-ISAC. The layered systems map shows how optical enablers, medium-specific impairments, control logic, and benchmark discipline are coupled in Section VI. The deployment/benchmark gate should be read as the hinge that determines whether enabler-level gains remain comparable beyond isolated demonstrations and can be handed off to application-facing synthesis in Section VII.}
-    \label{fig:fig_vi_2}
+\caption{From programmable enablers to deployment-ready O-ISAC. The layered systems map shows how optical enablers, medium-specific impairments, control logic, and benchmark discipline are coupled in Section VI. The deployment/benchmark gate should be read as the hinge that determines whether enabler-level gains remain comparable beyond isolated demonstrations and can be handed off to application-facing synthesis in Section VII.}
+\label{fig:fig_vi_2}
 \end{figure}
+
+\FloatBarrier
 
 \textbf{VI-D takeaway.} The strongest immediate need is a shared benchmark contract rather than more isolated case studies. Benchmark discipline is what turns promising enablers into cumulative evidence and determines which claims remain credible once the discussion moves beyond single-link exemplars. With that reporting contract in place, Section VI can shift from feasibility to scale, which is the purpose of VI-E.
 

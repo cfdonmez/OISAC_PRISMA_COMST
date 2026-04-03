@@ -6,10 +6,12 @@ Section VII translates the application evidence base into deployment-facing use 
 \caption{Application Portfolio Matrix}
 \label{tab:section7_portfolio}
 \centering
-\begin{tabular}{|p{2.1cm}|p{3.0cm}|p{3.0cm}|p{3.0cm}|p{2.2cm}|p{2.7cm}|}
-\hline
-Vertical (VII-A..VII-E) & Scenario motif (short) & Comm-plane metrics & Sensing-plane metrics & Dominant component & Representative cite keys \\
-\hline
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{1.4cm}Y Y Y L{1.8cm}L{2.0cm}@{}}
+\toprule
+\thead{Vertical} & \thead{Scenario motif} & \thead{Comm.-plane metrics} & \thead{Sensing-plane metrics} & \thead{Dominant component} & \thead{Representative cites} \\
+\midrule
 VII-A & Outdoor V2V/UAV optical corridors & V2V transmission-quality behavior, throughput-oriented resource and trajectory control & received-power-ratio behavior, RMS delay-spread trends, FSO channel-gain estimation & Conventional & \cite{O_ISAC_003,O_ISAC_005} \\
 VII-A & Cabled-fiber corridor DAS + coherent carriage & 50-60 GBaud 16-QAM, coexistence penalty & distributed vibration monitoring, 1 m spatial resolution, interference-fading suppression & Conventional & \cite{O_ISAC_038,O_ISAC_074} \\
 VII-B & Retroreflective indoor VLC/LiFi localization & BER vs reported electrical-plane SNR & distance-measurement RMSE, positioning RMSE & Conventional & \cite{O_ISAC_011} \\
@@ -20,8 +22,8 @@ VII-D & Secure underwater OWC link & BER reduction, secrecy-rate outcomes & envi
 VII-D & SMART subsea cable monitoring & 20 GBaud DP-QAM16 transmission, Q-factor gain & in-line temperature sensing resolution ($0.0625\,^{\circ}\mathrm{C}$) & Conventional & \cite{O_ISAC_220} \\
 VII-E & LEO photonic O-ISAC payload & 29.99 Mbps, BER below 7\% pre-FEC threshold at 500 kHz Doppler & range-resolution behavior better than 0.146 m & Conventional & \cite{O_ISAC_187} \\
 VII-E & Multi-beam satellite payload & BER ($8.15 \times 10^{-7}$), EVM (6.74\%), 2.4 Gbps 16-QAM link & range resolution (14.9 cm), remote-sensing and imaging descriptors & Conventional & \cite{O_ISAC_195} \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \begin{figure}[htbp]
@@ -123,7 +125,7 @@ The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors
 
 \subsection{VII-F. Cross-Domain Application Synthesis}
 
-\textbf{Context.} Section VII-F is treated as a cross-domain applications layer for O-ISAC rather than a single vertical slice. Under the frozen manuscript policy, Section VII uses strict evidence counts over the canonical 220-paper included corpus as its primary coverage view, while structured `study_flag_count` values are retained only in VII-G as a secondary consistency lens. On that primary view, the evidence base covers 220 included papers and 48 micro-domains, with strongest macro coverage in smart infrastructure, automotive transportation, and indoor environments. The subsection keeps comm-plane and sensing-plane evidence separated while comparing transferable design patterns across domains \cite{O_ISAC_074,O_ISAC_164,O_ISAC_187}.
+\textbf{Context.} Section VII-F is treated as a cross-domain applications layer for O-ISAC rather than a single vertical slice. Under the frozen manuscript policy, Section VII uses strict evidence counts over the canonical 220-paper included corpus as its primary coverage view, while structured \texttt{study\_flag\_count} values are retained only in VII-G as a secondary consistency lens. On that primary view, the evidence base covers 220 included papers and 48 micro-domains, with strongest macro coverage in smart infrastructure, automotive transportation, and indoor environments. The subsection keeps comm-plane and sensing-plane evidence separated while comparing transferable design patterns across domains \cite{O_ISAC_074,O_ISAC_164,O_ISAC_187}.
 
 \textbf{Scenarios.} Endogenous telecom cabled-fiber monitoring and carriage co-design uses a 10.4 km span with dual-polarization chirp training and coherent payload-plus-sensing coexistence, reporting 1 m spatial resolution and 50 GBaud 16-QAM transmission \cite{O_ISAC_074}. A photonic Doppler-robust payload link in LEO uses chirp-multiplexed operation to report range behavior better than 0.146 m alongside 29.99 Mbps and BER below the 7\% pre-FEC threshold at 500 kHz Doppler \cite{O_ISAC_187}. A vehicular OC-ISAC camera link integrates cooperative road awareness with normalized sensing and communication gains \cite{O_ISAC_164}, and an indoor localization-plus-access deployment with distributed optical access points reports room-geometry-driven ranging/positioning together with BER behavior \cite{O_ISAC_011,O_ISAC_108}.
 
@@ -150,17 +152,19 @@ Therefore, VII-G reconciles findings through dual-view consistency accounting by
 \caption{Dual-View Discrepancy Summary}
 \label{tab:section7_dualview}
 \centering
-\begin{tabular}{|p{3.1cm}|c|c|c|c|c|p{2.2cm}|p{3.0cm}|}
-\hline
-macro\_domain & flag\_count & raw\_count & strict\_count & raw\_only\_delta & strict\_only\_delta & example\_key & row refs \\
-\hline
-automotive\_transportation & 76 & 212 & 104 & 136 & 28 & O\_ISAC\_010 & comparison row \#4; examples row \#9 \\
-indoor\_environments & 65 & 175 & 81 & 110 & 16 & O\_ISAC\_013 & comparison row \#3; examples row \#7 \\
-smart\_infrastructure & 103 & 220 & 203 & 117 & 100 & O\_ISAC\_071 & comparison row \#2; examples row \#4 \\
-underwater\_harsh & 16 & 122 & 23 & 106 & 7 & O\_ISAC\_021 & comparison row \#5; examples row \#12 \\
-space\_satellite & 17 & 134 & 34 & 117 & 17 & O\_ISAC\_070 & comparison row \#6; examples row \#16 \\
-\hline
-\end{tabular}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{L{2.45cm} C{1.1cm} C{1.1cm} C{1.1cm} C{1.25cm} C{1.3cm} L{1.8cm} Y}
+\toprule
+Macro domain & Flags & Raw & Strict & Raw-only & Strict-only & Example key & Row references \\
+\midrule
+Automotive transportation & 76 & 212 & 104 & 136 & 28 & \texttt{O\_ISAC\_010} & Comparison row 4; examples row 9 \\
+Indoor environments & 65 & 175 & 81 & 110 & 16 & \texttt{O\_ISAC\_013} & Comparison row 3; examples row 7 \\
+Smart infrastructure & 103 & 220 & 203 & 117 & 100 & \texttt{O\_ISAC\_071} & Comparison row 2; examples row 4 \\
+Underwater / harsh deployments & 16 & 122 & 23 & 106 & 7 & \texttt{O\_ISAC\_021} & Comparison row 5; examples row 12 \\
+Space / satellite deployments & 17 & 134 & 34 & 117 & 17 & \texttt{O\_ISAC\_070} & Comparison row 6; examples row 16 \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \textbf{Context.} VII-G is treated as a dual-view consistency layer rather than a vertical application survey. The subsection compares study-level structured application tags with extracted evidence-row counts under raw and strict gates. This framing is used to assess where structured annotation and evidence extraction align or diverge across all five macro domains. Numerically, the contrast space spans large raw-only surpluses together with domain-dependent strict-view retention. The intent is methodological: expose view-dependent coverage patterns before interpreting domain conclusions. Accordingly, raw and study-flag discrepancies are treated here as audit diagnostics only; headline prevalence claims elsewhere in Section VII follow the strict primary view.

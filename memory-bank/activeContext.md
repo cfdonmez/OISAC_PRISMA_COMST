@@ -1,11 +1,47 @@
 # Active Context
 
-Son Guncelleme: 2026-03-18
+Son Guncelleme: 2026-04-04
 Guncelleyen: AI + Kullanici
 
 ---
 
 ## Su Anki Faz
+
+Repo state + IEEEtran transition snapshot (2026-04-04):
+- `manuscript/current_bundle/section1.tex` through `section8.tex` received a new IEEE-facing cleanup pass after the initial section split.
+- Dominant structural shift: major tables moved away from `\resizebox`-driven layouts toward `tabularx` + `booktabs` + tighter `\tabcolsep` / `\arraystretch` tuning so they can be reasoned about under IEEEtran column constraints.
+- The local current-bundle workspace is now a compilable source spine rather than only a reading bundle:
+  - `manuscript/current_bundle/main.tex`
+  - `manuscript/current_bundle/references.bib`
+  - `manuscript/current_bundle/included_studies_appendix.tex`
+  - `manuscript/current_bundle/generate_included_studies_appendix.py`
+- `manuscript/finalManuscript/` now exists as the active IEEEtran-oriented working area. Key files:
+  - `IEEEtran.cls`
+  - `New_IEEEtran_how-to.tex`
+  - `New_IEEEtran_how-to.pdf`
+  - `bare_jrnl_new_sample4.tex`
+  - local `references.bib`
+  - figure copies under `manuscript/finalManuscript/figures/`
+- Standards extracted from the IEEEtran reference set and now treated as local working rules:
+  1. Two-column journal layout is the default constraint; single-column floats should stay within one column, and only readability-critical wide material should use `figure*` / `table*`.
+  2. Figure pattern: `figure[!t]`, `\centering`, `\includegraphics`, `\caption`, `\label`.
+  3. Table pattern: `table[!t]`, `\begin{center}`, `\caption`, `\label`, then `tabular...`.
+  4. `\label` must come after `\caption`.
+  5. `IEEEtran.cls` sets table floats to `\footnotesize` by default; table typography should be planned with that assumption.
+- Current caution on `manuscript/finalManuscript/bare_jrnl_new_sample4.tex`:
+  - the O-ISAC manuscript body is merged into an IEEEtran file,
+  - but the tail still contains residual sample-template/demo sections after the survey conclusions,
+  - so future release cleanup must trim that template tail before submission-ready freeze.
+- Obsolete top-level manuscript sources appear functionally superseded:
+  - `manuscript/comst_template.tex`
+  - `manuscript/references.bib`
+  Their active replacements now live inside `manuscript/current_bundle/` and `manuscript/finalManuscript/`.
+- Local repo hygiene policy for this phase:
+  - build directories, aux logs, preview folders, and accidental `* (1).md` duplicate copies are local artifacts and should not drive repo history.
+- Git/ops state at this snapshot:
+  - branch = `main`
+  - remote = `origin` (`git@github.com:cfdonmez/OISAC_PRISMA_COMST.git`)
+  - immediate next action after this memory sync = commit selected manuscript/memory updates and push
 
 Section II role-clarification handoff (2026-03-18):
 - Bu oturumda repo-ici Section II amaci ve visual/table support contract'i yeniden netlestirildi.

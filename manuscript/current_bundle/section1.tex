@@ -2,7 +2,7 @@
 
 \subsection{The Convergence of Sensing and Communication: A 6G Imperative}
 
-The escalating complexity of the electromagnetic environment has intensified demands for ultra-reliable wireless connectivity, driving significant interest in Integrated Sensing and Communication (ISAC) systems \cite{O_ISAC_070:1}. This integrated approach enables ultra-efficient spectrum utilization and significantly reduces hardware costs, and more importantly, establishes a foundational framework for achieving seamless connectivity in future wireless networks \cite{O_ISAC_070:2}. ISAC has now emerged as a core enabler in 6G networks and is recognized as one of the six key usage scenarios by both the ITU-R IMT-2030 framework \cite{O_ISAC_162:1} and 3GPP \cite{O_ISAC_162:2}, spanning the coexistence, cooperation, and co-design of communication and sensing functionalities \cite{O_ISAC_070:3}.
+The escalating complexity of the electromagnetic environment has intensified demands for ultra-reliable wireless connectivity, driving significant interest in Integrated Sensing and Communication (ISAC) systems \cite{O_ISAC_070}. This integrated approach enables ultra-efficient spectrum utilization and significantly reduces hardware costs, and more importantly, establishes a foundational framework for achieving seamless connectivity in future wireless networks \cite{O_ISAC_070}. ISAC has now emerged as a core enabler in 6G networks and is recognized as one of the six key usage scenarios by both the ITU-R IMT-2030 framework \cite{O_ISAC_162} and 3GPP \cite{O_ISAC_162}, spanning the coexistence, cooperation, and co-design of communication and sensing functionalities \cite{O_ISAC_070}.
 
 The intelligence of future society necessitates an immediate requirement for ultra-high-speed communication and ultra-resolution sensing in the 6G era \cite{O_ISAC_016}. As intelligent applications---including robot navigation, augmented reality, autonomous driving, and human--machine interaction---continue to proliferate, these emerging services require the capability of highly-reliable wireless communication and high-accuracy environment sensing simultaneously \cite{O_ISAC_351}. Wireless communication frequency bands are gradually transitioning to higher frequency ranges---encompassing millimeter-wave (mmWave) and terahertz (THz)---to fulfill the ultra-high data rate requirements of this vision. \textbf{Despite significant progress in RF-based ISAC}, the conventional independent design of communication and sensing systems generally occupies disjoint spectral resources, profoundly aggravating spectrum congestion \cite{O_ISAC_351}. Moreover, using traditional all-electronic approaches to generate mmWave or THz signals will inevitably encounter challenges such as high complexity and \textbf{bandwidth limitation}, which will increase the system costs significantly \cite{O_ISAC_286}. To the best of our knowledge, conventional RF-ISAC systems face three fundamental constraints:
 
@@ -31,24 +31,25 @@ Table I previews the axis-based comparison of related review- and survey-style w
 \caption{Axis-Based Comparison of This Review with Existing Related Review- and Survey-Style Works}
 \label{tab:axis_comparison}
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
-\hline
-Ref. & Year & Tier & Modality Scope & Int. Depth & Methodology & Taxonomy & Metrics & Benchmark & Transfer & Enablers \\
-\hline
-\cite{O_ISAC_161} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\circ$ & $\bullet$ & Review & $\oslash$ & -- & -- & -- & -- \\
-\cite{O_ISAC_068} & 2023 & 2 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\bullet$ & Narrative & -- & -- & -- & -- & -- \\
-\cite{O_ISAC_327} & 2024 & 2 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\oslash$ & Survey & $\oslash$ & -- & -- & -- & -- \\
-\cite{O_ISAC_006} & 2024 & 2 & $\bullet$ / $\circ$ / $\circ$ / $\circ$ & $\oslash$ & Review & -- & $\oslash$ & -- & -- & -- \\
-\cite{O_ISAC_368} & 2023 & 2 & $\bullet$ / $\circ$ / $\circ$ / $\circ$ & $\oslash$ & Review & -- & -- & -- & -- & -- \\
-\cite{O_ISAC_021} & 2023 & 2 & $\circ$ / $\bullet$ / $\circ$ / $\circ$ & $\bullet$ & Tutorial & $\oslash$ & $\oslash$ & -- & -- & $\oslash$ \\
-\cite{O_ISAC_070} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\bullet$ & $\bullet$ & Narrative & $\oslash$ & -- & -- & -- & -- \\
-\cite{O_ISAC_163} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\circ$ & $\bullet$ & Survey & $\oslash$ & -- & -- & $\oslash$ & $\bullet$ \\
-\cite{O_ISAC_303} & 2024 & 1 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\bullet$ & Review & $\oslash$ & $\oslash$ & -- & -- & -- \\
-\textbf{This Review} & \textbf{2026} & \textbf{--} & \textbf{$\bullet$ / $\bullet$ / $\bullet$ / $\bullet$} & \textbf{$\bullet$} & \textbf{PRISMA 2020} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} \\
-\hline
-\end{tabular}%
-}
+\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{@{}C{1.15cm}C{0.75cm}C{0.65cm}Y C{0.85cm}L{1.35cm}C{0.8cm}C{0.85cm}C{0.95cm}C{0.85cm}C{0.85cm}@{}}
+\toprule
+\thead{Ref.} & \thead{Year} & \thead{Tier} & \thead{Modality\\Scope} & \thead{Int.\\Depth} & \thead{Method} & \thead{Tax.} & \thead{Metrics} & \thead{Bench.} & \thead{Transfer} & \thead{Enablers} \\
+\midrule
+\cite{O_ISAC_161} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\circ$ & $\bullet$ & Rev. & $\oslash$ & -- & -- & -- & -- \\
+\cite{O_ISAC_068} & 2023 & 2 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\bullet$ & Narr. & -- & -- & -- & -- & -- \\
+\cite{O_ISAC_327} & 2024 & 2 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\oslash$ & Surv. & $\oslash$ & -- & -- & -- & -- \\
+\cite{O_ISAC_006} & 2024 & 2 & $\bullet$ / $\circ$ / $\circ$ / $\circ$ & $\oslash$ & Rev. & -- & $\oslash$ & -- & -- & -- \\
+\cite{O_ISAC_368} & 2023 & 2 & $\bullet$ / $\circ$ / $\circ$ / $\circ$ & $\oslash$ & Rev. & -- & -- & -- & -- & -- \\
+\cite{O_ISAC_021} & 2023 & 2 & $\circ$ / $\bullet$ / $\circ$ / $\circ$ & $\bullet$ & Tut. & $\oslash$ & $\oslash$ & -- & -- & $\oslash$ \\
+\cite{O_ISAC_070} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\bullet$ & $\bullet$ & Narr. & $\oslash$ & -- & -- & -- & -- \\
+\cite{O_ISAC_163} & 2025 & 2 & $\circ$ / $\circ$ / $\circ$ / $\circ$ & $\bullet$ & Surv. & $\oslash$ & -- & -- & $\oslash$ & $\bullet$ \\
+\cite{O_ISAC_303} & 2024 & 1 & $\circ$ / $\circ$ / $\bullet$ / $\circ$ & $\bullet$ & Rev. & $\oslash$ & $\oslash$ & -- & -- & -- \\
+\textbf{This Review} & \textbf{2026} & \textbf{--} & \textbf{$\bullet$ / $\bullet$ / $\bullet$ / $\bullet$} & \textbf{$\bullet$} & \textbf{PRISMA} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} & \textbf{$\bullet$} \\
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \textit{Legend: $\bullet$ = strong/explicit (Score 1); $\oslash$ = partial/within-modality (Score 0.5); -- = absent (Score 0); $\circ$ = out-of-scope. Modality Scope uses ($\circ$/$\oslash$/$\bullet$) only. F = Fiber, FSO = Free-Space Optics, VLC = Visible Light, THz = Photo-THz. THz denotes photonic-THz / optical--THz bridging O-ISAC (not generic RF THz-ISAC hardware surveys).}
@@ -66,10 +67,13 @@ To ground our analysis in empirical data, Table II presents a head-to-head compa
 \caption{RF-ISAC vs. O-ISAC Performance Comparison \cite{O_ISAC_021}}
 \label{tab:performance_comparison}
 \centering
-\begin{tabular}{|l|p{3.5cm}|p{4.5cm}|p{4cm}|}
-\hline
-Characteristic & RF-ISAC (Sub-6 GHz / mmWave) & Wireless O-ISAC (FSO / VLC / Photo-THz) & Wired O-ISAC (Fiber Sensing) \\
-\hline
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{2.4cm}YYY@{}}
+\toprule
+\thead{Characteristic} & \thead{RF-ISAC\\(Sub-6 GHz / mmWave)} & \thead{Wireless O-ISAC\\(FSO / VLC / Photo-THz)} & \thead{Wired O-ISAC\\(Fiber Sensing)} \\
+\midrule
 \textbf{Carrier Frequency} & 2.4--100 GHz & 0.1--10 THz (Photo-THz) + 28.3--845 THz (FSO/VLC) & 193 THz (C-Band / L-Band) \\
 \textbf{Physics Model} & Diffuse Multipath (Rich) & Line-of-Sight (LoS) Dominated & Guided Mode (Low Loss, Dispersive) \\
 \textbf{Signal Type} & Complex (I/Q) & Real (IM/DD) or Complex (Coherent FSO) & Complex (Coherent Phase/Polarization) \\
@@ -77,8 +81,8 @@ Characteristic & RF-ISAC (Sub-6 GHz / mmWave) & Wireless O-ISAC (FSO / VLC / Pho
 \textbf{Sensing Task} & Radar (Range/Doppler) & Localization, Gesture, Surface Profiling & DAS (Vibration), Strain, Temperature \\
 \textbf{Peak Data Rate} & $\sim$10--20 Gbps & \textbf{$\sim$100--120 Gbps} \cite{O_ISAC_105} & \textbf{$>$ 200 Tbps} (Aggregate) \cite{O_ISAC_046} \\
 \textbf{Resolution} & cm-level & \textbf{mm-level (2.5 mm)} \cite{O_ISAC_105} & m-level (Spatial) / $n\varepsilon$ (Strain) \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \subsubsection{Three Competitive Advantages of O-ISAC}
@@ -174,7 +178,7 @@ These gaps collectively establish the rationale for this review: a PRISMA-compli
 To close the five gaps identified in Section I-D, we provide evidence-backed contributions grounded in the PRISMA corpus and extraction schema; each item includes a compact Contribution-Gap-Section mapping:
 
 \begin{enumerate}
-    \item \textbf{PRISMA evidence base and quality scoring (Gap 2):} We apply the PRISMA 2020 protocol \cite{14} to a unified corpus of 220 studies with bibliographic year metadata available for 219 records (210 in 2020-2025), and we report complete 5-dimension TQAF scores for 208 studies. \textit{Contribution-Gap-Section:} Gap 2 $\rightarrow$ Section III.
+    \item \textbf{PRISMA evidence base and quality scoring (Gap 2):} We apply the PRISMA 2020 protocol \cite{PRISMA2020} to a unified corpus of 220 studies with bibliographic year metadata available for 219 records (210 in 2020-2025), and we report complete 5-dimension TQAF scores for 208 studies. \textit{Contribution-Gap-Section:} Gap 2 $\rightarrow$ Section III.
     \item \textbf{Cross-modality taxonomy with measured coverage (Gap 1):} We construct a unified taxonomy spanning fiber, FSO, VLC/visible-light, photo-THz, and hybrid O-ISAC; the extracted medium labels include 46 fiber, 19 FSO, 26 VLC/visible-light/UV, 1 photo-THz, and 116 hybrid studies (optical-THz bridging can appear under hybrid depending on the extraction label ontology). \textit{Contribution-Gap-Section:} Gap 1 $\rightarrow$ Section IV.
     \item \textbf{Standardized reporting contract and trade-off synthesis (Gap 3):} We normalize reporting using $\Delta r_{\min}$, $\sigma_r$, and $\text{CRQ}_{\Delta}$ and quantify coverage: 217 studies report data-rate metrics, 213 report a resolution-type metric ($\Delta r_{\min}$ in ranging or $\Delta z$/spatial granularity in fiber), 208 report $\sigma_r$, and 171 report CRB/CRLB values; 213 studies report both rate and a resolution-type metric, enabling $\text{CRQ}_{\Delta}$ comparisons where $\Delta r_{\min}$ is available (N\_rate\_and\_resType = 213; N\_rate\_and\_Drmin = 160). \textit{Contribution-Gap-Section:} Gap 3 $\rightarrow$ Section V.
     \item \textbf{Enabler-centric synthesis across optical platforms (Gap 5):} We quantify enabling-technology prevalence to ground Section VI, including machine learning (53 studies), optical RIS (ORIS, 8 studies), and optical phased arrays (OPA, 7 studies), and relate these tags to the integration pathways discussed in the enabler section. \textit{Contribution-Gap-Section:} Gap 5 $\rightarrow$ Section VI.
@@ -208,10 +212,12 @@ For the reader's convenience, the mathematical notation conventions and the most
 \caption{Mathematical Notation Conventions}
 \label{tab:math_notation}
 \centering
-\begin{tabular}{|c|l|}
-\hline
-Symbol & Definition \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{@{}L{4.8cm}Y@{}}
+\toprule
+\thead{Symbol} & \thead{Definition} \\
+\midrule
 $\lambda$ & Optical wavelength (nm) \\
 $B_{\text{eff}}$ & Effective signal bandwidth (Hz) \\
 $R$ & Data rate (bit/s) \\
@@ -221,18 +227,20 @@ $\sigma_r = \sqrt{\mathbb{E}[(\hat r - r)^2]}$ & Range estimation error / RMSE (
 $\text{SNR}$ & Signal-to-noise ratio \\
 $\text{BER}$ & Bit error rate \\
 $\alpha$ & Power allocation factor (C\&S trade-off) \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \begin{table}[htbp]
 \caption{List of Frequently Used Acronyms}
 \label{tab:acronyms}
 \centering
-\begin{tabular}{|l|l|}
-\hline
-Acronym & Definition \\
-\hline
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}L{2.8cm}Y@{}}
+\toprule
+\thead{Acronym} & \thead{Definition} \\
+\midrule
 \textbf{ISAC} & Integrated Sensing and Communication \\
 \textbf{O-ISAC} & Optical Integrated Sensing and Communication \\
 \textbf{ISAC-OF} & Integrated Sensing and Communication in Optical Fiber \\
@@ -263,6 +271,6 @@ Acronym & Definition \\
 \textbf{TQAF} & Technical Quality Assessment Form \\
 \textbf{RMSE} & Root Mean Square Error \\
 \textbf{CRB} & Cram\'er-Rao Bound \\
-\hline
-\end{tabular}
+\bottomrule
+\end{tabularx}
 \end{table}

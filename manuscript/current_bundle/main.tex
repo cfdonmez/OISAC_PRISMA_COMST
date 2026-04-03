@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs,array,multirow,tabularx,longtable}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[section]{placeins}
+\usepackage{ragged2e}
+\usepackage{xcolor}
+\usepackage[backend=biber,style=ieee,sorting=none]{biblatex}
+\usepackage[hidelinks]{hyperref}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+\newcommand{\thead}[1]{\textbf{\shortstack[c]{#1}}}
+
+\addbibresource{references.bib}
+
+\title{O-ISAC Manuscript Preview}
+\author{Current Bundle Draft}
+\date{\today}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\captionsetup{
+  justification=raggedright,
+  singlelinecheck=false,
+  skip=6pt
+}
+
+\floatplacement{figure}{tbp}
+\floatplacement{table}{tbp}
+
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.82}
+\setlength{\textfloatsep}{12pt plus 2pt minus 4pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 1fil}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\clearpage
+
+\input{section1.tex}
+\input{section2.tex}
+\input{section3.tex}
+\input{section4.tex}
+\input{section5.tex}
+\input{section6.tex}
+\input{section7.tex}
+\input{section8.tex}
+\input{section9.tex}
+
+\clearpage
+\appendix
+\input{included_studies_appendix.tex}
+
+\clearpage
+\printbibliography[title={References}]
+
+\end{document}

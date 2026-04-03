@@ -153,21 +153,19 @@ Table II-1 compacts the modality-aware channel and transceiver abstractions intr
 \caption{Modality-Aware Channel and Transceiver Abstraction Summary}
 \label{tab:ii1}
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|p{2.3cm}|p{3.2cm}|p{3.3cm}|p{3.0cm}|p{3.0cm}|p{2.6cm}|}
-\hline
-Modality & Channel abstraction & Signaling / detection view & Dominant impairment family & Native sensing abstraction & Governance guard \\
-\hline
+\small
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{1.55cm}Y Y Y Y Y@{}}
+\toprule
+\thead{Modality} & \thead{Channel\\abstraction} & \thead{Signaling /\\detection view} & \thead{Dominant impairment\\family} & \thead{Native sensing\\abstraction} & \thead{Governance\\guard} \\
+\midrule
 Fiber (cabled) & Guided dispersive link; NLSE-style extension in nonlinear regimes & Typically coherent, field-aware observation & Dispersion, Kerr nonlinearity, PMD, phase noise & \(\Delta z\) for DAS/OTDR-like spatial granularity & Do not relabel \(\Delta z\) as wireless \(\Delta r_{\min}\) \\
-\hline
 FSO & Multiplicative atmosphere-plus-pointing link with path attenuation & IM/DD or coherent depending receiver chain & Turbulence, pointing error, attenuation & Delay/range estimation under two-way ranging convention & Keep optical-plane and electrical-plane reporting distinct \\
-\hline
 VLC / LiFi & Lambertian LoS/NLoS CIR with geometry-driven gain & IM/DD with nonnegative intensity waveform & Ambient light, shot/thermal noise, geometry & Positioning/ranging from CIR structure or intensity observations & Do not import coherent-field assumptions into IM/DD interpretations \\
-\hline
 Photonic-THz bridge & Split chain: optical generation/distribution + THz propagation & Bridged optical front-end plus THz wireless observation & Optical front-end impairments plus frequency-selective THz propagation & Delay/range/angle inference over a two-stage chain & Keep optical generation stage and THz propagation stage conceptually separated \\
-\hline
-\end{tabular}%
-}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \paragraph{Lesson (C):} Hardware commonality is abstraction-level (source-modulator-receiver-wavefront control), while implementations remain modality-specific.
@@ -225,31 +223,23 @@ Table II-2 summarizes the metric contract used throughout this review. It states
 \caption{Metric Contract and Comparability Guard Summary}
 \label{tab:ii2}
 \centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|p{2.2cm}|p{2.3cm}|p{2.6cm}|p{3.4cm}|p{3.7cm}|}
-\hline
-Quantity & Role & Native scope / plane & Admissible use & Forbidden substitution / warning \\
-\hline
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}L{1.8cm}L{1.8cm}Y Y Y@{}}
+\toprule
+\thead{Quantity} & \thead{Role} & \thead{Native scope /\\plane} & \thead{Admissible use} & \thead{Forbidden substitution /\\warning} \\
+\midrule
 \(\Delta r_{\min}\) & Bandwidth-limited resolution & Two-way ranging physics & Use as resolution term; combine with \(R\) for \(\mathrm{CRQ}_{\Delta}\) only when both come from the same scenario & Do not treat as \(\sigma_r\) or \(\Delta z\) \\
-\hline
 \(\sigma_r\) & Estimator-dependent accuracy & Estimator/noise-model dependent & Report as accuracy or RMSE-style sensing fidelity & Do not relabel as physics-limited resolution \\
-\hline
 CRB / FIM & Bound-type metric & Model-based lower bound context & Use to contextualize attainable estimator accuracy & Do not report as measured accuracy or as \(\Delta r_{\min}\) \\
-\hline
 \(\Delta z\) & Fiber spatial granularity & Guided sensing / DAS-OTDR contexts & Use for gauge/segment-length style fiber reporting & Do not substitute into \(\mathrm{CRQ}_{\Delta}\) or wireless ranging comparisons \\
-\hline
 \(R\) & Communication throughput / rate & Communication objective & Use directly as rate objective; pair with \(\Delta r_{\min}\) only under matched scenario records & Not a sensing metric and not a quality-plane surrogate \\
-\hline
 \(\mathrm{CRQ}_{\Delta}\) & Derived joint indicator & Same-scenario derived quantity & Compute only from explicit \(R\) and \(\Delta r_{\min}\) & Undefined if only \(\Delta z\) or ambiguous resolution fields are available \\
-\hline
 OSNR & Optical-plane quality metric & Pre-detection optical plane & Compare within explicit optical-plane reporting & Do not convert to electrical SNR without an explicit receiver/noise model \\
-\hline
 SNR / ESNR & Electrical-plane quality metric & Post-detection electrical plane & Compare only within fixed electrical-plane contexts & Do not merge with OSNR as if they were interchangeable \\
-\hline
 Ambiguous SNR & Unresolved quality label & Plane unspecified & Flag as ambiguous and exclude from plane-sensitive synthesis & Cannot justify plane separation or cross-plane conversion \\
-\hline
-\end{tabular}%
-}
+\bottomrule
+\end{tabularx}
 \end{table}
 
 \textbf{Fig. II-2} visualizes the metric-governance contract used throughout this review. Specifically, it shows the admissible chain from effective bandwidth to \(\Delta r_{\min}\), from delay/time-of-flight to range, and from matched \(R\) plus \(\Delta r_{\min}\) to \(\mathrm{CRQ}_{\Delta}\); it also keeps CRB/FIM as contextual support for estimator accuracy rather than as a substitute for \(\sigma_r\), preserves \(\Delta z\) as fiber-only spatial granularity, and enforces explicit separation between optical-plane and electrical-plane quality metrics.
