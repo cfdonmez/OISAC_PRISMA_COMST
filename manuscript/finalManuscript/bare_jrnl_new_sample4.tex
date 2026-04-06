@@ -408,15 +408,15 @@ Design rationale: We define a joint design variable set that spans waveform para
 
 
 \textbf{Generic baseband observation (complex coherent model):}
-\[
+\begin{equation}
 \mathbf{y}(t)=\mathbf{H}(t;\boldsymbol{\theta})\mathbf{s}(t)+\mathbf{w}(t),
-\]
+\end{equation}
 where \(\mathbf{y}(t)\) is the received complex baseband observation, \(\mathbf{s}(t)\) is the transmitted complex baseband waveform, \(\mathbf{H}(t;\boldsymbol{\theta})\) is a parametric operator embedding sensing parameters \(\boldsymbol{\theta}\) (e.g., delay, Doppler, angle), and \(\mathbf{w}(t)\) is receiver noise.
 
 \textbf{IM/DD observation (real, nonnegative intensity constraint):}
-\[
+\begin{equation}
 y(t)=\mathcal{R}\,\big(x(t)\ast h(t)\big)+n(t),\qquad x(t)\ge 0,
-\]
+\end{equation}
 where \(y(t)\) is the electrical observation after direct detection, \(x(t)\) is the transmitted optical intensity waveform, \(h(t)\) is the intensity channel impulse response, \(\mathcal{R}\) is photodetector responsivity, and \(n(t)\) is additive electrical noise. Here \(x(t)\) denotes the modulated optical intensity (post square-law abstraction), not the optical field amplitude; the nonnegativity constraint follows.
 
 \textbf{Measurement-plane contract.} We map each reported metric \(m\) to a measurement plane via
@@ -455,9 +455,9 @@ Paradigm-to-mechanism bridge:
 \end{itemize}
 
 We define an integration depth variable
-\[
+\begin{equation}
 d_{\text{int}}\in\{0,\;1/2,\;1\},
-\]
+\end{equation}
 where \(d_{\text{int}}=0\) corresponds to coexistence, \(d_{\text{int}}=1/2\) to partial sharing/cooperation, and \(d_{\text{int}}=1\) to full co-design. This internal axis is used later to align taxonomy and trade-off synthesis without rewriting modality-specific models.
 
 Evidence alignment: A.2 defines a review-internal synthesis scaffold for later sections; it does not claim prevalence or superiority of any paradigm in this subsection, so no paper-specific performance claim is asserted here.
@@ -506,13 +506,13 @@ Evidence alignment: This part is theory-standard modeling; no paper-specific pre
 Design rationale: FSO propagation is dominated by multiplicative effects (turbulence and misalignment/pointing) plus path attenuation.
 
 A compact IM/DD-friendly form is
-\[
+\begin{equation}
 y = h_{\text{turb}}\,h_{\text{point}}\,h_{\text{att}}\,x + n,\qquad x\ge 0,
-\]
+\end{equation}
 with
-\[
+\begin{equation}
 h_{\text{att}}=\exp(-\kappa d),
-\]
+\end{equation}
 where \(d\) is propagation distance and \(\kappa\) is the extinction coefficient. Turbulence statistics are typically modeled with log-normal or Gamma-Gamma families depending on regime assumptions.
 
 Evidence alignment: Representative studies explicitly model Beer-Lambert attenuation and pointing/turbulence effects in FSO channel setup and analysis \cite{O_ISAC_035}, \cite{O_ISAC_005}.
@@ -521,9 +521,9 @@ Evidence alignment: Representative studies explicitly model Beer-Lambert attenua
 Design rationale: VLC behavior is geometry-driven and typically represented by an intensity impulse response under Lambertian emission assumptions.
 
 A generic representation is
-\[
+\begin{equation}
 h(t)=h_{\text{LOS}}(t)+h_{\text{NLOS}}(t),
-\]
+\end{equation}
 where LoS and reflected components are separated in the CIR. Shot noise, thermal noise, and ambient-light-induced noise are included according to receiver setup.
 
 Evidence alignment: Representative VLC/OWC studies model LoS/NLoS decomposition and Lambertian emission within impulse-response channel formulations \cite{O_ISAC_039}, \cite{O_ISAC_022}.
@@ -562,9 +562,9 @@ Evidence alignment: Coherent receiver implementations explicitly use optical-hyb
 Design rationale: Spatial-control elements (especially OPA-class front ends) are treated as enablers that shape beam directionality and angular observability while remaining compatible with the source-modulator-channel-detector abstraction.
 
 A generic array response model for steering/sensing is
-\[
+\begin{equation}
 \mathbf{a}(\phi)=\left[1,\;e^{jkd\sin\phi},\;\ldots,\;e^{jkd(N-1)\sin\phi}\right]^{\top}.
-\]
+\end{equation}
 
 Evidence alignment: Representative OW-ISAC studies explicitly use OPA-based beamforming front ends and discuss their role in joint communication-sensing operation \cite{O_ISAC_061}, \cite{O_ISAC_091}.
 
@@ -620,9 +620,9 @@ Keep optical generation stage and THz propagation stage conceptually separated \
 
 
 We adopt the two-way delay model with
-\[
+\begin{equation}
 \Delta r_{\min} := \frac{v}{2B_{\text{eff}}},
-\]
+\end{equation}
 where \(v=c\) in free space and \(v\approx c/n_g\) in guided media. For ranging tasks, \(\tau=2r/v\) links delay and range. Fiber DAS/OTDR records are mapped to \(\Delta z\) (gauge/segment length), not \(\Delta r_{\min}\) (Metric Governance).
 
 Evidence alignment: Representative photonic ranging studies report bandwidth-limited resolution forms consistent with \(c/(2B)\) under the two-way convention \cite{O_ISAC_026}, \cite{O_ISAC_034}.
@@ -631,13 +631,13 @@ Evidence alignment: Representative photonic ranging studies report bandwidth-lim
 Design rationale: Accuracy is estimator- and noise-model-dependent, so it must remain distinct from bandwidth-limited resolution.
 
 Estimator-dependent accuracy is defined as
-\[
+\begin{equation}
 \sigma_r := \sqrt{\mathbb{E}[(\hat r-r)^2]},
-\]
+\end{equation}
 while a canonical delay-bound form is
-\[
+\begin{equation}
 \mathrm{var}(\hat\tau) \ge \frac{1}{8\pi^2\beta^2\,\mathrm{SNR}} \Rightarrow \mathrm{var}(\hat r) \ge \left(\frac{v}{2}\right)^2\mathrm{var}(\hat\tau).
-\]
+\end{equation}
 Here SNR is an abstract estimator-plane quantity unless a source explicitly fixes the measurement plane; this expression does not permit OSNR/electrical-SNR substitution (Metric Governance).
 
 Evidence alignment: This subsection states theory-standard definitions and bound forms; no paper-specific prevalence claim is asserted.
@@ -653,9 +653,9 @@ Evidence alignment: Representative fiber sensing works report meter-scale spatia
 Design rationale: A compact cross-architecture indicator is useful only under strict admissibility constraints.
 
 We define
-\[
+\begin{equation}
 \mathrm{CRQ}_{\Delta} := \frac{R}{\Delta r_{\min}} \quad [\mathrm{bps/m}].
-\]
+\end{equation}
 \(\mathrm{CRQ}_{\Delta}\) is computed only when both \(R\) and \(\Delta r_{\min}\) are available from the same scenario record and the measurement-plane note is explicit. If only \(\Delta z\) (or generic spatial\_resolution\_m) is available, \(\mathrm{CRQ}_{\Delta}\) remains undefined.
 Evidence alignment: This is a governance-level construct used to control later synthesis; no prevalence claim is asserted in Section II-D.
 
@@ -910,9 +910,9 @@ These requirements are motivated by representative cross-modality evidence where
 
 \subsubsection{Axis Definitions}
 To enforce deterministic synthesis, each study $p$ is mapped to
-\[
+\begin{equation}
 T(p) = (m(p), i(p), d(p), s(p)).
-\]
+\end{equation}
 Here, $m(p)$ denotes medium class, $i(p)$ denotes integration class, $d(p)$ denotes detection/observability class, and $s(p)$ denotes sensing-task class. Therefore, each axis isolates one comparability condition, and joint interpretation requires all four axes simultaneously.
 
 Axis 1 (Medium) captures propagation and deployment substrate. The dominant classes in the $N=220$ corpus are hybrid 116/220 (52.7\%), fiber 45/220 (20.5\%), VLC/LiFi 25/220 (11.4\%), and FSO 19/220 (8.6\%). These shares support a synthesis-first reading: hybrid systems are common enough to be central to transferability analysis, while fiber, VLC/LiFi, and FSO provide modality-specific anchors for controlled contrasts. However, medium share is not interpreted as superiority; it is interpreted as evidence concentration for conditioned comparison.
@@ -929,9 +929,9 @@ This axis design follows evidence-grounded cross-modality practice and remains c
 Deterministic mapping is required because many O-ISAC papers report multi-stage systems, multi-task outcomes, or partially implicit measurement assumptions. The mapping pipeline follows six fixed principles: structured descriptors first; textual fallback if missing; multi-task keeps all labels with one primary only for tabulation; hybrids remain hybrid; normalize labels before aggregation; contradictions retained and flagged. Therefore, assignment is reproducible while preserving uncertainty rather than hiding it.
 
 Measurement-plane governance follows the Section II contract:
-\[
+\begin{equation}
 \pi(m) \in \{\text{OPTICAL\_PLANE}, \text{ELECTRICAL\_PLANE}, \text{AMBIGUOUS}\}.
-\]
+\end{equation}
 No implicit OSNR-to-SNR substitution is allowed without an explicit receiver/noise model. This rule is falsifiable at extraction time because any substitution must be accompanied by a stated model, otherwise the record is tagged as governed ambiguity.
 
 Metric governance is equally strict. Resolution and accuracy are distinct roles and must remain separate in synthesis statements. In particular, $\Delta r_{\min}$ and $\sigma_r$ are not aliases and cannot be pooled as interchangeable evidence. Consequently, aggregate claims are built from role-consistent subsets only, and mixed-role reporting is retained with reduced interpretive weight.
@@ -1287,13 +1287,13 @@ Comparability guard: task-level metrics are aggregated only within compatible ob
 
 \subsubsection{Metric Reporting Implications}
 Design rationale: once detection and observability are fixed, metric comparability depends on measurement-plane governance and metric-role separation. Section II remains binding through
-\[
+\begin{equation}
 \pi(m)\in\{\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\;\text{AMBIGUOUS}\},
-\]
+\end{equation}
 and
-\[
+\begin{equation}
 \Delta r_{\min}\neq \sigma_r.
-\]
+\end{equation}
 The first constraint enforces explicit plane typing and forbids implicit OSNR-to-SNR substitution without an explicit receiver/noise model. The second constraint prevents resolution and accuracy from being treated as aliases during pooled synthesis.
 
 Receiver-side structured typing mitigates, but does not eliminate, governance risk: although structured receiver-detection coverage reaches 218/220, plane ambiguity can still arise when reported SNR-family metrics are not explicitly tagged as optical-plane or electrical-plane quantities in the narrative or tables.
@@ -1719,15 +1719,15 @@ $\mathrm{CRB}$ & Bound-type sensing metric; not interchangeable with empirical a
 \begin{quote}
 \textbf{Model VI-U (Unified Channel/Signal Model).}
 
-\[
+\begin{equation}
 y_k = \left(h_{d,k} + \mathbf{h}_{r,k}^{T}\Theta\mathbf{g}\right)x + n_k,
-\]
-\[
+\end{equation}
+\begin{equation}
 \Theta = \operatorname{diag}\!\left(\beta_n e^{j\theta_n}\right),
-\]
-\[
+\end{equation}
+\begin{equation}
 \theta_n \in \left\{0,\frac{2\pi}{Q},\ldots,\frac{2\pi(Q-1)}{Q}\right\}.
-\]
+\end{equation}
 
 Model VI-U is a compact abstraction reused across VI-A, VI-C, VI-E, and VI-F for notation consistency \cite{O_ISAC_061,O_ISAC_091,O_ISAC_098,O_ISAC_127}.
 \end{quote}
@@ -1737,12 +1737,12 @@ Model VI-U is a compact abstraction reused across VI-A, VI-C, VI-E, and VI-F for
 Programmable optical enablers matter because they convert optical propagation from a mostly fixed channel into a controllable channel. OPA studies expose transmit-side beam agility, angular selectivity, and joint waveform support, whereas ORIS studies expose environment-side path shaping, alignment assistance, and blockage mitigation through reflected or reconstructed paths \cite{O_ISAC_008,O_ISAC_061,O_ISAC_091,O_ISAC_098,O_ISAC_112}. This distinction is important: OPA and ORIS should be written as complementary control authorities rather than as interchangeable technologies.
 
 A compact steering anchor for OPA is
-\[
+\begin{equation}
 AF(\theta)=\sum_{m=0}^{M-1} a_m\exp\!\left(j\left(kdm\sin\theta+\phi_m\right)\right),
-\]
-\[
+\end{equation}
+\begin{equation}
 \phi_m^{\star}=-kdm\sin\theta_0,
-\]
+\end{equation}
 which steers the main lobe toward $\theta_0$ under accurate phase control \cite{O_ISAC_008,O_ISAC_061,O_ISAC_091}. In practice, finite receiver FoV, grating-lobe behavior, insertion loss, and channel impairments prevent ideal steering gains from translating directly into reproducible O-ISAC gains \cite{O_ISAC_061,O_ISAC_091,O_ISAC_098}.
 
 PIC, programmable photonics, and photonics-assisted signal-generation themes belong here only as enabling substrates beneath these control surfaces, not as a detached component inventory. At the current evidence level, Section VI should therefore treat these families conservatively unless they are directly anchored to measurable O-ISAC integration benefits. In this review, their main value is explanatory: they clarify packaging, integration pathway, and hardware-stack feasibility behind OPA/ORIS-style controllability, but they do not yet carry the same headline evidence weight as the primary programmable-surface and beam-steering narratives. Likewise, prevalence language must remain cautious: structured metric traces for OPA/ORIS are broader than strong study-level evidence of deliberate co-design adoption, so OPA/ORIS discussion in this review should be read as a high-signal but still limited adoption core rather than as evidence of uniform platform maturity.
@@ -1813,12 +1813,12 @@ These medium-conditioned asymmetries are better read as an enabler landscape tha
 Robustness is a first-order concern in O-ISAC because the same optical channel impairments degrade communication reliability and sensing fidelity together. Across FSO, VLC/LiFi, and hybrid optical settings, the literature repeatedly models end-to-end gain as a composition of deterministic loss, atmospheric or medium turbulence, and pointing or alignment components \cite{O_ISAC_023,O_ISAC_035,O_ISAC_061,O_ISAC_098,O_ISAC_199}. Guided-fiber cases remain important, but they require different impairment abstractions and should not be silently collapsed into the same wireless robustness template. This is the point where enabler value becomes conditional: a programmable surface or beam-steering mechanism is only useful insofar as it remains effective under the dominant impairment regime.
 
 A compact robustness anchor is
-\[
+\begin{equation}
 H=H_l H_a H_p,
-\]
-\[
+\end{equation}
+\begin{equation}
 P_{\text{out}}=\Pr\!\left(\gamma(H)<\gamma_{\text{th}}\right)\le \varepsilon.
-\]
+\end{equation}
 
 This chance-constrained view links physical impairment statistics directly to reliability targets and is consistent with quantile-robust formulations already used in optical ISAC optimization studies \cite{O_ISAC_023,O_ISAC_061,O_ISAC_091}. Here $\gamma$ must stay tied to one declared detection plane per scenario; the expression does not permit implicit OSNR-to-electrical-SNR conversion or blind pooling of coherent and direct observations. Practical mitigation then combines design-time robustness with runtime adaptation through tracking, refresh control, environment-aware reconfiguration, and fallback or diversity mechanisms \cite{O_ISAC_098,O_ISAC_112,O_ISAC_127,O_ISAC_199}.
 
@@ -1831,12 +1831,12 @@ The prose here should stay medium-aware. Turbulence and weather attenuation domi
 Joint co-design is required because waveform, beam, power, and ORIS controls share physical constraints. In IM/DD implementations, feasible signaling must satisfy nonnegativity and optical power bounds, while coherent or programmable settings add quantization, steering, and update constraints \cite{O_ISAC_009,O_ISAC_023,O_ISAC_054,O_ISAC_061,O_ISAC_091,O_ISAC_127}. Model VI-U is useful here because it keeps transmitter, ORIS, and sensing terms in one variable structure.
 
 A minimal feasible-set and objective anchor is
-\[
+\begin{equation}
 \mathcal U=\{x(t):x(t)\ge 0,\;\mathbb{E}[x(t)]\le \bar P,\;\max_t x(t)\le P_{\max}\},
-\]
-\[
+\end{equation}
+\begin{equation}
 \max_{\mathbf{w},\Theta,\,x\in\mathcal U}\;\alpha R(\mathbf{w},\Theta)-(1-\alpha)\,\mathrm{CRB}(\mathbf{w},\Theta),\quad \alpha\in[0,1].
-\]
+\end{equation}
 
 The weight $\alpha$ sets the communication-sensing operating point and can be extended with reliability and latency constraints when channel dynamics are explicit \cite{O_ISAC_023,O_ISAC_061,O_ISAC_091,O_ISAC_127}. Within this subsection, $\mathrm{CRB}$ is retained as a bound-type sensing term; it should not be read as interchangeable with empirical accuracy metrics such as $\sigma_r$ or with bandwidth-limited resolution terms. However, this subsection must preserve two maturity caveats. First, Section VI contains more structured OPA/ORIS metric traces than strong study-level evidence of deliberate full-stack co-design adoption. Second, many reported formulations remain exemplar-driven studies under controlled assumptions rather than reproducibly benchmarked integrated stacks. It is therefore safer to say that the literature exposes a structured control space for co-design than to say that metric-bearing OPA/ORIS papers already establish mature multi-objective O-ISAC practice.
 
@@ -1847,12 +1847,12 @@ The weight $\alpha$ sets the communication-sensing operating point and can be ex
 The literature now contains both experimental demonstrations and simulation-heavy studies, but cross-paper comparability remains weak because scenario definitions, baselines, and KPI contracts differ. This makes benchmarking the hinge of Section VI: the earlier subsections show that the control space is rich, but this subsection explains why that richness does not automatically translate into cumulative scientific maturity \cite{O_ISAC_023,O_ISAC_035,O_ISAC_054,O_ISAC_061,O_ISAC_091,O_ISAC_112,O_ISAC_127}.
 
 A minimal benchmark contract can be written as
-\[
+\begin{equation}
 \mathbf{s}=\{\ell,\,C_n^2,\,\sigma_{\text{jitter}},\,\lambda,\,B,\,N_{\text{ORIS}},\,M_{\text{OPA}},\,\bar P,\,P_{\max},\,T_{\text{update}}\},
-\]
-\[
+\end{equation}
+\begin{equation}
 \mathbf{m}=(R,\,\mathrm{BER},\,m_{\text{res}},\,m_{\text{acc}},\,m_{\text{bnd}},\,P_{\text{out}},\,\text{latency},\,\text{energy}).
-\]
+\end{equation}
 
 Here $\ell$ denotes link distance, $m_{\text{res}}$ denotes a role-consistent resolution or granularity metric, $m_{\text{acc}}$ denotes an empirical accuracy metric such as $\sigma_r$, and $m_{\text{bnd}}$ denotes a bound-type metric such as $\mathrm{CRB}$ or CRLB. For Section II consistency, $m_{\text{res}}$ may be instantiated by $\Delta r_{\min}$ in bandwidth-limited ranging settings or by $\Delta z$ in fiber spatial-granularity settings, but these are not interchangeable and should never be collapsed into a single pooled number without task and medium conditioning. The contract makes scenario assumptions explicit before gains are interpreted and prevents comparisons across incompatible operating conditions.
 
@@ -1910,12 +1910,12 @@ The benchmark chain in VI-D is also the structural backbone of the section as a 
 Networked O-ISAC introduces burdens that do not appear in single-link settings: multi-user interference, feedback overhead, sensing-fusion consistency, and coordination delay. The corpus already reports explicit FoV and grating-lobe interference effects in multi-user OPA settings, tracking burden growth with user count in mobile ORIS systems, and protocol-level overhead sensitivity in VLC-based networked settings \cite{O_ISAC_009,O_ISAC_061,O_ISAC_091,O_ISAC_098,O_ISAC_303}.
 
 A compact network objective anchor is
-\[
+\begin{equation}
 \max_{\{\mathbf{w}_k\},\Theta}\;\sum_{k}\omega_k\log\!\left(1+\mathrm{SINR}_k\right)-\lambda\,\mathrm{CRB}(\Theta)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t.}\quad \sum_k\|\mathbf{w}_k\|_2^2\le P,\quad \theta_n\in\mathcal Q.
-\]
+\end{equation}
 
 This formulation makes communication, sensing, and ORIS quantization constraints explicit in one multi-user program \cite{O_ISAC_061,O_ISAC_091,O_ISAC_127}. Its interpretation still requires fixed detection semantics for $\mathrm{SINR}_k$ and a role-consistent sensing objective rather than a mixed resolution-accuracy score. More importantly for the review narrative, this subsection is where Section VI begins to connect directly to Section VII: once user count, fusion policy, fairness, and control overhead become dominant, the question is no longer whether an enabler exists but whether a deployment setting can absorb its coordination cost.
 
@@ -1926,15 +1926,15 @@ This formulation makes communication, sensing, and ORIS quantization constraints
 AI-assisted adaptation and security-aware design are emerging layers in O-ISAC, especially in dynamic channels where static policies may underperform. At the study-level tag view fixed in Section I, machine learning appears in 53 studies, but only a more limited subset supports direct interpretation as reproducible adaptation or security-aware control in Section VI. The available literature therefore contains targeted reports of learning-driven adaptation for nonstationary environments together with secrecy, authentication, and resilience formulations, but jointly validated AI-plus-security optical benchmarks remain limited \cite{O_ISAC_127,O_ISAC_145,O_ISAC_156,O_ISAC_163}. In the review flow, this subsection is not meant to compete with the physical enabler evidence in VI-A; it functions as a forward-looking systems layer that explains how controllable optical platforms may later absorb adaptation, trust, and resilience requirements.
 
 A compact secrecy and robust-control anchor is
-\[
+\begin{equation}
 R_s=[R_b-R_e]^+,
-\]
-\[
+\end{equation}
+\begin{equation}
 \max_{\mathbf{u}}\;\min_{a\in\mathcal A}\;\alpha R(\mathbf{u})+\beta R_s(\mathbf{u},a)-(1-\alpha-\beta)\,\mathrm{CRB}(\mathbf{u}),
-\]
-\[
+\end{equation}
+\begin{equation}
 \alpha\ge 0,\;\beta\ge 0,\;\alpha+\beta\le 1,
-\]
+\end{equation}
 
 where $\mathbf{u}$ includes transmitter and ORIS controls inherited from Model VI-U \cite{O_ISAC_127,O_ISAC_145,O_ISAC_163}. This framing captures the central tension of this subsection: adaptation gains are only meaningful if they survive uncertainty, overhead, and adversarial pressure rather than only nominal channels. Here again, $R$, $R_s$, and $\mathrm{CRB}$ must be interpreted as role-specific quantities rather than as mutually convertible scores. In most cases, the current evidence should be read as focused demonstrations of learning or secrecy mechanisms, not yet as reproducible proof of mature end-to-end AI-secure O-ISAC stacks.
 
@@ -2067,15 +2067,15 @@ The figure should be read as a deployment-orientation map rather than a scorecar
 \textbf{Scenarios.} Outdoor mobility corridors combine vehicular and UAV-assisted optical links, with V2V distance variation, weather-dependent FSO attenuation, and throughput-oriented trajectory control. Distributed fiber corridor studies report vibration monitoring at 1 m spatial resolution together with coherent 50--60 GBaud 16-QAM carriage and coexistence penalty tracking. Metropolitan access supervision remains a deployed-fiber monitoring case in which direct event observability and downstream traffic continuity are both evaluated \cite{O_ISAC_003,O_ISAC_005,O_ISAC_038,O_ISAC_074,O_ISAC_064,O_ISAC_276}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \max_{u,\pi,T}\ \alpha R_{\mathrm{comm}}(u,\pi;s) - (1-\alpha) J_{\mathrm{sense}}(u,T;s)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t.}\ \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\quad 0 \le p_k \le P_m,\ \forall k,
-\]
-\[
+\end{equation}
+\begin{equation}
 \mathrm{BER}(u,\pi;s) \le \beta_{\mathrm{rel}}.
-\]
+\end{equation}
 
 Here, $u$ denotes waveform and link-adaptation settings and $s$ denotes deployment state such as distance, load, and atmospheric condition \cite{O_ISAC_034,O_ISAC_048}. The communication plane is captured by $R_{\mathrm{comm}}$ and BER reliability, while the sensing plane is captured by $J_{\mathrm{sense}}$ as a ranging-error surrogate \cite{O_ISAC_034,O_ISAC_048}. The per-subcarrier cap $P_m$ follows reported maximum normalized subcarrier-power allocation, and the BER bound is treated as a service reliability target with $10^{-4}$ as an illustrative reported operating point rather than a universal fixed threshold \cite{O_ISAC_034,O_ISAC_048}.
 
@@ -2088,11 +2088,11 @@ Here, $u$ denotes waveform and link-adaptation settings and $s$ denotes deployme
 \textbf{Scenarios.} Retroreflective indoor VLC/LiFi localization uses a 5 m $\times$ 5 m $\times$ 3 m room, four-LED transmitter geometry, and PD/CCR loops with delay estimation; sensing is reported through distance-measurement RMSE and positioning RMSE, while communication is reported by BER versus electrical-plane SNR \cite{O_ISAC_011}. A second motif uses a VLC-capable desk lamp with ring-shaped multi-LED emission and co-located PD reception to support gesture recognition above 90\% accuracy while maintaining uplink/downlink BER and 220 kbps throughput \cite{O_ISAC_030}. A later two-phase indoor LED O-ISAC case adds distributed O-APs, coordinate MSE, and reported sensing MSE below $10^{-4}$, while a multi-user VLC-CDMA case emphasizes BER degradation under user-count growth \cite{O_ISAC_108,O_ISAC_388}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \min_{u}\ \alpha\,\mathrm{BER}(u;s) + (1-\alpha)\,\mathrm{MSE}_{\mathrm{pos}}(u;s),
 \qquad
 s=(g_{\mathrm{room}},\rho_{\mathrm{user}}).
-\]
+\end{equation}
 
 Here, $u$ denotes indoor control variables such as resource allocation and waveform adaptation policy over the shared communication-sensing optical stack \cite{O_ISAC_108,O_ISAC_388}. Communication-plane quality is represented by BER, while sensing-plane quality is represented by position-coordinate MSE.
 
@@ -2105,12 +2105,12 @@ Here, $u$ denotes indoor control variables such as resource allocation and wavef
 \textbf{Scenarios.} An autonomous-vehicle ISAC-OW V2V system reports a LiDAR ranging estimate of 100.011 m for a 100 m reference target and BER versus electrical-plane SNR under turbulence \cite{O_ISAC_060}. An outdoor OCC-based V2X deployment tunes exposure time and tracks normalized sensing gain $G_e$ and normalized communication gain $G_c$ under mobility and illumination variation \cite{O_ISAC_164}. A V2V VLC case emphasizes target/background sensing through received-power ratio and delay-spread trends, while a vehicular-network FSO ISAC link with LFM-CPM reports ToF-oriented CRB/RMSE alongside BER and achievable rate \cite{O_ISAC_003,O_ISAC_055}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \max_{u,\pi,T}\ \alpha R_{\mathrm{comm}}(u,\pi;s)-(1-\alpha)J_{\mathrm{sense}}(u,T;s)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t.}\ \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\quad 0 \le p_k \le P_m,\ \forall k,\quad \mathrm{BER}(u,\pi;s)\le \beta_{\mathrm{rel}}.
-\]
+\end{equation}
 
 The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors, while the communication plane is represented by BER or achievable rate.
 
@@ -2123,12 +2123,12 @@ The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors
 \textbf{Scenarios.} Secure underwater OWC links report BER reduction and secrecy-rate outcomes while also predicting environmental state through mean absolute error of 0.008 PSU \cite{O_ISAC_127}. SMART subsea cable monitoring combines 20 GBaud DP-QAM16 transmission and Q-factor gains with in-line temperature sensing resolution of $0.0625\,^{\circ}\mathrm{C}$ \cite{O_ISAC_220}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \max_u\ \alpha R_{\mathrm{comm}}(u;s)-(1-\alpha)J_{\mathrm{sense}}(u;s)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t.}\ \mathrm{BER}(u;s)\le \epsilon_{\mathrm{comm}},\quad \mathrm{MAE}(u;s)\le \epsilon_{\mathrm{sense}}.
-\]
+\end{equation}
 
 \textbf{Key takeaways and application priorities.} The underwater/harsh-environment vertical is dominated by environmental stress and secure operation rather than by headline rate alone. The sensing side is often environmental-state prediction or thermal monitoring, while the communication side remains BER- and secrecy-oriented.
 
@@ -2139,12 +2139,12 @@ The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors
 \textbf{Scenarios.} A spaceborne optical ISL backbone for constellation networking emphasizes throughput-oriented inter-satellite transport and relay operation over laser ISLs \cite{O_ISAC_089}. A LEO photonic O-ISAC payload under dynamic Doppler conditions reports range-resolution better than 0.146 m together with 29.99 Mbps and BER below the 7\% pre-FEC threshold at 500 kHz Doppler \cite{O_ISAC_187}. Ground-to-satellite SLR integration layers ranging and data transfer on the same pulse framework, and a multi-beam satellite payload combines remote-sensing descriptors with 2.4 Gbps communication and BER/EVM reporting \cite{O_ISAC_137,O_ISAC_195}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \max_{u\in\mathcal{U}(s)}\;\alpha R_{\mathrm{comm}}(u;s)-(1-\alpha)J_{\mathrm{sense}}(u;s)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t. } \mathrm{BER}(u;s)\le\epsilon_{\mathrm{comm}},\quad \rho_{\mathrm{range}}(u;s)\le\epsilon_{\mathrm{sense}},\quad s=(s_{\mathrm{LEO}},s_{\mathrm{mb}}).
-\]
+\end{equation}
 
 \textbf{Key takeaways and application priorities.} Space-satellite O-ISAC spans ISL backbone networking, LEO Doppler-robust payloads, SLR integration, and multi-beam Earth-observation payloads. Communication-plane reporting and sensing-plane reporting are both explicit, but they are carried by different metric families and must remain separated in synthesis. All four scenarios remain Conventional because no source explicitly establishes OPA- or ORIS-dominant deployment control.
 
@@ -2155,15 +2155,15 @@ The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors
 \textbf{Scenarios.} Endogenous telecom cabled-fiber monitoring and carriage co-design uses a 10.4 km span with dual-polarization chirp training and coherent payload-plus-sensing coexistence, reporting 1 m spatial resolution and 50 GBaud 16-QAM transmission \cite{O_ISAC_074}. A photonic Doppler-robust payload link in LEO uses chirp-multiplexed operation to report range behavior better than 0.146 m alongside 29.99 Mbps and BER below the 7\% pre-FEC threshold at 500 kHz Doppler \cite{O_ISAC_187}. A vehicular OC-ISAC camera link integrates cooperative road awareness with normalized sensing and communication gains \cite{O_ISAC_164}, and an indoor localization-plus-access deployment with distributed optical access points reports room-geometry-driven ranging/positioning together with BER behavior \cite{O_ISAC_011,O_ISAC_108}.
 
 \textbf{Math anchor.}
-\[
+\begin{equation}
 \max_{x,z,g,y}\; \sum_{d \in D} W_d z_d + \sum_{a \in A} V_a g_a - \lambda \sum_{d<q} L_{d,q}(1-y_{d,q})
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t. } z_d \le \sum_{i=1}^{N} M_{i,d}x_i,\quad g_a \le \sum_{i=1}^{N} U_{i,a}x_i,\quad \sum_{i=1}^{N}x_i \le B
-\]
-\[
+\end{equation}
+\begin{equation}
 y_{d,q}\le z_d,\quad y_{d,q}\le z_q,\quad x_i \in \{0,1\},\quad z_d,g_a,y_{d,q}\in\{0,1\}.
-\]
+\end{equation}
 
 Here, $x$ is the scenario or paper-selection vector, coverage terms are parameterized by macro- and micro-domain evidence counts, and the transfer penalty is parameterized by shared-medium cross-domain structure.
 
@@ -2294,7 +2294,7 @@ VIII-A (Standardization and Interoperability Challenges) frames the \texttt{stan
 \paragraph{Math Anchor}
 Decision variables are profile/format selection, sensing-payload placement policy, and receiver DSP processing mode:
 
-\[
+\begin{equation}
 \begin{aligned}
 u &= (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}),\\
 \max_{u}\quad & J_{\mathrm{perf}}(u),\\
@@ -2304,7 +2304,7 @@ u &= (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}),\\
 & (u_{\mathrm{dsp}},u_{\mathrm{placement}}) \in \mathcal{U}_{\mathrm{dsp\_compatible}},\\
 & u \in \mathcal{U}_{\mathrm{PtMP\_attribution}},\quad J_{\mathrm{perf}}(u) \in \mathcal{J}_{\mathrm{QoS\_acceptable}}.
 \end{aligned}
-\]
+\end{equation}
 
 This anchor uses Option-2 because the available evidence is constraint-centric rather than weight-tuning-centric: SMART is explicitly presented as a standardized configuration, and dense operation is explicitly tied to precise placement of sensing information into communication frequency blanks \cite{O_ISAC_220}. The compatibility requirement is also textual and direct, since sensing transmission format design is linked to communication-compatible DSP behavior, so the feasible set must jointly constrain placement policy and DSP processing mode \cite{O_ISAC_220}. For access-network interoperability, PON evidence reports both standards-linked spectral-occupancy requirements and PtMP ambiguity risk under simultaneous interrogation of multiple drop fibers, which motivates an explicit attribution-integrity constraint \cite{O_ISAC_104}. Finally, the symbolic objective $J_{\mathrm{perf}}$ is retained as a communication-plus-sensing QoS proxy because spectral-efficiency degradation and sensing-failure risk are both documented in the evidence base \cite{O_ISAC_220, O_ISAC_104}.
 
@@ -2358,7 +2358,7 @@ Section VIII-B defines \texttt{hardware\_scalability\_efficiency} as a cross-cut
 \paragraph{Math Anchor}
 Selected form: Option-2 (resource-constrained performance optimization).
 
-\[
+\begin{equation}
 \begin{aligned}
 \max_{u=(u_{arch},u_{proc},u_{ctrl})} \quad & U_{perf}(u;s)=\beta_c U_{comm}(u;s_{comm})+\beta_s U_{sens}(u;s_{sens}) \\
 \text{s.t.} \quad & C_{hw}(u;s) \le C_{max}, \\
@@ -2366,7 +2366,7 @@ Selected form: Option-2 (resource-constrained performance optimization).
 & P_{hw}(u;s) \le P_{max}, \\
 & O_{ctrl}(u;s) \le O_{max}.
 \end{aligned}
-\]
+\end{equation}
 
 This anchor adopts Option-2 because direct evidence supports four distinct hardware constraints for VIII-B: computational burden, processing-latency envelope, energy constraint, and beam-control overhead \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. The decision variable tuple $u=(u_{arch},u_{proc},u_{ctrl})$ captures architecture choice, processing schedule, and control-update policy under scenario context $s=(s_{shared},s_{mob},s_{array})$, where shared transceiver use, high mobility, and large-array steering pressure are explicitly evidenced \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. Plane separation is explicit in $U_{perf}$: $U_{comm}$ denotes comm-plane utility (beamforming/communication efficiency), while $U_{sens}$ denotes sensing-plane utility (sensing/imaging capability). Constraint $C_{hw}$ bounds compute and baseband complexity, $L_{hw}$ bounds delay, $P_{hw}$ bounds hardware energy demand, and $O_{ctrl}$ bounds steering/control overhead. This keeps hardware scalability and efficiency primary, while permitting performance optimization only inside hardware-feasible regions.
 
@@ -2422,13 +2422,13 @@ Evidence indicates that channel modeling and evaluation are foundational for O-I
 \paragraph{Math Anchor}
 Selected form: Option-B (benchmark-contract constrained evaluation).
 
-\[
+\begin{equation}
 \max_{\pi}\; U_{\mathrm{eval}}(\pi)
-\]
-\[
+\end{equation}
+\begin{equation}
 \text{s.t.}\; \pi \in \Pi_{\mathrm{contract}},\quad
 \Pi_{\mathrm{contract}} = \{\kappa_{\mathrm{cond}},\,\gamma_{\mathrm{geom}},\,\mu_{\mathrm{metric}},\,\delta_{\mathrm{prov}}\}
-\]
+\end{equation}
 
 This anchor maps VIII-C to benchmark-contract constrained evaluation by forcing each result protocol to carry channel-condition tags and scenario-geometry descriptors before cross-paper comparison, which directly follows weather-conditioned channel behavior and geometry-dependent reporting contexts \cite{O_ISAC_005, O_ISAC_327}. The term $\mu_{\mathrm{metric}}$ is comm-plane specific and binds BER-capacity definitions to evaluation conditions (for example distance-conditioned reporting), while sensing-plane metrics are intentionally not instantiated because direct sensing-plane evidence is not present in the locked evidence subset \cite{O_ISAC_381}. The term $\delta_{\mathrm{prov}}$ encodes measurement-campaign and dataset/testbed provenance so that the documented need for a standard model becomes an enforceable contract item rather than a narrative recommendation \cite{O_ISAC_327}.
 
@@ -2487,14 +2487,14 @@ Selected form: Option-1 (risk-constrained service utility).
     \item Why Option-2 is weaker: explicit overhead and availability constraint semantics are not directly grounded in the selected evidence subset.
 \end{itemize}
 
-\[
+\begin{equation}
 \begin{aligned}
 \max_{u=(u_{\mathrm{auth}},u_{\mathrm{mon}},u_{\mathrm{priv}})} \quad & U_{\mathrm{service}}(u) \\
 \text{s.t.} \quad & R_{\mathrm{int}}(u) \le \varepsilon_{\mathrm{int}}, \\
 & L_{\mathrm{priv}}(u) \le \varepsilon_{\mathrm{priv}}, \\
 & A_{\mathrm{auth}}(u) \ge \tau_{\mathrm{auth}}.
 \end{aligned}
-\]
+\end{equation}
 
 Evidence indicates that service utility is exposed when network interruption events occur and when falsification risks degrade trustworthiness, so $R_{\mathrm{int}}$ is linked to interruption and integrity-monitoring risk under SDN alerting and service-adjustment workflows \cite{O_ISAC_041, O_ISAC_145}. Evidence also reports confidential-data leakage concern and a model-update exchange rule, which directly supports the privacy-leakage constraint $L_{\mathrm{priv}}$ and the $u_{\mathrm{priv}}$ policy component \cite{O_ISAC_039}. For authentication feasibility, evidence indicates that dense heterogeneous connectivity raises dynamic key-management burden while authentication and integrity remain central security processes, supporting $A_{\mathrm{auth}}$ and the $u_{\mathrm{auth}}$ policy component \cite{O_ISAC_156}. The monitoring component $u_{\mathrm{mon}}$ maps to real-time warning, alert-routing, and service-adjustment evidence \cite{O_ISAC_041}. All thresholds are kept symbolic ($\varepsilon_{\mathrm{int}}$, $\varepsilon_{\mathrm{priv}}$, $\tau_{\mathrm{auth}}$) because no bound values are fixed in the extracted source text.
 
@@ -2526,7 +2526,7 @@ If convergence is inferred from isolated implementations, transferability may we
 \paragraph{Math Anchor}
 Selected form: readiness-gated deployment utility.
 
-\[
+\begin{equation}
 \begin{aligned}
 \max_{u=(u_{\mathrm{arch}},u_{\mathrm{api}},u_{\mathrm{stack}},u_{\mathrm{model}},u_{\mathrm{audit}})} \quad & U_{\mathrm{deploy}}(u) \\
 \text{s.t.} \quad & g_{\mathrm{ready}}(u) \ge 0, \\
@@ -2534,7 +2534,7 @@ Selected form: readiness-gated deployment utility.
 & \operatorname{budget}_{\mathrm{edge}}(u) \le B_{\mathrm{edge}},\; \operatorname{budget}_{\mathrm{bw}}(u) \le B_{\mathrm{bw}}, \\
 & \operatorname{valid}_{\mathrm{model}}(u)=1,\; \operatorname{prov}_{\mathrm{audit}}(u)=1.
 \end{aligned}
-\]
+\end{equation}
 
 Here, $U_{\mathrm{deploy}}$ and $g_{\mathrm{ready}}$ map to coupling and staged deployment pressure \cite{O_ISAC_039, O_ISAC_163}, $u_{\mathrm{api}}$ with budget constraints captures context-fusion orchestration stress under edge/bandwidth limitations \cite{O_ISAC_151}, and governance constraints map to compatibility, model-validity, and provenance evidence from open-source and model-gap statements \cite{O_ISAC_200}. Symbolic $B_{\mathrm{edge}}$ and $B_{\mathrm{bw}}$ are retained because no numeric deployment budgets are fixed in the cited excerpts.
 
@@ -2687,14 +2687,14 @@ Normal \\
 
 \paragraph{VIII-F Math Anchor (Review-Level Organizational Prioritization Scaffold)}
 
-\[
+\begin{equation}
 \begin{aligned}
 \max_{x \in \{0,1\}^N}\quad & \sum_{i=1}^{N} w_i x_i \\
 \text{s.t.}\quad & \sum_{i=1}^{N} c_i x_i \le B,\\
 & \mathrm{cover}_d(x) \ge z_d,\quad d \in \{A,B,C,D,E\}_{\mathrm{selected}},\\
 & \mathrm{risk\_flag}(x) \le R_{\max}.
 \end{aligned}
-\]
+\end{equation}
 
 Here, $x_i$ marks whether agenda item $i$ is prioritized; $w_i$ is an evidence or dependency weight drawn from the VIII-F linkage summary; $c_i$ is a symbolic editorial or research bandwidth cost; $cover_d$ is a domain-coverage indicator; and $risk\_flag$ limits the concentration of FLAGGED-evidence items. This is a review-level organizational guide, not a validated scientific law and not a claim of deployment certainty.
 
@@ -3348,5 +3348,3 @@ Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the 
 \vfill
 
 \end{document}
-
-
