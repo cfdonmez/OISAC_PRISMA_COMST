@@ -42,8 +42,19 @@ Working file: `bare_jrnl_new_sample4.tex`
 
 ## Current repo intent
 
-- Commit only the manuscript, bibliography, checklist/audit material, and this memory note.
-- Leave unrelated image-file modifications and temporary LaTeX byproducts out of the commit unless explicitly requested later.
+- The intended commit scope is the manuscript, bibliography, checklist/audit material, and this memory note.
+- Unrelated image-file modifications and temporary LaTeX byproducts are intentionally outside that scope unless explicitly requested later.
+
+## Handoff status
+
+- A local commit already exists:
+  - `cd70b23` - `Refine manuscript structure and audit artifacts`
+- Push was not completed from the Codex side.
+- The branch is currently ahead of `origin/main` by one commit.
+- The working tree still contains out-of-scope items:
+  - modified figure files under `figures/`
+  - temporary `.aux` files produced by local LaTeX checks
+- If the user prefers a different commit history, they can replace, amend, or squash the local commit before pushing.
 
 ## Suggested next steps
 
