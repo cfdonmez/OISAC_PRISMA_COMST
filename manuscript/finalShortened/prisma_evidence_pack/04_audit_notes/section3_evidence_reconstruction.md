@@ -25,16 +25,19 @@ What this reconstruction proves
   - `219` legacy-only screening groups backed by the earlier screening log
 - The repository also supports a lower-bound title/abstract reconstruction of `260` unique non-duplicate screened records plus `133` duplicate-only groups from the available Dec 28 update workflow.
 - The reconstructed included set now matches the `220`-row legacy `analysis/ph1_scr/included_studies_list.csv` in size, but it is stronger as a freeze artifact because it records explicit repository reconciliation decisions.
+- External supplemental evidence now also exists for the deduplication stage:
+  - `search/dedup_external_overlap_support_20260411.csv` records `152` normalized overlap rows between the repo-preserved external IEEE 511 export and the visible Dec 28 Scopus export.
+  - `36` of those overlap rows are additional duplicate-support rows not already present in `search/dedup_log.csv`, raising the combined duplicate-support total to `188`.
 - External supplemental evidence now also exists for the title/abstract stage:
   - `C:\Users\fdonmez\Drive’ım (cfdonmez@gmail.com)\IEEE_511_OISAC_Results_Screened.csv` contains `510` screened IEEE records with a `158 INCLUDE / 352 EXCLUDE` split.
   - When normalized by DOI/title and unioned with the current in-repo title/abstract reconstruction, the combined support reaches `738` unique title/abstract records.
 
 What this reconstruction does not prove
 - It does not prove the upstream PRISMA chain `980 -> 280 -> 700 -> 222 -> 2 -> 220` at row level.
-- It only partially repairs the duplicate audit trail: `search/dedup_log.csv` now records `152` explicit duplicate decisions from the available Dec 28 update workflow, but it still does not fully back the canonical `duplicates_removed = 280`.
+- It only partially repairs the duplicate audit trail: `search/dedup_log.csv` now records `152` explicit duplicate decisions from the available Dec 28 update workflow, and `search/dedup_external_overlap_support_20260411.csv` contributes `36` additional noncanonical overlap-support rows, but the canonical `duplicates_removed = 280` still remains short by `92`.
 - The reconstructed title/abstract evidence is still incomplete relative to the claimed `records_screened = 700`, because the repo snapshot directly supports only `260` unique non-duplicate screened records.
 - The external IEEE screening artifact narrows the screened-record gap substantially, but it is not yet canonical because `17` of its `EXCLUDE` decisions still collide with items that are currently in the final included corpus.
-- `search/dedup_reconstruction_status.md` now documents that the repo snapshot currently exposes only `413` raw export rows against a claimed formal identification total of `980`, and that the current best dedup ledger reaches `152` explicit duplicate decisions with `128` resolved retained masters.
+- `search/dedup_reconstruction_status.md` now documents that the repo snapshot currently exposes only `413` raw export rows against a claimed formal identification total of `980`, that the current best in-repo dedup ledger reaches `152` explicit duplicate decisions with `128` resolved retained masters, and that the external overlap-supported stack reaches `188` duplicate-support rows in total.
 - `screening/title_abstract_screening_reconstruction_status.md` now documents that `analysis/nb/01_search_and_dedup.ipynb` expects `data/raw_search_results/`, but that directory is absent from the current repo snapshot.
 - The inferred provenance files improve the historical credibility of the `2025-11-30` freeze date, but they still do not replace a true WoS or merged raw-search export pack.
 
@@ -55,6 +58,7 @@ How to use this for Section III
 - Use `screening/title_abstract_screening_reconstruction.csv` when a reviewer asks what the current repo snapshot can directly support at the title/abstract stage.
 - Use `.agent/workflows/section3_external_evidence_search_20260310.md` when a reviewer asks what additional off-repo evidence was recovered during the March 10, 2026 search.
 - Use `search/dedup_log.csv` as the best available row-level duplicate ledger in the current repo snapshot.
+- Use `search/dedup_external_overlap_support_20260411.csv` and `search/dedup_external_overlap_support_summary_20260411.md` when a reviewer asks how external evidence narrows the duplicate gap without being promoted to canonical freeze-level support.
 - Use `search/formal_identification_reconstruction_20251130.csv` when a reviewer asks how the canonical IEEE / Scopus / WoS counts relate to the raw exports still visible in the repo.
 - Use `search/upstream_prisma_reconstruction_20260310.csv` when a reviewer asks which upstream PRISMA transitions are row-backed versus only canonically claimed.
 - Use `search/inferred_freeze_provenance_timeline_20260310.csv` and `search/inferred_freeze_provenance_from_memory_bank_20260310.md` when a reviewer asks why the `2025-11-30` freeze date is still treated as historically grounded despite the missing original raw bundle.
@@ -63,7 +67,7 @@ How to use this for Section III
 - Do not cite `analysis/ph1_scr/screening_log.csv` or `analysis/PRISMA_stat.md` as proof of the final `980 -> 280 -> 700 -> 222 -> 2 -> 220` chain.
 
 Next required actions before full freeze
-- Recover or regenerate the remaining `128` duplicate decisions needed to fully row-back `duplicates_removed = 280`.
+- Recover or regenerate the remaining `92` duplicate-support rows needed to close the current combined evidence gap for `duplicates_removed = 280`, and replace the `36` noncanonical external overlap rows with canonical freeze-level support where possible.
 - Recover or regenerate the missing raw search inputs needed to close the `440`-record gap between the current title/abstract reconstruction (`260` screened records) and the claimed `records_screened = 700`.
 - Keep the in-place warning labels on the legacy wrong-linked `O_ISAC_347` ACM assets unless a verified JLT replacement is later recovered.
 

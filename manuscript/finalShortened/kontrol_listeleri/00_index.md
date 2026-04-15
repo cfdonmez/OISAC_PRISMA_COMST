@@ -14,6 +14,7 @@ Kullanim sirasi:
 8. `08_final_pass_checklist.md`
 9. `09_prisma_2020_reporting_checklist.md`
 10. `10_prisma_flow_evidence_map.md`
+11. `11_section3_impact_matrix.md`
 
 Dosya kapsamlari:
 
@@ -27,6 +28,7 @@ Dosya kapsamlari:
 - `08_final_pass_checklist.md`: son kalite guvencesi ve toplu kontrol
 - `09_prisma_2020_reporting_checklist.md`: systematic review reporting, PRISMA flow integrity, excluded studies, included-study ledger, and supplement/bibliography consistency
 - `10_prisma_flow_evidence_map.md`: repo-based PRISMA evidence map separating row-backed stages from reconstructed upstream stages
+- `11_section3_impact_matrix.md`: Section III claim-by-claim edit map showing which PRISMA statements are safe, need softening, or require supplement anchoring
 
 Kaynak section haritasi:
 

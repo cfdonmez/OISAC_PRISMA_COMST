@@ -23,13 +23,14 @@ Primary evidence:
 
 - `protocol/prisma_proto.md`
 - `search/search_strings.md`
+- `search/search_log.csv`
 - `screening/prisma_flow_counts.csv`
 - `search/formal_identification_reconstruction_20251130.csv`
 - `search/upstream_prisma_reconstruction_20260310.csv`
 
 Important gap:
 
-- `search/search_log.csv` is referenced across the repo as the canonical formal search log, but it is not present in the current repo snapshot.
+- `search/search_log.csv` has been restored as a reconstructed aggregate log, but the original freeze-time raw export bundle is still not present in the current repo snapshot.
 
 ## 2. Canonical PRISMA Counts
 
@@ -86,6 +87,8 @@ Evidence:
 - `search/dedup_log.csv`
 - `search/dedup_reconstruction_status.md`
 - `search/dedup_reconstruction_available_exports.csv`
+- `search/dedup_external_overlap_support_20260411.csv`
+- `search/dedup_external_overlap_support_summary_20260411.md`
 
 What is row-backed now:
 
@@ -93,11 +96,13 @@ What is row-backed now:
 - `149` linked to available Scopus raw-export rows
 - `3` linked to available IEEE raw-export rows
 - `128` of the `152` resolve to a retained non-duplicate master
+- `36` additional noncanonical duplicate-support rows are recovered from the external IEEE 511 export versus the visible Scopus export
 
 Status:
 
 - `duplicates_removed = 280` is not fully row-backed.
 - The current repo still lacks row-level support for `128` duplicate decisions.
+- Even with the external overlap support, the combined duplicate-support gap remains `92`.
 
 ### 3.3 Title and Abstract Screening
 
@@ -273,4 +278,3 @@ Recommended audit wording:
 
 - describe the earlier PRISMA stages as canonical aggregate counts reconciled against the best available reconstruction artifacts
 - describe the later PRISMA stages as directly backed by the current structured ledgers
-

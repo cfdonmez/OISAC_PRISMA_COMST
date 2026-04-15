@@ -42,8 +42,8 @@ Optical integrated sensing and communication, O-ISAC, free-space optics, visible
 
 \section{Introduction}
 \label{introduction}
-\subsection{The Convergence of Sensing and Communication: A 6G Imperative}
-\IEEEPARstart{T}{he} escalating complexity of the electromagnetic environment has intensified demand for wireless systems that can communicate and sense jointly. ISAC is therefore now treated as a core 6G enabler and is recognized by both the ITU-R IMT-2030 framework and 3GPP as part of the future service landscape \cite{O_ISAC_070,O_ISAC_162}. Emerging applications such as robot navigation, augmented reality, autonomous driving, and human--machine interaction increasingly require high-rate communication and high-accuracy environmental awareness in the same workflow \cite{O_ISAC_016,O_ISAC_351}. Yet even with strong progress in RF-based ISAC, the migration toward mmWave and THz does not remove three persistent constraints:
+\paragraph{The Convergence of Sensing and Communication: A 6G Imperative}
+The escalating complexity of the electromagnetic environment has intensified demand for wireless systems that can communicate and sense jointly. ISAC is therefore now treated as a core 6G enabler and is recognized by both the ITU-R IMT-2030 framework and 3GPP as part of the future service landscape \cite{O_ISAC_070,O_ISAC_162}. Emerging applications such as robot navigation, augmented reality, autonomous driving, and human--machine interaction increasingly require high-rate communication and high-accuracy environmental awareness in the same workflow \cite{O_ISAC_016,O_ISAC_351}. Yet even with strong progress in RF-based ISAC, the migration toward mmWave and THz does not remove three persistent constraints:
 
 \begin{enumerate}
     \item \textbf{Spectrum Congestion}: RF communication and sensing remain constrained by scarce spectrum, growing interference pressure, and increasing competition from data-hungry mobile services \cite{O_ISAC_068,O_ISAC_161}.
@@ -136,9 +136,9 @@ with THz restricted here to photonic-THz or optical--THz bridging O-ISAC.\\
 The symbol $\circ$ is used only for modality-scope exclusion and is not scored.
 \end{table*}
 
-\subsection{The Optical Opportunity: A Vast and Untapped Frontier}
-The optical domain expands the design space far beyond congested sub-300 GHz RF bands, nominally spanning approximately \textbf{28.3 THz to 845 THz}, though practical systems cluster in atmospheric transmission windows and fiber telecom bands \cite{O_ISAC_021}. In this review, Photo-THz O-ISAC denotes photonics-enabled architectures in which optical carriers support generation/LO/distribution while wireless propagation occurs in the sub-THz/THz band. The rest of this subsection isolates the physical advantages that make that spectrum attractive for next-generation ISAC.
-\subsubsection{Quantitative Comparison: RF-ISAC vs. O-ISAC}
+\paragraph{The Optical Opportunity: A Vast and Untapped Frontier}
+The optical domain expands the design space far beyond congested sub-300 GHz RF bands, nominally spanning approximately \textbf{28.3 THz to 845 THz}, though practical systems cluster in atmospheric transmission windows and fiber telecom bands \cite{O_ISAC_021}. In this review, Photo-THz O-ISAC denotes photonics-enabled architectures in which optical carriers support generation/LO/distribution while wireless propagation occurs in the sub-THz/THz band. The following paragraphs isolate the physical advantages that make that spectrum attractive for next-generation ISAC.
+\paragraph{Quantitative Comparison: RF-ISAC vs. O-ISAC}
 
 Table~\ref{tab:performance_comparison} provides a compact RF-ISAC versus O-ISAC comparison using representative ranges from the reviewed corpus \cite{O_ISAC_021}.
 
@@ -207,7 +207,7 @@ Photo-THz denotes photonic-THz or optical--THz bridging links; DAS = distributed
 IM/DD = intensity modulation/direct detection; PMD = polarization mode dispersion.
 \end{table*}
 
-\subsubsection{Three Competitive Advantages of O-ISAC}
+\paragraph{Three Competitive Advantages of O-ISAC}
 
 Following \cite{O_ISAC_021}, we group the optical advantage into three mechanisms: capacity scaling, bandwidth-limited sensing precision, and directional spatial isolation. Fig.~\ref{fig:fig2} summarizes the underlying physics.
 
@@ -228,7 +228,7 @@ Range resolution in two-way sensing is bandwidth-limited as $\Delta r_{\min} = v
 The high directionality of optical beams provides deployment-dependent spatial isolation and can reduce multi-user interference relative to wide-beam RF sectors in clear line-of-sight settings \cite{O_ISAC_021}. Wireless O-ISAC still faces turbulence and ambient-light sensitivity \cite{O_ISAC_003}, but its weak coupling to conventional RF electromagnetic interference and milliradian-scale beam divergence support dense spatial reuse when propagation conditions are favorable.
 
 
-\subsection{Unified O-ISAC Taxonomy}
+\paragraph{Unified O-ISAC Taxonomy}
 
 Having established the optical advantages, we next delimit the scope of this review. O-ISAC is not a single monolithic system class; it clusters into modality families shaped by propagation medium, signal model, and dominant impairment. Fig.~\ref{fig:fig3} previews the evidence-based taxonomy from our PRISMA-compliant corpus, centered on 2020--2025 while retaining a small number of earlier protocol-eligible foundational studies: fiber, free-space optical, VLC/LiFi, and photonic-THz, each with distinct operating windows and sensing--communication conventions.
 
@@ -242,7 +242,7 @@ Having established the optical advantages, we next delimit the scope of this rev
 
 This shared reference frame is essential for later cross-modality comparison, but it also exposes a deeper issue: terminology, metrics, and evaluation protocols remain inconsistent across communities. That inconsistency motivates the fragmentation challenge discussed next.
 
-\subsection{The Fragmentation Challenge: A Landscape Without Unity}
+\paragraph{The Fragmentation Challenge: A Landscape Without Unity}
 
 Despite these physical advantages, the O-ISAC literature remains fragmented. Our systematic analysis of \textbf{220 peer-reviewed studies}, primarily from \textbf{2020--2025}, reveals four recurring fault lines: inconsistent terminology, non-standardized sensing metrics, siloed modality communities, and weak cross-domain technology transfer. Together, they impede reproducibility and defensible cross-study comparison.
 
@@ -260,7 +260,7 @@ where $v=c$ in free space and $v\approx c/n_g$ in guided media. In contrast, RMS
 
 \textbf{The Missing Unifying Framework.} These issues point to the same gap: O-ISAC still lacks a shared physical-layer taxonomy, a standardized reporting contract, and a cross-modality benchmark culture. At minimum, comparable studies should disclose communication performance, sensing performance separated into $\Delta r_{\min}$, estimator-level error, and CRB/FIM-style bounds, signal quality at an explicit reference plane, and the channel/scenario assumptions that govern comparability. Recent calls for standardized VLC channel models and interoperability-oriented standardization reinforce the urgency of this unification \cite{O_ISAC_327,O_ISAC_068,O_ISAC_082}.
 
-\subsection{Related Surveys and Gap Analysis}
+\paragraph{Related Surveys and Gap Analysis}
 
 RF-ISAC already has a mature survey landscape, but optical ISAC remains comparatively underserved. Existing review-style work is still modality-centric: VLC surveys emphasize positioning and indoor propagation \cite{O_ISAC_068,O_ISAC_327}, fiber reviews focus on DFOS/DAS integration and co-route monitoring \cite{O_ISAC_006,O_ISAC_041,O_ISAC_090}, and FSO or photonic-THz surveys discuss architectures, waveforms, and high-CRQ demonstrations without bridging the full FSO--fiber--VLC divide \cite{O_ISAC_021,O_ISAC_035,O_ISAC_058,O_ISAC_070}. Within our 220-study corpus, only the VLC-based LiSAC review explicitly treats optical ISAC as its primary topic, and even that work remains single-modality and non-PRISMA \cite{O_ISAC_303}. RIS-for-ISAC surveys provide useful enabling-technology context but remain RF/THz-centric \cite{O_ISAC_163}. Table~\ref{tab:axis_comparison} summarizes this landscape.
 
@@ -269,7 +269,7 @@ RF-ISAC already has a mature survey landscape, but optical ISAC remains comparat
 
 These gaps collectively establish the rationale for this review: a PRISMA-compliant systematic review that unifies O-ISAC across all four modalities, establishes a standardized taxonomy and reporting contract, and synthesizes quantitative trade-off frontiers to guide future research.
 
-\subsection{Contributions of This Review}
+\paragraph{Contributions of This Review}
 To close the five gaps identified in Section I-D, we provide evidence-backed contributions grounded in the PRISMA corpus and extraction schema; each item includes a compact Contribution-Gap-Section mapping:
 
 
@@ -281,12 +281,12 @@ To close the five gaps identified in Section I-D, we provide evidence-backed con
     \item \textbf{Cross-domain transfer map tied to applications (Gap 4):} We build a modality-application transfer map in Section VII; 15 application domains appear in $\ge$2 modality classes (8 domains in $\ge$3), with high-frequency domains including industrial manufacturing (65), vehicular (60), indoor positioning (56), and 6G networking (46). \textit{Contribution-Gap-Section:} Gap 4 $\rightarrow$ Section VII.
 \end{enumerate}
 
-\subsection{Organization of This Paper}
+\paragraph{Organization of This Paper}
 
 The remainder of this review is organized as follows. Section II establishes the physical-layer fundamentals, Section III details the PRISMA/TQAF methodology, Section IV introduces the unified taxonomy, Section V synthesizes rate-resolution trade-offs, Section VI reviews enabling technologies, Section VII maps applications and transfer patterns, Section VIII consolidates challenge domains and the research roadmap, and Section IX concludes.
 
 
-\subsection{Notation and Acronyms}
+\paragraph{Notation and Acronyms}
 
 For the reader's convenience, the mathematical notation conventions and the most frequently used acronyms in this paper are defined in Tables~\ref{tab:math_notation} and \ref{tab:acronyms}, respectively.
 \begin{table}[!t]
@@ -353,6 +353,7 @@ $\alpha$ & Power allocation factor for communication--sensing trade-off \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
 
 
 \section{TECHNICAL FUNDAMENTALS OF O-ISAC}
@@ -704,12 +705,12 @@ Flag as ambiguous and exclude from plane-sensitive synthesis &
 
 \textbf{Fig.~\ref{fig:fig_ii_2}} visualizes the metric-governance contract used throughout this review. Specifically, it shows the admissible chain from effective bandwidth to \(\Delta r_{\min}\), from delay/time-of-flight to range, and from matched \(R\) plus \(\Delta r_{\min}\) to \(\mathrm{CRQ}_{\Delta}\); it also keeps CRB/FIM as contextual support for estimator accuracy rather than as a substitute for \(\sigma_r\), preserves \(\Delta z\) as fiber-only spatial granularity, and enforces explicit separation between optical-plane and electrical-plane quality metrics.
 
-\begin{figure}[!t]
+\begin{figure*}[!t]
     \centering
     \includegraphics[width=\linewidth]{figures/fig_ii_2.png}
     \caption{Metric contract and admissible comparison map for O-ISAC. The figure links effective bandwidth to \(\Delta r_{\min}\), delay/time-of-flight to range, and matched \(R\) plus \(\Delta r_{\min}\) to \(\mathrm{CRQ}_{\Delta}\), while keeping \(\sigma_r\), CRB/FIM, \(\Delta z\), and OSNR versus SNR/ESNR explicitly separated. Green links are admissible, dashed gray links are contextual, and red links are forbidden substitutions without an explicit receiver/noise model.}
     \label{fig:fig_ii_2}
-\end{figure}
+\end{figure*}
 
 \subsection{ISAC Coupling and Trade-off Foundations (Optimization View)}
 
@@ -738,12 +739,12 @@ Evidence alignment. Because representative O-ISAC studies already instantiate co
 
 
 \subsection{Protocol and Registration}
-This systematic review adheres to the \textbf{Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020} statement \cite{PRISMA2020} and the PRISMA-S extension for literature search reporting \cite{PRISMAS2021}. To ensure transparency and minimize reporting bias, the study protocol---including research questions, search strategy, and eligibility criteria---was registered with the \textbf{Open Science Framework (OSF)} on \textbf{February 12, 2026} (Registration ID: \texttt{7f6wb}). The protocol and associated metadata are accessible via the OSF Registries at \texttt{https://osf.io/7f6wb}.
+This systematic review adheres to the \textbf{Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020} statement \cite{PRISMA2020} and the PRISMA-S extension for literature search reporting \cite{PRISMAS2021}. To ensure transparency and minimize reporting bias, the study protocol, including research questions, search strategy, and eligibility criteria, was registered with the \textbf{Open Science Framework (OSF)} on \textbf{February 12, 2026} (Registration ID: \texttt{7f6wb}). The protocol and associated metadata are accessible via the OSF Registries at \texttt{https://osf.io/7f6wb}.
 No substantive amendments to the registered objectives, eligibility criteria, canonical information sources, or synthesis plan were made after registration; scope clarifications in the frozen manuscript were reporting-level clarifications only and did not alter the registered review workflow.
 The objective of this review is to systematically identify, screen, assess, and synthesize primary O-ISAC studies across fiber, free-space optical, VLC/LiFi, and photonic-THz platforms, with emphasis on taxonomy, metric governance, enabling technologies, applications, and open challenges.
 
 \subsection{Information Sources and Search Strategy}
-A comprehensive literature search for the formal PRISMA identification stage was conducted across three engineering and physics databases: \textbf{IEEE Xplore}, \textbf{Scopus}, and \textbf{Web of Science}, all last searched on \textbf{November 30, 2025}. Supplementary search templates were retained for \textbf{arXiv} and \textbf{TechRxiv} to support preprint monitoring and version tracing, but these supplementary sources did not contribute separate records to the canonical PRISMA flow reported in this review (\texttt{other\_sources\_results = 0}).
+A comprehensive literature search for the formal PRISMA identification stage was conducted across three engineering and physics databases: \textbf{IEEE Xplore}, \textbf{Scopus}, and \textbf{Web of Science}, all last searched on \textbf{November 30, 2025}. These three databases defined the canonical formal identification stage for the frozen PRISMA flow reported in this review. Supplementary search templates were retained for \textbf{arXiv} and \textbf{TechRxiv} to support preprint monitoring and version tracing, but these supplementary sources did not contribute separate records to the canonical PRISMA flow reported in this review (\texttt{other\_sources\_results = 0}).
 
 The search strategy employed two mandatory concept blocks and one optional refinement block:
 \begin{enumerate}
@@ -752,7 +753,9 @@ The search strategy employed two mandatory concept blocks and one optional refin
     \item \textbf{Physical-Layer Refinement (Optional):} Additional terms such as waveform, modulation, signal model, channel model, or optical front-end, used only when a database required extra disambiguation.
 \end{enumerate}
 
-The exact executed search strings and run-level search logs were preserved in the study records for auditability and methodological traceability. The literature search was frozen as of \textbf{November 30, 2025}.
+Consistent with the registered eligibility policy, the formal database searches were restricted to \textbf{English-language} records and to \textbf{peer-reviewed journal articles} or \textbf{full-length conference/proceedings papers} where platform filtering was available. The search coverage extended from \textbf{2000} to the \textbf{November 30, 2025} freeze date in order to retain protocol-eligible foundational optical studies that predate current O-ISAC terminology, while the synthesis remained centered on the \textbf{2020--2025} core window.
+
+The exact executed search strings were preserved in the study records for auditability and methodological traceability. The search-stage evidence supporting the frozen PRISMA identification record, including reconstructed aggregate logs and audit notes where the original freeze-time raw exports were incomplete, was archived in the supplementary evidence package prepared for this review. The literature search was frozen as of \textbf{November 30, 2025}.
 
 \subsection{Eligibility Criteria}
 To ensure the review's coherence and focus on the \textit{optical} domain, strict inclusion and exclusion criteria were applied (Table~\ref{tab:iii1}).
@@ -765,6 +768,7 @@ To ensure the review's coherence and focus on the \textit{optical} domain, stric
 \end{itemize}
 
 Within this scope, the final corpus is centered on the 2020--2025 period but retains a small number of earlier protocol-eligible foundational studies. Photonic-THz or hybrid entries were included only when an optical carrier or photonic front end remained integral to both sensing and communication; RF-only THz studies were excluded.
+Borderline records were retained when the optical carrier or photonic front end remained integral to both sensing and communication, even if the work was not explicitly labeled as O-ISAC; by contrast, optical links performing only auxiliary channel estimation, alignment, or beam tracking for communication maintenance were not treated as eligible joint sensing-and-communication studies.
 
 \textbf{Exclusion Criteria:}
 \begin{itemize}
@@ -808,14 +812,14 @@ Studies lacking technical depth regarding the integration mechanism, trade-offs,
 \subsection{Study Selection and PRISMA Flow}
 Study selection followed a three-step PRISMA workflow:
 \begin{enumerate}
-    \item \textbf{Deduplication:} Semi-automated removal of duplicate records across databases, with manual verification of ambiguous matches.
+    \item \textbf{Deduplication:} Semi-automated identification and removal of duplicate candidates across databases using DOI-first and normalized-title metadata matching, supplemented by publication-year/author consistency checks and manual verification of ambiguous matches.
     \item \textbf{Screening:} Title and abstract screening to remove clearly irrelevant (e.g., RF-only or biomedical sensing) records.
     \item \textbf{Eligibility:} Full-text review of candidate papers against the inclusion criteria.
 \end{enumerate}
 
 Following the registered protocol, two reviewers first calibrated the eligibility criteria on a pilot sample of 50 records, then independently conducted title/abstract screening and full-text eligibility assessment. Any record marked as \textit{Include} or \textit{Unsure} by at least one reviewer advanced to full-text review. Disagreements were resolved by consensus discussion and, where needed, third-reviewer arbitration, with adjudications archived in the structured screening logs.
 
-The canonical aggregate PRISMA counts were maintained in a structured screening ledger and reconciled against stage-specific audit records. Earlier-stage records covered deduplication and title/abstract screening, while later-stage records directly backed the full-text assessment, exclusion, and final inclusion ledgers. In the reconciled record, \textbf{222} full-text articles were assessed, \textbf{2} were excluded at the full-text stage, and the final included corpus comprised \textbf{N = 220} studies. The attrition process is summarised in Fig.~\ref{fig:fig_iii_1}, and the study-oriented ledger for the complete 220-paper corpus was retained in the structured screening archive supporting this review.
+The canonical aggregate PRISMA counts were maintained in a structured screening ledger and reconciled against stage-specific audit records. For the upstream stages, the identification, deduplication, and title/abstract totals were retained as canonical aggregate counts supported by the reconstructed search-stage evidence package; for the later stages, the full-text assessment, exclusion, and final inclusion ledgers were directly row-backed in the repository. In the reconciled record, \textbf{222} full-text articles were assessed, \textbf{2} were excluded at the full-text stage, and the final included corpus comprised \textbf{N = 220} studies. The two reconciled full-text exclusions, together with their study identifiers, exclusion codes, and reasons, were retained in the structured exclusion log and mirrored in the supplementary exclusion appendix prepared for this review. Because the compressed main text cites only the subset of included studies discussed narratively, the main bibliography is shorter than the full 220-study corpus; the complete included set is therefore documented in the supplementary included-studies appendix and canonical ledger rather than duplicated in the main reference list. The attrition process is summarised in Fig.~\ref{fig:fig_iii_1}, and the study-oriented ledger for the complete 220-paper corpus was retained in the structured screening archive and mirrored in the supplementary included-studies appendix prepared for this review.
 
 
 \begin{figure}[!t]
@@ -842,7 +846,7 @@ $\downarrow$ \\
 \end{figure}
 
 \subsection{Data Extraction and Taxonomical Classification}
-Data extraction was performed using a standardized structured schema to rigorously map the O-ISAC landscape. Key extracted variables include modality coverage (categorizing fiber, FSO, VLC/LiFi, or hybrid regimes), integration depth (distinguishing true waveform/hardware sharing from resource coexistence), quantitative performance metrics (capturing sensing resolution and range alongside communication data rate and BER), and validation level (coding empirical evidence as simulation, experiment, prototype, or analytical). This structured extraction directly feeds the quantitative trade-off frontiers evaluated in Section V.
+Data extraction was performed using a standardized structured schema to rigorously map the O-ISAC landscape. Following the registered schema-driven workflow, two reviewers verified the core study descriptors, taxonomy-critical classifications, and synthesis-critical performance fields, and any ambiguous extractions were reconciled by consensus review rather than silent inference. Key extracted variables include modality coverage (categorizing fiber, FSO, VLC/LiFi, or hybrid regimes), integration depth (distinguishing true waveform/hardware sharing from resource coexistence), quantitative performance metrics (capturing sensing resolution and range alongside communication data rate and BER), and validation level (coding empirical evidence as simulation, experiment, prototype, or analytical). Values not explicitly reported in the source study were retained as unfilled/NR-type fields in the structured extraction records rather than being imputed from conjecture. This structured extraction directly feeds the quantitative trade-off frontiers evaluated in Section V.
 
 \subsection{Quality Appraisal (TQAF)}
 To assess the reliability of the surveyed literature, we developed a custom \textbf{Technical Quality Assessment Form (TQAF)}. Each included study was evaluated independently by two reviewers across five formal dimensions:
@@ -857,7 +861,7 @@ To assess the reliability of the surveyed literature, we developed a custom \tex
 Each dimension was scored on a 0--2 scale (low/moderate/high quality). Any scoring disagreements were resolved by consensus discussion or third-party arbitration. While TQAF scores did not determine study exclusion, they are used throughout Sections IV, VI, and VIII to formally weight the strength of evidence, highlighting methodological gaps where high-impact claims lack rigorous validation.
 
 \subsection{Data Synthesis Strategy}
-Given the heterogeneity of metrics across fiber, FSO, and VLC domains---combined with varying assumptions in channel modeling and hardware bounds---a formal statistical meta-analysis was not feasible. Instead, we employ a structured qualitative and quantitative descriptive synthesis driven by the taxonomic model. The literature is first organized by physical modality (Section IV) to reveal domain-specific integration techniques. Following this taxonomic mapping, we conduct a quantitative trade-off analysis (Section V) using visual synthesis tools, such as rate-resolution scatter plots, to identify empirical Pareto frontiers within the joint sensing and communication performance space.
+Given the heterogeneity of metrics across fiber, FSO, and VLC domains, along with varying assumptions in channel modeling and hardware bounds, a formal statistical meta-analysis was not feasible. Instead, we employ a structured qualitative and quantitative descriptive synthesis driven by the taxonomic model. The literature is first organized by physical modality (Section IV) to reveal domain-specific integration techniques. Following this taxonomic mapping, we conduct a quantitative trade-off analysis (Section V) using visual synthesis tools, such as rate-resolution scatter plots, to identify empirical Pareto frontiers within the joint sensing and communication performance space.
 
 \section{UNIFIED O-ISAC TAXONOMY}
 
@@ -1741,7 +1745,7 @@ The benchmark chain in VI-D is the structural backbone of the section as a whole
 \begin{figure*}[!t]
     \centering
     \includegraphics[width=\linewidth]{figures/fig_vi_2.jpg}
-\caption{From programmable enablers to deployment-ready O-ISAC. The systems map couples optical enablers, medium-specific impairments, control logic, and benchmark discipline, with the deployment/benchmark gate acting as the hinge for carrying Section VI gains into Section VII.}
+    \caption{From programmable enablers to deployment-ready O-ISAC. The systems map couples optical enablers, medium-specific impairments, control logic, and benchmark discipline, with the deployment/benchmark gate acting as the hinge for carrying Section VI gains into Section VII.}
 \label{fig:fig_vi_2}
 \end{figure*}
 
@@ -2114,19 +2118,19 @@ Section VIII synthesizes open challenges into a deployment-facing roadmap using 
 
 At the manuscript level, the section operationalizes protocol RQ3 conservatively: Section V supplies admissible tradeoff boundaries, Section VI bounds enabling stacks and benchmark realism, and Section VII shows where deployment evidence actually concentrates. Fig.~\ref{fig:fig_viii_1} condenses those dependencies, while any implication for optical RIS, ORIS, or optical phased arrays remains a forward-looking architectural hook rather than a separate evidence-bearing challenge domain.
 
-\begin{figure}[!t]
+\begin{figure*}[!t]
     \centering
     \includegraphics[width=\linewidth]{figures/fig_viii_1.jpg}
     \caption{Challenge-to-roadmap dependency map for O-ISAC. The figure places the five Section VIII challenge domains around shared system pressure and roadmap outcomes, while the bottom ribbon links them back to Section V tradeoffs, Section VI enablers/benchmarks, and Section VII deployments.}
     \label{fig:fig_viii_1}
-\end{figure}
+\end{figure*}
 
 Fig.~\ref{fig:fig_viii_1} is a dependency map, not a maturity ladder: the domain cards show where pressure accumulates and the outcome cluster summarizes what a credible roadmap must deliver.
 
 \subsection{Standardization and Interoperability Challenges}
 
 \paragraph{Context}
-VIII-A treats \texttt{standardization\_interoperability} as a deployment bottleneck centered on interface alignment across shared infrastructure. SMART subsea evidence links integrated operation to joint-task-force standardization \cite{O_ISAC_220}, transport-supported ISAC exposes RAN/MEC/SDN interoperability pressure \cite{O_ISAC_025}, and transceiver surveys show that prototype transition is already turning terminology, timing, and interface consistency into implementation constraints \cite{O_ISAC_161}. Upstream bridge evidence remains indirect and is interpreted cautiously.
+IX-A treats \texttt{standardization\_interoperability} as a deployment bottleneck centered on interface alignment across shared infrastructure. SMART subsea evidence links integrated operation to joint-task-force standardization \cite{O_ISAC_220}, transport-supported ISAC exposes RAN/MEC/SDN interoperability pressure \cite{O_ISAC_025}, and transceiver surveys show that prototype transition is already turning terminology, timing, and interface consistency into implementation constraints \cite{O_ISAC_161}. Upstream bridge evidence remains indirect and is interpreted cautiously.
 
 \paragraph{Challenge Case 1: Standards Vocabulary and Reference-Model Divergence}
 \textbf{Failure mode.} Without aligned vocabulary and reference-model assumptions, implementations expose incompatible expectations for integrated sensing-communication operation, weakening cross-system comparability and deployment transferability \cite{O_ISAC_220, O_ISAC_161}. \textbf{Affected interfaces/layers.} Control-plane terminology, sensing-metadata semantics, timing/synchronization assumptions, and transceiver-orchestration interfaces across multi-domain deployments \cite{O_ISAC_220, O_ISAC_161}. \textbf{Evidence.} SMART links integrated operation to joint-task-force standardization, while transceiver surveys report rising prototype and standardization activity, showing that interface consistency is now an implementation pressure \cite{O_ISAC_220, O_ISAC_161}. \textbf{Roadmap implication.} Reference-model and terminology alignment should be treated as a prerequisite for credible cross-platform evaluation \cite{O_ISAC_220, O_ISAC_161}.
@@ -2161,7 +2165,7 @@ u &= (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}),\\
 This anchor is constraint-centric because the evidence emphasizes conformance sets rather than tunable weights: SMART is treated as a standardized configuration, dense operation requires precise blank-allocation of sensing payloads, DSP compatibility is explicit in the cited texts, and PON evidence motivates the PtMP attribution constraint \cite{O_ISAC_220, O_ISAC_104}. The symbolic objective $J_{\mathrm{perf}}$ remains only a joint QoS proxy because both spectral-efficiency degradation and sensing-failure risk are documented \cite{O_ISAC_220, O_ISAC_104}.
 
 \paragraph{Key Takeaways and Research Priorities}
-Interoperability risk in VIII-A is not only a standards-label issue; it also appears in branch-level sensing semantics, attribution contracts, and format/DSP compatibility under dense integrated operation \cite{O_ISAC_104, O_ISAC_220}. Evaluation/reporting contracts and signal-format contracts should therefore be prioritized separately because they fail at different interfaces, and a compact conformance profile coupling branch-attribution semantics with DSP-interface checks is the clearest near-term roadmap hypothesis.
+Interoperability risk in IX-A is not only a standards-label issue; it also appears in branch-level sensing semantics, attribution contracts, and format/DSP compatibility under dense integrated operation \cite{O_ISAC_104, O_ISAC_220}. Evaluation/reporting contracts and signal-format contracts should therefore be prioritized separately because they fail at different interfaces, and a compact conformance profile coupling branch-attribution semantics with DSP-interface checks is the clearest near-term roadmap hypothesis.
 
 \subsection{Hardware Scalability and Efficiency Challenges}
 
@@ -2198,7 +2202,7 @@ u &= (u_{arch},u_{proc},u_{ctrl}),\\
 This anchor adopts Option-2 because the evidence supports four explicit hardware constraints: computational burden, latency envelope, energy budget, and beam-control overhead \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. The tuple $u=(u_{arch},u_{proc},u_{ctrl})$ captures architecture, processing schedule, and control policy under shared-transceiver, mobility, and large-array pressure, while $C_{hw}$, $L_{hw}$, $P_{hw}$, and $O_{ctrl}$ keep optimization inside hardware-feasible regions.
 
 \paragraph{Key Takeaways and Research Priorities}
-VIII-B shows that deployment-ready gains depend on explicit hardware feasibility ledgers rather than performance claims alone. Integration-level complexity accounting, calibration-aware front-end drift handling, and beam-control schemes that avoid switch-count explosion should be prioritized together, while multimodal pipeline FLOPs, latency envelopes, and beam-pruning strategy need to be co-designed rather than scaled independently \cite{O_ISAC_134, O_ISAC_161, O_ISAC_162, O_ISAC_171}.
+IX-B shows that deployment-ready gains depend on explicit hardware feasibility ledgers rather than performance claims alone. Integration-level complexity accounting, calibration-aware front-end drift handling, and beam-control schemes that avoid switch-count explosion should be prioritized together, while multimodal pipeline FLOPs, latency envelopes, and beam-pruning strategy need to be co-designed rather than scaled independently \cite{O_ISAC_134, O_ISAC_161, O_ISAC_162, O_ISAC_171}.
 
 \subsection{Channel Modeling and Evaluation Challenges}
 
@@ -2234,12 +2238,12 @@ Selected form: Option-B (benchmark-contract constrained evaluation).
 This anchor makes each result protocol carry channel-condition tags and scenario-geometry descriptors before cross-paper comparison, directly reflecting weather-conditioned behavior and geometry-dependent reporting \cite{O_ISAC_005, O_ISAC_327}. The term $\mu_{\mathrm{metric}}$ binds BER-capacity definitions to evaluation conditions such as distance, while $\delta_{\mathrm{prov}}$ encodes campaign and dataset/testbed provenance so that standard-model needs become enforceable contract items \cite{O_ISAC_381, O_ISAC_327}.
 
 \paragraph{Key Takeaways and Research Priorities}
-VIII-C shows that cross-study transfer remains weak unless channel assumptions, measurement conditions, and comm-plane metric semantics are reported together. An evaluation-contract minimum should therefore record channel-model class, measurement-campaign lineage, condition-tagged metric declarations, and standard-framework compatibility, with a compact reporting card as the clearest near-term mechanism for reducing audit friction \cite{O_ISAC_327, O_ISAC_381}.
+IX-C shows that cross-study transfer remains weak unless channel assumptions, measurement conditions, and comm-plane metric semantics are reported together. An evaluation-contract minimum should therefore record channel-model class, measurement-campaign lineage, condition-tagged metric declarations, and standard-framework compatibility, with a compact reporting card as the clearest near-term mechanism for reducing audit friction \cite{O_ISAC_327, O_ISAC_381}.
 
 \subsection{Security, Privacy, and Reliability Challenges}
 
 \paragraph{Context}
-VIII-D treats \texttt{security\_privacy\_reliability} as a coupled risk-governance domain because sensing increases observability while communication paths preserve exploitable attack surfaces \cite{O_ISAC_145, O_ISAC_039}. The evidence clusters around eavesdropping/falsification risk, privacy leakage in sensing-learning pipelines, authentication under dense heterogeneous connectivity, and fail-safe integrity monitoring in transport networks \cite{O_ISAC_145, O_ISAC_039, O_ISAC_156, O_ISAC_041}. This is therefore not a single-metric security problem.
+IX-D treats \texttt{security\_privacy\_reliability} as a coupled risk-governance domain because sensing increases observability while communication paths preserve exploitable attack surfaces \cite{O_ISAC_145, O_ISAC_039}. The evidence clusters around eavesdropping/falsification risk, privacy leakage in sensing-learning pipelines, authentication under dense heterogeneous connectivity, and fail-safe integrity monitoring in transport networks \cite{O_ISAC_145, O_ISAC_039, O_ISAC_156, O_ISAC_041}. This is therefore not a single-metric security problem.
 
 \paragraph{Challenge Case 1: Physical-Layer Confidentiality and Trust Exposure in Hybrid Links}
 \textbf{Failure mode.} Wireless links remain susceptible to eavesdropping, and trust in received sensing/communication outputs can degrade when adversaries manipulate observations \cite{O_ISAC_145}. \textbf{Affected interfaces/layers.} Physical-layer confidentiality, jammer-aware channel behavior, and trust interpretation in edge decision loops consuming sensing-assisted communication outputs are directly exposed \cite{O_ISAC_145}. \textbf{Evidence.} The cited text reports both eavesdropping susceptibility and attacker-side falsification risk in hybrid sensing/communication operation \cite{O_ISAC_145}. \textbf{Roadmap implication.} Confidentiality-integrity checks should be treated as a coupled risk surface before cross-scenario security claims \cite{O_ISAC_145}.
@@ -2269,12 +2273,12 @@ u &= (u_{\mathrm{auth}},u_{\mathrm{mon}},u_{\mathrm{priv}}),\\
 Here, $R_{\mathrm{int}}$ maps to interruption and integrity-monitoring risk under SDN alerting and service-adjustment workflows \cite{O_ISAC_041, O_ISAC_145}, $L_{\mathrm{priv}}$ to privacy leakage in model-update exchange \cite{O_ISAC_039}, and $A_{\mathrm{auth}}$ to dense-network authentication feasibility under dynamic key-management pressure \cite{O_ISAC_156}. The monitoring component $u_{\mathrm{mon}}$ captures real-time warning and service adjustment \cite{O_ISAC_041}, and all thresholds remain symbolic because the extracted texts do not fix numeric bounds.
 
 \paragraph{Key Takeaways and Research Priorities}
-VIII-D shows that key management, confidentiality, authentication, malicious-node detection, and continuity monitoring cannot be evaluated as separate checklist items. Reliability claims should expose trust-loop dependencies, tie co-route fiber disruption directly to survivability checks, and keep SDN-linked alerting plus service adjustment inside the security/reliability contract rather than as an external operations assumption \cite{O_ISAC_041, O_ISAC_156}.
+IX-D shows that key management, confidentiality, authentication, malicious-node detection, and continuity monitoring cannot be evaluated as separate checklist items. Reliability claims should expose trust-loop dependencies, tie co-route fiber disruption directly to survivability checks, and keep SDN-linked alerting plus service adjustment inside the security/reliability contract rather than as an external operations assumption \cite{O_ISAC_041, O_ISAC_156}.
 
 \subsection{Deployment Convergence and Roadmap Challenges}
 
 \paragraph{Context}
-VIII-E treats \texttt{deployment\_convergence\_roadmap} as a distinct bottleneck beyond standards, hardware, channel modeling, and security because sensing and communication may remain insufficiently co-integrated in practice \cite{O_ISAC_039}. Four motifs recur: sensing-positioning and channel-estimation coupling, orchestration and state-fusion stress, staged roll-out/readiness gating, and governance for transferability through compatibility, model validity, and provenance controls \cite{O_ISAC_039, O_ISAC_151, O_ISAC_163, O_ISAC_200}.
+IX-E treats \texttt{deployment\_convergence\_roadmap} as a distinct bottleneck beyond standards, hardware, channel modeling, and security because sensing and communication may remain insufficiently co-integrated in practice \cite{O_ISAC_039}. Four motifs recur: sensing-positioning and channel-estimation coupling, orchestration and state-fusion stress, staged roll-out/readiness gating, and governance for transferability through compatibility, model validity, and provenance controls \cite{O_ISAC_039, O_ISAC_151, O_ISAC_163, O_ISAC_200}.
 
 \paragraph{Roadmap Case 1: Coupled deployment dependency between sensing and communication tasks}
 If convergence is assumed too early, separate task pipelines can leave bottlenecks at sensing-positioning, channel-estimation, and orchestration interfaces \cite{O_ISAC_039}. The cited text therefore implies that convergence claims require explicit interface-level gating before portability interpretation \cite{O_ISAC_039}.
@@ -2308,7 +2312,7 @@ u &= (u_{\mathrm{arch}},u_{\mathrm{api}},u_{\mathrm{stack}},\\
 Here, $U_{\mathrm{deploy}}$ and $g_{\mathrm{ready}}$ map to coupling and staged deployment pressure \cite{O_ISAC_039, O_ISAC_163}, $u_{\mathrm{api}}$ with budget constraints captures context-fusion stress under edge/bandwidth limits \cite{O_ISAC_151}, and the governance constraints map to compatibility, model-validity, and provenance evidence \cite{O_ISAC_200}. $B_{\mathrm{edge}}$ and $B_{\mathrm{bw}}$ remain symbolic because the cited excerpts do not fix numeric budgets.
 
 \paragraph{Key Takeaways and Research Priorities}
-Deployment evaluation in VIII-E needs minimum interface contracts binding sensing-positioning and channel-estimation coupling with explicit orchestration handoff checks \cite{O_ISAC_039, O_ISAC_151}. Roadmap claims should use staged readiness gates rather than immediate convergence assumptions \cite{O_ISAC_163}, and governance baselines should require compatibility, model-validity, provenance, and explicit validation boundaries before transferability interpretation \cite{O_ISAC_200}.
+Deployment evaluation in IX-E needs minimum interface contracts binding sensing-positioning and channel-estimation coupling with explicit orchestration handoff checks \cite{O_ISAC_039, O_ISAC_151}. Roadmap claims should use staged readiness gates rather than immediate convergence assumptions \cite{O_ISAC_163}, and governance baselines should require compatibility, model-validity, provenance, and explicit validation boundaries before transferability interpretation \cite{O_ISAC_200}.
 
 \subsection{Capstone Dependency Synthesis and Prioritized Research Agenda}
 

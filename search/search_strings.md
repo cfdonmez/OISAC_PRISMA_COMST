@@ -13,10 +13,16 @@ Supplementary monitoring note:
 - A template for `arXiv / TechRxiv` is retained below for version tracing and future updates.
 - It is not part of the current canonical PRISMA flow unless separately executed and logged.
 
+Applied limits and filters for the current freeze:
+- `Language:` English
+- `Document type:` peer-reviewed journal articles and proceedings papers, implemented through platform filters where supported
+- `Coverage window:` 2000-11-30 to 2025-11-30, with the final synthesis centered on 2020 onwards while retaining earlier protocol-eligible foundational studies
+
 Use the formal-database strings below to search the respective sources. Export results as CSV or RIS and place them in `data/raw_search_results/`.
 
 ## 1. IEEE Xplore
 **Fields:** Metadata (Title, Abstract, Keywords)
+**Platform filters:** English-language journal and conference records
 **Command:**
 ```text
 ("integrated sensing and communication" OR ISAC OR "joint sensing and communication" OR "joint communication and sensing" OR "joint radar-communication" OR "dual-function radar-communication" OR DFRC OR "simultaneous sensing and communication") AND (optical OR photonic OR "optical fibre" OR "optical fiber" OR fibre OR fiber OR "free-space optical" OR FSO OR "visible light" OR "visible light communication" OR VLC OR LiFi OR LiDAR OR LIDAR OR "optical radar")

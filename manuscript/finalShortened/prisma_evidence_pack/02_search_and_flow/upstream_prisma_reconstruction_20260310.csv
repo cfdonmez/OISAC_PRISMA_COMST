@@ -1,6 +1,6 @@
 stage,canonical_count,row_level_repo_support,external_supplemental_support,gap_to_canonical,reconstruction_status,notes
 identified_records,980,413,0,567,partial_raw_export_coverage,"413 currently visible raw-export rows come from Dec 28, 2025 IEEE and Scopus update exports and do not include a freeze-time Web of Science export."
-duplicates_removed,280,152,0,128,partial_dedup_ledger,"search/dedup_log.csv row-backs 152 explicit duplicate decisions from the current repo snapshot."
+duplicates_removed,280,152,36,92,partial_dedup_ledger_with_noncanonical_external_support,"search/dedup_log.csv row-backs 152 explicit duplicate decisions from the current repo snapshot; search/dedup_external_overlap_support_20260411.csv adds 36 noncanonical IEEE511-vs-Scopus overlap-support rows not already captured in that ledger."
 records_screened,700,260,738,440,partial_title_abstract_ledger_with_noncanonical_external_support,"260 non-duplicate screened records are directly row-backed in repo; the external IEEE screened file raises normalized union support to 738, but that support remains non-canonical."
 records_excluded_title,478,196,352,282,partial_title_abstract_exclusion_support,"196 title/abstract exclusions are directly row-backed in the current reconstruction; the external IEEE screened file contributes 352 excludes but cannot be promoted blindly because of active canonical conflicts."
 fulltext_assessed,222,222,0,0,row_backed,"Phase-2 extraction artifacts fully back the assessed set."
