@@ -1,4 +1,4 @@
-\documentclass[lettersize,journal]{IEEEtran}
+\documentclass[letterpaper,journal]{IEEEtran}
 \usepackage{amsmath,amsfonts}
 \usepackage{algorithmic}
 \usepackage{algorithm}
@@ -20,8 +20,8 @@
 \title{Optical Integrated Sensing and Communication: A Systematic Review of Fiber, Free-Space, VLC/LiFi, and Photonic-THz Platforms}
 
 \author{Fatih D\"onmez, Ahmet Altuncu, and Mustafa Namdar,~\IEEEmembership{Member, IEEE}%
-\thanks{Fatih D\"onmez and Ahmet Altuncu are with the Department of Electrical and Electronics Engineering, Afyon Kocatepe University, Afyonkarahisar, Turkiye (e-mail: fatih.donmez@usr.aku.edu.tr; aaltuncu@aku.edu.tr). Fatih D\"onmez ORCID: 0000-0003-0553-4418. Corresponding author: Fatih D\"onmez.}%
-\thanks{Mustafa Namdar is with the Department of Electrical and Electronics Engineering, Faculty of Engineering, Kutahya Dumlupinar University, Kutahya, Turkiye (e-mail: mustafa.namdar@dpu.edu.tr).}}
+    \thanks{Fatih D\"onmez and Ahmet Altuncu are with the Department of Electrical and Electronics Engineering, Afyon Kocatepe University, Afyonkarahisar, Turkiye (e-mail: fatih.donmez@usr.aku.edu.tr; aaltuncu@aku.edu.tr). Fatih D\"onmez ORCID: 0000-0003-0553-4418. Corresponding author: Fatih D\"onmez.}%
+    \thanks{Mustafa Namdar is with the Department of Electrical and Electronics Engineering, Faculty of Engineering, Kutahya Dumlupinar University, Kutahya, Turkiye (e-mail: mustafa.namdar@dpu.edu.tr).}}
 
 \markboth{Draft Manuscript}%
 {D\"onmez \MakeLowercase{\textit{et al.}}: Optical Integrated Sensing and Communication Review}
@@ -29,15 +29,15 @@
 \maketitle
 
 \begin{abstract}
-Optical Integrated Sensing and Communication (O-ISAC) is emerging as a promising 6G direction because optical carriers can jointly support ultra-high-rate links and high-resolution sensing across both guided and wireless settings. However, the literature remains fragmented across fiber, free-space optics, VLC/LiFi, and photonic-THz systems, and prior survey-style works do not provide a PRISMA-grounded, cross-modality, metric-governed synthesis.
+    Optical Integrated Sensing and Communication (O-ISAC) is emerging as a promising 6G direction because optical carriers can jointly support ultra-high-rate links and high-resolution sensing across both guided and wireless settings. However, the literature remains fragmented across fiber, free-space optics, VLC/LiFi, and photonic-THz systems, and prior survey-style works do not provide a PRISMA-grounded, cross-modality, metric-governed synthesis.
 
-This systematic review synthesizes 220 peer-reviewed O-ISAC studies and builds a unified framework for comparing heterogeneous optical platforms without collapsing physically distinct metrics. We first establish the physical-layer foundations of O-ISAC and then develop a cross-modality taxonomy spanning medium class, integration style, detection regime, and task specialization. We further introduce a reporting contract that separates bandwidth-limited resolution, estimator-level accuracy, information-theoretic bounds, and plane-specific signal-quality metrics, enabling governed trade-off analysis through admissible rate-resolution views and conservative capacity-resolution quotient (CRQ) synthesis. Beyond performance reporting, we synthesize enabling technologies such as machine learning, optical RIS, optical phased arrays, and photonics-assisted high-frequency generation; map cross-domain applications and transfer opportunities; and consolidate the field into five challenge domains covering standardization, hardware scalability, channel modeling and evaluation, security and reliability, and deployment convergence.
+    This systematic review synthesizes 220 peer-reviewed O-ISAC studies and builds a unified framework for comparing heterogeneous optical platforms without collapsing physically distinct metrics. We first establish the physical-layer foundations of O-ISAC and then develop a cross-modality taxonomy spanning medium class, integration style, detection regime, and task specialization. We further introduce a reporting contract that separates bandwidth-limited resolution, estimator-level accuracy, information-theoretic bounds, and plane-specific signal-quality metrics, enabling governed trade-off analysis through admissible rate-resolution views and conservative capacity-resolution quotient (CRQ) synthesis. Beyond performance reporting, we synthesize enabling technologies such as machine learning, optical RIS, optical phased arrays, and photonics-assisted high-frequency generation; map cross-domain applications and transfer opportunities; and consolidate the field into five challenge domains covering standardization, hardware scalability, channel modeling and evaluation, security and reliability, and deployment convergence.
 
-The resulting manuscript does not treat O-ISAC as a single monolithic architecture. Instead, it offers an evidence-backed roadmap for when cross-paper comparison is defensible, where current deployment evidence concentrates, and which research bottlenecks most strongly shape credible 6G-facing O-ISAC systems.
+    The resulting manuscript does not treat O-ISAC as a single monolithic architecture. Instead, it offers an evidence-backed roadmap for when cross-paper comparison is defensible, where current deployment evidence concentrates, and which research bottlenecks most strongly shape credible 6G-facing O-ISAC systems.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Optical integrated sensing and communication, O-ISAC, free-space optics, visible light communication, distributed fiber sensing, photonic-terahertz systems, systematic review.
+    Optical integrated sensing and communication, O-ISAC, free-space optics, visible light communication, distributed fiber sensing, photonic-terahertz systems, systematic review.
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -65,75 +65,75 @@ These exemplars define the rate--resolution frontier considered throughout the m
 Table~\ref{tab:axis_comparison} previews the axis-based comparison of related review- and survey-style works discussed in Section I-D.
 
 \begin{table*}[!t]
-\caption{Comparison of this review with representative related review- and survey-style works across scope, methodology, and analytical coverage axes}
-\label{tab:axis_comparison}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{1.15}
+    \caption{Comparison of this review with representative related review- and survey-style works across scope, methodology, and analytical coverage axes}
+    \label{tab:axis_comparison}
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{3.2pt}
+    \renewcommand{\arraystretch}{1.15}
 
-\begin{tabularx}{\textwidth}{@{}%
->{\centering\arraybackslash}p{1.35cm}
->{\centering\arraybackslash}p{0.68cm}
->{\centering\arraybackslash}p{0.62cm}
->{\centering\arraybackslash}X
->{\centering\arraybackslash}p{0.82cm}
->{\centering\arraybackslash}p{0.90cm}
->{\centering\arraybackslash}p{0.72cm}
->{\centering\arraybackslash}p{0.82cm}
->{\centering\arraybackslash}p{0.88cm}
->{\centering\arraybackslash}p{0.90cm}
->{\centering\arraybackslash}p{0.95cm}
-@{}}
-\toprule
-\multicolumn{6}{c}{\textbf{Positioning and Review Type}} &
-\multicolumn{5}{c}{\textbf{Analytical Coverage}} \\
-\cmidrule(lr){1-6}\cmidrule(lr){7-11}
-\textbf{Ref.} &
-\textbf{Year} &
-\textbf{Tier} &
-\textbf{\shortstack{Modality Scope\\(Fiber / FSO / VLC / P-THz)}} &
-\textbf{\shortstack{Int.\\Depth}} &
-\textbf{Method} &
-\textbf{Tax.} &
-\textbf{Metrics} &
-\textbf{Bench.} &
-\textbf{Transfer} &
-\textbf{Enablers} \\
-\midrule
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\centering\arraybackslash}p{1.35cm}
+        >{\centering\arraybackslash}p{0.80cm}
+        >{\centering\arraybackslash}p{0.70cm}
+        >{\centering\arraybackslash}X
+        >{\centering\arraybackslash}p{0.95cm}
+        >{\centering\arraybackslash}p{1.30cm}
+        >{\centering\arraybackslash}p{0.90cm}
+        >{\centering\arraybackslash}p{1.30cm}
+        >{\centering\arraybackslash}p{1.30cm}
+        >{\centering\arraybackslash}p{1.40cm}
+        >{\centering\arraybackslash}p{1.40cm}
+        @{}}
+        \toprule
+        \multicolumn{6}{c}{\textbf{Positioning and Review Type}} &
+        \multicolumn{5}{c}{\textbf{Analytical Coverage}}                                                                                                                           \\
+        \cmidrule(lr){1-6}\cmidrule(lr){7-11}
+        \textbf{Ref.}                                            &
+        \textbf{Year}                                            &
+        \textbf{Tier}                                            &
+        \textbf{\shortstack{Modality Scope                                                                                                                                         \\(Fiber / FSO / VLC / P-THz)}} &
+        \textbf{\shortstack{Int.                                                                                                                                                   \\Depth}} &
+        \textbf{Method}                                          &
+        \textbf{Tax.}                                            &
+        \textbf{Metrics}                                         &
+        \textbf{Bench.}                                          &
+        \textbf{Transfer}                                        &
+        \textbf{Enablers}                                                                                                                                                          \\
+        \midrule
 
-\cite{O_ISAC_161} & 2025 & 2 & $\circ/\circ/\circ/\circ$ & $\bullet$  & Rev.   & $\oslash$ & --        & --        & --        & --        \\
-\cite{O_ISAC_068} & 2023 & 2 & $\circ/\circ/\bullet/\circ$ & $\bullet$  & Narr.  & --        & --        & --        & --        & --        \\
-\cite{O_ISAC_327} & 2024 & 2 & $\circ/\circ/\bullet/\circ$ & $\oslash$  & Surv.  & $\oslash$ & --        & --        & --        & --        \\
-\cite{O_ISAC_006} & 2024 & 2 & $\bullet/\circ/\circ/\circ$ & $\oslash$  & Rev.   & --        & $\oslash$ & --        & --        & --        \\
-\cite{O_ISAC_368} & 2023 & 2 & $\bullet/\circ/\circ/\circ$ & $\oslash$  & Rev.   & --        & --        & --        & --        & --        \\
-\cite{O_ISAC_021} & 2023 & 2 & $\circ/\bullet/\circ/\circ$ & $\bullet$  & Tut.   & $\oslash$ & $\oslash$ & --        & --        & $\oslash$ \\
-\cite{O_ISAC_070} & 2025 & 2 & $\circ/\circ/\circ/\bullet$ & $\bullet$  & Narr.  & $\oslash$ & --        & --        & --        & --        \\
-\cite{O_ISAC_163} & 2025 & 2 & $\circ/\circ/\circ/\circ$ & $\bullet$  & Surv.  & $\oslash$ & --        & --        & $\oslash$ & $\bullet$ \\
-\cite{O_ISAC_303} & 2024 & 1 & $\circ/\circ/\bullet/\circ$ & $\bullet$  & Rev.   & $\oslash$ & $\oslash$ & --        & --        & --        \\
+        \cite{O_ISAC_161}                                        & 2025 & 2 & $\circ/\circ/\circ/\circ$   & $\bullet$ & Rev.  & $\oslash$ & --        & -- & --        & --        \\
+        \cite{O_ISAC_068}                                        & 2023 & 2 & $\circ/\circ/\bullet/\circ$ & $\bullet$ & Narr. & --        & --        & -- & --        & --        \\
+        \cite{O_ISAC_327}                                        & 2024 & 2 & $\circ/\circ/\bullet/\circ$ & $\oslash$ & Surv. & $\oslash$ & --        & -- & --        & --        \\
+        \cite{O_ISAC_006}                                        & 2024 & 2 & $\bullet/\circ/\circ/\circ$ & $\oslash$ & Rev.  & --        & $\oslash$ & -- & --        & --        \\
+        \cite{O_ISAC_368}                                        & 2023 & 2 & $\bullet/\circ/\circ/\circ$ & $\oslash$ & Rev.  & --        & --        & -- & --        & --        \\
+        \cite{O_ISAC_021}                                        & 2023 & 2 & $\circ/\bullet/\circ/\circ$ & $\bullet$ & Tut.  & $\oslash$ & $\oslash$ & -- & --        & $\oslash$ \\
+        \cite{O_ISAC_070}                                        & 2025 & 2 & $\circ/\circ/\circ/\bullet$ & $\bullet$ & Narr. & $\oslash$ & --        & -- & --        & --        \\
+        \cite{O_ISAC_163}                                        & 2025 & 2 & $\circ/\circ/\circ/\circ$   & $\bullet$ & Surv. & $\oslash$ & --        & -- & $\oslash$ & $\bullet$ \\
+        \cite{O_ISAC_303}                                        & 2024 & 1 & $\circ/\circ/\bullet/\circ$ & $\bullet$ & Rev.  & $\oslash$ & $\oslash$ & -- & --        & --        \\
 
-\midrule
-\textbf{This Review} &
-\textbf{2026} &
-\textbf{--} &
-\textbf{$\bullet/\bullet/\bullet/\bullet$} &
-$\bullet$ &
-\textbf{PRISMA} &
-$\bullet$ &
-$\bullet$ &
-$\bullet$ &
-$\bullet$ &
-$\bullet$ \\
-\bottomrule
-\end{tabularx}
+        \midrule
+        \textbf{This Review}                                     &
+        \textbf{2026}                                            &
+        \textbf{--}                                              &
+        \textbf{$\bullet/\bullet/\bullet/\bullet$}               &
+        $\bullet$                                                &
+        \textbf{PRISMA}                                          &
+        $\bullet$                                                &
+        $\bullet$                                                &
+        $\bullet$                                                &
+        $\bullet$                                                &
+        $\bullet$                                                                                                                                                                  \\
+        \bottomrule
+    \end{tabularx}
 
-\vspace{2pt}
-\footnotesize
-\emph{Notation:} $\bullet$ = strong/explicit; $\oslash$ = partial/within-modality; -- = absent; 
-$\circ$ = out-of-scope. Modality scope is reported in the order \textbf{F / FSO / VLC / THz}, 
-with THz restricted here to photonic-THz or optical--THz bridging O-ISAC.\\
-\emph{Scoring rule:} For analytical axes, $\{--,\oslash,\bullet\}\mapsto\{0,\tfrac{1}{2},1\}$.
-The symbol $\circ$ is used only for modality-scope exclusion and is not scored.
+    \vspace{2pt}
+    \footnotesize
+    \emph{Notation:} $\bullet$ = strong/explicit; $\oslash$ = partial/within-modality; -- = absent;
+    $\circ$ = out-of-scope. Modality scope is reported in the order \textbf{F / FSO / VLC / THz},
+    with THz restricted here to photonic-THz or optical--THz bridging O-ISAC.\\
+    \emph{Scoring rule:} For analytical axes, $\{--,\oslash,\bullet\}\mapsto\{0,\tfrac{1}{2},1\}$.
+    The symbol $\circ$ is used only for modality-scope exclusion and is not scored.
 \end{table*}
 
 \paragraph{The Optical Opportunity: A Vast and Untapped Frontier}
@@ -143,68 +143,68 @@ The optical domain expands the design space far beyond congested sub-300 GHz RF 
 Table~\ref{tab:performance_comparison} provides a compact RF-ISAC versus O-ISAC comparison using representative ranges from the reviewed corpus \cite{O_ISAC_021}.
 
 \begin{table*}[!t]
-\caption{RF-ISAC vs. O-ISAC Performance Comparison \protect\cite{O_ISAC_021}}
-\label{tab:performance_comparison}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{1.15}
+    \caption{RF-ISAC vs. O-ISAC Performance Comparison \protect\cite{O_ISAC_021}}
+    \label{tab:performance_comparison}
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{3.2pt}
+    \renewcommand{\arraystretch}{1.15}
 
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.35cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Characteristic} &
-\textbf{RF-ISAC (Sub-6 GHz / mmWave)} &
-\textbf{Wireless O-ISAC (FSO / VLC / Photo-THz)} &
-\textbf{Wired O-ISAC (Fiber Sensing)} \\
-\midrule
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.35cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Characteristic}                           &
+        \textbf{RF-ISAC (Sub-6 GHz / mmWave)}             &
+        \textbf{Wireless O-ISAC (FSO / VLC / Photo-THz)}  &
+        \textbf{Wired O-ISAC (Fiber Sensing)}               \\
+        \midrule
 
-\textbf{Carrier Frequency} &
-2.4--100 GHz &
-0.1--10 THz (Photo-THz) + 28.3--845 THz (FSO/VLC) &
-193 THz (C-band / L-band) \\
+        \textbf{Carrier Frequency}                        &
+        2.4--100 GHz                                      &
+        0.1--10 THz (Photo-THz) + 28.3--845 THz (FSO/VLC) &
+        193 THz (C-band / L-band)                           \\
 
-\textbf{Physics Model} &
-Diffuse multipath (rich) &
-LoS-dominated propagation &
-Guided mode (low-loss, dispersive) \\
+        \textbf{Physics Model}                            &
+        Diffuse multipath (rich)                          &
+        LoS-dominated propagation                         &
+        Guided mode (low-loss, dispersive)                  \\
 
-\textbf{Signal Type} &
-Complex (I/Q) &
-Real (IM/DD) or complex (coherent FSO) &
-Complex (coherent phase/polarization) \\
+        \textbf{Signal Type}                              &
+        Complex (I/Q)                                     &
+        Real (IM/DD) or complex (coherent FSO)            &
+        Complex (coherent phase/polarization)               \\
 
-\textbf{Key Impairments} &
-Interference, multipath fading &
-Ambient light, turbulence, pointing error &
-Kerr nonlinearity, PMD, phase noise \\
+        \textbf{Key Impairments}                          &
+        Interference, multipath fading                    &
+        Ambient light, turbulence, pointing error         &
+        Kerr nonlinearity, PMD, phase noise                 \\
 
-\textbf{Sensing Task} &
-Radar (range/Doppler) &
-Localization, gesture, surface profiling &
-DAS (vibration), strain, temperature \\
+        \textbf{Sensing Task}                             &
+        Radar (range/Doppler)                             &
+        Localization, gesture, surface profiling          &
+        DAS (vibration), strain, temperature                \\
 
-\textbf{Peak Data Rate} &
-$\sim$10--20 Gbps &
-\textbf{$\sim$100--120 Gbps} \cite{O_ISAC_105} &
-\textbf{$>$200 Tbps} (aggregate) \cite{O_ISAC_046} \\
+        \textbf{Peak Data Rate}                           &
+        $\sim$10--20 Gbps                                 &
+        \textbf{$\sim$100--120 Gbps} \cite{O_ISAC_105}    &
+        \textbf{$>$200 Tbps} (aggregate) \cite{O_ISAC_046}  \\
 
-\textbf{Resolution} &
-cm-level &
-\textbf{mm-level (2.5 mm)} \cite{O_ISAC_105} &
-m-level (spatial) / $n\varepsilon$ (strain) \\
-\bottomrule
-\end{tabularx}
+        \textbf{Resolution}                               &
+        cm-level                                          &
+        \textbf{mm-level (2.5 mm)} \cite{O_ISAC_105}      &
+        m-level (spatial) / $n\varepsilon$ (strain)         \\
+        \bottomrule
+    \end{tabularx}
 
-\vspace{2pt}
-\footnotesize
-\emph{Abbreviations:} RF = radio frequency; FSO = free-space optics; VLC = visible light communication; 
-Photo-THz denotes photonic-THz or optical--THz bridging links; DAS = distributed acoustic sensing; 
-IM/DD = intensity modulation/direct detection; PMD = polarization mode dispersion.
+    \vspace{2pt}
+    \footnotesize
+    \emph{Abbreviations:} RF = radio frequency; FSO = free-space optics; VLC = visible light communication;
+    Photo-THz denotes photonic-THz or optical--THz bridging links; DAS = distributed acoustic sensing;
+    IM/DD = intensity modulation/direct detection; PMD = polarization mode dispersion.
 \end{table*}
 
 \paragraph{Three Competitive Advantages of O-ISAC}
@@ -250,7 +250,7 @@ Despite these physical advantages, the O-ISAC literature remains fragmented. Our
 
 \textbf{Metric Non-Isomorphism.} Equally problematic is the absence of a shared sensing-performance language. A first-order example is the recurrent conflation of \textbf{physical resolution limits}, \textbf{estimator-dependent accuracy}, and \textbf{information-/estimation-theoretic bounds}. For ranging, the bandwidth-limited physical resolution is
 \begin{equation}
-\Delta r_{\min}=\frac{v}{2B_{\text{eff}}}
+    \Delta r_{\min}=\frac{v}{2B_{\text{eff}}}
 \end{equation}
 where $v=c$ in free space and $v\approx c/n_g$ in guided media. In contrast, RMSE/$\sigma_r$ and localization error remain SNR- and estimator-dependent, while CRB/FIM quantities describe information bounds under an explicit observation model \cite{O_ISAC_013,O_ISAC_050,O_ISAC_056}. The same "resolution" label can therefore refer to different objects across modalities, and signal quality also shifts across reference planes: coherent fiber studies often report OSNR \cite{O_ISAC_028}, whereas VLC studies usually report post-detection electrical SNR \cite{O_ISAC_009}.
 
@@ -290,68 +290,68 @@ The remainder of this review is organized as follows. Section II establishes the
 
 For the reader's convenience, the mathematical notation conventions and the most frequently used acronyms in this paper are defined in Tables~\ref{tab:math_notation} and \ref{tab:acronyms}, respectively.
 \begin{table}[!t]
-\caption{Mathematical Notation Conventions}
-\label{tab:math_notation}
-\centering
-\footnotesize
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.38\columnwidth} >{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Symbol} & \textbf{Definition} \\
-\midrule
-$\lambda$ & Optical wavelength (nm) \\
-$B_{\mathrm{eff}}$ & Effective signal bandwidth (Hz) \\
-$R$ & Data rate (bit/s) \\
-$d$ & Target distance or range (m) \\
-$\Delta r_{\min}$ & Bandwidth-limited two-way range resolution (m) \\
-$\sigma_r = \sqrt{\mathbb{E}[(\hat r - r)^2]}$ & Range estimation error or RMSE (m) \\
-$\mathrm{SNR}$ & Signal-to-noise ratio \\
-$\mathrm{BER}$ & Bit error rate \\
-$\alpha$ & Power allocation factor for communication--sensing trade-off \\
-\bottomrule
-\end{tabularx}
+    \caption{Mathematical Notation Conventions}
+    \label{tab:math_notation}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.38\columnwidth} >{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Symbol}                                & \textbf{Definition}                                          \\
+        \midrule
+        $\lambda$                                      & Optical wavelength (nm)                                      \\
+        $B_{\mathrm{eff}}$                             & Effective signal bandwidth (Hz)                              \\
+        $R$                                            & Data rate (bit/s)                                            \\
+        $d$                                            & Target distance or range (m)                                 \\
+        $\Delta r_{\min}$                              & Bandwidth-limited two-way range resolution (m)               \\
+        $\sigma_r = \sqrt{\mathbb{E}[(\hat r - r)^2]}$ & Range estimation error or RMSE (m)                           \\
+        $\mathrm{SNR}$                                 & Signal-to-noise ratio                                        \\
+        $\mathrm{BER}$                                 & Bit error rate                                               \\
+        $\alpha$                                       & Power allocation factor for communication--sensing trade-off \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 \begin{table}[!t]
-\caption{List of Frequently Used Acronyms}
-\label{tab:acronyms}
-\centering
-\footnotesize
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Acronym} & \textbf{Definition} \\
-\midrule
-\textbf{ISAC} & Integrated Sensing and Communication \\
-\textbf{O-ISAC} & Optical Integrated Sensing and Communication \\
-\textbf{ISAC-OF} & Integrated Sensing and Communication in Optical Fiber \\
-\textbf{DFS} & Distributed Fiber Sensing \\
-\textbf{DAS} & Distributed Acoustic Sensing \\
-\textbf{VLC} & Visible Light Communication \\
-\textbf{FSO} & Free-Space Optical \\
-\textbf{OWC} & Optical Wireless Communication \\
-\textbf{LFM} & Linear Frequency Modulation \\
-\textbf{OFDM} & Orthogonal Frequency Division Multiplexing \\
-\textbf{DCO-OFDM} & DC-biased Optical OFDM \\
-\textbf{OCDM} & Orthogonal Chirp Division Multiplexing \\
-\textbf{IM/DD} & Intensity Modulation / Direct Detection \\
-\textbf{ORIS} & Optical Reconfigurable Intelligent Surface \\
-\textbf{OPA} & Optical Phased Array \\
-\textbf{PIC} & Photonic Integrated Circuit \\
-\textbf{CCR} & Corner Cube Reflector \\
-\textbf{RO-ISAC} & Retroreflective O-ISAC \\
-\textbf{$\phi$-OTDR} & Phase-Sensitive Optical Time-Domain Reflectometry \\
-\textbf{SMF} & Single-Mode Fiber \\
-\textbf{FMF} & Few-Mode Fiber \\
-\textbf{MCF} & Multi-Core Fiber \\
-\textbf{WDM} & Wavelength Division Multiplexing \\
-\textbf{DSCM} & Digital Subcarrier Multiplexing \\
-\textbf{THz} & Terahertz \\
-\textbf{MIMO} & Multiple-Input Multiple-Output \\
-\textbf{PRISMA} & Preferred Reporting Items for Systematic Reviews and Meta-Analyses \\
-\textbf{TQAF} & Technical Quality Assessment Form \\
-\textbf{RMSE} & Root Mean Square Error \\
-\textbf{CRB} & Cram\'er--Rao Bound \\
-\bottomrule
-\end{tabularx}
+    \caption{List of Frequently Used Acronyms}
+    \label{tab:acronyms}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Acronym}     & \textbf{Definition}                                                \\
+        \midrule
+        \textbf{ISAC}        & Integrated Sensing and Communication                               \\
+        \textbf{O-ISAC}      & Optical Integrated Sensing and Communication                       \\
+        \textbf{ISAC-OF}     & Integrated Sensing and Communication in Optical Fiber              \\
+        \textbf{DFS}         & Distributed Fiber Sensing                                          \\
+        \textbf{DAS}         & Distributed Acoustic Sensing                                       \\
+        \textbf{VLC}         & Visible Light Communication                                        \\
+        \textbf{FSO}         & Free-Space Optical                                                 \\
+        \textbf{OWC}         & Optical Wireless Communication                                     \\
+        \textbf{LFM}         & Linear Frequency Modulation                                        \\
+        \textbf{OFDM}        & Orthogonal Frequency Division Multiplexing                         \\
+        \textbf{DCO-OFDM}    & DC-biased Optical OFDM                                             \\
+        \textbf{OCDM}        & Orthogonal Chirp Division Multiplexing                             \\
+        \textbf{IM/DD}       & Intensity Modulation / Direct Detection                            \\
+        \textbf{ORIS}        & Optical Reconfigurable Intelligent Surface                         \\
+        \textbf{OPA}         & Optical Phased Array                                               \\
+        \textbf{PIC}         & Photonic Integrated Circuit                                        \\
+        \textbf{CCR}         & Corner Cube Reflector                                              \\
+        \textbf{RO-ISAC}     & Retroreflective O-ISAC                                             \\
+        \textbf{$\phi$-OTDR} & Phase-Sensitive Optical Time-Domain Reflectometry                  \\
+        \textbf{SMF}         & Single-Mode Fiber                                                  \\
+        \textbf{FMF}         & Few-Mode Fiber                                                     \\
+        \textbf{MCF}         & Multi-Core Fiber                                                   \\
+        \textbf{WDM}         & Wavelength Division Multiplexing                                   \\
+        \textbf{DSCM}        & Digital Subcarrier Multiplexing                                    \\
+        \textbf{THz}         & Terahertz                                                          \\
+        \textbf{MIMO}        & Multiple-Input Multiple-Output                                     \\
+        \textbf{PRISMA}      & Preferred Reporting Items for Systematic Reviews and Meta-Analyses \\
+        \textbf{TQAF}        & Technical Quality Assessment Form                                  \\
+        \textbf{RMSE}        & Root Mean Square Error                                             \\
+        \textbf{CRB}         & Cram\'er--Rao Bound                                                \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 
@@ -364,24 +364,24 @@ Design rationale: We define a joint design variable set that spans waveform para
 
 \textbf{Generic baseband observation (complex coherent model):}
 \begin{equation}
-\mathbf{y}(t)=\mathbf{H}(t;\boldsymbol{\theta})\mathbf{s}(t)+\mathbf{w}(t)
+    \mathbf{y}(t)=\mathbf{H}(t;\boldsymbol{\theta})\mathbf{s}(t)+\mathbf{w}(t)
 \end{equation}
 where \(\mathbf{y}(t)\) is the received complex baseband observation, \(\mathbf{s}(t)\) is the transmitted complex baseband waveform, \(\mathbf{H}(t;\boldsymbol{\theta})\) is a parametric operator embedding sensing parameters \(\boldsymbol{\theta}\) (e.g., delay, Doppler, angle), and \(\mathbf{w}(t)\) is receiver noise.
 
 \textbf{IM/DD observation (real, nonnegative intensity constraint):}
 \begin{equation}
-y(t)=\mathcal{R}\,\big(x(t)\ast h(t)\big)+n(t),\qquad x(t)\ge 0
+    y(t)=\mathcal{R}\,\big(x(t)\ast h(t)\big)+n(t),\qquad x(t)\ge 0
 \end{equation}
 where \(y(t)\) is the electrical observation after direct detection, \(x(t)\) is the transmitted optical intensity waveform, \(h(t)\) is the intensity channel impulse response, \(\mathcal{R}\) is photodetector responsivity, and \(n(t)\) is additive electrical noise. Here \(x(t)\) denotes the modulated optical intensity (post square-law abstraction), not the optical field amplitude; the nonnegativity constraint follows.
 
 \textbf{Measurement-plane contract.} We map each reported metric \(m\) to a measurement plane via
 
 \begin{equation}
-\label{eq:measurement_plane_contract}
-\begin{aligned}
-\pi(m)\in\{&\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\\
-&\text{AMBIGUOUS}\}
-\end{aligned}
+    \label{eq:measurement_plane_contract}
+    \begin{aligned}
+        \pi(m)\in\{ & \text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE}, \\
+                    & \text{AMBIGUOUS}\}
+    \end{aligned}
 \end{equation}
 
 
@@ -413,7 +413,7 @@ Paradigm-to-mechanism bridge:
 
 We define an integration depth variable
 \begin{equation}
-d_{\text{int}}\in\{0,\;1/2,\;1\}
+    d_{\text{int}}\in\{0,\;1/2,\;1\}
 \end{equation}
 where \(d_{\text{int}}=0\) corresponds to coexistence, \(d_{\text{int}}=1/2\) to partial sharing/cooperation, and \(d_{\text{int}}=1\) to full co-design. This internal axis is used later to align taxonomy and trade-off synthesis without rewriting modality-specific models.
 
@@ -426,7 +426,7 @@ Evidence alignment: A.2 defines a review-internal synthesis scaffold for later s
     \centering
     \includegraphics[width=\linewidth]{figures/fig_ii_1.png}
     \caption{Unified O-ISAC system abstraction across modalities. The figure summarizes a common source-modulator-waveform-channel-observation-output chain while retaining modality-conditioned channels, coherent versus IM/DD observations, and communication-centric to joint-design integration depths.}
-   \label{fig:fig_ii_1}
+    \label{fig:fig_ii_1}
 \end{figure*}
 
 \subsection{Propagation and Channel Models Across Modalities}
@@ -437,23 +437,23 @@ Design rationale: Fiber links are naturally represented by a linear dispersive b
 
 A baseline model is
 \begin{equation}
-\mathbf{y}(t)=\mathbf{G}_{\mathrm{disp}}(t)\ast \mathbf{s}(t)+\mathbf{w}(t)
-\label{eq:fiber_linear_model}
+    \mathbf{y}(t)=\mathbf{G}_{\mathrm{disp}}(t)\ast \mathbf{s}(t)+\mathbf{w}(t)
+    \label{eq:fiber_linear_model}
 \end{equation}
 where $\mathbf{G}_{\mathrm{disp}}(t)$ captures chromatic-dispersion-dominated propagation.
 
 For nonlinear regimes, a conceptual NLSE form is
 \begin{equation}
-\begin{split}
-\frac{\partial A(z,t)}{\partial z}
-&=
--\frac{\alpha}{2}A
--j\frac{\beta_2}{2}\frac{\partial^2 A}{\partial t^2} \\
-&\quad
-+j\gamma |A|^2 A
-+\eta(z,t)
-\end{split}
-\label{eq:nlse_conceptual}
+    \begin{split}
+        \frac{\partial A(z,t)}{\partial z}
+         & =
+        -\frac{\alpha}{2}A
+        -j\frac{\beta_2}{2}\frac{\partial^2 A}{\partial t^2} \\
+         & \quad
+        +j\gamma |A|^2 A
+        +\eta(z,t)
+    \end{split}
+    \label{eq:nlse_conceptual}
 \end{equation}
 where $A(z,t)$ is the optical field envelope, $\alpha$ is attenuation, $\beta_2$ is group-velocity dispersion, and $\gamma$ is the nonlinear coefficient. For sensing tasks, fiber reports spatial granularity via $\Delta z$ (gauge/segment length), not wireless-style $\Delta r_{\min}$ (Metric Governance). Integrated fiber O-ISAC implementations also show that probe pre-compensation, temperature compensation, and estimator-side vibration recovery can be central to the effective observability chain in guided media \cite{O_ISAC_024,O_ISAC_032,O_ISAC_072,O_ISAC_085}.
 
@@ -464,11 +464,11 @@ Design rationale: FSO propagation is dominated by multiplicative effects (turbul
 
 A compact IM/DD-friendly form is
 \begin{equation}
-y = h_{\text{turb}}\,h_{\text{point}}\,h_{\text{att}}\,x + n,\qquad x\ge 0
+    y = h_{\text{turb}}\,h_{\text{point}}\,h_{\text{att}}\,x + n,\qquad x\ge 0
 \end{equation}
 with
 \begin{equation}
-h_{\text{att}}=\exp(-\kappa d)
+    h_{\text{att}}=\exp(-\kappa d)
 \end{equation}
 where \(d\) is propagation distance and \(\kappa\) is the extinction coefficient. Turbulence statistics are typically modeled with log-normal or Gamma-Gamma families depending on regime assumptions.
 
@@ -479,7 +479,7 @@ Design rationale: VLC behavior is geometry-driven and typically represented by a
 
 A generic representation is
 \begin{equation}
-h(t)=h_{\text{LOS}}(t)+h_{\text{NLOS}}(t)
+    h(t)=h_{\text{LOS}}(t)+h_{\text{NLOS}}(t)
 \end{equation}
 where LoS and reflected components are separated in the CIR. Shot noise, thermal noise, and ambient-light-induced noise are included according to receiver setup.
 
@@ -504,11 +504,11 @@ Design rationale: Receiver architecture defines the observation plane and theref
 
 We restate the measurement-plane contract for receiver-side interpretation:
 \begin{equation}
-\label{eq:receiver_plane_contract}
-\begin{aligned}
-\pi(m)\in\{&\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\\
-&\text{AMBIGUOUS}\}
-\end{aligned}
+    \label{eq:receiver_plane_contract}
+    \begin{aligned}
+        \pi(m)\in\{ & \text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE}, \\
+                    & \text{AMBIGUOUS}\}
+    \end{aligned}
 \end{equation}
 
 where OSNR is optical-plane and electrical SNR/ESNR is post-detection electrical-plane; OSNR-to-SNR conversion is prohibited without an explicit receiver/noise model (Metric Governance).
@@ -520,10 +520,10 @@ Design rationale: Spatial-control elements (especially OPA-class front ends) are
 
 A generic array response model for steering/sensing is
 \begin{equation}
-\begin{split}
-\mathbf{a}(\phi)=\left[1,\;e^{jkd\sin\phi},\;\ldots,\right.\\
-\left.\qquad e^{jkd(N-1)\sin\phi}\right]^{\top}
-\end{split}
+    \begin{split}
+        \mathbf{a}(\phi)=\left[1,\;e^{jkd\sin\phi},\;\ldots,\right. \\
+            \left.\qquad e^{jkd(N-1)\sin\phi}\right]^{\top}
+    \end{split}
 \end{equation}
 
 Evidence alignment: Representative OW-ISAC studies explicitly use OPA-based beamforming front ends and discuss their role in joint communication-sensing operation \cite{O_ISAC_061,O_ISAC_091}. Phase-time-array and antenna-on-display studies further illustrate how beam steering and spatial scanning become part of the sensing/communication front-end abstraction rather than a separate post-processing layer \cite{O_ISAC_081,O_ISAC_120}.
@@ -532,56 +532,56 @@ Evidence alignment: Representative OW-ISAC studies explicitly use OPA-based beam
 Table~\ref{tab:ii1} compacts the modality-aware channel and transceiver abstractions introduced across Sections II-B and II-C. Its purpose is not to rank modalities, but to preserve a common comparison scaffold while making each modality's native sensing abstraction and reporting constraints explicit.
 
 \begin{table*}[!t]
-\caption{Modality-Aware Channel and Transceiver Abstraction Summary}
-\label{tab:ii1}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{1.55cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Modality} &
-\textbf{\shortstack{Channel\\abstraction}} &
-\textbf{\shortstack{Signaling /\\detection view}} &
-\textbf{\shortstack{Dominant impairment\\family}} &
-\textbf{\shortstack{Native sensing\\abstraction}} &
-\textbf{\shortstack{Governance\\guard}} \\
-\midrule
+    \caption{Modality-Aware Channel and Transceiver Abstraction Summary}
+    \label{tab:ii1}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{1.55cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Modality}                                                      &
+        \textbf{\shortstack{Channel                                                    \\abstraction}} &
+        \textbf{\shortstack{Signaling /                                                \\detection view}} &
+        \textbf{\shortstack{Dominant impairment                                        \\family}} &
+        \textbf{\shortstack{Native sensing                                             \\abstraction}} &
+        \textbf{\shortstack{Governance                                                 \\guard}} \\
+        \midrule
 
-Fiber (cabled) &
-Guided dispersive link; NLSE-style extension in nonlinear regimes &
-Typically coherent, field-aware observation &
-Dispersion, Kerr nonlinearity, PMD, phase noise &
-$\Delta z$ for DAS/OTDR-like spatial granularity &
-Do not relabel $\Delta z$ as wireless $\Delta r_{\min}$ \\
+        Fiber (cabled)                                                         &
+        Guided dispersive link; NLSE-style extension in nonlinear regimes      &
+        Typically coherent, field-aware observation                            &
+        Dispersion, Kerr nonlinearity, PMD, phase noise                        &
+        $\Delta z$ for DAS/OTDR-like spatial granularity                       &
+        Do not relabel $\Delta z$ as wireless $\Delta r_{\min}$                        \\
 
-FSO &
-Multiplicative atmosphere-plus-pointing link with path attenuation &
-IM/DD or coherent depending on receiver chain &
-Turbulence, pointing error, attenuation &
-Delay/range estimation under two-way ranging convention &
-Keep optical-plane and electrical-plane reporting distinct \\
+        FSO                                                                    &
+        Multiplicative atmosphere-plus-pointing link with path attenuation     &
+        IM/DD or coherent depending on receiver chain                          &
+        Turbulence, pointing error, attenuation                                &
+        Delay/range estimation under two-way ranging convention                &
+        Keep optical-plane and electrical-plane reporting distinct                     \\
 
-VLC / LiFi &
-Lambertian LoS/NLoS CIR with geometry-driven gain &
-IM/DD with nonnegative intensity waveform &
-Ambient light, shot/thermal noise, geometry &
-Positioning/ranging from CIR structure or intensity observations &
-Do not import coherent-field assumptions into IM/DD interpretations \\
+        VLC / LiFi                                                             &
+        Lambertian LoS/NLoS CIR with geometry-driven gain                      &
+        IM/DD with nonnegative intensity waveform                              &
+        Ambient light, shot/thermal noise, geometry                            &
+        Positioning/ranging from CIR structure or intensity observations       &
+        Do not import coherent-field assumptions into IM/DD interpretations            \\
 
-Photonic-THz bridge &
-Split chain: optical generation/distribution plus THz propagation &
-Bridged optical front-end plus THz wireless observation &
-Optical front-end impairments plus frequency-selective THz propagation &
-Delay/range/angle inference over a two-stage chain &
-Keep optical generation stage and THz propagation stage conceptually separated \\
-\bottomrule
-\end{tabularx}
+        Photonic-THz bridge                                                    &
+        Split chain: optical generation/distribution plus THz propagation      &
+        Bridged optical front-end plus THz wireless observation                &
+        Optical front-end impairments plus frequency-selective THz propagation &
+        Delay/range/angle inference over a two-stage chain                     &
+        Keep optical generation stage and THz propagation stage conceptually separated \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
 
 We adopt the two-way delay model with
 \begin{equation}
-\Delta r_{\min} = \frac{v}{2B_{\text{eff}}}
+    \Delta r_{\min} = \frac{v}{2B_{\text{eff}}}
 \end{equation}
 where \(v=c\) in free space and \(v\approx c/n_g\) in guided media. For ranging tasks, \(\tau=2r/v\) links delay and range. Fiber DAS/OTDR records are mapped to \(\Delta z\) (gauge/segment length), not \(\Delta r_{\min}\) (Metric Governance).
 
@@ -592,14 +592,14 @@ Design rationale: Accuracy is estimator- and noise-model-dependent, so it must r
 
 Estimator-dependent accuracy is defined as
 \begin{equation}
-\sigma_r = \sqrt{\mathbb{E}[(\hat r-r)^2]}
+    \sigma_r = \sqrt{\mathbb{E}[(\hat r-r)^2]}
 \end{equation}
 while a canonical delay-bound form is
 \begin{equation}
-\begin{split}
-\mathrm{var}(\hat\tau) &\ge \frac{1}{8\pi^2\beta^2\,\mathrm{SNR}} \\
-\Rightarrow\ \mathrm{var}(\hat r) &\ge \left(\frac{v}{2}\right)^2\mathrm{var}(\hat\tau).
-\end{split}
+    \begin{split}
+        \mathrm{var}(\hat\tau)            & \ge \frac{1}{8\pi^2\beta^2\,\mathrm{SNR}}             \\
+        \Rightarrow\ \mathrm{var}(\hat r) & \ge \left(\frac{v}{2}\right)^2\mathrm{var}(\hat\tau).
+    \end{split}
 \end{equation}
 Here SNR is an abstract estimator-plane quantity unless a source explicitly fixes the measurement plane; this expression does not permit OSNR/electrical-SNR substitution (Metric Governance).
 
@@ -617,7 +617,7 @@ Design rationale: A compact cross-architecture indicator is useful only under st
 
 We define
 \begin{equation}
-\mathrm{CRQ}_{\Delta} = \frac{R}{\Delta r_{\min}} \quad [\mathrm{bps/m}],
+    \mathrm{CRQ}_{\Delta} = \frac{R}{\Delta r_{\min}} \quad [\mathrm{bps/m}],
 \end{equation}
 \(\mathrm{CRQ}_{\Delta}\) is computed only when both \(R\) and \(\Delta r_{\min}\) are available from the same scenario record and the measurement-plane note is explicit. If only \(\Delta z\) (or generic spatial\_resolution\_m) is available, \(\mathrm{CRQ}_{\Delta}\) remains undefined.
 Evidence alignment: This is a governance-level construct used to control later synthesis; no prevalence claim is asserted in Section II-D.
@@ -626,83 +626,83 @@ Table~\ref{tab:ii2} summarizes the metric contract used throughout this review. 
 
 
 \begin{table*}[!t]
-\caption{Metric Contract and Comparability Guard Summary}
-\label{tab:ii2}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{1.15}
+    \caption{Metric Contract and Comparability Guard Summary}
+    \label{tab:ii2}
+    \centering
+    \footnotesize
+    \setlength{\tabcolsep}{3.2pt}
+    \renewcommand{\arraystretch}{1.15}
 
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{1.45cm}
->{\raggedright\arraybackslash}p{1.65cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Quantity} &
-\textbf{Role} &
-\textbf{\shortstack{Native scope /\\plane}} &
-\textbf{Admissible use} &
-\textbf{\shortstack{Forbidden substitution /\\warning}} \\
-\midrule
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{1.45cm}
+        >{\raggedright\arraybackslash}p{1.65cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Quantity}                                                                                                  &
+        \textbf{Role}                                                                                                      &
+        \textbf{\shortstack{Native scope /                                                                                   \\plane}} &
+        \textbf{Admissible use}                                                                                            &
+        \textbf{\shortstack{Forbidden substitution /                                                                         \\warning}} \\
+        \midrule
 
-$\Delta r_{\min}$ &
-Bandwidth-limited resolution &
-Two-way ranging physics &
-Use as a resolution term; combine with $R$ for $\mathrm{CRQ}_{\Delta}$ only when both arise from the same scenario &
-Do not treat as $\sigma_r$ or $\Delta z$ \\
+        $\Delta r_{\min}$                                                                                                  &
+        Bandwidth-limited resolution                                                                                       &
+        Two-way ranging physics                                                                                            &
+        Use as a resolution term; combine with $R$ for $\mathrm{CRQ}_{\Delta}$ only when both arise from the same scenario &
+        Do not treat as $\sigma_r$ or $\Delta z$                                                                             \\
 
-$\sigma_r$ &
-Estimator-dependent accuracy &
-Estimator/noise-model dependent &
-Report as accuracy or RMSE-style sensing fidelity &
-Do not relabel as physics-limited resolution \\
+        $\sigma_r$                                                                                                         &
+        Estimator-dependent accuracy                                                                                       &
+        Estimator/noise-model dependent                                                                                    &
+        Report as accuracy or RMSE-style sensing fidelity                                                                  &
+        Do not relabel as physics-limited resolution                                                                         \\
 
-CRB / FIM &
-Bound-type metric &
-Model-based lower-bound context &
-Use to contextualize attainable estimator accuracy &
-Do not report as measured accuracy or as $\Delta r_{\min}$ \\
+        CRB / FIM                                                                                                          &
+        Bound-type metric                                                                                                  &
+        Model-based lower-bound context                                                                                    &
+        Use to contextualize attainable estimator accuracy                                                                 &
+        Do not report as measured accuracy or as $\Delta r_{\min}$                                                           \\
 
-$\Delta z$ &
-Fiber spatial granularity &
-Guided sensing / DAS-OTDR contexts &
-Use for gauge- or segment-length style fiber reporting &
-Do not substitute into $\mathrm{CRQ}_{\Delta}$ or wireless ranging comparisons \\
+        $\Delta z$                                                                                                         &
+        Fiber spatial granularity                                                                                          &
+        Guided sensing / DAS-OTDR contexts                                                                                 &
+        Use for gauge- or segment-length style fiber reporting                                                             &
+        Do not substitute into $\mathrm{CRQ}_{\Delta}$ or wireless ranging comparisons                                       \\
 
-$R$ &
-Communication throughput / rate &
-Communication objective &
-Use directly as a rate objective; pair with $\Delta r_{\min}$ only under matched scenario records &
-Not a sensing metric and not a quality-plane surrogate \\
+        $R$                                                                                                                &
+        Communication throughput / rate                                                                                    &
+        Communication objective                                                                                            &
+        Use directly as a rate objective; pair with $\Delta r_{\min}$ only under matched scenario records                  &
+        Not a sensing metric and not a quality-plane surrogate                                                               \\
 
-$\mathrm{CRQ}_{\Delta}$ &
-Derived joint indicator &
-Same-scenario derived quantity &
-Compute only from explicit $R$ and $\Delta r_{\min}$ &
-Undefined if only $\Delta z$ or ambiguous resolution fields are available \\
+        $\mathrm{CRQ}_{\Delta}$                                                                                            &
+        Derived joint indicator                                                                                            &
+        Same-scenario derived quantity                                                                                     &
+        Compute only from explicit $R$ and $\Delta r_{\min}$                                                               &
+        Undefined if only $\Delta z$ or ambiguous resolution fields are available                                            \\
 
-OSNR &
-Optical-plane quality metric &
-Pre-detection optical plane &
-Compare only within explicit optical-plane reporting &
-Do not convert to electrical SNR without an explicit receiver/noise model \\
+        OSNR                                                                                                               &
+        Optical-plane quality metric                                                                                       &
+        Pre-detection optical plane                                                                                        &
+        Compare only within explicit optical-plane reporting                                                               &
+        Do not convert to electrical SNR without an explicit receiver/noise model                                            \\
 
-SNR / ESNR &
-Electrical-plane quality metric &
-Post-detection electrical plane &
-Compare only within fixed electrical-plane contexts &
-Do not merge with OSNR as if they were interchangeable \\
+        SNR / ESNR                                                                                                         &
+        Electrical-plane quality metric                                                                                    &
+        Post-detection electrical plane                                                                                    &
+        Compare only within fixed electrical-plane contexts                                                                &
+        Do not merge with OSNR as if they were interchangeable                                                               \\
 
-Ambiguous SNR &
-Unresolved quality label &
-Plane unspecified &
-Flag as ambiguous and exclude from plane-sensitive synthesis &
-\shortstack[l]{Cannot justify plane separation\\ or cross-plane conversion} \\
-\bottomrule
-\end{tabularx}
+        Ambiguous SNR                                                                                                      &
+        Unresolved quality label                                                                                           &
+        Plane unspecified                                                                                                  &
+        Flag as ambiguous and exclude from plane-sensitive synthesis                                                       &
+        \shortstack[l]{Cannot justify plane separation                                                                       \\ or cross-plane conversion} \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 \textbf{Fig.~\ref{fig:fig_ii_2}} visualizes the metric-governance contract used throughout this review. Specifically, it shows the admissible chain from effective bandwidth to \(\Delta r_{\min}\), from delay/time-of-flight to range, and from matched \(R\) plus \(\Delta r_{\min}\) to \(\mathrm{CRQ}_{\Delta}\); it also keeps CRB/FIM as contextual support for estimator accuracy rather than as a substitute for \(\sigma_r\), preserves \(\Delta z\) as fiber-only spatial granularity, and enforces explicit separation between optical-plane and electrical-plane quality metrics.
@@ -780,34 +780,34 @@ Borderline records were retained when the optical carrier or photonic front end 
 \end{itemize}
 
 \begin{table*}[!t]
-\caption{Eligibility Criteria Applied for Study Selection}
-\label{tab:iii1}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.1cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Criterion} &
-\textbf{Inclusion Requirements} &
-\textbf{Exclusion Conditions} \\
-\midrule
+    \caption{Eligibility Criteria Applied for Study Selection}
+    \label{tab:iii1}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.1cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Criterion}                                                                                                                                                                 &
+        \textbf{Inclusion Requirements}                                                                                                                                                    &
+        \textbf{Exclusion Conditions}                                                                                                                                                        \\
+        \midrule
 
-\textbf{Domain Scope} &
-Systems utilizing \textbf{optical carrier frequencies} (IR, visible, or UV) for joint sensing and communication functionalities. &
-\textbf{RF-only ISAC} systems (sub-6 GHz, mmWave, or THz) without an optical component, as well as biomedical or chemical sensing studies without data transmission. \\
+        \textbf{Domain Scope}                                                                                                                                                              &
+        Systems utilizing \textbf{optical carrier frequencies} (IR, visible, or UV) for joint sensing and communication functionalities.                                                   &
+        \textbf{RF-only ISAC} systems (sub-6 GHz, mmWave, or THz) without an optical component, as well as biomedical or chemical sensing studies without data transmission.                 \\
 
-\textbf{Integration Level} &
-\textbf{True O-ISAC} (shared hardware/waveform) or \textbf{coexistence} (resource sharing) strategies operating at the physical or link layer. &
-\textbf{Disjoint systems}, including pure optical sensing (e.g., standard LiDAR) or pure optical communication (e.g., an FSO link), without an explicit integration mechanism. \\
+        \textbf{Integration Level}                                                                                                                                                         &
+        \textbf{True O-ISAC} (shared hardware/waveform) or \textbf{coexistence} (resource sharing) strategies operating at the physical or link layer.                                     &
+        \textbf{Disjoint systems}, including pure optical sensing (e.g., standard LiDAR) or pure optical communication (e.g., an FSO link), without an explicit integration mechanism.       \\
 
-\textbf{Publication \& Time} &
-Peer-reviewed \textbf{journal articles} and \textbf{full-length conference papers} published in English, primarily within the \textbf{2020--2025} core window. &
-Short abstracts, non-English publications, and \textbf{grey literature} such as theses, white papers, patents, and technical reports. \\
+        \textbf{Publication \& Time}                                                                                                                                                       &
+        Peer-reviewed \textbf{journal articles} and \textbf{full-length conference papers} published in English, primarily within the \textbf{2020--2025} core window.                     &
+        Short abstracts, non-English publications, and \textbf{grey literature} such as theses, white papers, patents, and technical reports.                                                \\
 
-\textbf{Technical Content} &
-Studies reporting at least one \textbf{sensing metric} (e.g., detection probability, CRB, or RMSE) and at least one \textbf{communication metric} (e.g., BER, SINR, or data rate). &
-Studies lacking technical depth regarding the integration mechanism, trade-offs, or performance evaluation, such as high-level vision papers without analytical support. \\
-\bottomrule
-\end{tabularx}
+        \textbf{Technical Content}                                                                                                                                                         &
+        Studies reporting at least one \textbf{sensing metric} (e.g., detection probability, CRB, or RMSE) and at least one \textbf{communication metric} (e.g., BER, SINR, or data rate). &
+        Studies lacking technical depth regarding the integration mechanism, trade-offs, or performance evaluation, such as high-level vision papers without analytical support.             \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -825,26 +825,26 @@ The canonical aggregate PRISMA counts were maintained in a structured screening 
 
 
 \begin{figure}[!t]
-\centering
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{tabular}{c}
-\fbox{\parbox{0.92\linewidth}{\centering Identification\\Records identified from databases\\(n = 980)\\IEEE Xplore, Scopus, Web of Science}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Duplicate records removed\\(n = 280)}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Screening\\Records screened by title and abstract\\(n = 700)}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Records excluded\\(n = 478)\\Irrelevant topic, RF-only, or out-of-scope}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Eligibility\\Full-text articles assessed\\(n = 222)}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Full-text articles excluded\\(n = 2)\\Non-O-ISAC or unverifiable full-text record}} \\
-$\downarrow$ \\
-\fbox{\parbox{0.92\linewidth}{\centering Included\\Studies included in review\\(n = 220)}}
-\end{tabular}
-\caption{PRISMA 2020 flow diagram describing the systematic literature search and selection process.}
-\label{fig:fig_iii_1}
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.15}
+    \begin{tabular}{c}
+        \fbox{\parbox{0.92\linewidth}{\centering Identification              \\Records identified from databases\\(n = 980)\\IEEE Xplore, Scopus, Web of Science}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Duplicate records removed   \\(n = 280)}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Screening                   \\Records screened by title and abstract\\(n = 700)}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Records excluded            \\(n = 478)\\Irrelevant topic, RF-only, or out-of-scope}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Eligibility                 \\Full-text articles assessed\\(n = 222)}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Full-text articles excluded \\(n = 2)\\Non-O-ISAC or unverifiable full-text record}} \\
+        $\downarrow$                                                         \\
+        \fbox{\parbox{0.92\linewidth}{\centering Included                    \\Studies included in review\\(n = 220)}}
+    \end{tabular}
+    \caption{PRISMA 2020 flow diagram describing the systematic literature search and selection process.}
+    \label{fig:fig_iii_1}
 \end{figure}
 
 \subsection{Data Extraction and Taxonomical Classification}
@@ -877,7 +877,7 @@ Section IV builds a unified O-ISAC taxonomy for cross-modality synthesis rather 
 \subsubsection{Axis Definitions}
 To enforce deterministic synthesis, each study $p$ is mapped to
 \begin{equation}
-T(p) = (m(p), i(p), d(p), s(p))
+    T(p) = (m(p), i(p), d(p), s(p))
 \end{equation}
 Here, $m(p)$ denotes medium class, $i(p)$ integration class, $d(p)$ detection/observability class, and $s(p)$ sensing-task class. The four axes isolate the main comparability conditions in the corpus: medium captures propagation substrate, integration captures coupling architecture, detection captures receiver observability, and task captures sensing objective. At corpus level, the dominant states are hybrid 116/220, fiber 45/220, VLC/LiFi 25/220, and FSO 19/220 for medium; shared front-end 194/220 for integration; direct 118/220 and coherent 97/220 for detection; and ranging 162/220 for task. These counts indicate evidence concentration, not superiority, and they remain the basis for conditioned synthesis in the later sections \cite{O_ISAC_021,O_ISAC_039,O_ISAC_077}.
 
@@ -887,78 +887,78 @@ Deterministic mapping is necessary because many O-ISAC papers report multi-stage
 Measurement-plane governance follows the Section II contract:
 
 \begin{equation}
-\begin{aligned}
-\pi(m)\in\{&\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\\
-&\text{AMBIGUOUS}\}
-\end{aligned}
+    \begin{aligned}
+        \pi(m)\in\{ & \text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE}, \\
+                    & \text{AMBIGUOUS}\}
+    \end{aligned}
 \end{equation}
 No implicit OSNR-to-SNR substitution is allowed without an explicit receiver/noise model, and metric governance is equally strict: $\Delta r_{\min}$ and $\sigma_r$ are not aliases and are pooled only within role-consistent subsets. In the current corpus, 84 ambiguity cases are retained under this contract, including 75 metric-aliasing cases and 9 measurement-plane ambiguity cases. That conservatism is intentional because it preserves auditability instead of inflating apparent agreement.
 
 Table~\ref{tab:taxonomy_contract} summarizes the operational contract that binds axis assignment, deterministic mapping, and comparability protection.
 
 \begin{table*}[!t]
-\caption{Operational Contract for O-ISAC Taxonomy Synthesis}
-\label{tab:taxonomy_contract}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.15cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Element} &
-\textbf{Role in Taxonomy} &
-\textbf{Operational Rule} &
-\textbf{Comparability Guard} \\
-\midrule
+    \caption{Operational Contract for O-ISAC Taxonomy Synthesis}
+    \label{tab:taxonomy_contract}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.15cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Element}                                                                                          &
+        \textbf{Role in Taxonomy}                                                                                 &
+        \textbf{Operational Rule}                                                                                 &
+        \textbf{Comparability Guard}                                                                                \\
+        \midrule
 
-Design requirements &
-Defines admissible synthesis scope &
-Enforce cross-modality comparability, evidence traceability, and Section II metric-governance consistency &
-Reject unconditioned cross-modality claims \\
+        Design requirements                                                                                       &
+        Defines admissible synthesis scope                                                                        &
+        Enforce cross-modality comparability, evidence traceability, and Section II metric-governance consistency &
+        Reject unconditioned cross-modality claims                                                                  \\
 
-Axis 1 (Medium) &
-Encodes propagation or deployment substrate &
-Map each study to one medium label, preserving hybrid status when present &
-Compare results only within medium-conditioned subsets \\
+        Axis 1 (Medium)                                                                                           &
+        Encodes propagation or deployment substrate                                                               &
+        Map each study to one medium label, preserving hybrid status when present                                 &
+        Compare results only within medium-conditioned subsets                                                      \\
 
-Axis 2 (Integration) &
-Encodes coupling architecture &
-Assign shared front-end or separate front-ends from explicit implementation evidence &
-Do not merge co-designed and coexistence regimes \\
+        Axis 2 (Integration)                                                                                      &
+        Encodes coupling architecture                                                                             &
+        Assign shared front-end or separate front-ends from explicit implementation evidence                      &
+        Do not merge co-designed and coexistence regimes                                                            \\
 
-Axis 3 (Detection/plane) &
-Encodes observability regime &
-Assign direct or coherent detection with plane-aware interpretation &
-Block plane conflation across observability regimes \\
+        Axis 3 (Detection/plane)                                                                                  &
+        Encodes observability regime                                                                              &
+        Assign direct or coherent detection with plane-aware interpretation                                       &
+        Block plane conflation across observability regimes                                                         \\
 
-Axis 4 (Task class) &
-Encodes sensing objective &
-Keep all task labels; use one primary label only for tabulation &
-Avoid cross-task pooling without task conditioning \\
+        Axis 4 (Task class)                                                                                       &
+        Encodes sensing objective                                                                                 &
+        Keep all task labels; use one primary label only for tabulation                                           &
+        Avoid cross-task pooling without task conditioning                                                          \\
 
-Mapping pipeline &
-Guarantees reproducible assignment &
-Apply structured descriptors first, then textual fallback; normalize labels before aggregation &
-Preserve deterministic labels across reruns \\
+        Mapping pipeline                                                                                          &
+        Guarantees reproducible assignment                                                                        &
+        Apply structured descriptors first, then textual fallback; normalize labels before aggregation            &
+        Preserve deterministic labels across reruns                                                                 \\
 
-Measurement-plane governance &
-Protects signal-domain validity &
-Enforce $\pi(m)$ set membership; require an explicit receiver/noise model for OSNR--SNR linkage &
-No implicit OSNR-to-SNR substitution \\
+        Measurement-plane governance                                                                              &
+        Protects signal-domain validity                                                                           &
+        Enforce $\pi(m)$ set membership; require an explicit receiver/noise model for OSNR--SNR linkage           &
+        No implicit OSNR-to-SNR substitution                                                                        \\
 
-Metric governance &
-Protects metric-role validity &
-Keep resolution and accuracy separate; treat $\Delta r_{\min}$ and $\sigma_r$ as non-alias quantities &
-Prevent metric aliasing in pooled statistics \\
+        Metric governance                                                                                         &
+        Protects metric-role validity                                                                             &
+        Keep resolution and accuracy separate; treat $\Delta r_{\min}$ and $\sigma_r$ as non-alias quantities     &
+        Prevent metric aliasing in pooled statistics                                                                \\
 
-Ambiguity handling &
-Preserves uncertainty information &
-Retain contradictions and mark ambiguity at record level &
-Down-weight ambiguous evidence in conclusions \\
-\bottomrule
-\end{tabularx}
+        Ambiguity handling                                                                                        &
+        Preserves uncertainty information                                                                         &
+        Retain contradictions and mark ambiguity at record level                                                  &
+        Down-weight ambiguous evidence in conclusions                                                               \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 \begin{quote}
-\textbf{Lesson (A):} Unified O-ISAC taxonomy is defensible only when four-axis classification, deterministic mapping, and measurement-metric governance are enforced jointly under explicit ambiguity retention.
+    \textbf{Lesson (A):} Unified O-ISAC taxonomy is defensible only when four-axis classification, deterministic mapping, and measurement-metric governance are enforced jointly under explicit ambiguity retention.
 \end{quote}
 
 \subsection{Medium-Based Classes}
@@ -967,70 +967,70 @@ Section IV-B instantiates Axis 1 by grouping studies according to normalized med
 \textbf{Table~\ref{tab:medium_classes} summarizes medium-based taxonomy classes, corpus share, and dominant operational profiles.}
 
 \begin{table*}[!t]
-\caption{Medium-Based Taxonomy Classes and Dominant Operational Profiles}
-\label{tab:medium_classes}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{1.75cm}
->{\raggedright\arraybackslash}p{1.35cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{3.0cm}
-@{}}
-\toprule
-\textbf{Medium Class} &
-\textbf{\shortstack{Corpus\\Share}} &
-\textbf{\shortstack{Dominant Integration\\Profile}} &
-\textbf{\shortstack{Dominant Detection\\Profile}} &
-\textbf{\shortstack{Dominant Sensing\\Emphasis}} &
-\textbf{\shortstack{Representative\\Studies}} \\
-\midrule
+    \caption{Medium-Based Taxonomy Classes and Dominant Operational Profiles}
+    \label{tab:medium_classes}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{1.75cm}
+        >{\raggedright\arraybackslash}p{1.35cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{3.0cm}
+        @{}}
+        \toprule
+        \textbf{Medium Class}                                                                            &
+        \textbf{\shortstack{Corpus                                                                         \\Share}} &
+        \textbf{\shortstack{Dominant Integration                                                           \\Profile}} &
+        \textbf{\shortstack{Dominant Detection                                                             \\Profile}} &
+        \textbf{\shortstack{Dominant Sensing                                                               \\Emphasis}} &
+        \textbf{\shortstack{Representative                                                                 \\Studies}} \\
+        \midrule
 
-Fiber (cabled) &
-45/220 (20.5\%) &
-Shared front-end (43/45) &
-Coherent-leading (27 coherent, 18 direct) &
-Ranging primary (27), followed by vibration (8) and 2D localization (6) &
-\cite{O_ISAC_006,O_ISAC_033,O_ISAC_046,O_ISAC_041,O_ISAC_090} \\
+        Fiber (cabled)                                                                                   &
+        45/220 (20.5\%)                                                                                  &
+        Shared front-end (43/45)                                                                         &
+        Coherent-leading (27 coherent, 18 direct)                                                        &
+        Ranging primary (27), followed by vibration (8) and 2D localization (6)                          &
+        \cite{O_ISAC_006,O_ISAC_033,O_ISAC_046,O_ISAC_041,O_ISAC_090}                                      \\
 
-FSO &
-19/220 (8.6\%) &
-Shared front-end (14/19) &
-Mixed direct/coherent, with direct leading (11/8) &
-Ranging primary (18), with a small 2D-localization tail (1) &
-\cite{O_ISAC_021,O_ISAC_035,O_ISAC_005,O_ISAC_023,O_ISAC_199} \\
+        FSO                                                                                              &
+        19/220 (8.6\%)                                                                                   &
+        Shared front-end (14/19)                                                                         &
+        Mixed direct/coherent, with direct leading (11/8)                                                &
+        Ranging primary (18), with a small 2D-localization tail (1)                                      &
+        \cite{O_ISAC_021,O_ISAC_035,O_ISAC_005,O_ISAC_023,O_ISAC_199}                                      \\
 
-VLC/LiFi &
-25/220 (11.4\%) &
-Shared front-end dominant (18/25) &
-Direct-detection dominant (24/25) &
-Ranging (12) with a localization-heavy tail (10 2D localization, 3 localization) &
-\cite{O_ISAC_068,O_ISAC_303,O_ISAC_039,O_ISAC_327,O_ISAC_062,O_ISAC_009} \\
+        VLC/LiFi                                                                                         &
+        25/220 (11.4\%)                                                                                  &
+        Shared front-end dominant (18/25)                                                                &
+        Direct-detection dominant (24/25)                                                                &
+        Ranging (12) with a localization-heavy tail (10 2D localization, 3 localization)                 &
+        \cite{O_ISAC_068,O_ISAC_303,O_ISAC_039,O_ISAC_327,O_ISAC_062,O_ISAC_009}                           \\
 
-Photonic-THz / THz proxy &
-1/220 (0.5\%) explicit terahertz class &
-Shared front-end (1/1) &
-Direct (1/1) &
-Ranging (1/1) &
-\cite{O_ISAC_016,O_ISAC_077,O_ISAC_105,O_ISAC_070,O_ISAC_029} \\
+        Photonic-THz / THz proxy                                                                         &
+        1/220 (0.5\%) explicit terahertz class                                                           &
+        Shared front-end (1/1)                                                                           &
+        Direct (1/1)                                                                                     &
+        Ranging (1/1)                                                                                    &
+        \cite{O_ISAC_016,O_ISAC_077,O_ISAC_105,O_ISAC_070,O_ISAC_029}                                      \\
 
-Hybrid systems &
-116/220 (52.7\%) &
-Shared front-end dominant (106/116) &
-Near-balanced coherent/direct mix (59/53), with residual labels (4) &
-Ranging primary (95), followed by a 2D-localization tail (12) and a broader multi-task remainder &
-\cite{O_ISAC_021,O_ISAC_077,O_ISAC_041,O_ISAC_199,O_ISAC_010} \\
+        Hybrid systems                                                                                   &
+        116/220 (52.7\%)                                                                                 &
+        Shared front-end dominant (106/116)                                                              &
+        Near-balanced coherent/direct mix (59/53), with residual labels (4)                              &
+        Ranging primary (95), followed by a 2D-localization tail (12) and a broader multi-task remainder &
+        \cite{O_ISAC_021,O_ISAC_077,O_ISAC_041,O_ISAC_199,O_ISAC_010}                                      \\
 
-Long-tail media (outside main five) &
-14/220 (6.4\%) &
-Mixed, mostly shared front-end &
-Mostly direct-detection &
-Heterogeneous low-support tasks &
-\cite{O_ISAC_039,O_ISAC_070,O_ISAC_090} \\
-\bottomrule
-\end{tabularx}
+        Long-tail media (outside main five)                                                              &
+        14/220 (6.4\%)                                                                                   &
+        Mixed, mostly shared front-end                                                                   &
+        Mostly direct-detection                                                                          &
+        Heterogeneous low-support tasks                                                                  &
+        \cite{O_ISAC_039,O_ISAC_070,O_ISAC_090}                                                            \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 \subsubsection{Fiber (Cabled) O-ISAC}
@@ -1049,7 +1049,7 @@ Photonic-THz is best read as a bridge class rather than a self-contained medium 
 Hybrid systems are the structural core of the corpus, accounting for 116/220 records (52.7\%). They are strongly shared-front-end (106/116), near-balanced in coherent/direct detection (59/53, plus four residual labels), and ranging-dominant (95) while still carrying the broadest multi-task tail. That makes hybrid evidence the main bridge for transferability analysis, but only under full axis conditioning; cross-link reports that mix measurement planes or blur resolution and accuracy remain constrained evidence rather than pooled performance \cite{O_ISAC_021,O_ISAC_077,O_ISAC_041,O_ISAC_199,O_ISAC_010}.
 
 \begin{quote}
-\textbf{Lesson (B):} Medium class determines dominant physical constraints, but comparability is recovered only when all classes are interpreted under a common metric-governance contract.
+    \textbf{Lesson (B):} Medium class determines dominant physical constraints, but comparability is recovered only when all classes are interpreted under a common metric-governance contract.
 \end{quote}
 
 \subsection{Integration Mechanisms}
@@ -1057,56 +1057,56 @@ This subsection instantiates Axis 2 using the normalized mechanism labels of sha
 
 \textbf{Table~\ref{tab:integration_mechanisms} summarizes integration mechanisms, evidence intensity, and dominant trade-off implications.}
 \begin{table*}[!t]
-\caption{Integration Mechanisms, Evidence Intensity, and Trade-Off Implications}
-\label{tab:integration_mechanisms}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{1.75cm}
->{\raggedright\arraybackslash}p{2.25cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{2.7cm}
-@{}}
-\toprule
-\textbf{Mechanism Class} &
-\textbf{Evidence Intensity} &
-\textbf{\shortstack{Typical Coupling\\Layer}} &
-\textbf{Dominant Benefit} &
-\textbf{Primary Risk} &
-\textbf{\shortstack{Representative\\Studies}} \\
-\midrule
+    \caption{Integration Mechanisms, Evidence Intensity, and Trade-Off Implications}
+    \label{tab:integration_mechanisms}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{1.75cm}
+        >{\raggedright\arraybackslash}p{2.25cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{2.7cm}
+        @{}}
+        \toprule
+        \textbf{Mechanism Class}                                                                         &
+        \textbf{Evidence Intensity}                                                                      &
+        \textbf{\shortstack{Typical Coupling                                                               \\Layer}} &
+        \textbf{Dominant Benefit}                                                                        &
+        \textbf{Primary Risk}                                                                            &
+        \textbf{\shortstack{Representative                                                                 \\Studies}} \\
+        \midrule
 
-Shared Waveform &
-34 (direct+indirect); direct-only: 13 &
-Signal and waveform design chain &
-Joint reuse of modulation degrees of freedom under tight synchronization &
-Strong objective coupling can amplify trade-offs among rate, robustness, and estimator stability &
-\cite{O_ISAC_035,O_ISAC_190,O_ISAC_304,O_ISAC_016} \\
+        Shared Waveform                                                                                  &
+        34 (direct+indirect); direct-only: 13                                                            &
+        Signal and waveform design chain                                                                 &
+        Joint reuse of modulation degrees of freedom under tight synchronization                         &
+        Strong objective coupling can amplify trade-offs among rate, robustness, and estimator stability &
+        \cite{O_ISAC_035,O_ISAC_190,O_ISAC_304,O_ISAC_016}                                                 \\
 
-Shared Hardware &
-15 (direct+indirect); direct-only: 5 &
-Optical/electrical front-end components and transceiver chain &
-Reduced platform duplication and tighter timing alignment &
-Hardware-impairment coupling reduces decoupling flexibility and calibration margin &
-\cite{O_ISAC_021,O_ISAC_164,O_ISAC_324,O_ISAC_056,O_ISAC_161} \\
+        Shared Hardware                                                                                  &
+        15 (direct+indirect); direct-only: 5                                                             &
+        Optical/electrical front-end components and transceiver chain                                    &
+        Reduced platform duplication and tighter timing alignment                                        &
+        Hardware-impairment coupling reduces decoupling flexibility and calibration margin               &
+        \cite{O_ISAC_021,O_ISAC_164,O_ISAC_324,O_ISAC_056,O_ISAC_161}                                      \\
 
-Shared Resources &
-43 (direct+indirect); direct-only: 16 &
-Time/frequency/power scheduling and allocation plane &
-Flexible balancing of sensing and communication utility under deployment constraints &
-Resource contention can degrade both links if sensing and traffic loads are co-peaked &
-\cite{O_ISAC_061,O_ISAC_114,O_ISAC_142,O_ISAC_141,O_ISAC_021} \\
+        Shared Resources                                                                                 &
+        43 (direct+indirect); direct-only: 16                                                            &
+        Time/frequency/power scheduling and allocation plane                                             &
+        Flexible balancing of sensing and communication utility under deployment constraints             &
+        Resource contention can degrade both links if sensing and traffic loads are co-peaked            &
+        \cite{O_ISAC_061,O_ISAC_114,O_ISAC_142,O_ISAC_141,O_ISAC_021}                                      \\
 
-Shared Processing &
-30 (direct+indirect); direct-only: 8 &
-Joint estimation/decoding and algorithmic inference stack &
-Cross-task feature reuse and improved end-to-end decision coherence &
-Model mismatch and task interference can bias both communication and sensing outputs &
-\cite{O_ISAC_086,O_ISAC_039,O_ISAC_134,O_ISAC_381,O_ISAC_161} \\
-\bottomrule
-\end{tabularx}
+        Shared Processing                                                                                &
+        30 (direct+indirect); direct-only: 8                                                             &
+        Joint estimation/decoding and algorithmic inference stack                                        &
+        Cross-task feature reuse and improved end-to-end decision coherence                              &
+        Model mismatch and task interference can bias both communication and sensing outputs             &
+        \cite{O_ISAC_086,O_ISAC_039,O_ISAC_134,O_ISAC_381,O_ISAC_161}                                      \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -1133,56 +1133,56 @@ This subsection instantiates Axis 3 by formalizing how detection model and signa
 
 \textbf{Table~\ref{tab:detection_observability} summarizes detection and observability classes, evidence intensity, and governance implications.}
 \begin{table*}[!t]
-\caption{Detection and Observability Classes, Evidence Intensity, and Governance Implications}
-\label{tab:detection_observability}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.25cm}
->{\raggedright\arraybackslash}p{2.15cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{2.7cm}
-@{}}
-\toprule
-\textbf{\shortstack{Detection /\\Observability Class}} &
-\textbf{\shortstack{Evidence\\Intensity}} &
-\textbf{Corpus-Level Anchor} &
-\textbf{Governance Implication} &
-\textbf{\shortstack{Representative\\References}} \\
-\midrule
+    \caption{Detection and Observability Classes, Evidence Intensity, and Governance Implications}
+    \label{tab:detection_observability}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.25cm}
+        >{\raggedright\arraybackslash}p{2.15cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{2.7cm}
+        @{}}
+        \toprule
+        \textbf{\shortstack{Detection /                                                                                    \\Observability Class}} &
+        \textbf{\shortstack{Evidence                                                                                       \\Intensity}} &
+        \textbf{Corpus-Level Anchor}                                                                                     &
+        \textbf{Governance Implication}                                                                                  &
+        \textbf{\shortstack{Representative                                                                                 \\References}} \\
+        \midrule
 
-IM/DD regime &
-29 unique papers (direct+indirect); direct-only: 23 &
-Direct-detection-heavy VLC/LiFi plus direct subsets in FSO and fiber &
-Interpret under intensity-domain and post-detection electrical-plane semantics; no implicit OSNR-to-SNR transfer &
-\cite{O_ISAC_001,O_ISAC_023,O_ISAC_028,O_ISAC_029} \\
+        IM/DD regime                                                                                                     &
+        29 unique papers (direct+indirect); direct-only: 23                                                              &
+        Direct-detection-heavy VLC/LiFi plus direct subsets in FSO and fiber                                             &
+        Interpret under intensity-domain and post-detection electrical-plane semantics; no implicit OSNR-to-SNR transfer &
+        \cite{O_ISAC_001,O_ISAC_023,O_ISAC_028,O_ISAC_029}                                                                 \\
 
-Coherent detection &
-45 unique papers (direct+indirect); direct-only: 25 &
-Fiber and hybrid anchors with coherent-leading subclusters &
-Preserve receiver/noise-model transparency before cross-regime comparison &
-\cite{O_ISAC_006,O_ISAC_021,O_ISAC_077,O_ISAC_190} \\
+        Coherent detection                                                                                               &
+        45 unique papers (direct+indirect); direct-only: 25                                                              &
+        Fiber and hybrid anchors with coherent-leading subclusters                                                       &
+        Preserve receiver/noise-model transparency before cross-regime comparison                                        &
+        \cite{O_ISAC_006,O_ISAC_021,O_ISAC_077,O_ISAC_190}                                                                 \\
 
-Intensity-only observability &
-118 unique papers (direct+indirect); direct-only: 58 &
-Dominant in direct-detection corpora, especially VLC/LiFi &
-Do not infer phase-sensitive or complex-field behavior from intensity-only evidence &
-\cite{O_ISAC_021,O_ISAC_082,O_ISAC_039,O_ISAC_056} \\
+        Intensity-only observability                                                                                     &
+        118 unique papers (direct+indirect); direct-only: 58                                                             &
+        Dominant in direct-detection corpora, especially VLC/LiFi                                                        &
+        Do not infer phase-sensitive or complex-field behavior from intensity-only evidence                              &
+        \cite{O_ISAC_021,O_ISAC_082,O_ISAC_039,O_ISAC_056}                                                                 \\
 
-Complex-field observability &
-17 unique papers (direct+indirect); direct-only: 4 &
-Coherent-leading fiber/hybrid subset &
-Keep field-aware estimator behavior separate from intensity-only aggregation &
-\cite{O_ISAC_021,O_ISAC_082,O_ISAC_056} \\
+        Complex-field observability                                                                                      &
+        17 unique papers (direct+indirect); direct-only: 4                                                               &
+        Coherent-leading fiber/hybrid subset                                                                             &
+        Keep field-aware estimator behavior separate from intensity-only aggregation                                     &
+        \cite{O_ISAC_021,O_ISAC_082,O_ISAC_056}                                                                            \\
 
-Residual receiver labels / structured tail &
-5 residual corpus labels; structured receiver typing populated in 218/220 studies &
-Unknown, envelope-detection, MIMO, and other low-support labels &
-\shortstack[l]{Retain explicit tail labels and do not\\ silently absorb them into\\ direct/coherent bins} &
-\cite{O_ISAC_132,O_ISAC_061,O_ISAC_050} \\
-\bottomrule
-\end{tabularx}
+        Residual receiver labels / structured tail                                                                       &
+        5 residual corpus labels; structured receiver typing populated in 218/220 studies                                &
+        Unknown, envelope-detection, MIMO, and other low-support labels                                                  &
+        \shortstack[l]{Retain explicit tail labels and do not                                                              \\ silently absorb them into\\ direct/coherent bins} &
+        \cite{O_ISAC_132,O_ISAC_061,O_ISAC_050}                                                                            \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -1195,14 +1195,14 @@ Observability class determines which information is directly measurable and ther
 \subsubsection{Metric Reporting Implications}
 Once detection and observability are fixed, metric comparability still depends on measurement-plane governance and metric-role separation. Section II remains binding through
 \begin{equation}
-\begin{aligned}
-\pi(m)\in\{&\text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE},\\
-&\text{AMBIGUOUS}\}
-\end{aligned}
+    \begin{aligned}
+        \pi(m)\in\{ & \text{OPTICAL\_PLANE},\;\text{ELECTRICAL\_PLANE}, \\
+                    & \text{AMBIGUOUS}\}
+    \end{aligned}
 \end{equation}
 and
 \begin{equation}
-\Delta r_{\min}\neq \sigma_r
+    \Delta r_{\min}\neq \sigma_r
 \end{equation}
 The first constraint forbids implicit OSNR-to-SNR substitution without an explicit receiver/noise model; the second prevents resolution and accuracy from being treated as aliases. Although structured receiver-detection coverage is high, governance risk remains when SNR-family metrics are not explicitly tied to optical or electrical planes in the narrative. This caution becomes even more important in specialized front ends, where nonstandard receiver physics or radar-centric photonic-THz chains can make generic SNR-style reporting especially opaque without an explicit plane definition \cite{O_ISAC_136,O_ISAC_349}. The contract-violation audit therefore matters directly: 84 flagged records remain in the corpus, split into 75 metric-aliasing cases and 9 measurement-plane ambiguity cases. Section IV-D consequently prioritizes defensible comparability over maximal aggregation, and any statement that mixes planes or interchanges $\Delta r_{\min}$ and $\sigma_r$ is treated as non-comparable evidence \cite{O_ISAC_132,O_ISAC_061,O_ISAC_013,O_ISAC_050,O_ISAC_056}.
 
@@ -1213,7 +1213,7 @@ Section IV-E consolidates the taxonomy into reader-facing figure and matrix view
 
 \begin{figure*}[!t]
     \centering
-\includegraphics[width=\linewidth,trim=0.8cm 0.7cm 0.8cm 1.1cm,clip]{figures/fig_iv_1.jpg}
+    \includegraphics[width=\linewidth,trim=0.8cm 0.7cm 0.8cm 1.1cm,clip]{figures/fig_iv_1.jpg}
     \caption{Reader-facing semantic taxonomy map for O-ISAC. The figure visualizes fiber, FSO, VLC/LiFi, hybrid, and THz-linked classes and links them to integration style and detection regime. Its role is explanatory rather than rank-implying, preceding the denser synthesis in Table~\ref{tab:taxonomy_clusters} and Fig.~\ref{fig:fig_iv_2}.}
     \label{fig:fig_iv_1}
 \end{figure*}
@@ -1224,77 +1224,77 @@ Section II governance remains binding at figure level: no implicit OSNR-to-SNR s
 Table~\ref{tab:taxonomy_clusters} complements Fig.~\ref{fig:fig_iv_1} by encoding clustered patterns rather than one-row-per-paper listings, so Sections IV--VI can reference stable taxonomy clusters with explicit comparability guards.
 
 \begin{table*}[!t]
-\caption{Taxonomy Summary Views and Cluster-Level Synthesis Contract}
-\label{tab:taxonomy_clusters}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{1.55cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{2.2cm}
-@{}}
-\toprule
-\textbf{\shortstack{Taxonomy\\Cluster}} &
-\textbf{\shortstack{Dominant Deployment\\Scenario}} &
-\textbf{\shortstack{Integration\\Mechanism}} &
-\textbf{\shortstack{Detection /\\Observability}} &
-\textbf{\shortstack{Representative\\Sensing Tasks}} &
-\textbf{\shortstack{Primary Communication\\Metrics}} &
-\textbf{\shortstack{Primary Sensing\\Metrics}} &
-\textbf{\shortstack{Representative\\References}} \\
-\midrule
+    \caption{Taxonomy Summary Views and Cluster-Level Synthesis Contract}
+    \label{tab:taxonomy_clusters}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{1.55cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{2.2cm}
+        @{}}
+        \toprule
+        \textbf{\shortstack{Taxonomy                                                  \\Cluster}} &
+        \textbf{\shortstack{Dominant Deployment                                       \\Scenario}} &
+        \textbf{\shortstack{Integration                                               \\Mechanism}} &
+        \textbf{\shortstack{Detection /                                               \\Observability}} &
+        \textbf{\shortstack{Representative                                            \\Sensing Tasks}} &
+        \textbf{\shortstack{Primary Communication                                     \\Metrics}} &
+        \textbf{\shortstack{Primary Sensing                                           \\Metrics}} &
+        \textbf{\shortstack{Representative                                            \\References}} \\
+        \midrule
 
-Fiber-guided O-ISAC cluster &
-Long-reach cabled links with distributed monitoring overlays &
-Shared front-end dominant &
-Coherent-leading with a direct subset &
-Ranging primary, with vibration concentration and a fault-localization tail &
-BER, FEC margin, and communication robustness &
-Spatial granularity/ranging and vibration indicators &
-\cite{O_ISAC_006,O_ISAC_041,O_ISAC_013} \\
+        Fiber-guided O-ISAC cluster                                                 &
+        Long-reach cabled links with distributed monitoring overlays                &
+        Shared front-end dominant                                                   &
+        Coherent-leading with a direct subset                                       &
+        Ranging primary, with vibration concentration and a fault-localization tail &
+        BER, FEC margin, and communication robustness                               &
+        Spatial granularity/ranging and vibration indicators                        &
+        \cite{O_ISAC_006,O_ISAC_041,O_ISAC_013}                                       \\
 
-FSO wireless optical cluster &
-Line-of-sight outdoor and inter-building optical links &
-Shared front-end with a non-negligible separate-front-end subset &
-Mixed direct/coherent regime &
-Ranging dominant, with a small localization tail &
-BER, outage, and spectral efficiency &
-Range estimation and resolution-class indicators &
-\cite{O_ISAC_021,O_ISAC_023,O_ISAC_199} \\
+        FSO wireless optical cluster                                                &
+        Line-of-sight outdoor and inter-building optical links                      &
+        Shared front-end with a non-negligible separate-front-end subset            &
+        Mixed direct/coherent regime                                                &
+        Ranging dominant, with a small localization tail                            &
+        BER, outage, and spectral efficiency                                        &
+        Range estimation and resolution-class indicators                            &
+        \cite{O_ISAC_021,O_ISAC_023,O_ISAC_199}                                       \\
 
-VLC/LiFi indoor cluster &
-Illumination-constrained indoor access and positioning &
-Shared front-end dominant &
-Direct-detection and intensity-only dominant &
-Ranging with a strong localization concentration &
-Throughput, BER, and link reliability &
-Localization error and ranging metrics &
-\cite{O_ISAC_068,O_ISAC_039,O_ISAC_009} \\
+        VLC/LiFi indoor cluster                                                     &
+        Illumination-constrained indoor access and positioning                      &
+        Shared front-end dominant                                                   &
+        Direct-detection and intensity-only dominant                                &
+        Ranging with a strong localization concentration                            &
+        Throughput, BER, and link reliability                                       &
+        Localization error and ranging metrics                                      &
+        \cite{O_ISAC_068,O_ISAC_039,O_ISAC_009}                                       \\
 
-Hybrid bridge cluster &
-Fiber-wireless and photonic-THz bridging pipelines &
-Shared front-end dominant &
-Near-balanced coherent/direct mix with residual labels &
-Ranging dominant with a multi-task tail &
-Throughput and BER under cross-link coupling &
-Range/localization and task-specific errors &
-\cite{O_ISAC_077,O_ISAC_010,O_ISAC_190} \\
+        Hybrid bridge cluster                                                       &
+        Fiber-wireless and photonic-THz bridging pipelines                          &
+        Shared front-end dominant                                                   &
+        Near-balanced coherent/direct mix with residual labels                      &
+        Ranging dominant with a multi-task tail                                     &
+        Throughput and BER under cross-link coupling                                &
+        Range/localization and task-specific errors                                 &
+        \cite{O_ISAC_077,O_ISAC_010,O_ISAC_190}                                       \\
 
-Residual low-support cluster &
-\parbox[t]{\linewidth}{\raggedright\scriptsize Specialized or emerging\\ deployment cases} &
-Mixed mechanisms &
-\parbox[t]{\linewidth}{\raggedright\scriptsize Mostly direct, with\\ sparse alternatives} &
-\parbox[t]{\linewidth}{\raggedright\scriptsize Heterogeneous\\ low-support tasks} &
-\shortstack{Context-\\dependent} &
-\shortstack{Context-\\dependent} &
-\cite{O_ISAC_070,O_ISAC_056} \\
-\bottomrule
-\end{tabularx}
+        Residual low-support cluster                                                &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize Specialized or emerging        \\ deployment cases} &
+        Mixed mechanisms                                                            &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize Mostly direct, with            \\ sparse alternatives} &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize Heterogeneous                  \\ low-support tasks} &
+        \shortstack{Context-                                                          \\dependent} &
+        \shortstack{Context-                                                          \\dependent} &
+        \cite{O_ISAC_070,O_ISAC_056}                                                  \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 Ambiguity remains explicit at cluster level: the same 84 flagged records are retained and interpreted conservatively when aliasing or plane ambiguity remains unresolved. Fig.~\ref{fig:fig_iv_2} then complements Table~\ref{tab:taxonomy_clusters} with a reader-facing specialization view, making the global dominance of ranging and the secondary localization, vibration, and multi-task tails easier to recognize before returning to the denser table-level synthesis \cite{O_ISAC_006,O_ISAC_068,O_ISAC_077,O_ISAC_039}.
@@ -1315,44 +1315,44 @@ Building on the Section II metric-governance contract and the Section IV taxonom
 Section V-A works on governed scenario records rather than raw study counts. Communication metrics are scoped to reported communication rate ($R$) and link-quality indicators, with strict separation between optical-plane OSNR and electrical-plane SNR/ESNR because the two are measured at different receiver-chain stages. Table~\ref{tab:comm_metrics} summarizes the resulting plane-aware coverage.
 
 \begin{table*}[!t]
-\caption{Governed Communication-Metric Coverage and Plane-Aware Availability}
-\label{tab:comm_metrics}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.15cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{2.2cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Communication Metric} &
-\textbf{Raw Scenario Coverage} &
-\textbf{Governed Usable Coverage} &
-\textbf{\shortstack{Governed Range /\\Median}} &
-\textbf{Interpretation Note} \\
-\midrule
+    \caption{Governed Communication-Metric Coverage and Plane-Aware Availability}
+    \label{tab:comm_metrics}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.15cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{2.2cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Communication Metric}                        &
+        \textbf{Raw Scenario Coverage}                       &
+        \textbf{Governed Usable Coverage}                    &
+        \textbf{\shortstack{Governed Range /                                                          \\Median}} &
+        \textbf{Interpretation Note}                                                                  \\
+        \midrule
 
-Rate ($R$) &
-197/225 records; 194/220 papers &
-33 rate-bearing records within 53 governed scenarios &
-25 Mbps to 448 Gbps; median 10 Gbps &
-Supports comparative communication synthesis only with explicit support-size caveats \\
+        Rate ($R$)                                           &
+        197/225 records; 194/220 papers                      &
+        33 rate-bearing records within 53 governed scenarios &
+        25 Mbps to 448 Gbps; median 10 Gbps                  &
+        Supports comparative communication synthesis only with explicit support-size caveats          \\
 
-Electrical-plane SNR &
-190/225 records; 186/220 papers &
-20/53 governed records &
-7--22 dB; median 10 dB &
-The only governed quality indicator that survives filtering across more than one medium slice \\
+        Electrical-plane SNR                                 &
+        190/225 records; 186/220 papers                      &
+        20/53 governed records                               &
+        7--22 dB; median 10 dB                               &
+        The only governed quality indicator that survives filtering across more than one medium slice \\
 
-Optical-plane OSNR &
-169/225 records; 166/220 papers &
-0/53 governed records &
--- &
-\parbox[t]{\linewidth}{\raggedright\scriptsize All OSNR-bearing records are blocked\\ by plane mixing in this release} \\
-\bottomrule
-\end{tabularx}
+        Optical-plane OSNR                                   &
+        169/225 records; 166/220 papers                      &
+        0/53 governed records                                &
+        --                                                   &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize All OSNR-bearing records are blocked           \\ by plane mixing in this release} \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 Before governance filtering, communication reporting appears broad: the 225-point trade-off set includes rate in 197 records, electrical-plane SNR in 190, and optical-plane OSNR in 169. After the Section II filter, however, only 53/225 scenarios remain usable, 172 are blocked, and 169 papers lose all scenarios. The dominant blocker is metric-plane mixing (169 records), followed by $\Delta z$-to-$\Delta r_{\min}$ aliasing (19 records, with 16 overlapping both flags). Within the governed subset, rate-bearing records are concentrated in hybrid (17) and cabled fiber (12), yielding medians of 10 Gbps and 28.5 Gbps, respectively; the remaining media are sparse and should be read as anchors rather than distributions. Electrical-plane SNR survives in only 20 governed records, while governance-usable OSNR drops to zero, so Section V-A can support electrical-plane quality remarks but not optical-plane cross-medium comparisons. CRQ-linked comments are likewise bounded to the 20 eligible records, dominated by hybrid (14) and cabled fiber (4). The same pattern explains the section's conservatism overall: the governance audit reports 299 MAJOR violations across 169 papers, including 261 metric-plane and 38 metric-aliasing violations, so communication synthesis remains intentionally selective rather than coverage-maximizing.
@@ -1362,50 +1362,50 @@ Section V-B keeps the same governed scenario scope but reorganizes sensing evide
 
 
 \begin{table*}[!t]
-\caption{Governed Sensing-Metric Coverage by Functional Role}
-\label{tab:sensing_metrics}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.35cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{2.2cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Sensing Role} &
-\textbf{Raw Scenario Coverage} &
-\textbf{Governed Usable Coverage} &
-\textbf{\shortstack{Governed Range /\\Median}} &
-\textbf{Interpretation Note} \\
-\midrule
+    \caption{Governed Sensing-Metric Coverage by Functional Role}
+    \label{tab:sensing_metrics}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.35cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{2.2cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Sensing Role}                    &
+        \textbf{Raw Scenario Coverage}           &
+        \textbf{Governed Usable Coverage}        &
+        \textbf{\shortstack{Governed Range /                                                               \\Median}} &
+        \textbf{Interpretation Note}                                                                       \\
+        \midrule
 
-Resolution ($\Delta r_{\min}$-eligible) &
-173/225 eligible records; 170/220 papers &
-20/173 eligible records &
-0.0025 m to 15 m; median 0.0397 m &
-Physical resolution is retained only on the role-consistent governed subset \\
+        Resolution ($\Delta r_{\min}$-eligible)  &
+        173/225 eligible records; 170/220 papers &
+        20/173 eligible records                  &
+        0.0025 m to 15 m; median 0.0397 m        &
+        Physical resolution is retained only on the role-consistent governed subset                        \\
 
-Accuracy ($\sigma_r$) &
-186/225 records; 183/220 papers &
-16/186 records &
-0.001 m to 1000 m; median 0.0575 m &
-Estimator-level accuracy remains distinct from resolution and is not pooled with $\Delta r_{\min}$ \\
+        Accuracy ($\sigma_r$)                    &
+        186/225 records; 183/220 papers          &
+        16/186 records                           &
+        0.001 m to 1000 m; median 0.0575 m       &
+        Estimator-level accuracy remains distinct from resolution and is not pooled with $\Delta r_{\min}$ \\
 
-CRB &
-148/225 records; 145/220 papers &
-0/148 records &
--- &
-Bound-level reporting remains contextual only after governance filtering \\
+        CRB                                      &
+        148/225 records; 145/220 papers          &
+        0/148 records                            &
+        --                                       &
+        Bound-level reporting remains contextual only after governance filtering                           \\
 
-Fiber spatial granularity ($\Delta z$) &
-161/225 records; 158/220 papers &
-0/161 records &
--- &
-\parbox[t]{\linewidth}{\raggedright\scriptsize $\Delta z$ is retained as fiber-specific context\\ and is never substituted for $\Delta r_{\min}$} \\
-\bottomrule
-\end{tabularx}
+        Fiber spatial granularity ($\Delta z$)   &
+        161/225 records; 158/220 papers          &
+        0/161 records                            &
+        --                                       &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize $\Delta z$ is retained as fiber-specific context    \\ and is never substituted for $\Delta r_{\min}$} \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -1445,54 +1445,54 @@ Section V-D keeps the same governed scenario scope but changes the question from
 
 
 \begin{table*}[!t]
-\caption{Governed Fiber, Wireless, and Hybrid Slices}
-\label{tab:comparative_slices}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.0cm}
->{\raggedright\arraybackslash}p{1.65cm}
->{\raggedright\arraybackslash}p{1.7cm}
->{\raggedright\arraybackslash}p{1.7cm}
->{\raggedright\arraybackslash}p{1.6cm}
->{\raggedright\arraybackslash}p{2.0cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Comparative Slice} &
-\textbf{\shortstack{Governed Points\\(Papers)}} &
-\textbf{Median Rate} &
-\textbf{Median $\Delta r_{\min}$} &
-\textbf{Median $\sigma_r$} &
-\textbf{\shortstack{Median CRQ\\(Eligible Only)}} &
-\textbf{Coupling Composition} \\
-\midrule
+    \caption{Governed Fiber, Wireless, and Hybrid Slices}
+    \label{tab:comparative_slices}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.0cm}
+        >{\raggedright\arraybackslash}p{1.65cm}
+        >{\raggedright\arraybackslash}p{1.7cm}
+        >{\raggedright\arraybackslash}p{1.7cm}
+        >{\raggedright\arraybackslash}p{1.6cm}
+        >{\raggedright\arraybackslash}p{2.0cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Comparative Slice}                  &
+        \textbf{\shortstack{Governed Points                                   \\(Papers)}} &
+        \textbf{Median Rate}                        &
+        \textbf{Median $\Delta r_{\min}$}           &
+        \textbf{Median $\sigma_r$}                  &
+        \textbf{\shortstack{Median CRQ                                        \\(Eligible Only)}} &
+        \textbf{Coupling Composition}                                         \\
+        \midrule
 
-Fiber (cabled fiber slice) &
-15 (13) &
-28.5 Gbps (\texttt{n\_rate=12}) &
-5.5 m (\texttt{n=4}) &
-0.1 m (\texttt{n=7}) &
-$5.50 \times 10^9$ bps/m (\texttt{n=4}) &
-\texttt{resource\_division} 13; \texttt{joint\_waveform} 2 \\
+        Fiber (cabled fiber slice)                  &
+        15 (13)                                     &
+        28.5 Gbps (\texttt{n\_rate=12})             &
+        5.5 m (\texttt{n=4})                        &
+        0.1 m (\texttt{n=7})                        &
+        $5.50 \times 10^9$ bps/m (\texttt{n=4})     &
+        \texttt{resource\_division} 13; \texttt{joint\_waveform} 2            \\
 
-Wireless (pooled wireless slice) &
-9 (9) &
-1 Gbps (\texttt{n\_rate=3}) &
-0.0025 m (\texttt{n=1}) &
--- &
-$4.80 \times 10^{13}$ bps/m (\texttt{n=1}) &
-\texttt{resource\_division} 5; \texttt{joint\_waveform} 4 \\
+        Wireless (pooled wireless slice)            &
+        9 (9)                                       &
+        1 Gbps (\texttt{n\_rate=3})                 &
+        0.0025 m (\texttt{n=1})                     &
+        --                                          &
+        $4.80 \times 10^{13}$ bps/m (\texttt{n=1})  &
+        \texttt{resource\_division} 5; \texttt{joint\_waveform} 4             \\
 
-Hybrid bridge slice &
-27 (27) &
-10 Gbps (\texttt{n\_rate=17}) &
-0.019075 m (\texttt{n=14}) &
-0.01 m (\texttt{n=8}) &
-$8.83 \times 10^{10}$ bps/m (\texttt{n=14}) &
-\parbox[t]{\linewidth}{\raggedright\scriptsize resource\_division 19;\\ joint\_waveform 6;\\ unlabeled 2} \\
-\bottomrule
-\end{tabularx}
+        Hybrid bridge slice                         &
+        27 (27)                                     &
+        10 Gbps (\texttt{n\_rate=17})               &
+        0.019075 m (\texttt{n=14})                  &
+        0.01 m (\texttt{n=8})                       &
+        $8.83 \times 10^{10}$ bps/m (\texttt{n=14}) &
+        \parbox[t]{\linewidth}{\raggedright\scriptsize resource\_division 19; \\ joint\_waveform 6;\\ unlabeled 2} \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -1522,57 +1522,57 @@ Throughout this section, we use \textbf{ORIS (Optical Reconfigurable Intelligent
 
 
 \begin{table}[!t]
-\caption{Unified Notation for Section VI}
-\label{tab:section6_notation}
-\centering
-\footnotesize
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{1.85cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.55cm}@{}}
-\toprule
-\textbf{Symbol} & \textbf{Meaning} & \textbf{Used in} \\
-\midrule
-$x(t)$ & Optical transmit waveform or equivalent sampled signal & VI-C, VI-E \\
-$\ell$ & Link distance in benchmark-scenario disclosure & VI-D \\
-$\bar P$ & Average optical power budget & VI-C, VI-D \\
-$P_{\max}$ & Peak optical power budget & VI-C, VI-D \\
-$H$ & End-to-end channel coefficient or gain & VI-B \\
-$H_l$ & Deterministic or path-loss component of $H$ & VI-B \\
-$H_a$ & Atmospheric or medium-turbulence component of $H$ & VI-B \\
-$H_p$ & Pointing or misalignment component of $H$ & VI-B \\
-$\gamma$ & Instantaneous reliability proxy evaluated on a fixed detection plane; no cross-plane substitution is implied & VI-B, VI-E \\
-$\gamma_{\text{th}}$ & Reliability threshold for outage control & VI-B \\
-$\varepsilon$ & Allowed outage-probability target & VI-B, VI-C \\
-$m_{\text{res}}$ & Role-consistent resolution or granularity metric & VI-D \\
-$m_{\text{acc}}$ & Empirical sensing accuracy metric & VI-D \\
-$m_{\text{bnd}}$ & Bound-type sensing-metric family & VI-D \\
-$\sigma_r$ & Estimator-dependent sensing accuracy metric when reported & VI-D \\
-$\Theta$ & ORIS diagonal response matrix & VI-A, VI-C, VI-E, VI-F \\
-$\beta_n$ & ORIS amplitude coefficient of element $n$ & VI-A \\
-$\theta_n$ & ORIS phase of element $n$ & VI-A, VI-E \\
-$Q$ & Number of phase-quantization levels & VI-A, VI-E \\
-$\mathbf{w}_k$ & Beamforming vector for user $k$ & VI-C, VI-E \\
-$\mathrm{SINR}_k$ & User-$k$ communication quality metric & VI-E \\
-$\mathrm{CRB}$ & Bound-type sensing metric; not interchangeable with empirical accuracy metrics & VI-C, VI-D, VI-E, VI-F \\
-\bottomrule
-\end{tabularx}
+    \caption{Unified Notation for Section VI}
+    \label{tab:section6_notation}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{1.85cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.55cm}@{}}
+        \toprule
+        \textbf{Symbol}      & \textbf{Meaning}                                                                                             & \textbf{Used in}       \\
+        \midrule
+        $x(t)$               & Optical transmit waveform or equivalent sampled signal                                                       & VI-C, VI-E             \\
+        $\ell$               & Link distance in benchmark-scenario disclosure                                                               & VI-D                   \\
+        $\bar P$             & Average optical power budget                                                                                 & VI-C, VI-D             \\
+        $P_{\max}$           & Peak optical power budget                                                                                    & VI-C, VI-D             \\
+        $H$                  & End-to-end channel coefficient or gain                                                                       & VI-B                   \\
+        $H_l$                & Deterministic or path-loss component of $H$                                                                  & VI-B                   \\
+        $H_a$                & Atmospheric or medium-turbulence component of $H$                                                            & VI-B                   \\
+        $H_p$                & Pointing or misalignment component of $H$                                                                    & VI-B                   \\
+        $\gamma$             & Instantaneous reliability proxy evaluated on a fixed detection plane; no cross-plane substitution is implied & VI-B, VI-E             \\
+        $\gamma_{\text{th}}$ & Reliability threshold for outage control                                                                     & VI-B                   \\
+        $\varepsilon$        & Allowed outage-probability target                                                                            & VI-B, VI-C             \\
+        $m_{\text{res}}$     & Role-consistent resolution or granularity metric                                                             & VI-D                   \\
+        $m_{\text{acc}}$     & Empirical sensing accuracy metric                                                                            & VI-D                   \\
+        $m_{\text{bnd}}$     & Bound-type sensing-metric family                                                                             & VI-D                   \\
+        $\sigma_r$           & Estimator-dependent sensing accuracy metric when reported                                                    & VI-D                   \\
+        $\Theta$             & ORIS diagonal response matrix                                                                                & VI-A, VI-C, VI-E, VI-F \\
+        $\beta_n$            & ORIS amplitude coefficient of element $n$                                                                    & VI-A                   \\
+        $\theta_n$           & ORIS phase of element $n$                                                                                    & VI-A, VI-E             \\
+        $Q$                  & Number of phase-quantization levels                                                                          & VI-A, VI-E             \\
+        $\mathbf{w}_k$       & Beamforming vector for user $k$                                                                              & VI-C, VI-E             \\
+        $\mathrm{SINR}_k$    & User-$k$ communication quality metric                                                                        & VI-E                   \\
+        $\mathrm{CRB}$       & Bound-type sensing metric; not interchangeable with empirical accuracy metrics                               & VI-C, VI-D, VI-E, VI-F \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 
 
 
 \begin{quote}
-\textbf{Model VI-U (Unified Channel/Signal Model).}
+    \textbf{Model VI-U (Unified Channel/Signal Model).}
 
-\begin{equation}
-y_k = \left(h_{d,k} + \mathbf{h}_{r,k}^{T}\Theta\mathbf{g}\right)x + n_k
-\end{equation}
-\begin{equation}
-\Theta = \operatorname{diag}\!\left(\beta_n e^{j\theta_n}\right)
-\end{equation}
-\begin{equation}
-\theta_n \in \left\{0,\frac{2\pi}{Q},\ldots,\frac{2\pi(Q-1)}{Q}\right\}
-\end{equation}
+    \begin{equation}
+        y_k = \left(h_{d,k} + \mathbf{h}_{r,k}^{T}\Theta\mathbf{g}\right)x + n_k
+    \end{equation}
+    \begin{equation}
+        \Theta = \operatorname{diag}\!\left(\beta_n e^{j\theta_n}\right)
+    \end{equation}
+    \begin{equation}
+        \theta_n \in \left\{0,\frac{2\pi}{Q},\ldots,\frac{2\pi(Q-1)}{Q}\right\}
+    \end{equation}
 
-Model VI-U is a compact abstraction reused across VI-A, VI-C, VI-E, and VI-F for notation consistency \cite{O_ISAC_061,O_ISAC_091,O_ISAC_098,O_ISAC_127}.
+    Model VI-U is a compact abstraction reused across VI-A, VI-C, VI-E, and VI-F for notation consistency \cite{O_ISAC_061,O_ISAC_091,O_ISAC_098,O_ISAC_127}.
 \end{quote}
 
 \subsection{Programmable Optical Enablers}
@@ -1581,10 +1581,10 @@ Programmable optical enablers matter because they convert optical propagation fr
 
 A compact steering anchor for OPA is
 \begin{equation}
-AF(\theta)=\sum_{m=0}^{M-1} a_m\exp\!\left(j\left(kdm\sin\theta+\phi_m\right)\right)
+    AF(\theta)=\sum_{m=0}^{M-1} a_m\exp\!\left(j\left(kdm\sin\theta+\phi_m\right)\right)
 \end{equation}
 \begin{equation}
-\phi_m^{\star}=-kdm\sin\theta_0
+    \phi_m^{\star}=-kdm\sin\theta_0
 \end{equation}
 which steers the main lobe toward $\theta_0$ under accurate phase control \cite{O_ISAC_008,O_ISAC_061,O_ISAC_091}. In practice, finite receiver FoV, grating-lobe behavior, insertion loss, and channel impairments prevent ideal steering gains from translating directly into reproducible O-ISAC gains \cite{O_ISAC_061,O_ISAC_091,O_ISAC_098}.
 
@@ -1593,44 +1593,44 @@ PIC, programmable photonics, and photonics-assisted signal generation are treate
 
 
 \begin{table*}[!t]
-\caption{Section VI-A Comparison of Programmable Optical Enabler Families}
-\label{tab:vi_a_enablers}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{2.0cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Enabler Family} &
-\textbf{Primary Control Role in O-ISAC} &
-\textbf{Strongest Evidence Posture in This Review} &
-\textbf{Main Deployment Constraints} \\
-\midrule
+    \caption{Section VI-A Comparison of Programmable Optical Enabler Families}
+    \label{tab:vi_a_enablers}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.0cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Enabler Family}                                                                                                                                  &
+        \textbf{Primary Control Role in O-ISAC}                                                                                                                  &
+        \textbf{Strongest Evidence Posture in This Review}                                                                                                       &
+        \textbf{Main Deployment Constraints}                                                                                                                       \\
+        \midrule
 
-OPA &
-Transmit-side beam agility, angular selectivity, and joint communication--sensing steering &
-Primary evidence core; Section I contribution count includes 7 study-level papers, whereas broader structured traces are used only as supporting context &
-Grating lobes, finite receiver FoV, insertion loss, and sensitivity to atmospheric or channel loss \\
+        OPA                                                                                                                                                      &
+        Transmit-side beam agility, angular selectivity, and joint communication--sensing steering                                                               &
+        Primary evidence core; Section I contribution count includes 7 study-level papers, whereas broader structured traces are used only as supporting context &
+        Grating lobes, finite receiver FoV, insertion loss, and sensitivity to atmospheric or channel loss                                                         \\
 
-ORIS &
-Environment-side path shaping, blockage mitigation, alignment assistance, and NLoS reconstruction &
-Primary evidence core; Section I contribution count includes 8 study-level papers, whereas broader structured traces are used only as supporting context &
-Refresh latency, attenuation, phase quantization, coherence-time mismatch, and control overhead \\
+        ORIS                                                                                                                                                     &
+        Environment-side path shaping, blockage mitigation, alignment assistance, and NLoS reconstruction                                                        &
+        Primary evidence core; Section I contribution count includes 8 study-level papers, whereas broader structured traces are used only as supporting context &
+        Refresh latency, attenuation, phase quantization, coherence-time mismatch, and control overhead                                                            \\
 
-PIC / programmable photonics &
-Integration substrate for packaging, routing, and scalable optical control &
-Qualitative/supporting only; used to explain how controllable optics may be integrated, rather than to claim mature O-ISAC adoption &
-Calibration burden, packaging complexity, insertion loss, and hardware-stack dependence \\
+        PIC / programmable photonics                                                                                                                             &
+        Integration substrate for packaging, routing, and scalable optical control                                                                               &
+        Qualitative/supporting only; used to explain how controllable optics may be integrated, rather than to claim mature O-ISAC adoption                      &
+        Calibration burden, packaging complexity, insertion loss, and hardware-stack dependence                                                                    \\
 
-Photonics-assisted signal generation / photonic-THz bridge &
-Source and distribution pathway for hybrid optical--wireless control chains &
-Bridge evidence only; relevant for hybrid-system interpretation, but not a standalone maturity claim in Section VI-A &
-Stage-aware modeling, cross-plane reporting, and front-end chain complexity \\
-\bottomrule
-\end{tabularx}
+        Photonics-assisted signal generation / photonic-THz bridge                                                                                               &
+        Source and distribution pathway for hybrid optical--wireless control chains                                                                              &
+        Bridge evidence only; relevant for hybrid-system interpretation, but not a standalone maturity claim in Section VI-A                                     &
+        Stage-aware modeling, cross-plane reporting, and front-end chain complexity                                                                                \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -1655,10 +1655,10 @@ Robustness is a first-order concern in O-ISAC because the same optical channel i
 
 A compact robustness anchor is
 \begin{equation}
-H=H_l H_a H_p
+    H=H_l H_a H_p
 \end{equation}
 \begin{equation}
-P_{\text{out}}=\Pr\!\left(\gamma(H)<\gamma_{\text{th}}\right)\le \varepsilon
+    P_{\text{out}}=\Pr\!\left(\gamma(H)<\gamma_{\text{th}}\right)\le \varepsilon
 \end{equation}
 
 This chance-constrained view links physical impairment statistics directly to reliability targets and is consistent with quantile-robust formulations already used in optical ISAC optimization studies \cite{O_ISAC_023,O_ISAC_061,O_ISAC_091}. Here $\gamma$ must stay tied to one declared detection plane per scenario; the expression does not permit implicit OSNR-to-electrical-SNR conversion or blind pooling of coherent and direct observations. Practical mitigation then combines design-time robustness with runtime adaptation through tracking, refresh control, environment-aware reconfiguration, and fallback or diversity mechanisms \cite{O_ISAC_098,O_ISAC_112,O_ISAC_127,O_ISAC_199}.
@@ -1673,16 +1673,16 @@ Joint co-design is required because waveform, beam, power, and ORIS controls sha
 
 A minimal feasible-set and objective anchor is
 \begin{equation}
-\begin{split}
-\mathcal U=\{x(t):x(t)\ge 0,\;\mathbb{E}[x(t)]\le \bar P,\\
-\qquad \max_t x(t)\le P_{\max}\}
-\end{split}
+    \begin{split}
+        \mathcal U=\{x(t):x(t)\ge 0,\;\mathbb{E}[x(t)]\le \bar P, \\
+        \qquad \max_t x(t)\le P_{\max}\}
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\max_{\mathbf{w},\Theta,\,x\in\mathcal U}\;&\alpha R(\mathbf{w},\Theta)\\
-&-(1-\alpha)\,\mathrm{CRB}(\mathbf{w},\Theta),\quad \alpha\in[0,1]
-\end{split}
+    \begin{split}
+        \max_{\mathbf{w},\Theta,\,x\in\mathcal U}\; & \alpha R(\mathbf{w},\Theta)                                       \\
+                                                    & -(1-\alpha)\,\mathrm{CRB}(\mathbf{w},\Theta),\quad \alpha\in[0,1]
+    \end{split}
 \end{equation}
 
 The weight $\alpha$ sets the communication-sensing operating point and can be extended with reliability and latency constraints when channel dynamics are explicit \cite{O_ISAC_023,O_ISAC_061,O_ISAC_091,O_ISAC_127}. Within this subsection, $\mathrm{CRB}$ is retained as a bound-type sensing term rather than an empirical accuracy or resolution proxy. The evidence supports a structured control space, but adoption claims should remain modest: strong study-level co-design demonstrations are fewer than the broader metric traces, and many reported formulations remain exemplar-driven rather than reproducibly benchmarked.
@@ -1695,54 +1695,54 @@ The literature now contains both experimental demonstrations and simulation-heav
 
 A minimal benchmark contract can be written as
 \begin{equation}
-\begin{split}
-\mathbf{s}=\{\ell,\,C_n^2,\,\sigma_{\text{jitter}},\,\lambda,\,B,\\
-\qquad N_{\text{ORIS}},\,M_{\text{OPA}},\,\bar P,\,P_{\max},\,T_{\text{update}}\},
-\end{split}
+    \begin{split}
+        \mathbf{s}=\{\ell,\,C_n^2,\,\sigma_{\text{jitter}},\,\lambda,\,B, \\
+        \qquad N_{\text{ORIS}},\,M_{\text{OPA}},\,\bar P,\,P_{\max},\,T_{\text{update}}\},
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\mathbf{m}=(R,\,\mathrm{BER},\,m_{\text{res}},\,m_{\text{acc}},\\
-\qquad m_{\text{bnd}},\,P_{\text{out}},\,\text{latency},\,\text{energy}).
-\end{split}
+    \begin{split}
+        \mathbf{m}=(R,\,\mathrm{BER},\,m_{\text{res}},\,m_{\text{acc}}, \\
+        \qquad m_{\text{bnd}},\,P_{\text{out}},\,\text{latency},\,\text{energy}).
+    \end{split}
 \end{equation}
 
 Here $\ell$ denotes link distance, $m_{\text{res}}$ a role-consistent resolution or granularity metric, $m_{\text{acc}}$ an empirical accuracy metric such as $\sigma_r$, and $m_{\text{bnd}}$ a bound-type metric such as $\mathrm{CRB}$ or CRLB. For Section II consistency, $m_{\text{res}}$ may be instantiated by $\Delta r_{\min}$ in bandwidth-limited ranging settings or by $\Delta z$ in fiber spatial-granularity settings, but these are not interchangeable and should not be pooled without task and medium conditioning. The contract therefore makes scenario assumptions explicit before gains are interpreted, and Table~\ref{tab:vi_d_reporting} operationalizes it at field level.
 
 \begin{table}[!t]
-\caption{Reporting Fields for Reproducible O-ISAC Experiments and Simulations}
-\label{tab:vi_d_reporting}
-\centering
-\footnotesize
-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{2.35cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
-\toprule
-\textbf{Item} & \textbf{Minimum Required Fields} & \textbf{Why It Matters} \\
-\midrule
-Scenario vector disclosure &
-Full $\mathbf{s}$ values, mobility profile, and channel-model family &
-Prevents hidden scenario drift across papers \\
+    \caption{Reporting Fields for Reproducible O-ISAC Experiments and Simulations}
+    \label{tab:vi_d_reporting}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{2.35cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+        \toprule
+        \textbf{Item}                                                                    & \textbf{Minimum Required Fields} & \textbf{Why It Matters} \\
+        \midrule
+        Scenario vector disclosure                                                       &
+        Full $\mathbf{s}$ values, mobility profile, and channel-model family             &
+        Prevents hidden scenario drift across papers                                                                                                  \\
 
-KPI contract disclosure &
-Full $\mathbf{m}$ values with units, confidence intervals, and metric-role notes &
-Supports fair comparison of communication and sensing quality without role aliasing \\
+        KPI contract disclosure                                                          &
+        Full $\mathbf{m}$ values with units, confidence intervals, and metric-role notes &
+        Supports fair comparison of communication and sensing quality without role aliasing                                                           \\
 
-Baseline taxonomy &
-At least one separated baseline and one practical baseline &
-Prevents inflated gains from weak references \\
+        Baseline taxonomy                                                                &
+        At least one separated baseline and one practical baseline                       &
+        Prevents inflated gains from weak references                                                                                                  \\
 
-Runtime and control budget &
-Solver runtime, $T_{\text{update}}$, hardware timing, and feedback overhead &
-Distinguishes deployable designs from offline-only solutions \\
+        Runtime and control budget                                                       &
+        Solver runtime, $T_{\text{update}}$, hardware timing, and feedback overhead      &
+        Distinguishes deployable designs from offline-only solutions                                                                                  \\
 
-Reproducibility package &
-Parameter files, script versions, data provenance, and random seeds &
-Enables external replication and audit \\
+        Reproducibility package                                                          &
+        Parameter files, script versions, data provenance, and random seeds              &
+        Enables external replication and audit                                                                                                        \\
 
-Safety and operating envelope &
-Optical power settings and safety-margin reporting method &
-Necessary for translation to certified deployments \\
-\bottomrule
-\end{tabularx}
+        Safety and operating envelope                                                    &
+        Optical power settings and safety-margin reporting method                        &
+        Necessary for translation to certified deployments                                                                                            \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 
@@ -1752,7 +1752,7 @@ The benchmark chain in VI-D is the structural backbone of the section as a whole
     \centering
     \includegraphics[width=\linewidth]{figures/fig_vi_2.jpg}
     \caption{From programmable enablers to deployment-ready O-ISAC. The systems map couples optical enablers, medium-specific impairments, control logic, and benchmark discipline, with the deployment/benchmark gate acting as the hinge for carrying Section VI gains into Section VII.}
-\label{fig:fig_vi_2}
+    \label{fig:fig_vi_2}
 \end{figure*}
 
 
@@ -1764,16 +1764,16 @@ Networked O-ISAC introduces burdens that do not appear in single-link settings: 
 
 A compact network objective anchor is
 \begin{equation}
-\begin{split}
-\max_{\{\mathbf{w}_k\},\Theta}\;&\sum_{k}\omega_k\log\!\left(1+\mathrm{SINR}_k\right)\\
-&-\lambda\,\mathrm{CRB}(\Theta)
-\end{split}
+    \begin{split}
+        \max_{\{\mathbf{w}_k\},\Theta}\; & \sum_{k}\omega_k\log\!\left(1+\mathrm{SINR}_k\right) \\
+                                         & -\lambda\,\mathrm{CRB}(\Theta)
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t.}\quad &\sum_k\|\mathbf{w}_k\|_2^2\le P,\\
-&\theta_n\in\mathcal Q.
-\end{split}
+    \begin{split}
+        \text{s.t.}\quad & \sum_k\|\mathbf{w}_k\|_2^2\le P, \\
+                         & \theta_n\in\mathcal Q.
+    \end{split}
 \end{equation}
 
 This formulation makes communication, sensing, and ORIS quantization constraints explicit in one multi-user program \cite{O_ISAC_061,O_ISAC_091,O_ISAC_127}. Its interpretation still requires fixed detection semantics for $\mathrm{SINR}_k$ and a role-consistent sensing objective rather than a mixed resolution-accuracy score. At this point, the narrative starts to connect directly to Section VII: once user count, fusion policy, fairness, and control overhead dominate, the key question is whether a deployment setting can absorb the coordination cost.
@@ -1786,16 +1786,16 @@ AI-assisted adaptation and security-aware design are emerging layers in O-ISAC, 
 
 A compact secrecy and robust-control anchor is
 \begin{equation}
-R_s=[R_b-R_e]^+,
+    R_s=[R_b-R_e]^+,
 \end{equation}
 \begin{equation}
-\begin{split}
-\max_{\mathbf{u}}\;\min_{a\in\mathcal A}\;&\alpha R(\mathbf{u})+\beta R_s(\mathbf{u},a)\\
-&-(1-\alpha-\beta)\,\mathrm{CRB}(\mathbf{u}),
-\end{split}
+    \begin{split}
+        \max_{\mathbf{u}}\;\min_{a\in\mathcal A}\; & \alpha R(\mathbf{u})+\beta R_s(\mathbf{u},a) \\
+                                                   & -(1-\alpha-\beta)\,\mathrm{CRB}(\mathbf{u}),
+    \end{split}
 \end{equation}
 \begin{equation}
-\alpha\ge 0,\;\beta\ge 0,\;\alpha+\beta\le 1,
+    \alpha\ge 0,\;\beta\ge 0,\;\alpha+\beta\le 1,
 \end{equation}
 
 where $\mathbf{u}$ includes transmitter and ORIS controls inherited from Model VI-U \cite{O_ISAC_127,O_ISAC_145,O_ISAC_163}. This framing captures the central tension of the subsection: adaptation gains matter only if they survive uncertainty, overhead, and adversarial pressure rather than only nominal channels. Here again, $R$, $R_s$, and $\mathrm{CRB}$ must be interpreted as role-specific quantities rather than as mutually convertible scores, and the current evidence should still be read as focused demonstrations rather than proof of mature end-to-end AI-secure O-ISAC stacks.
@@ -1814,98 +1814,98 @@ Taken together, VI-A to VI-F suggest that the main optical-ISAC bottleneck is no
 Section VII maps the application evidence into deployment-facing use cases under the earlier classification and governance contracts. Medium labels follow Section IV, OPA/ORIS mentions remain contextual, and SNR-family quantities stay in the communication plane unless a source explicitly states an optical-plane model. The synthesis is visualized in Fig.~\ref{fig:fig_vii_1} and tabulated in Table~\ref{tab:section7_portfolio}.
 
 \begin{table*}[!t]
-\caption{Application Portfolio Matrix}
-\label{tab:section7_portfolio}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{1.05cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{1.45cm}
->{\raggedright\arraybackslash}p{1.9cm}
-@{}}
-\toprule
-\textbf{Vertical} &
-\textbf{Scenario Motif} &
-\textbf{Comm.-Plane Metrics} &
-\textbf{Sensing-Plane Metrics} &
-\textbf{Dominant Component} &
-\textbf{Representative Cites} \\
-\midrule
+    \caption{Application Portfolio Matrix}
+    \label{tab:section7_portfolio}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{1.05cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}p{1.45cm}
+        >{\raggedright\arraybackslash}p{1.9cm}
+        @{}}
+        \toprule
+        \textbf{Vertical}                                                                             &
+        \textbf{Scenario Motif}                                                                       &
+        \textbf{Comm.-Plane Metrics}                                                                  &
+        \textbf{Sensing-Plane Metrics}                                                                &
+        \textbf{Dominant Component}                                                                   &
+        \textbf{Representative Cites}                                                                   \\
+        \midrule
 
-VII-A &
-Outdoor V2V/UAV optical corridors &
-V2V transmission-quality behavior, throughput-oriented resource and trajectory control &
-Received-power-ratio behavior, RMS delay-spread trends, and FSO channel-gain estimation &
-Conventional &
-\cite{O_ISAC_003,O_ISAC_005} \\
+        VII-A                                                                                         &
+        Outdoor V2V/UAV optical corridors                                                             &
+        V2V transmission-quality behavior, throughput-oriented resource and trajectory control        &
+        Received-power-ratio behavior, RMS delay-spread trends, and FSO channel-gain estimation       &
+        Conventional                                                                                  &
+        \cite{O_ISAC_003,O_ISAC_005}                                                                    \\
 
-VII-A &
-Cabled-fiber corridor DAS with coherent carriage &
-50--60 GBaud 16-QAM and coexistence penalty &
-Distributed vibration monitoring, 1 m spatial resolution, and interference-fading suppression &
-Conventional &
-\cite{O_ISAC_038,O_ISAC_074} \\
+        VII-A                                                                                         &
+        Cabled-fiber corridor DAS with coherent carriage                                              &
+        50--60 GBaud 16-QAM and coexistence penalty                                                   &
+        Distributed vibration monitoring, 1 m spatial resolution, and interference-fading suppression &
+        Conventional                                                                                  &
+        \cite{O_ISAC_038,O_ISAC_074}                                                                    \\
 
-VII-B &
-Retroreflective indoor VLC/LiFi localization &
-BER versus reported electrical-plane SNR &
-Distance-measurement RMSE and positioning RMSE &
-Conventional &
-\cite{O_ISAC_011} \\
+        VII-B                                                                                         &
+        Retroreflective indoor VLC/LiFi localization                                                  &
+        BER versus reported electrical-plane SNR                                                      &
+        Distance-measurement RMSE and positioning RMSE                                                &
+        Conventional                                                                                  &
+        \cite{O_ISAC_011}                                                                               \\
 
-VII-B &
-Two-phase indoor LED O-AP deployment &
-BER gains (2.70 dB directionless; 63.35 dB directional) &
-Coordinate MSE, including the $<10^{-4}$ operating point &
-Conventional &
-\cite{O_ISAC_108} \\
+        VII-B                                                                                         &
+        Two-phase indoor LED O-AP deployment                                                          &
+        BER gains (2.70 dB directionless; 63.35 dB directional)                                       &
+        Coordinate MSE, including the $<10^{-4}$ operating point                                      &
+        Conventional                                                                                  &
+        \cite{O_ISAC_108}                                                                               \\
 
-VII-C &
-Autonomous-vehicle ISAC-OW V2V &
-BER versus reported electrical-plane SNR under turbulence &
-LiDAR ranging estimate (100.011 m for a 100 m reference) &
-Conventional &
-\cite{O_ISAC_060} \\
+        VII-C                                                                                         &
+        Autonomous-vehicle ISAC-OW V2V                                                                &
+        BER versus reported electrical-plane SNR under turbulence                                     &
+        LiDAR ranging estimate (100.011 m for a 100 m reference)                                      &
+        Conventional                                                                                  &
+        \cite{O_ISAC_060}                                                                               \\
 
-VII-C &
-Vehicular-network FSO ISAC link (LFM-CPM) &
-BER and achievable data rate &
-ToF-oriented CRB and RMSE &
-Conventional &
-\cite{O_ISAC_055} \\
+        VII-C                                                                                         &
+        Vehicular-network FSO ISAC link (LFM-CPM)                                                     &
+        BER and achievable data rate                                                                  &
+        ToF-oriented CRB and RMSE                                                                     &
+        Conventional                                                                                  &
+        \cite{O_ISAC_055}                                                                               \\
 
-VII-D &
-Secure underwater OWC link &
-BER reduction and secrecy-rate outcomes &
-Environmental-state prediction MAE (0.008 PSU) &
-Conventional &
-\cite{O_ISAC_127} \\
+        VII-D                                                                                         &
+        Secure underwater OWC link                                                                    &
+        BER reduction and secrecy-rate outcomes                                                       &
+        Environmental-state prediction MAE (0.008 PSU)                                                &
+        Conventional                                                                                  &
+        \cite{O_ISAC_127}                                                                               \\
 
-VII-D &
-SMART subsea cable monitoring &
-20 GBaud DP-QAM16 transmission and Q-factor gain &
-In-line temperature sensing resolution ($0.0625\,^{\circ}\mathrm{C}$) &
-Conventional &
-\cite{O_ISAC_220} \\
+        VII-D                                                                                         &
+        SMART subsea cable monitoring                                                                 &
+        20 GBaud DP-QAM16 transmission and Q-factor gain                                              &
+        In-line temperature sensing resolution ($0.0625\,^{\circ}\mathrm{C}$)                         &
+        Conventional                                                                                  &
+        \cite{O_ISAC_220}                                                                               \\
 
-VII-E &
-LEO photonic O-ISAC payload &
-\shortstack[l]{29.99 Mbps and BER below\\ the 7\% pre-FEC threshold\\ at 500 kHz Doppler} &
-\shortstack[l]{Range-resolution behavior\\ better than 0.146 m} &
-Conventional &
-\cite{O_ISAC_187} \\
+        VII-E                                                                                         &
+        LEO photonic O-ISAC payload                                                                   &
+        \shortstack[l]{29.99 Mbps and BER below                                                         \\ the 7\% pre-FEC threshold\\ at 500 kHz Doppler} &
+        \shortstack[l]{Range-resolution behavior                                                        \\ better than 0.146 m} &
+        Conventional                                                                                  &
+        \cite{O_ISAC_187}                                                                               \\
 
-VII-E &
-Multi-beam satellite payload &
-\shortstack[l]{BER ($8.15 \times 10^{-7}$),\\ EVM (6.74\%), and a\\ 2.4 Gbps 16-QAM link} &
-\shortstack[l]{Range resolution (14.9 cm)\\ with remote-sensing and\\ imaging descriptors} &
-Conventional &
-\cite{O_ISAC_195} \\
-\bottomrule
-\end{tabularx}
+        VII-E                                                                                         &
+        Multi-beam satellite payload                                                                  &
+        \shortstack[l]{BER ($8.15 \times 10^{-7}$),                                                     \\ EVM (6.74\%), and a\\ 2.4 Gbps 16-QAM link} &
+        \shortstack[l]{Range resolution (14.9 cm)                                                       \\ with remote-sensing and\\ imaging descriptors} &
+        Conventional                                                                                  &
+        \cite{O_ISAC_195}                                                                               \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 \begin{figure*}[!t]
@@ -1926,19 +1926,19 @@ VII-A covers outdoor mobility corridors, metro/industrial cabled-fiber corridors
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\max_{u,\pi,T}\ &\alpha R_{\mathrm{comm}}(u,\pi;s) \\
-&- (1-\alpha) J_{\mathrm{sense}}(u,T;s)
-\end{split}
+    \begin{split}
+        \max_{u,\pi,T}\  & \alpha R_{\mathrm{comm}}(u,\pi;s)      \\
+                         & - (1-\alpha) J_{\mathrm{sense}}(u,T;s)
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t.}\ &\sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\\
-&0 \le p_k \le P_m,\ \forall k,
-\end{split}
+    \begin{split}
+        \text{s.t.}\  & \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}}, \\
+                      & 0 \le p_k \le P_m,\ \forall k,
+    \end{split}
 \end{equation}
 \begin{equation}
-\mathrm{BER}(u,\pi;s) \le \beta_{\mathrm{rel}}.
+    \mathrm{BER}(u,\pi;s) \le \beta_{\mathrm{rel}}.
 \end{equation}
 
 Here, $u$ collects waveform/link-adaptation settings and $s$ the deployment state; $R_{\mathrm{comm}}$ and BER capture the communication plane, while $J_{\mathrm{sense}}$ acts as a ranging-error surrogate \cite{O_ISAC_034,O_ISAC_048}. The cap $P_m$ follows reported subcarrier-power limits, and the BER bound is an illustrative service target rather than a universal threshold \cite{O_ISAC_034,O_ISAC_048}.
@@ -1951,10 +1951,10 @@ VII-B uses shared lighting-centric infrastructure to deliver service while sensi
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\min_{u}\ &\alpha\,\mathrm{BER}(u;s) + (1-\alpha)\,\mathrm{MSE}_{\mathrm{pos}}(u;s),\\
-&s=(g_{\mathrm{room}},\rho_{\mathrm{user}}).
-\end{split}
+    \begin{split}
+        \min_{u}\  & \alpha\,\mathrm{BER}(u;s) + (1-\alpha)\,\mathrm{MSE}_{\mathrm{pos}}(u;s), \\
+                   & s=(g_{\mathrm{room}},\rho_{\mathrm{user}}).
+    \end{split}
 \end{equation}
 
 Here, $u$ denotes indoor control variables over the shared communication-sensing stack; BER represents communication quality and position-coordinate MSE the sensing plane \cite{O_ISAC_108,O_ISAC_388}.
@@ -1967,17 +1967,17 @@ VII-C covers moving-road deployments that require optical connectivity and envir
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\max_{u,\pi,T}\ &\alpha R_{\mathrm{comm}}(u,\pi;s)\\
-&-(1-\alpha)J_{\mathrm{sense}}(u,T;s)
-\end{split}
+    \begin{split}
+        \max_{u,\pi,T}\  & \alpha R_{\mathrm{comm}}(u,\pi;s)    \\
+                         & -(1-\alpha)J_{\mathrm{sense}}(u,T;s)
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t.}\ &\sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},\\
-&0 \le p_k \le P_m,\ \forall k,\\
-&\mathrm{BER}(u,\pi;s)\le \beta_{\mathrm{rel}}.
-\end{split}
+    \begin{split}
+        \text{s.t.}\  & \sum_{k=1}^{K} p_k \le P_{\mathrm{avg}},       \\
+                      & 0 \le p_k \le P_m,\ \forall k,                 \\
+                      & \mathrm{BER}(u,\pi;s)\le \beta_{\mathrm{rel}}.
+    \end{split}
 \end{equation}
 
 The sensing plane is represented by LiDAR ranging, gain, or CRB/RMSE descriptors, while the communication plane is represented by BER or achievable rate.
@@ -1990,16 +1990,16 @@ VII-D emphasizes operation under attenuation, turbulence, and environmental vari
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\max_u\ &\alpha R_{\mathrm{comm}}(u;s)\\
-&-(1-\alpha)J_{\mathrm{sense}}(u;s)
-\end{split}
+    \begin{split}
+        \max_u\  & \alpha R_{\mathrm{comm}}(u;s)      \\
+                 & -(1-\alpha)J_{\mathrm{sense}}(u;s)
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t.}\ &\mathrm{BER}(u;s)\le \epsilon_{\mathrm{comm}},\\
-&\mathrm{MAE}(u;s)\le \epsilon_{\mathrm{sense}}.
-\end{split}
+    \begin{split}
+        \text{s.t.}\  & \mathrm{BER}(u;s)\le \epsilon_{\mathrm{comm}},  \\
+                      & \mathrm{MAE}(u;s)\le \epsilon_{\mathrm{sense}}.
+    \end{split}
 \end{equation}
 
 \textbf{Key takeaway.} This vertical is governed more by environmental stress and secure operation than by headline rate alone; sensing is typically environmental-state or thermal monitoring, while communication remains BER- and secrecy-oriented.
@@ -2010,17 +2010,17 @@ VII-E covers satellite-network settings where optical inter-satellite connectivi
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\max_{u\in\mathcal{U}(s)}\;&\alpha R_{\mathrm{comm}}(u;s)\\
-&-(1-\alpha)J_{\mathrm{sense}}(u;s)
-\end{split}
+    \begin{split}
+        \max_{u\in\mathcal{U}(s)}\; & \alpha R_{\mathrm{comm}}(u;s)      \\
+                                    & -(1-\alpha)J_{\mathrm{sense}}(u;s)
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t. } &\mathrm{BER}(u;s)\le\epsilon_{\mathrm{comm}},\\
-&\rho_{\mathrm{range}}(u;s)\le\epsilon_{\mathrm{sense}},\\
-&s=(s_{\mathrm{LEO}},s_{\mathrm{mb}}).
-\end{split}
+    \begin{split}
+        \text{s.t. } & \mathrm{BER}(u;s)\le\epsilon_{\mathrm{comm}},           \\
+                     & \rho_{\mathrm{range}}(u;s)\le\epsilon_{\mathrm{sense}}, \\
+                     & s=(s_{\mathrm{LEO}},s_{\mathrm{mb}}).
+    \end{split}
 \end{equation}
 
 \textbf{Key takeaway.} Space-satellite O-ISAC spans ISL transport, Doppler-robust payloads, SLR integration, and multi-beam observation payloads. Communication and sensing are both explicit but remain different metric families, and all scenarios still read as Conventional because no source establishes OPA- or ORIS-dominant control.
@@ -2031,23 +2031,23 @@ VII-F is a cross-domain synthesis layer rather than a single vertical. Under the
 
 \textbf{Math anchor.}
 \begin{equation}
-\begin{split}
-\max_{x,z,g,y}\;& \sum_{d \in D} W_d z_d + \sum_{a \in A} V_a g_a\\
-&- \lambda \sum_{d<q} L_{d,q}(1-y_{d,q}).
-\end{split}
+    \begin{split}
+        \max_{x,z,g,y}\; & \sum_{d \in D} W_d z_d + \sum_{a \in A} V_a g_a \\
+                         & - \lambda \sum_{d<q} L_{d,q}(1-y_{d,q}).
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t. } &z_d \le \sum_{i=1}^{N} M_{i,d}x_i,\\
-&g_a \le \sum_{i=1}^{N} U_{i,a}x_i,\\
-&\sum_{i=1}^{N}x_i \le B.
-\end{split}
+    \begin{split}
+        \text{s.t. } & z_d \le \sum_{i=1}^{N} M_{i,d}x_i, \\
+                     & g_a \le \sum_{i=1}^{N} U_{i,a}x_i, \\
+                     & \sum_{i=1}^{N}x_i \le B.
+    \end{split}
 \end{equation}
 \begin{equation}
-\begin{split}
-y_{d,q}\le z_d,\quad &y_{d,q}\le z_q,\\
-x_i \in \{0,1\},\quad &z_d,g_a,y_{d,q}\in\{0,1\}.
-\end{split}
+    \begin{split}
+        y_{d,q}\le z_d,\quad  & y_{d,q}\le z_q,            \\
+        x_i \in \{0,1\},\quad & z_d,g_a,y_{d,q}\in\{0,1\}.
+    \end{split}
 \end{equation}
 
 Here, $x$ is the scenario-selection vector, the coverage terms follow macro- and micro-domain evidence counts, and the transfer penalty reflects shared-medium cross-domain structure.
@@ -2060,57 +2060,57 @@ VII-G then audits how this strict coverage view differs from structured study fl
 
 
 \begin{table*}[!t]
-\caption{Dual-View Discrepancy Summary}
-\label{tab:section7_dualview}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{0.70cm}
->{\centering\arraybackslash}p{0.75cm}
->{\centering\arraybackslash}p{0.75cm}
->{\centering\arraybackslash}p{0.90cm}
->{\centering\arraybackslash}p{0.90cm}
->{\raggedright\arraybackslash}p{1.30cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Macro Domain} &
-\textbf{Flags} &
-\textbf{Raw} &
-\textbf{Strict} &
-\textbf{Raw only} &
-\textbf{Strict only} &
-\textbf{\shortstack{Rep.\\Ref.}} &
-\textbf{Row References} \\
-\midrule
+    \caption{Dual-View Discrepancy Summary}
+    \label{tab:section7_dualview}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{0.70cm}
+        >{\centering\arraybackslash}p{0.75cm}
+        >{\centering\arraybackslash}p{0.75cm}
+        >{\centering\arraybackslash}p{0.90cm}
+        >{\centering\arraybackslash}p{0.90cm}
+        >{\raggedright\arraybackslash}p{1.30cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Macro Domain}          &
+        \textbf{Flags}                 &
+        \textbf{Raw}                   &
+        \textbf{Strict}                &
+        \textbf{Raw only}              &
+        \textbf{Strict only}           &
+        \textbf{\shortstack{Rep.                                 \\Ref.}} &
+        \textbf{Row References}                                  \\
+        \midrule
 
-Automotive transportation &
-76 & 212 & 104 & 136 & 28 &
-\cite{O_ISAC_010} &
-Comparison row 4; examples row 9 \\
+        Automotive transportation      &
+        76                             & 212 & 104 & 136 & 28  &
+        \cite{O_ISAC_010}              &
+        Comparison row 4; examples row 9                         \\
 
-Indoor environments &
-65 & 175 & 81 & 110 & 16 &
-\cite{O_ISAC_013} &
-Comparison row 3; examples row 7 \\
+        Indoor environments            &
+        65                             & 175 & 81  & 110 & 16  &
+        \cite{O_ISAC_013}              &
+        Comparison row 3; examples row 7                         \\
 
-Smart infrastructure &
-103 & 220 & 203 & 117 & 100 &
-\cite{O_ISAC_071} &
-Comparison row 2; examples row 4 \\
+        Smart infrastructure           &
+        103                            & 220 & 203 & 117 & 100 &
+        \cite{O_ISAC_071}              &
+        Comparison row 2; examples row 4                         \\
 
-Underwater / harsh deployments &
-16 & 122 & 23 & 106 & 7 &
-\cite{O_ISAC_021} &
-Comparison row 5; examples row 12 \\
+        Underwater / harsh deployments &
+        16                             & 122 & 23  & 106 & 7   &
+        \cite{O_ISAC_021}              &
+        Comparison row 5; examples row 12                        \\
 
-Space / satellite deployments &
-17 & 134 & 34 & 117 & 17 &
-\cite{O_ISAC_070} &
-Comparison row 6; examples row 16 \\
-\bottomrule
-\end{tabularx}
+        Space / satellite deployments  &
+        17                             & 134 & 34  & 117 & 17  &
+        \cite{O_ISAC_070}              &
+        Comparison row 6; examples row 16                        \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -2154,18 +2154,18 @@ IX-A treats \texttt{standardization\_interoperability} as a deployment bottlenec
 Decision variables capture profile/format selection, sensing-payload placement, and receiver DSP mode:
 
 \begin{equation}
-\begin{aligned}
-u &= (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}),\\
-\max_{u}\quad & J_{\mathrm{perf}}(u),\\
-\text{s.t.}\quad
-& u_{\mathrm{profile}} \in \mathcal{U}_{\mathrm{SMART\_conform}},\\
-& (u_{\mathrm{placement}},u_{\mathrm{profile}})\\
-&\qquad \in \mathcal{U}_{\mathrm{blank\_allocation}},\\
-& (u_{\mathrm{dsp}},u_{\mathrm{placement}})\\
-&\qquad \in \mathcal{U}_{\mathrm{dsp\_compatible}},\\
-& u \in \mathcal{U}_{\mathrm{PtMP\_attribution}},\\
-& J_{\mathrm{perf}}(u) \in \mathcal{J}_{\mathrm{QoS\_acceptable}}.
-\end{aligned}
+    \begin{aligned}
+        u             & = (u_{\mathrm{profile}},u_{\mathrm{placement}},u_{\mathrm{dsp}}), \\
+        \max_{u}\quad & J_{\mathrm{perf}}(u),                                             \\
+        \text{s.t.}\quad
+                      & u_{\mathrm{profile}} \in \mathcal{U}_{\mathrm{SMART\_conform}},   \\
+                      & (u_{\mathrm{placement}},u_{\mathrm{profile}})                     \\
+                      & \qquad \in \mathcal{U}_{\mathrm{blank\_allocation}},              \\
+                      & (u_{\mathrm{dsp}},u_{\mathrm{placement}})                         \\
+                      & \qquad \in \mathcal{U}_{\mathrm{dsp\_compatible}},                \\
+                      & u \in \mathcal{U}_{\mathrm{PtMP\_attribution}},                   \\
+                      & J_{\mathrm{perf}}(u) \in \mathcal{J}_{\mathrm{QoS\_acceptable}}.
+    \end{aligned}
 \end{equation}
 
 This anchor is constraint-centric because the evidence emphasizes conformance sets rather than tunable weights: SMART is treated as a standardized configuration, dense operation requires precise blank-allocation of sensing payloads, DSP compatibility is explicit in the cited texts, and PON evidence motivates the PtMP attribution constraint \cite{O_ISAC_220, O_ISAC_104}. The symbolic objective $J_{\mathrm{perf}}$ remains only a joint QoS proxy because both spectral-efficiency degradation and sensing-failure risk are documented \cite{O_ISAC_220, O_ISAC_104}.
@@ -2194,15 +2194,15 @@ Interoperability risk in IX-A is not only a standards-label issue; it also appea
 Selected form: Option-2 (resource-constrained performance optimization).
 
 \begin{equation}
-\begin{aligned}
-u &= (u_{arch},u_{proc},u_{ctrl}),\\
-\max_{u} \quad & U_{perf}(u;s) \\
-&= \beta_c U_{comm}(u;s_{comm})+\beta_s U_{sens}(u;s_{sens}) \\
-\text{s.t.} \quad & C_{hw}(u;s) \le C_{max}, \\
-& L_{hw}(u;s) \le L_{max}, \\
-& P_{hw}(u;s) \le P_{max}, \\
-& O_{ctrl}(u;s) \le O_{max}.
-\end{aligned}
+    \begin{aligned}
+        u                 & = (u_{arch},u_{proc},u_{ctrl}),                             \\
+        \max_{u} \quad    & U_{perf}(u;s)                                               \\
+                          & = \beta_c U_{comm}(u;s_{comm})+\beta_s U_{sens}(u;s_{sens}) \\
+        \text{s.t.} \quad & C_{hw}(u;s) \le C_{max},                                    \\
+                          & L_{hw}(u;s) \le L_{max},                                    \\
+                          & P_{hw}(u;s) \le P_{max},                                    \\
+                          & O_{ctrl}(u;s) \le O_{max}.
+    \end{aligned}
 \end{equation}
 
 This anchor adopts Option-2 because the evidence supports four explicit hardware constraints: computational burden, latency envelope, energy budget, and beam-control overhead \cite{O_ISAC_134, O_ISAC_161, O_ISAC_171}. The tuple $u=(u_{arch},u_{proc},u_{ctrl})$ captures architecture, processing schedule, and control policy under shared-transceiver, mobility, and large-array pressure, while $C_{hw}$, $L_{hw}$, $P_{hw}$, and $O_{ctrl}$ keep optimization inside hardware-feasible regions.
@@ -2231,14 +2231,14 @@ Channel modeling and evaluation are foundational because conclusions do not tran
 Selected form: Option-B (benchmark-contract constrained evaluation).
 
 \begin{equation}
-\max_{\pi}\; U_{\mathrm{eval}}(\pi).
+    \max_{\pi}\; U_{\mathrm{eval}}(\pi).
 \end{equation}
 \begin{equation}
-\begin{split}
-\text{s.t.}\; &\pi \in \Pi_{\mathrm{contract}},\\
-\Pi_{\mathrm{contract}} =\;& \{\kappa_{\mathrm{cond}},\,\gamma_{\mathrm{geom}},\\
-&\mu_{\mathrm{metric}},\,\delta_{\mathrm{prov}}\}
-\end{split}
+    \begin{split}
+        \text{s.t.}\;               & \pi \in \Pi_{\mathrm{contract}},                   \\
+        \Pi_{\mathrm{contract}} =\; & \{\kappa_{\mathrm{cond}},\,\gamma_{\mathrm{geom}}, \\
+                                    & \mu_{\mathrm{metric}},\,\delta_{\mathrm{prov}}\}
+    \end{split}
 \end{equation}
 
 This anchor makes each result protocol carry channel-condition tags and scenario-geometry descriptors before cross-paper comparison, directly reflecting weather-conditioned behavior and geometry-dependent reporting \cite{O_ISAC_005, O_ISAC_327}. The term $\mu_{\mathrm{metric}}$ binds BER-capacity definitions to evaluation conditions such as distance, while $\delta_{\mathrm{prov}}$ encodes campaign and dataset/testbed provenance so that standard-model needs become enforceable contract items \cite{O_ISAC_381, O_ISAC_327}.
@@ -2267,13 +2267,13 @@ IX-D treats \texttt{security\_privacy\_reliability} as a coupled risk-governance
 Selected form: Option-1 (risk-constrained service utility), since explicit overhead and availability semantics are not directly grounded in the selected evidence subset.
 
 \begin{equation}
-\begin{aligned}
-u &= (u_{\mathrm{auth}},u_{\mathrm{mon}},u_{\mathrm{priv}}),\\
-\max_{u} \quad & U_{\mathrm{service}}(u) \\
-\text{s.t.} \quad & R_{\mathrm{int}}(u) \le \varepsilon_{\mathrm{int}}, \\
-& L_{\mathrm{priv}}(u) \le \varepsilon_{\mathrm{priv}}, \\
-& A_{\mathrm{auth}}(u) \ge \tau_{\mathrm{auth}}.
-\end{aligned}
+    \begin{aligned}
+        u                 & = (u_{\mathrm{auth}},u_{\mathrm{mon}},u_{\mathrm{priv}}), \\
+        \max_{u} \quad    & U_{\mathrm{service}}(u)                                   \\
+        \text{s.t.} \quad & R_{\mathrm{int}}(u) \le \varepsilon_{\mathrm{int}},       \\
+                          & L_{\mathrm{priv}}(u) \le \varepsilon_{\mathrm{priv}},     \\
+                          & A_{\mathrm{auth}}(u) \ge \tau_{\mathrm{auth}}.
+    \end{aligned}
 \end{equation}
 
 Here, $R_{\mathrm{int}}$ maps to interruption and integrity-monitoring risk under SDN alerting and service-adjustment workflows \cite{O_ISAC_041, O_ISAC_145}, $L_{\mathrm{priv}}$ to privacy leakage in model-update exchange \cite{O_ISAC_039}, and $A_{\mathrm{auth}}$ to dense-network authentication feasibility under dynamic key-management pressure \cite{O_ISAC_156}. The monitoring component $u_{\mathrm{mon}}$ captures real-time warning and service adjustment \cite{O_ISAC_041}, and all thresholds remain symbolic because the extracted texts do not fix numeric bounds.
@@ -2302,17 +2302,17 @@ If convergence is inferred from isolated implementations, transferability can we
 Selected form: readiness-gated deployment utility.
 
 \begin{equation}
-\begin{aligned}
-u &= (u_{\mathrm{arch}},u_{\mathrm{api}},u_{\mathrm{stack}},\\
-&\qquad u_{\mathrm{model}},u_{\mathrm{audit}}),\\
-\max_{u} \quad & U_{\mathrm{deploy}}(u) \\
-\text{s.t.} \quad & g_{\mathrm{ready}}(u) \ge 0, \\
-& \operatorname{compat}_{\mathrm{infra}}(u)=1, \\
-& \operatorname{budget}_{\mathrm{edge}}(u) \le B_{\mathrm{edge}}, \\
-& \operatorname{budget}_{\mathrm{bw}}(u) \le B_{\mathrm{bw}}, \\
-& \operatorname{valid}_{\mathrm{model}}(u)=1, \\
-& \operatorname{prov}_{\mathrm{audit}}(u)=1.
-\end{aligned}
+    \begin{aligned}
+        u                 & = (u_{\mathrm{arch}},u_{\mathrm{api}},u_{\mathrm{stack}},       \\
+                          & \qquad u_{\mathrm{model}},u_{\mathrm{audit}}),                  \\
+        \max_{u} \quad    & U_{\mathrm{deploy}}(u)                                          \\
+        \text{s.t.} \quad & g_{\mathrm{ready}}(u) \ge 0,                                    \\
+                          & \operatorname{compat}_{\mathrm{infra}}(u)=1,                    \\
+                          & \operatorname{budget}_{\mathrm{edge}}(u) \le B_{\mathrm{edge}}, \\
+                          & \operatorname{budget}_{\mathrm{bw}}(u) \le B_{\mathrm{bw}},     \\
+                          & \operatorname{valid}_{\mathrm{model}}(u)=1,                     \\
+                          & \operatorname{prov}_{\mathrm{audit}}(u)=1.
+    \end{aligned}
 \end{equation}
 
 Here, $U_{\mathrm{deploy}}$ and $g_{\mathrm{ready}}$ map to coupling and staged deployment pressure \cite{O_ISAC_039, O_ISAC_163}, $u_{\mathrm{api}}$ with budget constraints captures context-fusion stress under edge/bandwidth limits \cite{O_ISAC_151}, and the governance constraints map to compatibility, model-validity, and provenance evidence \cite{O_ISAC_200}. $B_{\mathrm{edge}}$ and $B_{\mathrm{bw}}$ remain symbolic because the cited excerpts do not fix numeric budgets.
@@ -2324,138 +2324,138 @@ Deployment evaluation in IX-E needs minimum interface contracts binding sensing-
 
 Section VIII-F is a capstone synthesis that summarizes cross-domain dependency coverage and organizes a prioritized agenda. Table~\ref{tab:viii_f_1} is an observational co-linkage summary derived from Sections V--VII, not a causal graph. Within that bounded view, domains A and C emerge as the densest linkage hubs, while domain E appears underlinked and should be read as a coverage gap rather than as lower importance \cite{O_ISAC_049,O_ISAC_107,O_ISAC_133}.
 \begin{table*}[!t]
-\caption{Dependency Coverage Summary Across A--E Domains}
-\label{tab:viii_f_1}
-\centering
-\footnotesize
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccl@{}}
-\toprule
-\textbf{Domain} &
-\textbf{\shortstack{Section V\\Links}} &
-\textbf{\shortstack{Section VI\\Links}} &
-\textbf{\shortstack{Section VII\\Links}} &
-\textbf{Status} \\
-\midrule
+    \caption{Dependency Coverage Summary Across A--E Domains}
+    \label{tab:viii_f_1}
+    \centering
+    \footnotesize
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcccl@{}}
+        \toprule
+        \textbf{Domain} &
+        \textbf{\shortstack{Section V\\Links}} &
+        \textbf{\shortstack{Section VI\\Links}} &
+        \textbf{\shortstack{Section VII\\Links}} &
+        \textbf{Status} \\
+        \midrule
 
-Standardization / interoperability &
-55 & 55 & 55 &
-Covered \\
+        Standardization / interoperability &
+        55 & 55 & 55 &
+        Covered \\
 
-Channel modeling / evaluation &
-54 & 54 & 54 &
-Covered \\
+        Channel modeling / evaluation &
+        54 & 54 & 54 &
+        Covered \\
 
-Hardware scalability / efficiency &
-25 & 25 & 25 &
-Covered \\
+        Hardware scalability / efficiency &
+        25 & 25 & 25 &
+        Covered \\
 
-Security / privacy / reliability &
-18 & 18 & 18 &
-Covered \\
+        Security / privacy / reliability &
+        18 & 18 & 18 &
+        Covered \\
 
-Deployment convergence / roadmap &
-0 & 0 & 0 &
-Isolated \\
-\bottomrule
-\end{tabular*}
+        Deployment convergence / roadmap &
+        0 & 0 & 0 &
+        Isolated \\
+        \bottomrule
+    \end{tabular*}
 \end{table*}
 
 
 Table~\ref{tab:viii_f_2} converts this summary into an organizational shortlist. F-AG01--F-AG04 remain explicitly source-linked \cite{O_ISAC_133,O_ISAC_049,O_ISAC_156,O_ISAC_107}, whereas F-AG05--F-AG07 preserve coverage-derived agenda slots rather than new literature claims. The P1--P3 tiers are organizational labels assigned from co-linkage density, coverage balance, and FLAGGED-evidence concentration; any optical RIS, ORIS, or optical phased-array implication remains only a forward-looking architectural hook under RQ3.
 
 \begin{table*}[!t]
-\caption{Prioritized Research Agenda}
-\label{tab:viii_f_2}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{0.95cm}
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{1.2cm}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{0.8cm}
->{\centering\arraybackslash}p{1.05cm}
-@{}}
-\toprule
-\textbf{ID} &
-\textbf{Title} &
-\textbf{\shortstack{Linked\\Domains}} &
-\textbf{Linkage Rationale} &
-\textbf{Representative Support} &
-\textbf{Tier} &
-\textbf{Mode} \\
-\midrule
+    \caption{Prioritized Research Agenda}
+    \label{tab:viii_f_2}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}p{0.95cm}
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{1.2cm}
+        >{\raggedright\arraybackslash}X
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{0.8cm}
+        >{\centering\arraybackslash}p{1.05cm}
+        @{}}
+        \toprule
+        \textbf{ID}                                                                             &
+        \textbf{Title}                                                                          &
+        \textbf{\shortstack{Linked                                                                \\Domains}} &
+        \textbf{Linkage Rationale}                                                              &
+        \textbf{Representative Support}                                                         &
+        \textbf{Tier}                                                                           &
+        \textbf{Mode}                                                                             \\
+        \midrule
 
-F-AG01 &
-Align interoperability rules with evaluation baselines &
-A, C &
-A/C hotspot across Sections V--VII &
-\cite{O_ISAC_133}; dense interoperability--evaluation linkage &
-P1 &
-Normal \\
+        F-AG01                                                                                  &
+        Align interoperability rules with evaluation baselines                                  &
+        A, C                                                                                    &
+        A/C hotspot across Sections V--VII                                                      &
+        \cite{O_ISAC_133}; dense interoperability--evaluation linkage                           &
+        P1                                                                                      &
+        Normal                                                                                    \\
 
-F-AG02 &
-Reduce multi-slot resource contention in optical ISAC &
-A, B, C &
-Shared A/B/C resource pressure across Sections V--VII &
-\cite{O_ISAC_049}; joint sensing--communication resource coupling &
-P1 &
-Normal \\
+        F-AG02                                                                                  &
+        Reduce multi-slot resource contention in optical ISAC                                   &
+        A, B, C                                                                                 &
+        Shared A/B/C resource pressure across Sections V--VII                                   &
+        \cite{O_ISAC_049}; joint sensing--communication resource coupling                       &
+        P1                                                                                      &
+        Normal                                                                                    \\
 
-F-AG03 &
-Hybrid stacks may require a unified security--evaluation framework &
-A, C, D &
-A/C/D cross-layer security linkage &
-\cite{O_ISAC_156}; hybrid security--evaluation coupling &
-P1 &
-Cons. \\
+        F-AG03                                                                                  &
+        Hybrid stacks may require a unified security--evaluation framework                      &
+        A, C, D                                                                                 &
+        A/C/D cross-layer security linkage                                                      &
+        \cite{O_ISAC_156}; hybrid security--evaluation coupling                                 &
+        P1                                                                                      &
+        Cons.                                                                                     \\
 
-F-AG04 &
-Prototype calibration may require hardware-scaling coordination &
-A, B, D &
-A/B/D prototype-to-scale calibration pressure &
-\cite{O_ISAC_107}; calibration overhead in scaling-oriented settings &
-P2 &
-Cons. \\
+        F-AG04                                                                                  &
+        Prototype calibration may require hardware-scaling coordination                         &
+        A, B, D                                                                                 &
+        A/B/D prototype-to-scale calibration pressure                                           &
+        \cite{O_ISAC_107}; calibration overhead in scaling-oriented settings                    &
+        P2                                                                                      &
+        Cons.                                                                                     \\
 
-F-AG05 &
-Sustain lower-coverage security and reliability threads &
-D &
-Persistent but lower-density D-domain continuity signal &
-Targeted D-domain continuity signal &
-P2 &
-Normal \\
+        F-AG05                                                                                  &
+        Sustain lower-coverage security and reliability threads                                 &
+        D                                                                                       &
+        Persistent but lower-density D-domain continuity signal                                 &
+        Targeted D-domain continuity signal                                                     &
+        P2                                                                                      &
+        Normal                                                                                    \\
 
-F-AG06 &
-Strengthen deployment-convergence evidence through governance-aware integration studies &
-A, C, E &
-Underlinked E-domain convergence pathway &
-Deployment-convergence underlinkage in the current linkage summary &
-P2 &
-Normal \\
+        F-AG06                                                                                  &
+        Strengthen deployment-convergence evidence through governance-aware integration studies &
+        A, C, E                                                                                 &
+        Underlinked E-domain convergence pathway                                                &
+        Deployment-convergence underlinkage in the current linkage summary                      &
+        P2                                                                                      &
+        Normal                                                                                    \\
 
-F-AG07 &
-Maintain balanced cross-domain research coverage &
-A, B, C, D, E &
-Cross-domain balance under finite research bandwidth &
-Aggregate cross-domain coverage balance &
-P3 &
-Normal \\
-\bottomrule
-\end{tabularx}
+        F-AG07                                                                                  &
+        Maintain balanced cross-domain research coverage                                        &
+        A, B, C, D, E                                                                           &
+        Cross-domain balance under finite research bandwidth                                    &
+        Aggregate cross-domain coverage balance                                                 &
+        P3                                                                                      &
+        Normal                                                                                    \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
 \paragraph{VIII-F Math Anchor (Organizational Prioritization Scaffold)}
 
 \begin{equation}
-\begin{aligned}
-\max_{x \in \{0,1\}^N}\quad & \sum_{i=1}^{N} w_i x_i \\
-\text{s.t.}\quad & \sum_{i=1}^{N} c_i x_i \le B,\\
-& \mathrm{cover}_d(x) \ge z_d,\quad d \in \{A,B,C,D,E\}_{\mathrm{selected}},\\
-& \mathrm{risk\_flag}(x) \le R_{\max}.
-\end{aligned}
+    \begin{aligned}
+        \max_{x \in \{0,1\}^N}\quad & \sum_{i=1}^{N} w_i x_i                                                     \\
+        \text{s.t.}\quad            & \sum_{i=1}^{N} c_i x_i \le B,                                              \\
+                                    & \mathrm{cover}_d(x) \ge z_d,\quad d \in \{A,B,C,D,E\}_{\mathrm{selected}}, \\
+                                    & \mathrm{risk\_flag}(x) \le R_{\max}.
+    \end{aligned}
 \end{equation}
 
 Here, $x_i$ marks whether agenda item $i$ is prioritized; $w_i$ is an evidence/dependency weight from the VIII-F linkage summary; $c_i$ is a symbolic editorial or research-bandwidth cost; $cover_d$ is a domain-coverage indicator; and $risk\_flag$ limits FLAGGED-evidence concentration. This is a review-level organizational guide rather than a scientific law or a deployment-certainty claim.
@@ -2468,46 +2468,46 @@ Table~\ref{tab:viii_g_1} shows full aggregate matching for A--D, each with equal
 
 
 \begin{table*}[!t]
-\caption{Cross-Section Alignment Summary Across A--E Domains}
-\label{tab:viii_g_1}
-\centering
-\footnotesize
-\begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{1.35cm}
->{\centering\arraybackslash}p{1.20cm}
->{\centering\arraybackslash}p{1.55cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Challenge Domain} &
-\textbf{\shortstack{Upstream\\Count}} &
-\textbf{\shortstack{Strict\\Count}} &
-\textbf{\shortstack{Unmatched\\Strict}} &
-\textbf{Audit Read} \\
-\midrule
+    \caption{Cross-Section Alignment Summary Across A--E Domains}
+    \label{tab:viii_g_1}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\textwidth}{@{}%
+        >{\raggedright\arraybackslash}X
+        >{\centering\arraybackslash}p{1.35cm}
+        >{\centering\arraybackslash}p{1.20cm}
+        >{\centering\arraybackslash}p{1.55cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Challenge Domain}          &
+        \textbf{\shortstack{Upstream                  \\Count}} &
+        \textbf{\shortstack{Strict                    \\Count}} &
+        \textbf{\shortstack{Unmatched                 \\Strict}} &
+        \textbf{Audit Read}                           \\
+        \midrule
 
-Standardization / interoperability &
-55 & 55 & 0 &
-Fully matched continuity \\
+        Standardization / interoperability &
+        55                                 & 55 & 0 &
+        Fully matched continuity                      \\
 
-Hardware scalability / efficiency &
-25 & 25 & 0 &
-Fully matched continuity \\
+        Hardware scalability / efficiency  &
+        25                                 & 25 & 0 &
+        Fully matched continuity                      \\
 
-Channel modeling / evaluation &
-54 & 54 & 0 &
-Fully matched continuity \\
+        Channel modeling / evaluation      &
+        54                                 & 54 & 0 &
+        Fully matched continuity                      \\
 
-Security / privacy / reliability &
-18 & 18 & 0 &
-Fully matched continuity \\
+        Security / privacy / reliability   &
+        18                                 & 18 & 0 &
+        Fully matched continuity                      \\
 
-Deployment convergence / roadmap &
-0 & 0 & 0 &
-Zero/underlinked row \\
-\bottomrule
-\end{tabularx}
+        Deployment convergence / roadmap   &
+        0                                  & 0  & 0 &
+        Zero/underlinked row                          \\
+        \bottomrule
+    \end{tabularx}
 \end{table*}
 
 
@@ -2515,42 +2515,42 @@ Interpretation remains aggregate-only. As summarized in Table~\ref{tab:viii_g_2}
 
 
 \begin{table}[!t]
-\caption{Availability of Paper-Level Discrepancy Examples}
-\label{tab:viii_g_2}
-\centering
-\footnotesize
-\begin{tabularx}{\columnwidth}{@{}%
->{\raggedright\arraybackslash}p{2.65cm}
->{\centering\arraybackslash}p{1.25cm}
->{\raggedright\arraybackslash}X
-@{}}
-\toprule
-\textbf{Domain} &
-\textbf{\shortstack{Example\\Present}} &
-\textbf{Interpretation Limit} \\
-\midrule
+    \caption{Availability of Paper-Level Discrepancy Examples}
+    \label{tab:viii_g_2}
+    \centering
+    \footnotesize
+    \begin{tabularx}{\columnwidth}{@{}%
+        >{\raggedright\arraybackslash}p{2.65cm}
+        >{\centering\arraybackslash}p{1.25cm}
+        >{\raggedright\arraybackslash}X
+        @{}}
+        \toprule
+        \textbf{Domain}                    &
+        \textbf{\shortstack{Example          \\Present}} &
+        \textbf{Interpretation Limit}        \\
+        \midrule
 
-Standardization / interoperability &
-No &
-Aggregate continuity only \\
+        Standardization / interoperability &
+        No                                 &
+        Aggregate continuity only            \\
 
-Hardware scalability / efficiency &
-No &
-Aggregate continuity only \\
+        Hardware scalability / efficiency  &
+        No                                 &
+        Aggregate continuity only            \\
 
-Channel modeling / evaluation &
-No &
-Aggregate continuity only \\
+        Channel modeling / evaluation      &
+        No                                 &
+        Aggregate continuity only            \\
 
-Security / privacy / reliability &
-No &
-Aggregate continuity only \\
+        Security / privacy / reliability   &
+        No                                 &
+        Aggregate continuity only            \\
 
-Deployment convergence / roadmap &
-No &
-Zero row remains aggregate-only \\
-\bottomrule
-\end{tabularx}
+        Deployment convergence / roadmap   &
+        No                                 &
+        Zero row remains aggregate-only      \\
+        \bottomrule
+    \end{tabularx}
 \end{table}
 
 
@@ -2577,15 +2577,15 @@ The roadmap implication is therefore methodological as much as technological: O-
 \newpage
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figures/foto_fatih.jpg}}]{Fatih D\"onmez}
-received the B.S. degree in electrical and electronics engineering from TOBB University of Economics and Technology, Ankara, Turkiye, in 2012, and the M.S. degree in electrical and electronics engineering from Kutahya Dumlupinar University, Kutahya, Turkiye, in 2022. He is currently pursuing the Ph.D. degree in electrical and electronics engineering with Afyon Kocatepe University, Afyonkarahisar, Turkiye. His research interests include communication networks, wireless communications, communication system optimization, and integrated sensing and communication (ISAC).
+    received the B.S. degree in electrical and electronics engineering from TOBB University of Economics and Technology, Ankara, Turkiye, in 2012, and the M.S. degree in electrical and electronics engineering from Kutahya Dumlupinar University, Kutahya, Turkiye, in 2022. He is currently pursuing the Ph.D. degree in electrical and electronics engineering with Afyon Kocatepe University, Afyonkarahisar, Turkiye. His research interests include communication networks, wireless communications, communication system optimization, and integrated sensing and communication (ISAC).
 \end{IEEEbiography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figures/foto_ahmet.jpg}}]{Ahmet Altuncu}
-received the Ph.D. degree in electronic systems engineering from the University of Essex, Colchester, U.K., in 1998. He founded and directed the Photonics Technologies Application and Research Center at Dumlupinar University. He is currently a Professor with the Department of Electrical and Electronics Engineering, Afyon Kocatepe University, Afyonkarahisar, Turkiye. His research interests include doped-fiber optical amplifiers, CW and pulsed fiber lasers, and optical sensors. He is the author of more than 50 international journal and conference papers.
+    received the Ph.D. degree in electronic systems engineering from the University of Essex, Colchester, U.K., in 1998. He founded and directed the Photonics Technologies Application and Research Center at Dumlupinar University. He is currently a Professor with the Department of Electrical and Electronics Engineering, Afyon Kocatepe University, Afyonkarahisar, Turkiye. His research interests include doped-fiber optical amplifiers, CW and pulsed fiber lasers, and optical sensors. He is the author of more than 50 international journal and conference papers.
 \end{IEEEbiography}
 
 \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{figures/foto_mustafa.jpg}}]{Mustafa Namdar}
-(Member, IEEE) received the B.Sc. and Ph.D. degrees in electronics and communications engineering from Yildiz Technical University, Istanbul, Turkiye. From 2000 to 2011, he was with Turkcell, Istanbul, Turkiye, where he participated in several wireless communications projects. He is currently an Associate Professor with the Department of Electrical and Electronics Engineering, Kutahya Dumlupinar University, Kutahya, Turkiye. His research interests include cognitive radio networks, interference alignment, nonorthogonal multiple access (NOMA), reconfigurable intelligent surfaces (RIS), and integrated sensing and communication (ISAC).
+    (Member, IEEE) received the B.Sc. and Ph.D. degrees in electronics and communications engineering from Yildiz Technical University, Istanbul, Turkiye. From 2000 to 2011, he was with Turkcell, Istanbul, Turkiye, where he participated in several wireless communications projects. He is currently an Associate Professor with the Department of Electrical and Electronics Engineering, Kutahya Dumlupinar University, Kutahya, Turkiye. His research interests include cognitive radio networks, interference alignment, nonorthogonal multiple access (NOMA), reconfigurable intelligent surfaces (RIS), and integrated sensing and communication (ISAC).
 \end{IEEEbiography}
 
 \end{document}
