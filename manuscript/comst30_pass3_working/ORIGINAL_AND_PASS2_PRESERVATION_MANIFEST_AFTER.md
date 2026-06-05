@@ -1,0 +1,20 @@
+# Original and Pass-2 Preservation Manifest After Pass 3
+
+Pass-3 work was confined to `manuscript/comst30_pass3_working/`. The hashes below were recomputed after the final clean build.
+
+| Path | SHA256 | Bytes | Modified |
+|---|---|---:|---|
+| `manuscript_submission/bare_jrnl_new_sample4.tex` | `86C174E06AF152BF89F22A0F5F95F3618418C9D578F6028CA63CA5991383C494` | 249006 | 2026-04-18 16:07:50 |
+| `manuscript_submission/bare_jrnl_new_sample4.pdf` | `AC6A48D1CE7A84DE6E3F0449F6C65BE2F7E2BDFB98F50368DF4038E44EB821A3` | 8039631 | 2026-04-18 16:18:06 |
+| `manuscript_submission/references.bib` | `646C300C0CCF7DB08225AA9A5CCE2F1FF02F2CF83DEC679F3DF53545D4A3299A` | 137423 | 2026-04-18 15:32:16 |
+| `manuscript/finalShortened/bare_jrnl_new_sample4.tex` | `86C174E06AF152BF89F22A0F5F95F3618418C9D578F6028CA63CA5991383C494` | 249006 | 2026-04-18 16:07:50 |
+| `manuscript/finalShortened/bare_jrnl_new_sample4.pdf` | `8FB0F09DF3616768079ED1B11B203B0C248CDF612647049F62A26348AB009EDD` | 8039631 | 2026-04-18 16:07:52 |
+| `manuscript/finalShortened/references.bib` | `646C300C0CCF7DB08225AA9A5CCE2F1FF02F2CF83DEC679F3DF53545D4A3299A` | 137423 | 2026-04-18 15:32:16 |
+| `manuscript/finalManuscript/bare_jrnl_new_sample4.tex` | `27B27BAF31B73AF1BDF9D74D008B15A248C9ACD6B1006DE30CF7419295638A3B` | 276867 | 2026-04-07 18:55:45 |
+| `manuscript/finalManuscript/bare_jrnl_new_sample4.pdf` | `9A142473539F9A703E2779699BD1FE86913AC447833ED1C4B6F9F70CD882ED2C` | 34049603 | 2026-04-07 18:57:05 |
+| `manuscript/comst30_pass2_working/bare_jrnl_new_sample4.tex` | `940927EC8772DDF3B6CA2192357E645CA8FFCBF9C2C05A4FC0ED8402038E3B82` | 128388 | 2026-06-05 00:08:46 |
+| `manuscript/comst30_pass2_working/bare_jrnl_new_sample4.pdf` | `88E6CED6B0D6F555EA6C3419EA507C85DF52E497F200CD07718DF729EABA3EEA` | 3129887 | 2026-06-05 00:09:15 |
+
+## Verification
+
+All after-pass hashes match `ORIGINAL_AND_PASS2_PRESERVATION_MANIFEST_BEFORE.md`. No protected original or Pass-2 package file was modified.
