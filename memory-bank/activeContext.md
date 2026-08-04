@@ -1,5 +1,22 @@
 # Active Context
 
+## Current verified state — 2026-08-04
+
+The current analytical and writing source of truth is [full_corpus_206_source_of_truth_2026-08-04.md](full_corpus_206_source_of_truth_2026-08-04.md). All older 220/221-study locks below are historical and must not drive new corpus-derived claims.
+
+- PRISMA flow: 1,733 identified; 1,259 screened; 330 unique reports sought; 58 not retrieved; 272 assessed; 227 included reports; 206 included studies.
+- Phase D: 8,306 governed claims; 3,206 qualitative, 4,997 quantitative, 31 contextual, 72 quarantined.
+- Study use: 175 survey-ready; 31 survey-ready with claim restrictions.
+- Provenance: investigator-supervised, AI-assisted and user-delegated; independent full-corpus human verification is not documented.
+- Phase E is complete: 206/206 TQAF rows; overall contribution 6 low, 75 adequate, 125 strong; 115 evidence bodies with 54 high, 47 moderate, 10 limited and 4 unclear certainty; QA PASS 43/43; final-workbook invariance PASS across 9,476 comparisons with 0 mismatches.
+- Phase F is complete: primary synthesis = 8,203 claims (3,020 evidence + 4,779 metric + 404 trade-off); internal QA PASS and independent artifact-tool QA PASS 29/29.
+- Current work is Phase G reviewed manuscript integration. The dated package `review_package/full_corpus_206_20260804/` is the safe source for the Abstract, Methods, PRISMA Results, claim governance, TQAF, S1–S7, Discussion/Roadmap and Conclusion text, plus the validated 206-study/227-report-lineage appendix.
+- Safety: do not mechanically replace 220/221 with 206 and do not overwrite the user's existing dirty `manuscript/finalManuscript/` edits.
+- Final package QA status: `PASS_FOR_REVIEWED_MANUSCRIPT_INTEGRATION`; this is not a submission-ready claim.
+- Git delivery: branch `agent/full-corpus-survey-ready`, scientific package commit `2292bfdb3021a3e1dd495ecaa89953350d494405`, draft PR [#1](https://github.com/cfdonmez/OISAC_PRISMA_COMST/pull/1).
+
+---
+
 Son Guncelleme: 2026-04-04
 Guncelleyen: AI + Kullanici
 

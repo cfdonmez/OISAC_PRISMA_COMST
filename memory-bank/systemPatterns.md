@@ -1,5 +1,19 @@
 # System Patterns
 
+## 2026-08-04 evidence-governance rules
+
+- AI output, Gemini output and user-delegated adjudication are not independent human verification.
+- Preserve report, study and claim as separate counting units.
+- Preserve source conflicts; quarantine only the affected exact claim when no authoritative value can be selected.
+- Quantitative-use eligibility does not imply cross-study comparability.
+- Primary synthesis = 8,203; the 8,234 inclusive non-quarantined universe contains 31 context-only metrics.
+- Multi-label `other` is fallback-only; unmatched co-occurring source tokens stay in the audit trail.
+- TQAF qualifies synthesis language and never silently overrides claim-level quarantine.
+- Never perform a global corpus-number replacement in prose, figures, tables or citation keys.
+- Use `memory-bank/full_corpus_206_source_of_truth_2026-08-04.md` as the current authority.
+
+---
+
 **Son Güncelleme:** 2026-01-10
 
 

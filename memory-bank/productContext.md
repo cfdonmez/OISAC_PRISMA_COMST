@@ -1,5 +1,7 @@
 # Product Context
 
+> **2026-08-04 target clarification:** IEEE Photonics Journal is the current submission target in this repository. The COMST corpus and Golden Model remain a survey-structure and writing-quality reference; they are not evidence that COMST is the active target. Scientific claims and counts come from the governed 206-study PRISMA corpus, not from the writing-model corpus.
+
 ## The Problem
 The literature on Optical Integrated Sensing and Communication (O-ISAC) is **fragmented**.
 *   **Fiber Sensing** communities (e.g., DAS, φ-OTDR) rarely cross-pollinate with **FSO/VLC** (Wireless) communities.

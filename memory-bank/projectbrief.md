@@ -1,5 +1,13 @@
 # Project Brief: O-ISAC Systematic Review
 
+## 2026-08-04 current brief
+
+The project now uses a locked PRISMA denominator of **227 included reports / 206 included studies** and a claim-governed full-corpus extraction of **8,306 claims**. Phase E TQAF and Phase F S1–S7 synthesis are complete; primary synthesis uses **8,203 claims**. The old 221-study status table below is historical. Current scope, counts, provenance limits and manuscript migration rules are authoritative in `full_corpus_206_source_of_truth_2026-08-04.md`.
+
+The survey's core purpose remains a unified cross-modality O-ISAC account spanning fiber, FSO, VLC/LiFi, photonic-THz and hybrid systems, with explicit governance of metric comparability, trade-offs, validation maturity and benchmark readiness. The repository's current journal target is IEEE Photonics Journal; COMST remains a survey-writing reference.
+
+---
+
 **Son Güncelleme:** 2025-12-11
 
 ---

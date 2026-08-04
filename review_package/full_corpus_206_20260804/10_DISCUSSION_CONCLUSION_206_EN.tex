@@ -1,0 +1,162 @@
+\section{DISCUSSION AND 6G RESEARCH ROADMAP}
+\label{sec:discussion_roadmap}
+
+\subsection{A Cross-Modality Field Rather Than a Single Design Family}
+
+The 206-study corpus shows that O-ISAC has developed as a family of related
+optical and photonic paradigms rather than as one homogeneous system class.
+Photonic-terahertz and fiber platforms together contributed 125 studies, but
+VLC/LiFi and FSO added 69 further studies with markedly different propagation,
+hardware, illumination, mobility, and sensing constraints. Hybrid and other
+optical platforms formed a smaller frontier. A useful O-ISAC taxonomy must
+therefore preserve the physical medium and sensing construct instead of
+projecting all studies onto an RF-inspired joint-radar-and-communication
+template.
+
+At the same time, the integration results reveal a common design grammar.
+Shared resource allocation, shared hardware, and shared waveforms each
+appeared in more than half of the corpus, while shared links/channels and joint
+optimization were also prominent. This commonality provides a credible basis
+for a unified survey, provided that ``integration'' is reported at the level
+actually demonstrated. Reuse of a carrier, waveform, front end, link, sensing
+observable, or application context are different architectural commitments
+and should not be collapsed into a binary ISAC label.
+
+\subsection{Metric Abundance Does Not Equal Comparability}
+
+The evidence model contains 4,779 primary metric claims, spanning sensing,
+communication, joint, implementation, system, energy, security,
+machine-learning, and other domains. This richness is scientifically useful,
+but it also explains why a universal performance ranking would be misleading.
+Metric names alone rarely define comparable evidence. A numerical value is
+interpretable only together with its metric role, measurement plane, operating
+condition, scenario, and validation context.
+
+The appraisal makes this distinction visible. Reporting completeness was
+strong in 196 studies and metric clarity was strong in 168, yet only 4 studies
+received the strongest comparison-admissibility score and none reached the
+strongest benchmark-readiness score. Many reports are therefore sufficiently
+clear to understand on their own terms but insufficiently standardized for
+direct cross-study ranking. Future O-ISAC reporting should attach a compact
+metric contract to each headline result: definition, numerator and
+denominator, physical or electrical plane, reference bandwidth or time,
+scenario, channel/target model, hardware state, and uncertainty or repeat
+count.
+
+\subsection{Trade-offs Are Multi-Resource and Task-Dependent}
+
+The 404 trade-off records do not support reducing O-ISAC design to a single
+rate--resolution curve. Bandwidth, spectrum, or resource allocation was the
+largest trade-off family, followed closely by power, energy, or dynamic range.
+Communication reliability versus sensing quality, rate--resolution,
+rate--accuracy, and rate--localization were also substantial. Range, coverage,
+hardware complexity, and security formed additional axes.
+
+This structure suggests that practical O-ISAC optimization should expose at
+least four coupled budgets: spectral/time resources, optical/electrical power
+and dynamic range, hardware/DSP complexity, and task-specific performance.
+Pareto comparisons are meaningful only when these budgets and the validation
+plane are aligned. A curve obtained from a simulation under one channel model
+should not be presented as directly dominating a laboratory or field result
+that uses a different sensing observable or performance definition.
+
+\subsection{Experimental Momentum, Reproducibility Deficit}
+
+Three-quarters of the corpus reached at least a laboratory experiment,
+proof-of-concept, controlled prototype, or field tier, demonstrating that
+O-ISAC is not merely a theoretical research program. The maturity profile is
+nevertheless uneven: only 12 studies reached field or deployment-oriented
+validation. More importantly, experimental maturity was not accompanied by
+open research artifacts. Only 13 studies provided open data, while code or
+model artifacts were unavailable or not reported in 197.
+
+This gap is a central barrier to cumulative progress. A convincing prototype
+can establish feasibility, but without reusable waveforms, channel/target
+traces, calibration procedures, parameter files, code, or baseline outputs, it
+cannot easily become a community benchmark. The near-term priority is not one
+universal dataset for all optical modalities. It is a family of modality-aware
+benchmark packages with a common metadata envelope and explicit translation
+rules between measurement planes.
+
+\subsection{Enabling Technologies and Application Pull}
+
+The multi-label technology map shows several overlapping streams. These
+include photonic-terahertz and microwave-photonic generation; FMCW and other
+chirped processing; coherent optics; multicarrier modulation; distributed
+fiber sensing; integrated photonics; beam control; and learning-based
+inference. No single enabler defines O-ISAC. Instead, the field advances by
+recombining optical generation, propagation, detection, waveform, and
+inference technologies around a shared sensing--communication objective.
+
+The application map is similarly broad. 6G/access-network contexts were most
+frequent, followed by environmental monitoring, vehicular systems, smart
+infrastructure, industrial settings, optical access networks, security, and
+indoor positioning. The 6G-relevance crosswalk classified 138 studies as
+directly relevant and 64 as inferentially relevant. The evidence therefore
+supports O-ISAC as a substantive component of the 6G research landscape, but
+the label should remain tied to demonstrated capabilities rather than used as
+a substitute for system-level requirements or deployment evidence.
+
+\subsection{Research Roadmap}
+
+The synthesis supports six priorities.
+
+\begin{enumerate}
+\item \emph{Adopt measurement-plane contracts.} Headline sensing and
+communication values should identify their physical/electrical reference
+plane, role, bandwidth/time basis, and uncertainty.
+\item \emph{Publish modality-aware benchmark bundles.} Data, code or models,
+waveforms, calibration records, parameter files, and baseline outputs should
+be released together under a common metadata structure.
+\item \emph{Move from feasibility to field evidence.} Laboratory prototypes
+should be tested under mobility, environmental variation, component drift,
+interference, and realistic network load.
+\item \emph{Report multi-resource Pareto fronts.} Evaluations should expose
+spectral, power, complexity, and task-performance budgets instead of selecting
+one favorable trade-off axis.
+\item \emph{Separate shared-component claims from joint optimization.}
+Architecture reporting should identify what is shared, where the functions
+separate, and whether sensing information closes a communication-control loop
+or vice versa.
+\item \emph{Design cross-modality comparisons around equivalent tasks.}
+Benchmarking should compare matched operational objectives and constraints,
+not nominally similar metrics that represent different sensing constructs.
+\end{enumerate}
+
+\subsection{Limitations of the Evidence and Review Process}
+
+The review is limited by heterogeneity in terminology, measurement planes,
+scenarios, and validation practices. The absence of common effect measures
+precluded conventional meta-analysis, and the descriptive distributions
+should not be interpreted as pooled causal effects. Fifty-eight unique reports
+were not retrieved. Contextual records were kept outside the primary technical
+corpus, while 31 context-only claims and 72 claims with unresolved source
+conflicts were excluded from primary numerical synthesis. Claim-level
+quarantine preserves uncertainty but can reduce the evidence available for a
+specific comparison without excluding the entire study.
+
+The workflow was investigator-supervised, AI-assisted, user-delegated, and
+claim-governed. Independent duplicate human screening and independent
+full-corpus human PDF verification are not documented; inter-rater reliability
+is therefore not reported. Deterministic QA, source locators, decision logs,
+hashes, and explicit conflict registers improve auditability but do not replace
+reviewer independence. These limitations should be considered when
+interpreting fine-grained prevalence estimates or claims that depend on a
+small evidence body.
+
+\section{CONCLUSION}
+\label{sec:conclusion_206}
+
+This review consolidates 227 eligible reports into 206 unique O-ISAC studies
+and organizes 8,203 primary claims through a cross-modality, metric-governed
+synthesis. The field has established a broad technical base spanning
+photonic-terahertz, fiber, VLC/LiFi, FSO, and hybrid optical platforms, with
+resource, hardware, waveform, and link reuse providing a shared integration
+grammar. Its main limitation is no longer a shortage of reported performance
+values; it is the lack of portable measurement contracts, common baselines,
+open artifacts, and field evidence required to compare those values
+responsibly. Progress toward 6G-ready O-ISAC will therefore depend on coupling
+continued photonic and signal-processing innovation with reproducible,
+task-equivalent, and modality-aware evaluation. The taxonomy, claim-governance
+rules, technical appraisal, and S1--S7 evidence maps developed here provide an
+auditable foundation for that transition.

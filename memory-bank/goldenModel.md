@@ -1,5 +1,7 @@
 # Golden Model: IEEE COMST Survey Yazım Modeli
 
+> **2026-08-04 scope clarification:** this is a writing and structure reference. It does not define the current journal target, the PRISMA denominator, or the scientific evidence base. Current evidence authority: `full_corpus_206_source_of_truth_2026-08-04.md`.
+
 **Son Güncelleme:** 2026-01-05
 **Durum:** ✅ Analiz Tamamlandı — Yazım Aşamasına Hazır
 

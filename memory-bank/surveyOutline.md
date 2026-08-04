@@ -1,5 +1,11 @@
 # Ideal O-ISAC Survey Outline - Implementation Plan
 
+## 2026-08-04 evidence-basis override
+
+The section architecture below remains a useful writing scaffold, but its 221-study, 2010–2025 and planned-search statements are obsolete. Current prevalence, taxonomy, metric, trade-off, validation and application results are available in `review_package/full_corpus_206_20260804/07_PHASE_F_S1_S7_RESULTS_EN.tex` and its Phase-F tables, derived from the governed **206-study / 227-report** corpus. The actual search window is 1 January 2020–22 June 2026.
+
+---
+
 **Amaç:** IEEE COMST standartlarında, "ilk kapsamlı Optical ISAC survey" olarak konumlandırılacak bir makale outline'ı oluşturmak.
 
 **Temel:** 76 COMST makalesinin Golden Model analizi + 221 O-ISAC çalışmasından çıkarılan veriler

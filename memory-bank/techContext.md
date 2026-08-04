@@ -1,5 +1,14 @@
 # Tech Context
 
+## 2026-08-04 authoring safety override
+
+- The completed Phase A–F corpus-migration package is `review_package/full_corpus_206_20260804/`; Phase G reviewed manuscript integration is current.
+- `manuscript/finalManuscript/bare_jrnl_new_sample4.tex` contains user changes and must not be overwritten by automated migration.
+- The older active-path statements below describe historical authoring phases; verify the current Git status before editing any manuscript source.
+- Corpus-derived tables and figures must be regenerated from 206 unique studies rather than edited by denominator substitution.
+
+---
+
 **Son Guncelleme:** 2026-03-24
 
 ---
@@ -154,4 +163,4 @@
 - Tarihsel drive path:
   - `/content/drive/MyDrive/AKU_WorkSpace/survey_fdgit/OISAC_PRISMA_COMST`
 - Guncel local workspace:
-  - `C:\\Users\\fdonmez\\Drive'im (cfdonmez@gmail.com)\\AKU_WorkSpace\\survey_fdgit\\OISAC_PRISMA_COMST`
+  - host-specific path intentionally omitted; use the repository root checked out on the current machine

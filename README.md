@@ -1,8 +1,10 @@
 # 📡 O-ISAC Systematic Survey (PRISMA 2020)
 
+> **Current corpus notice — 2026-08-04:** the authoritative review universe is 227 included reports mapped to 206 studies. Phase D contains 8,306 claim-governed records. The older 223+/220/221 and legacy Pipeline-V4 dashboard content below is historical. Start with [`memory-bank/full_corpus_206_source_of_truth_2026-08-04.md`](memory-bank/full_corpus_206_source_of_truth_2026-08-04.md) and the dated [`review_package/full_corpus_206_20260804/`](review_package/full_corpus_206_20260804/) migration package.
+
 > **"Optical Integrated Sensing and Communication: A Unified Survey"**
 
-Hoş geldiniz! 👋 Bu repo, **IEEE Communications Surveys & Tutorials (COMST)** dergisi için hazırlanan akademik bir sistematik survey (derleme) projesinin **tüm mutfağını** barındırır.
+Hoş geldiniz! 👋 Bu repo, **COMST düzeyindeki survey yazım ilkelerini referans alan ve mevcut submission planında IEEE Photonics Journal'ı hedefleyen** akademik bir sistematik survey (derleme) projesinin tüm mutfağını barındırır.
 
 Burada, literatürdeki binlerce makalenin nasıl tarandığını, nasıl elendiğini ve yapay zeka destekli araçlarla nasıl analiz edildiğini **şeffaf bir şekilde** görebilirsiniz.
 
@@ -22,13 +24,14 @@ Bu repo, bu soruyu cevaplamak için yapılan **bilimsel yolculuğun** dijital ka
 
 | Aşama | Ne Yapıyoruz? | Durum |
 |:---|:---|:---:|
-| **1. Planlama** | Kuralları ve protokolü belirledik. ([Protokolü İncele](protocol/prisma_proto.md)) | ✅ Tamamlandı |
-| **2. Arama** | 1200+ makaleyi veritabanlarından bulduk. | ✅ Tamamlandı |
-| **3. Eleme** | Başlık ve özet okuyarak ilgisizleri ayıkladık (223+ dahil edildi). | ✅ Tamamlandı |
-| **4. PDF Toplama** | Dahil edilen 223+ makalenin tam metinlerini topladık. | ✅ Tamamlandı |
-| **5. Veri Madenciliği** | **Pipeline V4 (Vision + CoT)** ile derin analiz yapıyoruz. | 🟢 Devam Ediyor (200+ İşlendi) |
-| **6. Benchmark** | V4 vs Legacy sonuçlarını kıyaslıyoruz. | 🟢 Devam Ediyor ([Benchmark Lab](analysis/nb/06_Extraction_Benchmark_Lab.ipynb)) |
-| **7. Yazım** | Sonuçları COMST taslağına dönüştürüyoruz. | 🟡 Hazırlanıyor |
+| **1. Planlama** | Protokol, eligibility ve reviewer-process amendments | ✅ Tamamlandı |
+| **2. Arama** | 1.733 kayıt; gerçek son arama tarihi 22 Haziran 2026 | ✅ Tamamlandı |
+| **3. Eleme** | 272 full text; 227 dahil rapor → 206 çalışma | ✅ Tamamlandı |
+| **4. Retrieval** | 330 unique rapor arandı; 58 rapor alınamadı | ✅ Tamamlandı |
+| **5. Veri Çıkarma** | 206 çalışma; 8.306 claim; claim-level governance | ✅ Tamamlandı |
+| **6. TQAF** | 206/206 çalışma; 115 evidence body; QA 43/43 | ✅ Tamamlandı |
+| **7. Sentez** | S1–S7; 8.203 primary claim; artifact QA 29/29 | ✅ Tamamlandı |
+| **8. Yazım** | 206-study patch hazır; aktif manuscript'e kontrollü entegrasyon | 🟡 Devam Ediyor |
 
 > **Canlı Süreç:** Bu proje "Onion" (Soğan) mimarisiyle katman katman derinleşir. ([Detaylı Takip Dosyası](data/ext_track.md))
 

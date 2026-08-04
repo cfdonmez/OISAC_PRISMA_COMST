@@ -1,5 +1,7 @@
 # I. INTRODUCTION (O‑ISAC Survey)
 
+> 2026-08-04: Any 220/221-study or pre-2026 search statement in these templates is obsolete. Use the 206-study source-of-truth file and finalized Phase-E/F results.
+
 ## A. Hook (Motivation)
 > **Pattern A – 6G Vision Hook**: "As 6G networks evolve towards the *intelligence of everything*, **Optical Integrated Sensing and Communication (O‑ISAC)** emerges as a transformative paradigm that unifies perception, transmission, and processing on optical carriers. This integration addresses the spectrum scarcity and interference bottlenecks of traditional RF‑ISAC and enables ultra‑high data‑rate, low‑latency, and high‑resolution sensing for emerging verticals such as smart factories, autonomous vehicles, and holographic telepresence."
 

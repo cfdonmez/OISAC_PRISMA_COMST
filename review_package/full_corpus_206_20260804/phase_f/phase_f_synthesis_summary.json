@@ -1,0 +1,944 @@
+{
+  "package": "OISAC Phase-F S1-S7 publication-ready descriptive synthesis",
+  "generated_at_utc": "2026-08-03T23:43:50.750837+00:00",
+  "source": {
+    "workbook": "OISAC_PHASE_D_SURVEY_READY_2026-08-04.xlsx",
+    "sha256": "c1b3b89789c6ed3e20da5a6283e480875c1913e21af88ff59ac747a6aa949348",
+    "expected_locked_sha256": "c1b3b89789c6ed3e20da5a6283e480875c1913e21af88ff59ac747a6aa949348",
+    "phase_e_crosswalk": "PHASE_E_TQAF_NORMALIZATION_CROSSWALK_DRAFT_2026-08-04.json",
+    "phase_e_crosswalk_sha256": "41d6f8f574bdd0d6eba04806b2930ade8fa1d3d56e28b083de3d56bb13e7d122",
+    "expected_phase_e_crosswalk_sha256": "41d6f8f574bdd0d6eba04806b2930ade8fa1d3d56e28b083de3d56bb13e7d122"
+  },
+  "scope_and_denominators": {
+    "unique_study_clusters": 206,
+    "study_weighting_rule": "Each study_cluster_id contributes at most once to each category.",
+    "mutually_exclusive_tables": [
+      "s1_modality.csv",
+      "s5_validation_maturity.csv",
+      "s5_open_data.csv",
+      "s5_open_code.csv",
+      "s7_six_g_relevance.csv",
+      "study survey_use_status"
+    ],
+    "multi_label_tables": [
+      "s2_integration_mechanisms.csv",
+      "s5_validation_types.csv",
+      "s6_enabling_technologies.csv",
+      "s6_application_domains.csv"
+    ],
+    "multi_label_warning": "Category totals in multi-label tables can exceed 206 and must not be interpreted as additional studies.",
+    "multi_label_coverage": {
+      "integration_mechanism": 206,
+      "enabling_technology": 206,
+      "application_domain": 206
+    },
+    "fallback_other_semantics": "For integration, enabling technology, and application domain, other is assigned only when the study has no recognized category on that axis; unmatched co-occurring tokens are audit-only.",
+    "fallback_other_counts": {
+      "integration_mechanism": 0,
+      "enabling_technology": 19,
+      "application_domain": 15
+    },
+    "exclusive_dimension_authority": "Phase-E per_study_crosswalk is the sole authority for modality, validation_maturity_max, dataset_availability, code_model_availability, and six_g; Phase F does not reclassify these dimensions.",
+    "exclusive_distributions": {
+      "modality": {
+        "photonic_THz": 69,
+        "fiber": 56,
+        "VLC_LiFi": 38,
+        "FSO": 31,
+        "hybrid_optical": 9,
+        "other_optical": 3
+      },
+      "validation_maturity_max": {
+        "2": 32,
+        "3": 18,
+        "4": 78,
+        "5": 66,
+        "6": 12
+      },
+      "dataset_availability": {
+        "unavailable_or_NR": 145,
+        "on_request": 41,
+        "open": 13,
+        "NA": 7
+      },
+      "code_model_availability": {
+        "unavailable_or_NR": 197,
+        "on_request": 7,
+        "partial_components": 1,
+        "NA": 1
+      },
+      "six_g": {
+        "direct": 138,
+        "inferred": 64,
+        "weak": 1,
+        "not_applicable": 3
+      }
+    }
+  },
+  "claim_governance": {
+    "total_claims": 8306,
+    "inclusive_governed_nonquarantined_universe": 8234,
+    "inclusive_universe_caution": "The 8,234 non-quarantined records include 31 context-only metrics and must not be reported as the primary evidence count.",
+    "context_only_claims_excluded_from_primary_synthesis": 31,
+    "quarantined_claims_excluded_from_all_claim_based_numeric_results": 72,
+    "primary_synthesis_claims": 8203,
+    "conditional_primary_synthesis_claims": 1505,
+    "conditional_inclusive_nonquarantined_claims": 1532,
+    "conditional_definition": "A claim is conditional when it is comparison-gated, source-guardrailed, conditionally admissible/comparable, marked caution, or allows cross-study quantitative comparison only with conditions.",
+    "primary_evidence_claims": 3020,
+    "primary_metric_claims": 4779,
+    "primary_tradeoff_claims": 404,
+    "record_type_use_class_crosstab": {
+      "evidence": {
+        "eligible_qualitative": 3020,
+        "quarantined_conflict": 21
+      },
+      "metric": {
+        "context_only": 31,
+        "eligible_quantitative": 4779,
+        "quarantined_conflict": 51
+      },
+      "tradeoff": {
+        "eligible_qualitative": 186,
+        "eligible_quantitative": 218
+      }
+    }
+  },
+  "study_restrictions": {
+    "survey_use_status": {
+      "survey_ready": 175,
+      "survey_ready_with_claim_restrictions": 31
+    },
+    "adjudication_tier": {
+      "historical_extraction_reviewed": 25,
+      "machine_resolved_by_survey_rule": 49,
+      "source_audited_no_elevated_issue": 88,
+      "source_author_required_for_exact_claim": 28,
+      "targeted_pdf_resolved": 16
+    },
+    "independent_human_status": {
+      "not_documented": 206
+    },
+    "provenance_caution": "Independent human PDF verification is not documented; these are AI-assisted/user-delegated survey-scope adjudications and must not be described as dual-independent-reviewer findings."
+  },
+  "headline_tables": {
+    "S1_modality": [
+      {
+        "category": "photonic_THz",
+        "study_count": 69,
+        "percent_of_206": 33.5
+      },
+      {
+        "category": "fiber",
+        "study_count": 56,
+        "percent_of_206": 27.2
+      },
+      {
+        "category": "VLC_LiFi",
+        "study_count": 38,
+        "percent_of_206": 18.4
+      },
+      {
+        "category": "FSO",
+        "study_count": 31,
+        "percent_of_206": 15.0
+      },
+      {
+        "category": "hybrid_optical",
+        "study_count": 9,
+        "percent_of_206": 4.4
+      },
+      {
+        "category": "other_optical",
+        "study_count": 3,
+        "percent_of_206": 1.5
+      }
+    ],
+    "S2_integration_mechanism": [
+      {
+        "category": "shared_waveform",
+        "study_count": 113,
+        "percent_of_206": 54.9
+      },
+      {
+        "category": "shared_hardware",
+        "study_count": 117,
+        "percent_of_206": 56.8
+      },
+      {
+        "category": "shared_optical_carrier",
+        "study_count": 49,
+        "percent_of_206": 23.8
+      },
+      {
+        "category": "shared_link_or_channel",
+        "study_count": 87,
+        "percent_of_206": 42.2
+      },
+      {
+        "category": "shared_resource_allocation",
+        "study_count": 118,
+        "percent_of_206": 57.3
+      },
+      {
+        "category": "joint_design_or_optimization",
+        "study_count": 72,
+        "percent_of_206": 35.0
+      },
+      {
+        "category": "shared_application_scenario",
+        "study_count": 46,
+        "percent_of_206": 22.3
+      },
+      {
+        "category": "mixed",
+        "study_count": 3,
+        "percent_of_206": 1.5
+      },
+      {
+        "category": "other",
+        "study_count": 0,
+        "percent_of_206": 0.0
+      },
+      {
+        "category": "unclear",
+        "study_count": 0,
+        "percent_of_206": 0.0
+      }
+    ],
+    "S3_metric_domain": [
+      {
+        "category": "sensing",
+        "claim_count": 1816,
+        "unique_study_count": 203,
+        "percent_of_206_studies": 98.5,
+        "conditional_claim_count": 505,
+        "eligible_quantitative_claim_count": 1816,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "communication",
+        "claim_count": 1328,
+        "unique_study_count": 194,
+        "percent_of_206_studies": 94.2,
+        "conditional_claim_count": 296,
+        "eligible_quantitative_claim_count": 1328,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "joint",
+        "claim_count": 870,
+        "unique_study_count": 158,
+        "percent_of_206_studies": 76.7,
+        "conditional_claim_count": 260,
+        "eligible_quantitative_claim_count": 870,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "implementation",
+        "claim_count": 476,
+        "unique_study_count": 64,
+        "percent_of_206_studies": 31.1,
+        "conditional_claim_count": 28,
+        "eligible_quantitative_claim_count": 476,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "system",
+        "claim_count": 104,
+        "unique_study_count": 11,
+        "percent_of_206_studies": 5.3,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 104,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "energy",
+        "claim_count": 25,
+        "unique_study_count": 5,
+        "percent_of_206_studies": 2.4,
+        "conditional_claim_count": 23,
+        "eligible_quantitative_claim_count": 25,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "scenario",
+        "claim_count": 12,
+        "unique_study_count": 5,
+        "percent_of_206_studies": 2.4,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 12,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "waveform",
+        "claim_count": 11,
+        "unique_study_count": 5,
+        "percent_of_206_studies": 2.4,
+        "conditional_claim_count": 4,
+        "eligible_quantitative_claim_count": 11,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "channel",
+        "claim_count": 9,
+        "unique_study_count": 4,
+        "percent_of_206_studies": 1.9,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 9,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "tradeoff",
+        "claim_count": 5,
+        "unique_study_count": 4,
+        "percent_of_206_studies": 1.9,
+        "conditional_claim_count": 3,
+        "eligible_quantitative_claim_count": 5,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "illumination",
+        "claim_count": 9,
+        "unique_study_count": 3,
+        "percent_of_206_studies": 1.5,
+        "conditional_claim_count": 1,
+        "eligible_quantitative_claim_count": 9,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "optical",
+        "claim_count": 8,
+        "unique_study_count": 3,
+        "percent_of_206_studies": 1.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 8,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "resource",
+        "claim_count": 5,
+        "unique_study_count": 3,
+        "percent_of_206_studies": 1.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 5,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "security",
+        "claim_count": 40,
+        "unique_study_count": 2,
+        "percent_of_206_studies": 1.0,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 40,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "machine_learning",
+        "claim_count": 31,
+        "unique_study_count": 2,
+        "percent_of_206_studies": 1.0,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 31,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "component",
+        "claim_count": 8,
+        "unique_study_count": 2,
+        "percent_of_206_studies": 1.0,
+        "conditional_claim_count": 8,
+        "eligible_quantitative_claim_count": 8,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "network",
+        "claim_count": 2,
+        "unique_study_count": 2,
+        "percent_of_206_studies": 1.0,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 2,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "simulation",
+        "claim_count": 2,
+        "unique_study_count": 2,
+        "percent_of_206_studies": 1.0,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 2,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "power_transfer",
+        "claim_count": 4,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 4,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "algorithm",
+        "claim_count": 3,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 3,
+        "eligible_quantitative_claim_count": 3,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "control",
+        "claim_count": 3,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 3,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "mobility",
+        "claim_count": 2,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 2,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "operations",
+        "claim_count": 2,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 2,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "baseline",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 1,
+        "eligible_quantitative_claim_count": 1,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "optimization",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 1,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "processing",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 1,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "resource_performance",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 0,
+        "eligible_quantitative_claim_count": 1,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      }
+    ],
+    "S4_tradeoff_family": [
+      {
+        "category": "bandwidth_spectrum_or_resource_allocation",
+        "claim_count": 95,
+        "unique_study_count": 71,
+        "percent_of_206_studies": 34.5,
+        "conditional_claim_count": 90,
+        "eligible_quantitative_claim_count": 50,
+        "eligible_qualitative_claim_count": 45,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "power_energy_or_dynamic_range",
+        "claim_count": 90,
+        "unique_study_count": 64,
+        "percent_of_206_studies": 31.1,
+        "conditional_claim_count": 81,
+        "eligible_quantitative_claim_count": 50,
+        "eligible_qualitative_claim_count": 40,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "communication_reliability_vs_sensing_quality",
+        "claim_count": 59,
+        "unique_study_count": 48,
+        "percent_of_206_studies": 23.3,
+        "conditional_claim_count": 55,
+        "eligible_quantitative_claim_count": 37,
+        "eligible_qualitative_claim_count": 22,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "rate_resolution",
+        "claim_count": 46,
+        "unique_study_count": 39,
+        "percent_of_206_studies": 18.9,
+        "conditional_claim_count": 41,
+        "eligible_quantitative_claim_count": 26,
+        "eligible_qualitative_claim_count": 20,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "rate_accuracy_or_localization",
+        "claim_count": 40,
+        "unique_study_count": 33,
+        "percent_of_206_studies": 16.0,
+        "conditional_claim_count": 39,
+        "eligible_quantitative_claim_count": 22,
+        "eligible_qualitative_claim_count": 18,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "waveform_hardware_or_complexity",
+        "claim_count": 21,
+        "unique_study_count": 20,
+        "percent_of_206_studies": 9.7,
+        "conditional_claim_count": 21,
+        "eligible_quantitative_claim_count": 6,
+        "eligible_qualitative_claim_count": 15,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "rate_range_or_coverage",
+        "claim_count": 21,
+        "unique_study_count": 16,
+        "percent_of_206_studies": 7.8,
+        "conditional_claim_count": 18,
+        "eligible_quantitative_claim_count": 10,
+        "eligible_qualitative_claim_count": 11,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "other_joint_tradeoff",
+        "claim_count": 19,
+        "unique_study_count": 15,
+        "percent_of_206_studies": 7.3,
+        "conditional_claim_count": 18,
+        "eligible_quantitative_claim_count": 14,
+        "eligible_qualitative_claim_count": 5,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "qualitative_or_partial_general",
+        "claim_count": 11,
+        "unique_study_count": 9,
+        "percent_of_206_studies": 4.4,
+        "conditional_claim_count": 8,
+        "eligible_quantitative_claim_count": 2,
+        "eligible_qualitative_claim_count": 9,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "security_or_resilience_tradeoff",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 1,
+        "eligible_quantitative_claim_count": 1,
+        "eligible_qualitative_claim_count": 0,
+        "context_only_claim_count": 0
+      },
+      {
+        "category": "synergy_or_non_antagonistic_coupling",
+        "claim_count": 1,
+        "unique_study_count": 1,
+        "percent_of_206_studies": 0.5,
+        "conditional_claim_count": 1,
+        "eligible_quantitative_claim_count": 0,
+        "eligible_qualitative_claim_count": 1,
+        "context_only_claim_count": 0
+      }
+    ],
+    "S5_validation_type": [
+      {
+        "category": "analytical",
+        "study_count": 131,
+        "percent_of_206": 63.6
+      },
+      {
+        "category": "numerical_analysis",
+        "study_count": 14,
+        "percent_of_206": 6.8
+      },
+      {
+        "category": "simulation",
+        "study_count": 104,
+        "percent_of_206": 50.5
+      },
+      {
+        "category": "dataset_based",
+        "study_count": 13,
+        "percent_of_206": 6.3
+      },
+      {
+        "category": "laboratory_experiment",
+        "study_count": 148,
+        "percent_of_206": 71.8
+      },
+      {
+        "category": "prototype_testbed",
+        "study_count": 83,
+        "percent_of_206": 40.3
+      },
+      {
+        "category": "field_experiment",
+        "study_count": 12,
+        "percent_of_206": 5.8
+      },
+      {
+        "category": "mixed",
+        "study_count": 33,
+        "percent_of_206": 16.0
+      },
+      {
+        "category": "unclear",
+        "study_count": 0,
+        "percent_of_206": 0.0
+      }
+    ],
+    "S5_validation_maturity": [
+      {
+        "category": "2",
+        "study_count": 32,
+        "percent_of_206": 15.5,
+        "maturity_label": "simulation_or_numerical"
+      },
+      {
+        "category": "3",
+        "study_count": 18,
+        "percent_of_206": 8.7,
+        "maturity_label": "enhanced_simulation_or_dataset"
+      },
+      {
+        "category": "4",
+        "study_count": 78,
+        "percent_of_206": 37.9,
+        "maturity_label": "laboratory_experiment_or_proof_of_concept"
+      },
+      {
+        "category": "5",
+        "study_count": 66,
+        "percent_of_206": 32.0,
+        "maturity_label": "controlled_prototype"
+      },
+      {
+        "category": "6",
+        "study_count": 12,
+        "percent_of_206": 5.8,
+        "maturity_label": "field_trial_or_deployment"
+      }
+    ],
+    "S5_open_data": [
+      {
+        "category": "unavailable_or_NR",
+        "study_count": 145,
+        "percent_of_206": 70.4
+      },
+      {
+        "category": "on_request",
+        "study_count": 41,
+        "percent_of_206": 19.9
+      },
+      {
+        "category": "open",
+        "study_count": 13,
+        "percent_of_206": 6.3
+      },
+      {
+        "category": "NA",
+        "study_count": 7,
+        "percent_of_206": 3.4
+      }
+    ],
+    "S5_open_code": [
+      {
+        "category": "unavailable_or_NR",
+        "study_count": 197,
+        "percent_of_206": 95.6
+      },
+      {
+        "category": "on_request",
+        "study_count": 7,
+        "percent_of_206": 3.4
+      },
+      {
+        "category": "partial_components",
+        "study_count": 1,
+        "percent_of_206": 0.5
+      },
+      {
+        "category": "NA",
+        "study_count": 1,
+        "percent_of_206": 0.5
+      }
+    ],
+    "S6_enabling_technology": [
+      {
+        "category": "OFDM",
+        "study_count": 56,
+        "percent_of_206": 27.2
+      },
+      {
+        "category": "beamforming",
+        "study_count": 13,
+        "percent_of_206": 6.3
+      },
+      {
+        "category": "MIMO",
+        "study_count": 7,
+        "percent_of_206": 3.4
+      },
+      {
+        "category": "coherent_optics",
+        "study_count": 64,
+        "percent_of_206": 31.1
+      },
+      {
+        "category": "photonic_integration",
+        "study_count": 20,
+        "percent_of_206": 9.7
+      },
+      {
+        "category": "photonic_THz_generation",
+        "study_count": 68,
+        "percent_of_206": 33.0
+      },
+      {
+        "category": "ML_AI",
+        "study_count": 20,
+        "percent_of_206": 9.7
+      },
+      {
+        "category": "RIS_ORIS",
+        "study_count": 2,
+        "percent_of_206": 1.0
+      },
+      {
+        "category": "OPA",
+        "study_count": 11,
+        "percent_of_206": 5.3
+      },
+      {
+        "category": "digital_twin",
+        "study_count": 2,
+        "percent_of_206": 1.0
+      },
+      {
+        "category": "fiber_DAS",
+        "study_count": 22,
+        "percent_of_206": 10.7
+      },
+      {
+        "category": "FMCW",
+        "study_count": 66,
+        "percent_of_206": 32.0
+      },
+      {
+        "category": "other",
+        "study_count": 19,
+        "percent_of_206": 9.2
+      }
+    ],
+    "S6_application_domain": [
+      {
+        "category": "6G_access",
+        "study_count": 100,
+        "percent_of_206": 48.5
+      },
+      {
+        "category": "indoor_positioning",
+        "study_count": 25,
+        "percent_of_206": 12.1
+      },
+      {
+        "category": "vehicular",
+        "study_count": 41,
+        "percent_of_206": 19.9
+      },
+      {
+        "category": "industrial",
+        "study_count": 34,
+        "percent_of_206": 16.5
+      },
+      {
+        "category": "security",
+        "study_count": 26,
+        "percent_of_206": 12.6
+      },
+      {
+        "category": "environment_monitoring",
+        "study_count": 55,
+        "percent_of_206": 26.7
+      },
+      {
+        "category": "underwater",
+        "study_count": 2,
+        "percent_of_206": 1.0
+      },
+      {
+        "category": "aerospace",
+        "study_count": 20,
+        "percent_of_206": 9.7
+      },
+      {
+        "category": "datacenter",
+        "study_count": 4,
+        "percent_of_206": 1.9
+      },
+      {
+        "category": "optical_access_network",
+        "study_count": 32,
+        "percent_of_206": 15.5
+      },
+      {
+        "category": "healthcare",
+        "study_count": 8,
+        "percent_of_206": 3.9
+      },
+      {
+        "category": "smart_infrastructure",
+        "study_count": 41,
+        "percent_of_206": 19.9
+      },
+      {
+        "category": "other",
+        "study_count": 15,
+        "percent_of_206": 7.3
+      }
+    ],
+    "S7_six_g_relevance": [
+      {
+        "category": "direct",
+        "study_count": 138,
+        "percent_of_206": 67.0
+      },
+      {
+        "category": "inferred",
+        "study_count": 64,
+        "percent_of_206": 31.1
+      },
+      {
+        "category": "weak",
+        "study_count": 1,
+        "percent_of_206": 0.5
+      },
+      {
+        "category": "not_applicable",
+        "study_count": 3,
+        "percent_of_206": 1.5
+      }
+    ]
+  },
+  "normalization": {
+    "method": "Phase-E per_study_crosswalk is copied without reclassification for the five mutually exclusive dimensions. Preserved Phase-F multi-label fields use deterministic field-specific keyword rules. Every raw-to-normalized mapping is recorded in normalization_audit.csv.",
+    "audit_bucket_counts": {
+      "controlled_or_fully_mapped": 149,
+      "fallback_other_or_unclear": 31,
+      "mapped_with_fine_grained_long_tail_preserved": 446,
+      "other_explicit_token_audit_only": 64,
+      "phase_e_frozen_crosswalk": 277
+    },
+    "long_tail_rule": "Other is a fallback-only study label. A source-explicit other token that co-occurs with a recognized category is retained only in the other_explicit_token_audit_only bucket; fine-grained out-of-codebook fragments are likewise audit-only after broad mapping.",
+    "phase_e_authoritative_exclusive_fields": [
+      "modality",
+      "validation_maturity_max",
+      "dataset_availability",
+      "code_model_availability",
+      "six_g"
+    ],
+    "phase_f_interpretive_outputs": [
+      "integration mechanism broad mapping",
+      "validation type multi-label mapping",
+      "application domain mapping",
+      "enabling technology mapping",
+      "tradeoff family"
+    ]
+  },
+  "qa_status": "PASS",
+  "qa_checks": {
+    "source_sha_matches_locked_value": true,
+    "phase_e_crosswalk_sha_matches_locked_value": true,
+    "phase_e_crosswalk_rows_206": true,
+    "phase_e_crosswalk_ids_unique": true,
+    "phase_e_crosswalk_study_universe_matches_phase_d": true,
+    "phase_e_crosswalk_internal_qa_pass": true,
+    "phase_e_declared_exclusive_distributions_match_expected": true,
+    "phase_f_exclusive_tables_match_expected_phase_e": true,
+    "exclusive_dimensions_match_phase_e_BLOCKING": true,
+    "study_master_rows_206": true,
+    "unique_study_clusters_206": true,
+    "modality_mutually_exclusive_sum_206": true,
+    "six_g_mutually_exclusive_sum_206": true,
+    "validation_maturity_mutually_exclusive_sum_206": true,
+    "open_data_mutually_exclusive_sum_206": true,
+    "open_code_mutually_exclusive_sum_206": true,
+    "s2_s6_multilabel_axes_cover_all_206_BLOCKING": true,
+    "other_is_fallback_only_no_colabels_BLOCKING": true,
+    "fallback_other_counts_exact_BLOCKING": true,
+    "study_status_sum_206": true,
+    "ledger_rows_8306": true,
+    "claim_use_classes_sum_to_ledger": true,
+    "record_type_use_class_crosstab_exact_BLOCKING": true,
+    "quarantined_claims_72": true,
+    "inclusive_governed_nonquarantined_universe_8234": true,
+    "context_only_claims_31": true,
+    "primary_synthesis_claims_8203_BLOCKING": true,
+    "primary_evidence_claims_3020": true,
+    "primary_metric_claims_4779_BLOCKING": true,
+    "primary_tradeoff_claims_404": true,
+    "primary_components_sum_to_8203": true,
+    "context_only_excluded_from_primary_metric_domains_BLOCKING": true,
+    "context_only_excluded_from_primary_metric_families_BLOCKING": true,
+    "evidence_ledger_join_complete": true,
+    "metric_ledger_join_complete": true,
+    "tradeoff_ledger_join_complete": true,
+    "ledger_record_ids_unique": true,
+    "primary_metric_domain_claims_reconcile_4779": true,
+    "primary_metric_family_claims_reconcile_4779": true,
+    "primary_tradeoff_family_claims_reconcile_404": true,
+    "study_use_rows_206": true,
+    "survey_ready_statuses_only": true,
+    "independent_human_review_not_misrepresented": true
+  }
+}
