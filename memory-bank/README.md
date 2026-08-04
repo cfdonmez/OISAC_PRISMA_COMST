@@ -13,7 +13,8 @@ Bu klasör AI asistanı için bağlam dosyalarını içerir. AI yeni bir session
 | Dosya | Amaç | Okuma Sırası |
 |-------|------|--------------|
 | `full_corpus_206_source_of_truth_2026-08-04.md` | **Kanonik corpus, Phase D–F ve provenance** | 1️⃣ |
-| `activeContext.md` | **ŞU ANKİ DURUM** | 2️⃣ |
+| `full_corpus_206_delivery_2026-08-04.md` | **Git branch/commit/PR teslim kaydı** | 2️⃣ |
+| `activeContext.md` | **ŞU ANKİ DURUM** | 3️⃣ |
 | `projectbrief.md` | Projenin amacı ve kapsamı | 3️⃣ |
 | `fileMap.md` | Tüm dosyaların haritası | 4️⃣ |
 | `master_writing_guide.md` | **MASTER GUIDE** - Tüm yazım şablonları | 5️⃣ ⭐ |

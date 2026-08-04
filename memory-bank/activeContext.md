@@ -13,6 +13,7 @@ The current analytical and writing source of truth is [full_corpus_206_source_of
 - Current work is Phase G reviewed manuscript integration. The dated package `review_package/full_corpus_206_20260804/` is the safe source for the Abstract, Methods, PRISMA Results, claim governance, TQAF, S1–S7, Discussion/Roadmap and Conclusion text, plus the validated 206-study/227-report-lineage appendix.
 - Safety: do not mechanically replace 220/221 with 206 and do not overwrite the user's existing dirty `manuscript/finalManuscript/` edits.
 - Final package QA status: `PASS_FOR_REVIEWED_MANUSCRIPT_INTEGRATION`; this is not a submission-ready claim.
+- Git delivery: branch `agent/full-corpus-survey-ready`, scientific package commit `2292bfdb3021a3e1dd495ecaa89953350d494405`, draft PR [#1](https://github.com/cfdonmez/OISAC_PRISMA_COMST/pull/1).
 
 ---
 

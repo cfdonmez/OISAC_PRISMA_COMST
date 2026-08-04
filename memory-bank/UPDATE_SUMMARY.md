@@ -19,6 +19,7 @@
 - Public Git copies were sanitized to remove or parameterize host-specific paths; analytical fields, locked source hashes and canonical local checkpoint provenance remain unchanged.
 - Active manuscript migration remains a separate reviewed Phase-G action because `manuscript/finalManuscript/bare_jrnl_new_sample4.tex` contains user changes.
 - Final package-level QA is `PASS_FOR_REVIEWED_MANUSCRIPT_INTEGRATION`; final IEEEtran/citation/rendered-PDF and author-declaration gates remain open.
+- Git delivery completed on `agent/full-corpus-survey-ready`: scientific package commit `2292bfdb3021a3e1dd495ecaa89953350d494405`; draft PR [#1](https://github.com/cfdonmez/OISAC_PRISMA_COMST/pull/1).
 
 
 ### Kayit: 2026-04-04 (Current bundle LaTeX cleanup + IEEEtran transition sync)
