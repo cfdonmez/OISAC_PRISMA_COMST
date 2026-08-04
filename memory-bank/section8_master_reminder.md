@@ -1,5 +1,7 @@
 # Section 8 Master Reminder (Execution + Closure Plan)
 
+> 2026-08-04 supersession note: regenerate Section VIII evidence anchors from the governed 206-study corpus. Do not reuse the old `n_total_papers=221` package or mechanically edit its denominator.
+
 Date: 2026-02-10
 Owner: AI + User
 Purpose: Section 8 tamamlanirken tum section evidence baglarini kontrol etmek, sonra draft + figure/table + final COMST/PRISMA kapanisini risksiz tamamlamak.
@@ -159,5 +161,4 @@ Her calisma gunu:
 2. Bu dosyadan en yuksek etkili 1-2 gorevi sec.
 3. Cikti olusturunca ilgili workflow notunu guncelle.
 4. Gun sonunda `memory-bank/UPDATE_SUMMARY.md` ve `memory-bank/activeContext.md` senkronize et.
-
 

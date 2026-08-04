@@ -1,4 +1,6 @@
 # O-ISAC Survey: Master Writing Guide
+
+> 2026-08-04: Treat every hard-coded corpus count or completed-TQAF example below as a template variable. Current scientific authority is the governed 206-study source; current journal target is IEEE Photonics Journal, while COMST remains a writing reference.
 **IEEE COMST-Compliant Writing Templates**
 
 > **Purpose:** This master guide consolidates all micro-templates developed from the analysis of 76 COMST papers. Use this as your primary reference when drafting any section of the O-ISAC survey.

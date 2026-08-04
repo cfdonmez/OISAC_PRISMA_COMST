@@ -1,0 +1,143 @@
+{
+  "artifact": "included_studies_206_appendix",
+  "generated_date": "2026-08-04",
+  "source_provenance": {
+    "phase_d_workbook": {
+      "file": "OISAC_PHASE_D_SURVEY_READY_2026-08-04.xlsx",
+      "expected_sha256": "c1b3b89789c6ed3e20da5a6283e480875c1913e21af88ff59ac747a6aa949348",
+      "actual_sha256_before_read": "c1b3b89789c6ed3e20da5a6283e480875c1913e21af88ff59ac747a6aa949348",
+      "actual_sha256_after_read": "c1b3b89789c6ed3e20da5a6283e480875c1913e21af88ff59ac747a6aa949348",
+      "sheets_read_with_artifact_tool": [
+        "01_STUDY_MASTER",
+        "02_REPORT_LINEAGE",
+        "24_STUDY_SURVEY_USE"
+      ]
+    },
+    "phase_e_crosswalk": {
+      "file": "PHASE_E_TQAF_NORMALIZATION_CROSSWALK_DRAFT_2026-08-04.json",
+      "expected_sha256": "41d6f8f574bdd0d6eba04806b2930ade8fa1d3d56e28b083de3d56bb13e7d122",
+      "actual_sha256_before_read": "41d6f8f574bdd0d6eba04806b2930ade8fa1d3d56e28b083de3d56bb13e7d122",
+      "actual_sha256_after_read": "41d6f8f574bdd0d6eba04806b2930ade8fa1d3d56e28b083de3d56bb13e7d122"
+    }
+  },
+  "output_schema": [
+    "study_cluster_id",
+    "primary_report_id",
+    "primary_screening_record_id",
+    "title",
+    "year",
+    "venue",
+    "canonical_modality",
+    "validation_maturity_max",
+    "survey_use_status",
+    "eligible_report_count",
+    "eligible_report_lineage",
+    "independent_human_status"
+  ],
+  "counts": {
+    "study_rows": 206,
+    "unique_study_cluster_ids": 206,
+    "unique_primary_report_ids": 206,
+    "total_eligible_reports": 227,
+    "tex_data_rows": 206
+  },
+  "distributions": {
+    "canonical_modality": {
+      "expected_phase_e": {
+        "fiber": 56,
+        "FSO": 31,
+        "hybrid_optical": 9,
+        "other_optical": 3,
+        "photonic_THz": 69,
+        "VLC_LiFi": 38
+      },
+      "actual_appendix": {
+        "fiber": 56,
+        "FSO": 31,
+        "hybrid_optical": 9,
+        "other_optical": 3,
+        "photonic_THz": 69,
+        "VLC_LiFi": 38
+      }
+    },
+    "validation_maturity_max": {
+      "expected_phase_e": {
+        "2": 32,
+        "3": 18,
+        "4": 78,
+        "5": 66,
+        "6": 12
+      },
+      "actual_appendix": {
+        "2": 32,
+        "3": 18,
+        "4": 78,
+        "5": 66,
+        "6": 12
+      }
+    },
+    "survey_use_status": {
+      "expected": {
+        "survey_ready": 175,
+        "survey_ready_with_claim_restrictions": 31
+      },
+      "actual_appendix": {
+        "survey_ready": 175,
+        "survey_ready_with_claim_restrictions": 31
+      }
+    },
+    "independent_human_status": {
+      "expected": {
+        "not_documented": 206
+      },
+      "actual_appendix": {
+        "not_documented": 206
+      }
+    }
+  },
+  "path_leakage_scan": {
+    "csv_findings": [],
+    "tex_findings": [],
+    "qa_json_findings": []
+  },
+  "artifact_tool_csv_reimport": {
+    "rows_including_header": 207,
+    "columns": 12,
+    "headers_match": true
+  },
+  "output_files": {
+    "11_INCLUDED_STUDIES_206.csv": {
+      "sha256": "c860639419b8588666601f04f6ee4831f27cd1e0155bfd115f2d7e2eaa7b8ecb",
+      "bytes_utf8": 67803
+    },
+    "11_INCLUDED_STUDIES_206.tex": {
+      "sha256": "871d56dc03c1b60efa4fa285d1765c76e0fc01c67d823a47b53709af462f04a4",
+      "bytes_utf8": 91511
+    }
+  },
+  "assertions": {
+    "source_workbook_sha256_matches_locked_value": true,
+    "source_workbook_unchanged_during_artifact_tool_read": true,
+    "crosswalk_sha256_matches_frozen_value": true,
+    "crosswalk_unchanged_during_read": true,
+    "artifact_tool_read_required_phase_d_sheets": true,
+    "appendix_row_count_is_206": true,
+    "unique_study_cluster_ids_are_206": true,
+    "no_duplicate_rows": true,
+    "all_primary_report_ids_nonblank": true,
+    "all_primary_report_ids_unique": true,
+    "exactly_one_designated_primary_report_per_study": true,
+    "eligible_report_count_matches_lineage_for_all_studies": true,
+    "modality_distribution_matches_phase_e": true,
+    "validation_maturity_distribution_matches_phase_e": true,
+    "survey_use_status_sums_to_175_plus_31": true,
+    "independent_human_status_is_not_documented_for_all_206": true,
+    "csv_has_no_path_leakage": true,
+    "tex_has_no_path_leakage": true,
+    "restricted_abstract_snippet_and_source_path_fields_absent": true,
+    "artifact_tool_csv_reimport_has_207_rows_and_12_columns": true,
+    "tex_contains_206_data_rows": true,
+    "qa_json_has_no_path_leakage": true
+  },
+  "pass": true
+}

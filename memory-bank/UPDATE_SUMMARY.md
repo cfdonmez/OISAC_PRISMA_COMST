@@ -1,5 +1,26 @@
 # Memory-Bank Update Summary
 
+### Kayit: 2026-08-04 (206-study PRISMA corpus and claim-governance reset)
+
+- The old 220/221-study analytical lock is superseded for current writing.
+- Formal corpus: 227 eligible reports mapped to 206 included studies.
+- Phase-D model: 3,041 evidence items, 4,861 metric rows and 404 trade-off rows, totalling 8,306 governed claims.
+- Survey use: 3,206 qualitative, 4,997 quantitative, 31 context-only and 72 quarantined exact claims.
+- Study use: 175 survey-ready and 31 survey-ready with claim restrictions.
+- Independent full-corpus human verification is not documented. The reportable process is investigator-supervised, AI-assisted, user-delegated and claim-governed.
+- A new authoritative memory file was added: `memory-bank/full_corpus_206_source_of_truth_2026-08-04.md`.
+- Existing corpus-derived manuscript numbers must be regenerated, not mechanically changed from 220/221 to 206.
+- Phase-E deterministic TQAF completed for 206/206 studies: overall contribution 6 low / 75 adequate / 125 strong; 115 evidence bodies; certainty 54 high / 47 moderate / 10 limited / 4 unclear; QA PASS 43/43.
+- The frozen Phase-E crosswalk was explicitly reconciled to the authoritative final Phase-D workbook: 206 studies, 46 check families, 9,476 comparisons, 0 mismatches and 0 failed studies.
+- Phase-F S1–S7 synthesis completed: 8,203 primary claims; 31 context-only and 72 quarantined claims excluded from primary numerical synthesis; internal QA PASS plus independent artifact-tool QA PASS 29/29.
+- Multi-label fallback inflation was detected and corrected before release. Final `other` fallback counts are integration=0, enabling technology=19 and application=15, with no recognized-category co-label violation.
+- English Abstract, Methods, PRISMA Results, claim-governance, TQAF, S1–S7 and Discussion/Roadmap/Conclusion fragments plus final audit outputs were added under `review_package/full_corpus_206_20260804/`.
+- The included-studies appendix was regenerated as 206 unique study rows with separate 227-report lineage; CSV/LaTeX counts, locked distributions, artifact re-import and local-path leakage checks all PASS.
+- Public Git copies were sanitized to remove or parameterize host-specific paths; analytical fields, locked source hashes and canonical local checkpoint provenance remain unchanged.
+- Active manuscript migration remains a separate reviewed Phase-G action because `manuscript/finalManuscript/bare_jrnl_new_sample4.tex` contains user changes.
+- Final package-level QA is `PASS_FOR_REVIEWED_MANUSCRIPT_INTEGRATION`; final IEEEtran/citation/rendered-PDF and author-declaration gates remain open.
+
+
 ### Kayit: 2026-04-04 (Current bundle LaTeX cleanup + IEEEtran transition sync)
 - `manuscript/current_bundle/section1.tex` through `section8.tex` yeni bir IEEE-facing cleanup pass'inden gecti.
 - En belirgin yapisal degisim tablo tarafinda oldu:

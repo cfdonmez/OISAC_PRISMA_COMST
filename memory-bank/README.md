@@ -1,6 +1,8 @@
 # 🧠 Memory Bank - AI Context
 
-**Son Güncelleme: 2026-01-15**
+> Current authority (2026-08-04): read `full_corpus_206_source_of_truth_2026-08-04.md` first, then `activeContext.md`. Older 220/221-study content is historical unless explicitly regenerated from the 206-study corpus.
+
+**Son Güncelleme: 2026-08-04**
 
 Bu klasör AI asistanı için bağlam dosyalarını içerir. AI yeni bir session'a başladığında bu dosyaları okumalıdır.
 
@@ -10,15 +12,16 @@ Bu klasör AI asistanı için bağlam dosyalarını içerir. AI yeni bir session
 
 | Dosya | Amaç | Okuma Sırası |
 |-------|------|--------------|
-| `projectbrief.md` | Projenin amacı ve kapsamı | 1️⃣ |
-| `activeContext.md` | **ŞU ANKİ DURUM** - En güncel | 2️⃣ |
-| `fileMap.md` | Tüm dosyaların haritası | 3️⃣ |
-| `master_writing_guide.md` | **MASTER GUIDE** - Tüm yazım şablonları | 4️⃣ ⭐ |
-| `goldenModel.md` | **GOLDEN MODEL** - Survey yazım rehberi | 5️⃣ |
-| `surveyOutline.md` | **SURVEY OUTLINE** - Onaylı makale yapısı | 6️⃣ |
-| `techContext.md` | Teknik terimler ve araçlar | 7️⃣ |
-| `systemPatterns.md` | Çalışma kuralları | 8️⃣ |
-| `productContext.md` | Problem ve hedef | 9️⃣ |
+| `full_corpus_206_source_of_truth_2026-08-04.md` | **Kanonik corpus, Phase D–F ve provenance** | 1️⃣ |
+| `activeContext.md` | **ŞU ANKİ DURUM** | 2️⃣ |
+| `projectbrief.md` | Projenin amacı ve kapsamı | 3️⃣ |
+| `fileMap.md` | Tüm dosyaların haritası | 4️⃣ |
+| `master_writing_guide.md` | **MASTER GUIDE** - Tüm yazım şablonları | 5️⃣ ⭐ |
+| `goldenModel.md` | **GOLDEN MODEL** - Survey yazım rehberi | 6️⃣ |
+| `surveyOutline.md` | **SURVEY OUTLINE** - Onaylı makale yapısı | 7️⃣ |
+| `techContext.md` | Teknik terimler ve araçlar | 8️⃣ |
+| `systemPatterns.md` | Çalışma kuralları | 9️⃣ |
+| `productContext.md` | Problem ve hedef | 🔟 |
 
 ## 📝 Şablon Dosyaları (Template Library)
 

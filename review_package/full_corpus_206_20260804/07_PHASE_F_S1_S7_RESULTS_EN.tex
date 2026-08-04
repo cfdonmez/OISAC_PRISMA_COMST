@@ -1,0 +1,218 @@
+\section{CROSS-MODALITY EVIDENCE SYNTHESIS}
+\label{sec:full_corpus_synthesis}
+
+The primary synthesis comprised 8,203 governed claims: 3,020 evidence
+statements, 4,779 metric results, and 404 trade-off records. The broader set of
+8,234 non-quarantined claims additionally contained 31 context-only metric
+records; these records were excluded from primary prevalence and performance
+summaries. A conditional subset of 1,505 primary claims met a recorded
+comparability or guardrail condition and is reported as a subset rather than
+as unconditional evidence.
+
+\subsection{S1: Optical Modality Taxonomy}
+
+Photonic-terahertz systems formed the largest mutually exclusive modality
+group (69/206, 33.5\%), followed by fiber systems (56, 27.2\%), VLC/LiFi (38,
+18.4\%), FSO (31, 15.0\%), hybrid optical systems (9, 4.4\%), and other optical
+platforms (3, 1.5\%). The distribution shows that O-ISAC is not a single-medium
+literature: photonic-terahertz and fiber together accounted for 60.7\% of the
+included studies, while optical wireless modalities remained a substantial
+and technically distinct evidence base.
+
+\begin{table}[!t]
+\caption{Mutually exclusive optical-modality distribution.}
+\label{tab:s1_modality}
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Modality} & \textbf{Studies} & \textbf{\% of 206} \\
+\midrule
+Photonic-THz & 69 & 33.5 \\
+Fiber & 56 & 27.2 \\
+VLC/LiFi & 38 & 18.4 \\
+FSO & 31 & 15.0 \\
+Hybrid optical & 9 & 4.4 \\
+Other optical & 3 & 1.5 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{S2: Architecture and Integration Mechanisms}
+
+Integration was predominantly resource- and hardware-centered. Shared
+resource allocation appeared in 118 studies (57.3\%), shared hardware in 117
+(56.8\%), and a shared waveform in 113 (54.9\%). Shared links or channels were
+reported in 87 studies (42.2\%), joint design or optimization in 72 (35.0\%),
+shared optical carriers in 49 (23.8\%), and a shared application scenario in
+46 (22.3\%). These categories were multi-label and therefore represent
+overlapping design mechanisms rather than a partition of the corpus.
+
+The pattern indicates that the dominant O-ISAC integration logic is not merely
+co-location of two functions. More than half of the studies reused hardware,
+waveform structure, or resource allocation, while over one-third explicitly
+introduced joint design or optimization. Shared-application-only integration
+was less common and was kept separate from stronger physical or algorithmic
+coupling.
+
+\begin{table*}[!t]
+\caption{Multi-label architecture and integration mechanisms.}
+\label{tab:s2_integration}
+\centering
+\begin{tabular}{lrr@{\hspace{2em}}lrr}
+\toprule
+\textbf{Mechanism} & \textbf{$n$} & \textbf{\%} &
+\textbf{Mechanism} & \textbf{$n$} & \textbf{\%} \\
+\midrule
+Shared resource allocation & 118 & 57.3 & Shared hardware & 117 & 56.8 \\
+Shared waveform & 113 & 54.9 & Shared link/channel & 87 & 42.2 \\
+Joint design/optimization & 72 & 35.0 & Shared optical carrier & 49 & 23.8 \\
+Shared application scenario & 46 & 22.3 & Mixed mechanism & 3 & 1.5 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{S3: Communication and Sensing Metric Reporting}
+
+The metric map contained 4,779 primary metric claims after excluding 31
+context-only and 51 quarantined metric claims. Sensing was the largest coded
+domain, with 1,816 claims across 203 studies. Communication accounted for
+1,328 claims across 194 studies, joint metrics for 870 claims across 158
+studies, and implementation metrics for 476 claims across 64 studies. The
+remaining 289 primary claims were distributed across smaller system, energy,
+scenario, waveform, channel, security, machine-learning, component, network,
+and other source-defined domains.
+
+\begin{table}[!t]
+\caption{Largest primary metric domains.}
+\label{tab:s3_metric_domains}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Domain} & \textbf{Studies} & \textbf{Claims} & \textbf{Conditional} \\
+\midrule
+Sensing & 203 & 1,816 & 505 \\
+Communication & 194 & 1,328 & 296 \\
+Joint & 158 & 870 & 260 \\
+Implementation & 64 & 476 & 28 \\
+All other domains & --- & 289 & --- \\
+\midrule
+Total & --- & 4,779 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The breadth of the source-specific metric vocabulary precluded a defensible
+single performance ranking. Similar labels frequently referred to different
+roles, planes, scenarios, or validation contexts. Accordingly, the metric map
+supports reporting-pattern and within-stratum comparisons, but not a universal
+O-ISAC performance league table.
+
+\subsection{S4: Communication--Sensing Trade-offs}
+
+Trade-off evidence comprised 404 primary records contributed by 168 studies.
+The most frequently reported family concerned bandwidth, spectrum, or resource
+allocation (95 claims; 71 studies), followed by power, energy, or dynamic range
+(90; 64), communication reliability versus sensing quality (59; 48),
+rate--resolution (46; 39), and rate--accuracy or localization (40; 33). Less
+frequent families concerned waveform/hardware complexity (21; 20),
+rate--range/coverage (21; 16), other joint trade-offs (19; 15), and qualitative
+or partial relationships (11; 9). One security/resilience trade-off and one
+non-antagonistic synergy relationship were also retained.
+
+\begin{table*}[!t]
+\caption{Communication--sensing trade-off families.}
+\label{tab:s4_tradeoffs}
+\centering
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Trade-off family} & \textbf{Studies} & \textbf{Claims} & \textbf{Conditional subset} \\
+\midrule
+Bandwidth/spectrum/resource allocation & 71 & 95 & 90 \\
+Power/energy/dynamic range & 64 & 90 & 81 \\
+Communication reliability vs. sensing quality & 48 & 59 & 55 \\
+Rate--resolution & 39 & 46 & 41 \\
+Rate--accuracy/localization & 33 & 40 & 39 \\
+Waveform/hardware/complexity & 20 & 21 & 21 \\
+Rate--range/coverage & 16 & 21 & 18 \\
+Other joint trade-off & 15 & 19 & 18 \\
+Qualitative/partial general relation & 9 & 11 & 8 \\
+Security/resilience & 1 & 1 & 1 \\
+Synergy/non-antagonistic coupling & 1 & 1 & 1 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+These results broaden the conventional ``rate versus sensing'' narrative.
+Resource allocation and power constraints were at least as prominent as
+rate-centered formulations, suggesting that practical O-ISAC design should be
+described as a multi-resource optimization problem rather than by one Pareto
+axis alone.
+
+\subsection{S5: Validation Maturity and Benchmark Readiness}
+
+Laboratory experiment or proof-of-concept evidence was the most common maximum
+validation tier (78 studies, 37.9\%), followed by controlled prototypes (66,
+32.0\%). Enhanced simulation or dataset-supported validation accounted for 18
+studies (8.7\%), basic simulation or numerical evidence for 32 (15.5\%), and
+field or deployment-oriented validation for only 12 (5.8\%). Thus, 156 studies
+(75.7\%) reached at least a laboratory/proof-of-concept tier, but only a small
+minority extended to field conditions.
+
+Artifact availability was substantially weaker. Data were openly available
+for 13 studies (6.3\%) and available on request for 41 (19.9\%); 145 (70.4\%)
+reported no available dataset or did not report availability, and 7 were not
+applicable. Code or model artifacts were unavailable or not reported in 197
+studies (95.6\%); 7 offered access on request, 1 exposed partial components,
+and 1 was not applicable. This gap between experimental maturity and artifact
+availability explains why benchmark readiness remained limited despite strong
+within-study reporting in much of the corpus.
+
+\subsection{S6: Enabling Technologies and Applications}
+
+The enabling-technology map was multi-label. Photonic-terahertz or
+microwave-photonic generation appeared in 68 studies (33.0\%), FMCW/chirped
+techniques in 66 (32.0\%), coherent optical techniques in 64 (31.1\%), and
+OFDM or closely related multicarrier methods in 56 (27.2\%). Fiber distributed
+acoustic sensing appeared in 22 studies (10.7\%); photonic integration and
+ML/AI appeared in 20 studies each (9.7\%). Beamforming appeared in 13 studies,
+optical phased arrays in 11, MIMO in 7, and RIS/ORIS and digital-twin methods
+in 2 each. Nineteen studies (9.2\%) had no recognized broad technology label
+and therefore remained in the fallback category.
+
+Application coding likewise allowed overlap. Explicit 6G/access-network use
+appeared in 100 studies (48.5\%), environmental monitoring in 55 (26.7\%),
+vehicular applications and smart infrastructure in 41 each (19.9\%),
+industrial settings in 34 (16.5\%), optical access networks in 32 (15.5\%),
+security/surveillance in 26 (12.6\%), and indoor positioning in 25 (12.1\%).
+Aerospace applications appeared in 20 studies, healthcare in 8, datacenter
+contexts in 4, and underwater settings in 2. Fifteen studies (7.3\%) had no
+recognized broad application label. Long-tail or unmatched source terms were
+retained in the normalization audit; a fallback category was used only when a
+study had no recognized category on the relevant axis.
+
+\subsection{S7: Evidence Gaps and 6G Relevance}
+
+The frozen study-level crosswalk classified 138 studies (67.0\%) as directly
+6G-relevant and 64 (31.1\%) as inferentially relevant. Only one study was weakly
+relevant and three were not applicable. This distribution supports O-ISAC as a
+substantive 6G research direction, while the appraisal and availability results
+show that thematic relevance has advanced faster than benchmarking maturity.
+
+The principal research needs are therefore: (i) explicit measurement-plane and
+metric-role contracts; (ii) scenario-complete reporting of operating
+conditions; (iii) shared, externally usable baselines; (iv) open data, code,
+models, and experimental protocols; (v) field validation beyond controlled
+laboratory demonstrations; and (vi) modality-aware benchmarks that do not
+collapse physically different sensing constructs into nominally similar metric
+labels. These priorities are supported jointly by the metric-governance layer,
+the trade-off map, the TQAF appraisal, and the artifact-availability results.
+
+\subsection{Interpretive Boundary}
+
+The reported distributions characterize the governed 206-study corpus. They
+do not imply that every claim was independently verified by a second human
+reviewer, and they do not establish pooled causal effects. The appropriate
+interpretation is a transparent, investigator-supervised, AI-assisted, and
+claim-governed synthesis whose most reproducible conclusions concern the
+structure, reporting practices, validation maturity, and open benchmarking
+needs of the field.

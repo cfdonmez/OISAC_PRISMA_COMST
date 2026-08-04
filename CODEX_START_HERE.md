@@ -1,5 +1,17 @@
 # Codex Start Here
 
+## 2026-08-04 corpus override
+
+Before using the older onboarding instructions below, read:
+
+1. `memory-bank/full_corpus_206_source_of_truth_2026-08-04.md`
+2. `memory-bank/activeContext.md`
+3. `review_package/full_corpus_206_20260804/00_SOURCE_OF_TRUTH.md` when present
+
+The current corpus is 227 included reports mapped to 206 studies, not 220/221. Phases D--F are complete: 8,306 governed claims, 8,203 primary synthesis claims, 206 TQAF rows, and finalized S1--S7 outputs. Phase G reviewed manuscript integration is current. The full-corpus process is investigator-supervised and AI-assisted; independent human verification is not documented. Do not overwrite dirty files under `manuscript/finalManuscript/`, and do not mechanically replace corpus numbers in old prose, figures or citation keys.
+
+---
+
 Bu dosya, repo icinde yeni bir Codex oturumu acildiginda en hizli ve en guvenli onboarding giris noktasidir.
 
 Amac:

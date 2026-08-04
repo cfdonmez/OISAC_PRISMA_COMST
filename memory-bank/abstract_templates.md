@@ -1,5 +1,7 @@
 # Abstract & Conclusion Templates (The "Bookends")
 
+> 2026-08-04: Counts and quality/synthesis claims in examples are placeholders unless they match `full_corpus_206_source_of_truth_2026-08-04.md` and finalized Phase-E/F outputs.
+
 ## Part 1: The Abstract (The "Storefront")
 
 ### A. Methodology & Analysis Match

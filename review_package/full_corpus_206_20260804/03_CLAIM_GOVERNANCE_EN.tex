@@ -1,0 +1,96 @@
+\subsection{Claim-Level Evidence Governance}
+\label{subsec:claim_governance}
+
+The extraction model treated a study-level ``included'' decision and a
+claim-level ``usable'' decision as different judgments. Inclusion established
+that a study belonged to the primary technical corpus; it did not make every
+statement or number in that study suitable for cross-study synthesis. Each
+extracted claim was therefore retained with its study and report identifiers,
+source locator, claim type, reported conditions, units, validation context,
+and survey-use disposition.
+
+Claims were separated into evidence statements, quantitative metric results,
+and trade-off relationships. Quantitative use required an identifiable metric
+definition and role, a preserved unit, an explicit or defensibly coded
+measurement plane, an operating condition, and a source location. Optical
+OSNR was not substituted for electrical SNR or ESNR without a source-provided
+conversion model. Physical resolution, estimator accuracy or RMSE, CRB-type
+bounds, and fiber spatial granularity were retained as distinct constructs.
+Simulation, analytical, laboratory, prototype, and field evidence were also
+kept as distinct validation contexts.
+
+Claims were assigned one of four operational survey-use dispositions:
+eligible for qualitative synthesis, eligible for quantitative synthesis,
+context only, or quarantined conflict. Quantitative eligibility indicates that
+a claim may be used numerically under its recorded conditions; it does not
+mean that the claim is automatically comparable with every other quantitative
+claim or eligible for statistical pooling. Context-only claims may inform
+terminology, limitations, or interpretation but may not support primary
+technical prevalence or performance conclusions. Quarantined claims are
+excluded from quantitative synthesis until the conflict is resolved from an
+authoritative source.
+
+Source disagreements were preserved in a conflict register. Conflicting
+values were not averaged, normalized by assumption, or replaced with a
+preferred value solely because that value appeared more plausible. A study
+could therefore remain survey-ready while one or more of its claims remained
+restricted or quarantined.
+
+\subsubsection{Current Phase-D Claim Dispositions}
+
+The governed Phase-D evidence model contains 8,306 claims across 206 included
+studies. Of these, 3,206 claims are eligible for qualitative synthesis, 4,997
+are eligible for quantitative synthesis, 31 are restricted to contextual use,
+and 72 are quarantined. These four dispositions reconcile exactly to the full
+claim universe:
+
+\begin{equation}
+3{,}206 + 4{,}997 + 31 + 72 = 8{,}306.
+\end{equation}
+
+At study level, 175 studies are classified as survey-ready and 31 as
+survey-ready with claim restrictions, accounting for all 206 included studies.
+The conflict register contains 93 rows, including 2 rows classified as explicit
+metric conflicts. Conflict-register rows and quarantined claims are different
+counting units and must not be presented as interchangeable totals.
+
+\begin{table}[htbp]
+\caption{Phase-D claim-governance and study-use status.}
+\label{tab:phase_d_claim_governance}
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Governance category} & \textbf{Count} \\
+\midrule
+All governed claims & 8,306 \\
+Claims eligible for qualitative synthesis & 3,206 \\
+Claims eligible for quantitative synthesis & 4,997 \\
+Context-only claims & 31 \\
+Quarantined claims & 72 \\
+Survey-ready studies & 175 \\
+Survey-ready studies with claim restrictions & 31 \\
+Conflict-register rows & 93 \\
+Explicit metric-conflict rows & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These classifications are survey-use controls rather than TQAF quality grades.
+The workflow provenance documents investigator-supervised, AI-assisted, and
+investigator-delegated adjudication, but independent full-corpus human verification
+is not documented. The corpus must therefore not be described as independently
+human-verified, double-reviewed, or independently adjudicated. Likewise, the
+175/31 study statuses must not be interpreted as evidence that every extracted
+claim has received independent human source verification.
+
+% PHASE-E INTEGRATION MARKER:
+% Phase-E TQAF results are supplied as a separate appraisal layer in
+% 06_PHASE_E_TQAF_RESULTS_EN.tex.
+% Do not relabel the Phase-D claim dispositions or 175/31 study-use statuses as
+% quality scores.
+
+% PHASE-F INTEGRATION MARKER:
+% Phase-F synthesis denominators are derived from the eligible claim subset
+% required by each analysis; see 07_PHASE_F_S1_S7_RESULTS_EN.tex. Do not use
+% 8,306, 4,997, or 206 as a universal denominator for taxonomy, metric,
+% trade-off, or application claims.
