@@ -13,8 +13,10 @@
 - The verified pre-edit PDF has 23 pages, 203,407 bytes, 241 bibliography
   entries, and SHA-256
   `A258E699084D190186298EA95D279E459A75D5F9B9881EC2EF9DC03F505C5E35`.
-- The immediate gate is the GitHub safety push. Prose changes begin only after
-  that remote checkpoint exists.
+- The GitHub safety gate is complete. Commit
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` is available on
+  `origin/codex/final-submission-20260824`. The next gate is the complete
+  language, abbreviation, repetition, and claim audit.
 - The governing checkpoint is
   `checkpoints/final_submission_baseline_2026-08-24/README.md`.
 

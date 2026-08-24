@@ -13,6 +13,9 @@
 - Korunan uzak taban `agent/full-corpus-survey-ready` dalındaki
   `9b29b221213786c9893134a36638c3d9a0739f49` commit'idir. Yeni çalışma dalı
   `codex/final-submission-20260824` olarak açıldı.
+- Değişiklik öncesi kanonik güvenlik paketi
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` commit'iyle
+  `origin/codex/final-submission-20260824` dalına başarıyla gönderildi.
 - Pre-edit `main.pdf` 23 sayfa, 203,407 byte ve 241 bibliography entry içerir.
   SHA-256 değeri
   `A258E699084D190186298EA95D279E459A75D5F9B9881EC2EF9DC03F505C5E35`'tir.

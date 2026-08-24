@@ -58,5 +58,15 @@ bilimsel girdilerin yerine geçmez.
 6. Figure-inclusive derleme, tam PDF render denetimi ve son GitHub teslimini
    tamamla.
 
-Baseline ve final commit kimlikleri bu dosyaya ilgili push işlemlerinden sonra
-eklenecektir.
+## Uzak güvenlik noktası
+
+- Baseline commit
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` olarak oluşturuldu ve
+  `origin/codex/final-submission-20260824` dalına başarıyla gönderildi.
+- GitHub dalı
+  `https://github.com/cfdonmez/OISAC_PRISMA_COMST/tree/codex/final-submission-20260824`
+  konumundadır.
+- Bundan sonraki manuscript değişiklikleri bu doğrulanmış uzak güvenlik
+  noktasının üzerine ayrı commitler olarak eklenecektir.
+- Final commit kimliği, figure-inclusive closeout tamamlandığında bu dosyaya
+  eklenecektir.

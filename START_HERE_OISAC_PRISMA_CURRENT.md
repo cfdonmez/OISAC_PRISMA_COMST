@@ -13,6 +13,8 @@ Project: *Optical Integrated Sensing and Communication for 6G: A Systematic Revi
   Çalışma klasöründeki boş `.git` metadatası uzak depodaki kayıtlı teslim
   geçmişinden güvenli biçimde geri bağlandı. Eski uzak dal korunur ve yeni
   çalışma dalı `codex/final-submission-20260824` olarak açılmıştır.
+- Pre-edit güvenlik commit'i
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` olarak GitHub'a gönderildi.
 - Değişiklik öncesi aktif PDF 23 sayfa, 203,407 byte ve 241 bibliography
   entry içerir. SHA-256 değeri
   `A258E699084D190186298EA95D279E459A75D5F9B9881EC2EF9DC03F505C5E35`'tir.

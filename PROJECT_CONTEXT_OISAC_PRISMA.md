@@ -9,6 +9,9 @@
 - İlk güvenlik tabanı `codex/final-submission-20260824` dalında hazırlanır. Uzak
   depodaki `agent/full-corpus-survey-ready` dalı ve
   `9b29b221213786c9893134a36638c3d9a0739f49` başı değiştirilmeden korunur.
+- Pre-edit güvenlik paketi
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` commit'iyle
+  `origin/codex/final-submission-20260824` dalına gönderilmiştir.
 - Çalışma klasöründeki boş `.git` dizini ayrı bir yerel backup konumuna taşındı
   ve uzak geçmiş yalnız Git metadatası üzerinden geri bağlandı. Çalışma
   dosyalarının hiçbiri klondan alınmadı veya üzerine yazılmadı.
