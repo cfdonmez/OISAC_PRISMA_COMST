@@ -1,0 +1,124 @@
+{
+  "generated_at_utc": "2026-08-16T16:22:17.406Z",
+  "status": "PASS",
+  "counts": {
+    "unique_studies": 206,
+    "eligible_reports": 227,
+    "primary_reports": 206,
+    "companion_reports": 21,
+    "multi_report_studies": 19,
+    "report_citation_keys": 227,
+    "primary_bibliography_entries": 206,
+    "companion_bibliography_entries": 21,
+    "combined_bibliography_entries": 227,
+    "doi_entries": 220,
+    "url_fallback_entries": 7,
+    "companion_evidence_rows": 95,
+    "companion_metric_rows": 123,
+    "companion_tradeoff_rows": 9,
+    "report_specific_guardrail_metrics": 14,
+    "historical_pending_human_tokens": 59,
+    "resolved_or_approved_pending_tokens": 59,
+    "unresolved_pending_human_rows": 0,
+    "orphan_source_ids": 0
+  },
+  "checks": {
+    "st01_rows_are_206": true,
+    "unique_study_ids_are_206": true,
+    "eligible_report_rows_are_227": true,
+    "report_ids_are_227_unique": true,
+    "screening_record_ids_are_227_unique": true,
+    "report_citation_keys_are_227_unique": true,
+    "primary_reports_are_206": true,
+    "companion_reports_are_21": true,
+    "multi_report_studies_are_19": true,
+    "study_rows_cite_every_linked_report": true,
+    "primary_bibliography_has_206_unique_entries": true,
+    "companion_bibliography_has_21_unique_entries": true,
+    "combined_bibliography_has_227_unique_entries": true,
+    "every_report_key_resolves": true,
+    "every_report_metadata_matches_bibliography": true,
+    "all_227_reports_have_stable_url_or_doi": true,
+    "combined_bibliography_has_220_dois_and_7_url_fallbacks": true,
+    "combined_dois_are_unique": true,
+    "report_identity_tokens_are_227_unique": true,
+    "title_only_collisions_are_authorized_same_study_distinct_reports": true,
+    "companions_do_not_duplicate_primary_report_identity": true,
+    "every_eligible_report_has_extracted_evidence": true,
+    "evidence_sources_have_zero_orphans": true,
+    "evidence_sources_have_zero_study_mismatches": true,
+    "companion_exact_provenance_is_21_rows": true,
+    "companion_exact_record_ids_match_all_row_counts": true,
+    "companion_extracted_evidence_is_95_rows": true,
+    "companion_extracted_metrics_are_123_rows_across_20_reports": true,
+    "companion_tradeoffs_are_9_rows_across_8_reports": true,
+    "companion_report_specific_guardrails_are_14_metrics": true,
+    "guardrail_metric_ids_are_14_nonblank_unique": true,
+    "historical_pending_tokens_are_59_and_all_resolved_or_approved": true,
+    "hard_pending_gate_has_zero_unresolved_rows": true,
+    "resolved_pending_tokens_do_not_auto_block_reports": true,
+    "report_specific_conflict_guardrails_remain_active": true,
+    "explicit_include_is_not_wildcard": true,
+    "explicit_include_contains_all_227_keys": true,
+    "standalone_supplement_inputs_both_tables": true,
+    "standalone_supplement_uses_227_report_bibliography": true,
+    "main_manuscript_loads_companion_carrier": true
+  },
+  "failures": [],
+  "diagnostics": {
+    "duplicate_study_ids": [],
+    "duplicate_report_ids": [],
+    "duplicate_screening_record_ids": [],
+    "duplicate_report_citation_keys": [],
+    "duplicate_combined_bibliography_keys": [],
+    "duplicate_combined_dois": [],
+    "duplicate_combined_titles": [
+      "thz over fiber system with orthogonal chirp division multiplexing for integrated sensing and communication"
+    ],
+    "authorized_title_only_collision_groups": [
+      {
+        "title": "thz over fiber system with orthogonal chirp division multiplexing for integrated sensing and communication",
+        "keys": [
+          "OISAC_SCR00993",
+          "OISAC_SCR01149"
+        ],
+        "study_ids": [
+          "STC-OCDM-THZ-OVER-FIBER-2024-2025",
+          "STC-OCDM-THZ-OVER-FIBER-2024-2025"
+        ],
+        "identity_tokens": [
+          "doi:10.1109/jlt.2023.3311645",
+          "doi:10.1109/oecc56963.2023.10209717"
+        ],
+        "authorized": true
+      }
+    ],
+    "unauthorized_title_collision_groups": [],
+    "missing_bibliography_keys": [],
+    "bibliography_metadata_mismatches": [],
+    "companion_duplicate_primary_dois": [],
+    "companion_duplicate_primary_titles": [
+      "thz over fiber system with orthogonal chirp division multiplexing for integrated sensing and communication"
+    ],
+    "evidence_orphan_source_ids": [],
+    "evidence_source_study_mismatches": [],
+    "study_report_count_mismatches": []
+  },
+  "pending_gate": {
+    "rule": "A pending_human token blocks synthesis only when the same row lacks a resolved or approved adjudication.",
+    "audited_sources": [
+      "SCR-00083",
+      "SCR-00553"
+    ],
+    "historical_token_counts": {
+      "SCR-00083": 40,
+      "SCR-00553": 19
+    },
+    "unresolved_counts": {
+      "SCR-00083": 0,
+      "SCR-00553": 0
+    },
+    "outcome": "No unresolved row remains in these two sources; report-specific conflict guardrails remain active."
+  },
+  "interpretation": "The review contains 206 unique studies represented by 227 eligible reports: 206 designated primary reports and 21 eligible companion reports. ST-01 retains one row per study while carrying a resolvable citation key for every report."
+}

@@ -1,0 +1,200 @@
+{
+  "audit_id": "MANUSCRIPT_CLAIM_REAUDIT_2026-08-13",
+  "timestamp": "2026-08-13T23:30:18+03:00",
+  "status": "PASS_AFTER_CORRECTION",
+  "scope": {
+    "manuscript": "comst_206_v2_9section",
+    "section_files_audited": 10,
+    "section_files_changed": 9,
+    "unchanged_after_audit": [
+      "sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex"
+    ],
+    "out_of_scope": [
+      "PRISMA Item 17 citation completeness closure",
+      "bibliography edits",
+      "supplement edits",
+      "visual-contract edits",
+      "durable log and memory-bank edits",
+      "PDF-by-PDF re-extraction of all 206 studies",
+      "LaTeX compilation"
+    ]
+  },
+  "authorities": [
+    "Phase C final PRISMA flow report, count CSV, and alias crosswalk",
+    "Locked Phase D survey-ready workbook",
+    "Phase E TQAF summary, dimension audit, normalization crosswalk, and scoring code",
+    "Phase F final synthesis JSON and S1-S7 CSV files",
+    "Related-synthesis source audit and context bibliography for positioning only"
+  ],
+  "content_authority_exclusion": "The 76 COMST papers were used only as language and architecture guidance, never as scientific evidence for manuscript counts, mechanisms, or findings.",
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "high",
+      "status": "fixed",
+      "files": ["sections/00_ABSTRACT.tex"],
+      "summary": "The abstract reduced the multilabel integration taxonomy to three patterns and omitted canonical coupling locations.",
+      "correction": "Represented the seven canonical locations without implying an exclusive or hierarchical taxonomy."
+    },
+    {
+      "id": "H2",
+      "severity": "high",
+      "status": "fixed",
+      "files": [
+        "sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex",
+        "sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex",
+        "sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex"
+      ],
+      "summary": "Several statements described observational synthesis as causal chains or causal mechanisms.",
+      "correction": "Recast them as reported or coded coupling mechanisms, associated relationships, and bounded survey inferences."
+    },
+    {
+      "id": "M1",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex",
+        "sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex",
+        "sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex"
+      ],
+      "summary": "Integration-ladder and stronger/weaker/tighter language contradicted the non-hierarchical multilabel taxonomy.",
+      "correction": "Replaced hierarchy with location, purpose, and explicit shared-element descriptions."
+    },
+    {
+      "id": "M2",
+      "severity": "medium",
+      "status": "fixed",
+      "files": [
+        "sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex",
+        "sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex",
+        "sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex"
+      ],
+      "summary": "Several platform statements could be read as universal prevalence, dominance, or mechanism claims.",
+      "correction": "Bounded statements to the reviewed evidence and replaced prevalence with within-corpus coverage."
+    },
+    {
+      "id": "M3",
+      "severity": "medium",
+      "status": "fixed",
+      "files": ["sections/03_REVIEW_METHOD_AND_EVIDENCE_BASE.tex"],
+      "summary": "Reviewer-boundary wording obscured investigator conduct and AI assistance.",
+      "correction": "Stated investigator supervision, recorded governance, bounded AI-supported adjudication, retained provenance, and absence of independent duplicate review."
+    },
+    {
+      "id": "M4",
+      "severity": "medium",
+      "status": "fixed",
+      "files": ["sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex"],
+      "summary": "Discussion contained no thematic comparison with prior syntheses.",
+      "correction": "Added architecture-, medium-, model-, and deployment-centered comparisons with eight contextual citation-key uses."
+    },
+    {
+      "id": "M5",
+      "severity": "medium",
+      "status": "fixed",
+      "files": ["sections/00_ABSTRACT.tex", "sections/09_CONCLUSION.tex"],
+      "summary": "Artifact reusability and breadth of joint operation were overstated relative to source-reported availability and study-specific validation.",
+      "correction": "Restricted artifact language to reported open status and joint evidence to study-specific settings."
+    },
+    {
+      "id": "M6",
+      "severity": "medium",
+      "status": "fixed",
+      "files": ["sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex"],
+      "summary": "Some conclusions and roadmap prescriptions were not explicitly identified as survey inference.",
+      "correction": "Added framework-, synthesis-, evidence-, and corpus-level boundaries."
+    },
+    {
+      "id": "L1",
+      "severity": "low",
+      "status": "fixed",
+      "files": ["sections/01_INTRODUCTION.tex"],
+      "summary": "The opening technical examples had incomplete citation fit for turbulence-aware links.",
+      "correction": "Matched fiber sensing, visible-light positioning, and turbulence-aware links to direct primary examples."
+    },
+    {
+      "id": "L2",
+      "severity": "low",
+      "status": "fixed",
+      "files": ["sections/09_CONCLUSION.tex"],
+      "summary": "The Discussion and Conclusion openings repeated the same inference with high lexical overlap.",
+      "correction": "Rebuilt the conclusion around separate integration-location and comparability decisions; no cross-file Jaccard hit remains at 0.30."
+    },
+    {
+      "id": "L3",
+      "severity": "low",
+      "status": "fixed",
+      "files": [
+        "sections/03_REVIEW_METHOD_AND_EVIDENCE_BASE.tex",
+        "sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex",
+        "sections/09_CONCLUSION.tex"
+      ],
+      "summary": "Several transitions blurred review-specific rule outputs with general scientific quality.",
+      "correction": "Used recorded-evidence, review-specific-rule, and bounded interpretation language."
+    }
+  ],
+  "numeric_reconciliation": {
+    "status": "pass",
+    "unresolved_numeric_or_denominator_errors": 0,
+    "headline_regex_checks": {"passed": 26, "total": 26},
+    "verified_units": [
+      "records",
+      "reports",
+      "unique studies",
+      "coding records",
+      "substantive tradeoff records",
+      "study-level multilabel counts",
+      "maximum validation tiers",
+      "TQAF study scores",
+      "TQAF evidence bodies"
+    ],
+    "canonical_values": {
+      "prisma_flow": {"identified": 1733, "screened": 1259, "reports_sought": 330, "not_retrieved": 58, "assessed": 272, "eligible_reports": 227, "unique_studies": 206, "contextual": 67},
+      "phase_d_governed": {"total": 8306, "evidence": 3041, "metric": 4861, "tradeoff": 404, "qualitative": 3206, "quantitative": 4997, "context": 31, "quarantine": 72},
+      "phase_f_primary": {"total": 8203, "evidence": 3020, "metric": 4779, "tradeoff_ledger": 404, "substantive_tradeoff": 402, "tradeoff_studies": 168},
+      "metric_comparison": {"conditional_yes": 118, "no": 4661},
+      "tradeoff_use": {"quantitative": 218, "qualitative": 184, "conditional": 371},
+      "maximum_validation": [32, 18, 78, 66, 12]
+    }
+  },
+  "qa_checks": {
+    "citation_key_uses": 182,
+    "unique_citation_keys": 103,
+    "undefined_citation_keys": 0,
+    "labels": 14,
+    "duplicate_labels": 0,
+    "references": 22,
+    "unresolved_references": 0,
+    "section_commands": 9,
+    "subsection_commands": 29,
+    "subsubsection_commands": 18,
+    "braces_balanced_in_all_section_files": true,
+    "conflict_markers": 0,
+    "paragraph_similarity": {"prose_blocks_tested": 185, "jaccard_threshold": 0.30, "cross_file_hits": 0},
+    "stale_claim_hits": 0,
+    "mohsan_chronology": {
+      "doi": "10.1016/j.osn.2026.100854",
+      "cover_date": "2026-09",
+      "official_first_online_field_found": false,
+      "table_note_preserved": true
+    }
+  },
+  "file_hashes_sha256": {
+    "sections/00_ABSTRACT.tex": "fe44b05b05e50be6028f74a08b0f05235c11a99626662e955768e7eb2e9639a3",
+    "sections/01_INTRODUCTION.tex": "b517166b5f585597750aa5ee277bf6b881a80cd3a52cdeb0cbd3842c71a0e2ce",
+    "sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex": "bcc0a693c9313508897d965f09ec285ba549c2e624b08ee8ac3b1dc84c44bc43",
+    "sections/03_REVIEW_METHOD_AND_EVIDENCE_BASE.tex": "530b538710aeca158e9c0abc7624a13b77b6f3c8b37c72060230f50994bbdad9",
+    "sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex": "fe3d500fab3cc0da85e286d98272e9f844fca31984d509b0a40aba318a215c2b",
+    "sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex": "0aacf744e73d69bb6556c40d839c1a94f6e7978cbaf4e22f48b7c07f48d515f9",
+    "sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex": "cec9d6c8d2f3f3da54da813821e145497dcef297c2a859ca63b306165750193c",
+    "sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex": "7d6b73eb91b72d36ce9de731bcf96e636997573667f885724c08b192e90077ee",
+    "sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex": "3379ce386554dac2ff4397448abff473ce183bb11eb9ebb3af516f5b743096db",
+    "sections/09_CONCLUSION.tex": "d83a29f2ebfba2e4be32844861edecb1ca5deba118cf8abe3525899d94a5943b"
+  },
+  "residual_limitations": [
+    "Item 17 is handled by a separate audit line.",
+    "The audit reconciles manuscript claims to locked canonical artifacts; it is not a fresh full-text extraction of all 206 PDFs.",
+    "No LaTeX compilation was performed by instruction.",
+    "Planned figures, tables, and supplements were not materialized in this task."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "qa_id": "PRISMA_2020_POSTFIX_REAUDIT_QA_2026-08-13",
+  "snapshot": "POST-FIX live v2",
+  "audit_complete": true,
+  "submission_ready": false,
+  "public_release_ready": false,
+  "interpretation": "PASS checks validate the POST-FIX audit structure, local artifact integrity, and honest state boundaries. They do not mean that the manuscript is submission ready or that the supplements are publicly released.",
+  "output_hashes": {
+    "PRISMA_2020_POSTFIX_REAUDIT_2026-08-13.md": "6F6890EE48874184C94815105FF8FDE5001E552EA8932805917136C43060584E",
+    "PRISMA_2020_POSTFIX_REAUDIT_2026-08-13.json": "DCADB379F78C341AF53F3DB6D015CC228A8191FA90CE65886367D9D247B76399",
+    "PRISMA_2020_POSTFIX_REAUDIT_2026-08-13.csv": "B18773B7D06A3DE0790FF182A13CBE9BE80A3CDC17158EA8AC7B4021ED48D383",
+    "PRISMA_2020_POSTFIX_REAUDIT_2026-08-13.xlsx": "0B86DAF7A4B0B2A346473217A47395789976C003F98B2148EECEE67E3929583A"
+  },
+  "checks": [
+    {"id":"official_item_count","result":"PASS","expected":42,"observed":42},
+    {"id":"unique_item_identifiers","result":"PASS","expected":42,"observed":42},
+    {"id":"status_reconciliation","result":"PASS","observed":{"READY":29,"PARTIAL":6,"OPEN":0,"JUSTIFIED_NA":7,"TOTAL":42}},
+    {"id":"four_axis_presence","result":"PASS","expected_rows":42,"observed_rows":42,"axes":["manuscript_text","materialized_local_supplement","active_tex_carrier","public_persistent_release"]},
+    {"id":"abstract_word_count","result":"PASS","expected":250,"observed":250},
+    {"id":"abstract_subitems","result":"PASS","expected":12,"observed":12,"overall_status":"PARTIAL","remaining_gate":"A1 title activation and approval only"},
+    {"id":"item17_local_materialization","result":"PASS","status":"READY","included_studies":206,"semantic_citations":206,"exact_bibliography_keys":206,"eligible_report_lineage":227,"primary_reports":206,"eligible_companion_reports":21,"wildcard_nocite":false},
+    {"id":"excluded_report_supplement","result":"PASS","rows":39},
+    {"id":"evidence_supplements","result":"PASS","primary_evidence":3020,"primary_metrics":4779,"governed_tradeoffs":404,"substantive_tradeoffs":402},
+    {"id":"appraisal_and_certainty_supplements","result":"PASS","tqaf_studies":206,"evidence_bodies":115,"body_memberships":4931,"boundary":"TQAF is not conventional risk of bias or GRADE"},
+    {"id":"reporting_supplements","result":"PASS","data_dictionary_rows":446,"protocol_deviation_rows":8,"unreconstructed_query_mappings":2,"invented_queries":false},
+    {"id":"related_synthesis_supplement","result":"PASS","contextual_syntheses":38,"inside_primary_206_denominator":false},
+    {"id":"s7_supplement","result":"PASS_WITH_EXPLICIT_NR","canonical_join":206,"maximum_tier":12,"paired_function":6,"note":"Relationship timing and separate function-specific locators remain explicit NR and were not inferred."},
+    {"id":"xlsx_key_range_inspection","result":"PASS","range":"Checklist!A1:M8"},
+    {"id":"xlsx_formula_error_scan","result":"PASS","matches":0},
+    {"id":"xlsx_visual_review","result":"PASS","sheets_reviewed":["Summary","Checklist","Abstract"],"severe_layout_defects":0},
+    {"id":"draft_release_guard","result":"PASS","observed":"All local supplements and prior staging remain classified as local or draft; none is represented as a public persistent release."},
+    {"id":"submission_gate","result":"BLOCKING","items":["1","2","13c","16a","26","27"],"reason":"Final title/driver, abstract A1 activation, selected result displays, PRISMA flow, competing-interests carrier, and availability carrier remain incomplete."},
+    {"id":"public_release_gate","result":"BLOCKING","reason":"Creator scope, rights holder, licenses, clean repository route, final version/tag, persistent archive DOI, and active exact availability statement remain unresolved."}
+  ]
+}

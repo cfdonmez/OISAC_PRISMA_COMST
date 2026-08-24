@@ -1,0 +1,124 @@
+{
+  "qa_id": "PRISMA_2020_FULL_REAUDIT_QA_2026-08-13",
+  "audit": "PRISMA_2020_FULL_REAUDIT_2026-08-13",
+  "candidate": "comst_206_v2_9section",
+  "audit_status": "AUDIT_COMPLETE_FINDINGS_OPEN",
+  "submission_ready": false,
+  "interpretation": "PASS results below validate the structure and internal consistency of the re-audit only. They do not mean that the manuscript complies with all PRISMA 2020 items or is submission ready.",
+  "source_files": {
+    "json": {
+      "path": "qa/PRISMA_2020_FULL_REAUDIT_2026-08-13.json",
+      "sha256": "9274FEA209A57074D01818F007ADB2A7C79CF8A00770133798116664C6E6978D"
+    },
+    "markdown": {
+      "path": "qa/PRISMA_2020_FULL_REAUDIT_2026-08-13.md",
+      "sha256": "4A3CBF8017A008D31227521B0370CB79A32559F43CCB7FD19F234568C6D0C0A7"
+    }
+  },
+  "checks": [
+    {
+      "id": "json_parse",
+      "result": "PASS",
+      "observed": "valid JSON"
+    },
+    {
+      "id": "official_expanded_item_count",
+      "result": "PASS",
+      "expected": 42,
+      "observed": 42
+    },
+    {
+      "id": "official_expanded_unique_identifiers",
+      "result": "PASS",
+      "expected": 42,
+      "observed": 42,
+      "identifiers": [
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10a", "10b", "11", "12", "13a", "13b", "13c", "13d", "13e", "13f", "14", "15", "16a", "16b", "17", "18", "19", "20a", "20b", "20c", "20d", "21", "22", "23a", "23b", "23c", "23d", "24a", "24b", "24c", "25", "26", "27"
+      ]
+    },
+    {
+      "id": "status_reconciliation",
+      "result": "PASS",
+      "observed": {
+        "READY": 9,
+        "PARTIAL": 24,
+        "OPEN": 6,
+        "JUSTIFIED_NA": 3,
+        "TOTAL": 42
+      }
+    },
+    {
+      "id": "four_axis_presence",
+      "result": "PASS",
+      "expected_rows": 42,
+      "observed_rows": 42,
+      "axes": [
+        "reported_in_prose",
+        "materialized_artifact",
+        "final_manuscript_pointer",
+        "public_availability_release"
+      ]
+    },
+    {
+      "id": "prisma_for_abstracts_subitem_count",
+      "result": "PASS",
+      "expected": 12,
+      "observed": 12
+    },
+    {
+      "id": "markdown_item_row_count",
+      "result": "PASS",
+      "expected": 42,
+      "observed": 42
+    },
+    {
+      "id": "item17_honest_state",
+      "result": "PASS",
+      "observed": "OPEN",
+      "note": "The audit correctly leaves Item 17 open; this is a QA pass on honest classification, not a PRISMA compliance pass."
+    },
+    {
+      "id": "item17_included_study_citation_coverage",
+      "result": "OPEN",
+      "expected": "206 of 206 included studies cited and represented in a final citation-linked characteristics carrier",
+      "observed": "76 of 206 included studies currently cited; no final active ST-01 carrier",
+      "gate": "Do not close Item 17 until the materialized ST-01 has 206 unique study rows, every citation key resolves, and all 206 included studies are visibly cited in the manuscript or carrier."
+    },
+    {
+      "id": "draft_release_guard",
+      "result": "PASS",
+      "observed": "All public_release_v1_0_0_staging_2026-08-07 paths are classified as draft staging, not public release or journal supplement."
+    },
+    {
+      "id": "blueprint_guard",
+      "result": "PASS",
+      "observed": "Planned figures, tables, and commented production notes are not counted as materialized artifacts or final manuscript pointers."
+    },
+    {
+      "id": "tqaf_boundary",
+      "result": "PASS",
+      "observed": "TQAF is treated as a review-specific nonvalidated technical appraisal and is not relabeled as conventional risk of bias or GRADE."
+    },
+    {
+      "id": "comst_authority_boundary",
+      "result": "PASS",
+      "observed": "The 76 COMST papers are restricted to style and presentation comparison and are not used as scientific or PRISMA decision authorities."
+    },
+    {
+      "id": "public_availability",
+      "result": "OPEN",
+      "observed": "No released repository package, persistent DOI, approved rights and license metadata, or final availability statement is present."
+    },
+    {
+      "id": "overall_submission_gate",
+      "result": "BLOCKING",
+      "observed": "NOT_SUBMISSION_READY",
+      "reason": "Thirty items remain PARTIAL or OPEN, including Items 1, 2, 17, 25, 26, and 27."
+    }
+  ],
+  "spreadsheet_candidate": {
+    "requested_path": "qa/PRISMA_2020_CHECKLIST_CANDIDATE_2026-08-13.csv",
+    "status": "NOT_CREATED_RUNTIME_BLOCKED",
+    "reason": "The required workspace dependency loader did not return a usable artifact tool runtime after repeated bounded waits. No alternate spreadsheet library or guessed runtime path was used. The audit JSON contains all 42 deterministic rows for later export."
+  }
+}

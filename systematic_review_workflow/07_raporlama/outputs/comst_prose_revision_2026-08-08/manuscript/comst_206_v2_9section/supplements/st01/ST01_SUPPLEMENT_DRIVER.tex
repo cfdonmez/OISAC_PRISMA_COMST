@@ -1,0 +1,52 @@
+\documentclass[onecolumn,journal,oneside]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[nocompress]{cite}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{pdflscape}
+\usepackage{tabularx}
+\usepackage{seqsplit}
+\usepackage{textcomp}
+\usepackage{url}
+
+\begin{document}
+
+\title{Electronic Supplement ST-01: Included Studies and Eligible Report
+Lineage for the O-ISAC Survey}
+
+\author{Fatih D\"onmez, Ahmet Altuncu, and Mustafa Namdar}
+
+\maketitle
+
+\section*{Purpose and Counting Boundary}
+
+This supplement identifies and characterizes every study included in the
+systematic survey. The review unit is the unique study: 227 eligible reports
+were mapped to 206 studies, so companion reports do not appear as independent
+technical demonstrations. Each study row cites its designated primary report
+and every eligible companion report. ST-01B exposes the exact evidence,
+metric, and tradeoff provenance of the 21 companions. A historical
+\texttt{pending\_human} token triggers exclusion only when no resolved or
+approved adjudication is recorded; report-specific conflict guardrails remain
+in force after adjudication.
+
+\begin{landscape}
+\begingroup
+\footnotesize
+\sloppy
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.02}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\input{ST01_INCLUDED_STUDIES_206.tex}
+\clearpage
+\input{ST01_COMPANION_REPORT_PROVENANCE_21.tex}
+\endgroup
+\end{landscape}
+
+\bibliographystyle{IEEEtran}
+\bibliography{ST01_REFERENCES_227}
+
+\end{document}

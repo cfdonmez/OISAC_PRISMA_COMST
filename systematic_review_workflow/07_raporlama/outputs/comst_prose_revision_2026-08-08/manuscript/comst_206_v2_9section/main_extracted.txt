@@ -1,0 +1,2746 @@
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+1
+
+Optical Integrated Sensing and Communication for
+6G: A Systematic Review and Survey of
+Architectures, Metrics, and Tradeoffs Across
+Optical Platforms
+Fatih Dönmez, Ahmet Altuncu, and Mustafa Namdar
+
+Abstract—Light carries data and signatures of the path and
+objects it encounters, allowing the same optical infrastructure to
+support communication and sensing. Optical integrated sensing
+and communication (O-ISAC) builds on this dual capability
+across fiber, free space optical, visible light and light fidelity
+(LiFi), millimeter wave and terahertz systems enabled by photonics, and hybrid systems. This breadth raises a central question:
+which design insights are shared, and which depend on a
+particular platform? A systematic literature search covering 1
+January 2020 through 22 June 2026 identified 227 eligible reports,
+corresponding to 206 unique studies. Using structured narrative
+synthesis and a review specific technical assessment, we organized
+the evidence by physical modality and by how communication
+and sensing are coupled. The review received no specific support and was retrospectively registered on OSF (7f6wb; DOI:
+10.17605/OSF.IO/7F6WB). Our comparison framework keeps
+each result connected to its task, measurement plane, operating
+conditions, and validation setting. The evidence reveals conditional relations in which bandwidth, optical power, hardware constraints, and signal design jointly shape communication reliability
+and sensing performance, extending design reasoning beyond a
+single rate and resolution frontier. Laboratory demonstrations
+already span a wide range of architectures; field validation,
+shared benchmarks, and reusable data and code offer the next
+stage of maturity. Together, the taxonomy and framework help
+researchers interpret evidence, choose meaningful benchmarks,
+and advance O-ISAC toward 6G.
+Index Terms—6G, integrated sensing and communication,
+metric comparability, optical communication, optical sensing.
+
+I. INTRODUCTION
+The practical appeal of O-ISAC lies in reuse. Optical
+networks already deploy sources, propagation paths, receivers,
+and signal processors, and these resources can reveal information about the environment while carrying data. Distributed
+This review received no specific financial or nonfinancial support. No
+funder or sponsor had any role in the design, conduct, analysis, interpretation,
+manuscript preparation, or decision to submit.
+Fatih Dönmez is with the Department of Electrical and Electronics Engineering, Afyon Kocatepe University, 03200 Afyonkarahisar, Türkiye (e-mail:
+fatih.donmez@usr.aku.edu.tr; ORCID: 0000-0003-0553-4418).
+Ahmet Altuncu is with the Department of Electrical and Electronics
+Engineering, Faculty of Technology, Afyon Kocatepe University, 03200
+Afyonkarahisar, Türkiye (e-mail: aaltuncu@aku.edu.tr; ORCID: 0000-00023753-9515).
+Mustafa Namdar is with the Department of Electrical and Electronics
+Engineering, Faculty of Engineering, Kütahya Dumlupınar University, 43100
+Kütahya, Türkiye (e-mail: mustafa.namdar@dpu.edu.tr; ORCID: 0000-00023522-4608).
+Corresponding
+author:
+Fatih
+Dönmez
+(e-mail:
+fatih.donmez@usr.aku.edu.tr).
+
+sensing over fiber, positioning based on visible light, and
+turbulence monitoring illustrate the breadth of this opportunity
+[1], [2], [3].
+Sharing turns that opportunity into a systems question. A
+resource or receiver chosen for one function can change the
+information available to the other. The central engineering
+problem is therefore not whether light can support communication and sensing, but what can be shared and how that
+sharing changes system design.
+This question has gained importance since integrated sensing and communication (ISAC) was identified as one of the
+usage scenarios for International Mobile Telecommunications
+for 2030 and beyond (IMT-2030) [4]. Optical implementations span guided fiber, free space optical and visible light
+communication links, systems in the millimeter wave and
+terahertz bands enabled by photonics, and hybrid designs [5],
+[6], [7]. Their propagation paths, observables, hardware, and
+performance measures differ. O-ISAC is therefore a family of
+related architectures rather than one interchangeable platform.
+That diversity requires both a clear survey boundary and
+care in comparison. Here, O-ISAC covers optical or photonic
+systems in which communication and sensing are considered,
+integrated, designed, optimized, or evaluated together. Their
+common technical setting may be an architecture, optical link,
+signal or resource framework, hardware platform, channel
+model, or application scenario. Sharing a waveform or operating concurrently are possible forms of coupling, not inclusion
+requirements. Within this scope, familiar metric names are
+most informative when read together with their measurement
+and operating context. Preserving that context allows results
+from different platforms to be interpreted consistently and
+compared where their defining conditions align.
+A. Prior Syntheses and Survey Positioning
+Existing surveys illuminate complementary parts of OISAC, but differ in the evidence they organize and the questions they help readers answer. Table I organizes them by
+reader task, evidence unit, and comparison boundary.
+Across these perspectives, the remaining task is to relate
+primary evidence without separating a result from the setting
+in which it acquired meaning. This article is a survey of 206
+unique O-ISAC studies in the primary evidence window from
+1 January 2020 to 22 June 2026. Its central objective is to
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+2
+
+TABLE I
+P RIOR O-ISAC SYNTHESES BY READER TASK , EVIDENCE UNIT, AND COMPARISON BOUNDARY. FAMILIES SUPPORT NAVIGATION RATHER THAN
+QUALITY RANKING .
+Synthesis family Sources
+Architecture and
+system design
+
+Optical scope
+
+Evidence unit and
+comparison logic
+
+Reader task
+
+Boundary
+
+[8], [9], [10], [11]
+
+General O-ISAC, Architecture, optimization,
+How are communication Relations remain architecture and
+free space optical target, or link model;
+and sensing coupled?
+assumption specific.
+links,
+taxonomy and relations
+retroreflective
+within each scenario
+links, and fiber
+networks
+Analytical limits [12], [13]
+General optical
+Model, bound, objective,
+What limits follow from A single model does not define an
+and estimation
+systems and
+estimator, or learning
+the assumptions?
+empirical scale for an entire
+methods
+polarization
+method; comparison within a
+modality.
+sensing in
+model and among methods
+coherent fiber
+links
+Technological
+[14], [15], [16], [17], Evolution from
+Historical phase,
+How has O-ISAC moved A shared trajectory does not make
+evolution,
+[18]
+radio to optical
+standardization path, network toward deployment?
+infrastructures commensurate.
+standardization,
+systems; terrestrial architecture, or deployment;
+and deployment
+and submarine
+synthesis by period and
+networks
+ecosystem
+Physical media
+[19], [20], [21], [22], Visible light
+Medium, observable, sensing How does each path
+Transfer requires aligned media,
+and optical
+[23], [24]
+ISAC, guided fiber path, or network
+support sensing?
+observables, paths, and conditions.
+networks
+systems, and
+configuration; taxonomy
+optical networks
+within related solution classes
+Waveforms,
+[25], [26], [27], [28], Fiber, microwave Waveform, multiplexing,
+Which mechanisms
+Shared photonics does not equate
+resource
+[29], [30]
+photonics, and
+front end, or processing
+enable joint operation?
+paths, observables, or metrics.
+multiplexing, and
+millimeter wave or chain; mechanism taxonomy
+photonic
+terahertz systems with selected demonstrations
+hardware
+enabled by
+photonics
+Applications and [31]
+Visible light
+Application, use case,
+Which applications and Breadth connects research lines
+challenges across
+communication,
+solution class, or challenge; gaps recur?
+without making results
+platforms
+free space optical, thematic synthesis across
+commensurate.
+fiber, photonics,
+platforms
+and hybrid settings
+
+organize and compare that evidence while preserving physical,
+measurement, and validation context.
+The survey makes four contributions:
+A taxonomy separates physical modality from the mechanisms that couple communication and sensing.
+• A context-preserving comparison framework keeps each
+performance result connected to its measurement definition and operating conditions.
+• A condition-aware synthesis brings recurring communication and sensing tradeoff mechanisms together while
+retaining the conditions that shape their interpretation.
+• An evidence-maturity assessment links validation, benchmark readiness, and reproducibility to research priorities
+grounded in the reviewed evidence.
+
+•
+
+The organization of the article follows the analytical sequence of the survey. Sections II and III establish the comparison framework across optical platforms and describe the review methodology and evidence base. Sections IV through VII
+present the technical synthesis of optical platforms, integration
+architectures, performance metrics, joint design tradeoffs, validation, enabling technologies, and applications. Section VIII
+discusses the research priorities and limitations that emerge
+from this synthesis, and Section IX concludes the article.
+
+II. O-ISAC FOUNDATIONS AND COMPARISON
+FRAMEWORK
+The scope defined in Section I brings diverse optical systems
+into one survey. This section turns that scope into a comparison
+profile by following the physical context, coupling location,
+measurement contract, and evidence trace of each result. Together, these elements preserve the meaning of an observation
+and show how it can inform the synthesis. Table II condenses
+them into a map for the reader.
+A. System Boundary, Modality, and Signal Path
+Technical comparison begins by locating communication
+and sensing within their physical signal paths. The modality of
+the observable is recorded separately from the hardware used
+to generate, distribute, or process the signal. This distinction
+provides the physical reference for the six analytical families
+used in the survey.
+The evidence is organized into fiber, free space optical
+(FSO), visible light communication and LiFi (VLC/LiFi),
+photonic terahertz (THz), hybrid optical, and other optical
+systems. These analytical categories place each result in its
+relevant physical regime before performance comparison.
+Fiber systems either sense the guided path directly or use it
+to transport signals to a downstream segment that reaches the
+target. FSO systems place target geometry and beam control
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+in a directional optical path, while VLC/LiFi adds illumination
+and access constraints. In photonic THz systems, optical
+hardware may generate, distribute, or process the carrier, but
+the path to the target remains radio frequency. Hybrid systems
+require both domains and their interface to be retained. These
+distinctions establish the physical reference frame. Section IV
+later synthesizes their study counts, implementations, and
+constraints specific to each platform [2], [7], [32], [33], [34].
+B. Integration Mechanisms and Measurement Planes
+Integration is located where the two functions share a
+component, signal, resource, path, or decision. Application
+coupling can coordinate a service even when the signal paths
+remain separate. At the physical and signal levels, systems
+may share a link, hardware element, optical carrier, waveform,
+or allocation rule. Joint design connects these choices by
+selecting at least one variable using outcomes from both
+functions.
+These locations overlap within a system. Shared hardware
+can support separate waveforms, while a joint optimization
+model can coordinate both functions before hardware validation. A shared hardware application [35], a fiber system
+with a shared link [36], and a design that combines multiple
+mechanisms [32] therefore represent distinct engineering relations. We retain these attributes separately so later sections
+can compare concurrency, resource use, and validation.
+The measurement plane adds where the reported quantity
+is observed. Design variables describe carrier and waveform
+settings, launch power, and geometry. Optical power, loss, and
+optical signal to noise ratio (OSNR) belong to the optical
+link. After conversion, electrical signal to noise ratio (SNR),
+error rate, and throughput describe the electrical and digital
+stages. Sensing measurements add task specific observations
+of geometry, motion, environment, classification, or detection.
+Familiar labels become comparable through matched references. OSNR and electrical SNR belong to different planes,
+just as launch and received power describe different locations
+in the chain. Rate accounting distinguishes gross from net
+data, and error accounting distinguishes the event measured
+before forward error correction (pre-FEC) from the event
+measured after it (post-FEC). Sensing likewise separates range
+resolution, estimation error, precision, and analytical bounds.
+Comparison therefore follows the task, target, operating point,
+channel, and processing chain together with the metric name.
+Provenance adds the form of evidence. Analytical bounds,
+simulations, laboratory measurements, offline dataset results,
+and field observations support different kinds of inference.
+When decisive conditions align, their results can reveal a
+bounded relation across studies. Within a study, a sweep
+can show how a design choice changes outcomes across its
+reported operating region.
+C. The Cross Platform Comparison Profile
+The profile becomes comparative when its decisive fields
+align. A matched definition and measurement plane establish
+what is being compared, while the operating region and
+evidence trace state where the relation holds. This keeps
+
+3
+
+TABLE II
+C OMPARISON PROFILE CARRIED WITH EACH REPORTED O-ISAC RESULT
+Comparison profile
+Component
+
+Context carried with the result
+
+Physical context
+
+Modality, the signal path that reaches the target and
+its conversion boundary, communication task or role,
+sensing task, and target locate the physical regime.
+Coupling location
+A shared component, carrier, waveform, resource,
+path, application, or design rule shows where the
+functions meet.
+Measurement contract Metric name and source definition, statistic,
+measurement plane, unit and accounting state,
+operating point, channel, geometry, environment,
+reference or ground truth, constraints, and baseline
+define the quantity and operating region.
+Evidence trace
+Validation setting, value origin, and exact source
+locator connect the result to its evidence.
+Analytical use
+Use
+
+Evidence condition
+
+Interpretation within a
+study
+Bounded relation across
+studies
+Descriptive retention
+
+The result supports a technical interpretation
+under the conditions reported by its source.
+Decisive fields align and the remaining
+differences are stated.
+The record informs mechanism, scope, or
+feasibility in its reported context.
+Note. Electronic Supplements S-Data Dictionary and S-Evidence provide the
+exact field definitions, controlled states, coding rules, and provenance for each
+record. The comparison decision follows the source fields available for each
+result.
+
+each quantitative relation tied to the physical system and the
+metric’s reported meaning.
+One fiber study illustrates this logic. Its communication and
+localization outcomes form a bounded relation under shared
+conditions, while its other results retain narrower roles within
+their recorded settings [37]. The profile makes each role visible
+and preserves the platform context for later synthesis.
+Throughout the survey, representative studies anchor recurring patterns, tables summarize the inventory, and prose
+explains engineering meaning. Modality and signal path establish physical context, integration locates the coupling, and the
+measurement plane identifies the observation. Together with
+the evidence trace, these elements determine how evidence
+can be related across studies.
+III. REVIEW PROCESS AND EVIDENCE BASE
+With these comparison conditions established, the analysis
+turns to the evidence base on which the technical synthesis
+rests. The corpus was assembled through a systematic review
+reported in accordance with the Preferred Reporting Items
+for Systematic Reviews and Meta-Analyses (PRISMA) 2020
+statement, with search reporting guided by PRISMA-S [38],
+[39]. The following subsections summarize corpus construction and the rules that preserve the context of reported results
+throughout the synthesis. Table III provides an overview of
+how the extracted evidence is used in the survey.
+A. Corpus Construction
+To assemble that evidence base, we searched Scopus, IEEE
+Xplore, ScienceDirect, SpringerLink, Wiley Online Library,
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+4
+
+TABLE III
+U SE OF EXTRACTED EVIDENCE IN THE SURVEY. ROW COUNTS ARE CODING RECORDS ; STUDY COUNTS OVERLAP ACROSS CATEGORIES .
+Evidence use
+
+Rows
+
+Studies
+
+Role in the survey
+
+Quantitative evidence
+4,997
+206 Numerical or directional synthesis under recorded conditions.
+Qualitative evidence
+3,206
+206 Mechanisms, trends, and limitations.
+Context-only claims
+31
+21 Interpretation only; outside the primary synthesis.
+Conflict-restricted claims
+72
+31 Withheld from primary synthesis; unaffected evidence retained.
+Primary synthesis
+8,203
+206 Quantitative and qualitative evidence combined.
+Note: The governed ledger contains 8,306 rows. The 8,203 primary synthesis rows and their source locations are reported in Electronic Supplement S-Evidence;
+governance rules are reported in S-Protocol.
+
+and Taylor & Francis Online. The search covered peerreviewed journal articles and full conference papers first made
+publicly available from 1 January 2020 through 22 June 2026.
+We retained reports that contained sufficient full technical
+content in English, examined communication and sensing
+within an optical or photonic system, and provided assessable
+evidence for at least one survey domain. Reviews and other
+contextual sources helped position the field but did not enter
+the technical denominator. Search strategies, eligibility decisions, and protocol documentation are provided in Electronic
+Supplements S-Search, S-Exclusions, and S-Protocol.
+After deduplication, screening, and full-text assessment, 227
+reports met the eligibility criteria. Twenty-one were companion reports describing studies also represented by another
+eligible report. Consolidating the report set at study level
+produced 206 unique studies for the technical synthesis; the
+difference therefore reflects mapping rather than further exclusion. This mapping preserves report-level provenance while
+counting each underlying study once. Electronic Supplement
+ST-01 cites all 206 studies and traces their 227 reports.
+B. Evidence Extraction and Use
+With the study denominator established, we extracted evidence at three linked levels: study, report, and individual claim.
+For each result, we recorded its definition, unit, measurement plane, operating conditions, validation setting, and exact
+source location. Results reported under different conditions
+remained separate; missing information was not inferred, and
+graphs were not digitized to create new values. Electronic
+Supplement S-Data Dictionary provides the complete coding
+schema.
+Claims extracted from an included study could serve different roles. Quantitative and qualitative claims could support the
+synthesis within their recorded context; context-only claims informed interpretation, whereas conflict-restricted claims were
+withheld from the primary synthesis. Relations across studies
+also had to satisfy the contextual alignment rules in Table II.
+Because these decisions operated at claim level, restricting
+one claim did not discard unaffected evidence from the same
+study. All 206 studies therefore remained represented in the
+primary synthesis by claims supported within their recorded
+context.
+C. Technical Appraisal and Synthesis
+To clarify how each study could support the synthesis, we
+characterized the technical evidence and reporting of all 206
+
+studies with the review-specific Technical Quality Assessment
+Framework (TQAF). The framework applies deterministic
+rules across eight dimensions and records overall evidence
+contribution as a separate category. The resulting profile
+records how the reported evidence can be interpreted in its
+original setting and compared through a shared benchmark
+or across platforms. Overall contribution refers specifically to
+the support a study provides for this synthesis. Electronic Supplements S-Protocol and S-Appraisal provide the framework’s
+methodological scope, scoring rules, and study-level records.
+Overall contribution was strong for 125 studies, adequate
+for 75, and low for 6. Across the eight dimensions, evidence
+was generally easier to interpret within its reported setting
+than to transfer to a shared benchmark or direct cross-platform
+comparison.
+We therefore used a structured narrative synthesis that
+retained each result’s native task and unit together with its
+operating conditions and validation setting. This structure
+preserved the meaning of heterogeneous results while allowing
+recurring mechanisms and design relationships to be compared
+across the corpus. The evidence was organized into 115 bodies
+across seven survey domains, keeping each conclusion tied
+to its supporting studies. Electronic Supplement S-Bodies
+provides their criteria, ratings, and memberships. With this
+evidence structure in place, the technical synthesis begins with
+the physical role of optics and the mechanism that couples
+communication and sensing.
+IV. OPTICAL PLATFORMS AND INTEGRATION
+ARCHITECTURES
+In O-ISAC, the physical role of optics determines both
+where information propagates and where the environment is
+observed. Optics may carry the user link, illuminate a target,
+distribute a wireless carrier, or provide a coherent reference,
+and each role exposes a different set of impairments. The
+integration architecture then reveals which component, signal,
+or resource is shared by communication and sensing. We
+therefore examine the evidence along the axes of physical
+platform and coupling mechanism.
+Table IV reports the mutually exclusive family counts and
+corpus shares; photonics-assisted terahertz and fiber together
+account for 125 studies (60.7% of the corpus).
+The family profiles below provide the corresponding physical paths, observables, coupling mechanisms, active constraints, transfer conditions, and evidence anchors. Each study
+belongs to one platform family, while its coupling mechanisms
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+5
+
+TABLE IV
+C ANONICAL PHYSICAL ORGANIZATION OF THE 206- STUDY CORPUS
+Platform family
+Photonics-assisted THz
+Fiber
+VLC/LiFi
+Free-space optical
+Hybrid optical
+Other optical
+
+Studies, n (%)
+69 (33.5%)
+56 (27.2%)
+38 (18.4%)
+31 (15.0%)
+9 (4.4%)
+3 (1.5%)
+
+Total
+206 (100.0%)
+Note. Each study is counted once under its dominant platform family. Media
+and integration mechanisms can overlap within the represented systems. The
+counts summarize how the reviewed evidence is distributed across the six
+platform families.
+
+may overlap. Transmitters supplied through fiber enter the terahertz family when photonic generation and conversion create
+the wireless carrier directed at the target. Fiber remains the
+organizing platform when it transports signals to downstream
+radio-frequency identification (RFID), radio, or radar sensing.
+Hybrid membership begins when interaction between physical
+segments shapes the result. This organization locates the target
+path and guides the synthesis that follows.
+A. Physical Platform Families
+1) Photonics Assisted Terahertz Systems: Photonicsassisted terahertz is the largest family, comprising 69 of
+the 206 studies (33.5%). The optical chain generates, distributes, or processes a coherent carrier before conversion
+to a wireless terahertz or millimeter-wave target path, from
+which delay, range, Doppler, angle, imaging, and channel- or
+target-response observables are obtained. Communication and
+sensing recur as hardware-, reference-, waveform-, beam-, or
+resource-coupled functions [6], [7], [40]. This upstream sharing ties both functions to the same optical conditions. Laser
+coherence and linewidth govern reference stability, while component bandwidth, conversion fidelity, and efficiency shape the
+bandwidth, phase structure, and power delivered to the antenna
+[41], [42]. At the radio interface, antenna aperture, gain, and
+alignment govern launch and collection, molecular absorption
+shapes propagation, and target scattering forms the returning
+echo in radar configurations [43], [44].
+Where the functions meet varies by architecture, with some
+systems dividing a multicarrier frame between sensing and
+communication and others placing the joint decision in a
+phased array controlled through photonics [6], [40]. Wavelength tuning and multibeam reception move coordination
+to the source or the receiving front end [45], [46]. At the
+waveform level, one multichannel design combines linear
+frequency modulation (LFM) with communication symbols
+across coherent carriers [41]. Other designs add source agility
+through frequency hopping or organize the signal over delay
+and Doppler through orthogonal multiplexing [44], [47]. Information can also close the loop, as burst SNR estimates guide
+both probabilistic shaping and ranging, while a simulated radar
+waveform carries communication data [43], [48]. Together,
+these designs show how the joint decision can move from
+
+hardware to waveform and to the information used by both
+tasks.
+The location of that decision also determines how the
+measurement is formed. A returned echo may be remodulated onto light and carried back over fiber for centralized
+processing, where photonic dechirping expresses target delay
+at a lower frequency [44], [49]. Along this path, phase noise
+associated with laser linewidth degrades the recovered signal,
+while delay mismatch between optical and electrical paths
+shifts the ranging observable [49]. Laboratory experiments reveal waveform, conversion, and beamforming behavior under
+controlled conditions [6], [41], whereas a 270 m outdoor link
+adds wireless propagation and operation of the complete chain
+[40]. Meaningful numerical transfer therefore requires aligned
+optical and wireless stages, aperture and beam conditions,
+receiver processing, and validation setting.
+2) Fiber O-ISAC: Fiber comprises 56 studies (27.2%) and
+follows two physical paths. The guided link may form the
+sensing medium, with disturbances observed through backscatter, carrier phase, modal coupling, or an inserted sensor [36],
+[50], [51], [52]. Fiber may instead transport signals to a downstream RFID, radio, or radar segment, so the target interaction
+occurs after optical distribution [53], [54], [55], [56], [57].
+The corresponding observations include distributed events,
+vibration, strain, and environmental change in the guided path,
+together with downstream tag state, range, localization, and
+imaging [36], [53], [54]. The measurement boundary therefore
+lies either within the guided path or across the complete optical
+and wireless chain.
+Coupling recurs through shared hardware, wavelengths,
+waveforms, links, or resource decisions. Integration can reuse
+the communication signal itself [50], [51], [58], [59], [60] or
+place distinct data and sensing signals on shared infrastructure
+[1], [36], [52], [61], [62]. The first form ties sensing to the
+symbols, carrier, phase, or supported modes, whereas the
+second ties both functions to the same fiber and receiver
+conditions. Guided sensing is constrained by dynamic range,
+leakage, reflection, nonlinearity, reference stability, topology,
+and traffic, whereas transported sensing additionally depends
+on conversion, timing, remote calibration, and wireless geometry. Evidence from laboratory links, live access networks, and a
+deployed submarine route shows why numerical transfer must
+match the interrogation or transport role, topology, launch
+and receiver conditions, conversion and clocking, target path,
+traffic, and validation setting [36], [53], [54], [57], [58], [59],
+[62].
+3) VLC/LiFi Systems: VLC/LiFi comprises 38 studies
+(18.4%) and places communication and sensing within the
+same illuminated scene. The grouping preserves the distinct
+link- and networking-level meanings of VLC and LiFi. Direct
+or reflected room and device paths through emitters, cameras,
+and photodiodes support position, pose, distance, imaging,
+gesture, recognition, and physiological sensing [2], [63], [64].
+Cameras and photodiodes expose different balances between
+spatial detail and reception speed, while nonnegativity, dimming, flicker, source linearity, ambient light, field of view, and
+exposure constrain what can be communicated and observed
+[63], [65], [66], [67]. Coupling recurs through hardware,
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+waveform, geometry, resource decisions, and the application
+loop. It may arise through a shared observation [64], [68],
+through geometry and resource decisions [69], [70], [71], [72],
+[73], or through integrated emitters and detectors [35], [74],
+[75].
+Illumination is the common comparison boundary across
+these designs. Geometry and multipath shape localization,
+reflected observations support gesture and recognition, and
+learned models extend the same optical field to health sensing
+tasks [63], [67], [71], [72], [76], [77]. Analytical and simulated studies isolate geometry and resource choices, whereas
+prototypes and field experiments add lighting, receiver, and
+control conditions [63], [68], [69], [71], [73], [75]. Numerical
+transfer requires matched task definitions, layout, orientation,
+illumination, detector, processing, and validation conditions.
+4) Free Space Optical Systems: Free-space optical systems
+comprise 31 studies (15.0%) and use a directional link, optionally combined with target illumination and return, over direct
+or reflected aperture and beam paths. These paths support
+ranging, localization, imaging, tracking, and atmospheric or
+channel observation [78], [79], [80]. Geometry is therefore
+part of both the link and the measurement. Coupling recurs
+through the link, waveform, aperture or beam, and spatial
+or temporal resources, while pointing, divergence, aperture,
+reflectivity, loss, turbulence, and motion constrain the resulting evidence. Direct, reflected, scanned, and steered paths
+illustrate these relations [78], [81], [82], [83]. Retroreflection
+and multicarrier reception connect returned power to range
+and position [79], [80]. Structured waveforms and steering
+apertures place coupling in the signal or beam [84], [85], [86],
+[87], while atmospheric estimates can guide beam shaping or
+link selection [3], [88].
+Across these forms, beam geometry determines both spatial
+selectivity and the power collected at the receiver. Range,
+angle, and image features therefore remain tied to calibration,
+aperture, pointing, and motion [78], [79], [80], [81], [82]. Controlled links reveal waveform and estimator behavior, whereas
+operational ranging adds atmospheric variation and continuous field observations [3], [80]. Numerical transfer requires
+matched geometry, calibration, target properties, weather, motion, and validation conditions. Hybrid systems extend that
+comparison across interfaces between physical segments.
+5) Hybrid Optical Systems: Hybrid optical systems comprise nine studies (4.4%) in which consequential interaction
+occurs among optical, fiber, free-space, or radio segments and
+the perturbation and observation may straddle a conversion
+boundary. Their observables include range, vibration, and
+target or network state within individual segments, while
+coupling arises through a central reference and through links,
+resources, control, or applications shared across segments.
+Conversion loss, segment power, synchronization, calibration,
+and timing are therefore active constraints [34], [89], [90]. Numerical transfer must trace every segment, conversion, clock,
+and measurement plane and validate each communication and
+sensing function.
+Unlike fiber used only for downstream transport, hybrid
+membership requires conversion or cross-segment feedback to
+shape the result. This occurs when fiber-to-wireless interaction
+
+6
+
+is consequential [34], [89], when a shared photonic source
+spans fiber, free space, and millimeter-wave stages [91], or
+when sensing in one segment guides service in another [90],
+[92]. Other designs establish a common signal origin through
+shared time modes or a frequency-agile photonic waveform
+[93], [94].
+6) Other Optical Systems: The three other optical studies
+(1.5%) use distinct optical-control or coherent-carrier mechanisms: a microcomb-generated microwave field, a solar-blind
+ultraviolet path, and a quantum-optical path. Their observables are, respectively, a field pattern, particulate or smoke
+response, and phase [95], [96], [97]. Coupling is specific to
+specialized hardware, reference, and application choices, and
+each case is bounded by its own propagation, target, receiver,
+and measurement models. Numerical results must therefore
+be interpreted within the native mechanism and measurement
+model of each system. Together, the hybrid and other optical
+cases complete the physical map before the analysis turns to
+coupling mechanisms shared across families.
+B. Integration Architectures and Resource Coupling
+Across these physical families, integration architecture locates where communication and sensing meet along the target
+path. The coupling may enter through shared hardware, a common carrier or waveform, coordinated resources, a propagation
+link, or a service decision. Several mechanisms can coexist in
+one system. Each label identifies one coupling location while
+preserving the rest of the chain for separate interpretation.
+Coverage is therefore multilabel. Shared hardware appeared
+in 117 studies and shared optical carriers in 49. Shared waveforms appeared in 113 studies, coordinated resource allocation
+in 118, and shared link or channel use in 87. Joint design or
+optimization appeared in 72 studies, and application coupling
+in 46. The normalized map covers all 206 studies and retains
+three boundary cases as mixed.
+1) Shared Hardware, Carrier, and Link: Hardware, carrier,
+and link sharing describe different physical relations. Reusing
+a component makes its bandwidth, coherence, dynamic range,
+or alignment conditions relevant to both functions. A common
+optical carrier adds a phase or wavelength relation, while a
+common link adds shared propagation and calibration conditions. Together, these relations show which design choice is
+common and which constraint follows it.
+The physical path gives reuse its engineering meaning. In
+fiber, traffic and sensing share the guided structure, with a
+resonance shift, phase, or backscatter conveying the sensed
+change [1], [98]. A retroreflective free space path supports
+information delivery together with ranging or localization
+[78]. Arrays controlled through photonics instead share optical
+generation and beam control while the target path remains
+wireless [6]. Comparison therefore follows the component
+role, carrier relation, propagation path, and calibration.
+2) Shared Waveforms: Waveform sharing begins when one
+signal structure contributes to both decoding and sensing. The
+shared element may be the complete waveform or a selected
+pilot, chirp, code, polarization state, or spatial pattern. This
+common design links payload efficiency, sensing observability,
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+and receiver processing. Structural sharing records that relationship. Concurrent performance adds the requirement that
+both outcomes be observed at a matched operating point, a
+distinction carried into Section V.
+The evidence illustrates several forms. Pilots inserted for
+channel estimation can also provide a sensing reference [99].
+One photonic terahertz prototype generates a waveform whose
+frequency steps provide the radar dimension and whose amplitude carries data. Its experimental evidence is strongest for
+waveform generation and communication response [100]. A
+visible light design combines temporal data with spatially
+structured illumination and uses localization to adapt beamforming [2]. The shared structure is similar, but its physical
+and receiver implementation remains platform specific.
+3) Resource Allocation and Joint Design: Resource coupling coordinates temporal, spectral, power, spatial, or processing degrees of freedom. An allocation can change payload
+opportunity, link margin, sensing observability, geometry, or
+latency. Joint design connects the two functions more directly
+by choosing a variable, objective, or constraint in view of
+both outcomes. The resource, allocation rule, and operating
+conditions therefore define the resulting evidence.
+A visible light V2X camera model makes exposure time
+a shared decision variable. Its coexistence result is analytical
+and numerical, while laboratory communication and sensing
+gains were obtained in separate configurations [65]. In one
+reported terahertz configuration, a rapidly swept photonic
+source and common waveform plan support simultaneous
+data transmission and ranging [7]. These cases distinguish a
+modeled optimum from a measured concurrent configuration.
+Section V therefore reads each relationship within its operating
+region and evidence form.
+4) Coupling at the Application Level and Boundary Cases:
+Application coupling arises when sensing informs beam or link
+selection, trajectory planning, blockage response, or network
+control. The shared element is then the system action, even
+when the signal paths remain separate. A near infrared wearable combines communication and physiological sensing on
+a common material platform while retaining separate detector
+roles [35]. A hybrid last mile design places free space optical
+delivery and fiber Bragg grating monitoring within one system
+model [90]. Their coordination lies in hardware and service
+context.
+Three studies cross temporal or physical segment boundaries. One performs localization and imaging before data
+delivery on a shared optical source and path with separate
+receivers [81]. Two use sensed free space optical channel state
+to adapt trajectory and resource allocation or cell placement
+and user association across optical backhaul and radio access
+[101], [102]. The mixed label preserves this path and keeps
+each result tied to the segment, function, and operating stage
+that produces it.
+C. Interpretation Across Platforms
+Read together, the platform and architecture views form one
+mechanism map. The platform establishes the physical transfer
+conditions, while the architecture identifies the shared choice.
+
+7
+
+In fiber, waveform sharing inherits guided propagation and
+reflections, together with launch and receiver conditions [58],
+[59]. In free space optical systems, the same mechanism is
+shaped by aperture, geometry, and alignment, whereas terahertz systems assisted by photonics also introduce conversion
+from optics to radio [6], [78]. Application coupling can instead
+coordinate separate optical and radio paths through a common
+service decision [101].
+Across these mechanisms, sharing concentrates design
+around a common component, reference, or resource. That
+choice can couple the functions through power balance and interference, while synchronization and receiver dynamic range
+constrain their joint operation [1], [34]. Section V therefore
+examines which communication and sensing outcomes change
+together at a matched operating point and which conditions
+explain that relationship.
+V. PERFORMANCE METRICS AND JOINT DESIGN
+TRADEOFFS
+After locating a shared choice, the analysis turns to the
+reported communication and sensing outcomes. A reported
+value gains engineering meaning from its task, its observation
+point in the signal chain, and its operating and validation
+conditions. The comparison profile connects these elements
+to the performance evidence.
+The primary synthesis contains 4,779 metric records. Each
+record is an extraction unit that retains the reported quantity
+together with the definition and source conditions available for
+it. The denominator therefore represents reported quantities in
+their original contexts. Data rate, bit error rate (BER), and
+range resolution have the widest study coverage, appearing
+in 85, 60, and 50 studies, respectively. Since one study may
+report several families, these totals provide overlapping views
+of the evidence.
+Beyond these familiar measures, the evidence extends from
+link and waveform behavior to outcomes observed at the
+device, estimator, application, and implementation levels. This
+breadth makes semantic alignment the organizing principle for
+the analysis that follows.
+A. Metric Specific Application of the Comparison Profile
+Applying the comparison profile defined in Section II, each
+metric row was coded by source definition, task, measurement plane, operating point, validation method, and value
+provenance. Communication and sensing results form a joint
+operating point when the source links them to the same
+condition set. Table V summarizes domain coverage and the
+analytical role assigned to each record.
+The domain distribution shows where metric evidence is
+concentrated, while the analytical role determines how each
+record enters the survey. The following subsections explain
+how task, measurement plane, and operating conditions shape
+communication, sensing, joint, and implementation metrics.
+B. Metrics Across Functions
+1) Communication Metrics: A communication rate gains
+meaning from what the source counts. Symbol rate tracks signaling pace, while data rate reflects the payload and overhead
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+8
+
+TABLE V
+M ETRIC EVIDENCE PROFILE FOR 4,779 PRIMARY RECORDS
+Metric domains
+Domain
+
+Records, n (%) Studies, n (%)
+
+Sensing
+Communication
+Joint
+Implementation
+Smaller normalized domains
+
+1,816 (38.0%)
+1,328 (27.8%)
+870 (18.2%)
+476 (10.0%)
+289 (6.0%)
+
+Analytical roles
+Role
+
+203 (98.5%)
+194 (94.2%)
+158 (76.7%)
+64 (31.1%)
+33 (16.0%)
+
+Records, n Use in the survey
+(%)
+
+Bounded relation
+
+118 (2.5%) Conditional comparison across
+studies
+Native context
+4,661 Mechanism, feasibility, and
+(97.5%) qualitative synthesis
+Note. Domain rows and analytical roles each partition the 4,779 primary
+records, while study counts overlap. The governed ledger contains 4,861
+rows, including 31 for contextual interpretation and 51 under conflict governance. Comparison follows the reported definition, task, measurement plane,
+conditions, and validation. Electronic Supplement S-Evidence provides the
+full records and provenance, including quantities preserved under the residual
+“other” code.
+
+included in that count. Throughput describes delivered service,
+capacity provides a model bound, and spectral efficiency
+relates useful data to its stated denominator. In a photonics
+assisted terahertz prototype, net rates follow communication
+subcarrier allocation, payload occupancy, and coding overhead [40]. An embedded pilot orthogonal frequency division
+multiplexing (OFDM) simulation defines spectral efficiency as
+the data subcarrier fraction and reports cyclic prefix overhead
+separately [99].
+Reliability shifts attention to the event and its location in
+the signal chain. BER measured before and after forward error
+correction describes two stages of the link, while packet loss
+and outage describe broader delivery boundaries. A long span
+fiber experiment reports receiver OSNR and BER before correction during concurrent distributed sensing [103]. A robotics
+study reports packet loss over distance and view angle, display
+delay over queue size, and formation control under dynamic
+motion as separate results [63]. The reported reliability value
+is therefore tied to its event, observation point, time scale, and
+system boundary.
+The observation point also determines how signal quality
+and power are interpreted. OSNR relates signal power to noise
+in a stated optical reference bandwidth, while electrical SNR
+follows photodetection and digital SNR follows equalization.
+Launch and received power likewise refer to the transmitter
+and receiver ends of the link. A fiber polarization sensing
+experiment traces recovered vibration SNR across an OSNR
+sweep, connecting the sensing response to a stated optical
+condition [32].
+Distance and latency complete the profile by locating the
+result in space and time. Fiber span and wireless separation
+describe link geometry, while target range and coverage radius
+describe the observed or served region. Latency may include
+propagation and buffering, signal acquisition and processing,
+or the full application loop. Stated endpoints, included stages,
+
+and operating conditions define the scope of each value. The
+complete profile connects each communication metric to the
+system behavior it represents.
+2) Sensing Metrics: Sensing metrics first take meaning
+from the task and quantity they represent. Range and position
+estimates, motion measurements, images, and class decisions
+refer to distinct observations and references. Resolution describes separability along a stated dimension, while estimation
+error relates an estimate to a reference. Repeatability captures
+variation across trials, and a model bound supplies a conditional benchmark. These distinctions establish the comparison
+basis.
+Representative studies show how this contract works. A
+fiber reflectometry system reports breakpoint localization error
+and range resolution separately for laboratory and simulated
+conditions [37]. A visible light localization experiment distinguishes lateral estimation error from the smallest demonstrated
+displacement and summarizes signed displacement with means
+and standard deviations across repeated trials [2]. An optical
+phased array simulation relates imaging root mean square
+error to electrical SNR under a defined scene, waveform, and
+beamforming constraint [33]. Each result retains its summary,
+geometry, and validation setting.
+Detection and classification add dataset and decision context. Their metrics take meaning from class balance, decision
+thresholds, background conditions, and the relation between
+training and test data. CORE-Lens reports recognition accuracy and optical camera communication BER across stated
+class, data rate, and background settings, with runtime evaluated separately [104]. VehicleTalk evaluates link performance,
+distance estimation error, and vehicle status recognition under
+separate prototype conditions [64]. Their application meaning
+follows from the attached classes, geometries, and test protocols.
+Physical quantity sensing follows the same logic by linking
+each measurand to a reference and calibration. Spatial support
+and acquisition time locate the observation, while the aggregation rule shapes its summary. The resulting profile connects the
+task, reference, geometry, processing, and validation setting to
+the reported sensing outcome. Together, these elements define
+the conditions for comparison.
+3) Joint and Implementation Metrics: Joint metrics connect
+communication and sensing through a shared operating point
+or resource rule. A matched tuple uses the same conditions
+for both functions. A shared resource can also link values that
+retain their own reported conditions. In an embedded pilot
+OFDM simulation, BER and mean absolute pilot error are
+reported at the same SNR with eight pilots, while spectral efficiency follows the corresponding data subcarrier fraction [99].
+The pilot error measures deviation of known pilot symbols in
+the simulated channel. Together, the three values show how
+pilot allocation connects communication reliability, resource
+efficiency, and the reported sensing measure.
+Optimization creates another form of joint evidence by
+selecting an operating point through shared design variables.
+In a simulated optical phased array system, precoding matrices
+and photodiode orientations are selected together. The design
+maximizes a sensing contrast metric under a communication
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+quality threshold and emitter power constraints [33]. Geometry, constraint thresholds, and metric definitions define the
+scope of the solution.
+Implementation metrics place these operating points within
+the platform and application chain. Receiver bandwidth, converter rate, memory, acquisition time, and latency show where
+processing burdens arise. An outdoor photonics assisted terahertz prototype evaluates receiver pipeline latency in hardware analysis and communication and ranging performance
+in a field experiment [40]. A smartphone camera prototype
+evaluates recognition and communication in the laboratory
+and benchmarks module latency, memory, and complete cycle
+timing on the device [104]. Together, these measures connect
+joint performance to the processing chain and locate the effects
+of shared design choices in system behavior.
+C. How Communication and Sensing Performance Interact
+Communication and sensing often share bandwidth, power,
+waveform components, hardware, and processing. A design
+change in any of these elements can move both functions to
+a new operating point. More pilot symbols may strengthen
+a sensing reference while leaving fewer resources for data.
+Wider bandwidth may support both a higher data rate and finer
+range resolution until a receiver or platform limit becomes
+active. The evidence is organized by the shared choice that
+produces each pattern.
+The synthesis covers 402 relationships from 168 studies.
+Each relationship is read within its waveform, geometry, target,
+observation point, and validation setting. These details matter
+because 371 relationships depend on the reported operating
+conditions. The following discussion explains what is shared,
+how both functions respond, and when the pattern can guide
+another design.
+1) Bandwidth, Spectrum, and Resource Allocation: Bandwidth links the two functions when both draw on the same
+signal space. That space may be divided across subcarriers,
+wavelengths, guard intervals, observation time, or the usable
+response of a device. Embedded pilots show the basic pattern.
+Increasing pilot support improves the reported pilot deviation
+proxy while changing BER and the data carrying fraction [99].
+Protection intervals and chirp sweeps create related exchanges
+by improving sensing isolation or pulse compression within
+device bandwidth and subcarrier limits [34], [61]. In each case,
+the effect follows the resource being shared and the limit that
+becomes active.
+Waveform structure determines how the shared signal space
+is used, with format and operating mode setting time and
+spectral sharing [7], [78], [81]. Within that structure, digital designs assign subbands, chirp parameters, power, and weighted
+resources [105], [106], [107], [108], [109]. Pilot strength,
+placement, and synchronization fields define reference support
+and communication margin, while receiver partitioning and
+ranging sequence redundancy set the usable signal region [40],
+[110], [111], [112], [113], [114]. A tunable laser study supplies
+qualitative generation context for the same design space [115].
+Together, the allocation rule and receiver condition define the
+operating point reported in each design.
+
+9
+
+Resource sharing also appears in time. Observation duration,
+camera exposure, and task scheduling connect sensing quality
+and cadence with communication goodput or execution time
+[65], [104], [116]. Time division, chirp repetition, coding
+traffic, security control, and embedded pulse count place both
+functions within a shared frame [64], [68], [117], [118], [119].
+Other designs reserve spectral, temporal, spatial, polarization,
+or phase structure to manage interference, coverage, and
+receiver complexity [5], [46], [56], [120], [121], [122]. The
+observed outcome therefore depends on the frame period,
+exposure response, isolation rule, and remaining occupancy.
+When both functions occupy the same waveform, bandwidth
+affects pulse compression, estimation precision, sidelobes,
+and radar image quality together with communication support [123], [124], [125], [126], [127]. Stimulated Brillouin
+scattering, frequency partitioning, and constellation choice
+reveal device and spectral limits [41], [128], [129]. Doppler
+refinement depends on phase noise and computation [130].
+A communication and sensing bandwidth ratio gains meaning
+from total bandwidth, target range, and receiver architecture
+[131]. These results show that signal bandwidth and receiver
+processing jointly define the operating point.
+Reuse extends this mechanism by carrying sensing content
+in a shared waveform or an existing transport path [42],
+[132], [133]. Phase coding, carrier grouping, radio frequency
+bandwidth, and space and wavelength allocation then set the
+occupancy and isolation available to each function [67], [134],
+[135], [136]. The result depends on how the receiver separates
+the shared content and recovers the underlying sequence.
+Hardware and processing resources complete the picture.
+Reference recovery and coding consume timing or redundancy
+[80], [137], [138], while emitter bandwidth, source coherence,
+optical budget, and distributed learning traffic set hardware and
+network capacity [139], [140], [141], [142]. Receiver count
+introduces alignment and crosstalk constraints. In the reported
+prototype, four surrounding receivers were designed and one
+receiver was operated [143]. Phase control and observation
+settings affect the recoverable path [3], [144], while modulation, sideband, and time bandwidth controls affect signal
+recovery [145], [146], [147]. The same nominal allocation
+can therefore produce a different result when the platform or
+receiver changes.
+2) Power, Energy, and Dynamic Range: Power affects both
+functions through the finite operating range of the transmitter,
+channel, and receiver. Launch and received power, carrier and
+probe ratios, device bias, modulation swing, and converter
+headroom refer to different points in that chain. As power
+changes, performance follows the component that first approaches a noise, nonlinear, or saturation limit. The reference
+plane and limiting component are therefore part of the result.
+A fiber probe sweep shows this response directly. Raising
+the sensing to telecom power ratio improves sensing SNR and
+raises BER, with the strongest link penalty near the probe
+[148]. In a visible light prototype, one optical branch supports
+communication and ranging while another supports energy
+harvesting. Their allocation governs rate, ranging quality, and
+harvested power under separate receiver and endpoint bias
+conditions [149]. Similar ratios connect BER or OSNR margin
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+with phase, polarization, and vibration observability in fiber
+[1], [32], [150], [151], [152]. In photonic wireless links, carrier
+and waveform ratios connect phase recovery, BER or EVM,
+and radar or ranging quality within the available receiver
+headroom [49], [153], [154], [155]. Comparisons are most
+informative when they use the same power reference and
+receiver margin.
+Absolute power sweeps reveal where the operating range
+ends. In fiber, launch and received power expose nonlinear
+interaction and sensing reach [103], [156], [157]. Photonic
+front ends examine operating limits associated with input
+power, modulator drive, converter linearity, and amplifier gain
+[54], [158], [159], [160]. Architecture then decides where
+the available power is used. Polarization paths, receiver taps,
+and branches assigned to individual functions distribute power
+before estimation [161], [162], [163]. Propagation, insertion,
+and alignment losses determine how much reaches those
+branches [62], [82], [98]. The remaining margin sets the
+feasible operation of optical phased arrays, communication
+users, sensing estimators, and illumination services [33], [83],
+[164], [165].
+Power allocation can also be written into the waveform.
+Service branches, reference copies, and relative waveform
+amplitudes connect radar masking, ranging, data delivery, and
+energy harvesting through a shared allocation [166], [167],
+[168], [169]. Sequence transitions, coding choices, and chaotic
+source parameters change how communication and sensing information is recovered [170], [171], [172]. Frequency
+separation, probabilistic shaping, sensing slots, and carrier
+reuse move energy and occupancy across signal dimensions
+[173], [174], [175], [176]. The waveform definition, hardware
+margin, and performance threshold determine the resulting
+operating point. These same factors also govern reliability and
+sensing quality.
+3) Communication Reliability and Sensing Quality: Communication reliability and sensing quality become linked after
+the waveform and receiver are selected. Communication evidence uses BER, EVM, Q factor, and required OSNR, while
+sensing evidence uses SNR, estimation error, and detection.
+These measures can move together as leakage, nonlinear mixing, phase noise, cancellation quality, or receiver competition
+changes. Some controls reduce an interference path, while
+others redistribute energy within the shared signal. This distinction explains why similar metric pairs can follow different
+trends.
+Two studies show why interference control and power
+redistribution require separate interpretation. In a fiber link
+combining communication with coherent reflectometry, sequence shaping reduces nonlinear interference induced by signal transitions. This lowers the communication penalty while
+retaining phase sensing at the reported condition [170]. In a
+millimeter wave waveform, DC offset strengthens the sensing
+component and raises radar SIR together with communication
+EVM [177]. The first mechanism changes how interference
+is produced, while the second redistributes energy within the
+signal. Their trends therefore arise from different controls.
+Architecture then determines where these effects enter the
+chain. Shared path tests evaluate communication reliability be-
+
+10
+
+side sensing outcomes at stated operating points and validation
+settings [37], [178], [179], [180]. Dedicated monitoring wavelengths and reused channel estimates locate sensing support
+in optical filtering or receiver processing, with communication
+performance described qualitatively [36], [181]. The path and
+receiver therefore define the scope of each reliability result.
+Once the architecture is fixed, waveform and inference
+choices determine the reported communication and sensing
+metrics. Carrier choice, DC offset, and phase modulation affect
+recovery at stated settings [100], [182], [183]. Coding, guard
+structure, and waveform composition affect BER, correlation
+quality, and ranging error [184], [185], [186]. At the inference
+stage, loss weighting connects communication reliability with
+distance and velocity errors [187], while Kalman tuning acts
+within the sensing branch [188]. Shared sequence structure
+and finite block phase processing place radar detection and
+phase estimation under their sample and noise models [55],
+[97]. Phase index and pulse position timing likewise connect
+communication error with radar SNR or time of arrival precision [189], [190]. The sample, noise, timing, and calibration
+definitions give each result its scope.
+At the system level, access placement guided by channel
+sensing connects link capacity with weather and demand [102].
+The aggregation of sensing traffic connects capacity with target
+count and resolution requirements [57]. Simultaneous use of
+time and frequency creates direct waveform coupling [191],
+while shared hardware with waveform switching creates a
+different path [192]. Waveform robustness under fading and
+learned phase sensing place the limiting response in the channel or processing stage [193], [194]. These studies connect
+reliability and sensing quality to the complete waveform,
+receiver, channel, and processing chain. The same chain also
+governs rate, resolution, accuracy, and range.
+4) Rate, Resolution, Accuracy, and Range: The link between communication rate and sensing begins with the design
+variable that changes the rate. Bandwidth and symbol timing
+can alter resolution directly, while frame structure, geometry,
+and processing change the resources available to the estimator.
+The controlling variable and its operating conditions explain
+why a similar rate change can produce different sensing
+outcomes.
+Waveform parameters provide the clearest starting point.
+In optoelectronic oscillator and remote ranging designs, code
+length and period connect bit rate or capacity with distance
+resolution and unambiguous range [195], [196]. Power division changes OFDM reliability, reach, and ranging error in
+a retroreflective prototype, while image decomposition links
+stripe recovery with scene reconstruction and recognition
+[197], [198]. LFM slope indexing and time division designs in
+the W band place their controlling choices in slope selection
+and frame duration [199], [200]. The shared parameter sets
+the direction of the relationship in each case.
+Frame structure creates a second path by deciding when and
+where each function receives signal support. Dynamic allocation and intensity scaling distribute support across payload,
+sensing patterns, and coverage [2], [201]. OTFS parameterization and complete grid OFDM reuse place both functions
+in a common time frequency structure [89], [202]. Separate
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+measurement paths and mode switching show how a similar
+waveform can support different forms of integration [203],
+[204]. The frame and measurement schedule are therefore part
+of the result.
+Geometry sets the region in which those resources remain
+useful. Steering and access point placement define communication and localization coverage, while surface allocation
+and blockage aware access select the paths available to each
+function [6], [92], [205], [206]. Source directivity and tag
+delay spacing further affect coverage, range separation, and
+concurrent return recovery [207], [208]. The reported layout
+is therefore part of the observed trend.
+Signal construction can tie payload more closely to sensing
+observability. Chip length changes occupied symbol rate together with ranging precision and security tolerance, while embedded communication data affects distributed sensing fidelity
+[58], [209]. ASK rate and guard duration connect communication timing with range resolution and ambiguity [210], [211].
+Waveform switching provides a related parameter coupling,
+with rate and resolution evaluated through separate parameter
+changes [212]. In the terahertz system, the available device
+band supports QPSK communication and the LFM bandwidth
+used to achieve range resolution [213]. The waveform and
+hardware band together define the feasible region.
+Optimization studies express these mechanisms as operating
+regions. Energy and asymptotic block length define communication and detection rate pairs, while NOMA power allocation
+connects aggregate rate with ranging error [66], [214]. Other
+studies combine capacity with ranging information or compare separate and joint operating configurations [91], [215].
+Probabilistic shaping and embedded data create further regions
+through information rate, sidelobe level, and estimation error
+[216], [217]. The selected operating point follows the stated
+objective, constraints, and normalization.
+Processing adds another layer because the estimator decides
+how much of the available signal becomes useful sensing information. Sampling period, spectral weighting, zero padding,
+and transform length exchange response time and computation
+for resolution under stated acquisition settings [218], [219],
+[220], [221]. Rate selection can tune the sensitivity of a density
+estimate derived from BER [222]. In a separate application,
+classifier size changes recognition accuracy and edge processing burden [77]. These studies distinguish waveform rate from
+the update and computation needed to interpret it.
+At network scale, the relationship moves from a single
+waveform to the traffic and spectrum available across the
+system. Transport capacity controls how many sensing streams
+meet an echo quality threshold [223]. Separated bands, idle
+time frequency cells, cyclic prefix correlation, and shared
+optical waveforms connect occupied spectrum with resolution
+or estimation support [224], [225], [226], [227]. A visible
+light study carries this logic into a proposed capacity and
+localization problem [228]. The evidence thus distinguishes
+observed operation from a proposed design space.
+5) Waveform, Hardware, and Complexity: Implementation
+complexity depends on where a design places its burden.
+Source coherence, receiver structure, calibration, synchronization, computation, memory, and latency represent different
+
+11
+
+costs. Reusing a component may move work into processing
+or control, so implementation complexity must be assessed
+across the complete chain.
+Two photonic systems show how this transfer occurs. A
+terahertz design uses coherent comb generation to stabilize
+the QPSK and LFM paths and concentrates complexity in the
+optical source chain [213]. A long span fiber experiment uses
+lower cost lasers with broad linewidths and recovers coherent
+data and vibration through residual carrier processing [229].
+Each architecture preserves performance through a different
+balance of source hardware and digital processing.
+6) Other Implementation Relationships: Other implementation relationships show how a shared choice appears at
+different layers of the system. Its effect may emerge as
+protection, joint gain, device sensitivity, estimator burden,
+control freshness, or allocation latency. Each case carries its
+own conditions and prepares the comparison limits that follow.
+Security and synergy illustrate two possible directions.
+Phase keyed recovery uses ranging tolerance to create a physically bounded decryption region [209]. With spatial alignment,
+communication gain and target profile estimation can benefit
+from the same optical design [83]. Their geometry, objective,
+and validation setting explain why one relationship expresses
+protection and the other expresses joint gain.
+Other cases locate the relationship within the implementation chain. Electrode transparency connects device architecture
+with photodetector sensitivity, while passive return loss and
+repeater structure affect access for fault localization [35],
+[230]. Capacity and distance estimation define a model operating region [231]. Queue freshness enters the robotic control
+loop, and local spectral scanning connects computation with
+range resolution [63], [232]. Weighted priorities guide resource
+allocation, while orthogonal task channels shape application
+latency [233], [234]. Read together, these cases locate the
+relationship at the device, estimator, control, or allocation
+layer and provide the conditions needed for comparison across
+studies.
+D. Conditions for Comparison Across Studies
+Comparison across studies begins with alignment. The
+bounded relations summarized in Table V connect studies
+when their task, metric definition, measurement plane, operating point, and validation setting can be matched through
+the framework in Section II. Other metric evidence explains
+mechanisms, feasibility, and behavior within individual systems. This separation keeps each reported value attached to
+its original engineering meaning.
+Tradeoff evidence follows the same principle. Because
+objectives and constraints vary across systems, the synthesis compares the shared mechanism and the conditions that
+produce the observed response. This approach shows why a
+relationship recurs and when it can guide another design. Its
+engineering value also depends on the validation setting and
+on how completely the configuration can be reconstructed.
+Section VI examines these requirements through validation
+settings, field evidence across both functional domains, and
+reconstructability.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+VI. VALIDATION EVIDENCE,
+RECONSTRUCTABILITY, AND BENCHMARK
+READINESS
+Section V showed that a reported relationship becomes
+useful for comparison when its task, measurement plane, operating point, and validation setting align. Validation now asks
+how far that operating point was tested. Reconstructability asks
+how completely another group can recover the configuration
+and evaluation path that produced it. This section examines
+the settings and methods used across the corpus, field evidence
+reported for both functional domains, and the artifact support
+available for reconstruction and benchmark comparison.
+A. Validation Settings and Methods
+The corpus has a broad experimental base. A total of 156
+studies reached at least a laboratory experiment or proof of
+concept. Within the exclusive maximum setting distribution,
+basic simulation or numerical evidence was the highest setting
+in 32 studies and enhanced simulation or evaluation supported
+by a dataset was highest in 18. Laboratory experiments or
+proofs of concept accounted for 78 studies, controlled prototypes for 66, and field trials or deployments for 12. Each study
+enters one category, so the distribution covers all 206 studies.
+These settings expose different parts of an O-ISAC system.
+Simulation studies isolate waveform and device sensitivities
+under controlled conditions [99], [202]. Laboratory and prototype systems reveal conversion, synchronization, and receiver
+effects in physical implementations [35], [89], [123]. Field
+studies extend the evidence to access networks, deployed fiber,
+submarine monitoring, and outdoor wireless links [36], [40],
+[53], [54], [136].
+The highest setting describes the reach of the evidence.
+Its scientific meaning still depends on the claim and the test
+design. A controlled prototype may explore a wider parameter
+range than a field trial, while a laboratory experiment may
+reveal communication and sensing interactions more directly
+than a field dataset collected for one outcome. The setting
+therefore gains meaning when it is read together with the tested
+conditions, available controls, and functional coverage.
+The overlapping method map provides a complementary
+view. Analytical treatment appeared in 131 studies, numerical
+analysis in 14, simulation in 104, and evaluation with a
+dataset in 13. Laboratory experiments appeared in 148 studies,
+while 83 used a prototype or testbed and 12 reported a
+field experiment. Mixed validation appeared in 33 studies.
+These counts permit more than one method per study because
+analysis, simulation, measurement, and prototype work can
+contribute to the same evidence chain.
+The two maps answer different questions. Laboratory work
+contributed to 148 studies, while laboratory experiment or
+proof of concept was the strongest setting for 78. Prototype
+or testbed work contributed to 83 studies, while a controlled
+prototype was the strongest setting for 66.
+Each method serves a different analytical purpose. Analysis
+clarifies assumptions, simulation supports controlled parameter
+studies, and laboratory work reveals the behavior of physical
+components. Prototypes bring subsystems together, while field
+
+12
+
+studies introduce at least one operational boundary. Their
+combined value grows when the configuration and conditions
+remain traceable as the evidence moves from one method to
+another.
+Section IV shows that realistic validation conditions change
+with the platform. Fiber studies depend on topology, traffic,
+launch and receiver conditions, and the disturbance context.
+VLC/LiFi studies add layout, orientation, illumination, detector, and processing conditions. Free space optical studies
+require geometry, pointing, target properties, weather, and
+motion. Terahertz systems enabled by photonics must also
+trace optical conversion, antenna alignment, and wireless
+propagation. A useful validation record therefore identifies
+the environment, measurement plane, target or disturbance,
+reference method, and exercised function.
+B. Field Evidence Across Communication and Sensing
+The highest validation setting and the coverage of both
+functions answer related questions. For 12 studies, a field
+trial or deployment was the strongest reported setting. Six
+of them also received TQAF validation score 3 because their
+records report field or deployment outcomes in each functional
+domain. The assessment is applied to each study. Electronic
+Supplement S-Appraisal reports the corresponding scores, and
+Electronic Supplement S7 identifies the 12 studies and the
+subset of six.
+The six studies span terahertz and cellular links enabled
+by photonics, fiber to the room access integrated with radio
+frequency identification, space laser ranging and communication, multicore fiber deployed in the field, and submarine cable
+monitoring [36], [40], [53], [54], [80], [136]. Their diversity
+shows that field evidence for both functional domains appears
+across several platforms. Platform comparisons still follow the
+native validation conditions described in Section IV.
+Electronic Supplement S7 records relationship timing and
+separate source locators for the two functions as unresolved.
+The six cases therefore establish field or deployment outcomes
+in both functional domains at the study level. A stronger
+claim of concurrent joint operation requires both outcomes
+to be traceable to the same configuration, time interval, and
+condition set.
+The distinction becomes important when evidence is produced at different stages of a system. One fiber study combines
+field data with offline sensing classification and illustrates how
+field collection and functional execution can occupy different
+parts of the evaluation path [133]. Segmented architectures add
+interfaces, timing, calibration, and conversion conditions to
+that path. When these elements connect both outcomes to one
+operating point, field coverage can support a stronger claim of
+joint operation.
+C. Artifact Access and Reconstructability
+Validation describes what a study tested. Reconstructability
+describes how completely another group can recover the
+operating point and the path from input to reported result.
+Access to data, code, or models supports this task, while
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+13
+
+TABLE VI
+R EPORTED ACCESS TO DATA AND TO CODE OR MODELS IN THE 206
+STUDIES
+
+Reported access
+
+Studies, n (%)
+
+Data
+Unavailable or not reported
+145 (70.4)
+Available on request
+41 (19.9)
+Open
+13 (6.3)
+Not applicable
+7 (3.4)
+Code or model
+Unavailable or not reported
+197 (95.6)
+Available on request
+7 (3.4)
+Partial components
+1 (0.5)
+Not applicable
+1 (0.5)
+Note. The first row in each group combines records coded as unavailable
+with records that did not report an access route at extraction.
+
+physical experiments also depend on the system configuration,
+measurement conditions, processing steps, and provenance.
+Table VI summarizes the access routes reported for data and
+for code or models in all 206 studies.
+The reported routes support different forms of reconstruction. Open data appear across simulation, laboratory, prototype, computer vision, and field data settings [104], [123],
+[133], [202], [235]. They support reanalysis of the released
+data, while complete system reconstruction also requires configuration and execution details. Software preserves the transformation from inputs to reported outputs, and one computer
+vision study reported partial code or model components [104].
+The reconstruction framework developed in this review adds
+the information needed to recreate a physical experiment. It
+covers the system and hardware, the scene and calibration,
+the waveform and processing, the metrics and data, and the
+versioned release. These requirements extend the comparison
+profile in Section II. Electronic Supplements S-Data Dictionary and S-Evidence provide the field definitions and record
+provenance used in the review.
+The TQAF reproducibility assessment reads artifact access
+together with parameter reporting. It places 4 studies in the
+low category, 199 in the adequate category, and 3 in the
+strong category. Electronic Supplement S-Appraisal provides
+the study level scores. Thirteen studies report open data,
+while three reach strong reproducibility. The difference reflects
+the additional reconstruction information captured by the appraisal.
+D. Benchmark Readiness
+A reconstructable result becomes a reusable benchmark
+when another group can apply the same task, condition set,
+baseline, and metric definition. The TQAF benchmark assessment combines these requirements with artifact access,
+validation, reproducibility, and comparison admissibility. It
+places 48 studies in the low category and 158 in the adequate
+category. The strong category contains zero studies under the
+review criteria.
+Under the review criteria, strong readiness depends on
+bringing an external or common baseline, an open artifact,
+admissible outcomes in both functional domains, and strong
+
+validation and reproducibility support into the same evidence
+chain. Electronic Supplement S-Appraisal provides the study
+level scores. The zero count directs attention from isolated
+demonstrations toward shared tasks, baselines, artifacts, and
+evaluation conditions that other groups can reuse.
+These distributions describe validation and reporting patterns within the 206 included studies. The survey design supports conclusions about evidence reach, functional coverage,
+artifact access, and reconstructability. Questions about causal
+relations among artifact access, validation setting, and reported
+performance require a different study design. Section VIII
+turns the observed gaps into specific benchmark and reporting
+actions.
+Overall, the corpus combines a broad laboratory and prototype base with a smaller set of field and deployment results.
+Stronger cumulative evidence emerges when both functions are
+tied to one traceable configuration and the evaluation path is
+preserved through reusable artifacts. Section VII builds on this
+validation map by examining the technologies and applications
+supported by the reported evidence and their connection to 6G
+network roles.
+VII. ENABLING TECHNOLOGIES, APPLICATION
+REQUIREMENTS, AND 6G NETWORK EVIDENCE
+Section VI established how far the reported systems were
+tested. This section follows what those systems enable. It
+connects the mechanisms that create useful observables to the
+requirements of their application domains and then examines
+how far the evidence reaches toward a 6G network role. A
+study may contribute to several technology and application
+labels, so the counts describe coverage within the corpus.
+The synthesis first explains how waveforms, optical components, and spatial control shape the observable. It then follows
+integration through devices, infrastructure, and inference. The
+application map translates these mechanisms into operating
+conditions, and the final subsection explains what those labels
+mean for 6G network evidence.
+A. Technologies That Create and Shape Observables
+The most frequent technology labels occupy complementary
+points in the signal chain. Photonic terahertz and microwave
+photonic generation appear in 68 studies. Frequency modulated continuous wave and related chirped processing appear
+in 66, coherent optical techniques in 64, and OFDM or related
+multicarrier methods in 56. Photonic generation creates or
+translates the carrier. Chirped processing maps delay or motion
+to beat frequency. Coherent reception preserves phase, and
+OFDM provides controllable time and frequency resources. A
+single architecture can combine several of these mechanisms.
+OFDM supports joint operation by placing payload and
+sensing resources within one signal structure. The sensing observable may come from pilots, payload tones, cyclic prefixes,
+reserved subcarriers, or a dedicated processing branch. This
+choice determines which samples are known at the receiver
+and how interference enters the estimate. Optical modulation
+constraints and the measurement plane used for SNR shape
+the interpretation. Embedded pilot fiber sensing and indoor
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+optical positioning show how the same multicarrier principle
+serves different observables and geometries [99], [207].
+Chirped and coherent systems draw on phase continuity and
+a shared timing reference. A returned chirp can reveal range or
+motion as the transmitted signal carries data. A coherent front
+end preserves small phase changes for distributed sensing and
+demodulation. Photonic generation can extend the reference to
+wideband millimeter wave or terahertz carriers. Full photonic
+dechirping and coherent fiber vibration sensing illustrate these
+two uses [58], [213]. Their performance depends on laser
+stability, reference distribution, conversion efficiency, receiver
+bandwidth, and calibration.
+The optical stage governs carrier generation and reference
+stability. Once the carrier is radiated, the communication and
+sensing paths follow microwave, millimeter wave, or terahertz
+propagation. In a free space optical link, the optical beam
+itself traverses the channel. System evaluation should therefore
+follow the signal across both physical domains and identify
+where power, SNR, bandwidth, and timing are measured. This
+view makes the interface between components part of the joint
+system.
+Spatial control changes both the communication link budget
+and the sensing geometry. Beamforming appears in 13 studies,
+optical phased arrays in 8, multiple input multiple output
+systems in 7, and a reconfigurable optical intelligent surface
+in 1. These labels describe different functions. Beamforming
+directs energy. An optical phased array provides one steering
+mechanism. Multiple input multiple output processing uses
+several spatial dimensions, and an intelligent surface reshapes
+an intermediate propagation boundary. A system may combine
+these roles.
+A narrow beam improves received power and angular selectivity while making acquisition, tracking, blockage, and
+calibration central to joint performance. The joint use of an
+optical phased array and OFDM and the use of frequency
+comb beamforming connect steering with ranging or imaging [83], [123]. Multiple input multiple output processing
+adds communication streams, sensing diversity, or separation
+among targets and paths. Structured fields and hybrid systems
+that combine free space optics with fiber Bragg gratings place
+these spatial dimensions at different points in the architecture
+[90], [95]. Meaningful comparison therefore requires the independent dimensions, geometry, and calibration method.
+The intelligent surface evidence consists of one study
+that models a mobile free space optical path controlled by
+an optical intelligent surface [206]. A separate laboratory
+demonstration uses mechanically rotated Risley prisms to
+steer a photonically generated terahertz signal [122]. Both
+mechanisms redirect energy, and each uses different surface
+physics, propagation laws, control variables, and validation
+settings. Their separate treatment preserves the physical meaning and provides two starting points for broader experimental
+comparison.
+B. Integration Beyond the Waveform
+Integration and inference move joint design beyond waveform selection. Photonic integration appears in 20 studies, fiber
+
+14
+
+distributed acoustic sensing in 22, and machine learning or
+artificial intelligence in 20. Two studies use digital twins. A
+further 19 studies contain specialized mechanisms grouped as
+other because they fall outside the broad technology labels.
+Together, these categories cover device integration, infrastructure reuse, inference, and a diverse long tail.
+Photonic integration can place generation, reference distribution, beam control, and detection on a compact hardware
+path. This arrangement reduces duplicated paths and brings
+packaging, thermal drift, crosstalk, and calibration into the
+same design problem. Microcomb synchronization coordinates
+wireless data with radar imaging. A distributed W band
+system uses radar estimates for beam alignment and flexible
+data service [236], [237]. Both examples show how a shared
+reference can connect communication and sensing hardware.
+Fiber distributed acoustic sensing follows a complementary
+route by using the transmission medium as a spatial sensor.
+Phase, backscatter, and polarization can reveal events along
+the route as the fiber carries traffic. Coherent multicore transmission with distributed sensing and operational submarine
+cable monitoring illustrate two scales of this infrastructure
+reuse [36], [161]. The central design question becomes how to
+preserve the optical observable together with traffic continuity.
+Learning turns optical observations into event labels, positions, field estimates, channel predictions, and resource decisions. Each task is best read with its definition, reference data,
+training distribution, evaluation shift, uncertainty, and inference cost. Fiber diagnosis, federated visible light positioning,
+and wearable optical sensing show the range from distributed
+infrastructure to human centered use [76], [133], [142].
+A neural network can also take part in both functions.
+In one coherent link, the model compensates transmission
+impairments and estimates distributed power and abnormal
+loss [238]. The two outputs share the link while retaining
+separate targets and reference data. Digital twins add another
+model layer. One represents vehicular edge resources, and
+another provides a model aided physical reference for coherent
+fiber sensing [194], [234]. Clear reporting of the represented
+state, update process, mismatch model, and resulting decision
+gives these models an explicit system role.
+C. Applications as Operating Requirements
+Applications translate the mechanisms above into conditions
+that a joint service must satisfy. Table VII retains all thirteen
+application domains and maps each one to its joint role and
+defining evaluation conditions. A fiber platform for vehicles,
+for example, carries high speed data and measures distributed
+temperature [239]. Human centered devices connect communication or remote alerts with motion, falls, air pressure,
+physiology, or gesture [76], [240], [241]. Each application
+therefore changes what the experiment must demonstrate, even
+when both functions share the same optical interface.
+Across the map, the dominant requirement moves with the
+application. Network and mobility settings emphasize acquisition, timing, and continuity. Deployed infrastructure emphasizes persistent observation alongside carried traffic. Human
+centered and extreme settings add physiological references,
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+15
+
+TABLE VII
+A PPLICATION DOMAINS AND OPERATING REQUIREMENTS IN THE REVIEWED CORPUS
+Network and mobility
+Domain, n (%)
+6G and access 100
+(48.5%)
+Vehicular 41 (19.9%)
+Optical access 32
+(15.5%)
+Indoor positioning 13
+(6.3%)
+Data center 4 (1.9%)
+
+Infrastructure
+Domain, n (%)
+Environmental
+monitoring 55 (26.7%)
+Smart infrastructure
+41 (19.9%)
+Industrial 34 (16.5%)
+Security and
+surveillance 26 (12.6%)
+
+Common communication and sensing role
+
+Key operating condition
+
+Studies
+
+Access and transport with channel, target, position, or
+environment sensing
+Vehicle data links with range, motion, pose, temperature, or
+channel sensing
+Access and transport links with channel, event, or fiber state
+sensing
+Indoor optical links with user or robot position and
+orientation sensing
+Short reach data links with channel estimation or link state
+sensing
+
+Timing, orchestration, continuity, and evidence
+for both functions
+Changing geometry, acquisition, tracking, and
+service continuity
+Reach, synchronization, and traffic continuity
+
+[57], [90]
+
+Common communication and sensing role
+
+Key operating condition
+
+Studies
+
+Distributed links with vibration, temperature, or
+environmental event sensing
+Infrastructure links with structural, motion, or event
+monitoring
+Industrial data or control with process, strain, temperature,
+motion, or position sensing
+Monitoring links with anomaly, event, or location sensing
+
+Persistent observation, localization, and traceable
+reference data
+Continuous observation, calibration, and resilient
+alert delivery
+Delay, continuity, calibration, and safe operation
+
+[36], [133],
+[221]
+[90], [133],
+[139]
+[76], [90]
+
+Coverage, event discrimination, and alert latency
+
+[133]
+
+Key operating condition
+
+Studies
+
+Human centered, extreme settings, and residual
+Domain, n (%)
+Common communication and sensing role
+
+Geometry, calibration, coverage, and update
+continuity
+Traffic continuity and calibrated link references
+
+[65], [239]
+[57], [99],
+[133]
+[63], [207]
+[99]
+
+Healthcare 6 (2.9%)
+
+Wearable or ambient links with vital sign, activity, or gesture Motion robustness, physiological reference,
+[35], [76]
+sensing
+illumination, and user safety
+Aerospace 20 (9.7%)
+Satellite links with atmospheric or wavefront sensing
+Pointing, turbulence, delay, and link adaptation
+[88]
+Underwater 2 (1.0%)
+Underwater link concepts and subsea data links with
+Water attenuation or cable calibration, packaging,
+[139], [221]
+temperature or event sensing
+and access
+Other 17 (8.3%)
+Emerging links with range, imaging, object, or channel
+Task specific metrics and reporting
+[122]
+sensing
+Note. Application domains overlap, so a study may contribute to more than one row. Counts and percentages describe coverage within the 206 included
+studies. For each domain, the table includes a selected study set and lists the corresponding references in the final column. The 6G and access row identifies
+the application category, and the final subsection provides the 6G relevance classification.
+
+safety, privacy, pointing, atmosphere, packaging, and access to
+the test environment. These requirement bundles show which
+operating conditions must accompany a reported result before
+it can support comparison or reuse.
+D. From 6G Relevance to Network Evidence
+The exclusive 6G crosswalk places 138 studies (67.0%) in
+the direct class, 64 (31.1%) in the inferential class, 1 (0.5%) in
+the weak class, and 3 (1.5%) in the not applicable class. These
+four labels are review codes for positioning the corpus. They
+follow the frozen Phase E crosswalk, which groups source
+level codes through explicit or direct and inferred or enabling
+normalization rules. Weak and not applicable assignments
+remain separate. Direct assignments include [57], [123], and
+inferential assignments include [58], [99]. The weak and not
+applicable classes are documented in [181], [241].
+The distribution connects the reviewed corpus with future access, transport, localization, automation, environmental
+awareness, and high frequency carrier generation. A relevance
+code therefore locates a study within the 6G discussion.
+Standard conformance, interoperability, and deployment readiness require additional evidence tied to the relevant network
+framework [4].
+
+Network evidence begins when the optical or photonic
+subsystem occupies an explicit end to end role. Access,
+fronthaul, transport, edge processing, and service control bring
+timing, mobility, orchestration, energy, security, and recovery
+requirements. A convincing experiment evaluates useful communication and sensing under the conditions of that role and
+reports the resources needed to sustain both. This creates a
+traceable path from the physical observable and hardware to
+the service objective.
+
+Within the scope of this survey, the strongest 6G interpretation follows that path through both functional outcomes and
+their operating conditions. It describes the evidence reported
+by the 206 included studies. Claims about industry adoption, economic feasibility, and standard compliance require
+evidence designed for those questions. Taken together, this
+section connects the physical observable to the application
+requirement and the network role. Section VIII uses the
+remaining gaps in that chain to develop the research and
+reporting roadmap.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+VIII. DISCUSSION, RESEARCH ROADMAP, AND
+LIMITATIONS
+The preceding sections trace O-ISAC from physical sharing
+to metric evidence, validation, application requirements, and
+network relevance. This section brings those findings together,
+turns recurring evidence gaps into research priorities, and
+states the boundaries within which the synthesis can be read.
+A. Interpretation Across the Evidence Base
+Physical integration identifies where communication and
+sensing share infrastructure, signals, or information. Evidential
+integration shows how clearly both outcomes remain traceable
+to the same operating conditions. Together, these views connect syntheses of architecture and transmission medium while
+preserving the physical regime of each platform [8], [9], [19],
+[22].
+Integration depth determines how many design variables
+become connected. Sharing additional components can improve coordination across the two functions. It also joins
+power budgets, distortion, synchronization, dynamic range,
+and failure modes. The scientific value of deeper sharing
+therefore depends on showing where these effects enter the
+signal chain and how they shape both outcomes.
+Tradeoff patterns transfer across studies when tasks, metric
+definitions, measurement planes, baselines, constraints, and
+validation settings remain aligned. This alignment allows
+model bounds and empirical operating points to retain their
+distinct roles and support comparison within a stated context
+[12], [13].
+Fielded cable and network studies illustrate the value of
+operational continuity [16], [18]. Within the survey, system
+evidence becomes reusable when configuration, calibration,
+processing, and reported artifacts remain connected across
+interfaces. This continuity links physical sharing to application
+and network claims. It also defines the central research task,
+which is to establish joint operating points that another group
+can interpret, test, and reuse.
+
+16
+
+TABLE VIII
+R ESEARCH PRIORITIES DERIVED FROM THE REVIEWED EVIDENCE
+Priority
+
+Finding and proposed action
+
+Evidence of progress
+
+1.
+Measurement
+contract
+
+Finding. Of 4,779 metric records, An independent reader
+118 supported bounded relations
+reconstructs the
+under aligned conditions. Action.
+quantity and condition
+Record the task, plane, unit,
+from a machine
+baseline, operating condition,
+readable record.
+validation setting, and source
+locator.
+2. Modality
+Finding. Cross study comparison
+Independent groups
+specific
+depends on matched physical
+reproduce the relative
+benchmark
+context. Action. Repeat one task
+finding under the
+with reference and independent
+shared protocol.
+designs under shared calibration
+and ground truth.
+3. Joint
+Finding. Of 402 substantive
+Repeated trials recover
+operation
+tradeoff relationships, 371 depend the joint region and its
+under
+on reported conditions. Six of 12 limiting mechanism.
+disturbance
+field or deployment tier studies
+report outcomes in both domains,
+while shared timing remains
+unresolved. Action. Evaluate both
+functions in the same run and
+condition set under load, a
+modality specific disturbance, and
+matched single function baselines.
+4. ReconFinding. Open data appear in 13 of An independent rerun
+structable
+206 studies, and code or model
+recovers the
+experiment
+access reaches a partial release in comparison and added
+package
+one. Action. Preserve a versioned condition from the
+package and rerun the main
+package.
+comparison under one added
+condition.
+5. Intelligence, Finding. Technology and
+The service retains an
+scale, and
+application counts are multilabel.
+explainable boundary
+with resource use,
+security
+The exclusive 6G crosswalk
+records corpus relevance, with
+decisions, and fallback
+conformance, interoperability, and recorded.
+readiness kept as separate targets.
+Action. Apply a declared shift,
+attack, load, or component failure
+and report overhead, resource use,
+decisions, and fallback.
+Note. The findings summarize the retained corpus presented in Sections IV
+through VII. The authors developed the proposed actions and indicators of
+progress for future evaluation. The numbered stages form a dependency
+order and retain the physical conditions of each modality.
+
+B. Research Priorities for Reusable Evidence
+Table VIII organizes the synthesis into five priorities spanning measurement context, modality benchmarks, joint tests,
+reconstruction, intelligence, scale, and security. Future studies
+provide the evaluation setting.
+The order matters because each stage uses evidence produced by the previous one. Clear measurement context supports fair benchmarks. Benchmarks support realistic joint
+tests. Reconstructable artifacts make those tests repeatable,
+and repeatable tests provide a basis for adaptive, secure, and
+network scale evaluation.
+Modality specific stress tests should follow the native signal
+path. Fiber tests can vary traffic and topology. Free space
+optical tests can vary geometry, pointing, atmosphere, and
+blockage. Visible light tests can vary illumination, field of
+view, orientation, and ambient light. Photonic terahertz tests
+can vary optical front end drift together with wireless propagation. Matched single function baselines keep the limiting
+mechanism visible across these settings.
+
+For standards and 6G coordination, this sequence provides a
+practical basis for reporting profiles. A shared core can define
+essential metadata while preserving modality physics and
+ground truth. Funding calls can support the same goal through
+reusable condition descriptions, benchmark definitions, and
+versioned artifacts.
+C. Scope and Limitations of the Review
+The review searched six sources for reports published from
+1 January 2020 to 22 June 2026 and required sufficient full
+technical content in English. Full text assessment covered 272
+of the 330 reports sought, with 58 recorded as unretrieved.
+Exact query to export mapping remains incomplete for two
+low yield Taylor & Francis exports. These boundaries define
+the literature represented by the 206 retained studies.
+The OSF record was created retrospectively after searching
+and screening and captures a 221 study predecessor state.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+Lineage reconciliation rebaselined that predecessor state to the
+final 206 study corpus, whose attrition path follows the executed search records in Section III. One investigator supervised
+the workflow and made the final review decisions. Routine
+independent duplicate screening, extraction, appraisal, and
+adjudication were outside the executed workflow. Independent
+checks focused on governed artifacts and reconciliation.
+TQAF is a nonvalidated technical appraisal developed for
+this survey and describes evidential support within the review.
+Conventional study level risk of bias instruments and GRADE
+certainty assessment were outside the executed appraisal.
+Task, quantity, and validation heterogeneity made structured
+narrative synthesis the appropriate analytical form, with meta
+analysis outside the review design. Formal sensitivity analysis
+requires a pooled or model dependent primary effect beyond
+this structure. Formal missing results and publication bias
+assessment requires harmonized prespecified outcomes and
+source protocols, which were unavailable across the corpus.
+Selective reporting and publication bias therefore remain
+possible. Causal moderator inference belongs to a different
+analytical design.
+Taxonomy and multilabel coding depend on reviewer judgment and can carry classification error, especially for hybrid
+architectures. Row counts reflect extraction granularity and
+represent coded observations. Independent effect counts require a different unit of analysis. Ninety two legacy metric
+rows received the conservative comparison status because the
+required conditions were absent from their recorded fields.
+Artifact status reflects source reporting at the audit date. Link
+verification was selective, and common protocol execution of
+released artifacts remained outside the review.
+The conclusions describe recurring mechanisms, measurement constraints, and validation patterns within the retained
+corpus. Worldwide activity, market share, deployment prevalence, causal effects, and platform ranking remain separate
+research questions. Within these boundaries, the corpus supports a clear conclusion about the conditions that turn optical
+integration into transferable joint evidence. Section IX brings
+these conditions together in the final synthesis.
+
+IX. CONCLUSION
+Across 206 studies, O-ISAC integration was realized
+through shared hardware, carriers, waveforms, resources, links,
+design rules, and application contexts. The portability of these
+results depended less on the sharing label than on continuity
+across modality, task, measurement plane, operating condition,
+and validation setting. The corpus thus establishes a broad
+technical base while locating its principal maturity gap in
+transferable joint evidence.
+Modality aware measurement contracts, paired function
+validation under realistic disturbances, and versioned configuration, calibration, data, and processing artifacts provide
+the basis for closing that gap. Together, these practices can
+convert isolated demonstrations into repeatable evidence for
+cumulative engineering and network scale evaluation.
+
+17
+
+R EFERENCES
+[1] J. Wang, L. Lu, J. Zhang, A. P. T. Lau, Z. Li, and C. Lu, “On the
+coexistence of distributed fiber optic sensing and IM/DD transmission
+via digital subcarrier multiplexing,” Optics Express, vol. 34, no. 3, p.
+5592, 2026.
+[2] Z. Li, J. Shi, C. Shen, Y. Zhang, J. Zhang, and N. Chi, “Adaptive
+visible light integrated sensing and communication for cable-free
+virtual reality,” Photonics Research, vol. 13, no. 9, p. 2453, 2025.
+[3] M. Zhou, R. Jin, S. Chen, J. Ding, M. Xu, and Z. Wu, “TurbulenceResilient Communication through Beam Shaping Enabled by MultiRegion Turbulence Intensity Sensing,” in 2025 Asia Communications
+and Photonics Conference (ACP), 2025, pp. 1–5.
+[4] International Telecommunication Union, “Framework and overall objectives of the future development of IMT for 2030 and beyond,”
+ITU Radiocommunication Sector, Tech. Rep. Recommendation ITUR M.2160-0, Nov. 2023.
+[5] Y. Chen et al., “Optical Integrated Sensing and Communication Lidar
+Based on RBPSK-FMCW Joint Waveform and Optical Phased Array,”
+Journal of Lightwave Technology, vol. 44, no. 10, pp. 4032–4040, 2026.
+[6] X. Guo, Z. Li, Z. Zhou, L. Deng, Y. Yu, and X. Zhang, “MillimeterWave Integrated Sensing and Communication System Based on a
+Photonics-Assisted Phased Array,” Laser & Photonics Reviews, vol. 20,
+no. 10, p. e02350, 2026.
+[7] R. Kaide et al., “Terahertz ISAC with Simultaneous Fast-Swept FMCW
+Radar and High-Speed Wireless Link Using a Single UTC-PD,”
+Electronics, vol. 15, no. 8, p. 1608, 2026.
+[8] Y. Wen, F. Yang, J. Song, and Z. Han, “Optical integrated sensing
+and communication: Architectures, potentials and challenges,” IEEE
+Internet of Things Magazine, vol. 7, no. 4, pp. 68–74, 2024.
+[9] X. Su et al., “Optical integrated sensing and communication: From
+theory to practice,” Tsinghua Science and Technology, 2025, available
+online 11 December 2025.
+[10] T. Chu et al., “Retroreflective optical ISAC for 6G: Technologies,
+applications and future directions,” 2025, arXiv:2512.01275, submitted
+1 December 2025.
+[11] J. Wang et al., “Integrated sensing and communication over optical
+fiber: A communication-centric cross-layer view from long-haul to
+short-reach networks,” IEEE Photonics Journal, vol. 18, no. 4, p.
+0600914, 2026.
+[12] A. G. Khorasgani, “A survey on general and optical ISAC: Fundamental
+limits, design approaches, and future directions,” Optical Switching and
+Networking, vol. 60, p. 100853, 2026.
+[13] A. Rode et al., “Machine learning opportunities for integrated polarization sensing and communication in optical fibers,” Optical Fiber
+Technology, vol. 90, p. 104047, 2025.
+[14] D. Zhang et al., “Integrated sensing and communications over the
+years: An evolution perspective,” IEEE Communications Surveys &
+Tutorials, vol. 28, pp. 5014–5048, 2026.
+[15] K. Liu, J. Xie, B. Wu, and F. Li, “Technology, application and prospect
+of integrated sensing and communication of optical networks,” Study
+on Optical Communications, no. 2, p. 240046, 2025.
+[16] X. Cao et al., “Intelligent submarine environmental monitoring based
+on fiber-optic integrated sensing and communication system,” Science
+China Information Sciences, vol. 69, no. 6, p. 160303, 2026.
+[17] Q. Zhang, X. Gao, A. Zhang, Y. Ding, and X. Huo, “Integrated sensing
+and communication for optical transmission networks,” Journal of
+Optical Communications and Networking, vol. 18, no. 6, pp. B150–
+B169, 2026.
+[18] E. Ip, Y.-K. Huang, M.-F. Huang, F. Yaman, J. Fang, and T. Wang,
+“Integrated sensing and communications over deployed terrestrial
+and submarine telecom cables,” Science China Information Sciences,
+vol. 69, no. 6, p. 160304, 2026.
+[19] C. Liang et al., “Integrated sensing, lighting and communication based
+on visible light communication: A review,” Digital Signal Processing,
+vol. 145, p. 104340, 2024.
+[20] C. Zhang, X. Tang, G. Wang, M. Zhang, and S. Shen, “Research
+frontier of communication and sensing integration technology for
+optical networks,” Laser & Optoelectronics Progress, vol. 60, no. 1, p.
+0100001, 2023, first published online 23 June 2022.
+[21] H. He, X. Zou, Z. Pu, Y. Wang, W. Pan, and L. Yan, “Research
+advances of fiber-based integrated sensing and communication,” Acta
+Optica Sinica, vol. 45, no. 13, p. 1306002, 2025.
+[22] Z. Liu et al., “A review of optical fiber integrated sensing and
+communication systems,” Science China Information Sciences, vol. 69,
+no. 6, p. 160302, 2026.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+[23] L. Lu, Y. Yan, B. Yang, Y. Yang, A. P. T. Lau, and C. Lu, “Towards
+converged networks: A review of integrated optical fiber sensing and
+communication,” Science China Information Sciences, vol. 69, no. 6,
+p. 160301, 2026.
+[24] W. Wang, L. Pei, J. Wang, and T. Ning, “Integrated fiber sensing
+and communication for optical networks: Principles, solutions, and
+challenges,” Photonics, vol. 13, no. 3, p. 216, 2026.
+[25] B. Yang et al., “Recent advances in integrated vibration sensing and
+communication in digital subcarrier multiplexing systems,” Photonics,
+vol. 12, no. 3, p. 290, 2025.
+[26] H. He et al., “Fiber-based photonic integrated sensing and communication: Enabling technologies and key challenges,” Journal of Optical
+Communications and Networking, vol. 18, no. 4, pp. B33–B48, 2026.
+[27] J. Yu et al., “Broadband photon-assisted terahertz communication and
+sensing,” Journal of Lightwave Technology, vol. 41, no. 11, pp. 3332–
+3349, 2023.
+[28] W. Bai et al., “Microwave photonics promotes emerging integrated
+sensing and communication technology,” APL Photonics, vol. 10, no. 3,
+p. 031101, 2025.
+[29] L. Wang, X. Wang, and S. Pan, “Microwave photonics empowered
+integrated sensing and communication for 6G,” IEEE Transactions on
+Microwave Theory and Techniques, vol. 73, no. 8, pp. 5295–5315,
+2025.
+[30] Z. Lyu et al., “Exploring photonic THz-ISAC systems with integrated
+waveforms,” Journal of Lightwave Technology, vol. 44, no. 3, pp. 868–
+877, 2026.
+[31] S. A. H. Mohsan et al., “Optical integrated sensing and communication:
+Fundamentals, applications, challenges and future aspects,” Optical
+Switching and Networking, vol. 61, p. 100854, 2026.
+[32] L. Wang et al., “Integrated Communication and In-Band Spectrum
+Polarization-Based Sensing via Fraction-Division Non-Orthogonal
+Multiple Access,” Journal of Lightwave Technology, vol. 44, no. 1,
+pp. 138–147, 2026.
+[33] Y. Wen, F. Yang, J. Song, and Z. Han, “Optical Wireless Integrated
+Sensing and Communication Based on Optical Phased Array: Performance Metric and Optimal Beamforming,” IEEE Transactions on
+Wireless Communications, vol. 24, no. 9, pp. 7221–7236, 2025.
+[34] J. Wang, J. Zhang, A. P. T. Lau, and C. Lu, “Integrated ultralarge dynamic vibration sensing with fronthaul analog radio-over-fiber
+transmission,” Photonics Research, vol. 13, no. 8, p. 2339, 2025.
+[35] Y. Xia et al., “High-Speed Flexible Near-Infrared Organic Photodetectors for Self-Powered Optical Integrated Sensing and Communications,” Advanced Functional Materials, vol. 35, no. 2, p. 2412813,
+2025.
+[36] S. Chen, K. Zhu, J. Han, Q. Sui, and Z. Li, “Photonic Integrated
+Sensing and Communication System Harnessing Submarine Fiber
+Optic Cables for Coastal Event Monitoring,” IEEE Communications
+Magazine, vol. 60, no. 12, pp. 110–116, 2022.
+[37] M. Ma et al., “Joint break-point localization sensing based on OFDR
+and non-disruptive communication fiber ISAC system,” Optics & Laser
+Technology, vol. 192, p. 113726, 2025.
+[38] M. J. Page et al., “The PRISMA 2020 statement: An updated guideline
+for reporting systematic reviews,” BMJ, vol. 372, p. n71, 2021.
+[39] M. L. Rethlefsen et al., “PRISMA-S: An extension to the PRISMA
+statement for reporting literature searches in systematic reviews,”
+Systematic Reviews, vol. 10, no. 1, p. 39, 2021.
+[40] Q. Wang et al., “Real-Time Integrated Sensing with 5.08 mm Range
+Resolution and 15.5 Gbps Bidirectional Wireless Communication Over
+a 270-Meter Outdoor Photonic-Assisted Terahertz Link,” IEEE Photonics Journal, vol. 18, no. 4, p. 7301309, 2026.
+[41] Z. Lyu et al., “Multi-Channel Photonic THz-ISAC System Based on
+Integrated LFM-QAM Waveform,” Journal of Lightwave Technology,
+vol. 42, no. 11, pp. 3981–3988, 2024.
+[42] J. He, S. Xiao, C. Ying, Z. Chen, and Y. Xiao, “Sliding WindowBased LSTM Scheme for PAM-4 Photonics-Assisted W-Band ISAC
+Systems,” IEEE Photonics Technology Letters, 2026.
+[43] D. Shi et al., “310Gbps Transmission and Centimeter-Level Ranging
+Photonic THz ISAC System,” Journal of Lightwave Technology, 2026.
+[44] S. Ye et al., “Photonic Frequency-Hopped THz ISAC-Enabled by
+Electro-Optically Tunable Laser,” IEEE Photonics Technology Letters,
+2026.
+[45] R. Kaide, S. Ye, Y. Wang, Y. Mikami, Y. Ueda, and K. Kato, “Integrated
+Terahertz FMCW Radar and FSK Communication Enabled by HighSpeed Wavelength Tunable Lasers,” Photonics, vol. 12, no. 10, p. 977,
+2025.
+
+18
+
+[46] R. Wang, W. Ma, J. Liu, H. Xu, Z. Shen, and W. Li, “Integrated sensing
+and communication system based on a photonic integrated broadband
+multi-beamformer,” Optics Express, vol. 33, no. 10, p. 20619, 2025.
+[47] Y. Wang, W. Lu, Y. Song, and J. Yu, “Photonics-Assisted mmWave
+Integrated Sensing and Communication System Enabled by ODDM
+Waveform,” IEEE Transactions on Microwave Theory and Techniques,
+2026.
+[48] T. Reddy, V. Reddy, R. Thipparaju, and U. Singh, “Performance Analysis of Microwave Photonics Assisted Joint Radar Communications,”
+in 2024 International Conference on Wireless Communications, Signal
+Processing and Networking, WiSPNET 2024, 2024.
+[49] B. Dong et al., “Photonic-Based W-Band Integrated Sensing and
+Communication System With Flexible Time- Frequency Division Multiplexed Waveforms for Fiber-Wireless Network,” Journal of Lightwave
+Technology, 2024.
+[50] H. Zhou et al., “Ultrasonic phase extraction method for co-cable
+identification in coherent optical transmission systems,” Chinese Optics
+Letters, 2024.
+[51] S. Gaiani, M. Fasano, A. Gatto, P. Parolari, P. Martelli, and P. Boffi,
+“Exploitation of FMF capabilities for joint communications and sensing,” in International Conference on Transparent Optical Networks,
+2025.
+[52] C. Guan et al., “A novel passive bi-directional audio over fiber
+transmission system with 20 Km,” Optical Fiber Technology, 2024.
+[53] S. Zhang, J. Li, J. Zhu, D. Zhang, Y. Zeng, and Y. Luo, “First
+Demonstration of FTTR-based RFID Network for Integrated Sensing
+and Communication,” in 2025 Asia Communications and Photonics
+Conference (ACP), 2025, pp. 1–3.
+[54] Y. Zhao, J. Wan, S. Xu, and W. Zou, “Integration of endogenous
+sensing and communication based on photonics-enabled cellular base
+station networks with a spectrum fusion algorithm,” Optics Express,
+vol. 32, no. 26, p. 47428, 2024.
+[55] A. Alzamil, M. Sharawy, E. Almohimmah, A. Ragheb, A. Almaiman,
+and S. Alshebeili, “Development of an Integrated Communication and
+Sensing System Using Spread Spectrum and Photonics Technologies,”
+Photonics, 2024.
+[56] M. Lei et al., “A Spectrum-Efficient MoF Architecture for Joint Sensing and Communication in B5G Based on Polarization Interleaving and
+Polarization-Insensitive Filtering,” Journal of Lightwave Technology,
+2022.
+[57] A. Tzanakaki and M. Anastasopoulos, “Optical Transport Networks
+Supporting Integrated Communications and Sensing in 6G,” in 2025
+European Conference on Optical Communications (ECOC), 2025, pp.
+1–4.
+[58] H. He et al., “Integrated sensing and communication in an optical
+fibre,” Light: Science & Applications, vol. 12, no. 1, p. 25, 2023.
+[59] Z. Hu, C. Zhao, M. Zhang, J. Chen, and M. Tang, “Native and
+Reconfigurable Distributed Acoustic Sensing Integrated with Singlecarrier 64QAM Transmission Signal,” in Optical Fiber Communication
+Conference (OFC 2025), 2025.
+[60] H. Zhu, X. Xu, Z. Liu, and J. Zhang, “Integrated optical covert sensing
+and communication,” Chinese Optics Letters, 2025.
+[61] L. Gu et al., “Co-wavelength-channel integration of ultra-lowfrequency distributed acoustic sensing and high-capacity communication,” Photonics Research, vol. 13, no. 6, p. 1611, 2025.
+[62] P. J. Urban, E. M. Miśkiewicz, D. Karczewicz, W. Kogut, and
+J. Kopczyński, “Parallel Path Effect-Free Remote Monitoring and
+Sensing in Live XGS-PON Using Legacy Optical Time Domain
+Reflectometry,” Journal of Lightwave Technology, vol. 43, no. 14, pp.
+6711–6719, 2025.
+[63] S. Wang and H. Chen, “Optical Integrated Sensing and Communication for Cooperative Mobile Robotics: Design and Experiments,” in
+2023 21st International Symposium on Modeling and Optimization in
+Mobile, Ad Hoc, and Wireless Networks (WiOpt), 2023, pp. 207–214.
+[64] Y. Song et al., “VehicleTalk: Lightweight V2V Network Enabled by
+Optical Wireless Communication and Sensing,” in 2024 IEEE 99th
+Vehicular Technology Conference (VTC2024-Spring), 2024, pp. 1–5.
+[65] K. Dong, W. Cao, and M. Wang, “Optical Camera-Based Integrated
+Sensing and Communication for V2X Applications: Model and Optimization,” Sensors, vol. 25, no. 22, p. 7061, 2025.
+[66] N. N. Luong, C. T. Nguyen, and T. V. Pham, “Performance Analysis
+of NOMA-Assisted Optical OFDM ISAC Systems with Clipping
+Distortion,” in 2026 IEEE Wireless Communications and Networking
+Conference (WCNC), 2026.
+[67] Z. Liu, J. Zhu, J. Yang, Y. Sun, Y. Yang, and J. Luo, “ReflexGest:
+Recognizing Hand Gestures Under VLC-Capable Lamps,” IEEE Transactions on Mobile Computing, vol. 24, no. 7, pp. 6583–6594, 2025.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+[68] C. Fragner, A. P. Weiss, F. P. Wenzl, and E. Leitgeb, “Integrated
+Sensing and Communication in the Visible Spectral Range: A Novel
+Closed Loop Controller,” in 2022 International Conference on Broadband Communications for Next Generation Networks and Multimedia
+Applications (CoBCom), 2022, pp. 1–7.
+[69] R. Zhang, Y. Shao, M. Li, L. Lu, and Y. C. Eldar, “Optical Integrated
+Sensing and Communication With Light-Emitting Diode,” IEEE Internet of Things Journal, 2025.
+[70] H. Wang, Z. Zeng, C. Chen, B. Zhu, S. Shao, and M. Liu, “Retroreflective Optical ISAC Supporting 3D Positioning in Indoor Environments,”
+in 2024 Asia Communications and Photonics Conference (ACP) and
+International Conference on Information Photonics and Optical Communications (IPOC), 2024.
+[71] P. Dong, P. Tang, Y. Yin, L. Tian, and J. Zhang, “Analysis of Visible
+Light-Based ISAC Channel Characteristics in a V2V Scenario,” in
+IEEE Wireless Communications and Networking Conference, WCNC,
+2025.
+[72] B. Zhou, A. Liu, and H. So, “Visible Light Communication-Enabled
+Simultaneous Position and Orientation Detection for Harnessing Multipath Interference and Random Fading,” IEEE Transactions on Intelligent Transportation Systems, 2024.
+[73] W. Wang, H. Wang, Z. Zeng, C. He, and C. Chen, “UAV-Aided Flying
+Retroreflective Optical ISAC with Angle Diversity Transmitters,” in
+2025 30th OptoElectronics and Communications Conference (OECC)
+and 2025 International Conference on Photonics in Switching and
+Computing (PSC), 2025.
+[74] Y. Jiang, M. Xie, Z. Shi, and Y. Wang, “Monolithic III-Nitride Photonic
+Circuit for Integrated Sensing and Communication System,” in 2023
+20th China International Forum on Solid State Lighting & 2023 9th
+International Forum on Wide Bandgap Semiconductors (SSLCHINA:
+IFWS), 2023.
+[75] B. Jia et al., “Monolithically Integrated Sensing, Communication, and
+Energy Harvester,” Energy Technology, 2022.
+[76] J. Li et al., “An integrated sensing and communication solar skin for
+health monitoring and human–machine interaction,” Nano Energy, vol.
+148, p. 111639, 2026.
+[77] ——, “Indoor Health Monitoring with VLC-based Passive Posture
+Monitoring,” in 2024 Photonics & Electromagnetics Research Symposium (PIERS), 2024.
+[78] Y. Cui et al., “Retroreflective optical ISAC using OFDM: channel
+modeling and performance analysis,” Optics Letters, vol. 49, no. 15,
+p. 4214, 2024.
+[79] L. Shi, Z. Liu, B. Béchadergue, H. Guan, L. Chassagne, and X. Zhang,
+“Experimental Demonstration of Integrated Optical Wireless Sensing
+and Communication,” Journal of Lightwave Technology, vol. 42, no. 20,
+pp. 7070–7084, 2024.
+[80] A. Aboltins, V. Bespal’ko, and V. Kurtenoks, “Continuous Event
+Recording Technology For Integrated Sensing And Communications
+In Space,” in IGARSS 2024 - 2024 IEEE International Geoscience and
+Remote Sensing Symposium, 2024, pp. 2971–2974.
+[81] Z. Ye, L. Liu, Z. Lin, L. Liu, Z. Liu, and H. Fu, “Single-Source optical
+integrated sensing and communication (O-ISAC) with sequential target
+recognition,” Optics & Laser Technology, vol. 198, p. 114961, 2026.
+[82] C. Carver et al., “Catch Me If You Can: Laser Tethering with Highly
+Mobile Targets,” in Proceedings of the 21st USENIX Symposium on
+Networked Systems Design and Implementation, NSDI 2024, 2024.
+[83] Y. Wen, F. Yang, J. Song, and Z. Han, “Joint Design of Optical Phased
+Array Beamforming and OFDM Waveform in Optical Wireless Integrated Sensing and Communication,” IEEE Transactions on Wireless
+Communications, vol. 25, pp. 9703–9718, 2026.
+[84] X. Shi, M. Cao, C. Chen, S. Zhang, P. Fan, and H. Wang, “OCDM
+Integrated LiDAR and Communication System for UAVs,” in 2025
+13th International Conference on Information and Communication
+Networks, ICICN 2025, 2025.
+[85] T. Zhang, Z. Yan, A. Pang, and A. Dang, “Phase-Coded FMCW
+for Optical Integrated Sensing and Communication,” in 2024 Asia
+Communications and Photonics Conference (ACP) and International
+Conference on Information Photonics and Optical Communications
+(IPOC), 2024.
+[86] F. Tian, J. Zhao, Y. Zhang, G. Zheng, and T. Xu, “Gaussian Pulse-Based
+PSS-PPM Scheme for Optical Integrated Sensing and Communication
+Systems,” in 2025 Asia Communications and Photonics Conference
+(ACP), 2025.
+[87] Y. Chen et al., “Wide-Steering Integrated Sensing and Communication
+OPA-Based Lidar Design with Joint Waveform and Thinned Antenna,”
+in Opto-Electronics and Communications Conference, OECC, 2025.
+
+19
+
+[88] M. Wu, H. Yang, W. Liu, Q. Yao, J. Zhang, and M. Cheriet, “An
+Adaptive Control System for Satellite-Ground Laser Communication
+Based on Integrated Sensing and Communication,” in 2025 30th
+OptoElectronics and Communications Conference (OECC) and 2025
+International Conference on Photonics in Switching and Computing
+(PSC), 2025, pp. 1–4.
+[89] N. Tihomorskis et al., “Software-Defined Radio Experimental Validation of an OTFS-Based ISAC for Velocity Estimation in an ARoF
+Setup,” Technologies, vol. 14, no. 5, p. 262, 2026.
+[90] R. Arunachalam, R. Singh, and M. V. Kumar, “Towards last-mile
+connectivity in 6G-IoT: An integrated MIMO-FSO communication
+system and FBG sensors under atmospheric attenuations, strain and
+temperature effects,” Engineering Science and Technology, an International Journal, vol. 63, p. 101958, 2025.
+[91] A. Safiriyu et al., “Heterogeneous Integrated III-V-on-Soi Transmitter
+for 6G FiWi mmWave/FSO Integrated Sensing and Communication,”
+in 2025 European Conference on Optical Communications (ECOC),
+2025, pp. 1–5.
+[92] H. Prabhakar, N. R. R, and V. A. Bohara, “A THz with VLC Assisted
+ISAC System Under the Impact of Human Blockages,” in 2026 IEEE
+Wireless Communications and Networking Conference (WCNC), 2026,
+pp. 1–6.
+[93] X. Yu, Z. He, S. Tong, J. Meier, and T. Schneider, “Communication and
+Sensing via Hermite-Gaussian Time-Domain Mode-Division-MultipleAccess,” in Asia Communications and Photonics Conference, ACP,
+2025.
+[94] Y. Z. Z. L. Wang, “Photonic generation of frequency agile LFM signals
+for ISAC systems,” Optical and Quantum Electronics, 2024.
+[95] X. Song et al., “Full dimensional control of structured microwaves
+based on microcombs,” Nature Photonics, vol. 20, no. 4, pp. 377–385,
+2026.
+[96] J. Shao, T. Z. Gutema, and W. O. Popoola, “Enhanced Room Coverage
+With Photon-Level NLOS Ultraviolet Optical Wireless Communication,” IEEE Photonics Technology Letters, vol. 37, no. 24, pp. 1447–
+1450, 2025.
+[97] I. Krikidis, “Quantum Optical Integrated Sensing and Communication
+With Homodyne BPSK Detection,” IEEE Wireless Communications
+Letters, vol. 15, pp. 1375–1379, 2026.
+[98] X. Ou et al., “Integrated Optical Sensing and Communication (IOSAC)
+System Based on Hybrid-Waveguide Structures,” Advanced Materials
+Technologies, vol. 9, no. 3, p. 2300998, 2024.
+[99] M. F. Ahmed, R. U. Mondal, M. H. Kabir, and A. M. A. Rahman,
+“OFDM-based optical integrated sensing and communication framework using embedded pilot subcarriers,” Optics Continuum, vol. 5,
+no. 6, p. 1706, 2026.
+[100] M. Che, B. Li, H. Tang, S. Ye, Y. Kamiura, and K. Kato, “Photonic
+Generation of Joint Amplitude-Frequency Modulated Waveform for
+THz Integrated Sensing and Communication,” Microwave and Optical
+Technology Letters, vol. 67, no. 5, p. e70216, 2025.
+[101] M. Nafees, M. Baniasadi, J. R. Hopgood, M. Safari, and J. S.
+Thompson, “Integrated Sensing and Communication for UAV Trajectory Optimization in Mixed FSO-RF Networks in Dynamic Weather
+Conditions,” in 2025 IEEE Wireless Communications and Networking
+Conference (WCNC), 2025, pp. 1–6.
+[102] ——, “Leveraging ISAC for Adaptive Cell Zooming in Mixed FSO-RF
+Networks,” in 2025 IEEE 36th International Symposium on Personal,
+Indoor and Mobile Radio Communications (PIMRC), 2025, pp. 1–6.
+[103] X. Tang et al., “Optical fiber communication and distributed multiparameter sensing integrated network for smart power grid applications,” Science China Information Sciences, vol. 69, no. 6, p. 160305,
+2026.
+[104] Z. Liu et al., “CORE-Lens: Simultaneous Communication and Object
+REcognition with Disentangled-GAN Cameras,” in Proceedings of
+the 28th Annual International Conference on Mobile Computing And
+Networking, 2022, pp. 172–185.
+[105] J. Shi, Y. Han, Y. Li, X. Gui, X. Fu, and Z. Li, “Common biasdigital subcarrier multiplexing scheme for integrated sensing and
+communication in short-reach optical transmission systems,” Optics
+Express, 2025.
+[106] Z. Chen et al., “Learned Digital Back-Propagation for an opticaldomain waveform integrated with communication and sensing,” in
+ACM International Conference Proceeding Series, 2023.
+[107] Y. Wen, F. Yang, J. Song, and Z. Han, “Adaptive Resource Allocation
+in ADO-OFDM for Optical Wireless Integrated Sensing and Communication,” in GLOBECOM 2024 - 2024 IEEE Global Communications
+Conference, 2024, eligible companion report in the governed 206study/227-report O-ISAC evidence base.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+[108] ——, “Optical Wireless Integrated Sensing and Communication Based
+on EADO-OFDM: A Flexible Resource Allocation Perspective,” IEEE
+Transactions on Wireless Communications, 2025.
+[109] Z. Lyu et al., “Photonic Chirp Spread Spectrum THz-ISAC: Constraints
+and Design Considerations,” IEEE Transactions on Microwave Theory
+and Techniques, 2026.
+[110] ——, “Photonic THz Sensing-assisted Multipath Channel Estimation
+for ISAC,” in Optical Fiber Communication Conference (OFC 2025),
+2025.
+[111] B. Yang et al., “Integrated Communication and Enhanced Forward
+Phase-Based Sensing Based on Frequency-Domain Pilot Tones in
+DSCM Systems Using 100 kHz ECLs,” Journal of Lightwave Technology, 2025.
+[112] Y. Song, M. Deng, Y. Liu, W. Wang, and F. Li, “Simultaneous
+polarization demultiplexing and vibration sensing via single pilot tone
+in DSCM-ISAC systems,” Optics Express, 2025.
+[113] Z. Lyu et al., “Preamble-Free Synchronization Based on Dual-chirp
+Waveforms for Photonic THz-ISAC,” Journal of Lightwave Technology,
+2024.
+[114] Y. Zou et al., “Picosecond-Level Round-Trip Delay Measurement
+Scheme Based on Non-Commensurate Sampling for Future Deterministic Passive Optical Networks,” Journal of Lightwave Technology,
+2026.
+[115] R. Kaide, S. Ye, Y. Wang, Y. Mikami, Y. Ueda, and K. Kato,
+“Integrated Sensing and Communication in the Terahertz Band Enabled
+by Photomixing Using a High-Speed Wavelength Tunable Laser,” in
+2025 International Symposium on Antennas and Propagation, ISAP
+2025, 2025, eligible companion report in the governed 206-study/227report O-ISAC evidence base.
+[116] K. Matsuda et al., “Sensing µm-scale vibrations in the Hz range within
+a THz communication system,” Optics Express, 2026.
+[117] B. Yin et al., “Integrated Sensing and Communication in SelfHomodyne MCF Transmission Systems With Linear Frequency Modulation,” Journal of Lightwave Technology, 2026.
+[118] M. Salhi and M. Sliti, “Secure Multi-Tenant Distributed Sensing for
+ISAC-Over-Fiber (IOSAC) Networks,” IEEE Access, 2026.
+[119] M. Lei et al., “Photonics-assisted THz ISAC System Based on A
+Time-Frequency Efficient SF-LFM-OFDM Waveform,” in 2026 Optical
+Fiber Communications Conference and Exhibition (OFC), 2026, eligible companion report in the governed 206-study/227-report O-ISAC
+evidence base.
+[120] Y. Tao et al., “Integrated photonic ultrawideband real-time spectrum
+sensing for 6G wireless networks,” Nature Communications, 2026.
+[121] S. Chen, Z. Zeng, and C. Chen, “Experimental Demonstration of MultiUser Full-Duplex RO-ISAC System,” in 2025 Asia Communications
+and Photonics Conference (ACP), 2025.
+[122] Z. Lyu et al., “A Beam-Scannable Photonic THz-ISAC System Based
+on Risley Prisms,” in 2023 Asia Communications and Photonics Conference/2023 International Photonics and Optoelectronics Meetings
+(ACP/POEM), 2023, pp. 1–4.
+[123] M. Wang, W. Zhang, Z. Ren, S. Li, X. Zheng, and X. Xue, “Frequencycomb-steered ultrawideband quasi-true-time-delay beamformer for integrated sensing and communication,” Nature Communications, vol. 16,
+no. 1, p. 7571, 2025.
+[124] Y. Men, J. Ji, A. Wen, Y. Wang, and F. Yang, “Photonic-assisted
+generation of joint radar and communication signals with immunity
+to power fading,” Optics Communications, 2023.
+[125] L. Peng, M. Yin, D. Zou, N. Yang, Y. Xiao, and F. Li, “Photonicsassisted integrated sensing and communication with ranging resolution
+improvement by multiple signal classification,” Optics Express, 2024.
+[126] W. Bai et al., “Millimeter-wave joint radar and communication system
+based on photonic frequency-multiplying constant envelope LFMOFDM,” Optics Express, 2022.
+[127] Y. Wen, F. Yang, J. Song, and Z. Han, “Free Space Optical Integrated
+Sensing and Communication Based on LFM and CPM,” IEEE Communications Letters, 2024.
+[128] S. Chen et al., “Microwave Photonics Empowered Minimalist Base Station for Integrated Sensing and Communication via Cascaded Intensity
+and Phase Modulation,” Journal of Lightwave Technology, 2026.
+[129] N. Zhong, P. Li, W. Bai, W. Pan, L. Yan, and X. Zou, “Spectral-Efficient
+Frequency-Division Photonic Millimeter-Wave Integrated Sensing and
+Communication System Using Improved Sparse LFM Sub-Bands Fusion,” Journal of Lightwave Technology, 2023.
+[130] L. Peng, D. Luo, Y. Xiao, and F. Li, “A Photonics-aided MMW
+OFDM Joint Radar and Communication System with Velocity Accuracy Improvement,” in APSCON 2023 - IEEE Applied Sensing
+
+20
+
+Conference, Symposium Proceedings, 2023, eligible companion report
+in the governed 206-study/227-report O-ISAC evidence base.
+[131] B. Dong et al., “Demonstration of photonics-based flexible integration
+of sensing and communication with adaptive waveforms for a W-band
+fiber-wireless integrated network,” Optics Express, 2022, eligible companion report in the governed 206-study/227-report O-ISAC evidence
+base.
+[132] J. Gao, D. Liang, T. Shi, and Y. Chen, “Microwave Photonic Integrated
+Sensing and Communication Based on Polarization Multiplexing and
+Frequency-to-Time Mapping,” IEEE Internet of Things Journal, 2025.
+[133] Z. Wang et al., “Co-Route Fiber Recognition and Status Diagnosis
+Based on Integrated Sensing and Communication in 6G Transport
+Networks,” IEEE Internet of Things Journal, vol. 11, no. 18, pp.
+29 348–29 359, 2024.
+[134] S. Liu, T. Sun, L. Wang, J. Lin, J. Song, and Y. Dong, “Integrated
+PC-FMCW Automotive Headlamp for Communication, Sensing, and
+Illumination,” in 2025 Asia Communications and Photonics Conference
+(ACP), 2025.
+[135] Z. Xie, W. Dong, Z. Zhu, F. Deng, K. Yin, and T. Jiang, “A Novel
+Comb Based Multi-Function Architecture for ISAC System,” Journal
+of Lightwave Technology, 2026.
+[136] Z. Wei et al., “Simultaneous distributed sensing and communication
+enabled by space and wavelength division multiplexing in a fielddeployed seven-core fiber,” Journal of Optical Communications and
+Networking, vol. 18, no. 4, p. B49, 2026.
+[137] Y. Hu et al., “Demonstration of High Sensitivity Detection and High
+Precision Localization of Vibrations in Bidirectional Coherent Transmission Systems Enabled by Carrier Laser Phase Noise Retrieval,”
+Journal of Lightwave Technology, 2025.
+[138] Y. Xu, T. Wang, P. Huang, and G. Zeng, “Integrated Distributed Sensing
+and Quantum Communication Networks,” Research, 2024.
+[139] X. Li et al., “Integrated Sensing and Communication Chip Based on IIINitride for Motion Detection,” ACS Omega, vol. 8, no. 16, pp. 14 656–
+14 661, 2023.
+[140] Y. Zhu et al., “Long-Distance Integrated Forward Vibration Sensing and
+Terabit Optical Communication with 12.5-MHz DFB Laser via Phase
+Noise Separation,” in 2026 Optical Fiber Communications Conference
+and Exhibition (OFC), 2026.
+[141] X. Meng et al., “Photonics-Assisted System for Joint Radar Ranging,
+Wireless Communications, and Spectrum Sensing,” Journal of Lightwave Technology, 2026.
+[142] T. Wei, S. Liu, and X. Du, “Visible Light Integrated Positioning and
+Communication: A Multi-Task Federated Learning Framework,” IEEE
+Transactions on Mobile Computing, vol. 22, no. 12, pp. 7086–7103,
+2023.
+[143] X.-X. Feng, M.-Y. Han, M.-P. Chen, Q. Fang, Y.-J. Wang, and X. Li,
+“Integrated Nitride optoelectronic chip for motion detection and visible
+light communication,” Chinese Optics, 2023, eligible companion report
+in the governed 206-study/227-report O-ISAC evidence base.
+[144] B. Yang, Q. Zhuo, H. Yu, J. Tang, S. Gao, and Y. Yang, “Vibration
+Localization under Unidirectional Single-Channel Transmission Conditions in the DSCM Systems Based on Non-Reciprocity,” in 2025 Asia
+Communications and Photonics Conference (ACP), 2025.
+[145] M. Fang et al., “On-Chip Photonic MMW Joint Communication and
+Radar System,” in 2023 International Topical Meeting on Microwave
+Photonics (MWP), 2023.
+[146] J. Chen et al., “Photonic-Assisted Joint Radar and Communication
+System Using Overlapped Spectrum for High-Resolution Ranging and
+High-Speed Data Transmission,” IEEE Transactions on Microwave
+Theory and Techniques, 2025.
+[147] R. T. R. W. G. J. X. H. L. Z. H. Z. Wu, “Seamless integration of
+distributed acoustic sensing and passive optical networks for human
+intrusion monitoring,” Communications Engineering, 2026.
+[148] L. Maoqi, W. Jingchuan, L. Chen, Y. Changyuan, and L. Chao, “PreCompensation of LFM Sensing Probe via Integrated Sensing and
+Communication over Fiber System,” in 2025 30th OptoElectronics
+and Communications Conference (OECC) and 2025 International
+Conference on Photonics in Switching and Computing (PSC), 2025,
+pp. 1–4.
+[149] T. Chu et al., “Revolutionizing 6G: Experimental Validation of an Optical Integrated Communication, Sensing, and Power Transfer System,”
+IEEE Journal on Selected Areas in Communications, vol. 44, pp. 689–
+701, 2026.
+[150] L. Wang et al., “Endogenous integration of communication and interference fading free sensing using telecom pilots via joint polarizationfraction domain multiplexing,” Optics Express, 2025.
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+[151] Y. Wang, L. Wang, Z. Lin, C. Lu, M. Tang, and C. Yu, “Endogenous
+ISAC Enabled Interference Fading Free Sensing via Telecom Training Sequence,” in Opto-Electronics and Communications Conference,
+OECC, 2025, eligible companion report in the governed 206-study/227report O-ISAC evidence base.
+[152] Y. Wang, L. Wang, Y. Li, C. Yu, M. Tang, and Z. Wei, “Integration of
+In-band Polarization-Based Sensing and Communication via Fraction
+Domain Multiplexing,” in Asia Communications and Photonics Conference, ACP, 2025, eligible companion report in the governed 206study/227-report O-ISAC evidence base.
+[153] F. Liu et al., “Millimeter-wave over fiber integrated sensing and
+communication system using self-coherent OFDM,” Optics Express,
+2024.
+[154] F. Liu, X. Zou, N. Zhong, X. Deng, L. Yan, and W. Pan, “SignalSignal Beating Interference: From Destructive to Constructive for
+Photonic THz Integrated Sensing and Communication System Using
+Self-Coherent OFDM,” IEEE Transactions on Microwave Theory and
+Techniques, 2026.
+[155] B. Dong et al., “Photonic-Based Flexible Integrated Sensing and Communication With Multiple Targets Detection Capability for W-Band
+Fiber-Wireless Network,” IEEE Transactions on Microwave Theory
+and Techniques, 2024.
+[156] Y. Zuo, W. Liu, Y. Cheng, X. Li, and M. Luo, “High-performance
+Vibration Sensing Based on Subband Phase-Shift Transform in Integrated Sensing and Communication System,” in Asia Communications
+and Photonics Conference, ACP, 2025.
+[157] J. Wang, A. P. T. Lau, and C. Lu, “Sensing as a Service: Can In-Band
+Distributed Fiber Optic Sensing Coexist With Coherent Metro DWDM
+Communication Network?” Journal of Lightwave Technology, 2026.
+[158] B. Dong et al., “THz Integrated Sensing and Communication With
+Full-Photonic Direct LFM Reception and De-Chirping for D-Band
+Fiber-Wireless Network,” IEEE Transactions on Microwave Theory
+and Techniques, 2025.
+[159] Q. Zhou et al., “A Sub-THz ISAC System with Simultaneous RealTime 125.516-Gbps Communication Rate and Offline 10-mm Sensing
+Resolution Enabled by Photonics,” in ECOC 2024; 50th European
+Conference on Optical Communication, 2024.
+[160] W. Bai et al., “Photonic Millimeter-Wave Joint Radar Communication
+System Using Spectrum-Spreading Phase-Coding,” IEEE Transactions
+on Microwave Theory and Techniques, 2022.
+[161] X. Liu et al., “Integrating High-Capacity Self-Homodyne Transmission
+and High-Sensitivity Dual-Pulse ϕ-OTDR with an EO Comb over a 7Core Fiber,” Photonics, vol. 13, no. 3, p. 261, 2026.
+[162] B. Yang et al., “Accurate vibration recognition enabled by synergistic
+sensing based on both phase and SOP for stable IM-DD optical
+interconnects,” Journal of Optical Communications and Networking,
+2026.
+[163] M. Lei et al., “Integration of Sensing and Communication in a WBand Fiber-Wireless Link Enabled by Electromagnetic Polarization
+Multiplexing,” Journal of Lightwave Technology, 2023.
+[164] Y. Wen, F. Yang, J. Song, and Z. Han, “Interference Cancellation for
+Optical Wireless ISAC Based on Optical Phased Array,” in GLOBECOM 2025 - 2025 IEEE Global Communications Conference, 2025.
+[165] X. Xie et al., “Adaptive Lighting Control in Visible Light Systems: An
+Integrated Sensing, Communication, and Illumination Framework,” in
+2025 11th International Conference on Computer and Communications
+(ICCC), 2025.
+[166] T. Shi, F. Zhang, and Y. Chen, “Microwave Photonic Joint Radar and
+Secure Communication via Radar Signal Masking,” IEEE Microwave
+and Wireless Technology Letters, 2025.
+[167] S. Chen, C. Chen, Z. Zeng, Y. Yang, and H. Haas, “Full-Duplex ROISAC System: Wavelength Division Duplexing and Hybrid Waveform
+Design,” IEEE Photonics Technology Letters, 2025.
+[168] T. Chu et al., “Flexible Hybrid Waveform Design for Optical Integrated
+Communication, Sensing, and Power Transfer Systems,” Journal of
+Lightwave Technology, 2026.
+[169] B. Yang, J. Sun, H. Chi, K. Xu, and S. Yang, “Joint radar and
+communication system based on a chaotic optoelectronic oscillator,”
+Optics Communications, 2024.
+[170] M. A. Allousch and A. Sandmann, “Cc-Otdr Sequence Shaping Enabling Joint Co-Directional Sensing and Communication,” in 2025
+IEEE Photonics Conference (IPC), 2025, pp. 1–2.
+[171] L. Tang, Z. Hu, D. Teng, and L. Liu, “Integrated high precision time-offlight depth sensing and optical communication based on Hamiltonian
+coding,” Optics Communications, 2023.
+[172] T. Wang et al., “Integrated secure communication and sensing based
+on simultaneous chaotic encryption and vibration detection with an
+
+21
+
+RE-LFM signal,” Journal of Optical Communications and Networking,
+2026.
+[173] M. Lei et al., “Demonstration of Photonic Sub-THz ISAC System
+with Real-Time 251.03-Gbps Communication Rate and Offline 2.5cm Sensing Resolution,” in 2024 22nd International Conference on
+Optical Communications and Networks (ICOCN), 2024.
+[174] Z. Wang et al., “Probabilistic Shaping With Bit-Weighted Distribution
+Matching for Photonics-Assisted mmWave Dual-Functional OFDM
+ISAC Systems,” Journal of Lightwave Technology, 2026.
+[175] J. Y. Wang, H. N. Yang, J. B. Wang, M. Lin, and P. Shi, “Joint
+Optimization of Slot Selection and Power Allocation in Integrated
+Visible Light Communication and Sensing Systems,” IEEE Internet
+of Things Journal, 2023.
+[176] M. Liu, J. Wang, C. Liu, C. Yu, and C. Lu, “Coexistence of Distributed
+Sensing and Ultra-Simple Coherent RoF Based Front-Haul for Radio
+Access Network,” Journal of Lightwave Technology, 2025.
+[177] M. Lei et al., “Photonics-aided integrated sensing and communications
+in mmW bands based on a DC-offset QPSK-encoded LFMCW,” Optics
+Express, vol. 30, no. 24, p. 43088, 2022.
+[178] F. Liu, G. Zhu, and X. Zhou, “Enhanced single-fiber bi-directional FTDVS using a 600-kHz linewidth DBR laser with LPN compensation
+for O-ISAC [Invited],” Chinese Optics Letters, 2026.
+[179] G. Chen et al., “Deep Integration Between Polarimetric ForwardTransmission Fiber-Optic Communication and Distributed Sensing
+Systems,” Sensors, 2024.
+[180] R. Zhu et al., “Deep Integration of Fiber-Optic Communication and
+Sensing Systems Using Forward-Transmission Distributed Vibration
+Sensing and on–off Keying,” Sensors, 2024.
+[181] J. C. Wang, T. Y. Liu, and J. H. Zhou, “Fiber Events Recognition
+in Integrated Sensing and Communication Systems Based on Signal
+State of Polarization Analysis,” in 2025 Photonics & Electromagnetics
+Research Symposium - Fall (PIERS-Fall), 2025, pp. 1–6.
+[182] M. Lei et al., “Photonics-Aided THz ISAC System Based on A
+Spectral Overlapping Multi-Carrier 16QAM-LFM Waveform,” in 2025
+Optical Fiber Communications Conference and Exhibition, OFC 2025
+- Proceedings, 2025.
+[183] X. Yu et al., “Photonics-assisted self-interference cancellation for inband full-duplex integrated sensing and communication transceiver,”
+Optics Express, 2024.
+[184] Z. Yixiao, Z. Shanghong, L. Xuan, W. Guodong, and Y. Longqiang,
+“Photonic-aid dual-formats LFM signals generator for joint radarcommunication system,” Optik, 2022.
+[185] H. Wang, C. Chen, Z. Zeng, S. Shao, and H. Haas, “Bidirectional
+Retroreflective Optical ISAC Using Time Division Duplexing and
+Clipped OFDM,” IEEE Photonics Technology Letters, 2025.
+[186] W. Wang et al., “Multiuser Retroreflective Optical ISAC: Waveform
+Design, Joint Sensing and Multiple Access,” Journal of Lightwave
+Technology, 2026.
+[187] G. Zhou, M. Cao, Q. Yang, Y. Zhang, X. Zhang, and H. Wang, “BiLSTM-Transformer hybrid network for V2V optical wireless ISAC
+systems,” ICT Express, 2026.
+[188] B. Yang, J. Tang, S. Gao, J. Liang, J. Wei, and Y. Yang, “Flexible
+Vibration Sensing Using Kalman Smoother Integrated in ECL-Based
+Communication Systems,” IEEE Photonics Technology Letters, 2025.
+[189] Y. Liu, X. Deng, N. Zhong, X. Zou, W. Pan, and L. Yan, “Simulation
+of Constant-Envelope THz Integrated Sensing and Communication
+System Based on Photonics with 2D Positioning,” in 2024 Asia
+Communications and Photonics Conference (ACP) and International
+Conference on Information Photonics and Optical Communications
+(IPOC), 2024.
+[190] S. Migla et al., “Demonstration of Integrated Sensing and Communications in an ARoF-Based Radar System Utilizing Pulse Position
+Modulation,” IEEE Access, 2026.
+[191] J. Zhang et al., “Photonics-Aided THz Integrated Sensing and Communication System Based on a Time-Frequency Efficient SF-LFM-OFDM
+Waveform,” IEEE Transactions on Microwave Theory and Techniques,
+2026.
+[192] Q. Wang, Y. Deng, D. Mishra, Y. Xie, E. Aboutanios, and S. Atakaramians, “Photonics-based Terahertz Integrated Communication and Localization for D-band,” in 2024 49th International Conference on Infrared,
+Millimeter, and Terahertz Waves (IRMMW-THz), 2024.
+[193] L. Li et al., “THz-Over-Fiber System With Orthogonal Chirp Division
+Multiplexing for Integrated Sensing and Communication,” Journal of
+Lightwave Technology, 2024.
+[194] B. Yang, J. Tang, L. Fan, J. Wei, and Y. Yang, “Machine-learningenhanced phase-based vibration sensing in coherent DSCM systems
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+under commercial ECLs,” Science China Information Sciences, vol. 69,
+no. 6, p. 160306, 2026.
+[195] Z. Xue, S. Li, X. Xue, X. Zheng, and B. Zhou, “Photonics-assisted joint
+radar and communication system based on an optoelectronic oscillator,”
+Optics Express, vol. 29, no. 14, p. 22442, 2021.
+[196] Y. Hai, Y. Luo, C. Liu, and A. Dang, “Remote Phase-Shift LiDAR With
+Communication,” IEEE Transactions on Communications, vol. 71,
+no. 2, pp. 1059–1070, 2023.
+[197] J. Du et al., “Flexible Waveform Design for RO-ISAC Based on
+OFDM-Embedded Maximum Length Sequence,” IEEE Wireless Communications Letters, vol. 14, no. 10, pp. 3334–3338, 2025.
+[198] W. Liu, Q. Deng, Z. Yang, F. Xiao, B. Zhou, and X. Geng, “Integrated
+Optical Camera Communication and Scene Sensing Based on Generative Adversarial Networks,” IEEE Transactions on Mobile Computing,
+vol. 25, no. 6, pp. 9010–9025, 2026.
+[199] Z. Yixiao et al., “Photonic-aided Doppler-robust ISAC system based
+on index modulation and chirp multiplexing,” Optics Express, vol. 33,
+no. 17, p. 35059, 2025.
+[200] D. Du, Y. Wang, and Y. Gao, “Integrated Communication and Radar
+Detection Based-on Single Modulator at W-Band,” in 2024 7th International Conference on Information Communication and Signal
+Processing (ICICSP), 2024, pp. 1158–1162.
+[201] A. Bansal, A. Bhatnagar, V. Sharma, and N. Sharma, “Optical integrated sensing and communication (O-ISAC): A unified framework
+for 6G and AI-Powered intelligent networks,” Journal of Optical
+Communications, 2026.
+[202] K. Deng, J. Liu, X. Lu, J. Chen, Y. Zhou, and W. Li, “A Unified
+OFDM-ISAC Signal Generation Architecture in W-Band via PhotonicsAided Frequency Multiplication and Phase Noise Mitigation,” Photonics, vol. 12, no. 11, p. 1052, 2025.
+[203] J. Liu et al., “W-band photonics-aided OFDM system integrating
+sensing and communication with phase noise suppression scheme,”
+Optics and Laser Technology, 2025.
+[204] H. Dong, K. Xi, H. Song, S. Liu, and Z. Zhang, “An Information Interaction Method for Autonomous Train Operation Protection Based on
+Detection and Communication Integrated Microwave Photonic Radar,”
+IEEE Transactions on Instrumentation and Measurement, 2026.
+[205] L. Shi, B. Bechadergue, L. Chassagne, and H. Guan, “Joint Visible
+Light Sensing and Communication Using m-CAP Modulation,” IEEE
+Transactions on Broadcasting, 2023.
+[206] H. Wang, Z. Zhang, Y. Ge, and B. Zhu, “Optical Integrated Sensing
+and Communication System Based on Combination of OIRS and
+PD Array for Mobile Scenarios,” IEEE Transactions on Wireless
+Communications, vol. 23, no. 12, pp. 19 522–19 536, 2024.
+[207] H. A. Satai, B. Bechadergue, L. Chassagne, K. Acuna-Condori,
+B. Cagneau, and P. Ruaux, “Single-Source Integrated Optical Wireless
+Positioning and Communication,” in 2026 IEEE 6th International
+Symposium on Joint Communications & Sensing (JC&S), 2026, pp.
+1–6.
+[208] X. Xiong, H. Wang, S. Shao, and C. Chen, “Hybrid MRR-Assisted
+Long-Range SDMA for RO-ISAC Systems in Industry IoT Applications,” Journal of Lightwave Technology, 2026.
+[209] Z. Yue et al., “Demonstration of Ranging-Based Phase Encryption
+for Enhanced Free-Space Optical Security,” Journal of Lightwave
+Technology, 2026.
+[210] F. Yang, C. Lin, J. Gao, and Y. Chen, “Microwave Photonic Joint
+Radar, Wireless Communications, and Spectrum Sensing System With
+Broadband Tunability From 12 to 40 GHz,” IEEE Internet of Things
+Journal, 2026.
+[211] Y. Wen, F. Yang, J. Song, and Z. Han, “Pulse Sequence Sensing
+and Pulse Position Modulation for Optical Integrated Sensing and
+Communication,” IEEE Communications Letters, 2023.
+[212] Q. Bai and J. Ma, “Photonic-assisted generation of fast switchable
+multi-format LFM waveforms with a tuned bandwidth for a joint radarcommunication system,” Optics Communications, 2025.
+[213] Z. Wang et al., “Simultaneous Full-Photonic Dechirping and Demodulation THz-ISAC System Based on Thin-Film Lithium Niobate
+Modulator,” Journal of Lightwave Technology, vol. 44, no. 11, pp.
+4640–4647, 2026.
+[214] P. Munar-Vallespir, J. Nötzel, and F. Seitz, “Joint Communication and
+Eavesdropper Detection on the Lossy Bosonic Channel,” in Proceedings - IEEE Global Communications Conference, GLOBECOM, 2024.
+[215] B. Li, J. Wang, Y. Gao, J. Lian, and B. Lian, “LACO-OFDMBased Optical ISAC System Design and Performance Analysis,” IEEE
+Internet of Things Journal, 2026.
+
+22
+
+[216] Z. Wang et al., “Bit Inversion Probabilistic Shaping Enabling Performance Tradeoff in Photonics-Aided Millimeter-Wave OFDM Integrated Sensing and Communication Systems,” IEEE Transactions on
+Microwave Theory and Techniques, 2026.
+[217] Z. Lyu et al., “Radar-Centric Photonic Terahertz Integrated Sensing
+and Communication System Based on LFM-PSK Waveform,” IEEE
+Transactions on Microwave Theory and Techniques, 2023.
+[218] J. Shen, J. Fan, M. Li, Y. Fei, T. Fu, and M. Gao, “Multi-service
+integrated sensing and communication system for industrial internetof-things,” Optics and Lasers in Engineering, 2026.
+[219] J. He, K. Liu, L. Yin, and Z. Chen, “An Orthogonal Time Frequency
+Space Waveform With W-MUSIC Scheme for Photonic-Aided ISAC
+System,” IEEE Photonics Technology Letters, 2026.
+[220] J. He, L. Yin, K. Liu, S. Xiao, and Z. Chen, “Zero-Padding 2DDFT Scheme for Photonics-Assisted W-Band Fiber-Wireless ISAC
+System With Orthogonal Time Frequency Space Modulation,” Journal
+of Lightwave Technology, 2025.
+[221] Y. Wu et al., “Advanced Integration of Sensing and Communication
+With High DSP Compatibility for SMART Network,” IEEE Photonics
+Technology Letters, vol. 37, no. 21, pp. 1249–1252, 2025.
+[222] H. Xiao, W. Wang, K. Zhang, F. Li, and C. Sun, “Microalgae Density
+Measurement Using Quantum-Dot-Integrated Sensing and Communication System,” IEEE Transactions on Instrumentation and Measurement, 2025.
+[223] M. Anastasopoulos, J. Gutiérrez, and A. Tzanakaki, “Optical Transport
+Network Optimization Supporting Integrated Sensing and Communication Services,” in Optical Fiber Communication Conference in
+Proceedings Optical Fiber Communication Conference, OFC 2025 and
+Optical Fiber Communication Conference (OFC) Postdeadline Papers
+2025, 2025.
+[224] N. Zhong et al., “Photonics Terahertz Dual-Band Anti-Jamming Integrated Sensing and Communication System Empowered by Permutation Frequency Hopping,” Journal of Lightwave Technology, 2026.
+[225] J. Zhang et al., “Photonics-Aided THz Integrated Sensing and Communication System Based on a Subcarrier-Chirp Inter-Embedded Waveform,” IEEE Open Journal of the Communications Society, 2025.
+[226] B. Li et al., “Passive Sensing Technique Using Cyclic Prefix in
+Power-Constrained Optical Wireless Communication Systems,” IEEE
+Transactions on Vehicular Technology, 2025.
+[227] G. Zhou, M. Cao, Q. Yang, Y. Zhang, S. Han, and H. Wang, “Integrated
+Design of OFDM-LFM Lidar Communication in IoV Environment,” in
+2024 IEEE 12th International Conference on Information, Communication and Networks (ICICN), 2024.
+[228] B. Zhou, X. Wang, Y. Shen, and P. Fan, “6-DoF Location-and-Pose
+Estimation Toward Integrated Visible Light Communication and Sensing: Algorithm Design and Performance Limits,” IEEE Transactions
+on Signal Processing, 2024.
+[229] Y. Zhu et al., “Integrated 1-Tb/s/λ Coherent Optical Transmission
+and Forward Vibration Sensing Using DFB Lasers with Combined
+Linewidth of 21.4 MHz,” in 2025 Asia Communications and Photonics
+Conference (ACP), 2025, pp. 1–5.
+[230] J. Wu, Z. Liu, L. Liu, H. Ji, and W. Shieh, “Simultaneous Transmission and Sensing Emulation Using Interconnected Counter-Propagating
+Recirculating Loops,” in 2025 European Conference on Optical Communications (ECOC), 2025.
+[231] A. G. Khorasgani, M. Mirmohseni, and A. Elzanaty, “Optical ISAC:
+Fundamental Performance Limits and Transceiver Design,” in 2024
+IEEE Globecom Workshops (GC Wkshps), 2024.
+[232] J. He, J. Li, K. Liu, S. Xiao, and Z. Chen, “A Cross-Correlation
+MUSIC Scheme Based on OFDM for Photonics-Aided W-Band ISAC
+Systems,” IEEE Photonics Technology Letters, 2026.
+[233] Z. Saghir and S. Aboagye, “Movable Access Point-Aided Integrated
+Visible Light Communication and Sensing Networks,” IEEE Wireless
+Communications Letters, 2025.
+[234] H.-N. Yang, J.-Y. Wang, Q. Zeng, M. Cheng, M. Lin, and J.-B. Wang,
+“Joint Task Offloading and Resource Allocation for Integrated VLC and
+Sensing in Digital Twin-Aided Vehicular Edge Computing Networks,”
+IEEE Transactions on Vehicular Technology, vol. 74, no. 4, pp. 6360–
+6372, 2025.
+[235] T. Li et al., “Submarine integrated sensing and communication cable
+networks enable high-precision earthquake location estimation through
+linear wavefront theory,” Journal of Optical Communications and
+Networking, vol. 18, no. 4, p. B108, 2026.
+[236] X. Zhang et al., “Microcomb-synchronized optoelectronics,” Nature
+Electronics, 2025.
+[237] J. Jia, B. Dong, L. Tao, J. Shi, N. Chi, and J. Zhang, “Demonstration
+of radar-aided flexible communication in a photonics-based W-band
+
+IEEE COMMUNICATIONS SURVEYS & TUTORIALS
+
+distributed integrated sensing and communication system for 6G,”
+Chinese Optics Letters, 2024.
+[238] F. Li et al., “Double-effect DNN-based DBP Scheme for Integrated
+Sensing and Communications (ISAC),” in 2022 Optical Fiber Communications Conference and Exhibition (OFC), 2022.
+[239] F. Zhang et al., “Glass fiber-based integrated sensing and communication system for vehicular applications,” Advanced Photonics Nexus,
+2026.
+[240] J. Wu, X. Lin, C. Yang, S. Yang, C. Liu, and Y. Cao, “Wearable Sensors
+Based on Miniaturized High-Performance Hybrid Nanogenerator for
+Medical Health Monitoring,” Biosensors, 2024.
+[241] Z. Jiang et al., “Optoelectronic integrated sensing and communication
+system based on InGaN/GaN MQW for wireless detection of air
+pressure,” Sensors and Actuators A: Physical, vol. 395, p. 117086,
+2025.
+
+23
+
+

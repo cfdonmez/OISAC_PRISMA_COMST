@@ -1,0 +1,64 @@
+{
+  "artifacts": [
+    "supplements\\s7\\S7_CANONICAL_JOIN_206.csv",
+    "supplements\\s7\\S7_PAIRED_FUNCTION_VALIDATION_12.csv"
+  ],
+  "status": "PASS_WITH_EXPLICIT_UNRESOLVED_FUNCTION_SPECIFIC_LOCATORS",
+  "counts": {
+    "canonical_join_rows": 206,
+    "maximum_tier_6_rows": 12,
+    "paired_function_score_3_rows": 6,
+    "nonpaired_maximum_tier_rows": 6
+  },
+  "checks": {
+    "joined_rows_equal_206": true,
+    "joined_unique_study_ids_equal_206": true,
+    "maximum_field_or_deployment_rows_equal_12": true,
+    "paired_function_rows_equal_6": true,
+    "paired_ids_strict_subset_of_maximum_ids": true,
+    "all_pair_rows_have_score_3_and_both_domains": true,
+    "all_carrier_rows_have_tier_6": true,
+    "all_st01_ids_resolve": true,
+    "all_tqaf_ids_resolve": true,
+    "all_validation_audit_ids_resolve": true,
+    "no_phase_f_s7_conflation": true,
+    "function_specific_missingness_explicit": true,
+    "no_local_path_or_email_leakage": true
+  },
+  "maximum_tier_study_ids": [
+    "STC-REALTIME-BIDIR-DMT-THZ-2024-2026",
+    "STC-SINGLETON-SCR-00496",
+    "STC-SINGLETON-SCR-00631",
+    "STC-SINGLETON-SCR-00730",
+    "STC-SINGLETON-SCR-00910",
+    "STC-SINGLETON-SCR-00979",
+    "STC-SINGLETON-SCR-01006",
+    "STC-SINGLETON-SCR-01008",
+    "STC-SINGLETON-SCR-01086",
+    "STC-SINGLETON-SCR-01180",
+    "STC-SINGLETON-SCR-01188",
+    "STC-SUBMARINE-CABLE-DAS-HUIZHOU-2022-2026"
+  ],
+  "paired_function_study_ids": [
+    "STC-REALTIME-BIDIR-DMT-THZ-2024-2026",
+    "STC-SINGLETON-SCR-00496",
+    "STC-SINGLETON-SCR-00631",
+    "STC-SINGLETON-SCR-00730",
+    "STC-SINGLETON-SCR-01086",
+    "STC-SUBMARINE-CABLE-DAS-HUIZHOU-2022-2026"
+  ],
+  "sha256": {
+    "S7_CANONICAL_JOIN_206.csv": "bf09e9614fa029c68c3193f7b76afb7dd9347b07ec4d1dd00660212ed3f89671",
+    "S7_PAIRED_FUNCTION_VALIDATION_12.csv": "219c307e117cb598de857910244407782fb9f3626e479a8ac50e41401318d1e3"
+  },
+  "authorities": {
+    "st01_sha256": "14305144170308299ec1106d0e108ba65f0a3408deacd01f17aae014bcce7ee4",
+    "tqaf_206_sha256": "0cd727981c0f7f8bd3cd02bfb632524243f02118e068b49f1ef2a7db867b5350",
+    "tqaf_dimension_audit_sha256": "2f72563507bf0ba49ac54025573ec03a537896935fe26a4026ddd298cf080e48"
+  },
+  "unresolved_fields": [
+    "relationship_timing is not exposed in an existing audited projection.",
+    "The audited TQAF trace supplies combined record locators but does not map separate locators to communication and sensing; function-specific locator fields remain explicit NR values."
+  ],
+  "boundary": "Supplement S7 is the paired-function validation view; it is not Phase-F synthesis domain S7 (6G relevance). Maximum tier 6 is not equivalent to TQAF validation score 3."
+}

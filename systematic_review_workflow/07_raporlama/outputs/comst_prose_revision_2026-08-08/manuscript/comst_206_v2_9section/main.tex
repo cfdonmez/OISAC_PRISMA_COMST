@@ -1,0 +1,65 @@
+\documentclass[letterpaper,journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[nocompress]{cite}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{placeins}
+
+% Compact submission bibliography: the BibTeX databases retain complete DOI
+% and URL metadata, while the page-limited article suppresses redundant URL
+% rendering. Non-DOI access routes remain in the submitted BibTeX records.
+\begin{filecontents*}{oisac_bib_control.bib}
+@IEEEtranBSTCTL{OISAC:BSTcontrol,
+  CTLuse_url = "no",
+  CTLuse_forced_etal = "yes",
+  CTLmax_names_forced_etal = "6",
+  CTLnames_show_etal = "1"
+}
+\end{filecontents*}
+
+\begin{document}
+
+\title{Optical Integrated Sensing and Communication for 6G: A Systematic
+Review and Survey of Architectures, Metrics, and Tradeoffs Across Optical
+Platforms}
+
+\author{Fatih D\"onmez, Ahmet Altuncu, and Mustafa Namdar%
+\thanks{This review received no specific financial or nonfinancial support.
+No funder or sponsor had any role in the design, conduct, analysis,
+interpretation, manuscript preparation, or decision to submit.}%
+\thanks{Fatih D\"onmez is with the Department of Electrical and Electronics
+Engineering, Afyon Kocatepe University, 03200 Afyonkarahisar, T\"urkiye
+(e-mail: fatih.donmez@usr.aku.edu.tr; ORCID: 0000-0003-0553-4418).}%
+\thanks{Ahmet Altuncu is with the Department of Electrical and Electronics
+Engineering, Faculty of Technology, Afyon Kocatepe University, 03200
+Afyonkarahisar, T\"urkiye (e-mail: aaltuncu@aku.edu.tr; ORCID:
+0000-0002-3753-9515).}%
+\thanks{Mustafa Namdar is with the Department of Electrical and Electronics
+Engineering, Faculty of Engineering, K\"utahya Dumlup{\i}nar University,
+43100 K\"utahya, T\"urkiye (e-mail: mustafa.namdar@dpu.edu.tr; ORCID:
+0000-0002-3522-4608).}%
+\thanks{Corresponding author: Fatih D\"onmez
+(e-mail: fatih.donmez@usr.aku.edu.tr).}}
+
+\markboth{IEEE Communications Surveys \& Tutorials}%
+{D\"onmez \MakeLowercase{\textit{et al.}}: Optical Integrated Sensing and
+Communication for 6G}
+
+\maketitle
+\bstctlcite{OISAC:BSTcontrol}
+
+% The standalone Supplement ST-01 carries one row for each of the 206 included
+% studies, cites all 227 eligible reports, and preserves their report-to-study
+% lineage. Directly cited reports remain in the main reference list.
+\input{MANUSCRIPT_BODY_INPUTS.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{oisac_bib_control,references_206_candidate,references_companion_21_candidate,references_context_candidate}
+
+\end{document}

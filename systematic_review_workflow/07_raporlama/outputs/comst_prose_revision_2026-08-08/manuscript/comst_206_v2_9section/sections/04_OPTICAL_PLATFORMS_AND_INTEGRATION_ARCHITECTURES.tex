@@ -1,0 +1,384 @@
+\section{OPTICAL PLATFORMS AND INTEGRATION ARCHITECTURES}
+\label{sec:optical_modality_families}
+\label{sec:integration_architectures}
+
+In O-ISAC, the physical role of optics determines both where information
+propagates and where the environment is observed. Optics may carry the user
+link, illuminate a target, distribute a wireless carrier, or provide a coherent
+reference, and each role exposes a different set of impairments. The integration
+architecture then reveals which component, signal, or resource is shared by
+communication and sensing. We therefore examine the evidence along the axes of
+physical platform and coupling mechanism.
+
+Table~\ref{tab:modality_map} reports the mutually exclusive family counts and
+corpus shares; photonics-assisted terahertz and fiber together account for 125
+studies (60.7\% of the corpus).
+
+\begin{table}[t]
+\caption{Canonical physical organization of the 206-study corpus}
+\label{tab:modality_map}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.06}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X r@{}}
+\toprule
+Platform family & Studies, $n$ (\%) \\
+\midrule
+Photonics-assisted THz & 69 (33.5\%) \\
+Fiber & 56 (27.2\%) \\
+VLC/LiFi & 38 (18.4\%) \\
+Free-space optical & 31 (15.0\%) \\
+Hybrid optical & 9 (4.4\%) \\
+Other optical & 3 (1.5\%) \\
+\midrule
+\textbf{Total} & \textbf{206 (100.0\%)} \\
+\bottomrule
+\end{tabularx}
+\vspace{1pt}
+\parbox{\columnwidth}{\footnotesize\emph{Note.} Each study is counted once under
+its dominant platform family. Media and integration mechanisms can overlap
+within the represented systems. The counts summarize how the reviewed evidence
+is distributed across the six platform families.}
+\end{table}
+
+The family profiles below provide the corresponding physical paths,
+observables, coupling mechanisms, active constraints, transfer conditions, and
+evidence anchors. Each study belongs to one platform family, while its coupling
+mechanisms may overlap. Transmitters supplied through fiber enter the terahertz
+family when photonic generation and conversion create the wireless carrier
+directed at the target. Fiber remains the organizing platform when it transports
+signals to downstream radio-frequency identification (RFID), radio, or radar
+sensing. Hybrid membership begins when interaction between physical segments
+shapes the result. This organization locates the target path and guides the
+synthesis that follows.
+
+\subsection{Physical Platform Families}
+
+\subsubsection{Photonics Assisted Terahertz Systems}
+
+Photonics-assisted terahertz is the largest family, comprising 69 of the 206
+studies (33.5\%). The optical chain generates, distributes, or processes a
+coherent carrier before conversion to a wireless terahertz or millimeter-wave
+target path, from which delay, range, Doppler, angle, imaging, and channel- or
+target-response observables are obtained. Communication and sensing recur as
+hardware-, reference-, waveform-, beam-, or resource-coupled functions
+\cite{OISAC_SCR01054,OISAC_SCR00036,OISAC_SCR00083}. This upstream sharing ties
+both functions to the same optical conditions. Laser coherence and linewidth
+govern reference stability, while component bandwidth, conversion fidelity,
+and efficiency shape the bandwidth, phase structure, and power delivered to
+the antenna \cite{OISAC_SCR00988,OISAC_SCR01004}. At the radio interface,
+antenna aperture, gain, and alignment govern launch and collection, molecular
+absorption shapes propagation, and target scattering forms the returning echo
+in radar configurations \cite{OISAC_SCR00989,OISAC_SCR00992}.
+
+Where the functions meet varies by architecture, with some systems dividing a
+multicarrier frame between sensing and communication and others placing the
+joint decision in a phased array controlled through photonics
+\cite{OISAC_SCR01054,OISAC_SCR00036}. Wavelength tuning and multibeam reception
+move coordination to the source or the receiving front end
+\cite{OISAC_SCR00185,OISAC_SCR00396}. At the waveform level, one multichannel
+design combines linear frequency modulation (LFM) with communication symbols
+across coherent carriers \cite{OISAC_SCR00988}. Other designs add source
+agility through frequency hopping or organize the signal over delay and Doppler
+through orthogonal multiplexing \cite{OISAC_SCR00992,OISAC_SCR00973}.
+Information can also close the loop, as burst SNR estimates guide both
+probabilistic shaping and ranging, while a simulated radar waveform carries
+communication data \cite{OISAC_SCR00989,OISAC_SCR00882}. Together, these
+designs show how the joint decision can move from hardware to waveform and to
+the information used by both tasks.
+
+\FloatBarrier
+
+The location of that decision also determines how the measurement is formed. A
+returned echo may be remodulated onto light and carried back over fiber for
+centralized processing, where photonic dechirping expresses target delay at a
+lower frequency \cite{OISAC_SCR00966,OISAC_SCR00992}. Along this path, phase
+noise associated with laser linewidth degrades the recovered signal, while
+delay mismatch between optical and electrical paths shifts the ranging
+observable \cite{OISAC_SCR00966}.
+Laboratory experiments reveal waveform, conversion, and beamforming behavior
+under controlled conditions \cite{OISAC_SCR00988,OISAC_SCR00036}, whereas a
+270~m outdoor link adds wireless propagation and operation of the complete
+chain \cite{OISAC_SCR01054}. Meaningful numerical transfer therefore requires
+aligned optical and wireless stages, aperture and beam conditions, receiver
+processing, and validation setting.
+
+\subsubsection{Fiber O-ISAC}
+
+Fiber comprises 56 studies (27.2\%) and follows two physical paths. The guided
+link may form the sensing medium, with disturbances observed through
+backscatter, carrier phase, modal coupling, or an inserted sensor
+\cite{OISAC_SCR00957,OISAC_SCR00432,OISAC_SCR00356,OISAC_SCR00679}. Fiber may
+instead transport signals to a downstream RFID, radio, or radar segment, so the
+target interaction occurs after optical distribution
+\cite{OISAC_SCR00496,OISAC_SCR00631,OISAC_SCR00719,OISAC_SCR00983,OISAC_SCR01049}.
+The corresponding observations include distributed events, vibration, strain,
+and environmental change in the guided path, together with downstream tag
+state, range, localization, and imaging
+\cite{OISAC_SCR00957,OISAC_SCR00631,OISAC_SCR00496}. The measurement boundary
+therefore lies either within the guided path or across the complete optical and
+wireless chain.
+
+Coupling recurs through shared hardware, wavelengths, waveforms, links, or
+resource decisions. Integration can reuse the communication signal itself
+\cite{OISAC_SCR00647,OISAC_SCR00038,OISAC_SCR00356,OISAC_SCR00432,OISAC_SCR00015}
+or place distinct data and sensing signals on shared infrastructure
+\cite{OISAC_SCR00013,OISAC_SCR00344,OISAC_SCR00957,OISAC_SCR00218,OISAC_SCR00679}.
+The first form ties sensing to the symbols, carrier, phase, or supported modes,
+whereas the second ties both functions to the same fiber and receiver
+conditions. Guided sensing is constrained by dynamic range, leakage,
+reflection, nonlinearity, reference stability, topology, and traffic, whereas
+transported sensing additionally depends on conversion, timing, remote
+calibration, and wireless geometry. Evidence from laboratory links, live
+access networks, and a deployed submarine route shows why numerical transfer
+must match the interrogation or transport role, topology, launch and receiver
+conditions, conversion and clocking, target path, traffic, and validation
+setting
+\cite{OISAC_SCR00647,OISAC_SCR00038,OISAC_SCR00218,OISAC_SCR00957,
+OISAC_SCR00631,OISAC_SCR00496,OISAC_SCR01049}.
+
+\subsubsection{VLC/LiFi Systems}
+
+VLC/LiFi comprises 38 studies (18.4\%) and places communication and sensing
+within the same illuminated scene. The grouping preserves the distinct link-
+and networking-level meanings of VLC and LiFi. Direct or reflected room and
+device paths through emitters, cameras, and photodiodes support position, pose,
+distance, imaging, gesture, recognition, and physiological sensing
+\cite{OISAC_SCR00910,OISAC_SCR01034,OISAC_SCR00196}. Cameras and photodiodes
+expose different balances between spatial detail and reception speed, while
+nonnegativity, dimming, flicker, source linearity, ambient light, field of view,
+and exposure constrain what can be communicated and observed
+\cite{OISAC_SCR00273,OISAC_SCR00925,OISAC_SCR00910,OISAC_SCR01036}.
+Coupling recurs through hardware, waveform, geometry, resource decisions, and
+the application loop. It may arise through a shared observation
+\cite{OISAC_SCR01034,OISAC_SCR00836}, through geometry and resource decisions
+\cite{OISAC_SCR00901,OISAC_SCR00905,OISAC_SCR00407,OISAC_SCR00557,OISAC_SCR00915},
+or through integrated emitters and detectors
+\cite{OISAC_SCR00943,OISAC_SCR00873,OISAC_SCR00001}.
+
+Illumination is the common comparison boundary across these designs. Geometry
+and multipath shape localization, reflected observations support gesture and
+recognition, and learned models extend the same optical field to health sensing
+tasks
+\cite{OISAC_SCR00910,OISAC_SCR00407,OISAC_SCR00557,OISAC_SCR01036,
+OISAC_SCR00376,OISAC_SCR01047}. Analytical and
+simulated studies isolate geometry and resource choices, whereas prototypes and
+field experiments add lighting, receiver, and control conditions
+\cite{OISAC_SCR00901,OISAC_SCR00407,OISAC_SCR00915,OISAC_SCR00910,
+OISAC_SCR00836,OISAC_SCR00873}. Numerical transfer requires matched task
+definitions, layout, orientation, illumination, detector, processing, and
+validation conditions.
+
+\subsubsection{Free Space Optical Systems}
+
+Free-space optical systems comprise 31 studies (15.0\%) and use a directional
+link, optionally combined with target illumination and return, over direct or
+reflected aperture and beam paths. These paths support ranging, localization,
+imaging, tracking, and atmospheric or channel observation
+\cite{OISAC_SCR00011,OISAC_SCR01029,OISAC_SCR00730}. Geometry is therefore part
+of both the link and the measurement. Coupling recurs through the link,
+waveform, aperture or beam, and spatial or temporal resources, while pointing,
+divergence, aperture, reflectivity, loss, turbulence, and motion constrain the
+resulting evidence. Direct, reflected, scanned, and steered paths illustrate
+these relations \cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00506,OISAC_SCR00941}.
+Retroreflection and multicarrier reception connect returned power to range and
+position \cite{OISAC_SCR01029,OISAC_SCR00730}. Structured waveforms and
+steering apertures place coupling in the signal or beam
+\cite{OISAC_SCR00256,OISAC_SCR00903,OISAC_SCR00904,OISAC_SCR00594}, while
+atmospheric estimates can guide beam shaping or link selection
+\cite{OISAC_SCR01085,OISAC_SCR00456}.
+
+Across these forms, beam geometry determines both spatial selectivity and the
+power collected at the receiver. Range, angle, and image features
+therefore remain tied to calibration, aperture, pointing, and motion
+\cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00506,OISAC_SCR01029,
+OISAC_SCR00730}. Controlled links reveal waveform and estimator behavior,
+whereas operational ranging adds atmospheric variation and continuous field
+observations \cite{OISAC_SCR01085,OISAC_SCR00730}. Numerical transfer requires
+matched geometry, calibration, target properties, weather, motion, and
+validation conditions. Hybrid systems extend that comparison across interfaces
+between physical segments.
+
+\subsubsection{Hybrid Optical Systems}
+
+Hybrid optical systems comprise nine studies (4.4\%) in which consequential
+interaction occurs among optical, fiber, free-space, or radio segments and the
+perturbation and observation may straddle a conversion boundary. Their
+observables include range, vibration, and target or network state within
+individual segments, while coupling arises through a central reference and
+through links, resources, control, or applications shared across segments.
+Conversion loss, segment power, synchronization, calibration, and timing are
+therefore active constraints
+\cite{OISAC_SCR00210,OISAC_SCR00366,OISAC_SCR00277}. Numerical transfer must
+trace every segment, conversion, clock, and measurement plane and validate each
+communication and sensing function.
+
+Unlike fiber used only for downstream transport, hybrid membership requires
+conversion or cross-segment feedback to shape the result. This occurs when
+fiber-to-wireless interaction is consequential
+\cite{OISAC_SCR00210,OISAC_SCR00366}, when a shared photonic source spans fiber,
+free space, and millimeter-wave stages \cite{OISAC_SCR00944}, or when sensing in
+one segment guides service in another \cite{OISAC_SCR01011,OISAC_SCR00277}.
+Other designs establish a common signal origin through shared time modes or a
+frequency-agile photonic waveform
+\cite{OISAC_SCR00091,OISAC_SCR01229}.
+
+\subsubsection{Other Optical Systems}
+
+The three other optical studies (1.5\%) use distinct optical-control or
+coherent-carrier mechanisms: a microcomb-generated microwave field, a
+solar-blind ultraviolet path, and a quantum-optical path. Their observables are,
+respectively, a field pattern, particulate or smoke response, and phase
+\cite{OISAC_SCR00268,OISAC_SCR00379,OISAC_SCR00906}. Coupling is specific to
+specialized hardware, reference, and application choices, and each case is
+bounded by its own propagation, target, receiver, and measurement models.
+Numerical results must therefore be interpreted within the native mechanism and
+measurement model of each system. Together, the hybrid and other optical cases
+complete the physical map before the analysis turns to coupling mechanisms
+shared across families.
+
+\subsection{Integration Architectures and Resource Coupling}
+
+Across these physical families, integration architecture locates where
+communication and sensing meet along the target path. The coupling may enter
+through shared hardware, a common carrier or waveform, coordinated resources,
+a propagation link, or a service decision. Several mechanisms can coexist in
+one system. Each label identifies one coupling location while preserving the
+rest of the chain for separate interpretation.
+
+Coverage is therefore multilabel. Shared hardware appeared in 117 studies and
+shared optical carriers in 49. Shared waveforms appeared in 113 studies,
+coordinated resource allocation in 118, and shared link or channel use in 87.
+Joint design or optimization appeared in 72 studies, and application coupling
+in 46. The normalized map covers all 206 studies and retains three boundary
+cases as mixed.
+
+% FUTURE FIGURE 5 --- MULTILABEL INTEGRATION AND RESOURCE COUPLING MAP
+% Do not generate in this revision.
+% Stable label: fig:integration_map
+% Blueprint ID: FIG-OISAC-04
+% Placement: immediately after a compact interpretive lead-in and before the
+% mechanism subsections.
+% Activation rule: once the figure is live, replace the current seven-count
+% prose inventory with the two-sentence lead-in below. Do not repeat the counts
+% in the surrounding prose.
+% Data authority: Phase F s2_integration_mechanisms.csv and its locked
+% normalization audit; denominator 206, multilabel.
+% Layout: a generic left-to-right system chain with parallel communication and
+% sensing lanes: source/front end -> carrier/modulation -> waveform/frame ->
+% resource controller -> propagation link/channel and target -> receiver/DSP ->
+% service/application. Seven equal coupling bands connect the lanes at their
+% usual locations: shared hardware 117; optical carrier 49; waveform 113;
+% resource allocation 118; link or channel 87; joint design or optimization 72;
+% application scenario 46. Retain three mixed boundary cases as a separate
+% audit callout. Node order shows location, not frequency or maturity; badge size
+% remains constant and counts must not be summed.
+% Future lead-in: ``Figure~\ref{fig:integration_map} locates the seven recurring
+% integration mechanisms along a generic O-ISAC signal and service path. The
+% badges report overlapping coverage rather than an exclusive taxonomy.''
+% Exact future caption: ``Locations of communication and sensing coupling in
+% the 206-study O-ISAC corpus. Shared resource allocation (118 studies),
+% hardware (117), waveform (113), link or channel (87), joint design or
+% optimization (72), optical carrier (49), and application scenario (46) are
+% shown at their typical locations; three mixed boundary cases remain separate.
+% Coding is multilabel, so counts must not be summed and do not indicate
+% integration strength or maturity.''
+
+\subsubsection{Shared Hardware, Carrier, and Link}
+
+Hardware, carrier, and link sharing describe different physical relations.
+Reusing a component makes its bandwidth, coherence, dynamic range, or alignment
+conditions relevant to both functions. A common optical carrier adds a phase or
+wavelength relation, while a common link adds shared propagation and calibration
+conditions. Together, these relations show which design choice is common and
+which constraint follows it.
+
+The physical path gives reuse its engineering meaning. In fiber, traffic and
+sensing share the guided structure, with a resonance shift, phase, or
+backscatter conveying the sensed change
+\cite{OISAC_SCR00002,OISAC_SCR00013}. A retroreflective free space
+path supports information delivery together with ranging or localization
+\cite{OISAC_SCR00011}. Arrays controlled through photonics instead share
+optical generation and beam control while the target path remains wireless
+\cite{OISAC_SCR00036}. Comparison therefore follows the component role, carrier
+relation, propagation path, and calibration.
+
+\subsubsection{Shared Waveforms}
+
+Waveform sharing begins when one signal structure contributes to both decoding
+and sensing. The shared element may be the complete waveform or a selected
+pilot, chirp, code, polarization state, or spatial pattern. This common design
+links payload efficiency, sensing observability, and receiver processing.
+Structural sharing records that relationship. Concurrent performance adds the
+requirement that both outcomes be observed at a matched operating point, a
+distinction carried into Section~\ref{sec:metrics}.
+
+The evidence illustrates several forms. Pilots inserted for channel estimation
+can also provide a sensing reference \cite{OISAC_SCR00007}. One photonic
+terahertz prototype generates a waveform whose frequency steps provide the
+radar dimension and whose amplitude carries data. Its experimental evidence is
+strongest for waveform generation and communication response
+\cite{OISAC_SCR00160}. A visible light design combines temporal data with
+spatially structured illumination and uses localization to adapt beamforming
+\cite{OISAC_SCR00196}. The shared structure is similar, but its physical and
+receiver implementation remains platform specific.
+
+\subsubsection{Resource Allocation and Joint Design}
+
+Resource coupling coordinates temporal, spectral, power, spatial, or processing
+degrees of freedom. An allocation can change payload opportunity, link margin,
+sensing observability, geometry, or latency. Joint design connects the two
+functions more directly by choosing a variable, objective, or constraint in
+view of both outcomes. The resource, allocation rule, and operating conditions
+therefore define the resulting evidence.
+
+A visible light V2X camera model makes exposure time a shared decision variable.
+Its coexistence result is analytical and numerical, while laboratory
+communication and sensing gains were obtained in separate configurations
+\cite{OISAC_SCR00273}. In one reported terahertz configuration, a rapidly swept
+photonic source and common waveform plan support simultaneous data transmission
+and ranging \cite{OISAC_SCR00083}. These cases distinguish a modeled optimum
+from a measured concurrent configuration. Section~\ref{sec:tradeoffs} therefore
+reads each relationship within its operating region and evidence form.
+
+\subsubsection{Coupling at the Application Level and Boundary Cases}
+
+Application coupling arises when sensing informs beam or link selection,
+trajectory planning, blockage response, or network control. The shared element
+is then the system action, even when the signal paths remain separate. A near
+infrared wearable combines communication and physiological sensing on a common
+material platform while retaining separate detector roles
+\cite{OISAC_SCR00001}. A hybrid last mile design places free space optical
+delivery and fiber Bragg grating monitoring within one system model
+\cite{OISAC_SCR00277}. Their coordination lies in hardware and service context.
+
+Three studies cross temporal or physical segment boundaries. One performs
+localization and imaging before data delivery on a shared optical source and
+path with separate receivers \cite{OISAC_SCR00012}. Two use sensed free space
+optical channel state to adapt trajectory and resource allocation or cell
+placement and user association across optical backhaul and radio access
+\cite{OISAC_SCR00917,OISAC_SCR00922}. The mixed label preserves this path and
+keeps each result tied to the segment, function, and operating stage that
+produces it.
+
+\subsection{Interpretation Across Platforms}
+
+Read together, the platform and architecture views form one mechanism map. The
+platform establishes the physical transfer conditions, while the architecture
+identifies the shared choice. In fiber, waveform sharing inherits guided
+propagation and reflections, together with launch and receiver conditions
+\cite{OISAC_SCR00038,OISAC_SCR00647}. In free space optical systems, the same
+mechanism is shaped by aperture, geometry, and alignment, whereas terahertz
+systems assisted by photonics also introduce conversion from optics to radio
+\cite{OISAC_SCR00011,OISAC_SCR00036}. Application coupling can instead
+coordinate separate optical and radio paths through a common service decision
+\cite{OISAC_SCR00917}.
+
+Across these mechanisms, sharing concentrates design around a common component,
+reference, or resource. That choice can couple the functions through power
+balance and interference, while synchronization and receiver dynamic range
+constrain their joint operation
+\cite{OISAC_SCR00013,OISAC_SCR00366}. Section~\ref{sec:metrics} therefore
+examines which communication and sensing outcomes change together at a matched
+operating point and which conditions explain that relationship.

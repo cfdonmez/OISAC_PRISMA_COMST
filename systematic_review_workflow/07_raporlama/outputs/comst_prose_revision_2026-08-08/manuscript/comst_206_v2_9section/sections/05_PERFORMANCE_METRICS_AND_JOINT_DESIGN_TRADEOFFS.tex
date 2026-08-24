@@ -1,0 +1,572 @@
+\section{PERFORMANCE METRICS AND JOINT DESIGN TRADEOFFS}
+\label{sec:metrics}
+\label{sec:tradeoffs}
+After locating a shared choice, the analysis turns to the reported
+communication and sensing outcomes. A reported value gains engineering meaning
+from its task, its observation point in the signal chain, and its operating and
+validation conditions. The comparison profile connects these elements to the
+performance evidence.
+
+The primary synthesis contains 4,779 metric records. Each record is an extraction
+unit that retains the reported quantity together with the definition and source
+conditions available for it. The denominator therefore represents reported
+quantities in their original contexts. Data rate, bit error
+rate (BER), and range resolution have the widest study coverage, appearing in
+85, 60, and 50 studies, respectively. Since one study may report several
+families, these totals provide overlapping views of the evidence.
+
+Beyond these familiar measures, the evidence extends from link and waveform
+behavior to outcomes observed at the device, estimator, application, and
+implementation levels. This breadth makes semantic alignment the organizing
+principle for the analysis that follows.
+
+\subsection{Metric Specific Application of the Comparison Profile}
+
+Applying the comparison profile defined in
+Section~\ref{sec:foundations_comparison}, each metric row was coded by source
+definition, task, measurement plane, operating point, validation method, and
+value provenance. Communication and sensing results form a joint operating
+point when the source links them to the same condition set.
+Table~\ref{tab:metric_admissibility} summarizes domain coverage and the
+analytical role assigned to each record.
+
+\begin{table}[!htbp]
+\caption{Metric evidence profile for 4,779 primary records}
+\label{tab:metric_admissibility}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.04}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X r r@{}}
+\toprule
+\multicolumn{3}{@{}l}{\emph{Metric domains}} \\
+\addlinespace[1pt]
+Domain & Records, $n$ (\%) & Studies, $n$ (\%) \\
+\midrule
+Sensing & 1,816 (38.0\%) & 203 (98.5\%) \\
+Communication & 1,328 (27.8\%) & 194 (94.2\%) \\
+Joint & 870 (18.2\%) & 158 (76.7\%) \\
+Implementation & 476 (10.0\%) & 64 (31.1\%) \\
+Smaller normalized domains & 289 (6.0\%) & 33 (16.0\%) \\
+\bottomrule
+\end{tabularx}
+
+\vspace{3pt}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.275\columnwidth}
+>{\raggedleft\arraybackslash}p{0.180\columnwidth}
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+\multicolumn{3}{@{}l}{\emph{Analytical roles}} \\
+\addlinespace[1pt]
+Role & Records, $n$ (\%) & Use in the survey \\
+\midrule
+Bounded relation & 118 (2.5\%) & Conditional comparison across studies \\
+Native context & 4,661 (97.5\%) & Mechanism, feasibility, and qualitative
+synthesis \\
+\bottomrule
+\end{tabularx}
+\vspace{1pt}
+\parbox{\columnwidth}{\footnotesize\emph{Note.} Domain rows and analytical
+roles each partition the 4,779 primary records, while study counts overlap. The
+governed ledger contains 4,861 rows, including 31 for contextual interpretation
+and 51 under conflict governance. Comparison follows the reported definition,
+task, measurement plane, conditions, and validation. Electronic Supplement
+S-Evidence provides the full records and provenance, including quantities
+preserved under the residual ``other'' code.}
+\end{table}
+
+The domain distribution shows where metric evidence is concentrated, while the
+analytical role determines how each record enters the survey. The following
+subsections explain how task, measurement plane, and operating conditions shape
+communication, sensing, joint, and implementation metrics.
+
+\subsection{Metrics Across Functions}
+
+\subsubsection{Communication Metrics}
+
+A communication rate gains meaning from what the source counts. Symbol rate
+tracks signaling pace, while data rate reflects the payload and overhead
+included in that count. Throughput describes delivered service, capacity
+provides a model bound, and spectral efficiency relates useful data to its
+stated denominator. In a photonics assisted terahertz prototype, net rates
+follow communication subcarrier allocation, payload occupancy, and coding
+overhead
+\cite{OISAC_SCR01054}. An embedded pilot orthogonal frequency division
+multiplexing (OFDM) simulation defines spectral efficiency as the data
+subcarrier fraction and reports cyclic prefix overhead
+separately
+\cite{OISAC_SCR00007}.
+
+Reliability shifts attention to the event and its location in the signal chain.
+BER measured before and after forward error correction describes two stages of
+the link, while packet loss and outage describe broader delivery boundaries. A
+long span fiber experiment reports receiver OSNR and BER before correction
+during concurrent distributed sensing
+\cite{OISAC_SCR01180}. A robotics study reports packet loss over distance and
+view angle, display delay over queue size, and formation control under dynamic
+motion as separate results \cite{OISAC_SCR00910}. The reported reliability value
+is therefore tied to its event, observation point, time scale, and system boundary.
+
+The observation point also determines how signal quality and power are
+interpreted. OSNR relates signal power to noise in a stated optical reference
+bandwidth, while electrical SNR follows photodetection and digital SNR follows
+equalization. Launch and received power likewise refer to the transmitter and
+receiver ends of the link. A fiber polarization sensing experiment traces
+recovered vibration SNR across an OSNR sweep, connecting the
+sensing response to a stated optical condition
+\cite{OISAC_SCR00220}.
+
+Distance and latency complete the profile by locating the result in space and
+time. Fiber span and wireless separation describe link geometry, while target
+range and coverage radius describe the observed or served region. Latency may
+include propagation and buffering, signal acquisition and processing, or the
+full application loop. Stated endpoints, included stages, and operating
+conditions define the scope of each value. The complete profile connects each
+communication metric to the system behavior it represents.
+
+\subsubsection{Sensing Metrics}
+
+Sensing metrics first take meaning from the task and quantity they represent.
+Range and position estimates, motion measurements, images, and class decisions
+refer to distinct observations and references. Resolution describes
+separability along a stated dimension, while estimation error relates an
+estimate to a reference. Repeatability captures variation across trials, and a
+model bound supplies a conditional benchmark. These distinctions establish the
+comparison basis.
+
+Representative studies show how this contract works. A fiber reflectometry
+system reports breakpoint localization error and range resolution separately
+for laboratory and simulated conditions \cite{OISAC_SCR00056}. A visible light
+localization experiment distinguishes lateral estimation error from the
+smallest demonstrated displacement and summarizes signed displacement with
+means and standard deviations across repeated trials
+\cite{OISAC_SCR00196}. An optical phased array simulation relates imaging root
+mean square error to electrical SNR under a defined scene, waveform, and
+beamforming constraint \cite{OISAC_SCR00940}. Each result retains its summary,
+geometry, and validation setting.
+
+Detection and classification add dataset and decision context. Their metrics
+take meaning from class balance, decision thresholds, background conditions,
+and the relation between training and test data. CORE-Lens reports recognition
+accuracy and optical camera communication BER across stated class, data rate,
+and background settings, with runtime evaluated separately
+\cite{OISAC_SCR00833}. VehicleTalk evaluates link performance, distance
+estimation error, and vehicle status recognition under separate prototype
+conditions \cite{OISAC_SCR01034}. Their application meaning follows from the
+attached classes, geometries, and test protocols.
+
+Physical quantity sensing follows the same logic by linking each measurand to a
+reference and calibration. Spatial support and acquisition time locate the
+observation, while the aggregation rule shapes its summary. The resulting
+profile connects the task, reference, geometry, processing, and validation
+setting to the reported sensing outcome. Together, these elements define the
+conditions for comparison.
+
+\subsubsection{Joint and Implementation Metrics}
+
+Joint metrics connect communication and sensing through a shared operating
+point or resource rule. A matched tuple uses the same conditions for both
+functions. A shared resource can also link values that retain their own
+reported conditions. In an embedded pilot OFDM simulation, BER and mean
+absolute pilot error are reported at the same SNR with eight pilots, while
+spectral efficiency follows the corresponding data subcarrier fraction
+\cite{OISAC_SCR00007}. The pilot error measures deviation of known pilot symbols
+in the simulated channel. Together, the three values show how pilot allocation
+connects communication reliability, resource efficiency, and the reported
+sensing measure.
+
+Optimization creates another form of joint evidence by selecting an operating
+point through shared design variables. In a simulated optical phased array
+system, precoding matrices and photodiode orientations are selected together.
+The design maximizes a sensing contrast metric under a communication quality
+threshold and emitter power constraints \cite{OISAC_SCR00940}. Geometry,
+constraint thresholds, and metric definitions define the scope of the
+solution.
+
+Implementation metrics place these operating points within the platform and
+application chain. Receiver bandwidth, converter rate, memory, acquisition
+time, and latency show where processing burdens arise. An outdoor photonics
+assisted terahertz prototype evaluates receiver pipeline latency in hardware
+analysis and communication and ranging performance in a field experiment
+\cite{OISAC_SCR01054}. A smartphone camera prototype evaluates recognition and
+communication in the laboratory and benchmarks module latency, memory, and
+complete cycle timing on the device \cite{OISAC_SCR00833}. Together, these
+measures connect joint performance to the processing chain and locate the
+effects of shared design choices in system behavior.
+
+\subsection{How Communication and Sensing Performance Interact}
+
+Communication and sensing often share bandwidth, power, waveform components,
+hardware, and processing. A design change in any of these elements can move
+both functions to a new operating point. More pilot symbols may strengthen a
+sensing reference while leaving fewer resources for data. Wider bandwidth may
+support both a higher data rate and finer range resolution until a receiver or
+platform limit becomes active. The evidence is organized by the shared choice
+that produces each pattern.
+
+The synthesis covers 402 relationships from 168 studies. Each relationship is
+read within its waveform, geometry, target, observation point, and validation
+setting. These details matter because 371 relationships depend on the reported
+operating conditions. The following discussion explains what is shared, how
+both functions respond, and when the pattern can guide another design.
+
+% FUTURE FIGURE 6 --- CONDITION-AWARE TRADEOFF EVIDENCE PROFILE
+% Do not generate yet.
+% Stable label: fig:tradeoff_profile
+% Blueprint ID: FIG-OISAC-05
+% Placement: here, after ledger and conditionality framing and before the eleven
+% mechanism families.
+% Data authority: Phase F s4_tradeoff_families.csv plus the locked sentinel
+% correction. Lineage: 404 governed rows/169 studies/373 conditional rows;
+% excluding two absence-status audit sentinels gives 402 substantive rows,
+% 168 studies, and 371 conditional substantive rows.
+% Layout: three aligned panels sharing the same eleven-family y order.
+% Panel A uses stacked horizontal bars for 218 quantitative and 184 qualitative
+% rows. Panel B uses lollipops for the overlapping number of studies in each
+% family; the overall union is 168 and family counts must not be summed. Panel C
+% plots conditional share and labels each dot conditional/rows, with 92.3%
+% overall as a reference. The corrected bandwidth/resource row is 50+44=94,
+% 70 studies, 89 conditional; the qualitative/partial row is 2+8=10, 8 studies,
+% 7 conditional. Small n=1 families use open markers.
+% Future lead-in: ``Figure~\ref{fig:tradeoff_profile} separates row type,
+% overlapping study coverage, and conditionality across the eleven recurring
+% coupling families.''
+% Exact future caption: ``Conditionality profile for 402 substantive
+% communication and sensing tradeoff rows from 168 studies. Panel (a) separates
+% 218 quantitative and 184 qualitative rows. Panel (b) reports overlapping
+% study counts, and panel (c) reports conditional shares within each family.
+% Overall, 371 of 402 rows are conditional. The governed ledger also contains
+% two absence status audit rows, bringing its total to 404. Row frequency
+% describes evidence coverage, while each transfer claim remains attached to
+% its source conditions.''
+
+\subsubsection{Bandwidth, Spectrum, and Resource Allocation}
+
+Bandwidth links the two functions when both draw on the same signal space. That
+space may be divided across subcarriers, wavelengths, guard intervals,
+observation time, or the usable response of a device. Embedded pilots show the
+basic pattern. Increasing pilot support improves the reported pilot deviation
+proxy while changing BER and the data carrying fraction
+\cite{OISAC_SCR00007}. Protection intervals and chirp sweeps create related
+exchanges by improving sensing isolation or pulse compression within device
+bandwidth and subcarrier limits
+\cite{OISAC_SCR00344,OISAC_SCR00366}. In each case, the effect follows the
+resource being shared and the limit that becomes active.
+
+Waveform structure determines how the shared signal space is used, with format
+and operating mode setting time and spectral sharing
+\cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00083}. Within that structure,
+digital designs assign subbands, chirp parameters, power, and weighted resources
+\cite{OISAC_SCR00367,OISAC_SCR00626,OISAC_SCR00955,OISAC_SCR00956,OISAC_SCR01010}.
+Pilot strength, placement, and synchronization fields define reference support
+and communication margin, while receiver partitioning and ranging sequence
+redundancy set the usable signal region
+\cite{OISAC_SCR00086,OISAC_SCR00151,OISAC_SCR00369,OISAC_SCR00990,OISAC_SCR01054,OISAC_SCR01088}.
+A tunable laser study supplies qualitative generation context for the same
+design space \cite{OISAC_SCR00553}. Together, the allocation rule and receiver
+condition define the operating point reported in each design.
+
+Resource sharing also appears in time. Observation duration, camera exposure,
+and task scheduling connect sensing quality and cadence with communication
+goodput or execution time
+\cite{OISAC_SCR00189,OISAC_SCR00273,OISAC_SCR00833}. Time division, chirp
+repetition, coding traffic, security control, and embedded pulse count place
+both functions within a shared frame
+\cite{OISAC_SCR00836,OISAC_SCR01015,OISAC_SCR01034,OISAC_SCR01045,OISAC_SCR01019}.
+Other designs reserve spectral, temporal, spatial, polarization, or phase
+structure to manage interference, coverage, and receiver complexity
+\cite{OISAC_SCR00177,OISAC_SCR00396,OISAC_SCR00916,OISAC_SCR00920,OISAC_SCR00953,OISAC_SCR00983}.
+The observed outcome therefore depends on the frame period, exposure response,
+isolation rule, and remaining occupancy.
+
+When both functions occupy the same waveform, bandwidth affects pulse
+compression, estimation precision, sidelobes, and radar image quality together
+with communication support
+\cite{OISAC_SCR00362,OISAC_SCR00884,OISAC_SCR00889,OISAC_SCR00891,OISAC_SCR00909}.
+Stimulated Brillouin scattering, frequency partitioning, and constellation
+choice reveal device and spectral limits
+\cite{OISAC_SCR00965,OISAC_SCR00970,OISAC_SCR00988}. Doppler refinement depends
+on phase noise and computation \cite{OISAC_SCR00900}. A communication and
+sensing bandwidth ratio gains meaning from total bandwidth, target range, and
+receiver architecture \cite{OISAC_SCR00784}. These results show that signal
+bandwidth and receiver processing jointly define the operating point.
+
+Reuse extends this mechanism by carrying sensing content in a shared waveform
+or an existing transport path
+\cite{OISAC_SCR00996,OISAC_SCR01004,OISAC_SCR01006}. Phase coding, carrier
+grouping, radio frequency bandwidth, and space and wavelength allocation then
+set the occupancy and isolation available to each function
+\cite{OISAC_SCR01033,OISAC_SCR01036,OISAC_SCR01040,OISAC_SCR01086}. The result
+depends on how the receiver separates the shared content and recovers the
+underlying sequence.
+
+Hardware and processing resources complete the picture. Reference recovery and
+coding consume timing or redundancy
+\cite{OISAC_SCR00278,OISAC_SCR00607,OISAC_SCR00730}, while emitter bandwidth,
+source coherence, optical budget, and distributed learning traffic set hardware
+and network capacity
+\cite{OISAC_SCR00763,OISAC_SCR01071,OISAC_SCR01073,OISAC_SCR01081}. Receiver
+count introduces alignment and crosstalk constraints. In the reported
+prototype, four surrounding receivers were designed and one receiver was
+operated \cite{OISAC_SCR00619}. Phase control and observation settings affect the
+recoverable path \cite{OISAC_SCR01085,OISAC_SCR01103}, while modulation,
+sideband, and time bandwidth controls affect signal recovery
+\cite{OISAC_SCR01152,OISAC_SCR01153,OISAC_SCR01188}. The same nominal allocation
+can therefore produce a different result when the platform or receiver changes.
+
+\subsubsection{Power, Energy, and Dynamic Range}
+
+Power affects both functions through the finite operating range of the
+transmitter, channel, and receiver. Launch and received power, carrier and
+probe ratios, device bias, modulation swing, and converter headroom refer to
+different points in that chain. As power changes, performance follows the
+component that first approaches a noise, nonlinear, or saturation limit. The
+reference plane and limiting component are therefore part of the result.
+
+A fiber probe sweep shows this response directly. Raising the sensing to
+telecom power ratio improves sensing SNR and raises BER, with the strongest link
+penalty near the probe \cite{OISAC_SCR00057}. In a visible light prototype, one
+optical branch supports communication and ranging while another supports
+energy harvesting. Their allocation governs rate, ranging quality, and
+harvested power under separate receiver and endpoint bias conditions
+\cite{OISAC_SCR01025}. Similar ratios connect BER or OSNR margin with phase,
+polarization, and vibration observability in fiber
+\cite{OISAC_SCR00013,OISAC_SCR00072,OISAC_SCR00220,OISAC_SCR00099,OISAC_SCR00592}.
+In photonic wireless links, carrier and waveform ratios connect phase recovery,
+BER or EVM, and radar or ranging quality within the available receiver headroom
+\cite{OISAC_SCR00492,OISAC_SCR00954,OISAC_SCR00966,OISAC_SCR00985}.
+Comparisons are most informative when they use the same power reference and
+receiver margin.
+
+Absolute power sweeps reveal where the operating range ends. In fiber, launch
+and received power expose nonlinear interaction and sensing reach
+\cite{OISAC_SCR00473,OISAC_SCR01079,OISAC_SCR01180}. Photonic front ends examine
+operating limits associated with input power, modulator drive, converter
+linearity, and amplifier gain
+\cite{OISAC_SCR00631,OISAC_SCR00986,OISAC_SCR01012,OISAC_SCR01151}.
+Architecture then decides where the available power is used. Polarization
+paths, receiver taps, and branches assigned to individual functions distribute
+power before estimation
+\cite{OISAC_SCR00346,OISAC_SCR01072,OISAC_SCR01075}. Propagation, insertion,
+and alignment losses determine how much reaches those branches
+\cite{OISAC_SCR00002,OISAC_SCR00218,OISAC_SCR00506}. The remaining margin sets
+the feasible operation of optical phased arrays, communication users, sensing
+estimators, and illumination services
+\cite{OISAC_SCR00940,OISAC_SCR00941,OISAC_SCR00980,OISAC_SCR01028}.
+
+Power allocation can also be written into the waveform. Service branches,
+reference copies, and relative waveform amplitudes connect radar masking,
+ranging, data delivery, and energy harvesting through a shared allocation
+\cite{OISAC_SCR00893,OISAC_SCR00919,OISAC_SCR01032,OISAC_SCR01165}. Sequence
+transitions, coding choices, and chaotic source parameters change how
+communication and sensing information is recovered
+\cite{OISAC_SCR00052,OISAC_SCR00460,OISAC_SCR01105}. Frequency separation,
+probabilistic shaping, sensing slots, and carrier reuse move energy and
+occupancy across signal dimensions
+\cite{OISAC_SCR01009,OISAC_SCR01020,OISAC_SCR01030,OISAC_SCR01093}. The
+waveform definition, hardware margin, and performance threshold determine the
+resulting operating point. These same factors also govern reliability and
+sensing quality.
+
+\subsubsection{Communication Reliability and Sensing Quality}
+
+Communication reliability and sensing quality become linked after the waveform
+and receiver are selected. Communication evidence uses BER, EVM, Q factor, and
+required OSNR, while sensing evidence uses SNR, estimation error, and detection.
+These measures can move together as leakage, nonlinear mixing, phase noise,
+cancellation quality, or receiver competition changes. Some controls reduce an
+interference path, while others redistribute energy within the shared signal.
+This distinction explains why similar metric pairs can follow different trends.
+
+Two studies show why interference control and power redistribution require
+separate interpretation. In a fiber link combining communication with coherent
+reflectometry, sequence shaping reduces nonlinear interference induced by
+signal transitions. This lowers the communication penalty while retaining
+phase sensing at the reported condition \cite{OISAC_SCR00052}. In a millimeter
+wave waveform, DC offset strengthens the sensing component and raises radar SIR together with
+communication EVM \cite{OISAC_SCR00808}. The first mechanism changes how
+interference is produced, while the second redistributes energy within the
+signal. Their trends therefore arise from different controls.
+
+Architecture then determines where these effects enter the chain. Shared path
+tests evaluate communication reliability beside sensing outcomes at stated
+operating points and validation settings
+\cite{OISAC_SCR00008,OISAC_SCR00056,OISAC_SCR00589,OISAC_SCR00680}. Dedicated
+monitoring wavelengths and reused channel estimates locate sensing support in
+optical filtering or receiver processing, with communication performance
+described qualitatively \cite{OISAC_SCR00957,OISAC_SCR00959}. The path and
+receiver therefore define the scope of each reliability result.
+
+Once the architecture is fixed, waveform and inference choices determine the
+reported communication and sensing metrics. Carrier choice, DC offset, and phase
+modulation affect recovery at stated settings
+\cite{OISAC_SCR00160,OISAC_SCR00312,OISAC_SCR00602}. Coding, guard structure,
+and waveform composition affect BER, correlation quality, and ranging error
+\cite{OISAC_SCR00885,OISAC_SCR00902,OISAC_SCR00918}. At the
+inference stage, loss weighting connects communication reliability with
+distance and velocity errors \cite{OISAC_SCR00233}, while Kalman tuning acts
+within the sensing branch \cite{OISAC_SCR00665}. Shared sequence structure and
+finite block phase processing place radar detection and phase estimation under
+their sample and noise models \cite{OISAC_SCR00719,OISAC_SCR00906}. Phase index
+and pulse position timing likewise connect communication error with radar SNR
+or time of arrival precision \cite{OISAC_SCR00937,OISAC_SCR00979}. The sample,
+noise, timing, and calibration definitions give each result its scope.
+
+At the system level, access placement guided by channel sensing connects link
+capacity with weather and demand \cite{OISAC_SCR00922}. The aggregation of
+sensing traffic connects capacity with target count and resolution requirements
+\cite{OISAC_SCR01049}. Simultaneous use of time and frequency
+creates direct waveform coupling \cite{OISAC_SCR00978}, while shared hardware
+with waveform switching creates a different path
+\cite{OISAC_SCR01041}. Waveform robustness under fading and learned phase
+sensing place the limiting response in the channel or processing stage
+\cite{OISAC_SCR00993,OISAC_SCR01185}. These studies connect reliability and
+sensing quality to the complete waveform, receiver, channel, and processing
+chain. The same chain also governs rate, resolution, accuracy, and range.
+
+\subsubsection{Rate, Resolution, Accuracy, and Range}
+
+The link between communication rate and sensing begins with the design variable
+that changes the rate. Bandwidth and symbol timing can alter resolution
+directly, while frame structure, geometry, and processing change the resources
+available to the estimator. The controlling variable and its operating
+conditions explain why a similar rate change can produce different sensing
+outcomes.
+
+Waveform parameters provide the clearest starting point. In optoelectronic
+oscillator and remote ranging designs, code length and period connect bit rate
+or capacity with distance resolution and unambiguous range
+\cite{OISAC_SCR00896,OISAC_SCR00576}. Power division changes OFDM reliability,
+reach, and ranging error in a retroreflective prototype, while image
+decomposition links stripe recovery with scene reconstruction and recognition
+\cite{OISAC_SCR00912,OISAC_SCR00110}. LFM slope indexing and time division
+designs in the W band place their controlling choices in slope selection and
+frame duration
+\cite{OISAC_SCR00361,OISAC_SCR01101}. The shared parameter sets the direction
+of the relationship in each case.
+
+Frame structure creates a second path by deciding when and where each function
+receives signal support. Dynamic allocation and intensity scaling distribute
+support across payload, sensing patterns, and coverage
+\cite{OISAC_SCR00009,OISAC_SCR00196}. OTFS parameterization and complete grid
+OFDM reuse place both functions in a common time frequency structure
+\cite{OISAC_SCR00210,OISAC_SCR00274}. Separate measurement paths and mode
+switching show how a similar waveform can support different forms of
+integration \cite{OISAC_SCR00418,OISAC_SCR01060}. The frame and measurement
+schedule are therefore part of the result.
+
+Geometry sets the region in which those resources remain useful. Steering and
+access point placement define communication and localization coverage, while
+surface allocation and blockage aware access select the paths available to
+each function
+\cite{OISAC_SCR00036,OISAC_SCR00527,OISAC_SCR00914,OISAC_SCR01011}. Source
+directivity and tag delay spacing further affect coverage, range separation,
+and concurrent return recovery \cite{OISAC_SCR01024,OISAC_SCR01050}. The
+reported layout is therefore part of the observed trend.
+
+Signal construction can tie payload more closely to sensing observability.
+Chip length changes occupied symbol rate together with ranging precision and
+security tolerance, while embedded communication data affects distributed
+sensing fidelity \cite{OISAC_SCR00387,OISAC_SCR00647}. ASK rate and guard
+duration connect communication timing with range resolution and ambiguity
+\cite{OISAC_SCR00887,OISAC_SCR00913}. Waveform switching provides a related
+parameter coupling, with rate and resolution evaluated through separate
+parameter changes \cite{OISAC_SCR00899}. In the terahertz system, the available
+device band supports QPSK communication and the LFM bandwidth used to achieve
+range resolution
+\cite{OISAC_SCR01000}. The waveform and hardware band together define the
+feasible region.
+
+Optimization studies express these mechanisms as operating regions. Energy and
+asymptotic block length define communication and detection rate pairs, while
+NOMA power allocation connects aggregate rate with ranging error
+\cite{OISAC_SCR00761,OISAC_SCR00925}. Other studies combine capacity with
+ranging information or compare separate and joint operating configurations
+\cite{OISAC_SCR00926,OISAC_SCR00944}. Probabilistic shaping and embedded data
+create further regions through information rate, sidelobe level, and
+estimation error \cite{OISAC_SCR00974,OISAC_SCR00975}. The selected operating
+point follows the stated objective, constraints, and normalization.
+
+Processing adds another layer because the estimator decides how much of the
+available signal becomes useful sensing information. Sampling period, spectral
+weighting, zero padding, and transform length exchange response time and
+computation for resolution under stated acquisition settings
+\cite{OISAC_SCR00238,OISAC_SCR00998,OISAC_SCR01018,OISAC_SCR01095}. Rate
+selection can tune the sensitivity of a density estimate derived from BER
+\cite{OISAC_SCR01021}. In a separate application, classifier size changes
+recognition accuracy and edge processing burden \cite{OISAC_SCR01047}. These
+studies distinguish waveform rate from the update and computation needed to
+interpret it.
+
+At network scale, the relationship moves from a single waveform to the traffic
+and spectrum available across the system. Transport capacity controls how many
+sensing streams meet an echo quality threshold \cite{OISAC_SCR00436}.
+Separated bands, idle time frequency cells, cyclic prefix correlation, and
+shared optical waveforms connect occupied spectrum with resolution or
+estimation support
+\cite{OISAC_SCR00977,OISAC_SCR00981,OISAC_SCR01023,OISAC_SCR01115}. A visible
+light study carries this logic into a proposed capacity and localization
+problem \cite{OISAC_SCR00488}. The evidence thus distinguishes observed
+operation from a proposed design space.
+
+\subsubsection{Waveform, Hardware, and Complexity}
+
+Implementation complexity depends on where a design places its burden. Source
+coherence, receiver structure, calibration, synchronization, computation,
+memory, and latency represent different costs. Reusing a component may move
+work into processing or control, so implementation complexity must be assessed
+across the complete chain.
+
+Two photonic systems show how this transfer occurs. A terahertz design uses
+coherent comb generation to stabilize the QPSK and LFM paths and concentrates
+complexity in the optical source chain \cite{OISAC_SCR01000}. A long span fiber
+experiment uses lower cost lasers with broad linewidths and recovers coherent
+data and vibration through residual carrier processing
+\cite{OISAC_SCR01070}. Each architecture preserves performance through a
+different balance of source hardware and digital processing.
+
+\subsubsection{Other Implementation Relationships}
+
+Other implementation relationships show how a shared choice appears at
+different layers of the system. Its effect may emerge as protection, joint
+gain, device sensitivity, estimator burden, control freshness, or allocation
+latency. Each case carries its own conditions and prepares the comparison
+limits that follow.
+
+Security and synergy illustrate two possible directions. Phase keyed recovery
+uses ranging tolerance to create a physically bounded decryption region
+\cite{OISAC_SCR00387}. With spatial alignment, communication gain and target
+profile estimation can benefit from the same optical design
+\cite{OISAC_SCR00941}. Their geometry, objective, and validation setting explain
+why one relationship expresses protection and the other expresses joint gain.
+
+Other cases locate the relationship within the implementation chain. Electrode
+transparency connects device architecture with photodetector sensitivity, while
+passive return loss and repeater structure affect access for fault localization
+\cite{OISAC_SCR00001,OISAC_SCR01100}. Capacity and distance estimation define a
+model operating region \cite{OISAC_SCR00908}. Queue freshness enters the robotic
+control loop, and local spectral scanning connects computation with range
+resolution \cite{OISAC_SCR00910,OISAC_SCR00994}. Weighted priorities guide
+resource allocation, while orthogonal task channels shape application latency
+\cite{OISAC_SCR01001,OISAC_SCR01059}. Read together, these
+cases locate the relationship at the device, estimator, control, or allocation
+layer and provide the conditions needed for comparison across studies.
+
+\subsection{Conditions for Comparison Across Studies}
+
+Comparison across studies begins with alignment. The bounded relations summarized
+in Table~\ref{tab:metric_admissibility} connect studies when their task, metric
+definition, measurement plane, operating point, and validation setting can be
+matched through the framework in Section~\ref{sec:foundations_comparison}.
+Other metric evidence explains mechanisms, feasibility, and behavior within
+individual systems. This separation keeps each reported value attached to its
+original engineering meaning.
+
+Tradeoff evidence follows the same principle. Because objectives and
+constraints vary across systems, the synthesis compares the shared mechanism
+and the conditions that produce the observed response. This approach shows why
+a relationship recurs and when it can guide another design. Its engineering
+value also depends on the validation setting and on how completely the
+configuration can be reconstructed. Section~\ref{sec:validation_reproducibility}
+examines these requirements through validation settings, field evidence across
+both functional domains, and reconstructability.
