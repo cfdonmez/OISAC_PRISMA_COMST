@@ -1,8 +1,40 @@
 # START HERE — O-ISAC PRISMA Current State and Forward Roadmap
 
-Last verified: 2026-08-24  
-Status: Final whole-manuscript language, abbreviation, claim, and figure closeout in progress  
-Project: *Optical Integrated Sensing and Communication for 6G: A Systematic Review and Survey of Architectures, Metrics, and Tradeoffs Across Optical Platforms*
+Last verified: 2026-08-25
+Status: Final manuscript and figure closeout verified locally; focused GitHub push pending
+Project: *Optical Integrated Sensing and Communication for 6G Through a Systematic Review of Architectures, Metrics, and Tradeoffs Across Optical Platforms*
+
+## 21. CURRENT SUBMISSION CLOSEOUT — 2026-08-25
+
+- The complete Sections I--IX narrative has been audited and revised for flow,
+  repetition, abbreviation use, claim strength, positive framing, and survey
+  scope. The simple academic tone established in Sections IV and V now governs
+  the manuscript.
+- Reader-facing manuscript text contains no audit-history comparison,
+  predecessor-denominator narrative, unfinished work promise, or authoring-tool
+  disclosure. Scientific limits remain stated once in the carrier where they
+  affect interpretation.
+- The abbreviation recipe is active throughout. O-ISAC is expanded once in the
+  Abstract, sixth generation is opened at first use, and low-value short forms
+  were replaced with readable full terms.
+- Figures 1--8 are complete as editable SVG and vector PDF assets generated
+  deterministically without generative imagery or external artwork. The
+  manuscript now contains eight live figures and eight live tables.
+- The verified `main.pdf` has 27 pages, 598,488 bytes, 241 bibliography entries,
+  and SHA-256
+  `6A195C6856E5BD784DEF0A5149B1DF025771E5E50D7B2C02A7D229108B450DC2`.
+- The final compile has no undefined citation, undefined reference, LaTeX
+  warning, overfull box, oversized float, or fatal error. All 27 rendered pages
+  passed visual inspection.
+- Governing QA is
+  `comst_206_v2_9section/qa/FINAL_SUBMISSION_QA_2026-08-25.md`. The durable
+  checkpoint is
+  `systematic_review_workflow/09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
+- The only remaining operation in this closeout is the focused final commit and
+  remote verification on `codex/final-submission-20260824`.
+
+This block supersedes the 2026-08-24 operation block below, which remains as
+dated audit history.
 
 ## 20. CURRENT FINAL SUBMISSION OPERATION — 2026-08-24
 

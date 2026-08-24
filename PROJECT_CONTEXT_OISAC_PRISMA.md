@@ -2,6 +2,33 @@
 
 ## Current Workflow State
 
+### CURRENT RESUME AUTHORITY — Final Submission Candidate, 2026-08-25
+
+- The active manuscript is the completed figure-inclusive candidate in
+  `systematic_review_workflow/07_raporlama/outputs/comst_prose_revision_2026-08-08/manuscript/comst_206_v2_9section/`.
+- Sections I--IX have received a full language, flow, repetition, abbreviation,
+  claim, and positive-framing pass using the reader-friendly survey tone
+  established in Sections IV and V.
+- O-ISAC is expanded once in the Abstract. Low-value abbreviations and
+  avoidable alphabetic compounds were removed where their full wording reads
+  more naturally.
+- Reader-facing text no longer exposes audit history, predecessor comparisons,
+  unresolved production tasks, or authoring-tool references.
+- Figures 1--8 are live and available as editable SVG plus vector PDF sources.
+  No generative imagery or external artwork was used. Tables I--VIII remain
+  live and compact.
+- The compiled artifact is 27 pages and 598,488 bytes with eight figures, eight
+  tables, 241 bibliography entries, and SHA-256
+  `6A195C6856E5BD784DEF0A5149B1DF025771E5E50D7B2C02A7D229108B450DC2`.
+- TeXcount reports 12,078 total words. Compilation and 27-page rendered QA pass
+  with zero undefined citations, undefined references, LaTeX warnings,
+  overfull boxes, float errors, clipping, or overlap.
+- Governing QA is `qa/FINAL_SUBMISSION_QA_2026-08-25.md`. Durable handoff is
+  `systematic_review_workflow/09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
+- The focused GitHub content commit is the remaining repository operation.
+
+This authority supersedes the 2026-08-24 closeout-start block below.
+
 ### CURRENT RESUME AUTHORITY — Final Submission Closeout, 2026-08-24
 
 - Kullanıcı bütün manuscript için son submission denetimini ve Figures 1--8'in

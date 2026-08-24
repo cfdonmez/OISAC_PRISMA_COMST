@@ -70,3 +70,20 @@ bilimsel girdilerin yerine geçmez.
   noktasının üzerine ayrı commitler olarak eklenecektir.
 - Final commit kimliği, figure-inclusive closeout tamamlandığında bu dosyaya
   eklenecektir.
+
+## Figure-inclusive closeout sonucu
+
+- Final yerel aday 2026-08-25 tarihinde tamamlandı.
+- `main.pdf` 27 sayfa, 598,488 byte, sekiz şekil, sekiz tablo ve 241 kaynak
+  girdisi içerir.
+- Final PDF SHA-256 değeri
+  `6A195C6856E5BD784DEF0A5149B1DF025771E5E50D7B2C02A7D229108B450DC2` olarak
+  doğrulandı.
+- Figures 1--8 düzenlenebilir SVG ve vektör PDF olarak deterministik biçimde
+  üretildi. Üretken görsel veya dış sanat eseri kullanılmadı.
+- Tam dil, akış, tekrar, kısaltma, iddia ve olumlu anlatım denetimi tamamlandı.
+- Derleme ve 27 sayfalık görsel QA geçti. Governing record
+  `checkpoints/comst_final_submission_closeout_2026-08-25/README.md` ve
+  manuscript QA `qa/FINAL_SUBMISSION_QA_2026-08-25.md` dosyalarıdır.
+- Focused final content commit kimliği, push tamamlandıktan sonra closeout
+  checkpoint'ine işlenecektir.

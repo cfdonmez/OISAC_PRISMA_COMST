@@ -20,7 +20,7 @@ behavior to outcomes observed at the device, estimator, application, and
 implementation levels. This breadth makes semantic alignment the organizing
 principle for the analysis that follows.
 
-\subsection{Metric Specific Application of the Comparison Profile}
+\subsection{Applying the Comparison Profile to Individual Metrics}
 
 Applying the comparison profile defined in
 Section~\ref{sec:foundations_comparison}, each metric row was coded by source
@@ -68,11 +68,11 @@ synthesis \\
 \vspace{1pt}
 \parbox{\columnwidth}{\footnotesize\emph{Note.} Domain rows and analytical
 roles each partition the 4,779 primary records, while study counts overlap. The
-governed ledger contains 4,861 rows, including 31 for contextual interpretation
-and 51 under conflict governance. Comparison follows the reported definition,
-task, measurement plane, conditions, and validation. Electronic Supplement
-S-Evidence provides the full records and provenance, including quantities
-preserved under the residual ``other'' code.}
+complete metric register contains 4,861 rows. The additional rows comprise 31
+contextual records and 51 records documenting source conflicts. Comparison
+follows the reported definition, task, measurement plane, conditions, and
+validation. Electronic Supplement S-Evidence provides the complete records and
+provenance, including quantities grouped under the broader other category.}
 \end{table}
 
 The domain distribution shows where metric evidence is concentrated, while the
@@ -88,7 +88,7 @@ A communication rate gains meaning from what the source counts. Symbol rate
 tracks signaling pace, while data rate reflects the payload and overhead
 included in that count. Throughput describes delivered service, capacity
 provides a model bound, and spectral efficiency relates useful data to its
-stated denominator. In a photonics assisted terahertz prototype, net rates
+stated denominator. In a terahertz prototype enabled by photonics, net rates
 follow communication subcarrier allocation, payload occupancy, and coding
 overhead
 \cite{OISAC_SCR01054}. An embedded pilot orthogonal frequency division
@@ -100,7 +100,7 @@ separately
 Reliability shifts attention to the event and its location in the signal chain.
 BER measured before and after forward error correction describes two stages of
 the link, while packet loss and outage describe broader delivery boundaries. A
-long span fiber experiment reports receiver OSNR and BER before correction
+fiber experiment over a long span reports receiver OSNR and BER before correction
 during concurrent distributed sensing
 \cite{OISAC_SCR01180}. A robotics study reports packet loss over distance and
 view angle, display delay over queue size, and formation control under dynamic
@@ -204,41 +204,28 @@ support both a higher data rate and finer range resolution until a receiver or
 platform limit becomes active. The evidence is organized by the shared choice
 that produces each pattern.
 
-The synthesis covers 402 relationships from 168 studies. Each relationship is
-read within its waveform, geometry, target, observation point, and validation
-setting. These details matter because 371 relationships depend on the reported
-operating conditions. The following discussion explains what is shared, how
-both functions respond, and when the pattern can guide another design.
+The synthesis covers 402 relationships from 168 studies.
+Figure~\ref{fig:tradeoff_profile} separates record type, overlapping study
+coverage, and condition dependence across 11 recurring mechanism families.
+Each relationship remains tied to its waveform, geometry, target, observation
+point, and validation setting.
 
-% FUTURE FIGURE 6 --- CONDITION-AWARE TRADEOFF EVIDENCE PROFILE
-% Do not generate yet.
-% Stable label: fig:tradeoff_profile
-% Blueprint ID: FIG-OISAC-05
-% Placement: here, after ledger and conditionality framing and before the eleven
-% mechanism families.
-% Data authority: Phase F s4_tradeoff_families.csv plus the locked sentinel
-% correction. Lineage: 404 governed rows/169 studies/373 conditional rows;
-% excluding two absence-status audit sentinels gives 402 substantive rows,
-% 168 studies, and 371 conditional substantive rows.
-% Layout: three aligned panels sharing the same eleven-family y order.
-% Panel A uses stacked horizontal bars for 218 quantitative and 184 qualitative
-% rows. Panel B uses lollipops for the overlapping number of studies in each
-% family; the overall union is 168 and family counts must not be summed. Panel C
-% plots conditional share and labels each dot conditional/rows, with 92.3%
-% overall as a reference. The corrected bandwidth/resource row is 50+44=94,
-% 70 studies, 89 conditional; the qualitative/partial row is 2+8=10, 8 studies,
-% 7 conditional. Small n=1 families use open markers.
-% Future lead-in: ``Figure~\ref{fig:tradeoff_profile} separates row type,
-% overlapping study coverage, and conditionality across the eleven recurring
-% coupling families.''
-% Exact future caption: ``Conditionality profile for 402 substantive
-% communication and sensing tradeoff rows from 168 studies. Panel (a) separates
-% 218 quantitative and 184 qualitative rows. Panel (b) reports overlapping
-% study counts, and panel (c) reports conditional shares within each family.
-% Overall, 371 of 402 rows are conditional. The governed ledger also contains
-% two absence status audit rows, bringing its total to 404. Row frequency
-% describes evidence coverage, while each transfer claim remains attached to
-% its source conditions.''
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig06_tradeoff_profile.pdf}
+\caption{Evidence profile for 402 substantive joint performance relationships
+from 168 studies. Panel (a) separates 218 quantitative and 184 qualitative
+records. Panel (b) reports overlapping study coverage across the mechanism
+families. Panel (c) reports the share of records whose interpretation depends
+on stated conditions, with 371 such relationships across the profile. Family
+study counts may overlap, and frequency describes corpus coverage.}
+\label{fig:tradeoff_profile}
+\end{figure*}
+
+Resource and power mechanisms carry much of the coded evidence, while condition
+dependence remains common across the families. This pattern directs the
+discussion toward the shared mechanism and the operating condition that shapes
+each reported relation.
 
 \subsubsection{Bandwidth, Spectrum, and Resource Allocation}
 
@@ -333,7 +320,8 @@ harvested power under separate receiver and endpoint bias conditions
 polarization, and vibration observability in fiber
 \cite{OISAC_SCR00013,OISAC_SCR00072,OISAC_SCR00220,OISAC_SCR00099,OISAC_SCR00592}.
 In photonic wireless links, carrier and waveform ratios connect phase recovery,
-BER or EVM, and radar or ranging quality within the available receiver headroom
+BER or error vector magnitude (EVM), and radar or ranging quality within the
+available receiver headroom
 \cite{OISAC_SCR00492,OISAC_SCR00954,OISAC_SCR00966,OISAC_SCR00985}.
 Comparisons are most informative when they use the same power reference and
 receiver margin.
@@ -371,8 +359,9 @@ sensing quality.
 \subsubsection{Communication Reliability and Sensing Quality}
 
 Communication reliability and sensing quality become linked after the waveform
-and receiver are selected. Communication evidence uses BER, EVM, Q factor, and
-required OSNR, while sensing evidence uses SNR, estimation error, and detection.
+and receiver are selected. Communication evidence uses BER, EVM, quality
+factor, and required OSNR, while sensing evidence uses SNR, estimation error,
+and detection.
 These measures can move together as leakage, nonlinear mixing, phase noise,
 cancellation quality, or receiver competition changes. Some controls reduce an
 interference path, while others redistribute energy within the shared signal.
@@ -383,8 +372,9 @@ separate interpretation. In a fiber link combining communication with coherent
 reflectometry, sequence shaping reduces nonlinear interference induced by
 signal transitions. This lowers the communication penalty while retaining
 phase sensing at the reported condition \cite{OISAC_SCR00052}. In a millimeter
-wave waveform, DC offset strengthens the sensing component and raises radar SIR together with
-communication EVM \cite{OISAC_SCR00808}. The first mechanism changes how
+wave waveform, a direct current offset strengthens the sensing component and
+raises the radar signal to interference ratio together with communication EVM
+\cite{OISAC_SCR00808}. The first mechanism changes how
 interference is produced, while the second redistributes energy within the
 signal. Their trends therefore arise from different controls.
 
@@ -398,7 +388,8 @@ described qualitatively \cite{OISAC_SCR00957,OISAC_SCR00959}. The path and
 receiver therefore define the scope of each reliability result.
 
 Once the architecture is fixed, waveform and inference choices determine the
-reported communication and sensing metrics. Carrier choice, DC offset, and phase
+reported communication and sensing metrics. Carrier choice, direct current
+offset, and phase
 modulation affect recovery at stated settings
 \cite{OISAC_SCR00160,OISAC_SCR00312,OISAC_SCR00602}. Coding, guard structure,
 and waveform composition affect BER, correlation quality, and ranging error
@@ -448,7 +439,8 @@ of the relationship in each case.
 Frame structure creates a second path by deciding when and where each function
 receives signal support. Dynamic allocation and intensity scaling distribute
 support across payload, sensing patterns, and coverage
-\cite{OISAC_SCR00009,OISAC_SCR00196}. OTFS parameterization and complete grid
+\cite{OISAC_SCR00009,OISAC_SCR00196}. Orthogonal time frequency space
+parameterization and complete grid
 OFDM reuse place both functions in a common time frequency structure
 \cite{OISAC_SCR00210,OISAC_SCR00274}. Separate measurement paths and mode
 switching show how a similar waveform can support different forms of
@@ -467,19 +459,22 @@ reported layout is therefore part of the observed trend.
 Signal construction can tie payload more closely to sensing observability.
 Chip length changes occupied symbol rate together with ranging precision and
 security tolerance, while embedded communication data affects distributed
-sensing fidelity \cite{OISAC_SCR00387,OISAC_SCR00647}. ASK rate and guard
+sensing fidelity \cite{OISAC_SCR00387,OISAC_SCR00647}. Amplitude shift keying
+rate and guard
 duration connect communication timing with range resolution and ambiguity
 \cite{OISAC_SCR00887,OISAC_SCR00913}. Waveform switching provides a related
 parameter coupling, with rate and resolution evaluated through separate
 parameter changes \cite{OISAC_SCR00899}. In the terahertz system, the available
-device band supports QPSK communication and the LFM bandwidth used to achieve
+device band supports quadrature phase shift keying (QPSK) communication and the
+LFM bandwidth used to achieve
 range resolution
 \cite{OISAC_SCR01000}. The waveform and hardware band together define the
 feasible region.
 
 Optimization studies express these mechanisms as operating regions. Energy and
 asymptotic block length define communication and detection rate pairs, while
-NOMA power allocation connects aggregate rate with ranging error
+nonorthogonal multiple access power allocation connects aggregate rate with
+ranging error
 \cite{OISAC_SCR00761,OISAC_SCR00925}. Other studies combine capacity with
 ranging information or compare separate and joint operating configurations
 \cite{OISAC_SCR00926,OISAC_SCR00944}. Probabilistic shaping and embedded data
@@ -498,7 +493,7 @@ recognition accuracy and edge processing burden \cite{OISAC_SCR01047}. These
 studies distinguish waveform rate from the update and computation needed to
 interpret it.
 
-At network scale, the relationship moves from a single waveform to the traffic
+Across the network, the relationship moves from a single waveform to the traffic
 and spectrum available across the system. Transport capacity controls how many
 sensing streams meet an echo quality threshold \cite{OISAC_SCR00436}.
 Separated bands, idle time frequency cells, cyclic prefix correlation, and
@@ -519,8 +514,8 @@ across the complete chain.
 
 Two photonic systems show how this transfer occurs. A terahertz design uses
 coherent comb generation to stabilize the QPSK and LFM paths and concentrates
-complexity in the optical source chain \cite{OISAC_SCR01000}. A long span fiber
-experiment uses lower cost lasers with broad linewidths and recovers coherent
+complexity in the optical source chain \cite{OISAC_SCR01000}. A fiber experiment
+over a long span uses lower cost lasers with broad linewidths and recovers coherent
 data and vibration through residual carrier processing
 \cite{OISAC_SCR01070}. Each architecture preserves performance through a
 different balance of source hardware and digital processing.

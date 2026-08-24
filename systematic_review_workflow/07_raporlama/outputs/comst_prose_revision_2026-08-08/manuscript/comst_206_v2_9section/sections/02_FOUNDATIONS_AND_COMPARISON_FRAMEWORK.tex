@@ -6,76 +6,25 @@ profile by following the physical context, coupling location, measurement
 contract, and evidence trace of each result. Together, these elements preserve
 the meaning of an observation and show how it can inform the synthesis.
 Table~\ref{tab:comparison_record} condenses them into a map for the reader.
+Figure~\ref{fig:native_evidence_objects} first distinguishes three evidence
+objects that retain meaning through their native frames.
 
-% ============================================================================
-% FUTURE FIGURE 1 PRODUCTION SPECIFICATION --- DO NOT MATERIALIZE IN THIS PASS
-% Intended placement: here, at the opening of the foundations section. It
-% bridges the prior-survey positioning in Table I to the comparison vocabulary
-% developed below.
-%
-% Working title:
-% Native Evidence Objects in O-ISAC Synthesis
-% Stable label: fig:native_evidence_objects
-% Blueprint ID: FIG-OISAC-RS1
-% Data authority: Table I and the audited 38-source related-synthesis register;
-% conceptual illustration with no prevalence denominator.
-%
-% Reader question:
-% Why can results gathered under the O-ISAC label not be placed directly on
-% one common numerical scale?
-%
-% Layout: three equal, parallel, and unconnected horizontal panels. The panels
-% are illustrative evidence objects, not stages, families, or quality levels.
-%
-% Panel A --- model-defined result:
-% Assumptions and a system model lead to an analytical bound or optimized
-% relation. Attach compact labels for assumptions, objective, and constraints.
-%
-% Panel B --- medium-native observation:
-% A propagation path, physical observable, and measurement setting lead to a
-% reported observation. Attach labels for medium, measurement plane, and
-% operating conditions.
-%
-% Panel C --- architecture or deployment object:
-% Components and a network or application setting lead to a design or
-% deployment relation. Attach labels for shared components, scenario, and
-% validation setting.
-%
-% Common lower band:
-% ``The O-ISAC label alone does not supply a common denominator.''
-%
-% Main visual message:
-% The evidence objects differ in meaning, not in rank. Each can be informative
-% within its native frame, but its definition and conditions must be retained
-% before a cross-study relationship is considered.
-%
-% Future lead-in (activate only after the figure has been produced and audited):
-% Figure~\ref{fig:native_evidence_objects} illustrates the three native
-% evidence objects that recur across the survey literature and motivates the
-% contextual record developed in this section.
-%
-% Future caption:
-% Native evidence objects represented in O-ISAC syntheses. A model-defined
-% result is bounded by analytical assumptions; a medium-native observation is
-% tied to its propagation path, observable, and measurement setting; and an
-% architecture or deployment object organizes system, network, or application
-% choices. The parallel panels are illustrative rather than exhaustive and
-% imply neither sequence nor quality. Reader-task families and source
-% assignments remain in Table I.
-%
-% Visual constraints:
-% - Do not repeat the six reader-task families or individual sources from
-%   Table I; the wider contextual-synthesis register remains an internal audit
-%   artifact and is not a reader-facing annex.
-% - Do not connect the panels with arrows or arrange them as a sequence,
-%   maturity scale, or hierarchy.
-% - Do not reproduce the comparison fields or admissibility decisions reserved
-%   for Table II and Figure 2.
-% - Do not use checkmarks, scores, unequal panel sizes, source counts, or any
-%   encoding that could imply prevalence or quality.
-% - Use equal panel dimensions, direct labels, and grayscale-safe borders or
-%   icons.
-% ============================================================================
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig01_native_evidence_objects.pdf}
+\caption{Native evidence objects represented in O-ISAC syntheses. A model
+result retains its assumptions, objective, and constraints. A medium
+observation retains its optical path, measurement plane, and operating
+conditions. An architecture or deployment object retains its shared
+components, scenario, and validation setting. The equal panels present
+parallel evidence forms whose interpretation remains tied to their native
+frames.}
+\label{fig:native_evidence_objects}
+\end{figure*}
+
+Each evidence form supports a distinct kind of reasoning. Reconciliation at
+the study level connects them across sources by preserving the context carried
+with every result.
 
 \subsection{System Boundary, Modality, and Signal Path}
 
@@ -85,20 +34,21 @@ from the hardware used to generate, distribute, or process the signal. This
 distinction provides the physical reference for the six analytical families
 used in the survey.
 
-The evidence is organized into fiber, free space optical (FSO), visible light
-communication and LiFi (VLC/LiFi), photonic terahertz (THz), hybrid optical,
-and other optical systems. These analytical categories place each result in
-its relevant physical regime before performance comparison.
+The evidence is organized into fiber, free space optical, visible light
+communication and LiFi, photonic terahertz, hybrid optical, and other optical
+systems. These analytical categories place each result in its relevant
+physical regime before performance comparison.
 
 Fiber systems either sense the guided path directly or use it to transport
-signals to a downstream segment that reaches the target. FSO systems place target
-geometry and beam control in a directional optical path, while VLC/LiFi adds
-illumination and access constraints. In photonic THz systems, optical hardware
-may generate, distribute, or process the carrier, but the path to the target
-remains radio frequency. Hybrid systems require both domains and their
-interface to be retained. These distinctions establish the physical reference
-frame. Section~\ref{sec:optical_modality_families} later synthesizes their study
-counts, implementations, and constraints specific to each platform
+signals to a downstream segment that reaches the target. Free space optical
+systems place target geometry and beam control in a directional optical path,
+while visible light communication and LiFi add illumination and access
+constraints. In photonic terahertz systems, optical hardware
+may generate, distribute, or process the carrier, while a radio frequency path
+reaches the target. Hybrid systems combine both physical domains through their
+interface. These platform boundaries guide the synthesis of study counts,
+implementations, and constraints in
+Section~\ref{sec:optical_modality_families}
 \cite{OISAC_SCR00220,OISAC_SCR00940,OISAC_SCR00196,OISAC_SCR00083,
 OISAC_SCR00366}.
 
@@ -117,22 +67,22 @@ before hardware validation. A shared hardware application
 \cite{OISAC_SCR00001}, a fiber system with a shared link
 \cite{OISAC_SCR00957}, and a design that combines multiple mechanisms
 \cite{OISAC_SCR00220} therefore represent distinct engineering relations. We
-retain these attributes separately so later sections can compare concurrency,
-resource use, and validation.
+keep these attributes separate to reveal how concurrency, resource use, and
+validation differ across architectures.
 
-The measurement plane adds where the reported quantity is observed. Design
+The measurement plane identifies where the reported quantity is observed. Design
 variables describe carrier and waveform settings, launch power, and geometry.
 Optical power, loss, and optical signal to noise ratio (OSNR) belong to the
 optical link. After conversion, electrical signal to noise ratio (SNR), error
 rate, and throughput describe the electrical and digital stages. Sensing
-measurements add task specific observations of geometry, motion, environment,
+measurements add observations specific to the task, including geometry, motion, environment,
 classification, or detection.
 
 Familiar labels become comparable through matched references. OSNR and
 electrical SNR belong to different planes, just as launch and received power
 describe different locations in the chain. Rate accounting distinguishes gross
 from net data, and error accounting distinguishes the event measured before
-forward error correction (pre-FEC) from the event measured after it (post-FEC).
+forward error correction from the event measured after forward error correction.
 Sensing likewise separates range resolution,
 estimation error, precision, and analytical bounds. Comparison therefore
 follows the task, target, operating point, channel, and processing chain
@@ -145,64 +95,26 @@ results can reveal a bounded relation across studies. Within a study, a sweep
 can show how a design choice changes outcomes across its reported operating
 region.
 
-% ============================================================================
-% FUTURE FIGURE 2 PRODUCTION SPECIFICATION --- DO NOT MATERIALIZE IN THIS PASS
-% Intended placement: here, after integration and measurement context and
-% immediately before the formal comparison profile.
-%
-% Working title:
-% Four-Axis O-ISAC Comparison Framework
-% Stable label: fig:comparison_framework
-% Blueprint ID: FIG-OISAC-01
-% Data authority: the Phase D metric, tradeoff, and codebook schemas together
-% with the review's comparison-decision rules; conceptual model, no denominator.
-%
-% Reader question:
-% Which contextual axes must be fixed before a reported O-ISAC value can support
-% an admissible inference?
-%
-% Layout: a two-part hub-and-gate diagram. Panel (a) uses four equal axes feeding
-% one candidate comparison profile: physical context; coupling location;
-% measurement contract; provenance. Physical context includes modality, the
-% optical or radio signal path and conversion boundary, both tasks, target,
-% geometry, and communication role. Coupling location includes hardware,
-% carrier, waveform, resources, link or channel, joint design, and application.
-% The measurement contract includes definition, plane, unit, aggregation,
-% operating point, channel, target or ground truth, constraints, and baseline.
-% Provenance includes value origin, validation setting, exact source locator,
-% and configuration continuity. The central profile must carry the warning
-% ``missing field = unknown; never infer from a neighboring study.''
-%
-% Panel (b) sends the candidate profile to three equal outcomes: within-study
-% interpretation; conditional cross-study relation; descriptive only. A crossed
-% label states that no unconditional cross-platform comparison category exists.
-%
-% Main visual message:
-% Comparison is an evidence decision governed by aligned context and
-% provenance, not a consequence of placing two values beside one another.
-%
-% Future lead-in (activate only after production and audit):
-% Figure~\ref{fig:comparison_framework} condenses the review's comparison logic
-% into four axes and three admissible uses without turning them into a maturity
-% sequence.
-%
-% Future caption:
-% Four-axis framework used to interpret O-ISAC evidence across platforms.
-% Physical context, coupling location, measurement contract, and provenance
-% feed a candidate profile that supports within-study interpretation, a
-% conditional cross-study relation, or descriptive use. Missing fields are not
-% inferred, and the framework contains no unconditional cross-platform
-% comparison category.
-%
-% Visual constraints:
-% - Figure 2 shows the decision path; Table II summarizes the profile groups.
-%   Exact fields and codes remain in S-Data Dictionary and S-Evidence.
-% - Give all four axes equal visual weight; do not imply that one modality is a
-%   reference standard or that the axes form a sequence.
-% - Use explicit outcome labels, not green/red approval symbols.
-% - Do not display numerical performance values or an O-ISAC Pareto frontier.
-% - Use grayscale-safe shapes and redundant text labels.
-% ============================================================================
+Figure~\ref{fig:comparison_framework} brings the physical context, coupling
+location, measurement contract, and provenance into one comparison record. The
+record then identifies the analytical use supported by the available context.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig02_comparison_framework.pdf}
+\caption{Framework based on four comparison axes for interpreting O-ISAC
+evidence across platforms. Physical context locates the tasks and signal path. Coupling location
+records where the functions meet. The measurement contract retains the
+definition, plane, unit, conditions, and baseline. Provenance retains the value
+origin, validation setting, configuration, and source locator. Together, these
+fields support interpretation in the source setting, a conditional relation
+across studies, or descriptive placement.}
+\label{fig:comparison_framework}
+\end{figure*}
+
+The four axes have equal roles in the comparison record, and the outcome states
+the supported analytical use. Table~\ref{tab:comparison_record} provides the
+compact field map used throughout the survey.
 
 \begin{table}[!htbp]
 \caption{Comparison profile carried with each reported O-ISAC result}
@@ -254,7 +166,7 @@ controlled states, coding rules, and provenance for each record. The comparison
 decision follows the source fields available for each result.}
 \end{table}
 
-\subsection{The Cross Platform Comparison Profile}
+\subsection{Comparison Profile Across Platforms}
 
 The profile becomes comparative when its decisive fields align. A matched
 definition and measurement plane establish what is being compared, while the
@@ -268,8 +180,8 @@ results retain narrower roles within their recorded settings
 \cite{OISAC_SCR00056}. The profile makes each role visible and preserves the
 platform context for later synthesis.
 
-Throughout the survey, representative studies anchor recurring patterns,
-tables summarize the inventory, and prose explains engineering meaning.
+Throughout the survey, selected studies anchor recurring patterns, while tables
+provide compact corpus maps.
 Modality and signal path establish physical context, integration locates the
 coupling, and the measurement plane identifies the observation. Together with
 the evidence trace, these elements determine how evidence can be related

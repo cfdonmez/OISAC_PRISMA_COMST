@@ -9,44 +9,40 @@ turbulence monitoring illustrate the breadth of this opportunity
 
 Sharing turns that opportunity into a systems question. A resource or receiver
 chosen for one function can change the information available to the other.
-The central engineering problem is therefore not whether light can support
-communication and sensing, but what can be shared and how that sharing changes
-system design.
+The central engineering problem is what can be shared and how that sharing
+shapes system design.
 
 This question has gained importance since integrated sensing and communication
-(ISAC) was identified as one of the usage scenarios for International Mobile
+was identified as one of the usage scenarios for International Mobile
 Telecommunications for 2030 and beyond (IMT-2030)
 \cite{ITUR_M2160_2023}. Optical implementations span guided fiber, free space
 optical and visible light communication links, systems in the millimeter wave
 and terahertz bands enabled by photonics, and hybrid designs
 \cite{OISAC_SCR00916,OISAC_SCR00036,OISAC_SCR00083}. Their propagation paths,
-observables, hardware, and performance measures differ. O-ISAC is therefore a
-family of related architectures rather than one interchangeable platform.
+observables, hardware, and performance measures differ. O-ISAC therefore forms
+a family of related architectures, each with its own physical and measurement
+context.
 
-That diversity requires both a clear survey boundary and care in comparison.
-Here, O-ISAC covers optical or photonic systems in which communication and
-sensing are considered, integrated, designed, optimized, or evaluated together.
-Their common technical setting may be an architecture, optical link, signal or
-resource framework, hardware platform, channel model, or application scenario.
-Sharing a waveform or operating concurrently are possible forms of coupling,
-not inclusion requirements. Within this scope, familiar metric names are most
-informative when read together with their measurement and operating context.
-Preserving that context allows results from different platforms to be
-interpreted consistently and compared where their defining conditions align.
+That diversity requires a clear survey boundary and careful comparison. The
+survey includes optical or photonic systems that consider, integrate, design,
+optimize, or evaluate communication and sensing together. Their common setting
+may lie in an architecture, optical link, signal or resource framework,
+hardware platform, channel model, or application scenario. Coupling can appear
+through a shared waveform, concurrent operation, or another common system
+choice. Each result is interpreted through its metric definition, measurement
+plane, and operating conditions. This context supports consistent
+interpretation and bounded comparison across platforms.
 
 \subsection{Prior Syntheses and Survey Positioning}
 \label{sec:related_surveys}
 
-Existing surveys illuminate complementary parts of O-ISAC, but differ in the
-evidence they organize and the questions they help readers answer.
-Table~\ref{tab:prior_surveys} organizes them by reader task, evidence unit, and
-comparison boundary.
+Prior surveys organize complementary parts of O-ISAC. Each serves a different
+reader task and uses a different evidence unit and comparison boundary.
+Table~\ref{tab:prior_surveys} provides a compact map of these perspectives.
 
-% Integration requirement: the manuscript driver must load array, booktabs,
-% and tabularx before this section is included.
 \begin{table*}[!t]
-\caption{Prior O-ISAC syntheses by reader task, evidence unit, and comparison
-boundary. Families support navigation rather than quality ranking.}
+\caption{Representative prior O-ISAC syntheses organized by reader task,
+evidence unit, and comparison boundary}
 \label{tab:prior_surveys}
 \centering
 \begingroup
@@ -69,35 +65,39 @@ Architecture and system design &
 Chu2025ROISACOverview,Wang2026CrossLayerISACoF} &
 General O-ISAC, free space optical links, retroreflective links, and fiber
 networks &
-Architecture, optimization, target, or link model; taxonomy and relations
+Architecture, optimization, target, or link model, with taxonomy and relations
 within each scenario &
 How are communication and sensing coupled? &
-Relations remain architecture and assumption specific. \\
+Relations remain tied to each architecture and its assumptions. \\
 \addlinespace[1pt]
 Analytical limits and estimation methods &
 \cite{Khorasgani2026GeneralOpticalISACSurvey,Rode2025PolarizationISAC} &
 General optical systems and polarization sensing in coherent fiber links &
-Model, bound, objective, estimator, or learning method; comparison within a
+Model, bound, objective, estimator, or learning method, with comparison within a
 model and among methods &
 What limits follow from the assumptions? &
-A single model does not define an empirical scale for an entire modality. \\
+Empirical interpretation remains tied to the model, modality, and evidence
+setting. \\
 \addlinespace[1pt]
 Technological evolution, standardization, and deployment &
 \cite{Zhang2026ISACEvolution,Liu2025OpticalNetworkISACProspect,
 Cao2026SubmarineFiberISAC,Zhang2026OpticalTransmissionNetworks,
 Ip2026DeployedTelecomCableISAC} &
-Evolution from radio to optical systems; terrestrial and submarine networks &
-Historical phase, standardization path, network architecture, or deployment;
-synthesis by period and ecosystem &
+Evolution from radio to optical systems across terrestrial and submarine
+networks &
+Historical phase, standardization path, network architecture, or deployment,
+synthesized by period and ecosystem &
 How has O-ISAC moved toward deployment? &
-A shared trajectory does not make infrastructures commensurate. \\
+Infrastructure comparison requires aligned physical and operational
+conditions. \\
 \addlinespace[1pt]
 Physical media and optical networks &
 \cite{Liang2024LiSACReview,Zhang2023OpticalNetworkISACFrontier,
 He2025FiberISACAdvances,Liu2026OpticalFiberISACReview,
 Lu2026ConvergedFiberISACReview,Wang2026FiberNetworkISAC} &
-Visible light ISAC, guided fiber systems, and optical networks &
-Medium, observable, sensing path, or network configuration; taxonomy within
+Visible light integrated sensing and communication, guided fiber systems, and
+optical networks &
+Medium, observable, sensing path, or network configuration, with taxonomy within
 related solution classes &
 How does each path support sensing? &
 Transfer requires aligned media, observables, paths, and conditions. \\
@@ -108,46 +108,45 @@ Yu2023PhotonAssistedTHz,Bai2025MicrowavePhotonicsISAC,
 Wang2025MicrowavePhotonicsISAC,Lyu2026PhotonicTHzWaveforms} &
 Fiber, microwave photonics, and millimeter wave or terahertz systems enabled by
 photonics &
-Waveform, multiplexing, front end, or processing chain; mechanism taxonomy with
-selected demonstrations &
+Waveform, multiplexing, front end, or processing chain, with a mechanism
+taxonomy and selected demonstrations &
 Which mechanisms enable joint operation? &
-Shared photonics does not equate paths, observables, or metrics. \\
+Comparison across photonic systems follows alignment of paths, observables, and
+metrics. \\
 \addlinespace[1pt]
 Applications and challenges across platforms &
 \cite{Mohsan2026OISACReview} &
 Visible light communication, free space optical, fiber, photonics, and hybrid
 settings &
-Application, use case, solution class, or challenge; thematic synthesis across
-platforms &
+Application, use case, solution class, or challenge, with thematic synthesis
+across platforms &
 Which applications and gaps recur? &
-Breadth connects research lines without making results commensurate. \\
+Interpretation across platforms follows the measurement and operating context
+of each result. \\
 \bottomrule
 \end{tabularx}
 \endgroup
 \end{table*}
 
-Across these perspectives, the remaining task is to relate primary evidence
-without separating a result from the setting in which it acquired meaning.
-This article is a survey of 206 unique O-ISAC studies in the primary evidence
-window from 1 January 2020 to 22 June 2026. Its central objective is to organize
-and compare that evidence while preserving physical, measurement, and validation
-context.
+Across these perspectives, synthesis across platforms depends on retaining the
+physical, measurement, and validation setting of each primary result. This
+survey addresses that task through 206 unique O-ISAC studies first made publicly
+available from 1 January 2020 through 22 June 2026.
 
-The survey makes four contributions:
+The survey makes four contributions.
 
 \begin{itemize}
 \item A taxonomy separates physical modality from the mechanisms that couple
 communication and sensing.
 
-\item A context-preserving comparison framework keeps each performance result
-connected to its measurement definition and operating conditions.
+\item A comparison framework connects each performance result to its
+measurement definition and operating conditions.
 
-\item A condition-aware synthesis brings recurring communication and sensing
-tradeoff mechanisms together while retaining the conditions that shape their
-interpretation.
+\item A synthesis of recurring tradeoff mechanisms retains the conditions that
+shape communication and sensing outcomes.
 
-\item An evidence-maturity assessment links validation, benchmark readiness,
-and reproducibility to research priorities grounded in the reviewed evidence.
+\item An assessment of validation, benchmark readiness, and reproducibility
+grounds research priorities in the reviewed evidence.
 \end{itemize}
 
 The organization of the article follows the analytical sequence of the survey.

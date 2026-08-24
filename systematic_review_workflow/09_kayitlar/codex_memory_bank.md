@@ -3,6 +3,38 @@
 > Güncel operasyon için aşağıdaki en yeni tarihli `CURRENT RESUME AUTHORITY`
 > bölümü kullanılır. Daha eski bloklar yalnız tarihli audit trail’dir.
 
+## CURRENT RESUME AUTHORITY — FINAL SUBMISSION CANDIDATE, 2026-08-25
+
+- Active authority is
+  `07_raporlama/outputs/comst_prose_revision_2026-08-08/manuscript/comst_206_v2_9section/`.
+- Sections I--IX have completed the final whole-manuscript language, flow,
+  repetition, abbreviation, claim-strength, and positive-framing audit. The
+  reader-friendly survey tone established in Sections IV and V now governs the
+  full paper.
+- O-ISAC is expanded once in the Abstract. Abbreviation density is reduced,
+  low-value short forms are written in full, and avoidable alphabetic
+  hyphenation is removed from reader-facing language.
+- Reader-facing prose, captions, and notes contain no author-inserted colon or
+  semicolon. Audit history, predecessor comparison, unresolved work language,
+  and OpenAI, Codex, or Gemini references are absent.
+- Figures 1--8 are complete and live. Each has editable SVG and vector PDF
+  sources. Figure production is deterministic and uses no generative imagery
+  or external artwork. Tables I--VIII are also live.
+- Final `main.pdf` has 27 pages, 598,488 bytes, eight figures, eight tables, 241
+  bibliography entries, and SHA-256
+  `6A195C6856E5BD784DEF0A5149B1DF025771E5E50D7B2C02A7D229108B450DC2`.
+- TeXcount reports 12,078 total words. Compilation and 27-page visual QA pass
+  with no undefined citation, undefined reference, LaTeX warning, overfull box,
+  float error, clipping, overlap, or broken table.
+- Governing QA is `qa/FINAL_SUBMISSION_QA_2026-08-25.md`. Durable checkpoint is
+  `09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
+- The pre-edit remote baseline remains
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` on
+  `codex/final-submission-20260824`. Record the focused final content commit and
+  verified remote head in the closeout checkpoint after push.
+
+This authority supersedes the 2026-08-24 closeout-start block below.
+
 ## CURRENT RESUME AUTHORITY — FINAL SUBMISSION CLOSEOUT, 2026-08-24
 
 - Kullanıcı bütün manuscripti submission öncesi son kez baştan sona denetleme

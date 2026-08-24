@@ -1,25 +1,35 @@
 \section{VALIDATION EVIDENCE, RECONSTRUCTABILITY, AND BENCHMARK READINESS}
 \label{sec:validation_reproducibility}
 
-Section~\ref{sec:metrics} showed that a reported relationship becomes useful
-for comparison when its task, measurement plane, operating point, and
-validation setting align. Validation now asks how far that operating point was
-tested. Reconstructability asks how completely another group can recover the
-configuration and evaluation path that produced it. This section examines the
-settings and methods used across the corpus, field evidence reported for both
-functional domains, and the artifact support available for reconstruction and
-benchmark comparison.
+Section~\ref{sec:metrics} showed that comparison depends on alignment across
+the task, measurement plane, operating point, and validation setting. This
+section examines how far those operating points were tested and how completely
+their configurations can be reconstructed. It then relates validation settings,
+evidence from both functions, and artifact access to benchmark readiness.
 
 \subsection{Validation Settings and Methods}
 
-The corpus has a broad experimental base. A total of 156 studies reached at
-least a laboratory experiment or proof of concept. Within the exclusive
-maximum setting distribution, basic simulation or numerical evidence was the
-highest setting in 32 studies and enhanced simulation or evaluation supported
-by a dataset was highest in 18. Laboratory experiments or proofs of concept
-accounted for 78 studies, controlled prototypes for 66, and field trials or
-deployments for 12. Each study enters one category, so the distribution covers
-all 206 studies.
+Figure~\ref{fig:validation_profile} places each study's highest reported setting
+beside the validation methods used across the corpus. The first panel assigns
+one setting to every study, while the second allows several methods to
+contribute to one evidence chain.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig07_validation_profile.pdf}
+\caption{Validation settings and methods in the 206 studies. Panel (a) assigns
+each study to one highest reported setting. Panel (b) reports analytical and
+numerical methods, simulations, methods based on datasets, laboratory
+experiments, prototypes, field studies, and mixed methods. Method categories may overlap because several
+forms of evidence can contribute to one study. The panels describe the reach
+and composition of validation as distinct properties.}
+\label{fig:validation_profile}
+\end{figure*}
+
+The profile shows a broad laboratory and prototype base together with a smaller
+field subset. Analytical, simulation, laboratory, and prototype methods can
+contribute to one study, so the configuration trail across methods shapes
+interpretation.
 
 These settings expose different parts of an O-ISAC system. Simulation studies
 isolate waveform and device sensitivities under controlled conditions
@@ -38,19 +48,6 @@ than a field dataset collected for one outcome. The setting therefore gains
 meaning when it is read together with the tested conditions, available
 controls, and functional coverage.
 
-The overlapping method map provides a complementary view. Analytical treatment
-appeared in 131 studies, numerical analysis in 14, simulation in 104, and
-evaluation with a dataset in 13. Laboratory experiments appeared in 148
-studies, while 83 used a prototype or testbed and 12 reported a field
-experiment. Mixed validation appeared in 33 studies. These counts permit more
-than one method per study because analysis, simulation, measurement, and
-prototype work can contribute to the same evidence chain.
-
-The two maps answer different questions. Laboratory work contributed to 148
-studies, while laboratory experiment or proof of concept was the strongest
-setting for 78. Prototype or testbed work contributed to 83 studies, while a
-controlled prototype was the strongest setting for 66.
-
 Each method serves a different analytical purpose. Analysis clarifies
 assumptions, simulation supports controlled parameter studies, and laboratory
 work reveals the behavior of physical components. Prototypes bring subsystems
@@ -60,7 +57,8 @@ traceable as the evidence moves from one method to another.
 
 Section~\ref{sec:optical_modality_families} shows that realistic validation
 conditions change with the platform. Fiber studies depend on topology, traffic,
-launch and receiver conditions, and the disturbance context. VLC/LiFi studies
+launch and receiver conditions, and the disturbance context. Visible light
+communication and LiFi studies
 add layout, orientation, illumination, detector, and processing conditions.
 Free space optical studies require geometry, pointing, target properties,
 weather, and motion. Terahertz systems enabled by photonics must also trace
@@ -75,23 +73,24 @@ related questions. For 12 studies, a field trial or deployment was the
 strongest reported setting. Six of them also received TQAF validation score 3
 because their records report field or deployment outcomes in each functional
 domain. The assessment is applied to each study. Electronic Supplement
-S-Appraisal reports the corresponding scores, and Electronic Supplement S7
-identifies the 12 studies and the subset of six.
+S-Appraisal reports the corresponding scores. Electronic Supplement S7, the
+paired function validation register, identifies the 12 studies and the subset
+of six.
 
-The six studies span terahertz and cellular links enabled by photonics, fiber
-to the room access integrated with radio frequency identification, space laser
-ranging and communication, multicore fiber deployed in the field, and
-submarine cable monitoring
+The six studies cover several settings. They include terahertz and cellular
+links enabled by photonics, fiber access integrated with radio frequency
+identification, and space laser ranging and communication. They also include
+multicore fiber deployed in the field and submarine cable monitoring
 \cite{OISAC_SCR01054,OISAC_SCR00496,OISAC_SCR00631,OISAC_SCR00730,OISAC_SCR01086,OISAC_SCR00957}.
 Their diversity shows that field evidence for both functional domains appears
 across several platforms. Platform comparisons still follow the native
 validation conditions described in Section~\ref{sec:optical_modality_families}.
 
-Electronic Supplement S7 records relationship timing and separate source
-locators for the two functions as unresolved. The six cases therefore
-establish field or deployment outcomes in both functional domains at the study
-level. A stronger claim of concurrent joint operation requires both outcomes
-to be traceable to the same configuration, time interval, and condition set.
+Electronic Supplement S7 records the available relationship timing and separate
+source locators for the two functions. The six cases establish field or
+deployment outcomes in both functional domains at the level of each study. Concurrent
+joint operation is established when both outcomes are traceable to the same
+configuration, time interval, and condition set.
 
 The distinction becomes important when evidence is produced at different
 stages of a system. One fiber study combines field data with offline sensing
@@ -101,50 +100,6 @@ Segmented architectures add interfaces, timing, calibration, and conversion
 conditions to that path. When these elements connect both outcomes to one
 operating point, field coverage can support a stronger claim of joint
 operation.
-
-% ============================================================================
-% PLANNED FIGURE 7 --- VALIDATION PROFILE
-% Stable label fig:validation_profile
-% Blueprint ID FIG-OISAC-06
-% Placement here after settings, methods, and functional coverage.
-% Data authority Phase F s5_validation_maturity.csv and
-% s5_validation_types.csv with denominator 206.
-%
-% Purpose
-% Separate the strongest setting reached from the overlapping methods used to
-% build the evidence.
-%
-% Layout
-% Use exactly two aligned panels. This is a profile and carries no quality
-% sequence.
-%
-% Panel A shows the mutually exclusive maximum settings. Use 32 basic
-% simulation or numerical, 18 enhanced simulation with dataset support, 78
-% laboratory or proof of concept, 66 controlled prototype, and 12 field trial
-% or deployment. State that 156 studies reached at least laboratory or proof
-% of concept.
-%
-% Panel B shows the overlapping methods. Use analytical 131, numerical analysis
-% 14, simulation 104, dataset evaluation 13, laboratory experiment 148,
-% prototype or testbed 83, field experiment 12, and mixed validation 33. Counts
-% remain separate and are not summed.
-%
-% Activation rule
-% Once the figure is produced and audited, replace the full count inventories
-% in the first and fourth paragraphs of subsection VI-A with the following
-% lead in.
-% Figure~\ref{fig:validation_profile} separates the strongest setting reached
-% by each study from the methods used to build the evidence.
-%
-% Future caption
-% Validation profile of the 206 studies. Panel A assigns each study to its
-% strongest setting. Panel B shows the validation methods reported across the
-% corpus and permits more than one method per study.
-%
-% Keep functional coverage in prose and Electronic Supplement S7. Keep
-% artifact access in Table VI and TQAF profiles in Figure 4.
-% Use direct labels and a grayscale safe design.
-% ============================================================================
 
 \subsection{Artifact Access and Reconstructability}
 
@@ -171,38 +126,36 @@ for data and for code or models in all 206 studies.
 Reported access & Studies, $n$ (\%) \\
 \midrule
 \multicolumn{2}{@{}l}{\textit{Data}} \\
-Unavailable or not reported & 145 (70.4) \\
-Available on request & 41 (19.9) \\
-Open & 13 (6.3) \\
-Not applicable & 7 (3.4) \\
+Closed or status unreported & 145 (70.4\%) \\
+Access by request & 41 (19.9\%) \\
+Open access & 13 (6.3\%) \\
+Outside artifact scope & 7 (3.4\%) \\
 \addlinespace[2pt]
 \multicolumn{2}{@{}l}{\textit{Code or model}} \\
-Unavailable or not reported & 197 (95.6) \\
-Available on request & 7 (3.4) \\
-Partial components & 1 (0.5) \\
-Not applicable & 1 (0.5) \\
+Closed or status unreported & 197 (95.6\%) \\
+Access by request & 7 (3.4\%) \\
+Partial components & 1 (0.5\%) \\
+Outside artifact scope & 1 (0.5\%) \\
 \bottomrule
 \end{tabularx}
 \vspace{1pt}
 \parbox{\columnwidth}{\raggedright\footnotesize\emph{Note.} The first row in
-each group combines records coded as unavailable with records that did not
-report an access route at extraction.\par}
+each group combines closed access and an unspecified access status.\par}
 \end{table}
 
 The reported routes support different forms of reconstruction. Open data
 appear across simulation, laboratory, prototype, computer vision, and field
 data settings
 \cite{OISAC_SCR00274,OISAC_SCR00362,OISAC_SCR00833,OISAC_SCR01006,OISAC_SCR01008}.
-They support reanalysis of the released data, while complete system
-reconstruction also requires configuration and execution details. Software
-preserves the transformation from inputs to reported outputs, and one computer
-vision study reported partial code or model components
+They support reanalysis of the released data. Complete system reconstruction
+also requires configuration and execution details. Software preserves the
+transformation from inputs to reported outputs, and one computer vision study
+reported partial code or model components
 \cite{OISAC_SCR00833}.
 
-The reconstruction framework developed in this review adds the information
-needed to recreate a physical experiment. It covers the system and hardware,
-the scene and calibration, the waveform and processing, the metrics and data,
-and the versioned release. These requirements extend the comparison profile in
+Reconstructing a physical experiment requires the system and hardware, the
+scene and calibration, the waveform and processing, the metrics and data, and
+the versioned release. These requirements extend the comparison profile in
 Section~\ref{sec:foundations_comparison}. Electronic Supplements S-Data
 Dictionary and S-Evidence provide the field definitions and record provenance
 used in the review.
@@ -210,7 +163,7 @@ used in the review.
 The TQAF reproducibility assessment reads artifact access together with
 parameter reporting. It places 4 studies in the low category, 199 in the
 adequate category, and 3 in the strong category. Electronic Supplement
-S-Appraisal provides the study level scores. Thirteen studies report open data,
+S-Appraisal provides scores for each study. Thirteen studies report open data,
 while three reach strong reproducibility. The difference reflects the
 additional reconstruction information captured by the appraisal.
 
@@ -219,24 +172,21 @@ additional reconstruction information captured by the appraisal.
 A reconstructable result becomes a reusable benchmark when another group can
 apply the same task, condition set, baseline, and metric definition. The TQAF
 benchmark assessment combines these requirements with artifact access,
-validation, reproducibility, and comparison admissibility. It places 48
-studies in the low category and 158 in the adequate category. The strong
-category contains zero studies under the review criteria.
+validation, reproducibility, and comparison admissibility. The observed
+distribution comprises 48 studies in the low category, 158 in the adequate
+category, and zero in the strong category.
 
 Under the review criteria, strong readiness depends on bringing an external or
 common baseline, an open artifact, admissible outcomes in both functional
 domains, and strong validation and reproducibility support into the same
-evidence chain. Electronic Supplement S-Appraisal provides the study level
-scores. The zero count directs attention from isolated demonstrations toward
-shared tasks, baselines, artifacts, and evaluation conditions that other groups
-can reuse.
+evidence chain. S-Appraisal reports these scores. This distribution directs
+attention toward shared tasks, baselines,
+artifacts, and evaluation conditions that other groups can reuse.
 
-These distributions describe validation and reporting patterns within the 206
-included studies. The survey design supports conclusions about evidence reach,
-functional coverage, artifact access, and reconstructability. Questions about
-causal relations among artifact access, validation setting, and reported
-performance require a different study design. Section~\ref{sec:discussion_roadmap}
-turns the observed gaps into specific benchmark and reporting actions.
+These distributions characterize evidence reach, functional coverage, artifact
+access, and reconstructability within the 206 included studies. They provide
+the descriptive basis for the benchmark and reporting actions in
+Section~\ref{sec:discussion_roadmap}.
 
 Overall, the corpus combines a broad laboratory and prototype base with a
 smaller set of field and deployment results. Stronger cumulative evidence

@@ -1,88 +1,41 @@
 \section{ENABLING TECHNOLOGIES, APPLICATION REQUIREMENTS, AND 6G NETWORK EVIDENCE}
 \label{sec:technologies_applications_6g}
-Section~\ref{sec:validation_reproducibility} established how far the reported
-systems were tested. This section follows what those systems enable. It connects
-the mechanisms that create useful observables to the requirements of their
-application domains and then examines how far the evidence reaches toward a 6G
-network role. A study may contribute to several technology and application
-labels, so the counts describe coverage within the corpus.
+Validation shows how far a reported system was tested. We now follow the
+technologies that form communication and sensing observables into application
+requirements and 6G network roles. Because a study may contribute to several
+technology and application labels, their counts describe coverage within the
+corpus.
 
-The synthesis first explains how waveforms, optical components, and spatial
-control shape the observable. It then follows integration through devices,
-infrastructure, and inference. The application map translates these mechanisms
-into operating conditions, and the final subsection explains what those labels
-mean for 6G network evidence.
+Figure~\ref{fig:technology_application_chain} follows this evidence chain from
+optical generation and transport through waveform formation, spatial control,
+inference, selected application domains, and 6G network positioning.
 
-% ============================================================================
-% PLANNED FIGURE 8 --- FROM OPTICAL OBSERVABLES TO NETWORK EVIDENCE
-% DO NOT DRAW IN THIS VERSION
-% Stable label fig:technology_application_chain
-% Blueprint ID FIG-OISAC-07
-% Placement after the section framing and before the detailed synthesis
-% Data authority Phase F s6_enabling_technologies.csv,
-% s6_application_domains.csv, and s7_six_g_relevance.csv. Technology and
-% application counts are multilabel. The 6G relevance gate is exclusive over
-% all 206 studies.
-%
-% Purpose
-% Give the reader one cross layer map showing how each layer contributes to a
-% joint service. Marginal multilabel counts describe layer coverage.
-%
-% Layout
-% Use six layers from left to right with uniform technical progression arrows
-% and dashed reverse requirement arrows.
-% 1. Generation and transport with photonic THz 68, coherent optics 64, photonic
-%    integration 20, fiber DAS/infrastructure reuse 22, other 19.
-% 2. Waveform and physical observables with FMCW or chirped 66, OFDM or
-%    multicarrier 56, and phase, polarization, backscatter, spatial, power, and
-%    image observables.
-% 3. Spatial control with beamforming 13, OPA 8, MIMO 7, and RIS or ORIS 1.
-% 4. Inference and system models with ML or AI 20 and digital twin 2. Show
-%    calibration, training distribution, uncertainty, computation, and latency.
-% 5. Four application requirement families covering network and mobility,
-%    infrastructure and environment, positioning and human centered services,
-%    and extreme settings. Table VII retains the thirteen individual domains.
-% 6. The exclusive 6G evidence gate with direct 138, inferential 64, weak 1,
-%    and not applicable 3. Follow it with network role, timing, orchestration,
-%    interoperability, paired function evidence, and validated service.
-%    The closing label reads ``6G relevance marks corpus positioning.
-%    Conformance, interoperability, and readiness require further evidence.''
-%
-% Activation rule
-% After the figure is produced and audited, replace the count inventories at
-% the start of subsections VII-A, VII-B, and VII-D with the following lead in.
-% Figure~\ref{fig:technology_application_chain} organizes the section as a
-% cross layer evidence chain from generation and observable formation to
-% application requirements and a bounded 6G relevance gate.
-%
-% Future caption
-% Cross layer organization of O-ISAC enabling technologies, observables,
-% application requirements, and 6G evidence. Generation and transport create or
-% preserve observables. Waveform design, spatial control, and inference shape
-% their use. Application requirements return constraints to the system. The
-% labels describe corpus coverage, and the arrows show technical progression.
-% The final gate reports direct, inferential, weak, and not applicable relevance
-% as 138, 64, 1, and 3 studies. Conformance, interoperability, paired operation,
-% and deployment require additional evidence.
-%
-% Visual constraints
-% Use a conceptual chain instead of a Sankey diagram and keep every arrow width
-% uniform. Connect technologies at the layer level because the current data
-% authority supplies marginal counts. Keep wireless propagation explicit after
-% photonic carrier generation. Present 6G relevance as corpus positioning. Use
-% grayscale safe shapes and direct layer labels.
-% ============================================================================
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig08_technology_application_chain.pdf}
+\caption{Organization across system layers of the mechanisms that create and shape
+O-ISAC observables and connect them to service requirements. Technology and
+application counts describe overlapping corpus coverage, so a study may
+contribute to several displayed categories. The 6G evidence gate is exclusive
+and assigns each of the 206 studies to one relevance class. Selected application
+domains illustrate the requirement flow, while Table~\ref{tab:application_requirements}
+provides the complete application inventory.}
+\label{fig:technology_application_chain}
+\end{figure*}
+
+The chain shows that network interpretation depends on continuity across the
+physical observable, the joint design choice, the application condition, and
+the reported network role. The displayed categories guide the reader through
+that relationship, while the following subsections retain the platform
+conditions and study evidence.
 
 \subsection{Technologies That Create and Shape Observables}
 
-The most frequent technology labels occupy complementary points in the signal
-chain. Photonic terahertz and microwave photonic generation appear in 68
-studies. Frequency modulated continuous wave and related chirped processing
-appear in 66, coherent optical techniques in 64, and OFDM or related
-multicarrier methods in 56. Photonic generation creates or translates the
-carrier. Chirped processing maps delay or motion to beat frequency. Coherent
-reception preserves phase, and OFDM provides controllable time and frequency
-resources. A single architecture can combine several of these mechanisms.
+The main technology labels occupy complementary points in the signal chain.
+Photonic generation creates or translates the carrier. Chirped processing maps
+delay or motion to beat frequency. Coherent reception preserves phase, and OFDM
+provides controllable time and frequency resources. A single architecture can
+combine several of these mechanisms.
 
 OFDM supports joint operation by placing payload and sensing resources within
 one signal structure. The sensing observable may come from pilots, payload
@@ -113,13 +66,12 @@ bandwidth, and timing are measured. This view makes the interface between
 components part of the joint system.
 
 Spatial control changes both the communication link budget and the sensing
-geometry. Beamforming appears in 13 studies, optical phased arrays in 8,
-multiple input multiple output systems in 7, and a reconfigurable optical
-intelligent surface in 1. These labels describe different functions.
-Beamforming directs energy. An optical phased array provides one steering
-mechanism. Multiple input multiple output processing uses several spatial
-dimensions, and an intelligent surface reshapes an intermediate propagation
-boundary. A system may combine these roles.
+geometry. Beamforming, optical phased arrays, multiple input multiple output
+processing, and reconfigurable optical intelligent surfaces provide different
+forms of spatial control. Beamforming directs energy. An optical phased array
+provides one steering mechanism. Multiple input multiple output processing uses
+several spatial dimensions, and an intelligent surface reshapes an intermediate
+propagation boundary. A system may combine these roles.
 
 A narrow beam improves received power and angular selectivity while making
 acquisition, tracking, blockage, and calibration central to joint performance.
@@ -174,7 +126,7 @@ estimates, channel predictions, and resource decisions. Each task is best read
 with its definition, reference data, training distribution, evaluation shift,
 uncertainty, and inference cost. Fiber diagnosis, federated visible light
 positioning, and wearable optical sensing show the range from distributed
-infrastructure to human centered use
+infrastructure to personal use
 \cite{OISAC_SCR01006,OISAC_SCR01081,OISAC_SCR00376}.
 
 A neural network can also take part in both functions. In one coherent link,
@@ -193,8 +145,8 @@ Applications translate the mechanisms above into conditions that a joint
 service must satisfy. Table~\ref{tab:application_requirements} retains all
 thirteen application domains and maps each one to its joint role and defining
 evaluation conditions. A fiber platform for vehicles, for
-example, carries high speed data and measures distributed temperature
-\cite{OISAC_SCR00123}. Human centered devices connect communication or remote
+example, carries data at high rates and measures distributed temperature
+\cite{OISAC_SCR00123}. Devices used by people connect communication or remote
 alerts with motion, falls, air pressure, physiology, or gesture
 \cite{OISAC_SCR00451,OISAC_SCR00294,OISAC_SCR00376}. Each application therefore
 changes what the experiment must demonstrate, even when both functions share
@@ -279,7 +231,7 @@ event, or location sensing & Coverage, event discrimination, and alert latency &
 >{\raggedright\arraybackslash}X
 >{\centering\arraybackslash}p{0.095\textwidth}@{}}
 \toprule
-\multicolumn{4}{@{}l}{\emph{Human centered, extreme settings, and residual}} \\
+\multicolumn{4}{@{}l}{\emph{Human use, extreme settings, and remaining domains}} \\
 \addlinespace[1pt]
 \textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
 \textbf{Key operating condition} & \textbf{Studies} \\
@@ -297,7 +249,7 @@ with temperature or event sensing & Water attenuation or cable calibration,
 packaging, and access & \cite{OISAC_SCR00763,OISAC_SCR01095} \\
 \addlinespace[1.25pt]
 \textbf{Other} 17 (8.3\%) & Emerging links with range, imaging, object, or
-channel sensing & Task specific metrics and reporting & \cite{OISAC_SCR00953} \\
+channel sensing & Metrics and reporting specific to the task & \cite{OISAC_SCR00953} \\
 \bottomrule
 \end{tabularx}
 \vspace{1pt}
@@ -312,45 +264,39 @@ the final subsection provides the 6G relevance classification.\par}
 Across the map, the dominant requirement moves with the application. Network
 and mobility settings emphasize acquisition, timing, and continuity. Deployed
 infrastructure emphasizes persistent observation alongside carried traffic.
-Human centered and extreme settings add physiological references, safety,
+Human use and extreme settings add physiological references, safety,
 privacy, pointing, atmosphere, packaging, and access to the test environment.
 These requirement bundles show which operating conditions must accompany a
 reported result before it can support comparison or reuse.
 
 \subsection{From 6G Relevance to Network Evidence}
 
-The exclusive 6G crosswalk places 138 studies (67.0\%) in the direct class, 64
-(31.1\%) in the inferential class, 1 (0.5\%) in the weak class, and 3 (1.5\%)
-in the not applicable class. These four labels are review codes for positioning
-the corpus. They follow the frozen Phase E crosswalk, which groups source level
-codes through explicit or direct and inferred or enabling normalization rules.
-Weak and not applicable assignments remain separate. Direct assignments include
-\cite{OISAC_SCR00362,OISAC_SCR01049}, and inferential assignments include
-\cite{OISAC_SCR00007,OISAC_SCR00647}. The weak and not applicable classes are
-documented in
-\cite{OISAC_SCR00959,OISAC_SCR00294}.
+The 6G relevance gate in Figure~\ref{fig:technology_application_chain} assigns
+each study one corpus position. Direct cases connect the reported system
+explicitly to a 6G role, as illustrated
+by \cite{OISAC_SCR00362,OISAC_SCR01049}. Inferential cases contribute an
+enabling link that gains meaning from additional network context, as illustrated
+by \cite{OISAC_SCR00007,OISAC_SCR00647}. The remaining classes capture a lighter
+connection to 6G or an application focus outside that framing, as illustrated
+by \cite{OISAC_SCR00959,OISAC_SCR00294}.
 
-The distribution connects the reviewed corpus with future access, transport,
-localization, automation, environmental awareness, and high frequency carrier
-generation. A relevance code therefore locates a study within the 6G
+The distribution connects the reviewed corpus with 6G access, transport,
+localization, automation, environmental awareness, and generation of carriers
+at high frequencies. A relevance code therefore locates a study within the 6G
 discussion. Standard conformance, interoperability, and deployment readiness
 require additional evidence tied to the relevant network framework
 \cite{ITUR_M2160_2023}.
 
-Network evidence begins when the optical or photonic subsystem occupies an
-explicit end to end role. Access, fronthaul, transport, edge processing, and
-service control bring timing, mobility, orchestration, energy, security, and
-recovery requirements. A convincing experiment evaluates useful communication
-and sensing under the conditions of that role and reports the resources needed
-to sustain both. This creates a traceable path from the physical observable and
-hardware to the service objective.
+A stronger network interpretation emerges when the optical or photonic
+subsystem occupies an explicit role across the complete network path. Access, fronthaul, transport,
+edge processing, and service control bring timing, mobility, orchestration,
+energy, security, and recovery requirements. Evidence at this level evaluates
+useful communication and sensing under the conditions of that role and reports
+the resources needed to sustain both. This creates a traceable path from the
+physical observable and hardware to the service objective.
 
-Within the scope of this survey, the strongest 6G interpretation follows that
-path through both functional outcomes and their operating conditions. It
-describes the evidence reported by the 206 included studies. Claims about
-industry adoption, economic feasibility, and standard compliance require
-evidence designed for those questions. Taken together, this section connects
-the physical observable to the application requirement and the network role.
-Section~\ref{sec:discussion_roadmap} uses the remaining gaps in that chain to
-develop the research and reporting roadmap.
-\FloatBarrier
+Within this survey, 6G relevance is strongest when both functional outcomes and
+their operating conditions remain traceable to a network role. The resulting
+evidence chain links physical observables, application requirements, and service
+objectives and provides the basis for the research priorities in
+Section~\ref{sec:discussion_roadmap}.

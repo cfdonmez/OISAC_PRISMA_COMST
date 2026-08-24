@@ -1,6 +1,32 @@
 ﻿# Ilerleme Takip Tablosu
 
-## Current State — Final Submission Closeout Started (2026-08-24)
+## Current State — Final Submission Candidate Verified (2026-08-25)
+
+- Full Sections I--IX language, flow, repetition, abbreviation, claim, and
+  positive-framing revision is complete. The manuscript now uses the simple
+  survey narrative established in Sections IV and V throughout.
+- Audit-history comparisons, predecessor-denominator discussion, unfinished
+  work promises, and authoring-tool references are absent from reader-facing
+  text.
+- Figures 1--8 are complete as editable SVG and vector PDF assets produced from
+  governed data and manuscript concepts without generative imagery. Figures
+  1--8 and Tables I--VIII are all live.
+- Final `main.pdf` has 27 pages, 598,488 bytes, 241 bibliography entries, and
+  SHA-256
+  `6A195C6856E5BD784DEF0A5149B1DF025771E5E50D7B2C02A7D229108B450DC2`.
+- TeXcount total is 12,078 words. Final compilation and all-page rendered QA
+  pass with zero undefined citation, undefined reference, LaTeX warning,
+  overfull box, float error, clipping, overlap, or broken table finding.
+- Governing records are
+  `../07_raporlama/outputs/comst_prose_revision_2026-08-08/manuscript/comst_206_v2_9section/qa/FINAL_SUBMISSION_QA_2026-08-25.md`
+  and
+  `checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
+- The focused final content commit and remote-head verification are the only
+  remaining closeout actions.
+
+> The 2026-08-24 closeout-start block below is retained as dated audit history.
+
+## Previous Current State — Final Submission Closeout Started (2026-08-24)
 
 - User-authorized scope is now the complete manuscript. The pass covers
   narrative flow, repeated statements, abbreviations, avoidable hyphenation,
