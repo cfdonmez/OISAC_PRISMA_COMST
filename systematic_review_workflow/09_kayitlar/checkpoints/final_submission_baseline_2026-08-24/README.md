@@ -85,5 +85,7 @@ bilimsel girdilerin yerine geçmez.
 - Derleme ve 27 sayfalık görsel QA geçti. Governing record
   `checkpoints/comst_final_submission_closeout_2026-08-25/README.md` ve
   manuscript QA `qa/FINAL_SUBMISSION_QA_2026-08-25.md` dosyalarıdır.
-- Focused final content commit kimliği, push tamamlandıktan sonra closeout
-  checkpoint'ine işlenecektir.
+- Focused final content commit
+  `564d0fa866c22114affbffd08e149b9260a60aaf` olarak oluşturuldu ve
+  `origin/codex/final-submission-20260824` dalına gönderildi. Uzak dal başı aynı
+  hash ile doğrulandı.

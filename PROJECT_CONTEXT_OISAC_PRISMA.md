@@ -25,7 +25,9 @@
   overfull boxes, float errors, clipping, or overlap.
 - Governing QA is `qa/FINAL_SUBMISSION_QA_2026-08-25.md`. Durable handoff is
   `systematic_review_workflow/09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
-- The focused GitHub content commit is the remaining repository operation.
+- Final content commit `564d0fa866c22114affbffd08e149b9260a60aaf`
+  is pushed to `origin/codex/final-submission-20260824`, and the remote head
+  matches the local content commit.
 
 This authority supersedes the 2026-08-24 closeout-start block below.
 

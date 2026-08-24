@@ -1,7 +1,7 @@
 # START HERE — O-ISAC PRISMA Current State and Forward Roadmap
 
 Last verified: 2026-08-25
-Status: Final manuscript and figure closeout verified locally; focused GitHub push pending
+Status: Final manuscript and figure closeout complete; GitHub branch verified
 Project: *Optical Integrated Sensing and Communication for 6G Through a Systematic Review of Architectures, Metrics, and Tradeoffs Across Optical Platforms*
 
 ## 21. CURRENT SUBMISSION CLOSEOUT — 2026-08-25
@@ -30,8 +30,9 @@ Project: *Optical Integrated Sensing and Communication for 6G Through a Systemat
   `comst_206_v2_9section/qa/FINAL_SUBMISSION_QA_2026-08-25.md`. The durable
   checkpoint is
   `systematic_review_workflow/09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
-- The only remaining operation in this closeout is the focused final commit and
-  remote verification on `codex/final-submission-20260824`.
+- Final content commit
+  `564d0fa866c22114affbffd08e149b9260a60aaf` is available on
+  `origin/codex/final-submission-20260824` and the remote head was verified.
 
 This block supersedes the 2026-08-24 operation block below, which remains as
 dated audit history.

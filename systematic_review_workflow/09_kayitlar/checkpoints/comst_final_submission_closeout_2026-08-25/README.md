@@ -32,4 +32,8 @@ Compilation, cross reference, citation, vector figure, font embedding, grayscale
 
 ## Git state
 
-The pre-edit safety baseline is commit `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` on `codex/final-submission-20260824`. The final content commit and verified remote head are recorded below after the focused push.
+The pre-edit safety baseline is commit `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` on `codex/final-submission-20260824`.
+
+The final content commit is `564d0fa866c22114affbffd08e149b9260a60aaf`.
+It was pushed to `origin/codex/final-submission-20260824`, and `git ls-remote`
+confirmed the same hash as the remote branch head.

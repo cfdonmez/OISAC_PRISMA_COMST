@@ -21,8 +21,9 @@
   `../07_raporlama/outputs/comst_prose_revision_2026-08-08/manuscript/comst_206_v2_9section/qa/FINAL_SUBMISSION_QA_2026-08-25.md`
   and
   `checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
-- The focused final content commit and remote-head verification are the only
-  remaining closeout actions.
+- Final content commit `564d0fa866c22114affbffd08e149b9260a60aaf`
+  is pushed to `origin/codex/final-submission-20260824`, and the remote head
+  matches the local content commit.
 
 > The 2026-08-24 closeout-start block below is retained as dated audit history.
 

@@ -29,9 +29,10 @@
 - Governing QA is `qa/FINAL_SUBMISSION_QA_2026-08-25.md`. Durable checkpoint is
   `09_kayitlar/checkpoints/comst_final_submission_closeout_2026-08-25/README.md`.
 - The pre-edit remote baseline remains
-  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03` on
-  `codex/final-submission-20260824`. Record the focused final content commit and
-  verified remote head in the closeout checkpoint after push.
+  `64a3dc2c5371c1aa7a4d61a595a1df3ed26c3b03`. Final content commit
+  `564d0fa866c22114affbffd08e149b9260a60aaf` is pushed to
+  `origin/codex/final-submission-20260824`, and the remote head matches the
+  local content commit.
 
 This authority supersedes the 2026-08-24 closeout-start block below.
 
