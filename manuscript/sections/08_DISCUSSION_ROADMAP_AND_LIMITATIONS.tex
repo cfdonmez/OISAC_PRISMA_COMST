@@ -1,0 +1,158 @@
+\section{DISCUSSION, RESEARCH ROADMAP, AND LIMITATIONS}
+\label{sec:discussion_roadmap}
+
+Across the evidence base, the central issue is whether physical sharing
+produces joint outcomes that remain traceable to one operating context. This
+section interprets that relationship, develops five research priorities, and
+states the review boundaries.
+
+\subsection{Interpretation Across the Evidence Base}
+
+Physical integration identifies where communication and sensing share
+infrastructure, signals, or information. Evidential integration shows how
+clearly both outcomes remain tied to the same operating conditions. Together,
+they connect architectural and transmission perspectives while preserving the
+physical regime of each platform
+\cite{Wen2024OISACArchitectures,Su2025OISACTheoryPractice,
+Liang2024LiSACReview,Liu2026OpticalFiberISACReview}.
+
+Deeper sharing can connect more design variables and improve coordination
+across the two functions. It can also couple power, distortion,
+synchronization, dynamic range, and failure behavior. Its scientific value
+therefore depends on locating these effects in the signal chain and tracing
+their influence on both outcomes.
+
+Tradeoff patterns transfer across studies when tasks, metric definitions,
+measurement planes, baselines, constraints, and validation settings remain
+aligned. This alignment allows model bounds and empirical operating points to
+retain their distinct roles and support comparison within a stated context
+\cite{Khorasgani2026GeneralOpticalISACSurvey,Rode2025PolarizationISAC}.
+
+Fielded cable and network studies illustrate the value of operational
+continuity
+\cite{Cao2026SubmarineFiberISAC,Ip2026DeployedTelecomCableISAC}. Within the
+survey, system evidence becomes reusable when configuration, calibration,
+processing, and reported artifacts remain connected across interfaces. This
+continuity links physical sharing to application and network claims and
+motivates a central research task. Joint operating points should remain
+interpretable, testable, and reusable across groups.
+
+\subsection{Research Priorities for Reusable Evidence}
+
+Table~\ref{tab:research_roadmap} organizes five priorities and pairs each
+observed finding with an action and a measurable sign of progress.
+
+\begin{table}[!t]
+\caption{Research priorities derived from the reviewed evidence}
+\label{tab:research_roadmap}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.4pt}
+\renewcommand{\arraystretch}{1.02}
+\begin{tabularx}{\columnwidth}{@{}
+>{\raggedright\arraybackslash}p{0.20\columnwidth}
+>{\raggedright\arraybackslash}X
+>{\raggedright\arraybackslash}p{0.30\columnwidth}@{}}
+\toprule
+Priority & Finding and proposed action & Evidence of progress \\
+\midrule
+\textbf{1. Measurement contract} &
+\emph{Finding.} Of 4,779 metric records, 118 supported bounded relations under
+aligned conditions. \emph{Action.} Record the task, plane, unit, baseline,
+operating condition, validation setting, and source locator. &
+An independent reader reconstructs the quantity and condition from a structured
+record. \\
+\addlinespace[1.5pt]
+\textbf{2. Benchmark for each modality} &
+\emph{Finding.} Comparison across studies depends on matched physical context.
+\emph{Action.} Repeat one task with reference and independent designs under
+shared calibration and ground truth. &
+Independent groups reproduce the relative finding under the shared protocol. \\
+\addlinespace[1.5pt]
+\textbf{3. Joint operation under disturbance} &
+\emph{Finding.} Of 402 substantive tradeoff relationships, 371 depend on
+reported conditions. Six of 12 field or deployment tier studies report
+outcomes in both domains. Traceability is strongest when both outcomes share
+the same timing and condition set.
+\emph{Action.} Evaluate both functions in the same run and condition set under
+load, a disturbance relevant to the modality, and matched baselines for the
+individual functions. &
+Repeated trials recover the joint region and its limiting mechanism. \\
+\addlinespace[1.5pt]
+\textbf{4. Reconstructable experiment package} &
+\emph{Finding.} Open data appear in 13 of 206 studies, and code or model access
+reaches a partial release in one. \emph{Action.} Preserve a versioned package
+and rerun the main comparison under one added condition. &
+An independent rerun recovers the comparison and added condition from the
+package. \\
+\addlinespace[1.5pt]
+\textbf{5. Intelligence, scale, and security} &
+\emph{Finding.} Technology and application coverage connects the corpus to 6G
+roles. Conformance, interoperability, and readiness become measurable through
+explicit network tests. \emph{Action.} Apply a declared shift, attack, load, or
+component failure and report overhead, resource use, decisions, and fallback. &
+The service retains an explainable boundary with resource use, decisions, and
+fallback recorded. \\
+\bottomrule
+\end{tabularx}
+\vspace{1pt}
+\parbox{\columnwidth}{\raggedright\footnotesize\emph{Note.} The findings
+summarize the retained corpus presented in Sections~\ref{sec:optical_modality_families}
+through \ref{sec:technologies_applications_6g}. The proposed actions retain the
+physical conditions of each modality and define observable signs of progress.\par}
+\end{table}
+
+The order matters because each stage uses evidence produced by the previous
+one. Clear measurement context supports fair benchmarks. Benchmarks support
+realistic joint tests. Reconstructable artifacts make those tests repeatable,
+and repeatable tests provide a basis for adaptive and secure evaluation at
+network scale.
+
+Stress tests should follow the native signal path of each modality. Fiber tests
+can vary topology and traffic, free space optical tests can vary geometry and
+atmosphere, and visible light tests can vary illumination and orientation.
+Photonic terahertz tests can vary optical drift together with wireless
+propagation. Matched baselines for the individual functions keep the limiting
+mechanism visible across these settings.
+
+For standards and 6G coordination, the same sequence can support a core
+reporting profile that preserves modality physics, ground truth, and reusable
+benchmark definitions. Shared metadata can connect results across platforms
+while retaining the conditions needed for interpretation.
+
+\subsection{Scope and Limitations of the Review}
+
+The review represents English language technical reports published from 1
+January 2020 through 22 June 2026 and indexed by the six searched sources. Full
+texts were available and assessed for 272 of the 330 reports sought, which
+corresponds to 82.4\% retrieval coverage. Two Taylor \& Francis exports with few
+records are documented through their complete platform exports. These
+boundaries define the literature represented by the final corpus of 206 studies.
+
+Searches and screening preceded retrospective registration, and the subsequent
+search refresh and report reconciliation produced the final corpus described
+in Section~\ref{sec:review_methods}. One investigator supervised routine
+decisions, while independent checks focused on specified evidence records and
+report reconciliation.
+
+TQAF provides a technical appraisal developed for this review. The diversity
+of tasks, quantities, validation settings, outcomes, and source protocols
+supports structured narrative synthesis, which preserves native conditions and
+bounded comparisons. This analytical scale centers interpretation on reported
+mechanisms and conditions. Harmonized outcomes and source protocols form the
+appropriate basis for pooled effects, sensitivity estimates, and causal
+moderator analysis.
+
+The multilabel taxonomy incorporates reviewer judgment, especially for hybrid
+systems. Row counts represent coded observations at extraction granularity,
+while effect analysis uses a different unit. For 92 metric rows, the available
+fields supported interpretation within the source setting and a conservative
+comparison status. Artifact access combined source reporting with targeted link
+checks, so the appraisal reflects documented reconstruction information.
+
+The conclusions concern recurring mechanisms, measurement constraints, and
+validation patterns within the retained corpus. Corpus distributions describe
+the reviewed literature. Worldwide prevalence, market maturity, and platform
+rank require evidence designed for those questions. Within its stated scope,
+the review identifies the conditions that allow optical integration to support
+transferable joint results.
