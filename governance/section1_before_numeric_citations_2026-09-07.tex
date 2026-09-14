@@ -1,0 +1,227 @@
+\section{INTRODUCTION}
+\label{sec:introduction}
+
+\subsection{Background and Motivation}
+
+Communication and sensing are often needed within the same system. A mobile
+terminal needs a data link and knowledge of its position, while a network
+operator needs to carry traffic and monitor the infrastructure that supports
+it. Integrated sensing and communication (ISAC) brings these functions together
+through shared signals, hardware, or infrastructure
+\cite{Zhang2026ISACEvolution}. This interest extends to future mobile networks,
+with ISAC included among the usage scenarios in the International Mobile
+Telecommunications framework for 2030 and beyond
+\cite{ITUR_M2160_2023}.
+
+Optical integrated sensing and communication (O-ISAC) applies this idea to
+optical links and photonic systems. A fiber can carry communication and sensing
+signals along the same route, while a visible light source can support data
+transmission and positioning \cite{OISAC_SCR00013,OISAC_SCR00196}.
+Figure~\ref{fig:oisac_platform_overview} illustrates representative ways of
+combining the two functions. The role of optics differs across these systems.
+In fiber and optical wireless links, light propagates through the sensing
+medium or reaches the receiver or target. In photonics-enabled wireless
+systems, optical components can generate the signal while propagation to the
+target takes place in the millimeter-wave or terahertz band
+\cite{OISAC_SCR00036,OISAC_SCR00083}.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_introduction_oisac_platforms.png}
+\caption{Representative O-ISAC configurations in fiber, free-space optical,
+visible-light, and photonics-enabled terahertz systems. Each panel shows a
+shared resource and the communication and sensing functions it supports.
+The design choices below the panels can affect both functions, with their
+roles depending on the implementation. These examples illustrate physical
+configurations rather than a performance ranking or an exhaustive taxonomy.}
+\label{fig:oisac_platform_overview}
+\end{figure*}
+
+Sharing a resource can also link the performance of the two functions.
+In one fiber experiment, raising the sensing-probe power while holding
+communication launch power fixed improved the sensing signal-to-noise ratio
+but increased the communication bit error rate \cite{OISAC_SCR00057}.
+Joint operation can also allow sensing to assist communication. In a
+visible-light prototype, position estimates guided beamforming toward the
+receiver and improved the communication data rate at the tested locations
+\cite{OISAC_SCR00196}. These examples show why the shared resource and the way
+it is used matter. Joint design must account for both the benefit sought and
+its effect on the other function.
+
+The physical setting determines how these relationships can be used.
+A vibration measurement along a fiber and a position estimate in a room
+answer different sensing questions. Optical wireless links also depend on
+propagation and alignment, while fiber systems have their own transmission
+and sensing constraints \cite{OISAC_SCR00916,OISAC_SCR01085,Mohsan2026OISACReview}.
+A researcher selecting an O-ISAC approach therefore needs more than a list
+of achievable rates or sensing errors. The useful questions are which design
+choice produced the result, how both functions responded, and whether the
+conditions match the intended application. This connects the reported
+performance to decisions about how to build and evaluate a system.
+
+\subsection{Related Surveys}
+\label{sec:related_surveys}
+
+Existing reviews provide both platform-specific design guidance and broader
+views of O-ISAC. Wen et al.\ \cite{Wen2024OISACArchitectures} explain optical
+architectures and waveform allocation, using a common simulation setting to
+show communication error rate and ranging error. Liang et al.
+\cite{Liang2024LiSACReview} examine the integration of lighting, sensing, and
+communication, with performance tables for visible-light and hybrid systems.
+Lyu et al.\ \cite{Lyu2026PhotonicTHzWaveforms} review photonic millimeter-wave
+and terahertz demonstrations and compare integrated waveforms through models
+and experiments. Other focused reviews address optical transmission and
+estimation, or communication and sensing in fiber networks
+\cite{Su2025OISACTheoryPractice,Khorasgani2026GeneralOpticalISACSurvey,
+Liu2026OpticalFiberISACReview,Lu2026ConvergedFiberISACReview}.
+
+Broader surveys connect these technical developments to larger research
+questions. Zhang et al.\ \cite{Zhang2026ISACEvolution} trace ISAC across
+spectrum, network scale, and sensing modalities, including optical and
+RF--optical systems. Mohsan et al.\ \cite{Mohsan2026OISACReview} bring together
+optical platforms, experimental results, waveform design, and applications.
+Both discuss performance measures and the need for further evaluation.
+Together, these works explain design choices, report numerical
+demonstrations, and identify research directions.
+
+Table~\ref{tab:prior_surveys} distinguishes the physical coverage and review
+approach of representative works. Its platform columns identify where the
+sensing interaction takes place. The last two columns address how studies
+are selected and how results from different studies are judged comparable.
+This distinction matters because a controlled waveform comparison and a
+comparison between independently reported experiments answer different
+questions. The latter also requires agreement on what was measured and under
+which conditions.
+
+\begin{table*}[!t]
+\caption{Physical coverage and review approach of representative related
+reviews and tutorial-style syntheses}
+\label{tab:prior_surveys}
+\centering
+\begingroup
+\footnotesize
+% Local Wasy glyphs keep the full and half-filled circles the same size.
+\newcommand{\surveyGlyph}[1]{{\fontencoding{U}\fontfamily{wasy}\selectfont\char#1}}
+\newcommand{\surveyFull}{\mbox{\surveyGlyph{32}}}
+\newcommand{\surveyPartial}{\leavevmode
+  \hbox to 0pt{\surveyGlyph{71}\hss}\hbox{\surveyGlyph{35}}}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.2}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\begin{tabularx}{\textwidth}{@{}%
+>{\raggedright\arraybackslash}m{0.13\textwidth}
+>{\raggedright\arraybackslash}m{0.30\textwidth}
+>{\centering\arraybackslash}m{0.055\textwidth}
+>{\centering\arraybackslash}m{0.09\textwidth}
+>{\centering\arraybackslash}m{0.09\textwidth}
+>{\centering\arraybackslash}X
+>{\centering\arraybackslash}X@{}}
+\toprule
+\textbf{Work / year} & \textbf{Main focus} &
+\multicolumn{3}{c}{\textbf{Optical platforms}} &
+\multicolumn{2}{c}{\textbf{Review approach}} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-7}
+& & Fiber & Optical wireless & Photonic wireless &
+Study selection & Cross-study comparison rules \\
+\midrule
+Wen et al.\ \cite{Wen2024OISACArchitectures}\newline 2024 &
+Optical architectures, waveform design, and resource allocation &
+\textemdash & \surveyFull & \textemdash & \textemdash & \textemdash \\
+\addlinespace[3pt]
+Liang et al.\ \cite{Liang2024LiSACReview}\newline 2024 &
+Lighting--sensing--communication integration and hybrid links &
+\textemdash & \surveyFull & \textemdash & \textemdash & \textemdash \\
+\addlinespace[3pt]
+Lyu et al.\ \cite{Lyu2026PhotonicTHzWaveforms}\newline 2026 &
+Integrated photonic waveforms and controlled performance comparisons &
+\textemdash & \textemdash & \surveyFull & \textemdash & \textemdash \\
+\addlinespace[3pt]
+Zhang et al.\ \cite{Zhang2026ISACEvolution}\newline 2026 &
+ISAC evolution across spectrum, networks, and sensing modalities &
+\surveyPartial & \surveyFull & \surveyFull & \textemdash & \surveyPartial \\
+\addlinespace[3pt]
+Mohsan et al.\ \cite{Mohsan2026OISACReview}\newline 2026 &
+Optical platforms, experimental demonstrations, and applications &
+\surveyFull & \surveyFull & \surveyFull & \textemdash & \surveyPartial \\
+\midrule
+\textbf{This survey} &
+Shared-resource performance relations and evidence-based evaluation &
+\surveyFull & \surveyFull & \surveyFull & \surveyFull & \surveyFull \\
+\bottomrule
+\end{tabularx}
+\par\vspace{4pt}
+\noindent
+\parbox{\textwidth}{\raggedright\footnotesize
+\surveyFull: structured treatment; \surveyPartial: selected discussion or an
+identified research need; \textemdash: not developed in the stated sense.
+Fiber denotes sensing in the fiber, not fiber transport alone; photonic
+wireless denotes optically generated or processed signals with wireless
+RF propagation. Only optical-related coverage is marked for Zhang et al.
+Study selection denotes an explicit search and eligibility procedure.
+Cross-study comparison rules address metric definitions, measurement points,
+conditions, baselines, and supporting evidence; they are distinct from a
+controlled comparison within one model or experiment.\par}
+\endgroup
+\end{table*}
+
+A further need is to explain when a reported result can guide another
+design. Zhang et al.\ identify the difficulty
+of using common performance measures across RF and optical systems, while
+Mohsan et al.\ call for shared benchmarks
+\cite{Zhang2026ISACEvolution,Mohsan2026OISACReview}. We address this question
+by linking the shared design choice to communication and sensing outcomes,
+then examining the measurement conditions that support the link. This lets us
+distinguish a result demonstrated in one setting from a design lesson that
+can guide another. The same analysis identifies which joint measurement or
+experiment should come next.
+
+\subsection{Scope and Contributions}
+
+This survey examines 206 unique O-ISAC studies first made publicly available
+from 1 January 2020 through 22 June 2026. It covers guided optical systems,
+optical wireless links, and photonics-enabled wireless systems, including
+hybrid configurations. Across these settings, we examine how communication
+and sensing are connected through a physical resource, a signal, or a joint
+design objective. The review follows three questions. What is shared between
+the two functions? How does the shared design affect their performance?
+What further evaluation is needed to use the resulting insight in another
+system?
+
+The survey makes three contributions that connect system selection,
+performance interpretation, and experimental evaluation.
+\begin{itemize}
+\item \textbf{A physical basis for selecting an O-ISAC design.}
+We distinguish platforms by their sensing paths and identify how hardware,
+signals, and allocated resources connect the two functions. This explains
+which integration mechanisms fit a given physical setting and which
+constraints must be considered when adapting them
+(Sections~\ref{sec:foundations_comparison}
+and~\ref{sec:optical_modality_families}).
+
+\item \textbf{A common basis for interpreting performance.}
+We relate bandwidth, power, waveform, and receiver choices to communication
+rate and reliability alongside sensing accuracy and resolution. We distinguish
+relationships demonstrated within a study from comparisons that require
+compatible metrics, measurement points, and operating conditions. This
+supports design lessons while keeping numerical results tied to the settings
+in which they were obtained
+(Sections~\ref{sec:foundations_comparison} and~\ref{sec:tradeoffs}).
+
+\item \textbf{Evaluation priorities derived from the evidence.}
+We connect validation findings to joint tests under traffic, changing
+illumination, atmospheric variation, and optical drift. The proposed tests
+pair communication and sensing measurements with separate-function baselines
+and observable signs of progress. They give researchers concrete next steps
+for testing whether a design remains useful beyond its original setting
+(Sections~\ref{sec:validation_reproducibility}
+and~\ref{sec:discussion_roadmap}).
+\end{itemize}
+
+Section~\ref{sec:foundations_comparison} introduces the physical and performance
+concepts used in the review, and Section~\ref{sec:review_methods} describes the
+review methods. Sections~\ref{sec:optical_modality_families}
+through~\ref{sec:technologies_applications_6g} examine platforms, joint design,
+validation, and applications. Section~\ref{sec:discussion_roadmap} develops the
+research priorities, and Section~\ref{sec:conclusion} concludes the article.
+
+\FloatBarrier

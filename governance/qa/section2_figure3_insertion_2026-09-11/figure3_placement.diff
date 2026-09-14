@@ -1,0 +1,31 @@
+--- before/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex
++++ after/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex
+@@ -92,17 +92,19 @@
+ which time and frequency resources are available to each function, while
+ hardware constraints determine the waveform that can occupy them.
+ 
+-\begin{figure}[!t]
++\begin{figure*}[!t]
+ \centering
+-\input{figures/fig_section2_resource_sharing.tex}
+-\caption{Three conceptual time-frequency allocations. The axes $t$ and $f$
+-denote time and frequency. C and S denote
+-communication and sensing use of a resource. A joint waveform reuses an
+-allocation for both functions, whereas time and frequency sharing separate
+-their allocations. The rectangles indicate the time-frequency resources
+-assigned to each function, rather than measured spectra or performance.}
++\includegraphics[width=\textwidth]{figures/fig_section2_resource_sharing_icons_2026-09-11.png}
++\caption{Conceptual time-frequency allocations for communication and sensing.
++Panel (a) assigns different time slots to the two functions.
++Panel (b) assigns separate frequency bands, with a guard band shown in this
++example. Panel (c) uses one waveform within a shared allocation.
++The axes $t$ and $f$ denote time and frequency, and C and S denote
++communication and sensing. Icons identify the functions, while rectangles
++indicate allocated resources. Equal panel dimensions serve the illustration
++and do not assert equal bandwidth or performance.}
+ \label{fig:resource_sharing}
+-\end{figure}
++\end{figure*}
+ 
+ Optical hardware constrains the waveform that can realize this sharing.
+ In an intensity-modulated link, a bipolar electrical waveform must produce

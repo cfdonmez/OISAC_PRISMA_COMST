@@ -5,19 +5,30 @@
 - Opened: 2026-09-06
 - Status: author-review working draft; not a locked or submission-ready version
 
-Latest reading copy: [s3a.pdf](output/pdf/s3a.pdf), 30 pages.
-The latest Section III-A changes and Figure 5 layout check are recorded in
-[s3a.md](governance/s3a.md).
+Latest reading copy: [review.pdf](output/pdf/review.pdf), 29 pages.
+The 14 September structure and verification are recorded in
+[review.md](governance/review.md). Review Methodology is now Introduction I-C,
+between Related Surveys and Scope and Contributions. The standalone methods
+section has been removed, leaving eight main sections. The compact selection
+flow is Figure 2; technical appraisal is presented with the validation results.
+
+Detailed methods and analysis-unit counts are in
+[methods.md](supplement/methods.md), with source carriers mapped in
+[index.md](supplement/index.md). The manuscript uses the author-approved
+final-state OSF statement. Updating the OSF archive remains a separate joint
+task; no remote update was performed in this manuscript revision.
 
 GitHub repository: https://github.com/cfdonmez/OISAC_PRISMA_COMST
 This branch contains the standalone V3 manuscript snapshot and its local
 baseline history. It is not based on the repository's `main` branch history.
-Temporary render files, browser profiles, and intermediate backup PDFs are
-kept locally outside the published revision.
+The 14 September transfer also includes project memory, source carriers,
+revision backups and recorded QA. Start with [README.md](README.md) and
+[handoff/state.md](handoff/state.md). Machine-local browser profiles remain excluded.
 
 Active authoring decisions are in `governance/V3_ACTIVE_WRITING_RULES.md`.
-They supersede conflicting historical recipe instructions, including the old
-requirement to state the study count in Introduction.
+They supersede conflicting historical recipes. Methodological dates and counts
+are confined to the new methods subsection/flow and supplements; they are not
+presented as scientific contributions.
 
 The applied Section I recipe and Section II handoff guide are in
 `governance/SECTION1_RECETESI_VE_SECTION2_UYGULAMA_REHBERI_2026-09-07.md`.
@@ -40,10 +51,10 @@ explanations. Table II presents
 source-specific numerical configurations from fiber, visible-light, and
 photonic-THz studies, with their distinct measurement conditions preserved.
 
-Corpus counts and the full quantitative synthesis remain in Sections III, V,
-and VI. Section II provides the technical foundation without importing old
-composite scores or creating a pooled cross-platform benchmark. The previously
-revised Introduction is preserved.
+The current performance and validation analyses are in Sections IV and V.
+Section II provides the technical foundation without importing old composite
+scores or creating a pooled cross-platform benchmark. Existing technical
+figure assets are preserved; figure and table numbering follows the new order.
 
 The subsection/figure map, source locations, and scoped verification record
 are in `governance/V3_SECTION_II_TECHNICAL_REWRITE_NOTE_2026-09-07.md`.
@@ -52,23 +63,24 @@ Section II received a further house-style audit on 2026-09-07. Missing
 abbreviation and equation-variable definitions were supplied, and repeated
 defensive captions were replaced with direct physical explanations.
 
-Section III was then rewritten around search and study reconciliation,
+In the earlier 7 September version, Section III was rewritten around search and study reconciliation,
 extraction and analysis units, and technical appraisal and synthesis.
-Table III now distinguishes study, coding-record, metric, relationship, and
+Its Table III distinguished study, coding-record, metric, relationship, and
 synthesis-group counts. The executed investigator-supervised, AI-assisted
-workflow and retrospective registration are described with their actual scope.
-The PRISMA artwork has a separate layout-corrected vector copy with unchanged
-text and numbers. Section IV and later sections have not been revised in this
-pass.
+workflow and retrospective registration were described with their actual scope.
+Those detailed records now belong in the scientific methods supplement.
+The earlier PRISMA artwork remains preserved alongside the new selection
+diagram. Historical verification below describes those earlier versions.
 
-The current audit and subsection map are in
+The earlier audit and subsection map are in
 `governance/V3_SECTION_II_RECHECK_AND_SECTION_III_REVISION_2026-09-07.md`.
 
-The 12 September update orders Section III-A around eligibility, searches,
+Historical 12 September state: that update ordered Section III-A around eligibility, searches,
 the executed review workflow, retrospective registration, and report-to-study
-reconciliation. Figure 5 retains its labels and counts with corrected panel
-spacing. The reading-copy hash matches the recorded verification result;
-build and layout checks are documented in `governance/qa/s3a/result.json`.
+reconciliation. The then-Figure 5 retained its labels and counts with corrected
+panel spacing. That historical reading-copy hash and its build/layout checks
+are documented in `governance/qa/s3a/result.json`. The current reading copy
+is `review.pdf`, and the current selection diagram is Figure 2.
 
 To build, run from `manuscript/`:
 

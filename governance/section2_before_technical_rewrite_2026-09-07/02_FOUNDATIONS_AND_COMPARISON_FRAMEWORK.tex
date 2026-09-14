@@ -1,0 +1,213 @@
+\section{O-ISAC FOUNDATIONS AND PERFORMANCE COMPARISON}
+\label{sec:foundations_comparison}
+A useful comparison of O-ISAC designs asks how a shared design choice affects
+both data transmission and sensing. Answering this question requires an
+understanding of the signal paths, the quantities being measured, and the
+conditions under which the results were obtained. This section explains these
+connections and establishes how we compare performance throughout the review.
+
+\begin{figure*}[!t]
+\centering
+\footnotesize
+\begin{tabular}{@{}c@{\hspace{9pt}}c@{\hspace{9pt}}c@{}}
+\fbox{\parbox[c][13mm][c]{0.28\textwidth}{\centering
+\textbf{Shared design factor}\\
+A variable, constraint, or disturbance}}
+& $\longrightarrow$ &
+\begin{tabular}{@{}c@{}}
+\fbox{\parbox[c][9mm][c]{0.43\textwidth}{\centering
+\textbf{Communication result}\\
+Rate, error rate, or another communication measure}}\\[5pt]
+\fbox{\parbox[c][9mm][c]{0.43\textwidth}{\centering
+\textbf{Sensing result}\\
+Error, detection probability, or another sensing measure}}
+\end{tabular}
+\end{tabular}
+\caption{Connecting communication and sensing performance within a study.
+Both results are read against the same design factor, with their measurement
+conditions and configuration identified. The source must show how both
+results relate to that factor. Comparison with another design requires the
+additional checks in Fig.~\ref{fig:claim_permission_pipeline}.}
+\label{fig:joint_evidence_anatomy}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\footnotesize
+\begin{tabular}{@{}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{}}
+\fbox{\parbox[c][14mm][c]{0.255\textwidth}{\centering
+\textbf{Do the metrics mean the same thing?}\\
+Definition, measurement point, and units}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][14mm][c]{0.255\textwidth}{\centering
+\textbf{Are the settings comparable?}\\
+Physical system, task, conditions, and baseline}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][14mm][c]{0.255\textwidth}{\centering
+\textbf{Does the evidence support the comparison?}\\
+Independent studies, validation, and uncertainty}}
+\end{tabular}
+\caption{Checks for a numerical comparison across studies. All three must
+support the comparison being made. Table~\ref{tab:comparison_record} summarizes
+the conclusions that different kinds of evidence can support.}
+\label{fig:claim_permission_pipeline}
+\end{figure*}
+
+\begin{table*}[!t]
+\caption{What different kinds of O-ISAC evidence can tell us}
+\label{tab:comparison_record}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.18\textwidth}
+>{\raggedright\arraybackslash}p{0.38\textwidth}
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Evidence & What it establishes & How we use it \\
+\midrule
+Shared architecture &
+Which components, signals, or resources serve both functions. &
+Explain the integration mechanism. Joint performance requires results
+that connect a shared factor to both functions. \\
+\addlinespace[3pt]
+An individual result &
+Communication or sensing performance under identified conditions. &
+Report what the system achieved for that function and setting. \\
+\addlinespace[3pt]
+Linked results within one study &
+How both functions relate to a shared factor under the same or matched
+conditions, supported by a common configuration or timing record. &
+Explain the performance relationship and any tradeoff demonstrated within
+the tested range. \\
+\addlinespace[3pt]
+Comparable results from independent studies &
+A numerical comparison supported by the metric, setting, and evidence
+checks in Fig.~\ref{fig:claim_permission_pipeline}. &
+Compare the reported performance within the conditions that the studies
+have in common. \\
+\addlinespace[3pt]
+A recurring mechanism &
+A relationship supported in several study settings whose numerical results
+cannot be directly combined. &
+Explain the mechanism and any supported direction of change.
+Keep numerical magnitudes tied to their source settings. \\
+\addlinespace[3pt]
+A recurring obstacle to comparison &
+Which missing measurement, baseline, or validation prevents a useful
+engineering conclusion. &
+Specify an experiment or reporting requirement that could resolve the
+question. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Linking Communication and Sensing Performance}
+
+The physical signal path determines how communication and sensing interact.
+A fiber can serve as the sensing medium or carry a signal to another segment
+where sensing takes place. In photonic-terahertz systems, optical components
+may generate or process the carrier, while a radio-frequency path interacts
+with the target. We therefore distinguish the sensing modality from the
+hardware used to produce or process the signal
+\cite{OISAC_SCR00220,OISAC_SCR00940,OISAC_SCR00196,OISAC_SCR00083,
+OISAC_SCR00366}. Section~\ref{sec:optical_modality_families} develops these
+physical differences for each platform.
+
+Within a system, communication and sensing may share hardware, a signal path,
+or a waveform. They can also be linked through resource allocation or a common
+design objective. Several forms of sharing can coexist. Identifying what is
+shared explains the architecture. Evaluating its performance requires a
+further question about how a design variable, constraint, or disturbance is
+linked to both functions.
+
+For example, to examine the effect of power allocation, we need communication
+and sensing results for corresponding allocation settings. Those results can
+show whether a gain in one function is accompanied by an improvement, a cost,
+or little measured change in the other. The relationship must be traceable
+to the same study configuration or to settings whose differences can be
+accounted for from the source. Two performance values reported separately in a
+paper do not, by themselves, establish that relationship.
+
+Figure~\ref{fig:joint_evidence_anatomy} illustrates the connection we seek in
+each study. A relationship established in one study supports conclusions
+within its reported conditions. Applying it to another design also requires
+an understanding of the physical paths and shared resources in both systems,
+followed by the measurement and comparison checks below.
+
+\subsection{Understanding the Reported Measurements}
+
+A metric becomes useful for comparison when its meaning and measurement
+point are clear. Optical signal-to-noise ratio (OSNR) and electrical
+signal-to-noise ratio (SNR) refer to optical and electrical measurement
+domains, respectively.
+Launch power and received power likewise refer to different locations along
+the link. These distinctions determine which quantities can be compared
+directly and which require a source-supported conversion.
+
+Communication metrics also depend on how performance is counted. Gross rate
+and net rate use different accounting conventions, as do error rates before
+and after forward error correction. Sensing metrics distinguish different
+abilities. Resolution concerns the separation of targets, while estimation
+error describes deviation from a reference value. Precision, detection
+probability, and analytical bounds provide further information that must be
+interpreted according to the source definition.
+
+Operating conditions complete the interpretation. We retain the task and
+target together with the channel, geometry, and processing settings.
+The baseline identifies what a reported improvement is measured against, and
+the ground truth provides the reference for sensing accuracy. Communication
+and sensing results are linked only when their settings are the same or can
+be matched using information reported in the source. If those conditions
+differ materially, we discuss each
+result within its own setting.
+
+The form of validation also matters. An analytical bound, a simulation, and a
+measurement on deployed hardware answer different questions about performance.
+For each result, we retain its validation setting and exact source location.
+To connect the two functions, we also follow the model configuration,
+experimental run, or recorded timing through which their results were obtained.
+Field deployment alone does not establish that both functions were evaluated
+together. The conclusion follows the conditions actually supported by the
+study.
+
+\subsection{Comparing Results and Drawing Design Lessons}
+
+A within-study comparison shows how communication and sensing respond to a
+shared design factor over the tested operating range. We report the direction
+of that relationship and any magnitude established by the source. Its
+relevance to another design depends on the physical context, the shared
+mechanism, and the measurement conditions.
+
+Numerical comparisons across studies require at least two independent studies
+with compatible physical systems and tasks. For a numerical comparison of
+joint performance, each study must connect the shared factor to both
+communication and sensing results. We check that metric definitions,
+measurement points, and units agree. We then examine operating conditions and
+baselines, followed by validation methods and relevant uncertainty.
+Figure~\ref{fig:claim_permission_pipeline} groups these checks.
+Any remaining differences must be small enough, or sufficiently accounted
+for, to support the particular comparison.
+
+When numerical values cannot be compared on this basis, studies may still
+reveal a recurring design mechanism. We can explain how that mechanism is
+linked to the two functions while keeping each numerical result in its own
+setting. We do not combine these values into a common effect or use them to
+rank platforms. Any conflicting evidence that changes the interpretation is
+discussed alongside the conclusion.
+
+Table~\ref{tab:comparison_record} summarizes how we use the evidence. A useful
+research recommendation also follows this reasoning. It identifies a
+recurring obstacle to comparison and specifies the measurement, reference
+experiment, or validation needed to address it. This makes the recommendation
+a testable next step.
+
+Section~\ref{sec:review_methods} explains how the study records support this
+analysis. Section~\ref{sec:optical_modality_families} develops the architectures,
+and Section~\ref{sec:tradeoffs} examines performance and tradeoffs.
+Sections~\ref{sec:validation_reproducibility}
+and~\ref{sec:technologies_applications_6g} assess validation and application
+requirements. These findings guide the research priorities in
+Section~\ref{sec:discussion_roadmap}.
+
+\FloatBarrier

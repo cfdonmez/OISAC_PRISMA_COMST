@@ -174,6 +174,46 @@ These observations motivate comparison rules that connect shared design
 choices to both performance outcomes and specify the measurement conditions
 under which results can be compared.
 
+\subsection{Review Methodology}
+\label{sec:review_methods}
+
+We conducted a systematic literature review, with reporting guided by
+PRISMA 2020 and PRISMA-S \cite{PRISMA2020,PRISMAS2021}.
+Searches covered six bibliographic and publisher sources and were completed
+on 22 June 2026. The publication window extended from 1 January 2020 to that
+date, using the date when a report first became publicly available.
+Search strategies combined O-ISAC terminology with terms for joint sensing
+and communication in optical or photonic systems. Eligible reports were
+peer-reviewed journal articles or full conference papers describing
+communication and sensing within a shared optical or photonic system,
+with sufficient English-language technical content to assess at least one
+survey domain.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/selection.pdf}
+\caption{Study selection for the O-ISAC review. The flow distinguishes search
+records, eligible reports, and underlying studies. The 227 eligible reports
+describe 206 studies; 21 companion reports remain linked to those studies.
+The 67 contextual records support background and field positioning.
+Detailed eligibility decisions are provided in Electronic Supplement
+S-Exclusions.}
+\label{fig:prisma_report_study_flow}
+\end{figure*}
+
+After duplicate removal, records underwent title and abstract screening
+followed by full-text eligibility assessment.
+Figure~\ref{fig:prisma_report_study_flow} summarizes the selection flow and
+distinguishes publications from underlying studies. Contextual literature
+was retained separately for background and field positioning.
+We extracted reported results with their metric definitions, units,
+measurement points, and operating conditions, and used structured narrative
+synthesis to examine recurring mechanisms and performance relations.
+Numerical comparisons retained the conditions under which each result was
+obtained. The search strategies, eligibility criteria, study-selection
+records, and supporting review materials are available in the OSF
+repository.\footnote{\url{https://osf.io/7f6wb/}}
+
 \subsection{Scope and Contributions}
 
 This survey examines O-ISAC in guided optical systems, optical wireless links,
@@ -181,16 +221,16 @@ and photonics-enabled wireless systems, including hybrid configurations.
 We analyze how shared infrastructure, signals, and design objectives connect
 communication and sensing, and how these connections shape joint performance.
 
-The contributions address physical integration, performance interpretation,
-and experimental evaluation.
 \begin{itemize}
-\item \textbf{A physical basis for selecting an O-ISAC design.}
+\item \begin{minipage}[t]{\linewidth}
+\textbf{A physical basis for selecting an O-ISAC design.}
 We distinguish platforms by their sensing paths and identify how hardware,
 signals, and allocated resources connect the two functions. This explains
 which integration mechanisms fit a given physical setting and which
 constraints must be considered when adapting them
 (Sections~\ref{sec:foundations_comparison}
 and~\ref{sec:optical_modality_families}).
+\end{minipage}
 
 \item \textbf{A common basis for interpreting performance.}
 We relate waveform and receiver choices, together with resource allocation,
@@ -210,8 +250,7 @@ and~\ref{sec:discussion_roadmap}).
 \end{itemize}
 
 Section~\ref{sec:foundations_comparison} introduces the physical and performance
-concepts used in the review, and Section~\ref{sec:review_methods} describes the
-review methods. Sections~\ref{sec:optical_modality_families}
+concepts used in the review. Sections~\ref{sec:optical_modality_families}
 through~\ref{sec:technologies_applications_6g} examine platforms, joint design,
 validation, and applications. Section~\ref{sec:discussion_roadmap} develops the
 research priorities, and Section~\ref{sec:conclusion} concludes the article.

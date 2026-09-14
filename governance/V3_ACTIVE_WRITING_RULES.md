@@ -9,9 +9,13 @@ historical recipes preserved in v3_source_snapshot_2026-09-06.
   coverage, and this survey's scientific contributions.
 - Do not present the corpus count, exact publication/search window, screening
   counts, registration information, or review-process bookkeeping as scope or
-  contributions. Keep the reproducibility details in Methods and supplements.
-- This supersedes the historical instruction to mention 206 studies once in
-  Introduction. Do not reinsert that sentence in a later writing pass.
+  contributions. The approved 14 September revision places a compact Review
+  Methodology subsection between Related Surveys and Scope and Contributions.
+  Search dates and selection counts belong in that subsection/flow figure;
+  full methodological records belong in the scientific supplement.
+- This supersedes the historical instruction to present the study count as an
+  Introduction contribution. Counts in the selection flow have a methodological
+  role and must not become claims of scientific contribution.
 - Keep editor-facing submission declarations and journal-fit arguments out of
   the Introduction. Do not relocate reproducibility information exclusively
   to a cover letter.
@@ -56,7 +60,7 @@ permission to create or edit Section II figures.
 - Report text completion separately from pending external figure production.
   An unresolved dependency or failed check must remain visible.
 
-## Section III — scientific methods and cover-letter boundary
+## Review methodology — scientific methods and cover-letter boundary
 
 Reaffirmed author instruction, 2026-09-12.
 
@@ -65,10 +69,19 @@ Reaffirmed author instruction, 2026-09-12.
   if needed for submission, belongs in the cover letter.
 - Keep internal QA results, approval gates, workload accounts, and revision
   histories in project records; do not turn them into scientific prose.
-- Section III explains the actual selection, extraction, appraisal, and synthesis
-  methods, with the information and limitations needed to interpret or reproduce
-  them. Relevant reporting-guideline citations and truthful descriptions of the
-  executed workflow remain scientific methods information.
+- The 14 September author-approved structure replaces standalone Section III
+  with Introduction I-C, Review Methodology. Keep a two-paragraph search,
+  selection, and synthesis summary there, together with the selection flow.
+  Detailed extraction/conduct records and analysis-unit counts belong in the
+  scientific supplement. Put the TQAF definition/profile with the validation
+  results and preserve essential interpretation limits in the technical text.
+- Keep AI/tool-use and registration-history detail in the scientific supplement.
+  The author will complete the OSF update jointly in a separate task. Write the
+  manuscript's archive statement in the present tense for that final state;
+  track the outstanding update in project records, outside manuscript prose.
+- Relevant reporting-guideline citations and truthful descriptions of the
+  executed workflow remain scientific methods information. PRISMA concerns
+  reporting; it does not certify review conduct or the quality of the evidence.
 - Use the COMST/PRISMA comparison tables to guide revision, not as manuscript
   text defending compliance. Any worked example must explain a real scientific
   decision rather than demonstrate an internal check or an approval status.

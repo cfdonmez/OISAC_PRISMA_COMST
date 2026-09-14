@@ -1,0 +1,274 @@
+\section{JOINT-EVIDENCE MODEL AND COMPARISON FRAMEWORK}
+\label{sec:foundations_comparison}
+The value of a cross-platform O-ISAC review does not come from placing studies
+under platform labels alone. Its central analytical task is to determine when
+a reported communication result and a sensing result describe a joint
+engineering relation, which conditions bound that relation, and which
+conclusion the evidence permits. We therefore use a relation-centered unit of
+synthesis. This section defines that unit, specifies the measurement and
+evidence conditions carried with it, and converts those conditions into
+explicit comparison permissions. Section~\ref{sec:review_methods} then explains
+how the framework is populated from the review corpus.
+
+\subsection{What Counts as a Joint-Performance Relation?}
+
+Two performance values do not become joint evidence merely because they
+appear in the same paper or originate from an integrated architecture. The
+minimum native relation requires a shared or varied design variable,
+constraint, or impairment to be linked to both the communication and sensing
+outcomes under an adequate measurement and evidence contract. A complete
+record that can be tested for transfer additionally resolves the physical
+system and the coupling mechanism. For relation record $r$, we express this
+full unit as
+\[
+J_r=\langle P_r,G_r,X_r,C_r,S_r,M_r,E_r\rangle .
+\]
+Here, $P_r$ identifies the physical context and system boundary; $G_r$
+locates what the communication and sensing functions share and where they
+share it; $X_r$ is the shared or varied design variable, constraint, or
+impairment linked to both functions; $C_r$ and $S_r$ are the reported
+communication and sensing outcomes; and $M_r$ and $E_r$ preserve the
+measurement contract and evidence envelope. The tuple is not a score, and the
+presence of a native link does not by itself establish transferability. It is a
+compact test of whether a claimed relation can be interpreted and assessed
+without changing the meaning of either result.
+
+The physical context is set by the path that reaches the target, not by the
+presence of optical hardware alone. The observable modality is therefore kept
+separate from the technology used to generate, transport, or process the
+signal. A fiber may itself be the sensing medium or may transport a signal to
+a downstream target-facing segment. In a photonic-terahertz system, optical
+components may generate or process the carrier while the target interaction
+occurs over a radio-frequency path. The corresponding propagation, conversion,
+illumination, and geometry boundaries are retained for all platform families
+before comparison in Section~\ref{sec:optical_modality_families}
+\cite{OISAC_SCR00220,OISAC_SCR00940,OISAC_SCR00196,OISAC_SCR00083,
+OISAC_SCR00366}.
+
+The coupling term $G_r$ records where the functions meet; several coupling
+loci may coexist. The factor $X_r$ is kept separate from that shared object: it
+is the variable, constraint, or impairment whose setting or exposure is
+related to both outcomes. This distinction separates \emph{structural
+integration} from \emph{evidential jointness}. Shared hardware or a common
+service establishes an architecture relation, whereas an adequate
+$X_r$--$C_r$--$S_r$ trace establishes the minimum native performance relation.
+Resolving $P_r$ and $G_r$ is additionally required before the complete record
+can be tested for transfer beyond its native context.
+Figure~\ref{fig:joint_evidence_anatomy} shows this anatomy.
+
+\begin{figure*}[!t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{}}
+\fbox{\parbox[c][13mm][c]{0.275\textwidth}{\centering
+\textbf{Minimum native relation}\\
+$X_r$ linked to $C_r$ and $S_r$ under adequate $M_r/E_r$}}
+& $+$ &
+\fbox{\parbox[c][13mm][c]{0.225\textwidth}{\centering
+\textbf{Resolved context}\\
+physical boundary $P_r$ and coupling $G_r$}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][13mm][c]{0.25\textwidth}{\centering
+\textbf{Complete record $J_r$}\\
+eligible for the transfer test}}
+\\
+\end{tabular}
+\caption{Native-relation and complete-record requirements. The minimum native
+relation links a shared or varied factor to both outcomes under an adequate
+measurement contract and evidence envelope. Resolving the physical and
+coupling context completes $J_r$ and permits assessment of transfer beyond the
+source setting; transfer permission still depends on adequate, aligned $M/E$
+conditions and independent evidence.}
+\label{fig:joint_evidence_anatomy}
+\end{figure*}
+
+A native link is most directly established within one study because its two
+outcomes can be followed through the same model, experiment, dataset, or
+operating sweep. Transfer across studies is a separate operation. It is
+allowed only after the meanings and conditions attached to the native
+relations have been aligned; co-occurrence at the topic or platform level is
+not sufficient.
+
+\subsection{Measurement and Evidence Conditions}
+
+The link in $J_r$ remains interpretable only while the measurement and
+evidence contracts remain attached to it. We organize them as
+\[
+M_r=\langle M_C,M_S,A_M\rangle,
+\qquad
+E_r=\langle E_C,E_S,T_r,B_r\rangle .
+\]
+$M_C$ and $M_S$ retain the definitions used for the communication and
+sensing quantities, respectively. Each includes the measurement plane, unit,
+statistic or accounting state, task and target, operating point, channel,
+geometry, processing conditions, baseline, and ground truth. $A_M$ records
+whether the condition sets are the same, alignable, materially different, or
+not yet resolved for comparison. This
+alignment term prevents a familiar metric name from substituting for an
+actual measurement match.
+
+Several distinctions are particularly consequential in optical systems. OSNR
+and electrical SNR refer to different observation planes; launch and received
+power refer to different positions in the signal chain. Gross and net rate,
+or error rates before and after correction, use different accounting states.
+For sensing, resolution, estimation error, precision, detection probability,
+and an analytical bound answer different questions. A numerical comparison is
+therefore formed from matched definitions and references, not from matched
+abbreviations.
+
+$E_C$ and $E_S$ identify how each outcome was produced, the validation setting,
+and the exact source locator at which it can be verified. Analytical,
+simulation, laboratory, offline-dataset, and field evidence are not treated as
+interchangeable; each supports inference within its own validation setting.
+$T_r$ preserves the configuration or timing trace that connects the outcomes
+to $X_r$, such as a shared sweep, timestamped observation, configuration
+identifier, or optimization run. $B_r$ states the permitted inference boundary:
+the native setting or aligned transfer domain within which the relation may be
+used. A validation label by itself does not create a paired relation: the link
+must still be recoverable through $T_r$.
+
+These conditions are deliberately separated from a study-level validation
+label. A nontransferable result may still be decisive for its source system,
+and field validation does not repair a mismatch in metric meaning. The
+framework instead asks a narrower question: what is the strongest conclusion
+that follows while the original system, measurement, and evidence meanings
+are preserved? Figure~\ref{fig:claim_permission_pipeline} summarizes that
+decision path.
+
+\begin{figure*}[!t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{\hspace{2pt}}c@{}}
+\fbox{\parbox[c][12mm][c]{0.14\textwidth}{\centering
+\textbf{1. Locate}\\
+physical regime and coupling}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][12mm][c]{0.14\textwidth}{\centering
+\textbf{2. Link}\\
+trace $X_r$ to both $C_r$ and $S_r$}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][12mm][c]{0.145\textwidth}{\centering
+\textbf{3. Align}\\
+measurement contracts and condition sets}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][12mm][c]{0.145\textwidth}{\centering
+\textbf{4. Bound}\\
+provenance, trace, and inference scope}}
+& $\longrightarrow$ &
+\fbox{\parbox[c][12mm][c]{0.145\textwidth}{\centering
+\textbf{5. State}\\
+the permitted claim class}}\\
+\end{tabular}
+\caption{Claim-permission path used in the review. Each stage preserves the
+meaning established by the previous stage. An unmet gate does not erase the
+source result; it routes the record to the strongest permitted class in
+Table~\ref{tab:comparison_record}.}
+\label{fig:claim_permission_pipeline}
+\end{figure*}
+
+\subsection{From a Relation Record to a Permitted Claim}
+
+The framework converts evidence description into an explicit synthesis
+decision. The weakest material condition bounds the claim; a
+strong value on one metric cannot compensate for a missing link or an
+incompatible definition elsewhere in the relation. Table~\ref{tab:comparison_record}
+states the resulting permission matrix. The matrix separates source-native
+performance, within-study relations, and cross-study transfer so that the
+reader can see both what the evidence supports and where that support ends.
+
+\begin{table*}[!t]
+\caption{Evidence conditions and permitted claim classes in the O-ISAC synthesis}
+\label{tab:comparison_record}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}
+>{\raggedright\arraybackslash}p{0.19\textwidth}
+>{\raggedright\arraybackslash}p{0.25\textwidth}
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+Evidence condition & Permitted claim & Claim boundary & Downstream use \\
+\midrule
+An integration mechanism or shared element is documented, but no traceable
+$X_r$--$C_r$--$S_r$ link is established. &
+Architecture or feasibility statement. &
+Shows how the functions can coexist or share resources; it does not establish
+a joint-performance relation. &
+Architecture synthesis in Section~\ref{sec:optical_modality_families}. \\
+
+A communication or sensing result is source-traceable and its native
+conditions are recoverable. &
+Source-native performance statement. &
+Applies to the reported task, system, and operating region; no effect on the
+other function is inferred. &
+Metric landscape in Section~\ref{sec:metrics}. \\
+
+One study links $X_r$ to both outcomes through a common trace, $A_M$ confirms
+the same or alignable condition set, and the $M/E$ contract is adequate. &
+Within-study relation or tradeoff. &
+The source-supported direction and any source-reported magnitude apply only to
+the tested model, experiment, dataset, and operating region. &
+Native tradeoff synthesis in Section~\ref{sec:tradeoffs}. \\
+
+At least two independent studies expose compatible native relations and align
+physical regime, metric definitions, planes, units, tasks, targets, operating
+conditions, baselines, validation setting, and relevant uncertainty; remaining
+differences are bounded. &
+Bounded cross-study numerical comparison. &
+Transfer is limited to the shared comparison domain; it is not a universal
+effect, unconditional pooled estimate, platform ranking, or leaderboard. &
+Cross-platform synthesis in Section~\ref{sec:tradeoffs}. \\
+
+A recurrent, source-supported coupling interpretation connects both functions,
+but the numerical contracts do not support magnitude transfer. &
+Mechanism-based or directional statement. &
+States a source-supported direction or recurring coupling interpretation
+without assigning a shared numerical effect or unsupported causality. &
+Mechanism synthesis across Sections~\ref{sec:optical_modality_families}
+and~\ref{sec:tradeoffs}. \\
+
+A recurring, material omission prevents a decision-relevant relation from
+being tested or transferred. &
+Actionable literature-gap statement. &
+The gap names the missing measurement, baseline, trace, or validation link and
+the comparison it is designed to test or enable. &
+Benchmark priorities in Section~\ref{sec:validation_reproducibility} and the
+roadmap in Section~\ref{sec:discussion_roadmap}. \\
+
+No supported relation route is available, or the available routes remain in
+material conflict. &
+Audit retention only. &
+The record remains in the evidence base for transparency and future updating;
+no reader-facing relational conclusion is drawn from it. &
+Corpus accounting in Section~\ref{sec:review_methods}. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+When either the independence test or the alignment test for numerical transfer
+is not satisfied, the decision is explicit non-pooling. The most informative
+supported non-cross-study use is retained, but the review does not produce a
+pooled effect, forced unit normalization, platform ranking, or leaderboard.
+This is a comparison decision, not a judgment that the underlying studies are
+uninformative. The framework likewise does not manufacture a positive relation
+merely to fill a synthesis category.
+
+This permission structure supplies the handoff to the remainder of the review.
+Section~\ref{sec:review_methods} constructs and traces the records;
+Section~\ref{sec:optical_modality_families} explains their physical and
+architectural mechanisms; Section~\ref{sec:tradeoffs} evaluates the admitted
+performance relations; Section~\ref{sec:validation_reproducibility} assesses
+their reconstructability and benchmark readiness;
+Section~\ref{sec:technologies_applications_6g} translates supported mechanisms
+to application and 6G requirements; and Section~\ref{sec:discussion_roadmap}
+converts recurring comparison limits into
+benchmark and research priorities. The result is a framework that tells an
+O-ISAC researcher not only where a study belongs, but also which findings can
+be compared, why that comparison is defensible, and what evidence would enable
+the next stronger conclusion.
+
+\FloatBarrier

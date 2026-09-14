@@ -1,6 +1,6 @@
 # Section III-A uygulaması
 
-Tarih: 12 Eylül 2026. Kullanıcının onayladığı [öneri](C:/OISAC/outputs/s3_map/s3a.md) makaleye uygulandı.
+Tarih: 12 Eylül 2026. Kullanıcının onayladığı [öneri](../handoff/maps/s3/s3a.md) makaleye uygulandı.
 
 - Teknik uygunluk, arama, fiilî inceleme süreci ve retrospektif kayıt açıklandı; rapor–çalışma uzlaştırması III-B’ye geçişle birlikte sona alındı.
 - S-Search’teki mevcut/yeniden kurulmuş stratejiler ile Taylor & Francis sorgu–dışa aktarım eşleştirmesinin kurulamaması, nihai arama kaydına uygun biçimde belirtildi.
@@ -15,4 +15,4 @@ Okuma kopyası: [s3a.pdf](../output/pdf/s3a.pdf). Derlenen `main.pdf` ile SHA-25
 
 Yedekler, bu tura ait fark ve kontrol sonuçları: `governance/qa/s3a/`. Başlangıç envanterindeki 31 dosyanın 28’i aynı; değişenler Section III TeX dosyası ve Fig. 5’in SVG/PDF dosyaları.
 
-GitHub kopyasında kontrol özeti `qa/s3a/result.json` dosyasındadır. Ayrıntılı yerel yedekler, geçici tarayıcı profili ve ara görsel çıktılar yayımlanan dosya kapsamına alınmadı.
+İlk GitHub kopyası kontrol özetiyle sınırlıydı. 14 Eylül devir paketine ayrıntılı revizyon yedekleri ve görsel QA çıktıları da eklendi. Makinenin geçici tarayıcı profili taşınmaz. Bu not 12 Eylül sürümünü anlatır; güncel yöntem yerleşimi için [devir özeti](../handoff/state.md) okunmalıdır.

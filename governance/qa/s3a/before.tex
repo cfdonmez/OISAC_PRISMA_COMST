@@ -1,0 +1,194 @@
+\section{REVIEW PROCESS AND EVIDENCE BASE}
+\label{sec:review_methods}
+\label{sec:corpus_appraisal_results}
+
+The technical synthesis connects reported results to the physical setting and
+shared resources described in Section~\ref{sec:foundations_comparison}.
+This section explains how we selected studies, extracted their results, and
+assessed their support for comparison. Review reporting follows the Preferred
+Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020
+statement and its search extension, PRISMA-S \cite{PRISMA2020,PRISMAS2021}.
+
+\subsection{Search, Eligibility, and Study Reconciliation}
+\label{sec:study_selection_reconciliation}
+
+We searched Scopus, IEEE Xplore, and ScienceDirect, together with
+SpringerLink, Wiley Online Library, and Taylor \& Francis Online.
+The strategies covered O-ISAC phrases and combinations of joint
+sensing--communication terms with optical or photonic platform terms.
+All final searches were executed on 22 June 2026. Electronic Supplement
+S-Search provides the source-specific strategies and export records.
+
+The publication window extended from 1 January 2020 through 22 June 2026,
+using the date when a report first became publicly available.
+Eligible reports were peer-reviewed journal articles or full conference papers
+with sufficient technical content in English. They addressed communication
+and sensing within a shared optical or photonic system and provided assessable
+evidence for at least one survey domain. Eligibility and support for a joint
+quantitative comparison were assessed separately. Contextual publications
+supported field positioning outside the primary study denominator.
+
+Selection proceeded from deduplicated records through title and abstract
+screening to full-text assessment. Figure~\ref{fig:prisma_report_study_flow}
+shows the resulting record, report, and study counts. We reconciled reports
+describing the same underlying study before synthesis. This step mapped
+227 eligible reports to 206 studies, with 21 companion reports retaining
+their source links. Electronic Supplement ST-01 provides this report-to-study
+mapping, and S-Exclusions records the eligibility decisions.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_section3_prisma_layout.pdf}
+\caption{Selection and reconciliation of the O-ISAC evidence base.
+Six sources yielded 1,733 records, of which 1,259 entered title and abstract
+screening. The retrieval route contained 330 unique reports after two
+bibliographic aliases were consolidated. Full-text assessment covered
+272 reports and produced 227 eligible reports, mapped to 206 studies.
+The separate contextual corpus contains 67 records for field positioning.}
+\label{fig:prisma_report_study_flow}
+\end{figure*}
+
+The review used an investigator-supervised workflow with assistance from
+artificial intelligence (AI) tools. These tools supported record preparation,
+extraction, and proposed adjudication. The investigator authorized specified
+decision packages, and rule-based checks verified source links and counting
+units. Routine independent duplicate human review and third-reviewer
+arbitration were not performed. Electronic Supplement S-Protocol documents
+the executed workflow and its departures from the original plan.
+
+The review was retrospectively registered on the Open Science Framework
+on 12 February 2026 under record \texttt{7f6wb}. That record describes an
+earlier review state. Dated amendments in S-Protocol explain the subsequent
+search scope and report reconciliation, together with changes in review conduct
+and synthesis. The final corpus reported here follows that amended workflow.
+
+\subsection{Extraction and Units of Analysis}
+\label{sec:extraction_analysis_units}
+
+A study can contribute several results obtained under different conditions.
+We therefore retained the report and source location for each extracted item.
+Metric records preserved the reported quantity and unit, the measurement
+point, and the test configuration. The configuration included operating
+conditions, baselines, and validation settings where supplied by the source.
+Electronic Supplement S-Data Dictionary defines the extraction fields.
+
+Communication and sensing measurements remained separate unless the source
+linked them to a shared setting. Relationship records captured the design
+factors or objectives discussed in the source, together with their constraints
+and reported effects. These records support the mechanism-based synthesis,
+while Section~\ref{sec:joint_performance_interpretation} establishes the
+conditions for interpreting a numerical joint operating point.
+Table~\ref{tab:evidence_reconciliation} distinguishes these analysis units.
+
+\begin{table*}[!t]
+\caption{Units of analysis and their roles in the technical synthesis}
+\label{tab:evidence_reconciliation}
+\centering
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.17\textwidth}
+>{\raggedleft\arraybackslash}p{0.06\textwidth}
+>{\raggedright\arraybackslash}p{0.35\textwidth}
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Analysis unit} & \textbf{Count} &
+\textbf{Meaning of one entry} & \textbf{Use in the survey} \\
+\midrule
+Included study & 206 &
+An underlying study after reconciliation of its eligible reports. &
+Study-level platform, integration, and validation profiles. \\
+\addlinespace[3pt]
+Primary coding record & 8,203 &
+An extracted evidence item, metric record, or tradeoff record retained for
+primary synthesis. &
+Source-linked technical analysis, with each record retaining its own unit
+and conditions. \\
+\addlinespace[3pt]
+Metric record & 4,779 &
+A reported measure with its definition and evaluation setting. &
+Communication, sensing, and implementation performance in
+Section~\ref{sec:tradeoffs}. \\
+\addlinespace[3pt]
+Substantive relationship & 402 &
+A source-described relation among design factors, objectives, or outcomes. &
+Mechanisms and condition-dependent tradeoffs in
+Section~\ref{sec:tradeoffs}. \\
+\addlinespace[3pt]
+Synthesis group & 115 &
+A set of studies grouped for thematic synthesis. &
+111 theme-specific groups support synthesis. Four broad classification
+groups retain coverage information. \\
+\bottomrule
+\end{tabularx}
+\par\vspace{3pt}
+\noindent\parbox{\textwidth}{\raggedright\footnotesize
+The counts refer to different analysis levels. Metric and relationship records
+contribute to the primary coding total, while a study may contribute to several
+synthesis groups. The primary total comprises 3,020 evidence items,
+4,779 metric records, and 404 tradeoff records. Of the latter, 402 describe
+relationships and two document the absence of a reported tradeoff.\par}
+\endgroup
+\end{table*}
+
+Extraction retained numerical values stated by the source. Graphical results
+supported interpretation in their reported form, without creating additional
+numerical measurements. Source conflicts were handled at the individual-claim
+level, so supported findings from the same study remained available.
+The complete register contains 8,306 records, including 31 contextual items
+and 72 items with source conflicts outside the primary synthesis.
+Electronic Supplement S-Evidence provides the primary synthesis records and
+their source links. S-Protocol describes the rules for handling contextual
+items and source conflicts.
+
+\subsection{Technical Appraisal and Synthesis}
+\label{sec:technical_appraisal_synthesis}
+
+We assessed all included studies using the Technical Quality Assessment
+Framework (TQAF) developed for this review. Its deterministic rules score
+eight technical and reporting dimensions from 0 to 3. Overall evidence
+contribution is recorded separately. TQAF is a review-specific descriptive
+appraisal whose scoring has not been independently validated. It characterizes
+support for interpretation and reuse, rather than providing a conventional
+risk-of-bias assessment.
+
+Figure~\ref{fig:tqaf_profile} separates the appraisal dimensions by their
+role in reading the evidence. Metric clarity and reporting completeness help
+establish what a result means in its original setting. Validation and
+reproducibility address how that result was tested and can be reconstructed.
+Benchmark readiness and comparison admissibility address its use beyond the
+original experiment. Electronic Supplements S-Protocol and S-Appraisal provide
+the scoring rules and study-level records, respectively.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig04_tqaf_profile.pdf}
+\caption{Technical appraisal of the 206 included studies under the
+review-specific TQAF rules. Each row groups all studies by strong, adequate,
+or low support. The interpretation dimensions concern the meaning and
+reporting of results in their source setting. Transfer and reuse dimensions
+concern validation and reconstruction, together with benchmark and comparison
+support. Overall evidence contribution is displayed separately.}
+\label{fig:tqaf_profile}
+\end{figure*}
+
+The synthesis grouped studies by technical theme across seven survey domains.
+Within each theme, we examined recurring mechanisms and reported performance
+relations while preserving their physical and measurement conditions.
+Thematic groups supported synthesis conclusions, while broad classification
+groups recorded coverage across mixed topics. Electronic Supplement S-Bodies
+provides group membership and the review-specific appraisal rules.
+
+We used structured narrative synthesis to connect these heterogeneous
+results. Numerical examples retain their original tasks, units, and operating
+conditions. The review did not fit a pooled effect model or perform formal
+publication-bias and sensitivity analyses. The resulting conclusions concern
+supported mechanisms and bounded performance relations.
+
+Section~\ref{sec:optical_modality_families} first examines the physical role
+of optics and the resources shared by communication and sensing.
+Those distinctions provide the context for the performance relations in
+Section~\ref{sec:tradeoffs} and their validation in
+Section~\ref{sec:validation_reproducibility}.
