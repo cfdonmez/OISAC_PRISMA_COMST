@@ -1,0 +1,32 @@
+% Conceptual time-frequency occupancy. No measured data or integration score.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize,
+  >={Stealth[length=1.6mm]},line width=0.45pt]
+\definecolor{resourcecomm}{RGB}{35,99,150}
+\definecolor{resourcesense}{RGB}{30,126,101}
+\definecolor{resourcejoint}{RGB}{104,74,151}
+\foreach \x/\title in {0/{Time sharing},2.75/{Frequency sharing},5.50/{Joint waveform}} {
+  \node[font=\footnotesize\bfseries,anchor=south] at (\x+1.07,1.70) {\title};
+  \draw[->] (\x,0) -- (\x+2.36,0) node[right,font=\scriptsize] {$t$};
+  \draw[->] (\x,0) -- (\x,1.55) node[above,font=\scriptsize] {$f$};
+}
+\fill[resourcecomm!23] (0.12,0.12) rectangle (1.08,1.36);
+\fill[resourcesense!23] (1.13,0.12) rectangle (2.09,1.36);
+\draw[resourcecomm] (0.12,0.12) rectangle (1.08,1.36);
+\draw[resourcesense] (1.13,0.12) rectangle (2.09,1.36);
+\node[text=resourcecomm] at (0.60,0.74) {C};
+\node[text=resourcesense] at (1.61,0.74) {S};
+\node[align=center,font=\scriptsize] at (1.08,-0.45) {Different slots\\in one frame};
+
+\fill[resourcecomm!23] (2.87,0.12) rectangle (4.84,0.68);
+\fill[resourcesense!23] (2.87,0.80) rectangle (4.84,1.36);
+\draw[resourcecomm] (2.87,0.12) rectangle (4.84,0.68);
+\draw[resourcesense] (2.87,0.80) rectangle (4.84,1.36);
+\node[text=resourcecomm] at (3.85,0.40) {C};
+\node[text=resourcesense] at (3.85,1.08) {S};
+\node[align=center,font=\scriptsize] at (3.83,-0.45) {Separate bands\\with a guard band};
+
+\fill[resourcejoint!18] (5.62,0.12) rectangle (7.59,1.36);
+\draw[resourcejoint] (5.62,0.12) rectangle (7.59,1.36);
+\node[text=resourcejoint,align=center] at (6.60,0.74) {C + S\\one waveform};
+\node[align=center,font=\scriptsize] at (6.58,-0.45) {Same time-frequency\\allocation};
+\end{tikzpicture}

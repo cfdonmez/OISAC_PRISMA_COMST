@@ -1,0 +1,128 @@
+% Conceptual signal paths and measurement locations; no study data are plotted.
+% Required libraries: arrows.meta, positioning, calc. Nominal size: 17.25 x 7.1 cm.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  font=\footnotesize,
+  block/.style={draw=blue!45!black,fill=blue!3,rounded corners=2pt,
+    line width=.6pt,align=center,inner sep=4pt},
+  output/.style={draw=green!40!black,fill=green!3,rounded corners=2pt,
+    line width=.6pt,align=center,inner sep=3pt},
+  signal/.style={-{Latex[length=1.7mm]},draw=blue!65!black,line width=.8pt},
+  sensing/.style={-{Latex[length=1.7mm]},draw=green!40!black,line width=.8pt},
+  measure/.style={circle,fill=orange!85!black,draw=white,line width=.35pt,
+    inner sep=1.55pt},
+  note/.style={align=center,inner sep=1pt},
+  leader/.style={draw=orange!75!black,line width=.55pt}
+]
+\path[use as bounding box] (0,0) rectangle (17.25,7.1);
+
+% (a) The interaction and receiver may supply several kinds of sensing
+% observations. No universal radar-return topology is imposed on this path.
+\node[anchor=west,font=\small\bfseries,text=blue!55!black] at (0,6.94)
+  {(a) Optical propagation and observation};
+
+\node[note] at (.70,6.06) {Data};
+\draw[blue!65!black,line width=.75pt]
+  (.20,5.82)--(.20,5.97)--(.42,5.97)--(.42,5.82)--(.65,5.82)
+  --(.65,5.97)--(.87,5.97)--(.87,5.82)--(1.10,5.82);
+\node[note,anchor=west] at (.10,4.96) {Probe / reference};
+\draw[green!40!black,line width=.75pt]
+  (.20,5.32)--(.38,5.32).. controls (.46,5.32) and (.46,5.58) .. (.55,5.58)
+  .. controls (.64,5.58) and (.64,5.32) .. (.73,5.32)--(1.10,5.32);
+\draw[signal] (1.20,5.90)--(1.63,5.90)--(1.63,5.65)--(2.08,5.65);
+\draw[sensing] (1.20,5.38)--(1.63,5.38)--(1.63,5.65);
+
+\node[block,minimum width=2.60cm,minimum height=1.05cm] (optical) at (3.38,5.65)
+  {Optical waveform\\and front-end};
+\node[block,minimum width=2.80cm,minimum height=1.05cm] (medium) at (6.85,5.65) {};
+\node[note] at (6.85,5.88) {Fiber / free space};
+\draw[blue!65!black,line width=.75pt] (5.73,5.48)--(6.34,5.48)
+  .. controls (6.55,5.68) and (6.83,5.28) .. (7.02,5.48)--(7.98,5.48);
+\draw[blue!25,line width=2pt] (5.76,5.39)--(6.25,5.39);
+\draw[blue!25,line width=2pt] (7.45,5.39)--(7.95,5.39);
+\node[block,minimum width=2.45cm,minimum height=1.05cm] (detect) at (10.43,5.65)
+  {Detection and\\processing\\coherent or direct};
+\node[output,minimum width=2.55cm,minimum height=.74cm] (comm) at (14.65,6.06)
+  {Data recovery\\Communication};
+\node[output,minimum width=2.55cm,minimum height=.74cm] (sense) at (14.65,4.94)
+  {Parameter estimate\\$\hat{\boldsymbol{\theta}}$};
+
+\draw[signal] (optical.east)--(medium.west);
+\draw[signal] (medium.east)--(detect.west);
+\draw[signal] (detect.east)--(12.02,5.65)--(12.02,6.06)--(comm.west);
+\draw[sensing] (12.02,5.65)--(12.02,4.94)--(sense.west);
+\fill[blue!65!black] (12.02,5.65) circle (.035cm);
+
+% Orange dots locate the quantities; they are not additional components.
+\node[measure] (launch) at (5.00,5.65) {};
+\draw[leader] (launch.north)--(5.00,6.18);
+\node[note,anchor=south] at (5.00,6.20) {Launch\\power};
+\node[measure] (received) at (8.70,5.65) {};
+\draw[leader] (received.north)--(8.70,6.18);
+\node[note,anchor=south] at (8.70,6.20)
+  {Received optical power\\OSNR in coherent fiber};
+\node[measure] (electrical) at (12.52,6.06) {};
+\draw[leader] (electrical.north)--(12.52,6.31);
+\node[note,anchor=south] at (12.52,6.33) {Electrical SNR};
+\draw[signal] (comm.east)--(16.33,6.06);
+\node[measure] (ber) at (16.18,6.06) {};
+\draw[leader] (ber.north)--(16.18,6.31);
+\node[note,anchor=south] at (16.18,6.33) {BER};
+
+\draw[-{Latex[length=1.7mm]},draw=orange!85!black,line width=.8pt]
+  (6.85,4.78)--(6.85,5.10);
+\node[note,anchor=north] at (6.85,4.76)
+  {Physical quantity $\boldsymbol{\theta}$\\and propagation conditions};
+\node[note,anchor=west,text=black!75] at (.10,3.88)
+  {Sensing may use transmitted light, backscatter, reflections, or spatial intensity.};
+
+\draw[black!20,line width=.55pt] (0,3.54)--(17.12,3.54);
+
+% (b) Optical generation ends before propagation to the target/remote terminal.
+\node[anchor=west,font=\small\bfseries,text=blue!55!black] at (0,3.20)
+  {(b) Photonics-enabled wireless propagation};
+\node[note,text=blue!55!black] at (3.42,2.76) {Optical generation};
+\node[note,text=green!35!black] at (11.87,2.76)
+  {RF propagation and reception};
+\draw[black!40,densely dashed,line width=.65pt] (6.95,.58)--(6.95,2.59);
+
+\node[block,minimum width=3.00cm,minimum height=1.46cm] (tones) at (1.85,1.71) {};
+\node[note] at (1.85,2.11) {Optical tones + modulation};
+\draw[blue!35,line width=.6pt] (.82,1.34)--(2.87,1.34);
+\draw[blue!65!black,line width=1pt] (1.27,1.34)--(1.27,1.86);
+\draw[blue!65!black,line width=1pt] (2.33,1.34)--(2.33,1.86);
+\node[note,anchor=north] at (1.27,1.29) {$f_1$};
+\node[note,anchor=north] at (2.33,1.29) {$f_2$};
+\node[block,minimum width=2.05cm,minimum height=1.04cm] (mixer) at (5.48,1.71)
+  {Photomixing\\RF generation};
+\draw[signal] (tones.east)--(mixer.west);
+
+\node[draw=green!40!black,fill=green!3,rounded corners=2pt,
+  line width=.6pt,minimum width=3.58cm,minimum height=1.60cm]
+  (rfpath) at (9.31,1.67) {};
+\node[note] at (9.31,2.22) {mmWave / THz};
+\draw[signal] (mixer.east)--(7.85,1.71);
+% A radiator, wavefronts, and a remote scatterer/terminal make the RF leg visual.
+\draw[green!40!black,line width=.8pt] (7.88,1.35)--(7.88,1.94);
+\draw[green!40!black,line width=.8pt] (7.67,1.94)--(7.88,1.68)--(8.09,1.94);
+\draw[green!40!black,line width=.65pt] (8.40,1.42) arc[start angle=-42,end angle=42,radius=.43cm];
+\draw[green!40!black,line width=.65pt] (8.67,1.28) arc[start angle=-42,end angle=42,radius=.65cm];
+\draw[signal] (9.15,1.71)--(9.72,1.71);
+\draw[green!40!black,fill=white,line width=.8pt]
+  (9.82,1.28)--(10.37,1.36)--(10.37,1.93)--(9.82,2.02)--cycle;
+\draw[green!40!black,line width=.65pt] (10.01,1.54)--(10.22,1.57)--(10.22,1.80)--(10.01,1.83)--cycle;
+\draw[sensing,densely dashed] (9.76,1.12)--(8.14,1.12);
+\node[note,anchor=north] at (9.31,.82) {Link / target response};
+
+\node[block,minimum width=2.35cm,minimum height=1.04cm] (rfreceive) at (13.15,1.71)
+  {RF reception\\and processing};
+\draw[signal] (rfpath.east)--(rfreceive.west);
+\node[output,minimum width=1.88cm,minimum height=.64cm] (rfc) at (16.08,2.10)
+  {Data recovery};
+\node[output,minimum width=1.88cm,minimum height=.64cm] (rfs) at (16.08,1.18)
+  {Sensing estimate};
+\draw[signal] (rfreceive.east)--(14.72,1.71)--(14.72,2.10)--(rfc.west);
+\draw[sensing] (14.72,1.71)--(14.72,1.18)--(rfs.west);
+\fill[blue!65!black] (14.72,1.71) circle (.035cm);
+
+\end{tikzpicture}

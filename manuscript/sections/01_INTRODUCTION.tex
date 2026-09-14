@@ -1,161 +1,219 @@
 \section{INTRODUCTION}
 \label{sec:introduction}
-The practical appeal of O-ISAC lies in reuse. Optical networks already deploy
-sources, propagation paths, receivers, and signal processors, and these
-resources can reveal information about the environment while carrying data.
-Distributed sensing over fiber, positioning based on visible light, and
-turbulence monitoring illustrate the breadth of this opportunity
-\cite{OISAC_SCR00013,OISAC_SCR00196,OISAC_SCR01085}.
 
-Sharing turns that opportunity into a systems question. A resource or receiver
-chosen for one function can change the information available to the other.
-The central engineering problem is what can be shared and how that sharing
-shapes system design.
+\subsection{Background and Motivation}
 
-This question has gained importance since integrated sensing and communication
-was identified as one of the usage scenarios for International Mobile
-Telecommunications for 2030 and beyond (IMT-2030)
-\cite{ITUR_M2160_2023}. Optical implementations span guided fiber, free space
-optical and visible light communication links, systems in the millimeter wave
-and terahertz bands enabled by photonics, and hybrid designs
-\cite{OISAC_SCR00916,OISAC_SCR00036,OISAC_SCR00083}. Their propagation paths,
-observables, hardware, and performance measures differ. O-ISAC therefore forms
-a family of related architectures, each with its own physical and measurement
-context.
+Optical communication infrastructure can support data transmission alongside
+physical measurements, such as vibration along a fiber or receiver position
+in a room \cite{OISAC_SCR00057,OISAC_SCR00196}.
+Optical integrated sensing and communication (O-ISAC) uses this capability to
+combine the two functions through shared infrastructure, hardware, or signals
+\cite{OISAC_SCR00013,Mohsan2026OISACReview}.
+This extends integrated sensing and communication (ISAC) to optical and
+photonic systems \cite{Zhang2026ISACEvolution}.
+ISAC is included among the usage scenarios in the International Mobile
+Telecommunications framework for 2030 and beyond \cite{ITUR_M2160_2023}.
+The opportunity to reuse resources brings a joint design problem, since their
+operation must account for both communication and sensing requirements.
 
-That diversity requires a clear survey boundary and careful comparison. The
-survey includes optical or photonic systems that consider, integrate, design,
-optimize, or evaluate communication and sensing together. Their common setting
-may lie in an architecture, optical link, signal or resource framework,
-hardware platform, channel model, or application scenario. Coupling can appear
-through a shared waveform, concurrent operation, or another common system
-choice. Each result is interpreted through its metric definition, measurement
-plane, and operating conditions. This context supports consistent
-interpretation and bounded comparison across platforms.
+How these resources are shared depends on the signal path and the sensing
+task. In fiber and optical wireless systems, light interacts with the sensing
+medium or reaches the receiver or target
+\cite{OISAC_SCR00013,OISAC_SCR00916,OISAC_SCR01085}.
+In photonics-enabled wireless systems, optical components can generate the signal,
+while propagation to the target occurs in the millimeter-wave or terahertz band
+\cite{OISAC_SCR00036,OISAC_SCR00083}.
+Figure~\ref{fig:oisac_platform_overview} illustrates these physical settings
+and the resources used by both functions.
+Its common design question is how choices of power and waveform, together
+with timing and receiver design, affect communication and sensing performance.
 
-\subsection{Prior Syntheses and Survey Positioning}
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_introduction_oisac_platforms.png}
+\caption{Representative O-ISAC configurations in fiber, free-space optical,
+visible-light, and photonics-enabled terahertz systems. Each panel identifies
+a shared resource, the two functions it supports, and a representative physical
+constraint. The lower panel highlights power and waveform choices alongside
+timing and receiver design as common design considerations.}
+\label{fig:oisac_platform_overview}
+\end{figure*}
+
+Shared operation can introduce a tradeoff or allow one function to assist the
+other. In one fiber experiment, raising the sensing-probe power while holding
+communication launch power fixed improved the sensing signal-to-noise ratio
+but increased the communication bit error rate \cite{OISAC_SCR00057}.
+In a visible-light prototype, position estimates guided beamforming toward the
+receiver and improved the communication data rate at the tested locations
+\cite{OISAC_SCR00196}.
+The fiber result illustrates a power-dependent tradeoff, whereas the
+visible-light result shows how sensing information can guide transmission.
+
+A researcher selecting an O-ISAC approach needs to know which integration
+mechanism fits the application and how it affects both functions.
+Reported rates and sensing errors become useful for that choice when they
+are linked to the shared design and its operating conditions.
+These links can explain why a method is effective in one setting and what
+must be tested before adapting it to another.
+A synthesis of the literature should therefore connect physical architectures
+to joint performance and to the experiments needed for further development.
+
+\subsection{Related Surveys}
 \label{sec:related_surveys}
 
-Prior surveys organize complementary parts of O-ISAC. Each serves a different
-reader task and uses a different evidence unit and comparison boundary.
-Table~\ref{tab:prior_surveys} provides a compact map of these perspectives.
+Existing reviews provide several perspectives on these design questions,
+through platform-specific analyses and broader views of O-ISAC. A tutorial on
+optical architectures and waveform allocation
+uses a common simulation setting to show communication error rate and ranging
+error \cite{Wen2024OISACArchitectures}. A review of lighting, sensing, and
+communication integration provides performance tables for visible-light and
+hybrid systems \cite{Liang2024LiSACReview}. A waveform-focused review examines
+photonic millimeter-wave and terahertz demonstrations and compares integrated
+waveforms through models and experiments
+\cite{Lyu2026PhotonicTHzWaveforms}. Other focused reviews address optical transmission and
+estimation, or communication and sensing in fiber networks
+\cite{Su2025OISACTheoryPractice,Khorasgani2026GeneralOpticalISACSurvey,
+Liu2026OpticalFiberISACReview,Lu2026ConvergedFiberISACReview}.
+
+Broader surveys connect these technical developments to larger research
+questions. An evolution-oriented survey traces ISAC across spectrum, network
+scale, and sensing modalities, including optical and RF--optical systems
+\cite{Zhang2026ISACEvolution}. A broad O-ISAC review brings together optical
+platforms, experimental results, waveform design, and applications
+\cite{Mohsan2026OISACReview}. These two surveys also discuss performance
+measures and the need for further evaluation.
+Together, these works explain design choices, report numerical
+demonstrations, and identify research directions.
+
+Table~\ref{tab:prior_surveys} distinguishes the physical coverage and review
+approach of representative works. Its platform columns identify where the
+sensing interaction takes place. The last two columns address how studies
+are selected and how results from different studies are judged comparable.
+This distinction matters because a controlled waveform comparison and a
+comparison between independently reported experiments answer different
+questions. The latter also requires agreement on what was measured and under
+which conditions.
 
 \begin{table*}[!t]
-\caption{Representative prior O-ISAC syntheses organized by reader task,
-evidence unit, and comparison boundary}
+\caption{Physical coverage and review approach of representative related
+reviews and tutorial-style syntheses}
 \label{tab:prior_surveys}
 \centering
 \begingroup
 \footnotesize
-\setlength{\tabcolsep}{2.2pt}
-\renewcommand{\arraystretch}{1.00}
+% Local Wasy glyphs keep the full and half-filled circles the same size.
+\newcommand{\surveyGlyph}[1]{{\fontencoding{U}\fontfamily{wasy}\selectfont\char#1}}
+\newcommand{\surveyFull}{\mbox{\surveyGlyph{32}}}
+\newcommand{\surveyPartial}{\leavevmode
+  \hbox to 0pt{\surveyGlyph{71}\hss}\hbox{\surveyGlyph{35}}}
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.2}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
 \begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}p{0.112\textwidth}
->{\raggedright\arraybackslash}p{0.140\textwidth}
->{\raggedright\arraybackslash}p{0.120\textwidth}
->{\raggedright\arraybackslash}p{0.190\textwidth}
->{\raggedright\arraybackslash}p{0.160\textwidth}
->{\raggedright\arraybackslash}X@{}}
+>{\raggedright\arraybackslash}m{0.13\textwidth}
+>{\raggedright\arraybackslash}m{0.30\textwidth}
+>{\centering\arraybackslash}m{0.055\textwidth}
+>{\centering\arraybackslash}m{0.09\textwidth}
+>{\centering\arraybackslash}m{0.09\textwidth}
+>{\centering\arraybackslash}X
+>{\centering\arraybackslash}X@{}}
 \toprule
-Synthesis family & Sources & Optical scope & Evidence unit and comparison logic &
-Reader task & Boundary \\
+\textbf{Ref. / year} & \textbf{Main focus} &
+\multicolumn{3}{c}{\textbf{Optical platforms}} &
+\multicolumn{2}{c}{\textbf{Review approach}} \\
+\cmidrule(lr){3-5}\cmidrule(l){6-7}
+& & Fiber & Optical wireless & Photonic wireless &
+Study selection & Cross-study comparison rules \\
 \midrule
-Architecture and system design &
-\cite{Wen2024OISACArchitectures,Su2025OISACTheoryPractice,
-Chu2025ROISACOverview,Wang2026CrossLayerISACoF} &
-General O-ISAC, free space optical links, retroreflective links, and fiber
-networks &
-Architecture, optimization, target, or link model, with taxonomy and relations
-within each scenario &
-How are communication and sensing coupled? &
-Relations remain tied to each architecture and its assumptions. \\
-\addlinespace[1pt]
-Analytical limits and estimation methods &
-\cite{Khorasgani2026GeneralOpticalISACSurvey,Rode2025PolarizationISAC} &
-General optical systems and polarization sensing in coherent fiber links &
-Model, bound, objective, estimator, or learning method, with comparison within a
-model and among methods &
-What limits follow from the assumptions? &
-Empirical interpretation remains tied to the model, modality, and evidence
-setting. \\
-\addlinespace[1pt]
-Technological evolution, standardization, and deployment &
-\cite{Zhang2026ISACEvolution,Liu2025OpticalNetworkISACProspect,
-Cao2026SubmarineFiberISAC,Zhang2026OpticalTransmissionNetworks,
-Ip2026DeployedTelecomCableISAC} &
-Evolution from radio to optical systems across terrestrial and submarine
-networks &
-Historical phase, standardization path, network architecture, or deployment,
-synthesized by period and ecosystem &
-How has O-ISAC moved toward deployment? &
-Infrastructure comparison requires aligned physical and operational
-conditions. \\
-\addlinespace[1pt]
-Physical media and optical networks &
-\cite{Liang2024LiSACReview,Zhang2023OpticalNetworkISACFrontier,
-He2025FiberISACAdvances,Liu2026OpticalFiberISACReview,
-Lu2026ConvergedFiberISACReview,Wang2026FiberNetworkISAC} &
-Visible light integrated sensing and communication, guided fiber systems, and
-optical networks &
-Medium, observable, sensing path, or network configuration, with taxonomy within
-related solution classes &
-How does each path support sensing? &
-Transfer requires aligned media, observables, paths, and conditions. \\
-\addlinespace[1pt]
-Waveforms, resource multiplexing, and photonic hardware &
-\cite{Yang2025DSCMISACReview,He2026PhotonicFiberISAC,
-Yu2023PhotonAssistedTHz,Bai2025MicrowavePhotonicsISAC,
-Wang2025MicrowavePhotonicsISAC,Lyu2026PhotonicTHzWaveforms} &
-Fiber, microwave photonics, and millimeter wave or terahertz systems enabled by
-photonics &
-Waveform, multiplexing, front end, or processing chain, with a mechanism
-taxonomy and selected demonstrations &
-Which mechanisms enable joint operation? &
-Comparison across photonic systems follows alignment of paths, observables, and
-metrics. \\
-\addlinespace[1pt]
-Applications and challenges across platforms &
-\cite{Mohsan2026OISACReview} &
-Visible light communication, free space optical, fiber, photonics, and hybrid
-settings &
-Application, use case, solution class, or challenge, with thematic synthesis
-across platforms &
-Which applications and gaps recur? &
-Interpretation across platforms follows the measurement and operating context
-of each result. \\
+\cite{Wen2024OISACArchitectures} (2024) &
+Optical architectures, waveform design, and resource allocation &
+\textemdash & \surveyFull & \textemdash & \textemdash & \textemdash \\
+\addlinespace[3pt]
+\cite{Liang2024LiSACReview} (2024) &
+Lighting--sensing--communication integration and hybrid links &
+\textemdash & \surveyFull & \textemdash & \textemdash & \textemdash \\
+\addlinespace[3pt]
+\cite{Lyu2026PhotonicTHzWaveforms} (2026) &
+Integrated photonic waveforms and controlled performance comparisons &
+\textemdash & \textemdash & \surveyFull & \textemdash & \textemdash \\
+\addlinespace[3pt]
+\cite{Zhang2026ISACEvolution} (2026) &
+ISAC evolution across spectrum, networks, and sensing modalities &
+\surveyPartial & \surveyFull & \surveyFull & \textemdash & \surveyPartial \\
+\addlinespace[3pt]
+\cite{Mohsan2026OISACReview} (2026) &
+Optical platforms, experimental demonstrations, and applications &
+\surveyFull & \surveyFull & \surveyFull & \textemdash & \surveyPartial \\
+\midrule
+\textbf{This survey} &
+Shared-resource performance relations and evidence-based evaluation &
+\surveyFull & \surveyFull & \surveyFull & \surveyFull & \surveyFull \\
 \bottomrule
 \end{tabularx}
+\par\vspace{4pt}
+\noindent
+\parbox{\textwidth}{\raggedright\footnotesize
+\surveyFull: structured treatment; \surveyPartial: selected discussion or an
+identified research need; \textemdash: not developed in the stated sense.
+Fiber denotes sensing in the fiber, not fiber transport alone; photonic
+wireless denotes optically generated or processed signals with wireless
+RF propagation. Only optical-related coverage is marked for
+\cite{Zhang2026ISACEvolution}.
+Study selection denotes an explicit search and eligibility procedure.
+Cross-study comparison rules address metric definitions, measurement points,
+conditions, baselines, and supporting evidence; they are distinct from a
+controlled comparison within one model or experiment.\par}
 \endgroup
 \end{table*}
 
-Across these perspectives, synthesis across platforms depends on retaining the
-physical, measurement, and validation setting of each primary result. This
-survey addresses that task through 206 unique O-ISAC studies first made publicly
-available from 1 January 2020 through 22 June 2026.
+A further need is to explain when a reported result can guide another
+design. The difficulty of using common performance measures across RF and
+optical systems is discussed in \cite{Zhang2026ISACEvolution}, while shared
+benchmarks are identified as a research need in \cite{Mohsan2026OISACReview}.
+These observations motivate comparison rules that connect shared design
+choices to both performance outcomes and specify the measurement conditions
+under which results can be compared.
 
-The survey makes four contributions.
+\subsection{Scope and Contributions}
 
+This survey examines O-ISAC in guided optical systems, optical wireless links,
+and photonics-enabled wireless systems, including hybrid configurations.
+We analyze how shared infrastructure, signals, and design objectives connect
+communication and sensing, and how these connections shape joint performance.
+
+The contributions address physical integration, performance interpretation,
+and experimental evaluation.
 \begin{itemize}
-\item A taxonomy separates physical modality from the mechanisms that couple
-communication and sensing.
+\item \textbf{A physical basis for selecting an O-ISAC design.}
+We distinguish platforms by their sensing paths and identify how hardware,
+signals, and allocated resources connect the two functions. This explains
+which integration mechanisms fit a given physical setting and which
+constraints must be considered when adapting them
+(Sections~\ref{sec:foundations_comparison}
+and~\ref{sec:optical_modality_families}).
 
-\item A comparison framework connects each performance result to its
-measurement definition and operating conditions.
+\item \textbf{A common basis for interpreting performance.}
+We relate waveform and receiver choices, together with resource allocation,
+to communication rate and reliability alongside sensing accuracy and
+resolution. We distinguish relationships demonstrated within a study from
+comparisons that require compatible metrics, measurement points, and
+operating conditions
+(Sections~\ref{sec:foundations_comparison} and~\ref{sec:tradeoffs}).
 
-\item A synthesis of recurring tradeoff mechanisms retains the conditions that
-shape communication and sensing outcomes.
-
-\item An assessment of validation, benchmark readiness, and reproducibility
-grounds research priorities in the reviewed evidence.
+\item \textbf{Evaluation priorities derived from the evidence.}
+We derive joint tests from the validation limits observed across optical
+platforms. These tests pair communication and sensing measurements with
+separate-function baselines under changes in traffic, propagation conditions,
+or hardware stability
+(Sections~\ref{sec:validation_reproducibility}
+and~\ref{sec:discussion_roadmap}).
 \end{itemize}
 
-The organization of the article follows the analytical sequence of the survey.
-Sections~\ref{sec:foundations_comparison} and~\ref{sec:review_methods}
-establish the comparison framework across optical platforms and describe the
-review methodology and evidence base. Sections~\ref{sec:optical_modality_families}
-through~\ref{sec:technologies_applications_6g} present the technical synthesis
-of optical platforms, integration architectures, performance metrics, joint
-design tradeoffs, validation, enabling technologies, and applications.
-Section~\ref{sec:discussion_roadmap} discusses the research priorities and
-limitations that emerge from this synthesis, and
-Section~\ref{sec:conclusion} concludes the article.
+Section~\ref{sec:foundations_comparison} introduces the physical and performance
+concepts used in the review, and Section~\ref{sec:review_methods} describes the
+review methods. Sections~\ref{sec:optical_modality_families}
+through~\ref{sec:technologies_applications_6g} examine platforms, joint design,
+validation, and applications. Section~\ref{sec:discussion_roadmap} develops the
+research priorities, and Section~\ref{sec:conclusion} concludes the article.
+
+\FloatBarrier

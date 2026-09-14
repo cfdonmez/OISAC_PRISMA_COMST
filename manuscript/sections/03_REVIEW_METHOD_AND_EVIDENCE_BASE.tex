@@ -2,152 +2,197 @@
 \label{sec:review_methods}
 \label{sec:corpus_appraisal_results}
 
-With these comparison conditions established, the analysis turns to the
-evidence base for the technical synthesis. We assembled the corpus through a
-systematic review reported in accordance with the Preferred Reporting Items for
-Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement. Search reporting
-followed the PRISMA extension for searches (PRISMA-S)
-\cite{PRISMA2020,PRISMAS2021}. The following subsections describe corpus
-construction, evidence extraction, and technical appraisal.
-Table~\ref{tab:evidence_reconciliation} maps the analytical role of each
-evidence category.
+The technical synthesis connects reported results to the physical setting and
+shared resources described in Section~\ref{sec:foundations_comparison}.
+This section explains how we selected studies, extracted their results, and
+assessed their support for comparison. Review reporting follows the Preferred
+Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020
+statement and its search extension, PRISMA-S \cite{PRISMA2020,PRISMAS2021}.
 
-\begin{table*}[t]
-\caption{Use of extracted evidence in the survey. Row counts represent coding
-records, and study counts may overlap across categories.}
-\label{tab:evidence_reconciliation}
-\centering
-\footnotesize
-\setlength{\tabcolsep}{5.0pt}
-\renewcommand{\arraystretch}{1.04}
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}
->{\raggedleft\arraybackslash}p{0.08\textwidth}
->{\raggedleft\arraybackslash}p{0.09\textwidth}
->{\raggedright\arraybackslash}X@{}}
-\toprule
-Evidence use & Rows & Studies & Role in the survey \\
-\midrule
-Quantitative evidence & 4,997 & 206 & Numerical or directional synthesis under recorded conditions. \\
-Qualitative evidence & 3,206 & 206 & Mechanisms, trends, and limitations. \\
-Claims used for context & 31 & 21 & Contextual interpretation reported
-separately from the primary synthesis. \\
-Claims with source conflicts & 72 & 31 & Recorded separately under predefined
-decision rules, while supported evidence from the same studies remained in the
-primary synthesis. \\
-Primary synthesis & 8,203 & 206 & Quantitative and qualitative evidence combined. \\
-\bottomrule
-\end{tabularx}
-\vspace{1pt}
-\parbox{\textwidth}{\footnotesize\emph{Note.} The complete evidence register
-contains
-8,306 rows. Electronic Supplement S-Evidence reports the 8,203 primary
-synthesis rows and their source locations. Electronic Supplement S-Protocol
-documents the decision rules.}
-\end{table*}
+\subsection{Search, Eligibility, and Study Reconciliation}
+\label{sec:study_selection_reconciliation}
 
-\subsection{Corpus Construction}
+The primary evidence base covered communication and sensing within a shared
+optical or photonic system. Eligible reports were peer-reviewed journal
+articles or full conference papers with sufficient technical content in
+English and assessable evidence for at least one survey domain. The
+publication window extended from 1 January 2020 through 22 June 2026, using
+the date when a report first became publicly available. Eligibility was
+assessed separately from support for a joint quantitative comparison.
+Contextual publications informed field positioning outside the primary study
+count.
 
-To assemble that evidence base, we searched Scopus, IEEE Xplore, ScienceDirect,
-SpringerLink, Wiley Online Library, and Taylor \& Francis Online. The search
-covered journal articles and full conference papers that had undergone peer
-review and were first made publicly available from 1 January 2020 through
-22 June 2026. Eligible reports contained sufficient technical content in
-English, examined communication and sensing within an optical or photonic
-system, and provided assessable evidence for at least one survey domain.
-Reviews and other contextual sources supported field positioning. Eligible
-primary reports proceeded to study reconciliation for the technical
-denominator. Search strategies, eligibility decisions, and protocol
-documentation are provided in Electronic Supplements S-Search, S-Exclusions,
-and S-Protocol.
+We searched Scopus, IEEE Xplore, ScienceDirect, SpringerLink, Wiley Online
+Library, and Taylor \& Francis Online. The strategies covered O-ISAC phrases
+and combinations of joint sensing--communication terms with optical or
+photonic platform terms. All final searches were executed on 22 June 2026.
+Electronic Supplement S-Search provides the available or reconstructed
+strategies and export records. The query-to-export mapping for Taylor \&
+Francis Online could not be reconstructed.
 
-After deduplication, screening, and assessment of full texts, 227 reports met the
-eligibility criteria. Among them, 21 were companion reports for studies also
-represented by another eligible report. Consolidating eligible reports by study
-produced 206 unique studies for the technical synthesis. The totals differ by
-21 because companion reports map to studies already represented in the eligible
-set. This mapping preserves provenance for every report while counting each
-underlying study once. Electronic Supplement ST-01 cites all 206 studies and
-traces their 227 reports.
+Selection proceeded from deduplicated records through title and abstract
+screening to full-text assessment. The review was investigator supervised,
+with artificial intelligence (AI) tools assisting record preparation,
+extraction, and proposed decisions. The investigator authorized specified sets
+of decisions, while rule-based checks examined source links and counting
+units. Routine independent duplicate human review and third-reviewer
+arbitration were not performed. Electronic Supplement S-Protocol describes the
+executed workflow.
 
-Figure~\ref{fig:prisma_report_study_flow} reconciles the selection flow while
-keeping records, reports, and studies as distinct counting units.
+The review was retrospectively registered on the Open Science Framework on 12
+February 2026 under record \texttt{7f6wb}. This registration documents an
+earlier review state. Dated amendments in S-Protocol describe subsequent
+changes to the search scope, report reconciliation, review conduct, and
+synthesis.
+
+Before synthesis, we linked reports describing the same underlying study to
+avoid counting them as separate studies. This mapped 227 eligible reports to
+206 studies, with 21 companion reports retaining their source links.
+Figure~\ref{fig:prisma_report_study_flow} presents the record, report, and
+study counts. Electronic Supplement ST-01 provides the report-to-study
+mapping, and S-Exclusions records the eligibility decisions. These links
+provide the basis for retaining the source and conditions of each extracted
+result in Section~\ref{sec:extraction_analysis_units}.
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig03_prisma_report_study_flow.pdf}
-\caption{Selection of the O-ISAC evidence base. Six sources yielded 1,733
-records and 1,259 entered title and abstract screening. The retrieval route
-contained 330 unique reports after two bibliographic aliases were consolidated.
-Assessment of full texts covered 272 reports and produced 227 eligible reports.
-Companion mapping linked these reports to 206 unique studies. The contextual
-corpus contains 67 records that support field positioning.}
+\includegraphics[width=\textwidth]{figures/fig_section3_prisma_layout.pdf}
+\caption{Selection and reconciliation of the O-ISAC evidence base.
+Six sources yielded 1,733 records, of which 1,259 entered title and abstract
+screening. The retrieval route contained 330 unique reports after two
+bibliographic aliases were consolidated. Full-text assessment covered
+272 reports and produced 227 eligible reports, mapped to 206 studies.
+The separate contextual corpus contains 67 records for field positioning.}
 \label{fig:prisma_report_study_flow}
 \end{figure*}
 
-The counting unit changes from records to reports at retrieval and from reports
-to studies at synthesis. Contextual records support field positioning, while
-the study set defines the technical denominator.
+\subsection{Extraction and Units of Analysis}
+\label{sec:extraction_analysis_units}
 
-\subsection{Evidence Extraction and Use}
+A study can contribute several results obtained under different conditions.
+We therefore retained the report and source location for each extracted item.
+Metric records preserved the reported quantity and unit, the measurement
+point, and the test configuration. The configuration included operating
+conditions, baselines, and validation settings where supplied by the source.
+Electronic Supplement S-Data Dictionary defines the extraction fields.
 
-With the study denominator established, we extracted evidence at three linked
-levels covering the study, report, and individual claim. Each result retained
-its definition, unit, measurement plane, operating conditions, validation
-setting, and exact source location. Records remained separate when conditions
-differed. Each field contained a reported value or a defined availability
-state.
-Quantitative extraction used values stated by the source, while graphical
-findings remained in their reported form. Electronic Supplement S-Data
-Dictionary provides the complete coding schema.
+Communication and sensing measurements remained separate unless the source
+linked them to a shared setting. Relationship records captured the design
+factors or objectives discussed in the source, together with their constraints
+and reported effects. These records support the mechanism-based synthesis,
+while Section~\ref{sec:joint_performance_interpretation} establishes the
+conditions for interpreting a numerical joint operating point.
+Table~\ref{tab:evidence_reconciliation} distinguishes these analysis units.
 
-Claims entered the analysis according to their role. Quantitative and
-qualitative claims supported the primary synthesis within their recorded
-contexts. Contextual claims and claims with source conflicts were recorded
-separately. This structure preserved supported evidence from all 206 studies,
-while comparisons across studies followed the alignment rules in
-Table~\ref{tab:comparison_record}.
+\begin{table*}[!t]
+\caption{Units of analysis and their roles in the technical synthesis}
+\label{tab:evidence_reconciliation}
+\centering
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.17\textwidth}
+>{\raggedleft\arraybackslash}p{0.06\textwidth}
+>{\raggedright\arraybackslash}p{0.35\textwidth}
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Analysis unit} & \textbf{Count} &
+\textbf{Meaning of one entry} & \textbf{Use in the survey} \\
+\midrule
+Included study & 206 &
+An underlying study after reconciliation of its eligible reports. &
+Study-level platform, integration, and validation profiles. \\
+\addlinespace[3pt]
+Primary coding record & 8,203 &
+An extracted evidence item, metric record, or tradeoff record retained for
+primary synthesis. &
+Source-linked technical analysis, with each record retaining its own unit
+and conditions. \\
+\addlinespace[3pt]
+Metric record & 4,779 &
+A reported measure with its definition and evaluation setting. &
+Communication, sensing, and implementation performance in
+Section~\ref{sec:tradeoffs}. \\
+\addlinespace[3pt]
+Substantive relationship & 402 &
+A source-described relation among design factors, objectives, or outcomes. &
+Mechanisms and condition-dependent tradeoffs in
+Section~\ref{sec:tradeoffs}. \\
+\addlinespace[3pt]
+Synthesis group & 115 &
+A set of studies grouped for thematic synthesis. &
+111 theme-specific groups support synthesis. Four broad classification
+groups retain coverage information. \\
+\bottomrule
+\end{tabularx}
+\par\vspace{3pt}
+\noindent\parbox{\textwidth}{\raggedright\footnotesize
+The counts refer to different analysis levels. Metric and relationship records
+contribute to the primary coding total, while a study may contribute to several
+synthesis groups. The primary total comprises 3,020 evidence items,
+4,779 metric records, and 404 tradeoff records. Of the latter, 402 describe
+relationships and two document the absence of a reported tradeoff.\par}
+\endgroup
+\end{table*}
+
+Extraction retained numerical values stated by the source. Graphical results
+supported interpretation in their reported form, without creating additional
+numerical measurements. Source conflicts were handled at the individual-claim
+level, so supported findings from the same study remained available.
+The complete register contains 8,306 records, including 31 contextual items
+and 72 items with source conflicts outside the primary synthesis.
+Electronic Supplement S-Evidence provides the primary synthesis records and
+their source links. S-Protocol describes the rules for handling contextual
+items and source conflicts.
 
 \subsection{Technical Appraisal and Synthesis}
+\label{sec:technical_appraisal_synthesis}
 
-To clarify how each study supports the synthesis, we assessed the technical
-evidence and reporting of all 206 studies with the Technical Quality Assessment
-Framework (TQAF) developed for this review. The framework applies deterministic
-rules across eight dimensions. A separate overall contribution category
-summarizes the support each study provides to this synthesis. The profile
-indicates how evidence can support interpretation in its source setting,
-comparison through a shared benchmark, and comparison across platforms.
-Electronic Supplements S-Protocol and S-Appraisal provide the framework's
-methodological scope, scoring rules, and records for each study.
+We assessed all included studies using the Technical Quality Assessment
+Framework (TQAF) developed for this review. Its deterministic rules score
+eight technical and reporting dimensions from 0 to 3. Overall evidence
+contribution is recorded separately. TQAF is a review-specific descriptive
+appraisal whose scoring has not been independently validated. It characterizes
+support for interpretation and reuse, rather than providing a conventional
+risk-of-bias assessment.
 
-Figure~\ref{fig:tqaf_profile} places the eight appraisal dimensions beside the
-separate overall evidence contribution category. The profile distinguishes
-support for source interpretation from support for transfer and reuse.
+Figure~\ref{fig:tqaf_profile} separates the appraisal dimensions by their
+role in reading the evidence. Metric clarity and reporting completeness help
+establish what a result means in its original setting. Validation and
+reproducibility address how that result was tested and can be reconstructed.
+Benchmark readiness and comparison admissibility address its use beyond the
+original experiment. Electronic Supplements S-Protocol and S-Appraisal provide
+the scoring rules and study-level records, respectively.
 
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig04_tqaf_profile.pdf}
-\caption{Technical appraisal profile of the 206 included studies. Each row
-assigns all studies to strong, adequate, or low evidentiary support under the
-TQAF rules developed for this review. The interpretation group covers technical
-relevance, metric clarity, reporting completeness, and limitation transparency.
-The transfer and reuse group covers validation maturity, reproducibility,
-benchmark readiness, and comparison admissibility. Overall evidence
-contribution remains a separate summary category.}
+\caption{Technical appraisal of the 206 included studies under the
+review-specific TQAF rules. Each row groups all studies by strong, adequate,
+or low support. The interpretation dimensions concern the meaning and
+reporting of results in their source setting. Transfer and reuse dimensions
+concern validation and reconstruction, together with benchmark and comparison
+support. Overall evidence contribution is displayed separately.}
 \label{fig:tqaf_profile}
 \end{figure*}
 
-Reporting completeness and metric clarity support interpretation within the
-source setting. Validation, reproducibility, benchmark readiness, and
-comparison admissibility introduce further conditions for transfer across
-studies. These distinct roles explain the profile and guide the structured
-synthesis.
+The synthesis grouped studies by technical theme across seven survey domains.
+Within each theme, we examined recurring mechanisms and reported performance
+relations while preserving their physical and measurement conditions.
+Thematic groups supported synthesis conclusions, while broad classification
+groups recorded coverage across mixed topics. Electronic Supplement S-Bodies
+provides group membership and the review-specific appraisal rules.
 
-The structured narrative synthesis retained each result's native task and unit
-together with its operating conditions and validation setting. This structure
-preserved the meaning of heterogeneous results while allowing recurring
-mechanisms and design relationships to be compared across the corpus. The
-evidence was organized into 115 bodies across seven survey domains, connecting
-synthesis conclusions to their supporting studies. Electronic Supplement
-S-Bodies provides their criteria, ratings, and memberships. With this evidence
-structure in place, the technical synthesis begins with the physical role of
-optics and the mechanism that couples communication and sensing.
+We used structured narrative synthesis to connect these heterogeneous
+results. Numerical examples retain their original tasks, units, and operating
+conditions. The review did not fit a pooled effect model or perform formal
+publication-bias and sensitivity analyses. The resulting conclusions concern
+supported mechanisms and bounded performance relations.
+
+Section~\ref{sec:optical_modality_families} first examines the physical role
+of optics and the resources shared by communication and sensing.
+Those distinctions provide the context for the performance relations in
+Section~\ref{sec:tradeoffs} and their validation in
+Section~\ref{sec:validation_reproducibility}.
