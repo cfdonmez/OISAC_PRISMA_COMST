@@ -23,21 +23,10 @@ medium or reaches the receiver or target
 In photonics-enabled wireless systems, optical components can generate the signal,
 while propagation to the target occurs in the millimeter-wave or terahertz band
 \cite{OISAC_SCR00036,OISAC_SCR00083}.
-Figure~\ref{fig:oisac_platform_overview} illustrates these physical settings
-and the resources used by both functions.
-Its common design question is how choices of power and waveform, together
-with timing and receiver design, affect communication and sensing performance.
-
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig_introduction_oisac_platforms.png}
-\caption{Representative O-ISAC configurations in fiber, free-space optical,
-visible-light, and photonics-enabled terahertz systems. Each panel identifies
-a shared resource, the two functions it supports, and a representative physical
-constraint. The lower panel highlights power and waveform choices alongside
-timing and receiver design as common design considerations.}
-\label{fig:oisac_platform_overview}
-\end{figure*}
+The common design question is how the shared resource changes the signal
+available to each receiver, and therefore the communication and sensing
+performance. Section~\ref{sec:signal_paths_observations} develops these paths
+in one physical diagram.
 
 Shared operation can introduce a tradeoff or allow one function to assist the
 other. In one fiber experiment, raising the sensing-probe power while holding
@@ -46,17 +35,13 @@ but increased the communication bit error rate \cite{OISAC_SCR00057}.
 In a visible-light prototype, position estimates guided beamforming toward the
 receiver and improved the communication data rate at the tested locations
 \cite{OISAC_SCR00196}.
-The fiber result illustrates a power-dependent tradeoff, whereas the
-visible-light result shows how sensing information can guide transmission.
 
-A researcher selecting an O-ISAC approach needs to know which integration
-mechanism fits the application and how it affects both functions.
-Reported rates and sensing errors become useful for that choice when they
-are linked to the shared design and its operating conditions.
-These links can explain why a method is effective in one setting and what
-must be tested before adapting it to another.
-A synthesis of the literature should therefore connect physical architectures
-to joint performance and to the experiments needed for further development.
+These different responses make resource reuse an insufficient basis for
+selecting an architecture. The relevant question is which physical mechanism
+connects the two outcomes and whether it remains useful under the application's
+power, geometry, traffic, and timing constraints. This survey follows that
+connection from architecture through performance and validation to the tests
+needed for further development.
 
 \subsection{Related Surveys}
 \label{sec:related_surveys}
@@ -222,15 +207,13 @@ We analyze how shared infrastructure, signals, and design objectives connect
 communication and sensing, and how these connections shape joint performance.
 
 \begin{itemize}
-\item \begin{minipage}[t]{\linewidth}
-\textbf{A physical basis for selecting an O-ISAC design.}
+\item \textbf{A physical basis for selecting an O-ISAC design.}
 We distinguish platforms by their sensing paths and identify how hardware,
 signals, and allocated resources connect the two functions. This explains
 which integration mechanisms fit a given physical setting and which
 constraints must be considered when adapting them
 (Sections~\ref{sec:foundations_comparison}
 and~\ref{sec:optical_modality_families}).
-\end{minipage}
 
 \item \textbf{A common basis for interpreting performance.}
 We relate waveform and receiver choices, together with resource allocation,
@@ -254,5 +237,3 @@ concepts used in the review. Sections~\ref{sec:optical_modality_families}
 through~\ref{sec:technologies_applications_6g} examine platforms, joint design,
 validation, and applications. Section~\ref{sec:discussion_roadmap} develops the
 research priorities, and Section~\ref{sec:conclusion} concludes the article.
-
-\FloatBarrier

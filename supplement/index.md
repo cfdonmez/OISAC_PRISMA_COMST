@@ -1,6 +1,25 @@
 # Supplement source index
 
-Checked: 14 September 2026.
+Checked: 16 September 2026.
+
+## S-Core and supplementary evidence profiles
+
+[profiles.pdf](../output/pdf/profiles.pdf) contains the detailed platform,
+metric, relationship, technical appraisal, validation-method and application
+profiles accompanying the revised article. Editable sources are [driver.tex](driver.tex),
+[core.tex](core.tex) and [late.tex](late.tex); build from this folder with
+`latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error driver.tex`.
+The main article retains the physical mechanisms and interpretation limits.
+The profiles do not create new studies or pooled effect estimates.
+
+## S7 — Field coverage in both functions
+
+[S7_PAIRED_FUNCTION_VALIDATION_12.csv](v10/s7/S7_PAIRED_FUNCTION_VALIDATION_12.csv)
+preserves the 12 field/deployment studies, their separate communication and
+sensing evidence and source locators. The six-study subset has field/deployment
+outcomes in both domains; this does not establish concurrent execution in every
+study. [S7_CANONICAL_JOIN_206.csv](v10/s7/S7_CANONICAL_JOIN_206.csv) supplies the
+full study-level join and exclusive maximum validation tiers.
 
 [methods.md](methods.md) is the V3 supplementary methods narrative. This index identifies the existing source files behind its aliases. The frozen source files have now been copied into this worktree for transfer. This is not a claim that they have been uploaded to OSF.
 
@@ -81,7 +100,7 @@ The conduct-and-reporting record under S-Protocol describes the review-specific 
 
 ## Reporting checklist
 
-The frozen v10 package and its packing list contain no completed PRISMA reporting checklist. The [current reporting-location map](../governance/review.md#reporting-location-map) identifies the revised manuscript and supplement destinations. That map is a project record; it is not a submitted checklist or a claim of full PRISMA checklist completion. Earlier section, figure, and page references in source snapshots must not be treated as current V3 locations.
+The frozen v10 package and its packing list contain no completed PRISMA reporting checklist. The [current reporting-location map](../governance/flow.md#reporting-locations) identifies the revised manuscript and supplement destinations. That map is a project record; it is not a submitted checklist or a claim of full PRISMA checklist completion. Earlier section, figure, and page references in source snapshots must not be treated as current V3 locations.
 
 ## Packaging status
 

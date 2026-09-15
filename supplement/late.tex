@@ -1,0 +1,248 @@
+% Input fragment for the supplement driver; compile from supplement/.
+\section{Validation Profiles and Application Coverage}
+\label{sec:s_late_profiles}
+
+This supplement preserves the descriptive profiles that support the main
+article's discussion of joint validation, application requirements, and
+research priorities. Counts refer to the 206 included studies unless another
+unit is specified. Overlapping categories describe coded coverage rather than
+independent replications, market prevalence, or a ranking of platforms.
+
+\Needspace{9\baselineskip}
+\subsection{Technical Appraisal and Validation Methods}
+
+The Technical Quality Assessment Framework (TQAF) scores the eight technical
+and reporting dimensions in Fig.~\ref{fig:s_tqaf_profile} from 0 to 3, with
+overall evidence contribution recorded separately. This descriptive appraisal
+was developed for the review and has not been independently validated; it is
+neither a conventional risk-of-bias instrument nor GRADE. Scoring rules and
+study-level records are available in S-Protocol and S-Appraisal, with conduct
+and interpretation limits in the methods supplement.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../manuscript/figures/final_submission_2026-08-25/fig04_tqaf_profile.pdf}
+\caption{Full review-specific TQAF profile. The eight dimensions characterize
+support for interpretation, transfer, and reuse under the stated scoring
+rules. Overall evidence contribution is shown separately; it is not a ninth
+appraisal dimension. These descriptive scores do not establish a universal
+study ranking.}
+\label{fig:s_tqaf_profile}
+\end{figure*}
+
+The reproducibility assessment combines parameter reporting with artifact
+access: 4 studies were classified as low, 199 as adequate, and 3 as strong.
+The benchmark-readiness assessment classified 48 as low, 158 as adequate, and
+none as strong. Under these review-specific criteria, strong benchmark
+readiness requires an external or common baseline, an open artifact,
+admissible outcomes in both functional domains, and strong validation and
+reproducibility support within the same evidence chain. These criteria are
+more restrictive than either reporting open data or demonstrating a physical
+prototype alone.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{../manuscript/figures/final_submission_2026-08-25/fig07_validation_profile.pdf}
+\caption{Validation settings and overlapping evaluation methods.
+Panel (a) assigns each study one highest reported validation setting. Panel
+(b) permits overlapping methods: analysis, numerical or dataset-based work,
+simulation, laboratory experiments, prototypes, field studies, and mixed
+methods may contribute to the same study. Method counts must therefore not
+be added to infer a number of independent studies or experimental replications.}
+\label{fig:s_validation_methods}
+\end{figure*}
+
+The highest-setting classes contain 32 simulation or numerical studies,
+18 enhanced-simulation or dataset studies, 78 laboratory or proof-of-concept
+studies, 66 controlled prototypes, and 12 field or deployment studies.
+Six of the 12 field studies report outcomes in both communication and sensing
+at field or deployment level. This study-level classification does not
+establish concurrent operation in one configuration or time interval.
+S7 preserves separate source locators for the two functions and the available
+relationship timing.
+
+\subsection{Technology and 6G Relevance Inventory}
+
+Table~\ref{tab:s_technology_census} preserves the original overlapping
+technology counts and the exclusive 6G relevance classification. Technology
+labels can occupy different positions in the same signal chain, so their
+frequencies do not represent competing architectures or a universal sequence.
+For example, photonic integration occurs in 20 studies, distributed acoustic
+sensing in 22, machine learning or artificial intelligence in 20, and digital
+twins in two. Nineteen studies include specialized mechanisms grouped under
+other technology labels. These categories capture device integration,
+infrastructure reuse, inference, and additional specialized mechanisms.
+
+\begin{table}[!t]
+\caption{Technology-label counts and 6G relevance classes}
+\label{tab:s_technology_census}
+\centering
+\footnotesize
+\begin{tabular}{@{}lr@{}}
+\toprule
+Label & Studies, $n$ \\
+\midrule
+\multicolumn{2}{@{}l}{\textit{Technology labels: overlapping}} \\
+Photonic terahertz generation & 68 \\
+Chirped processing & 66 \\
+Coherent optics & 64 \\
+Multicarrier waveform & 56 \\
+Fiber sensing reuse & 22 \\
+Photonic integration & 20 \\
+Machine learning & 20 \\
+Other specialized technologies & 19 \\
+Beamforming & 13 \\
+Optical phased array & 8 \\
+Multiple input multiple output & 7 \\
+Digital twin & 2 \\
+Optical intelligent surface & 1 \\
+\addlinespace[2pt]
+\multicolumn{2}{@{}l}{\textit{6G relevance: exclusive}} \\
+Direct relevance & 138 \\
+Inferential relevance & 64 \\
+Weak relevance & 1 \\
+Not applicable & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Direct 6G relevance means that a report explicitly connects its system to a
+6G role; inferential relevance identifies an enabling contribution requiring
+additional network context. The remaining classes describe lighter
+connections or application settings outside that framing. The application
+category ``6G and access'' in Table~\ref{tab:s_application_census} is a separate,
+overlapping application label. Neither classification demonstrates a
+network-level operating point merely through the presence of a 6G label.
+
+\subsection{Complete Application Inventory}
+
+Table~\ref{tab:s_application_census} preserves all thirteen application
+domains and their study counts, conditions, and selected references.
+The main article groups these requirements by the experiment needed to test
+joint operation; that presentation does not alter the underlying taxonomy.
+\begin{table*}[!t]
+\caption{Application domains and operating requirements in the reviewed corpus}
+\label{tab:s_application_census}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.16\textwidth}
+>{\raggedright\arraybackslash}p{0.39\textwidth}
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}p{0.095\textwidth}@{}}
+\toprule
+\multicolumn{4}{@{}l}{\emph{Network and mobility}} \\
+\addlinespace[1pt]
+\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+\textbf{Key operating condition} & \textbf{Studies} \\
+\midrule
+\textbf{6G and access} 100 (48.5\%) & Access and transport with channel, target,
+position, or environment sensing & Timing, orchestration, continuity, and
+evidence for both functions & \cite{OISAC_SCR00277,OISAC_SCR01049} \\
+\addlinespace[1.25pt]
+\textbf{Vehicular} 41 (19.9\%) & Vehicle data links with range, motion, pose,
+temperature, or channel sensing & Changing geometry, acquisition, tracking, and
+service continuity & \cite{OISAC_SCR00123,OISAC_SCR00273} \\
+\addlinespace[1.25pt]
+\textbf{Optical access} 32 (15.5\%) & Access and transport links with channel,
+event, or fiber state sensing & Reach, synchronization, and traffic continuity &
+\cite{OISAC_SCR00007,OISAC_SCR01006,OISAC_SCR01049} \\
+\addlinespace[1.25pt]
+\textbf{Indoor positioning} 13 (6.3\%) & Indoor optical links with user or robot
+position and orientation sensing & Geometry, calibration, coverage, and update
+continuity &
+\cite{OISAC_SCR00910,OISAC_SCR01024} \\
+\addlinespace[1.25pt]
+\textbf{Data center} 4 (1.9\%) & Short reach data links with channel estimation
+or link state sensing & Traffic continuity and calibrated link references &
+\cite{OISAC_SCR00007} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.16\textwidth}
+>{\raggedright\arraybackslash}p{0.39\textwidth}
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}p{0.095\textwidth}@{}}
+\toprule
+\multicolumn{4}{@{}l}{\emph{Infrastructure}} \\
+\addlinespace[1pt]
+\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+\textbf{Key operating condition} & \textbf{Studies} \\
+\midrule
+\textbf{Environmental monitoring} 55 (26.7\%) & Distributed links with vibration,
+temperature, or environmental event sensing & Persistent observation,
+localization, and traceable reference data &
+\cite{OISAC_SCR00957,OISAC_SCR01006,OISAC_SCR01095} \\
+\addlinespace[1.25pt]
+\textbf{Smart infrastructure} 41 (19.9\%) & Infrastructure links with structural,
+motion, or event monitoring & Continuous observation, calibration, and
+resilient alert delivery & \cite{OISAC_SCR00277,OISAC_SCR00763,OISAC_SCR01006} \\
+\addlinespace[1.25pt]
+\textbf{Industrial} 34 (16.5\%) & Industrial data or control with process,
+strain, temperature, motion, or position sensing & Delay, continuity,
+calibration, and safe operation & \cite{OISAC_SCR00277,OISAC_SCR00376} \\
+\addlinespace[1.25pt]
+\textbf{Security and surveillance} 26 (12.6\%) & Monitoring links with anomaly,
+event, or location sensing & Coverage, event discrimination, and alert latency &
+\cite{OISAC_SCR01006} \\
+\bottomrule
+\end{tabularx}
+
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.16\textwidth}
+>{\raggedright\arraybackslash}p{0.39\textwidth}
+>{\raggedright\arraybackslash}X
+>{\centering\arraybackslash}p{0.095\textwidth}@{}}
+\toprule
+\multicolumn{4}{@{}l}{\emph{Human use, extreme settings, and remaining domains}} \\
+\addlinespace[1pt]
+\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+\textbf{Key operating condition} & \textbf{Studies} \\
+\midrule
+\textbf{Healthcare} 6 (2.9\%) & Wearable or ambient links with vital sign,
+activity, or gesture sensing & Motion robustness, physiological reference,
+illumination, and user safety & \cite{OISAC_SCR00001,OISAC_SCR00376} \\
+\addlinespace[1.25pt]
+\textbf{Aerospace} 20 (9.7\%) & Satellite links with atmospheric or wavefront
+sensing & Pointing, turbulence, delay, and link adaptation &
+\cite{OISAC_SCR00456} \\
+\addlinespace[1.25pt]
+\textbf{Underwater} 2 (1.0\%) & Underwater link concepts and subsea data links
+with temperature or event sensing & Water attenuation or cable calibration,
+packaging, and access & \cite{OISAC_SCR00763,OISAC_SCR01095} \\
+\addlinespace[1.25pt]
+\textbf{Other} 17 (8.3\%) & Emerging links with range, imaging, object, or
+channel sensing & Metrics and reporting specific to the task & \cite{OISAC_SCR00953} \\
+\bottomrule
+\end{tabularx}
+\vspace{1pt}
+\parbox{\textwidth}{\raggedright\footnotesize\emph{Note.} Application domains
+overlap, so a study may contribute to more than one row. Counts and percentages
+describe coverage within the 206 included studies. For each domain, the table
+includes a selected study set and lists the corresponding references in the
+final column. The 6G and access row identifies the application category, and
+the preceding subsection provides the separate 6G relevance classification.\par}
+\end{table*}
+\subsection{Metric Records Requiring Conservative Interpretation}
+
+The primary metric collection contains 4,779 records, each representing a
+reported metric observation rather than an independent study or joint effect.
+Within this collection, 118 records are conditional comparison candidates.
+Their candidate status does not establish 118 verified cross-study relations,
+independent replications, or pooled effects. Compatibility still depends on
+the task, quantity, measurement plane, operating conditions, and source-level
+evidence, as explained in the main article.
+
+For 92 metric rows, the available source fields supported interpretation in
+the original setting with a conservative comparison status. These rows are
+retained with their source context; missing comparison information is not
+imputed, and their count does not define an effect estimate. S-Evidence and
+the metric records preserve the detailed field values and source locators.
+Artifact-access classifications combine source reporting with targeted link
+checks and describe the documented access route, rather than the completeness
+of an independently executed reproduction.

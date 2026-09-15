@@ -1,302 +1,243 @@
-\section{ENABLING TECHNOLOGIES, APPLICATION REQUIREMENTS, AND 6G NETWORK EVIDENCE}
+\section{APPLICATION REQUIREMENTS AND NETWORK OPERATION}
 \label{sec:technologies_applications_6g}
-Validation shows how far a reported system was tested. We now follow the
-technologies that form communication and sensing observables into application
-requirements and 6G network roles. Because a study may contribute to several
-technology and application labels, their counts describe coverage within the
-corpus.
 
-Figure~\ref{fig:technology_application_chain} follows this evidence chain from
-optical generation and transport through waveform formation, spatial control,
-inference, selected application domains, and 6G network positioning.
+An application determines which part of the joint operating region is useful.
+A fiber monitor needs persistent observations while traffic continues; a moving
+terminal needs a position or channel estimate early enough to guide the next
+transmission. Both may reuse a signal, yet their limiting conditions differ.
+The mechanisms in Sections~\ref{sec:optical_modality_families}
+and~\ref{sec:tradeoffs} become system choices when these requirements are
+specified. This section follows that progression from the optical observation
+to a service outcome, using the validation distinctions in
+Section~\ref{sec:validation_reproducibility} to identify what each demonstration
+supports.
 
-\begin{figure*}[!t]
-\centering
-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig08_technology_application_chain.pdf}
-\caption{Organization across system layers of the mechanisms that create and shape
-O-ISAC observables and connect them to service requirements. Technology and
-application counts describe overlapping corpus coverage, so a study may
-contribute to several displayed categories. The 6G evidence gate is exclusive
-and assigns each of the 206 studies to one relevance class. Selected application
-domains illustrate the requirement flow, while Table~\ref{tab:application_requirements}
-provides the complete application inventory.}
-\label{fig:technology_application_chain}
-\end{figure*}
+\subsection{Continuous Monitoring Along a Communication Path}
 
-The chain shows that network interpretation depends on continuity across the
-physical observable, the joint design choice, the application condition, and
-the reported network role. The displayed categories guide the reader through
-that relationship, while the following subsections retain the platform
-conditions and study evidence.
+Fiber infrastructure provides a direct setting for sustained sharing: the
+medium carrying communication also responds to the environment being sensed.
+Phase, backscatter, and polarization can support distributed observations
+along a route. Coherent multicore transmission with distributed sensing and
+operational submarine cable monitoring illustrate this reuse at different
+scales \cite{OISAC_SCR00346,OISAC_SCR00957}. Their application value depends on
+preserving a useful optical observation together with traffic continuity.
+Topology, launch and receiver conditions, and the disturbance context therefore
+belong to the service definition, rather than being incidental laboratory
+settings.
 
-\subsection{Technologies That Create and Shape Observables}
+The sensing task changes the required observation and reference. A fiber
+platform for vehicles combines high-rate data transmission with distributed
+temperature measurement \cite{OISAC_SCR00123}. Infrastructure diagnosis can
+instead process collected fiber data into event classes
+\cite{OISAC_SCR01006}. Temperature estimates and event labels place different
+demands on calibration, observation duration, and reference data. An application
+evaluation should connect those demands to the communication interval affected
+by sensing. Offline classification can demonstrate information in a recorded
+signal, while timely operational diagnosis additionally depends on acquisition,
+processing, and delivery of the result.
 
-The main technology labels occupy complementary points in the signal chain.
-Photonic generation creates or translates the carrier. Chirped processing maps
-delay or motion to beat frequency. Coherent reception preserves phase, and OFDM
-provides controllable time and frequency resources. A single architecture can
-combine several of these mechanisms.
+Sharing extends beyond the sensing fiber when observations must be transported.
+One study relates transport capacity to the number of sensing streams meeting
+an echo-quality threshold \cite{OISAC_SCR00436}; another connects sensing traffic
+capacity with target count and resolution requirements \cite{OISAC_SCR01049}.
+These cases make a system-level coupling explicit: acquiring richer sensing
+observations creates traffic that consumes network resources. The useful
+operating point depends on the observations that reach the processing stage
+with sufficient quality, alongside the communication service maintained by the
+same infrastructure.
 
-OFDM supports joint operation by placing payload and sensing resources within
-one signal structure. The sensing observable may come from pilots, payload
-tones, cyclic prefixes, reserved subcarriers, or a dedicated processing branch.
-This choice determines which samples are known at the receiver and how
-interference enters the estimate. Optical modulation constraints and the
-measurement plane used for SNR shape the interpretation. Embedded pilot fiber
-sensing and indoor optical positioning show how the same multicarrier principle
-serves different observables and geometries
-\cite{OISAC_SCR00007,OISAC_SCR01024}.
+\subsection{Mobility, Directional Links, and the Age of an Estimate}
 
-Chirped and coherent systems draw on phase continuity and a shared timing
-reference. A returned chirp can reveal range or motion as the transmitted signal
-carries data. A coherent front end preserves small phase changes for distributed
-sensing and demodulation. Photonic generation can extend the reference to
-wideband millimeter wave or terahertz carriers. Full photonic dechirping and
-coherent fiber vibration sensing illustrate these two uses
-\cite{OISAC_SCR01000,OISAC_SCR00647}. Their performance depends on laser
-stability, reference distribution, conversion efficiency, receiver bandwidth,
-and calibration.
+For a directional wireless link, sensing can inform where energy should be
+sent. A distributed W-band system uses radar estimates for beam alignment and
+flexible data service, while microcomb synchronization coordinates wireless
+data with radar imaging \cite{OISAC_SCR00502,OISAC_SCR00406}. These examples link
+spatial information and a shared reference to communication operation. Their
+service interpretation depends on the complete interval from observation to
+transmission: the geometry at acquisition may differ from the geometry when a
+beam or resource decision is applied.
 
-The optical stage governs carrier generation and reference stability. Once the
-carrier is radiated, the communication and sensing paths follow microwave,
-millimeter wave, or terahertz propagation. In a free space optical link, the
-optical beam itself traverses the channel. System evaluation should therefore
-follow the signal across both physical domains and identify where power, SNR,
-bandwidth, and timing are measured. This view makes the interface between
-components part of the joint system.
+Observation age creates a pointing cost even when estimation error is small.
+Consider a sequential steering loop using an estimate referenced to the start
+of acquisition. Its age at actuation is
+\begin{equation}
+T_{\mathrm{age}}=T_{\mathrm{acq}}+T_{\mathrm{proc}}
++T_{\mathrm{transport}}+T_{\mathrm{act}},
+\label{eq:observation_age}
+\end{equation}
+where the terms are acquisition, processing, transport, and actuation times.
+For constant relative transverse velocity $v_\perp$, nearly fixed distance $d$,
+and small angular displacement, uncompensated motion contributes
+\begin{equation}
+\Delta\theta_{\mathrm{motion}}\simeq
+\frac{|v_\perp|T_{\mathrm{age}}}{d}.
+\label{eq:motion_pointing}
+\end{equation}
+The remaining pointing budget must accommodate this displacement together
+with other errors at the selected service threshold. These illustrative
+kinematic relations explain why a precise but stale estimate can fail to
+support a narrow beam; they are not fitted results from the corpus.
+An overlapped pipeline uses the actual interval between the estimate's
+reference time and actuation. Prediction, acceleration, and measurement
+uncertainty require their own residual-error models.
 
-Spatial control changes both the communication link budget and the sensing
-geometry. Beamforming, optical phased arrays, multiple input multiple output
-processing, and reconfigurable optical intelligent surfaces provide different
-forms of spatial control. Beamforming directs energy. An optical phased array
-provides one steering mechanism. Multiple input multiple output processing uses
-several spatial dimensions, and an intelligent surface reshapes an intermediate
-propagation boundary. A system may combine these roles.
+The optical phased-array and frequency-comb demonstrations discussed earlier
+connect steering with ranging or imaging
+\cite{OISAC_SCR00941,OISAC_SCR00362}. In a moving application, narrower beams
+make acquisition, tracking, blockage, and calibration consequential for both
+functions. A useful evaluation therefore follows rate or reliability alongside
+sensing error and update timing as the geometry changes. A static alignment
+result identifies an achievable operating point; motion and recovery tests
+establish the conditions over which that point remains useful.
 
-A narrow beam improves received power and angular selectivity while making
-acquisition, tracking, blockage, and calibration central to joint performance.
-The joint use of an optical phased array and OFDM and the use of frequency comb
-beamforming connect steering with ranging or imaging
-\cite{OISAC_SCR00941,OISAC_SCR00362}. Multiple input multiple output processing
-adds communication streams, sensing diversity, or separation among targets and
-paths. Structured fields and hybrid systems that combine free space
-optics with fiber Bragg gratings place these spatial dimensions at different
-points in the architecture \cite{OISAC_SCR00268,OISAC_SCR00277}. Meaningful
-comparison therefore requires the independent dimensions, geometry, and
-calibration method.
-
-The intelligent surface evidence consists of one study that models a mobile
-free space optical path controlled by an optical intelligent surface
-\cite{OISAC_SCR00914}. A separate laboratory demonstration uses mechanically
+The steering mechanism must also remain physically explicit. The optical
+intelligent-surface study models a controlled mobile FSO path
+\cite{OISAC_SCR00914}, whereas a laboratory demonstration uses mechanically
 rotated Risley prisms to steer a photonically generated terahertz signal
-\cite{OISAC_SCR00953}. Both mechanisms redirect energy, and each uses different
-surface physics, propagation laws, control variables, and validation settings.
-Their separate treatment preserves the physical meaning and provides two
-starting points for broader experimental comparison.
+\cite{OISAC_SCR00953}. Both redirect energy, but the control variables,
+propagation physics, and validation settings differ. Their future comparison
+requires a shared task and stated motion conditions, with actuator behavior
+and conversion interfaces retained in the timing budget.
 
-\subsection{Integration Beyond the Waveform}
+\subsection{Indoor Operation, Human Use, and Difficult Environments}
 
-Integration and inference move joint design beyond waveform selection.
-Photonic integration appears in 20 studies, fiber distributed acoustic sensing
-in 22, and machine learning or artificial intelligence in 20. Two studies use
-digital twins. A further 19 studies contain specialized mechanisms grouped as
-other because they fall outside the broad technology labels. Together, these
-categories cover device integration, infrastructure reuse, inference, and a
-diverse long tail.
+In indoor optical systems, the user or robot's position and orientation shape
+both received power and the sensing geometry. Multicarrier positioning and
+robotic communication illustrate different consequences of this dependence
+\cite{OISAC_SCR01024,OISAC_SCR00910}. The robotics study reports packet loss over
+distance and view angle, display delay over queue size, and formation control
+under dynamic motion as separate results \cite{OISAC_SCR00910}. Together they
+show why communication reliability, information freshness, and control behavior
+need distinct measurements. They should not be collapsed into a single paired
+operating point unless their conditions and timing are linked by the source.
 
-Photonic integration can place generation, reference distribution, beam
-control, and detection on a compact hardware path. This arrangement reduces
-duplicated paths and brings packaging, thermal drift, crosstalk, and calibration
-into the same design problem. Microcomb synchronization coordinates wireless
-data with radar imaging. A distributed W band system uses radar estimates for
-beam alignment and flexible data service
-\cite{OISAC_SCR00406,OISAC_SCR00502}. Both examples show how a shared reference
-can connect communication and sensing hardware.
+Human-facing optical devices connect communication or remote alerts with
+motion, falls, air pressure, physiology, or gesture
+\cite{OISAC_SCR00451,OISAC_SCR00294,OISAC_SCR00376}. Here, a sensing estimate is
+useful when it represents the intended event or physiological quantity under
+the user's motion and illumination conditions. Communication is useful when
+that information can be delivered with the required continuity. Reference
+measurements, event definitions, and processing delay consequently matter
+alongside link rate. This requirement also distinguishes a recognition result
+on collected data from an evaluated sensing-and-alert service.
 
-Fiber distributed acoustic sensing follows a complementary route by using the
-transmission medium as a spatial sensor. Phase, backscatter, and polarization
-can reveal events along the route as the fiber carries traffic. Coherent
-multicore transmission with distributed sensing and operational submarine cable
-monitoring illustrate two scales of this infrastructure reuse
-\cite{OISAC_SCR00346,OISAC_SCR00957}. The central design question becomes how to
-preserve the optical observable together with traffic continuity.
+Extreme environments impose a different set of physical constraints.
+Satellite-link work connects communication with atmospheric or wavefront
+sensing \cite{OISAC_SCR00456}, making pointing and propagation part of the
+adaptation problem. Underwater optical-link concepts and subsea fiber
+monitoring involve different paths \cite{OISAC_SCR00763,OISAC_SCR01095}.
+Attenuation through water applies to the former; cable calibration and access
+to the installed infrastructure constrain the latter. Grouping both by their
+application environment is useful for locating requirements, but their
+physical observations and attainable operating regions remain distinct.
 
-Learning turns optical observations into event labels, positions, field
-estimates, channel predictions, and resource decisions. Each task is best read
-with its definition, reference data, training distribution, evaluation shift,
-uncertainty, and inference cost. Fiber diagnosis, federated visible light
-positioning, and wearable optical sensing show the range from distributed
-infrastructure to personal use
-\cite{OISAC_SCR01006,OISAC_SCR01081,OISAC_SCR00376}.
+\subsection{Inference and Control as Parts of the Joint System}
 
-A neural network can also take part in both functions. In one coherent link,
-the model compensates transmission impairments and estimates distributed power
-and abnormal loss \cite{OISAC_SCR00949}. The two outputs share the link while
-retaining separate targets and reference data. Digital twins add another model
-layer. One represents vehicular edge resources, and another provides a model
-aided physical reference for coherent fiber sensing
-\cite{OISAC_SCR01059,OISAC_SCR01185}. Clear reporting of the represented state,
-update process, mismatch model, and resulting decision gives these models an
-explicit system role.
+Learning methods convert optical observations into positions, event labels,
+field estimates, channel predictions, or resource decisions. Fiber diagnosis,
+federated visible-light positioning, and wearable optical sensing illustrate
+this range \cite{OISAC_SCR01006,OISAC_SCR01081,OISAC_SCR00376}. The inference task
+adds a reference-data requirement to the physical measurement: reported
+accuracy depends on what was labeled, how data were divided, and the conditions
+represented in evaluation. Applying a learned model in another layout or
+operating regime therefore introduces a further test of the joint system.
 
-\subsection{Applications as Operating Requirements}
+One coherent-link model both compensates transmission impairments and
+estimates distributed power and abnormal loss \cite{OISAC_SCR00949}. The
+outputs share a link, but retain different targets and reference information.
+This architecture motivates testing whether a change in the link affects the
+two outputs similarly, and whether adaptation that helps one preserves the
+other. The answer cannot be inferred from communication compensation or
+sensing accuracy alone.
 
-Applications translate the mechanisms above into conditions that a joint
-service must satisfy. Table~\ref{tab:application_requirements} retains all
-thirteen application domains and maps each one to its joint role and defining
-evaluation conditions. A fiber platform for vehicles, for
-example, carries data at high rates and measures distributed temperature
-\cite{OISAC_SCR00123}. Devices used by people connect communication or remote
-alerts with motion, falls, air pressure, physiology, or gesture
-\cite{OISAC_SCR00451,OISAC_SCR00294,OISAC_SCR00376}. Each application therefore
-changes what the experiment must demonstrate, even when both functions share
-the same optical interface.
+Processing also consumes time and resources. Classifier size changes
+recognition accuracy and the edge-processing burden in
+\cite{OISAC_SCR01047}. A digital-twin study represents vehicular edge resources
+and relates orthogonal task channels to application latency
+\cite{OISAC_SCR01059}. Another uses a model-aided physical reference for coherent
+fiber sensing \cite{OISAC_SCR01185}. These model roles differ: one organizes
+resources for a service, while the other supports interpretation of the
+physical observation. Reporting the represented state, update process, model
+mismatch, and resulting decision connects either role to a testable system
+benefit. It also allows inference accuracy to be weighed against the delay and
+resource use needed to obtain it.
 
 \begin{table*}[!t]
-\caption{Application domains and operating requirements in the reviewed corpus}
+\caption{From application operation to a joint demonstration. The outcome
+pairs identify measurements needed to evaluate the stated operation; they do
+not assert that every cited study measured both concurrently.}
 \label{tab:application_requirements}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.05}
+\renewcommand{\arraystretch}{1.12}
 \begin{tabularx}{\textwidth}{@{}
 >{\raggedright\arraybackslash}p{0.16\textwidth}
->{\raggedright\arraybackslash}p{0.39\textwidth}
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{0.095\textwidth}@{}}
+>{\raggedright\arraybackslash}p{0.25\textwidth}
+>{\raggedright\arraybackslash}p{0.24\textwidth}
+>{\raggedright\arraybackslash}X@{}}
 \toprule
-\multicolumn{4}{@{}l}{\emph{Network and mobility}} \\
-\addlinespace[1pt]
-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
-\textbf{Key operating condition} & \textbf{Studies} \\
+Operation & Shared mechanism & Communication and sensing outcomes & Needed demonstration \\
 \midrule
-\textbf{6G and access} 100 (48.5\%) & Access and transport with channel, target,
-position, or environment sensing & Timing, orchestration, continuity, and
-evidence for both functions & \cite{OISAC_SCR00277,OISAC_SCR01049} \\
-\addlinespace[1.25pt]
-\textbf{Vehicular} 41 (19.9\%) & Vehicle data links with range, motion, pose,
-temperature, or channel sensing & Changing geometry, acquisition, tracking, and
-service continuity & \cite{OISAC_SCR00123,OISAC_SCR00273} \\
-\addlinespace[1.25pt]
-\textbf{Optical access} 32 (15.5\%) & Access and transport links with channel,
-event, or fiber state sensing & Reach, synchronization, and traffic continuity &
-\cite{OISAC_SCR00007,OISAC_SCR01006,OISAC_SCR01049} \\
-\addlinespace[1.25pt]
-\textbf{Indoor positioning} 13 (6.3\%) & Indoor optical links with user or robot
-position and orientation sensing & Geometry, calibration, coverage, and update
-continuity &
-\cite{OISAC_SCR00910,OISAC_SCR01024} \\
-\addlinespace[1.25pt]
-\textbf{Data center} 4 (1.9\%) & Short reach data links with channel estimation
-or link state sensing & Traffic continuity and calibrated link references &
-\cite{OISAC_SCR00007} \\
+Continuous fiber monitoring & Traffic and distributed observations use a common
+fiber or reference \cite{OISAC_SCR00346,OISAC_SCR00957} & Link continuity or BER;
+event, field, or disturbance estimate & Measure both during stated traffic and
+disturbance changes, preserving calibration and observation intervals. \\
+\addlinespace[2pt]
+Directional mobile service & Sensing informs steering; generation and reception
+share a reference \cite{OISAC_SCR00502,OISAC_SCR00406} & Delivered rate or
+reliability; range, angle, or motion estimate & Vary motion and alignment,
+including acquisition, update delay, blockage, and recovery. \\
+\addlinespace[2pt]
+Indoor positioning and control & Optical observations guide a location-dependent
+communication or control task \cite{OISAC_SCR01024,OISAC_SCR00910} & Packet delivery
+and delay; position or control error & Link the geometry and timing of each
+observation to the resulting data or control action. \\
+\addlinespace[2pt]
+Transport of sensing streams & Sensing quality and target coverage consume
+transport capacity \cite{OISAC_SCR00436,OISAC_SCR01049} & Carried traffic; delivered
+echo quality, target count, or resolution & Increase sensing and communication
+load together, identifying which service requirement first fails. \\
+\addlinespace[2pt]
+Learned sensing and adaptation & Processing converts a shared observation into
+estimates and decisions \cite{OISAC_SCR00949,OISAC_SCR01047} & Communication
+impairment or service measure; estimation or recognition quality & Apply a
+specified data or channel shift and record both outputs, inference cost,
+adaptation, and fallback. \\
+\addlinespace[2pt]
+Human use and difficult environments & Optical data and measurements share an
+interface with the user or environment
+\cite{OISAC_SCR00376,OISAC_SCR00456,OISAC_SCR01095} & Delivery continuity; task-specific
+estimate against a physical reference & Exercise the relevant motion,
+illumination, atmosphere, or cable condition with suitable reference data. \\
 \bottomrule
 \end{tabularx}
-
-\vspace{3pt}
-\begin{tabularx}{\textwidth}{@{}
->{\raggedright\arraybackslash}p{0.16\textwidth}
->{\raggedright\arraybackslash}p{0.39\textwidth}
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{0.095\textwidth}@{}}
-\toprule
-\multicolumn{4}{@{}l}{\emph{Infrastructure}} \\
-\addlinespace[1pt]
-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
-\textbf{Key operating condition} & \textbf{Studies} \\
-\midrule
-\textbf{Environmental monitoring} 55 (26.7\%) & Distributed links with vibration,
-temperature, or environmental event sensing & Persistent observation,
-localization, and traceable reference data &
-\cite{OISAC_SCR00957,OISAC_SCR01006,OISAC_SCR01095} \\
-\addlinespace[1.25pt]
-\textbf{Smart infrastructure} 41 (19.9\%) & Infrastructure links with structural,
-motion, or event monitoring & Continuous observation, calibration, and
-resilient alert delivery & \cite{OISAC_SCR00277,OISAC_SCR00763,OISAC_SCR01006} \\
-\addlinespace[1.25pt]
-\textbf{Industrial} 34 (16.5\%) & Industrial data or control with process,
-strain, temperature, motion, or position sensing & Delay, continuity,
-calibration, and safe operation & \cite{OISAC_SCR00277,OISAC_SCR00376} \\
-\addlinespace[1.25pt]
-\textbf{Security and surveillance} 26 (12.6\%) & Monitoring links with anomaly,
-event, or location sensing & Coverage, event discrimination, and alert latency &
-\cite{OISAC_SCR01006} \\
-\bottomrule
-\end{tabularx}
-
-\vspace{3pt}
-\begin{tabularx}{\textwidth}{@{}
->{\raggedright\arraybackslash}p{0.16\textwidth}
->{\raggedright\arraybackslash}p{0.39\textwidth}
->{\raggedright\arraybackslash}X
->{\centering\arraybackslash}p{0.095\textwidth}@{}}
-\toprule
-\multicolumn{4}{@{}l}{\emph{Human use, extreme settings, and remaining domains}} \\
-\addlinespace[1pt]
-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
-\textbf{Key operating condition} & \textbf{Studies} \\
-\midrule
-\textbf{Healthcare} 6 (2.9\%) & Wearable or ambient links with vital sign,
-activity, or gesture sensing & Motion robustness, physiological reference,
-illumination, and user safety & \cite{OISAC_SCR00001,OISAC_SCR00376} \\
-\addlinespace[1.25pt]
-\textbf{Aerospace} 20 (9.7\%) & Satellite links with atmospheric or wavefront
-sensing & Pointing, turbulence, delay, and link adaptation &
-\cite{OISAC_SCR00456} \\
-\addlinespace[1.25pt]
-\textbf{Underwater} 2 (1.0\%) & Underwater link concepts and subsea data links
-with temperature or event sensing & Water attenuation or cable calibration,
-packaging, and access & \cite{OISAC_SCR00763,OISAC_SCR01095} \\
-\addlinespace[1.25pt]
-\textbf{Other} 17 (8.3\%) & Emerging links with range, imaging, object, or
-channel sensing & Metrics and reporting specific to the task & \cite{OISAC_SCR00953} \\
-\bottomrule
-\end{tabularx}
-\vspace{1pt}
-\parbox{\textwidth}{\raggedright\footnotesize\emph{Note.} Application domains
-overlap, so a study may contribute to more than one row. Counts and percentages
-describe coverage within the 206 included studies. For each domain, the table
-includes a selected study set and lists the corresponding references in the
-final column. The 6G and access row identifies the application category, and
-the final subsection provides the 6G relevance classification.\par}
 \end{table*}
 
-Across the map, the dominant requirement moves with the application. Network
-and mobility settings emphasize acquisition, timing, and continuity. Deployed
-infrastructure emphasizes persistent observation alongside carried traffic.
-Human use and extreme settings add physiological references, safety,
-privacy, pointing, atmosphere, packaging, and access to the test environment.
-These requirement bundles show which operating conditions must accompany a
-reported result before it can support comparison or reuse.
+\subsection{From a Subsystem Benefit to a Network Role}
 
-\subsection{From 6G Relevance to Network Evidence}
+Table~\ref{tab:application_requirements} connects these applications through
+the evidence needed to sustain a useful service. At network scale, an O-ISAC
+subsystem must occupy an explicit role in access, fronthaul, transport, edge
+processing, or service control. The consequences of sharing then include
+traffic, timing, orchestration, energy, and recovery across interfaces. For
+example, channel sensing can inform access placement under weather and demand
+changes \cite{OISAC_SCR00922}; evaluating its system benefit requires connecting
+the sensed condition to the placement decision and resulting communication
+service.
 
-The 6G relevance gate in Figure~\ref{fig:technology_application_chain} assigns
-each study one corpus position. Direct cases connect the reported system
-explicitly to a 6G role, as illustrated
-by \cite{OISAC_SCR00362,OISAC_SCR01049}. Inferential cases contribute an
-enabling link that gains meaning from additional network context, as illustrated
-by \cite{OISAC_SCR00007,OISAC_SCR00647}. The remaining classes capture a lighter
-connection to 6G or an application focus outside that framing, as illustrated
-by \cite{OISAC_SCR00959,OISAC_SCR00294}.
-
-The distribution connects the reviewed corpus with 6G access, transport,
-localization, automation, environmental awareness, and generation of carriers
-at high frequencies. A relevance code therefore locates a study within the 6G
-discussion. Standard conformance, interoperability, and deployment readiness
-require additional evidence tied to the relevant network framework
+The corpus includes studies with an explicit 6G role
+\cite{OISAC_SCR00362,OISAC_SCR01049} and enabling contributions that require
+additional network context \cite{OISAC_SCR00007,OISAC_SCR00647}. The complete
+relevance classification and application inventory are provided in the
+electronic supplement. These classifications describe the literature's
+connection to 6G. Standard conformance, interoperability, and deployment
+readiness require evidence tied to the relevant network framework
 \cite{ITUR_M2160_2023}.
 
-A stronger network interpretation emerges when the optical or photonic
-subsystem occupies an explicit role across the complete network path. Access, fronthaul, transport,
-edge processing, and service control bring timing, mobility, orchestration,
-energy, security, and recovery requirements. Evidence at this level evaluates
-useful communication and sensing under the conditions of that role and reports
-the resources needed to sustain both. This creates a traceable path from the
-physical observable and hardware to the service objective.
-
-Within this survey, 6G relevance is strongest when both functional outcomes and
-their operating conditions remain traceable to a network role. The resulting
-evidence chain links physical observables, application requirements, and service
-objectives and provides the basis for the research priorities in
-Section~\ref{sec:discussion_roadmap}.
+The remaining engineering question is whether the observed subsystem benefit
+persists after including the resources used to acquire, transport, process,
+and act on sensing information. Answering it requires the same two functional
+outcomes examined earlier, now measured under the load, motion, and timing of
+the intended role. Those unresolved links define the research tests developed
+in Section~\ref{sec:discussion_roadmap}.

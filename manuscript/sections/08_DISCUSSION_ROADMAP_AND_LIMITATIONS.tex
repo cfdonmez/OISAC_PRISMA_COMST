@@ -1,153 +1,139 @@
-\section{DISCUSSION, RESEARCH ROADMAP, AND LIMITATIONS}
+\section{RESEARCH QUESTIONS AND EVALUATION PRIORITIES}
 \label{sec:discussion_roadmap}
 
-Across the evidence base, the central issue is whether physical sharing
-produces joint outcomes that remain traceable to one operating context. This
-section interprets that relationship, develops five research priorities, and
-states the review boundaries.
+The preceding sections connect a physical sensing interaction to a shared
+design choice, two performance outcomes, and the conditions of an application.
+The unresolved issue is how far a useful relation persists when those
+conditions change. Greater integration can improve coordination, while also
+coupling distortion, synchronization, dynamic range, and failure behavior.
+Research can resolve this tension by identifying the mechanism that limits
+joint operation and testing the variables expected to move that limit.
 
-\subsection{Interpretation Across the Evidence Base}
+\subsection{From Reported Relations to Discriminating Experiments}
 
-Physical integration identifies where communication and sensing share
-infrastructure, signals, or information. Evidential integration shows how
-clearly both outcomes remain tied to the same operating conditions. Together,
-they connect architectural and transmission perspectives while preserving the
-physical regime of each platform
+The literature offers recurring mechanisms across optical platforms, but their
+quantitative consequences belong to particular tasks and measurement settings
 \cite{Wen2024OISACArchitectures,Su2025OISACTheoryPractice,
-Liang2024LiSACReview,Liu2026OpticalFiberISACReview}.
+Khorasgani2026GeneralOpticalISACSurvey}. A useful next experiment should
+therefore begin with a relation already observed within a study. It should
+state which explanation is being tested, change the relevant parameter, and
+measure both functions against suitable separate-function baselines. The
+shared-resource budget must remain explicit: increasing a sensing probe with
+communication launch power held fixed answers a different question from
+redistributing a fixed total power budget.
 
-Deeper sharing can connect more design variables and improve coordination
-across the two functions. It can also couple power, distortion,
-synchronization, dynamic range, and failure behavior. Its scientific value
-therefore depends on locating these effects in the signal chain and tracing
-their influence on both outcomes.
+Table~\ref{tab:research_roadmap} identifies five research questions arising from
+the reviewed mechanisms and validation limits. The proposed tests distinguish
+an achievable operating point from the range of conditions over which that
+point remains useful. They are prospective experiments, not additional results
+of the review.
 
-Tradeoff patterns transfer across studies when tasks, metric definitions,
-measurement planes, baselines, constraints, and validation settings remain
-aligned. This alignment allows model bounds and empirical operating points to
-retain their distinct roles and support comparison within a stated context
-\cite{Khorasgani2026GeneralOpticalISACSurvey,Rode2025PolarizationISAC}.
-
-Fielded cable and network studies illustrate the value of operational
-continuity
-\cite{Cao2026SubmarineFiberISAC,Ip2026DeployedTelecomCableISAC}. Within the
-survey, system evidence becomes reusable when configuration, calibration,
-processing, and reported artifacts remain connected across interfaces. This
-continuity links physical sharing to application and network claims and
-motivates a central research task. Joint operating points should remain
-interpretable, testable, and reusable across groups.
-
-\subsection{Research Priorities for Reusable Evidence}
-
-Table~\ref{tab:research_roadmap} organizes five priorities and pairs each
-observed finding with an action and a measurable sign of progress.
-
-\begin{table}[!t]
-\caption{Research priorities derived from the reviewed evidence}
+\begin{table*}[!t]
+\caption{Testable research questions derived from the reviewed mechanisms and
+validation limits}
 \label{tab:research_roadmap}
 \centering
 \footnotesize
-\setlength{\tabcolsep}{2.4pt}
-\renewcommand{\arraystretch}{1.02}
-\begin{tabularx}{\columnwidth}{@{}
->{\raggedright\arraybackslash}p{0.20\columnwidth}
->{\raggedright\arraybackslash}X
->{\raggedright\arraybackslash}p{0.30\columnwidth}@{}}
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}
+>{\raggedright\arraybackslash}p{0.19\textwidth}
+>{\raggedright\arraybackslash}p{0.23\textwidth}
+>{\raggedright\arraybackslash}p{0.32\textwidth}
+>{\raggedright\arraybackslash}X@{}}
 \toprule
-Priority & Finding and proposed action & Evidence of progress \\
+Research question & Evidence motivating the test & Controlled test & Informative outcome \\
 \midrule
-\textbf{1. Measurement contract} &
-\emph{Finding.} Of 4,779 metric records, 118 supported bounded relations under
-aligned conditions. \emph{Action.} Record the task, plane, unit, baseline,
-operating condition, validation setting, and source locator. &
-An independent reader reconstructs the quantity and condition from a structured
-record. \\
-\addlinespace[1.5pt]
-\textbf{2. Benchmark for each modality} &
-\emph{Finding.} Comparison across studies depends on matched physical context.
-\emph{Action.} Repeat one task with reference and independent designs under
-shared calibration and ground truth. &
-Independent groups reproduce the relative finding under the shared protocol. \\
-\addlinespace[1.5pt]
-\textbf{3. Joint operation under disturbance} &
-\emph{Finding.} Of 402 substantive tradeoff relationships, 371 depend on
-reported conditions. Six of 12 field or deployment tier studies report
-outcomes in both domains. Traceability is strongest when both outcomes share
-the same timing and condition set.
-\emph{Action.} Evaluate both functions in the same run and condition set under
-load, a disturbance relevant to the modality, and matched baselines for the
-individual functions. &
-Repeated trials recover the joint region and its limiting mechanism. \\
-\addlinespace[1.5pt]
-\textbf{4. Reconstructable experiment package} &
-\emph{Finding.} Open data appear in 13 of 206 studies, and code or model access
-reaches a partial release in one. \emph{Action.} Preserve a versioned package
-and rerun the main comparison under one added condition. &
-An independent rerun recovers the comparison and added condition from the
-package. \\
-\addlinespace[1.5pt]
-\textbf{5. Intelligence, scale, and security} &
-\emph{Finding.} Technology and application coverage connects the corpus to 6G
-roles. Conformance, interoperability, and readiness become measurable through
-explicit network tests. \emph{Action.} Apply a declared shift, attack, load, or
-component failure and report overhead, resource use, decisions, and fallback. &
-The service retains an explainable boundary with resource use, decisions, and
-fallback recorded. \\
+Which resource limit determines the joint gain? & Probe power and pilot
+allocation alter sensing support and communication impairment
+\cite{OISAC_SCR00057,OISAC_SCR00007}. & Sweep probe fraction or pilot occupancy
+under declared power and bandwidth budgets; compare joint and separate-function
+baselines, measuring both outputs in each run. & The operating region and the
+interference, reference, or resource constraint that limits it. \\
+\addlinespace[2pt]
+How robust is a shared optical reference? & Coherent sensing and photonic
+dechirping depend on reference and receiver behavior
+\cite{OISAC_SCR00647,OISAC_SCR01000}. & Introduce calibrated drift or timing
+mismatch, holding the task and processing definition fixed; repeat paired
+communication and sensing measurements. & The disturbance at which one
+function fails first and whether compensation restores both. \\
+\addlinespace[2pt]
+When does sensing-assisted control repay its overhead? & Radar-guided alignment
+and robotic queues connect observations to subsequent service
+\cite{OISAC_SCR00502,OISAC_SCR00910}. & Vary motion, observation age, and control
+load; compare adaptive and reference operation with acquisition and update
+time included. & The conditions under which delivered service improves,
+and the delay or recovery boundary where the gain disappears. \\
+\addlinespace[2pt]
+Do learned joint functions survive a change of conditions? & Shared-link
+inference and classifier size connect estimation quality to processing cost
+\cite{OISAC_SCR00949,OISAC_SCR01047}. & Apply a declared geometry, channel, or data
+shift; measure both outputs, inference delay, adaptation cost, and fallback
+against a fixed reference. & The range over which both functions remain useful
+and the resource cost of recovering from shift. \\
+\addlinespace[2pt]
+Can a relative design advantage be reproduced under service load? & Field
+coverage, artifact access, and transport capacity leave distinct validation
+gaps \cite{OISAC_SCR00436,OISAC_SCR01049}. & Independently reconstruct one
+modality-specific task with common calibration and baselines; vary traffic
+and one physical disturbance during the same paired test. & Agreement or
+disagreement on the relative result, its limiting mechanism, and the load
+at which an application requirement fails. \\
 \bottomrule
 \end{tabularx}
-\vspace{1pt}
-\parbox{\columnwidth}{\raggedright\footnotesize\emph{Note.} The findings
-summarize the retained corpus presented in Sections~\ref{sec:optical_modality_families}
-through \ref{sec:technologies_applications_6g}. The proposed actions retain the
-physical conditions of each modality and define observable signs of progress.\par}
-\end{table}
+\end{table*}
 
-The order matters because each stage uses evidence produced by the previous
-one. Clear measurement context supports fair benchmarks. Benchmarks support
-realistic joint tests. Reconstructable artifacts make those tests repeatable,
-and repeatable tests provide a basis for adaptive and secure evaluation at
-network scale.
+These experiments require perturbations that act on the native signal path.
+Fiber tests can vary topology, traffic, or the sensed disturbance; VLC tests
+can vary illumination and orientation; FSO tests can vary pointing and
+atmosphere. Photonic terahertz tests should separate optical drift from changes
+in wireless propagation before combining them. This separation helps explain
+whether the observed loss of joint performance follows from the proposed
+coupling mechanism or from a different component. Repeated paired trials
+then show the variability of the operating region under the stated conditions.
 
-Stress tests should follow the native signal path of each modality. Fiber tests
-can vary topology and traffic, free space optical tests can vary geometry and
-atmosphere, and visible light tests can vary illumination and orientation.
-Photonic terahertz tests can vary optical drift together with wireless
-propagation. Matched baselines for the individual functions keep the limiting
-mechanism visible across these settings.
+The result remains useful if integration provides no net gain. For example,
+if sensing-assisted alignment improves a static link but its update delay
+erases the advantage during motion, the crossover defines when the control
+method is appropriate. Likewise, a shared reference that improves one output
+while destabilizing the other identifies a need for compensation, a different
+allocation, or partial separation. Such findings turn a performance comparison
+into a design rule with an explicit range of validity.
 
-For standards and 6G coordination, the same sequence can support a core
-reporting profile that preserves modality physics, ground truth, and reusable
-benchmark definitions. Shared metadata can connect results across platforms
-while retaining the conditions needed for interpretation.
+\subsection{Building Comparable Tests Across Groups and Networks}
+
+Independent comparisons need a common task within a physical modality, a
+reference design, calibration and ground truth, and sufficient artifacts to
+recover the reported processing. Agreement should concern the relative result
+and its conditions, with model bounds and empirical measurements retaining
+their different meanings. Such a test supplies evidence of transfer through
+an independently executed comparison.
+
+At network scale, the experiment also needs the load, timing, and resource
+use of the intended role. Transporting observations, updating a model, or
+steering a beam can consume the resources that create the apparent subsystem
+benefit. Fielded cable and network work illustrates the importance of
+operational continuity \cite{Cao2026SubmarineFiberISAC,Ip2026DeployedTelecomCableISAC}.
+Future tests can connect that continuity to the sensing decision and include
+recovery from a component failure or corrupted observation. The resulting
+benchmarks would support discussion of network requirements while preserving
+the propagation and measurement conditions of each platform.
 
 \subsection{Scope and Limitations of the Review}
 
-The publication window, language requirements, and search coverage described
-in Section~\ref{sec:review_methods} define the literature represented by the
-206 studies. Full texts were available and assessed for 272 of the 330 reports
-sought, corresponding to 82.4\% retrieval coverage. Findings from unavailable
-reports may therefore be absent from the synthesis. Selection involved
-investigator judgment without routine independent duplicate review;
-Electronic Supplement S-Protocol documents the review conduct.
+The publication window, language requirements, and search sources in
+Section~\ref{sec:review_methods} delimit the literature represented here.
+Full texts were assessed for 272 of 330 sought reports, or 82.4\%; findings
+from unavailable reports may be absent. Selection involved investigator
+judgment without routine independent duplicate assessment. The scientific
+methods supplement documents these limitations and the review conduct.
 
-TQAF provides a technical appraisal developed for this review. The diversity
-of tasks, quantities, validation settings, outcomes, and source protocols
-supports structured narrative synthesis, which preserves native conditions and
-bounded comparisons. This analytical scale centers interpretation on reported
-mechanisms and conditions. Harmonized outcomes and source protocols form the
-appropriate basis for pooled effects, sensitivity estimates, and causal
-moderator analysis.
-
-The multilabel taxonomy incorporates reviewer judgment, especially for hybrid
-systems. Row counts represent coded observations at extraction granularity,
-while effect analysis uses a different unit. For 92 metric rows, the available
-fields supported interpretation within the source setting and a conservative
-comparison status. Artifact access combined source reporting with targeted link
-checks, so the appraisal reflects documented reconstruction information.
-
-The conclusions concern recurring mechanisms, measurement constraints, and
-validation patterns within the retained corpus. Corpus distributions describe
-the reviewed literature. Worldwide prevalence, market maturity, and platform
-rank require evidence designed for those questions. Within its stated scope,
-the review identifies the conditions that allow optical integration to support
-transferable joint results.
+TQAF is a review-specific appraisal that has not been independently validated.
+Hybrid-system classification and thematic synthesis also involve judgment.
+Differences in tasks, metrics, measurement planes, and source protocols
+prevented a common pooled effect model. No meta-regression, formal
+publication-bias assessment, or formal sensitivity analysis was performed.
+The synthesis therefore supports interpretation of reported mechanisms and
+conditions, rather than a universal effect, platform ranking, or estimate of
+worldwide technological maturity. These limits bound the proposed research
+priorities to the gaps identified in the retained literature.

@@ -1,90 +1,73 @@
-# Güncel durum — 14 Eylül 2026
-
-Bu dosya, eski hafıza ve reçetelerden önce okunacak devir özetidir.
-Canlı metin ve en son kullanıcı kararı her zaman esas alınır.
+# Güncel durum — 16 Eylül 2026
 
 ## Nerede kaldık?
 
-Makale sekiz ana bölüme indirildi. Ayrı yöntem bölümü kaldırıldı; kısa Review
-Methodology anlatısı Introduction I-C'ye taşındı. Güncel okuma kopyası
-[review.pdf](../output/pdf/review.pdf), 29 sayfadır. Ayrıntılı uygulama kaydı
-[review.md](../governance/review.md), onaylanan plan ise
-[plan.md](maps/s3/plan.md) içindedir.
+Tüm makale, yazarın 16 Eylül talimatıyla fiziksel paylaşım → tasarım değişkeni →
+iki işlevin sonucu → doğrulama → uygulama → araştırma sorusu akışında yeniden
+işlendi. Çalışma dalı **`rev/flow-20260916`**; bu dal henüz yereldir.
+Güncel okuma kopyası [flow.pdf](../output/pdf/flow.pdf), **20 sayfa**.
+[Karşılaştırma](../compare.md), [metin farkı](../archive/text.diff) ve
+[önceki sürüm arşivi](../archive/base.zip) birlikte korunur. Referans commit
+`0d5d6f869336266fde80d8e9ad829108c29b1c7e`; önceki dal değiştirilmedi.
 
-| Güncel bölüm | İşlev / kaynak |
+| Bölüm | Güncel görev |
 |---|---|
-| I — Introduction | Mühendislik problemi, önceki survey'ler, I-C yöntem özeti, katkılar ve organizasyon; `01_INTRODUCTION.tex` |
-| II — Technical Foundations of O-ISAC | Sinyal yolları, paylaşılan kaynaklar, metrikler ve ortak çalışma noktaları; `02_...tex` |
-| III — Optical Platforms and Integration Architectures | `04_...tex` |
-| IV — Performance Metrics and Joint Design Tradeoffs | `05_...tex`; extraction koşulları ve claim düzeyindeki çatışmalar korunur |
-| V — Validation Evidence, Reconstructability, and Benchmark Readiness | `06_...tex`; TQAF tanımı ve profili buradadır |
-| VI — Enabling Technologies, Application Requirements, and 6G Network Evidence | `07_...tex` |
-| VII — Discussion, Research Roadmap, and Limitations | `08_...tex`; yöntemsel sınırlar korunur |
-| VIII — Conclusion | `09_CONCLUSION.tex` |
+| I — Introduction | Motivasyon, önceki survey'ler, kısa I-C yöntemi ve teknik katkılar |
+| II — Technical Foundations of O-ISAC | Sinyal yolu, paylaşım, ölçüm anlamı ve ortak çalışma noktası |
+| III — Optical Platforms and Architecture Choices | Fiziksel yolun mümkün kıldığı tasarım tercihleri |
+| IV — Shared Design Choices and Joint Performance | Kaynak/zaman, güç, geometri ve işleme değişikliklerinin iki çıktıya etkisi |
+| V — Joint Validation Under Realistic Conditions | Deney ortamı, iki işlevde saha kanıtı, deneyin yeniden kurulması |
+| VI — Application Requirements and Network Operation | Trafik, hareket, kestirim yaşı, öğrenme ve ağ işletimi |
+| VII — Research Questions and Evaluation Priorities | Kanıttan türetilen beş sınanabilir soru ve incelemenin sınırları |
+| VIII — Conclusion | Koşullara bağlı mühendislik bulgusu ve bundan sonraki deneyler |
 
-Kaynak dosyası numaraları ile güncel bölüm numaraları farklıdır. Sıralamanın
-otoritesi [MANUSCRIPT_BODY_INPUTS.tex](../manuscript/MANUSCRIPT_BODY_INPUTS.tex)
-dosyasıdır; sırf isimleri eşitlemek için dosyaları yeniden adlandırmayın.
+Dosya numaraları tarihsel kaldı; gerçek sıralama
+[MANUSCRIPT_BODY_INPUTS.tex](../manuscript/MANUSCRIPT_BODY_INPUTS.tex) içindedir.
+Eski ayrı yöntem bölümü geri gelmedi. I-C kısa kaldı; işlem geçmişi ve cover-letter
+anlatısı ana metne girmedi.
 
-## Tamamlanan iyileştirmeler
+## Şekiller, tablolar ve supplement
 
-- Introduction katkıları teknik sorular etrafında kuruldu; önceki survey
-  karşılaştırmaları ve anlatı geliştirildi. Kullanıcının son kararıyla yöntem
-  tarih/sayıları I-C'de yer alır; katkı iddiası olarak kullanılmaz.
-- Section II fiziksel yol → paylaşılan kaynak → ölçüm anlamı → çalışma noktası
-  sırasına göre yeniden yazıldı. Optik/RF ayrımı, OSNR/elektriksel SNR,
-  çözünürlük/hata/bound ve ayrı deney/ortak çalışma noktası ayrımları korundu.
-  Onaylı ikonlu figürler ve bant genişliği–çözünürlük figürü yerleştirildi.
-- Eski III-A'nın geliştirilmesi ve eski Fig. 5 aralık düzeltmesi 12 Eylül'deki
-  ara aşamaydı. 14 Eylül'de kısa yöntem özeti I-C'ye, ayrıntılar supplement'e
-  taşındı. Eski `s3a.pdf` ve o tarihteki Fig. 5 numarası güncel değildir.
-- Seçim akışı şimdi Fig. 2'dir (`selection.svg` / `.pdf`). TQAF profili güncel
-  Section V / Fig. 8 içindedir. Eski analiz birimleri tablosu Table S1 olarak
-  [methods.md](../supplement/methods.md) içindedir.
-- Aktarım sırasında frozen v10 taşıyıcıları
-  [supplement/v10](../supplement/v10/) altına eksiksiz kopyalandı ve
-  [supplement index](../supplement/index.md) taşınabilir bağlantılara çevrildi.
-  Özgün v10 dosyaları değişmedi; hash manifestleri korunur.
+Makale 5 şekil ve 7 tablo içeriyor. Seçim akışı Fig. 1 olarak korunur.
+Fig. 2–5 sırasıyla `paths`, `sharing`, `coupling`, `validation` dosyalarıdır:
+gömülü yazı tipleri olan PDF ve düzenlenebilir SVG, raster nesne yok.
+En küçük şekil metni 7.5 pt; eski varlıklar arşivde ve Git geçmişinde korunur.
 
-## Bilimsel sınırlar ve kararlar
+Ayrıntılı metrik/ilişki, TQAF, yöntem, teknoloji ve uygulama profilleri
+[profiles.pdf](../output/pdf/profiles.pdf) içindedir. Kaynakları
+`supplement/driver.tex`, `core.tex`, `late.tex`; bilimsel yöntem anlatısı
+[methods.md](../supplement/methods.md), tüm taşıyıcılar
+[index.md](../supplement/index.md) üzerinden erişilir.
 
-227 uygun rapor = 206 çalışma + 21 companion report. 8,203 primary coding
-record, 4,779 metric record ve 402 substantive relationship aynı birim değildir.
-404 tradeoff kaydının ikisi tradeoff yokluğunu kaydeder. 115 synthesis group'un
-111'i substantive'dır. Bunlar tek bir havuzlanmış etki veya karşılaştırma sayısı
-olarak sunulmaz. 118 conditional candidate, doğrulanmış cross-study comparison
-anlamına gelmez. RC1 kanıt kilitleri kendi sınırlı kapsamlarıyla okunmalıdır.
+## Korunan bilimsel sınırlar
 
-TQAF sekiz boyut ve ayrı overall contribution içerir; GRADE veya standart
-risk-of-bias değerlendirmesinin yerine geçmez. Fiilî insan/AI iş akışı,
-retrospektif kayıt geçmişi, rutin bağımsız çift değerlendirme ve yapılmayan
-analizlere ilişkin sınırlar supplement'te korunur. Cover-letter savunusu ve
-iç QA anlatısı bilimsel metne taşınmaz.
+227 rapor / 206 çalışma; 4,779 metrik; 404 tradeoff kaydının 402'si substantive.
+118 kayıt koşullu karşılaştırma adayıdır, doğrulanmış bağımsız çalışmalar arası
+karşılaştırma değildir. Sayımların ayrıntısı supplement'tedir.
+12 saha/deployment çalışmasının altısı iki işlevde de o düzeyde çıktı raporlar;
+bu sayılar eşzamanlı ortak çalışmayı kanıtlamaz. TQAF incelemeye özgüdür ve
+bağımsız doğrulanmış değildir. Frozen `supplement/v10` dosyaları değişmedi.
 
-## Açık işler
+SCR00057 güç süpürmesi iletişim launch gücünü sabit tutar; toplam güç sabit
+değildir. Ayrı pre-compensation kazancı 2.4 dB'dir. SCR00083'te alıcı
+konfigürasyonları, sweep/occupied bandwidth ve çözünürlük/hata ayrıdır.
+SCR00007 pilot hatası hedef-konum hatası değildir. VI'daki kestirim yaşı ve
+hareket açısı denklemleri açık varsayımlı öğretici kinematiktir; corpus verisine
+fit edilmiş sonuç değildir.
 
-1. **Birlikte OSF güncellemesi:** v10 kaynakları artık GitHub kopyasında var.
-   V3 supplement anlatısı ve son makaleyle sürüm uyumunu değerlendirip OSF
-   taşıyıcılarını güncellemek, erişimi ve makaledeki bağlantıyı doğrulamak kaldı.
-   Metindeki final-state arşiv cümlesi yazarın açık isteğiyle kullanılmıştır;
-   bu cümle uzaktaki arşivin güncellendiğini kanıtlamaz. Bu aktarım OSF'ye yazmaz.
-2. Bağımsız tamamlanmış bir PRISMA checklist bulunmuş değildir. Mevcut
-   reporting-location haritası checklist veya tam uyum onayı diye sunulmaz.
-3. Yeni kullanıcı göreviyle kalan teknik bölümlere geçilebilir. Son turdaki
-   geçiş/TQAF/limit düzeltmeleri bütün sonraki bölümlerin yeniden yazıldığı
-   anlamına gelmez. Bilimsel son okuma ve yazar onayı ayrı aşamalardır.
-4. Eski kaynak profillerindeki COMST031 dışlama/DOI atfı tarihsel ve çözülmemiş
-   metadata sorunudur. Yeni doğrulama yapılmadan kesin corpus kuralına dönüştürmeyin.
+## Kontrol ve açık işler
 
-## Kontrol durumu
+[QA](../governance/qa/flow/result.json): temiz kaynak/atıf/bağlantı kontrolleri;
+son makale SHA-256 `38b21adb5a55126176d3006ab6f80c059d9c6efd490093b5778a98664ee4a6b0`. Bütün sayfa incelemesi
+`governance/qa/flow/paper/visual_checks.json` ile aynı hash'e bağlanır.
+`python handoff/verify.py` frozen taşıyıcıları ve güncel PDF hash'ini denetler.
 
-14 Eylül kayıtlı QA: 29 sayfa, tüm sayfaların contact-sheet incelemesi ve
-etkilenen sayfaların ayrıntılı incelemesi; undefined citation/reference,
-duplicate label, missing figure/character veya overfull yok. Underfull
-uyarıları kayıtlıdır. [QA sonucu](../governance/qa/review/result.json)
-ve [figür kontrolü](../governance/qa/review/selection.json) korunur.
-
-Okuma kopyasının SHA-256 değeri:
-`f2e99ccbd1ea7068eb970fa99cc61a8bbf69672c4cf203b707cfb5c1aba7e84d`.
-Aktarım kontrolleri `checks.json` içinde kaydedilir. Teknik kontrol sonuçları
-insan bilimsel incelemesi veya submission-ready kararı değildir.
+1. Yazar bu sürümü okuyacak; teknik QA, yazarın bilimsel onayı değildir.
+2. OSF güncellemesi önceden kararlaştırılan ayrı ortak iştir. Makaledeki
+   yazar-onaylı final-state arşiv cümlesi uzaktaki güncellemeyi kanıtlamaz.
+3. Güncel raporlama-konumu haritası [flow.md](../governance/flow.md) içindedir;
+   tamamlanmış bağımsız PRISMA checklist diye sunulmaz.
+4. GitHub'a bu yeni dalın aktarılması ayrı adımdır. Eski dal/commit arşiv
+   referansıdır; ham sohbetler veya global Codex ayarları bu pakete alınmadı.
+5. Tarihsel COMST031 metadata sorunu bu revizyonda yeni bir corpus taramasına
+   dönüştürülmedi.

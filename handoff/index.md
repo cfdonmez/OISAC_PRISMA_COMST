@@ -6,7 +6,8 @@ Aşağıdaki ayrıntılar yalnız ilgili görev için açılmalıdır.
 
 | İhtiyaç | Konum |
 |---|---|
-| Güncel makale / okuma kopyası | [manuscript](../manuscript/), [review.pdf](../output/pdf/review.pdf) |
+| Güncel makale / okuma kopyası | [manuscript](../manuscript/), [flow.pdf](../output/pdf/flow.pdf) |
+| Bütün-makale revizyonu ve karşılaştırma | [compare.md](../compare.md), [flow.md](../governance/flow.md), [base.zip](../archive/base.zip) |
 | V3 reçeteleri, figür promptları, uygulama geçmişi | [governance](../governance/) |
 | Yöntemlerin yeni yerleşimi ve açık OSF işi | [review.md](../governance/review.md), [plan.md](maps/s3/plan.md) |
 | Bilimsel supplement ve kaynak taşıyıcıları | [methods.md](../supplement/methods.md), [index.md](../supplement/index.md), [v10](../supplement/v10/) |
@@ -31,7 +32,7 @@ Aşağıdaki ayrıntılar yalnız ilgili görev için açılmalıdır.
 halleriyle korunur. Eski Section III/V/IX numaraları, erken corpus sayıları,
 prospektif planlar, GRADE taslakları veya figür üretim yasakları güncel kararı
 otomatik olarak değiştirmez. Eski mimari adayının adı bir onay değildir.
-14 Eylül yöntem yerleşimi ve en son yazar talimatı esas alınır.
+16 Eylül bütün-makale revizyonu ve en son yazar talimatı esas alınır.
 
 V10 kaynakları frozen snapshot'tır. PRISMA know-how, gerçek uygulanmış süreç
 kaydıyla birlikte okunur. Eski raporlama uyum matrisi tamamlanmış güncel PRISMA
@@ -69,4 +70,4 @@ Eski analiz betikleri de yerel kaynak yolları içerebilir; otomatik çalıştı
 yazar. Yeniden çalıştırılması sonradan eklenen görsel inceleme kanıtlarını
 silebilir. Yeni doğrulamayı ayrı sonuç dosyasına yazın; kayıtlı QA'yı koruyun.
 `output/pdf` içindeki eski sürümler ve `governance` yedekleri tarihsel kanıttır;
-güncel okuma kopyası yalnız `review.pdf` olarak belirtilmiştir.
+güncel okuma kopyası `flow.pdf` olarak belirtilmiştir. Eski `review.pdf` referans sürümdür.

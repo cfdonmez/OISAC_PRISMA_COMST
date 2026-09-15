@@ -1,0 +1,3054 @@
+diff --git a/manuscript/sections/00_ABSTRACT.tex b/manuscript/sections/00_ABSTRACT.tex
+index c7dd21a..12002e9 100644
+--- a/manuscript/sections/00_ABSTRACT.tex
++++ b/manuscript/sections/00_ABSTRACT.tex
+@@ -1,28 +1,28 @@
+ \begin{abstract}
+-Light carries data and signatures of the path and objects it encounters,
+-allowing the same optical infrastructure to support communication and sensing.
+-Optical integrated sensing and communication (O-ISAC) builds on this dual
+-capability across fiber, free space optical, visible light, and light fidelity
+-(LiFi) platforms. Photonic hardware extends the concept to millimeter wave and
+-terahertz systems, while hybrid designs connect physical domains. This breadth
+-motivates comparison of the design insights that extend
+-across platforms and those tied to a particular physical setting. A systematic
+-literature search covering 1 January 2020 through 22 June 2026 identified 227
+-eligible reports representing 206 unique studies. We organized this evidence by
+-physical platform and coupling mechanism using structured narrative synthesis
+-and a technical assessment developed for this review. The comparison framework
+-connects each result to its task, measurement plane, operating conditions, and
+-validation setting. Across the included corpus, bandwidth, optical power,
+-hardware constraints, and signal design jointly shape communication reliability
+-and sensing performance. These relationships depend on reported conditions and
+-extend beyond a single rate and resolution frontier. Laboratory studies span
+-diverse architectures. Broader field validation, shared benchmarks, and
+-reusable data and code emerge as priorities for stronger comparison and
+-reconstruction. The resulting taxonomy and framework support the design and
+-evaluation of O-ISAC systems for sixth generation (6G) networks.
++Optical integrated sensing and communication (O-ISAC) reuses optical
++infrastructure, signals, or hardware to transmit data and observe a physical
++environment. Its implementations span guided fiber, optical wireless, and
++photonics-enabled millimeter-wave and terahertz links, whose different sensing
++paths complicate the interpretation of reported performance. This systematic
++review synthesizes 227 eligible reports representing 206 studies published
++from January 2020 through June 2026. We connect each architecture's shared
++resource to the design variable, physical mechanism, and communication and
++sensing outcomes it affects, retaining source-specific measurement and
++validation conditions. The synthesis identifies distinct routes to joint
++performance: reference allocation can reduce payload opportunity; increased
++probe power can improve sensing while impairing data recovery; and interference
++suppression or sensing-guided steering can support communication without the
++same resource exchange. These mechanisms explain why separately reported peak
++rates and sensing errors cannot define a common performance frontier. Laboratory
++and prototype evidence is broad, but only 12 studies reach field or deployment
++settings, with six reporting outcomes in both functional domains at that level.
++That coverage alone does not establish concurrent joint operation. We derive
++application-specific tests of traffic continuity, motion, optical drift, and
++inference cost, using paired measurements and separate-function baselines to
++determine when a demonstrated subsystem benefit remains useful in a network.
+ \end{abstract}
+ 
+ \begin{IEEEkeywords}
+-6G, integrated sensing and communication, metric comparability, optical
+-communication, optical sensing.
++6G, integrated sensing and communication, optical communication, optical
++sensing, resource allocation, systematic review.
+ \end{IEEEkeywords}
+diff --git a/manuscript/sections/01_INTRODUCTION.tex b/manuscript/sections/01_INTRODUCTION.tex
+index 13c9396..5734478 100644
+--- a/manuscript/sections/01_INTRODUCTION.tex
++++ b/manuscript/sections/01_INTRODUCTION.tex
+@@ -23,21 +23,10 @@ medium or reaches the receiver or target
+ In photonics-enabled wireless systems, optical components can generate the signal,
+ while propagation to the target occurs in the millimeter-wave or terahertz band
+ \cite{OISAC_SCR00036,OISAC_SCR00083}.
+-Figure~\ref{fig:oisac_platform_overview} illustrates these physical settings
+-and the resources used by both functions.
+-Its common design question is how choices of power and waveform, together
+-with timing and receiver design, affect communication and sensing performance.
+-
+-\begin{figure*}[!t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/fig_introduction_oisac_platforms.png}
+-\caption{Representative O-ISAC configurations in fiber, free-space optical,
+-visible-light, and photonics-enabled terahertz systems. Each panel identifies
+-a shared resource, the two functions it supports, and a representative physical
+-constraint. The lower panel highlights power and waveform choices alongside
+-timing and receiver design as common design considerations.}
+-\label{fig:oisac_platform_overview}
+-\end{figure*}
++The common design question is how the shared resource changes the signal
++available to each receiver, and therefore the communication and sensing
++performance. Section~\ref{sec:signal_paths_observations} develops these paths
++in one physical diagram.
+ 
+ Shared operation can introduce a tradeoff or allow one function to assist the
+ other. In one fiber experiment, raising the sensing-probe power while holding
+@@ -46,17 +35,13 @@ but increased the communication bit error rate \cite{OISAC_SCR00057}.
+ In a visible-light prototype, position estimates guided beamforming toward the
+ receiver and improved the communication data rate at the tested locations
+ \cite{OISAC_SCR00196}.
+-The fiber result illustrates a power-dependent tradeoff, whereas the
+-visible-light result shows how sensing information can guide transmission.
+ 
+-A researcher selecting an O-ISAC approach needs to know which integration
+-mechanism fits the application and how it affects both functions.
+-Reported rates and sensing errors become useful for that choice when they
+-are linked to the shared design and its operating conditions.
+-These links can explain why a method is effective in one setting and what
+-must be tested before adapting it to another.
+-A synthesis of the literature should therefore connect physical architectures
+-to joint performance and to the experiments needed for further development.
++These different responses make resource reuse an insufficient basis for
++selecting an architecture. The relevant question is which physical mechanism
++connects the two outcomes and whether it remains useful under the application's
++power, geometry, traffic, and timing constraints. This survey follows that
++connection from architecture through performance and validation to the tests
++needed for further development.
+ 
+ \subsection{Related Surveys}
+ \label{sec:related_surveys}
+@@ -222,15 +207,13 @@ We analyze how shared infrastructure, signals, and design objectives connect
+ communication and sensing, and how these connections shape joint performance.
+ 
+ \begin{itemize}
+-\item \begin{minipage}[t]{\linewidth}
+-\textbf{A physical basis for selecting an O-ISAC design.}
++\item \textbf{A physical basis for selecting an O-ISAC design.}
+ We distinguish platforms by their sensing paths and identify how hardware,
+ signals, and allocated resources connect the two functions. This explains
+ which integration mechanisms fit a given physical setting and which
+ constraints must be considered when adapting them
+ (Sections~\ref{sec:foundations_comparison}
+ and~\ref{sec:optical_modality_families}).
+-\end{minipage}
+ 
+ \item \textbf{A common basis for interpreting performance.}
+ We relate waveform and receiver choices, together with resource allocation,
+@@ -254,5 +237,3 @@ concepts used in the review. Sections~\ref{sec:optical_modality_families}
+ through~\ref{sec:technologies_applications_6g} examine platforms, joint design,
+ validation, and applications. Section~\ref{sec:discussion_roadmap} develops the
+ research priorities, and Section~\ref{sec:conclusion} concludes the article.
+-
+-\FloatBarrier
+diff --git a/manuscript/sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex b/manuscript/sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex
+index 736f39d..261de09 100644
+--- a/manuscript/sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex
++++ b/manuscript/sections/02_FOUNDATIONS_AND_COMPARISON_FRAMEWORK.tex
+@@ -5,9 +5,6 @@ The physical interaction that enables sensing also determines how it can
+ share resources with communication. This section follows the signal from
+ that interaction to the receiver, then explains the optical constraints on
+ sharing and the measures used to evaluate both functions.
+-Numerical examples show how a shared setting connects the resulting
+-performance, providing a basis for the architectures and design relationships in
+-Sections~\ref{sec:optical_modality_families} and~\ref{sec:tradeoffs}.
+ 
+ \subsection{Signal Paths and Sensing Observations}
+ \label{sec:signal_paths_observations}
+@@ -32,7 +29,7 @@ estimators even when they share optical components
+ 
+ \begin{figure*}[!t]
+ \centering
+-\includegraphics[width=\textwidth]{figures/fig_section2_signal_paths_icons_2026-09-10.png}
++\includegraphics[width=\textwidth]{figures/paths.pdf}
+ \caption{Conceptual signal paths and measurement locations in O-ISAC.
+ Panel (a) shows alternative fiber and free-space optical paths with direct
+ or coherent reception. Sensing observations may use forward light,
+@@ -40,9 +37,11 @@ backscatter, reflections, or spatial intensity.
+ Panel (b) separates optical generation from radio-frequency (RF) propagation
+ and distinguishes communication and target-interaction paths.
+ Receiver icons represent functional roles with shared or separate hardware.
++Panel (a) illustrates a laser and external modulator; an intensity-driven LED
++can supply the optical waveform in an IM/DD implementation.
+ Markers identify launch and received optical power, optical signal-to-noise
+ ratio (OSNR) before photodetection where applicable, electrical signal-to-noise
+-ratio (SNR) after receiver processing, and bit error rate (BER) at data recovery.}
++ratio (SNR) at the stated electrical receiver plane, and bit error rate (BER) at data recovery.}
+ \label{fig:joint_evidence_anatomy}
+ \end{figure*}
+ 
+@@ -94,14 +93,15 @@ hardware constraints determine the waveform that can occupy them.
+ 
+ \begin{figure*}[!t]
+ \centering
+-\includegraphics[width=\textwidth]{figures/fig_section2_resource_sharing_icons_2026-09-11.png}
++\includegraphics[width=\textwidth]{figures/sharing.pdf}
+ \caption{Conceptual time-frequency allocations for communication and sensing.
+ Panel (a) assigns different time slots to the two functions.
+ Panel (b) assigns separate frequency bands, with a guard band shown in this
+ example. Panel (c) uses one waveform within a shared allocation.
+-The axes $t$ and $f$ denote time and frequency, and C and S denote
+-communication and sensing. Icons identify the functions, while rectangles
+-indicate allocated resources. Equal panel dimensions serve the illustration
++The horizontal and vertical axes denote time and frequency; C and S denote
++communication and sensing. Source and detector icons indicate a shared
++optical link, while rectangles indicate allocated resources.
++Equal panel dimensions serve the illustration
+ and do not assert equal bandwidth or performance.}
+ \label{fig:resource_sharing}
+ \end{figure*}
+@@ -182,21 +182,6 @@ The resolution expression assumes a calibrated, bandwidth-limited delay
+ response. Windowing, processing, and target conditions influence practical
+ separation. A fiber delay model requires the appropriate propagation speed
+ in the medium.
+-Figure~\ref{fig:bandwidth_resolution} shows this physical scale using the
+-6.2~GHz sweep reported in a photonic-THz experiment
+-\cite{OISAC_SCR00083}.
+-
+-\begin{figure}[!t]
+-\centering
+-\input{figures/fig_section2_bandwidth_resolution.tex}
+-\caption{Calculated nominal range resolution for an ideal two-way,
+-bandwidth-limited measurement in air. The curve uses
+-$\Delta r=c/(2B_{\mathrm{s}})$. The marked 6.2~GHz sweep corresponds to
+-approximately 2.4~cm, as reported for the waveform in
+-\cite{OISAC_SCR00083}. The calculation describes the nominal separation scale
+-for two targets.}
+-\label{fig:bandwidth_resolution}
+-\end{figure}
+ 
+ Estimation error answers how closely an estimated parameter matches its
+ reference value. For $N$ range estimates, the root mean square error (RMSE) is
+@@ -207,8 +192,8 @@ reference value. For $N$ range estimates, the root mean square error (RMSE) is
+ \end{equation}
+ Here, $\hat r_i$ is the estimated range and $r_i$ is its reference value for
+ observation $i$, with both expressed in the same units.
+-A maximum absolute error describes a different statistic. The same
+-6.2~GHz experiment reports a maximum ranging error of 0.55~cm for static
++A maximum absolute error describes a different statistic. For example, a 6.2~GHz sweep gives a nominal resolution of about 2.4~cm,
++whereas the experiment reports a maximum ranging error of 0.55~cm for static
+ targets at 20--45~cm \cite{OISAC_SCR00083}. This smaller error is consistent
+ with estimating one target more precisely than the nominal separation scale
+ for two targets. Practical resolution is established through a two-target
+@@ -256,96 +241,56 @@ measured operating points. The distinction preserves the contribution of
+ each experiment while identifying which values can be interpreted together.
+ 
+ \begin{table*}[!t]
+-\caption{Representative O-ISAC configurations and the physical meaning of
+-their reported performance measures}
++\caption{Three examples of metric interpretation under source-specific test conditions}
+ \label{tab:section2_quantitative_examples}
+ \centering
+-\begingroup
+ \footnotesize
+-\setlength{\tabcolsep}{4pt}
+-\renewcommand{\arraystretch}{1.15}
+-\begin{tabularx}{\textwidth}{@{}
+->{\raggedright\arraybackslash}p{0.10\textwidth}
+->{\raggedright\arraybackslash}p{0.25\textwidth}
+->{\raggedright\arraybackslash}p{0.19\textwidth}
+->{\raggedright\arraybackslash}p{0.23\textwidth}
+->{\raggedright\arraybackslash}X@{}}
++\setlength{\tabcolsep}{5pt}
++\renewcommand{\arraystretch}{1.12}
++\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth}
++>{\raggedright\arraybackslash}p{0.40\textwidth}>{\raggedright\arraybackslash}X@{}}
+ \toprule
+-\textbf{System / ref.} &
+-\textbf{Signal and test configuration} &
+-\textbf{Communication measure} &
+-\textbf{Sensing measure and setting} &
+-\textbf{Technical distinction} \\
++\textbf{Configuration} & \textbf{Reported communication and sensing measures} & \textbf{Interpretation} \\
+ \midrule
+-Fiber\newline\cite{OISAC_SCR00057} &
+-40~km fiber. Two 30~GBaud 16-QAM subcarriers and a 500~MHz LFM probe.
+-A 200~Hz vibration is applied to a 1~m fiber segment. &
+-Reported $2\times120$~Gbit/s during concurrent sensing.
+-The probe-power sweep holds communication launch power at 0~dBm. &
+-Reported 1~m nominal spatial resolution.
+-Differential phase uses a 10~m gauge length.
+-Probe pre-compensation improves vibration-spectrum SNR by 2.4~dB. &
+-Span, spatial resolution, and gauge length have different roles.
+-The 2.4~dB gain belongs to the pre-compensation comparison. \\
++Fiber \cite{OISAC_SCR00057}: 40~km; two 30~GBaud 16-QAM subcarriers;
++500~MHz LFM probe; 200~Hz vibration on a 1~m segment. &
++$2\times120$~Gbit/s during concurrent sensing; nominal spatial resolution
++1~m with a 10~m gauge length. Probe pre-compensation improves vibration-spectrum
++SNR by 2.4~dB. &
++Gauge length differs from spatial resolution. The 2.4~dB gain is a
++pre-compensation result, separate from the probe-power sweep, which fixes
++communication launch power at 0~dBm rather than total power. \\
+ \addlinespace[4pt]
+-Visible light\newline\cite{OISAC_SCR00196} &
+-225~mW white laser diode and a 1~GHz receiver.
+-Structured illumination covers $0.6\times0.6$~m at 2~m distance. &
+-Estimated data rate averages 3.35~Gbit/s across patterns,
+-with a 3.16--3.52~Gbit/s range. &
+-Separate tests resolve 1~mm lateral and approximately 4~cm depth
+-displacements. Dynamic localization operates at 39~frames/s. &
+-The pattern-averaged rate and the static and dynamic localization values
+-come from distinct tests. \\
++Visible light \cite{OISAC_SCR00196}: 225~mW white laser; 1~GHz receiver;
++$0.6\times0.6$~m illumination area at 2~m. &
++Estimated rate averages 3.35~Gbit/s (3.16--3.52 across patterns).
++Separate tests resolve 1~mm lateral and approximately 4~cm depth displacements;
++dynamic localization runs at 39~frames/s. &
++Estimated rate is not delivered throughput. Pattern averages, static spatial
++tests and dynamic localization describe different evaluations. \\
+ \addlinespace[4pt]
+-Photonic THz\newline\cite{OISAC_SCR00083} &
+-262.1--268.3~GHz joint ASK/FMCW signal.
+-The 6.2~GHz sweep lasts 400~ns per chirp.
+-Communication is evaluated over 1~m. &
+-15~Gbit/s ASK with measured BER $2.97\times10^{-3}$.
+-The source reports approximately 36.2~GHz total occupied bandwidth. &
+-Nominal range resolution is approximately 2.4~cm.
+-Maximum ranging error is 0.55~cm for static targets at 20--45~cm,
+-using a separate receiver configuration. &
+-Sweep bandwidth differs from occupied bandwidth.
+-Ranging error differs from resolution, and target distance differs
+-from communication distance. \\
++Photonic THz \cite{OISAC_SCR00083}: 262.1--268.3~GHz ASK/FMCW signal;
++6.2~GHz sweep in 400~ns; communication distance 1~m. &
++15~Gbit/s with BER $2.97\times10^{-3}$; approximately 36.2~GHz occupied
++bandwidth. Nominal range resolution 2.4~cm; maximum error 0.55~cm for static
++targets at 20--45~cm in a separate receiver configuration. &
++Sweep and occupied bandwidth differ. Range error is distinct from resolution;
++target range is distinct from communication distance. \\
+ \bottomrule
+ \end{tabularx}
+-\par\vspace{3pt}
+-\noindent\parbox{\textwidth}{\raggedright\footnotesize
+-Values retain their source definitions and evaluation settings. Nominal
+-resolution is distinguished from measured error. Values within a row can
+-come from separate tests and do not by themselves define a joint operating
+-point. Rates estimated from signal quality are distinct from delivered
+-throughput.\par
+-QAM denotes quadrature amplitude modulation and LFM denotes linear frequency
+-modulation.\par
+-ASK denotes amplitude-shift keying and FMCW denotes frequency-modulated
+-continuous wave. BER denotes bit error rate and SNR denotes signal-to-noise
+-ratio.\par}
+-\endgroup
++\vspace{3pt}
++\parbox{\textwidth}{\footnotesize Values in a row may come from separate tests
++and do not by themselves define one jointly measured operating point.
++QAM: quadrature amplitude modulation; LFM: linear frequency modulation;
++ASK: amplitude-shift keying; FMCW: frequency-modulated continuous wave.}
+ \end{table*}
+ 
+-The clearest performance link is a controlled change in a shared factor.
+-In the fiber example, increasing sensing-probe power at fixed communication
+-launch power raises sensing SNR while increasing the BER of both data
+-subcarriers \cite{OISAC_SCR00057}. This is a within-study power tradeoff.
+-The total launch power is not held fixed in this sweep.
+-The pre-compensation gain listed in the table comes from a separate comparison
+-using the communication receiver's response estimate.
+-The two comparisons reveal resource competition and a benefit of cooperation
+-under their respective conditions.
+-
+-The other examples show why simultaneous signal generation and paired
+-performance measurements require separate interpretation. The THz waveform
+-carries data and a sensing sweep together, but communication and ranging
+-are evaluated with different receiver configurations \cite{OISAC_SCR00083}.
+-The visible-light study also demonstrates simultaneous data reception and
+-dynamic localization, while the table's rate average and spatial resolving
+-tests describe distinct evaluations \cite{OISAC_SCR00196}.
+-The common waveform supports integration in both cases, and each numerical
+-relationship retains its own test configuration.
++A shared waveform can support both tasks while their reported numerical
++results come from different receiver configurations or tests, as in the
++photonic-THz and visible-light examples. A controlled sweep instead links a
++specific change to both responses. Section~\ref{sec:tradeoffs} examines such
++within-study relationships, including the fiber probe-power sweep, and
++distinguishes them from benefits obtained by sharing receiver information.
+ 
+ Once both outcomes can be evaluated for a shared setting, joint design can
+ express the choice as a constrained problem. An illustrative
+@@ -385,14 +330,6 @@ available power or measurement time can be mistaken for a gain due to sharing.
+ When magnitudes are not directly comparable, a recurring mechanism can still
+ explain a design choice, with each result retained in its own context.
+ 
+-The same condition set also determines what further evaluation can establish.
+-Simulation predicts behavior under a model, while laboratory and field tests
+-probe the system under their respective physical conditions.
+-Section~\ref{sec:validation_reproducibility} examines that validation evidence,
+-and Section~\ref{sec:discussion_roadmap} derives priorities for paired tests
+-under disturbances and against separate-function baselines.
+-
+-Sections~\ref{sec:optical_modality_families} and~\ref{sec:tradeoffs}
+-use these foundations to examine architectures and joint-design results.
+-
+-\FloatBarrier
++The architecture analysis in Section~\ref{sec:optical_modality_families}
++now identifies which shared choices each physical platform makes available.
++Their measured or modeled consequences follow in Section~\ref{sec:tradeoffs}.
+diff --git a/manuscript/sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex b/manuscript/sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex
+index d88a27c..80aa634 100644
+--- a/manuscript/sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex
++++ b/manuscript/sections/04_OPTICAL_PLATFORMS_AND_INTEGRATION_ARCHITECTURES.tex
+@@ -1,369 +1,230 @@
+-\section{OPTICAL PLATFORMS AND INTEGRATION ARCHITECTURES}
++\section{OPTICAL PLATFORMS AND ARCHITECTURE CHOICES}
+ \label{sec:optical_modality_families}
+ \label{sec:integration_architectures}
+ 
+-In O-ISAC, the physical role of optics determines both where information
+-propagates and where the environment is observed. Optics may carry the user
+-link, illuminate a target, distribute a wireless carrier, or provide a coherent
+-reference, and each role exposes a different set of impairments. The integration
+-architecture then reveals which component, signal, or resource is shared by
+-communication and sensing. We therefore examine the evidence along the axes of
+-physical platform and coupling mechanism.
+-
+-Table~\ref{tab:modality_map} reports the mutually exclusive family counts and
+-corpus shares. Photonic terahertz and fiber together account for 125 studies,
+-representing 60.7\% of the corpus.
+-
+-\begin{table}[t]
+-\caption{Canonical physical organization of the corpus of 206 studies}
++The signal paths in Section~\ref{sec:foundations_comparison} leave an important
++design question: where should communication and sensing share a component,
++signal, or decision? Reusing a communication carrier for sensing exposes the
++measurement to its modulation and reference errors. Adding a sensing probe
++provides more control over the measurement but introduces an additional signal
++into the link. Moving the target interaction beyond an optical-to-radio
++conversion adds another channel and calibration boundary. The appropriate
++architecture therefore follows from the location of the target and the
++resources through which the two functions interact.
++
++Table~\ref{tab:modality_map} connects the platform families to these decisions.
++The optical wireless families include visible light communication (VLC), light
++fidelity (LiFi) networking, and free-space optical (FSO) links. Each study has
++one dominant platform assignment; a system can share several
++resources and contain more than one propagation medium. The discussion follows
++the physical path, then examines how its shared elements become design
++variables.
++
++\begin{table*}[t]
++\caption{Physical paths and architecture choices across the 206 studies}
+ \label{tab:modality_map}
+ \centering
+ \footnotesize
+ \setlength{\tabcolsep}{4pt}
+-\renewcommand{\arraystretch}{1.06}
+-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X r@{}}
++\renewcommand{\arraystretch}{1.10}
++\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.17\textwidth}
++>{\raggedright\arraybackslash}p{0.26\textwidth}
++>{\raggedright\arraybackslash}p{0.25\textwidth}
++>{\raggedright\arraybackslash}X@{}}
+ \toprule
+-Platform family & Studies, $n$ (\%) \\
++Platform; studies, $n$ (\%) & Target interaction and observation & Main shared
++choices & Conditions that constrain the choice \\
+ \midrule
+-Photonic terahertz & 69 (33.5\%) \\
+-Fiber & 56 (27.2\%) \\
+-Visible light communication and LiFi & 38 (18.4\%) \\
+-Free space optical & 31 (15.0\%) \\
+-Hybrid optical & 9 (4.4\%) \\
+-Other optical & 3 (1.5\%) \\
++Photonic terahertz; 69 (33.5\%) & Optical generation followed by a wireless
++millimeter wave or terahertz target path & Reference, conversion, waveform and
++beam control & Source coherence, conversion bandwidth, antenna geometry and
++wireless propagation \\
++Fiber; 56 (27.2\%) & Guided-path perturbation, or a downstream target reached
++through optical transport & Communication-carrier reuse, separate probe,
++wavelength and receiver allocation & Leakage, nonlinear interaction, topology,
++traffic and remote calibration \\
++VLC and LiFi; 38 (18.4\%) & Direct and reflected light in an illuminated scene
++& Modulation, exposure, illumination and spatial allocation & Source response,
++ambient light, field of view, orientation and receiver type \\
++Free space optical; 31 (15.0\%) & Directional optical link and, where present,
++target return & Waveform, aperture, beam and acquisition time & Pointing,
++divergence, collected power, reflectivity, weather and motion \\
++Hybrid optical; 9 (4.4\%) & Interaction across optical, guided and wireless
++segments & Shared reference, conversion or sensing-guided control & Segment
++power, synchronization, calibration and control timing \\
++Other optical; 3 (1.5\%) & Microcomb-generated microwave field, ultraviolet
++response or quantum phase & Specialized source, reference and task design &
++The native propagation, receiver and measurement model \\
+ \midrule
+-\textbf{Total} & \textbf{206 (100.0\%)} \\
++\textbf{Total; 206 (100.0\%)} & \multicolumn{3}{l}{One dominant family per study;
++physical segments and sharing mechanisms may overlap.} \\
+ \bottomrule
+ \end{tabularx}
+-\vspace{1pt}
+-\parbox{\columnwidth}{\footnotesize\emph{Note.} Each study is counted once under
+-its dominant platform family. Media and integration mechanisms can overlap
+-within the represented systems. The counts summarize how the reviewed evidence
+-is distributed across the six platform families.}
+-\end{table}
+-
+-The family profiles below provide the corresponding physical paths,
+-observables, coupling mechanisms, active constraints, transfer conditions, and
+-evidence anchors. Each study belongs to one platform family, while its coupling
+-mechanisms may overlap. Transmitters supplied through fiber enter the terahertz
+-family when photonic generation and conversion create the wireless carrier
+-directed at the target. Fiber remains the organizing platform when it transports
+-signals to downstream radio frequency identification (RFID), radio, or radar
+-sensing. Hybrid membership begins when interaction between physical segments
+-shapes the result. This organization locates the target path and guides the
+-synthesis that follows.
+-
+-\subsection{Physical Platform Families}
+-
+-\subsubsection{Photonic Terahertz Systems}
+-
+-Photonic terahertz is the largest family, comprising 69 of the 206
+-studies (33.5\%). The optical chain generates, distributes, or processes a
+-coherent carrier before conversion to a wireless terahertz or millimeter wave
+-target path. It yields delay, range, Doppler, angle, imaging, and channel or
+-target response observables. Communication and sensing are coupled through
+-hardware, references, waveforms, beams, or resources
+-\cite{OISAC_SCR01054,OISAC_SCR00036,OISAC_SCR00083}. This upstream sharing ties
+-both functions to the same optical conditions. Laser coherence and linewidth
+-govern reference stability, while component bandwidth, conversion fidelity,
+-and efficiency shape the bandwidth, phase structure, and power delivered to
+-the antenna \cite{OISAC_SCR00988,OISAC_SCR01004}. At the radio interface,
+-antenna aperture, gain, and alignment govern launch and collection, molecular
+-absorption shapes propagation, and target scattering forms the returning echo
+-in radar configurations \cite{OISAC_SCR00989,OISAC_SCR00992}.
+-
+-Where the functions meet varies by architecture, with some systems dividing a
+-multicarrier frame between sensing and communication and others placing the
+-joint decision in a phased array controlled through photonics
+-\cite{OISAC_SCR01054,OISAC_SCR00036}. Wavelength tuning and multibeam reception
+-move coordination to the source or the receiving front end
+-\cite{OISAC_SCR00185,OISAC_SCR00396}. At the waveform level, one multichannel
+-design combines linear frequency modulation (LFM) with communication symbols
+-across coherent carriers \cite{OISAC_SCR00988}. Other designs add source
+-agility through frequency hopping or organize the signal over delay and Doppler
+-through orthogonal multiplexing \cite{OISAC_SCR00992,OISAC_SCR00973}.
+-Information can also close the loop, as burst SNR estimates guide both
+-probabilistic shaping and ranging, while a simulated radar waveform carries
+-communication data \cite{OISAC_SCR00989,OISAC_SCR00882}. Together, these
+-designs show how the joint decision can move from hardware to waveform and to
+-the information used by both tasks.
+-
+-\FloatBarrier
+-
+-The location of that decision also determines how the measurement is formed. A
+-returned echo may be remodulated onto light and carried back over fiber for
+-centralized processing, where photonic dechirping expresses target delay at a
+-lower frequency \cite{OISAC_SCR00966,OISAC_SCR00992}. Along this path, phase
+-noise associated with laser linewidth degrades the recovered signal, while
+-delay mismatch between optical and electrical paths shifts the ranging
+-observable \cite{OISAC_SCR00966}.
+-Laboratory experiments reveal waveform, conversion, and beamforming behavior
+-under controlled conditions \cite{OISAC_SCR00988,OISAC_SCR00036}, whereas a
+-270~m outdoor link adds wireless propagation and operation of the complete
+-chain \cite{OISAC_SCR01054}. Comparison across photonic terahertz systems
+-depends on aligned optical and wireless stages, aperture and beam conditions,
+-receiver processing, and validation setting.
+-
+-\subsubsection{Fiber O-ISAC}
+-
+-Fiber comprises 56 studies (27.2\%) and follows two physical paths. The guided
+-link may form the sensing medium, with disturbances observed through
+-backscatter, carrier phase, modal coupling, or an inserted sensor
+-\cite{OISAC_SCR00957,OISAC_SCR00432,OISAC_SCR00356,OISAC_SCR00679}. Fiber may
+-instead transport signals to a downstream RFID, radio, or radar segment, so the
+-target interaction occurs after optical distribution
++\end{table*}
++
++\subsection{Guided Paths: Sensing the Fiber or Transporting the Probe}
++
++When fiber is the sensing medium, environmental disturbances alter the same
++guided field that carries traffic. Backscatter, carrier phase, modal coupling,
++or an inserted sensor can reveal distributed events, vibration, strain, and
++environmental change
++\cite{OISAC_SCR00957,OISAC_SCR00432,OISAC_SCR00356,OISAC_SCR00679}.
++The architecture first decides whether to recover this information from the
++communication signal or to introduce a dedicated sensing signal. Carrier and
++waveform reuse make symbols, phase, or supported modes part of the measurement
++\cite{OISAC_SCR00647,OISAC_SCR00038,OISAC_SCR00015}. Separate probes or
++wavelengths permit a different interrogation structure while retaining common
++fiber and receiver constraints
++\cite{OISAC_SCR00013,OISAC_SCR00344,OISAC_SCR00218}.
++
++These alternatives place interference at different points. A separate probe
++can leak into the data channel or induce nonlinear interaction, so its launch
++conditions affect both sensing support and communication margin. Reusing the
++data carrier avoids that particular addition but makes sensing depend on the
++available reference and on how data modulation is removed. Coherent vibration
++sensing, for example, relies on preserving and recovering phase along the
++communication path \cite{OISAC_SCR00647}. Dynamic range, reflections, topology,
++and traffic determine which reuse is practical; their importance persists in
++live access networks and deployed routes \cite{OISAC_SCR00218,OISAC_SCR00957}.
++
++Fiber used to transport a probe has a different measurement boundary. The
++optical link distributes signals to a radio frequency identification (RFID),
++radio, or radar segment, where the
++target interaction occurs
+ \cite{OISAC_SCR00496,OISAC_SCR00631,OISAC_SCR00719,OISAC_SCR00983,OISAC_SCR01049}.
+-The corresponding observations include distributed events, vibration, strain,
+-and environmental change in the guided path, together with downstream tag
+-state, range, localization, and imaging
+-\cite{OISAC_SCR00957,OISAC_SCR00631,OISAC_SCR00496}. The measurement boundary
+-therefore lies either within the guided path or across the complete optical and
+-wireless chain.
+-
+-Coupling recurs through shared hardware, wavelengths, waveforms, links, or
+-resource decisions. Integration can reuse the communication signal itself
+-\cite{OISAC_SCR00647,OISAC_SCR00038,OISAC_SCR00356,OISAC_SCR00432,OISAC_SCR00015}
+-or place distinct data and sensing signals on shared infrastructure
+-\cite{OISAC_SCR00013,OISAC_SCR00344,OISAC_SCR00957,OISAC_SCR00218,OISAC_SCR00679}.
+-The first form ties sensing to the symbols, carrier, phase, or supported modes,
+-whereas the second ties both functions to the same fiber and receiver
+-conditions. Guided sensing is constrained by dynamic range, leakage,
+-reflection, nonlinearity, reference stability, topology, and traffic, whereas
+-transported sensing additionally depends on conversion, timing, remote
+-calibration, and wireless geometry. Evidence comes from laboratory links, live
+-access networks, and a deployed submarine route. For fiber evidence, comparison
+-depends on the interrogation or transport role, topology, launch and receiver
+-conditions, conversion and clocking, target path, traffic, and validation setting
+-\cite{OISAC_SCR00647,OISAC_SCR00038,OISAC_SCR00218,OISAC_SCR00957,
+-OISAC_SCR00631,OISAC_SCR00496,OISAC_SCR01049}.
+-
+-\subsubsection{Visible Light Communication and LiFi Systems}
+-
+-Visible light communication and LiFi comprise 38 studies (18.4\%) and place
+-communication and sensing within the same illuminated scene. The grouping
+-preserves their distinct meanings at the link and networking levels. Direct or
+-reflected room and
+-device paths through emitters, cameras, and photodiodes support position, pose,
+-distance, imaging, gesture, recognition, and physiological sensing
+-\cite{OISAC_SCR00910,OISAC_SCR01034,OISAC_SCR00196}. Cameras and photodiodes
+-expose different balances between spatial detail and reception speed, while
+-nonnegativity, dimming, flicker, source linearity, ambient light, field of view,
+-and exposure constrain what can be communicated and observed
+-\cite{OISAC_SCR00273,OISAC_SCR00925,OISAC_SCR00910,OISAC_SCR01036}.
+-Coupling recurs through hardware, waveform, geometry, resource decisions, and
+-the application loop. It may arise through a shared observation
+-\cite{OISAC_SCR01034,OISAC_SCR00836}, through geometry and resource decisions
+-\cite{OISAC_SCR00901,OISAC_SCR00905,OISAC_SCR00407,OISAC_SCR00557,OISAC_SCR00915},
+-or through integrated emitters and detectors
+-\cite{OISAC_SCR00943,OISAC_SCR00873,OISAC_SCR00001}.
+-
+-Illumination is the common comparison boundary across these designs. Geometry
+-and multipath shape localization, reflected observations support gesture and
+-recognition, and learned models extend the same optical field to health sensing
+-tasks
+-\cite{OISAC_SCR00910,OISAC_SCR00407,OISAC_SCR00557,OISAC_SCR01036,
+-OISAC_SCR00376,OISAC_SCR01047}. Analytical and
+-simulated studies isolate geometry and resource choices, whereas prototypes and
+-field experiments add lighting, receiver, and control conditions
+-\cite{OISAC_SCR00901,OISAC_SCR00407,OISAC_SCR00915,OISAC_SCR00910,
+-OISAC_SCR00836,OISAC_SCR00873}. Visible light comparisons depend on matched
+-task definitions, layout, orientation, illumination, detector, processing, and
+-validation conditions.
+-
+-\subsubsection{Free Space Optical Systems}
+-
+-Free space optical systems comprise 31 studies (15.0\%) and use a directional
+-link, optionally combined with target illumination and return, over direct or
+-reflected aperture and beam paths. These paths support ranging, localization,
+-imaging, tracking, and atmospheric or channel observation
+-\cite{OISAC_SCR00011,OISAC_SCR01029,OISAC_SCR00730}. Geometry is therefore part
+-of both the link and the measurement. Coupling recurs through the link,
+-waveform, aperture or beam, and spatial or temporal resources, while pointing,
+-divergence, aperture, reflectivity, loss, turbulence, and motion constrain the
+-resulting evidence. Direct, reflected, scanned, and steered paths illustrate
+-these relations \cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00506,OISAC_SCR00941}.
+-Retroreflection and multicarrier reception connect returned power to range and
+-position \cite{OISAC_SCR01029,OISAC_SCR00730}. Structured waveforms and
+-steering apertures place coupling in the signal or beam
+-\cite{OISAC_SCR00256,OISAC_SCR00903,OISAC_SCR00904,OISAC_SCR00594}, while
+-atmospheric estimates can guide beam shaping or link selection
+-\cite{OISAC_SCR01085,OISAC_SCR00456}.
+-
+-Across these forms, beam geometry determines both spatial selectivity and the
+-power collected at the receiver. Range, angle, and image features
+-therefore remain tied to calibration, aperture, pointing, and motion
+-\cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00506,OISAC_SCR01029,
+-OISAC_SCR00730}. Controlled links reveal waveform and estimator behavior,
+-whereas operational ranging adds atmospheric variation and continuous field
+-observations \cite{OISAC_SCR01085,OISAC_SCR00730}. Comparison across free space
+-optical systems depends on matched geometry, calibration, target properties,
+-weather, motion, and validation conditions. Hybrid systems extend that comparison across interfaces
+-between physical segments.
+-
+-\subsubsection{Hybrid Optical Systems}
+-
+-Hybrid optical systems comprise nine studies (4.4\%) in which consequential
+-interaction occurs among optical, fiber, free space, or radio segments and the
+-perturbation and observation may straddle a conversion boundary. Their
+-observables include range, vibration, and target or network state within
+-individual segments, while coupling arises through a central reference and
+-through links, resources, control, or applications shared across segments.
+-Conversion loss, segment power, synchronization, calibration, and timing are
+-therefore active constraints
+-\cite{OISAC_SCR00210,OISAC_SCR00366,OISAC_SCR00277}. Hybrid comparisons trace
+-every segment, conversion, clock, and measurement plane together with the
+-validation of both functions.
+-
+-Unlike fiber used only for downstream transport, hybrid membership requires
+-conversion or feedback across segments to shape the result. This occurs when
+-interaction between fiber and wireless segments is consequential
+-\cite{OISAC_SCR00210,OISAC_SCR00366}, when a shared photonic source spans fiber,
+-free space, and millimeter wave stages \cite{OISAC_SCR00944}, or when sensing in
+-one segment guides service in another \cite{OISAC_SCR01011,OISAC_SCR00277}.
+-Other designs establish a common signal origin through shared time modes or a
+-photonic waveform with frequency agility
+-\cite{OISAC_SCR00091,OISAC_SCR01229}.
+-
+-\subsubsection{Other Optical Systems}
+-
+-The three other optical studies (1.5\%) use distinct mechanisms based on optical
+-control or coherent carriers. These comprise a microwave field generated by a
+-microcomb, a solar blind ultraviolet path, and a quantum optical path. Their
+-observables are,
+-respectively, a field pattern, particulate or smoke response, and phase
+-\cite{OISAC_SCR00268,OISAC_SCR00379,OISAC_SCR00906}. Coupling is specific to
+-specialized hardware, reference, and application choices, and each case is
+-bounded by its own propagation, target, receiver, and measurement models.
+-Each numerical result is therefore interpreted within the native mechanism and
+-measurement model of its system. Together, the hybrid and other optical cases
+-complete the physical map before the analysis turns to coupling mechanisms
+-shared across families.
+-
+-\subsection{Integration Architectures and Resource Coupling}
+-
+-Across these physical families, integration architecture locates where
+-communication and sensing meet along the target path. The coupling may enter
+-through shared hardware, a common carrier or waveform, coordinated resources,
+-a propagation link, or a service decision. Several mechanisms can coexist in
+-one system. Each label identifies one coupling location while preserving the
+-rest of the chain for separate interpretation.
+-
+-Figure~\ref{fig:integration_map} locates seven recurring coupling mechanisms
+-along a generic signal and service path. A study may occupy several locations,
+-so the badges report overlapping coverage across the corpus.
+-
+-\begin{figure*}[!t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig05_integration_map.pdf}
+-\caption{Locations of communication and sensing coupling in the corpus of 206
+-studies. Equal cards identify hardware, optical carrier, waveform, resource,
+-link, joint design, and application coupling along the system path. The badges
+-report overlapping study coverage, with three mixed boundary cases shown
+-separately. Card position identifies the typical coupling location, while each
+-card retains equal visual weight.}
+-\label{fig:integration_map}
+-\end{figure*}
+-
+-Resource, hardware, and waveform sharing can form one connected design chain.
+-Application coupling acts at the service level and carries a different
+-engineering meaning. The following subsections trace these locations from
+-physical reuse to coordinated resources and design.
+-
+-\subsubsection{Shared Hardware, Carrier, and Link}
+-
+-Hardware, carrier, and link sharing describe different physical relations.
+-Reusing a component makes its bandwidth, coherence, dynamic range, or alignment
+-conditions relevant to both functions. A common optical carrier adds a phase or
+-wavelength relation, while a common link adds shared propagation and calibration
+-conditions. Together, these relations show which design choice is common and
+-which constraint follows it.
+-
+-The physical path gives reuse its engineering meaning. In fiber, traffic and
+-sensing share the guided structure, with a resonance shift, phase, or
+-backscatter conveying the sensed change
+-\cite{OISAC_SCR00002,OISAC_SCR00013}. A retroreflective free space
+-path supports information delivery together with ranging or localization
+-\cite{OISAC_SCR00011}. Arrays controlled through photonics instead share
+-optical generation and beam control while the target path remains wireless
+-\cite{OISAC_SCR00036}. Comparison therefore follows the component role, carrier
+-relation, propagation path, and calibration.
+-
+-\subsubsection{Shared Waveforms}
+-
+-Waveform sharing begins when one signal structure contributes to both decoding
+-and sensing. The shared element may be the complete waveform or a selected
+-pilot, chirp, code, polarization state, or spatial pattern. This common design
+-links payload efficiency, sensing observability, and receiver processing.
+-Structural sharing records that relationship. Concurrent performance adds the
+-requirement that both outcomes be observed at a matched operating point, a
+-distinction carried into Section~\ref{sec:metrics}.
+-
+-The evidence illustrates several forms. Pilots inserted for channel estimation
+-can also provide a sensing reference \cite{OISAC_SCR00007}. One photonic
+-terahertz prototype generates a waveform whose frequency steps provide the
+-radar dimension and whose amplitude carries data. Its experimental evidence is
+-strongest for waveform generation and communication response
+-\cite{OISAC_SCR00160}. A visible light design combines temporal data with
+-spatially structured illumination and uses localization to adapt beamforming
+-\cite{OISAC_SCR00196}. The shared structure is similar, while its physical and
+-receiver implementation remains specific to the platform.
+-
+-\subsubsection{Resource Allocation and Joint Design}
+-
+-Resource coupling coordinates temporal, spectral, power, spatial, or processing
+-degrees of freedom. An allocation can change payload opportunity, link margin,
+-sensing observability, geometry, or latency. Joint design connects the two
+-functions more directly by choosing a variable, objective, or constraint in
+-view of both outcomes. The resource, allocation rule, and operating conditions
+-therefore define the resulting evidence.
+-
+-A visible light model for vehicle to everything communication makes exposure
+-time a shared decision variable.
+-Its coexistence result is analytical and numerical, while laboratory
+-communication and sensing gains were obtained in separate configurations
+-\cite{OISAC_SCR00273}. In one reported terahertz configuration, a rapidly swept
+-photonic source and common waveform plan support simultaneous data transmission
+-and ranging \cite{OISAC_SCR00083}. These cases distinguish a modeled optimum
+-from a measured concurrent configuration. Section~\ref{sec:tradeoffs} therefore
+-reads each relationship within its operating region and evidence form.
+-
+-\subsubsection{Coupling at the Application Level and Boundary Cases}
+-
+-Application coupling arises when sensing informs beam or link selection,
+-trajectory planning, blockage response, or network control. The shared element
+-is then the system action, even when the signal paths remain separate. A near
+-infrared wearable combines communication and physiological sensing on a common
+-material platform while retaining separate detector roles
+-\cite{OISAC_SCR00001}. A hybrid last mile design places free space optical
+-delivery and fiber Bragg grating monitoring within one system model
+-\cite{OISAC_SCR00277}. Their coordination lies in hardware and service context.
+-
+-Three studies cross temporal or physical segment boundaries. One performs
+-localization and imaging before data delivery on a shared optical source and
+-path with separate receivers \cite{OISAC_SCR00012}. Two use sensed free space
+-optical channel state to adapt trajectory and resource allocation or cell
++The recovered quantity may be tag state, range, localization, or an image.
++Optical transport then contributes conversion, timing, and reference errors to
++an observation also shaped by wireless geometry. A reported transport span
++therefore cannot substitute for target range. Evaluating this architecture
++requires following the outgoing signal and the return through their conversion
++and clocking stages.
++
++\subsection{Illuminated Scenes and Directional Optical Links}
++
++In VLC and LiFi systems, the emitted light simultaneously defines the
++communication path and the scene available for observation. Photodiodes favor
++rapid temporal reception, while cameras provide spatially resolved samples
++subject to exposure and readout constraints. Direct and reflected paths can
++support position, pose, gesture, recognition, and physiological sensing
++\cite{OISAC_SCR00910,OISAC_SCR01034,OISAC_SCR01036}. The receiver choice thus
++changes what can be inferred from the common optical field, as well as which
++modulation and update rates are usable.
++
++Illumination makes waveform and spatial design interdependent. Nonnegativity,
++dimming, flicker, and source linearity restrict temporal modulation, while
++ambient light, orientation, and field of view determine which signal reaches
++the detector \cite{OISAC_SCR00273,OISAC_SCR00925}. A design combining temporal
++data with structured illumination uses position estimates to adapt beamforming;
++the resulting coupling runs from the observed geometry back to the transmitted
++field \cite{OISAC_SCR00196}. Other designs allocate emitters or spatial
++resources to communication and localization
++\cite{OISAC_SCR00901,OISAC_SCR00407,OISAC_SCR00557}. Here, a stronger received
++signal and a more informative localization geometry are distinct objectives.
++Their relation depends on emitter placement and receiver orientation.
++
++FSO links place similar spatial decisions in a directional beam and aperture
++path. The link may deliver data directly, illuminate a target, or collect a
++retroreflected return. Aperture, divergence, pointing, reflectivity, and motion
++then determine the available communication power and sensing observation
++\cite{OISAC_SCR00011,OISAC_SCR01029,OISAC_SCR00730}. Scanning and steering
++choose which region is observed and served
++\cite{OISAC_SCR00012,OISAC_SCR00506,OISAC_SCR00941}; atmospheric estimates
++can support beam shaping or link selection
++\cite{OISAC_SCR01085,OISAC_SCR00456}. A narrow spatial response can aid
++selection of a user or target, but its value depends on maintaining alignment.
++Thus, the aperture and control strategy belong to the performance result,
++together with the waveform. Laboratory ranging and sustained operation under
++changing atmospheric conditions test different parts of this dependency
++\cite{OISAC_SCR00730,OISAC_SCR01085}.
++
++\subsection{Photonic Generation with Wireless Target Interaction}
++
++Photonic millimeter wave and terahertz systems use optics to generate,
++distribute, or process a carrier before a wireless target interaction. Laser
++coherence and linewidth affect the shared reference; component bandwidth and
++conversion fidelity determine the signal delivered to the antenna
++\cite{OISAC_SCR00988,OISAC_SCR01004}. Antenna aperture, alignment, molecular
++absorption, and target scattering subsequently shape the radiated link and
++return \cite{OISAC_SCR00989,OISAC_SCR00992}. This separation identifies which
++impairment a proposed photonic improvement can address and which remains in the
++wireless path.
++
++Architecture determines how far the common reference extends. A multicarrier
++frame can allocate spectral support between data and sensing, while a
++photonically controlled array places the joint decision in the transmitted
++beam \cite{OISAC_SCR01054,OISAC_SCR00036}. Wavelength tuning or multibeam
++reception moves control to the source or receiving front end
++\cite{OISAC_SCR00185,OISAC_SCR00396}. Combining linear frequency modulation
++(LFM) with communication symbols across coherent carriers makes waveform
++generation a shared constraint \cite{OISAC_SCR00988}. Frequency hopping and
++delay--Doppler multiplexing provide other ways of structuring that signal
++\cite{OISAC_SCR00992,OISAC_SCR00973}; their benefits depend on how the receiver
++recovers the communication symbols and target response.
++
++The return path can introduce a further optical stage. An echo may be
++remodulated onto light for centralized processing, with photonic dechirping
++mapping delay to a lower-frequency observable
++\cite{OISAC_SCR00966,OISAC_SCR01000}. Reference phase noise degrades recovery,
++and optical/electrical path mismatch can shift the inferred range
++\cite{OISAC_SCR00966}. A shared source consequently reduces neither all timing
++errors nor all calibration requirements. Controlled experiments expose these
++conversion and beamforming effects
++\cite{OISAC_SCR00988,OISAC_SCR00036}; the reported 270~m outdoor link also
++tests operation across the complete wireless chain \cite{OISAC_SCR01054}.
++
++\subsection{Integration Across Segments and Control Loops}
++
++Hybrid integration becomes consequential when conversion or feedback between
++segments changes the system response. Fiber and wireless interactions can
++couple power, timing, and calibration across a common waveform
++\cite{OISAC_SCR00210,OISAC_SCR00366}. A shared photonic source can span fiber,
++FSO, and millimeter wave stages \cite{OISAC_SCR00944}. In each case, an
++end-to-end result depends on the interfaces as well as on the individual
++segments. Separate segment measurements establish only the behavior actually
++measured at those boundaries.
++
++A control loop creates another form of integration. Sensing in one segment may
++guide service in another, as in blockage-aware access and combined optical
++delivery and monitoring \cite{OISAC_SCR01011,OISAC_SCR00277}. Sensed FSO
++channel state can inform trajectory and resource allocation, or access
+ placement and user association across optical backhaul and radio access
+-\cite{OISAC_SCR00917,OISAC_SCR00922}. The mixed label preserves this path and
+-keeps each result tied to the segment, function, and operating stage that
+-produces it.
+-
+-\subsection{Interpretation Across Platforms}
+-
+-Read together, the platform and architecture views form one mechanism map. The
+-platform establishes the physical transfer conditions, while the architecture
+-identifies the shared choice. In fiber, waveform sharing inherits guided
+-propagation and reflections, together with launch and receiver conditions
+-\cite{OISAC_SCR00038,OISAC_SCR00647}. In free space optical systems, the same
+-mechanism is shaped by aperture, geometry, and alignment, whereas terahertz
+-systems assisted by photonics also introduce conversion from optics to radio
+-\cite{OISAC_SCR00011,OISAC_SCR00036}. Application coupling can instead
+-coordinate separate optical and radio paths through a common service decision
+-\cite{OISAC_SCR00917}.
+-
+-Across these mechanisms, sharing concentrates design around a common component,
+-reference, or resource. That choice can couple the functions through power
+-balance and interference, while synchronization and receiver dynamic range
+-constrain their joint operation
+-\cite{OISAC_SCR00013,OISAC_SCR00366}. Section~\ref{sec:metrics} therefore
+-examines which communication and sensing outcomes change together at a matched
+-operating point and which conditions explain that relationship.
++\cite{OISAC_SCR00917,OISAC_SCR00922}. The shared element is the decision:
++observation age, processing, and actuation now matter alongside signal quality.
++Section~\ref{sec:technologies_applications_6g} examines the service requirements placed on
++these loops.
++
++The remaining specialized paths retain their native measurement models. A
++microcomb-generated microwave field, a solar-blind ultraviolet response, and a
++quantum phase measurement provide different observations and receiver
++requirements \cite{OISAC_SCR00268,OISAC_SCR00379,OISAC_SCR00906}. Likewise,
++integration of communication and physiological sensing in a common material
++platform can retain separate detector roles \cite{OISAC_SCR00001}. Such
++examples extend the architecture space without establishing equivalent
++communication or sensing tasks.
++
++\subsection{From a Shared Component to a Joint Design Choice}
++
++Across these paths, the decisive step is to identify an adjustable choice.
++Hardware sharing makes a component's bandwidth, coherence, or dynamic range
++common to both functions. Carrier sharing supplies a frequency or phase
++relation. Waveform sharing goes further by making a pilot, chirp, code, or
++spatial pattern contribute to decoding and sensing. In OFDM, the chosen pilots
++and payload structure determine which samples are known to the receiver and
++how much signal support remains for data \cite{OISAC_SCR00007}. In guided
++sensing, removing data modulation to recover phase makes receiver processing
++part of the integration \cite{OISAC_SCR00647}.
++
++The resulting evidence depends on how the shared choice was exercised. One
++photonic prototype uses frequency steps for the radar dimension and amplitude
++for data, with its experimental support strongest for waveform generation and
++communication response \cite{OISAC_SCR00160}. An exposure-time design provides
++an analytical and numerical coexistence result, while laboratory communication
++and sensing gains were obtained in separate configurations
++\cite{OISAC_SCR00273}. Another photonic system uses a shared ASK/FMCW waveform,
++with functional metrics evaluated in separate receiver configurations
++\cite{OISAC_SCR00083}. Localization
++and imaging performed before data delivery on a shared source constitute a
++further temporal arrangement \cite{OISAC_SCR00012}. These distinctions
++determine which paired outcomes can be assigned to one operating point. The
++next section follows the shared choice through its mechanism to those
++outcomes.
+diff --git a/manuscript/sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex b/manuscript/sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex
+index 62915d3..dfaa568 100644
+--- a/manuscript/sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex
++++ b/manuscript/sections/05_PERFORMANCE_METRICS_AND_JOINT_DESIGN_TRADEOFFS.tex
+@@ -1,574 +1,296 @@
+-\section{PERFORMANCE METRICS AND JOINT DESIGN TRADEOFFS}
++\section{SHARED DESIGN CHOICES AND JOINT PERFORMANCE}
+ \label{sec:metrics}
+ \label{sec:tradeoffs}
+-After locating a shared choice, the analysis turns to the reported
+-communication and sensing outcomes. A reported value gains engineering meaning
+-from its task, its observation point in the signal chain, and its operating and
+-validation conditions. The comparison profile connects these elements to the
+-performance evidence.
+ 
+-The primary synthesis contains 4,779 metric records. Each record is an extraction
+-unit that retains the reported quantity together with the definition and source
+-conditions available for it. The denominator therefore represents reported
+-quantities in their original contexts. Data rate, bit error
+-rate (BER), and range resolution have the widest study coverage, appearing in
+-85, 60, and 50 studies, respectively. Since one study may report several
+-families, these totals provide overlapping views of the evidence.
+-
+-Beyond these familiar measures, the evidence extends from link and waveform
+-behavior to outcomes observed at the device, estimator, application, and
+-implementation levels. This breadth makes semantic alignment the organizing
+-principle for the analysis that follows.
+-
+-\subsection{Applying the Comparison Profile to Individual Metrics}
+-
+-Applying the comparison profile defined in
+-Section~\ref{sec:foundations_comparison}, each metric row was coded by source
+-definition and unit, task, measurement plane, operating point, available
+-baseline, validation method, and value provenance, with its report and source
+-location retained. Communication and sensing results form a joint operating
+-point when the source links them to the same condition set.
+-
+-Extraction retained numerical values stated by the source. Graphical results
+-supported interpretation without creating additional numerical measurements.
+-Source conflicts were assessed at the individual-claim level, preserving
+-supported findings from the same study. Electronic Supplement S-Protocol
+-describes these rules.
+-Table~\ref{tab:metric_admissibility} summarizes domain coverage and the
+-analytical role assigned to each record.
++A shared architecture becomes a performance question when a design variable
++changes. Increasing pilot support can improve a reference while reducing the
++data-bearing fraction; increasing probe power can strengthen sensing while
++introducing interference; changing beam direction can alter both collected
++power and the geometry available for estimation. The useful synthesis follows
++the adjustable variable, the physical or processing mechanism, and the two
++responses under the reported conditions. It also distinguishes a measured
++response to a sweep from a modeled optimum or a proposed design relationship.
++
++Figure~\ref{fig:coupling} summarizes this reasoning. The reviewed evidence
++contains 402 substantive relationships from 168 studies, including quantitative
++and qualitative descriptions. Their prevalence is reported in Electronic
++Supplement S-Core; here, the emphasis is on how the mechanisms work.
++Table~\ref{tab:metric_admissibility} provides selected within-study anchors.
++Its rows illustrate different mechanisms and evidence forms rather than a
++common performance ranking.
++
++\begin{figure*}[t]
++\centering
++\includegraphics[width=\textwidth]{figures/coupling.pdf}
++\caption{Two allocation costs and one feedback benefit in reported
++configurations. More pilots occupy data subcarriers in a fixed OFDM grid;
++the associated sensing measure is a pilot-error proxy
++\cite{OISAC_SCR00007}. Higher probe power at fixed communication launch power
++increases sensing SNR and BER \cite{OISAC_SCR00057}. A position estimate used
++to steer illumination supports higher estimated communication rate
++\cite{OISAC_SCR00196}; this does not imply a simultaneous improvement in
++localization accuracy. Arrows explain these within-study mechanisms and do not
++represent pooled trends.}
++\label{fig:coupling}
++\end{figure*}
+ 
+-\begin{table}[!htbp]
+-\caption{Metric evidence profile for 4,779 primary records}
++\begin{table*}[t]
++\caption{Selected mechanisms and their within-study performance evidence}
+ \label{tab:metric_admissibility}
+ \centering
+ \footnotesize
+-\setlength{\tabcolsep}{3.5pt}
+-\renewcommand{\arraystretch}{1.04}
+-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X r r@{}}
+-\toprule
+-\multicolumn{3}{@{}l}{\emph{Metric domains}} \\
+-\addlinespace[1pt]
+-Domain & Records, $n$ (\%) & Studies, $n$ (\%) \\
+-\midrule
+-Sensing & 1,816 (38.0\%) & 203 (98.5\%) \\
+-Communication & 1,328 (27.8\%) & 194 (94.2\%) \\
+-Joint & 870 (18.2\%) & 158 (76.7\%) \\
+-Implementation & 476 (10.0\%) & 64 (31.1\%) \\
+-Smaller normalized domains & 289 (6.0\%) & 33 (16.0\%) \\
+-\bottomrule
+-\end{tabularx}
+-
+-\vspace{3pt}
+-\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{0.275\columnwidth}
+->{\raggedleft\arraybackslash}p{0.180\columnwidth}
++\setlength{\tabcolsep}{4pt}
++\renewcommand{\arraystretch}{1.12}
++\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}
++>{\raggedright\arraybackslash}p{0.22\textwidth}
++>{\raggedright\arraybackslash}p{0.22\textwidth}
+ >{\raggedright\arraybackslash}X@{}}
+ \toprule
+-\multicolumn{3}{@{}l}{\emph{Analytical roles}} \\
+-\addlinespace[1pt]
+-Role & Records, $n$ (\%) & Use in the survey \\
++Shared choice & Communication response & Sensing response & Interpretation
++conditions and evidence \\
+ \midrule
+-Bounded relation & 118 (2.5\%) & Conditional comparison across studies \\
+-Native context & 4,661 (97.5\%) & Mechanism, feasibility, and qualitative
+-synthesis \\
++Embedded pilot allocation \cite{OISAC_SCR00007} & Changes BER and the data
++subcarrier fraction & More pilot support improves the reported pilot-deviation
++proxy & Simulation; known-pilot error is the reported sensing measure. The
++data fraction and cyclic-prefix overhead are defined separately. \\
++Probe-to-telecom power ratio \cite{OISAC_SCR00057} & Higher ratio raises BER;
++the strongest penalty occurs near the probe & Higher ratio improves sensing
++SNR & Fiber probe sweep at fixed communication launch power; retain probe
++location and receiver conditions. \\
++Sequence-transition shaping \cite{OISAC_SCR00052} & Reduces the communication
++penalty from nonlinear interference & Retains phase sensing at the reported
++condition & Shared fiber link with coherent reflectometry; the control changes
++how interference is generated. \\
++Waveform direct-current (DC) offset \cite{OISAC_SCR00808} & Error vector
++magnitude (EVM) rises as the sensing component
++is strengthened & Radar signal-to-interference ratio rises & Millimeter wave
++waveform; energy redistribution changes the two recovery conditions. Higher
++EVM indicates worse communication signal quality. \\
++Camera exposure time \cite{OISAC_SCR00273} & Exposure is part of the modeled
++communication/coexistence design & Exposure also governs the modeled sensing
++response & Analytical and numerical coexistence; laboratory gains for the two
++functions came from separate configurations. \\
++Precoding and photodiode orientation \cite{OISAC_SCR00940} & Communication
++quality is constrained above a stated threshold & Sensing contrast is
++maximized within that feasible region & Optical phased array simulation;
++emitter power, scene, orientation, and metric definitions constrain the
++solution. \\
++Source and carrier-recovery design \cite{OISAC_SCR01070} & Coherent data are
++recovered using broad-linewidth lasers & Vibration is recovered through
++residual-carrier processing & Long-span fiber experiment; hardware reuse moves
++requirements into phase recovery and digital processing, without a universal
++cost ranking. \\
+ \bottomrule
+ \end{tabularx}
+-\vspace{1pt}
+-\parbox{\columnwidth}{\footnotesize\emph{Note.} Domain rows and analytical
+-roles each partition the 4,779 primary records, while study counts overlap. The
+-complete metric register contains 4,861 rows. The additional rows comprise 31
+-contextual records and 51 records documenting source conflicts. Comparison
+-follows the reported definition, task, measurement plane, conditions, and
+-validation. Electronic Supplement S-Evidence provides the complete records and
+-provenance, including quantities grouped under the broader other category.}
+-\end{table}
+-
+-The domain distribution shows where metric evidence is concentrated, while the
+-analytical role determines how each record enters the survey. The following
+-subsections explain how task, measurement plane, and operating conditions shape
+-communication, sensing, joint, and implementation metrics.
+-
+-\subsection{Metrics Across Functions}
+-
+-\subsubsection{Communication Metrics}
+-
+-A communication rate gains meaning from what the source counts. Symbol rate
+-tracks signaling pace, while data rate reflects the payload and overhead
+-included in that count. Throughput describes delivered service, capacity
+-provides a model bound, and spectral efficiency relates useful data to its
+-stated denominator. In a terahertz prototype enabled by photonics, net rates
+-follow communication subcarrier allocation, payload occupancy, and coding
+-overhead
+-\cite{OISAC_SCR01054}. An embedded pilot orthogonal frequency division
+-multiplexing (OFDM) simulation defines spectral efficiency as the data
+-subcarrier fraction and reports cyclic prefix overhead
+-separately
+-\cite{OISAC_SCR00007}.
+-
+-Reliability shifts attention to the event and its location in the signal chain.
+-BER measured before and after forward error correction describes two stages of
+-the link, while packet loss and outage describe broader delivery boundaries. A
+-fiber experiment over a long span reports receiver OSNR and BER before correction
+-during concurrent distributed sensing
+-\cite{OISAC_SCR01180}. A robotics study reports packet loss over distance and
+-view angle, display delay over queue size, and formation control under dynamic
+-motion as separate results \cite{OISAC_SCR00910}. The reported reliability value
+-is therefore tied to its event, observation point, time scale, and system boundary.
+-
+-The observation point also determines how signal quality and power are
+-interpreted. OSNR relates signal power to noise in a stated optical reference
+-bandwidth, while electrical SNR follows photodetection and digital SNR follows
+-equalization. Launch and received power likewise refer to the transmitter and
+-receiver ends of the link. A fiber polarization sensing experiment traces
+-recovered vibration SNR across an OSNR sweep, connecting the
+-sensing response to a stated optical condition
+-\cite{OISAC_SCR00220}.
+-
+-Distance and latency complete the profile by locating the result in space and
+-time. Fiber span and wireless separation describe link geometry, while target
+-range and coverage radius describe the observed or served region. Latency may
+-include propagation and buffering, signal acquisition and processing, or the
+-full application loop. Stated endpoints, included stages, and operating
+-conditions define the scope of each value. The complete profile connects each
+-communication metric to the system behavior it represents.
+-
+-\subsubsection{Sensing Metrics}
+-
+-Sensing metrics first take meaning from the task and quantity they represent.
+-Range and position estimates, motion measurements, images, and class decisions
+-refer to distinct observations and references. Resolution describes
+-separability along a stated dimension, while estimation error relates an
+-estimate to a reference. Repeatability captures variation across trials, and a
+-model bound supplies a conditional benchmark. These distinctions establish the
+-comparison basis.
+-
+-Representative studies show how this contract works. A fiber reflectometry
+-system reports breakpoint localization error and range resolution separately
+-for laboratory and simulated conditions \cite{OISAC_SCR00056}. A visible light
+-localization experiment distinguishes lateral estimation error from the
+-smallest demonstrated displacement and summarizes signed displacement with
+-means and standard deviations across repeated trials
+-\cite{OISAC_SCR00196}. An optical phased array simulation relates imaging root
+-mean square error to electrical SNR under a defined scene, waveform, and
+-beamforming constraint \cite{OISAC_SCR00940}. Each result retains its summary,
+-geometry, and validation setting.
+-
+-Detection and classification add dataset and decision context. Their metrics
+-take meaning from class balance, decision thresholds, background conditions,
+-and the relation between training and test data. CORE-Lens reports recognition
+-accuracy and optical camera communication BER across stated class, data rate,
+-and background settings, with runtime evaluated separately
+-\cite{OISAC_SCR00833}. VehicleTalk evaluates link performance, distance
+-estimation error, and vehicle status recognition under separate prototype
+-conditions \cite{OISAC_SCR01034}. Their application meaning follows from the
+-attached classes, geometries, and test protocols.
+-
+-Physical quantity sensing follows the same logic by linking each measurand to a
+-reference and calibration. Spatial support and acquisition time locate the
+-observation, while the aggregation rule shapes its summary. The resulting
+-profile connects the task, reference, geometry, processing, and validation
+-setting to the reported sensing outcome. Together, these elements define the
+-conditions for comparison.
+-
+-\subsubsection{Joint and Implementation Metrics}
+-
+-Joint metrics connect communication and sensing through a shared operating
+-point or resource rule. A matched tuple uses the same conditions for both
+-functions. A shared resource can also link values that retain their own
+-reported conditions. In an embedded pilot OFDM simulation, BER and mean
+-absolute pilot error are reported at the same SNR with eight pilots, while
+-spectral efficiency follows the corresponding data subcarrier fraction
+-\cite{OISAC_SCR00007}. The pilot error measures deviation of known pilot symbols
+-in the simulated channel. Together, the three values show how pilot allocation
+-connects communication reliability, resource efficiency, and the reported
+-sensing measure.
+-
+-Optimization creates another form of joint evidence by selecting an operating
+-point through shared design variables. In a simulated optical phased array
+-system, precoding matrices and photodiode orientations are selected together.
+-The design maximizes a sensing contrast metric under a communication quality
+-threshold and emitter power constraints \cite{OISAC_SCR00940}. Geometry,
+-constraint thresholds, and metric definitions define the scope of the
+-solution.
+-
+-Implementation metrics place these operating points within the platform and
+-application chain. Receiver bandwidth, converter rate, memory, acquisition
+-time, and latency show where processing burdens arise. An outdoor photonics
+-assisted terahertz prototype evaluates receiver pipeline latency in hardware
+-analysis and communication and ranging performance in a field experiment
+-\cite{OISAC_SCR01054}. A smartphone camera prototype evaluates recognition and
+-communication in the laboratory and benchmarks module latency, memory, and
+-complete cycle timing on the device \cite{OISAC_SCR00833}. Together, these
+-measures connect joint performance to the processing chain and locate the
+-effects of shared design choices in system behavior.
+-
+-\subsection{How Communication and Sensing Performance Interact}
+-
+-Communication and sensing often share bandwidth, power, waveform components,
+-hardware, and processing. A design change in any of these elements can move
+-both functions to a new operating point. More pilot symbols may strengthen a
+-sensing reference while leaving fewer resources for data. Wider bandwidth may
+-support both a higher data rate and finer range resolution until a receiver or
+-platform limit becomes active. The evidence is organized by the shared choice
+-that produces each pattern.
+-
+-The synthesis covers 402 relationships from 168 studies.
+-Figure~\ref{fig:tradeoff_profile} separates record type, overlapping study
+-coverage, and condition dependence across 11 recurring mechanism families.
+-Each relationship remains tied to its waveform, geometry, target, observation
+-point, and validation setting.
+-
+-\begin{figure*}[!t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig06_tradeoff_profile.pdf}
+-\caption{Evidence profile for 402 substantive joint performance relationships
+-from 168 studies. Panel (a) separates 218 quantitative and 184 qualitative
+-records. Panel (b) reports overlapping study coverage across the mechanism
+-families. Panel (c) reports the share of records whose interpretation depends
+-on stated conditions, with 371 such relationships across the profile. Family
+-study counts may overlap, and frequency describes corpus coverage.}
+-\label{fig:tradeoff_profile}
+-\end{figure*}
+-
+-Resource and power mechanisms carry much of the coded evidence, while condition
+-dependence remains common across the families. This pattern directs the
+-discussion toward the shared mechanism and the operating condition that shapes
+-each reported relation.
+-
+-\subsubsection{Bandwidth, Spectrum, and Resource Allocation}
+-
+-Bandwidth links the two functions when both draw on the same signal space. That
+-space may be divided across subcarriers, wavelengths, guard intervals,
+-observation time, or the usable response of a device. Embedded pilots show the
+-basic pattern. Increasing pilot support improves the reported pilot deviation
+-proxy while changing BER and the data carrying fraction
+-\cite{OISAC_SCR00007}. Protection intervals and chirp sweeps create related
+-exchanges by improving sensing isolation or pulse compression within device
+-bandwidth and subcarrier limits
+-\cite{OISAC_SCR00344,OISAC_SCR00366}. In each case, the effect follows the
+-resource being shared and the limit that becomes active.
+-
+-Waveform structure determines how the shared signal space is used, with format
+-and operating mode setting time and spectral sharing
+-\cite{OISAC_SCR00011,OISAC_SCR00012,OISAC_SCR00083}. Within that structure,
+-digital designs assign subbands, chirp parameters, power, and weighted resources
+-\cite{OISAC_SCR00367,OISAC_SCR00626,OISAC_SCR00955,OISAC_SCR00956,OISAC_SCR01010}.
+-Pilot strength, placement, and synchronization fields define reference support
+-and communication margin, while receiver partitioning and ranging sequence
+-redundancy set the usable signal region
+-\cite{OISAC_SCR00086,OISAC_SCR00151,OISAC_SCR00369,OISAC_SCR00990,OISAC_SCR01054,OISAC_SCR01088}.
+-A tunable laser study supplies qualitative generation context for the same
+-design space \cite{OISAC_SCR00553}. Together, the allocation rule and receiver
+-condition define the operating point reported in each design.
+-
+-Resource sharing also appears in time. Observation duration, camera exposure,
+-and task scheduling connect sensing quality and cadence with communication
+-goodput or execution time
+-\cite{OISAC_SCR00189,OISAC_SCR00273,OISAC_SCR00833}. Time division, chirp
+-repetition, coding traffic, security control, and embedded pulse count place
+-both functions within a shared frame
+-\cite{OISAC_SCR00836,OISAC_SCR01015,OISAC_SCR01034,OISAC_SCR01045,OISAC_SCR01019}.
+-Other designs reserve spectral, temporal, spatial, polarization, or phase
+-structure to manage interference, coverage, and receiver complexity
+-\cite{OISAC_SCR00177,OISAC_SCR00396,OISAC_SCR00916,OISAC_SCR00920,OISAC_SCR00953,OISAC_SCR00983}.
+-The observed outcome therefore depends on the frame period, exposure response,
+-isolation rule, and remaining occupancy.
+-
+-When both functions occupy the same waveform, bandwidth affects pulse
+-compression, estimation precision, sidelobes, and radar image quality together
+-with communication support
+-\cite{OISAC_SCR00362,OISAC_SCR00884,OISAC_SCR00889,OISAC_SCR00891,OISAC_SCR00909}.
+-Stimulated Brillouin scattering, frequency partitioning, and constellation
+-choice reveal device and spectral limits
+-\cite{OISAC_SCR00965,OISAC_SCR00970,OISAC_SCR00988}. Doppler refinement depends
+-on phase noise and computation \cite{OISAC_SCR00900}. A communication and
+-sensing bandwidth ratio gains meaning from total bandwidth, target range, and
+-receiver architecture \cite{OISAC_SCR00784}. These results show that signal
+-bandwidth and receiver processing jointly define the operating point.
+-
+-Reuse extends this mechanism by carrying sensing content in a shared waveform
+-or an existing transport path
+-\cite{OISAC_SCR00996,OISAC_SCR01004,OISAC_SCR01006}. Phase coding, carrier
+-grouping, radio frequency bandwidth, and space and wavelength allocation then
+-set the occupancy and isolation available to each function
+-\cite{OISAC_SCR01033,OISAC_SCR01036,OISAC_SCR01040,OISAC_SCR01086}. The result
+-depends on how the receiver separates the shared content and recovers the
+-underlying sequence.
+-
+-Hardware and processing resources complete the picture. Reference recovery and
+-coding consume timing or redundancy
+-\cite{OISAC_SCR00278,OISAC_SCR00607,OISAC_SCR00730}, while emitter bandwidth,
+-source coherence, optical budget, and distributed learning traffic set hardware
+-and network capacity
+-\cite{OISAC_SCR00763,OISAC_SCR01071,OISAC_SCR01073,OISAC_SCR01081}. Receiver
+-count introduces alignment and crosstalk constraints. In the reported
+-prototype, four surrounding receivers were designed and one receiver was
+-operated \cite{OISAC_SCR00619}. Phase control and observation settings affect the
+-recoverable path \cite{OISAC_SCR01085,OISAC_SCR01103}, while modulation,
+-sideband, and time bandwidth controls affect signal recovery
+-\cite{OISAC_SCR01152,OISAC_SCR01153,OISAC_SCR01188}. The same nominal allocation
+-can therefore produce a different result when the platform or receiver changes.
+-
+-\subsubsection{Power, Energy, and Dynamic Range}
+-
+-Power affects both functions through the finite operating range of the
+-transmitter, channel, and receiver. Launch and received power, carrier and
+-probe ratios, device bias, modulation swing, and converter headroom refer to
+-different points in that chain. As power changes, performance follows the
+-component that first approaches a noise, nonlinear, or saturation limit. The
+-reference plane and limiting component are therefore part of the result.
+-
+-A fiber probe sweep shows this response directly. Raising the sensing to
+-telecom power ratio improves sensing SNR and raises BER, with the strongest link
+-penalty near the probe \cite{OISAC_SCR00057}. In a visible light prototype, one
+-optical branch supports communication and ranging while another supports
+-energy harvesting. Their allocation governs rate, ranging quality, and
+-harvested power under separate receiver and endpoint bias conditions
+-\cite{OISAC_SCR01025}. Similar ratios connect BER or OSNR margin with phase,
+-polarization, and vibration observability in fiber
+-\cite{OISAC_SCR00013,OISAC_SCR00072,OISAC_SCR00220,OISAC_SCR00099,OISAC_SCR00592}.
+-In photonic wireless links, carrier and waveform ratios connect phase recovery,
+-BER or error vector magnitude (EVM), and radar or ranging quality within the
+-available receiver headroom
+-\cite{OISAC_SCR00492,OISAC_SCR00954,OISAC_SCR00966,OISAC_SCR00985}.
+-Comparisons are most informative when they use the same power reference and
+-receiver margin.
+-
+-Absolute power sweeps reveal where the operating range ends. In fiber, launch
+-and received power expose nonlinear interaction and sensing reach
+-\cite{OISAC_SCR00473,OISAC_SCR01079,OISAC_SCR01180}. Photonic front ends examine
+-operating limits associated with input power, modulator drive, converter
+-linearity, and amplifier gain
+-\cite{OISAC_SCR00631,OISAC_SCR00986,OISAC_SCR01012,OISAC_SCR01151}.
+-Architecture then decides where the available power is used. Polarization
+-paths, receiver taps, and branches assigned to individual functions distribute
+-power before estimation
+-\cite{OISAC_SCR00346,OISAC_SCR01072,OISAC_SCR01075}. Propagation, insertion,
+-and alignment losses determine how much reaches those branches
+-\cite{OISAC_SCR00002,OISAC_SCR00218,OISAC_SCR00506}. The remaining margin sets
+-the feasible operation of optical phased arrays, communication users, sensing
+-estimators, and illumination services
+-\cite{OISAC_SCR00940,OISAC_SCR00941,OISAC_SCR00980,OISAC_SCR01028}.
+-
+-Power allocation can also be written into the waveform. Service branches,
+-reference copies, and relative waveform amplitudes connect radar masking,
+-ranging, data delivery, and energy harvesting through a shared allocation
+-\cite{OISAC_SCR00893,OISAC_SCR00919,OISAC_SCR01032,OISAC_SCR01165}. Sequence
+-transitions, coding choices, and chaotic source parameters change how
+-communication and sensing information is recovered
+-\cite{OISAC_SCR00052,OISAC_SCR00460,OISAC_SCR01105}. Frequency separation,
+-probabilistic shaping, sensing slots, and carrier reuse move energy and
+-occupancy across signal dimensions
+-\cite{OISAC_SCR01009,OISAC_SCR01020,OISAC_SCR01030,OISAC_SCR01093}. The
+-waveform definition, hardware margin, and performance threshold determine the
+-resulting operating point. These same factors also govern reliability and
+-sensing quality.
+-
+-\subsubsection{Communication Reliability and Sensing Quality}
+-
+-Communication reliability and sensing quality become linked after the waveform
+-and receiver are selected. Communication evidence uses BER, EVM, quality
+-factor, and required OSNR, while sensing evidence uses SNR, estimation error,
+-and detection.
+-These measures can move together as leakage, nonlinear mixing, phase noise,
+-cancellation quality, or receiver competition changes. Some controls reduce an
+-interference path, while others redistribute energy within the shared signal.
+-This distinction explains why similar metric pairs can follow different trends.
+-
+-Two studies show why interference control and power redistribution require
+-separate interpretation. In a fiber link combining communication with coherent
+-reflectometry, sequence shaping reduces nonlinear interference induced by
+-signal transitions. This lowers the communication penalty while retaining
+-phase sensing at the reported condition \cite{OISAC_SCR00052}. In a millimeter
+-wave waveform, a direct current offset strengthens the sensing component and
+-raises the radar signal to interference ratio together with communication EVM
+-\cite{OISAC_SCR00808}. The first mechanism changes how
+-interference is produced, while the second redistributes energy within the
+-signal. Their trends therefore arise from different controls.
+-
+-Architecture then determines where these effects enter the chain. Shared path
+-tests evaluate communication reliability beside sensing outcomes at stated
+-operating points and validation settings
+-\cite{OISAC_SCR00008,OISAC_SCR00056,OISAC_SCR00589,OISAC_SCR00680}. Dedicated
+-monitoring wavelengths and reused channel estimates locate sensing support in
+-optical filtering or receiver processing, with communication performance
+-described qualitatively \cite{OISAC_SCR00957,OISAC_SCR00959}. The path and
+-receiver therefore define the scope of each reliability result.
+-
+-Once the architecture is fixed, waveform and inference choices determine the
+-reported communication and sensing metrics. Carrier choice, direct current
+-offset, and phase
+-modulation affect recovery at stated settings
+-\cite{OISAC_SCR00160,OISAC_SCR00312,OISAC_SCR00602}. Coding, guard structure,
+-and waveform composition affect BER, correlation quality, and ranging error
+-\cite{OISAC_SCR00885,OISAC_SCR00902,OISAC_SCR00918}. At the
+-inference stage, loss weighting connects communication reliability with
+-distance and velocity errors \cite{OISAC_SCR00233}, while Kalman tuning acts
+-within the sensing branch \cite{OISAC_SCR00665}. Shared sequence structure and
+-finite block phase processing place radar detection and phase estimation under
+-their sample and noise models \cite{OISAC_SCR00719,OISAC_SCR00906}. Phase index
+-and pulse position timing likewise connect communication error with radar SNR
+-or time of arrival precision \cite{OISAC_SCR00937,OISAC_SCR00979}. The sample,
+-noise, timing, and calibration definitions give each result its scope.
+-
+-At the system level, access placement guided by channel sensing connects link
+-capacity with weather and demand \cite{OISAC_SCR00922}. The aggregation of
+-sensing traffic connects capacity with target count and resolution requirements
+-\cite{OISAC_SCR01049}. Simultaneous use of time and frequency
+-creates direct waveform coupling \cite{OISAC_SCR00978}, while shared hardware
+-with waveform switching creates a different path
+-\cite{OISAC_SCR01041}. Waveform robustness under fading and learned phase
+-sensing place the limiting response in the channel or processing stage
+-\cite{OISAC_SCR00993,OISAC_SCR01185}. These studies connect reliability and
+-sensing quality to the complete waveform, receiver, channel, and processing
+-chain. The same chain also governs rate, resolution, accuracy, and range.
+-
+-\subsubsection{Rate, Resolution, Accuracy, and Range}
+-
+-The link between communication rate and sensing begins with the design variable
+-that changes the rate. Bandwidth and symbol timing can alter resolution
+-directly, while frame structure, geometry, and processing change the resources
+-available to the estimator. The controlling variable and its operating
+-conditions explain why a similar rate change can produce different sensing
+-outcomes.
+-
+-Waveform parameters provide the clearest starting point. In optoelectronic
+-oscillator and remote ranging designs, code length and period connect bit rate
+-or capacity with distance resolution and unambiguous range
+-\cite{OISAC_SCR00896,OISAC_SCR00576}. Power division changes OFDM reliability,
+-reach, and ranging error in a retroreflective prototype, while image
+-decomposition links stripe recovery with scene reconstruction and recognition
+-\cite{OISAC_SCR00912,OISAC_SCR00110}. LFM slope indexing and time division
+-designs in the W band place their controlling choices in slope selection and
+-frame duration
+-\cite{OISAC_SCR00361,OISAC_SCR01101}. The shared parameter sets the direction
+-of the relationship in each case.
+-
+-Frame structure creates a second path by deciding when and where each function
+-receives signal support. Dynamic allocation and intensity scaling distribute
+-support across payload, sensing patterns, and coverage
+-\cite{OISAC_SCR00009,OISAC_SCR00196}. Orthogonal time frequency space
+-parameterization and complete grid
+-OFDM reuse place both functions in a common time frequency structure
+-\cite{OISAC_SCR00210,OISAC_SCR00274}. Separate measurement paths and mode
+-switching show how a similar waveform can support different forms of
+-integration \cite{OISAC_SCR00418,OISAC_SCR01060}. The frame and measurement
+-schedule are therefore part of the result.
+-
+-Geometry sets the region in which those resources remain useful. Steering and
+-access point placement define communication and localization coverage, while
+-surface allocation and blockage aware access select the paths available to
+-each function
+-\cite{OISAC_SCR00036,OISAC_SCR00527,OISAC_SCR00914,OISAC_SCR01011}. Source
+-directivity and tag delay spacing further affect coverage, range separation,
+-and concurrent return recovery \cite{OISAC_SCR01024,OISAC_SCR01050}. The
+-reported layout is therefore part of the observed trend.
+-
+-Signal construction can tie payload more closely to sensing observability.
+-Chip length changes occupied symbol rate together with ranging precision and
+-security tolerance, while embedded communication data affects distributed
+-sensing fidelity \cite{OISAC_SCR00387,OISAC_SCR00647}. Amplitude shift keying
+-rate and guard
+-duration connect communication timing with range resolution and ambiguity
+-\cite{OISAC_SCR00887,OISAC_SCR00913}. Waveform switching provides a related
+-parameter coupling, with rate and resolution evaluated through separate
+-parameter changes \cite{OISAC_SCR00899}. In the terahertz system, the available
+-device band supports quadrature phase shift keying (QPSK) communication and the
+-LFM bandwidth used to achieve
+-range resolution
+-\cite{OISAC_SCR01000}. The waveform and hardware band together define the
+-feasible region.
+-
+-Optimization studies express these mechanisms as operating regions. Energy and
+-asymptotic block length define communication and detection rate pairs, while
+-nonorthogonal multiple access power allocation connects aggregate rate with
+-ranging error
+-\cite{OISAC_SCR00761,OISAC_SCR00925}. Other studies combine capacity with
+-ranging information or compare separate and joint operating configurations
+-\cite{OISAC_SCR00926,OISAC_SCR00944}. Probabilistic shaping and embedded data
+-create further regions through information rate, sidelobe level, and
+-estimation error \cite{OISAC_SCR00974,OISAC_SCR00975}. The selected operating
+-point follows the stated objective, constraints, and normalization.
+-
+-Processing adds another layer because the estimator decides how much of the
+-available signal becomes useful sensing information. Sampling period, spectral
+-weighting, zero padding, and transform length exchange response time and
+-computation for resolution under stated acquisition settings
+-\cite{OISAC_SCR00238,OISAC_SCR00998,OISAC_SCR01018,OISAC_SCR01095}. Rate
+-selection can tune the sensitivity of a density estimate derived from BER
+-\cite{OISAC_SCR01021}. In a separate application, classifier size changes
+-recognition accuracy and edge processing burden \cite{OISAC_SCR01047}. These
+-studies distinguish waveform rate from the update and computation needed to
+-interpret it.
+-
+-Across the network, the relationship moves from a single waveform to the traffic
+-and spectrum available across the system. Transport capacity controls how many
+-sensing streams meet an echo quality threshold \cite{OISAC_SCR00436}.
+-Separated bands, idle time frequency cells, cyclic prefix correlation, and
+-shared optical waveforms connect occupied spectrum with resolution or
+-estimation support
+-\cite{OISAC_SCR00977,OISAC_SCR00981,OISAC_SCR01023,OISAC_SCR01115}. A visible
+-light study carries this logic into a proposed capacity and localization
+-problem \cite{OISAC_SCR00488}. The evidence thus distinguishes observed
+-operation from a proposed design space.
+-
+-\subsubsection{Waveform, Hardware, and Complexity}
+-
+-Implementation complexity depends on where a design places its burden. Source
+-coherence, receiver structure, calibration, synchronization, computation,
+-memory, and latency represent different costs. Reusing a component may move
+-work into processing or control, so implementation complexity must be assessed
+-across the complete chain.
+-
+-Two photonic systems show how this transfer occurs. A terahertz design uses
+-coherent comb generation to stabilize the QPSK and LFM paths and concentrates
+-complexity in the optical source chain \cite{OISAC_SCR01000}. A fiber experiment
+-over a long span uses lower cost lasers with broad linewidths and recovers coherent
+-data and vibration through residual carrier processing
+-\cite{OISAC_SCR01070}. Each architecture preserves performance through a
+-different balance of source hardware and digital processing.
+-
+-\subsubsection{Other Implementation Relationships}
+-
+-Other implementation relationships show how a shared choice appears at
+-different layers of the system. Its effect may emerge as protection, joint
+-gain, device sensitivity, estimator burden, control freshness, or allocation
+-latency. Each case carries its own conditions and prepares the comparison
+-limits that follow.
+-
+-Security and synergy illustrate two possible directions. Phase keyed recovery
+-uses ranging tolerance to create a physically bounded decryption region
+-\cite{OISAC_SCR00387}. With spatial alignment, communication gain and target
+-profile estimation can benefit from the same optical design
+-\cite{OISAC_SCR00941}. Their geometry, objective, and validation setting explain
+-why one relationship expresses protection and the other expresses joint gain.
+-
+-Other cases locate the relationship within the implementation chain. Electrode
+-transparency connects device architecture with photodetector sensitivity, while
+-passive return loss and repeater structure affect access for fault localization
+-\cite{OISAC_SCR00001,OISAC_SCR01100}. Capacity and distance estimation define a
+-model operating region \cite{OISAC_SCR00908}. Queue freshness enters the robotic
+-control loop, and local spectral scanning connects computation with range
+-resolution \cite{OISAC_SCR00910,OISAC_SCR00994}. Weighted priorities guide
+-resource allocation, while orthogonal task channels shape application latency
+-\cite{OISAC_SCR01001,OISAC_SCR01059}. Read together, these
+-cases locate the relationship at the device, estimator, control, or allocation
+-layer and provide the conditions needed for comparison across studies.
+-
+-\subsection{Conditions for Comparison Across Studies}
+-
+-Comparison across studies begins with alignment. The bounded relations summarized
+-in Table~\ref{tab:metric_admissibility} connect studies when their task, metric
+-definition, measurement plane, operating point, and validation setting can be
+-matched through the framework in Section~\ref{sec:foundations_comparison}.
+-Other metric evidence explains mechanisms, feasibility, and behavior within
+-individual systems. This separation keeps each reported value attached to its
+-original engineering meaning.
+-
+-Tradeoff evidence follows the same principle. Because objectives and
+-constraints vary across systems, the synthesis compares the shared mechanism
+-and the conditions that produce the observed response. This approach shows why
+-a relationship recurs and when it can guide another design. Its engineering
+-value also depends on the validation setting and on how completely the
+-configuration can be reconstructed. Section~\ref{sec:validation_reproducibility}
+-examines these requirements through validation settings, field evidence across
+-both functional domains, and reconstructability.
++\end{table*}
++
++\subsection{Allocating Signal Space and Observation Time}
++
++When communication and sensing occupy a finite frame, an allocation changes
++both the samples available to the estimator and the opportunity to carry
++payload. Embedded-pilot OFDM makes this connection explicit. Increasing pilot
++support improves the reported pilot-deviation proxy, while BER and the data
++subcarrier fraction follow the selected allocation
++\cite{OISAC_SCR00007}. That proxy describes errors in known pilot symbols in a
++simulated channel; it does not establish target range or localization accuracy.
++The study's spectral-efficiency definition counts data subcarriers and treats
++cyclic-prefix overhead separately. Thus, the same allocation informs three
++reported outcomes, but each retains a different meaning.
++
++Reserved intervals, subbands, and chirps extend the mechanism to other
++waveforms. Protection can isolate a sensing return, and a chirp can supply
++pulse-compression support, at the cost of occupying a particular part of the
++available signal space \cite{OISAC_SCR00344,OISAC_SCR00366}. In a photonic
++terahertz prototype, net communication rates depend on subcarrier assignment,
++payload occupancy, and coding overhead \cite{OISAC_SCR01054}. The resource
++cost therefore follows from the implemented frame, including the information
++needed for synchronization and recovery. It cannot be inferred from the
++modulation order or nominal bandwidth alone.
++
++Full waveform reuse changes this accounting: sensing can use samples that also
++carry data, but the receiver must recover a reference or separate the two
++signal components. Full-grid OFDM reuse and shared optical waveforms illustrate
++this alternative \cite{OISAC_SCR00274,OISAC_SCR01115}. A wider usable
++bandwidth can support communication signaling and finer delay discrimination
++at the same time. The benefit is limited by the device response, reference
++quality, sidelobes, and receiver processing
++\cite{OISAC_SCR00965,OISAC_SCR00988,OISAC_SCR01000}. A bandwidth ratio is
++therefore informative only with the total bandwidth, target range, and
++receiver architecture \cite{OISAC_SCR00784}.
++
++Observation time creates a related, but distinct, allocation. Camera exposure,
++acquisition duration, and task scheduling affect sensing support and update
++cadence alongside data recovery or execution time
++\cite{OISAC_SCR00189,OISAC_SCR00273,OISAC_SCR00833}. Longer observation does
++not merely consume a frame fraction: it can change which temporal variations
++remain observable. Chirp repetition, coding traffic, and embedded pulse count
++likewise place the two functions in a common schedule
++\cite{OISAC_SCR01015,OISAC_SCR01034,OISAC_SCR01019}. The exposure-time
++coexistence analysis in Table~\ref{tab:metric_admissibility} is especially
++instructive because the modeled shared choice and the separately obtained
++laboratory gains support different conclusions \cite{OISAC_SCR00273}.
++
++\subsection{Distributing Power Under Interference and Receiver Limits}
++
++Power enters the joint design through a reference plane and a constraint.
++Changing a probe-to-data ratio at fixed communication launch power adds a
++different burden from dividing a fixed total budget. Launch power, received
++power, carrier-to-signal ratio, modulation swing, and detector bias refer to
++different points in the chain. Their effects pass through loss, noise,
++nonlinear interaction, and saturation before either functional metric is
++formed. Consequently, a reported gain can be interpreted only after identifying
++what power was varied and what remained fixed.
++
++The fiber probe sweep in Table~\ref{tab:metric_admissibility} exhibits a direct
++conflict. Raising the sensing-to-telecom ratio at fixed communication launch
++power improves sensing SNR and raises BER, with the strongest communication
++penalty near the probe \cite{OISAC_SCR00057}. Related fiber designs connect
++probe or carrier ratios to phase, polarization, and vibration observability
++under their own OSNR and receiver conditions
++\cite{OISAC_SCR00013,OISAC_SCR00072,OISAC_SCR00220}. These observations locate
++the interaction in the optical link; they do not justify transferring a
++preferred ratio between different fiber topologies or receivers.
++
++Architecture determines where that power is spent. Polarization paths, receiver
++taps, and separate service branches distribute the signal before estimation
++\cite{OISAC_SCR00346,OISAC_SCR01072,OISAC_SCR01075}. In a visible-light
++prototype, allocation between a communication/ranging branch and an
++energy-harvesting branch governs their reported outcomes under distinct
++receiver and endpoint bias conditions \cite{OISAC_SCR01025}. In photonic
++wireless systems, carrier and waveform ratios interact with phase recovery and
++the headroom available for communication and radar reception
++\cite{OISAC_SCR00492,OISAC_SCR00954,OISAC_SCR00966}. The same allocation can
++therefore produce different responses after a change in receiver architecture.
++
++Absolute-power and drive sweeps expose another limit. Fiber launch conditions
++affect nonlinear interaction and sensing reach
++\cite{OISAC_SCR00473,OISAC_SCR01079,OISAC_SCR01180}; photonic front ends add
++modulator, converter, and amplifier limits
++\cite{OISAC_SCR00631,OISAC_SCR00986,OISAC_SCR01012}. Once a component limits
++recovery, additional signal power need not provide proportional improvement.
++Loss, pointing, and branch insertion loss also determine the margin actually
++available at the detector \cite{OISAC_SCR00002,OISAC_SCR00218,OISAC_SCR00506}.
++The useful operating region is bounded by these physical limits and by the
++communication and sensing thresholds required together.
++
++\subsection{Choosing Geometry, Aperture, and Spatial Support}
++
++Spatial design changes both received energy and the information carried by the
++available paths. Directing more light toward a communication receiver can
++increase its signal, while sensing also depends on the positions and angles
++needed to distinguish a target or estimate a location. Beam steering, access
++point placement, and spatial allocation therefore influence coverage and
++observability through related but unequal mechanisms
++\cite{OISAC_SCR00036,OISAC_SCR00527,OISAC_SCR00914}. A common physical path
++does not by itself imply that the communication receiver and sensing target
++favor the same beam.
++
++Joint optimization expresses this dependence through an explicit feasible
++region. In the optical phased array simulation in
++Table~\ref{tab:metric_admissibility}, precoding and photodiode orientation are
++selected to maximize sensing contrast while satisfying a communication quality
++threshold and emitter power constraints \cite{OISAC_SCR00940}. The result
++establishes performance under the modeled scene and constraints. A related
++spatial design shows communication gain and target-profile estimation
++benefiting under alignment conditions \cite{OISAC_SCR00941}. Such joint gains
++are plausible when the useful spatial support overlaps; the stated geometry is
++part of the explanation, rather than an incidental test detail.
++
++Geometry also enters through feedback. Structured illumination can provide a
++position estimate used to adapt communication beamforming
++\cite{OISAC_SCR00196}. Blockage-aware access can select a different usable
++path \cite{OISAC_SCR01011}. The control decision may improve the subsequent
++link, but its benefit depends on whether the observation remains current when
++the action occurs. This creates a bridge from static spatial optimization to
++the service timing examined in Section~\ref{sec:technologies_applications_6g}.
++
++Spatial claims must also retain the implemented receiver configuration. Source
++directivity and tag-delay spacing affect coverage and the separability of
++returns \cite{OISAC_SCR01024,OISAC_SCR01050}. In another prototype, four
++surrounding receivers were designed but one was operated
++\cite{OISAC_SCR00619}. The measured configuration supports conclusions about
++that receiver path; array-wide coverage and crosstalk require their own tests.
++
++\subsection{Designing Waveforms and Recovering Shared Information}
++
++Waveform design can change the origin of interference as well as the allocation
++of signal energy. This distinction explains why superficially similar metric
++pairs exhibit different trends. In fiber communication with coherent
++reflectometry, shaping sequence transitions reduces nonlinear interference,
++lowering the communication penalty while retaining phase sensing at the
++reported condition \cite{OISAC_SCR00052}. A millimeter wave design instead
++increases a DC offset to strengthen the sensing component: radar
++signal-to-interference ratio improves while communication EVM rises
++\cite{OISAC_SCR00808}. The former modifies the interference mechanism; the
++latter changes the balance of energy within the waveform.
++
++Sequence timing governs another set of coupled outcomes. Code length and
++period can connect signaling rate with delay resolution and unambiguous range
++\cite{OISAC_SCR00896,OISAC_SCR00576}. Chip duration, amplitude-keying timing,
++and guard duration likewise determine the signal support for data recovery and
++range discrimination \cite{OISAC_SCR00387,OISAC_SCR00887,OISAC_SCR00913}.
++Embedding communication data into a sensing signal can change its correlation
++or distributed-sensing fidelity \cite{OISAC_SCR00647,OISAC_SCR00918}.
++Reported rate--range relations therefore require the precise timing and
++ambiguity definitions; resolution, estimation error, and maximum unambiguous
++range remain different outcomes.
++
++Receiver processing can also reuse information obtained by the other function.
++In the fiber probe study, a communication-receiver estimate of the link
++frequency response is used to pre-compensate the sensing probe, improving
++vibration-spectrum SNR by 2.4~dB in that processing test
++\cite{OISAC_SCR00057}. This result concerns compensation using shared receiver
++information; it is separate from the probe-power sweep and its communication
++penalty.
++
++Receiver processing also decides how the acquired samples become estimates. Spectral
++weighting and transform choices alter the recovered response and computational
++burden under a stated acquisition window
++\cite{OISAC_SCR00998,OISAC_SCR01018,OISAC_SCR01095}. Zero padding refines the
++sampled transform grid; it does not add independent delay information or,
++by itself, improve the physical separability set by the acquired signal.
++Similarly, changing a sensing estimator alone does not establish a joint
++communication--sensing improvement. Kalman tuning acts within the sensing
++branch \cite{OISAC_SCR00665}, whereas loss weighting in a joint inference
++design explicitly connects communication reliability with distance and velocity
++errors \cite{OISAC_SCR00233}. The metric and branch affected by the processing
++change must therefore remain visible.
++
++Source and digital processing choices can exchange implementation burden. One
++terahertz design uses coherent comb generation to stabilize quadrature
++phase-shift keying (QPSK) and LFM paths
++\cite{OISAC_SCR01000}. A long-span fiber experiment recovers coherent data and
++vibration using broad-linewidth lasers and residual-carrier processing
++\cite{OISAC_SCR01070}. These examples place reference recovery in different
++parts of the chain. They support architecture-specific feasibility, while a
++cost or energy comparison would require matched hardware, processing, and
++performance assumptions.
++
++The processing burden also has a time dimension. Receiver bandwidth, converter
++rate, memory, and acquisition length determine how quickly a result is
++available. The outdoor terahertz study reports pipeline latency through
++hardware analysis and communication/ranging performance through a field
++experiment \cite{OISAC_SCR01054}. A smartphone camera system evaluates
++recognition and communication in the laboratory and module latency, memory,
++and complete-cycle timing on the device \cite{OISAC_SCR00833}. These
++measurements describe complementary parts of the implementation; their
++endpoints must align before they constitute an end-to-end latency result.
++
++\subsection{What the Reported Operating Points Establish}
++
++The mechanisms above explain both conflict and shared benefit. Allocating a
++finite resource can favor one task at the expense of another. Suppressing a
++common impairment or aligning useful spatial support can instead improve the
++conditions for both. A source-reported parameter sweep, a constrained model,
++and two separate demonstrations establish different parts of that argument.
++In particular, a modeled optimum remains conditional on its objective,
++constraints, noise model, and geometry; it is not a measured frontier for all
++systems using the same platform.
++
++The comparison conditions in Section~\ref{sec:foundations_comparison} determine
++whether the magnitude of a response can inform another design. Where those
++conditions differ, the transferable insight is the mechanism and the constraint
++that limits it. The remaining question is whether that explanation survives
++physical disturbances and can be tested independently.
++Section~\ref{sec:validation_reproducibility} examines the corresponding
++validation evidence.
+diff --git a/manuscript/sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex b/manuscript/sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex
+index 2ce3907..b16720f 100644
+--- a/manuscript/sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex
++++ b/manuscript/sections/06_VALIDATION_REPRODUCIBILITY_AND_BENCHMARK_READINESS.tex
+@@ -1,221 +1,164 @@
+-\section{VALIDATION EVIDENCE, RECONSTRUCTABILITY, AND BENCHMARK READINESS}
++\section{JOINT VALIDATION UNDER REALISTIC CONDITIONS}
+ \label{sec:validation_reproducibility}
+ 
+-Section~\ref{sec:metrics} showed that comparison depends on alignment across
+-the task, measurement plane, operating point, and validation setting. This
+-section examines how far those operating points were tested and how completely
+-their configurations can be reconstructed. It then relates validation settings,
+-evidence from both functions, and artifact access to benchmark readiness.
+-
+-We assessed all 206 included studies using the Technical Quality Assessment
+-Framework (TQAF) developed for this review. Its deterministic rules score
+-eight technical and reporting dimensions from 0 to 3, with overall evidence
+-contribution recorded separately. TQAF is a descriptive appraisal whose
+-scoring has not been independently validated; it does not provide a
+-conventional risk-of-bias assessment. Electronic Supplements S-Protocol and
+-S-Appraisal provide the scoring rules and study-level records, respectively.
+-
+-Figure~\ref{fig:tqaf_profile} summarizes support for interpreting the reported
+-results and reusing them beyond their original setting. The analyses below
+-connect the validation, reproducibility, and benchmark-readiness dimensions
+-to tested settings, coverage of both functions, and reconstructability.
++The performance relations in Section~\ref{sec:tradeoffs} identify how a shared
++resource or design choice changes communication and sensing. Their usefulness
++for another system depends on whether the relation survives the disturbances,
++hardware effects, and service demands of that system. Validation must therefore
++connect the controlled design choice to both measured outcomes and explain how
++the operating conditions were exercised. The central question is how much of
++that joint behavior has been demonstrated, from a numerical model to a deployed
++link, and how another group could test it again.
++
++\subsection{What Different Validation Settings Reveal}
++
++Figure~\ref{fig:validation_profile} summarizes each study's highest reported
++setting. Laboratory and proof-of-concept work accounts for 78 studies, and
++controlled prototypes for 66. Simulation or numerical work accounts for 32,
++enhanced simulation or dataset-based work for 18, and field trials or deployments
++for 12. These exclusive settings describe the reach of the reported evaluation;
++a single study can also combine analysis, simulation, and physical experiments.
++The complete overlapping method profile is retained in the electronic supplement.
+ 
+ \begin{figure*}[!t]
+ \centering
+-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig04_tqaf_profile.pdf}
+-\caption{Technical appraisal of the 206 included studies under the
+-review-specific TQAF rules. Each row groups all studies by strong, adequate,
+-or low support. The interpretation dimensions concern the meaning and
+-reporting of results in their source setting. Transfer and reuse dimensions
+-concern validation and reconstruction, together with benchmark and comparison
+-support. Overall evidence contribution is displayed separately.}
+-\label{fig:tqaf_profile}
+-\end{figure*}
+-
+-\subsection{Validation Settings and Methods}
+-
+-Figure~\ref{fig:validation_profile} places each study's highest reported setting
+-beside the validation methods used across the corpus. The first panel assigns
+-one setting to every study, while the second allows several methods to
+-contribute to one evidence chain.
+-
+-\begin{figure*}[!t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig07_validation_profile.pdf}
+-\caption{Validation settings and methods in the 206 studies. Panel (a) assigns
+-each study to one highest reported setting. Panel (b) reports analytical and
+-numerical methods, simulations, methods based on datasets, laboratory
+-experiments, prototypes, field studies, and mixed methods. Method categories may overlap because several
+-forms of evidence can contribute to one study. The panels describe the reach
+-and composition of validation as distinct properties.}
++\includegraphics[width=\textwidth]{figures/validation.pdf}
++\caption{Validation reach in the 206 included studies. The highest-setting
++classes are exclusive. The nested field subset distinguishes 12 studies whose
++highest setting was field or deployment from six reporting field or deployment
++outcomes in both communication and sensing. Neither count establishes concurrent
++joint operation in one configuration and time interval.}
+ \label{fig:validation_profile}
+ \end{figure*}
+ 
+-The profile shows a broad laboratory and prototype base together with a smaller
+-field subset. Analytical, simulation, laboratory, and prototype methods can
+-contribute to one study, so the configuration trail across methods shapes
+-interpretation.
+-
+-These settings expose different parts of an O-ISAC system. Simulation studies
+-isolate waveform and device sensitivities under controlled conditions
+-\cite{OISAC_SCR00007,OISAC_SCR00274}. Laboratory and prototype systems reveal
+-conversion, synchronization, and receiver effects in physical implementations
+-\cite{OISAC_SCR00001,OISAC_SCR00210,OISAC_SCR00362}. Field studies extend the
+-evidence to access networks, deployed fiber, submarine monitoring, and outdoor
+-wireless links
++Each setting exposes a different part of the coupling mechanism. Simulation
++can isolate waveform allocation and device sensitivities while holding other
++parameters fixed \cite{OISAC_SCR00007,OISAC_SCR00274}. Laboratory and prototype
++implementations expose conversion, synchronization, and receiver effects that
++enter the physical signal chain
++\cite{OISAC_SCR00001,OISAC_SCR00210,OISAC_SCR00362}. Field studies add the
++constraints of access networks, deployed fiber, submarine monitoring, and
++outdoor wireless links
+ \cite{OISAC_SCR00496,OISAC_SCR00631,OISAC_SCR00957,OISAC_SCR01054,OISAC_SCR01086}.
+-
+-The highest setting describes the reach of the evidence. Its scientific
+-meaning still depends on the claim and the test design. A controlled prototype
+-may explore a wider parameter range than a field trial, while a laboratory
+-experiment may reveal communication and sensing interactions more directly
+-than a field dataset collected for one outcome. The setting therefore gains
+-meaning when it is read together with the tested conditions, available
+-controls, and functional coverage.
+-
+-Each method serves a different analytical purpose. Analysis clarifies
+-assumptions, simulation supports controlled parameter studies, and laboratory
+-work reveals the behavior of physical components. Prototypes bring subsystems
+-together, while field studies introduce at least one operational boundary.
+-Their combined value grows when the configuration and conditions remain
+-traceable as the evidence moves from one method to another.
+-
+-Section~\ref{sec:optical_modality_families} shows that realistic validation
+-conditions change with the platform. Fiber studies depend on topology, traffic,
+-launch and receiver conditions, and the disturbance context. Visible light
+-communication and LiFi studies
+-add layout, orientation, illumination, detector, and processing conditions.
+-Free space optical studies require geometry, pointing, target properties,
+-weather, and motion. Terahertz systems enabled by photonics must also trace
+-optical conversion, antenna alignment, and wireless propagation. A useful
+-validation record therefore identifies the environment, measurement plane,
+-target or disturbance, reference method, and exercised function.
+-
+-\subsection{Field Evidence Across Communication and Sensing}
+-
+-The highest validation setting and the coverage of both functions answer
+-related questions. For 12 studies, a field trial or deployment was the
+-strongest reported setting. Six of them also received TQAF validation score 3
+-because their records report field or deployment outcomes in each functional
+-domain. The assessment is applied to each study. Electronic Supplement
+-S-Appraisal reports the corresponding scores. Electronic Supplement S7, the
+-paired function validation register, identifies the 12 studies and the subset
+-of six.
+-
+-The six studies cover several settings. They include terahertz and cellular
+-links enabled by photonics, fiber access integrated with radio frequency
+-identification, and space laser ranging and communication. They also include
+-multicore fiber deployed in the field and submarine cable monitoring
++The scientific contribution of a field trial depends on which of these
++conditions it actually tests. A controlled prototype may sweep a larger range
++of a shared parameter or measure the two functions more directly than a field
++dataset collected for a single outcome.
++
++The required disturbances follow the physical path. In fiber, topology,
++traffic, launch conditions, receiver operation, and the disturbance being
++sensed define the experiment. For VLC and LiFi, geometry, receiver orientation,
++illumination, and detector response determine the available observation. FSO
++adds pointing, target properties, atmosphere, and motion. Photonics-enabled
++terahertz systems cross an additional interface: optical conversion and
++reference stability must be related to antenna alignment and wireless
++propagation. Following the same configuration through analysis, simulation,
++and experiment helps distinguish a predicted resource interaction from an
++unmodeled component or environmental effect.
++
++\subsection{Field Coverage of Both Functions}
++
++Among the 12 field or deployment studies, six report outcomes in both
++functional domains at that level. They cover photonics-enabled terahertz and
++cellular links, fiber access integrated with radio-frequency identification,
++space laser ranging and communication, deployed multicore fiber, and submarine
++cable monitoring
+ \cite{OISAC_SCR01054,OISAC_SCR00496,OISAC_SCR00631,OISAC_SCR00730,OISAC_SCR01086,OISAC_SCR00957}.
+-Their diversity shows that field evidence for both functional domains appears
+-across several platforms. Platform comparisons still follow the native
+-validation conditions described in Section~\ref{sec:optical_modality_families}.
+-
+-Electronic Supplement S7 records the available relationship timing and separate
+-source locators for the two functions. The six cases establish field or
+-deployment outcomes in both functional domains at the level of each study. Concurrent
+-joint operation is established when both outcomes are traceable to the same
+-configuration, time interval, and condition set.
+-
+-The distinction becomes important when evidence is produced at different
+-stages of a system. One fiber study combines field data with offline sensing
+-classification and illustrates how field collection and functional execution
+-can occupy different parts of the evaluation path \cite{OISAC_SCR01006}.
+-Segmented architectures add interfaces, timing, calibration, and conversion
+-conditions to that path. When these elements connect both outcomes to one
+-operating point, field coverage can support a stronger claim of joint
+-operation.
+-
+-\subsection{Artifact Access and Reconstructability}
+-
+-Validation describes what a study tested. Reconstructability describes how
+-completely another group can recover the operating point and the path from
+-input to reported result. Access to data, code, or models supports this task,
+-while physical experiments also depend on the system configuration,
+-measurement conditions, processing steps, and provenance.
+-
+-Table~\ref{tab:artifact_reconstruction} summarizes the access routes reported
+-for data and for code or models in all 206 studies.
++Thus, field evidence for communication and sensing extends across several
++physical settings. This finding establishes coverage at the study level; it
++does not make all six systems equivalent joint demonstrations.
++
++Concurrent joint operation requires the two outcomes to refer to the same
++configuration, time interval, and condition set. If a communication result
++comes from one test and a sensing result from another, their coexistence in a
++paper supports a different claim. Electronic Supplement S7 preserves the
++separate source locators and available timing information for the two
++functions. This distinction also matters when the environment is physical but
++the downstream processing is performed later. One fiber study combines field
++data with offline sensing classification \cite{OISAC_SCR01006}. The data show
++what was observed on the link, while the classification evaluates a subsequent
++processing stage; collection and functional execution occupy different parts
++of the evaluation.
++
++For a segmented system, the same reasoning extends across synchronization,
++conversion, and calibration interfaces. A joint test should show how each
++interface maps the transmitted signal and physical disturbance to the two
++reported outcomes. This makes it possible to identify whether a degradation
++originates in the shared optical resource, the wireless path, or subsequent
++processing, and to judge whether service continues during the disturbance.
++
++\subsection{Recovering the Experiment Behind a Result}
++
++Independent reconstruction requires more than a reported peak rate or error.
++Another group needs the waveform and processing chain, hardware configuration,
++scene and calibration, metric definitions, and data used to obtain that value.
++Table~\ref{tab:artifact_reconstruction} summarizes the reported access routes.
++Closed access and an unspecified status are combined in the original coding
++and cannot be separated by interpreting this table.
+ 
+ \begin{table}[!t]
+-\caption{Reported access to data and to code or models in the 206 studies}
++\caption{Reported artifact access in the 206 studies}
+ \label{tab:artifact_reconstruction}
+ \centering
+ \footnotesize
+-\setlength{\tabcolsep}{3.2pt}
+-\renewcommand{\arraystretch}{1.04}
+-\begin{tabularx}{\columnwidth}{@{}
+->{\raggedright\arraybackslash}X
+->{\centering\arraybackslash}p{0.28\columnwidth}@{}}
++\setlength{\tabcolsep}{3pt}
++\renewcommand{\arraystretch}{1.05}
++\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}X
++>{\centering\arraybackslash}p{0.26\columnwidth}@{}}
+ \toprule
+-Reported access & Studies, $n$ (\%) \\
++Access route & Studies, $n$ (\%) \\
+ \midrule
+ \multicolumn{2}{@{}l}{\textit{Data}} \\
+ Closed or status unreported & 145 (70.4\%) \\
+-Access by request & 41 (19.9\%) \\
+-Open access & 13 (6.3\%) \\
++By request & 41 (19.9\%) \\
++Open & 13 (6.3\%) \\
+ Outside artifact scope & 7 (3.4\%) \\
+ \addlinespace[2pt]
+ \multicolumn{2}{@{}l}{\textit{Code or model}} \\
+ Closed or status unreported & 197 (95.6\%) \\
+-Access by request & 7 (3.4\%) \\
++By request & 7 (3.4\%) \\
+ Partial components & 1 (0.5\%) \\
+ Outside artifact scope & 1 (0.5\%) \\
+ \bottomrule
+ \end{tabularx}
+-\vspace{1pt}
+-\parbox{\columnwidth}{\raggedright\footnotesize\emph{Note.} The first row in
+-each group combines closed access and an unspecified access status.\par}
+ \end{table}
+ 
+-The reported routes support different forms of reconstruction. Open data
+-appear across simulation, laboratory, prototype, computer vision, and field
+-data settings
++Open data appear in simulation, laboratory, prototype, computer-vision, and
++field-data settings
+ \cite{OISAC_SCR00274,OISAC_SCR00362,OISAC_SCR00833,OISAC_SCR01006,OISAC_SCR01008}.
+-They support reanalysis of the released data. Complete system reconstruction
+-also requires configuration and execution details. Software preserves the
+-transformation from inputs to reported outputs, and one computer vision study
+-reported partial code or model components
+-\cite{OISAC_SCR00833}.
+-
+-Reconstructing a physical experiment requires the system and hardware, the
+-scene and calibration, the waveform and processing, the metrics and data, and
+-the versioned release. These requirements extend the comparison profile in
+-Section~\ref{sec:foundations_comparison}. Electronic Supplements S-Data
+-Dictionary and S-Evidence provide the field definitions and record provenance
+-used in the review.
+-
+-The TQAF reproducibility assessment reads artifact access together with
+-parameter reporting. It places 4 studies in the low category, 199 in the
+-adequate category, and 3 in the strong category. Electronic Supplement
+-S-Appraisal provides scores for each study. Thirteen studies report open data,
+-while three reach strong reproducibility. The difference reflects the
+-additional reconstruction information captured by the appraisal.
+-
+-\subsection{Benchmark Readiness}
+-
+-A reconstructable result becomes a reusable benchmark when another group can
+-apply the same task, condition set, baseline, and metric definition. The TQAF
+-benchmark assessment combines these requirements with artifact access,
+-validation, reproducibility, and comparison admissibility. The observed
+-distribution comprises 48 studies in the low category, 158 in the adequate
+-category, and zero in the strong category.
+-
+-Under the review criteria, strong readiness depends on bringing an external or
+-common baseline, an open artifact, admissible outcomes in both functional
+-domains, and strong validation and reproducibility support into the same
+-evidence chain. S-Appraisal reports these scores. This distribution directs
+-attention toward shared tasks, baselines,
+-artifacts, and evaluation conditions that other groups can reuse.
+-
+-These distributions characterize evidence reach, functional coverage, artifact
+-access, and reconstructability within the 206 included studies. They provide
+-the descriptive basis for the benchmark and reporting actions in
+-Section~\ref{sec:discussion_roadmap}.
+-
+-Overall, the corpus combines a broad laboratory and prototype base with a
+-smaller set of field and deployment results. Stronger cumulative evidence
+-emerges when both functions are tied to one traceable configuration and the
+-evaluation path is preserved through reusable artifacts. Section~\ref{sec:technologies_applications_6g}
+-builds on this validation map by examining the technologies and applications
+-supported by the reported evidence and their connection to 6G network roles.
++They permit reanalysis of the released observations. Repeating the physical
++experiment additionally requires the acquisition and calibration conditions,
++and reproducing a processed result requires the transformation from inputs to
++outputs. The computer-vision study reporting partial code or model components
++illustrates this distinction between an available component and a complete
++execution path \cite{OISAC_SCR00833}.
++
++We used the Technical Quality Assessment Framework (TQAF) developed for this
++review to describe such support. It scores eight technical and reporting
++dimensions from 0 to 3 and records overall evidence contribution separately.
++TQAF is a review-specific descriptive appraisal whose scoring has not been
++independently validated; it is not a conventional risk-of-bias assessment.
++The full profile and scoring rules are provided in the electronic supplement.
++Its reproducibility dimension combines parameter reporting with artifact
++access: 13 studies report open data, whereas three meet its strong
++reproducibility criteria. The difference reflects the additional information
++needed to reconstruct the system and its analysis.
++
++\subsection{From Reconstruction to a Shared Benchmark}
++
++A reconstructable experiment becomes a common test when independent designs
++can address the same task under a stated baseline, calibration, and metric
++definition. This requires agreement on which variables are controlled and
++which are allowed to change. For example, repeating a power-allocation result
++requires the same interpretation of the power budget; repeating a tracking
++result also requires the geometry and update process that produced the
++observation. The comparison conditions established in
++Section~\ref{sec:foundations_comparison} are therefore part of the experiment.
++
++No study reached the strong benchmark-readiness category under TQAF's combined
++criteria for common baselines, open artifacts, admissible outcomes in both
++domains, validation, and reproducibility. This review-specific result identifies
++an opportunity to combine capabilities already demonstrated separately. Shared
++tasks and recoverable experiments would allow the application requirements in
++Section~\ref{sec:technologies_applications_6g} to be tested against the same
++physical performance relation, rather than inferred from unrelated peak values.
+diff --git a/manuscript/sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex b/manuscript/sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex
+index c077ae1..28064e8 100644
+--- a/manuscript/sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex
++++ b/manuscript/sections/07_ENABLING_TECHNOLOGIES_APPLICATIONS_AND_6G.tex
+@@ -1,302 +1,243 @@
+-\section{ENABLING TECHNOLOGIES, APPLICATION REQUIREMENTS, AND 6G NETWORK EVIDENCE}
++\section{APPLICATION REQUIREMENTS AND NETWORK OPERATION}
+ \label{sec:technologies_applications_6g}
+-Validation shows how far a reported system was tested. We now follow the
+-technologies that form communication and sensing observables into application
+-requirements and 6G network roles. Because a study may contribute to several
+-technology and application labels, their counts describe coverage within the
+-corpus.
+ 
+-Figure~\ref{fig:technology_application_chain} follows this evidence chain from
+-optical generation and transport through waveform formation, spatial control,
+-inference, selected application domains, and 6G network positioning.
+-
+-\begin{figure*}[!t]
+-\centering
+-\includegraphics[width=\textwidth]{figures/final_submission_2026-08-25/fig08_technology_application_chain.pdf}
+-\caption{Organization across system layers of the mechanisms that create and shape
+-O-ISAC observables and connect them to service requirements. Technology and
+-application counts describe overlapping corpus coverage, so a study may
+-contribute to several displayed categories. The 6G evidence gate is exclusive
+-and assigns each of the 206 studies to one relevance class. Selected application
+-domains illustrate the requirement flow, while Table~\ref{tab:application_requirements}
+-provides the complete application inventory.}
+-\label{fig:technology_application_chain}
+-\end{figure*}
+-
+-The chain shows that network interpretation depends on continuity across the
+-physical observable, the joint design choice, the application condition, and
+-the reported network role. The displayed categories guide the reader through
+-that relationship, while the following subsections retain the platform
+-conditions and study evidence.
+-
+-\subsection{Technologies That Create and Shape Observables}
+-
+-The main technology labels occupy complementary points in the signal chain.
+-Photonic generation creates or translates the carrier. Chirped processing maps
+-delay or motion to beat frequency. Coherent reception preserves phase, and OFDM
+-provides controllable time and frequency resources. A single architecture can
+-combine several of these mechanisms.
+-
+-OFDM supports joint operation by placing payload and sensing resources within
+-one signal structure. The sensing observable may come from pilots, payload
+-tones, cyclic prefixes, reserved subcarriers, or a dedicated processing branch.
+-This choice determines which samples are known at the receiver and how
+-interference enters the estimate. Optical modulation constraints and the
+-measurement plane used for SNR shape the interpretation. Embedded pilot fiber
+-sensing and indoor optical positioning show how the same multicarrier principle
+-serves different observables and geometries
+-\cite{OISAC_SCR00007,OISAC_SCR01024}.
+-
+-Chirped and coherent systems draw on phase continuity and a shared timing
+-reference. A returned chirp can reveal range or motion as the transmitted signal
+-carries data. A coherent front end preserves small phase changes for distributed
+-sensing and demodulation. Photonic generation can extend the reference to
+-wideband millimeter wave or terahertz carriers. Full photonic dechirping and
+-coherent fiber vibration sensing illustrate these two uses
+-\cite{OISAC_SCR01000,OISAC_SCR00647}. Their performance depends on laser
+-stability, reference distribution, conversion efficiency, receiver bandwidth,
+-and calibration.
+-
+-The optical stage governs carrier generation and reference stability. Once the
+-carrier is radiated, the communication and sensing paths follow microwave,
+-millimeter wave, or terahertz propagation. In a free space optical link, the
+-optical beam itself traverses the channel. System evaluation should therefore
+-follow the signal across both physical domains and identify where power, SNR,
+-bandwidth, and timing are measured. This view makes the interface between
+-components part of the joint system.
+-
+-Spatial control changes both the communication link budget and the sensing
+-geometry. Beamforming, optical phased arrays, multiple input multiple output
+-processing, and reconfigurable optical intelligent surfaces provide different
+-forms of spatial control. Beamforming directs energy. An optical phased array
+-provides one steering mechanism. Multiple input multiple output processing uses
+-several spatial dimensions, and an intelligent surface reshapes an intermediate
+-propagation boundary. A system may combine these roles.
+-
+-A narrow beam improves received power and angular selectivity while making
+-acquisition, tracking, blockage, and calibration central to joint performance.
+-The joint use of an optical phased array and OFDM and the use of frequency comb
+-beamforming connect steering with ranging or imaging
+-\cite{OISAC_SCR00941,OISAC_SCR00362}. Multiple input multiple output processing
+-adds communication streams, sensing diversity, or separation among targets and
+-paths. Structured fields and hybrid systems that combine free space
+-optics with fiber Bragg gratings place these spatial dimensions at different
+-points in the architecture \cite{OISAC_SCR00268,OISAC_SCR00277}. Meaningful
+-comparison therefore requires the independent dimensions, geometry, and
+-calibration method.
+-
+-The intelligent surface evidence consists of one study that models a mobile
+-free space optical path controlled by an optical intelligent surface
+-\cite{OISAC_SCR00914}. A separate laboratory demonstration uses mechanically
++An application determines which part of the joint operating region is useful.
++A fiber monitor needs persistent observations while traffic continues; a moving
++terminal needs a position or channel estimate early enough to guide the next
++transmission. Both may reuse a signal, yet their limiting conditions differ.
++The mechanisms in Sections~\ref{sec:optical_modality_families}
++and~\ref{sec:tradeoffs} become system choices when these requirements are
++specified. This section follows that progression from the optical observation
++to a service outcome, using the validation distinctions in
++Section~\ref{sec:validation_reproducibility} to identify what each demonstration
++supports.
++
++\subsection{Continuous Monitoring Along a Communication Path}
++
++Fiber infrastructure provides a direct setting for sustained sharing: the
++medium carrying communication also responds to the environment being sensed.
++Phase, backscatter, and polarization can support distributed observations
++along a route. Coherent multicore transmission with distributed sensing and
++operational submarine cable monitoring illustrate this reuse at different
++scales \cite{OISAC_SCR00346,OISAC_SCR00957}. Their application value depends on
++preserving a useful optical observation together with traffic continuity.
++Topology, launch and receiver conditions, and the disturbance context therefore
++belong to the service definition, rather than being incidental laboratory
++settings.
++
++The sensing task changes the required observation and reference. A fiber
++platform for vehicles combines high-rate data transmission with distributed
++temperature measurement \cite{OISAC_SCR00123}. Infrastructure diagnosis can
++instead process collected fiber data into event classes
++\cite{OISAC_SCR01006}. Temperature estimates and event labels place different
++demands on calibration, observation duration, and reference data. An application
++evaluation should connect those demands to the communication interval affected
++by sensing. Offline classification can demonstrate information in a recorded
++signal, while timely operational diagnosis additionally depends on acquisition,
++processing, and delivery of the result.
++
++Sharing extends beyond the sensing fiber when observations must be transported.
++One study relates transport capacity to the number of sensing streams meeting
++an echo-quality threshold \cite{OISAC_SCR00436}; another connects sensing traffic
++capacity with target count and resolution requirements \cite{OISAC_SCR01049}.
++These cases make a system-level coupling explicit: acquiring richer sensing
++observations creates traffic that consumes network resources. The useful
++operating point depends on the observations that reach the processing stage
++with sufficient quality, alongside the communication service maintained by the
++same infrastructure.
++
++\subsection{Mobility, Directional Links, and the Age of an Estimate}
++
++For a directional wireless link, sensing can inform where energy should be
++sent. A distributed W-band system uses radar estimates for beam alignment and
++flexible data service, while microcomb synchronization coordinates wireless
++data with radar imaging \cite{OISAC_SCR00502,OISAC_SCR00406}. These examples link
++spatial information and a shared reference to communication operation. Their
++service interpretation depends on the complete interval from observation to
++transmission: the geometry at acquisition may differ from the geometry when a
++beam or resource decision is applied.
++
++Observation age creates a pointing cost even when estimation error is small.
++Consider a sequential steering loop using an estimate referenced to the start
++of acquisition. Its age at actuation is
++\begin{equation}
++T_{\mathrm{age}}=T_{\mathrm{acq}}+T_{\mathrm{proc}}
+++T_{\mathrm{transport}}+T_{\mathrm{act}},
++\label{eq:observation_age}
++\end{equation}
++where the terms are acquisition, processing, transport, and actuation times.
++For constant relative transverse velocity $v_\perp$, nearly fixed distance $d$,
++and small angular displacement, uncompensated motion contributes
++\begin{equation}
++\Delta\theta_{\mathrm{motion}}\simeq
++\frac{|v_\perp|T_{\mathrm{age}}}{d}.
++\label{eq:motion_pointing}
++\end{equation}
++The remaining pointing budget must accommodate this displacement together
++with other errors at the selected service threshold. These illustrative
++kinematic relations explain why a precise but stale estimate can fail to
++support a narrow beam; they are not fitted results from the corpus.
++An overlapped pipeline uses the actual interval between the estimate's
++reference time and actuation. Prediction, acceleration, and measurement
++uncertainty require their own residual-error models.
++
++The optical phased-array and frequency-comb demonstrations discussed earlier
++connect steering with ranging or imaging
++\cite{OISAC_SCR00941,OISAC_SCR00362}. In a moving application, narrower beams
++make acquisition, tracking, blockage, and calibration consequential for both
++functions. A useful evaluation therefore follows rate or reliability alongside
++sensing error and update timing as the geometry changes. A static alignment
++result identifies an achievable operating point; motion and recovery tests
++establish the conditions over which that point remains useful.
++
++The steering mechanism must also remain physically explicit. The optical
++intelligent-surface study models a controlled mobile FSO path
++\cite{OISAC_SCR00914}, whereas a laboratory demonstration uses mechanically
+ rotated Risley prisms to steer a photonically generated terahertz signal
+-\cite{OISAC_SCR00953}. Both mechanisms redirect energy, and each uses different
+-surface physics, propagation laws, control variables, and validation settings.
+-Their separate treatment preserves the physical meaning and provides two
+-starting points for broader experimental comparison.
+-
+-\subsection{Integration Beyond the Waveform}
+-
+-Integration and inference move joint design beyond waveform selection.
+-Photonic integration appears in 20 studies, fiber distributed acoustic sensing
+-in 22, and machine learning or artificial intelligence in 20. Two studies use
+-digital twins. A further 19 studies contain specialized mechanisms grouped as
+-other because they fall outside the broad technology labels. Together, these
+-categories cover device integration, infrastructure reuse, inference, and a
+-diverse long tail.
+-
+-Photonic integration can place generation, reference distribution, beam
+-control, and detection on a compact hardware path. This arrangement reduces
+-duplicated paths and brings packaging, thermal drift, crosstalk, and calibration
+-into the same design problem. Microcomb synchronization coordinates wireless
+-data with radar imaging. A distributed W band system uses radar estimates for
+-beam alignment and flexible data service
+-\cite{OISAC_SCR00406,OISAC_SCR00502}. Both examples show how a shared reference
+-can connect communication and sensing hardware.
+-
+-Fiber distributed acoustic sensing follows a complementary route by using the
+-transmission medium as a spatial sensor. Phase, backscatter, and polarization
+-can reveal events along the route as the fiber carries traffic. Coherent
+-multicore transmission with distributed sensing and operational submarine cable
+-monitoring illustrate two scales of this infrastructure reuse
+-\cite{OISAC_SCR00346,OISAC_SCR00957}. The central design question becomes how to
+-preserve the optical observable together with traffic continuity.
+-
+-Learning turns optical observations into event labels, positions, field
+-estimates, channel predictions, and resource decisions. Each task is best read
+-with its definition, reference data, training distribution, evaluation shift,
+-uncertainty, and inference cost. Fiber diagnosis, federated visible light
+-positioning, and wearable optical sensing show the range from distributed
+-infrastructure to personal use
+-\cite{OISAC_SCR01006,OISAC_SCR01081,OISAC_SCR00376}.
+-
+-A neural network can also take part in both functions. In one coherent link,
+-the model compensates transmission impairments and estimates distributed power
+-and abnormal loss \cite{OISAC_SCR00949}. The two outputs share the link while
+-retaining separate targets and reference data. Digital twins add another model
+-layer. One represents vehicular edge resources, and another provides a model
+-aided physical reference for coherent fiber sensing
+-\cite{OISAC_SCR01059,OISAC_SCR01185}. Clear reporting of the represented state,
+-update process, mismatch model, and resulting decision gives these models an
+-explicit system role.
+-
+-\subsection{Applications as Operating Requirements}
+-
+-Applications translate the mechanisms above into conditions that a joint
+-service must satisfy. Table~\ref{tab:application_requirements} retains all
+-thirteen application domains and maps each one to its joint role and defining
+-evaluation conditions. A fiber platform for vehicles, for
+-example, carries data at high rates and measures distributed temperature
+-\cite{OISAC_SCR00123}. Devices used by people connect communication or remote
+-alerts with motion, falls, air pressure, physiology, or gesture
+-\cite{OISAC_SCR00451,OISAC_SCR00294,OISAC_SCR00376}. Each application therefore
+-changes what the experiment must demonstrate, even when both functions share
+-the same optical interface.
++\cite{OISAC_SCR00953}. Both redirect energy, but the control variables,
++propagation physics, and validation settings differ. Their future comparison
++requires a shared task and stated motion conditions, with actuator behavior
++and conversion interfaces retained in the timing budget.
++
++\subsection{Indoor Operation, Human Use, and Difficult Environments}
++
++In indoor optical systems, the user or robot's position and orientation shape
++both received power and the sensing geometry. Multicarrier positioning and
++robotic communication illustrate different consequences of this dependence
++\cite{OISAC_SCR01024,OISAC_SCR00910}. The robotics study reports packet loss over
++distance and view angle, display delay over queue size, and formation control
++under dynamic motion as separate results \cite{OISAC_SCR00910}. Together they
++show why communication reliability, information freshness, and control behavior
++need distinct measurements. They should not be collapsed into a single paired
++operating point unless their conditions and timing are linked by the source.
++
++Human-facing optical devices connect communication or remote alerts with
++motion, falls, air pressure, physiology, or gesture
++\cite{OISAC_SCR00451,OISAC_SCR00294,OISAC_SCR00376}. Here, a sensing estimate is
++useful when it represents the intended event or physiological quantity under
++the user's motion and illumination conditions. Communication is useful when
++that information can be delivered with the required continuity. Reference
++measurements, event definitions, and processing delay consequently matter
++alongside link rate. This requirement also distinguishes a recognition result
++on collected data from an evaluated sensing-and-alert service.
++
++Extreme environments impose a different set of physical constraints.
++Satellite-link work connects communication with atmospheric or wavefront
++sensing \cite{OISAC_SCR00456}, making pointing and propagation part of the
++adaptation problem. Underwater optical-link concepts and subsea fiber
++monitoring involve different paths \cite{OISAC_SCR00763,OISAC_SCR01095}.
++Attenuation through water applies to the former; cable calibration and access
++to the installed infrastructure constrain the latter. Grouping both by their
++application environment is useful for locating requirements, but their
++physical observations and attainable operating regions remain distinct.
++
++\subsection{Inference and Control as Parts of the Joint System}
++
++Learning methods convert optical observations into positions, event labels,
++field estimates, channel predictions, or resource decisions. Fiber diagnosis,
++federated visible-light positioning, and wearable optical sensing illustrate
++this range \cite{OISAC_SCR01006,OISAC_SCR01081,OISAC_SCR00376}. The inference task
++adds a reference-data requirement to the physical measurement: reported
++accuracy depends on what was labeled, how data were divided, and the conditions
++represented in evaluation. Applying a learned model in another layout or
++operating regime therefore introduces a further test of the joint system.
++
++One coherent-link model both compensates transmission impairments and
++estimates distributed power and abnormal loss \cite{OISAC_SCR00949}. The
++outputs share a link, but retain different targets and reference information.
++This architecture motivates testing whether a change in the link affects the
++two outputs similarly, and whether adaptation that helps one preserves the
++other. The answer cannot be inferred from communication compensation or
++sensing accuracy alone.
++
++Processing also consumes time and resources. Classifier size changes
++recognition accuracy and the edge-processing burden in
++\cite{OISAC_SCR01047}. A digital-twin study represents vehicular edge resources
++and relates orthogonal task channels to application latency
++\cite{OISAC_SCR01059}. Another uses a model-aided physical reference for coherent
++fiber sensing \cite{OISAC_SCR01185}. These model roles differ: one organizes
++resources for a service, while the other supports interpretation of the
++physical observation. Reporting the represented state, update process, model
++mismatch, and resulting decision connects either role to a testable system
++benefit. It also allows inference accuracy to be weighed against the delay and
++resource use needed to obtain it.
+ 
+ \begin{table*}[!t]
+-\caption{Application domains and operating requirements in the reviewed corpus}
++\caption{From application operation to a joint demonstration. The outcome
++pairs identify measurements needed to evaluate the stated operation; they do
++not assert that every cited study measured both concurrently.}
+ \label{tab:application_requirements}
+ \centering
+ \footnotesize
+ \setlength{\tabcolsep}{3pt}
+-\renewcommand{\arraystretch}{1.05}
++\renewcommand{\arraystretch}{1.12}
+ \begin{tabularx}{\textwidth}{@{}
+ >{\raggedright\arraybackslash}p{0.16\textwidth}
+->{\raggedright\arraybackslash}p{0.39\textwidth}
+->{\raggedright\arraybackslash}X
+->{\centering\arraybackslash}p{0.095\textwidth}@{}}
++>{\raggedright\arraybackslash}p{0.25\textwidth}
++>{\raggedright\arraybackslash}p{0.24\textwidth}
++>{\raggedright\arraybackslash}X@{}}
+ \toprule
+-\multicolumn{4}{@{}l}{\emph{Network and mobility}} \\
+-\addlinespace[1pt]
+-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+-\textbf{Key operating condition} & \textbf{Studies} \\
++Operation & Shared mechanism & Communication and sensing outcomes & Needed demonstration \\
+ \midrule
+-\textbf{6G and access} 100 (48.5\%) & Access and transport with channel, target,
+-position, or environment sensing & Timing, orchestration, continuity, and
+-evidence for both functions & \cite{OISAC_SCR00277,OISAC_SCR01049} \\
+-\addlinespace[1.25pt]
+-\textbf{Vehicular} 41 (19.9\%) & Vehicle data links with range, motion, pose,
+-temperature, or channel sensing & Changing geometry, acquisition, tracking, and
+-service continuity & \cite{OISAC_SCR00123,OISAC_SCR00273} \\
+-\addlinespace[1.25pt]
+-\textbf{Optical access} 32 (15.5\%) & Access and transport links with channel,
+-event, or fiber state sensing & Reach, synchronization, and traffic continuity &
+-\cite{OISAC_SCR00007,OISAC_SCR01006,OISAC_SCR01049} \\
+-\addlinespace[1.25pt]
+-\textbf{Indoor positioning} 13 (6.3\%) & Indoor optical links with user or robot
+-position and orientation sensing & Geometry, calibration, coverage, and update
+-continuity &
+-\cite{OISAC_SCR00910,OISAC_SCR01024} \\
+-\addlinespace[1.25pt]
+-\textbf{Data center} 4 (1.9\%) & Short reach data links with channel estimation
+-or link state sensing & Traffic continuity and calibrated link references &
+-\cite{OISAC_SCR00007} \\
++Continuous fiber monitoring & Traffic and distributed observations use a common
++fiber or reference \cite{OISAC_SCR00346,OISAC_SCR00957} & Link continuity or BER;
++event, field, or disturbance estimate & Measure both during stated traffic and
++disturbance changes, preserving calibration and observation intervals. \\
++\addlinespace[2pt]
++Directional mobile service & Sensing informs steering; generation and reception
++share a reference \cite{OISAC_SCR00502,OISAC_SCR00406} & Delivered rate or
++reliability; range, angle, or motion estimate & Vary motion and alignment,
++including acquisition, update delay, blockage, and recovery. \\
++\addlinespace[2pt]
++Indoor positioning and control & Optical observations guide a location-dependent
++communication or control task \cite{OISAC_SCR01024,OISAC_SCR00910} & Packet delivery
++and delay; position or control error & Link the geometry and timing of each
++observation to the resulting data or control action. \\
++\addlinespace[2pt]
++Transport of sensing streams & Sensing quality and target coverage consume
++transport capacity \cite{OISAC_SCR00436,OISAC_SCR01049} & Carried traffic; delivered
++echo quality, target count, or resolution & Increase sensing and communication
++load together, identifying which service requirement first fails. \\
++\addlinespace[2pt]
++Learned sensing and adaptation & Processing converts a shared observation into
++estimates and decisions \cite{OISAC_SCR00949,OISAC_SCR01047} & Communication
++impairment or service measure; estimation or recognition quality & Apply a
++specified data or channel shift and record both outputs, inference cost,
++adaptation, and fallback. \\
++\addlinespace[2pt]
++Human use and difficult environments & Optical data and measurements share an
++interface with the user or environment
++\cite{OISAC_SCR00376,OISAC_SCR00456,OISAC_SCR01095} & Delivery continuity; task-specific
++estimate against a physical reference & Exercise the relevant motion,
++illumination, atmosphere, or cable condition with suitable reference data. \\
+ \bottomrule
+ \end{tabularx}
+-
+-\vspace{3pt}
+-\begin{tabularx}{\textwidth}{@{}
+->{\raggedright\arraybackslash}p{0.16\textwidth}
+->{\raggedright\arraybackslash}p{0.39\textwidth}
+->{\raggedright\arraybackslash}X
+->{\centering\arraybackslash}p{0.095\textwidth}@{}}
+-\toprule
+-\multicolumn{4}{@{}l}{\emph{Infrastructure}} \\
+-\addlinespace[1pt]
+-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+-\textbf{Key operating condition} & \textbf{Studies} \\
+-\midrule
+-\textbf{Environmental monitoring} 55 (26.7\%) & Distributed links with vibration,
+-temperature, or environmental event sensing & Persistent observation,
+-localization, and traceable reference data &
+-\cite{OISAC_SCR00957,OISAC_SCR01006,OISAC_SCR01095} \\
+-\addlinespace[1.25pt]
+-\textbf{Smart infrastructure} 41 (19.9\%) & Infrastructure links with structural,
+-motion, or event monitoring & Continuous observation, calibration, and
+-resilient alert delivery & \cite{OISAC_SCR00277,OISAC_SCR00763,OISAC_SCR01006} \\
+-\addlinespace[1.25pt]
+-\textbf{Industrial} 34 (16.5\%) & Industrial data or control with process,
+-strain, temperature, motion, or position sensing & Delay, continuity,
+-calibration, and safe operation & \cite{OISAC_SCR00277,OISAC_SCR00376} \\
+-\addlinespace[1.25pt]
+-\textbf{Security and surveillance} 26 (12.6\%) & Monitoring links with anomaly,
+-event, or location sensing & Coverage, event discrimination, and alert latency &
+-\cite{OISAC_SCR01006} \\
+-\bottomrule
+-\end{tabularx}
+-
+-\vspace{3pt}
+-\begin{tabularx}{\textwidth}{@{}
+->{\raggedright\arraybackslash}p{0.16\textwidth}
+->{\raggedright\arraybackslash}p{0.39\textwidth}
+->{\raggedright\arraybackslash}X
+->{\centering\arraybackslash}p{0.095\textwidth}@{}}
+-\toprule
+-\multicolumn{4}{@{}l}{\emph{Human use, extreme settings, and remaining domains}} \\
+-\addlinespace[1pt]
+-\textbf{Domain, n (\%)} & \textbf{Common communication and sensing role} &
+-\textbf{Key operating condition} & \textbf{Studies} \\
+-\midrule
+-\textbf{Healthcare} 6 (2.9\%) & Wearable or ambient links with vital sign,
+-activity, or gesture sensing & Motion robustness, physiological reference,
+-illumination, and user safety & \cite{OISAC_SCR00001,OISAC_SCR00376} \\
+-\addlinespace[1.25pt]
+-\textbf{Aerospace} 20 (9.7\%) & Satellite links with atmospheric or wavefront
+-sensing & Pointing, turbulence, delay, and link adaptation &
+-\cite{OISAC_SCR00456} \\
+-\addlinespace[1.25pt]
+-\textbf{Underwater} 2 (1.0\%) & Underwater link concepts and subsea data links
+-with temperature or event sensing & Water attenuation or cable calibration,
+-packaging, and access & \cite{OISAC_SCR00763,OISAC_SCR01095} \\
+-\addlinespace[1.25pt]
+-\textbf{Other} 17 (8.3\%) & Emerging links with range, imaging, object, or
+-channel sensing & Metrics and reporting specific to the task & \cite{OISAC_SCR00953} \\
+-\bottomrule
+-\end{tabularx}
+-\vspace{1pt}
+-\parbox{\textwidth}{\raggedright\footnotesize\emph{Note.} Application domains
+-overlap, so a study may contribute to more than one row. Counts and percentages
+-describe coverage within the 206 included studies. For each domain, the table
+-includes a selected study set and lists the corresponding references in the
+-final column. The 6G and access row identifies the application category, and
+-the final subsection provides the 6G relevance classification.\par}
+ \end{table*}
+ 
+-Across the map, the dominant requirement moves with the application. Network
+-and mobility settings emphasize acquisition, timing, and continuity. Deployed
+-infrastructure emphasizes persistent observation alongside carried traffic.
+-Human use and extreme settings add physiological references, safety,
+-privacy, pointing, atmosphere, packaging, and access to the test environment.
+-These requirement bundles show which operating conditions must accompany a
+-reported result before it can support comparison or reuse.
+-
+-\subsection{From 6G Relevance to Network Evidence}
+-
+-The 6G relevance gate in Figure~\ref{fig:technology_application_chain} assigns
+-each study one corpus position. Direct cases connect the reported system
+-explicitly to a 6G role, as illustrated
+-by \cite{OISAC_SCR00362,OISAC_SCR01049}. Inferential cases contribute an
+-enabling link that gains meaning from additional network context, as illustrated
+-by \cite{OISAC_SCR00007,OISAC_SCR00647}. The remaining classes capture a lighter
+-connection to 6G or an application focus outside that framing, as illustrated
+-by \cite{OISAC_SCR00959,OISAC_SCR00294}.
+-
+-The distribution connects the reviewed corpus with 6G access, transport,
+-localization, automation, environmental awareness, and generation of carriers
+-at high frequencies. A relevance code therefore locates a study within the 6G
+-discussion. Standard conformance, interoperability, and deployment readiness
+-require additional evidence tied to the relevant network framework
++\subsection{From a Subsystem Benefit to a Network Role}
++
++Table~\ref{tab:application_requirements} connects these applications through
++the evidence needed to sustain a useful service. At network scale, an O-ISAC
++subsystem must occupy an explicit role in access, fronthaul, transport, edge
++processing, or service control. The consequences of sharing then include
++traffic, timing, orchestration, energy, and recovery across interfaces. For
++example, channel sensing can inform access placement under weather and demand
++changes \cite{OISAC_SCR00922}; evaluating its system benefit requires connecting
++the sensed condition to the placement decision and resulting communication
++service.
++
++The corpus includes studies with an explicit 6G role
++\cite{OISAC_SCR00362,OISAC_SCR01049} and enabling contributions that require
++additional network context \cite{OISAC_SCR00007,OISAC_SCR00647}. The complete
++relevance classification and application inventory are provided in the
++electronic supplement. These classifications describe the literature's
++connection to 6G. Standard conformance, interoperability, and deployment
++readiness require evidence tied to the relevant network framework
+ \cite{ITUR_M2160_2023}.
+ 
+-A stronger network interpretation emerges when the optical or photonic
+-subsystem occupies an explicit role across the complete network path. Access, fronthaul, transport,
+-edge processing, and service control bring timing, mobility, orchestration,
+-energy, security, and recovery requirements. Evidence at this level evaluates
+-useful communication and sensing under the conditions of that role and reports
+-the resources needed to sustain both. This creates a traceable path from the
+-physical observable and hardware to the service objective.
+-
+-Within this survey, 6G relevance is strongest when both functional outcomes and
+-their operating conditions remain traceable to a network role. The resulting
+-evidence chain links physical observables, application requirements, and service
+-objectives and provides the basis for the research priorities in
+-Section~\ref{sec:discussion_roadmap}.
++The remaining engineering question is whether the observed subsystem benefit
++persists after including the resources used to acquire, transport, process,
++and act on sensing information. Answering it requires the same two functional
++outcomes examined earlier, now measured under the load, motion, and timing of
++the intended role. Those unresolved links define the research tests developed
++in Section~\ref{sec:discussion_roadmap}.
+diff --git a/manuscript/sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex b/manuscript/sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex
+index e5053b0..f53e0fd 100644
+--- a/manuscript/sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex
++++ b/manuscript/sections/08_DISCUSSION_ROADMAP_AND_LIMITATIONS.tex
+@@ -1,153 +1,139 @@
+-\section{DISCUSSION, RESEARCH ROADMAP, AND LIMITATIONS}
++\section{RESEARCH QUESTIONS AND EVALUATION PRIORITIES}
+ \label{sec:discussion_roadmap}
+ 
+-Across the evidence base, the central issue is whether physical sharing
+-produces joint outcomes that remain traceable to one operating context. This
+-section interprets that relationship, develops five research priorities, and
+-states the review boundaries.
++The preceding sections connect a physical sensing interaction to a shared
++design choice, two performance outcomes, and the conditions of an application.
++The unresolved issue is how far a useful relation persists when those
++conditions change. Greater integration can improve coordination, while also
++coupling distortion, synchronization, dynamic range, and failure behavior.
++Research can resolve this tension by identifying the mechanism that limits
++joint operation and testing the variables expected to move that limit.
+ 
+-\subsection{Interpretation Across the Evidence Base}
++\subsection{From Reported Relations to Discriminating Experiments}
+ 
+-Physical integration identifies where communication and sensing share
+-infrastructure, signals, or information. Evidential integration shows how
+-clearly both outcomes remain tied to the same operating conditions. Together,
+-they connect architectural and transmission perspectives while preserving the
+-physical regime of each platform
++The literature offers recurring mechanisms across optical platforms, but their
++quantitative consequences belong to particular tasks and measurement settings
+ \cite{Wen2024OISACArchitectures,Su2025OISACTheoryPractice,
+-Liang2024LiSACReview,Liu2026OpticalFiberISACReview}.
+-
+-Deeper sharing can connect more design variables and improve coordination
+-across the two functions. It can also couple power, distortion,
+-synchronization, dynamic range, and failure behavior. Its scientific value
+-therefore depends on locating these effects in the signal chain and tracing
+-their influence on both outcomes.
+-
+-Tradeoff patterns transfer across studies when tasks, metric definitions,
+-measurement planes, baselines, constraints, and validation settings remain
+-aligned. This alignment allows model bounds and empirical operating points to
+-retain their distinct roles and support comparison within a stated context
+-\cite{Khorasgani2026GeneralOpticalISACSurvey,Rode2025PolarizationISAC}.
+-
+-Fielded cable and network studies illustrate the value of operational
+-continuity
+-\cite{Cao2026SubmarineFiberISAC,Ip2026DeployedTelecomCableISAC}. Within the
+-survey, system evidence becomes reusable when configuration, calibration,
+-processing, and reported artifacts remain connected across interfaces. This
+-continuity links physical sharing to application and network claims and
+-motivates a central research task. Joint operating points should remain
+-interpretable, testable, and reusable across groups.
+-
+-\subsection{Research Priorities for Reusable Evidence}
+-
+-Table~\ref{tab:research_roadmap} organizes five priorities and pairs each
+-observed finding with an action and a measurable sign of progress.
+-
+-\begin{table}[!t]
+-\caption{Research priorities derived from the reviewed evidence}
++Khorasgani2026GeneralOpticalISACSurvey}. A useful next experiment should
++therefore begin with a relation already observed within a study. It should
++state which explanation is being tested, change the relevant parameter, and
++measure both functions against suitable separate-function baselines. The
++shared-resource budget must remain explicit: increasing a sensing probe with
++communication launch power held fixed answers a different question from
++redistributing a fixed total power budget.
++
++Table~\ref{tab:research_roadmap} identifies five research questions arising from
++the reviewed mechanisms and validation limits. The proposed tests distinguish
++an achievable operating point from the range of conditions over which that
++point remains useful. They are prospective experiments, not additional results
++of the review.
++
++\begin{table*}[!t]
++\caption{Testable research questions derived from the reviewed mechanisms and
++validation limits}
+ \label{tab:research_roadmap}
+ \centering
+ \footnotesize
+-\setlength{\tabcolsep}{2.4pt}
+-\renewcommand{\arraystretch}{1.02}
+-\begin{tabularx}{\columnwidth}{@{}
+->{\raggedright\arraybackslash}p{0.20\columnwidth}
+->{\raggedright\arraybackslash}X
+->{\raggedright\arraybackslash}p{0.30\columnwidth}@{}}
++\setlength{\tabcolsep}{3pt}
++\renewcommand{\arraystretch}{1.12}
++\begin{tabularx}{\textwidth}{@{}
++>{\raggedright\arraybackslash}p{0.19\textwidth}
++>{\raggedright\arraybackslash}p{0.23\textwidth}
++>{\raggedright\arraybackslash}p{0.32\textwidth}
++>{\raggedright\arraybackslash}X@{}}
+ \toprule
+-Priority & Finding and proposed action & Evidence of progress \\
++Research question & Evidence motivating the test & Controlled test & Informative outcome \\
+ \midrule
+-\textbf{1. Measurement contract} &
+-\emph{Finding.} Of 4,779 metric records, 118 supported bounded relations under
+-aligned conditions. \emph{Action.} Record the task, plane, unit, baseline,
+-operating condition, validation setting, and source locator. &
+-An independent reader reconstructs the quantity and condition from a structured
+-record. \\
+-\addlinespace[1.5pt]
+-\textbf{2. Benchmark for each modality} &
+-\emph{Finding.} Comparison across studies depends on matched physical context.
+-\emph{Action.} Repeat one task with reference and independent designs under
+-shared calibration and ground truth. &
+-Independent groups reproduce the relative finding under the shared protocol. \\
+-\addlinespace[1.5pt]
+-\textbf{3. Joint operation under disturbance} &
+-\emph{Finding.} Of 402 substantive tradeoff relationships, 371 depend on
+-reported conditions. Six of 12 field or deployment tier studies report
+-outcomes in both domains. Traceability is strongest when both outcomes share
+-the same timing and condition set.
+-\emph{Action.} Evaluate both functions in the same run and condition set under
+-load, a disturbance relevant to the modality, and matched baselines for the
+-individual functions. &
+-Repeated trials recover the joint region and its limiting mechanism. \\
+-\addlinespace[1.5pt]
+-\textbf{4. Reconstructable experiment package} &
+-\emph{Finding.} Open data appear in 13 of 206 studies, and code or model access
+-reaches a partial release in one. \emph{Action.} Preserve a versioned package
+-and rerun the main comparison under one added condition. &
+-An independent rerun recovers the comparison and added condition from the
+-package. \\
+-\addlinespace[1.5pt]
+-\textbf{5. Intelligence, scale, and security} &
+-\emph{Finding.} Technology and application coverage connects the corpus to 6G
+-roles. Conformance, interoperability, and readiness become measurable through
+-explicit network tests. \emph{Action.} Apply a declared shift, attack, load, or
+-component failure and report overhead, resource use, decisions, and fallback. &
+-The service retains an explainable boundary with resource use, decisions, and
+-fallback recorded. \\
++Which resource limit determines the joint gain? & Probe power and pilot
++allocation alter sensing support and communication impairment
++\cite{OISAC_SCR00057,OISAC_SCR00007}. & Sweep probe fraction or pilot occupancy
++under declared power and bandwidth budgets; compare joint and separate-function
++baselines, measuring both outputs in each run. & The operating region and the
++interference, reference, or resource constraint that limits it. \\
++\addlinespace[2pt]
++How robust is a shared optical reference? & Coherent sensing and photonic
++dechirping depend on reference and receiver behavior
++\cite{OISAC_SCR00647,OISAC_SCR01000}. & Introduce calibrated drift or timing
++mismatch, holding the task and processing definition fixed; repeat paired
++communication and sensing measurements. & The disturbance at which one
++function fails first and whether compensation restores both. \\
++\addlinespace[2pt]
++When does sensing-assisted control repay its overhead? & Radar-guided alignment
++and robotic queues connect observations to subsequent service
++\cite{OISAC_SCR00502,OISAC_SCR00910}. & Vary motion, observation age, and control
++load; compare adaptive and reference operation with acquisition and update
++time included. & The conditions under which delivered service improves,
++and the delay or recovery boundary where the gain disappears. \\
++\addlinespace[2pt]
++Do learned joint functions survive a change of conditions? & Shared-link
++inference and classifier size connect estimation quality to processing cost
++\cite{OISAC_SCR00949,OISAC_SCR01047}. & Apply a declared geometry, channel, or data
++shift; measure both outputs, inference delay, adaptation cost, and fallback
++against a fixed reference. & The range over which both functions remain useful
++and the resource cost of recovering from shift. \\
++\addlinespace[2pt]
++Can a relative design advantage be reproduced under service load? & Field
++coverage, artifact access, and transport capacity leave distinct validation
++gaps \cite{OISAC_SCR00436,OISAC_SCR01049}. & Independently reconstruct one
++modality-specific task with common calibration and baselines; vary traffic
++and one physical disturbance during the same paired test. & Agreement or
++disagreement on the relative result, its limiting mechanism, and the load
++at which an application requirement fails. \\
+ \bottomrule
+ \end{tabularx}
+-\vspace{1pt}
+-\parbox{\columnwidth}{\raggedright\footnotesize\emph{Note.} The findings
+-summarize the retained corpus presented in Sections~\ref{sec:optical_modality_families}
+-through \ref{sec:technologies_applications_6g}. The proposed actions retain the
+-physical conditions of each modality and define observable signs of progress.\par}
+-\end{table}
+-
+-The order matters because each stage uses evidence produced by the previous
+-one. Clear measurement context supports fair benchmarks. Benchmarks support
+-realistic joint tests. Reconstructable artifacts make those tests repeatable,
+-and repeatable tests provide a basis for adaptive and secure evaluation at
+-network scale.
+-
+-Stress tests should follow the native signal path of each modality. Fiber tests
+-can vary topology and traffic, free space optical tests can vary geometry and
+-atmosphere, and visible light tests can vary illumination and orientation.
+-Photonic terahertz tests can vary optical drift together with wireless
+-propagation. Matched baselines for the individual functions keep the limiting
+-mechanism visible across these settings.
+-
+-For standards and 6G coordination, the same sequence can support a core
+-reporting profile that preserves modality physics, ground truth, and reusable
+-benchmark definitions. Shared metadata can connect results across platforms
+-while retaining the conditions needed for interpretation.
++\end{table*}
++
++These experiments require perturbations that act on the native signal path.
++Fiber tests can vary topology, traffic, or the sensed disturbance; VLC tests
++can vary illumination and orientation; FSO tests can vary pointing and
++atmosphere. Photonic terahertz tests should separate optical drift from changes
++in wireless propagation before combining them. This separation helps explain
++whether the observed loss of joint performance follows from the proposed
++coupling mechanism or from a different component. Repeated paired trials
++then show the variability of the operating region under the stated conditions.
++
++The result remains useful if integration provides no net gain. For example,
++if sensing-assisted alignment improves a static link but its update delay
++erases the advantage during motion, the crossover defines when the control
++method is appropriate. Likewise, a shared reference that improves one output
++while destabilizing the other identifies a need for compensation, a different
++allocation, or partial separation. Such findings turn a performance comparison
++into a design rule with an explicit range of validity.
++
++\subsection{Building Comparable Tests Across Groups and Networks}
++
++Independent comparisons need a common task within a physical modality, a
++reference design, calibration and ground truth, and sufficient artifacts to
++recover the reported processing. Agreement should concern the relative result
++and its conditions, with model bounds and empirical measurements retaining
++their different meanings. Such a test supplies evidence of transfer through
++an independently executed comparison.
++
++At network scale, the experiment also needs the load, timing, and resource
++use of the intended role. Transporting observations, updating a model, or
++steering a beam can consume the resources that create the apparent subsystem
++benefit. Fielded cable and network work illustrates the importance of
++operational continuity \cite{Cao2026SubmarineFiberISAC,Ip2026DeployedTelecomCableISAC}.
++Future tests can connect that continuity to the sensing decision and include
++recovery from a component failure or corrupted observation. The resulting
++benchmarks would support discussion of network requirements while preserving
++the propagation and measurement conditions of each platform.
+ 
+ \subsection{Scope and Limitations of the Review}
+ 
+-The publication window, language requirements, and search coverage described
+-in Section~\ref{sec:review_methods} define the literature represented by the
+-206 studies. Full texts were available and assessed for 272 of the 330 reports
+-sought, corresponding to 82.4\% retrieval coverage. Findings from unavailable
+-reports may therefore be absent from the synthesis. Selection involved
+-investigator judgment without routine independent duplicate review;
+-Electronic Supplement S-Protocol documents the review conduct.
+-
+-TQAF provides a technical appraisal developed for this review. The diversity
+-of tasks, quantities, validation settings, outcomes, and source protocols
+-supports structured narrative synthesis, which preserves native conditions and
+-bounded comparisons. This analytical scale centers interpretation on reported
+-mechanisms and conditions. Harmonized outcomes and source protocols form the
+-appropriate basis for pooled effects, sensitivity estimates, and causal
+-moderator analysis.
+-
+-The multilabel taxonomy incorporates reviewer judgment, especially for hybrid
+-systems. Row counts represent coded observations at extraction granularity,
+-while effect analysis uses a different unit. For 92 metric rows, the available
+-fields supported interpretation within the source setting and a conservative
+-comparison status. Artifact access combined source reporting with targeted link
+-checks, so the appraisal reflects documented reconstruction information.
+-
+-The conclusions concern recurring mechanisms, measurement constraints, and
+-validation patterns within the retained corpus. Corpus distributions describe
+-the reviewed literature. Worldwide prevalence, market maturity, and platform
+-rank require evidence designed for those questions. Within its stated scope,
+-the review identifies the conditions that allow optical integration to support
+-transferable joint results.
++The publication window, language requirements, and search sources in
++Section~\ref{sec:review_methods} delimit the literature represented here.
++Full texts were assessed for 272 of 330 sought reports, or 82.4\%; findings
++from unavailable reports may be absent. Selection involved investigator
++judgment without routine independent duplicate assessment. The scientific
++methods supplement documents these limitations and the review conduct.
++
++TQAF is a review-specific appraisal that has not been independently validated.
++Hybrid-system classification and thematic synthesis also involve judgment.
++Differences in tasks, metrics, measurement planes, and source protocols
++prevented a common pooled effect model. No meta-regression, formal
++publication-bias assessment, or formal sensitivity analysis was performed.
++The synthesis therefore supports interpretation of reported mechanisms and
++conditions, rather than a universal effect, platform ranking, or estimate of
++worldwide technological maturity. These limits bound the proposed research
++priorities to the gaps identified in the retained literature.
+diff --git a/manuscript/sections/09_CONCLUSION.tex b/manuscript/sections/09_CONCLUSION.tex
+index 286b0bf..ae71e24 100644
+--- a/manuscript/sections/09_CONCLUSION.tex
++++ b/manuscript/sections/09_CONCLUSION.tex
+@@ -1,27 +1,24 @@
+ \section{CONCLUSION}
+ \label{sec:conclusion}
+-Across the reviewed corpus, O-ISAC is organized most clearly by the physical
+-role of optics and the mechanism that couples communication and sensing. Optics
+-may carry the user link, illuminate the target, distribute a carrier, or
+-preserve a coherent reference, and each role creates a different set of
+-constraints. Shared hardware, carriers, waveforms, resources, links, and design
+-rules then connect the two functions at different points in the system. Their
+-engineering value depends on how the task, metric definition, measurement
+-plane, operating condition, and validation setting are reported together.
+ 
+-The evidence indicates that recurring tradeoff mechanisms can be compared when
+-their physical context and measurement contracts align. Laboratory and
+-prototype studies provide a broad experimental base, while field results
+-illustrate how topology, geometry, propagation, calibration, and service
+-continuity enter real systems. Application and 6G relevance become more
+-informative when both functional outcomes remain traceable to the same network
+-role and condition set. This makes transferable joint evidence the central
+-measure of progress and keeps individual performance values tied to their
+-source conditions.
++O-ISAC design begins with the physical interaction that makes sensing possible
++and the resource that connects it to communication. A fiber can carry traffic
++and respond to a disturbance; an optical beam can transmit data and probe a
++scene; photonic hardware can create a shared reference for a wireless link.
++These roles lead to different constraints, even when the systems use similar
++waveforms or report similarly named metrics. Across the reviewed evidence,
++joint performance follows from how a design
++choice changes both the useful observation and its competing demands on
++power, bandwidth, timing, and receiver capability. Resource allocation can
++create interference or reduce payload capacity, while sensing information can
++also support transmission and control. The resulting benefit depends on the
++task, measurement plane, resource budget, and operating conditions. These
++mechanisms provide a basis for selecting and interpreting designs without
++implying a universal performance frontier across platforms.
+ 
+-Progress therefore depends on measurement contracts tailored to each modality, paired
+-validation under realistic disturbances, and versioned artifacts that preserve
+-configuration, calibration, data, and processing. These practices provide a
+-path from individual demonstrations to reusable benchmarks and evaluation at
+-network scale. They also allow subsequent designs to build on prior evidence while
+-preserving the physical meaning of each optical platform.
++The next step is to test whether these relations persist under the traffic,
++motion, propagation, and hardware conditions of the intended application.
++Paired measurements, suitable separate-function baselines, and reconstructable
++experiments can expose where a joint advantage holds, where it fails, and why.
++Extending those tests through acquisition, processing, and network control
++would connect optical integration to demonstrated service value.

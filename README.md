@@ -1,61 +1,42 @@
-# O-ISAC COMST V3
+# O-ISAC COMST
 
-Güncel çalışma dalı: `rev/comst-v3-20260906`.
+Güncel yerel dal: **`rev/flow-20260916`**.
+Okuma kopyası: [flow.pdf](output/pdf/flow.pdf), **20 sayfa**.
+Ayrıntılı bilimsel profiller: [profiles.pdf](output/pdf/profiles.pdf).
 
-**Yeni bilgisayarda başlangıç:** [durum özeti](handoff/state.md),
-[dosya rehberi](handoff/index.md) ve [Codex çalışma kuralları](AGENTS.md).
-Son okuma kopyası: [review.pdf](output/pdf/review.pdf), 29 sayfa.
+[Eski–yeni karşılaştırma](compare.md) · [Önceki sürüm](archive/base.zip) ·
+[Metin farkı](archive/text.diff)
 
-```sh
-git clone --single-branch --branch rev/comst-v3-20260906 https://github.com/cfdonmez/OISAC_PRISMA_COMST.git OISAC
-cd OISAC
-```
+Yeni görevde önce [AGENTS.md](AGENTS.md), [handoff/state.md](handoff/state.md)
+ve [handoff/index.md](handoff/index.md) okunmalı. Referans sürüm `0d5d6f8`,
+`rev/comst-v3-20260906` dalındadır. Yeni dalın uzaktaki durumu push yapılmadan
+varsayılmamalıdır.
 
-Bu klasörü Codex'te proje olarak açıp yeni sohbete şunu yazın:
+## Derleme
 
-> AGENTS.md, handoff/state.md ve handoff/index.md dosyalarını oku. Güncel
-> dosyaları kontrol ederek nerede kaldığımızı ve açık işleri kısaca özetle.
-> Eski reçetelerle güncel kararları ayır; ben yeni görev vermeden makaleyi değiştirme.
-
-Proje kuralları `AGENTS.md` üzerinden yüklenir; ayrıntılı kayıtlar bu dosyanın
-yönlendirdiği Markdown dosyalarındadır.
-[OpenAI'nin AGENTS.md belgesi](https://learn.chatgpt.com/docs/agent-configuration/agents-md)
-bu proje düzeyindeki kullanım biçimini açıklar. Paket, sohbet arayüzünü veya
-hesap ayarlarını yeniden kurmaz; araştırma bağlamını okunabilir dosyalarla taşır.
-
-## Pakette bulunanlar
-
-- Güncel makale, bibliyografya, onaylı figürler ve düzenlenebilir kaynakları.
-- Son PDF, önceki çalışma sürümleri, yerel revizyon yedekleri ve QA kayıtları.
-- Supplement yöntem anlatısı ve bütün frozen v10 kaynak paketi.
-- Gerçek proje `codex_memory_bank`, karar/ilerleme günlükleri ve konuya ait
-  Codex hafıza özetleri; COMST/P01/P02 analizleri, reçeteler ve bölüm haritaları.
-- Güncel durum, açık işler, kaynakların nereden taşındığı ve bütünlük kontrolü.
-
-Ana metin sekiz bölümlüdür. Review Methodology, Introduction I-C içindedir;
-ayrıntıları [supplement/methods.md](supplement/methods.md) taşır.
-**OSF güncellemesi hâlâ yapılacak ayrı ortak iştir.** GitHub aktarımı bunu tamamlamaz.
-
-## Kontrol ve derleme
-
-Python 3.9 veya üzeri ile, ek Python paketi gerektirmeden:
+TeX Live / MiKTeX, IEEEtran, pdfLaTeX, BibTeX ve latexmk gerekir.
+`manuscript/` içinde:
 
 ```sh
-python handoff/verify.py
-```
-
-TeX Live veya MiKTeX içinde pdfLaTeX, BibTeX, latexmk, IEEEtran ve kullanılan
-LaTeX paketleri bulunmalıdır. Ardından:
-
-```sh
-cd manuscript
 latexmk -pdf -bibtex -interaction=nonstopmode -halt-on-error -file-line-error main.tex
 ```
 
-Figürler hazır PDF/PNG olarak geldiği için normal derleme figür üretim
-araçlarına ihtiyaç duymaz. Eski figür/QA üretim betiklerinin bağımlılıkları ve
-yazma davranışları [dosya rehberinde](handoff/index.md) açıklanmıştır.
+`supplement/` içinde aynı komutu `driver.tex` için çalıştırın. Hazır vektör
+figürler normal derleme için yeterlidir; şekil üreticisini çalıştırmak gerekmez.
 
-Uzun yol sorunlarını azaltmak için kısa bir checkout yolu kullanın
-(örneğin `C:\OISAC`). Dalın geçmişi bağımsız V3 baseline'dan başlar;
-repo varsayılan `main` dalı farklı tarihsel çalışma ağacıdır.
+Repo kökünde `python handoff/verify.py`, frozen kaynakları, canlı derleme
+girdilerini, güncel PDF hash'ini ve etkin dosya bağlantılarını kontrol eder.
+
+## Bilimsel kayıt ve devamlılık
+
+Ana metin sekiz bölümdür; yöntem özeti Introduction I-C'dedir. Detaylı yöntem,
+rapor/çalışma listeleri, kaynak kayıtları ve TQAF kuralları
+[supplement/index.md](supplement/index.md) üzerinden bulunur.
+206 çalışma / 227 rapor tabanı ve frozen v10 değişmedi.
+
+Proje reçeteleri, karşılaştırma haritaları, kararlar ve tarihsel memory bank
+devir rehberinde korunur. Global Codex ayarları, kimlik bilgileri, tarayıcı
+profilleri, ham sohbet kayıtları ve yayıncı tam metinleri eklenmez.
+
+OSF güncellemesi ayrı ortak iştir. Güncel çalışma yazarın bilimsel okuması
+için hazırlanmıştır; teknik kontroller gönderim onayı sayılmaz.

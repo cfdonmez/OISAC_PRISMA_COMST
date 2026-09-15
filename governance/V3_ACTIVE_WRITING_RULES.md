@@ -1,5 +1,16 @@
 # Active V3 writing decisions
 
+## Current whole-manuscript authority — 16 September 2026
+
+The author requests complete, autonomous revision of all sections, figures and
+tables, assessing dependencies through the engineering chain from physical
+sharing to paired outcomes, validation and application requirements. Work on
+`rev/flow-20260916`, preserving `0d5d6f8` in `archive/base.zip` for comparison.
+This expressly supersedes historical section-only and external-figure-production
+restrictions below. Preserve the scientific constraints, cover-letter boundary,
+frozen records and joint OSF-update task. Target 20–30 pages with full PDF visual
+inspection. See `flow.md` for the section-purpose and dependency map.
+
 Author instruction, 2026-09-07. These decisions take precedence over the
 historical recipes preserved in v3_source_snapshot_2026-09-06.
 

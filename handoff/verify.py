@@ -35,10 +35,18 @@ for line in (frozen / 'SUPPLEMENT_SHA256_2026-08-17.txt').read_text(encoding='ut
     if not p.is_file() or digest(p).lower() != sha.lower():
         errors.append('Frozen manifest mismatch: ' + name)
 
-qa = json.loads((ROOT / 'governance/qa/review/result.json').read_text(encoding='utf-8'))
-pdf = ROOT / 'output/pdf/review.pdf'
-if not pdf.exists() or digest(pdf) != qa['sha256']:
+qa = json.loads((ROOT / 'governance/qa/flow/result.json').read_text(encoding='utf-8'))
+pdf = ROOT / 'output/pdf/flow.pdf'
+if not pdf.exists() or digest(pdf) != qa['pdfs']['flow']['sha256']:
     errors.append('Current reading copy does not match recorded QA hash')
+for name, row in qa['pdfs'].items():
+    p = ROOT / 'output/pdf' / (name + '.pdf')
+    if not p.is_file() or digest(p) != row['sha256']:
+        errors.append('Reading artifact changed: ' + name)
+for name, sha in qa['build_inputs'].items():
+    p = resolve_local(ROOT, name)
+    if not p.is_file() or digest(p) != sha:
+        errors.append('Source changed after PDF QA: ' + name)
 
 entry = ROOT / 'manuscript/main.tex'
 visited = set()
@@ -66,7 +74,8 @@ inspect_tex(entry)
 
 docs = ['README.md', 'AGENTS.md', 'README_V3_WORKING_DRAFT.md',
         'handoff/state.md', 'handoff/index.md', 'supplement/index.md',
-        'supplement/methods.md', 'governance/review.md', 'governance/s3a.md']
+        'supplement/methods.md', 'governance/review.md', 'governance/s3a.md',
+        'governance/flow.md', 'compare.md']
 link_count = 0
 for doc in docs:
     p = ROOT / doc

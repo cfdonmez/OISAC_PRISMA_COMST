@@ -1,3 +1,8 @@
+> Historical implementation record: 14 September 2026. Current section,
+> figure and reporting locations are in [flow.md](flow.md); the current reading
+> copy is [flow.pdf](../output/pdf/flow.pdf). The locations and QA below describe
+> the preserved 29-page baseline, not the later revision.
+
 # Introduction methods integration
 
 Date: 2026-09-14

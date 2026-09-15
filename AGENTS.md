@@ -5,7 +5,9 @@ Before substantive work, read `handoff/state.md`, then
 relevant evidence, recipes and historical memory. Do not load the whole history
 for every task. Check the live files and Git diff before relying on older notes.
 
-- Current branch: `rev/comst-v3-20260906`. The manuscript has eight main sections;
+- Current branch: `rev/flow-20260916`. Baseline `0d5d6f8` is archived in
+  `archive/base.zip` and remains on `rev/comst-v3-20260906`.
+  The manuscript has eight main sections;
   Review Methodology is Introduction I-C. Do not restore standalone Section III
   just because an old recipe or memory mentions it.
 - Write manuscript prose in English and explain work to the author in Turkish.
@@ -18,9 +20,10 @@ for every task. Check the live files and Git diff before relying on older notes.
 - Preserve study/report/metric/relationship distinctions and original measurement
   conditions. Never turn conditional comparison candidates into verified pooled
   or cross-study results. TQAF is not GRADE or a conventional risk-of-bias tool.
-- Preserve user edits and frozen source packages. New scientific content or
-  figure work follows the author's task; historical approval is not a blanket
-  permission to redraw figures. Retain approved figure assets and editable sources.
+- Preserve user edits and frozen source packages. The 16 September author task
+  authorizes the complete manuscript revision, restructuring and new figure
+  design with PDF inspection. Older section-only and external-figure restrictions
+  do not limit this task. Retain the baseline assets in the comparison archive.
 - Use local TeX/text and focused searches first. Avoid expensive broad reviews
   without explaining their value to the author; respect the token budget.
 - Build from `manuscript/` with
