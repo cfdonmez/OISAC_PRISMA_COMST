@@ -1,6 +1,8 @@
 # Önceki sürümle karşılaştırma
 
-16 Eylül 2026 · Yerel dal: `rev/flow-20260916` · Referans: `0d5d6f8`
+Revizyon: 16 Eylül 2026 · Dal: `rev/flow-20260916` · Referans: `0d5d6f8`
+
+GitHub aktarımı: 30 Eylül 2026. [Devam adımları](README.md#diğer-bilgisayarda-devam).
 
 [Yeni makale](output/pdf/flow.pdf) · [Bilimsel ek profiller](output/pdf/profiles.pdf) ·
 [Önceki sürümün kaynak ve PDF arşivi](archive/base.zip) · [Metin farkı](archive/text.diff)
@@ -81,7 +83,7 @@ Bu revizyon yeni literatür taraması veya corpus elemesi yapmadı.
 | Yeni iddialar destekli mi? | Ek deneyler açıkça öneri; hareket denklemleri açık varsayımlı örnek. Yeni ölçüm, havuzlanmış frontier veya evrensel platform üstünlüğü üretilmedi. |
 | Sonuç başka sisteme aktarılabilir mi? | Yalnız tanımlanan görev, ölçüm düzlemi, bütçe ve koşullar altında; bunu sınayacak deneyler VII'de. Gerçek deneysel fizibilite iddiası yapılmıyor. |
 | Dizgi ve taşınabilirlik | 20 sayfa; tüm şekil/tablo sayfaları incelendi. Hazır vektörlerle normal LaTeX derlemesi yeterli; yeni adlar kısa. |
-| Kalan bağımlılıklar | Yazarın bilimsel okuması, birlikte OSF güncellemesi ve yeni dalın GitHub'a aktarılması. Bu işler makaleye iç süreç anlatısı olarak eklenmedi. |
+| Kalan bağımlılıklar | Yazarın bilimsel okuması ve birlikte OSF güncellemesi. GitHub aktarımı 30 Eylül'de yapıldı; ayrıntılı açık işler [state.md](handoff/state.md) içinde. Bu işler makaleye iç süreç anlatısı olarak eklenmedi. |
 
 Kaynak/atıf/sayı/derleme kontrolleri [result.json](governance/qa/flow/result.json)
 içinde; görsel inceleme aynı PDF hash'ine bağlı. Hatalı veya eksik atıf/çapraz

@@ -1,6 +1,8 @@
 # O-ISAC COMST working draft
 
-Current local branch: `rev/flow-20260916`; comparison baseline: `0d5d6f8`.
+Current GitHub branch: `rev/flow-20260916`; comparison baseline: `0d5d6f8`.
+The 16 September revision was pushed on 30 September 2026. See
+[README.md](README.md) for cross-computer checkout and verification steps.
 The whole-manuscript revision is described in [compare.md](compare.md).
 Read [flow.pdf](output/pdf/flow.pdf) and the supplementary
 [profiles.pdf](output/pdf/profiles.pdf). The current structure, checks and

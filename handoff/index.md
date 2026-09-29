@@ -6,6 +6,7 @@ Aşağıdaki ayrıntılar yalnız ilgili görev için açılmalıdır.
 
 | İhtiyaç | Konum |
 |---|---|
+| Doğru GitHub dalını indirme ve yeni cihazda başlama | [README](../README.md#diğer-bilgisayarda-devam) — `rev/flow-20260916` |
 | Güncel makale / okuma kopyası | [manuscript](../manuscript/), [flow.pdf](../output/pdf/flow.pdf) |
 | Bütün-makale revizyonu ve karşılaştırma | [compare.md](../compare.md), [flow.md](../governance/flow.md), [base.zip](../archive/base.zip) |
 | V3 reçeteleri, figür promptları, uygulama geçmişi | [governance](../governance/) |
@@ -33,6 +34,8 @@ halleriyle korunur. Eski Section III/V/IX numaraları, erken corpus sayıları,
 prospektif planlar, GRADE taslakları veya figür üretim yasakları güncel kararı
 otomatik olarak değiştirmez. Eski mimari adayının adı bir onay değildir.
 16 Eylül bütün-makale revizyonu ve en son yazar talimatı esas alınır.
+30 Eylül GitHub aktarımı devamlılık belgelerini günceller; yeni bir bilimsel
+revizyon veya yazar onayı değildir.
 
 V10 kaynakları frozen snapshot'tır. PRISMA know-how, gerçek uygulanmış süreç
 kaydıyla birlikte okunur. Eski raporlama uyum matrisi tamamlanmış güncel PRISMA

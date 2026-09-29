@@ -1,10 +1,13 @@
-# Güncel durum — 16 Eylül 2026
+# Güncel durum — 30 Eylül 2026
 
 ## Nerede kaldık?
 
 Tüm makale, yazarın 16 Eylül talimatıyla fiziksel paylaşım → tasarım değişkeni →
 iki işlevin sonucu → doğrulama → uygulama → araştırma sorusu akışında yeniden
-işlendi. Çalışma dalı **`rev/flow-20260916`**; bu dal henüz yereldir.
+işlendi. Çalışma dalı **`rev/flow-20260916`**; 30 Eylül'de
+[GitHub'a aktarıldı](https://github.com/cfdonmez/OISAC_PRISMA_COMST/tree/rev/flow-20260916).
+Bilimsel revizyon commit'i `5ac538274a037067d7d4720145625756d79f0007`;
+bu aktarımda yalnız devamlılık belgeleri güncellendi, makale ve ekleri değişmedi.
 Güncel okuma kopyası [flow.pdf](../output/pdf/flow.pdf), **20 sayfa**.
 [Karşılaştırma](../compare.md), [metin farkı](../archive/text.diff) ve
 [önceki sürüm arşivi](../archive/base.zip) birlikte korunur. Referans commit
@@ -60,14 +63,24 @@ fit edilmiş sonuç değildir.
 [QA](../governance/qa/flow/result.json): temiz kaynak/atıf/bağlantı kontrolleri;
 son makale SHA-256 `38b21adb5a55126176d3006ab6f80c059d9c6efd490093b5778a98664ee4a6b0`. Bütün sayfa incelemesi
 `governance/qa/flow/paper/visual_checks.json` ile aynı hash'e bağlanır.
-`python handoff/verify.py` frozen taşıyıcıları ve güncel PDF hash'ini denetler.
+`python handoff/verify.py` (Python 3.9+) frozen taşıyıcıları, derleme girdilerini,
+iki okuma PDF'sinin hash'lerini ve etkin bağlantıları denetler. Aktarım öncesi
+kontrol PASS: 268 devir kaydı ve 40 frozen manifest girdisi doğrulandı.
+
+GitHub paketi güncel kaynakları, beş şekli, supplement'i, önceki sürüm arşivini,
+karşılaştırmayı, reçeteleri, haritaları, proje memory bank'ini ve karar kayıtlarını
+içerir. İndirme ve yeniden başlama adımları [README](../README.md) içindedir.
+Ham sohbetler veya global Codex ayarları bu pakete alınmadı.
+
+Açık işler:
 
 1. Yazar bu sürümü okuyacak; teknik QA, yazarın bilimsel onayı değildir.
 2. OSF güncellemesi önceden kararlaştırılan ayrı ortak iştir. Makaledeki
    yazar-onaylı final-state arşiv cümlesi uzaktaki güncellemeyi kanıtlamaz.
 3. Güncel raporlama-konumu haritası [flow.md](../governance/flow.md) içindedir;
    tamamlanmış bağımsız PRISMA checklist diye sunulmaz.
-4. GitHub'a bu yeni dalın aktarılması ayrı adımdır. Eski dal/commit arşiv
-   referansıdır; ham sohbetler veya global Codex ayarları bu pakete alınmadı.
-5. Tarihsel COMST031 metadata sorunu bu revizyonda yeni bir corpus taramasına
-   dönüştürülmedi.
+4. Tarihsel COMST031 metadata sorunu çözülmedi; bu revizyonda yeni bir corpus
+   taramasına dönüştürülmedi.
+
+Dergiye gönderim veya cover-letter iletimi yapılmadı. GitHub aktarımı, yazarın
+bilimsel onayını veya OSF güncellemesini tamamlamaz.
