@@ -22,6 +22,7 @@ Aşağıdaki ayrıntılar yalnız ilgili görev için açılmalıdır.
 | Karar ve ilerleme kayıtları | [decision_log.md](prisma/workflow/09_kayitlar/decision_log.md), [progress_tracker.md](prisma/workflow/09_kayitlar/progress_tracker.md) |
 | Önceki proje bağlamı | [context.md](prisma/context.md), [start.md](prisma/start.md) |
 | Codex'in ilgili yerel hafıza kayıtları | [history/memory.md](history/memory.md), `history/r01.md`–`r07.md`; [eşleme](history/index.json) |
+| 1 Ekim 2026 proje brifingi (doğrulanmış özet ve ham modüller) | [history/briefing_20261001](history/briefing_20261001/) |
 | Tam makale ilişki mimarisi ve revizyon senaryoları | [plans](plans/) — tarihsel adaylar, kendi onay durumlarıyla |
 | RC1 / G6–G7 kanıt kilidi geçmişi | [rc1](rc1/) — V3 onayı sayılmaz |
 | Özgün konum, byte boyutu ve SHA-256 | [files.json](files.json) |
